@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Correlated errors  (optional)</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="serial correlation, durbin-watson statistic">
+	<meta name="dataset" content="World rice production">
+</head>
+
+
+<body class="lecture">
+<script type="text/javascript">writePageStart();</script>
+
+
+<p class="heading">Total world rice production (million tonnes)</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="530">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="loessProg.DurbinWatsonApplet">
+<param name="xVarName" value="Year">
+<param name="yVarName" value="Rice production (million tonnes)">
+<param name="yValues" value="215.7 226.6 247.1 263.0 254.1 261.2 277.5 288.7 295.7 316.4 317.8 307.3 335.0 332.0 357.0 347.7 369.5 385.1 375.1 396.8 410.0 421.9 447.8 465.1 467.9 468.4 461.1 487.0 514.0 518.2 518.5 528.2 529.8 538.8 547.0 568.5 576.8 578.8 609.9 598.2 585.1">
+<param name="xValues" value="1961 1962 1963 1964 1965 1966 1967 1968 1969 1970 1971 1972 1973 1974 1975 1976 1977 1978 1979 1980 1981 1982 1983 1984 1985 1986 1987 1988 1989 1990 1991 1992 1993 1994 1995 1996 1997 1998 1999 2000 2001">
+<param name="horizAxis" value="1960 2001 1960 10">
+<param name="vertAxis" value="0 700 0 100">
+<param name="residAxis" value="-30 30 -30 10">
+<param name="durbinWatsonAxis" value="1.0 3.0 1.0 0.2">
+<param name="random" value="3.0 384958677">
+<param name="labelAxes" value="true">
+<param name="customText" value="Actual Data=Actual Data#Random Normal Data=Random Normal Data#Durbin-Watson=Durbin-Watson#propn as extreme=propn as extreme">
+<param name="fontSize" value="big">
+</applet>
+</div>
+
+<script type="text/javascript">
+	writeLecturerNotesLink(withDataNotes);
+</script>
+
+<div class="lecturerNote" id="lecturerNote">
+  <p>First discuss the assumption of independence and the possibility of serial correlation of the errors.</p>
+  <p>The <strong>Durbin-Watson statistic</strong> is:</p>
+  <p class=eqn><img class="gif" src="../HregnProblem/durbWatson.gif" width="127" height="51"> </p>
+  
+<div class="centred"><div class="boxed">
+<p>High serial correlation ==&gt; <em>d</em> close to zero.</p>
+</div></div>
+
+  <p>Is <em>d</em>&nbsp;=&nbsp;1.291 indicative of serial correlation?</p>
+  <p>Select <strong>Random Normal Data</strong>. Click <strong>Accumulate</strong>, 
+    then click <strong>Simulate</strong> about 100 times to build up the sampling 
+    distribution of <em>d</em>.</p>
+  <p>A value as low as 1.291 is very unlikely for data from a normal linear model.</p>
+  
+<div class="centred"><div class="boxed">
+<p>Strong evidence that years with unusually high (or low) yield tend 
+        to follow each other.</p>
+</div></div>
+
+  <p class="heading">Warning</p>
+  
+<div class="centred"><div class="boxed">
+<p>An unusually small Durbin-Watson statistic can be caused by <strong>either 
+        serial correlation or nonlinearity</strong>.</p>
+</div></div>
+
+<br>
+</div>
+<div class="lecturerNote" id="dataNote">
+<p>The time series  gives the total world rice production (million tonnes) 
+between 1961 and 2001.</p>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

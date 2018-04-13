@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Prédire X Y et la prédiction</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	<meta name="dataset" content="Weights of brothers">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Différentes lignes sont utilisées pour prédire Y et pour prédire X</p>
+	<p>Le coefficient de corrélation est symétrique dans les deux variables &mdash; le coefficient de corrélation entre X et Y est la même que celle entre Y et X. Cependant, les moindres carrés prédire Y à partir de X n'est pas le même que celui utilisé pour prédire X de Y ( même après réarrangeant l'équation).</p>
+	<p>Si le nuage est dessiné avec la variable Y sur l'axe vertical, les moindres carrés pour prédire Y à partir de X,</p>
+<p class=eqn><span class="black"><em>y</em> &nbsp;=&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x</em></span></p>
+	<p>minimise la somme des carrés des distances&nbsp;<strong>verticales</strong>&nbsp;entre les points sur un diagramme de dispersion et de la ligne.&nbsp;D'autre part, si nous sommes intéressés à prédire X de Y en utilisant une ligne,</p>
+<p class=eqn><span class="black"><em>x</em> &nbsp;=&nbsp; <em>c</em><sub>0</sub> + <em>c</em><sub>1 </sub><em>y</em></span></p>
+	<p>les résidus sont les distances&nbsp;<strong>horizontales</strong>&nbsp;entre les points et la ligne dans le nuage même, et des moindres carrés minimise la somme des carrés de ces derniers.</p>
+<p class=eqn><object data="images/predictAndInverse.svg" width="469" height="209"></object></p>
+	<p>Différentes lignes de minimiser la somme des carrés des distances horizontales et verticales.</p>
+<p class="heading">À propos des deux lignes de moindres carrés</p>
+	<p>Le moins deux lignes de carrés peuvent être simplement écrit en termes de variables normalisées,</p>
+	<table border="0" cellspacing="0" cellpadding="10" class="centred">
+		<tr> 
+			<th>L'équation de la ligne des moindres carrés pour prédire Y à partir de X</th>
+			<td><img class="gif" src="../../en/leastSqrs/images/yxLsLine.gif" width="135" height="44"></td>
+		</tr>
+		<tr> 
+			<th>L'équation de la ligne des moindres carrés pour prédire X de Y</th>
+			<td><img class="gif" src="../../en/leastSqrs/images/xyLsLine.gif" width="136" height="44"></td>
+		</tr>
+	</table>
+	<p>où&nbsp;<em>r</em>&nbsp;est le coefficient de corrélation entre&nbsp;<em>X</em>&nbsp;et&nbsp;<em>Y.</em>&nbsp;Comme&nbsp;<em>r</em>&nbsp;est toujours inférieur à 1, la ligne de carrés au moins pour prédire&nbsp;<em>Y</em>&nbsp;à partir de&nbsp;<em>X</em>&nbsp;est la plus horizontale (près d'être parallèle à l'axe des x) des deux lignes.</p>
+	<div class="diagram">
+
+		<p class="heading">Le poids des frères</p>
+
+		<p>Le diagramme de dispersion ci-dessous montre le poids adulte (en kg) de 100 paires de frères âgés entre 20 et 30.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.TwoWayResidApplet">
+<param name="xVarName" value="Frère cadet">
+<param name="yVarName" value="Frère aîné">
+<param name="xValues" value="77 74 82 81 84 78 67 92 77 69 81 85 77 95 79 80 82 84 75 82 89 77 83 84 81 76 82 85 77 87 86 85 67 89 70 78 82 83 84 70 80 71 84 83 73 70 92 82 76 76 80 83 83 85 82 84 74 86 88 68 77 87 83 85 78 82 77 75 78 86 87 90 73 88 80 77 77 88 77 85 86 86 72 91 74 76 75 87 86 73 80 78 81 85 75 77 87 76 78 77">
+<param name="yValues" value="80 83 83 85 82 84 74 86 88 68 77 87 83 85 78 82 77 75 78 86 87 90 73 88 80 77 77 88 77 85 86 86 72 91 74 76 75 87 86 73 80 78 81 85 75 77 87 76 78 77 77 74 82 81 84 78 67 92 77 69 81 85 77 95 79 80 82 84 75 82 89 77 83 84 81 76 82 85 77 87 86 85 67 89 70 78 82 83 84 70 80 71 84 83 73 70 92 82 76 76">
+<param name="horizAxis" value="60 100 60 10">
+<param name="vertAxis" value="60 100 60 10">
+<param name="initialLine" value="0 1">
+<param name="xRssAxis" value="0 8000 0 2000">
+<param name="yRssAxis" value="0 8000 0 2000">
+<param name="xRssDecimals" value="0">
+<param name="yRssDecimals" value="0">
+<param name="sliderHeight" value="60">
+<param name="labelAxes" value="true">
+<param name="customText" value="Response=Réponse#RSS=RSS#Resids for=Résidus pour">
+</applet>
+</div>
+
+		<p>La ligne qui est d'abord tiré sur le nuage de points semble un ajustement raisonnable des données &mdash; il prévoir le poids de chaque frère soit égale à celle de son frère.Cependant ce n'est&nbsp;<strong>pas</strong>&nbsp;la moindres carrés pour prédire le poids de l'frère aîné.</p>
+		<p>Cliquez sur <strong>Frère aîné</strong>&nbsp;case sous le nuage.&nbsp;Cela attire les résidus de l'utilisation de la ligne de prédire poids des grands frères de ceux de leurs jeunes frères. La somme résiduelle des carrés est également montré dans le diagramme de dispersion.&nbsp;<strong>Faites glisser la flèche rouge</strong>&nbsp;sur le diagramme de dispersion pour faire pivoter la ligne et d'observer que la somme résiduelle des carrés est minimisé lorsque la ligne est plus proche de l'horizontale.</p>
+		<p>Maintenant éteignez&nbsp;<strong>Frère aîné</strong> et cliquez sur la case&nbsp;<strong>Frère cadet.</strong>&nbsp;Les résidus de prédiction des poids les plus jeunes frères des frères plus âgés sont représentées par des lignes horizontales et leurs somme des carrés est affiché.&nbsp;<strong>Faites glisser</strong>&nbsp;la ligne et d'observer que la somme résiduelle des carrés est minimisé lorsque la ligne est plus verticale qu'auparavant.</p>
+	</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

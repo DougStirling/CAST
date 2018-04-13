@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Estimations de la densité du noyau</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="kernel density estimate, estimation">
+	<meta name="dataset" content="Strength measurements">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Les histogrammes sont &quot;boxy&quot;</p>
+
+<p>Histogrammes tendent à avoir un peu «boxy 'outline à moins que l'ensemble des données est très importante. Une <strong>estimation de la densité du noyau</strong> est un affichage alternatif de densité qui est plus lisse que d'un histogramme.</p>
+
+<p class="heading">Estimer la densité du noyau</p>
+<p>Dans une estimation de la densité du noyau, chaque valeur de l'échantillon est représenté par une zone de «encre» appelé un <strong>noyau</strong> qui est centrée sur la valeur. Lorsque les noyaux pour les valeurs de l'échantillon adjacentes se chevauchent, les domaines de l'encre sont empilés les uns sur les autres. Le diagramme ci-dessous montre les noyaux triangulaires pour les points de données 3. Les zones où le chevauchement des triangles sont empilés sur les triangles à leur gauche.<br>
+</p>
+
+<p class=eqn><object data="images/kernels.svg" width="365" height="143" alt="kernels"></object>
+</p>
+
+<p>Bien que les noyaux triangulaires peuvent être utilisés, un noyau arrondi est plus fréquente. La largeur des noyaux peuvent être ajustés pour donner le plus doux d'affichage. Très étroit résultat noyaux dans un pic à chaque valeur de données, tandis que les noyaux très large diffusion de l'estimation de densité plus large que les données réelles. Certains largeur intermédiaire offrira le meilleur compromis entre finesse et la proximité de ces données.</p>
+
+<div class="diagram">
+
+<p>Le diagramme ci-dessous montre un tracé de points de six valeurs. Surtout qu'il s'agit d'une estimation de densité de noyau basé sur ces valeurs.<br>
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="350" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="inferenceProg.KernelDisplayApplet">
+<param name="varName" value="Mesures des essais">
+<param name="values" value="10 20 30 35 40 50">
+<param name="horizAxis" value="0 60 0 10">
+<param name="kernelWidth" value="1 10 60">
+<param name="jittering" value="0.0">
+<param name="customText" value="Kernel width=Largeur des noyau#Narrow=Étroites#Wide=Large">
+</applet>
+</div>
+
+<p>Utilisez le curseur pour ajuster la largeur des noyaux et observer comment l'empilement des noyaux adoucit la densité lorsque les grains sont élargies.</p>
+
+<p><strong>Cliquez</strong> sur des croisements individuels dans le tracé de points pour mettre en évidence le noyau correspondant à l'estimation de densité, puis d'ajuster la largeur du noyau de nouveau pour voir comment les différentes noyaux traverse »sont empilées.</p>
+
+<p class="heading">Des mesures de résistance</p>
+
+<p>Le schéma suivant montre une estimation de la densité du noyau pour les données de Hong Kong étudiant force isométrique.<br>
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="350" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="inferenceProg.KernelDisplayApplet">
+<param name="varName" value="Force maximum volontaire isométrique (kg)">
+<param name="values" value="33 16 35 33 47 40 18 54 18 44 21 29 12 12 26 10 12 20 31 12 19 36 23 22 20 15 15 16 20 13 25 26 41 14 20 22 19 18 23 26 19">
+<param name="horizAxis" value="0 65 0 10">
+<param name="kernelWidth" value="1 10 50">
+<param name="jittering" value="1.0">
+<param name="customText" value="Kernel width=Largeur des noyau#Narrow=Étroites#Wide=Large">
+</applet>
+</div>
+
+<p>Utilisez le curseur pour ajuster la largeur des amandes et de donner une estimation de densité lisse. Si les grains sont trop larges, l'estimation de densité se propage trop loin de chaque côté de ces données, mais les noyaux étroits donner une estimation hérissés. Une largeur du noyau intermédiaire est le meilleur compromis.</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

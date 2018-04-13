@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Sequence of models</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="factorial design, sequential sums of squares">
+	<meta name="dataset" content="Strength of asphaltic concrete">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">No-interaction model for two factors</p>  
+  <p>The no-interaction model for the effect of two factors X and Z on a response can be written in the form</p>
+  <div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+    <tr>
+      <td align="center"><br><br>
+      <span class="em black">y<sub>ijk</sub></span>  &nbsp;= &nbsp;<span class="blue">µ</span></td>
+      <td align="center"><br><br>&nbsp;+&nbsp;</td>
+      <td align="center" class="red"><em>differences <br>
+      between X-levels</em><br>      
+      β<em><sub>i</sub></em></td>
+      <td align="center"><br><br>&nbsp;+&nbsp;</td>
+      <td align="center" class="green"><em>differences <br>
+        between Z-levels</em><br>
+      γ<em><sub>j</sub></em></td>
+      <td align="center"><br><br>&nbsp;+&nbsp;</td>
+      <td align="center"><br><br>ε<em><sub>ijk</sub></em></td>
+    </tr>
+  </table></div>
+  <br>
+  <div class="centred"><div class="boxed">
+    <p>If  either factor  has no effect on the response, the model is simplified by omitting the factor's term from the model. </p>
+  </div></div>
+  <p>There is therefore a network of meaningful models,</p>
+  
+  <div class="centred"><table class="centred">
+  <tr>
+  <td colspan="3" align="center">
+      <strong><em><span class="bold black">Neither X nor Z affects Y</span> </em></strong><br>
+      <span class="em black">y<sub>ijk</sub></span>  &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp;ε<em><sub>ijk</sub></em></td>
+  </tr>
+  <tr>
+  <td align="right"><img src="images/leftArrow.gif" width="70" height="70"></td>
+  <td width="100" align="center">&nbsp;</td>
+  <td align="left"><img src="images/rightArrow.gif" width="70" height="70"></td>
+  </tr>
+  <tr>
+  <td align="center">
+      <em><span class="bold black">Only X affects Y</span> </em><br>
+      <span class="em black">y<sub>ijk</sub></span>  &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp; <span class="red">β<em><sub>i</sub></em></span> &nbsp;+ &nbsp; ε<em><sub>ijk</sub></em></td>
+  <td align="center">&nbsp;</td>
+  <td align="center">
+      <em><span class="bold black">Only Z affects Y</span> </em><br>
+      <span class="em black">y<sub>ijk</sub></span>  &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp;<span class="green">γ<em><sub>j</sub></em></span> &nbsp; + &nbsp; ε<em><sub>ijk</sub></em></td>
+  </tr>
+  <tr>
+  <td align="right"><img src="images/rightArrow.gif" width="70" height="70"></td>
+  <td align="center">&nbsp;</td>
+  <td align="left"><img src="images/leftArrow.gif" width="70" height="70"></td>
+  </tr>
+  <tr>
+  <td colspan="5" align="center"><strong><span class="em black">Both X and Z affect Y</span> </strong><br>
+    <span class="em black">y<sub>ijk</sub></span>  &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp; <span class="red">β<em><sub>i</sub></em></span> &nbsp; + &nbsp; <span class="green">γ<em><sub>j</sub></em></span> &nbsp; + &nbsp; ε<em><sub>ijk</sub></em></td>
+  </tr>
+  </table></div>
+  
+  <p>Each time the flexibility (i.e. freedom) of the model is increased by adding 
+		extra parameters, it is possible to get the fitted values closer to the actual 
+		response values &mdash; i.e. the residuals can be reduced. When extra parameters 
+		are added to the model and estimated by least squares, the residual sum of squares therefore decreases.</p>
+  <div class="diagram"> 
+		<p class="heading">Strength of asphaltic concrete</p>
+		<p>A civil engineer conducted an experiment to evaluate how different compaction 
+		methods and types of aggregate affect the strength of asphaltic concrete. Four compaction methods and two aggregate types were used.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoFactorProg.RotateDragFactorsApplet">
+<param name="yVarName" value="Concrete strength">
+<param name="yValues" value="68 63 65 126 128 133 93 101 98 56 59 57 71 66 66 107 110 116 63 60 59 40 41 44">
+<param name="yAxis" value="20 150 20 20">
+<param name="zVarName" value="Aggregate">
+<param name="zValues" value="12@0 12@1">
+<param name="zLabels" value="Basalt Silicious">
+<param name="xVarName" value="Compaction">
+<param name="xValues" value="3@0 3@1 3@2 3@3 3@0 3@1 3@2 3@3">
+<param name="xLabels" value="Static Regular Low #Very low#">
+<param name="zModelTerms" value="none factor">
+<param name="xModelTerms" value="none factor">
+<param name="interaction" value="false">
+<param name="initialModel" value="ls">
+<param name="maxRss" value="99999.9">
+<param name="factorChecks" value="true">
+<param name="customText" value="None=None#Linear=Linear#Factor=Factor#Terms in model=Terms in model">
+</applet> 
+</div>
+
+		
+    <p>Initially the model used has no explanatory factors, so its residual sum of squares is high when fitted by least squares. (The fitted values are the overall mean reponse from all observations.)</p>
+    <p>Click the checkboxes to add the two factors to the model. Observe that:</p>
+    <div class="centred"><div class="boxed">
+      <p>Whenever a factor is added to the model, the residual sum of squares decreases. </p>
+    </div></div>
+
+<br>
+</div>
+
+  <br>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

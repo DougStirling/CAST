@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Transformationen und Korrelation</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="transformations, correlation coefficient/transform to linearity first">
+	<meta name="dataset" content="Bacteria survival after X-rays/high correlation after linearising">
+
+	<meta name="dataset" content="Lifespan and metabolic rate of mammals/higher correlation after linearising">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Korrelationskoeffizient und nichtlineare Beziehungen</p>
+<p>Der Korrelationskoeffizient <em>r</em>
+ist eine gute Beschreibung f&uuml;r die St&auml;rke linearer
+Beziehungen, aber <span
+ style="text-decoration: underline; color: rgb(0, 0, 153);">nicht
+f&uuml;r nichtlineare Beziehungen</span><span
+ style="color: rgb(0, 0, 153);">.</span> Wenn ein Streudiagramm eine
+deutliche Kr&uuml;mmung zeigt, kann der Korrelationskoeffizient
+deutlich die St&auml;rke der Beziehung untersch&auml;tzen.</p>
+<p>Wie kann man die St&auml;rke eines nichtlinearen Beziehung
+zusammenfassen? Eine L&ouml;sung ist eine andere zusammenfassende
+Statistik zu benutzen, die bessere Eigenschaften hat als <em>r</em> hat. Auf dieser Seite beschreiben
+wir eine alternative L&ouml;sung f&uuml;r das Problem.</p>
+<p class="heading">Transformiere die Variablen, um die Beziehung zu
+linearisieren</p>
+<p><a href="javascript:showNamedPage('transform2')"></a><span
+ style="text-decoration: underline; color: rgb(0, 0, 153);">Anwendung
+einer nichtlinearen Transformation</span> (wie eine Log-Transformation)
+auf eine einzelne Variable &auml;ndert&nbsp; die Form seiner Verteilung
+und kann, um Schr&auml;gheit zu beseitigen, verwendet werden.</p>
+<p>Nichtlineare Transformation einer Variablen hat eine wichtige
+Wirkung auf die bivariaten Daten- es &auml;ndert sich die Form der
+Beziehung. (Dies ist einfacher in der unteren Darstellung zu sehen als
+es in Worten zu erkl&auml;ren!) Es ist oft m&ouml;glich, eine Beziehung
+durch die Transformation einer oder beider Variablen zu linearisieren.</p>
+<p>Daher ist ein Weg <em>r</em> zu
+verwenden, um nichtlineare Verh&auml;ltnisse zu beschreiben, eine
+Transformation einer oder beider Variablen anzuwenden, um die <strong>Nichtlinearit&auml;t zu entfernen</strong>,
+bevor <em>r</em> bewertet wird.</p>
+<div class="diagram">
+<p class="heading">Marine Bakterien &uuml;berleben R&ouml;ntgenstrahlen</p>
+<p>Das nachfolgende Streudiagramm zeigt die Anzahl von&nbsp;marinen
+Bakterien, die eine Bestrahlung bis 200 Kilovolt R&ouml;ntgenstrahlen
+f&uuml;r Zeitr&auml;ume von t = 1 bis = 15 Intervallen von 6 Minuten
+&uuml;berlebt haben. Das Verh&auml;ltnis ist deutlich nichtlinear mit
+einem steilen anf&auml;nglichen R&uuml;ckgang der Anzahl und
+anschlie&szlig;ender allm&auml;hlicher Abnahme.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class"
+ archive="coreCAST.jar" height="370" width="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="corrProg.CorrelTransApplet"><param
+ name="xVarName" value="X-ray dose"><param name="yVarName"
+ value="survivors"><param name="xValues"
+ value="1 2 3 4 5 6 7 8 9 10 11 12 13 14 15">
+<param name="yValues"
+ value="355 211 197 166 142 106 104 60 56 38 36 32 21 19 15"><param
+ name="horizAxis" value="0 16 0 2"><param name="vertAxis"
+ value="14 360 50 50"><param name="labelAxes" value="true">
+<param name="transformAxes" value="true"></applet></div>
+<p>Der Korrelationskoeffizient betr&auml;gt <em>r</em> = -0,907 und zeigt eine ziemlich
+starke Beziehung zwischen der Anzahl der &Uuml;berlebenden und der
+Dosis der R&ouml;ntgenstrahlen an, aber die Nichtlinearit&auml;t
+bedeutet, dass die St&auml;rke der Beziehung durch diesen
+untersch&auml;tztz wird. </p>
+<p>Ziehe die rote Linie auf der vertikalen Achse nach oben, um eine
+Potenztransformation auf die Anzahl der &Uuml;berlebenden anzuwenden.
+Wenn die Potenz nahe an Null ist (das entspricht einer
+log-Transformation der Reaktion), wird das Verh&auml;ltnis fast linear.
+Da das Verh&auml;ltnis zwischen log (&Uuml;berlebende) und Dosis
+ann&auml;hernd linear ist, ist der Korrelationskoeffizient zwischen
+diesen beiden Variablen, <em>r </em>=
+-0,994, eine bessere Beschreibung der St&auml;rke des
+Verh&auml;ltnisses. </p>
+</div>
+<p class="heading">W&auml;hlen der Transformation</p>
+<p><strong>Wie entscheidest
+du dich, welche Variable zu transformieren ist, um eine Beziehung zu
+linearisieren?</strong> Es gibt keine einfache Antwort, die f&uuml;r alle
+Datens&auml;tze funktioniert, aber ein n&uuml;tzlicher Ansatz ist, die
+Randwerte jeder einzelnen Variablen getrennt zu betrachten und
+zun&auml;chst Transformationen zu versuchen, die jede m&ouml;gliche
+Schr&auml;gheit in dieser Verteilungen entfernen. </p>
+<div class="diagram">
+<p class="heading">Stoffwechselrate und Lebensdauer</p>
+<p>Das folgende Streudiagramm zeigt die Lebensdauer (in Jahren) und die
+Stoffwechselrate (gemessen durch Sauerstoffaufnahme pro Gramm Gewicht)
+einer Auswahl von S&auml;ugetieren. Die Boxplots auf den beiden Achsen
+zeigen, dass jede der Variablen eine schr&auml;ge Verteilung hat, und
+das Streudiagramm zeigt, dass die Beziehung nicht linear ist.
+</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class"
+ archive="coreCAST.jar" height="390" width="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="corrProg.CorrelTransBoxApplet"><param
+ name="xVarName" value="Metabolic rate"><param name="yVarName"
+ value="Lifespan"><param name="labelName" value="Species">
+<param name="xValues"
+ value="0.22 0.52 0.75 1.90 2.00 0.51 0.83 0.43 0.25 0.22 0.25 0.42 0.87 0.93 0.86 1.49 0.74 0.32 0.52 0.52 0.39 0.44 0.07 0.15 0.19 0.24 0.13"><param
+ name="yValues"
+ value="50.0 5.0 6.0 3.5 20.5 12.0 20.0 29.0 50.0 100.0 6.5 18.0 9.0 3.9 4.7 3.2 7.6 16.2 9.8 14.0 13.7 28.0 69.0 46.0 20.0 20.0 30.0"><param
+ name="labels"
+ value="#Echidna# #N American opossum# #European hedgehog# #E American mole# #Little brown bat# #Owl monkey# #Squirrel monkey# #Rhesus monkey# #Chimpanzee# #Man# #Nine-banded armadillo# #Rabbit# #Ground squirrel# #Golden hamster# #Rat# #Mouse# #Guinea pig# #Gray wolf# #Red fox# #Arctic fox# #Raccoon# #Cat# #Asian elephant# #Horse# #Goat# #Sheep# #Cow#"><param
+ name="horizAxis" value="0.06 2.1 0.5 0.5">
+<param name="vertAxis" value="3 105 20 20"><param name="labelAxes"
+ value="true"><param name="transformAxes" value="true"></applet>
+</div>
+<p>Ziehe die roten Linien auf den Achsen, um die&nbsp;Schr&auml;gheit
+an der Grenze zu entfernen. F&uuml;r diese Daten (und vielen andere)
+entfernt die Transformation die&nbsp;Schr&auml;gheit an der Grenze und
+linearisiert <strong>auch</strong> die
+Beziehung. Der Korrelationskoeffizient zwischen den transformierten
+Variablen (ca. -0,7) ist daher eine gerechtere Beschreibung der
+St&auml;rke der Beziehung als die der urspr&uuml;nglichen Messungen
+(-0,47).</p>
+<table class="centred" bgcolor="#ffffff" border="1" cellpadding="0"
+ cellspacing="0" width="85%">
+  <tbody>
+    <tr>
+      <td>
+      <p>Du hast wahrscheinlich festgestellt, dass die Metabolische
+Rate 0.2 eine einigerma&szlig;en symmetrische Verteilung hatte. Es ist
+jedoch schwer die Werte auf diesen Skalen zu interpretieren, daher
+ziehe die Log-Transformation der beiden Variablen&ndash; ihr
+Verh&auml;ltnis ist genauso linear und die Grafik ist einfacher zu
+deuten.</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p>Nach Linearisierung der Beziehung, scheint der Mensch nicht
+l&auml;nger ein Ausrei&szlig;er zu sein. Welche S&auml;ugetiere
+scheinen nun die am ungew&ouml;hnlichsten?</p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

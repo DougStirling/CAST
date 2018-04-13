@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Events in fixed time</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="poisson process, discrete distribution, poisson distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>In a homogeneous Poisson process with events that occur at a rate of \(\lambda\) per unit time, we  now define a discrete random variable, \(X\), to be the number of events that occur in one unit of time.</p>
+<p>If the unit of time is split into infinitessimally small periods, each of length \(\delta t\), the requirements of a homogeneous Poisson process mean that</p>
+<ol>
+	<li>No more than one event can occur in each period.</li>
+	<li>The occurrences of events in different small periods are independent.</li>
+	<li>The probability of an event in any interval is \(\lambda \times \delta t\).</li>
+</ol>
+<p class="heading">Binomial approximation</p>
+<p>To derive the probability function of \(X\), we start with a situation in which the above three conditions hold, but \(\delta t\) is larger. If unit time is split into \(n\) intervals, each of length \(\frac 1 n\), the three conditions would mean that the number of events is the number of successes in a series of \(n\) independent Bernoulli trials, each with probability \(\pi = \frac {\lambda} n\) of success, so</p>
+\[
+X \;\sim\; \BinomDistn \left(n, \pi = \frac {\lambda} n\right)
+\]
+<p>The probability function for the number of events in a homogeneous Poisson process can be found as the limit of the probability function of this binomial distribution, as \(n \to \infty\).</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Poisson probability function</p>
+		<p>The number of events in unit time in a Poisson process with rate \(\lambda\) per unit time has probability function</p>
+\[
+p(x) \;\;=\;\;  \frac {\lambda^x e^{-\lambda}} {x!} \quad\quad \text{ for } x=0, 1, \dots
+\]
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p>A distribution of this form is called a  <strong>Poisson distribution</strong>.</p>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

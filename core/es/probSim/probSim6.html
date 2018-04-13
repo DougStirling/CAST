@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Generating categorical values</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+  <style type="text/css">
+<!--
+.style1 {color: #000000}
+-->
+  </style>
+
+	<meta name="index" content="simulation, random numbers">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class=heading>Generating a categorical value</p>
+<p>Generation of a random value from a categorical distribution can be based on 
+a rectangularly distributed random value, <em><font color="#000000">r</font></em>. 
+If the categorical distribution has two possible values, <em>success</em> and 
+<em>failure</em>, and the probability of <em>success</em> is denoted by the symbol <span class="style1">π</span>, 
+then a <em>success</em> will be generated if <em><font color="#000000">r</font></em> 
+is less than <span class="style1">π</span>.</p>
+<p>If there are more than two possible categories in the distribution, the method 
+can be easily extended. Each possible value corresponds to a range of values of 
+<em><font color="#000000">r</font></em> whose width equals the required probability. 
+(Note that all probabilities for a categorical distribution must sum to 1.0.)</p>
+
+
+<div class="diagram">
+
+<p>The diagram below illustrates generation of a random result from a tennis match 
+in which player <em>Blue</em> has probability 0.6 of beating player <em>White</em>.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="simulationProg.RandomCat3Applet">
+<param name="randomTemplate" value="0.0000">
+<param name="varName" value="Random">
+<param name="catVarName" value="Result">
+<param name="catLabels" value="#Blue wins# #White wins#">
+<param name="random" value="538402167 387345678 13059746 643898242">
+<param name="customText" value="Generate value=Generate value">
+</applet>
+</div>
+
+<p>Click <strong>Generate value</strong> to find a rectangularly distributed value. 
+If this value is less than 0.6, a categorical value <em>Blue wins</em> is generated; 
+otherwise <em>White wins</em> is generated.</p>
+<p>Repeat several times and observe that approximately 60% of the values generated 
+are <em>Blue wins</em>.</p>
+
+<hr width="75%">
+
+<p>The next diagram shows how a random value can be generated from a categorical 
+distribution with more than two possible categories.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="simulationProg.RandomCat2Applet">
+<param name="randomTemplate" value="0.0000">
+<param name="varName" value="Random">
+<param name="noOfModels" value="2">
+<param name="modelName1" value="Eye Colour">
+<param name="modelLabels1" value="Brown Green Blue">
+<param name="modelProbs1" value="0.4 0.4 0.2">
+<param name="modelName2" value="Hair Colour">
+<param name="modelLabels2" value="Black Brown Blonde Red">
+<param name="modelProbs2" value="0.3 0.4 0.2 0.1">
+<param name="maxCats" value="4*Blonde">
+<param name="customText" value="Next value=Next value">
+</applet>
+</div>
+
+<p>Click <strong>Next Value</strong> to generate a random eye colour. Select <strong>Hair 
+colour</strong> from the pop-up menu to generate random hair colours.<strong> 
+</strong></p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

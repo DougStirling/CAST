@@ -1,0 +1,210 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Testing a hypothesis</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<script type="text/javascript">
+		var svgNames = new Array();
+		svgNames[0] = "images/hypnosisTest.svg";
+		svgNames[1] = "images/satelliteTest.svg";
+		svgNames[2] = "images/birthWtTest.svg";
+		svgNames[3] = "images/teethTest.svg";
+		
+		function changeSvgImage(select) {
+			var newIndex = select.selectedIndex;
+			var image = document.getElementById('dataImage');
+			image.src = svgNames[newIndex];
+		}
+	</script>
+
+	<meta name="index" content="hypothesis test, mean, difference">
+	<meta name="dataset" content="Anticipation of hypnosis">
+	<meta name="dataset" content="Satellite classification of land use">
+	<meta name="dataset" content="Births by season">
+	<meta name="dataset" content="Teeth and gender">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Testing for a difference between the two population means</p>
+
+<p>When samples are obtained from two groups, we often want to assess whether there is
+any evidence of a difference between the groups. Differences between the groups may involve
+differences between the spreads, skewness or other features of the distributions in the two
+groups. However the difference of most practical importance is a difference between the
+<strong>means</strong> of the groups.
+</p>
+
+<p class=eqn><span class="blue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong><sub>2</sub> &minus; </strong>&mu;<strong><sub>1</sub> &nbsp;=&nbsp; 0</strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong><sub>2</sub> &minus; </strong>&mu;<strong><sub>1</sub> &nbsp;&ne;&nbsp; 0</strong></span></p>
+
+<p>The summary statistic that throws most light on these hypotheses is the difference
+between the sample means,
+<span style="position:relative; top:5px"><img src="../../images/symbol.xBarDiff.png" width="36" height="15" align="baseline"></span>.
+Testing therefore involves assessment of whether this difference is unusually far from zero.
+</p>
+
+  <p class="heading">Test statistic and p-value</p>
+  <p>The difference <span style="position:relative; top:5px"><img src="../../images/symbol.xBarDiff.png" width="36" height="15" align="baseline"></span> 
+	is standardised (by dividing by an estimate of its standard deviation) and 
+	this t-statistic is compared to a t distribution, as shown in the diagram 
+	below. </p>
+
+<p class=eqn>
+	<object data="images/pValue.svg" width="454" height="266">
+	</object>
+</p>
+
+<p>As with all other hypothesis tests, a p-value near zero gives evidence that 
+the null hypothesis does not hold &mdash; evidence of a difference between the group 
+means. </p>
+<center>
+<table border="1" cellspacing="0" cellpadding="10" bgcolor="white" width="75%">
+<tr> 
+<td><div align="left"><strong>The p-value is the probability of getting sample 
+means as different as those observed if the two groups really had the same population 
+means.</strong></div></td>
+</tr>
+</table>
+</center>
+<br>
+
+<div class="diagram"> 
+<p class="heading">Examples</p>
+<p>The diagram below shows how the p-value for testing whether the means in two 
+groups are the same is evaluated and interpreted.</p>
+
+<form>
+<select name="dataset" onChange="changeSvgImage(this)">
+<option value="0" selected>Anticipation of hypnosis and ventilation</option>
+<option value="1">Satellite classification of land use</option>
+<option value="2">Birth weights in summer and winter</option>
+<option value="3">Teeth and gender</option>
+</select>
+</form>
+
+<p align="center"><iframe src="images/hypnosisTest.svg" id="dataImage" width="514" height="468" frameborder="0"></iframe></p>
+
+<p>Use the pop-up menu to examine other data sets.</p>
+
+</div>
+
+<p class="heading">Properties of p-values</p>
+
+<p>It is important to understand that a statistical hypothesis test cannot provide 
+a definitive answer about whether two groups have different means. The randomness 
+of sample data means that:</p>
+
+<ul>
+<li>p-values are also random quantities, and</li>
+<li>there is some chance of us being misled by an 'unlucky' sample. </li>
+</ul>
+
+<br>
+
+<div class="diagram"> 
+<p class="heading">Simulation when the underlying means are the same (H<sub>0</sub> is true)</p>
+<p>The diagram below allows samples of size 20 to be selected from two populations, both
+of which are normal with mean 75 and standard deviation 8.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoGroupProg.DiffPValueApplet">
+<param name="yVarName" value="response">
+<param name="yAxis" value="50 100 50 10">
+<param name="anovaModel" value="75 8 75 8">
+<param name="xVarName" value="Group">
+<param name="xValues" value="20@0 20@1">
+<param name="xLabels" value="#Group A# #Group B#">
+<param name="randomSeed" value="620045782">
+<param name="maxSummary" value="-99.99 0.9999">
+<param name="tAxis" value="-4 4 -4 1">
+<param name="alternative" value="both">
+</applet>
+</div>
+
+<p>Take several samples and observe the variation in the resulting p-value. The 
+p-values are <strong>usually</strong> greater than 0.1, so we would <strong>usually</strong> 
+conclude that there is no evidence of a difference between the means.</p>
+<p>However about <sup>1</sup>/<sub>10</sub> of the p-values are less than 0.1, 
+<sup>1</sup>/<sub>20</sub> are less than 0.05 and <sup>1</sup>/<sub>100</sub> 
+are less than 0.01.</p>
+<center>
+<table border="1" cellspacing="0" cellpadding="10" bgcolor="white" width="75%">
+<tr> 
+<td><div align="left"><strong>There is a (small) probability of getting random 
+data that misleadingly suggest that the means are different.</strong></div></td>
+</tr>
+</table>
+</center>
+<p class="heading">Simulation when the underlying means are different (H<sub>A</sub> 
+is true)</p>
+<p>In the next simulation, the underlying population means are 70 and 80 &mdash; a 
+difference of 10.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoGroupProg.DiffPValueApplet">
+<param name="yVarName" value="response">
+<param name="yAxis" value="50 100 50 10">
+<param name="anovaModel" value="70 8 80 8">
+<param name="xVarName" value="Group">
+<param name="xValues" value="20@0 20@1">
+<param name="xLabels" value="#Group A# #Group B#">
+<param name="randomSeed" value="620045782">
+<param name="maxSummary" value="-99.99 0.9999">
+<param name="tAxis" value="-6 6 -6 2">
+<param name="alternative" value="both">
+</applet>
+</div>
+
+<p>Again take several random samples from the model. Observe that the p-value 
+is <strong>usually</strong> very close to zero and we <strong>usually</strong> 
+conclude that there is strong evidence that the population means are different.</p>
+<p>However <strong>occasionally</strong> the sample means are closer and the p-value 
+is larger. </p>
+<center>
+<table border="1" cellspacing="0" cellpadding="10" bgcolor="white" width="75%">
+<tr> 
+<td><div align="left"><strong>There is a chance of getting a large p-value and 
+concluding that there is no evidence of a difference.</strong></div></td>
+</tr>
+</table>
+</center>
+
+<br>
+
+</div>
+
+<p class="heading">Effect of sample size on the chance of making a 'wrong' conclusion.</p>
+
+<p>There are two types of possible error when reaching a conclusion with a hypothesis 
+test. It is instructive to note how increasing the sample size affects the probabilities 
+of these two types of error.</p>
+<p><font color="#999999">(The results hold for <strong>all</strong> types of hypothesis 
+test, not just for comparisions of two population means.)</font></p>
+
+<dl>
+<dt>If the population means are really the same (H<sub>0</sub> holds):</dt>
+<dd>There is always probability 0.01 of getting a p-value of 0.01 or lower, irrespective 
+of the sample size. <strong>Increasing sample size therefore does not reduce the 
+chance of making this sort of error.</strong></dd>
+<dt>If the population means are really different (H<sub>A</sub> holds):</dt>
+<dd>As the sample size increases, the p-value becomes closer to zero &mdash; the probability 
+of getting a p-value below 0.01, say, approaches 1.<strong> If the population 
+means really are different, increasing the sample size makes you more likely to 
+detect this difference.</strong> </dd>
+</dl>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

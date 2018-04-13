@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Confidence and prediction intervals</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="prediction, extrapolation">
+	<meta name="dataset" content="Grass eaten by cows">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Interval estimates</p>
+<p>In the previous page, we showed that the same value,</p>
+<p class=eqn><span class="black"><span style="position:relative; top:4px"><img src="../../images/symbol.yHat.png" width="10" height="17" align="baseline"></span>&nbsp; =&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x</em></span> 
+</p>
+<p>is used both to estimate the mean response at <em>x</em> and to predict a new 
+individual's response at <em>x</em>. However the errors are different in the two 
+situations &mdash; the errors tend to be larger for predicting a new value.</p>
+<p>In both situations, it is more informative to give an interval of 'likely' 
+values rather than a single value.</p>
+  
+<p class="heading">Estimating mean response </p>
+  
+<p>A 95% confidence interval for the mean response takes the form</p>
+
+<p class=eqn><img class="gif" src="../regnPred/images/ciForMeanY.gif" width="224" height="26">
+</p>
+
+<p>We do not provide a formula for the standard error on the right of this formula 
+&mdash; the details are not important and statistical software will tell you the value.</p>
+<p class=heading>Predicting a new individual's response</p>
+
+<p>For prediction, a similar interval can be found</p>
+
+<p class=eqn><img class="gif" src="../regnPred/images/predInterval.gif" width="169" height="21"> 
+</p>
+<p>where the value <em>k</em> is greater than the corresponding standard error
+ for the confidence interval. <span class="gray">(Again we do not provide
+a full formula. Statistical computer software will perform the calculations for
+ you.)</span> </p>
+<p>A <strong>95% prediction interval</strong> is wider than a 95% confidence interval 
+for the distribution's mean. </p>
+
+<p class=heading>Extrapolation</p>
+<p>These 95% confidence intervals and 95% prediction intervals are valid within 
+the range of x-values about which we have collected data, but <strong>they should 
+not be relied on for <a href="javascript:showNamedPage('curvature4')">extrapolation</a></strong>. 
+Both intervals assume that the normal linear model describes the process, but 
+we have no information about linearity beyond the x-values that have been collected. 
+</p>
+
+<p>From a scatterplot, we can check that there is approximate linearity within 
+the observed range of x-values but there is no way to check linearity beyond the 
+observed data.</p>
+
+
+<div class="diagram" title="Example: Grass intake of dairy cows">
+
+<p class="heading">Grass intake of dairy cows</p>
+
+<p>An experiment was conducted to investigate the grazing behaviour of dairy cows. 
+Four cows were studied while they grazed on 48 different plots of grass, each 
+of which had different sward height. In each plot, the total grazing time was 
+recorded and the grass intake rate (in grams dry matter per minute) was estimated 
+by sampling from the plot before and after the experiment. The diagram below shows 
+the relationship between grass intake rate and sward height.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="410">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="linModProg.PredictionApplet">
+<param name="yVarName" value="Grass intake rate (gm dry matter/min)">
+<param name="xVarName" value="Grass ht (cm)">
+<param name="yValues" value="77 96.7 86.7 72.9 69.3 95.1 79.4 76.7 66.1 58.6 69.1 61.4 73.1 36.7 0.9 21 71.1 87.7 38.1 49.3 9.7 30 58 24.6 154 82.2 167.2 120.1 136.5 72.3 96.2 71.8 97.1 46.9 105.6 114 135.9 77.1 1.7 91.3 150.1 152.9 84.1 37.1 83.1 29.7 69.2 97.7">
+<param name="xValues" value="12.4 16.7 12.9 15.8 14.4 18.4 15.1 18.2 16 18 15.8 18 16.5 14.4 13.2 14.8 17.1 17 13 13.9 12.4 14.7 16.6 16.3 21.4 17.1 21.7 20.7 22 17.9 17 14.7 18.1 14.1 18.4 21.6 22.4 18.8 17.7 18.1 17.9 18.3 21.1 17 23.4 19.4 19 21.4">
+<param name="vertAxis" value="-50 250 -50 50">
+<param name="horizAxis" value="10 30 10 5">
+<param name="xLimits" value="10.0 30.0 0.1 20.0">
+<param name="maxPrediction" value="999.9">
+<param name="labelAxes" value="true">
+<param name="customText" value="to=to#95% CI for mean at * is=95% CI for mean at * is#95% prediction at * is=95% prediction at * is">
+</applet>
+</div>
+
+<p>Drag the slider to display...
+</p>
+
+<ul>
+<li>the 95% confidence interval for the mean grass intake for any sward height, 
+and</li>
+<li>the 95% prediction interval for the recorded grass intake for a <strong>single</strong> 
+dairy cow on a plot of that sward height.</li>
+</ul>
+
+<p>Because of uncertainty about linearity of the relationship, the confidence 
+intervals and prediction intervals are unreliable if <i>X</i> is greater than 
+12 or less than&nbsp;35. </p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

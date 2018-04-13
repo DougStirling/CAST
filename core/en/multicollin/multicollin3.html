@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Understanding multicollinearity</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="multicollinearity">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p>Multicollinearity complicates the interpretation of parameter estimates and 
+		hypothesis tests about linear models in ways that will be explained in later 
+		pages in this section. It is therefore worth first spending some time trying 
+		to understand how multicollinearity affects the information about the two 
+		slope parameters in regression data.</p>
+	<p class="heading">Meaning of the slope parameters</p>
+	<p>In the regression model</p>
+	<p class="eqn"><img src="../regnInfTwo/images/normModelTwo2.gif" width="418" height="21"></p>
+	<p>the slope parameter β<sub>1</sub> 
+		describes how <em>X</em> affects the mean response <strong>when <em>Z</em> 
+		is held fixed</strong>. This is the slope of any slice through the regression 
+		plane parallel to the x-axis (i.e. at any fixed value of <em>Z</em>).</p>
+	<div class="diagram"> 
+		<p>The plane below represents a linear model. The vertical blue plane shows 
+			a slice through this plane at a z-value that can be changed with the slider.</p>
+    <div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="550">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="multiRegnProg.ConditZApplet">
+<param name="yVarName" value="Y">
+<param name="xVarName" value="X">
+<param name="zVarName" value="Z">
+<param name="modelParams" value="38.0 0.10 -0.15 3.8">
+<param name="xValues" value="0.0">
+<param name="zValues" value="0.0">
+<param name="yAxis" value="12 55 20 10">
+<param name="xAxis" value="20 65 20 10">
+<param name="zAxis" value="0 100 0 20">
+<param name="paramMinMax" value="0.0 40 0.00 -0.10 0.00 -0.15">
+<param name="zLimits" value="0 100 60">
+<param name="customText" value="Mean of *, for=Mean of *, for#Show 95% band=Show 95% band">
+</applet> 
+</div>
+
+    <p>The 2-dimensional display at the bottom of the diagram shows this slice 
+			&mdash; how the mean response depends on <em>X</em> at this fixed z-value. Note 
+			that the slope of this slice is β<sub>1</sub>&nbsp;=&nbsp;0.10.</p>
+    </div>
+
+
+  <p class="heading">Information about the slope from multicollinear data</p>
+	<p>In a similar way, information about β<sub>1</sub> 
+		from a regression data set comes from the slices through the data at different 
+		z-values. When <em>X</em> and <em>Z</em> are highly correlated, each such 
+		slice only contains a small spread of x-values and therefore holds much less 
+		information about β<sub>1</sub> 
+		than similar slices where <em>X</em> and <em>Z</em> are uncorrelated.</p>
+	<p>As a result, β<sub>1</sub> 
+		cannot be estimated as accurately when the data are multicollinear.</p>
+	
+  <div class="diagram">
+    <p class="heading">Example</p>
+
+    <p>The diagram below shows a data set with 200 observations. The data points 
+			within a small range of z-values are highlighted in red. In the jittered 
+			dot plot on the top right, drag up/down the red band to change the slice 
+			of points that is highlighted. Click the x-y-z rotation button (or drag 
+			to rotate manually) to also display the x-values in the data set.</p>
+    <div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="600">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="multiRegnProg.Slice3DApplet">
+<param name="yAxis" value="0 40 0 10">
+<param name="xAxis" value="65 110 70 10">
+<param name="zAxis" value="63 77 65 5">
+<param name="yVarName" value="Y">
+<param name="xVarName" value="Z">
+<param name="zVarName" value="X">
+<param name="randomSeed" value="654938755">
+<param name="multiRegnModel" value="-85.0 0.4 1.0 2">
+<param name="xRandom" value="200 87 11 65443266 2.0">
+<param name="zRandom" value="200 69.5 3.2 76578924 2.0">
+<param name="initialXZR2" value="0.7">
+<param name="maxR" value="0.99">
+<param name="select" value="75 80">
+<param name="initialRotation" value="90 0">
+<param name="customText" value="Correl=Correl#Correl(X, Z)=Correl(X, Z)">
+</applet> 
+</div>
+
+    <p>The scatterplot at the bottom of the diagram shows how <em>Y</em> is related 
+			to <em>X</em> in each slice of points. (Remember that the parameter β<sub>1</sub> 
+			is the model slope in all such slices.)</p>
+		<p>Use the slider to make <em>X</em> and <em>Z</em> uncorrelated then vary 
+			the slices through the data. Observe that most slices strongly suggest that 
+			<em>Y</em> and <em>X</em> are related &mdash; that the parameter β<sub>1</sub> 
+			is not zero.</p>
+		<p>Finally drag the slider to the right to make <em>X</em> and Z multicollinear 
+			(correlation 0.99) and repeat. The slices now each contain a small range 
+			of x-values and do not strongly suggest that <em>Y</em> and <em>X</em> are 
+			related.</p>
+		
+<div class="centred"><div class="boxed">
+<p>When the data are multicollinear, there 
+							is therefore much less information about the value of β<sub>1</sub>.</p>
+</div></div>
+
+		<br>
+	</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

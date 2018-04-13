@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Example</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="estimation, maximum likelihood, normal distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>We now give an example.</p>
+<div class="example">
+	<p class="exampleHeading">Example: Normal distribution</p>
+	<p>We now consider a random sample, \(\{X_1, \dots, X_n\}\) from a \(\NormalDistn(\mu, \sigma^2)\) distribution. The distribution's probability density function is</p>
+	\[
+	f(x) \;\;=\;\; \frac 1{\sqrt{2\pi}\;\sigma} e^{- \frac{\Large (x-\mu)^2}{\Large 2 \sigma^2}}
+	\]
+	<p>and its logarithm is</p>
+	\[
+	\log f(x) \;\;=\;\; -\frac 1 2 \log(\sigma^2) - \frac{(x-\mu)^2}{2 \sigma^2} - \frac 1 2 \log(2\pi)
+	\]
+	<p>The log-likelihood function is therefore</p>
+\[
+	\ell(\mu, \sigma^2) \;\;=\;\; \sum_{i=1}^n {\log f(x_i)} \;\;=\;\; -\frac n 2 \log(\sigma^2) - \frac{\sum_{i=1}^n {(x_i-\mu)^2}}{2 \sigma^2} - \frac n 2 \log(2\pi)
+	\]
+	<p>To get the maximum likelihood estimates, we therefore solve</p>
+\[
+\frac{\partial \ell(\mu, \sigma^2)}{\partial \mu} \;\;=\;\; \frac{\sum{(x_i - \mu)}}{\sigma^2} \;\;=\;\; 0
+\]
+	<p>and</p>
+\[
+\frac{\partial \ell(\mu, \sigma^2)}{\partial \sigma^2} \;\;=\;\; -\frac n {2 \sigma^2} + \frac{\sum_{i=1}^n {(x_i-\mu)^2}}{2 \sigma^4} \;\;=\;\; 0
+\]
+	<p>Solving gives</p>
+\[ \begin{align}
+  \hat{\mu} \;&=\; \overline{x} \\[0.2em]
+  \hat{\sigma}^2 \;&=\; \frac {\sum{(x_i-\overline{x})^2}}	n
+\end{align} \]
+<p>Note that the MLE of \(\sigma^2\) is <strong>biased</strong>. The sample variance, \(S^2\), divides by \((n-1)\) instead of \(n\) — it is unbiased and is usually prefered.</p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Cumulative distribution function</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="negative binomial distribution, cumulative distribution function">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Direct evaluation of cumulative probabilities</p>
+
+<p>There is no simple formula for the negative binomial distribution's cumulative distribution function, \(F(x)\) but individual negative binomial probabilities can be added,</p> 
+\[
+F(x) = \sum_{u=k}^{\lfloor x \rfloor} {{u-1} \choose {k-1}} \pi^k(1-\pi)^{u-k}
+\]
+<p>where \(\lfloor x \rfloor \) denotes the smallest integer less than or equal to \(x\).</p>
+
+<p class="heading">Cumulative probabilities from binomial distribution</p>
+<p>If \(k\) is much smaller than \(x\), there is a simpler method since taking more than \(x\) trials to get the \(k\)'th success is equivalent to there being fewer than \(k\) successes in the first \(x\) trials.</p>
+\[ \begin{align}
+P(X \gt x) &amp; = P(\text{fewer than } k \text{ successes in first } x \text{ trials}) \\
+&amp; = \sum_{v=0}^{k-1} {x \choose v} \pi^v (1-\pi)^{x-v}
+\end{align}\]
+<p>The cumulative probability is \(F(x) = 1 - P(X \gt x)\).</p>
+<p class="heading">Cumulative probabilities in Excel</p>
+<p>These formulae can be avoided if Excel is used. Again the function &quot;NEGBINOM.DIST()&quot; is used, but with its last parameter set to <strong>true</strong>. For example, if the probability of success is π = 0.3 and we are interested in how long it takes to get \(k = 5\) successes,</p>
+<dl>
+	<dt>\(\mathbf{P( \text{no more than 16 trials} ) = P(X ≤ 16)}\), or</dt>
+	<dt>\(\mathbf{P( \text{no more than 11 failures} ) = P(X^* ≤ 11)}\)</dt>
+	<dd>Type in an Excel spreadsheet cell "=NEGBINOM.DIST(11, 5, 0.3, true)"</dd>
+</dl>
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Question</p>
+<p>If a fair six-sided die is rolled repeatedly, what is the probability that it will take more than 20 rolls before three sixes are observed?</p>
+<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

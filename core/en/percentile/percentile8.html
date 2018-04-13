@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Better definition of percentiles</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="percentile, median, quartiles">
+	<meta name="dataset" content="Dodoma rainfall">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class=heading>Different definitions of the quartiles</p>
+	<p>There is universal agreement that the median of a data set is the middle 
+		value if there is an odd number of observations, or half-way between the middle 
+		two values if the size of the data set is even.</p>
+	<p>However it was mentioned earlier that there are several competing definitions 
+		of the upper and lower quartile. All such definitions split the data approximately 
+		into quarters but there is not a unique way to do this. For example, if there 
+		are <em>n</em>&nbsp;=&nbsp;16 values in the data set, any value between the 
+		4th and 5th values would cut off a quarter of the data. In this situation, 
+		we have defined here the lower quartile to be half-way between these values, 
+		but other authors and computer software define the lower quartile to be nearer 
+		to the 4th value.</p>
+	<p>The differences are of little practical importance.</p>
+	
+<div class="centred"><div class="boxed">
+<p>If your conclusion about the data would change 
+				with a different definition of the quartiles, you are over-interpreting 
+				the data.</p>
+</div></div>
+
+	<p class=heading>Smoothing the cumulative proportions</p>
+	<p>There is even less agreement about the precise definition of other percentiles, 
+		and different computer software finds them in different ways. In the earlier 
+		pages of this section, we defined the percentiles as the values that are found 
+		from reading across and down the cumulative distribution function.</p>
+	<p>Most statistical computer software  replaces the cumulative distribution 
+		function (a step function) with a smoothed version before reading off the 
+		percentiles. </p>
+	<p>In practical terms, the difference is unimportant. If the data set is large, 
+		there is likely to be little difference in the value of most percentiles. 
+		If the data set is small, the percentile is likely to be more affected by 
+		'randomness' of the data so the precise value is less important.</p>
+	
+<div class="centred"><div class="boxed">
+<p>If your conclusion about the data would change 
+				with a different definition of the percentiles, you are over-interpreting 
+				the data.</p>
+</div></div>
+
+	<br>
+
+<div class="diagram" title="Illustration: Annual rainfall in Dodoma">
+<p class=heading>Annual rainfall in Dodoma, 1998 to 2013</p>
+
+		<p>The diagram below shows the last 16 years of the Dodoma annual rainfall data.</p>
+
+		<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="percentileProg.ChangeCumFunctApplet">
+<param name="varName" value="rainfall">
+<param name="longVarName" value="Annual rainfall in Dodoma, Tanzania">
+<param name="values" value="696.7 656.5 642.0 476.7 597.3 675.3 783.8 438.7 543.4 745.6 460.8 935.4 481.8 450.9 565.4 576.5">
+<param name="horizAxis" value="400 950 400 100">
+<param name="fixedValue" value="75">
+<param name="maxValue" value="950">
+<param name="units" value="mm">
+<param name="customText" value="Smooth function=Smooth function#is approximately=is approximately#The*'th percentile is=The*'th percentile is">
+</applet>
+</div>
+
+		<p>Drag the red horizontal line to read off different quartiles. Observe that 
+			the percentiles do not change smoothly, due to the steps in the cumulative 
+			distribution function.</p>
+		<p>Click the checkbox <strong>Smoothed</strong> to replace the cumulative 
+			distribution function with a smoothed version. Again drag the horizontal 
+			line to read the percentiles from this graph and observe that the percentiles 
+			change without sharp jumps.</p>
+		<p>(This smoothed graph gives the definition of the percentiles that is used 
+			in many statistical computer programs.)</p>
+
+<p class=heading>Annual rainfall in Dodoma, 1936 to 2013</p>
+
+		<p>The diagram below shows the full 78 years of Dodoma annual rainfall data.</p>
+
+		<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="percentileProg.ChangeCumFunctApplet">
+<param name="varName" value="rainfall">
+<param name="longVarName" value="Annual rainfall in Dodoma, Tanzania">
+<param name="values" value="696.7 656.5 642.0 476.7 597.3 675.3 783.8 438.7 543.4 745.6 460.8 935.4 481.8 450.9 565.4 576.5 590.6 261.1 379.4 505.7 665.0 568.5 722.7 596.5 812.4 352.5 757.8 427.0 711.9 482.8 438.3 398.0 880.7 286.1 520.0 639.1 549.1 654.9 514.3 390.0 418.7 431.4 521.2 649.6 597.8 423.0 386.4 606.2 713.4 778.2 439.8 809.3 510.6 667.7 774.6 444.9 511.7 566.4 505.1 531.4 826.9 301.4 934.6 496.7 520.9 826.2 534.8 425.0 657.7 517.0 460.6 909.7 539.8 543.1 643.9 446.1 755.5 477.0">
+<param name="horizAxis" value="250 950 300 100">
+<param name="fixedValue" value="75">
+<param name="maxValue" value="950">
+<param name="units" value="mm">
+<param name="customText" value="Smooth function=Smooth function#is approximately=is approximately#The*'th percentile is=The*'th percentile is">
+</applet>
+</div>
+
+		<p>Again drag the red horizontal line to read off different quartiles for 
+			the actual cumulative distribution function and the smoothed version. Observe 
+			that the differences between the two definitions of the percentiles are 
+			much smaller with this larger data set.</p>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

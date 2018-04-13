@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Revisiting two groups</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<script type="text/javascript">
+		setupChoiceImages("failedCoPooled", "colaPooled", "bonusPooled", "pieceworkPooled", "moderatorPooled");
+	</script>
+
+	<meta name="index" content="comparing groups, confidence interval, hypothesis test">
+	<meta name="dataset" content="Asset-liabilities ratios">
+	<meta name="dataset" content="Cola and supermarket display">
+	<meta name="dataset" content="Bonuses and gender">
+	<meta name="dataset" content="Piecework and salary">
+	<meta name="dataset" content="Moderator effect on ideas">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Revisiting the difference between <span class="red">two</span> group means</p>
+
+<p>In this page, we re-examine inference about the difference between two group 
+means, µ<sub>2&nbsp;</sub>-&nbsp;µ<sub>1</sub>, 
+but we now assume that both groups have the same standard deviation,</p>
+<p class=eqn><span class="black">&sigma;<sub>1</sub> = &sigma;<sub>2</sub> = &sigma;</span> </p>
+<p>Inference is still based on <span style="position:relative; top:5px"><img src="../../images/symbol.xBarDiff.png" width="36" height="15" align="baseline"></span>, 
+but the equation for its standard deviation can be simplified</p>
+<p class=eqn><img class="gif" src="../multiGroup/images/diffMeanSD.gif" width="261" height="45"> </p>
+<p class="heading">Confidence interval</p>
+<p>A 95% confidence interval for µ<sub>2&nbsp;</sub>-&nbsp;µ<sub>1</sub> 
+has the same general form as before,</p>
+<p class=eqn><img class="gif" src="../multiGroup/images/generalCI.gif" width="160" height="22"> </p>
+<p>However the value used for the standard deviation and the degrees of freedom
+for the t-value, &nu;, are different.</p>
+<div class="centred">
+	<table border="0" class="centred" cellpadding="10" cellspacing="0">
+		<tr>
+			<td style="border-bottom:1px solid #999999;">&nbsp;</td>
+			<td align="center" style="border-bottom:1px solid #999999;"><img class="gif" src="../multiGroup/images/sdEst.gif" width="42" height="22"></td>
+			<th align="center" style="border-bottom:1px solid #999999;"><span class="black">degrees of freedom</span></th>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #999999;">Allowing <span class="black">&sigma;<sub>1</sub> &ne; &sigma;<sub>2</sub></span></td>
+			<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;"><img class="gif" src="../multiGroup/images/sdEst1.gif" width="85" height="45"></td>
+			<td align="center" bgcolor="#FFFFFF" class="black" style="border-bottom:1px solid #999999;">min( <em>n</em><sub>1</sub> - 1, <em>n</em><sub>2</sub> - 1)</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #999999;">Assuming <span class="black">&sigma;<sub>1</sub> = &sigma;<sub>2</sub> = &sigma;</span></td>
+			<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;"><img class="gif" src="images/diffMeanSDEst.gif" width="109" height="39"></td>
+			<td align="center" bgcolor="#FFFFFF" class="black" style="border-bottom:1px solid #999999;"><em>n</em><sub>1</sub> + <em>n</em><sub>2</sub> - 2</td>
+		</tr>
+	</table>
+</div>
+<p>When the standard deviations are assumed to be equal, the degrees of freedom 
+are larger, so the t-value used for the confidence interval is smaller and the 
+confidence interval itself is usually narrower.</p>
+<p class="heading">Recommendation</p>
+<p>Since the 95% CI for the difference in means is usually narrower when the standard 
+deviations are assumed to be the same, it might appear that this would be the 
+best CI to use. However</p>
+
+<dl>
+<dt>Big sample sizes:</dt>
+<dd>There is very little difference between the two t-values &mdash; both are close 
+to 2.0. The two CIs are therefore similar.</dd>
+<dt>Small sample sizes:</dt>
+<dd>There is usually not enough data to assess whether the assumption <span class="black">&sigma;<sub>1</sub> = &sigma;<sub>2</sub> = &sigma;</span> 
+is justified.</dd>
+</dl>
+
+<p>Therefore:</p>
+
+
+<div class="centred"><div class="boxed">
+<p>It is usually best to avoid assuming equal standard 
+deviations and use the earlier confidence interval.</p>
+</div></div>
+
+
+<br>
+<div class="diagram"> 
+<p class="heading">Examples</p>
+<p>The diagram below shows 95% confidence intervals obtained by the two methods 
+for a few data sets.</p>
+
+
+<form>
+<select name="dataset" onChange="changeImage('image', this)">
+<option value="0" selected>Asset-to-liabilities ratios of companies</option>
+<option value="1">Cola sales and shelf location</option>
+<option value="2">Bonuses at end of year</option>
+<option value="3">Piecework vs salary</option>
+<option value="4">Effect of moderator on groups</option>
+</select>
+</form>
+
+<p class="eqn">
+	<img class="gif" id="image" src="images/failedCoPooled.gif" width="647" height="400">
+</p>
+
+<p>Observe that the 95% confidence intervals are similar when the sample sizes 
+are large. When the sample sizes are small however, the t-value is smaller when 
+the variances are assumed equal and the confidence interval is narrower.</p>
+</div>
+
+  
+<p class="heading">Hypothesis tests</p>
+
+<p>If it can be assumed that <span class="black">&sigma;<sub>1</sub> = &sigma;<sub>2</sub> = &sigma;</span>, 
+the test for equal means can also be modified.</p>
+<p style="margin-left:200px; color:#0000FF"><font size="+1" face="Arial, Helvetica, sans-serif"><strong>H</strong></font><font face="Arial, Helvetica, sans-serif"><strong><sub>0</sub></strong></font> : &nbsp; µ<sub>2</sub> &nbsp;&minus;&nbsp; µ<sub>1</sub>&nbsp;=&nbsp; 0<sub><em></em></sub><br>
+<font size="+1" face="Arial, Helvetica, sans-serif"><strong>H</strong></font><font face="Arial, Helvetica, sans-serif"><strong><sub>A</sub></strong></font>: &nbsp; µ<sub>2</sub> &nbsp;&minus;&nbsp; µ<sub>1</sub>&nbsp;≠&nbsp; 0<sub><em></em></sub></p>
+<p>The test would be based on the test statistic</p>
+<p class=eqn><img class="gif" src="images/testStat.gif" width="216" height="59"> </p>
+<p>The p-value for the test is found from the tail area of the t distribution 
+with (<span class="black"><em>n</em><sub>1</sub> + <em>n</em><sub>2</sub> - 
+2</span>) degrees of freedom. However it is usually better to stick with the earlier 
+test to avoid making assumptions about the variances.</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

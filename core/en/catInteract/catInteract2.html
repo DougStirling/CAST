@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Numerical-categorical interaction</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="interaction, comparing groups, indicator variable, general linear model, parallel regn lines">
+	<meta name="dataset" content="Gas consumption and insulation">
+	<meta name="dataset" content="Californian wine quality">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Model with no interaction</p>
+	<p>If there is no interaction between a numerical explanatory variable, <em>X</em>, 
+		and a categorical explanatory variable, <em>Z</em>, the model can be represented 
+		by <strong>parallel lines</strong> for the different levels of the categorical 
+		variable on a scatterplot of <em>Y</em> against <em>X</em>.</p>
+	<p class=eqn><img src="images/parallelLines3.gif" width="324" height="242"></p>
+	<p>In this diagram, there is the same slope for each level of <em>Z</em>, so 
+		changes to <em>X</em> have the same effect whatever the value of <em>Z</em>.</p>
+	<p class="heading">Model with interaction</p>
+	<p>On the other hand, the following diagram shows interaction between the effects 
+		of <em>X</em> and <em>Z</em>. If this model holds, increasing <em>X</em> has 
+		far more effect on the response at z&nbsp;=&nbsp;3 than at z&nbsp;=&nbsp;1.</p>
+	<p class=eqn><img src="images/nonParallelLines.gif" width="324" height="242"></p>
+<br>
+	
+	<div class="diagram"> 
+		<p class="heading">Gas consumption and insulation</p>
+		<p>Data were collected in the 1960s at a house in south-east England about 
+			weekly gas consumption (in 1000 cubic feet) and the average outside temperature 
+			(in degrees Celsius) for 26 weeks before and 18 weeks after cavity-wall 
+			insulation had been installed. The house thermostat was set at 20°C 
+			throughout.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="indicatorProg.DragLinesApplet">
+<param name="yVarName" value="Gas consumption">
+<param name="yValues" value="7.2 6.9 6.4 6.0 5.8 5.8 5.6 4.7 5.8 5.2 4.9 4.9 4.3 4.4 4.5 4.6 3.7 3.9 4.2 4.0 3.9 3.5 4.0 3.6 3.1 2.6 4.8 4.6 4.7 4.0 4.2 4.2 4.1 4.0 3.5 3.2 3.9 3.5 3.7 3.5 3.5 3.7 3.5 3.4">
+<param name="xVarName" value="Temperature">
+<param name="xValues" value="-0.8 -0.7 0.4 2.5 2.9 3.2 3.6 3.9 4.2 4.3 5.4 6.0 6.0 6.0 6.2 6.3 6.9 7.0 7.4 7.5 7.5 7.6 8.0 8.5 9.1 10.2 -0.7 0.8 1.0 1.4 1.5 1.6 2.3 2.5 2.5 3.1 3.9 4.0 4.0 4.2 4.3 4.6 4.7 4.9">
+<param name="zVarName" value="Insulation">
+<param name="zValues" value="26@0 18@1">
+<param name="zLabels" value="Before After">
+<param name="yAxis" value="0 9 0 1">
+<param name="xAxis" value="-1 11 0 2">
+<param name="initModelParams" value="8.00 -0.500 -3.00 0.000 0">
+<param name="shortNames" value="Gas Temp D/After T*D/After">
+<param name="maxCoeffs" value="9.99 -9.999 -9.99 -9.999">
+<param name="xStep" value="10">
+<param name="showCoeffs" value="false">
+<param name="customText" value="Allow interaction=Allow interaction">
+</applet> 
+</div>
+
+		<p>Drag the three red arrows to fit the two parallel lines for the no-interaction 
+			model as close as possible to the data, then click <strong>Least squares</strong> 
+			to minimise the sum of squared residuals.</p>
+		<p>Click <strong>Allow interaction</strong> then repeat.</p>
+		
+<div class="centred"><div class="boxed">
+<p>The model allowing interaction estimates 
+							that gas consumption decreases with increasing temperature more 
+							sharply when there is no insulation.</p>
+</div></div>
+
+		<br>
+		
+	</div>
+	
+		
+	<p class="heading">Modelling interaction</p>
+		
+	<p>We will set up our model in a way that makes it easier to test for the existence 
+		of interaction. One level of the categorical variable is treated as a 'baseline' 
+		level and a simple linear model is used for observations in this 'group'.</p>
+	<p class=eqn><img src="images/numCatInteractModel.gif" width="440" height="94"></p>
+	<p>The models for observations in the other groups are based on this, but have 
+		extra terms allowing the intercept and slope to be different.</p>
+	
+<div class="centred"><div class="boxed">
+<p>When the model is specified in this way, 
+						there is no interaction when the delta-parameters are zero and this 
+						can be tested.</p>
+</div></div>
+
+	<p class="heading">Expressing the model as a GLM</p>
+	<p>This model can be written as a general linear model (GLM) with extra 'explanatory 
+		variables' for the non-baseline groups. This is easier to demonstrate than 
+		to explain in words.</p>
+	<div class="diagram"> 
+		<p class="heading">Californian wine quality</p>
+
+		<p>Wines from various parts of California were judged in a competition. We 
+			consider here a model for the overall <em>Quality</em> of the wines in terms 
+			of their <em>Body</em> and the part of California in which they were produced, 
+			North, Napa valley and Central.</p>
+		<p>The matrices below show the model for 21 of these wines. (There were actually 
+			more, but we have reduced the size of the data set to simplify the diagram.)</p>
+		<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="550">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="matrixProg.InteractModelEqnApplet">
+<param name="nXColumns" value="2">
+<param name="fullNameX1" value="Body, b">
+<param name="shortNameX1" value="b">
+<param name="valuesX1" value="2.8 4.9 5.3 2.6 5.1 4.7 4.8 5.4 5.0 4.1 4.0 4.6 4.9 4.4 4.3 4.3 5.7 6.6 4.4 5.6 5.4">
+<param name="fullNameX2" value="Region, r">
+<param name="shortNameX2" value="r">
+<param name="valuesX2" value="7@0 7@1 7@2">
+<param name="labelsX2" value="North Central Napa">
+<param name="yName" value="Quality, Y">
+<param name="errorName" value="error">
+<param name="matrixFont" value="standard">
+<param name="interactionName" value="b * r">
+<param name="customText" value="effect=effect#interaction=interaction">
+</applet> 
+
+</div>
+
+		<p>Drag over the rows for the first 7 wines and observe the form of the model 
+			under the matrices. These rows are all from the baseline category (the North), 
+			so the model for these wines only involves the parameters β<sub>0</sub> 
+			and β<sub>1</sub>.</p>
+		<p>Now select rows from the Central region. All wines in this region have 
+			a different intercept (β<sub>0</sub>+β<sub>2</sub>) 
+			and a different slope (β<sub>1</sub>+δ<sub>1</sub>).</p>
+		<p>Finally select rows from the Napa valley and observe that their model again 
+			allows for a different intercept and slope.</p>
+		
+<div class="centred"><div class="boxed">
+<p>Note that the columns for the interaction 
+							in the design matrix are all products of columns for the main effects 
+							of the two variables.</p>
+</div></div>
+
+		<p class="heading">Gas consumption and insulation</p>
+		<p>We finally repeat the gas consumption diagram that was shown at the start 
+			of this page, but showing the numerical values for the model parameters.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="indicatorProg.DragLinesApplet">
+<param name="yVarName" value="Gas consumption">
+<param name="yValues" value="7.2 6.9 6.4 6.0 5.8 5.8 5.6 4.7 5.8 5.2 4.9 4.9 4.3 4.4 4.5 4.6 3.7 3.9 4.2 4.0 3.9 3.5 4.0 3.6 3.1 2.6 4.8 4.6 4.7 4.0 4.2 4.2 4.1 4.0 3.5 3.2 3.9 3.5 3.7 3.5 3.5 3.7 3.5 3.4">
+<param name="xVarName" value="Temperature">
+<param name="xValues" value="-0.8 -0.7 0.4 2.5 2.9 3.2 3.6 3.9 4.2 4.3 5.4 6.0 6.0 6.0 6.2 6.3 6.9 7.0 7.4 7.5 7.5 7.6 8.0 8.5 9.1 10.2 -0.7 0.8 1.0 1.4 1.5 1.6 2.3 2.5 2.5 3.1 3.9 4.0 4.0 4.2 4.3 4.6 4.7 4.9">
+<param name="zVarName" value="Insulation">
+<param name="zValues" value="26@0 18@1">
+<param name="zLabels" value="Before After">
+<param name="yAxis" value="0 9 0 1">
+<param name="xAxis" value="-1 11 0 2">
+<param name="initModelParams" value="8.00 -0.500 -3.00 0.000 0">
+<param name="shortNames" value="Gas Temp D/After T*D/After">
+<param name="maxCoeffs" value="9.99 -9.999 -9.99 -9.999">
+<param name="xStep" value="10">
+<param name="customText" value="Allow interaction=Allow interaction">
+</applet> 
+</div>
+
+		<p>Firstly drag the two arrows for the baseline group (before insulation) 
+			and observe that they specify the linear model for this group.</p>
+		<p>Now drag the red arrow for the second group (after insulation) and observe 
+			that the coefficient of the indicator variable in the model, D<em><sub>After</sub></em>, 
+			is the distance between the two parallel lines.</p>
+		<p>Finally click <strong>Allow interaction</strong> and drag the righthand 
+			arrow on the red line. The coefficient of the final term in the model is 
+			the difference between the slopes of the before and after insulation. (It 
+			is zero if both lines are parallel.)</p>
+		
+	</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

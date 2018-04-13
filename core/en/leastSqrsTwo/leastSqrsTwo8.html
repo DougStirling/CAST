@@ -1,0 +1,194 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Interpreting the coefficients</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="estimation, least squares, slope, intercept">
+	<meta name="dataset" content="Bee energy expenditure">
+	<meta name="dataset" content="Heart catheter length">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">What do the values of the coefficients tell you?</p>
+<p>The coefficients of the least squares line are interpreted in a similar way 
+to the corresponding coefficients for the simple linear model.</p>
+<p class="eqn"><span class="black"><em>y</em> &nbsp;=&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x</em> + <em>b</em><sub>2 </sub><em>z</em></span></p>
+<dl>
+<dt>Intercept</dt>
+<dd>The intercept, <em>b</em><sub>0</sub>, 
+is the predicted response when <strong>both</strong> <em>x</em> and <em>z</em> 
+are zero.</dd>
+<dt>Slope for <em>X</em></dt>
+<dd>The parameter <em>b</em><sub>1</sub> 
+is the predicted increase in the response when <em>x</em> increases by 1, <strong>provided 
+the value of <em>z</em> remains the same</strong>. For observational data, the 
+two explanatory variables may be correlated so an increase of 1 in <em>x</em> 
+may be associated with a change in <em>z</em> so this interpretation is of less 
+practical use.</dd>
+<dt>Slope for <em>Z</em></dt>
+<dd>The parameter <em>b</em><sub>2</sub> 
+is similarly the predicted increase in <em>y</em> when <em>z</em> increases by 
+1, <strong>provided <em>x</em> does not change</strong>.</dd>
+</dl>
+
+<br>
+
+
+<div class="centred"><div class="boxed">
+<p>It is important to remember that the slope parameters 
+only describe the effect of the variables <strong>if the other variable 
+remains constant</strong>.</p>
+</div></div>
+
+
+<br>
+
+<div class="diagram">
+<p class="heading">Energy expenditure of bees</p>
+  
+		<p>A researcher recorded energy expenditure (joules/sec) for bees drinking 
+			water with different sucrose concentrations (%) and at different temperatures 
+			(degrees Celsius). The diagram below shows the least squares equation on 
+			the top right and displays it as a plane on the left.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="600">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="multiRegnProg.ConditZApplet">
+<param name="yVarName" value="Energy, E">
+<param name="xVarName" value="Temperature, T">
+<param name="zVarName" value="Sucrose, S">
+<param name="yValues" value="3.1 3.7 4.7 5.5 6.7 7.3 7.9 9.2 9.3 6.0 6.9 7.5 11.5 12.9 13.4 17.5 15.8 14.7 7.7 8.3 9.5 15.7 14.3 15.9 19.1 18.0 19.9">
+<param name="xValues" value="9@20 9@30 9@40">
+<param name="zValues" value="3@20 3@40 3@60 3@20 3@40 3@60 3@20 3@40 3@60">
+<param name="yAxis" value="0 20 0 5">
+<param name="xAxis" value="17 43 20 10">
+<param name="zAxis" value="15 65 20 20">
+<param name="modelParams" value="-10.00 0.000 0.000 5">
+<param name="paramMinMax" value="-99.999 99.999 -99.999 99.999 -99.999 99.999">
+<param name="zLimits" value="15.0 65.0 30.0">
+<param name="shortVarNames" value="E T S">
+<param name="allowBand" value="false">
+<param name="allowVarSelection" value="true">
+<param name="customText" value="Variables in Model=Variables in Model#Mean of *, for=Mean of *, for">
+</applet>
+</div>
+
+		<p>At any <strong>fixed</strong> sucrose concentration, the model predicts 
+			that energy expenditure will increase by 0.394 joules/sec for each increase 
+			in temperature of 1 degree. This prediction is shown by the red equation 
+			at the bottom. Use the slider to adjust the sucrose concentration and observe 
+			that only the intercept of this line changes &mdash; its slope remains 0.394.</p>
+		<p>Click the <strong>y-x</strong> button to rotate the 3-dimensional diagram 
+			to show energy vs temperature. The diagram at the bottom is simply a cross-section 
+			of the full regression plane.</p>
+		<hr width="75%">
+		<p>The next diagram is similar but focuses on the relationship between energy 
+			expenditure and sucrose an fixed temperatures.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="600">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="multiRegnProg.ConditZApplet">
+<param name="yVarName" value="Energy, E">
+<param name="xVarName" value="Temperature, T">
+<param name="zVarName" value="Sucrose, S">
+<param name="yValues" value="3.1 3.7 4.7 5.5 6.7 7.3 7.9 9.2 9.3 6.0 6.9 7.5 11.5 12.9 13.4 17.5 15.8 14.7 7.7 8.3 9.5 15.7 14.3 15.9 19.1 18.0 19.9">
+<param name="xValues" value="9@20 9@30 9@40">
+<param name="zValues" value="3@20 3@40 3@60 3@20 3@40 3@60 3@20 3@40 3@60">
+<param name="yAxis" value="0 20 0 5">
+<param name="xAxis" value="17 43 20 10">
+<param name="zAxis" value="15 65 20 20">
+<param name="modelParams" value="-10.00 0.000 0.000 5">
+<param name="paramMinMax" value="-99.999 99.999 -99.999 99.999 -99.999 99.999">
+<param name="xLimits" value="17.0 43.0 30.0">
+<param name="shortVarNames" value="E T S">
+<param name="allowBand" value="false">
+<param name="allowVarSelection" value="true">
+<param name="customText" value="Variables in Model=Variables in Model#Mean of *, for=Mean of *, for">
+</applet>
+</div>
+		<p>At any <strong>fixed</strong> <strong>temperature</strong>, the model predicts 
+			that energy expenditure will increase by 0.206 joules/sec for each increase 
+			of 1% in sucrose concentration. This prediction is again shown at the bottom 
+			. Use the slider to adjust the temperature and observe that only the intercept 
+			of this line changes &mdash; its slope remains 0.206.</p>
+		<p>Click the <strong>y-z</strong> button to rotate the 3-dimensional diagram 
+			to show energy vs sucrose. Again the diagram at the bottom is simply a cross-section 
+			of the full regression plane.</p>
+		<p class="heading">Heart catheter length</p>
+  
+		<p>In heart catheterisation, a catheter is passed through a major vein or 
+			artery from the leg into the heart. X-rays are used to position the tip 
+			of the catheter. The catheter length (cm), height (in) and weight (lb) were 
+			recorded from 12 children. Surgeons want to estimate the length of catheter 
+			to use, based on the height and weight of a child.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="600">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="multiRegnProg.ConditZApplet">
+<param name="yVarName" value="Catheter, C">
+<param name="xVarName" value="Height, H">
+<param name="zVarName" value="Weight, W">
+<param name="yValues" value="37 50 34 36 43 28 37 20 34 30 38 47">
+<param name="xValues" value="42.8 63.5 37.5 39.5 45.5 38.5 43.0 22.5 37.0 23.5 33.0 58.0">
+<param name="zValues" value="40.0 93.5 35.5 30.0 52.0 17.0 38.5 8.5 33.0 9.5 21.0 79.0">
+<param name="yAxis" value="15 55 20 10">
+<param name="xAxis" value="20 65 20 10">
+<param name="zAxis" value="0 100 0 20">
+<param name="modelParams" value="-10.00 0.000 0.000 5">
+<param name="paramMinMax" value="-99.999 99.999 -99.999 99.999 -99.999 99.999">
+<param name="xLimits" value="20.0 65.0 50.0">
+<param name="shortVarNames" value="C H W">
+<param name="allowBand" value="false">
+<param name="allowVarSelection" value="true">
+<param name="customText" value="Variables in Model=Variables in Model#Mean of *, for=Mean of *, for">
+</applet>
+</div>
+
+		<p>The least squares equation (and plane) for these data predicts that:</p>
+<ul>
+<li>The length of the catheter is predicted to be 0.211 cm greater for any child 
+than for a similar child <strong>with the same weight</strong> but who is 1 inch 
+shorter.</li>
+<li>The catheter is predicted to be 0.191 cm longer for any child than for a similar 
+child <strong>with the same height</strong> who is 1 lb lighter.</li>
+</ul>
+		<p>These data are observational and that the heights and weights of the children 
+			are highly correlated &mdash; taller children also tend to be heavier. Since 
+			both explanatory variables measure different aspects of the same thing, 
+			the sizes of the children, we will now investigate a model with only the 
+			variable weight.</p>
+<p>Click the checkbox for <strong>Height</strong> to remove this variable from 
+the model. The least squares line for predicting catheter length from weight alone 
+has slope 0.284.</p>
+<ul>
+<li>The length of the catheter is predicted to be 0.284 cm greater for any child 
+than another who is 1 lb lighter if no account is taken of the heights of the 
+children. (The lighter child is also likely to be shorter which explains the higher 
+coefficient for weight than in the full model.)</li>
+</ul>
+
+<br>
+
+
+<div class="centred"><div class="boxed">
+<p>We will discuss the consequences of correlated 
+explanatory variables in much greater depth in a later section.</p>
+</div></div>
+
+
+<br>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

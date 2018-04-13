@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Probability models and simulation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="probability, simulation">
+	<meta name="dataset" content="Tennis game">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class=heading>Modelling other situations with probability</p>
+<p>We often model a data set as a random sample from some population and  probability was introduced as a way of describing the randomness of such data. Probability is also used to model a 
+  variety of other situations involving randomness.</p>
+<p>The randomness of games of chance involving cards, dice or roulette 
+wheels can often be expressed simply in probability terms. Sporting competitions 
+can also often be modelled using fairly simple probability models. Such models 
+usually simplify reality, but they may capture the essentials of behaviour.</p>
+
+
+<div class="diagram" title="Illustration: Women's tennis match"> 
+<p class=heading>Women's tennis match</p>
+
+<p>A simple model for a tennis match between two players, A and B, will now be described. In this model, we will assume that:</p>
+<div class="centred"><div class="boxed">
+  <p>Probability of A winning her serve = π<sub>1</sub>
+  <br>Probability of B winning her serve = π<sub>2</sub></p>
+  </div></div>
+<p>We will also assume that the results of successive points are independent &mdash; winning one point does not make A more likely to win the next point too &mdash; and the standard rules of tennis are also part of the model. This is a simplification of a real tennis match but it could still be useful to determine 
+how the probability of winning a whole match depends on π<sub>1</sub> and π<sub>2</sub>.</p>
+</div>
+<p class=heading>Simulation</p>
+<p>How can a probability model be used to find information about such a  system? One 
+way is to use the probabilities  to generate an <strong>instance</strong> of the system. If the model was to specify that something happens with a probability of 0.5, then we could toss a coin to generate an instance (with say <em>head</em> meaning that the event happens). Events with other probabilities can be  generated in a similar way on a computer.</p>
+<p>Generating all 'events' in the model from the probabilities  in this way is called a <strong>simulation</strong> of the model. (The mechanism will be clarified in the example below.)</p>
+<div class="diagram">
+
+<p class=heading>Women's tennis match</p>
+
+<p>The diagram below shows how randomly generated points can simulate a complete 
+women's tennis match with 3 sets. Initially, both players are equally matched and have probability 0.75 of winning 
+their serves.</p>
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="sportProg.TennisMatchApplet">
+<param name="noOfSets" value="3">
+<param name="displayRecords" value="8">
+<param name="serverWinProbs" value="0.75 0.75">
+<param name="randomSeed" value="577773746">
+<param name="customText" value="P(A wins serve)=P(A wins serve)#P(B wins serve)=P(B wins serve)#Simulate next point=Simulate next point#Start new match=Start new match#Sets=Sets#Games (Current Set)=Games (Current Set)#Points (Current Game)=Points (Current Game)#Server=Server#Winner=Winner#won game=won game#won set=won set#won match=won match">
+</applet>
+</div>
+<p>Click <strong>Simulate Next Point</strong> 
+to play a single point of the match &mdash; the computer randomly generates 
+a result, based on the probability of the server winning the point. Click 
+this button repeatedly to generate points until the match is completed. (Or hold it down to speed up the simulation.)</p>
+<p>Click <strong>Start New Match</strong> to perform 
+another simulation. Note that the precise sequence of points is unlikely 
+to be repeated exactly in different simulations, even when the probabilities are 
+the same in successive matches. (Before performing further simulations, you may 
+use the sliders to adjust the probabilities winning individual points for the 
+two competitors.)</p>
+</div>
+
+<p>In practice, we would rarely be interested in displaying as much detail in 
+a simulation (except perhaps when checking that we have programmed the rules of 
+the match properly!). We are usually interested in only one or two outcomes  (such as the identity of the winner or the total number of sets played in the match) 
+and only these summaries need be displayed from each run of the simulation.</p>
+
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

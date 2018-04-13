@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Densité des valeurs</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<script type="text/javascript">
+		var svgNames = new Array();
+		svgNames[0] = "images/dotPlotCross.svg";
+		svgNames[1] = "images/dotPlotCrossCanopy.svg";
+		svgNames[2] = "images/dotPlotCanopy.svg";
+		
+		function changeSvgImage(select) {
+			var newIndex = select.selectedIndex;
+			var image = document.getElementById('dataImage');
+			image.src = svgNames[newIndex];
+		}
+	</script>
+
+	<meta name="index" content="density">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Densité</p>
+	
+<p>Dans un nuage de points superposés (ou diagramme à tiges et feuilles), la plus haute des piles contiennent le plus de valeurs. Ces piles ont la plus forte <strong>densité</strong> de valeurs.</p>
+<p>Lorsque l'on regarde un tracé de points empilés ou diagramme à tiges et feuilles, nous sous-consciemment arrondir les colonnes dentelées des croix ou des feuilles avec une courbe. Cette courbe lissée décrit la densité des valeurs et nous aide à comprendre la distribution des valeurs.</p>
+<div class="diagram">
+<p>Le tracé de points empilés ci-dessous décrit un grand ensemble de données.<br>
+</p>
+
+<p align="center"><iframe src="images/dotPlotCross.svg" id="dataImage" width="436" height="210" frameborder="0"></iframe></p>
+
+<form>
+  <div class="centred">
+    <select name="dataset" onChange="changeSvgImage(this)">
+      <option value="0" selected>Dot plot seule</option>
+      <option value="1">Dot plot plus la densité</option>
+      <option value="2">Densité seule</option>
+    </select>
+  </div>
+</form>
+
+<p>Les informations utiles dans le dot plot sur la forme de la distribution provient de la «forme» des sommets des colonnes de traverse. Sélectionnez <strong>Diagramme de points plus la densité</strong> à partir du menu pop-up pour voir ça.</p>
+
+<p>Enfin, sélectionnez <strong>Densité uniquement</strong> dans le menu pop-up. La courbe décrit efficacement la distribution des valeurs sans la distraction des croix individuelles.</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

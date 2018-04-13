@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Variability of estimate at X</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="prediction, extrapolation">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">What affects the accuracy of a prediction?</p>
+
+<p>Since the predicted response at <i>X</i>,
+</p>
+
+<p class=eqn><span class="black"><span style="position:relative; top:4px"><img src="../../images/symbol.yHat.png" width="10" height="17" align="baseline"></span>&nbsp; =&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x</em></span>
+</p>
+
+<p>depends on the least squares estimates,
+<em>b</em><sub>0</sub> and <em>b</em><sub>1</sub>,
+it also varies from sample to sample. The prediction has a normal distribution whose
+mean is
+</p>
+
+<p class=eqn><span class="black">&mu;<sub><em>y</em></sub> &nbsp;=&nbsp; &beta;<sub>0</sub> &nbsp;+&nbsp; &beta;<sub>1</sub><em>x</em></span> 
+</p>
+
+<p>The standard deviation of the prediction describes its likely distance from
+this underlying population value. It depends on:</p>
+
+<dl>
+<dt>Characteristics of the 'training' data</dt>
+<dd>We saw earlier that <a href="javascript:showNamedPage('regnEst7')">the 
+slope and intercept are estimated most accurately</a> if the data have large <em>n</em>, 
+small σ 
+and a large spread of x-values.</dd>
+<dt>The x-value at which a prediction is being made</dt>
+<dd>Less obviously, the variability of the prediction also depends on the value 
+of <i>X</i> at which the prediction is being made. The further <i>X</i> is from 
+its mean in the training data, <img src="../../images/symbol.xBar.png" width="10" height="10" align="baseline">, 
+the greater the variability in the prediction.</dd>
+</dl>
+
+<br>
+
+
+<div class="centred"><div class="boxed">
+<p>Predictions are least variable (most accurate) when predicting at 
+an x-value near the mean of the 'training' data.</p>
+</div></div>
+
+<br>
+
+<div class="diagram" title="Illustration of variability of estimated response">
+
+<p>The diagram below shows a sample from a normal linear model and the least squares
+line that is fitted to these data.
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="linModProg.ZoomLSApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="regnModel" value="3.30 0.75 0.6">
+<param name="maxParams" value="10.00 10.00">
+<param name="xValues" value="2.8 3.8 2.81 3.14 0.84 3.1 2.35 0.82 3.67 1.46 3.5 3.71 1.92 2.56 3.48 3.95 3.66 2.99 1.93 2.1">
+<param name="randomSeed" value="345945782">
+<param name="horizAxis" value="-5.0 10.0 -5 1">
+<param name="horiz2Scale" value="0.5 4.5">
+<param name="vertAxis" value="-5.0 15.5 -4 2">
+<param name="vert2Scale" value="2.5 8.2">
+<param name="customText" value="Data=Data#Extrapolate=Extrapolate">
+</applet>
+</div>
+
+<p>Click <strong>Accumulate</strong>, then take approximately 20 further samples. The
+variability of the least squares lines is shown on the right.
+</p>
+
+<p>Now drag the slider on the right to expand the scales in the diagrams. Observe
+that the least squares lines (and hence the predictions that are made from them)
+are least variable near the centre of the data, but become increasingly variable
+as you extrapolate from the data.
+</p>
+
+    <hr align=center width="80%">
+
+<p>The next diagram concentrates on the errors that result from using the estimate
+</p>
+
+<p class=eqn><span class="black"><span style="position:relative; top:4px"><img src="../../images/symbol.yHat.png" width="10" height="17" align="baseline"></span>&nbsp; =&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x</em></span>
+</p>
+
+<p>of the true mean response,
+</p>
+
+<p class=eqn><span class="black">&mu;<sub><em>y</em></sub> &nbsp;=&nbsp; &beta;<sub>0</sub> &nbsp;+&nbsp; &beta;<sub>1</sub><em>x</em></span> 
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="340" name="errorDistn">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="linModProg.PredictionErrorApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="regnModel" value="3.30 0.75 0.6">
+<param name="xValues" value="2.8 3.8 2.81 3.14 0.84 3.1 2.35 0.82 3.67 1.46 3.5 3.71 1.92 2.56 3.48 3.95 3.66 2.99 1.93 2.1">
+<param name="horizAxis" value="0.5 4.5 1 1">
+<param name="vertAxis" value="2.5 8.0 3 1">
+<param name="randomSeed" value="345945782">
+<param name="errorAxis" value="-1.0 1.0 -1.0 0.5">
+<param name="maxParams" value="99.99 9.99 9.9 99.99">
+<param name="xLimits" value="0.5 4.5 0.1 2.5">
+<param name="customText" value="Difference from popn mean at x=Difference from popn mean at x">
+</applet>
+</div>
+
+<p>Click <strong>Accumulate</strong>, then take about 50 further samples.
+The jittered dot plot on the right shows the distribution of the errors that are
+obtained when using a least squares line to estimate the mean response at <i>X</i>.
+</p>
+
+<p class="gray">(Click on any cross in this plot to see the data set that
+gave rise to it.)
+</p>
+
+<p>Drag the slider to observe the distribution of the errors at other x-values. 
+Observe that the errors are least variable when predicting near x&nbsp;=&nbsp;2.5.</p>
+
+<p>Finally, click the checkbox below to display the theoretical distribution of the
+errors and again drag the slider to adjust the value of <i>X</i>.
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="300" height="35">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="linModProg.SlopeDistnControlApplet">
+<param name="slopeDistnApplet" value="errorDistn">
+<param name="customText" value="Show theoretical distn=Show theoretical distn">
+</applet>
+</div>
+
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

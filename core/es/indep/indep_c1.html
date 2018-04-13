@@ -1,0 +1,177 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Association between categorical variables</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="conditional probability, association, relationship">
+	<meta name="dataset" content="Obesity of workers">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Relationships between numerical variables</p>
+<p>When two or more measurements are made from each individual in a population, 
+we are usually interested in whether these variables are related to each other. 
+When both variables are numerical, the strength of the relationship can be described 
+with a correlation coefficient and <a href="javascript:showNamedPage('sec_regnModel')">regression 
+models</a> allow us to test whether two variables are related on the basis of 
+sample data.</p>
+<p class="heading">Relationships between categorical variables</p>
+<p>Two categorical measurements may also be related.</p>
+
+<ul>
+<li>Is the sex of a new accountancy graduate related to whether the graduate will 
+have an accountancy job within 3 months of graduation?</li>
+<li>In an engineering company, is union membership related to job satisfaction 
+(poor, OK or good)?</li>
+<li>Is a female employee's marital status related to whether or not she receives 
+promotion?</li>
+</ul>
+
+<p>As with numerical variables, we may be able to conclude that any relationship 
+between categorical variables is <strong>causal</strong> if it results from an 
+experiment (e.g. a randomised experiment in which some pea seeds are coated and 
+others are uncoated). From observational data however, we usually cannot deduce 
+a causal relationship &mdash; all we can say is that the variables may be <strong>associated</strong>.</p>
+<p class="heading">What does association mean?</p>
+<p>We say that two variables are associated if knowledge of the value of one tells 
+you something about the likely value of the other.</p>
+<table width="80%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+<tr> 
+<td align="center"><strong>If the conditional distribution of <em>Y</em> given 
+<em>X</em>&nbsp;=&nbsp;<em>x</em> depends on the value of <em>x</em>, we say that 
+<em>X</em> and <em>Y</em> are <font color="#FF0000">associated</font>.</strong></td>
+</tr>
+</table>
+<p>For example, if the conditional distribution of the <em>Job satisfaction</em> of new employees given <em>Job type</em> =<em> secretary </em>is different from the conditional distribution of<em> Job satisfaction</em> given <em>Job type</em> =<em> manager</em>, then we say that <em>Job satisfaction </em>and<em> Job type</em> are associated.</p>
+<p>In the next page, we will characterise two variables that are <strong>not</strong> associated, but first we give an example of variables that <strong>are</strong> related.</p>
+<div class="diagram">
+<p class="heading">Absenteeism and weight</p>
+
+<p>To illustrate the idea of association, we use a table of joint probabilities 
+that constitute a possible model for absenteeism of employees in a supermarket 
+chain and their weight.</p>
+<table width="80%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+<tr> 
+<td align="center"><strong>Note that the joint probabilities in this model<font color="#FF0000"> 
+do not accurately represent the effect of weight on absenteeism</font> &mdash; they 
+are only used to illustrate the concepts.</strong></td>
+</tr>
+</table>
+<br>
+<center>
+<table border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC" bgcolor="white">
+<caption>
+<strong>Joint Probabilities</strong> 
+</caption>
+<tr>
+<th align="CENTER"></th>
+<th align="CENTER" colspan="3"><font color="blue">Attendance record</font></th>
+<th align="CENTER"></th></tr>
+<tr>
+<th align="CENTER"></th>
+<th align="CENTER"><font color="blue">Poor</font></th>
+<th align="CENTER"><font color="blue">Satisfactory</font></th>
+<th align="CENTER"><font color="blue">Above average</font></th>
+<th align="CENTER"><font color="red">Marginal</font></th></tr>
+<tr>
+<th align="CENTER"><font color="blue">Underweight</font></th>
+<td align="CENTER">0.0450</td>
+<td align="CENTER">0.0900</td>
+<td align="CENTER">0.0150</td>
+<td align="CENTER"><font color="red">0.1500</font></td></tr>
+<tr>
+<th align="CENTER"><font color="blue">Normal</font></th>
+<td align="CENTER">0.0825</td>
+<td align="CENTER">0.3025</td>
+<td align="CENTER">0.1650</td>
+<td align="CENTER"><font color="red">0.5500</font></td></tr>
+<tr>
+<th align="CENTER"><font color="blue">Overweight</font></th>
+<td align="CENTER">0.0500</td>
+<td align="CENTER">0.1200</td>
+<td align="CENTER">0.0300</td>
+<td align="CENTER"><font color="red">0.2000</font></td></tr>
+<tr>
+<th align="CENTER"><font color="blue">Obese</font></th>
+<td align="CENTER">0.0300</td>
+<td align="CENTER">0.0650</td>
+<td align="CENTER">0.0050</td>
+<td align="CENTER"><font color="red">0.1000</font></td></tr>
+<tr>
+<th align="CENTER"><font color="red">Marginal</font></th>
+<td align="CENTER"><font color="red">0.1700</font></td>
+<td align="CENTER"><font color="red">0.5400</font></td>
+<td align="CENTER"><font color="red">0.2900</font></td>
+<td align="CENTER"><font color="red">1.0000</font></td></tr>
+</table>
+</center>
+
+<p>The implications of this model are best explained from conditional probabilities 
+for attendance, given weight: </p>
+
+<center>
+    <table border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC" bgcolor="white">
+<caption>
+<strong>Conditional Probabilities</strong> 
+</caption>
+<tr>
+<th align="CENTER"></th>
+<th align="CENTER" colspan="3"><font color="blue">Attendance record</font></th>
+<th align="CENTER"></th></tr>
+<tr>
+<th align="CENTER"></th>
+<th align="CENTER"><font color="blue">Poor</font></th>
+<th align="CENTER"><font color="blue">Satisfactory</font></th>
+<th align="CENTER"><font color="blue">Above average</font></th>
+<th align="CENTER"><font color="#FF0000">Total</font></th>
+</tr>
+<tr>
+<th align="CENTER"><font color="blue">Underweight</font></th>
+<td align="CENTER">0.30</td>
+<td align="CENTER">0.60</td>
+<td align="CENTER">0.10</td>
+<td align="CENTER"><font color="red">1.0</font></td></tr>
+<tr>
+<th align="CENTER"><font color="blue">Normal</font></th>
+<td align="CENTER">0.15</td>
+<td align="CENTER">0.55</td>
+<td align="CENTER">0.30</td>
+<td align="CENTER"><font color="red">1.0</font></td></tr>
+<tr>
+<th align="CENTER"><font color="blue">Overweight</font></th>
+<td align="CENTER">0.25</td>
+<td align="CENTER">0.60</td>
+<td align="CENTER">0.15</td>
+<td align="CENTER"><font color="red">1.0</font></td></tr>
+<tr>
+<th align="CENTER"><font color="blue">Obese</font></th>
+<td align="CENTER">0.30</td>
+<td align="CENTER">0.65</td>
+<td align="CENTER">0.05</td>
+<td align="CENTER"><font color="red">1.0</font></td></tr>
+</table>
+</center>
+
+<p>A proportional Venn diagram displays these conditional probabilities graphically. 
+</p>
+
+<p class=eqn><object data="images/assocVenn2.svg" width="375" height="300"></object></p>
+
+<p>If this model is correct, the conditional probability of poor attendance is 
+lowest for staff with 'normal' weight, increasing as weight gets further from 
+'normal'. Similarly, the probability of above average attendance is highest for 
+those with 'normal' weight.</p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

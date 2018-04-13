@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Three factors</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="incomplete factorial design, fractional factorial design, confounding, resolution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Third factor</p>  
+  <p>The column of ±1 values for the interaction on the previous page can 
+    be used to define the levels for a third factor, C</p>
+  <div class="centred"><table border="0" class="centred" cellpadding="3" cellspacing="0">
+    <tr> 
+      <th>&nbsp;</th>
+      <th colspan="3">&nbsp;&nbsp;Factor&nbsp;&nbsp;</th>
+      <th>&nbsp;</th>
+    </tr>
+    <tr> 
+      <th>Run</th>
+      <th>&nbsp;&nbsp;A&nbsp;&nbsp;</th>
+      <th>&nbsp;&nbsp;B&nbsp;&nbsp;</th>
+      <th><span class="red">&nbsp;&nbsp;C = AB&nbsp;&nbsp;</span></th>
+      <th><span class="darkblue">&nbsp;&nbsp;Response&nbsp;&nbsp;</span></th>
+    </tr>
+    <tr align="center"> 
+      <th>1</th>
+      <td bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">-1</td>
+      <td bgcolor="#FFFFFF" style="border-top:1px solid #999999;">-1</td>
+      <td bgcolor="#FFFFFF" style="border-top:1px solid #999999;"><span class="bold red">+1</span> </td>
+      <td bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;"><span class="darkblue"><em>y</em><sub>&mdash;+</sub></span></td>
+    </tr>
+    <tr align="center"> 
+      <th>2</th>
+      <td bgcolor="#FFFFFF" style="border-left:1px solid #999999;">-1</td>
+      <td bgcolor="#FFFFFF">+1</td>
+      <td bgcolor="#FFFFFF"><span class="bold red">-1</span> </td>
+      <td bgcolor="#FFFFFF" style="border-right:1px solid #999999;"><span class="darkblue"><sub></sub><em>y</em><sub>-+-</sub></span></td>
+    </tr>
+    <tr align="center"> 
+      <th>3</th>
+      <td bgcolor="#FFFFFF" style="border-left:1px solid #999999;">+1</td>
+      <td bgcolor="#FFFFFF">-1</td>
+      <td bgcolor="#FFFFFF"><span class="bold red">-1</span> </td>
+      <td bgcolor="#FFFFFF" style="border-right:1px solid #999999;"><span class="darkblue"><em>y</em><sub>+&mdash;</sub></span></td>
+    </tr>
+    <tr align="center"> 
+      <th>4</th>
+      <td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">+1</td>
+      <td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">+1</td>
+      <td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;"><span class="bold red">+1</span> </td>
+      <td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;"><span class="darkblue"><sub></sub><em>y</em><sub>+++</sub></span></td>
+    </tr>
+  </table></div>
+	
+  <p>When the levels for C are defined in this way, all three factors are orthogonal 
+    &mdash; the columns of ±1 are uncorrelated &mdash; so the main effects for the 
+    factors can be independently estimated</p>
+  <p class="eqn"><em>main effect for A</em>&nbsp; = &nbsp; (<em>y</em><sub>+++</sub> 
+    + <em>y</em><sub>+&mdash;</sub> - <em>y</em><sub>-+-</sub> -<em> y</em><sub>&mdash;+</sub>) 
+    / 2</p>
+  <p class="eqn"><em>main effect for B</em>&nbsp; = &nbsp; (<em>y</em><sub>+++</sub> 
+    + <em>y</em><sub>-+-</sub> - <em>y</em><sub>+&mdash;</sub> -<em> y</em><sub>&mdash;+</sub>) 
+    / 2</p>
+  <p class="eqn"><em>main effect for C</em>&nbsp; = &nbsp; (<em>y</em><sub>+++</sub> 
+    + <em>y</em><sub>&mdash;+</sub> - <em>y</em><sub>+&mdash;</sub> -<em> y</em><sub>-+-</sub>) 
+    / 2</p>
+  <p>Since this design uses half the number of runs that would be required for 
+    a full factorial design for 3 factors, it is called a <strong>fractional factorial</strong> 
+    design &mdash; a 2<sup>3-1</sup> design.</p>
+  <p class="heading">Interactions</p>
+  <p>The problem with this design is that the estimates of the main effect for 
+    each factor is intertwined with the interaction between the other two factors. 
+    Because the levels for C were defined from the AB interaction,</p>
+  <p class="eqn">C &nbsp; = &nbsp; AB</p>
+  <p>the estimated main effect for C is identical to the estimated AB interaction 
+		effect that was shown on the previous page. The main effect for C is said 
+		to be <strong>confounded</strong> with the AB interaction.</p>
+	<p class="eqn"><em>estimate of main effect of C</em> &nbsp; = &nbsp; (<em>true 
+		main effect of C</em>) &nbsp; + &nbsp; (<em>AB interaction effect</em>)</p>
+	<p>This has the potential to mislead if there are interactions.</p>
+	
+	<div class="boxed"><p>If A and B interact in their effect on the response, their interaction 
+				could incorrectly make C appear to have a main effect when it does not, 
+				or make C appear to have no effect when it does.</p></div>
+	
+  <p>In a similar way, the main effects for A and B are confounded with 2-factor 
+    interactions,</p>
+  <p class="eqn">A&nbsp; = &nbsp; BC</p>
+  <p class="eqn">B&nbsp; = &nbsp; AC</p>
+	
+	<div class="boxed"><p>The design is called a <strong>resolution III </strong>
+        design since the main effects are orthogonal with each other but are confounded with 2-factor interactions.</p></div>
+				
+  <p class="heading">3-factor interaction</p>
+  <p>If the three columns of ±1 for A, B and C are multiplied, the resulting 
+    value is +1 for all runs of the experiment. This means that the experiment 
+    can give no information about the ABC interaction.</p>
+  <div class="diagram"> 
+    <p>There are six possible ways to assign two high and two low levels for the 
+      factor C to the four runs of the experiment. In the diagram below, you can 
+      select three of these options &mdash; the other three have the high and low levels 
+      of C interchanged and are essentially equivalent.</p>
+    <div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="200" height="200">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="factorialProg.AddFractionalApplet">
+<param name="allTerms" value="A B C">
+<param name="nComplete" value="2">
+</applet> 
+</div>
+    <p>Initially the levels of C are identical to those of A &mdash; C is at a high 
+      level in the same runs as A. The main effects of A and C are therefore confounded, 
+      so it is impossible to tell whether the estimated effect results from A 
+      or C. This is clearly a bad design since it can give no information about 
+      which of A or C is more important.</p>
+    <p><strong>Click</strong> the red heading row above B to use the relationship</p>
+    <p class="eqn">C&nbsp; = &nbsp; B</p>
+    <p>to define the levels of C. The factors B and C are now confounded and their 
+      effects cannot be separated.</p>
+    <p>Finally click the red heading row above AB to define the levels of C with</p>
+    <p class="eqn">C&nbsp; = &nbsp; AB</p>
+    <p>The table shows the resulting interactions that are confounded with the 
+      main effects.</p>
+    </div>
+	
+	
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

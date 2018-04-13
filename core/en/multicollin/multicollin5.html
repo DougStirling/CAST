@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>F- and t-tests: a paradox?</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="multicollinearity">
+	<meta name="dataset" content="Heart catheter length">
+	<meta name="dataset" content="Leafing out time">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Tests for the slope parameters</p>
+  <p>In earlier sections of this chapter we have described two different types 
+		of test for whether the slope parameters associated with <em>X</em> and <em>Z</em> 
+		are zero &mdash; t-tests for the individual parameters and a combined F-test for 
+		them both.</p>
+	<p>It is important to understand the difference between these two types of test.</p>
+	<p class="heading">T-tests</p>
+	<p>These are separate tests for the two slope parameters, each of which asks 
+		whether one slope parameter is zero. These tests both refer to the full model,</p>
+	<p class="eqn"><img src="../regnInfTwo/images/normModelTwo2.gif" width="418" height="21"></p>
+	<p>For example, the t-test for the slope parameter associated with <em>X</em> 
+		is comparing the hypotheses:</p>
+	<p class="eqn"><img src="images/tHypotheses.gif" width="87" height="43"></p>
+	<p>These hypotheses equivalently compare the two models:</p>
+	<p class="eqn"><img src="images/tHypotheses2.gif" width="250" height="43"></p>
+	<p>Each t-test therefore asks about dropping a single variable from the full 
+		model but:</p>
+	
+<div class="centred"><div class="boxed">
+<p>The two t-tests <strong> 
+						do not give information about whether both variables might be dropped</strong>.</p>
+</div></div>
+
+	<p class="heading">F-test</p>
+	<p>On the other hand, the F-test simultaneously asks whether both parameters 
+		are zero:</p>
+	<p class="eqn"><img src="images/fHypotheses.gif" width="223" height="43"></p>
+	<p>This is equivalent to comparison of the two models:</p>
+	<p class="eqn"><img src="images/fHypotheses2.gif" width="250" height="43"></p>
+	<p>The F-test therefore assesses whether both variables can be dropped together, 
+		but:</p>
+	
+<div class="centred"><div class="boxed">
+<p>The F-test <strong>gives 
+						no information about whether dropping a single variable (but not the 
+						other) is reasonable</strong>.</p>
+</div></div>
+
+	<p class="heading">For multicollinear data</p>
+	<p>When the two explanatory variables are highly correlated, it is relatively 
+		hard to disentangle their effect on the response. It may be found that:</p>
+	<ul>
+		<li>Neither explanatory variable improves the fit of the model significantly 
+			when the other variable is in the model, and also...</li>
+		<li>At least one of the explanatory variable is needed in the model, but we 
+			cannot tell whether <em>X</em> or <em>Z</em> is the more important.</li>
+	</ul>
+	<p>In terms of the tests that were described above, this corresponds to:</p>
+	<ul>
+		<li>Both t-tests have large p-values, implying that either of the variables 
+			could be dropped from the full model, and</li>
+		<li>The F-test has a small p-value, implying that <strong>at least</strong> 
+			one of the variables is needed in the model.</li>
+	</ul>
+	
+  <p>This may <strong>seem</strong> like a paradox but can be understood if you 
+    think carefully about the hypotheses that the tests are testing.</p>
+	
+  <div class="diagram">
+    <p class="heading">Heart catheter length</p>
+
+    <p>The diagram below shows the results of F- and t-tests applied to the heart 
+			catheterisation data that were described on the previous page.</p>
+    <div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="420" height="550">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="multiRegnProg.TAndFApplet">
+<param name="yVarName" value="Catheter">
+<param name="xVarName" value="Height">
+<param name="zVarName" value="Weight">
+<param name="yValues" value="37 50 34 36 43 28 37 20 34 30 38 47">
+<param name="xValues" value="42.8 63.5 37.5 39.5 45.5 38.5 43.0 22.5 37.0 23.5 33.0 58.0">
+<param name="zValues" value="40.0 93.5 35.5 30.0 52.0 17.0 38.5 8.5 33.0 9.5 21.0 79.0">
+<param name="yAxis" value="15 55 20 10">
+<param name="xAxis" value="20 65 20 10">
+<param name="zAxis" value="0 100 0 20">
+<param name="maxCoeff" value="99.99 9.999 9.999">
+<param name="maxT" value="99.999">
+<param name="maxSsq" value="999.99 999.99 99.99">
+<param name="customText" value="t-test for=t-test for#F-test for * and=F-test for * and">
+</applet> 
+</div>
+
+    <p>The conclusion from the F-test is that there is strong evidence that at 
+			least one of <em>height</em> and <em>weight</em> is related to the catheter 
+			length.</p>
+		<p>However from the t-tests, we conclude that either <em>height</em> or <em>weight</em> 
+			can be dropped from the full model (leaving the other variable). Only one 
+			explanatory variable seems to be needed in the model, but there is little 
+			evidence about which is the more important of the two.</p>
+		
+<div class="centred"><div class="boxed">
+<p>The surgeon does not need to use both 
+							<em>height</em> and <em>weight</em> to predict the required catheter 
+							length, but there is little evidence about which of the two variables 
+							will give the more accurate predictions.</p>
+</div></div>
+
+		<p class="heading">Leafing-out time</p>
+
+    <p>In a study of genetic variation in sugar maple, the time of leafing-out 
+			of nursery seedlings in Wooster, Ohio, was measured in units of a weighted 
+			mean index in April, 1955. The seeds had been selected from native trees 
+			in the Eastern United States and Canada. Their time to leafing-out (Y = 
+			mean index) has been related to latitude north (X = °North) and the 
+			mean July temperature at the place of origin (Z = °F).</p>
+		<p>We wish to examine the relationship between Y and the explanatory variables 
+			X and Z since any connection would show that the place of origin had an 
+			effect on leafing-out time. Since this effect could only be transmitted 
+			genetically via the seeds, it would imply a genetic difference between plants 
+			in the different areas. (<strong>Click</strong> on crosses to see the source 
+			of each batch of seeds.)</p>
+    <div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="420" height="550">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="multiRegnProg.TAndFApplet">
+<param name="yVarName" value="Leafing-out time">
+<param name="xVarName" value="Latitude">
+<param name="zVarName" value="Temp">
+<param name="yValues" value="20.5 21.0 18.3 18.6 18.6 19.8 20.6 19.2 19.8 15.8 14.5 18.5 16.7 13.9 14.3 15.2 16.6 18.2 18.3 13.3 20.0 18.1 17.0 15.6 15.7 15.4 15.4 15.8 15.0 15.9 14.0 10.8">
+<param name="xValues" value="46.95 45.55 45.00 45.42 44.50 46.37 45.03 43.00 42.80 42.70 42.42 40.75 41.38 40.35 40.80 40.92 40.33 41.58 41.92 40.12 42.75 42.00 42.55 41.50 39.25 37.45 38.33 36.25 35.80 31.38 32.83 30.75">
+<param name="zValues" value="66.7 64.3 61.8 65.0 63.5 65.5 67.7 67.9 70.2 71.1 74.4 76.4 75.9 76.4 71.9 74.2 73.0 71.4 69.7 72.6 69.2 68.0 70.0 72.5 76.7 79.5 69.5 74.3 68.9 80.8 81.2 81.0">
+<param name="yAxis" value="10 22 10 2">
+<param name="xAxis" value="30 47 30 2">
+<param name="zAxis" value="60 82 60 5">
+<param name="maxCoeff" value="99.999 9.999 -9.999">
+<param name="maxT" value="99.999">
+<param name="maxSsq" value="99.999 99.99 99.99">
+<param name="customText" value="t-test for=t-test for#F-test for * and=F-test for * and">
+</applet> 
+</div>
+
+    <p>The F-test gives strong evidence that at least one of the explanatory variables 
+			is related to leafing-out time so we can conclude that there is a genetic 
+			difference between the seeds.</p>
+		<p>In this example, the t-tests give information about which of the explanatory 
+			variables is more important. If temperature is in the model, there is moderately 
+			strong evidence that latitude is also needed (from the top t-test). However 
+			if latitude is in the model, there is no evidence that temperature is also 
+			needed (from the second t-test). We can therefore conclude that latitude 
+			is the more important variable in explaining leafing-out time.</p>
+    </div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

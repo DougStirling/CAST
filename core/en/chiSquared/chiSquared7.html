@@ -1,0 +1,221 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Pooled variance from several samples</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="chi-squared distribution, pooled variance">
+	<meta name="dataset" content="Sugar beet yields">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Samples from several groups</p>
+
+<p>We now consider data sets that arise as random samples from two or more groups. </p>
+<div class="example">
+	<p class="exampleHeading">Sugar beet yields</p>
+	<p>An experiment was conducted to assess how the application of nitrogen fertiliser at different rates affected the yield of sugar beet. Five plots (randomly chosen from a pool of 30 plots) were given each of six different amounts of fertiliser — the experimental treatments. The table below shows the sugar beet yields from all 30 plots.</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred">
+<tr><th align="center">Nitrogen level <br>
+	(lb/acre)</th> <th colspan="5" align="center">Yield from plot <br>
+		(tons/acre)</th></tr>
+<tr><th align="center">0</th>
+	<td style="background-color:#FFFFFF; padding:0px 10px; border-top:1px solid #999999;">31.3</td>
+	<td style="background-color:#FFFFFF; padding:0px 10px; border-top:1px solid #999999;">33.4</td>
+	<td style="background-color:#FFFFFF; padding:0px 10px; border-top:1px solid #999999;">29.2</td>
+	<td style="background-color:#FFFFFF; padding:0px 10px; border-top:1px solid #999999;">32.2</td>
+	<td style="background-color:#FFFFFF; padding:0px 10px; border-top:1px solid #999999;">33.9</td>
+</tr>
+<tr><th align="center">50</th>
+	<td style="background-color:#FFFFFF; padding:0px 10px;">38.8</td>
+	<td style="background-color:#FFFFFF; padding:0px 10px;">37.5</td>
+	<td style="background-color:#FFFFFF; padding:0px 10px;">37.4</td>
+	<td style="background-color:#FFFFFF; padding:0px 10px;">35.8</td>
+	<td style="background-color:#FFFFFF; padding:0px 10px;">38.4</td></tr>
+<tr>
+	<th align="center">100</th>
+	<td style="background-color:#FFFFFF; padding:0px 10px;">40.9</td>
+	<td style="background-color:#FFFFFF; padding:0px 10px;">39.2</td>
+	<td style="background-color:#FFFFFF; padding:0px 10px;">39.5</td>
+	<td style="background-color:#FFFFFF; padding:0px 10px;">38.6</td>
+	<td style="background-color:#FFFFFF; padding:0px 10px;">39.8</td>
+</tr>
+<tr>
+	<th align="center">150</th>
+	<td style="background-color:#FFFFFF; padding:0px 10px;">40.9</td>
+	<td style="background-color:#FFFFFF; padding:0px 10px;">41.7</td>
+	<td style="background-color:#FFFFFF; padding:0px 10px;">39.4</td>
+	<td style="background-color:#FFFFFF; padding:0px 10px;">40.1</td>
+	<td style="background-color:#FFFFFF; padding:0px 10px;">40.0</td>
+</tr>
+<tr>
+	<th align="center">200</th>
+	<td style="background-color:#FFFFFF; padding:0px 10px;">39.7</td>
+	<td style="background-color:#FFFFFF; padding:0px 10px;">40.6</td>
+	<td style="background-color:#FFFFFF; padding:0px 10px;">39.2</td>
+	<td style="background-color:#FFFFFF; padding:0px 10px;">38.7</td>
+	<td style="background-color:#FFFFFF; padding:0px 10px;">41.9</td>
+</tr>
+<tr>
+	<th align="center">250</th>
+	<td style="background-color:#FFFFFF; padding:0px 10px; border-bottom:1px solid #999999;">40.6</td>
+	<td style="background-color:#FFFFFF; padding:0px 10px; border-bottom:1px solid #999999;">41.0</td>
+	<td style="background-color:#FFFFFF; padding:0px 10px; border-bottom:1px solid #999999;">41.5</td>
+	<td style="background-color:#FFFFFF; padding:0px 10px; border-bottom:1px solid #999999;">41.1</td>
+	<td style="background-color:#FFFFFF; padding:0px 10px; border-bottom:1px solid #999999;">39.8</td>
+</tr>
+</table>
+</div>
+	
+	<p>The five recorded yields at each level of nitrogen can be treated as a random sample from some distribution, but the six distributions corresponding to the different nitrogen levels may differ.</p>
+</div>
+<p class="heading">A normal model for the data</p>
+<p>The distributions in the different groups, from which we are assuming that the data are random samples, may differ in various ways. However it is common to assume that all groups have normal distributions, with a \(\NormalDistn(\mu_i,\;\sigma_i^2)\) distribution in the \(i\)'th of the \(g\) groups. If we can also assume that the variance is the same in each group, our model is that</p>
+
+\[
+Y_{ij} \;\;\sim\;\; \NormalDistn(\mu_i, \sigma^2) \qquad \text{for }i = 1,\dots,g \text{ and }j = 1,\dots,n_i
+\]
+<p>where \(Y_{ij}\) is the \(j\)'th value in group \(i\). Note that we are using \(n_i\) to denote the number of values in the \(i\)'th group and the total number of values is \(n = \sum_{i=1}^g n_i\).</p>
+<p class="heading">Parameter estimates</p>
+<p>The best estimates of the group means \(\{\mu_i\}\) — the maximum likelihood estimates — are the sample means in the groups,</p>
+\[
+\hat{\mu}_{i} \;\;=\;\; \overline{Y}_i
+\]
+<p>but how should we estimate the common group variance, \(\sigma^2\)? </p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>The <strong>pooled estimate</strong> of the common group variance is</p>
+\[
+S_{\text{pooled}}^2 \;=\; \frac{\sum_{i=1}^g (n_i - 1)S_i^2}{\sum_{i=1}^g (n_i - 1)}
+\]
+<p>where</p>
+\[
+S_i^2 \;=\; \frac{\sum_{j=1}^{n_i} (Y_{ij} - \overline{Y}_i)^2} {n_i - 1}
+\]
+<p>is the sample variance in group \(i\).</p>
+</div>
+
+<p>To help understand this estimator, note that it is simply the average of the group variance if there are the same number of values in all groups — if all \(n_i\) are equal. If the \(n_i\) differ, more weight is given to the variance in the larger groups.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Distribution of pooled variance</p>
+<p>The pooled estimator \(S_{\text{pooled}}^2\) is an unbiased estimator of \(\sigma^2\) and</p>
+\[
+\frac{n-g}{\sigma^2}S_{\text{pooled}}^2 \;\;\sim\;\; \ChiSqrDistn(n-g\;\text{df})
+\]</div>
+
+<div class="proof">
+<p>We have already shown that the sample variance from a normal distribution is an unbiased estimator of \(\sigma^2\), so \(E[S_i^2] = \sigma^2\). Therefore</p>
+\[
+E[S_{\text{pooled}}^2] \;=\; \frac{\sum_{i=1}^g (n_i - 1)E[S_i^2]}{\sum_{i=1}^g (n_i - 1)} \;=\; \frac{\sum_{i=1}^g (n_i - 1)\sigma^2}{\sum_{i=1}^g (n_i - 1)} \;=\; \sigma^2
+\]
+<p>Now we already know that the sample variance in any group has a Chi-squared distribution,</p>
+\[
+\frac{n_i - 1}{\sigma^2}S_i^2 \;\sim\; \ChiSqrDistn(n_i - 1\;\text{df})
+\]
+<p>Since \(\sum_{i=1}^g (n_i - 1) = (n-g)\),</p>
+\[
+\frac{n-g}{\sigma^2}S_{\text{pooled}}^2 \;=\; \sum_{i=1}^g \frac{n_i - 1}{\sigma^2}S_i^2
+\]
+<p>Using the fact that the sum of independent Chi-squared variables also has a Chi-squared distribution whose degrees of freedom are the sum of those of its components,</p>
+\[
+\frac{n-g}{\sigma^2}S_{\text{pooled}}^2 \;=\; \sum_{i=1}^g \frac{n_i - 1}{\sigma^2}S_i^2 \;\sim\; \ChiSqrDistn(n - g\;\text{df})
+\]
+
+<p>Note that we can also prove that the pooled estimator is unbiased from its Chi-squared distribution — the distribution's mean equals its degrees of freedom.</p>
+</div>
+
+</div>
+
+<p>We now apply this result to the sugar beet data.</p>
+<div class="example">
+	<p class="exampleHeading">Sugar beet yields</p>
+	<p>The table below shows the sample means and variances in the six groups. Since there were \(n_i = 5\) values in each group, all group variances have 4 degrees of freedom.</p>
+	
+	<div class="centred">
+	<table border="0" cellpadding="5" cellspacing="0" class="centred">
+		<tr>
+			<th align="center">Nitrogen level <br>
+				(lb/acre)</th>
+			<th align="center">Group mean <br>
+				\(\overline{y}_i\)</th>
+			<th align="center">Group variance <br>
+\(s_i^2\)</th>
+			<th align="center">Degrees of <br>
+			freedom</th>
+		</tr>
+		<tr>
+			<th align="center">0</th>
+			<td style="background-color:#FFFFFF; padding:0px 10px; text-align:center; border-top:1px solid #999999;">32.00</td>
+			<td style="background-color:#FFFFFF; padding:0px 10px; text-align:center; border-top:1px solid #999999;">3.485</td>
+			<td  style="background-color:#FFFFFF; padding:0px 10px; text-align:center; border-top:1px solid #999999;">4</td>
+		</tr>
+		<tr>
+			<th align="center">50</th>
+			<td style="background-color:#FFFFFF; padding:0px 10px; text-align:center;">37.58</td>
+			<td style="background-color:#FFFFFF; padding:0px 10px; text-align:center;">1.342</td>
+			<td style="background-color:#FFFFFF; padding:0px 10px; text-align:center;">4</td>
+		</tr>
+		<tr>
+			<th align="center">100</th>
+			<td style="background-color:#FFFFFF; padding:0px 10px; text-align:center;">39.60</td>
+			<td style="background-color:#FFFFFF; padding:0px 10px; text-align:center;">0.725</td>
+			<td style="background-color:#FFFFFF; padding:0px 10px; text-align:center;">4</td>
+		</tr>
+		<tr>
+			<th align="center">150</th>
+			<td style="background-color:#FFFFFF; padding:0px 10px; text-align:center;">40.42</td>
+			<td style="background-color:#FFFFFF; padding:0px 10px; text-align:center;">0.797</td>
+			<td style="background-color:#FFFFFF; padding:0px 10px; text-align:center;">4</td>
+		</tr>
+		<tr>
+			<th align="center">200</th>
+			<td style="background-color:#FFFFFF; padding:0px 10px; text-align:center;">40.02</td>
+			<td style="background-color:#FFFFFF; padding:0px 10px; text-align:center;">1.597</td>
+			<td style="background-color:#FFFFFF; padding:0px 10px; text-align:center;">4</td>
+		</tr>
+		<tr>
+			<th align="center">250</th>
+			<td style="background-color:#FFFFFF; padding:0px 10px; text-align:center; border-bottom:1px solid #999999;">40.80</td>
+			<td style="background-color:#FFFFFF; padding:0px 10px; text-align:center; border-bottom:1px solid #999999;">0.415</td>
+			<td style="background-color:#FFFFFF; padding:0px 10px; text-align:center; border-bottom:1px solid #999999;">4</td>
+		</tr>
+	</table>
+	</div>
+	
+	<p>Since all group sizes are equal, the pooled variance estimator is the average of those in the groups,</p>
+\[
+S_{\text{pooled}}^2 \;=\; 1.3935
+\]
+	<p>and this has 24 degrees of freedom. Since</p>
+\[
+\frac{24}{\sigma^2}S_{\text{pooled}}^2 \;\sim\; \ChiSqrDistn(24\;\text{df})
+\]
+<p>we can use this as a pivot to get a 95% confidence interval for \(\sigma^2\) in the same way that was done with a single sample,</p>
+\[
+\frac{24 s_{\text{pooled}}^2}{\chi_{24,\;0.975}^2} \;\;\lt\;\; \sigma^2 \;\;\lt\;\; \frac{24s_{\text{pooled}}^2}{\chi_{24,\;0.025}^2}
+\]
+\[
+0.850 \;\;\lt\;\; \sigma^2 \;\;\lt\;\; 2.697
+\]
+<p>This confidence interval is very wide, but the width should not be surprising when the group variances are so varied. Large sample sizes are necessary in order to estimate variances accurately.</p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

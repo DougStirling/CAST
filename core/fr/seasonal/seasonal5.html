@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Mettre le tout ensemble</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	<meta name="dataset" content="Tourist arrivals in Fiji">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Une analyse plus poussée des données désaisonnalisée</p>
+	<p>La première étape de l'analyse des données est généralement saisonnière pour enlever l'effet saisonnier.</p>
+<p class=eqn style="color:#009; font-weight:bold">Données &nbsp; = &nbsp; Effet saisonnier &nbsp; + &nbsp; Désaisonnalisée</p>
+	<p>Cependant, nous devons maintenant examiner les données désaisonnalisée pour les caractéristiques de tendance et cycliques. En utilisant les méthodes dans les deux premières sections de ce chapitre, nous pouvons obtenir les composantes tendance et cycle. Ce qui reste après avoir enlevé ce sont les résidus.</p>
+<p class=eqn style="color:#009; font-weight:bold"><span class="eqn" style="color:#009; font-weight:bold">Désaisonnalisée</span>&nbsp; = &nbsp; Tendance &nbsp; + &nbsp; Cyclique &nbsp; + &nbsp; Résiduelle</p>
+	<p>Mettre ces ensemble, nous pouvons identifier <strong>quatre</strong> éléments séparés à la variation de notre série chronologique original.</p>
+	<p class=eqn style="color:#009; font-weight:bold"><span class="eqn" style="color:#009; font-weight:bold">Données</span>&nbsp; = &nbsp; <span class="eqn" style="color:#009; font-weight:bold"><span class="eqn" style="color:#009; font-weight:bold">Effet saisonnier</span>&nbsp; + &nbsp; </span><span class="eqn" style="color:#009; font-weight:bold">Tendance &nbsp; + &nbsp; Cyclique &nbsp; + &nbsp; Résiduelle</span></p>
+	<p>Il est important que vous compreniez la distinction entre ces quatre composantes d'une série temporelle saisonnière:</p>
+  <dl> 
+		<dt>Effet saisonnier</dt>
+		<dd>Pour données mensuelles ou trimestrielles, cette composante se répète exactement de la même manière chaque année.</dd>
+		<dt>Tendance</dt>
+		<dd>Cette composante des changements en douceur sur toute la période des données. Il est souvent décrit par un modèle linéaire ou quadratique.</dd>
+		<dt>Cyclique</dt>
+		<dd>Ce volet décrit pics et les creux qui durent des valeurs des données de plusieurs. La composante comprend deux cycles à long terme et à court terme d'autocorrélation de quelques valeurs adjacentes.</dd>
+		<dt>Résiduelle</dt>
+		<dd>Cette composante est ce qui reste. Il reflète «inhabituelles» valeurs de données individuelles qui ne peuvent pas être expliquées par les effets d'autres.</dd>
+	</dl>
+	
+<br>
+	
+	<div class="diagram"> 
+		<p class="heading">Les arrivées de touristes dans les îles Fidji</p>
+		<p>Vous allez utiliser le diagramme ci-dessous pour aider à comprendre les différentes composantes de la série chronologique des arrivées de touristes dans les îles Fidji.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="600">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.ComponentsApplet">
+<param name="varName" value="Arrivées de touristes">
+<param name="values" value="22261 17917 22215 16967 17211 20031 25584 24769 24068 23638 23265 21424 19604 18000 21608 18990 19884 23389 28714 29119 26066 25825 24665 22670 20136 17827 22206 21128 21428 24302 29622 28495 26856 26319 24125 25018 21647 20269 26336 21863 24162 27862 31803 31933 29750 28225 27622 27402 23543 19122 23641 24581 24175 28149 32774 33955 28096 26614 25809 28036 23733 22147 24834 23930 22150 29497 33459 35819 32040 30862 29663 31426 28456 26078 29901 25307 26008 32236 35207 33954 30498 31307 30208 30281 26687 22556 28319 30570 29289 34602 36471 37821 32479 32198 29626 30724 28950 25263 31589 29082 34203 38445 41031 40680 36806 36800 35180 31926">
+<param name="vertAxis" value="15000 45000 15000 5000">
+<param name="seasonName" value="12 Jan Fév Mar Avr Mai Juin Juil Aoû Sep Oct Nov Déc">
+<param name="seasonInfo" value="0 0 1991">
+<param name="timeAxisName" value="Mois">
+<param name="timeSequence" value="0 1 108">
+<param name="decimals" value="0">
+<param name="customText" value="Components=Composantes#Seasonal=Saisonnier#Trend=Tendance#Cyclical=Cyclique#Residual=Résiduelle#Sum of selected components=Somme des composants sélectionnés#Data minus sum of selected components=Données moins la somme des composants sélectionnés#Sum of components=Somme des composantes#Prediction=Prévision">
+</applet> 
+</div>
+
+		<p>Initialement, la ligne bleue dans la moitié supérieure du diagramme relie les points de données brutes. Cliquez sur la case <strong>Saisonnière</strong> pour supprimer l'effet saisonnier de ce schéma et l'afficher dans la moitié inférieure du diagramme.<font color="#666666"> (La moyenne a été ajoutée aux effets saisonniers pour leur permettre d'être tracée sur l'axe même que les données.)</font> 
+			Le haut diagramme montre donc les données désaisonnalisée et le fond montre les effets saisonniers.</p>
+		<p>Maintenant également cliquer sur le <strong>Tendance</strong> case. Cela supprime une tendance quadratique à partir du haut et l'ajoute à la base.</p>
+		<p>Enfin, cliquez <strong>Cycliques</strong> pour supprimer la composante cyclique du diagramme en haut et l'ajouter à la base. Ce qui reste dans le top c'est les résidus.</p>
+		<p>Sélection des composants d'une moins-un-temps leur permet d'être affichées séparément dans la moitié inférieure du diagramme.</p>
+		</div>
+	<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Discrete distributions</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="discrete random variable, probability function, discrete distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Discrete random variables</p>
+
+<p>We now give a formal definition of a discrete random variable.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>A <strong>discrete random variable</strong> is a function that gives a numerical value for each outcome in a sample space and whose possible values are either finite or countably infinite.</p>
+</div>
+<p>This definition is necessary for situations in which there are two or more random variables. For example, we might roll three dice and be interested in both the minimum of the three values <strong>and</strong> their sum — both are discrete random variables. However in many applications, it is possible to use a simpler definition that is easier to understand.</p>
+<div class="definition">
+	<p class='definitionTitle'>Simpler (but less general) description</p>
+	<p>An experiment whose outcomes are numerical and whose sample space is either finite or countably infinite can be treated as a <strong>discrete random variable</strong>.</p>
+</div>
+<p>Most discrete random variables that we will consider in this e-book can be interpreted in this way. In most of them, the outcomes are <strong>whole numbers</strong> — <strong>counts</strong> of something.</p>
+<div class="example">
+	<p class="exampleHeading">Examples</p>
+	<ul>
+		<li>The number of children in a family.</li>
+		<li>The number of fatal accidents on a region's roads during a month.</li>
+		<li>The number of  multiple-choice questions that a student gets correct in a test with 20 questions.</li>
+		<li>The number of beetles that die when a low dose of insecticide is given to ten of them.</li>
+	</ul>
+</div>
+<p>Our definition of discrete random variables also includes experiments whose outcomes are not integers. For example,  the <strong>proportion</strong> of surviving beetles out of ten that are given the low dose of insecticide would also be a discrete random variable — its possible values are {0.0, 0.1, 0.2, ..., 0.9, 1.0}. We will however concentrate on discrete random variables with whole-number outcomes.</p>
+<p class="heading">Probability function</p>
+<p>The randomness of a discrete random variable, <em>X</em>, is fully described by the probabilities of all possible values. These probabilities are jointly called the variable's <strong>probability function</strong>.</p>
+
+\[
+P(\text{outcome } x) \;\;=\;\; P(X=x) \;\;=\;\; p(x)
+\]
+<p>By convention, we use capital letters such as <em>X</em> when referring to random variables. Lower-case letters are used as shorthand for an arbitrary value. We could therefore replace &quot;<em>x</em>&quot; above with the value &quot;2&quot;,</p>
+\[
+P(\text{outcome } 2) \;\;=\;\; P(X=2) \;\;=\;\; p(2)
+\]
+
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Example: Girls in a family</p>
+		<p>A couple want at least two children and no more than four. However, subject to this constraint on their total number of children, they will stop when they get a boy.</p>
+		<p>Assuming that  there are no multiple births and the probability of any child being male is \(\frac 1 2\), independent of the genders of previous children, what is the probability function for the number of girls in the family?</p>
+	</div>
+	<div class="solution">
+		<p>In the previous section, we used a tree diagram to show the possible sequences of births in the family.</p>
+		<p class="eqn"><img class="svgImage" src="../probCondit/images/tree_girls.png" width="393" height="245"></p>
+		<p>By adding probabilities for different branches, we found the probabilities for the various different numbers of girls in the family, <em>X</em>,</p>
+		<div class="centred">
+			<table border="0" class="centred" cellpadding="5" cellspacing="0">
+				<tr>
+					<th align="left" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">Number of girls, x</th>
+					<td width="40" align="center" style="border-bottom:1px solid #999999;">0</td>
+					<td width="40" align="center" style="border-bottom:1px solid #999999;">1</td>
+					<td width="40" align="center" style="border-bottom:1px solid #999999;">2</td>
+					<td width="40" align="center" style="border-bottom:1px solid #999999;">3</td>
+					<td width="40" align="center" style="border-bottom:1px solid #999999;">4</td>
+				</tr>
+				<tr>
+					<th align="left" style="border-right:1px solid #999999;">P(X&nbsp;=&nbsp;x)</th>
+					<td align="center">0.25</td>
+					<td align="center">0.5</td>
+					<td align="center">0.125</td>
+					<td align="center">0.0625</td>
+					<td align="center">0.0625</td>
+				</tr>
+			</table>
+		</div>
+		<p>This table describes the probability function for <em>X</em>.</p>
+	</div>
+</div>
+<p>A random variable's probability function may be described by a table of probabilities (if there is a finite number of possible outcomes) but is more often described by a mathematical formula, such as</p>
+
+\[
+p(x) = \begin{cases}
+	\displaystyle \frac 1 {(b-a+1)} &amp; \text{for } x = a,\dots, b \\[0.3em]
+	0 &amp; \text{otherwise}
+\end{cases}
+\]
+
+	<p class="heading">Other probabilities</p>
+<p>From the probability function, we can find the probability of any other event relating to the random variable. For any event, \(A\), we just need to add up the probabilities for the values in \(A\) since all values are mutually exclusive:</p>
+
+\[
+P(A) = \sum_{x \in A} p(x)
+\]
+
+	<p>For example,</p>
+
+\[
+P(2 \le X \le 4) \;=\; p(2) + p(3) + p(4)
+\]
+
+	<p class="heading">Properties of probability functions</p>
+<p>In order to be the probability function of a discrete random variable, a function \(p(x)\) must satisfy a few properties.</p>
+
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Properties of probability functions</p>
+
+\[
+p(x) \ge 0 \text{ for all } x\\[0.4em]
+\sum_{\text{all } x} p(x) = 1
+\]
+
+	</div>
+
+	<div class="proof">
+		<p>The first property is a consequence of the first axiom of probability &mdash; all probabilities must be between 0 and 1.</p>
+		<p>The second property arises because the different x-values form a partition of the sample space — one and only one value must occur.</p>
+
+\[
+P(S) = \sum_{x \in S} p(x) = 1
+\]
+	</div>
+
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

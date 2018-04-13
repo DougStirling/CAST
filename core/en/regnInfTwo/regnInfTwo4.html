@@ -1,0 +1,209 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Estimate of error standard deviation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="estimation, error variance, chi-squared distribution">
+	<meta name="dataset" content="Body fat">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Need to estimate the error standard deviation</p>
+<p>We stated on the previous page that the three least squares estimates have 
+normal distributions whose standard deviations depend on the x-values and z-values 
+in the data set and also on the population error standard deviation, σ</p>
+
+<p class="eqn"><img src="images/lseDistn.gif" width="245" height="69"></p>
+<p>The standard deviations of the parameter estimates are particularly important 
+since they describe the accuracy of the estimates.</p>
+<p>The green functions depend only on the x- and z-values in the data, so they 
+can be evaluated from a single data set, but the value of σ 
+is unknown in practice. We therefore need an estimate of σ 
+in order to get information about the accuracy of the estimates.</p>
+<p class="heading">Estimate of the error variance</p>
+
+<div class="centred"><div class="boxed">
+<p>For notational convenience, we will describe estimation 
+of the error variance, rather than its square root, the error standard deviation.</p>
+</div></div>
+
+<p>The sum of squared residuals from the least squares equation form the basis 
+of our estimate of σ<sup>2</sup>.</p>
+<p class="eqn"><img src="images/residSsqTwo.gif" width="177" height="26"></p>
+<p>The residual sum of squares has a distribution called a chi-squared distribution 
+with (<em>n</em>&nbsp;-&nbsp;3) degrees of freedom.</p>
+<p class="eqn"><img src="images/residSsqDistn.gif" width="201" height="26"></p>
+<p>Since the mean of a chi-squared distribution equals its degrees of freedom, 
+our best estimate of σ<sup>2</sup> 
+is the mean residual sum of squares,</p>
+<p class="eqn"><img src="images/errorVarEst.gif" width="231" height="44"></p>
+<br>
+<div class="diagram">
+<p class="heading">Simulation</p>
+
+<p>The diagram below again generates random responses from the model</p>
+<p class="eqn"><img src="images/bodyFatModel.gif" width="397" height="44"></p>
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="multiRegnProg.ResidSsqDistnApplet">
+<param name="yAxis" value="0 50 0 10">
+<param name="xAxis" value="65 120 70 10">
+<param name="zAxis" value="63 76 65 5">
+<param name="yVarName" value="Body fat">
+<param name="xVarName" value="Abdomen">
+<param name="zVarName" value="Height">
+<param name="noOfDataSets" value="3">
+<param name="dataName" value="n = 8">
+<param name="xValues" value="88.6 100.5 83.5 108.1 70.4 98.3 84.6 98.6">
+<param name="zValues" value="73.5 73.5 69 67 66.75 65.75 71.5 69.25">
+<param name="dataName2" value="n = 25">
+<param name="xValues2" value="88.6 100.5 83.5 108.1 70.4 98.3 84.6 98.6 86.5 94 92.3 87.5 87 106.6 106.8 92.4 90.8 104.5 101.2 89.7 84.4 88.7 93 100.5 111.5">
+<param name="zValues2" value="73.5 73.5 69 67 66.75 65.75 71.5 69.25 73 72 69.25 72.25 69.75 75 70.25 71.5 69.5 74.5 68.25 67.5 70.75 69.25 68.5 65.75 66">
+<param name="dataName3" value="n = 100">
+<param name="xValues3" value="85.2 83.0 87.9 86.4 100.0 94.4 90.7 88.5 82.5 88.6 83.6 90.9 91.6 101.8 96.4 92.8 96.4 97.5 89.6 100.5 95.9 98.8 76.4 80.0 76.3 79.7 74.6 88.7 73.9 83.5 88.7 84.5 79.1 100.5 115.6 113.1 100.9 98.8 108.1 104.3 111.2 104.3 76.0 81.5 73.7 79.5 83.4 70.4 86.7 77.9 82.0 79.6 77.6 100.0 99.8 104.2 105.3 98.3 104.8 94.7 102.4 99.7 105.5 100.3 83.9 86.6 78.4 84.6 91.5 82.8 82.9 76.0 83.3 81.8 78.8 95.0 95.4 98.6 95.8 89.0 97.8 94.9 99.8 89.7 88.1 90.9 86.0 86.5 95.6 93.2 83.1 97.5 88.8 91.6 86.7 88.2 94.0 95.0 92.0 89.2">
+<param name="zValues3" value="67.75 72.25 66.25 72.25 71.25 74.75 69.75 72.50 74.00 73.50 74.50 76.00 69.50 71.25 69.50 66.00 71.00 71.00 67.75 73.50 68.00 69.75 68.25 70.00 67.75 71.50 67.50 67.50 64.75 69.00 73.75 71.25 71.25 71.00 73.50 65.00 70.00 68.25 67.00 69.50 70.00 71.50 68.00 73.25 67.50 71.25 68.50 66.75 72.25 69.00 67.75 73.50 67.50 72.00 68.00 69.50 70.75 65.75 73.25 68.50 70.25 67.00 70.00 67.50 70.75 71.50 69.25 71.50 71.50 68.75 73.75 64.00 65.75 67.50 69.50 68.50 70.25 69.25 67.75 67.25 72.75 70.00 69.25 67.50 67.25 65.75 72.50 73.00 70.00 69.50 70.50 71.75 74.50 73.25 66.50 68.25 72.00 73.50 72.0 71.25">
+<param name="multiRegnModel" value="30.0 0.53 -0.80 5.0">
+<param name="randomSeed" value="755945782">
+<param name="decimals" value="3">
+<param name="maxSsq" value="9999.9 999.99 9.999 99.99">
+<param name="ssqAxis" value="0 4000 0 1000">
+<param name="meanSsqAxis" value="0 100 0 20">
+</applet> 
+</div>
+
+<p>Click <strong>Take sample</strong> several times to build up the sampling distribution 
+of the residual sum of squares and the best estimate of σ<sup>2</sup>, 
+the mean residual sum of squares.</p>
+<ul>
+<li>Observe that the sampling distribution matches the theoretical chi-squared 
+distributions for these statistics.</li>
+</ul>
+<p>Increase the sample size, <em>n</em>, with the pop-up menu.</p>
+
+
+<ul>
+<li>Observe that the estimate of σ<sup>2</sup> 
+has lower spread when the sample size is bigger &mdash; it becomes a more accurate 
+estimate.</li>
+</ul>
+<br>
+</div>
+
+
+<p class="heading">Reason for dividing by (<em>n</em>&nbsp;-&nbsp;3)</p>
+<p>You may be wondering why different divisors have been used when estimating 
+σ<sup>2</sup> 
+for the models that we have encountered so far. In particular,</p>
+
+<div class="centred"><table border="1" class="centred" cellpadding="4" cellspacing="0">
+<tr> 
+<th>Model</th>
+<th>Estimate of variance</th>
+</tr>
+<tr bgcolor="#FFFFFF"> 
+<td valign="middle"><img src="images/normModel0.gif" width="137" height="21"></td>
+<td><img src="images/errorVarEst0.gif" width="138" height="42"></td>
+</tr>
+<tr bgcolor="#FFFFFF"> 
+<td valign="middle"><img src="images/normModelUni.gif" width="199" height="21"></td>
+<td><img src="images/errorVarEst1.gif" width="138" height="42"></td>
+</tr>
+<tr bgcolor="#FFFFFF"> 
+<td valign="middle"><img src="images/normModelTwo.gif" width="257" height="21"></td>
+<td><img src="images/errorVarEst2.gif" width="138" height="44"></td>
+</tr>
+</table></div>
+
+<p>As extra parameters are added to the model, it is <strong>expected</strong> 
+that the least squares residuals will become smaller. After all, the parameter 
+estimates are chosen specifically to make the residual sum of squares as small 
+as possible, so adding parameters to the model should allow us to reduce the residual 
+sum of squares.</p>
+
+<div class="centred"><div class="boxed">
+<p>The greater the number of parameters in a model, 
+the smaller the denominator for the best estimate of the error variance.</p>
+</div></div>
+
+
+<p class="gray">(You may spot the pattern here and may be able to make 
+a good guess at the denominator to use for models with other numbers of explanatory 
+variables!)</p>
+
+<div class="diagram">
+<p class="heading">Simulation</p>
+
+<p>To illustrate the need for a lower divisor when more explanatory variables 
+are used, we again investigate models for percentage body fat. However we will 
+now use two explanatory variables that are <strong>unrelated</strong> to body 
+fat.</p>
+<ul>
+<li>Birthday, coded as 1 for 1st January to 356 for 31st December</li>
+<li>Last two digits of phone number (00 to 99)</li>
+</ul>
+
+<p>We therefore simulate the body fat of the 25 men using the simple model,</p>
+<p class="eqn"><img src="images/bodyFatModel0.gif" width="183" height="21"></p>
+<p>A scatterplot of percentage body fat against birthday for a sample of men is 
+shown below. </p>
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="multiRegnProg.ResidSsqSampleApplet">
+<param name="yAxis" value="0 50 0 10">
+<param name="xAxis" value="-5 370 0 50">
+<param name="zAxis" value="0 100 0 20">
+<param name="yVarName" value="Body fat">
+<param name="xVarName" value="Birthday">
+<param name="zVarName" value="Phone no">
+<param name="randomSeed" value="6456893">
+<param name="multiRegnModel" value="25 0 0 7">
+<param name="xValues" value="357 64 165 108 12 278 335 9 322 56 16 354 348 278 187 114 247 62 108 354 30 255 29 194 265">
+<param name="zValues" value="18 25 30 1 6 78 17 63 99 74 35 11 68 23 64 50 6 64 73 34 35 67 66 14 61">
+<param name="modelParams" value="10.00 0.000 0.000 5">
+<param name="biggestRss" value="99999">
+<param name="paramMinMax" value="-99.99 99.99 -9.999 9.999 -9.999 9.999">
+<param name="initialRotation" value="0 0">
+<param name="customText" value="resid=resid#Another data set=Another data set#Parameter=Parameter#Zero=Zero#Drag=Drag#Fix at best=Fix at best#Constant=Constant#Min resid ssq=Min resid ssq">
+</applet>
+</div>
+
+<ol>
+<li><strong>Drag</strong> the red arrow to minimise the residual sum of squares. 
+(The minimum occurs at the mean of the body fat measurements.)</li>
+<li>Now select the option <strong>Best</strong> from the pop-up menu associated 
+with 'Constant' on the right. A new arrow appears allowing you to predict body 
+fat as a linear function of birthday. Observe that the residual sum of squares 
+can be reduced from the lowest value from the model with no explanatory variables.</li>
+<li>Finally, click the y-x-z rotation button to rotate the display and select 
+the option <strong>Best</strong> from the pop-up menu associated with 'Birthday'. 
+Drag the arrow corresponding to Phone number to again minimise the residual sum 
+of squares.</li>
+</ol>
+<br>
+
+
+<div class="centred"><div class="boxed">
+<p>Each additional explanatory variable in the model 
+allows the residual sum of squares to be reduced, <strong>even though 
+the explanatory variables are totally unrelated to the response</strong>.</p>
+</div></div>
+
+<p>Click <strong>Another data set</strong> and verify that this happens whatever 
+the data set.</p>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

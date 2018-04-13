@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Diagramas residuales</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="regression model, linear model, curvature, outliers">
+	<meta name="dataset" content="Pressure and boiling point of water">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Detección de problemas con el modelo</p> 
+ 
+  <p>Si los afloramientos o la curvatura están presentes en un conjunto de datos, son a menudo visibles en un scatterplot de la respuesta contra la variable explicativa. Sin embargo estas características están generalmente más claras si las <strong>residuales</strong> se trazan contra <i>X</i> algo que la respuesta original.</p> 
+	<table width="75%" border="1" cellspacing="0" cellpadding="10" class="centred" bgcolor="#FFFFFF"> 
+		<tr> 
+			<td align="center"><strong>Trace las residuales contra X para buscar problemas en el modelo</strong></td> 
+		</tr> 
+	</table> 
+	
+	<br> 
+ 
+<div class="diagram"> 
+ 
+		<p class="heading">Presión atmosférica y punto de ebullición</p> 
+ 
+<p>En el mediados de siglo XIX, el J.D. Forbes tomó las medidas del punto de ebullición del agua (grados Fahrenheit) y de la presión barométrica (pulgadas de mercurio) en 17 localizaciones en las montan@as y en Escocia. 
+</p> 
+ 
+<p>Los datos fueron recogidos con la puntería de predecir la presión barométrica (y por lo tanto la altitud) del punto de ebullición, una cantidad fácilmente medida. Por lo tanto tratamos la presión como la variable de la respuesta en nuestro modelo. 
+</p> 
+ 
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="300"> 
+<script type="text/javascript">writeAppletParams();</script> 
+<param name="appletName" value="regnProg.ResidualPlotApplet"> 
+<param name="xVarName" value="Punto de ebullición"> 
+<param name="yVarName" value="Presión"> 
+<param name="xValues" value="194.5 194.3 197.9 198.4 199.4 199.9 200.9 201.1 201.4 201.3 203.6 204.6 209.5 208.6 210.7 211.9 212.2"> 
+<param name="yValues" value="20.79 20.79 22.40 22.67 23.15 23.35 23.89 23.99 24.02 24.01 25.14 26.57 28.49 27.76 29.04 29.88 30.06"> 
+<param name="horizAxis" value="194 213 195 5"> 
+<param name="vertAxis" value="20 31 20 2"> 
+<param name="residAxis" value="-0.4 0.8 -0.4 0.2"> 
+<param name="change1" value="#11 204.6 *#"> 
+<param name="change1Name" value="Eliminar valor atípico"> 
+</applet> 
+</div> 
+ 
+<p>Aunque el scatterplot de las informaciones en bruto a la izquierda parezca ajustarse absolutamente bien a un modelo linear simple, el diagrama de residuales a la derecha destaca dos problemas con el modelo. 
+</p> 
+ 
+<ul> 
+  <li>La mayor parte de las cruces en el diagrama residual mienten en una curva en forma de "U", indicando que la relación no es perfectamente linear.</li> 
+  <li>Un afloramiento es presente, una medida cuya presión sea inusualmente alta para su punto de ebullición.</li> 
+</ul> 
+ 
+<p>El afloramiento es probable haber sido causado por una medida incorrecta, pero esto es imposible ahora de comprobar. <strong>Afloramiento de la cancelación del</strong> tecleo para quitar el afloramiento. 
+</p> 
+ 
+<p>Examinaremos soluciones al problema de la ausencia de linealidad más adelante. 
+</p> 
+ 
+</div> 
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

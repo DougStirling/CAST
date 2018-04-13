@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Efecto de afloramientos</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="standard deviation, outliers">
+	<meta name="dataset" content="Samaru rainfall">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Afloramientos y la desviación estándar</p> 
+  <p>La desviación mala y estándar de un conjunto de datos resume el centro y la extensión de valores pero no contiene ninguna otra información sobre la forma de la distribución. Son por lo tanto descripciones pobres de las distribuciones que tienen racimos, afloramientos u oblicuidad.</p> 
+  <p>Vale el pasar un poco de más tiempo que investiga el efecto de un afloramiento sobre la desviación mala y estándar. Aunque un afloramiento tenga una influencia razonablemente fuerte en el medio de los datos,</p> 
+  <table width="75%" border="1" class="centred" cellpadding="10" cellspacing="0"> 
+		<tr> 
+			<td bgcolor="#FFFFFF"><strong>Los afloramientos tienen un efecto <font color="#FF0000">extremadamente</font> fuerte sobre la desviación estándar.</strong></td> 
+		</tr> 
+	</table> 
+	<p>Aplicando la regla empírica 70-95-100 y pensando en si las proporciones resultantes de valores dentro de 1, 2 y 3 desviaciones estándar son razonables en el contexto de los datos, usted puede poder decir que algo es incorrecto. (E.g. está razonable que los 70% de los valores están en medio dice 14 y 18, y los 30% están fuera de este intervalo?)</p> 
+	<table width="75%" border="1" class="centred" cellpadding="10" cellspacing="0"> 
+    <tr> 
+      <td bgcolor="#FFFFFF"><strong>El medio y la desviación estándar son malos resúmenes de los conjuntos de datos con afloramientos.</strong></td> 
+    </tr> 
+  </table> 
+	<p>Una exhibición gráfica tal como un diagrama del punto es la mejor manera de detectar un afloramiento y usted debe <strong>mirar siempre los datos</strong> antes de resumir con una desviación mala y estándar.</p> 
+	<p>Un afloramiento debe ser examinado cuidadosamente. ¿El valor fue registrado incorrectamente? ¿Había algo inusual sobre el individuo de el cual la medida fue obtenida? Si nos convencen de que había algo mal sobre el valor, debe ser quitado del conjunto de datos antes del análisis adicional.</p> 
+	<div class="diagram"> 
+		<p class="heading">La fecha del primera llueve en Samaru, Nigeria</p> 
+		<p>El diagrama apilado del punto abajo demuestra la fecha de la primera lluvia de establecimiento en Samaru cada año a partir la 1928 a 1983, definida pues la primera ocasión después del 1 de abril cuando había más de 20 milímetros de lluvia en el plazo de uno o dos días.</p> 
+		<p>Las fechas se registran como el número del día después del 1 de enero (e.g. 1 de abril = el día 92, 1 de mayo = día 122).</p> 
+		<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="210"> 
+<script type="text/javascript">writeAppletParams();</script> 
+<param name="appletName" value="statistic2Prog.DragOutlierApplet"> 
+<param name="varName" value="Fecha de la primera lluvia en Samaru, Nigeria"> 
+<param name="values" value="115 126 108 118 115 156 116 134 113 126 118 134 118 138 120 140 160 158 129 134 109 122 136 95 131 125 114 118 143 94 143 115 147 99 111 123 154 160 107 111 110 129 127 136 108 144 119 109 100 151 96 127 140 109 152 176 50 240"> 
+<param name="horizAxis" value="-20 390 0 50"> 
+<param name="decimals" value="1 1"> 
+<param name="lowFixedOutlier" value="0#No hay lluvia siembra (codificada 0)"> 
+<param name="highFixedOutlier" value="999#Valor perdido (codificada 999)"> 
+<param name="lowDragOutlier" value="1 80"> 
+<param name="highDragOutlier" value="200 365"> 
+<param name="customText" value="Low outlier=Atípico bajo#High outlier=atípico alto"> 
+</applet> 
+</div> 
+ 
+		<p>Ahora consideraremos agregar un “afloramiento” a este conjunto de datos &mdash; fingiremos que es una fecha incorrectamente registrada para las primeras lluvias en 1927. Chasque el <strong>alto afloramiento</strong> para agregar un valor de 240 al conjunto de datos. La fecha mala es aumentada en solamente 2 días, pero los aumentos de la desviación estándar a partir de 18.7 a 23.9 días, un aumento mucho mayor.</p> 
+		<p>Arrastre el afloramiento a 300, aumentando la desviación estándar a 29.5. La regla 70-95-100 con esta desviación estándar da una impresión engañosa de la ocasión de una fecha muy temprana o última para las primeras lluvias.</p> 
+		<p class="heading">Valor que falta</p> 
+		<p>Cuando un valor de datos falta (e.g. la fecha de las primeras lluvias en 1927 no pudo haber sido registrada), se cifra a menudo pues un valor “imposible”, tal como “999”. Chasque el <strong>valor que falta (cifrado 999)</strong> para cambiar el valor para 1927 a 999. Observe eso:</p> 
+		<ul> 
+			<li>El medio (día 141.5) sigue siendo un valor “razonable” para el conjunto de datos, aunque es incorrecto.</li> 
+			<li>La desviación estándar (117.1 días) no es razonable. Debe ser obvia a cualquier climatologist que no habría los 30% de años con las primeras lluvias fuera del ± 117.1 de los días 141.5, según lo predicho por la regla 70-95-100.</li> 
+		</ul> 
+		<p class="heading">Ninguna lluvia de establecimiento</p> 
+		<p>Otra complicación con datos de la precipitación en África es que las lluvias no comienzan a veces <strong>en absoluto</strong>. Considere qué sucedería si no había lluvia de establecimiento en 1984. Tal año se pudo cifrar como el valor “0”. Tales ceros son información importante (valores que falta desemejantes) pero no deben ser incluidos con el cálculo de medios y de desviaciones estándar.</p> 
+		<p>Chasque el <strong>afloramiento bajo</strong> y entonces <strong>ninguna lluvia de establecimiento (cifrada 0)</strong> para ver el efecto erróneamente de tratar el valor 0 para 1984 como fecha apropiada. La desviación estándar es otra vez gravemente afectada.</p> 
+		<table width="75%" border="1" class="centred" cellpadding="10" cellspacing="0"> 
+			<tr> 
+				<td bgcolor="#FFFFFF"><strong>La desviación mala y estándar puede aparecer “razonable” incluso si hay afloramientos. <font color="#FF0000">Examine siempre un diagrama del punto, un histograma o un diagrama de la caja antes de análisis.</font></strong></td> 
+			</tr> 
+		</table> 
+		<br> 
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

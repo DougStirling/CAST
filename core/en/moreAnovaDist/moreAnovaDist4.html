@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Theory behind anova test</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="comparing groups, analysis of variance, f test">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Distributions of sums of squares</p>
+  <p>The sums of squares within each of the two groups have chi-squared distributions 
+		whose degrees of freedom are the group sample size minus 1.</p>
+	<p class="eqn"><img src="../simpleAnova/images/within1SsqDistn.gif" width="314" height="37"><br>
+		<img src="../simpleAnova/images/within2SsqDistn.gif" width="314" height="37"></p>
+	<p>The within-group (residual) sum of squares is the sum of these and therefore 
+		has a chi-squared distribution with the sum of the degrees of freedom.</p>
+	<p class="eqn"><img src="images/ssWithinDistn.gif" width="408" height="26"></p>
+	<p>If the two group means are equal, the between-group (explained) sum of squares 
+		will have a chi-squared distribution with 1 degree of freedom (since the indicator 
+		variable is a single explanatory variable),</p>
+	<p class="eqn"><img src="images/ssBetweenDistn.gif" width="168" height="26"></p>
+	<p>The between-group sum of squares will tend to be higher if the two group 
+		means differ.</p>
+	<p class="heading">Distribution of F ratio</p>
+  <p>If the null hypothesis is true (both groups have the same mean), the F ratio 
+		will therefore have an F distribution,</p>
+<p class="eqn"><img src="images/fForMeanDistn.gif" width="277" height="38"></p>
+<p>The p-value for the test is therefore the upper tail-area from this F distribution 
+&mdash; it is the probability of getting an F ratio as large as the F-value that has 
+been observed if both sample means are the same.</p>
+<div class="diagram">
+<p class="heading">Simulation showing the distribution of F</p>
+<p>The diagram below takes samples of sizes <em>n</em><sub>1</sub>&nbsp;=&nbsp;20 
+and <em>n</em><sub>2</sub>&nbsp;=&nbsp;7 from normal distributions with the same 
+mean and standard deviation.</p>
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="varianceProg.TwoGroupMeanFApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Group, x">
+<param name="xLabels" value="#Group 1# #Group 2#">
+<param name="anovaModel" value="5.0 1.5 5.0 1.5">
+<param name="randomSeed" value="223945782">
+<param name="yAxis" value="1.0 9.5 1 1">
+<param name="decimals" value="3">
+<param name="maxSummaries" value="999.999 99.999 99.999 9.999">
+<param name="xValues" value="20@0 7@1">
+<param name="df" value="25">
+<param name="summaryAxis" value="0 6 0 1">
+<param name="componentName" value="Total variation#Between groups#Within groups">
+<param name="areaProportion" value="0.05">
+<param name="customText" value="F ratio=F ratio">
+</applet>
+</div>
+
+<p>Click <strong>Accumulate</strong> and then take several samples. Observe that 
+the F ratio has a distribution that is consistent with the theoretical F distribution 
+since the null hypothesis holds.</p>
+<p class="heading">Calculation of the p-value</p>
+<p>The next diagram shows how the p-value for the test is obtained from the F 
+distribution.</p>
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="550">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.FTailAreaApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value=" ">
+<param name="xLabels" value="#Group 1# #Group 2#">
+<param name="anovaModel" value="50 5 50 5">
+<param name="randomSeed" value="6533705671">
+<param name="yAxis" value="30 70 30 5">
+<param name="decimals" value="3">
+<param name="maxSsq" value="9999.999">
+<param name="maxMeanSsq" value="9999.999">
+<param name="maxF" value="999.99">
+<param name="ssqAxis" value="0 15 0 2">
+<param name="maxEffects" value="42 58">
+<param name="areaProportion" value="0.08">
+<param name="componentName" value="Total variation#Between groups#Within groups">
+<param name="dataInset" value="50">
+<param name="noOfDataSets" value="3">
+<param name="dataName" value="5 per group">
+<param name="dataName2" value="15 per group">
+<param name="dataName3" value="40 per group">
+<param name="xValues" value="5@0 5@1">
+<param name="xValues2" value="15@0 15@1">
+<param name="xValues3" value="40@0 40@1">
+<param name="customText" value="F distn if all groups are identical=F distn if all groups are identical#Population means=Population means#Same=Same#Different=Different">
+</applet>
+</div>
+
+<p>Initially the null hypothes is holds (both group means are equal). The p-value 
+is the upper tail area of the F distribution. Click <strong>Another Data Set</strong> 
+a few times to see how the p-value varies.</p>
+
+<div class="centred"><div class="boxed">
+<p>When the underlying group means are equal, all 
+p-values between 0 and 1 are equally likely. For example, a p-value below 0.05 
+occurs with probability 0.05. </p>
+</div></div>
+
+<p>The slider alters the difference between the population means. Drag it fully 
+to the right and take a few more samples.</p>
+
+<div class="centred"><div class="boxed">
+<p>When the group means are far apart, the p-value 
+is likely to be close to 0.0. <strong>P-values near zero therefore 
+provide evidence that the population means are different.</strong></p>
+</div></div>
+
+<br>
+
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

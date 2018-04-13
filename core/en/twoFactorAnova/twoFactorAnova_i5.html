@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Analyisis of variance tests</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="factorial design, anova, analysis of variance, f ratio, f test">
+	<meta name="dataset" content="Strength of asphaltic concrete">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Analysis of variance table</p>  
+  <p>Each explained sum of squares in the sum of squares table describes the reduction 
+    in residual sum of squares when a term is added to the model. Since small 
+    explained sums of squares result from adding terms that have little effect 
+    the fit of the model, they are used as the basis for testing whether the 
+    term is needed.</p>
+  <p>The sum of squares table is augmented with extra columns:</p>
+  
+  <dl>
+    <dt>Mean sums of squares</dt>
+    <dd>Each sum of squares is divided by its degrees of freedom</dd>
+    <dt>F ratios</dt>
+    <dd>Each mean explained sum of squares is then divided by the mean residual 
+      sum of squares to form an F-ratio.</dd>
+    <dt>p-values</dt>
+    <dd>Finally the significance of each F-ratio is assessed by comparing its 
+      value to an F distribution to give a p-value.</dd>
+  </dl>
+  
+  <p>The resulting table is called an <strong>analysis of variance </strong> (<strong>anova</strong>) table.</p>
+<div class="centred">
+<table border="0" class="centred" cellpadding="4" cellspacing="0">
+<tr>
+<th align="left" scope="col"><span class="black">Source of <br>
+variation</span></th>
+<th scope="col"><span class="black">Sum of <br>
+sqrs</span></th>
+<th scope="col"><span class="black">d.f.</span></th>
+<th scope="col"><span class="black">Mean ssq</span></th>
+<th scope="col"><span class="black">F-ratio</span></th>
+<th scope="col"><span class="black">&nbsp;&nbsp;p-value&nbsp;&nbsp;</span></th>
+</tr>
+<tr>
+<td bgcolor="#FFFFFF" style="border-top:1px solid #999999;">X</td>
+<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">SS<sub>X</sub></td>
+<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">(<em>g</em><sub>X</sub>&nbsp;-&nbsp;1)</td>
+<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">MS<sub>X</sub></td>
+<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">MS<sub>X</sub> / <span class="blue">MS<sub>Resid</sub></span></td>
+<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">(F distn)<sub></sub></td>
+</tr>
+<tr>
+<td bgcolor="#FFFFFF"> Z</td>
+<td align="center" bgcolor="#FFFFFF">SS<sub>Z</sub></td>
+<td align="center" bgcolor="#FFFFFF">(<em>g</em><sub>Z</sub>&nbsp;-&nbsp;1)</td>
+<td align="center" bgcolor="#FFFFFF">MS<sub>Z</sub></td>
+<td align="center" bgcolor="#FFFFFF">&nbsp;MS<sub>Z</sub> / <span class="blue">MS<sub>Resid&nbsp;</sub></span></td>
+<td align="center" bgcolor="#FFFFFF">(F distn)</td>
+</tr>
+<tr>
+<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;"><span class="blue">Residual</span></td>
+<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;"><span class="blue">&nbsp;SS<sub>Resid&nbsp;</sub></span></td>
+<td align="center" bgcolor="#FFFFFF" class="bottom"><span class="blue">&nbsp;(<em>n</em>&nbsp;-&nbsp;<em>g</em><sub>X</sub>&nbsp;-&nbsp;<em>g</em><sub>Z</sub>&nbsp;-&nbsp;1)&nbsp;</span></td>
+<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;"><span class="blue">&nbsp;MS<sub>Resid&nbsp;</sub></span></td>
+<td align="center">&nbsp;</td>
+<td align="center">&nbsp;</td>
+</tr>
+<tr>
+<th align="left" class="black">Total</th>
+<th class="black">SS<sub>Total</sub></th>
+<th class="black"><em>n</em>&nbsp;-&nbsp;1</th>
+<th>&nbsp;</th>
+<th>&nbsp;</th>
+<th>&nbsp;</th>
+</tr>
+</table>
+</div>
+<p><em>(Note that we are restricting attention in this section to  experiments with the same number of replicates for each combination of factor levels and hence orthogonal factors. We therefore do not need to distinguish between the two orders of adding the factors X and Z. The rows for the two factors could be swapped and their p-values would be the same.)</em></p>
+  <p class="heading">Interpretation of p-values</p>
+  <p>Each p-value is used to test the null hypothesis that the corresponding model 
+    term is unnecessary. It is interpreted in a similar way to other hypothesis 
+    tests.</p>
+	
+
+<div class="centred"><table border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC" class="centred">
+<tr> 
+<th align="CENTER" style="border-bottom:1px solid #999999;">p-value</th>
+<th align="CENTER" style="border-bottom:1px solid #999999;">Interpretation</th>
+</tr>
+<tr bgcolor="white"> 
+<td>over 0.1</td>
+        <td>no evidence that the term is needed</td>
+</tr>
+<tr bgcolor="white"> 
+<td>between 0.05 and 0.1</td>
+        <td>very weak evidence that the term is needed</td>
+</tr>
+<tr bgcolor="white"> 
+<td>between 0.01 and 0.05</td>
+        <td>moderately strong evidence that the term is needed</td>
+</tr>
+<tr bgcolor="white"> 
+<td style="border-bottom:1px solid #999999;">under 0.01</td>
+        <td style="border-bottom:1px solid #999999;">strong evidence that the term is needed</td>
+</tr>
+</table></div>
+
+  <br>
+  
+  <div class="diagram"> 
+    <p class="heading">Strength of asphaltic concrete</p>
+    <p>A civil engineer conducted an experiment to evaluate how different compaction 
+		methods and types of aggregate affect the strength of asphaltic concrete. Four compaction methods and two aggregate types were used.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoFactorProg.FactorAnovaSeqApplet">
+<param name="yVarName" value="Concrete strength">
+<param name="yValues" value="68 63 65 126 128 133 93 101 98 56 59 57 71 66 66 107 110 116 63 60 59 40 41 44">
+<param name="yAxis" value="20 150 20 20">
+<param name="xVariables" value="Ag Com">
+<param name="xTypes" value="zFac xFac">
+<param name="factorVariables" value="Com Ag">
+<param name="AgVarName" value="Aggregate">
+<param name="AgValues" value="12@0 12@1">
+<param name="AgLabels" value="Basalt Silicious">
+<param name="ComVarName" value="Compaction">
+<param name="ComValues" value="3@0 3@1 3@2 3@3 3@0 3@1 3@2 3@3">
+<param name="ComLabels" value="Static Regular Low #Very low#">
+<param name="maxSsq" value="99999.9 99 9999.9 999.99">
+<param name="componentNames" value="Aggregate#Compaction method">
+<param name="initVariables" value="0">
+</applet> 
+</div>
+
+    <p>Drag the red arrows in the analysis of variance table to add factor terms 
+      for <em>Aggregate</em> and <em>Compaction</em>.</p>
+    <p>The sum of squares explained by both factors are very highly significant. We can therefore 
+      conclude that:</p>
+    <div class="centred"><div class="boxed">
+    	<p>Both the aggregate type and type of compaction of the concrete affect its strength.<br>
+    </p>
+    </div></div>
+
+<br>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

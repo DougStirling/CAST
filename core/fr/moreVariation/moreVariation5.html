@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Racine l'erreur quadratique moyenne</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="error, bias, root mean square error">
+	<meta name="dataset" content="Weights of bags of potatoes">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Distance d'une cible</p>
+<p>Sacs de pommes de terre dans un supermarché sont étiquetés avec 3 kg de poids. À quelle distance sont les poids réels à cet objectif?</p>
+<dl>
+    <dt>Valeur unique</dt>
+    
+<dd>La distance d'une seule valeur, <font color="#000000"><em>x</em></font>, d'une cible, <font color="#000000"><em>k</em></font>, est appelé son <strong>erreur</strong>,</dd>
+  </dl>
+<p class=eqn style="color:#000000"><strong>erreur&nbsp; = &nbsp; </strong><font size="+1">(<em>x</em> − <em>k</em>)</font></p>
+<center>
+		<table border="0" cellpadding="12" cellspacing="0">
+			<tr>
+				<td bgcolor="#DDDDDD"><object data="images/errorOne.svg" width="308" height="127"></object></td>
+</tr></table></center>
+	
+  
+<p>Toutefois, si l'on mesure <font color="#000000"><em>n</em></font> sacs de pommes de terre, comment peut-on combiner les erreurs de donner une <strong>seule</strong> mesure de la précision?</p>
+  
+<dl>
+<dt>Erreur moyenne (biais)</dt>
+<dd>La moyenne des erreurs individuelles est égale à la différence entre la moyenne de l'échantillon et <font color="#000000"><em>k</em></font>, </dd>
+</dl>
+<p class=eqn><img class="gif" src="../../en/moreVariation/images/meanError.gif" width="154" height="40"> </p>
+  <dl>
+    <dd>Cette quantité est appelée le <strong>biais</strong> et nous dit clairement une chose au sujet de l'exactitude des poids des sacs de pommes de terre.</dd>
+  </dl>
+<center>
+		<table border="0" cellpadding="12" cellspacing="0">
+			<tr>
+				<td bgcolor="#DDDDDD"><object data="images/bias.svg" width="308" height="127"></object></td>
+</tr></table></center>
+  
+<dl>
+<dd>Cependant, même si le biais est nul, les valeurs individuelles peuvent être très différentes de la cible, <font color="#000000"><em>k</em></font>.</dd>
+</dl>
+<center>
+		<table border="0" cellpadding="12" cellspacing="0">
+			<tr>
+				<td bgcolor="#DDDDDD"><object data="images/zeroBias.svg" width="308" height="127"></object></td>
+</tr></table></center>
+  
+<dl>
+<dt>L'erreur quadratique moyenne</dt>
+<dd>Une solution au problème des erreurs négatives est de leur carré avant la moyenne,
+<div class="centred">
+<table border="0" cellspacing="0" cellpadding="10" class="centred">
+<tr>
+<th style="margin:0px; padding:0px"><span class="black bold"><strong>l'erreur
+quadratique moyenne</strong>&nbsp;&nbsp;=</span>&nbsp;&nbsp;&nbsp;</th>
+<td style="margin:0px; padding:0px"><img class="gif" src="images/meanSqrError.gif" width="77" height="44"></td>
+</tr>
+</table>
+</div>
+</dd>
+</dl>
+<dl>
+    <dt>Racine l'erreur quadratique moyenne</dt>
+    
+<dd>Le principal problème avec l'erreur quadratique moyenne, c'est que ses unités sont le carré de ceux des données brutes. Par exemple, le poids des sacs de pommes de terre (et donc les erreurs) sont mesurées en kg pour les erreurs au carré sont «kg au carré» et l'erreur quadratique moyenne est également «kg au carré». Comment interprétez-vous la valeur de ces unités? La solution est de prendre la racine carrée de retourner la valeur des unités d'origine.
+<div class="centred">
+<table border="0" cellspacing="0" cellpadding="10" class="centred">
+<tr>
+<th style="margin:0px; padding:0px"><span class="black bold"><strong>racine de
+l'erreur quadratique moyenne</strong>&nbsp;&nbsp;=</span>&nbsp;&nbsp;&nbsp;</th>
+<td style="margin:0px; padding:0px"><img class="gif" src="images/rootMeanSqrError.gif" width="90" height="50"></td>
+</tr>
+</table>
+</div>
+</dd>
+  </dl>
+<table width="75%" border="1" class="centred" cellpadding="10" cellspacing="0">
+<tr> 
+      
+<td align="center" bgcolor="#FFFFFF"><strong>La racine l'erreur quadratique moyenne est un «type» d'erreur.</strong></td>
+  </tr>
+  </table>
+	<br>
+  <div class="diagram"> 
+    <p class="heading">Poids des sacs de 3 kg de pommes de terre</p>
+    
+<p>Le diagramme ci-dessous montre le poids de sept sacs de pommes de terre étiquetées «3 kg ».<br>
+</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="statisticProg.DragCrossRmseApplet">
+<param name="varName" value="poids des sacs">
+<param name="values" value="2.7 2.9 2.95 3.05 3.15 3.2 3.25">
+<param name="target" value="3.0">
+<param name="targetName" value="Cible, k = 3 kg">
+<param name="horizAxis" value="2.4 3.3 2.4 0.2">
+<param name="maxSummary" value="99.999">
+<param name="customText" value="Root mean square error=Erreur quadratique moyenne">
+</applet> 
+</div>
+
+    
+<p>Un carré est établi pour chaque valeur de données dont les côtés ont une longueur égale à l'erreur pour ce sac de pommes de terre.</p>
+<table width="75%" border="1" class="centred" cellpadding="10" cellspacing="0">
+<tr> 
+<td align="center" bgcolor="#FFFFFF"><strong>La <font color="#FF0000">surface</font> de chaque carré est l'erreur quadratique pour la valeur.</strong></td>
+</tr>
+</table>
+<p>La racine l'erreur quadratique moyenne est la longueur des côtés du carré dont la surface est la <strong>moyenne</strong> des aires des carrés. Il est représenté en rouge sur le diagramme.</p>
+    
+<p><strong>Faites glisser les croix</strong> de voir comment les valeurs affectent la racine l'erreur quadratique moyenne.</p>
+<hr width="75%">
+<p>Vous pouvez remarquer que une valeur aberrante correspond à un carré avec une très grande superficie, il a donc un effet disproportionné sur la racine l'erreur quadratique moyenne.</p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

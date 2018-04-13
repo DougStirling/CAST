@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Test for a mean</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="simulation">
+	<meta name="dataset" content="Corn flake packet weight">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class=heading>Assessing a claim about a mean</p>
+<p>In this example, we ask whether a sample mean is consistent with the underlying population mean having a target value.</p>
+
+<div class="diagram" title="Example: Quality control for cornflake packets">
+<p class=heading>Quality control for cornflake packets</p>
+
+<p>In a factory producing packets of cornflakes, the weight of cornflakes that a filling machine places in each packet varies from packet to packet. From extensive previous monitoring of the operation of the machine, it is known that the net weight of '500&nbsp;gm' packets is approximately normal with standard deviation σ = 10&nbsp;gm.</p>
+<p>The mean net weight of cornflakes in the packets is controlled by a single knob. The target is for a mean  of µ&nbsp;=&nbsp;520&nbsp;gm to ensure that few packets will contain less than 500&nbsp;gm. Samples are  regularly taken to assess whether the machine needs to be adjusted. A sample of 10 packets was weighed and contained an average of 529&nbsp;gm. Does this indicate that the underlying mean has drifted from µ&nbsp;=&nbsp;520 and that the machine needs to be adjusted?</p>
+<p class=heading>A simulation</p>
+<p>If the filling machine is working to specifications, each packet would contain a  weight that is sampled from a normal distribution with µ&nbsp;=&nbsp;520 and σ = 10.</p>
+
+<div class="centred"><div class="boxed">
+<p>How unlikely is it to get the mean of a sample of size 10 that is as far from 520 as 529 if the machine is working correctly?</p>
+</div></div>
+
+<p>A simulation helps to answer this question.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="randomisationProg.MeanSimApplet">
+<param name="sampleInfo" value="10 520 10">
+<param name="yAxis" value="490 550 490 10">
+<param name="summaryAxis" value="505 535 505 5">
+<param name="actualMean" value="529">
+<param name="varName" value="Packet weight (gm)">
+<param name="meanLabel" value="Mean weight">
+<param name="sdLabel" value="SD of weight">
+<param name="nLabel" value="Number of packets =">
+<param name="showTheory" value="false">
+<param name="meanSdDecimals" value="1">
+<param name="tail" value="both">
+<param name="customText" value="P(mean as far as * from *)=P(mean as far as * from *)">
+</applet>
+</div>
+
+<p>Click <strong>Simulate</strong> to randomly generate the weights of 10 packets from a normal&nbsp;(µ&nbsp;=&nbsp;520,&nbsp;σ = 10) distribution. Click <strong>Accumulate</strong> 
+then run the simulation between 100 and 200 times. <span class="gray">(Hold 
+down the <strong>Simulate</strong> button to speed up the process.)</span></p>
+<p>Observe that although many of the individual cornflake packets weigh more than 529&nbsp;gm, it is rare for the <strong>mean</strong> weight to be as far from the target as 529&nbsp;gm (i.e. either ≥529&nbsp;gm or ≤511&nbsp;gm).</p>
+
+<div class="centred"><div class="boxed">
+<p>There is therefore strong evidence that the machine is no longer filling packets with a mean weight of 520&nbsp;gm and needs adjusting &mdash; a sample mean of 529&nbsp;gm would be unlikely 
+if the machine was filling packets to specifications.</p>
+</div></div>
+
+
+<p>We will return to this example later.</p>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Misleading marginal correlation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="lurking variable, hidden variable, marginal relationship, conditional relationship">
+	<meta name="dataset" content="Christmas bonus and job satisfaction">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Relationship between two numerical variables</p>
+	<p>In an earlier chapter, we described various methods to describe the relationship 
+		between two numerical variables, <em>Y</em> and <em>X</em>.</p>
+	<ul>
+		<li>A scatterplot displays the raw data</li>
+		<li>Their correlation coefficient describes the strength of the relationship</li>
+		<li>A least squares line can be used to predict <em>Y</em> from <em>X</em>.</li>
+	</ul>
+	<p>Although these methods honestly describe the data, they can sometimes give 
+		a misleading impression of how the two variables are related.</p>
+	<p class="heading">Marginal and conditional relationships</p>
+	<p>The problem arises when other variables are also associated with both <em>Y</em> 
+		and <em>X</em>. This can arise when the extra variables are either numerical 
+		or categorical, but is easiest to explain with an extra categorical explanatory 
+		variable, <em>Z</em>.</p>
+	<p>The <strong>marginal relationship between <em>Y</em> and <em>X</em></strong> 
+		is the relationship that is evident in a scatterplot of the two variables 
+		without taking into account any other variables. In contrast, the <strong>conditional 
+		relationship between <em>Y</em> and <em>X</em> given <em>Z</em></strong> is 
+		the relationship that is evident within subsets of the data corresponding 
+		to different values of <em>Z</em>.</p>
+	
+<div class="centred"><div class="boxed">
+<p>The strength and direction of the marginal relationship 
+					between <em>Y</em> and <em>X</em> may be different from those of the 
+					conditional relationships given <em>Z</em>.</p>
+</div></div>
+
+	<p>It is possible for the marginal relationship between <em>Y</em> and <em>X</em> 
+		to show positive correlation, when the conditional distributions all have 
+		zero or even negative correlation.</p>
+	
+<div class="centred"><div class="boxed">
+<p>When the marginal and conditional relationships differ, 
+					the conditional relationships are usually more meaningful.</p>
+</div></div>
+
+	<p>(However we give an example at the end of this section where the marginal 
+		relationship is more easily interpreted.)</p>
+	<p class="heading">Lurking (or hidden) variables</p>
+	<p>It is possible to examine the marginal <strong>and</strong> conditional distributions 
+		of <em>Y</em> and <em>X</em> if the third variable, <em>Z</em>, has been recorded. 
+		However <em>Z</em> might not be one of the variables in our data set.</p>
+	<p>If the marginal relationship between <em>X</em> and <em>Y</em> is different 
+		from their conditional relationship given <em>Z</em>, but <em>Z</em> has either 
+		not been recorded or is ignored when analysing the data, then <em>Z</em> is 
+		called a <strong>lurking </strong>variable (or a <strong>hidden</strong> variable).</p>
+	
+<div class="centred"><div class="boxed">
+<p>Always think about whether there might be a lurking 
+					variable, <em>Z</em>, that is distorting the relationship that is observed 
+					between <em>Y</em> and <em>X</em>.</p>
+</div></div>
+
+	<p>The following example illustrates the difference between the marginal and 
+		conditional relationships between two numerical variables, <em>X</em> and 
+		<em>Y</em>, and shows how the marginal relationship can be misleading.</p>
+
+
+<div class="diagram" title="Example: Christmas bonus and job satisfaction"> 
+<p class="heading">Christmas bonus and job satisfaction</p>
+<p>Executives in a large company regularly receive a Christmas bonus payment, 
+though the amount varies considerably. In order to assess the effectiveness of 
+this bonus on morale, the human resources group conducts a survey of company executives. 
+Job satisfaction is measured on a scale of 1 to 30 and its relationship to the 
+size of the bonus payment is shown in the scatterplot below.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="360">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="multivarProg.SliderSliceApplet">
+<param name="yVarName" value="Job satisfaction">
+<param name="xVarName" value="Bonus payment ($000)">
+<param name="zVarName" value="Salary">
+<param name="yValues" value="7 5 11 7 5 10 6 6 9 4 10 7 7 6 5 5 3 7 7 6 12 9 11 14 11 9 12 7 12 12 9 10 17 10 11 8 7 16 14 14 13 14 16 9 17 15 17 19 14 13 16 10 17 9 15 15 20 17 13 16 21 17 20 21 18 22 19 15 24 11 10 13 21 15 9 17 22 15 20 26 21 22 18 25 23 11 18 12 21 11 21 22 14 25 19 20 21 12 19 25">
+<param name="xValues" value="2.6 1.5 2.6 1.3 2.3 1.9 1.3 2.4 1.7 2.4 1.8 1.8 1.6 2.2 1.5 1.2 2.5 1.1 1.9 2.2 2.3 3.1 2.8 3.1 2.6 3.4 3.0 2.6 3.1 2.8 3.6 2.3 4.0 2.3 2.8 3.2 2.8 3.3 2.8 3.1 4.0 3.9 3.2 4.0 3.6 3.9 4.4 4.1 3.6 4.9 4.0 4.1 3.6 4.7 3.3 3.9 3.7 3.7 3.7 4.3 5.2 5.4 4.8 4.6 3.9 5.1 4.8 5.0 5.4 4.2 5.0 5.1 5.7 4.2 4.7 4.6 5.8 4.9 5.1 4.5 5.0 5.1 6.3 5.6 6.5 5.5 6.3 5.9 5.7 5.6 5.9 6.0 6.2 5.7 6.0 6.1 5.9 5.9 5.0 6.6">
+<param name="zValues" value="20@0 20@1 20@2 20@3 20@4">
+<param name="horizAxis" value="0 7 0 1">
+<param name="vertAxis" value="0 30 0 5">
+<param name="sliceNames" value="#under $35,000# #$35,000 to 49,999# #$50,000 to 70,000# #$70,000 to 90,000# #over $90,000#">
+<param name="labelAxes" value="true">
+</applet>
+</div>
+
+		<p>The marginal relationship between <em>job satisfaction</em> and <em>bonus</em> 
+			shows a positive correlation, so it might be taken to imply that giving 
+			good bonuses increases job satisfaction.</p>
+		<p>However this conclusion is flawed. The salaries of the executives in the 
+			study ranged from $25,000 to $140,000, and their bonuses and degree of satisfaction 
+			are both related to <em>salary</em>.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="multivarProg.SliderSliceApplet">
+<param name="yVarName" value="Job satisfaction">
+<param name="xVarName" value="Bonus payment ($000)">
+<param name="zVarName" value="Salary">
+<param name="yValues" value="7 5 11 7 5 10 6 6 9 4 10 7 7 6 5 5 3 7 7 6 12 9 11 14 11 9 12 7 12 12 9 10 17 10 11 8 7 16 14 14 13 14 16 9 17 15 17 19 14 13 16 10 17 9 15 15 20 17 13 16 21 17 20 21 18 22 19 15 24 11 10 13 21 15 9 17 22 15 20 26 21 22 18 25 23 11 18 12 21 11 21 22 14 25 19 20 21 12 19 25">
+<param name="xValues" value="2.6 1.5 2.6 1.3 2.3 1.9 1.3 2.4 1.7 2.4 1.8 1.8 1.6 2.2 1.5 1.2 2.5 1.1 1.9 2.2 2.3 3.1 2.8 3.1 2.6 3.4 3.0 2.6 3.1 2.8 3.6 2.3 4.0 2.3 2.8 3.2 2.8 3.3 2.8 3.1 4.0 3.9 3.2 4.0 3.6 3.9 4.4 4.1 3.6 4.9 4.0 4.1 3.6 4.7 3.3 3.9 3.7 3.7 3.7 4.3 5.2 5.4 4.8 4.6 3.9 5.1 4.8 5.0 5.4 4.2 5.0 5.1 5.7 4.2 4.7 4.6 5.8 4.9 5.1 4.5 5.0 5.1 6.3 5.6 6.5 5.5 6.3 5.9 5.7 5.6 5.9 6.0 6.2 5.7 6.0 6.1 5.9 5.9 5.0 6.6">
+<param name="zValues" value="20@0 20@1 20@2 20@3 20@4">
+<param name="horizAxis" value="0 7 0 1">
+<param name="vertAxis" value="0 30 0 5">
+<param name="sliceNames" value="#under $35,000# #$35,000 to 49,999# #$50,000 to 70,000# #$70,000 to 90,000# #over $90,000#">
+<param name="slicerExtreme" value="0 4">
+<param name="labelAxes" value="true">
+<param name="customText" value="Slice=Slice">
+</applet>
+</div>
+
+		<p>Click the checkbox <strong>Slice</strong>, then use the slider to display 
+			the relationship separately for the executives in different salary ranges. 
+			We now see that there is no clear relationship between <em>bonuses</em> 
+			and <em>job satisfaction</em> in the conditional relationship <strong>within 
+			each salary group</strong>. </p>
+
+
+<div class="centred"><div class="boxed">
+<p>The observed relationship between <em>bonus</em> payments 
+					and <em>job satisfaction</em> was caused by a lurking variable, <em>salary</em>.</p>
+</div></div>
+
+
+
+		<p class="heading">Nutrition and exam performance</p>
+		<p>A different investigator is studying child nutrition in developing countries. 
+			The number of calories eaten daily by each child taking a particular school 
+			examination and the exam mark are recorded. There is a positive relationship 
+			between <em>food intake</em> and <em>exam results</em>. The investigator 
+			claims that this shows that some children are performing poorly because 
+			they are not eating enough and these findings are published widely. </p>
+
+    
+<div class="centred"><div class="boxed">
+<p>Can you see the flaw in this conclusion?</p>
+</div></div>
+
+    <p>The nutritionalist should have considered what lurking variables might 
+			affect both <em>exam results</em> and <em>food intake</em>. Families whose 
+			parents are well educated are likely to have children who are better nourished, 
+			and they are also likely to have children who perform well at school (either 
+			for genetic reasons or because greater encouragement and help is given). 
+		</p>
+
+		<p><em>Family background</em> is therefore a lurking variable that could underlie 
+			the observed relationship between <em>food intake</em> and <em>exam results</em>, 
+			even if increasing food intake does not directly <strong>cause</strong> 
+			improved exam results. </p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Finding negative binomial probabilities</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="negative binomial distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">On a computer</p>
+
+<p>Excel has a function that will evaluate either single negative binomial probabilities or cumulative probabilities, &quot;NEGBINOM.DIST()&quot;. To find the probability that the \(k\)'th success in a series of Bernoulli trials occurs on the \(x\)'th trial, \(p(x)\), the function takes four parameters:</p>
+<ol>
+	<li>The number of failures, \(x-k\)</li>
+	<li>The number of successes, \(k\)</li>
+	<li>The probability of success, \(\pi\)</li>
+	<li><em><strong>false</strong></em></li>
+</ol>
+<p>(Excel is therefore implicitly using the second form of negative binomial distribution for the number of <strong>failures</strong> before the \(k\)'th success.)</p>
+<p class="heading">By hand</p>
+<p>Of course, negative binomial probabilities can also be found on a scientific calculator directly using the formula for its probability function.</p>
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Example</p>
+<p>If a coin is repeatedly tossed, what is the probability that the second head will appear on the fifth toss of the coin?</p>
+</div>
+
+<div class="solution">
+<p>If \(X\) denotes the toss when the second head appears,</p>
+\[
+X \;\; \sim \; \; \NegBinDistn(2, 0.5)
+\]
+<p>The answer is therefore</p>
+\[
+p(5) = {{5-1} \choose {2-1}} {0.5}^2(1-{0.5})^{5-2} = {4 \choose 1} {0.5}^5 = 0.125
+\]
+
+<p>In Excel, this could be found by typing in a spreadsheet cell</p>
+<p class="eqn">=NEGBINOM.DIST(3, 2, 0.5, false)</p>
+</div>
+
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

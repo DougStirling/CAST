@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Leverage</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="leverage, linear model, regression model">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Normal regression model</p>
+	<p>In this chapter, we return to the normal linear model, in which the <em>i</em>'th 
+		response value in the data set has distribution,</p>
+	
+  <p class="eqn"><img src="../ssq/images/regnModel.gif" width="199" height="21" align="absmiddle"></p>
+	<p>This model is often expressed in the equivalent form,</p>
+	<p class="eqn"><img src="../regnAnova/images/normModel.gif" width="359" height="21" align="absmiddle"></p>
+	<p>The least squares estimates of β<sub>0</sub> and β<sub>1</sub> 
+		are again denoted by <em>b</em><sub>0</sub> 
+		and <em>b</em><sub>1</sub>.</p>
+	<p class="heading">Variability of the least squares line</p>
+	<p>The variability of the least squares line can be described in terms of the 
+		variability of the predictions that are made from it at different <span class="em red">x</span> .</p>
+	<p class=eqn><img src="images/prediction.gif" width="112" height="20" alt="eqn"> 
+	</p>
+	<p>These predictions have standard deviation,</p>
+	<p class=eqn><img src="images/predictionSD.gif" width="218" height="55" alt="eqn"> 
+	</p>
+	<p>From this equation, it is clear that the standard deviation is lowest when 
+		predicting at a value <span class="red em">x</span>  that is close 
+		to the mean of the x-values in the data, <img src="../../images/symbol.xBar.png" width="10" height="10" align="baseline">.</p>
+	<div class="diagram"> 
+		<p class="heading">Variability of predictions</p>
+		<p>The diagram below simulates data from a normal linear model.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="linModProg.LeverageGraphApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="regnModel" value="3.30 0.75 0.6">
+<param name="xValues" value="2.8 3.8 2.81 3.14 3.1 2.35 3.67 1.46 3.5 3.71 1.92 2.56 3.48 3.95 3.66 2.99 1.93 2.1">
+<param name="horizAxis" value="0.5 5.5 1 1">
+<param name="vertAxis" value="2.5 8.0 3 1">
+<param name="randomSeed" value="345945782">
+<param name="fitVarAxis" value="0 0.3025 0 0.1">
+<param name="fitSDAxis" value="0 0.55 0 0.1">
+<param name="customText" value="Scale for prediction spread=Scale for prediction spread#St devn of prediction=St devn of prediction#Variance of prediction=Variance of prediction">
+</applet> 
+</div>
+
+		<p>Click <strong>Accumulate</strong> then take about 30 samples. Observe that 
+			the least squares line is most variable at values of <span class="em red">x</span>  
+			to the left and right of the diagram (away from <img src="../../images/symbol.xBar.png" width="10" height="10" align="baseline">).</p>
+		<p>The standard deviation of the predictions is shown as the graph at the 
+			bottom of the diagram. Use the pop-up menu to change the scale in this graph 
+			to show the variances of the predictions (the square of their standard deviation). 
+			This is a quadratic function of <span class="em red">x</span> .</p>
+		
+	</div>
+		
+	<p class="heading">Choosing the x-values</p>
+	<p>In an experiment, the researcher often has control over the x-values that 
+		are used for runs of the experiment. Looking again at the standard deviation 
+		of predictions,</p>
+	<p class=eqn><img src="images/predictionSD.gif" width="218" height="55" alt="eqn"> 
+	</p>
+	<p>it can be seen from the blue sum of squares that the predictions are less 
+		variable (more accurate) when the spread of x-values in the data is large. 
+		The most 'important' observations in the data set are therefore those that 
+		increase this sum of squares &mdash; observations that are far from <img src="../../images/symbol.xBar.png" width="10" height="10" align="baseline">.</p>
+	<p class="heading">Choosing the x-value for <span class="red">one</span> 
+		extra run of an experiment</p>
+	<p>Another way to look at the importance of observations at different x-values 
+		is to consider the effect of taking an <strong>extra</strong> observation 
+		at <span class="em red">x</span> . The best value for <span class="em red">x</span>  
+		is one that increases the spread of x-values &mdash; a value far from the mean 
+		of the earlier observations, <img src="../../images/symbol.xBar.png" width="10" height="10" align="baseline">.</p>
+	<p>Another equivalent way to describe this choice can be more easily extended 
+		in later chapters. A new observation at <span class="em red">x</span>  
+		will have most direct effect on improving predictions at <span class="em red">x</span>  
+		itself. The improvement will be greatest if the prediction at <span class="em red">x</span>  
+		was poor (large variance) before the new observation.</p>
+	
+<div class="centred"><div class="boxed">
+<p>The best place to make an extra observation 
+						is at an x-value <strong>where the fitted values have 
+						greatest variance</strong>.</p>
+</div></div>
+
+	<p>The potential benefit of making a new observation at <span class="em red">x</span>  
+		can therefore be described by its <strong>leverage</strong>.</p>
+	<p class=eqn><img src="images/leverageAtX.gif" width="319" height="53" alt="eqn"> 
+	</p>
+<br>
+	<div class="diagram"> 
+		<p class="heading">Effect of an extra observation at <span class="em red">x</span> </p>
+		<p>The diagram below describes the normal linear model</p>
+		<p class=eqn><img src="images/exampleModel.gif" width="349" height="21" alt="eqn"> 
+		</p>
+		<p>where observations are made at <em>x</em>&nbsp;=&nbsp;15, 18, 25 and 26.</p>
+		<p>The band contains 95% of the least squares lines that would be obtained 
+			from a simulation such as the simulation earlier in this page. (More precisely, 
+			the band contains 95% of the predictions that would be obtained at each 
+			<em>x</em>.)</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="linModProg.AddPointEffectApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="regnModel" value="10 2 5">
+<param name="xValues" value="15 18 25 26 ?">
+<param name="vertAxis" value="0 100 0 20">
+<param name="horizAxis" value="5 35 5 5">
+<param name="xLimits" value="5.0 35.0 0.1 20.0">
+<param name="labelAxes" value="true">
+<param name="customText" value="Extra point at=Extra point at">
+</applet> 
+</div>
+
+		<p>Click <strong>Extra point at</strong> to see how the distribution of the 
+			predictions changes when a fifth data point is added. The response distribution 
+			at this <span class="em red">x</span>  is represented by a red 
+			arrow ±2σ 
+			on each side of the response mean &mdash; i.e. on each side of the regression 
+			line at <span class="em red">x</span> .</p>
+		<p>Use the slider to see how the distribution of the predictions is affected 
+			by the x-value at which the new observation is made. The prediction band 
+			is narrowed by the new observation and this narrowing is most pronounced 
+			when <span class="em red">x</span>  is furthest from <img src="../../images/symbol.xBar.png" width="10" height="10" align="baseline">&nbsp;=&nbsp;21. 
+		</p>
+		</div>
+	
+	<p class="heading">Leverage of existing data points</p>
+	<p>Leverage can be used to describe the potential effect of a new observation 
+		at <strong>any</strong> x-value, but it is most often used to describe the 
+		importance of the <strong>existing</strong> data points.</p>
+	<p class=eqn><img src="images/leverageAtXi.gif" width="303" height="53" alt="eqn"> 
+	</p>
+<br>
+	
+<div class="centred"><div class="boxed">
+<p>Note that leverage does not depend on 
+						the response, only on the explanatory variable.</p>
+</div></div>
+
+	
+	<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

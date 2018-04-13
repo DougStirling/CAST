@@ -1,0 +1,256 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Test for interaction</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="degrees of freedom, interaction sum of squares, interaction, anova, analysis of variance, f test">
+	<meta name="dataset" content="Music and alzheimers disease">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Degrees of freedom</p>  
+  <p>In the diagram below, each arrow corresponds to adding a term to the model. The  sums of squares explained by adding the term has <strong>degrees of freedom</strong> equal to its number of non-zero parameters.</p>
+<div class="centred"><table class="centred">
+      <tr>
+        <td colspan="3" align="center"><strong><em><span class="bold black">Neither X nor Z affects Y</span> </em></strong><br>
+            <span class="em black">y<sub>ijk</sub></span>  &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp;ε<em><sub>ijk</sub></em></td>
+      </tr>
+      <tr>
+        <td align="right"><img src="images/leftArrow.gif" width="70" height="70"></td>
+        <td width="100" align="center">&nbsp;</td>
+        <td align="left"><img src="images/rightArrow.gif" width="70" height="70"></td>
+      </tr>
+      <tr>
+        <td align="center"><em><span class="bold black">Only X affects Y</span> </em><br>
+            <span class="em black">y<sub>ijk</sub></span>  &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp; <span class="red">β<em><sub>i</sub></em></span> &nbsp;+ &nbsp; ε<em><sub>ijk</sub></em></td>
+        <td align="center">&nbsp;</td>
+        <td align="center"><em><span class="bold black">Only Z affects Y</span> </em><br>
+            <span class="em black">y<sub>ijk</sub></span>  &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp;<span class="green">γ<em><sub>j</sub></em></span> &nbsp; + &nbsp; ε<em><sub>ijk</sub></em></td>
+      </tr>
+      <tr>
+        <td align="right"><img src="images/rightArrow.gif" width="70" height="70"></td>
+        <td align="center">&nbsp;</td>
+        <td align="left"><img src="images/leftArrow.gif" width="70" height="70"></td>
+      </tr>
+      <tr>
+        <td colspan="5" align="center"><strong><span class="em black">X and Z affect Y with no interaction</span> </strong><br>
+          <span class="em black">y<sub>ijk</sub></span>  &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp; <span class="red">β<em><sub>i</sub></em></span> &nbsp; + &nbsp; <span class="green">γ<em><sub>j</sub></em></span> &nbsp; + &nbsp; ε<em><sub>ijk</sub></em></td>
+      </tr>
+      <tr>
+        <td colspan="5" align="center"><img src="images/downArrow.gif" width="24" height="42"></td>
+    </tr>
+      <tr>
+        <td colspan="5" align="center"><strong><span class="em black">X and Z affect Y with  interaction</span> </strong><br>
+            <span class="em black">y<sub>ijk</sub></span>  &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp; <span class="red">β<em><sub>i</sub></em></span> &nbsp; + &nbsp; <span class="green">γ<em><sub>j</sub></em></span> &nbsp; + &nbsp; <span class="purple">δ<em><sub>ij</sub></em></span> &nbsp; + &nbsp; ε<em><sub>ijk</sub></em></td>
+      </tr>
+    </table></div>
+  <p>If factor X has <em>g</em><sub>X</sub> levels and factor Z has<em> g</em><sub>Z</sub> levels, then 
+    the different terms have degrees of freedom given in the table below.</p>
+  <div class="centred"><table border="0" class="centred" cellpadding="3" cellspacing="0">
+    <tr>
+      <th>&nbsp;</th>
+      <th>Non-zero parameters<br>
+          <em>(degrees of freedom)</em></th>
+    </tr>
+    <tr>
+      <th bgcolor="#FFFFFF" style="border-top:1px solid #999999;">Constant term, &nbsp; <span class="blue">µ</span></th>
+      <td align="center" bgcolor="#FFFFFF">1</td>
+    </tr>
+    <tr>
+      <th bgcolor="#FFFFFF" style="border-top:1px solid #999999;">Main effect for X, &nbsp; <span class="red">β</span></th>
+      <td align="center" bgcolor="#FFFFFF">(<em>g</em><sub>X</sub>&nbsp;-&nbsp;1)</td>
+    </tr>
+    <tr>
+      <th bgcolor="#FFFFFF">Main effect for Z, &nbsp; <span class="green">γ</span></th>
+      <td align="center" bgcolor="#FFFFFF">(<em>g</em><sub>Z</sub>&nbsp;-&nbsp;1)</td>
+    </tr>
+    <tr>
+      <th bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">Interaction terms, &nbsp; <span class="purple">δ</span></th>
+      <td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">(<em>g</em><sub>X</sub>&nbsp;-&nbsp;1)(<em>g</em><sub>Z</sub>&nbsp;-&nbsp;1)</td>
+    </tr>
+    <tr>
+      <th>Total</th>
+      <th align="center"><em>g</em><sub>X</sub><em>g</em><sub>Z</sub></th>
+    </tr>
+  </table></div>
+  <p>Note that the total number of non-zero parameters equals the number of treatments (i.e. the number of combinations of factor levels).</p>
+  <p class="heading">Analysis of variance table</p>
+  <p>As in most other models for experiments, the significance of terms is tested using an analysis of variance table with rows giving the explained sums of squares for a sequence of terms that are added to the model.</p>
+  <p>As in other applications of analysis of variance, the  explained sums of 
+		squares are divided by their degrees of freedom to give mean sums of squares. These are then divided by the mean residual sum of squares to give  F ratios. A p-value associated with each F ratio tests whether the corresponding term is needed in the model. (The p-values are found from  F distributions.)</p>
+  <div class="centred"><table border="0" class="centred" cellpadding="4" cellspacing="0">
+    <tr>
+      <th align="left" scope="col"><span class="black">Source of <br>
+      variation</span></th>
+      <th scope="col"><span class="black">Sum of <br>
+      sqrs</span></th>
+      <th scope="col"><span class="black">d.f.</span></th>
+      <th scope="col"><span class="black">Mean ssq</span></th>
+      <th scope="col"><span class="black">F-ratio</span></th>
+      <th scope="col"><span class="black">&nbsp;&nbsp;p-value&nbsp;&nbsp;</span></th>
+    </tr>
+    <tr>
+      <td bgcolor="#FFFFFF" style="border-top:1px solid #999999;">X</td>
+      <td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">SS<sub>X</sub></td>
+      <td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">(<em>g</em><sub>X</sub>&nbsp;-&nbsp;1)</td>
+      <td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">MS<sub>X</sub></td>
+      <td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">MS<sub>X</sub> / <span class="blue">MS<sub>Resid</sub></span></td>
+      <td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">(F distn)<sub></sub></td>
+    </tr>
+    <tr>
+      <td bgcolor="#FFFFFF"> Z</td>
+      <td align="center" bgcolor="#FFFFFF">SS<sub>Z</sub></td>
+      <td align="center" bgcolor="#FFFFFF">(<em>g</em><sub>Z</sub>&nbsp;-&nbsp;1)</td>
+      <td align="center" bgcolor="#FFFFFF">MS<sub>Z</sub></td>
+      <td align="center" bgcolor="#FFFFFF">MS<sub>Z</sub> / <span class="blue">MS<sub>Resid</sub></span></td>
+      <td align="center" bgcolor="#FFFFFF">(F distn)</td>
+    </tr>
+    <tr>
+      <td bgcolor="#FFFFFF"><span class="red">Interaction&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+      <td align="center" bgcolor="#FFFFFF"><span class="red">SS<sub>XZ</sub></span></td>
+      <td align="center" bgcolor="#FFFFFF"><span class="red">&nbsp;&nbsp;(<em>g</em><sub>X</sub>&nbsp;-&nbsp;1)(<em>g</em><sub>Z</sub>&nbsp;-&nbsp;1)&nbsp;&nbsp;</span></td>
+      <td align="center" bgcolor="#FFFFFF"><span class="red">&nbsp;&nbsp;MS<sub>XZ</sub>&nbsp;&nbsp;</span></td>
+      <td align="center" bgcolor="#FFFFFF">&nbsp;&nbsp;<span class="red">MS<sub>XZ</sub> /</span> <span class="blue">MS<sub>Resid</sub></span><sub>&nbsp;&nbsp;</sub></td>
+      <td align="center" bgcolor="#FFFFFF" class="red">(F distn)</td>
+    </tr>
+    <tr>
+      <td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;"><span class="blue">Residual</span></td>
+      <td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;"><span class="blue">SS<sub>Resid</sub></span></td>
+      <td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;"><span class="blue"><em>n</em>&nbsp;-&nbsp;<em>g</em><sub>X</sub><em>g</em><sub>Z</sub></span></td>
+      <td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;"><span class="blue">MS<sub>Resid</sub></span></td>
+      <td align="center">&nbsp;</td>
+      <td align="center">&nbsp;</td>
+    </tr>
+    <tr>
+      <th align="left" class="black">Total</th>
+      <th class="black">SS<sub>Total</sub></th>
+      <th class="black"><em>n</em>&nbsp;-&nbsp;1</th>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
+    </tr>
+  </table></div>
+  <p><em>(Note again that we are restricting attention in this section to  experiments with the same number of replicates for each combination of factor levels and hence orthogonal factors. The order of adding X and Z therefore does not affect their sums of squares and the first two rows of the anova table could be swapped.)</em></p>
+  <p>In particular, the F ratio for the interaction term is found from the interaction sum of squares. A small F ratio could have arisen by chance, so the p-value for testing is 
+    the probability of such an F ratio as high if there was no underlying interaction (the null hypothesis of the test).</p>
+  <p class="heading">Interpretation of p-values</p>
+  <p>The p-value associated with the interaction term is interpreted in a similar way to that for other hypothesis tests.</p>
+	
+
+<div class="centred"><table border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC" class="centred">
+<tr> 
+<th align="CENTER">p-value</th>
+<th align="CENTER">Interpretation</th>
+</tr>
+<tr bgcolor="white"> 
+<td>over 0.1</td>
+        <td>no evidence of interaction</td>
+</tr>
+<tr bgcolor="white"> 
+<td>between 0.05 and 0.1</td>
+        <td>very weak evidence of interaction</td>
+</tr>
+<tr bgcolor="white"> 
+<td>between 0.01 and 0.05</td>
+        <td>moderately strong evidence of interaction</td>
+</tr>
+<tr bgcolor="white"> 
+<td>under 0.01</td>
+        <td>strong evidence of interaction</td>
+</tr>
+</table></div>
+
+  <p class="heading">Order of testing</p>
+  <p>The analysis of variance table also includes F ratios and associated p-values for the main effects of X and Z. These p-values should not be used unless it is concluded that there is no interaction.</p>
+  <div class="centred"><div class="boxed">
+    <p>If there is an interaction, it is not meaningful to test the main effects for X and Z. </p>
+  </div></div>
+  <p>It would make no sense to drop the main effect terms from the model if there is evidence from the interaction p-value that X and Z interact in their effect on the response!</p>
+  <div class="diagram"> 
+<p class="heading">Music and Alzheimer's disease</p>
+		<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoFactorProg.FactorAnovaSeqApplet">
+<param name="yVarName" value="Agitation level">
+<param name="yValues" value="12 14 22 18 20 9 12 10 5 9 29 26 30 24 26 22 20 25 18 20 14 18 11 9 13 15 18 20 13 19">
+<param name="yAxis" value="0 30 0 5">
+<param name="xVarName" value="Alzheimer stage">
+<param name="xValues" value="15@0 15@1">
+<param name="xLabels" value="#Early stage# #Middle stage#">
+<param name="zVarName" value="Music type">
+<param name="zValues" value="5@0 5@1 5@2 5@0 5@1 5@2">
+<param name="zLabels" value="#Piano interlude# Mozart #Easy listening#">
+<param name="xVariables" value="x z Interaction">
+<param name="xTypes" value="xFac zFac Int">
+<param name="factorVariables" value="x z">
+<param name="InteractionVarName" value="Interaction">
+<param name="InteractionValues" value="20@0 5@0 5@1">
+<param name="InteractionLabels" value="I00 I11 I12">
+<param name="maxSsq" value="999.9 99 999.9 99.99">
+<param name="componentNames" value="Alzheimer stage#Music type#Interaction">
+<param name="initVariables" value="0">
+</applet> 
+</div>
+
+		<p>Drag the red arrow in the analysis of variance table to successively add 
+			 main effects for <em>Music type</em> and <em>Alzheimer stage</em> and then an 
+			interaction between these variables. Each successive term reduces the residual 
+		sum of squares. Note that the experimental design is balanced (4 replicates for each combination of factor levels) so the  main effects could have been added in the opposite order with the same sums of squares.</p>
+	<p>The p-value corresponding to the interaction sum of squares is extremely small &mdash; it is reported as zero &mdash; so we should come to the following conclusion.</p>
+	<div class="centred"><div class="boxed">
+		<p>There is extremely strong evidence that the 
+			difference between the mean agitation level in early and middle stage Altzheimers is different for the different music types.</p>
+	</div></div>
+	<p>The table below gives the mean agitation levels for the six treatment and helps us to understand the nature of the interaction between music type and Altzheimer stage.</p>
+	
+
+<div class="centred"><table border="0" class="centred" cellpadding="5" cellspacing="0">
+<tr> 
+<td>&nbsp;</td>
+<th colspan="2">Altzheimer stage</th>
+</tr>
+<tr> 
+<th valign="bottom">Music type</th>
+<th>Early stage</th>
+<th>Middle stage</th>
+</tr>
+<tr> 
+<th>Piano interlude</th>
+<td align="center" bgcolor="#FFFFFF">&nbsp;&nbsp;17.2</td>
+<td align="center" bgcolor="#FFFFFF">21.0</td>
+</tr>
+<tr> 
+<th>Mozart</th>
+<td align="center" bgcolor="#FFFFFF">&nbsp;&nbsp;9.0</td>
+<td align="center" bgcolor="#FFFFFF">13.0</td>
+</tr>
+<tr> 
+<th>Easy listening</th>
+<td align="center" bgcolor="#FFFFFF">27.0</td>
+<td align="center" bgcolor="#FFFFFF">17.0</td>
+</tr>
+</table></div>
+
+	<p>The differences between the treatment means can be summarised as follows:</p>
+	<ul>
+		<li>Agitation levels were lowest at both stages of the disease for those listening to Mozart.</li>
+		<li>For those listening to Mozart or Piano interludes, the agitation level was slightly higher in middle than in early  stage, but   with Easy listening music,  agitation levels were extremely high  in the early stage though average  at middle stage.</li>
+	</ul>
+	<p>Clicking the <strong>y-x</strong> rotation button in the diagram for the model with interaction shows these points graphically.<br>
+	</p>
+  </div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

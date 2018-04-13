@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Test statistic</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="hypothesis test, test, test statistic, binomial distribution, exponential distribution">
+	<meta name="dataset" content="Aircraft airconditioner failures">
+	<meta name="dataset" content="Telepathy">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p class="heading">Test statistic</p>
+<p>A hypothesis test is based on a quantity called a <strong>test statistic</strong> that is a function of the data. Because it is found from random data, it can also be treated as a random variable with a distribution. The test statistic should have the following properties.</p>
+<ul>
+  <li>The values of the test statistic should help to distinguish between the null and alternative hypotheses.</li>
+	<li>When the null hypothesis is true, the test statistic should have a distribution that does not involve any unknown parameters (such as a standard normal distribution).</li>
+</ul>
+
+<div class="example">
+	<p class="exampleHeading">Example: Telepathy experiment</p>
+	<p>In the telepathy experiment that was described on the previous page, one subject selects 90 cards with random shapes (circle, square or cross) and attempts to 'send' these shapes to another subject who is seated behind a screen. This second subject reports the shape imagined for each card. </p>
+	<p>To test whether there was telepathy, the two hypotheses are</p>
+	<ul>
+		<li>Null hypothesis, <strong>H<sub>0</sub></strong>: \(\pi = \diagfrac {\small 1} {\small 3} \)   (guessing)</li>
+		<li>Alternative hypothesis, <strong>H<sub>A</sub></strong>: \(\pi \gt \diagfrac {\small 1} {\small 3}\)   (telepathy)</li>
+	</ul>
+<p>The number of correctly guessed cards, \(X\),  is the number of &quot;successes&quot; in 90 independent &quot;trials&quot;, so</p>
+\[
+X \;\;\sim\;\; \BinomDistn(n=90, \pi) 
+\]
+<p>This random variable could be used as a test statistic.</p>
+<ul>
+	<li>Larger values of \(X\) would be expected when the alternative hypothesis is true (there is telepathy) than when the null hypothesis is true (guessing).</li>
+	<li>If the null hypothesis is true, \(X \sim \BinomDistn(90, \diagfrac {\small 1} {\small 3})\) and this distribution does not involve unknown parameters.</li>
+</ul>
+<p class="exampleHeading">Example: Aircraft air-conditioner failures</p>
+<p>In the aircraft air-conditioner failure data, our model was that the 199 times between failures were a random sample of values with exponential distributions,</p>
+\[
+X_i \;\;\sim\;\; \ExponDistn(\lambda) \qquad \text{for } i=1,\dots, 199
+\]
+<p>We will compare the following two hypotheses.</p>
+<ul>
+	<li>Null hypothesis, <strong>H<sub>0</sub></strong>: \(\lambda = \diagfrac {\small 1} {\small 110}\)</li>
+	<li>Alternative hypothesis, <strong>H<sub>A</sub></strong>:  \(\lambda \gt \diagfrac {\small 1} {\small 110}\)</li>
+</ul>
+<p>The sum of \(n=199\) exponential random variables has an Erlang distribution,</p>
+\[
+\sum{X_i} \;\sim\; \ErlangDistn(199, \lambda)
+\]
+<p>This can be used as a test statistic.</p>
+<ul>
+	<li>From the properties of the Erlang distribution, \(\sum{X_i}\) has mean \(\diagfrac {\small 199} {\lambda}\). Smaller values of \(\sum{X_i}\) would therefore be expected when the alternative hypothesis is true than when the null hypothesis holds.</li>
+	<li>If the null hypothesis is true, \(\sum{X_i} \sim \ErlangDistn(199, \diagfrac {\small 1} {\small 110})\) and this distribution does not involve unknown parameters.</li>
+</ul>
+</div>
+
+<p>In the next page, we will show how such a test statistic helps to compare the two hypotheses.</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

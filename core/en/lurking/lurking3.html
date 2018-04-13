@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Simpsons paradox</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="lurking variable, simpsons paradox, paradox, marginal relationship, conditional relationship">
+	<meta name="dataset" content="Cancer and smoking">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Lurking variables and relationships between categorical variables</p>
+<p>The relationship between two categorical variables, <em>X</em> and <em>Y</em>, 
+can also be strongly influenced by a third lurking variable, <em>Z</em>. Repeating 
+the points made before,</p>
+  
+<div class="centred"><div class="boxed">
+<p style="text-align:left">The marginal relationship between <em>X</em> and <em>Y</em> can 
+	be...</p>
+<ul style="margin-left:30px">
+	<li><strong>stronger</strong>,</li>
+	<li><strong>weaker</strong>, or even</li>
+	<li><strong>a different direction</strong></li>
+</ul>
+<p style="text-align:left">compared to their conditional relationship, given <em>Z</em>.</p>
+</div></div>
+
+<p>When the direction of the relationship reverses, the effect is called <strong>Simpson's 
+paradox</strong>. As with other 'paradoxes', there is no real contradiction; it 
+just takes a bit more thought to understand why your initial intuition is wrong. 
+</p>
+
+
+<div class="diagram" title="Example: Smoking and survival"> 
+<p class="heading">Smoking and survival</p>
+<p>In the early 1970s, a one-in-six health survey was conducted in Whickham in the North 
+of England. Twenty years later, a follow-up study was conducted. The table below 
+describes which of the 1,314 women who were classified either as current smokers 
+or as never having smoked in the earlier survey, survived until the second survey.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="160">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="bivarCatProg.CatSliceApplet">
+<param name="yVarName" value="Survival">
+<param name="yValues" value="369@0 945@1">
+<param name="yLabels" value="Dead Alive">
+<param name="xVarName" value="Smoker?">
+<param name="xValues" value="139@0 230@1 443@0 502@1">
+<param name="xLabels" value="Smoker Non-smoker">
+<param name="zVarName" value="Age">
+<param name="zValues" value="19@0 78@1 42@2 13@0 52@1 165@2 269@0 167@1 7@2 327@0 147@1 28@2">
+<param name="zLabels" value="18-44 45-64 65+">
+<param name="customText" value="Slice=Slice">
+</applet>
+</div>
+
+<p>A naive examination of the data suggests that smoking <strong>decreases</strong> 
+the probability of dying.</p>
+<p>Click <strong>Slice</strong> to see the corresponding data for different age 
+groups. Observe that the probability of dying is <strong>higher</strong> for the 
+smokers in each age group. Age is a lurking variable and the conditional relationship 
+between smoking and survival is the reverse of their marginal relationship.</p>
+		
+<div class="centred"><div class="boxed">
+<p>The marginal relationship between <em>smoking</em> and <em>survival</em> 
+					is misleading. The conditional relationships for different age groups 
+					are much more meaningful.</p>
+</div></div>
+
+		<p class="heading">Graphical representation</p>
+		<p>This reversal can be illustrated in a <a href="javascript:showNamedPage('bivarCat5')">proportional 
+			Venn diagram</a>. In this diagram,</p>
+
+<div class="centred"><div class="boxed">
+<p>The area of the rectangle for any combination of smoking, age and 
+survival is proportional to the number of women in that combination.</p>
+</div></div>
+
+<br>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="propnVennProg.AreaContin3Applet">
+<param name="xVarName" value="Survival">
+<param name="yVarName" value="Age">
+<param name="zVarName" value="Smoker?">
+<param name="yLabels" value="#under 45# #45-64# #65 plus#">
+<param name="xLabels" value="Dead Alive">
+<param name="zLabels" value="Smoker Non-smoker">
+<param name="xValues" value="19@0 269@1 78@0 167@1 42@0 7@1 13@0 327@1 52@0 147@1 165@0 28@1">
+<param name="yValues" value="288@0 245@1 49@2 340@0 199@1 193@2">
+<param name="zValues" value="582@0 732@1">
+<param name="customText" value="Group by=Group by#Conditional propn for=Conditional propn for">
+</applet>
+</div>
+
+<p>Initially the rectangles are arranged to display the conditional proportions. 
+Click any blue rectangle to display the proportions dying in that age group for 
+smokers and non-smokers, and observe that <strong>P(dead) is higher for smokers 
+than non-smokers in each age group.</strong></p>
+<p>Now select <strong>Group by smoker?</strong> from the pop-up menu. The rectangles 
+are rearranged to show the overall proportions of smokers and non-smokers dying. 
+Observe that the overall proportion of smokers dying is less than the overall 
+proportion of non-smokers dying.</p>
+		
+<div class="centred"><div class="boxed">
+<p>The reason for the reversal of the relationship is that most 
+					of the older women were non-smokers, and they had a higher proportion 
+					of deaths, increasing the marginal proportion of deaths for the non-smokers.</p>
+</div></div>
+
+		<br>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

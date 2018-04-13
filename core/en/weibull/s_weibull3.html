@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Calculating Weibull probabilities</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="weibull distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>Probabilities for the Weibull distribution are usually found from the cumulative distribution function.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Cumulative distribution function</p>
+		<p>If \(X \sim \WeibullDistn(\alpha, \lambda)\) its cumulative distribution function is</p>
+		\[
+		F(x) \;\;=\;\; P(X \le x) \;\;=\;\; 1 - e^{-(\lambda x)^{\alpha}} \] 
+		<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p>Given values of \(x\), \(\alpha\) and \(\lambda\), these probabilities can be evaluated on a scientific calculator. Excel also has a function to evaluate cumulative Weibull probabilities, but its third parameter is the inverse of \(\lambda\), rather than \(\lambda\) itself. The cumulative probability could be found by typing into a spreadsheet cell</p>
+<p class="eqn">=WEIBULL.DIST( \(x\),  \(\alpha\),   \(1/\lambda\),  true )</p>
+<p>Although the parameter \(\alpha\) has a meaningful interpretation since \(h(x) \propto x^{\alpha - 1}\), the value of the parameter \(\lambda\) is <strong>not</strong> easily interpreted. The <strong>mean</strong> lifetime of the items is an easier value to interpret than  \(\lambda\) itself,</p>
+\[
+E[X] \;=\; \frac 1 {\lambda} \Gamma\left(1 + \frac 1 {\alpha}\right)
+\]
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Question</p>
+		<p>If an item's hazard rate is proportional to the square root of its age, and its mean lifetime is 3 years, what is the probability that it will survive for longer than 10 years?</p>
+		<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+<p>We now give an example in which the hazard rate <strong>decreases</strong> over time.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Question</p>
+		<p>If the item's hazard rate was <strong>inversely </strong>proportional to the square root of its age, and its mean lifetime is 3 years, what would be the corresponding probability of surviving for longer than 10 years? 40 years?</p>
+		<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Wald-type confidence intervals</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="wald-type confidence interval, confidence interval, estimation">
+	<meta name="dataset" content="Heart attacks in city">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Normal approximation</p>
+
+<p>Earlier confidence intervals for parameters  were  based on point estimates that are approximately normally distributed.</p>
+<p>Given an estimate of the standard error of the estimator, an approximate confidence interval can be obtained from the quantiles of the normal distribution. For example, an approximate 95% CI for a parameter \(\theta\) is</p>
+\[
+\hat{\theta} - 1.96\; \se(\hat{\theta}) \;\;\lt\;\; \theta \;\;\lt\;\; \hat{\theta} + 1.96\; \se(\hat{\theta})
+\]
+<div class="example">
+	<p class="exampleHeading">Poisson distribution example</p>
+	<p>The following table describes the number of heart attacks in a city in 10 weeks.</p>
+	
+	<div class="centred">
+	<table border="0" cellpadding="5" cellspacing="0" class="centred">
+		<tr>
+			<th>Week</th>
+			<td width="24" align="center">1</td>
+			<td width="24" align="center">2</td>
+			<td width="24" align="center">3</td>
+			<td width="24" align="center">4</td>
+			<td width="24" align="center">5</td>
+			<td width="24" align="center">6</td>
+			<td width="24" align="center">7</td>
+			<td width="24" align="center">8</td>
+			<td width="24" align="center">9</td>
+			<td width="24" align="center">10</td>
+		</tr>
+		<tr>
+			<th>    Count    </th>
+			<td width="24" align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-right:0px;">6</td>
+			<td width="24" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">11</td>
+			<td width="24" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">13</td>
+			<td width="24" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">10</td>
+			<td width="24" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">21</td>
+			<td width="24" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">8</td>
+			<td width="24" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">16</td>
+			<td width="24" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">6</td>
+			<td width="24" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">9</td>
+			<td width="24" align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-left:0px;">19</td>
+		</tr>
+	</table>
+	</div>
+	
+	<p>Assuming a constant rate of heart attacks per week, \(\lambda\), this can be modelled as a random sample from a \(\PoissonDistn(\lambda)\) distribution. The MLE of \(\lambda\) is</p>
+\[
+\hat{\lambda} \;\;=\;\; \overline{x} \;\;=\;\; 11.9
+\]
+	<p>Since the variance of the Poisson distribution is \(\lambda\), we can use the Central Limit Theorem to show that \(\hat \lambda\) is approximately normally distributed in large samples and has standard error</p>
+
+\[
+\se(\hat{\lambda}) \;\;=\;\; \sqrt{\frac{\hat{\lambda}}{n}} \;\;=\;\; 1.091
+\]
+	<p>This justifies using a normal approximation to find an approximate 95% confidence interval,</p>
+\[
+\hat{\lambda} \pm 1.96\; \se(\hat{\lambda}) \;\;=\;\; 11.9 \pm 1.96 \times 1.091 \;\;=\;\; 9.76 \text{ to } 14.04
+\]</div>
+<p class="heading">Maximum likelihood estimators</p>
+<p>This can be used for <strong>all</strong> maximum likelihood estimators. In large samples, a parameter's MLE is approximately normally distributed with   standard error,</p>
+\[
+\se(\hat {\theta}) \;\;\approx\;\; \sqrt {- \frac 1 {\ell''(\hat {\theta})}}
+\]
+<p>This leads to 95% confidence intervals of the form</p>
+\[
+\hat{\theta} \pm 1.96 \sqrt {- \frac 1 {\ell''(\hat {\theta})}}
+\]
+<p>The constant 1.96 can be replaced by other quantiles from the normal distribution to give other confidence levels. Confidence intervals that are found in this way are called <strong>Wald-type confidence intervals</strong>.</p>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

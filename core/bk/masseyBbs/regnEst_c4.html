@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Standard error of least squares slope</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="slope">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Standard error of the least squares  slope</p>
+
+<p>The least squares slope, <em>b</em><sub>1</sub>, is the best estimate of β<sub>1</sub>. In the previous page, we explained that it has a normal 
+distribution with mean</p>
+
+<p class=eqn><img class="gif" src="../../en/regnEst/images/meanSlope.gif" width="64" height="22"> </p>
+<p>The standard deviation of <em>b</em><sub>1</sub> is the standard deviation of this distribution and can be written as:</p>
+<p class=eqn><img src="images/sdSlopeEqnBbs.gif" width="115" height="34" alt="eqn"></p>
+<p>where <em>s</em><sub>x </sub> is the standard deviation of the explanatory variable, <em>X</em>. <strong>You will not need to remember this formula</strong>, but it gives insight into which situations will provide the most accurate estimate of β<sub>1</sub>.</p>
+<div class="centred"><div class="boxed">
+	<p style="text-align:left">The standard error of the least squares slope, <em>b</em><sub>1</sub>, 
+		is lowest when: </p>
+	<ol>
+		<li>the response standard deviation, σ, 
+			is low</li>
+		<li>the sample size, <i>n</i>, is large</li>
+		<li>the spread of x-values is high</li>
+		</ol>
+</div></div>
+<p>The first two influences on accuracy are not surprising but the third needs 
+	a little more thought. It is easiest to understand the effect of <em>s</em><sub>x</sub> by considering the most extreme situation.</p>
+<blockquote>
+	<p>If all x-values are the same (<em>s</em><sub>x</sub>&nbsp;=&nbsp;0), 
+		the distribution of <em>Y</em> will also be the same for each and there will be <strong>no</strong> information about β<sub>1</sub>. 
+		If the x-values are similar, the errors will tend to mask any differences in the 
+		mean response and β<sub>1</sub> will be poorly estimated.</p>
+</blockquote>
+<p>The greater the spread of x-values, the smaller the 
+	errors relative to the difference in response means, so the greater the accuracy 
+	of the least squares estimates.</p>
+<div class="diagram">
+	<p class=heading>Demonstration</p>
+	<p>The diagram below shows the distribution of the least squares slope for samples 
+		from a normal linear model. </p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="linModProg.SampleSlope2Applet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="regnModel" value="3.00 0.75 0.6">
+<param name="maxParams" value="10.00 10.00">
+<param name="xDistn" value="-2.0 -0.3 0.3 2.0">
+<param name="horizAxis" value="-2.0 2.0 -2 1">
+<param name="vertAxis" value="0.0 6.0 0 1">
+<param name="randomSeed" value="345946662">
+<param name="slopeAxis" value="-1.5 3.0 -1 1">
+<param name="interceptAxis" value="1.5 4.5 1.5 0.5">
+<param name="sampleSize" value="8 *20 50 100">
+<param name="sdLimits" value="0.2 1.2 0.6">
+<param name="customText" value="X variability=X variability#Response st devn=Response st devn#Small=Small#Large=Large">
+</applet>
+</div>
+
+	<p>Use the pull-down menu to alter the sample size. Observe that the spread of the distribution
+		of <em>b</em><sub>1</sub> is lowest when the sample size is large.</p>
+	<p>Change the sample size back to 20, then adjust the response standard deviation. Observe
+		that the spread of the distribution of <em>b</em><sub>1</sub> is lowest when the response standard deviation is small.</p>
+	<p>Change the response standard deviation back to a medium value, then adjust the spread
+		of <i>X</i>. Observe that the spread of the distribution of <em>b</em><sub>1</sub> is lowest when the spread of <i>X</i> is high.</p>
+	<p class="gray">(Click <strong>Accumulate</strong> then take a few samples
+		at any combination of the three characteristics to verify that the blue normal
+		distributions are indeed correct!)</p>
+</div>
+
+<p class="heading">Implications for data collection</p>
+<p>So, if we are able to select which x-values will be used, we should choose values spread over the range we are interested in, to give a reasonable value of <em>s</em><sub>x</sub>.</p>
+<p>(Note that the arrangement that maximizes <em>s</em><sub>x</sub> has half the values at each endpoint. However, such a design does not give us any information for diagnosing non-linearity and should therefore be avoided.)</p>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

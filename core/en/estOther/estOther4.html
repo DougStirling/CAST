@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Bootstrap error distribution</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="bootstrap simulation, error distribution, quartiles, simulation">
+	<meta name="dataset" content="Dodoma rainfall">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Bootstrap simulation</p>
+
+<p>In the previous page, we used random samples from a normal population to 
+	simulate the error distribution.</p>
+<p>If a normal distribution does not seem a reasonable model, an alternative 
+	is to treat the actual data as the 'population' for the simulation and take 
+	random samples <strong>with replacement</strong> from this population. Such 
+	samples are called <strong>bootstrap samples</strong>.</p>
+<p>A simulation with these bootstrap samples can again show the error distribution 
+	and provide approximate values for the bias and standard error.</p>
+	
+
+<div class="diagram" title="Example: Rainfall in Dodoma, Tanzania">
+	<p class=heading>November and December rainfall in Dodoma, Tanzania</p>
+
+	<p>Monthly rainfall in Dodoma, Tanzania has a  skew distribution in some 
+		months. The diagram below shows the total rainfall at the start of the rainy season (November and December) in Dodoma between 1935 and 2012.</p>
+	<p class=eqn><img class="gif" src="images/dodomaNovDecUQ.gif" width="397" height="130"></p>
+	<p>The upper quartile of the rainfall distribution is 190.6 mm, so this is 
+		our estimate of the underlying population upper quartile.</p>
+	
+<div class="centred"><div class="boxed">
+<p>If the rainfall distribution remains the same as in the 
+					past, we would estimate rainfall of 190.6&nbsp;mm or more in one out 
+					of every four November/December periods.</p>
+</div></div>
+
+	<p>We will use a bootstrap simulation to find the error distribution for this 
+		estimate.</p>
+		
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="stdErrorProg.ErrorBootstrapApplet">
+<param name="varName" value="Nov/Dec rainfall in Dodoma, Tanzania">
+<param name="values" value="169.1 199.8 50.1 39.3 114.8 157.9 228.2 71.1 26.5 389.3 211.3 56.2 205.8 44.8 137.6 47.3 142.7 2.5 154.0 136.3 153.6 147.0 117.9 169.3 162.7 14.7 305.8 123.6 133.6 41.5 167.1 79.0 351.9 109.3 106.4 126.0 95.4 242.7 130.7 64.1 78.0 75.0 226.9 222.6 98.9 94.8 84.5 282.7 239.6 220.3 123.7 158.8 91.9 117.1 283.9 12.1 130.7 106.1 5.6 68.6 181.7 65.2 525.9 7.7 114.8 335.9 103.0 187.5 173.4 279.5 56.2 182.7 139.9 147.6 372.9 123.6 319.7 154.4">
+<param name="dataAxis" value="0 500 0 100">
+<param name="errorName" value="Error in estimate (mm)">
+<param name="errorAxis" value="-60 60 -60 20">
+<param name="percentile" value="0.75">
+<param name="paramName" value="Target (data UQ)">
+<param name="statisticName" value="Estimate (bootstrap UQ)">
+<param name="decimals" value="1">
+<param name="units" value="mm">
+<param name="maxBiasSe" value="99.99">
+<param name="customText" value="Estimate s.e. & bias=Estimate s.e. & bias#Bias=Bias">
+</applet>
+</div>
+
+		
+	<p>The actual data are represented by grey crosses in the stacked dot plot 
+		and a bootstrap sample is shown in blue. Since the bootstrap sample is taken 
+		<strong>with</strong> replacement, some data values occur in the bootstrap 
+		sample more than once &mdash; shown by blue digits instead of blue crosses.</p>
+	<p>As in simulations from a normal model, click <strong>Accumulate</strong> 
+		and take several bootstrap samples to build up the distribution of the errors 
+		in the simulation.</p>
+	<p>Click <strong>Estimate s.e. and bias</strong> to display the mean and standard 
+		deviation of the error distribution.</p>
+	
+<div class="centred"><div class="boxed">
+<p>From either the complete error distribution or by applying 
+					the 70-95-100 rule to the standard error, our estimate of the upper 
+					quartile rainfall in November/December, 190.6&nbsp;mm, is unlikely to be in error 
+					by more than about 50&nbsp;mm.</p>
+</div></div>
+
+	<br>
+</div>
+	
+
+<p>If a normal distribution is a reasonable model for the data, then it is usually 
+	better to use it for simulations. However if normality is not a reasonable 
+	assumption, then a bootstrap simulation is an alternative that can be used 
+		to get a handle on the likely size of the errors.</p>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

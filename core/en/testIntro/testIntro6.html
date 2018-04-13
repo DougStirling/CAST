@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Randomisation test for correlation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="randomisation test">
+	<meta name="dataset" content="Soccer league">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p>In this page, another example of randomisation is described to assess whether 
+teams in a soccer league are evenly matched.</p>
+
+
+<div class="diagram" title="Example: English Premier Soccer League in two seasons">
+<p class=heading>English Premier Soccer League, 2012/13 and 2013/14</p>
+
+<p>We saw earlier that the distribution of points in the 2013/14 English Premier 
+Soccer League Table was <a href="javascript:showNamedPage('testIntro2')">not 
+consistent with all teams being evenly matched</a> &mdash; the spread of points was 
+too high. We will now investigate the teams' performances further.</p>
+<p>If good performance in one year carries over into good performance in the following year, the positions of teams in the league 
+in successive years will tend to be similar. The table below shows the points 
+for the teams in two seasons. (Note that the bottom three teams are relegated 
+each year and three teams are promoted from the lower league, so we cannot compare 
+the positions of six of these 23 teams.)</p>
+<div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+<tr> 
+<th>&nbsp;</th>
+<th colspan="2" align="center">Points</th>
+</tr>
+<tr> 
+<th align="left">
+<div>Team</div></th>
+<th width="100" align="center">2012/13</th>
+<th width="100" align="center">2013/14</th>
+</tr>
+<tr> 
+<td style="text-align:left"><strong>Manchester United<br>Manchester City<br>Chelsea<br>Arsenal<br>Tottenham Hotspur<br>Everton<br>Liverpool<br>West Bromwich Albion<br>Swansea City<br>West Ham United<br>Norwich City<br>Fulham<br>Stoke City<br>Southampton<br>Aston Villa<br>Newcastle United<br>Sunderland<br>Wigan Athletic<br>Reading<br>Queens Park Rangers<br>Crystal Palace<br>Hull City<br>Cardiff City</strong></td>
+<td width="100" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;"><span>89<br>78<br>75<br>73<br>72<br>63<br>61<br>49<br>46<br>46<br>44<br>43<br>42<br>41<br>41<br>41<br>39<br>36<br>28<br>25</span><br>
+-<br>
+-<br>
+-</td>
+<td width="100" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">64<br>86<br>82<br>79<br>69<br>72<br>84<br>36<br>42<br>40<br>33<br>32<br>50<br>56<br>38<br>49<br>38<br>-<br>-<br>-<br>45<br>37<br>30</td>
+</tr>
+</table></div>
+<p>We will now use the apparent consistency of the teams from one year to the next to ask:</p>
+
+<div class="boxed"><p>Do the good teams in one season also tend to do well in the following season?</p></div>
+	
+<p class=heading>Randomisation</p>
+<p>If there is <strong>no carry-over effect</strong> of performance from one season to the next, 
+the 2013/14 points of 42 (which was actually obtained by Swansea City) would have been 
+equally likely to have been obtained by any of the teams in that year. Indeed, 
+any allocation of the points (64, 86, 82, ..., 38) to the 17 teams that played in both years would be equally likely.</p>
+<p>The diagram below performs this <strong>randomisation</strong> of the results 
+in 2013/14.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="530">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="randomisationProg.TwoYearCorrApplet">
+<param name="labelName" value="Team">
+<param name="labels" value="ManchesterU ManchesterC Chelsea Arsenal Tottenham Everton Liverpool WestBrom Swansea WestHam NorwichCity Fulham StokeCity Southampton AstonVilla Newcastle Sunderland">
+<param name="xVarName" value="2012/13">
+<param name="xValues" value="89 78 75 73 72 63 61 49 46 46 44 43 42 41 41 41 39">
+<param name="yVarName" value="2013/14">
+<param name="yValues" value="64 86 82 79 69 72 84 36 42 40 33 32 50 56 38 49 38">
+<param name="labels2" value="Wigan Reading QueensParkR CrystalPalace HullCity CardiffCity">
+<param name="xValues2" value="36 28 25 ? ? ?">
+<param name="yValues2" value="? ? ? 45 37 30">
+<param name="initFixed" value="0">
+<param name="summaryAxis" value="-1.0 1.0 -1.0 0.5">
+<param name="corrName" value="Corr">
+<param name="maxCorr" value="-1.000">
+<param name="customText" value="Actual Data=Actual Data#Randomised Data=Randomised Data#Propn more extreme=Propn more extreme">
+</applet>
+</div>
+
+<p>Click <strong>Randomise</strong> to shuffle the 2013/14 points between the 
+teams (excluding the  teams that were only in the league for 
+one of the seasons). If the teams were of equal ability, these points would have 
+been as likely as the actual ones.<span class="gray"></span></p>
+<p>The correlation coefficient between the points in the two seasons gives an 
+indication of how closely they are related. Click <strong>Accumulate</strong> 
+and repeat the randomisation several more times. Observe that the correlation 
+for the randomised values is hardly ever as far from zero as the actual correlation 
+(<em>r</em>&nbsp;=&nbsp;0.798). Since a correlation as high as 0.798 is unlikely when there is <strong>no</strong> consistency of performance from one season to the next,&nbsp;...</p>
+<div class="centred"><div class="boxed">
+  <p>There is  strong evidence that the teams doing well in one season also do well in the following season. </p>
+</div></div>
+
+<br>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

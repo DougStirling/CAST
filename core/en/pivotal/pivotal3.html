@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Confidence interval for exponential rate</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="confidence interval, pivot, exponential distribution">
+	<meta name="dataset" content="Aircraft airconditioner failures">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>We will now use a pivot to find a confidence interval for the rate parameter, \(\lambda\), of a homogeneous Poisson process, based on a random sample of inter-event times that  have  \(\ExponDistn(\lambda)\) distributions.</p>
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Example</p>
+<p>The following table  shows the number of operating hours between successive failures of air-conditioning equipment on one aircraft.</p>
+<div class="centred">
+	<table border="0" cellpadding="5" cellspacing="0" class="centred" style="border:1px solid #999999">
+		<tr>
+			<td width="30" align="center" bgcolor="#FFFFFF">487</td>
+			<td width="30" align="center" bgcolor="#FFFFFF">18</td>
+			<td width="30" align="center" bgcolor="#FFFFFF">100</td>
+			<td width="30" align="center" bgcolor="#FFFFFF">7</td>
+			<td width="30" align="center" bgcolor="#FFFFFF">98</td>
+			<td width="30" align="center" bgcolor="#FFFFFF">5</td>
+			<td width="30" align="center" bgcolor="#FFFFFF">85</td>
+			<td width="30" align="center" bgcolor="#FFFFFF">91</td>
+			<td width="30" align="center" bgcolor="#FFFFFF">43</td>
+			<td width="30" align="center" bgcolor="#FFFFFF">230</td>
+			<td width="30" align="center" bgcolor="#FFFFFF">3</td>
+			<td width="30" align="center" bgcolor="#FFFFFF">130</td>
+		</tr>
+	</table>
+</div>
+<p>Assuming that failures arise at random over time with a constant rate, \(\lambda\) — that failures are a homogeneous Poisson process — the values are a random sample from an \(\ExponDistn(\lambda)\)	distribution. Find a 95% confidence interval for the failure rate, \(\lambda\) per hour.</p>
+	</div>
+
+<div class="solution">
+<p>We <a href="javascript:showNamedPage('exponential5')">showed earlier</a> that the maximum likelihood estimator of \(\lambda\) based on a random sample from an \(\ExponDistn(\lambda)\)	distribution is the inverse of the sample mean,</p>
+\[
+\hat{\lambda} \;\;=\;\; \frac n {\sum{X_i}}
+\]
+<p>We will now find a pivot based on the sum of the sample values. We showed earlier that the sum of \(n\) independent exponential variables has an <a href="javascript:showNamedPage('sec_erlang')">Erlang distribution</a> — a Gamma distribution whose first parameter is integer,</p>
+\[
+\sum_{i=1}^n{X_i} \;\;\sim\;\; \ErlangDistn(n, \lambda) \;=\; \GammaDistn(n, \lambda)
+\]
+<p>This is not a pivot since it depends on \(\lambda\), but the inverse of Gamma distribution's second parameter is a <a href="javascript:showNamedPage('linearTransform4')">scale parameter</a>, so</p>
+\[
+\lambda \sum_{i=1}^n{X_i} \;\;\sim\;\; \GammaDistn(n, 1)
+\]
+<p>and this <strong>is</strong> a pivot.</p>
+<p>Since \(n = 12\) for this data set, we can use Excel to find the 2½% and 97½% points of the \(\GammaDistn(12, 1)\) distribution — they are 6.201 and 19.682. A 95% confidence interval is therefore the values of \(\lambda\) for which</p>
+\[
+6.201 \;\;\lt\;\; \lambda \sum_{i=1}^n{x_i} \;\;\lt\;\; 19.682
+\]
+\[
+6.201 \;\;\lt\;\; 1297\lambda \;\;\lt\;\; 19.682
+\]
+<p>Rearranging these inequalities gives</p>
+\[
+0.0048 \;\;\lt\;\; \lambda \;\;\lt\;\; 0.0152
+\]
+<p>We are therefore 95% confident that the failure rate of the air-conditioning unit on this plane is between 4.8 and 15.2 times per thousand hours.</p>
+</div>
+
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

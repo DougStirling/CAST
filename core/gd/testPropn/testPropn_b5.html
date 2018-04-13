@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Tests based on normal approximation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="proportion, binomial distribution, hypothesis test, normal distribution/approximation to binomial">
+	<meta name="dataset" content="Adverse reaction to drug">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Computational problem</p>
+
+<p>To find the p-value for a hypothesis test about a proportion, tail probabilities 
+for a binomial distribution must be summed.</p>
+<p>If the sample size <i>n</i> is large, there may be a huge number of probabilities 
+to add together and this is both tedious and may result in numerical errors.</p>
+
+<div class="diagram">
+<p class="heading">Adverse reactions to drug</p>
+
+<p>A pharmaceutical company claims that only 1% of the users of a certain drug 
+experience adverse reactions. To test its claim, an agency monitors 2500 patients 
+taking the drug and observes adverse reactions in 37 cases. Is the occurrence 
+of adverse reactions more common than claimed by the company?</p>
+<p>This question can be expressed as a hypothesis test. If the population proportion 
+of patients with adverse reactions is denoted by π, 
+the hypotheses can be written as... </p>
+
+<p class="eqn"><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> &nbsp;=&nbsp; 128</strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> &nbsp;&ne;&nbsp; 128</strong></span></p>
+
+<p>If the null hypothesis is true, the sample number with adverse reactions will 
+have a binomial distribution with parameters <em>n</em>&nbsp;=&nbsp;2500 and π&nbsp;=&nbsp;0.01. 
+The p-value for the test is therefore the sum of binomial probabilities,</p>
+
+<p class="eqn"><strong>p-value</strong> &nbsp; = &nbsp; P(<em>X</em> ≥ 37) &nbsp; = &nbsp; P(37) &nbsp;+ &nbsp;P(38) &nbsp;+ &nbsp;...  + &nbsp;P(2499) &nbsp;+ &nbsp;P(2500)</p>
+<p>A lot of probabilities must be evaluated and summed! And all are close to zero.</p>
+
+</div>
+
+<p class="heading">Normal approximation</p>
+<p>We saw earlier that the normal distribution may be used as an <a href="javascript:showNamedPage('randomPropn5')">approximation 
+  to the binomial</a> when <i>n</i> is large. Both the sample proportion of successes, <em>p</em>, 
+  and the number of successes, <em>x</em>&nbsp;=&nbsp;<em>np</em>, 
+  are approximately normal when <em>n</em> is large.</p>
+<p class=eqn><object data="../KrandomPropn/images/normalApprox.svg" width="389" height="126" alt="approx distn of x & p"></object></p>
+<p>The best-fitting normal distribution can be used to obtain an approximation 
+  to any binomial tail probability. In particular, it can be used to find an approximate 
+  p-value for a hypothesis test.</p>
+<p class="heading">Using a normal approximation to find a p-value</p>
+<p>A large random sample of size <i>n</i> is selected from a population with probability 
+  π 
+  of success and <em>x</em> successes are observed. We will again test the hypotheses </p>
+<p class=eqn><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;=&nbsp; </strong>&pi;<strong><sub>0</sub></strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;&lt;&nbsp; </strong>&pi;<strong><sub>0</sub></strong></span> </p>
+<p>The main difference from our exact procedure (using the binomial distribution) 
+  is that a different test statistic is used. The test statistic <em>z</em> is obtained 
+  by standardising the number of successes, <em>x</em>, &mdash; subtracting the mean of the normal 
+  approximation and dividing by its standard deviation.</p>
+<p class=eqn><object data="images/normalPValue.svg" width="471" height="266" alt="normal approx to find p-val"></object></p>
+<div class="diagram"> 
+<p class="heading">Adverse reactions to drug</p>
+
+<p>In this example, 37 out of 2,500 patients were found to have adverse reactions. 
+The p-value for testing whether the pharmaceutical company's claim (that only 
+1% of patients with adverse reactions) is the probability of 37 or more.</p>
+<p>The sample size is large, so we can use a normal approximation to obtain this 
+probability assuming that the underlying population probability is 0.01(the null 
+hypothesis). </p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="randomisationProg.SuccessSimApplet">
+<param name="sampleInfo" value="2500 0.01">
+<param name="summaryAxis" value="0 50 0 10">
+<param name="nSuccess" value="37">
+<param name="propnDecimals" value="4">
+<param name="catVarName" value="Reaction">
+<param name="catLabels" value="Adverse None">
+<param name="probLabel" value="Prob (Adverse reaction)">
+<param name="nLabel" value="Number of patients =">
+<param name="normalDecimals" value="1">
+<param name="showTheory" value="true">
+<param name="theoryType" value="normal">
+<param name="tail" value="high">
+<param name="customText" value="No of Success=No of Success#Number of=Number of#Show results as=Show results as#Propn with=Propn with#Prob of=Prob of#or fewer=or fewer#or more=or more#Approximate distribution=Approximate distribution#Normal approximation=Normal approximation">
+</applet>
+</div>
+
+<p>Click <strong>Accumulate</strong> then simulate sampling of 2,500 patients 
+about 300 times. (Hold down the button <strong>Simulate</strong>.) From the simulation, 
+it is clear that the probability of obtaining 37 or more patients with adverse reactions is extremely small 
+-- there is strong evidence against the null hypothesis. </p>
+
+<hr width="75%">
+<p>The same conclusion can be reached without a simulation. </p>
+
+<p>Select <strong>Bar chart</strong> from the pop-up menu, then select <strong>Normal 
+approximation</strong>. From the normal approximation, we can determine that the 
+p-value for the test (the tail area above 37) is very small. </p>
+
+</div>
+
+<p class="heading">Continuity correction (advanced)</p>
+
+<p>In the above, we found an approximate p-value using a test statistic</p>
+<p class=eqn><img class="gif" src="../../en/testPropn/images/z-formula.gif" width="120" height="38"> </p>
+<p>with approximately a standard normal distribution. Since <em>x</em> is discrete,</p>
+<p class="eqn">P(<em>X</em> ≤ 369) &nbsp; = &nbsp;P(<em>X</em> ≤ 369.5) &nbsp; = &nbsp; P(<em>X</em> ≤ 369.9) &nbsp; = &nbsp; ...</p>
+<p>To find this tail probability, any value of <em>x</em> between 369 and 370 might have been used when evaluating the z-score. The p-value can be more accurately estimate by using 369.5. This is called a <strong>continuity correction</strong>.</p>
+<div class="boxed">
+	<p>The continuity correction involves <strong>either adding or subtracting 0.5</strong> from the observed count, <em>x</em>, before finding the z-score.</p>
+	</div>
+<p>Be careful about whether to add or subtract — the probability statement should be unchanged. For example, P(<span class="eqn"><em>X</em>&nbsp;≥&nbsp;410) =&nbsp;P(<em>X&nbsp;</em>≥&nbsp;409.5)</span>, so 0.5 should be <strong>subtracted</strong> from <em>x</em>&nbsp;=&nbsp;410 as a continuity correction in order to find this probability using a normal approximation and z-score.</p>
+<div class="boxed">
+	<p>The continuity correction is most important when the observed count is near either 0 or <em>n</em>.</p>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

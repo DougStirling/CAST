@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>One- and two-tailed tests</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="hypothesis test, proportion, binomial distribution, one-tailed test, two-tailed test">
+	<meta name="dataset" content="Somali blood groups">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Finding the p-value for a one-tailed test</p>
+
+<p>The whale-scaring hypothesis test involved a random sample of size <i>n</i> 
+from a population with probability π 
+of success (whale leaving immediately). The data collected were <em>x</em> successes, and we tested the hypotheses... </p>
+<p class=eqn><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;=&nbsp; </strong>&pi;<strong><sub>0</sub></strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;&gt;&nbsp; </strong>&pi;<strong><sub>0</sub></strong></span> </p>
+
+  
+<p>where π<sub>0</sub> was the constant of interest (e.g. 0.4 in this example). The following steps were 
+followed to obtain the p-value for the test.</p>
+
+<ol>
+  <li>The sample proportion of successes, <em>p</em>, 
+    was identified as the most informative summary statistic about π.</li>
+  <li>The number of successes, <em>x</em>&nbsp;=&nbsp;<em>np</em> has a standard binomial distribution with no unknown parameters when <b>H<sub>0</sub></b> holds, so it is a better test statistic.</li>
+  <li>The p-value is a sum of tail probabilities for this binomial distribution.</li>
+  </ol>
+
+<p>The diagram below illustrates these steps</p>
+
+<p class=eqn><img class="gif" src="images/testProcessB.gif" width="441" height="265"> 
+</p>
+<p>The rat-learning example was similar, but the alternative hypothesis involved 
+high values of π 
+and the p-value was found by counting upper tail probabilities.</p>
+<p class="heading">Finding the p-value for a two-tailed test</p>
+  
+<p>The appropriate tail probability to use depends on the alternative hypothesis. 
+If the alternative hypothesis allows <strong>either high or low</strong> values 
+of <em>x</em>, 
+the test is called a <strong>two-tailed</strong> test, </p>
+
+<p class=eqn><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;=&nbsp; </strong>&pi;<strong><sub>0</sub></strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;&ne;&nbsp; </strong>&pi;<strong><sub>0</sub></strong></span> </p>
+
+<p>The p-value is then <strong>double the smaller tail probability</strong> since 
+values of <em>x</em> in <strong>both</strong> tails of the binomial distribution would provide evidence 
+for <b>H<sub>A</sub></b>. </p>
+
+
+<div class="diagram" title="Example: Somali blood groups">
+<p class="heading">Somali blood groups</p>
+<p>In a study of sab bondsmen, a population sub-group in Northern Somalia, blood 
+tests were conducted on a sample of 54, in order to investigate whether they differed 
+genetically from the main population of 'free-born noble Somali'. </p>
+
+<p>It is known that a proportion 0.574 of free-born noble Somali have blood group O.
+<span class="gray">(Actually 574 had blood group O in a sample of 1000, but this
+sample size was large enough to provide a reasonably accurate estimate.)</span>
+Is there any evidence that the sample proportion with blood group O in
+the sab bondsmen, 26 out of 54, does not come from a population with π
+&nbsp;=&nbsp;0.574.
+This can be expressed as the hypotheses
+</p>
+
+<p class=eqn><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;=&nbsp; 0.574</strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;&ne;&nbsp; 0.574</strong></span></p>
+
+<p>We would expect (0.574 x 54) = 31 of the sab bondsmen to have blood group O.
+A sample count that is either much greater than 31 or much less
+than 31 would suggest a genetic difference between the sab bondsmen and
+the free-born noble Somali. Use the slider below to obtain the p-value.
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="420" height="280">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="testProg.SuccessPValueApplet">
+<param name="testParams" value="54 0.574 30">
+<param name="testTail" value="two-tailed">
+<param name="successName" value="blood group O">
+<param name="customText" value="count of=count of">
+</applet>
+</div>
+
+<p>The probability of getting as few as 26 is 0.1084. Since this is a 2-tailed 
+test, we must also take account of the probability of getting a count that is 
+as unusually high, so the p-value is twice this, 0.2169. Getting 26 sab bondsmen 
+with blood group O is therefore not unlikely, so we conclude that there is no 
+evidence <strong>from these data</strong> of a genetic difference between sab 
+bondsmen and the free-born Somali. </p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

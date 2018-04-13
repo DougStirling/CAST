@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Paired t-test</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="hypothesis test, paired t-test">
+	<meta name="dataset" content="Blood pressure and the pill">
+	<meta name="dataset" content="Talking age and heart disease">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Approach</p>
+
+<p>We have seen that the problem of testing whether two paired measurements, <em>X</em> 
+and <em>Y</em>, have equal means is done in terms of the differences</p>
+<p class="eqn"><em><strong>D</strong></em><strong> = <em>Y</em> - <em>X</em></strong></p>
+<p>The test is then expressed as</p>
+<p class="eqn"><strong>H<sub>0</sub></strong>:&nbsp; &nbsp;µ<em><sub>D</sub></em> = 0</p>
+<p class="eqn"><strong>H<sub>A</sub></strong>:&nbsp; &nbsp;µ<em><sub>D</sub></em> ≠ 0</p>
+<p>or a one-tailed variant. This is a standard univariate hypothesis test of the 
+form analysed in the previous section.</p>
+<p class="heading">Paired t-test</p>
+<p>The hypotheses are therefore assessed with a standard t-test. The test statistic 
+is</p>
+<p class="eqn"><img class="gif" src="../../en/testPaired/images/testStat.gif" width="86" height="58"></p>
+<p>and it is compared against a t distribution with <em>n</em>&nbsp;-&nbsp;1 degrees 
+of freedom to find the p-value.</p>
+<div class="diagram"> 
+
+<p class="heading">Age when children with heart disease start to talk</p>
+<p>A research worker studying congenital heart disease wishes to compare the development 
+of cyanotic children with normal children. Among the measurement of interest is 
+the age at which the children speak their first word.</p>
+<p>Rather than independently selecting a sample of cyanotic and a sample of normal 
+children for this comparison, the researcher chooses cyanotic children who have 
+a sibling of the same gender. Measurements from the children therefore form a 
+paired data set. The ages in months when the first word was spoken are shown below.</p>
+<table border="0" class="centred" cellpadding="3" cellspacing="0">
+<tr> 
+<th>Pair of<br>
+siblings</th>
+<th>Cyanotic<br>
+sibling</th>
+<th>Normal<br>
+sibling</th>
+<th>Difference<br>
+(cyanotic - normal)</th>
+</tr>
+<tr align="center"> 
+<td><table border="0" cellpadding="0" cellspacing="0">
+<tr> 
+<td align="right">1<br>
+2<br>
+3<br>
+4<br>
+5<br>
+6<br>
+7<br>
+8<br>
+9<br>
+10</td>
+</tr>
+</table></td>
+<td bgcolor="#FFFFFF"><table border="0" cellpadding="0" cellspacing="0">
+<tr> 
+<td align="right">11.8<br>
+20.8<br>
+14.5<br>
+9.5<br>
+13.5<br>
+22.6<br>
+11.1<br>
+14.9<br>
+16.5<br>
+16.5</td>
+</tr>
+</table></td>
+<td bgcolor="#FFFFFF"><table border="0" cellpadding="0" cellspacing="0">
+<tr> 
+<td align="right">9.8<br>
+16.5<br>
+14.5<br>
+15.2<br>
+11.8<br>
+12.2<br>
+15.2<br>
+15.6<br>
+17.2<br>
+10.5</td>
+</tr>
+</table></td>
+<td bgcolor="#CCFFFF"> 
+<table border="0" cellpadding="0" cellspacing="0">
+<tr> 
+<td align="right">2.0<br>
+4.3<br>
+0.0<br>
+-5.7<br>
+1.7<br>
+10.4<br>
+-4.1<br>
+-0.7<br>
+-0.7<br>
+6.0</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<p>The data are paired since the measurements come in pairs from the same families.</p>
+<p>The researcher wants to test whether  cyanotic children speak their first word <strong>later</strong> on average than children without the disease, so a one-tailed test is appropriate. Denoting the difference within each sibling pair (cyanotic – normal) by <em>D</em>, we are looking for evidence that µ<em><sub>D</sub></em>&nbsp;&gt;&nbsp;0 (meaning that the mean age of speaking the first word is greater for cyanotic children than normal ones). The hypotheses are therefore:</p>
+<p class="eqn"><strong>H<sub>0</sub></strong>:&nbsp; &nbsp;µ<em><sub>D</sub></em> = 0</p>
+<p class="eqn"><strong>H<sub>A</sub></strong>:&nbsp; &nbsp;µ<em><sub>D</sub></em> &gt; 0</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="pairBlockProg.PairedTestApplet">
+<param name="x1Name" value="Normal">
+<param name="x1Values" value="9.8 16.5 14.5 15.2 11.8 12.2 15.2 15.6 17.2 10.5">
+<param name="x2Name" value="Cyanotic">
+<param name="x2Values" value="11.8 20.8 14.5 9.5 13.5 22.6 11.1 14.9 16.5 16.5">
+<param name="diffName" value="diff">
+<param name="rawAxis" value="5 30 0 5">
+<param name="diffAxis" value="-10 15 -10 5">
+<param name="alternative" value="high">
+<param name="means" value="0.0 5.0 0.01">
+<param name="summaryDecimals" value="3 3 4">
+<param name="formulaGif" value="test/dn">
+<param name="tAxis" value="-6 6 -6 2">
+<param name="customText" value="Actual Data=Actual Data#Modified Data=Modified Data">
+</applet>
+</div>
+
+<p>Since the p-value for the test is well above zero (0.201), there is no evidence 
+from these data that the cyanotic children learn to speak later.</p>
+<hr width="75%">
+<p>Select <strong>Modified Data</strong> from the pop-up menu, then use the slider 
+to investigate how much higher the mean for the 'cyanotic' values would need to 
+be to give strong evidence of a difference.</p>
+<p class="heading">Blood pressure and the pill</p>
+<p>In this example, the blood pressure of 15 college-aged women was measured before 
+starting to take the pill and after 6 months of use. The data were tabulated at 
+the start of this section and are graphed below.</p>
+<p>Here we use a two-tailed test as the pill might either increase or decrease blood pressure. Denoting the difference in blood pressure for each woman as <em>D</em>&nbsp;=&nbsp;(<em>after</em>&nbsp;-&nbsp;<em>before</em>), we are therefore interested in the hypotheses:</p>
+<p class="eqn"><strong>H<sub>0</sub></strong>:&nbsp; &nbsp;µ<em><sub>D</sub></em> = 0</p>
+<p class="eqn"><strong>H<sub>A</sub></strong>:&nbsp; &nbsp;µ<em><sub>D</sub></em> ≠ 0</p>
+<p>The p-value for this test is calculated on the right below.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="pairBlockProg.PairedTestApplet">
+<param name="x1Name" value="before">
+<param name="x1Values" value="70 80 72 76 76 76 72 78 82 64 74 92 74 68 84">
+<param name="x2Name" value="after">
+<param name="x2Values" value="68 72 62 70 58 66 68 52 64 72 74 60 74 72 74">
+<param name="diffName" value="diff">
+<param name="rawAxis" value="50 110 50 10">
+<param name="diffAxis" value="-40 40 -40 20">
+<param name="alternative" value="not equal">
+<param name="means" value="-15 12 0.1">
+<param name="summaryDecimals" value="3 3 4">
+<param name="formulaGif" value="test/dn">
+<param name="tAxis" value="-6 6 -6 2">
+<param name="customText" value="Actual Data=Actual Data#Modified Data=Modified Data">
+</applet>
+</div>
+
+<p>The resulting p-value is 
+very small, giving strong evidence that blood pressure has changed. The test only gives evidence of a <strong>difference</strong> in the mean blood pressures. However the positive t value suggests µ<em><sub>D</sub></em>&nbsp;&gt;&nbsp;0, so it is valid to conclude that there is evidence of a <strong>decrease</strong> in blood pressure after taking the pill.</p>
+<p>Again, select <strong>Modified Data</strong> and investigate how different 
+the sample means must be to give evidence of a difference in the population means.</p>
+
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

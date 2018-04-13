@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Interactions with several variables</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="interaction, general linear model">
+	<meta name="dataset" content="Body fat of AIS athletes">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Models for several variables</p>
+	<p>In previous sections, we showed how individual numerical and categorical 
+		explanatory variables can be modelled with terms in a GLM. In this section, 
+		we have also shown how to model the interaction between any two such variables.</p>
+	<p>If there are several explanatory variables, we can use a GLM that contains 
+		several main effects and <strong>several</strong> interactions between pairs 
+		of explanatory variables.</p>
+	<div class="diagram"> 
+		<p class="heading">Body fat of AIS athletes</p>
+
+		<p>Data were collected from a sample of elite athletes from six sports (Basketball, 
+			Rowing, Swimming, Field, Track, and Tennis) who were in training at the 
+			Australian Institute of Sport. We use these data to model the percentage 
+			<em>body fat</em> of the athletes in terms of two numerical explanatory 
+			variables, <em>Height</em>, and <em>Weight</em>, and two categorical explanatory 
+			variables, <em>Sex</em> and <em>Sport</em>.</p>
+		<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="indicatorProg.Type3InteractApplet">
+<param name="yVarName" value="Percent body fat">
+<param name="yValues" value="19.75 21.3 19.88 23.66 17.64 15.58 19.99 22.43 17.95 15.07 28.83 18.08 23.3 17.71 18.77 19.83 25.16 18.04 21.79 22.25 16.25 16.38 19.35 19.2 17.89 12.2 23.7 24.69 16.58 21.47 20.12 17.51 23.7 22.39 20.43 14.52 11.47 17.71 18.48 11.22 13.61 12.78 11.85 13.35 11.77 11.07 21.3 20.1 24.88 19.26 19.51 23.01 8.07 11.05 12.39 15.95 9.91 16.2 9.02 14.26 10.48 11.64 12.16 10.53 10.15 10.74 20.86 19.64 17.07 15.31 11.07 12.92 8.45 8.47 7.68 6.16 8.56 6.86 9.4 9.17 8.54 9.2 11.72 8.44 7.19 6.46 9 12.61 9.03 6.96 10.05 9.56 9.36 10.81 8.61 9.53 7.42 9.79 8.97 7.49 11.95 7.35 7.16 8.77 9.56 14.53 8.51 10.64 7.06 8.87 7.88 9.2 7.19 6.06 5.63 6.59 9.5 13.97 11.66 6.43 6.99 6 6.56 6.03 6.33 6.82 6.2 5.93 5.8 6.56 6.76 7.22 8.51 7.72 19.94 13.91 6.1 7.52 9.56 6.06 7.35 6 6.92 6.33 5.9 8.84 8.94 6.53 9.4 8.18 17.41 18.08 9.86 7.29 10.05 8.51 11.5 6.26">
+<param name="xVariables" value="Ht Wt Sex Sp">
+<param name="HtVarName" value="Height">
+<param name="HtValues" value="195.9 189.7 177.8 185 184.6 174 186.2 173.8 171.4 179.9 193.4 188.7 169.1 177.9 177.5 179.6 181.3 179.7 185.2 177.3 179.3 175.3 174 183.3 184.7 180.2 180.2 176 156 179.7 180.9 179.5 178.9 182.1 186.3 170 170 180.5 173.3 173.5 181 175 170.3 165 169.8 174.1 175 171.1 172.7 175.6 171.6 172.3 171.4 178 162 167.3 162 170.8 163 166.1 176 163.9 173 177 168 172 167.9 177.5 162.5 172.5 166.7 175 157.9 172.7 176.5 183 194.4 193.4 180.2 183 184 192.7 187.2 183.9 192 190.4 190.7 181.8 188.3 198 186 192 185.6 165.3 185.6 189 193.4 185.6 194.6 189 188.1 200.4 195.3 194.1 187.9 209.4 203.4 198.7 187.1 196.6 186.1 192.8 195.2 169.1 186.6 184.4 187.3 185.1 185.5 184.9 175 185.4 181 176 176.2 174 191 171 174 180.2 178.5 190.3 185 189 180.1 189.2 182.6 186 174.9 180.6 178.6 173 179.7 174.6 178 178.5 171.3 178 189.1 195.4 179.1 180.1 179.6 174.7 183.5 183.1 178.4 190.8">
+<param name="WtVarName" value="Weight">
+<param name="WtValues" value="78.9 74.4 69.1 74.9 64.6 63.7 75.2 62.3 66.5 62.9 96.3 75.5 63 80.5 71.3 70.5 73.2 68.7 80.5 72.9 74.5 75.4 69.5 66.4 79.7 73.6 78.7 75 49.8 67.2 66 74.3 78.1 79.5 78.5 64.8 59 72.1 75.6 71.4 69.7 63.9 55.1 60 58 64.7 87.5 78.9 83.9 82.8 74.4 94.8 49.2 61.9 53.6 63.7 52.8 65.2 50.9 57.3 60 60.1 52.5 59.7 57.3 59.6 71.5 69.7 56.1 61.1 47.4 56 45.8 67 74.4 79.3 87.5 83.5 78 78 85 84.7 92 72.3 83 96.9 85.7 85.4 85.3 93.5 86.8 87.9 87.2 53.8 89.8 91.1 88.6 92.3 97 89.5 88.2 92.2 78.9 90.3 87 113.7 98 100.2 79.4 90.3 77.7 83.9 75.5 60.6 71 71.8 76.8 102.7 94.25 79 66.6 71.8 74.8 68.2 62.3 61 77.5 57.4 71.4 70.3 80.2 84.2 111.3 80.7 97.9 123.2 72.9 83 75.9 70.7 67.1 69.2 67.05 70.5 70.8 71 69.1 62.9 94.8 94.6 108.2 97.9 75.2 74.8 80 73.8 71.1 76.7 ">
+<param name="SexVarName" value="Sex">
+<param name="SexValues" value="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0">
+<param name="SexLabels" value="Male Female">
+<param name="SpVarName" value="Sport">
+<param name="SpValues" value="0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 3 4 3 3 3 3 3 3 4 4 4 4 4 4 4 4 4 4 4 4 4 4 5 5 5 5 5 5 5 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 4 4 4 4 3 3 3 4 4 4 4 4 4 4 4 4 4 4 3 3 3 3 3 4 4 4 4 4 4 4 4 4 4 4 4 4 3 3 3 3 4 5 5 5 5">
+<param name="SpLabels" value="Basketball Rowing Swimming Field Track Tennis">
+<param name="maxTableEntries" value="9999.9 99 9999.9 99.99">
+<param name="customText" value="Type 3 ssq=Type 3 ssq#df=df#Mean ssq=Mean ssq">
+</applet> 
+
+</div>
+
+		<p>The table above shows the Type 3 sums of squares for the main effects of 
+			the four explanatory variables and all of their interactions.</p>
+		<p>It is not meaningful to consider deleting any main effects from the model 
+			when their interactions are present, so we should firstly examine the p-values 
+			associated with the interactions between pairs of explanatory variables.</p>
+		
+<div class="centred"><div class="boxed">
+<p>Use the checkboxes to remove interactions 
+							from the model that you believe are not significant.</p>
+</div></div>
+
+		<p>Since this is a large data set, several interactions are highly significant. 
+			The relationship between body fat and <em>Height</em>, <em>Weight</em>, 
+			<em>Sex</em> and <em>Sport</em> is clearly a complex one!</p>
+		<hr width="75%">
+		<p>Note that an analysis of variance table (with sequential Type 1 sums of 
+			squares) would not be helpful for analysing this model. Since the data are 
+			observational, the explanatory variables are correlated and the analysis 
+			of variance table would be highly dependent on the order of adding the main 
+			effects and interactions.</p>
+	</div>
+		
+	<p class="heading">Higher-order interactions</p>
+
+		
+	<p>We have only considered interactions between pairs of explanatory variables 
+		in this section. It is also possible for three or more variables to interact 
+		in more complex ways.</p>
+	<p>In observational data, it is uncommon to consider interactions between more 
+		than two explanatory variables at a time, but in experimental data, such interactions 
+		are sometimes of great importance. We end this section by simply mentioning 
+		that interactions can be more complex.</p>
+	
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

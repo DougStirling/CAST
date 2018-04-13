@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Estimate of common standard deviation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="pooled estimate">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Estimating the parameters</p>
+
+<p>We now restrict attention to normal models that have the same standard deviation 
+in each of the <em>g</em> groups.</p>
+<table border="0" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC" class="centred" style="margin-top:0; margin-bottom:0">
+	<tr>
+		<td>Group <em>i</em>:&nbsp;&nbsp;</td>
+		<td><span style="color:#000000"><em>Y</em> &nbsp; ~ &nbsp; <font face="Arial, Helvetica, sans-serif">normal</font> (µ<sub><em>i&nbsp;</em></sub>, σ)</span></td>
+	</tr>
+</table>
+<p>There are <em>g</em>&nbsp;+&nbsp;1 parameters that must be estimated from the 
+data. Each group mean can be estimated with the corresponding sample mean,</p>
+<p class=eqn><img class="gif" src="../../en/multiGroup/images/groupMeanEst.gif" width="52" height="22"> </p>
+<p>The sample standard deviation in any single group, <em>s<sub>i</sub></em>, 
+is a valid estimate of σ. 
+How should these <em>g</em> separate estimates be combined to give a single pooled 
+estimate of σ?</p>
+<p class="heading">Pooled estimate of variance</p>
+<center>
+<table border="1" cellspacing="0" cellpadding="5" bgcolor="white" width="75%">
+<tr> 
+<th align="CENTER"><strong>It is easier to describe estimation in terms of <font color="#000000">variance</font> 
+-- the square of the standard deviation</strong></th>
+</tr>
+</table>
+</center>
+  <p>From the data in a single group (say group <em>i</em>), the sample variance 
+		is an estimate of σ<sup>2</sup>,</p>
+	<p class=eqn><object data="images/varIEst.svg" width="132" height="56"></object></p>
+	<p>If the sample sizes are the same in all groups, the pooled variance is the 
+		average of these group variances,</p>
+	<p class=eqn><object data="images/varPooledEst3.svg" width="105" height="38"></object></p>
+	<p class="heading">Mixed sample sizes (optional)</p>
+	<p>If the sample sizes are not equal in all groups, a more complex formula is 
+		needed. The best estimate of σ<sup>2</sup> 
+		is found by adding the numerators and denominators of the formulae for the 
+		<em>g</em> separate group variances,</p>
+	<p class=eqn><object data="images/varPooledEst.svg" width="444" height="67"></object></p>
+<p>To express this more mathematically, we use two subscripts for each value, 
+so <em>y<sub>ij</sub></em> 
+denotes the <em><font color="#000000">j</font></em>'th of the <em><font color="#000000">n<sub>i</sub></font></em> 
+values in group <em><font color="#000000">i</font></em>, for <em><font color="#000000">i</font></em>&nbsp;=&nbsp;1 
+to <em><font color="#000000">g</font></em>. The pooled estimate of σ<sup>2</sup> 
+can then be written as</p>
+<p class=eqn><object data="images/varPooledEst2.svg" width="210" height="80"></object></p>
+
+<div class="diagram"> 
+<p class="heading">Illustration of pooled variance</p>
+		<p>The diagram below shows a random sample from a normal model in which the 
+			group means differ, but all groups have the same variance, σ<sup>2</sup>&nbsp;=&nbsp;0.9. 
+			(The grey bands show the means ± 2 standard deviations for the model.) 
+			Note that the crosses have been jittered a little (moved horizontally) to 
+			separate them within each group.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="520" height="430">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.PooledVarApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Group, x">
+<param name="xLabels" value="A B C">
+<param name="anovaModel" value="3.5 0.9 7.5 0.9 5.5 0.9">
+<param name="randomSeed" value="223945782">
+<param name="yAxis" value="1.0 9.5 1 1">
+<param name="decimals" value="3">
+<param name="maxSsq" value="999.999">
+<param name="maxMssq" value="99.999">
+<param name="maxDF" value="99">
+<param name="noOfDataSets" value="3">
+<param name="dataName" value="Group sizes equal">
+<param name="xValues" value="8@0 8@1 8@2">
+<param name="dataName2" value="Group sizes unequal">
+<param name="xValues2" value="15@0 6@1 3@2">
+<param name="dataName3" value="Group with 1 rep">
+<param name="xValues3" value="20@0 3@1 1@2">
+</applet>
+</div>
+
+<p>The vertical coloured lines from the crosses in each group to the group mean 
+are the values <img class="gif" src="../../en/multiGroup/images/devnInGroup.gif" width="53" height="20"> 
+whose sums of squares are the numerators of the equations for the <em>s<sub>i</sub></em><sup>2</sup>.</p>
+<p>The numerator of the pooled estimate of σ<sup>2</sup> 
+is the sum of the numerators for the group variances. The denominator is the sum 
+of their denominators.</p>
+
+<center>
+<table border="1" cellspacing="0" cellpadding="5" bgcolor="white" width="75%">
+<tr> 
+<th align="CENTER"><strong>Note that the numerator is the sum of the squared lengths 
+of all coloured vertical lines.</strong></th>
+</tr>
+</table>
+</center>
+<p>When all group sizes are the same, the pooled estimate is the average of the 
+three group variances.</p>
+<p>Use the pop-up menu to change the sample sizes. Observe that the pooled variance 
+is closest to the variance in group 1, the biggest group. Note that if one group has only a single observation, then it cannot contribute to the estimate of the pooled variance.</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

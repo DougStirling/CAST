@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Linear trend</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="least squares/time series, linear model">
+	<meta name="dataset" content="World rice production">
+</head>
+
+
+<body class="lecture">
+<script type="text/javascript">writePageStart();</script>
+
+
+<p class="heading">World rice production</p>
+
+<div class="divChoice">
+<form>
+    <select name="dataset" onChange="changeBlock(this, 2)" id="dataChoice">
+      <option value="0" selected>Explanatory variable = Year</option>
+      <option value="1">Explanatory variable = Year - 1960</option>
+    </select>
+</form>
+
+<div id="example1">
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="520" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.DragLine2Applet">
+<param name="xVarName" value="Year">
+<param name="yVarName" value="World rice production (million tonnes)">
+<param name="xSequence" value="1961 1 41">
+<param name="yValues" value="215.7 226.6 247.1 263.0 254.1 261.2 277.5 288.7 295.7 316.4 317.8 307.3 335.0 332.0 357.0 347.7 369.5 385.1 375.1 396.8 410.0 421.9 447.8 465.1 467.9 468.4 461.1 487.0 514.0 518.2 518.5 528.2 529.8 538.8 547.0 568.5 576.8 578.8 609.9 598.2 585.1">
+<param name="horizAxis" value="1960 2001 1960 10">
+<param name="vertAxis" value="100 700 100 100">
+<param name="interceptLimits" value="-35000 35000 -7700">
+<param name="slopeLimits" value="-20.0 20.0 4.0">
+<param name="labelAxes" value="true">
+<param name="fontSize" value="big">
+</applet>
+</div>
+
+</div>
+
+<div id="example2" style="display:none">
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="520" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.DragLine2Applet">
+<param name="xVarName" value="(Year-1960)">
+<param name="yVarName" value="World rice production (million tonnes)">
+<param name="xSequence" value="1 1 41">
+<param name="yValues" value="215.7 226.6 247.1 263.0 254.1 261.2 277.5 288.7 295.7 316.4 317.8 307.3 335.0 332.0 357.0 347.7 369.5 385.1 375.1 396.8 410.0 421.9 447.8 465.1 467.9 468.4 461.1 487.0 514.0 518.2 518.5 528.2 529.8 538.8 547.0 568.5 576.8 578.8 609.9 598.2 585.1">
+<param name="horizAxis" value="0 41 0 10">
+<param name="vertAxis" value="100 700 100 100">
+<param name="interceptLimits" value="0 700 200">
+<param name="slopeLimits" value="-20.0 20.0 4.0">
+<param name="labelAxes" value="true">
+<param name="fontSize" value="big">
+</applet>
+</div>
+</div>
+
+</div>
+
+
+<script type="text/javascript">
+	writeLecturerNotesLink(withDataNotes);
+</script>
+
+<div class="lecturerNote" id="lecturerNote">
+<p>Use this diagram to show how  to model a linear trend.</p>
+<p>Click <strong>Show residuals</strong>, drag the line to make the residuals small, then click <strong>Least squares</strong>.</p>
+<p>Show that the intercept is very large when <em>Year</em> is used as an explanatory variable. Use the pop-up menu at the top to change the explanatory variable to <em>(Year&nbsp;-&nbsp;1960)</em> and show that the least squares slope and the fitted values remain the same but the intercept is smaller.</p>
+<p>(This trick is more important when fitting polynomial models such as the quadratic model on the next page where use of the raw <em>Year</em> makes the parameter estimates numerically unstable.)</p>
+</div>
+
+<div class="lecturerNote" id="dataNote">
+<p>The data set gives the  total world rice production (million tonnes) 
+	between 1961 and 2001.</p>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

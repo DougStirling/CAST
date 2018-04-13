@@ -1,0 +1,451 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Soccer league simulation</title>
+
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="simulation">
+	<meta name="dataset" content="Soccer league">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Zuf&auml;lligkeit bei
+Sportergebnissen</p>
+
+<p>Obwohl man gerne denken m&ouml;chten, dass die
+&bdquo;beste&ldquo;
+Mannschaft bei Sportwettk&auml;mpfen gewinnt, gibt es
+tats&auml;chlich
+eine beachtliche Variabilit&auml;t bei den Ergebnissen. Viel von
+dieser
+Variabilit&auml;t kann als zuf&auml;llig erachtet werden
+&ndash; wenn
+die gleichen Mannschaften erneut spielen, sind die Ergebnisse oft
+verschieden. Die offensichtlichsten Beispiele dieser
+Zuf&auml;lligkeit
+treten auf, wenn eine Serie von Spielen zwischen den gleichen zwei
+Mannschaften gespielt wird.&nbsp;&nbsp;&nbsp;</p>
+
+<ul>
+
+  <li>In der Endspielserie der Landesbasketballliga in den USA
+spielen
+die zwei Finalisten eine Serie von 7 Spielen. Der
+schlie&szlig;liche
+Gewinner verliert gew&ouml;hnlich wenigstens ein Match innerhalb
+dieser
+Serie.</li>
+
+  <li>Beim Kricket gib es oft eine Serie internationaler
+Ein-Tages-Turniere zwischen einer reisenden Mannschaft
+und&nbsp;einer
+ortsans&auml;ssigen Mannschaft. Wieder werden selten alle Spiele
+vom
+gleichen Team gewonnen.&nbsp;</li>
+
+</ul>
+
+<p>Da die Mannschaften so gut wie unver&auml;ndert in jeder
+Serie sind,
+kann die Variabilit&auml;t von Ergebnissen nur mit
+Zuf&auml;lligkeit
+erkl&auml;rt werden.</p>
+
+<p class="heading">Zuf&auml;lligkeit oder
+F&auml;higkeiten?</p>
+
+<p>Wenn man sich Sportergebnissen ansieht, kann man dann sagen,
+ob alle
+Mannschaften mit der gleichen Wahrscheinlichkeit zu gewinnen,
+gleichm&auml;&szlig;ig abgestimmt sind? Oder haben einige
+Mannschaften
+eine h&ouml;here Wahrscheinlichkeit zu gewinnen, als andere?</p>
+
+<p>Es gibt verschiedene Wege diese Frage zu beurteilen,
+abh&auml;ngig
+von der Art der Daten, die verf&uuml;gbar sind. Das folgende
+Beispiel
+sch&auml;tzt eine Jahresabschlusstabelle ein.</p>
+
+<div class="diagram">
+<p class="heading">Englische Premier Soccer League, 2008/09</p>
+
+<p>In der Englischen Premier Soccer League spielt
+w&auml;hrend der
+Saison jede der zwanzig Mannschaften zwei Mal gegen jede andere
+Mannschaft (zu Hause und ausw&auml;rts).&nbsp;Drei Punkte
+werden
+f&uuml;r einen Sieg zuerkannt und einer f&uuml;r ein Remis. Die
+folgende Tabelle zeigt die Gewinne, Remis, Niederlagen und die
+Gesamtpunkte f&uuml;r alle Mannschaften am Ende der Saison von
+2008/09.</p>
+
+<table class="centred" border="0" cellpadding="2" cellspacing="0">
+
+  <tbody>
+
+    <tr>
+
+      <th>&nbsp;</th>
+
+      <th>
+      <div>Team</div>
+
+      </th>
+
+      <th align="center" width="60">Siege</th>
+
+      <th align="center" width="60">Remis</th>
+
+      <th align="center" width="60">Niederlagen</th>
+
+      <th align="center" width="60">Punkte</th>
+
+    </tr>
+
+    <tr>
+
+      <td>1.<br>
+
+2.<br>
+
+3.<br>
+
+4.<br>
+
+5.<br>
+
+6.<br>
+
+7.<br>
+
+8.<br>
+
+9.<br>
+
+10.<br>
+
+11.<br>
+
+12.<br>
+
+13.<br>
+
+14.<br>
+
+15.<br>
+
+16.<br>
+
+17.<br>
+
+18.<br>
+
+19.<br>
+
+20.</td>
+
+      <td bgcolor="#ffffff"><strong>Manchester_U<br>
+
+Liverpool<br>
+
+Chelsea<br>
+
+Arsenal<br>
+
+Everton<br>
+
+Aston_Villa<br>
+
+Fulham<br>
+
+Tottenham<br>
+
+West_Ham<br>
+
+Manchester_C<br>
+
+Wigan<br>
+
+Stoke_City<br>
+
+Bolton<br>
+
+Portsmouth<br>
+
+Blackburn<br>
+
+Sunderland<br>
+
+Hull_City<br>
+
+Newcastle<br>
+
+Middlesbrough<br>
+
+West_Brom_Albion </strong></td>
+
+      <td align="center" bgcolor="#ffffff" width="60">28<br>
+
+25<br>
+
+25<br>
+
+20<br>
+
+17<br>
+
+17<br>
+
+14<br>
+
+14<br>
+
+14<br>
+
+15<br>
+
+12<br>
+
+12<br>
+
+11<br>
+
+10<br>
+
+10<br>
+
+9<br>
+
+8<br>
+
+7<br>
+
+7<br>
+
+8</td>
+
+      <td align="center" bgcolor="#ffffff" width="60">6<br>
+
+11<br>
+
+8<br>
+
+12<br>
+
+12<br>
+
+11<br>
+
+11<br>
+
+9<br>
+
+9<br>
+
+5<br>
+
+9<br>
+
+9<br>
+
+8<br>
+
+11<br>
+
+11<br>
+
+9<br>
+
+11<br>
+
+13<br>
+
+11<br>
+
+8</td>
+
+      <td align="center" bgcolor="#ffffff" width="60">4<br>
+
+2<br>
+
+5<br>
+
+6<br>
+
+9<br>
+
+10<br>
+
+13<br>
+
+15<br>
+
+15<br>
+
+18<br>
+
+17<br>
+
+17<br>
+
+19<br>
+
+17<br>
+
+17<br>
+
+20<br>
+
+19<br>
+
+18<br>
+
+20<br>
+
+22</td>
+
+      <td align="center" bgcolor="#ffffff" width="60">90<br>
+
+86<br>
+
+83<br>
+
+72<br>
+
+63<br>
+
+62<br>
+
+53<br>
+
+51<br>
+
+51<br>
+
+50<br>
+
+45<br>
+
+45<br>
+
+41<br>
+
+41<br>
+
+41<br>
+
+36<br>
+
+35<br>
+
+34<br>
+
+32<br>
+
+32</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<p>In einer fr&uuml;heren Simulation beobachteten wir, dass <span style="text-decoration: underline; color: rgb(0, 0, 153);">es
+eine
+beachtliche Variabilit&auml;t bei den Punkten gibt</span>,
+selbst wenn
+alle Mannschaften gleichm&auml;&szlig;ig abgestimmt sind.
+Jedoch,
+...&nbsp;&nbsp;&nbsp;</p>
+
+<center>
+<table bgcolor="white" border="1" cellpadding="10" cellspacing="0" width="75%">
+
+  <tbody>
+
+    <tr>
+
+      <td><strong>Falls einige Mannschaften ihre Spiele mit
+gr&ouml;&szlig;erer Wahrscheinlichkeit gewinnen als andere, ist
+die
+Wahrscheinlichkeit der Streuung von Endpunkten
+gr&ouml;&szlig;er
+&ndash; Anfangs- und Schlussteams sind wahrscheinlich
+gegens&auml;tzlicher.&nbsp;&nbsp;</strong></td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+</center>
+
+<p class="heading">Eine Simulation</p>
+
+<p>Um abzusch&auml;tzen, ob es irgendeinen Unterschied auf
+der
+F&auml;higkeitsebene gibt, kann man eine Simulation der Liga
+ablaufen
+lassen, ausgehend von gleichm&auml;&szlig;ig abgestimmten
+Mannschaften
+und zuf&auml;lligen Ergebnissen mit Wahrscheinlichkeiten von 0,372,
+0,372 und 0,255 f&uuml;r Gewinne, Niederlagen und Remis. (Ein
+Anteil
+von 0,255 von Spielen in der aktuellen Liga trat in Remis auf.)</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" height="520" width="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="randomisationProg.LeagueSDApplet"><param name="labelName" value="Team"><param name="labels" value="ManchesterU Liverpool Chelsea Arsenal Everton AstonVilla Fulham Tottenham WestHam ManchesterC Wigan StokeCity Bolton Portsmouth Blackburn Sunderland HullCity Newcastle Middlesbro WestBromA"><param name="varName" value="Results"><param name="wins" value="28 25 25 20 17 17 14 14 14 15 12 12 11 10 10 9 8 7 7 8"><param name="draws" value="6 11 8 12 12 11 11 9 9 5 9 9 8 11 11 9 11 13 11 8"><param name="summaryAxis" value="0 20 0 5"><param name="drawProb" value="0.255"><param name="sdName" value="St devn"><param name="maxSD" value="99.999"><param name="customText" value="Propn more extreme=Extremeres Verh&auml;ltnis#Actual Data=Reale Ergebnisse#Simulated Data=Simulierte Ergebnisse"></applet></div>
+
+<p>Klicke<strong> Simulieren</strong>,
+um die
+380 Spiele in einer Saison zu simulieren. Die Standardabweichung der
+Endpunkte ist unter der Tabelle aufgef&uuml;hrt. Klicke <strong>Akkumulieren</strong>, dann
+durchlaufe die
+Simulation 100 Mal. <span style="color: rgb(102, 102, 102);">(Halte
+den Schalter f&uuml;r </span><span style="font-weight: bold; color: rgb(102, 102, 102);">Simulieren</span><span style="color: rgb(102, 102, 102);"> gedr&uuml;ckt, um
+den Vorgang zu
+beschleunigen.)</span></p>
+
+<p>Die Standardabweichung von Punkten in der aktuellen
+Ligatabelle war
+18,2. Da die meisten simulierten Standardabweichungen zwischen 5 und 12
+liegen, folgert man, dass solch eine hohe Streuung h&ouml;chst
+unwahrscheinlich sein w&uuml;rde, falls die Mannschaften
+gleichm&auml;&szlig;ig abgestimmt
+waren.&nbsp;&nbsp;&nbsp;</p>
+
+<center>
+<table bgcolor="white" border="1" cellpadding="10" cellspacing="0" width="75%">
+
+  <tbody>
+
+    <tr>
+
+      <td><strong>Es gibt starke Anhaltspunkte, dass die
+erstklassigen
+Mannschaften &bdquo;besser&ldquo; sind, als die
+Schlussmannschaften.&nbsp;</strong></td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+</center>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

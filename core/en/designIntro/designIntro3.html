@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>A badly designed experiment</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="lurking variable, experimental design">
+	<meta name="dataset" content="Calf weight gain">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Bad experimental design</p>
+  <p>We  noted earlier that the experimental units often have considerable variability. If the treatments are allocated to experimental units in a way that is associated with their characteristics, these varying characteristics can distort the apparent relationship between the treatments and the response.</p>
+  <p class="eqn"><img class="gif" src="../designIntro/images/lurking2.gif" width="297" height="120"></p>
+  <p>In a badly designed experiment, the characteristics of the experimental units act in the same way as lurking variables in observational studies.</p>
+  <p class="heading">Good experimental design</p>
+  <p>Since variability in the experimental units is usually unavoidable, we cannot 
+		prevent their effect on the response. However, in an experiment it is possible 
+		to allocate treatments to the experimental units in a way that either eliminates, 
+		or at least reduces, the relationship between the treatment, <em>X</em>, and 
+		characteristics of the experimental units. </p>
+  <p class="eqn"><img class="gif" src="../designIntro/images/lurking3.gif" width="297" height="120"></p>
+  <p>Good experimental design can avoid the potential effect of lurking variables. </p>
+
+<div class="diagram" title="Illustration: Weight gain in calves">
+    <p class="heading">Weight gain in calves &mdash; a badly designed experiment</p>
+		
+<p>Eighteen calves were used in an experiment to assess whether a feed supplement
+ improves their weight gain over a 2-month period. The calves were driven into
+ a barn and the first nine to enter were separated and given the supplement.
+We  will conduct a simulation of this experiment in which <strong>the supplement
+increases  weight gain by exactly 5</strong>.</p>
+		<p>The circles on the left of the diagram below represent the 18 calves with 
+			their initial weights represented by the colours of the circles.</p>
+		<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="580" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="experProg.SelectTreatmentsApplet">
+<param name="yVarName" value="Weight gain (kg)">
+<param name="yRegn" value="-38 0.5 2">
+<param name="yAxis" value="0 40 0 5">
+<param name="lurkingVarName" value="Initial weight:">
+<param name="lurkingValues" value="118 113 119 107 100 123 105 130 115 108 110 120 115 101 111 120 112 125">
+<param name="lurkingMinMax" value="100 kg#130 kg">
+<param name="unitName" value="Calves">
+<param name="circleCols" value="3">
+<param name="treatVarName" value="Feed">
+<param name="treatLabels" value="Control Supplement">
+<param name="treatEffect" value="5.0">
+<param name="lurkingRegn" value="0.0 1.0 12.0">
+<param name="effectName" value="Effect of supplement">
+<param name="noInLowGroup" value="9">
+<param name="maxDiff" value="99.99">
+<param name="randomSeed" value="54329311 23498564">
+<param name="customText" value="Theoretical=Theoretical#Estimated=Estimated#Allocate*Treatments=Allocate*Treatments#Run*Experiment=Run*Experiment">
+</applet> 
+</div>
+
+		<p>Click <strong>Allocate treatments</strong> to simulate the selection of 
+			nine of the calves (the first nine to enter the barn) to be given the 
+			feed supplement. Now click <strong>Run experiment</strong> to simulate the 
+			weight gains of the calves over two months.</p>
+		<p>Repeat the experiment a few times and observe that most runs of the experiment 
+			estimate the effect of the supplement to be an increased weight gain of 
+			between 6 and 11.</p>
+		
+<div class="centred"><div class="boxed">
+<p><span class="red">Why does the experiment consistently 
+					over-estimate the effect of the supplement?</span></p>
+</div></div>
+
+		<p>The problem lies in the method of choosing the calves to get the supplement. 
+			Larger calves tend to push ahead and enter the barn first, so the calves 
+			getting the supplement tend to be larger and we saw in the previous page 
+			that larger cows tend to gain more weight even without being given a supplement.</p>
+		<p class="heading">Weight gain with ineffective supplement</p>
+		<p>The reason for the misleading results is clearer in the following simulation 
+			in which the supplement has <strong>zero effect</strong>.</p>
+		<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="580" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="experProg.SelectTreatmentsApplet">
+<param name="yVarName" value="Weight gain (kg)">
+<param name="yRegn" value="-38 0.5 2">
+<param name="yAxis" value="0 40 0 5">
+<param name="lurkingVarName" value="Initial weight:">
+<param name="lurkingValues" value="118 113 119 107 100 123 105 130 115 108 110 120 115 101 111 120 112 125">
+<param name="lurkingMinMax" value="100 kg#130 kg">
+<param name="unitName" value="Calves">
+<param name="circleCols" value="3">
+<param name="treatVarName" value="Feed">
+<param name="treatLabels" value="Control Supplement">
+<param name="treatEffect" value="0.0">
+<param name="lurkingRegn" value="0.0 1.0 12.0">
+<param name="effectName" value="Effect of supplement">
+<param name="noInLowGroup" value="9">
+<param name="maxDiff" value="99.99">
+<param name="randomSeed" value="54329311 23498564">
+<param name="customText" value="Theoretical=Theoretical#Estimated=Estimated#Allocate*Treatments=Allocate*Treatments#Run*Experiment=Run*Experiment">
+</applet> 
+</div>
+
+<p>Repeat the simulation a few times and observe that the supplement is usually 
+	estimated to have a positive effect even though <strong>we know that it 
+	has no effect</strong>.</p>
+<p>Observe that the calves receiving the supplement tend to have higher initial 
+	weight &mdash; their circles are bluer. The difference between the means of the 
+	two groups of calves is caused by the difference in their average weights, 
+	not the supplement being tested.</p>
+
+<div class="centred"><div class="boxed">
+<p>Good experimental design means ensuring 
+			that there are no major differences between the two groups of experimental 
+			units.</p>
+</div></div>
+
+<p>Later pages in this section describe some strategies to follow when designing 
+	experiments that avoid the problem of lurking variables.</p>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

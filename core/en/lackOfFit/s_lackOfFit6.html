@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Goodness-of-fit for other models</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="interaction, curvature, lack of fit, analysis of variance">
+	<meta name="dataset" content="Bee energy expenditure">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Data with multiple observations at each (<em>x</em>, <em>z</em>)</p>
+  <p>In experimental data, there are often a small number of different x-values 
+		and z-values used in the experiment with several response measurements at 
+		each combination. For these data, it is possible to perform a test for whether 
+		any particuar linear model adequately describes the data. We will call the 
+		model under consideration 'Model A'. </p>
+	<p>We showed earlier that an analysis of variance table can be built from any 
+		sequence of models of increasing 'complexity'. We can add a final 'complex' 
+		model that allows each (<em>x</em>, <em>z</em>) combination to have its own 
+		mean &mdash; equivalent to treating each such combination as a separate 'group' 
+		and fitting a <a href="javascript:showNamedPage('oneWayAnova1')">1-factor 
+		analysis of variance model</a>.</p>
+	<p>The lack-of-fit sum of squares in the analysis of variance table is the sum 
+		of squares of the difference in fitted values between this 1-factor model 
+		and Model A. Its associated p-value describes the evidence that Model A is 
+		not adequate to describe variation in the data.</p>
+
+<div class="diagram"> 
+		<p class="heading">Energy expenditure of bees</p>
+
+		<p>We first examine the linear model for energy expenditure,</p>
+		<p class=eqn><img src="../nonlinTwo/images/xzModel.gif" width="214" height="17"></p>
+		<p>The diagram below shows the fitted values from this model <span class="red">(red)</span> 
+			and the fitted values for the factor model whose fitted value at each x-z 
+			combination is the mean of these observations <span class="blue">(blue)</span>.</p>
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="curveInteractProg.PureErrorTestApplet">
+<param name="yAxis" value="0 20 0 5">
+<param name="xAxis" value="17 43 20 10">
+<param name="zAxis" value="15 65 20 20">
+<param name="yVarName" value="energy (y)">
+<param name="xVarName" value="temperature (x)">
+<param name="zVarName" value="sucrose (z)">
+<param name="catName" value="group">
+<param name="yValues" value="3.1 3.7 4.7 5.5 6.7 7.3 7.9 9.2 9.3 6.0 6.9 7.5 11.5 12.9 13.4 17.5 15.8 14.7 7.7 8.3 9.5 15.7 14.3 15.9 19.1 18.0 19.9">
+<param name="xValues" value="9@20 9@30 9@40">
+<param name="zValues" value="3@20 3@40 3@60 3@20 3@40 3@60 3@20 3@40 3@60">
+<param name="catValues" value="3@0 3@1 3@2 3@3 3@4 3@5 3@6 3@7 3@8">
+<param name="catLabels" value="0 1 2 3 4 5 6 7 8">
+<param name="xList" value="20 30 40">
+<param name="zList" value="20 40 60">
+<param name="maxParam" value="-99.9 9.99 -9.999 -9.999 -9.9999 -9.9999">
+<param name="compName" value="Total#Linear X & Z#Lack of fit#Residual">
+<param name="maxSsq" value="999.99 999.99 999.99">
+<param name="maxTableEntries" value="-99.999 9.999 99.99">
+<param name="anovaType" value="linLin">
+</applet> 
+</div>
+
+		<p>In the anova table, the sum of squares for lack of fit is the sum of squared 
+			differences between these two sets of fitted values. Its associated p-value 
+			is close to zero giving strong evidence that the model with linear terms 
+			in both variables is not adequate.</p>
+		<p>(This should come as no suprise &mdash; after all, we found strong evidence 
+			of curvature and interaction in earlier pages!)</p>
+		<p class="heading">Model with curvature and interaction</p>
+
+		<p>We now examine the goodness-of-fit of the model with quadratic terms and 
+			interaction that was examined on the previous page.</p>
+		<p class=eqn><img src="images/quadInteractModel.gif" width="412" height="22"></p>
+		<p>Again the fitted values for this model are shown in <span class="red">red</span> 
+			and those for the factor model are shown in <span class="blue">blue</span>. 
+			(To make the diagram simpler, the red fitted means have been joined by straight 
+			lines instead of quadratic curves.)</p>
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="490">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="curveInteractProg.PureErrorTestApplet">
+<param name="yAxis" value="0 20 0 5">
+<param name="xAxis" value="17 43 20 10">
+<param name="zAxis" value="15 65 20 20">
+<param name="yVarName" value="energy (y)">
+<param name="xVarName" value="temperature (x)">
+<param name="zVarName" value="sucrose (z)">
+<param name="catName" value="group">
+<param name="yValues" value="3.1 3.7 4.7 5.5 6.7 7.3 7.9 9.2 9.3 6.0 6.9 7.5 11.5 12.9 13.4 17.5 15.8 14.7 7.7 8.3 9.5 15.7 14.3 15.9 19.1 18.0 19.9">
+<param name="xValues" value="9@20 9@30 9@40">
+<param name="zValues" value="3@20 3@40 3@60 3@20 3@40 3@60 3@20 3@40 3@60">
+<param name="catValues" value="3@0 3@1 3@2 3@3 3@4 3@5 3@6 3@7 3@8">
+<param name="catLabels" value="0 1 2 3 4 5 6 7 8">
+<param name="xList" value="20 30 40">
+<param name="zList" value="20 40 60">
+<param name="maxParam" value="-99.9 9.99 -9.999 -9.999 -9.9999 -9.9999">
+<param name="compName" value="Total#Linear X & Z#Quadratic X & Z#Interaction#Lack of fit#Residual">
+<param name="maxSsq" value="999.99 999.99 999.99">
+<param name="maxTableEntries" value="-99.999 9.999 99.99">
+<param name="anovaType" value="quadInteract">
+</applet> 
+</div>
+
+		<p>The two sets of fitted values are now much closer, so their sum of squared 
+			differences (the lack-of-fit sum of squares) is much smaller. The associated 
+			p-value for lack of fit is 0.2397, so there is no evidence that the model 
+			with quadratic terms in <em>x</em> and <em>z</em> and a simple interaction 
+			term does not underly the data.</p>
+		</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

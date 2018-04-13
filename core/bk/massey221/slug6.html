@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Inference</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="slope, confidence interval, hypothesis test">
+	<meta name="dataset" content="Slug weight and length">
+</head>
+
+
+<body style="background-color:#FFE1B6">
+<script type="text/javascript">writePageStart();</script>
+
+
+<p class="heading">Confidence Intervals for Slope and Intercept
+</p>
+
+<p>Minitab gives a handle on the sample-to-sample variability of the
+least squares coefficients (as estimates of the corresponding parameters for
+slugs in general) in its regression output. The following output was generated
+by Minitab with the <strong>Regression</strong> command where the response variable
+was <i>weight</i> (a Minitab column with the 100 slug weights) and the explanatory
+variable was <i>len3</i> (a Minitab column containing the 100 values of
+(length)<img src="images/super3.gif" width="7" height="10" align="BASELINE">).
+</p>
+
+<div class="centred"><table border="0" cellspacing="0" cellpadding="5" class="centred">
+<tr><td bgcolor="white" class="black">
+<tt><pre width="60">
+The regression equation is
+weight = 0.165 + 0.0124 len3
+
+Predictor       Coef       Stdev    t-ratio        p
+Constant      0.1652      0.1044       1.58    0.117
+len3       0.0124131   0.0003693      33.61    0.000
+</pre></tt>
+</td></tr>
+</table></div>
+
+<p>The column titled 'Stdev' gives the standard deviation of the two
+coefficients and therefore describes their accuracy. 95% confidence intervals
+for the corresponding parameters describing 'slugs in general' are of the form
+</p>
+
+<p class=eqn>
+<img src="images/ci2General.gif" width="175" height="24" alt="coef +- 2stdev(coef)">
+</p>
+
+<p>(If the number of data points, <i>n</i>, is small &mdash; say under 20 &mdash; you
+should really use a slightly larger value from t-tables with (<i>n</i>&nbsp;-&nbsp;2)
+degrees of freedom instead of the constant '2'.)</p>
+
+<p>95% confidence intervals for the two linear model parameters are therefore</p>
+
+<p class=eqn>
+<img src="images/param3CIs.gif" width="414" height="45" alt="CIs for slope & intercept">
+</p>
+
+<p class="heading">Hypothesis Tests for parameters
+</p>
+
+<p>The Minitab output also provides a column of p-values associated with the
+model parameters. These p-values describe whether the data are consistent with
+the corresponding model parameter being zero.
+</p>
+
+<dl>
+<dt><b>Is the intercept zero?</b>
+</dt>
+<dd>The p-value for the constant term is 0.117, meaning that there would have
+	been probability 0.117 of getting an intercept as far from zero as 0.1652
+	even if the intercept for slugs in general was 0.0. Since this is fairly
+	high, we conclude that the data are consistent with an intercept of zero.
+	<br>This is reassuring since a model with zero intercept would predict a
+	slug with length zero to also have weight zero!
+</dd>
+
+<dt><b>Is the slope zero?</b>
+</dt>
+    <dd>Minitab reports the p-value for (length)<img src="images/super3.gif" width="7" height="10" align="BASELINE"> 
+	  to be '0.000' which really means 'under 0.0005', meaning that there would 
+	  have been a probability below 0.0005 of getting a slope as far from zero 
+	  as our least squares estimate of 0.0124 if the slope for slugs in general 
+	  was 0.0. We therefore conclude that slug weight almost certainly <strong>is</strong> 
+	  related to (length)<img src="images/super3.gif" width="7" height="10" align="BASELINE">. 
+	</dd>
+</dl>
+
+<p>We could continue with this analysis by fitting a model without an intercept term,
+an option when specifying a regression model in Minitab. However there are other
+serious problems that mean a different approach is required.
+</p>
+	
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

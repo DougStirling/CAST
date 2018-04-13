@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>P-value and its interpretation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="hypothesis test, test, p-value, binomial distribution, exponential distribution">
+	<meta name="dataset" content="Aircraft airconditioner failures">
+	<meta name="dataset" content="Telepathy">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>The null and alternative hypotheses are treated differently in statistical hypothesis testing. We compare them by asking&nbsp;...</p>
+<div class="boxed" style="background-color:#FFFF00">
+	<p><span class="darkred">Are the data consistent with the null hypothesis?</span></p>
+</div>
+<p>A hypothesis test is based on a p-value — the probability of getting a value of the test statistic as &quot;extreme&quot; as the one calculated from the actual data set, assuming that the null hypothesis holds. </p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>For a hypothesis test using a test statistic \(T\), if the values of \(T\) that favour the alternative hypothesis at least as much as  the observed value of the test statistic, \(t\), are the set \(A\), the <strong>p-value</strong> for the test is the probability of such a value when the null hypothesis holds,</p>
+\[
+\text{p-value} \;\;=\;\; P(T \in A \mid H_0)
+\]</div>
+
+<p>For example, if <strong>large</strong> values of the test statistic, \(T\), would favour the alternative hypothesis and it is evaluated to be \(t\) from the recorded data, the p-value is</p>
+\[
+\text{p-value} \;\;=\;\; P(T \ge t \mid H_0)
+\]
+<p>Since we know the distribution of the test statistic when the null hypothesis holds, the p-value can always be evaluated.</p>
+<p class="heading">Interpretation</p>
+<p>A small p-value means that our data would have been unlikely if the null hypothesis was true. This gives evidence that the data are not consistent with the null hypothesis. The following table may be regarded as an oversimplification, but can be used as a guide to interpreting p-values.</p>
+
+<div class="centred">
+	<table cellpadding="5" cellspacing="0" class="centred">
+		<tr>
+			<th align="left">p-value</th>
+			<th align="left">Interpretation</th>
+		</tr>
+		<tr bgcolor="white">
+			<td align="left" style="border-top:1px solid #999999;"><strong>over 0.1</strong></td>
+			<td align="left" style="border-top:1px solid #999999;">no evidence that the null hypothesis does not hold</td>
+		</tr>
+		<tr bgcolor="white">
+			<td align="left" style="border-top:1px solid #999999;"><strong>between 0.05 and 0.1</strong></td>
+			<td align="left" style="border-top:1px solid #999999;">very weak evidence that the null hypothesis does not hold</td>
+		</tr>
+		<tr bgcolor="white">
+			<td align="left" style="border-top:1px solid #999999;"><strong>between 0.01 and 0.05</strong></td>
+			<td align="left" style="border-top:1px solid #999999;">moderately strong evidence that the null hypothesis does not hold</td>
+		</tr>
+		<tr bgcolor="white">
+			<td align="left" style="border-top:1px solid #999999; border-bottom:1px solid #999999;"><strong>under 0.01</strong></td>
+			<td align="left" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">strong evidence that the null hypothesis does not hold</td>
+		</tr>
+	</table>
+</div>
+<br>
+
+<div class="example">
+	<p class="exampleHeading">Binomial example</p>
+	<p>If \(X\) is the number of successes in \(n = 90\) independent binomial trials, \(X \sim \BinomDistn(n=90, \pi)\). We might want to test</p>
+	<ul>
+		<li>Null hypothesis, <strong>H<sub>0</sub></strong>: \(\pi = \diagfrac {\small 1} {\small 3} \)</li>
+		<li>Alternative hypothesis, <strong>H<sub>A</sub></strong>: \(\pi \gt \diagfrac {\small 1} {\small 3}\)</li>
+	</ul>
+	<p>If \(x = 36\) successes were recorded, the p-value is the probability of 36 or more successes from a  \(\BinomDistn(n=90, \diagfrac {\small 1} {\small 3})\) distribution.</p>
+	<p class="eqn"><img src="images/s_oneTailed.png" width="447" height="175" alt=""/></p>
+	<p>There would be an 11% chance of getting 36 successes when \(\pi\) was \(\diagfrac {\small 1} {\small 3}\) so the data would not be particularly unusual if <strong>H<sub>0</sub></strong> was true. We would therefore conclude that the data are consistent with the null hypothesis and there is no evidence suggesting that the alternative hypothesis is really true.</p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

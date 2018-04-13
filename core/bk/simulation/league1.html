@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Simulation of league</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Modelling a league
+</p>
+
+<p>In any game between evenly-matched opponents, there is a considerable chance element
+in the outcome &mdash; we cannot predict the result of the match. We will use a simulation to
+investigate how much a league table reflects this randomness and how much
+the results depend on the abilities of the different teams.
+</p>
+
+<p>The first stage in any simulation is to produce a <strong>model</strong> for
+the process. In the league table example, such a model defines the probabilities
+of winning, drawing and losing for each match during the season. A good model would express
+these probabilities in terms of different abilities for the various teams
+(perhaps based on their results from the previous year), a home-team advantage
+and changes during the season. However a much simpler model can still provide useful
+information.
+</p>
+
+<div class="diagram">
+
+<p>We will model a league with 10 teams.
+We initially assume that the two teams in each match are equally likely to win.
+More precisely, in any match between teams <i>i</i> and <i>j</i>, we assume that
+</p>
+
+<p class=eqn>
+<img src="images/winLoseDraw.gif" width="290" height="51" alt="P(win)=P(lose)=.4, P(draw)=.2">
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="650" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="sportProg.LeagueTableApplet">
+<param name="tableName" value="League table">
+<param name="drawProb" value="0.2">
+<param name="teamAProb" value="0.00 0.80 0.40">
+<param name="randomSeed" value="922883746">
+<param name="teams" value="10">
+<param name="rankAxis" value="1 10 1 1">
+<param name="rankName" value="Team A rank">
+<param name="customText" value="Run League=Run League#wins=wins#draw=draw#lose=lose#is top=is top">
+</applet>
+</div>
+
+<p>Click <strong>Run League</strong> to perform a simulation 
+in which each pair of teams plays two matches (one at each team's home ground). 
+The table on the left shows the winners of all 90 matches that were played with 
+a cross representing a draw. The row and column totals show the total points for 
+each team in its home and away matches respectively. (Three points are awarded 
+for a win and one for a draw.) </p>
+
+<p>The table in the centre shows the placings of the teams at the end of the season.</p>
+</div>
+
+<p class="heading">Is the best team likely to be top of the league?
+</p>
+
+<p>We will concentrate on the final position of Team A in the league &mdash; its rank is
+shown by a cross in the dot plot on the right. (A rank of 1 means that the team was top
+or top equal in the league.)</p>
+
+
+<div class="diagram">
+<p>Click <strong>Accumulate</strong> and run the simulation
+several more times. Observe that
+Team A has (almost) the same chance of being in any position in the league at the end of the
+season.
+</p>
+
+<p>The slider under the diagram allows us to adjust the probability of Team A winning its
+matches. (The other teams remain evenly matched.) Give Team A a probability of 0.55 of
+winning its matches &mdash; more than double its probability of losing &mdash; then repeat the
+simulation 100 times.
+</p>
+
+<p>Observe that Team A often wins the league, but not always. In almost half
+of our simulated seasons, another team beats it, despite Team A's advantage! Indeed, you
+will probably have observed that Team A's final placing was in the bottom half
+of the league in several simulated seasons!
+</p>
+</div>
+
+<p>We clearly need to be careful about interpreting a team's placing as being due 
+to skill, rather than chance!
+</p>
+
+<div class="boxed"><p>From the results of several runs of a simulation, we often get 
+	  a good idea of the properties of our model.</p>
+	  <p>However there is some uncertainty 
+	  due to the randomness of the sampling process.</p></div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

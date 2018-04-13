@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Selecting a random sample</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="random numbers">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Selecting a sample manually (raffle tickets)</p>
+
+<p>When choosing a random sample, each population member must have the same chance 
+of being included in the sample. How can we select a random sample in practice? 
+One method of selecting a random sample of size <em>n</em> is...</p>
+<ol>
+<li>Write the names (or other identification) of all population members on identical 
+pieces of paper,</li>
+<li>Mix them thoroughly in a box</li>
+<li>Select <em>n</em> pieces of paper (with or without replacement).</li>
+</ol>
+
+<p>This method is often used for raffles, but thorough mixing is difficult  for large populations and it is rarely used in research applications.</p>
+<p class="heading">Random digits</p>
+<p>An alternative method of selecting a random sample involves generating random 
+digits (0, 1, ..., 9). There are several ways to generate random digits such that 
+each has the same chance of appearing.</p>
+
+<table border="0" cellpadding="0" cellspacing="0" style="padding-bottom:0px; padding-top:0px"><tr>
+<td><ul style="margin-left:10px; margin-top:0px;"><li>Roll a 10-sided 
+die several times. (6-sided dice are more common, but 10-sided dice are also used 
+in various games &mdash; especially fantasy games.)</li>
+<li>Books of random digits have been published. Open a page at random then use 
+a sequence of digits starting from an arbitrary position on the page.</li>
+<li>Some computer programs (e.g. Microsoft Excel) contain functions that generate 
+random numbers. (Computer-generated values should strictly be called <em>pseudo-random 
+numbers</em>, but the distinction is not important here.)</li>
+<li>Many calculators have a 'random number' key that generates (pseudo-) random numbers.</li>
+</ul></td>
+<td valign="top" style="padding-left:12px;"><img src="../popSamp/images/die.png" width="150" height="123"></td>
+</tr></table>
+
+<p>Concatenating 2 or more of these random digits gives a larger random number.</p>
+
+
+<div class="diagram" title="Illustration: Generating random numbers"> 
+<p>Click the button <strong>Generate digit</strong> to generate a random digit.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="300" height="100">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="samplingProg.RandomDigitApplet">
+<param name="random" value="538402167">
+<param name="customText" value="Generate digit=Generate digit">
+</applet>
+</div>
+
+<p>Concatenating three such random digits gives a random number between 0 and 999.
+Click <strong>Generate value</strong> to find a random number in this range.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="100">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="samplingProg.RandomValueApplet">
+<param name="random" value="538402167 387345678 13059746">
+<param name="customText" value="Generate value=Generate value">
+</applet>
+</div>
+
+</div>
+  
+<p class="heading">Random number between 0 and <em>k</em></p>
+
+<p>A random number that is equally likely to be any number between 0 and 357 can be found by repeatedly generating 3-digit numbers (between 0 and 999) until a value between 0 and 357 is obtained.</p>
+<p>It is easier however to use a spreadsheet such as Excel &mdash; it has a function designed for this purpose, &quot;=RANDBEWEEN(0, 357)&quot;.</p>
+<p class="heading">Selecting a random sample</p>
+<p>To select a random sample without replacement using random numbers,</p>
+
+<ol>
+<li>Number all population members, starting from index 0.</li>
+		<li>Generate a random value between 0 and the largest population index.</li>
+<li>If sampling <strong>without</strong> replacement and the generated index has already been selected, go back to step 2 and select another index.<br>
+</li>
+<li>Add the selected population member to the sample, then repeat steps 2. and 3. until a large enough sample has been selected.</li>
+</ol>
+
+
+<div class="diagram" title="Illustration: Selecting a random sample without replacement"> 
+<p>The diagram below illustrates sampling without replacement from a population 
+of 56 individuals. They have been numbered from 0 to 55.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="samplingProg.SimulateSampleApplet">
+<param name="random" value="438402167 287345678">
+<param name="catVarName" value="Gender">
+<param name="catLabels" value="Male Female">
+<param name="popnInfo" value="7 8 2 7 5 0.5 632563625">
+<param name="customText" value="Clear sample=Clear sample#Random index=Random index#Faster=Faster#Ignored: no item has index=Ignored: no item has index#Item * has been selected=Item * has been selected#Ignored: item * was previously selected=Ignored: item * was previously selected">
+</applet>
+</div>
+
+<p>Click <strong>Random index</strong>. If the resulting two digits are between 
+0 and 55, the corresponding individual is added to the sample. Otherwise, an error 
+message appears and a new random value must be generated.</p>
+<p>Repeat several times to add more individuals to the sample. Note that:</p>
+
+<ul>
+<li>Almost half of the values initially generated are rejected because they are outside the 
+range 0 to 55. These rejections would have been avoided if the Excel function &quot;=RANDBETWEEN(0, 55)&quot; had been used instead of initially generating values between 0 and 99.</li>
+<li>Occasionally a population member is selected that is already in the sample 
+&mdash; it cannot be added twice. This happens more often as the sample size increases.</li>
+</ul>
+
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

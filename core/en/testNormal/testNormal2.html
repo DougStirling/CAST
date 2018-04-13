@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Test about mean, unknown σ</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="hypothesis test, test, normal distribution, mean, t distribution">
+	<meta name="dataset" content="Saturated fat in cooking oil">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Unknown variance, \(\sigma^2\)</p>
+
+<p>In most practical situations where normal distributions are used as models for data, the normal variance, \(\sigma^2\), is an unknown parameter.</p>
+<div class="example">
+	<p class="exampleHeading">Saturated fat content of cooking oil</p>
+	<p>Both cholesterol and saturated fats are often avoided by people who are trying 
+to lose weight or reduce their blood cholesterol level. Cooking oil made from 
+soybeans has little cholesterol and has been claimed to have only 15% saturated 
+fat.</p>
+	<p>A clinician believes that the saturated fat content is greater than 15% and 
+		randomly samples 13 bottles of soybean cooking oil for testing.</p>
+
+<div class="centred">
+<table border="0" class="centred soy" cellpadding="5" cellspacing="0" style="border:1px solid #999999; background-color:#FFFFFF;">
+			<caption>
+				<strong>Percentage saturated fat in soybean cooking oil</strong>
+			</caption>
+			<tr align="center" valign="top">
+				<td style="padding:5px 15px;">15.2<br>
+					12.4</td>
+				<td style="padding:5px 15px;">15.4<br>
+					13.5</td>
+				<td style="padding:5px 15px;">15.9<br>
+					17.1</td>
+				<td style="padding:5px 15px;">16.9<br>
+					14.3</td>
+				<td style="padding:5px 15px;">19.1<br>
+					18.2</td>
+				<td style="padding:5px 15px;">15.5<br>
+					16.3</td>
+				<td style="padding:5px 15px;">20.0</td>
+			</tr>
+</table>
+</div>
+		
+	<p>We might model the data as a random sample from a normal distribution, and the hypotheses of interest  relate to the mean, \(\mu\), of this distribution,</p>
+	<p class=eqn><strong><font size="+1">H</font><sub>0</sub></strong>&nbsp;:&nbsp;&nbsp;&nbsp;\(\mu = 15%\)<br>
+	<strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>\(\mu \gt 15%\)</p>
+	<p>However we no longer know the  variance, \(\sigma^2\), of the  distribution. 
+		The only information we have about \(\sigma^2\) 
+		comes from our sample.</p>
+</div>
+<p>When \(\sigma^2\) was a known value, we previously used a test statistic of the form</p>
+\[
+Z \;\;=\;\; \frac{\overline{X} - \mu_0}{\ {\sigma}{\sqrt n}}
+\]
+<p>where \(\mu_0 = 15\) and \(n=13\) in the context of this example. However \(Z\) cannot be used as a test statistic when \(\sigma^2\) is unknown since its value cannot be found from the data.</p>
+<p class="heading">Test statistic</p>
+<p>A test statistic with similar characteristics can be defined if \(\sigma\) is replaced by the <strong>sample</strong> standard deviation, \(S\).</p>
+\[
+T \;\;=\;\; \frac{\overline{X} - \mu_0}{\ {S}{\sqrt n}}
+\]
+<p>However although \(Z\) has a standard normal distribution, \(Z \sim \NormalDistn(0,1)\) when the null hypothesis is true,  the test statistic \(T\) has a different distribution.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Distribution of test statistic T</p>
+		<p>If \(\overline{X}\) and \(S^2\) are the mean and variance of a random sample of size \(n\) from a \(\NormalDistn(\mu_0, \sigma^2)\) distribution,</p>
+\[
+T \;\;=\;\; \frac{\overline{X} - \mu_0}{\diagfrac{S}{\sqrt{n}}} \;\;\sim\;\; \TDistn(n-1 \text{ df})
+\]	</div>
+	<div class="proof">
+		<p>The proof is almost identical to the earlier proof that \(\large\frac{\overline{X} - \mu}{\diagfrac{S}{\sqrt{n}}}\) was a <a href="javascript:showNamedPage('tDistn3')">pivot for \(\mu\)</a>.</p>
+\[
+T \;\;=\;\; \frac{\overline{X} - \mu_0}{S/\sqrt{n}} \;\;=\;\; \frac{\large\frac{\overline{X} - \mu_0}{\sigma/\sqrt{n}}}{\sqrt{S^2/\sigma^2}}
+ \;\;=\;\; \frac{\large\frac{\overline{X} - \mu_0}{\sigma/\sqrt{n}}}{\sqrt{\large\frac{(n-1)S^2/\sigma^2}{n-1}}}
+\]
+<p>The numerator has a standard normal distribution and \(\diagfrac{(n-1)S^2}{\sigma^2}\) has an independent Chi-squared distribution, so</p>
+\[
+T \;\sim\; \frac{\NormalDistn(0,\;1)}{\sqrt{\large \frac {\ChiSqrDistn(n-1\text{ df})}{n-1}}}
+\;\;=\;\; \TDistn(n-1\text{ df})
+\]	</div>
+</div>
+<p class="heading">T-test for \(\mu\)</p>
+<p>The test statistic \(T\) is used in a similar way to the \(Z\) statistic on the previous page, but the p-value is obtained as a tail probability from a t distribution instead of a standard normal one. The method is illustrated in an example.</p>
+
+<div class="example" title="Example: Saturated fat content of cooking oil">
+	<p class="exampleHeading">Saturated fat content of cooking oil</p>
+	<p>For the cooking oil data, the sample mean and standard deviation of the \(n=13\) values were \(\overline{x} = 16.138\) and \(s = 2.154\), so the test statistic for the t-test about whether \(\mu = 15\) is</p>
+\[
+t \;\;=\;\; \frac{\overline{x} - 15}{\ {s}{\sqrt n}} \;\;=\;\; 1.906
+\]
+	<p>Since the alternative hypothesis is for \(\mu \gt 15\), the p-value for the test is the <strong>upper</strong> tail area of the \(\TDistn(12 \text{ df})\) distribution,</p>
+	<p class="eqn">p-value   =   \(P(T \ge 1.906) \;\;=\;\; 0.040\)</p>
+	<p>Since this is below 0.05, we conclude that there is moderately strong evidence that the mean saturated fat content of the oils is higher than the claimed 15%.</p>
+	<hr width="75%">
+	<p>The diagram below illustrates the calculations.</p>
+	<div class="centred">
+		<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="330">
+			<script type="text/javascript">writeAppletParams();</script>
+			<param name="appletName" value="testProg.ZPValueApplet">
+			<param name="backgroundColor" value="FFFBF3">		
+			<param name="varName" value="saturated fat content">
+			<param name="horizAxis" value="10 22 10 2">
+			<param name="values" value="15.2 12.4 15.4 13.5 15.9 17.1 16.9 14.3 19.1 18.2 15.5 16.3 20.0">
+			<param name="testInfo" value="15.0">
+			<param name="alternative" value="high">
+			<param name="dataDecimals" value="2">
+			<param name="means" value="14.0 18.0 0.01">
+			<param name="summaryDecimals" value="3 3 4">
+			<param name="formulaGif" value="test/t15.0">
+			<param name="customText" value="Actual Data=Actual Data#Modified Data=Modified Data#Sample mean=Sample mean#Distn of mean=Distn of mean">
+		</applet>
+	</div>
+	<p>Select <strong>Modified Data</strong> from the pop-up menu and use the slider 
+to investigate how data with different means would lead to different p-values and conclusions from the 
+test. </p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

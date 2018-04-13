@@ -1,0 +1,334 @@
+<html>
+<head>
+  <title>4. Independence</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 4 &nbsp; Independence</h1>
+<h1 class="sectionName">4.1 &nbsp; Marginal & conditional probability</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Joint probabilities</li>
+<li>Marginal probabilities</li>
+<li>Conditional probabilities</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='4'>
+<li>Graphical display of probabilities</li>
+<li>Calculations with probabilities</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">4.1.1 &nbsp; Joint probabilities</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Data sets with two categorical variables</p>
+<p>Bivariate categorical data sets are usually summarised with a contingency
+table.</p>
+<p>For example, a study examined 62 patients who had been given a prescription
+medicine for some condition. Each patient was classified by whether they had
+complied with the treatment prescribed and by racial group:</p>
+<div class="centred"><table border="0" class="centred" cellpadding="3" cellspacing="0">
+<tr>
+<th align="left">Race</th>
+<th align="center">&nbsp;&nbsp;&nbsp;&nbsp;Compliers&nbsp;&nbsp;&nbsp;&nbsp;</th>
+<th align="center">Non-compliers</th>
+<th align="center">&nbsp;&nbsp;&nbsp;Total&nbsp;&nbsp;&nbsp;</th>
+</tr>
+<tr>
+<th align="left">&nbsp;&nbsp;White</th>
+<td align="center" bgcolor="#FFFFFF" class="top left">13</td>
+<td align="center" bgcolor="#FFFFFF" class="top right">10</td>
+<td align="center">23</td>
+</tr>
+<tr>
+<th align="left">&nbsp;&nbsp;Non-white&nbsp;&nbsp;&nbsp;</th>
+<td align="center" bgcolor="#FFFFFF" class="bottom left">13</td>
+<td align="center" bgcolor="#FFFFFF" class="bottom right">26</td>
+<td align="center">39</td>
+</tr>
+<tr>
+<th align="left">Total</th>
+<td align="center">26</td>
+<td align="center">36</td>
+<td align="center">62</td>
+</tr>
+</table></div>
+<p class="heading">Joint probabilities</p>
+<p>Bivariate categorical data can be modelled as a random sample from an underlying
+population of pairs of categorical values. The population proportion for each
+pair (<em>x</em>, <em>y</em>) is denoted by <em>p<sub>xy</sub></em> and is called
+the <strong>joint probability</strong> for (<em>x</em>, <em>y</em>).</p>
+<p>In games of chance, we can often work out the joint probabilities. For example,
+if a gambler draws a card from a shuffled deck and also tosses a coin, there
+are eight possible combinations,</p>
+<p class=eqn><img src="../../../en/prob/images/s_cardAndCoin.gif" width="296" height="122" alt="pxy = 1/8"> </p>
+<p>Since these are equally likely,</p>
+<p class=eqn><span class="black"><em>p</em><span class="textSub">head, heart</span> &nbsp;= &nbsp;<em>p</em><span class="textSub">head, club</span> &nbsp;= &nbsp;... &nbsp;= &nbsp;<em>p</em><span class="textSub">tail, spade</span> &nbsp;= &nbsp;<sup>1</sup>/<sub>8</sub> &nbsp;= &nbsp;0.125</span> </p>
+<p class="heading">Interest in the model</p>
+<p>In practice, we usually only have a random sample (summarised by a contingency
+table) and do not know the underlying joint probabilities. The sample proportions
+however provide <strong>estimates</strong>.</p>
+<p class=eqn><img class="gif" src="../../../en/prob/images/glaucoma.gif" id="gif_image_1_1_1" width="510" height="308"><iframe class="svg" src="../../../en/prob/images/glaucoma.svg" id="svg_image_1_1_1" width="510" height="308" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_1_1_1");</script> </p>
+
+
+
+
+<h2 class="pageName">4.1.2 &nbsp; Marginal probabilities</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Probabilities for a single variable</p>
+<p>A model for two categorical variables is characterised by the joint probabilities <span class="black em">p<sub>xy</sub></span>.</p>
+<p>The <strong>marginal probability</strong>, <span class="black em">p<sub>x</sub></span>,
+for a variable <span class="em black">X</span>  is the proportion of <span class="black">(<em>x</em>,&nbsp;<em>y</em>)</span> pairs
+in the population with <span class="em black">X</span>  = <span class="em black">x</span> .
+This can be found by adding all joint probabilities for pairs with this <em>x</em>-value.</p>
+<p class="eqn"><img class="gif" src="../../../en/prob/images/margProbEqn.gif" id="gif_image_1_2_1" width="89" height="31"><iframe class="svg" src="../../../en/prob/images/margProbEqn.svg" id="svg_image_1_2_1" width="89" height="31" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_1_2_1");</script></p>
+<p>There is a similar formula for the marginal
+probabilities of the other variable, </p>
+<p class=eqn><img class="gif" src="../../../en/prob/images/margProb2Eqn.gif" id="gif_image_1_2_2" width="88" height="27"><iframe class="svg" src="../../../en/prob/images/margProb2Eqn.svg" id="svg_image_1_2_2" width="88" height="27" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_1_2_2");</script> </p>
+<p class="heading">Example</p>
+<p>In the following example, the marginal probabilities for <em>X</em> are the
+row of  totals under the table, and the marginal probabilities for <em>Y</em> are
+the column of totals on the right.</p>
+
+<div class="centred"><table class="centred" border="0" cellpadding="5" cellspacing="0">
+<caption align="TOP">
+<strong>Joint probabilities</strong>
+</caption>
+<tr>
+<th align="CENTER">&nbsp;</th>
+<th colspan="3" align="CENTER">Variable <em>X</em></th>
+<th>&nbsp;</th>
+</tr>
+<tr>
+<th align="CENTER">Variable <em>Y</em></th>
+<th align="CENTER"><span class="blue"><em>X</em> = A</span></th>
+<th align="CENTER"><span class="blue"><em>X</em> = B</span></th>
+<th align="CENTER"><span class="blue"><em>X</em> = C</span></th>
+<th align="CENTER"><span class="red">Total</span></th>
+</tr>
+<tr>
+<th align="CENTER"><span class="blue"><em>Y</em> = 1</span></th>
+<td align="CENTER" bgcolor="#FFFFFF" class="top left">0.2576</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="top">0.1364</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="top right">0.1212</td>
+<td align="CENTER"><span class="red">0.5152</span></td>
+</tr>
+<tr>
+<th align="CENTER"><span class="blue"><em>Y</em> = 2</span></th>
+<td align="CENTER" bgcolor="#FFFFFF" class="left">0.0909</td>
+<td align="CENTER" bgcolor="#FFFFFF">0.0758</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="right">0.0152</td>
+<td align="CENTER"><span class="red">0.1818</span></td>
+</tr>
+<tr>
+<th align="CENTER"><span class="blue"><em>Y</em> = 3</span></th>
+<td align="CENTER" bgcolor="#FFFFFF" class="left">0.0455</td>
+<td align="CENTER" bgcolor="#FFFFFF">0.0758</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="right">0.0606</td>
+<td align="CENTER"><span class="red">0.1818</span></td>
+</tr>
+<tr>
+<th align="CENTER"><span class="blue"><em>Y</em> = 4</span></th>
+<td align="CENTER" bgcolor="#FFFFFF" class="bottom left">0.0152</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="bottom">0.0303</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="bottom right">0.0758</td>
+<td align="CENTER"><span class="red">0.1212</span></td>
+</tr>
+<tr>
+<th align="CENTER"><span class="brown">Total</span></th>
+<td align="CENTER"><span class="brown">0.4091</span></td>
+<td align="CENTER"><span class="brown">0.3182</span></td>
+<td align="CENTER"><span class="brown">0.2727</span></td>
+<td align="CENTER"><span class="gray">1.0000</span></td>
+</tr>
+</table></div>
+
+
+
+
+<h2 class="pageName">4.1.3 &nbsp; Conditional probabilities</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Probabilities in a sub-population</p>
+<dl>
+<dt>Complete population</dt>
+<dd>The joint probabilities <span class="black em">p<sub>xy</sub></span> and the marginal
+probabilities <span class="black em">p<sub>x</sub></span> and <span class="black em">p<sub>y</sub></span> all
+describe proportions in the complete population of <span class="black">(<em>x</em>,&nbsp;<em>y</em>)</span> pairs.</dd>
+<dt>Sub-population</dt>
+<dd>In contrast, it is sometimes meaningful to restrict attention to a <strong>subset</strong> of
+the <span class="black">(<em>x</em>,&nbsp;<em>y</em>)</span> pairs. For example,
+we may be interested only in pairs for which the first variable, <span class="em black">X</span> ,
+has some particular value. Probabilities that relate to a sub-population are called <strong>conditional</strong> probabilities.</dd>
+</dl>
+<p class="heading">Conditional probabilities for <em>Y</em>, given <em>X</em>&nbsp;=&nbsp;<em>x</em></p>
+<p>The general definition of the conditional probabilities for <i><span class="black">Y</span></i> given
+that the value of <i><span class="black">X</span></i> is <span class="em black">x</span>  is </p>
+<div class="centred"><table width="40%" border="1" class="centred" cellpadding="10" cellspacing="0" style="background-color:#FFFFFF">
+<tr>
+<td align="center"><img class="gif" src="../../../en/prob/images/conditProbDefn.gif" id="gif_image_1_3_2" width="91" height="39"><iframe class="svg" src="../../../en/prob/images/conditProbDefn.svg" id="svg_image_1_3_2" width="91" height="39" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_1_3_2");</script></td>
+</tr>
+</table></div>
+<p>They can be found by rescaling of that row of the table of joint probabilities
+(dividing by <span class="black em">p<sub>x</sub></span>) so that the row sums to 1.0. </p>
+<p class=eqn><img class="gif" src="../../../en/prob/images/conditCalc.gif" id="gif_image_1_3_1" width="395" height="294"><iframe class="svg" src="../../../en/prob/images/conditCalc.svg" id="svg_image_1_3_1" width="395" height="294" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_1_3_1");</script></p>
+<p class="heading">Two sets of conditional probabilities</p>
+<p>Conditional probabilities for <span class="em black">X</span>  given
+that <span class="em black">Y</span> &nbsp;has the value <span class="em black">y</span>  are
+defined in a similar way:</p>
+<p class=eqn><img class="gif" src="../../../en/prob/images/conditProb2Defn.gif" id="gif_image_1_3_3" width="90" height="42"><iframe class="svg" src="../../../en/prob/images/conditProb2Defn.svg" id="svg_image_1_3_3" width="90" height="42" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_1_3_3");</script> </p>
+<p>You should be careful to distinguish between <span class="black"><em>p</em><sub><em>x</em> | <em>y</em></sub></span> and <span class="black"><em>p</em><sub><em>y</em> | <em>x</em></sub></span>.</p>
+<div class="centred"><table width="75%" border="1" class="centred" cellpadding="10" cellspacing="0" style="background-color:#FFFFFF">
+<tr>
+<td align="center"><strong>The probability of being pregnant, given that a randomly
+selected person is female would be fairly small. The probability of being female,
+given that a person is pregnant is 1.0&nbsp;!!</strong></td>
+</tr>
+</table></div>
+
+
+
+<h2 class="pageName">4.1.4 &nbsp; Graphical display of probabilities</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Proportional Venn diagrams</p>
+<p>A proportional Venn diagram is drawn from the marginal probabilities of one
+variable and the conditional probabilities for the other variable,</p>
+<p class=eqn><img class="gif" src="../../../en/prob/images/propnVenn.gif" id="gif_image_1_4_1" width="550" height="281"><iframe class="svg" src="../../../en/prob/images/propnVenn.svg" id="svg_image_1_4_1" width="550" height="281" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_1_4_1");</script> </p>
+<p>Rewriting the definition of conditional probabilities,</p>
+<p class=eqn><img class="gif" src="../../../en/prob/images/jointProbEqn.gif" id="gif_image_1_4_2" width="118" height="20"><iframe class="svg" src="../../../en/prob/images/jointProbEqn.svg" id="svg_image_1_4_2" width="118" height="20" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_1_4_2");</script> </p>
+<p>The area of any rectangle in the diagram therefore equals the joint probability
+of the categories it represents.</p>
+<p>An alternative proportional Venn diagram can be drawn from the marginal probabilities
+of <i><span class="black">Y</span></i> and
+the conditional probabilites of <i><span class="black">X</span></i> given <i><span class="black">Y</span></i>.
+The area for the rectangle corresponding to any (<em>x</em>, <em>y</em>) is
+its joint probability, <span class="black em">p<sub>xy</sub></span>.</p>
+<p class="heading">Example</p>
+<p>The table below is based on the world population in 2002, categorised by region
+and by age group. It shows the joint probabilities for a randomly chosen person
+being in each age/region category.</p>
+<div class="centred"><table class="centred" border="0" cellpadding="5" cellspacing="0">
+<caption>
+<strong>Joint probabilities</strong>
+</caption>
+<tr>
+<th>&nbsp;</th>
+<th colspan="3" align="CENTER" width="100"><span class="blue">Age</span></th>
+</tr>
+<tr>
+<th>&nbsp;</th>
+<th align="CENTER" width="70"><span class="blue">0-19</span></th>
+<th align="CENTER" width="70"><span class="blue">20-64</span></th>
+<th align="CENTER" width="70"><span class="blue">65+</span></th>
+</tr>
+<tr>
+<th align="left"><span class="blue">Africa and Near East</span></th>
+<td align="CENTER" bgcolor="white" class="top left">0.085</td>
+<td align="CENTER" bgcolor="white" class="top">0.073</td>
+<td align="CENTER" bgcolor="white" class="top right">0.006</td>
+</tr>
+<tr>
+<th align="left"><span class="blue">Asia</span></th>
+<td align="CENTER" bgcolor="white" class="left">0.215</td>
+<td align="CENTER" bgcolor="white">0.315</td>
+<td align="CENTER" bgcolor="white" class="right">0.035</td>
+</tr>
+<tr>
+<th align="left"><span class="blue">America, Europe and Oceanea</span></th>
+<td align="CENTER" bgcolor="white" class="bottom left">0.084</td>
+<td align="CENTER" bgcolor="white" class="bottom">0.158</td>
+<td align="CENTER" bgcolor="white" class="bottom right">0.030</td>
+</tr>
+</table></div>
+<p>The two proportional Venn diagrams are shown below.</p>
+<p class="eqn"><img src="../../../en/prob/images/s_propnVenn.gif" width="535" height="620"></p>
+<p>Note that the areas are the same in both diagrams &mdash; they are simply rearranged.</p>
+
+
+
+
+<h2 class="pageName">4.1.5 &nbsp; Calculations with probabilities</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Marginal and conditional probs can be found from joint probs
+(and vice versa)</p>
+<p>We have used three types of probability to describe a model for two categorical
+variables &mdash; the <strong>joint</strong> probabilities, the <strong>marginal</strong> probabilities
+for the two variables and the <strong>conditional</strong> probabilities for
+each variable given the value of the other variable. These sets of probabilities
+are closely related. Indeed, the model can be equivalently described by any of
+the following.</p>
+<ul>
+<li>The joint probabilities, <span class="black em">p<sub>xy</sub></span></li>
+<li>The marginal probabilities for <i><span class="black">X</span></i>, <span class="black em">p<sub>x</sub></span>,
+and the conditional probabilities for <i><span class="black">Y</span></i>, <span class="black"><em>p</em><sub><em>y</em> | <em>x</em></sub></span></li>
+<li>The marginal probabilities for <i><span class="black">Y</span></i>, <span class="black em">p<sub>y</sub></span>,
+and the conditional probabilities for <i><span class="black">X</span></i>, <span class="black"><em>p</em><sub><em>x</em> | <em>y</em></sub></span></li>
+</ul>
+<p>Each can be found from the others:</p>
+<p class=eqn><img class="gif" src="../../../en/prob/images/jointCondit.gif" id="gif_image_1_5_1" width="537" height="234"><iframe class="svg" src="../../../en/prob/images/jointCondit.svg" id="svg_image_1_5_1" width="537" height="234" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_1_5_1");</script> </p>
+<p class="heading">Bayes theorem</p>
+<p>In particular, note that it is possible to obtain the conditional probabilities
+for <i><span class="black">X</span></i> given <i><span class="black">Y</span></i>, <span class="black"><em>p</em><sub><em>x</em> | <em>y</em></sub></span>,
+from the marginal probabilities of <i>X</i>, <span class="black em"> p<sub>x</sub></span>,
+and the conditional probabilities for <i><span class="black">Y</span></i> given <i><span class="black">X</span></i>, <span class="black"><em>p</em><sub><em>y</em> | <em>x</em></sub></span>.
+This can be expressed in a single formula that is called <strong>Bayes Theorem</strong>,
+but it is easier in practice to do the calculations in two steps, obtaining the
+joint probabilities, <span class="black em">p<sub>xy</sub></span>, in the first
+step. There are several important applications of Bayes Theorem.</p>
+<p class="heading">Accuracy of medical diagnostic tests</p>
+<p>There are
+two types of error in a test for a medical condition: </p>
+<ul>
+<li>A positive test result for someone who does not have the disease.</li>
+<li>A negative test result for someone who has the disease.</li>
+</ul>
+<p>Consider a diagnostic test with</p>
+<p class="eqn black"><em>p</em> <sub>negative | disease</sub>  =  0.05     <em>       p</em><sub>positive | no disease</sub>  =  0.10</p>
+<p>From these, we can also write</p>
+<p class="eqn black"><em>p</em> <sub>positive
+| disease</sub>  =  0.95     <em>      
+p</em><sub>negative | no disease</sub>  =  0.90</p>
+<p>We will also assume that 10% of people who are given the test have the disease,</p>
+<p class="eqn black"><em>p</em> <sub>disease</sub>  =  0.10</p>
+<p>From this information, we can find the probabilities of having the disease,
+given the result of the diagnostic test,</p>
+<p class="eqn"><img src="../../../en/prob/images/s_bayes.gif" width="550" height="368"></p>
+
+
+
+
+</html>

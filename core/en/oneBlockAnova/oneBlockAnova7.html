@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Confidence intervals for treatment means</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="confidence interval, treatment means, factor means, randomised block design">
+	<meta name="dataset" content="Acupuncture and codeine">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Confidence intervals for treatment means</p>
+
+  <p>If an analysis of variance test concludes that there are differences between 
+    the <em>g<sub></sub></em> treatments in a randomised block design, we must 
+    report estimates of the treatment means to help assess which are most different.</p>
+  <p>The simplest way to assess differences is with 95% confidence intervals for 
+    each of the treatment means. If there are <em>r</em> observations for each 
+    treatment (so the total sample size is <em>n</em>&nbsp;=&nbsp;<em>rg</em>), 
+    the appropriate 95% confidence interval for the treatment mean has a similar 
+    form to that for a completely randomised experiment (no blocks),</p>
+  <p class=eqn><img src="images/blockMeanCI.gif" width="112" height="30"> </p>
+  <p>In both the completely randomised and randomised block designs, <em>s</em> 
+    is our best estimate of the unexplained standard deviation, which is the mean 
+    residual sum of squares from the relevant anova table,</p>
+  <p class=eqn><img src="images/sEqualsMeanRSS.gif" width="92" height="26"> </p>
+  <p>In a randomised block design, block effects are removed in addition 
+    to treatment effects, so there can be much less unexplained variability and <em>s</em> can be much smaller. The degrees of freedom for the t-value, <em>df</em>, 
+    are those associated with the residual sum of squares in the relevant anova 
+    table.</p>
+  <p>If the block effects are large, <em>s</em> is likely to be much smaller when the data are analysed as 
+	a randomised block design rather than a completely randomised design. Therefore:</p>
+  <div class="centred"><div class="boxed">
+  	<p>Confidence 
+  		intervals are also likely to be much narrower.<br>
+   	</div></div>
+		<br>
+		
+  <div class="diagram"> 
+    <p class="heading">Codeine and acupuncture for dental pain relief</p>
+
+    <p>The diagram below shows the pain relief score for the 32 subjects who were 
+      each given one of four treatments (combinations of codeine and acupuncture). 
+      They were grouped into blocks of four according to an initial assessment 
+      of their pain tolerance and the treatments were randomly allocated to the 
+      four subjects in each block. (I.e. a randomised block design was used.)</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="pairBlockProg.MeanBlockCisApplet">
+<param name="yVarName" value="Pain relief score">
+<param name="yValues" value="0.0 0.6 0.5 1.2 0.3 0.7 0.6 1.3 0.4 0.8 0.8 1.6 0.4 0.9 0.7 1.5 0.6 1.5 1.0 1.9 0.9 1.6 1.4 2.3 1.0 1.7 1.8 2.1 1.2 1.6 1.7 2.4">
+<param name="xVarName" value="Treatment">
+<param name="xLabels" value="Placebo Codeine Acupuncture #Cod + Acu#">
+<param name="xValues" value="0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3">
+<param name="zVarName" value="Block (pain tolerance)">
+<param name="zLabels" value="#Tol 1# #Tol 2# #Tol 3# #Tol 4# #Tol 5# #Tol 6# #Tol 7# #Tol 8#">
+<param name="zValues" value="4@0 4@1 4@2 4@3 4@4 4@5 4@6 4@7">
+<param name="yAxis" value="0 2.5 0 0.5">
+<param name="jitter" value="0.0">
+<param name="customText" value="Analysis ignoring blocks=Analysis ignoring blocks#Correct analysis taking account of blocks=Correct analysis taking account of blocks#Show 95% confidence intervals for means=Show 95% confidence intervals for means">
+</applet>
+</div>
+
+    <p>Click <strong>Show 95% confidence intervals for means</strong>. Initially 
+      the confidence intervals are found ignoring the blocking of the data &mdash; 
+      as though the data were from a completely randomised design. Observe that 
+      there is considerable overlap between the confidence intervals.</p>
+    <p>Select <strong>Correct analysis taking account of blocks</strong> from 
+      the pop-up menu. Much of the residual variation is now explained by differences 
+      between the blocks of subjects, so the estimated residual standard deviation, 
+      <em>s</em>, is decreased, resulting in much narrower confidence intervals.</p>
+    
+<div class="centred"><div class="boxed">
+<p>Although we are still 
+						uncertain about the difference between the treatments Acupuncture 
+						and Codeine, there is now a clearer picture of the differences between 
+						all other pairs of treatments.</p>
+</div></div>
+
+	<br>
+  </div>
+
+
+  
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

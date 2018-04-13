@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Effet des valeurs aberrantes</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="standard deviation, outliers">
+	<meta name="dataset" content="Samaru rainfall">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Les valeurs aberrantes et la déviation standard</p>
+<p>La déviation moyenne et standard d'un ensemble de données résument le centre et la propagation des valeurs, mais ne contiennent pas d'informations sur la forme de la distribution. Ils sont donc des descriptions pauvres de distributions qui ont des grappes, les valeurs aberrantes ou asymétrie.</p>
+  <p>Il vaut mieux dépenser un peu plus étudier l'effet d'une valeur aberrante sur la moyenne et l'écart standard. Même si une valeur aberrante a une influence assez forte sur la moyenne des données,</p>
+<table width="75%" border="1" class="centred" cellpadding="10" cellspacing="0">
+		<tr> 
+			<td bgcolor="#FFFFFF"><strong>Les valeurs aberrantes ont un effet <font color="#FF0000">extrêmement</font> forte sur l'écart type.</strong></td>
+	</tr>
+	</table>
+	<p>En appliquant la règle du pouce et de 70-95-100 réfléchir pour savoir si les proportions résultant des valeurs au sein des écarts 1, 2 et 3 standards sont raisonnables dans le contexte des données, vous pourriez être en mesure de dire que quelque chose ne va pas. (Par exemple, est-il raisonnable que 70% des valeurs sont comprises entre 14 et 18 disent, et 30% sont en dehors de cet intervalle?)</p>
+<table width="75%" border="1" class="centred" cellpadding="10" cellspacing="0">
+    <tr>
+      <td bgcolor="#FFFFFF"><strong>La déviation moyenne et standard sont résumés mauvaise des ensembles de données avec les valeurs aberrantes.</strong></td>
+  </tr>
+  </table>
+	<p>Un affichage graphique, comme une dot plot est la meilleure façon de détecter une valeur aberrante et vous devriez toujours examiner les données avant de résumer avec un écart moyen et standard.</p>
+<p>Une valeur aberrante doivent être soigneusement examinés. A été la valeur correctement enregistrées? Y avait-il quelque chose d'inhabituel à propos de l'individu à partir de laquelle la mesure a été obtenue? Si nous sommes convaincus qu'il y avait quelque chose de mal sur la valeur, il devrait être retiré de l'ensemble des données avant l'analyse plus loin.</p>
+<div class="diagram"> 
+		<p class="heading">Date de premières pluies de Samaru, au Nigeria</p>
+	<p>Le tracé de points empilés ci-dessous montre la date de la pluie dans la première plantation Samaru chaque année de 1928 à 1983, défini comme la première fois après le 1er avril, quand il n'y avait plus de 20 mm de pluie dans un ou deux jours.</p>
+		<p>Les dates sont enregistrées comme le numéro du jour après le 1er Janvier (ex: 1er avril = 92 jours, le 1er mai = jour 122).</p>
+	<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="210">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="statistic2Prog.DragOutlierApplet">
+<param name="varName" value="Date de première pluie de Samaru, Nigeria">
+<param name="values" value="115 126 108 118 115 156 116 134 113 126 118 134 118 138 120 140 160 158 129 134 109 122 136 95 131 125 114 118 143 94 143 115 147 99 111 123 154 160 107 111 110 129 127 136 108 144 119 109 100 151 96 127 140 109 152 176 50 240">
+<param name="horizAxis" value="-20 390 0 50">
+<param name="decimals" value="1 1">
+<param name="lowFixedOutlier" value="0#Pas de pluie la plantation (codée 0)">
+<param name="highFixedOutlier" value="999#Valeur manquante (codée 999)">
+<param name="lowDragOutlier" value="1 80">
+<param name="highDragOutlier" value="200 365">
+<param name="customText" value="Low outlier=Faible valeur aberrante#High outlier=Haute valeur aberrante">
+</applet>
+</div>
+
+		<p>Nous allons maintenant envisager l'ajout d'une «aberrante» pour cet ensemble de données &mdash; nous allons faire semblant que c'est une date mal enregistré pour les premières pluies en 1927. Cliquez <strong>Aberrantes haute</strong> pour ajouter une valeur de 240 à l'ensemble des données. La date moyenne est augmenté de seulement 2 jours, mais l'écart-type augmente de 18.7 à 23.9 jours, une augmentation beaucoup plus grande.</p>
+		<p>Faites glisser la valeur aberrante à 300, augmentant ainsi l'écart-type de 29.5. La règle 70-95-100 avec cette déviation standard donne une impression trompeuse de la chance d'une date très tôt ou tard pour les premières pluies.</p>
+	<p class="heading">Valeur manquante</p>
+	<p>Quand une valeur de données est manquant (par exemple la date des premières pluies en 1927 n'aient pas été enregistrées), il est souvent codée comme un «impossible» de valeur, tels que '999 '. Cliquez <strong>Valeur manquante (codée 999)</strong> pour modifier la valeur pour 1927 à 999. Observez que:</p>
+<ul>
+			<li>La moyenne (141.5 jours) est encore un «raisonnable» de valeur pour l'ensemble de données, même si elle est erronée.</li>
+			<li>L'écart-type (117.1 jours) n'est <strong>pas</strong> raisonnable. Il devrait être évident pour tout le climatologue qu'il n'y aurait pas 30% des années avec les premières pluies en dehors des jours 141.5 ± 117.1, comme prédit par la règle de 70-95-100.</li>
+		</ul>
+	<p class="heading">Pas de pluie la plantation</p>
+	<p>Une autre complication avec les données pluviométriques en Afrique est que, parfois, les pluies ne commencent <strong>pas à tous</strong>. Considérez ce qui se passerait s'il n'y avait pas de pluie la plantation en 1984. Une telle année pourrait être codé comme la valeur '0 '. Ces zéros sont des informations importantes (à la différence des valeurs manquantes), mais ils ne devraient <strong>pas</strong> être inclus avec moyens de calcul et les écarts types.</p>
+	<p>Cliquez <strong>Aberrantes bas</strong> puis <strong>Pas de pluie plantation (codé 0)</strong> pour voir l'effet du traitement par erreur la valeur 0 pour l'année 1984 comme une date appropriée. Encore une fois l'écart type est durement touché.</p>
+	<table width="75%" border="1" class="centred" cellpadding="10" cellspacing="0">
+			<tr> 
+				<td bgcolor="#FFFFFF"><strong>La déviation moyenne et standard peuvent apparaître «raisonnable», même s'il ya des valeurs aberrantes. <font color="#FF0000">Toujours examiner un tracé de points, histogramme ou diagramme en boîte avant l'analyse.</font></strong></td>
+		</tr>
+		</table>
+		<br>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

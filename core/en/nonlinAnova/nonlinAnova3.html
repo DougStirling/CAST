@@ -1,0 +1,150 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Testing for linearity</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<script type="text/javascript">
+		setupChoiceImages("lettuce", "soybean", "pcbTrout", "monkeyTeeth", "heatLoss");
+	</script>
+
+	<meta name="index" content="quadratic model, f distribution, analysis of variance">
+	<meta name="dataset" content="Nitrogen fertilizer and lettuce yield">
+	<meta name="dataset" content="Soybeans and ozone">
+	<meta name="dataset" content="PCB in trout">
+	<meta name="dataset" content="Crown length of monkey teeth">
+	<meta name="dataset" content="Heat loss through windows">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Analysis of variance table</p>
+  <p>An analysis of variance table can be formed with sequential sums of squares 
+		from the following three models of increasing complexity.</p>
+
+    <div class="centred"><table border="1" cellpadding="7" cellspacing="0" bordercolor="#CCCCCC" class="centred">
+      <tr> 
+        <th align="center">&nbsp;</th>
+        <th align="center">Model</th>
+        <th>Fitted values (predicted response)</th>
+      </tr>
+      <tr> 
+        <th style="border-top:1px solid #999999; border-bottom:1px solid #999999;" align="left">Constant</th>
+        <td style="border-top:1px solid #999999; border-bottom:1px solid #999999;" align="center" bgcolor="#FFFFFF"><img src="images/univarModel.gif" width="97" height="20"></td>
+        <td style="border-top:1px solid #999999; border-bottom:1px solid #999999;" align="center" bgcolor="#FFFFFF"><img src="images/fitPoly0.gif" width="64" height="24"></td>
+      </tr>
+      <tr> 
+        <th style="border-bottom:1px solid #999999;" align="left">Linear model</th>
+        <td style="border-bottom:1px solid #999999;" align="center" bgcolor="#FFFFFF"><img src="images/linModel.gif" width="159" height="20"></td>
+        <td style="border-bottom:1px solid #999999;" align="center" bgcolor="#FFFFFF"><img src="images/fitPoly1.gif" width="128" height="24"></td>
+      </tr>
+      <tr> 
+        <th style="border-bottom:1px solid #999999;" align="left">Quadratic model</th>
+        <td style="border-bottom:1px solid #999999;" align="center" bgcolor="#FFFFFF"><img src="images/quadModel.gif" width="217" height="22"></td>
+        <td style="border-bottom:1px solid #999999;" align="center" bgcolor="#FFFFFF"><img src="images/fitPoly2.gif" width="188" height="24"></td>
+      </tr>
+    </table></div>
+
+  <p>Since each model has one more parameter than the previous model in the sequence, 
+    the two sums of squares for adding linear and then quadratic terms each have 
+    1 degree of freedom.</p>
+  <p class=eqn><img src="images/quadAnovaTable.gif" width="520" height="181"></p>
+<p class="heading">F ratio and p-value</p>
+  <p>Testing whether there is curvature in the quadratic model is equivalent to 
+		testing whether the coefficient of <em>x</em><sup>2</sup> is zero,</p>
+	<p class=eqn><img src="images/quadHypoth.gif" width="87" height="41"> </p>
+	<p>This test is based on the ratio of the mean quadratic and mean residual sums 
+		of squares in the anova table. This F ratio has an F distribution when <strong>H<sub>0</sub></strong> 
+		is true &mdash; i.e. when the underlying model is linear,</p>
+  <p class=eqn><img src="images/quadFDistn.gif" width="235" height="38"> </p>
+  <p>The F distribution does not involve unknown parameters, so F can be used 
+    as a test statistic.</p>
+  
+<div class="centred"><div class="boxed">
+<p>High values of the F ratio give evidence 
+            of nonlinearity, so the p-value is the upper tail area from the F 
+            distribution.</p>
+</div></div>
+
+  <p class=eqn> </p>
+  <p>If it is concluded from the F ratio for the quadratic term that there is 
+		no curvature, it is then possible to use the F ratio for the linear term to 
+		test whether there is <strong>any</strong> relationship at all.</p>
+  <div class="diagram"> 
+<p class="heading">Illustration</p>
+<p>The diagram below shows the calculations for an artificially generated data 
+set.</p>
+
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="520">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="varianceProg.QuadFApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="quadModel" value="5.5 0.0 0.0 0.7">
+<param name="randomSeed" value="3895705671">
+<param name="xAxis" value="0.5 4.5 1 1">
+<param name="yAxis" value="2.5 8.8 3 1">
+<param name="decimals" value="3">
+<param name="maxSsq" value="999.999">
+<param name="maxMeanSsq" value="999.999">
+<param name="maxF" value="999.99">
+<param name="ssqAxis" value="0 30 0 5">
+<param name="maxSlopeCurve" value="1.00 1.00">
+<param name="areaProportion" value="0.07">
+<param name="componentName" value="Total#Linear#Quadratic#Residual">
+<param name="noOfDataSets" value="3">
+<param name="dataName" value="5">
+<param name="dataName2" value="20">
+<param name="dataName3" value="50">
+<param name="xValues" value="1 1.75 2.5 3.25 4">
+<param name="xValues2" value="1.00 1.16 1.32 1.47 1.63 1.79 1.95 2.11 2.26 2.42 2.58 2.74 2.89 3.05 3.21 3.37 3.53 3.68 3.84 4.00">
+<param name="xValues3" value="1.00 1.06 1.12 1.18 1.24 1.31 1.37 1.43 1.49 1.55 1.61 1.67 1.73 1.80 1.86 1.92 1.98 2.04 2.10 2.16 2.22 2.29 2.35 2.41 2.47 2.53 2.59 2.65 2.71 2.78 2.84 2.90 2.96 3.02 3.08 3.14 3.20 3.27 3.33 3.39 3.45 3.51 3.57 3.63 3.69 3.76 3.82 3.88 3.94 4.00">
+<param name="customText" value="Model slope=Model slope#Model curvature=Model curvature#Zero=Zero#Another data set=Another data set#F distn if true model is linear=F distn if true model is linear">
+</applet>
+</div>
+
+<p>The p-value for the test is the upper tail-area of the F distribution and is 
+usually evaluated using a computer. (It can also be approximated using printed 
+tables of the F distributions.)</p>
+<p>Click <strong>Another Data Set</strong> several times and observe that all 
+p-values between 0 and 1 are equally likely (since the null hypothesis is initially 
+true).</p>
+<p>Use the slider at the top right to change the model to one with curvature. 
+Click <strong>Another Data Set</strong> a few more times and observe that the 
+F-ratio tends to be larger and the p-value closer to zero.</p>
+
+<div class="centred"><div class="boxed">
+<p>P-values near zero therefore give evidence of 
+curvature.</p>
+</div></div>
+
+<p class="heading">Examples</p>
+<p>Analysis of variance is used to test for curvature in several data sets below. Read the conclusion for each test
+carefully.</p>
+
+<form>
+<select name="dataset" onChange="changeImage('image', this)">
+<option value="0" selected>Nitrogen fertiliser and lettuce plants</option>
+<option value="1">Soybean yield and ozone</option>
+<option value="2">PCB concentration in trout</option>
+<option value="3">Crown length of monkey teeth</option>
+<option value="4">Heat loss through windows</option>
+</select>
+</form>
+
+<p align="center"><img id="image" src="images/lettuce.gif" width="580" height="534"></p>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

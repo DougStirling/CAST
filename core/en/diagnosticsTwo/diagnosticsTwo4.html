@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Standardised residuals</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="residual, standardised residual, non-constant variance">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Variance of fitted values and residuals</p>
+  <p>As in simple linear regression with a single explanatory variable, although 
+		the errors (and hence all <em>y<sub>i</sub></em>) have variance σ<sup>2</sup>, 
+		the residuals have variance that is lower than σ<sup>2</sup> 
+		and that depends on the leverages of the values.</p>
+	<p class=eqn> <img src="images/yComponents.gif" width="388" height="55" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<p>It can be proved that</p>
+	<p class=eqn> <img src="../diagnostics/images/yAndFitVar.gif" width="114" height="48" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<p class=eqn> <img src="../diagnostics/images/residVar.gif" width="159" height="20" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<p class="heading">Standardised residuals</p>
+	<p>Since different residuals have different variances, the solution is to standardise 
+		them using an estimate of their standard deviations,</p>
+	<p class=eqn><img src="../diagnostics/images/standardResid.gif" width="303" height="42" alt="log(wt) = log(a) + p log(len)"></p>
+<br>
+	
+<div class="centred"><div class="boxed">
+<p>If the normal linear model holds, the 
+						standardised residuals will have approximately normal(0,&nbsp;1) distributions.</p>
+</div></div>
+
+	<p>If the linear model holds, approximately 95% of these standardised residuals 
+		should therefore be between -2 and +2, and almost all should be between -3 
+		and +3.</p>
+	<p class="heading">Non-constant variance</p>
+	<p>An important use of standardised residuals is to look for non-constant variance. 
+		When there is non-constant variance, it is usually a function of the mean 
+		response, often increasing as the response mean increases. Rather than plotting 
+		the standardised residuals against the separate explanatory variables, a single 
+		plot of the standardised residuals against the fitted values is usually sufficient.</p>
+	
+<div class="centred"><div class="boxed">
+<p>A scatterplot of standardised residuals 
+						against fitted values usually has a 'funnel' shape if there is non-constant 
+						variance.</p>
+</div></div>
+
+	<p>Non-constant variance is usually associated with nonlinearity and a transformation 
+		of the response often fixes both problems.</p>
+	<p class="heading">Plotting variables against the fitted values (advanced)</p>
+		
+	<p>The fitted values are a linear combination of the two explanatory variables. 
+	</p>
+		<p class=eqn> <span class="black"><span style="position:relative; top:4px"><img src="../../images/symbol.yiHat.png" width="11" height="18" align="baseline"></span>&nbsp;=&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x<sub>i</sub></em></span> 
+		</p>
+		
+	<p>Therefore a plot of any variable against the fitted values can be obtained 
+		by rotating a 3-dimensional scatterplot of this variable against <em>X</em> 
+		and <em>Z</em>. </p>
+		
+	<div class="diagram"> 
+		<p class="heading">Illustration</p>
+		<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="residTwoProg.RotateToFitApplet">
+<param name="yVarName" value="Response, Y">
+<param name="xVarName" value="X">
+<param name="zVarName" value="Z">
+<param name="yValues" value="16.33 16.42 18.23 18.50 20.11 13.77 17.24 17.34 20.54 12.13 14.32 10.13 22.75 24.60 23.10 24.93 23.64 23.26 13.27 25.66 44.45">
+<param name="xValues" value="0.72 1.02 1.90 2.16 3.16 0.28 2.92 2.62 1.40 0.79 0.43 1.13 3.71 3.77 2.30 2.26 2.53 2.62 0.64 3.00 4.8">
+<param name="zValues" value="6.00 5.21 3.89 3.70 2.07 5.45 1.13 1.93 6.32 4.05 5.56 2.05 1.84 2.44 5.78 6.31 5.18 4.83 4.43 4.87 9.6">
+<param name="yAxis" value="0 50 0 10">
+<param name="xAxis" value="0 5 0 1">
+<param name="zAxis" value="0 10 0 2">
+<param name="fitAxis" value="0 60 0 10">
+<param name="residAxis" value="-4 4 -4 2">
+<param name="customText" value="Fitted value=Fitted value">
+</applet> 
+</div>
+
+    <p>The scatterplot of the left initially displays <em>Y</em> against <em>X</em>. 
+			Click the y-x rotation button on the right to rotate the 3-dimensional scatterplot 
+			to show the same plot.</p>
+		<p>Now select <em><strong>Z</strong></em> from the lower pop-up menu and observe 
+			that this is equivalent to a different rotation of the 3-dimensional scatterplot.</p>
+		<p>Select <strong>Fitted values</strong> from the pop-up menu and observe 
+			that this is equivalent to an intermediate rotation of the 3-dimensional 
+			scatterplot that 'looks along' the regression plane.</p>
+		<p>Finally, repeat with plots of the standardised residuals.</p>
+		</div>
+		
+	
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

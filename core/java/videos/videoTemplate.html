@@ -1,0 +1,305 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<style>
+		
+		html, body {font-size:11pt; margin:0px; padding:0px; text-align:center; overflow:hidden;}
+		
+		/* <video> element */
+		video {
+			display:inline;
+			background-color: rgba(0, 0, 0, 0.1);
+			margin: 0px auto;
+			margin-bottom: 7px;
+			border: 1px solid rgba(0, 0, 0, 0.0);		/*	will become less transparent when video plays		*/
+			-webkit-background-clip: padding-box; /* for Safari */
+		}
+		
+		/* Player Controls */
+		 div.video-controls {
+			display: block;
+			position:relative;
+			margin: 0px auto;
+			width: 450px;
+			height:28px;
+			border: 1px solid #222;
+			-webkit-border-radius: 5px;
+			border-radius: 5px;
+			background-color:rgba(0, 0, 0, 0.1);
+			font-family: Arial, Helvetica, sans-serif;
+		}
+		
+		/* <button>s */
+		button {
+			position:absolute;
+			height: 22px;
+			width: 22px;
+			padding: 0px;
+			border: none;
+			background-color: transparent;
+			background-repeat: no-repeat;
+			background-position: center center;
+			background-size: auto 100%;
+			
+			opacity: 0.7;
+			-webkit-transition: all 0.2s ease-in-out;
+			transition: all 0.2s ease-in-out;
+			
+			-webkit-border-radius: 2px;
+			border-radius: 2px;
+			
+			cursor: pointer;
+			text-indent: -9999px;
+		}
+		button:hover, button:focus {
+			opacity: 1;
+		}
+		
+		/* Playback controls(Play, Pause) */
+		button.play-button {
+			left: 5px;
+			top: 3px;
+		}
+		button.play-button:active {
+			top: 4px;	
+		}
+		button#play {
+			background-image: url("##controllerPath##/doug-play.png");
+		}
+		button#play:hover {
+			background-image: url("##controllerPath##/doug-play-bold.png");
+		}
+		button#paused {
+			background-image: url("##controllerPath##/doug-pause.png");
+		}
+		button#paused:hover {
+			background-image: url("##controllerPath##/doug-pause-bold.png");
+		}
+		
+		/* Seek Slider */
+		input#seek-slider {
+			position: absolute;
+			display: block;
+			left: 87px;
+			top: 9px;
+			width: 285px;
+			height: 10px;
+			margin: 0px;
+		}
+		
+		
+		/* Timer */
+		span#timer {
+			position: absolute;
+			left: 30px;
+			top: 3px;
+			width: 40px;
+			overflow: hidden;
+			margin-top: 3px;
+			color: #666;
+			font-weight: bold;
+			cursor: default;
+		}
+		
+		
+		/* Remaining */
+		span#remaining {
+			position: absolute;
+			right: 32px;
+			top: 3px;
+			width: 40px;
+			overflow: hidden;
+			margin-top: 3px;
+			color: #666;
+			font-weight: bold;
+			cursor: default;
+		}
+		
+		
+		/* Volume Box */
+		div.volume-box {
+			position: absolute;
+			right: 5px;
+			bottom: 2px;
+			width:22px;
+			height:23px;
+		/*	overflow: visible;	*/
+			overflow:hidden;
+			color: #fff;	
+			
+			-webkit-transition: all 0.1s ease-in-out;
+			transition: all 0.1s ease-in-out;
+		}
+		div.volume-box:hover {
+			height: 135px;
+			padding-top: 4px;
+		}
+		div.volume-box:hover input#volume-slider {
+			position: relative;
+			visibility: visible;
+			opacity: 1;
+		}
+		
+		/* Volume Slider */
+		input#volume-slider {
+			-webkit-appearance: slider-vertical;
+			position: relative;
+			height: 105px;
+			width: 10px;
+			left: 3px;
+			
+			visibility: hidden;
+			opacity: 0;
+		}
+			
+		/* Volume Button */
+		button.volume-button {
+			left: 0px;
+			bottom: 1px;
+		}
+		button#sound {
+			background-image: url("##controllerPath##/doug-volume-full.png");
+		}
+		button#mute {
+			background-image: url("##controllerPath##/doug-volume.png");
+		}
+		button.volume-button:active {
+			bottom: 0px;	
+		}
+	</style>
+	
+	<script>
+		var vid, playbtn, seekslider, curtimetext, remainingtimetext, mutebtn, volumeslider;
+		var duration = 0;
+		function intializePlayer() {
+			// Set object references
+			vid = document.getElementById("the-video");
+			playbtn = document.getElementById("play");
+			seekslider = document.getElementById("seek-slider");
+//			seekslider.step = 0.01;
+			curtimetext = document.getElementById("timer");
+			remainingtimetext = document.getElementById("remaining");
+			volumebtn = document.getElementById("sound");
+			volumeslider = document.getElementById("volume-slider");
+			// Add event listeners
+			playbtn.addEventListener("click", playPause, false);
+			seekslider.addEventListener("change", vidSeek, false);
+			vid.addEventListener("timeupdate", seektimeupdate, false);
+			vid.addEventListener("ended", videoEnded, false);
+			vid.addEventListener("loadedmetadata", seektimeupdate, false);
+			vid.addEventListener("durationchange", seektimeupdate, false);
+			volumebtn.addEventListener("click", vidmute, false);
+			volumeslider.addEventListener("change", setvolume, false);
+			
+			seektimeupdate();
+//			seekslider.disabled = true;
+//			logMessage("all loaded, duration = " + formatTime(vid.duration));
+		}
+		
+		
+		function playPause() {
+			if(vid.paused){
+				vid.play();
+				playbtn.id = "paused";
+			}
+			else {
+				vid.pause();
+				playbtn.id = "play";
+			}
+		}
+		
+		function vidSeek() {
+//			if (duration > 0) {
+//			logMessage("slider value =" + seekslider.value + ", slider max=" + 150);
+				if (seekslider.value >= 150) {
+//					logMessage("slider value too big");
+					videoEnded();
+					seekslider.value = 0;
+					vid.currentTime = 0;
+				}
+				else {
+//					logMessage("slider value OK");
+					var sliderVal = Math.min(seekslider.value, 150);
+					var seekto = duration * sliderVal / 150;
+					vid.currentTime = seekto;
+//					logMessage("slider value =" + sliderVal + ", seekto=" + seekto);
+				}
+//			}
+		}
+		
+		function videoEnded() {
+			vid.pause();
+			playbtn.id = "play";
+		}
+		
+		function formatTime(sec) {
+			var m = Math.floor(sec/60)<10 ? "0" + Math.floor(sec/60) : Math.floor(sec/60);
+			var s = Math.floor(sec-(m*60))<10 ? "0" + Math.floor(sec-(m*60)) : Math.floor(sec-(m*60));
+			return m + ":" + s;
+		};
+		
+		function seektimeupdate() {
+			if (duration <= 0) {
+				if (isNaN(vid.duration) || vid.duration == 0)
+					return;
+				duration = vid.duration;
+//				seekslider.disabled = false;
+			}
+			var nt = vid.currentTime * 150 / duration;
+			seekslider.value = nt;
+			curtimetext.innerHTML = formatTime(vid.currentTime);
+			remainingtimetext.innerHTML = formatTime(duration - vid.currentTime);
+//			logMessage("duration=" + duration + ", currentTime=" + vid.currentTime);
+		}
+		
+		function vidmute() {
+			if(vid.muted) {
+				vid.muted = false;
+				volumebtn.id = "sound";
+			} else {
+				vid.muted = true;
+				volumebtn.id = "mute";
+			}
+		}
+		function setvolume() {
+			vid.muted = false;
+			volumebtn.id = "sound";
+			vid.volume = volumeslider.value;
+		}
+
+/*
+		function logMessage(message) {
+			var messageP = document.getElementById("errorMessage");
+			messageP.innerHTML = messageP.innerHTML + "<br>" + message;
+		}
+*/
+	</script>
+</head>
+
+<body onLoad="intializePlayer()">
+
+<video id="the-video" poster="##videoPath##.png" width="##width##" height="##height##" preload="auto" >
+		<source src="##videoPath##.mp4" type="video/mp4" />
+		<source src="##videoPath##.webm" type="video/webm" />
+</video>
+														
+<div class="video-controls">
+		<button class="play-button" id="play">Play</button>
+		<span id="timer">00:00</span>
+		<input type="range" id="seek-slider" value="0" min="0" max="150" step="0.1" />
+		<span id="remaining">00:00</span>
+		<div class="volume-box">
+				<button class="volume-button" id="sound" >Mute</button>
+				<input type="range" id="volume-slider" value="1" min="0" max="1" step="0.05" />
+		</div>
+</div>
+
+<!--
+<div style="z-index:1; position:fixed; left:0px; top:0px; width:100%; height:100%; pointer-events:none;">
+<p id="errorMessage" style="text-align:left">Empty message</p>
+</div>
+-->
+
+</body>
+</html>

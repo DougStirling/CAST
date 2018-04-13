@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Correlated explanatory variables</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="multicollinearity">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Accuracy of slope estimates in simple linear regression</p>
+  <p>When fitting a regression model with a single explanatory variable, <em>X</em>, 
+		the accuracy of the least squares slope depends on the error standard deviation, 
+		σ, 
+		the sample size, <em>n</em>, and the spread of values of the explanatory variable,</p>
+		
+	<p class=eqn><img class="gif" src="../regnEst/images/sdSlopeEqn.gif" width="227" height="42"> 
+	</p>
+
+  <p class="heading">Accuracy of slope estimates with two explanatory variables</p>
+	<p>Consider the regression model</p>
+<p class="eqn"><img src="../regnInfTwo/images/normModelTwo2.gif" width="418" height="21"></p>
+	<p>In this model, the equation for the standard errors of the two least squares 
+		estimates of β<sub>1</sub> and β<sub>2</sub> 
+		takes a similar form:</p>
+	<p class=eqn><img src="images/bxSdEqn.gif" width="196" height="39" alt="eqn"> 
+		<br>
+		<img src="images/bzSdEqn.gif" width="196" height="39" alt="eqn"> </p>
+	<p>where <em>r</em> is the correlation coefficient between <em>X</em> and <em>Z</em>. 
+		The sample size, <em>n</em>, the error standard deviation, σ, 
+		and the standard deviations of <em>X</em> and <em>Z</em> affect the accuracy 
+		of these estimates in a similar way to simple linear regression. The model 
+		slope parameters are estimated most accurately when:</p>
+	<ul>
+		<li>The number of observations, <em>n</em>, is high.</li>
+		<li>The value of σ 
+			is low.</li>
+		<li>The standard deviations of <em>X</em> and <em>Z</em> are high.</li>
+	</ul>
+	<p>However the accuracy of <em>b</em><sub>1</sub> 
+		and <em>b</em><sub>2</sub> 
+		as estimates of β<sub>1</sub> and β<sub>2</sub> 
+		is <strong>also</strong> affected by <em>r</em>. β<sub>1</sub> and β<sub>2</sub> 
+		are estimated most accurately when:</p>
+	<ul>
+		<li><em>r</em> is close to zero.</li>
+	</ul>
+	<p>As the correlation between <em>X</em> and <em>Z</em> increases, <em>b</em><sub>1</sub> 
+		and <em>b</em><sub>2</sub> 
+		also become more correlated with each other but this is less important than 
+		its effect on their separate standard deviations. (The correlation between 
+		<em>b</em><sub>1</sub> 
+		and <em>b</em><sub>2</sub> 
+		is actually -<em>r</em>.)</p>
+	
+<div class="centred"><div class="boxed">
+<p>Uncorrelated explanatory variables therefore 
+						lead to the most accurate estimates of β<sub>1</sub> 
+						and β<sub>2</sub>.</p>
+</div></div>
+
+	<br>
+	<div class="diagram">
+    <p class="heading">Simulation</p>
+
+    <p>In the diagram below, the two explanatory variables <em>X</em> and <em>Z</em> 
+			retain the same spread but their correlation can be adjusted with the slider.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="600">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="multiRegnProg.SlopeCorrelApplet">
+<param name="yAxis" value="0 50 0 10">
+<param name="xAxis" value="65 120 70 10">
+<param name="zAxis" value="63 76 65 5">
+<param name="yVarName" value="Y">
+<param name="xVarName" value="X">
+<param name="zVarName" value="Z">
+<param name="randomSeed" value="6456893">
+<param name="multiRegnModel" value="-30.0 0.5 0.0 5">
+<param name="xValues" value="90.75 83.60 84.10 82.26 93.39 90.57 77.05 84.99 88.96 73.17 86.39 84.41 112.73 86.19 96.82 98.47 97.62 82.35 84.50 98.73 79.79 83.86 70.48 73.18 85.08 79.45">
+<param name="zValues" value="66.06 72.97 68.07 66.12 66.32 70.60 69.47 68.13 70.03 68.30 68.00 70.50 73.62 66.07 71.15 67.81 68.23 68.42 71.77 71.29 68.31 71.76 68.75 71.26 67.46 66.69">
+<param name="initialXZR2" value="0.7">
+<param name="maxR" value="0.99">
+<param name="maxCoeff" value="-999.99 -9.999 -9.999">
+<param name="xSlopeAxis" value="-2 3 -2 1">
+<param name="zSlopeAxis" value="-10 10 -10 5">
+<param name="customText" value="Slope for=Slope for#Correl(X, Z)=Correl(X, Z)">
+</applet> 
+</div>
+
+    <p>Initially <em>X</em> and <em>Z</em> are moderatelly correlated. Click <strong>Accumulate</strong> 
+			and take several samples. The scatterplot on the bottom right shows the 
+			distribution of the two slope parameters. Observe that they are moderately 
+			correlated.</p>
+		<p>Adjust the slider to make the correlation between <em>X</em> and <em>Z</em> 
+			equal to 0.99 and repeat. Observe that the two slope parameters are also 
+			highly correlated and that each has a very large spread &mdash; they are very 
+			poor estimates of the underlying slope parameters, 0.5 and 0.0.</p>
+		<p>Finally make the explanatory variables orthogonal (i.e. adjust their correlation 
+			with the slider to 0.0) and repeat. Observe that the separate slope parameters 
+			are now most accurately estimated.</p>
+    </div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

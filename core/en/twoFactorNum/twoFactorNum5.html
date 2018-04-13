@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Numerical-categorical interaction</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="interaction">
+	<meta name="dataset" content="Abrasion loss of fabrics">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Model for interaction</p>  
+  <p>When a numerical variable, X, is modelled linearly and Z is categorical, 
+		the no-interaction model specifies parallel regression lines for the response 
+		against X at each level of Z,</p>
+  <div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+  	<tr>
+  		<td align="center"><br>
+  			<em><span class="black">y</span><sub><span class="blue">i</span><span class="green">j</span><span class="red">k</span></sub></em>&nbsp;= &nbsp;µ&nbsp;+&nbsp;</td>
+  		<td align="center" class="blue">(<em>explained by X</em>)<br>
+  			β<em> x<sub>i</sub></em></td>
+  		<td align="center"><br>
+  			&nbsp;+&nbsp;</td>
+  		<td align="center" class="green">(<em>explained by Z</em>)<br>
+  			γ<em><sub>j</sub></em></td>
+  		<td align="center"><br>
+  			&nbsp;+&nbsp;</td>
+  		<td align="center" class="red">(<em>unexplained</em>)<br>
+  			ε<em><sub>ijk</sub></em></td>
+ 		</tr>
+ 	</table></div>
+  <p>Interaction gives the model the additional flexibility of different regression slopes at different levels of Z,</p>
+	<div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+		<tr>
+			<td align="center"><br>
+				<em><span class="black">y</span><sub><span class="blue">i</span><span class="green">j</span><span class="red">k</span></sub></em>&nbsp;= &nbsp;µ&nbsp;+&nbsp;</td>
+			<td align="center" class="blue">(<em>explained by X</em>)<br>
+				β<em> x<sub>i</sub></em></td>
+			<td align="center"><br>
+				&nbsp;+&nbsp;</td>
+			<td align="center" class="green">(<em>explained by Z</em>)<br>
+				γ<em><sub>j</sub></em></td>
+			<td align="center"><br>
+				&nbsp;+&nbsp;</td>
+			<td align="center" class="purple">(<em>interaction</em>)<br>
+				δ<em><sub>j</sub></em> <em>x<sub>i</sub></em></td>
+			<td align="center"><br>
+				&nbsp;+&nbsp;</td>
+			<td align="center" class="red">(<em>unexplained</em>)<br>
+				ε<em><sub>ijk</sub></em></td>
+		</tr>
+	</table></div>
+	<p class="heading">Degrees of freedom</p>
+	<p>If factor Z has <em>b</em> levels, the two models have the following degrees 
+		of freedom.</p>
+	<div class="centred"><table border="0" cellpadding="4" cellspacing="0" class="centred">
+		<tr> 
+			<th>&nbsp;</th>
+			<th style="border-bottom:1px solid #999999;">Degrees of freedom</th>
+		</tr>
+		<tr> 
+			<th>No-interaction model</th>
+			<td align="center"><em>b</em> + 1</td>
+		</tr>
+		<tr> 
+			<th>Model with interaction</th>
+			<td align="center" style="border-bottom:1px solid #999999;">2<em>b</em></td>
+		</tr>
+	</table></div>
+	<p>The difference gives the extra degrees of freedom for adding the interaction 
+		term. </p>
+	<div class="centred"><table border="0" cellpadding="4" cellspacing="0" class="centred">
+		<tr> 
+			<th>&nbsp;</th>
+			<th style="border-bottom:1px solid #999999;">Degrees of freedom</th>
+		</tr>
+		<tr> 
+			<th>Extra for interaction</th>
+			<td align="center" style="border-bottom:1px solid #999999;"><em>b</em>&nbsp;-&nbsp;1</td>
+		</tr>
+	</table></div>
+	<br>
+	
+	<div class="diagram"> 
+		<p class="heading">Abrasion of coated fabric</p>
+		<p>A method for testing materials for abrasion resistance consists of measuring 
+			the loss in weight or decrease in thickness of specimens that are rubbed 
+			against an abrasive for a fixed time. The diagram below shows the results 
+			of testing 12 specimens of coated fabric that contained three different 
+			proportions of two types of filler.</p>
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoFactorProg.RotateDragFactorsApplet">
+<param name="yVarName" value="Abrasion of fabric (gm)">
+<param name="yValues" value=".456 .377 .426 .476 .460 .426 .527 .561 .621 .664 .724 .743">
+<param name="yAxis" value=".35 .75 .4 .1">
+<param name="xVarName" value="Filler type">
+<param name="xValues" value="6@0 6@1">
+<param name="xLabels" value="F1 F2">
+<param name="zVarName" value="Filler percent">
+<param name="zValues" value="2@0 2@1 2@2 2@0 2@1 2@2">
+<param name="zLabels" value="25 50 75">
+<param name="xModelTerms" value="factor">
+<param name="zModelTerms" value="linear">
+<param name="interaction" value="true">
+<param name="initialModel" value="0.55">
+<param name="maxRss" value="9.9999">
+<param name="customText" value="None=None#Linear=Linear#Factor=Factor">
+</applet> 
+</div>
+
+		<p>The no-interaction model constrains the regression lines for the two fillers 
+			to be parallel. Click <strong>Least squares</strong> to display the best 
+			model of this type.</p>
+		<p>Click the checkbox <strong>Interaction</strong> to add an interaction to 
+			the model. This adds an extra draggable arrow to the diagram &mdash; interaction 
+			adds one degree of freedom to the model. Observe that the two lines for 
+			the filler types can be separately positioned.</p>
+		<p>Click <strong>Least squares</strong> then click the <strong>y-z</strong> 
+			rotation button. Increasing the percentage of filler F2 causes much more 
+			abrasion loss than a similar increase in the percentage of filler F1.</p>
+
+  </div>
+	
+	<p class="heading">Testing for interaction</p>
+		<p>Interaction can again be tested using analysis of variance. The sum of squares explained by the interaction is the reduction in the residual sum of squares that arises from adding the interaction term.</p>
+		<p>The anova test compares the sum of squares explained by the interaction with the residual sum of squares in the usual way.</p>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

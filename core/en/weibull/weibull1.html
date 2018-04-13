@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Weibull distribution</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="weibull distribution, continuous distribution, probability density function, lifetimes, hazard function">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p class="heading">Lifetime distributions</p>
+<p>In the previous chapter, we presented the \(\ExponDistn(\lambda)\) distribution as a possible model for the lifetimes of items. However the exponential distribution's hazard function is constant, \(h(x) = \lambda\), and this is unrealistic in most applications — usually items become more likely to fail as they age and wear down.</p>
+<p>We now describe a more general model that allows the hazard rate to increase or decrease over time.</p>
+<p class="heading">Weibull distribution</p>
+<p>The Weibull distribution is another standard distribution that is often used for lifetime data.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+<p>A random variable \(X\) is said to have a <strong>Weibull distribution</strong> with parameters \(\alpha \gt 0\) and  \(\lambda \gt 0\),</p>
+\[
+X \;\;\sim\;\; \WeibullDistn(\alpha,\; \lambda)
+\]
+<p>if its probability density function is</p>
+\[
+f(x) \;\;=\;\; \begin{cases} \alpha \lambda^{\alpha} x^{\alpha - 1} e^{-(\lambda x)^{\alpha}} &amp; x \gt 0 \\[0.4em]
+0 &amp; \text{otherwise}
+\end{cases} \]
+</div>
+
+<p>The Weibull distribution is particularly useful for lifetime data since its hazard function has a simple form.</p>
+
+<div class="theoremProof">
+<div class="theorem">
+<p class="theoremTitle">Weibull hazard function</p>
+<p>If a random variable \(X\) has a \(\WeibullDistn(\alpha, \lambda)\) distribution, its hazard function is</p>
+\[
+h(x) \;\;=\;\; \alpha \lambda^{\alpha} x^{\alpha - 1} \]</div>
+
+<div class="proof">
+<p>The Weibull distribution's survivor function is</p>
+\[
+S(x) \;\;=\;\; P(X \gt x) \;\;=\;\; \int_x^{\infty} {\alpha \lambda^{\alpha} u^{\alpha - 1} e^{-(\lambda u)^{\alpha}}} \; du \]
+<p>We can integrate this with a change of variable</p>
+\[
+v = (\lambda u)^{\alpha} \spaced{and} dv = \alpha \lambda(\lambda u)^{\alpha - 1} \;du\]
+<p>so</p>
+\[
+S(x) \;\;=\;\; \int_{ (\lambda x)^{\alpha}}^{\infty} e^{-v} \; dv \;\;=\;\; \Big[-e^{-v} \Big]_{(\lambda x)^{\alpha}}^{\infty} \;\;=\;\; e^{-(\lambda x)^{\alpha}}\]
+<p>The hazard function is</p>
+\[
+h(x) \;\;=\;\; \frac{f(x)}{S(x)} \;\;=\;\; \alpha \lambda^{\alpha} x^{\alpha - 1} \]</div>
+
+</div>
+
+<p>The hazard rate changes as the age of the items, \(x\), increases,</p>
+\[
+h(x) \;\;\propto\;\; x^{\alpha - 1} \]
+<p>The Weibull distribution can therefore be used as a model for items that either deteriorate or improve over time.</p>
+<dl>
+	<dt>\(\alpha \gt 1\)</dt>
+	<dd>The hazard function \(h(x)\) is an increasing function of \(x\) so the item becomes <strong>less reliable</strong> as it gets older.</dd>
+	<dt>\(\alpha \lt 1\)</dt>
+	<dd>The hazard function \(h(x)\) is a decreasing function of \(x\) so the item becomes <strong>more reliable</strong> as it gets older.</dd>
+	<dd></dd>
+	<dt>\(\alpha = 1\)</dt>
+	<dd>The hazard function \(h(x)\) is constant and the lifetime distribution is an exponential distribution.</dd>
+</dl>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

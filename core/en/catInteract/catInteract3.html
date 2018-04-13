@@ -1,0 +1,228 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Inference for num-cat interaction</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="interaction, comparing groups, indicator variable, parallel regn lines, t test, type 3 sum of squares">
+	<meta name="dataset" content="Gas consumption and insulation">
+	<meta name="dataset" content="Californian wine quality">
+	<meta name="dataset" content="Solder joint strength">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Model</p>
+	<p>We consider the following model for a numerical explanatory variable <em>X</em> 
+		and a categorical explanatory variable <em>Z</em>.</p>
+	<p class=eqn><img src="images/numCatInteractModel.gif" width="440" height="94"></p>
+	<p>This model has the flexibility of allowing an arbitrary linear relationship 
+		between <em>Y</em> and <em>X</em> within each group (level of <em>Z</em>).</p>
+	<p class="heading">Hypothesis of no interaction</p>
+	<p>If there is no interaction between the effects of <em>X</em> and <em>Z</em>, 
+		the regression lines in all groups will be identical. This corresponds to 
+		the following hypthesis test.</p>
+	<p class=eqn><img src="images/noInteractionHypoth.gif" width="207" height="49"></p>
+	<p class="heading">Two groups</p>
+	<p>If there are only two levels for <em>Z</em> (two groups), then only a single 
+		parameter is being tested. Since the model is a GLM, a simple t-test can be 
+		used.</p>
+	<div class="diagram"> 
+		<p class="heading">Gas consumption and insulation</p>
+
+		<p>The diagram below shows the least squares lines for a model that allows 
+			interaction. </p>
+		<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="indicatorProg.TwoGroupInferenceApplet">
+<param name="yVarName" value="Gas consumption">
+<param name="yValues" value="7.2 6.9 6.4 6.0 5.8 5.8 5.6 4.7 5.8 5.2 4.9 4.9 4.3 4.4 4.5 4.6 3.7 3.9 4.2 4.0 3.9 3.5 4.0 3.6 3.1 2.6 4.8 4.6 4.7 4.0 4.2 4.2 4.1 4.0 3.5 3.2 3.9 3.5 3.7 3.5 3.5 3.7 3.5 3.4">
+<param name="xVarName" value="Temperature">
+<param name="xValues" value="-0.8 -0.7 0.4 2.5 2.9 3.2 3.6 3.9 4.2 4.3 5.4 6.0 6.0 6.0 6.2 6.3 6.9 7.0 7.4 7.5 7.5 7.6 8.0 8.5 9.1 10.2 -0.7 0.8 1.0 1.4 1.5 1.6 2.3 2.5 2.5 3.1 3.9 4.0 4.0 4.2 4.3 4.6 4.7 4.9">
+<param name="zVarName" value="Insulation">
+<param name="zValues" value="26@0 18@1">
+<param name="zLabels" value="Before After">
+<param name="yAxis" value="0 8 0 1">
+<param name="xAxis" value="-1 11 0 2">
+<param name="maxParam" value="9.999 -9.999 -9.999 -9.999">
+<param name="maxTableEntries" value="-99.999 9.999 -99.99">
+<param name="groupEffectName" value="Insul (Aft - Bef)">
+<param name="hasInteraction" value="true">
+<param name="customText" value="param=param#se=se#intercept=intercept#interaction=interaction">
+</applet> 
+
+</div>
+
+		<p>The table shows the parameter estimates, their standard errors and the 
+			p-values for testing whether they are zero in the full model.</p>
+		
+<div class="centred"><div class="boxed">
+<p>Since the p-value associated with the 
+							interaction variable is 0.0025, we conclude that there is strong 
+							evidence that the interaction coefficient is not zero &mdash; i.e. that 
+							there is interaction.</p>
+</div></div>
+
+		<p>Note that we should <strong>not</strong> try to interpret the p-values 
+			for the main effects of temperature and insulation here. The p-values each 
+			test whether a single term can be omitted from the <strong>full</strong> 
+			model with interaction. The model with an interaction term between temperature 
+			and insulation but with one main effect is of no particular interest or 
+			meaning.</p>
+		
+<div class="centred"><div class="boxed">
+<p>Since we have concluded that the effect 
+							of increasing temperature is different before and after insulation, 
+							it is meaningless to test whether temperature itself affects gas 
+							consumption &mdash; it must do so in one or other group!</p>
+</div></div>
+
+		<p>The check-boxes in the diagram allow you to display models without interaction 
+			(even though we have concluded that it is important). Observe that the diagram 
+			enforces the hierarchy that both main effects must be in the model in order 
+			to allow their interaction to be present.</p>
+
+</div>
+  
+  <p class="heading">Three or more groups</p>
+	<p>When there are only two levels of the categorical variable (2 groups), testing 
+		for interaction involves only a single parameter so a t-test can be used. 
+		If there are three or more levels of the categorical variable (groups), the 
+		test involves more than one parameter, so a t-test is not appropriate.</p>
+	<p>A generalisation of the table of t-statistics and their p-values is a table 
+		of Type 3 sums of squares. These sums of squares are used to test whether 
+		<strong>groups</strong> of parameters can be set to zero in the full model. 
+		The p-values associated with the sums of squares are interpreted in exactly 
+		the same way as those in the gas-and-insulation example above.</p>
+	<div class="diagram"> 
+		<p class="heading">Californian wine quality</p>
+		<p>The diagram below shows the relationship between Quality and Body in wines 
+			from three regions of California.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="indicatorProg.NumCatInteractionApplet">
+<param name="yVarName" value="Quality, Q">
+<param name="yValues" value="9.8 12.6 11.9 11.1 13.3 12.8 12.8 12.0 13.6 13.9 14.4 12.3 16.1 16.1 15.5 15.5 13.8 13.8 11.3 7.9 15.1 13.5 10.8 9.5 12.7 11.6 11.7 11.9 10.8 8.5 10.7 9.1 12.1 14.9 13.5 12.2 10.3 13.2">
+<param name="xVarName" value="Body, B">
+<param name="xValues" value="2.8 4.9 5.3 2.6 5.1 4.7 4.8 4.5 4.3 3.9 4.3 5.4 5.7 6.6 4.4 5.6 5.4 5.5 4.1 5.0 5.4 5.3 4.1 4.0 5.4 4.6 4.0 4.9 4.4 3.7 4.3 3.8 3.5 5.0 5.7 4.7 5.5 4.8">
+<param name="zVarName" value="Region, R">
+<param name="zValues" value="0 0 0 0 0 0 0 0 2 0 2 1 2 2 2 2 2 2 0 1 2 2 1 1 2 1 0 1 1 1 1 0 0 2 0 0 0 0">
+<param name="zLabels" value="North Central Napa">
+<param name="yAxis" value="6 18 6 2">
+<param name="xAxis" value="2 7 2 1">
+<param name="maxParam" value="99.999 99.999 9.999 9.999">
+<param name="maxTableEntries" value="99.999 99 99.999 99.99">
+<param name="ssqType" value="3">
+<param name="customText" value="Type 3 ssq=Type 3 ssq#df=df#Mean ssq=Mean ssq#Interaction=Interaction">
+</applet> 
+</div>
+
+		<p>Since there are 3 regions, the test for interaction involves 2 parameters, 
+			and can therefore be tested using the Type 3 sum of squares with 2 degrees 
+			of freedom for these parameters.</p>
+		
+<div class="centred"><div class="boxed">
+<p>The p-value is 0.7780, so we conclude 
+							that there is no evidence of interaction between region and body 
+							in their effects on quality.</p>
+</div></div>
+
+		<p>Click the checkbox for the interaction term to display the least squares 
+			model without interaction. Now that the interaction term is removed from 
+			the model, we can interpret the p-values associated with the main effects 
+			of body and region:</p>
+		
+<div class="centred"><div class="boxed">
+<p>The p-values associated with the two 
+							main effects are now both low, so it is almost certain that there 
+							are differences in quality between the regions and there is also 
+							moderately strong evidence that quality is associated with body.</p>
+</div></div>
+
+		<br>
+		
+	</div>
+  
+  <p class="heading">Type 1 and 3 sums of squares</p>
+	<p>We described the test for interaction using Type 3 sums of squares in the 
+		example above since the associated p-values are interpreted in the same way 
+		as the p-values associated with t-tests of individual parameters.</p>
+	<p>An alternative table that results in the same test for interaction uses sequential 
+		(Type&nbsp;1) sums of squares arranged in an analysis of variance table. If 
+		the interaction term is the final term added sequentially to the model, its 
+		Type 1 and Type 3 sums of squares and associated p-value are identical, so 
+		this just provides a different way to lay out the calculations.</p>
+	
+<div class="centred"><div class="boxed">
+<p>Anova tables and Type 1 sums of squares 
+						are often used for experimental data where the explanatory variables 
+						are orthogonal and the order of adding the main effects does not affect 
+						the sums of squares.</p>
+</div></div>
+
+	<p>On the other hand, Type 3 sums of squares are often used in observational 
+		studies where the explanatory variables are orthogonal (correlated).</p>
+	
+  <div class="diagram">
+		<p class="heading">Solder joint strength</p>
+		<p>An experiment was conducted to investigate the effect of the chemical element 
+			antimony on the strength of tin-lead solder joints. Four cooling methods 
+			and four amounts of antimony were used in the experiment with 3 replicates 
+			for each combination. The shear strength (MPa) was measured for each joint.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="indicatorProg.NumCatInteractionApplet">
+<param name="yVarName" value="Strength of joint">
+<param name="yValues" value="17.6 19.5 18.3 20.0 24.3 21.9 18.3 19.8 22.9 19.4 19.8 20.3 18.6 19.5 19.0 20.0 20.9 20.4 21.7 22.9 22.1 19.0 20.9 19.9 22.3 19.5 20.5 20.9 22.9 20.6 22.9 19.7 21.6 19.6 16.4 20.5">
+<param name="xVarName" value="Antimony%, A">
+<param name="xValues" value="12@0 12@3 12@5">
+<param name="zVarName" value="Cooling method, C">
+<param name="zValues" value="3@0 3@1 3@2 3@3 3@0 3@1 3@2 3@3 3@0 3@1 3@2 3@3">
+<param name="zLabels" value="#Water quenched# #Oil quenched# #Air blown# #Furnace cooled#">
+<param name="yAxis" value="15 25 16 2">
+<param name="xAxis" value="-1 6 0 5 3">
+<param name="maxParam" value="99.99 99.99 9.999 9.999">
+<param name="maxTableEntries" value="999.99 99 999.99 99.99">
+<param name="ssqType" value="1">
+<param name="customText" value="Seq ssq=Seq ssq#df=df#Mean ssq=Mean ssq#Interaction=Interaction">
+</applet> 
+</div>
+
+		<p>Because of the design of the experiment, the cooling method and antimony 
+			percentage are orthogonal. The analysis of variance table therefore does 
+			not depend on the order of adding the main effects (though they must be 
+			added before the interaction).</p>
+		
+<div class="centred"><div class="boxed">
+<p>Since the p-value for the interaction 
+							is 0.1771, we conclude that there is no evidence of interaction 
+							between the effects of antimony and cooling method.</p>
+</div></div>
+
+		<p>The p-value for the interaction is the same as would be observed in a table 
+			of Type 3 sums of squares, so the conclusions are the same as would have 
+			been obtained using Type 1 sums of squares.</p>
+		<p><strong>Click</strong> the checkbox to remove the interaction from the 
+			model. The p-values for the two main effects can now be interpreted as tests 
+			for whether antimony or the cooling method affect joint strength. (Since 
+			they are orthogonal, their sequential ordering does not matter.)</p>
+		
+	</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

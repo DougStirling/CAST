@@ -1,0 +1,101 @@
+<html>
+<head>
+<title>3. Analysis of Variance</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../structure/tocPrintStyles.css" type="text/css">
+<script type='text/javascript'>
+	function toggleDescriptions() {
+		var showNotHide = document.getElementById('descriptionCheck').checked;
+		var descriptions = document.getElementsByTagName('p');
+		for (var i=0 ; i<descriptions.length ; i++)
+			descriptions[i].style.display = showNotHide ? 'block' : 'none';
+	}
+</script>
+</head>
+
+<body>
+<div style='position:absolute; top:3em; right:5; color:#FF0000; border:solid 1px #FF0000; background-color:#FFFFCC; padding:4px; margin:0px; line-height:0.8em'>
+<input type='checkbox' id='descriptionCheck' checked onChange='toggleDescriptions()'/>Long page<br>descriptions
+</div>
+<h1>Chapter 3 &nbsp; Analysis of Variance</h1>
+<h2>3.1 &nbsp; Anova for simple linear model</h2>
+<h3>3.1.1 &nbsp; Components for regression model</h3>
+<p>In regression data, the difference between the response and its overall mean can be split into an explained component and a residual.</p>
+<h3>3.1.2 &nbsp; Sums of squares</h3>
+<p>The total sum of squares equals the explained sum of squares plus the residual sum of squares.</p>
+<h3>3.1.3 &nbsp; Coefficient of determination</h3>
+<p>The relative sizes of the explained and residual sums of squares holds information about the strength of the relationship. The coefficient of determination describes the proportion of total variation that is explained.</p>
+<h3>3.1.4 &nbsp; Coefficient of determination and experiments</h3>
+<p>For experimental data, the coefficient of determination is affected both by the strength of the relationship and the range of x-values chosen by the experimenter.</p>
+<h3>3.1.5 &nbsp; Analysis of variance test</h3>
+<p>The F ratio can be used to test whether the variables are related (i.e. to test whether the model slope is zero). Since the F ratio is the square of the t statistic for this test, the conclusions for the F and t tests are identical.</p>
+<h2>3.2 &nbsp; All-or-nothing anova</h2>
+<h3>3.2.1 &nbsp; Components of variation for Y vs X and Z</h3>
+<p>The difference between each response value and the overall mean can be split into a component explained by the explanatory variables and a residual.</p>
+<h3>3.2.2 &nbsp; Sums of squares for Y vs X and Z</h3>
+<p>The total, regression and residual sum of squares contain information about how well the explanatory variables explain variability in the response. The coefficient of determination is a useful summary statistic.</p>
+<h3>3.2.3 &nbsp; F test for regression of Y vs X and Z</h3>
+<p>The ratio of the mean regression and residual sums of squares has an F distribution if the response is unrelated to the explanatory variables but is larger if they are related. It can be used as a test statistic for whether there is a relationship.</p>
+<h3>3.2.4 &nbsp; All-or-nothing F test for any GLM</h3>
+<p>A similar F test can simultaneously test whether all slope parameters in a GLM are zero.</p>
+<h3>3.2.5 &nbsp; Different interpretations of R-sqr and F</h3>
+<p>The coefficient of determination, R-sqr, describes the proportion of response variation that is explained by the model. The F ratio describes the strength of evidence for there being any relationship at all. In large samples, R-sqr can be small even when F is large.</p>
+<h2>3.3 &nbsp; Multicollinearity of X and Z</h2>
+<h3>3.3.1 &nbsp; Correlated explanatory variables</h3>
+<p>When the explanatory variables, X and Z, are correlated, their slope parameters can be estimated less accurately than for uncorrelated explanatory variables covering the same spreads of x- and z-values.</p>
+<h3>3.3.2 &nbsp; Correlated explanatory variables</h3>
+<p>The variance inflation factors for the slope parameters quantify the increase in their standard errors due to the explanatory variables being correlated.</p>
+<h3>3.3.3 &nbsp; Understanding multicollinearity</h3>
+<p>The slope coefficient for X is the slope of a slice through the regression plane at any z-value. When X and Z are highly correlated, similar slices of the data contain small ranges of x-values and therefore hold little information about the parameter.</p>
+<h3>3.3.4 &nbsp; Understanding multicollinearity (cont)</h3>
+<p>The position of the least squares plane is most accurately determined near the data. When X and Z are highly correlated, the LS plane can be very variable away from the data.</p>
+<h3>3.3.5 &nbsp; F- and t-tests: a paradox?</h3>
+<p>If X and Z are correlated, the F-test can show that the explanatory variables are related to Y but t-tests of the separate slopes may show that either one of X or Z can be dropped from the full model.</p>
+<h3>3.3.6 &nbsp; T-tests in full and partial models</h3>
+<p>If X and Z are correlated, the t-test for X in the full model with X and Z can give a different result from the t-test in the model with only the single explanatory variable X.</p>
+<h2>3.4 &nbsp; Sequential sums of squares</h2>
+<h3>3.4.1 &nbsp; Sequentially adding variables</h3>
+<p>As explanatory variables are added to the model, the regression plane gets closer to the data points. The regression planes corresponding to models with only X or Z correspond to planes that have zero slope for the other variable.</p>
+<h3>3.4.2 &nbsp; Splitting the explained sum of squares</h3>
+<p>Each additional variable reduces the residual sum of squares by an amount that is the sum of squares of differences between the least squares fits of the two models.</p>
+<h3>3.4.3 &nbsp; Order of adding X and Z</h3>
+<p>The explained sum of squares for X can be different, depending on whether Z is already in the model.</p>
+<h3>3.4.4 &nbsp; Anova tests for individual variables</h3>
+<p>There are two ways to split the total sum of squares in an anova table. The F-test for the final variable added to the model gives identical results to the t-test for the coefficient in the full model.</p>
+<h3>3.4.5 &nbsp; Orthogonal variables</h3>
+<p>When the two explanatory variables are uncorrelated (orthogonal), the results are easier to interpret. The slope coefficients for X are the same, whether or not Z is in the model, and the two anova tables are identical.</p>
+<h3>3.4.6 &nbsp; Orthogonal variables and experimental design</h3>
+<p>Orthogonal variables usually only arise from designed experiments. They result in the most accurate parameter estimates and results that are relatively easy to interpret.</p>
+<h3>3.4.7 &nbsp; Other sequences of models</h3>
+<p>For any sequence of models with increasing complexity, component sums of squares can be defined that compare successive models in the sequence.</p>
+<h2>3.5 &nbsp; Testing linearity in regression</h2>
+<h3>3.5.1 &nbsp; Linear and quadratic models</h3>
+<p>Linearity can be assessed by comparing the fits of a linear and quadratic model. The total sum of squares can be split into linear, quadratic and residual sums of squares.</p>
+<h3>3.5.2 &nbsp; Understanding the sums of squares</h3>
+<p>The quadratic sum of squares compares the fit of a linear and quadratic model and therefore holds information about whether there is curvature in the data.</p>
+<h3>3.5.3 &nbsp; Testing for linearity</h3>
+<p>An F ratio comparing the quadratic and residual mean sums of squares can be used to test for linearity.</p>
+<h3>3.5.4 &nbsp; Polynomial models</h3>
+<p>In polynomial models, only one order of adding terms is meaningful. This means that only a single anova table is possible.</p>
+<h3>3.5.5 &nbsp; Testing curvature in complex models</h3>
+<p>Analysis of variance can test the significance of the reduction in the residual sums of squares from adding quadratic terms in X and Z to a model with linear terms in both variables.</p>
+<h3>3.5.6 &nbsp; Inference for models with interaction</h3>
+<p>Testing whether the coefficient of XZ is zero can be done with either a t-test or analysis of variance. Both tests give the same p-value.</p>
+<h2>3.6 &nbsp; Several explanatory variables</h2>
+<h3>3.6.1 &nbsp; Marginal sums of squares</h3>
+<p>The marginal sums of squares in a general linear model describe the effect on the residual sum of squares of deleting single variables from the full model. </p>
+<h3>3.6.2 &nbsp; Variable selection</h3>
+<p>The variable with smallest marginal sum of squares is least important and its p-value indicates whether it can be dropped from the model. The marginal sums of squares can be recalculated and further variables dropped in an iterative procedure.</p>
+<h3>3.6.3 &nbsp; Multicollinearity</h3>
+<p>When the explanatory variables are uncorrelated, parameter estimates and marginal sums of squares are unaffected by removing other variables. Variance inflation factors indicate the degree of multicollinearity.</p>
+<h3>3.6.4 &nbsp; Sequential sums of squares</h3>
+<p>Sequential sums of squares describe changes to the residual sum of squares when the explanatory variables are added sequentially. The sums of squares depend on the order of adding the variables.</p>
+<h3>3.6.5 &nbsp; Sequential sums of squares and fitted values</h3>
+<p>The sequential sums of squares are also the sum of squared differences between the fitted values of consecutive models. In some applications, these differences can be shown graphically to illustrate the sequential sum of squares.</p>
+<h3>3.6.6 &nbsp; Order of variables in ssq table</h3>
+<p>The sequential sums of squares depend on the order of adding the variables except with the explanatory variables are uncorrelated.</p>
+<h3>3.6.7 &nbsp; Sums of squares for groups of variables</h3>
+<p>Individual explanatory variables can be grouped together by adding their sums of squares and degrees of freedom.</p>
+<h3>3.6.8 &nbsp; Hypothesis tests in anova tables</h3>
+<p>The sum of squares table can be extended with mean sums of squares and F ratios. P-values can be found for the F ratios to indicate whether each variable can be dropped from the model, but these should only be interpreted when subsequent p-values are not significant.</p>
+</html>

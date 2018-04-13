@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Confidence intervals</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<script type="text/javascript">
+		setupChoiceImages("skiing2", "buffalo2", "marketResearch2", "church2");
+	</script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="estimation, confidence interval, confidence level">
+	<meta name="dataset" content="Skiing injuries">
+	<meta name="dataset" content="Buffalo in Yellowstone">
+	<meta name="dataset" content="Market research for spice mix">
+	<meta name="dataset" content="Church attendance">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p class="heading">95% bounds on the error</p>
+<p>We can use the error distribution to find a range of values within which the 
+	error will lie with probability 0.95,</p>
+<p class="eqn"><img class="svgImage" src="images/errorBounds.png" width="276" height="114"></p>
+<p>Assuming that the error distribution is  normal (or approximately so), we can use the fact that <a href="javascript:showNamedPage('continuousDistns6')">95% of any normal distribution is between 1.96 standard deviations of the mean</a>.</p>
+<p class="eqn"><img class="svgImage" src="images/errorBounds2.png" width="276" height="114"></p>
+<p class="heading">95% confidence interval</p>
+<p>We can therefore write</p>
+\[
+P\left(-1.96 \times \se(\hat {\theta}) \;\;\lt\;\; error \;\;\lt\;\; 1.96 \times \se(\hat {\theta})\right) \;\;\approx\;\; 0.95
+\]
+<p>Since this is the probability of \(\hat{\theta}\) being within \(-1.96 \times \se(\hat {\theta})\) of \(\theta\), we can also write</p>
+\[
+P\left(\hat{\theta}-1.96 \times \se(\hat {\theta}) \;\;\lt\;\; \theta \;\;\lt\;\; \hat{\theta}+1.96 \times \se(\hat {\theta})\right) \;\;\approx\;\; 0.95
+\]
+<p>We therefore call the interval</p>
+\[
+\hat{\theta}-1.96 \times \se(\hat {\theta}) \quad \text{ to } \quad \hat{\theta}+1.96 \times \se(\hat {\theta})
+\]
+<p>a <strong>95% confidence interval</strong> for \(\theta\) and we have <strong>95% confidence</strong> that it will include the actual value of the parameter.</p>
+<p class="heading">Other confidence levels</p>
+<p>A similar argument can be repeated to get intervals with different confidence levels. For example, 90% of values from a normal distribution are within 1.645 standard deviations of the distribution's mean, so</p>
+<p class="eqn"><img class="svgImage" src="images/errorBounds3.png" width="276" height="114"></p>
+<p>This leads to a <strong>90% </strong>confidence interval,</p>
+\[
+\hat{\theta}-1.645 \times \se(\hat {\theta}) \quad \text{ to } \quad \hat{\theta}+1.645 \times \se(\hat {\theta})
+\]
+<p>We say that we are <strong>90% confident</strong> that an interval that is calculated in this way will include the true parameter value, \(\theta\).</p>
+<div class="example">
+	
+	<p class="exampleHeading">Binomial examples</p>
+	
+  <p>Each of the following data sets can be assumed to be  based on a series of independent Bernoulli trials with probability \(\pi\) of success, so the number of successes has a binomial distribution.</p>
+<form>
+	<select name="dataset" onChange="changeImage('image', this)">
+<option value="0" selected>Skiing injuries for children</option>
+<option value="1">Buffalo ages at Yellowstone</option>
+<option value="2">Market research for spice mix</option>
+<option value="3">Church attendance</option>
+</select>
+</form>
+
+<p class="eqn">
+	<img class="gif" id="image" src="images/skiing2.gif" width="594" height="307">
+</p>
+
+		<p>In each example, a 95% confidence interval is calculated as the sample proportion ± 1.96 standard errors.</p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

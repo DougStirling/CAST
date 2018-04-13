@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Testing whether slope is zero</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<script type="text/javascript">
+		setupChoiceImages("whistleblowers", "hawaii", "grandfatherClocks", "bankMinorities", "signReadingDist");
+	</script>
+
+	<meta name="index" content="slope, hypothesis test">
+	<meta name="dataset" content="Whistleblowers">
+	<meta name="dataset" content="Tourists in Hawaii">
+	<meta name="dataset" content="Grandfather clock price">
+	<meta name="dataset" content="Banks and minorities">
+	<meta name="dataset" content="Distance to read sign">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Testing for zero slope</p>
+
+<p>To assess whether the explanatory variable affects the response, we test the 
+  hypotheses </p>
+<p class=eqn><span class="blue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&beta;<sub>1</sub> &nbsp;=&nbsp; 0<br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&beta;<sub>1</sub>  &nbsp;&ne;&nbsp;  0</span> </p>
+<p>The least squares slope from a sample, <em>b</em><sub>1</sub>, 
+  is the obvious statistic to throw light on the value of β<sub>1</sub>, 
+  but <em>b</em><sub>1</sub> varies from sample to sample. We must therefore take account of its standard deviation 
+  to assess its distance from zero. </p>
+<p class="heading">If we knew the error standard deviation (we don't!)</p>
+<p>If we knew the value of σ, 
+  we could evaluate the standard deviation of <em>b</em><sub>1</sub></p>
+<p class=eqn><img class="gif" src="../regnTest/images/sdSlopeEqn.gif" width="129" height="42"> </p>
+<p>This could be used to standardise <em>b</em><sub>1</sub></p>
+<div class="centred">
+<table border="0" cellspacing="0" cellpadding="10" class="centred">
+<tr>
+<th style="margin:0px; padding:0px"><span class="black bold">standardised value,</span>&nbsp;&nbsp;&nbsp;</th>
+<td style="margin:0px; padding:0px"><span class="eqn"><img class="gif" src="images/standardisedSlope.gif" width="85" height="43"></span></td>
+</tr>
+</table>
+</div>
+<p>and <span class="em black">z</span>  would have a standard normal distribution 
+  (mean 0 and sd 1) if β<sub>1</sub> is really zero (<strong>H<sub>0</sub></strong>). The p-value for the test would 
+therefore be the probability of getting a value from the standard normal distribution 
+that is as far from zero as the z-value that you evaluated from your data.</p>
+<p class=eqn><img class="gif" src="images/zForTestingSlope.gif" width="294" height="141"></p>
+<p class="heading">Test statistic in practice</p>
+<p>Unfortunately σ  is usually unknown and the standard deviation of <em>b</em><sub>1</sub> must be <a href="javascript:showNamedPage('regnEst4')">estimated 
+  from the sample data</a>. We therefore use a test statistic of the form </p>
+<div class="centred">
+<table border="0" cellspacing="0" cellpadding="10" class="centred">
+<tr>
+<th style="margin:0px; padding:0px"><span class="black bold">t ratio,</span>&nbsp;&nbsp;&nbsp;</th>
+<td style="margin:0px; padding:0px"><span class="eqn"><img class="gif" src="images/standardisedSlope2.gif" width="69" height="48"></span></td>
+</tr>
+</table>
+</div>
+<p class="heading">The p-value</p>
+<p>The only change to the method when using the test statistic <span class="em black">t</span>  
+rather than <span class="em black">z</span>  is that a t distribution with 
+<i><span class="black">n</span></i><span class="black">&nbsp;-&nbsp;2</span> 
+degrees of freedom must be used to obtain the p-value instead of the standard 
+normal distribution.</p>
+<p class=eqn><img class="gif" src="images/slopeTestP.gif" width="426" height="268">
+</p>
+
+<p>The p-value is interpreted in the same way as for other hypothesis tests. </p>
+<p class="heading">Interpretation of p-value</p>
+<p>Consider a data set with least squares slope <em>b</em><sub>1</sub> and corresponding p-value,   0.0023. The p-value tells us that the 
+probability of getting a  least squares slope as far from zero 
+as <em>b</em><sub>1</sub> would be only 0.0023 if <b>H<sub>0</sub></b> was true (i.e. if <i>Y</i> and <i>X</i> were not related). Since this is very unlikely, the data give strong 
+evidence that the linear model slope is <strong>not</strong> zero and therefore that the response 
+is related to the explanatory variable. </p>
+<p>Similarly, if we calculate that the p-value for <em>b</em><sub>1</sub> is 0.4, this tells us that a least squares slope as far from zero as <em>b</em><sub>1</sub> would occur with probability 0.4, even if <em>Y</em> and <em>X</em> were not related. Since this is fairly high, our conclusion should be that there is no reason to doubt the null hypothesis &mdash;  there is no evidence of a relationship 
+	between the response and explanatory variables. </p>
+<div class="diagram"> 
+<p class="heading">Examples</p>
+<p>The following data sets show hypothesis tests for a few data sets and the conclusions that are reached. 
+</p>
+<form>
+<select name="dataset" onChange="changeImage('image', this)">
+<option value="0" selected>Whistleblower retaliation</option>
+<option value="1">Tourist arrivals in Hawaii</option>
+<option value="2">Grandfather clock auction prices</option>
+<option value="3">Banks and minorities</option>
+<option value="4">Distance to read sign</option>
+</select>
+</form>
+
+<p class="eqn">
+	<img class="gif" id="image" src="images/whistleblowers.gif" width="589" height="473">
+</p>
+
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

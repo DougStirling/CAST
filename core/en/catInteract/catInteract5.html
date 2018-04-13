@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Inference for categorical interaction</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="interaction, type 1 sum of squares, type 3 sum of squares, analysis of variance">
+	<meta name="dataset" content="Exercise and smoking">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Test for interaction</p>
+	<p>We parameterised the model with interaction as a GLM based on the no-interaction 
+		model with (<em>n</em><sub>X</sub>&nbsp;-&nbsp;1)(<em>n</em><sub>Z</sub>&nbsp;-&nbsp;1) 
+		extra terms involving indicator variables.</p>
+	<p class=eqn><img src="images/interactModel.gif" width="468" height="21"></p>
+	<p>This parameterisation makes it easy to test for whether <em>X</em> and <em>Z</em> 
+		interact &mdash; we simply test whether the (<em>n</em><sub>X</sub>&nbsp;-&nbsp;1)(<em>n</em><sub>Z</sub>&nbsp;-&nbsp;1) 
+		interaction parameters are zero.</p>
+	<div class="diagram"> 
+		<p class="heading">Exercise and smoking</p>
+
+		<p>The scatterplot below shows the best-fitting (least squares) model with 
+			interaction for the data.</p>
+		<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="indicatorProg.CatCatInteractionApplet">
+<param name="yVarName" value="Time to max O2">
+<param name="yValues" value="12.8 13.5 11.2 10.9 11.1 9.8 8.7 9.2 7.5 19.2 21.1 20.8 15.5 13.8 17.2 12.7 11.2 9.8 22.6 20.3 21.9 19.1 18.0 15.9 12.2 12.1 14.8">
+<param name="xVarName" value="Exercise, e">
+<param name="xValues" value="9@0 9@1 9@2">
+<param name="xLabels" value="Bicycle Treadmill Step">
+<param name="zVarName" value="Smoking, s">
+<param name="zValues" value="3@0 3@1 3@2 3@0 3@1 3@2 3@0 3@1 3@2">
+<param name="zLabels" value="Nonsmoker #Moderate smoker# #Heavy smoker#">
+<param name="yAxis" value="5 25 5 5">
+<param name="maxParam" value="99.99 99.99 99.99 99.99">
+<param name="maxTableEntries" value="999.99 99 999.99 99.99">
+<param name="ssqType" value="1">
+<param name="customText" value="Seq ssq=Seq ssq#df=df#Mean ssq=Mean ssq#Interaction=Interaction">
+</applet> 
+
+</div>
+
+		<p>The analysis of variance table provides a test for whether there is interaction. 
+			The interaction row in the table tests whether the (3&nbsp;-&nbsp;1)(3&nbsp;-&nbsp;1)&nbsp;=&nbsp;4 
+			interaction parameters are zero.</p>
+		
+<div class="centred"><div class="boxed">
+<p>We conclude that there is moderately 
+							strong evidence of an interaction between the effects of smoking 
+							and exercise type on time to maximum O<sub>2</sub>.</p>
+</div></div>
+
+		<p>If we conclude that there is interaction, the main effects of exercise 
+			and smoking should neither be interpreted nor removed from the model, so 
+			they are greyed out in the table. (If you click the checkbox to remove the 
+			interaction, then the main effects can be examined.)</p>
+		<p>Smoking and exercise are orthogonal due to the design of the experiment 
+			&mdash; there were 3 individuals for each smoking-exercise combination. As a 
+			result, the order of adding the main effects does not affect their sequential 
+			sums of squares and there is only a single meaningful anova table (since 
+			the interaction must be added after the two main effects).</p>
+		<p>For observational data in which <em>X</em> and <em>Z</em> are not orthogonal, 
+			there would be two possible anova tables, corresponding to the two orders 
+			of adding the two main effects for <em>X</em> and <em>Z</em>. For such data, 
+			a table of Type 3 sums of squares may be preferred. However the test for 
+			interaction would be the same for the two approaches.</p>
+		</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

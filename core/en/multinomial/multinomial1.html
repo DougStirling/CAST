@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Joint probability function</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="bivariate distribution, discrete distribution, multinomial distribution, binomial distribution, joint probability function">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Generalising Bernoulli trials</p>
+
+<p>The binomial distribution arose from a collection of \(n\) independent trials, each of which had two possible values that we called <strong>success</strong> and <strong>failure</strong>. Since there are only two possibilities, we can simply consider the number of successes, \(X\) — the number of failures, \(n - X\), is determined exactly from \(X\). The random variable \(X\) has a \(\BinomDistn(n, \pi)\) distribution where \(\pi\) is the probability of success and \((1-\pi)\) is the probability of failure.</p>
+<p>We now extend this to situations in which each of the \(n\) trials may have more than two possibilities. </p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>If the following conditions hold:</p>
+	<ol>
+		<li>There is a sequence of \(n\)  trials, each with \(g\) possible outcomes, \(\{O_1, O_2, \dots, O_g\}\), where <em>n</em> is a fixed constant,</li>
+		<li>The results of all  trials are independent of each other,</li>
+		<li>The probabilities for the \(g\) outcomes are the same in all trials, \(P(O_1) = \pi_1, \dots, P(O_g) = \pi_g\),</li>
+	</ol>
+	<p>then the total numbers of occurrences of the different outcomes, \((X_1, X_2,\dots, X_g)\), have a <strong>multinomial</strong> distribution with parameters \(n, \pi_1, \dots, \text{ and }\pi_g\),</p>
+	\[
+	(X_1, X_2,\dots, X_g) \;\; \sim \;\; \MultinomDistn(n, \pi_1, \dots, \pi_g)
+	\] </div>
+<p>Note here that</p>
+
+\[
+\sum_{i=1}^g X_i \;=\; n \spaced{and} \sum_{i=1}^g {\pi_i} \;=\; 1
+\]
+
+<p>When \(g = 2\), this is simply a binomial experiment and \(X_1\) and \(X_2\) are the numbers of successes and failures. This is therefore essentially a <strong>univariate</strong> situation.</p>
+<p>When there are \(g = 3\) possible outcomes, the situation is essentially <strong>bivariate</strong> since we can simply examine the joint distribution of \(X_1\) and \(X_2\); the value of \(X_3 = n - X_1 - X_2\) is completely determined by them.</p>
+
+<div class="theoremProof">
+<div class="theorem">
+<p class="theoremTitle">Joint probability function</p>
+	<p>If \((X_1, X_2,\dots, X_g)\) have a \(\MultinomDistn(n, \pi_1, \dots, \pi_g)\) distribution, then their joint probability function is</p>
+	\[
+	p(x_1, x_2, \dots, x_g) = \frac{n!}{x_1!\;x_2!\; \cdots,\;x_g!} \pi_1^{x_1}\pi_2^{x_2}\cdots \pi_g^{x_g}
+	\] 
+	<p>provided</p>
+\[
+	x_i=0, 1, \dots, n, \quad\text{for all }i \spaced{and}\quad \sum_{i=1}^g {x_i} = n
+	\]
+	<p>but is zero for other values of the \(\{x_i\}\).</p>
+</div>
+<div class="proof">
+	<p>Since each  trial is independent, any specific sequence of \(n\) outcomes containing \(x_1\) values of type \(O_1\), ..., and \(x_g\) values of type \(O_g\) has probability</p>
+	\[
+	\pi_1^{x_1}\pi_2^{x_2} \cdots \pi_g^{x_g}
+	\]
+	<p>(For example, this is the probability that the <strong>first</strong> \(x_1\) values are of type, \(O_1\), the <strong>next</strong> \(x_2\) values are of type \(O_2\), and so on.)</p>
+	<p>We now need to find <strong>how many</strong> distinct sequences of this type would result in \(x_1\) values of type \(O_1\), ..., and \(x_g\) values of type \(O_g\).</p>
+	<p>The \(x_1\) values of type \(O_1\) can be placed in the sequence in \({n \choose x_1} = \frac{n!}{x_1!(n-x_1)!}\) different ways.</p>
+	<p>For each of these, the  \(x_2\) values of type \(O_2\) can be placed in the remaining \((n-x_1)\) positions in the sequence in \({n-x_1 \choose x_2} = \frac{(n-x_1)!}{x_2!(n-x_1-x_2)!}\) different ways. The total number of ways of placing the values of type \(O_1\) and \(O_2\) in the sequence is therefore</p>
+\[
+	{n \choose x_1}{n-x_1 \choose x_2} \;\;= \frac{n!}{x_1!x_2!(n-x_1-x_2)!}
+	\]
+<p>Similar logic shows that the total number of ways of placing the values of type \(O_1\), \(O_2\) and \(O_3\) in the sequence is</p>
+	\[
+	{n \choose x_1}{n-x_1 \choose x_2}{n-x_1-x_2 \choose x_3} \;\;= \frac{n!}{x_1!x_2!x_3!(n-x_1-x_2-x_3)!}
+	\]
+	<p>Carrying on in the same way shows that the total number of sequences containing  \(x_1\) values of type \(O_1\), ..., and \(x_g\) values of type \(O_g\) is</p>
+\[
+	\frac{n!}{x_1!\;x_2!\; \cdots\;x_g!}
+	\]
+<p>The <strong>total</strong> probability of getting \(x_1\) values of type \(O_1\), ..., and \(x_g\) values of type \(O_g\) is the product of the probability of a <strong>specific</strong> sequence of this type times the <strong>number of possible sequences</strong> of this type, giving the joint probability function.</p>
+</div>
+</div>
+
+
+<p>We now give a numerical example.</p>
+
+<div class="example" title="Example: Opinion poll">
+
+<p class="exampleHeading">Opinion poll</p>
+
+<p>Consider a public opinion poll in which people are asked for their opinion about a new piece of legislation. Three possible responses are possible and each selected individual has the following probabilities for the responses:</p>
+<p class="eqn">P(Agree) = 0.3, <br>
+	P(Neutral) = 0.4<br>
+	P(Disagree) = 0.3
+</p>
+<p>If \(n\) individuals are randomly chosen and their responses are independent, the numbers giving the three responses will have a \(\MultinomDistn(n, 0.3, 0.4, 0.3)\) distribution. Note that this is really a <strong>bivariate</strong> situation since the number disagreeing can be determined from the numbers who agree or are neutral. (This is similar to the way that we only consider the distribution of the successes in a binomial situation.)</p>
+<p>The joint probability function can be written as</p>
+\[
+	p(x_1, x_2, x_3) = \frac{n!}{x_1!\;x_2!\; (n-x_1-x_2)!} {0.3}^{x_1}{0.4}^{x_2}{0.3}^{n-x_1-x_2}
+	\]
+<p>The diagram below shows these probabilities in a 3-dimensional bar chart for different values of \(n\).</p>
+
+<div class="centred">
+	<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="bivarDistnProg.MultinomialApplet">
+<param name="backgroundColor" value="FFFBF3">
+<param name="yVarName" value="Y = number neutral">
+<param name="xVarName" value="X = number agreeing">
+<param name="catProbs" value="0.3 0.4 0.3">
+<param name="sampleSize" value="1 2 3 4">
+<param name="probAxis" value="0 0.5 0 0.1#0 0.3 0 0.1#0 0.25 0 0.05#0 0.2 0 0.05">
+<param name="initialRotation" value="30 45">
+<param name="transitions" value="none">
+</applet>
+</div>
+
+<p>When the sample size is 1, there are only three possible values for the numbers agreeing and neutral, \(X_1\) and \(X_2\). These are the probabilities that the single value is &quot;Agree&quot;, &quot;Neutral&quot; or &quot;Disagree&quot;, corresponding to \((x_1=1, x_2=0)\),  \((x_1=0, x_2=1)\) and  \((x_1=0, x_2=0)\).</p>
+<p>Note that \(X_1\) and \(X_2\) are <strong>not</strong> independent. Knowing that \(X_1=1\) person agrees tells us that \(X_2\) must be zero since this is a sample of size one.</p>
+<p>Use the pop-up menu to increase the sample size and observe how this affects the joint distribution. Note again that  \(X_1\) and \(X_2\) are <strong>not</strong> independent since</p>
+\[
+	X_1 + X_2 \;\;\le\;\; n
+\] </div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

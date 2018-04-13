@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>ebook</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta id="viewport" name="viewport" content="">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+
+<link rel="icon" href="structure/images/castIcon.ico" />
+
+<link href="structure/layoutStyles.css" rel="stylesheet" type="text/css" />
+<link href="structure/bannerStyles.css" rel="stylesheet" type="text/css" />
+<link href="structure/tocStyles.css" rel="stylesheet" type="text/css" />
+
+<script src="structure/environment.js"></script>
+<script>
+	if (environment.isTablet) {
+		var viewportTag = document.getElementById("viewport");
+		var originalContent = viewportTag.getAttribute("content");
+		viewportTag.setAttribute("content", "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0");
+	}
+</script>
+
+<script src="structure/bookSetup.js"></script>				<!--	also reads Javascript file to set up e-book	-->
+<script src="structure/bookLayout.js"></script>
+<script src="structure/navigate.js"></script>
+
+<script src="structure/tocScript.js"></script>
+
+<script src="structure/bannerScript.js"></script>
+
+</head>
+
+<body onLoad="finishSetup()">			<!-- in bookLayout.js  -->
+
+<div id="banner">
+
+	<img class="button" id="castLogo" src="structure/images/logo.png" onClick="showWebCAST()" title="Show main CAST web site">
+<!--
+	<div id="ch">One Numerical Variable</div>
+	<div id="chNo">2</div>
+	<div id="chAndNo">2. One Numerical Variable</div>
+	<div id="sec">1. Graphical display of values</div>
+	<div id="page">2. The basic dot plot</div>
+	<div id="pageFull">2.1.2. The basic dot plot</div>
+-->
+	
+	<div id="ch"></div>
+	<div id="chNo"></div>
+	<div id="chAndNo"></div>
+	<div id="sec"></div>
+	<div id="page"></div>
+	<div id="pageFull"></div>
+	<img id="underscore" src="structure/images/pageUnderscore.png" border="0">
+	
+	<div id="arrowsDiv">
+	<table id="arrowsTable" margin="0" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td align="center">
+				<img class="button" id="backArrow" src="structure/images/backArrow_std.svg" width="42px" height="49px" border="0px" onClick="doBackPage()" onMouseOut="restoreBack()" onMouseOver="hiliteBack()" title="Show previous page"><img id="arrowStar" src="structure/images/arrowStar.svg" width="34" height="49" border="0"><img class="button" id="nextArrow" src="structure/images/nextArrow_std.svg" width="42" height="49" border="0" onClick="doNextPage()" onMouseOut="restoreNext()" onMouseOver="hiliteNext()" title="Show next page">			</td>
+		</tr>
+		<tr>
+			<td align="center"><img id="versionGif" src="structure/images/dummyBlue.gif" width="130px" height="20px" border="0px"></td>
+		</tr>
+	</table>
+	</div>
+	
+	<table id='tabs' cellspacing='0'><tr>
+	
+	<td class='tabEnd'><img id='summaryLeftTab' src='structure/images/s_ltab_off.png' width='6px' height='22px'></td>
+	<td class='tabText' id='summaryTextCell' onClick='showSummaryText()' onMouseOver='hiliteTabText("summary", true)' onMouseOut='hiliteTabText("summary", false)' title='Summarised version of page'><nobr><span id='summaryText'></span></nobr></td>
+	<td class='tabEnd'><img id='summaryRightTab' src='structure/images/s_rtab_off.png' width='6px' height='22px'></td>
+	
+	<td class='tabEnd'><img id='appletLeftTab' src='structure/images/s_ltab_off.png' width='6px' height='22px'></td>
+	<td class='tabText' id='appletTextCell' onClick='showAppletText()' onMouseOver='hiliteTabText("applet", true)' onMouseOut='hiliteTabText("applet", false)' title='Interactive version of page with applets'><nobr><span id='appletText'></span></nobr></td>
+	<td class='tabEnd'><img id='appletRightTab' src='structure/images/s_rtab_off.png' width='6px' height='22px'></td>
+	
+	<td class='tabEnd'><img id='fullLeftTab' src='structure/images/s_ltab_on.png' width='6px' height='22px'></td>
+	<td class='tabText' id='fullTextCell' onClick='showFullText()' onMouseOver='hiliteTabText("full", true)' onMouseOut='hiliteTabText("full", false)' title='Full page'><nobr><span id='fullText'></span></nobr></td>
+	<td class='tabEnd'><img id='fullRightTab' src='structure/images/s_rtab_on.png' width='6px' height='22px'></td>
+	
+	<td class='tabEnd'><img id='videoLeftTab' src='structure/images/s_ltab_off.png' width='6px' height='22px'></td>
+	<td class='tabText' id='videoTextCell' onClick='showVideoText()' onMouseOver='hiliteTabText("video", true)' onMouseOut='hiliteTabText("video", false)' title='Version of page with videos'><nobr><span id='videoText'></span></nobr></td>
+	<td class='tabEnd'><img id='videoRightTab' src='structure/images/s_rtab_off.png' width='6px' height='22px'></td>
+	
+	</tr></table>
+	
+<img id='print' src='structure/images/print.gif' onClick='showPrintDialog(true)' onMouseOver='hilitePrintIcon(true)' onMouseOut='hilitePrintIcon(false)' title='Format a chapter for printing'>
+
+</div>
+
+
+<div id="tocDiv">
+	<div id="toc"></div>
+</div>
+
+<div id="contentDiv">			<!-- with no scrolling -->
+	<div class="contentInnerDiv">			<!-- the part that scrolls -- needed for iPad -->
+		<iframe id="content" src="structure/dummy.html"></iframe>
+	</div>
+	<div id='section'></div>
+</div>
+
+<div id='resize'></div>
+	
+<div id="overlay">
+	<div id="printDiv">
+		<form>
+		<p id="summaryChoices">?</p>		<!--	contents set by setBannerChapters()    -->
+		<p align="center"><button onClick="showPrintChapter();return false">Show chapter</button>   <button onClick="showPrintDialog(false);return false;">Cancel</button></p>
+		</form>
+	</div>
+	
+	<div id="adviceDiv">
+		<a id="closeButton" onClick="showBrowserMessage(false)"></a>
+		<iframe id="adviceFrame"></iframe>		//	text in core/en/systemAdvice.html
+	</div>
+</div>
+	
+</body>
+
+</html>

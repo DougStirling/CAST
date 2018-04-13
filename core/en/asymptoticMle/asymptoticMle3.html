@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Examples</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="standard error, binomial distribution, geometric distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Standard errors for two distributions</p>
+
+<p>We now derive formulae for the standard errors of the maximum likelihood estimators  of the unknown parameters in two standard distributions.</p>
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Example: Single binomial value</p>
+<p>In a series of \(n\) independent success/failure trials with probability \(\pi\) of success, \(x\) successes were observed. What is the maximum likelihood estimator of \(\pi\) and what are its bias and standard error?</p>
+</div>
+
+<div class="solution">
+<p>The number of successes, \(X\), has a binomial distribution, so the likelihood function is the binomial probability,</p>
+\[
+	L(\pi) = {n \choose x} \pi^x(1-\pi)^{n-x} \]
+<p>The log-likelihood is</p>
+\[
+	\ell(\pi) \;\; = \;\;  x \log(\pi) + (n-x) \log(1 - \pi) + K\]
+<p>where \(K\) is a constant that does not depend on \(\pi\). The derivative of the log-likelihood is</p>
+\[ \ell'(\pi) \;\; = \;\; \frac x {\pi} - \frac {n-x} {1 - \pi}
+\]
+<p>and setting this to zero gives the maximum likelihood estimate</p>
+\[ \hat{\pi} \;\; = \;\; \frac x n
+\]
+<p class="heading">Bias and standard error</p>
+<p>This estimator is unbiased since \(E[X] = n\pi\) for a binomial distribution.</p>
+<p>We will now apply the asymptotic formula to find the approximate standard error of this kind of estimator. The second derivative of the log-likelihood is</p>
+\[
+\ell''(\pi) \;\; = \;\; -\frac x {\pi^2} - \frac {n-x} {(1 - \pi)^2}
+\]
+<p>Writing \(x = n \hat{\pi} \) and also replacing \(\pi\) by \(\hat{\pi}\) in the above equation,</p>
+\[ \begin{align}
+\ell''(\hat{\pi}) \;\; &amp; = \;\; -\frac {n\hat{\pi}} {\hat{\pi}^2} - \frac {n-n\hat{\pi}} {(1 - \hat{\pi})^2} \\
+&amp; = \;\; -\frac n {\hat{\pi}} - \frac n {(1 - \hat{\pi})} \\
+&amp; = \;\; -\frac n {\hat{\pi}(1-\hat{\pi})} \\
+\end{align} \]
+<p>The general asymptotic formula for the standard error is</p>
+\[
+\se(\hat {\pi}) \;\;\approx\;\; \sqrt {- \frac 1 {\ell''(\hat {\pi})}} \;\;=\;\; \sqrt {\frac {\hat{\pi}(1-\hat{\pi})} n}
+\]
+<hr width="75%">
+<p>Since \(\hat{\pi}\) is the sample proportion from a binomial distribution, we can also find the variance of the estimator <strong>directly</strong> from the properties of the binomial distribution,</p>
+\[ \Var(\hat{\pi}) \;\; = \;\; \frac {\pi(1-\pi)} n
+\]
+<p>The asymptotic formula is therefore consistent with the usual formula for the standard error.</p>
+</div>
+
+</div>
+
+<p>Our second example involves a random sample from a geometric distribution.</p>
+
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Example: Geometric random sample</p>
+		<p>If \(\{x_1, x_2, \dots, x_n\}\) is a random sample from a geometric distribution with parameter \(\pi\), what is the maximum likelihood estimator of \(\pi\) and what are its bias and standard error?</p>
+	</div>
+	<div class="solution">
+		<p>The geometric probability function is</p>
+		\[
+		p(x\;|\;\pi) = \pi(1-\pi)^{x-1} \]
+		<p>The log-likelihood is</p>
+		\[
+		\ell(\pi) \;\; = \;\;  \sum_{i=1}^n {\log(p(x_i\;|\;\pi))} = n \log(\pi) + (\sum x - n) \log(1 - \pi)\]
+		<p>Its derivative is</p>
+		\[ \ell'(\pi) \;\; = \;\; \frac n {\pi} - \frac {\sum x - n} {1 - \pi}
+		\]
+		<p>and setting this to zero gives the maximum likelihood estimate</p>
+		\[ \hat{\pi} \;\; = \;\; \frac n {\sum x}
+		 \;\; = \;\; \frac 1 {\overline x}\]
+		<p class="heading">Bias and standard error</p>
+		<p>The maximum likelihood estimator \(\hat\pi\) is <strong>not</strong> unbiased since \(E[\hat{\pi}] \ne \pi\). Although we cannot easily find a formula for the bias, we know from the properties of maximum likelihood estimators that \(\hat\pi\) is <strong>asymptotically</strong> unbiased — its bias decreases as \(n\) increases.</p>
+		<p>We similarly cannot  find an exact formula for \(Var[\hat{\pi}]\), but an approximate standard error can be obtained using the asymptotic formula for standard errors of maximum likelihood estimators. The second derivative of the log-likelihood is</p>
+		\[
+		\ell''(\pi) \;\; = \;\; -\frac n {\pi^2} - \frac {\sum x - n} {(1 - \pi)^2}
+		\]
+		<p>Writing \(\sum x = \large\frac n {\hat{\pi}} \) and replacing \(\pi\) by \(\hat{\pi}\),</p>
+		\[ \begin{align}
+		\ell''(\hat{\pi}) \;\; &amp; = \;\; -\frac n {\hat{\pi}^2} - \frac {{\large\frac n {\hat{\pi}}}-n} {(1 - \hat{\pi})^2} \\
+		&amp; = \;\; -\frac n {\hat{\pi}^2(1-\hat{\pi})} \\
+		\end{align} \]
+		<p>Applying the general asymptotic formula for the standard error</p>
+		\[
+		\se(\hat {\pi}) \;\;\approx\;\; \sqrt {- \frac 1 {\ell''(\hat {\pi})}} \;\;=\;\; \sqrt {\frac {{\hat{\pi}}^2(1-\hat{\pi})} n}
+		\]
+	</div>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

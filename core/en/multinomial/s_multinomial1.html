@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Joint probability function</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="bivariate distribution, discrete distribution, multinomial distribution, binomial distribution, joint probability function">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Generalising Bernoulli trials</p>
+
+<p>The binomial distribution arose from a collection of \(n\) independent trials, each of which had two possible values that we called <strong>success</strong> and <strong>failure</strong>. We now extend this to situations in which each trial may have three or more possibilities. </p>
+
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>If the following conditions hold:</p>
+	<ol>
+		<li>There is a sequence of \(n\)  trials, each with \(g\) possible outcomes, \(\{O_1, O_2, \dots, O_g\}\), where <em>n</em> is a fixed constant,</li>
+		<li>The results of all  trials are independent of each other,</li>
+		<li>The probabilities for the \(g\) outcomes are the same in all trials, \(P(O_1) = \pi_1, \dots, P(O_g) = \pi_g\),</li>
+	</ol>
+	<p>then the total numbers of occurrences of the different outcomes, \((X_1, X_2,\dots, X_g)\), have a <strong>multinomial</strong> distribution with parameters \(n, \pi_1, \dots, \text{ and }\pi_g\),</p>
+	\[
+	(X_1, X_2,\dots, X_g) \;\; \sim \;\; \MultinomDistn(n, \pi_1, \dots, \pi_g)
+	\]
+</div>
+
+<p>Note here that</p>
+
+\[
+\sum_{i=1}^g X_i \;=\; n \spaced{and} \sum_{i=1}^g {\pi_i} \;=\; 1
+\]
+
+<p>When \(g = 2\),  \(X_1\) and \(X_2\) are the numbers of successes and failures in a binomial experiment — essentially  <strong>univariate</strong>.</p>
+<p>When  \(g = 3\), the situation is essentially <strong>bivariate</strong> since  \(X_3 = n - X_1 - X_2\) is completely determined by the values of \(X_1\) and \(X_2\).</p>
+
+<div class="theoremProof">
+<div class="theorem">
+<p class="theoremTitle">Joint probability function</p>
+	<p>If \((X_1, X_2,\dots, X_g)\) have a \(\MultinomDistn(n, \pi_1, \dots, \pi_g)\) distribution, then their joint probability function is</p>
+	\[
+	p(x_1, x_2, \dots, x_g) = \frac{n!}{x_1!\;x_2!\; \cdots,\;x_g!} \pi_1^{x_1}\pi_2^{x_2}\cdots \pi_g^{x_g}
+	\] 
+	<p>provided</p>
+\[
+	x_i=0, 1, \dots, n, \quad\text{for all }i \spaced{and}\quad \sum_{i=1}^g {x_i} = n
+	\]
+	<p>but is zero for other values of the \(\{x_i\}\).</p>
+	<p class="theoremNote">(Proved in full version)</p>
+</div>
+</div>
+
+<p>We now give a numerical example.</p>
+
+<div class="example">
+<p class="exampleHeading">Opinion poll</p>
+
+<p>Consider a public opinion poll in which people are asked for their opinion about a new piece of legislation. Three possible responses are possible, with</p>
+<p class="eqn">P(Agree) = 0.3, <br>
+	P(Neutral) = 0.4<br>
+	P(Disagree) = 0.3
+</p>
+<p>If \(n\) individuals are randomly chosen and their responses are independent, the numbers giving the three responses will have a \(\MultinomDistn(n, 0.3, 0.4, 0.3)\) distribution.</p>
+<p>The joint probability function can be written as</p>
+\[
+	p(x_1, x_2, x_3) = \frac{n!}{x_1!\;x_2!\; (n-x_1-x_2)!} {0.3}^{x_1}{0.4}^{x_2}{0.3}^{n-x_1-x_2}
+	\]
+<p>The diagram below shows these probabilities in a 3-dimensional bar chart when \(n = 4\). Note that we can ignore \(x_3\) here since \(x_3 = 4 - X_1 - x_2\) — it is effectively a bivariate situation.</p>
+<p class="eqn"><img src="images/s_multinomialBarchart.png" width="419" height="395" alt=""/></p>
+<p>Note that \(X_1\) and \(X_2\) are <strong>not</strong> independent. For example, knowing that \(X_1=3\) people agree tells us that \(X_2\) must be either 0 or 1 since the sample size is only 4.</p>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

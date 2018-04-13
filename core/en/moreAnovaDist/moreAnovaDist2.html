@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Distributions of sums of squares</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="sums of squares, residual sum of squares, regression sum of squares, chi-squared distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">If <span class="darkred">neither</span> explanatory variable 
+    is related to the response...</p>
+  <p>If both slope coefficients in the model, β<sub>1</sub>	and β<sub>2</sub>, 
+		are zero, all sums of squares have chi-squared distributions.</p>
+  <p class=eqn><img src="images/anovaDistns.gif" width="394" height="125"> </p>
+  <p>Also, the regression and residual sums of squares are statistically independent.</p>
+  <p class=heading>If <span class="darkred">one or both</span> of the explanatory 
+    variables are related to the response...</p>
+  <p>The residual sum of squares still has the same chi-squared distribution but 
+    the regression and total sums of squares are bigger.</p>
+  <p class=eqn><img src="images/anovaDistns2.gif" width="394" height="125"> </p>
+  <p>Since the regression sum of squares is larger (in relation to the residual 
+		sum of squares) when one or both of the explanatory variables are related 
+		to the response, large values provide evidence of the existence of a relationship.</p>
+  <div class="diagram">
+    <p class="heading">Simulation</p>
+
+    <p>The diagram below generates random samples of 25 values from a normal linear 
+			model in which neither of the explanatory variables affect the response 
+			&mdash; i.e. both slope coefficients in the model underlying the data are zero. 
+			This would be the model <strong>if neither abdomen circumference nor height 
+			was related to body fat</strong>.</p>
+    <div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="550">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="multiRegnProg.RegnSsqDistnApplet">
+<param name="yAxis" value="0 50 0 10">
+<param name="xAxis" value="65 120 70 10">
+<param name="zAxis" value="63 76 65 5">
+<param name="yVarName" value="Body fat">
+<param name="xVarName" value="Abdomen">
+<param name="zVarName" value="Height">
+<param name="xValues" value="88.6 100.5 83.5 108.1 70.4 98.3 84.6 98.6 86.5 94 92.3 87.5 87 106.6 106.8 92.4 90.8 104.5 101.2 89.7 84.4 88.7 93 100.5 111.5">
+<param name="zValues" value="73.5 73.5 69 67 66.75 65.75 71.5 69.25 73 72 69.25 72.25 69.75 75 70.25 71.5 69.5 74.5 68.25 67.5 70.75 69.25 68.5 65.75 66">
+<param name="randomSeed" value="48763562">
+<param name="multiRegnModel" value="20.0 0.0 0.0 10">
+<param name="decimals" value="3">
+<param name="lsDecimals" value="3 4 4">
+<param name="maxCoeff" value="-999.999 -9.9999 -9.9999">
+<param name="maxSsq" value="999.99">
+<param name="ssqNames" value="Total Regression Residual">
+<param name="ssqAxis" value="0 1000 0 200">
+<param name="ssqAxisName" value="Regression sum of squares">
+<param name="customText" value="Least sqrs=Least sqrs">
+</applet> 
+</div>
+
+    <p>Click <strong>Accumulate</strong> then take several samples to build up 
+      the sampling distribution of the regression sum of squares.</p>
+    <p>Observe that the distribution matches the theoretical chi-squared distribution 
+      reasonably well.</p>
+    </div>
+
+
+  <p class="heading">Estimate of the error variance</p>
+  <p>Irrespective of the underlying model's two slope parameters, β<sub>1</sub> 
+		and β<sub>2</sub></p>
+  <p class=eqn><img src="images/residSsqDistn.gif" width="193" height="26"> </p>
+  <p>Since the mean of a chi-squared distribution equals its degrees of freedom, 
+    the <strong>mean </strong>residual sum of squares is always a good (unbiased) 
+    estimate of the error variance of the model, σ<sup>2</sup>.</p>
+  <p class=eqn><img src="images/residMeanSsq.gif" width="144" height="41" alt="MSSexplained and MSSresidual"> 
+  </p>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

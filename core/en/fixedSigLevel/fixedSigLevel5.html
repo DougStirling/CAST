@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Power function</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="hypothesis test, test, power function, type II error">
+	<meta name="dataset" content="Failure of printed circuit boards">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p class="heading">Power of a test</p>
+<p>For any decision rule,  a Type II error arises when we decide that is <strong>H<sub>0</sub></strong> is true when it is really false. However rather than describing this, it is conventional to describe its converse.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>The <strong>power</strong> of a decision rule is the probability of correctly deciding that the alternative hypothesis is true when it really <strong>is</strong> true,</p>
+\[ \begin{align}
+\text{Power} \;&amp;=\; 1 - P(\text{Type II error}) \\[0.3em]
+&amp;=\; P\left(\text {decide }H_A \text{ is true} \mid H_A\right)
+\end{align} \]
+</div>
+<p>A test with high power is therefore desirable.</p>
+<p>The power of a decision rule is usually not a single value since the alternative hypothesis allows for a range of different parameter values, such as \(\mu \gt 12\). It is really a <strong>power function</strong> that can be graphed against the possible parameter values.</p>
+
+<div class="example" title="Example: Failure of printed circuit boards">
+	<p class="exampleHeading">Failure of printed circuit boards</p>
+	<p>The example on the previous page about a new method of producing printed circuit boards examined the hypotheses</p>
+	<ul>
+		<li>Null hypothesis, <strong>H<sub>0</sub></strong>: \(\pi = 0.06\)   (no improvement)</li>
+		<li>Alternative hypothesis,<strong>H<sub>0</sub></strong>: \(\pi \lt 0.06\)   (new method is better)</li>
+	</ul>
+	<p>where \(\pi\) is the probability of failure of a board. We now consider the decision rule that rejects the null hypothesis (and concludes that the new production method results in a lower probability of failure) if \(y=7\) or fewer fail out of a sample of \(n=200\) boards. We showed previously that this decision rule has significance level \(\alpha = 0.083\).</p>
+	<p>If the alternative hypothesis holds and \(\pi \lt 0.06\), the power function is</p>
+	\[ \begin{align}
+	\operatorname{Power}(\pi) \;&amp;=\; P\left(\text {decide }H_A \text{ is true} \mid \pi \lt 0.06\right) \\[0.4em]
+	&amp;=\; P(X \le 7 \mid \pi \lt 0.06) \\
+	&amp;=\; \sum_{x=0}^7 {200 \choose x} \; \pi^x \; (1 - \pi)^{200-x}
+	\end{align} \]
+	<p>The diagram below graphs the power against \(\pi\).</p>
+<div class="centred">
+	<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="450">
+		<script type="text/javascript">writeAppletParams();</script>
+		<param name="appletName" value="estimationProg.BinomialPowerApplet">
+		<param name="backgroundColor" value="FFFBF3">
+		<param name="pSuccess" value="0.000 0.060 0.030">
+		<param name="paramAxis" value="0 0.06 0 0.01">
+		<param name="powerAxis" value="0 1 0 0.2">
+		<param name="sampleSize" value="200">
+		<param name="cutoff" value="7">
+		<param name="nullProb" value="0.06">
+		<param name="piName" value="Probability of board failing">
+		<param name="customText" value="Significance level=Significance level#Power function=Power function#reject=reject">
+	</applet>
+</div>
+<p>Drag the slider to see how the probability of rejecting <strong>H<sub>0</sub></strong> depends on the actual value of \(\pi\).</p>
+<ul>
+	<li>When \(\pi\) is near zero, the power is close to one — the test has a high probability of detecting that it is less than 0.06.</li>
+	<li>When \(\pi\) is closer to 0.06, the power decreases — if the true value of \(\pi\) is only a little less than 0.06, it will be hard to detect this.</li>
+	<li>When \(\pi = 0.06\), the probability of rejecting  <strong>H<sub>0</sub></strong> is the <strong>significance level</strong> of the test.</li>
+	</ul>
+<hr width="75%">
+<p>Observe that the power of the test is 0.746 when \(\pi = 0.03\). The engineer would be disappointed with this. It means that  if the new manufacturing method has actually decreased the probability of failure to 0.03 from 0.06 (a big improvement), there is still a good chance (25%) that the null hypothesis,  \(\pi = 0.06\), is accepted and the improvement is rejected.</p>
+</div>
+<p class="heading">Changing the decision criterion</p>
+<p>Ideally, the power of a test should be zero if <strong>H<sub>0</sub></strong> is true and one if <strong>H<sub>A</sub></strong> is true, but this is impossible to obtain in practice.</p>
+<p>Changing the decision rule alters the curve, but unfortunately changing the rule to increase the power of the test (and decrease the probability of a Type II error) also increases its significance level — there is a trade-off between the two types of error.</p>
+
+
+<div class="example" title="Example: Failure of printed circuit boards">
+	<p class="exampleHeading">Failure of printed circuit boards</p>
+	<p>The slider under the following power function allows the decision rule to be altered.</p>
+	<div class="centred">
+		<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="500">
+			<script type="text/javascript">writeAppletParams();</script>
+			<param name="appletName" value="estimationProg.BinomialPowerApplet">
+			<param name="backgroundColor" value="FFFBF3">
+			<param name="pSuccess" value="0.000 0.060 0.030">
+			<param name="paramAxis" value="0 0.06 0 0.01">
+			<param name="powerAxis" value="0 1 0 0.2">
+			<param name="sampleSize" value="200">
+			<param name="cutoff" value="1 10 7">
+			<param name="nullProb" value="0.06">
+			<param name="piName" value="Probability of board failing">
+			<param name="customText" value="Significance level=Significance level#Power function=Power function#reject=reject#Reject=Reject#when=when">
+		</applet>
+	</div>
+	<p>Observe that </p>
+	<ul>
+		<li>Reducing the cut-off value between accepting and rejecting the null hypothesis decrease the curve for all values of \(\pi\). This reduces both the power of the test (bad) <strong>and</strong> the significance level (good).</li>
+		<li>If the cut-off value is increased to reject  <strong>H<sub>0</sub></strong> when the number of failed boards is \(x \le 10\), the power of the test is high (good). However the significance level is now also high (bad) — there is probability 0.341 of concluding that the new method is better even when it is not.</li>
+	</ul>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

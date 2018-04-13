@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Gamma functions</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="gamma function, factorial">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p class="heading">Mathematical interlude: Gamma functions</p>
+<p>Various results relating to Poisson processes can be derived most easily using a particular kind of mathematical function called a <strong>gamma</strong> function. In particular, the mean and variance of the exponential distribution are easiest to find using gamma functions.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>The gamma function has a single argument and is defined by</p>
+\[
+\Gamma(t) \;\;=\;\; \int_0^{\infty} {x^{t-1} e^{-x}} \; dx
+\]</div>
+<p>Gamma functions have various useful properties.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Recursive formula</p>
+		<p>For any \(t\), </p>
+\[
+\Gamma(t+1) \;\;=\;\; t \times \Gamma(t) \] </div>
+	<div class="proof">
+		<p>The proof of this result requires integration by parts.</p>
+\[ \begin{align}
+\Gamma(t+1) \;\;&amp;=\;\; \int_0^{\infty} {x^t e^{-x}} \; dx \\
+&amp;=\;\; \int_0^{\infty} {tx^{t-1} e^{-x}} \; dx + \left[x^t \times -e^{-x} \right]_{x=0}^{\infty} \\
+&amp;=\;\; t \times \Gamma(t)
+\end{align} \]
+		<p>Note that \(\left[x^t \times -e^{-x} \right]\) is zero for both \(x = 0\) and \(x = \infty\).</p>
+	</div>
+</div>
+<p>Two specific values of the gamma function are now given.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Two specific values</p>
+		\[
+		\Gamma(1) \;\;=\;\; 1 \spaced{and} \Gamma \left(\frac 1 2\right) = \sqrt{\pi} \] </div>
+	<div class="proof">
+		<p>The first of these is easily proved by integration. The value of \(\Gamma(\frac 1 2)\) is much harder to derive and the proof is not given here.</p>
+	</div>
+</div>
+<p>Gamma functions can be treated as a generalisation of factorials. The following result shows their relationship.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Relationship to factorials</p>
+		<p>For any integer \(t \ge 0\), </p>
+		\[
+		\Gamma(t+1) \;\;=\;\; t! \] </div>
+	<div class="proof">
+		\[ \begin{align}
+		\Gamma(t+1) \;\;&amp;=\;\; t \times \Gamma(t) \\
+		&amp;=\;\; t(t-1) \times \Gamma(t-1) \\
+		&amp;=\;\; t(t-1)\cdots 1 \times \Gamma(1) \\
+		&amp;=\;\; t!
+		\end{align} \]
+	</div>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

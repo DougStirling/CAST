@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta HTTP-EQUIV="content-type" CONTENT="text/html; charset=UTF-8">
+	<title>从X预测Y</title>
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="regression model, prediction, explanatory variable, response variable">
+	<meta name="dataset" content="Impurity and temperature">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">关于预测的一些概念</p>
+  
+<dl>
+<dt>必然(因果)关系</dt>
+<dd>如果一旦一个变量的值给定了，那么另一个变量的值也就被确定了，这样
+的变量关系被称为必然(因果)关系。我们或许会利用在我们控制之下的一个变量的值来预测另一个变量的值。
+<br>
+&nbsp;<br>
+例如，化学反应在不同温度下发生后我们记录了化学药品的浓度。如果温度和浓度之间是必然(因果)关系，我们就可以利用这一关系来预测在别的温度下化学反应过后的化学药品的浓度。<br>
+&nbsp;<br>
+</dd>
+<dt>非必然(因果)关系</dt>
+<dd>在许多情形下变量间的关系不是必然或因果的，即为非必然(因果)关系。在非必然(因果)关系下，我们仍对由一个变量预测另一个变量感兴趣。
+<br>
+&nbsp;<br>
+例如，精确地测出人身体内有多少脂肪是困难的，但测皮肤褶的厚度是相对容易的。如果我们有一组数据给出了一组人脂肪量和皮肤褶的厚度，那么利用这组数据找出脂肪量和皮肤褶的厚度之间的关系，将有助于我们对人体脂肪量的预测。
+</dd>
+</dl>
+	<p class="heading"> 概念和约定 </p>
+	<p>在以上讨论的两种关系里，变量可以分为两类，即<strong>解释变量</strong>和 <strong>响应变量</strong>。一般我们用<i> X</i>来记解释变量，
+用<i>Y</i>来记响应变量。
+</p>
+	<table width="75%" border="1" align="center" cellpadding="10" cellspacing="0" bgcolor="#FFFFFF">
+    <tr>
+      <td><strong>作散点图时，解释变量<i>X</i>是横坐标，响应变量<i>Y</i>是纵坐标。</strong></td>
+    </tr>
+  </table>
+  <p class="heading">   刻划关系的形状  </p>
+	<p>相关系数刻划变量间(线性)关系的强弱及那些散开的点是否有正或负的斜率。相关系数不包含散点分布形状的信息。散点分布形状可以用一条“接近”大部分散点的直(或曲)线来刻划。这样的直(或曲)线被称为 <strong>回归模型</strong>。</p>
+	<p class="heading">预测响应变量</p>
+  <p>回归模型 (即用来刻划变量间关系的线)通常可被表达为如下数学公式
+</p>
+	<p class=eqn><span class="black"><em>y</em> &nbsp;=&nbsp; <em>&fnof;</em> (<em> x</em> )</span></p>
+	<p>其中函数 f()具有简单的形式。利用这样的模型，我们可以通过代入解释变量的值 <i>x</i>而获得对响应变量值的预测。</p>
+<div class="diagram">
+		<p class="heading">预测化学反应杂质的含量</p>
+<p>如下的散点图显示了不同温度下化学反应得到的产品所含的杂质的百分比。
+</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="330">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.DragOnCurveApplet">
+<param name="xVarName" value="温度 (C)">
+<param name="yVarName" value="杂质 (%)">
+<param name="xValues" value="27.6 23 20.8 31.9 17.6 8.1 28.5 12.7 38 26.5 6.4 2.5 8.4 26.1 17.7 9.8 36.7 35.4 13.9 23.6 8.6 31.3 4.6 5 28.2 1.3 27.2 8.1 36.9 38.1">
+<param name="yValues" value="14.3 9.3 9.4 15.1 7.9 4.4 12 9 18.6 12.1 3.4 3.8 6.6 12.3 9.6 6 16.3 14.5 8.1 11.5 7.4 16.4 5.8 4.2 12.7 2.7 14.8 4.3 16.3 19.2">
+<param name="model" value="2.0 0.4 0.0 1.0 0.0">
+<param name="xValues2" value="18.4 0.3 14.6 32.4 16.7 37 30.4 7.5 5.1 32.7 35.6 23.4 8.7 35.9 20.7 36.4 20.8 18 20.6 30.3 29.2 18.7 14 2.5 20.4 0.4 35.7 15.7 2.6 9.9">
+<param name="yValues2" value="13.3 1.2 12.3 19.3 14.5 18.2 17.8 8.2 5.4 15.3 18.5 15.8 10.9 18.1 17.3 16.3 16.5 13.8 14.3 15.5 18.4 14.8 15.5 3.9 16.7 4.7 17.5 15.5 3.1 8.9">
+<param name="model2" value="2.5 1.0 -0.01667 1.25 0.0">
+<param name="xValues3" value="1.5 22.5 6.4 8.5 18.9 14.5 37.4 20.6 22.9 7.7 29.9 31.5 35.9 38 7 20 19.5 18.3 37.4 5.4 36.8 27.4 25.7 1.1 9.8 17.1 39.1 32.3 28.7 29.6">
+<param name="yValues3" value="0.4 3.9 1.8 2.1 5.1 4.2 12.9 4.9 4.1 1.3 10.9 10.4 9.8 10.4 0.5 6.5 2.9 5.8 16.7 1.3 14.8 7.2 8 0.4 3 4.5 17 12.7 6.2 8.2">
+<param name="model3" value="0.279 0.09302 0.006875 0.1395 0.04651">
+<param name="horizAxis" value="0 40 0 5">
+<param name="vertAxis" value="0 20 0 2">
+<param name="decimals" value="2">
+<param name="dataNames" value="#线性# #曲线# #变量精度#">
+<param name="labelAxes" value="true">
+<param name="customText" value="Finished sketching curve=Finished sketching curve">
+</applet>
+</div>
+<p>灰色的线看起来是适合这组数据的一个模型，因为它“接近”大部分的数据点。朝左或右<strong>拖动</strong>红色的竖的直线，观察这个模型给出的在不同温度下化学反应得到的产品所含的杂质的百分比。
+</p>
+    <p>利用直线(<strong>线性模型</strong> )来预测有一些优点，但是在许多情形下变量间的关系是非线性的，因此在这些情形下曲线(模型)是有必要的。使用弹出式菜单选中数据文件<strong>曲线</strong> ，重复以上的练习。第三个数据集 (<strong>变量精度</strong>) 变量间的关系也是非线性的。
+</p>
+<p><font color="#666666">回归模型不可能提供完美的预测----大多数散点图里数据点也不是一丝不差地落在平滑的曲线上。因此，经常地我们更想预测一个范围而不是单单一个值。选中<strong>可能误差</strong>，看一个区间预测的例子。
+</font>
+</p>
+</div>
+<script language="JavaScript">
+	top.writeNextButton(document);
+	showCopyright ();
+</script>
+</body>
+</html>

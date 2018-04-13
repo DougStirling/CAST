@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Dangers of extrapolation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="regression model, nonlinear model, curvature, transformations, quadratic model, extrapolation">
+	<meta name="dataset" content="Pressure and boiling point of water">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">The shape of a relationship is only known around the data</p>
+
+<p>The models that we have used to describe the relationship between a response,
+<i>Y</i>, and explanatory variable, <i>X</i>, are usually only approximations to
+the 'real' relationship. For example, a scatterplot may <strong>look</strong> linear,
+but we really have no information about the shape of the relationship beyond our data.
+</p>
+
+<p class=eqn><img class="gif" src="../curvature/images/extrapolate.gif" width="256" height="166">
+
+<p>As a result, the models that we have described may be used to predict <i>Y</i>
+from values of <i>X</i> that are within the range of x-values in our data, but we
+should be very cautious about using a fitted model for predictions outside this range.
+This is called <strong>extrapolation</strong> and it can be badly in error.
+</p>
+
+  
+<div class="centred"><div class="boxed">
+<p>Avoid using a model to predict <em>Y</em> far beyond the available 
+        data.</p>
+</div></div>
+
+  <p class="heading">What model for curvature is best?</p>
+  <p>We described two different types of nonlinear model for data with curvature 
+    &mdash; quadratic models and linear models based on transformed variables. There 
+    are many data sets for which both types of model fit equally well.</p>
+  <p>However the different types of model can give very different predictions 
+    when used to extrapolate from the observed data. The data cannot help us to 
+    decide which is better.</p>
+
+<div class="diagram" title="Example: Atmospheric pressure and boiling point">
+<p class="heading">Forbes' data</p>
+
+<p>One such data set is the Forbes data, for which we hope to describe the relationship
+between barometric pressure, <i>Y</i>, and the boiling point of water, <i>X</i>.
+</p>
+
+<p>We saw earlier that a quadratic model fitted well; the least squares curve is
+</p>
+	
+	<p class=eqn><strong>estimate of pressure</strong>&nbsp;&nbsp;=&nbsp;&nbsp;116.59 &minus; 1.4165 <em>x</em> + 0.004752 <em>x</em><sup>2</sup>
+	</p>
+	
+<p>The logarithm of the pressure is also approximately linearly related
+to boiling point with the equation
+</p>
+	
+	<p class=eqn><strong>estimate of </strong>ln<strong> (pressure)</strong>&nbsp;&nbsp;=&nbsp;&nbsp;&minus;0.9518 + 0.02052 <em>x</em>
+	</p>
+
+	<p>This equation can be rewritten in the form
+	</p>
+
+	<p class=eqn><strong>estimate of pressure</strong>&nbsp;&nbsp;=&nbsp;&nbsp;exp( &minus;0.9518 + 0.02052 <em>x</em> )
+	</p>
+
+<p>The two models (quadratic in the original measurements and linear in the transformed
+measurements) both fit the data equally well with residual plots that are almost identical.
+The data give no indication of which of the alternative models fits better.
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="380">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.ChangeScalesApplet">
+<param name="xVarName" value="Boiling point">
+<param name="yVarName" value="Pressure">
+<param name="xValues" value="194.5 194.3 197.9 198.4 199.4 199.9 200.9 201.1 201.4 201.3 203.6 209.5 208.6 210.7 211.9 212.2">
+<param name="yValues" value="20.79 20.79 22.40 22.67 23.15 23.35 23.89 23.99 24.02 24.01 25.14 28.49 27.76 29.04 29.88 30.06">
+<param name="horizAxis" value="100 280 100 10">
+<param name="vertAxis" value="0 140 0 10">
+<param name="horiz2Scale" value="192 215">
+<param name="vert2Scale" value="20 32">
+<param name="customText" value="Data=Data#Extrapolate=Extrapolate#No model=No model#Log linear model=Log linear model#Both models=Both models">
+</applet>
+</div>
+
+<p>Use the pull-down menu to display the two fitted lines (<strong>Quadratic model</strong>
+and <strong>Log linear model</strong>). Observe that they almost coincide.
+</p>
+
+<p>Select the option <strong>Both models</strong>, then use the slider to extend the
+two axes. When the boiling point is less than approximately 150 degrees, or more
+than 250 degrees, the two models give very different predictions of the pressure.
+</p>
+
+<p>Indeed, the quadratic model (which is green) predicts that the pressure will
+<strong>increase</strong> when the boiling point falls below 150 degrees, which
+does not conform to physics! For these data, the log linear model is likely to
+give better predictions at low boiling points.
+</p>
+
+    <p>However we really have little idea about which curve is better at high 
+      boiling points &mdash; indeed, <strong>neither</strong> may adequately predict 
+      pressure. The point here is that...</p>
+
+<div class="boxed"><p>Predictions from any model will be very unreliable if the 
+          predictions are made away from values of the explanatory variables where 
+          we have data</p></div>
+    
+		<br>
+
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

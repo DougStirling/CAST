@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Exponential smoothing</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="smoothing, exponential smoothing">
+	<meta name="dataset" content="British Airways share price">
+	<meta name="dataset" content="World rice production">
+</head>
+
+
+<body class="lecture">
+<script type="text/javascript">writePageStart();</script>
+
+<div class="divChoice">
+<form>
+	<select name="dataset" onChange="changeBlock(this, 2)" id="dataChoice">
+		<option value="0" selected>Example with random fluctuations</option>
+		<option value="1">Example with upward trend</option>
+	</select>
+</form>
+
+<div id="example1">
+<p class=heading>British Airways shares traded (million)</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="440">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.ExpSmoothApplet">
+<param name="varName" value="BA Shares traded (million)">
+<param name="values" value="13.7 8.0 39.6 22.7 19.0 11.8 10.9 7.4 9.3 10.8 9.8 9.7 4.3 3.2 12.6 5.0 9.5 23.7 27.3 14.9 9.7 21.7 11.1 10.4 16.3 18.8 8.6 5.6 5.1 7.2 12.3 8.9 9.9 5.2 7.9 9.6 7.7 5.1 5.7 20.3 15.2 20.8 30.3 34.7 52.2 23.3 28.8 15.3 9.6 33.9 12.5 15.8 10.3 16.1 25.1 24.6 8.0">
+<param name="vertAxis" value="0 60 0 10">
+<param name="timeAxis" value="0 10 0 10">
+<param name="smoothName" value="smoothed">
+<param name="labelAxes" value="true">
+<param name="timeAxisName" value="Day">
+<param name="customText" value="Smoothing const=Smoothing const">
+<param name="fontSize" value="big">
+</applet>
+</div>
+
+</div>
+
+
+<div id="example2" style="display:none">
+<p class=heading>World rice production (million tonnes)</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="440">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.ExpSmoothApplet">
+<param name="varName" value="World rice production">
+<param name="values" value="? 215.7 226.6 247.1 263.0 254.1 261.2 277.5 288.7 295.7 316.4 317.8 307.3 335.0 332.0 357.0 347.7 369.5 385.1 375.1 396.8 410.0 421.9 447.8 465.1 467.9 468.4 461.1 487.0 514.0 518.2 518.5 528.2 529.8 538.8 547.0 568.5 576.8 578.8 609.9 598.2 585.1">
+<param name="vertAxis" value="200 650 200 50">
+<param name="timeAxis" value="0 10 1960 10">
+<param name="labelAxes" value="true">
+<param name="timeAxisName" value="Year">
+<param name="timeSequence" value="1960 1 43">
+<param name="smoothName" value="smoothed">
+<param name="customText" value="Smoothing const=Smoothing const">
+<param name="fontSize" value="big">
+</applet>
+</div>
+</div>
+
+</div>
+
+
+<script type="text/javascript">
+	writeLecturerNotesLink(withDataNotes);
+</script>
+
+<div class="lecturerNote" id="lecturerNote">
+<p>Use this diagram to show how exponential smoothing can provide smoothed values up to the end of the series.</p>
+<p>In the first example (with no pronounced trend), exponential smoothing works well. A smoothing constant of about 0.25 works well.</p>
+<p><strong>Click on values</strong> to see which of the original values contribute to any smoothed value &mdash; the darker the green, the greater the influence.</p>
+<p>However in the second example, there is a pronounced linear trend. As the exponential smoothing constant is decreased, the smoothed series is systematically too low.</p>
+<div class="centred"><div class="boxed">
+  <p>Do not use exponential smoothing on a time series with trend.</p>
+</div></div>
+<p>You could mention that there are modified versions of exponential smoothing that do work in the presence of trend.</p>
+</div>
+
+<div class="lecturerNote" id="dataNote">
+<p>The first data set gives the volume of British Airways shares traded 
+  in the first 57 trading days of 2002 &mdash; between 2nd January and 21st March.</p>
+<p>The second example gives the total world rice production each year from 1961 to 2001.</p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Linear scaling</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<div class="main">
+
+
+	<p class="heading">Aim of scaling</p>
+	<p>Sometimes it is felt that an exam or test is 'too easy' or 'too hard' and 
+		that the marks therefore do not give a fair indication of how the students 
+		have performed in relation to other classes or to a national expectation. 
+		For example, if the internal assessment component of marks for a Bursary subject 
+		are out of step with the marks achieved by the class in the external exam, 
+		they will be scaled up or down.</p>
+	<p class="heading">Linear transformations</p>
+	<p>The simplest type of scaling is called a <strong>linear scaling</strong> 
+		or a <strong>linear transformation</strong> of the marks. The simplest form 
+		of scaling multiplies each mark by a constant.</p>
+	<p class=eqn><img src="images/simpleLinear.gif" width="223" height="16"> </p>
+	<p>If the constant <i>b</i> is less than 1.0, the marks are reduced by the scaling 
+		whereas if <i>b</i> is greater than 1.0, the marks are increased.</p>
+	<p>A problem with this type of scaling is that its greatest effect is on the 
+		highest marks in the class and the lowest marks are affected least. A more 
+		flexible type of linear transformation is given by the equation</p>
+	<p class=eqn><img src="images/linearMark.gif" width="250" height="14"> </p>
+
+  <p>The effect of these types of transformation are most easily explained in 
+		an example.</p>
+		
+	<div class="diagram">
+
+		<p>The jittered dot plot at the bottom of the following diagram shows the 
+			raw marks of 20 students in a class. The line represents a linear scaling 
+			of these results.</p>
+		<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.LinearScaleApplet">
+<param name="varName" value="raw">
+<param name="scaledName" value="scaled">
+<param name="values" value="16 21 28 29 31 35 38 39 42 43 44 48 49 53 54 58 62 64 69 76">
+<param name="horizAxis" value="0 100 0 20">
+<param name="vertAxis" value="-40 140 -40 20">
+<param name="interceptLimits" value="-20.0 50.0 0.0">
+<param name="slopeLimits" value="-0.50 1.50 1.00">
+<param name="labelName" value="Name">
+<param name="labels" value="Simeon Suzanne Carolyn Marie Melanie Lorna Leith Julian Daniel Andrew Craig Aaron Benjamin Gar Katie Gavin Kamini Tracy Scott Samantha">
+<param name="minMax" value="0 100">
+<param name="customText" value="Zero unchanged=Zero unchanged">
+</applet>
+</div>
+
+		<p>Initially the constant <i>a</i> in the transformation is zero &mdash; a mark 
+			of 0 stays 0 after the transformation. Drag the red arrow on the right to 
+			change the constant <i>b</i> &mdash; the dot plot on the left of the diagram 
+			shows how the scaled marks are changed.</p>
+		<p>Click on individual crosses to see how their values are affected by the 
+			transformation.</p>
+		<p>Click on the checkbox <strong>Zero unchanged</strong> under the diagram 
+			to turn it off &mdash; this allows you to change both parameters. Drag the two 
+			red arrows to adjust the scaling of the marks.</p>
+
+</div>
+
+  <p class="heading">Centre and spread</p>
+	
+<p>The centre and spread of the scaled marks can be easily found from those of 
+the original marks. After a transformation of the form:</p>
+	<p class=eqn><img src="images/linearMark.gif" width="250" height="14"> </p>
+	
+<p>the mean (and other measures of centre such as the median) are similarly related:</p>
+	<p class=eqn><span class="black"><strong>new mean</strong> &nbsp; = &nbsp; <em>a</em> &nbsp;+ &nbsp;<em>b</em> &nbsp;&times &nbsp;<strong>old mean</strong></span> 
+	</p>
+	
+<p>The standard deviation (and other measures of spread that are expressed in 
+the same units as the raw data, such as the inter-quartile range) are related 
+with the equation:</p>
+	<p class=eqn><span class="black"><strong>new sd</strong> &nbsp; = &nbsp;<em><font size="+1">|</font>b<font size="+1">|</font></em> &nbsp;&times &nbsp;<strong>old sd</strong></span> 
+	</p>
+	<p>You will never want to use a negative scale factor, <i>b</i>, for scaling 
+		marks. However note that if the scale factor, <i>b</i>, is negative, we must 
+		change its sign since the standard deviation must be positive.</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

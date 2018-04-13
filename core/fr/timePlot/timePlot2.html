@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Patterns dans les séries chronologiques</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+  <style type="text/css">
+<!--
+.style1 {
+	color: #FF0000;
+	font-weight: bold;
+}
+-->
+  </style>
+
+	<meta name="index" content="time series, trend, seasonal pattern, cyclic pattern, autocorrelation">
+	<meta name="dataset" content="World rice production">
+	<meta name="dataset" content="Tourist arrivals in Fiji">
+	<meta name="dataset" content="US defence investment">
+	<meta name="dataset" content="British Airways share price">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Types de modèle</p>
+<p>Quelques modèles de séries chronologiques sont particulièrement importants.</p>
+
+<table>
+<tr valign="top">
+	<td><dl><dt>Tendance</dt>
+  <dd>
+  	Ceci se rapporte à long terme augmente et diminue dans les valeurs. Identifier tendance est importante puisque nous pourrions l'utiliser pour aider les valeurs futures prévues.</dd>
+	</dl>
+  </td>
+	<td><p><img src="../../en/timePlot/images/pattern_trend.gif" width="204" height="135"></p></td>
+ </tr>
+ 
+<tr valign="top">
+	<td><dl><dt>La variation saisonnière</dt>
+  <dd>La variation saisonnière est souvent évidente dans les données mensuelles ou trimestrielles et se réfère à un schéma qui se répète chaque année. Par exemple, la température est plus basse en hiver et plus élevé dans l'été de chaque année.
+  </dd>
+  </dl>
+  </td>
+	<td><p><img src="../../en/timePlot/images/pattern_seasonal.gif" width="204" height="135"></p></td>
+ </tr>
+ 
+<tr valign="top">
+	<td><dl>
+		<dt>Variation cyclique (autocorrélation)</dt>
+		<dd>Dans certaines séries chronologiques, les valeurs successives tendent à être similaires aux valeurs adjacentes, mais, contrairement à une situation où il ya des tendances, il n'ya pas de tendance systématique pour augmenter ou diminuer. Le graphique chronologique apparaît souvent avec des vagues irrégulières ou des cycles.</dd>
+		<dt>&nbsp;</dt>
+  </dl>
+  </td>
+	<td><p><img src="../../en/timePlot/images/pattern_cyclical.gif" width="204" height="135"></p></td>
+ </tr>
+ 
+<tr valign="top">
+	<td><dl><dt>Les fluctuations aléatoires</dt>
+  <dd>Ce sont des «hauts et des bas» dans une série chronologique qui ne correspondent pas à la tendance, les variations saisonnières ou d'autocorrélation.</dd>
+	</dl>
+	</td>
+	<td><p><img src="../../en/timePlot/images/pattern_random.gif" width="204" height="135"></p></td>
+ </tr>
+ 
+</table>
+
+<p>La plupart des séries de temps montrent plus d'un de ces modèles à un certain degré.</p>
+
+<div class="diagram">
+<p class="heading">La production mondiale de riz</p>
+<p>Le graphique chronologique ci-dessous montre la production mondiale totale de riz chaque année de 1961 à 2001.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.TimePlotApplet">
+<param name="varName" value="Production mondiale de riz (millions de tonnes)">
+<param name="values" value="? 215.7 226.6 247.1 263.0 254.1 261.2 277.5 288.7 295.7 316.4 317.8 307.3 335.0 332.0 357.0 347.7 369.5 385.1 375.1 396.8 410.0 421.9 447.8 465.1 467.9 468.4 461.1 487.0 514.0 518.2 518.5 528.2 529.8 538.8 547.0 568.5 576.8 578.8 609.9 598.2 585.1">
+<param name="vertAxis" value="200 650 200 50">
+<param name="timeAxis" value="0 10 1960 10">
+<param name="labelAxes" value="true">
+<param name="timeAxisName" value="An">
+<param name="timeSequence" value="1960 1 43">
+</applet>
+</div>
+<p>La caractéristique dominante de cette série chronologique est la <font color="#FF0000"><strong>tendance à la hausse</strong></font> sur la période.</p>
+
+<p class="heading">Les arrivées de touristes dans les îles Fidji</p>
+<p>Cette série chronologique indique le nombre total de touristes arrivant dans les îles Fidji chaque mois entre Janvier 2004 et Décembre 2007.</p>
+<div class="centred">
+  <applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.TimePlotApplet">
+  <param name="varName" value="Touristes internationaux">
+  <param name="values" value="35486 32072 37497 36460 39058 45168 51272 49047 48188 44376 41225 44226 41647 34407 42769 39820 40818 50134 58238 53013 48893 46923 42039 46444 40959 34406 39621 43207 41677 52110 59052 53865 54076 50519 39493 39604 36998 31743 39992 42140 38365 49497 55924 50557 53059 48326 43246 50034">
+  <param name="vertAxis" value="30000 62000 30000 5000">
+  <param name="labelAxes" value="false">
+  <param name="timeAxisName" value="Mois">
+  <param name="seasonName" value="12 Jan Fév Mar Avr Mai Juin Juil Aoû Sep Oct Nov Déc">
+  <param name="seasonInfo" value="0 0 2004">
+  </applet>
+</div>
+<p>Les arrivées de touristes sont très saisonnière. Dans la plupart des destinations touristiques, il ya un seul pic à l'été de chaque année, mais dans les îles Fidji, le pic est dans les mois d'hiver de Juillet à Septembre qui ont moins de précipitations et sont plus fraîches. C'est une <font color="#FF0000"><strong>tendance saisonnière</strong></font>.</p>
+<p class="heading">Américain à la Défense des dépenses</p>
+<p>La série chronologique ci-dessous montre l'investissement dans la défense aux Etats-Unis entre 1947 et 2006, avec toutes les valeurs rapportées dans '2000 dollars'.</p>
+<div class="centred">
+  <applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.TimePlotApplet">
+	<param name="varName" value="Dépenses de défense aux Etats-Unis ($milliards)">
+  <param name="values" value="4.9 9.4 13.8 10.8 38.5 55.7 62.4 50.8 41.1 39.3 37.3 39.7 47.3 42.7 47.3 48.9 42.3 38.4 33.5 38.7 43.7 38.3 34.0 30.9 19.7 14.7 16.6 20.2 22.5 24.5 25.0 24.8 28.4 30.4 33.5 37.7 44.2 50.5 60.7 69.6 76.0 70.3 70.7 72.9 68.7 66.1 57.8 53.8 50.9 51.3 45.1 45.6 47.6 48.8 50.8 56.7 61.7 68.0 71.7 76.6">
+  <param name="vertAxis" value="0 80 0 20">
+  <param name="timeAxis" value="3 10 1950 10">
+  <param name="labelAxes" value="true">
+  <param name="timeAxisName" value="An">
+  <param name="timeSequence" value="1947 1 60">
+  </applet>
+</div>
+<p>Le «ondulée» l'apparence indique une <font color="#FF0000"><strong>autocorrélation</strong></font> &mdash; s'il ya des dépenses élevées en un an, il ya généralement des dépenses élevées dans les années voisines aussi.</p>
+
+<p class="heading">British Airways volumes échangés part</p>
+<p>Le dernier exemple montre le nombre d'actions de British Airways qui ont été négociés dans chacun des 57 premiers jours de bourse de 2002 &mdash; entre le 2 Janvier et le 21 Mars.</p>
+<div class="centred">
+  <applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.TimePlotApplet">
+  <param name="varName" value="Part BA échangés (million)">
+  <param name="values" value="13.7 8.0 39.6 22.7 19.0 11.8 10.9 7.4 9.3 10.8 9.8 9.7 4.3 3.2 12.6 5.0 9.5 23.7 27.3 14.9 9.7 21.7 11.1 10.4 16.3 18.8 8.6 5.6 5.1 7.2 12.3 8.9 9.9 5.2 7.9 9.6 7.7 5.1 5.7 20.3 15.2 20.8 30.3 34.7 52.2 23.3 28.8 15.3 9.6 33.9 12.5 15.8 10.3 16.1 25.1 24.6 8.0">
+  <param name="vertAxis" value="0 60 0 10">
+  <param name="timeAxis" value="0 10 1 10">
+  <param name="labelAxes" value="true">
+  <param name="timeAxisName" value="Jour">
+  <param name="timeSequence" value="1 1 57">
+  </applet>
+</div>
+<p>Cette série chronologique est dominé par les <font color="#FF0000"><strong>fluctuations aléatoires</strong></font> &mdash; le volume d'actions négociées semble varier unpredicably.</p>
+<p class="heading"></p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

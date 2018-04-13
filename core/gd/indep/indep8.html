@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Comparing groups</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<script type="text/javascript">
+		var svgNames = new Array();
+		svgNames[0] = "images/obeseTest.svg";
+		svgNames[1] = "images/iqSeasonTest.svg";
+		svgNames[2] = "images/buffaloTest.svg";
+		svgNames[3] = "images/typhoidTest.svg";
+		
+		function changeSvgImage(select) {
+			var newIndex = select.selectedIndex;
+			var image = document.getElementById('dataImage');
+			image.src = svgNames[newIndex];
+		}
+	</script>
+
+	<meta name="index" content="contingency table, chi-squared test">
+	<meta name="dataset" content="Obesity and country">
+	<meta name="dataset" content="IQ and season">
+	<meta name="dataset" content="Buffalo in Yellowstone">
+	<meta name="dataset" content="Typhoid vaccine">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class=heading>Contingency tables from univariate data in several groups</p>
+
+<p>Contingency tables often arise from bivariate categorical data. However they 
+can also arise from univariate categorical data that is recorded separately from 
+several groups.</p>
+<p>'Group membership' can be treated as a second categorical variable.</p>
+
+<div class="diagram"> 
+<p class=heading>Typhoid vaccines</p>
+<p>The table below shows results from a trial of two vaccines for typhoid fever 
+that were given to 6907 people in Nepal. Of these, 3,457 were given the vaccine 
+<i>Vi capsular polysaccharide (Vi)</i> and 3,450 were given the vaccine <i>pneumococcus 
+polysaccharide (Pneumo).</i> </p>
+
+<center>
+    <table border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC" bgcolor="white">
+      <tr>
+        <th align="CENTER">&nbsp;</th>
+<th align="CENTER"><font color="blue">Vaccine Vi</font></th>
+<th align="CENTER"><font color="blue">Vaccine Pneumo</font></th>
+<th align="CENTER"><font color="red">Total</font></th></tr>
+<tr>
+<th align="CENTER"><font color="blue">Typhoid fever</font></th>
+<td align="CENTER">14</td>
+<td align="CENTER">57</td>
+<td align="CENTER"><font color="red">71</font></td></tr>
+<tr>
+<th align="CENTER"><font color="blue">No typhoid</font></th>
+<td align="CENTER">3443</td>
+<td align="CENTER">3393</td>
+<td align="CENTER"><font color="red">6836</font></td></tr>
+<tr>
+<th align="CENTER"><font color="red">Total</font></th>
+<td align="CENTER"><font color="red">3457</font></td>
+<td align="CENTER"><font color="red">3450</font></td>
+<td align="CENTER"><font color="blue">6907</font></td></tr>
+</table>
+</center>
+
+<p>In this example, two different groups of people were used in the experiment. 
+The column variable  (distinguishing between the two vaccines) is not a random variable, as it is controlled by the experiment. A single categorical measurement (whether or not typhoid was contracted) was made 
+from each person.</p>
+
+</div>
+
+<p class=heading>Comparing groups</p>
+
+<p>Although the chi-squared test was motivated as a test of independence of two 
+categorical variables, the <strong>same test</strong> can be used when each row 
+(or column) of a contingency table corresponds to a separate group of individuals.</p>
+
+<dl>
+<dt>Null hypothesis (corresponding to independence)</dt>
+<dd>The category probabilities are the same within each group.</dd>
+<dt>Alternative hypothesis (corresponding to association)</dt>
+<dd>The different groups have different probabilities.</dd>
+</dl>
+
+<p>The χ<sup>2</sup> test statistic and p-value are identical to those given earlier for testing independence.</p>
+
+<div class="diagram">
+<p class=heading>Examples</p>
+<p>In the following examples, we test whether the 'response' proportions are the 
+same in several groups.</p>
+
+<form>
+<select name="dataset" onChange="changeSvgImage(this)">
+<option value="0" selected>Obesity and country</option>
+<option value="1">IQ and season of birth</option>
+<option value="2">Buffalo in Yellowstone Park</option>
+<option value="3">Effect of typhoid vaccines</option>
+</select>
+</form>
+
+<p align="center"><iframe src="images/obeseTest.svg" id="dataImage" width="541" height="459" frameborder="0"></iframe></p>
+
+<p>Note again that a visual comparison of the observed counts and those estimated 
+from the margins assuming independence helps to explain the nature of the relationship 
+in examples where we conclude that there is some difference between the groups.</p>
+
+</div>
+
+<p class=heading>Two groups and two categories</p>
+
+<p>In the special case where there are two groups and the categorical measurement 
+has two categories (that we will call 'success' and 'failure'), the chi-squared 
+test is testing whether the probability of success is the same in both groups. 
+For example, in the Typhoid Vaccine data set, we are testing whether the probability 
+of getting typhoid is the same for the groups getting the two vaccines.</p>
+<p>This hypothesis can also be tested with a <a href="javascript:showNamedPage('twoGroupPropn4')">2-sample 
+test of equality of two proportions</a>.</p>
+<p>Fortunately, although the two tests have been motivated in a different way, 
+it can be proved that:</p>
+
+<table width="80%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+<tr> 
+<td align="center"><strong>The 2-sample test for equality of two proportions and 
+the chi-squared test both result in the same p-value and conclusion.</strong></td>
+</tr>
+</table>
+
+<br>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

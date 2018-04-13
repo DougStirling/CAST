@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Testing for equal  group variance</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="comparing groups, variance, sums of squares, analysis of variance, f test">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Hypotheses</p>
+<p>We now consider how the sums of squares for the model</p>
+
+<p class="eqn"> <img src="images/combinedGroupModel.gif" width="263" height="38" align="absmiddle"></p>
+<p>can be used to test whether the standard deviations in the two groups are the 
+same:</p>
+<p class="eqn"> <img src="images/equalSDHypoth.gif" width="144" height="45" align="absmiddle"></p>
+<p class="heading">Sums of squares</p>
+<p>The hypotheses are assessed using the sums of squares that were previously 
+defined: </p>
+<p class="eqn"><img src="images/twoGroupSsqTable.gif" width="344" height="154"></p>
+<p>If the null hypothesis is true (the standard deviations are equal), the sums 
+of squares within group 1 and within group 2 both have chi-squared distributions 
+involving the same population variance, σ<sup>2</sup>.</p>
+<p class="eqn"><img src="images/within1SsqDistn.gif" width="314" height="37"></p>
+<p class="eqn"><img src="images/within2SsqDistn.gif" width="314" height="37"></p>
+<p class="heading">F ratio</p>
+<p>Using the analysis of variance approach, the ratio of the two mean sums of 
+squares within the groups has an F distribution,</p>
+<p class="eqn"><img src="images/fVarianceTest.gif" width="390" height="73"></p>
+<p class="heading">Equivalence to previous test</p>
+<p>The two mean sums of squares are the sample variance within the two groups, 
+so the F ratio is identical to the one that we used earlier to test whether the 
+group standard deviations were the same,</p>
+<p class="eqn"><img src="images/fFromVariances.gif" width="63" height="45"></p>
+  <p>Obtaining the p-value and conclusion for the test are therefore identical to 
+    <a href="javascript:showNamedPage('varianceInf7')">the 
+    method described earlier</a>.</p>
+
+<div class="centred"><div class="boxed">
+<p>The analyis of variance approach simply <strong>presents 
+the calculations</strong> for the F ratio in a different way.</p>
+</div></div>
+
+
+<br>
+<div class="diagram">
+<p class="heading">Simulation demonstrating the distribution of F</p>
+<p>The diagram below takes samples from a normal model in which the two group 
+variances are equal (so the null hypothesis holds). The sample sizes in the two 
+groups are <em>n</em><sub>1</sub>&nbsp;=&nbsp;20 and <em>n</em><sub>2</sub>&nbsp;=&nbsp;7.</p>
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="varianceProg.TwoGroupF2Applet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Group, x">
+<param name="xLabels" value="#Group 1# #Group 2#">
+<param name="anovaModel" value="5.0 1.5 5.0 1.5">
+<param name="randomSeed" value="223945782">
+<param name="yAxis" value="1.0 9.5 1 1">
+<param name="decimals" value="3">
+<param name="maxSummaries" value="999.999 99.999 99.999 9.999">
+<param name="xValues" value="20@0 7@1">
+<param name="df" value="19 6">
+<param name="summaryAxis" value="0 6 0 1">
+<param name="componentName" value="Total variation#Between means#Within group 1#Within group 2">
+<param name="customText" value="F ratio=F ratio">
+</applet>
+</div>
+
+<p>The green F value is the ratio of the mean sums of squares within group 1 and 
+within group 2. This is also the ratio of the sample variances in the two groups.</p>
+<p>Click <strong>Accumulate</strong> and then take several samples. Observe that 
+the F ratio has a distribution that is consistent with the theoretical F distribution 
+since the null hypothesis holds.</p>
+
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

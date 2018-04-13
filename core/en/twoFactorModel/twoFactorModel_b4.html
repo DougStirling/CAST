@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Parameters for two factor model</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="factorial design, model, normal model, parameterisation, baseline level">
+	<meta name="dataset" content="Pigs and bait">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Model for two factors</p>
+<p>The reason for expressing the one-factor model in the form</p>
+<p class="eqn"><span class="black em">y<sub>ij</sub></span> &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp; <span class="red">β<em><sub>i</sub></em></span> &nbsp; + &nbsp; ε<em><sub>ij</sub></em> &nbsp; &nbsp; &nbsp; where <span class="red">β<sub>1</sub> = 0</span></p>
+<p>is that it can be extended easily to give a model without interaction for two factors.</p>
+<p>Consider an experiment in which factor X has <em>g</em><sub>X</sub> levels and factor Z has <em>g</em><sub>Z</sub> levels. We use the notation <em> y<sub>ijk</sub></em> to denote the <em>k</em>'th of the replicates for which factor X is at level <em>i</em> and factor Z is at level <em>j</em>. The model with no interaction can be expressed as:</p>
+<p class="eqn"><span class="black em">y<sub>ijk</sub></span> &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp; <span class="red">β<em><sub>i</sub></em></span> &nbsp; + &nbsp; <span class="green">γ<em><sub>j</sub></em></span> &nbsp; + &nbsp; ε<em><sub>ijk</sub></em> &nbsp; &nbsp; &nbsp; where <span class="red">β<sub>1</sub> = 0</span> and <span class="green">γ<sub>1</sub> = 0</span></p>
+<p>The parameters are interpreted as follows:</p>
+<ul>
+  <li><span class="blue">µ</span> is the mean response when both factors are at their baseline level (arbitrarily set as 1 here).</li>
+  <li><span class="red">β<em><sub>i</sub></em></span> is the difference between the mean response when X is at level <em>i</em> and at level 1, irrespective of the level of Z.</li>
+  <li><span class="green">γ<em><sub>j</sub></em></span> is the difference between the mean response when Z is at level <em>j</em> and at level 1, irrespective of the level of X.</li>
+</ul>
+<p>The <span class="red">β</span>-parameters therefore capture all the differences between the levels of X and there are (<em>g</em><sub>X</sub>&nbsp;-&nbsp;1) of them that are non-zero. Similarly there are (<em>g</em><sub>Z</sub>&nbsp;-&nbsp;1) non-zero <span class="green">γ</span>-parameters that capture the differences between the levels of Z.</p>
+<br>
+	
+	<div class="diagram">
+		<p class="heading">Bait Acceptability by Feral Pigs</p>
+
+		<p>In this experiment, trapped feral pigs were given a wheat diet on Day 1 then five different feeds on Day 2. Ten male and ten female pigs were used so each feed was given to two pigs of each gender. The response analysed was the difference in feed intake from Day 1 to Day 2.</p>
+		<p>We will treat<em> Male</em> as the baseline gender and <em>Wheat only</em> as the baseline treatment. The treatment <em>Wheat only</em> is a control treatment so it makes sense to compare the others with it. However <em>Female</em> could equally have been used as the baseline gender. The diagram below shows the means from the best model without interaction as a coloured grid.</p>
+		<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="550">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="indicatorProg.Rotate2FactorDragApplet">
+<param name="yVarName" value="Change in intake">
+<param name="yValues" value="0.188 -0.058 0.05 -0.138 0.058 -0.082 -0.712 -1.28 -0.61 -0.83 -0.28 -0.062 -0.54 -0.336 -0.26 -0.123 -0.894 -0.672 -0.837 -1.202">
+<param name="yAxis" value="-1.5 0.3 -1.5 0.5">
+<param name="xVarName" value="Gender">
+<param name="xValues" value="10@0 10@1">
+<param name="xLabels" value="Male Female">
+<param name="zVarName" value="Feed">
+<param name="zValues" value="2@0 2@1 2@2 2@3 2@4 2@0 2@1 2@2 2@3 2@4">
+<param name="zLabels" value="Wh Wh&wa Wh,wa&dy Wh,wa&1080 Wh,wa,dy&1080">
+<param name="initialMean" value="90">
+<param name="maxParam" value="9.999 -9.999 -9.999">
+<param name="customText" value="Baseline=Baseline">
+</applet>
+</div>
+
+		<p>The blue value under the table is <span class="blue">µ</span> in the equation earlier in the page. The two red values are the parameters <span class="red">β<em><sub>i</sub></em></span> and the five green values are the parameters <span class="green">γ<em><sub>j</sub></em></span>.</p>
+		<p>Drag the  red arrow for <em>Female</em> pigs  to change the parameter<span class="red"> β<sub>1</sub></span>and observe that its value is the difference between the mean response for females and the baseline category, males.</p>
+		<p>Similarly drag the four red arrows for the four non-baseline feeds (<em>Wheat&amp;water</em>, <em>Wheat,water&amp;dye</em>, <em>Wheat,water&amp;1080</em> and <em>Wheat,water,dye&amp;1080</em>) and observe that the values for the corresponding parameters are differences from the baseline feed (<em>Wheat only</em>).</p>
+		<p>Finally, click <strong>Least squares</strong> to show the least squares estimates 
+		of the parameters. Observe that the model estimates that:</p>
+  <ul>
+			<li>The mean change in feed intake for <em>Male</em> pigs getting the <em>Wheat</em> 
+				feed on Day 2 is 0.037</li>
+			<li>The mean change in feed intake for <em>Female</em> pigs is 0.179 lower than 
+				for <em>Male</em> pigs getting the same feed.</li>
+			<li>The mean change in feed intake for pigs getting <em>Wheat,water,dye&amp;1080</em> is 0.817 lower than 
+				for the <em>Wheat</em> diet.</li>
+		</ul>
+	<br>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Lisser les variations saisonnières</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="seasonal pattern, moving average/to remove seasonal pattern">
+	<meta name="dataset" content="Tourist arrivals in Fiji">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Les moyennes mobiles</p>
+
+  <p>Nous avons montré dans la première section de ce chapitre que les moyennes mobiles sont efficaces pour réduire les fluctuations aléatoires dans une série chronologique.</p>
+	<p>Les moyennes mobiles peuvent également être utilisés pour éliminer un effet saisonnier, mais la longueur d'exécution est cruciale.</p>
+	<table width="75%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+		<tr> 
+			<td>Pour les données saisonnières avec la longueur du cycle n, soit une moyenne de n-point mobile doit être utilisé.</td>
+		</tr>
+	</table>
+	<p>Par exemple, les données quotidiennes ont une durée de cycle de 7 jours. Chaque 7-point courant moyennes signifie exactement <strong>une valeur de chaque jour de la semaine</strong> (une valeur de chaque couleur dans le diagramme ci-dessous).</p>
+
+<p class=eqn><object data="images/weeklyMean.svg" width="413" height="131"></object>
+</p>
+
+  <p>Si, par exemple, les valeurs sont régulièrement samedi bas que les autres jours, les valeurs lissées pour chaque jour de la semaine comportera un samedi et seront également affectés. Les valeurs lissées pour les samedis ne seront donc pas tendance à être plus faible que les autres jours. Cela supprime le schéma saisonnier.</p>
+<p class=heading>Même longueurs de cycle</p>
+
+  <p>Malheureusement, il est une complication lorsque les données saisonnières ont une longueur de cycle, même (comme les données mensuelles avec une longueur de cycle de 12) car nous n'avons pas défini ce qu'on entend par une moyenne de n-point mobile, où n est pair. Une moyenne de 4 points en mouvement est défini pour être</p>
+
+<p class=eqn><img class="gif" src="../../en/seasonal/images/quarterlySmoothEqn.gif" width="314" height="46"></p>
+
+<p>avec des définitions similaires pour d'autres valeurs encore plus de n, en utilisant une demi-poids sur les deux valeurs extrêmes. Notez que d'une moyenne de 4 points le déplacement implique donc <strong>5</strong> valeurs, et non 4.</p>
+
+  <div class="diagram"> 
+		<p class="heading">Les arrivées de touristes dans les îles Fidji</p>
+		<p>Le diagramme ci-dessous montre encore une fois arrivées de touristes par mois dans les îles Fidji de 1991 à 1999.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.RunningMeanApplet">
+<param name="varName" value="Arrivées de touristes">
+<param name="values" value="22261 17917 22215 16967 17211 20031 25584 24769 24068 23638 23265 21424 19604 18000 21608 18990 19884 23389 28714 29119 26066 25825 24665 22670 20136 17827 22206 21128 21428 24302 29622 28495 26856 26319 24125 25018 21647 20269 26336 21863 24162 27862 31803 31933 29750 28225 27622 27402 23543 19122 23641 24581 24175 28149 32774 33955 28096 26614 25809 28036 23733 22147 24834 23930 22150 29497 33459 35819 32040 30862 29663 31426 28456 26078 29901 25307 26008 32236 35207 33954 30498 31307 30208 30281 26687 22556 28319 30570 29289 34602 36471 37821 32479 32198 29626 30724 28950 25263 31589 29082 34203 38445 41031 40680 36806 36800 35180 31926">
+<param name="vertAxis" value="15000 45000 15000 5000">
+<param name="seasonName" value="12 Jan Fév Mar Avr Mai Juin Juil Aoû Sep Oct Nov Déc">
+<param name="seasonInfo" value="0 0 1991">
+<param name="timeAxisName" value="Mois">
+<param name="smoothName" value="Lissées">
+<param name="runs" value="15 even">
+<param name="showEnds" value="false">
+<param name="customText" value="Running mean of=Exécution moyenne de">
+</applet>
+</div>
+
+		<p>Utilisez le contrôle en vertu de la parcelle à étudier l'effet des différentes moyennes mobiles. Observons que de 12 points des moyennes mobiles de supprimer l'effet saisonnier.</p>
+		</div>
+  <script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

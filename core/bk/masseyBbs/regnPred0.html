@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Point estimates of the response</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="prediction">
+	<meta name="dataset" content="Tree diameter and volume">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Predicting the response at x</p>
+
+<p>Recall that our point estimate (best guess) for a the response at a particular value of x is</p>
+
+<p class=eqn><span class="black"><span style="position:relative; top:4px"><img src="../../images/symbol.yHat.png" width="10" height="17" align="baseline"></span>&nbsp; =&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x</em></span>
+</p>
+
+<p>However, this relationship should be used with caution. First, we should only use the least squares line for prediction when the linear model assumptions discussed earlier in this chapter are satisfied. The most important of these to check are:</p>
+<ol>
+	<li>No outliers or points with high leverage</li>
+	<li>No curvature</li>
+</ol>
+<p>In addition, it is not sensible to use the linear model to predict far outside
+the range of the x's we have used to fit the model (the training data). This
+is called <strong>extrapolation</strong>. When we extrapolate to an area where
+we have not collected data, we cannot check that the relationship is still linear
+for these new x-values.</p>
+<div class="diagram">
+
+  
+<p class="heading">Tree diameter and timber volume</p>
+
+<p>The value of hardwood trees depends on the volume of timber that can be obtained 
+when the trees are harvested. However the volume of timber cannot be easily measured 
+when the tree is standing, so volume is usually estimated from measurements that 
+are easier to make, such as the tree diameter 4.5 feet above ground level. The 
+diagram below plots the cross-sectional area at this height against the volume 
+of timber for 31 black cherry trees that were harvested in the Allegheny National 
+Forest in Pennsylvania.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.ResidualPlotApplet">
+<param name="yVarName" value="Timber volume (ft3)">
+<!param name="yUnits" value="ft3">
+<param name="xVarName" value="Cross-section area (ft2)">
+<param name="yValues" value="10.3 10.3 10.2 16.4 18.8 19.7 15.6 18.2 22.6 19.9 24.2 21.0 21.4 21.3 19.1 22.2 33.8 27.4 25.7 24.9 34.5 31.7 36.3 38.3 42.6 55.4 55.7 58.3 51.5 51.0 77.0">
+<param name="xValues" value="0.376 0.403 0.422 0.601 0.624 0.636 0.660 0.660 0.672 0.684 0.696 0.709 0.709 0.747 0.785 0.908 0.908 0.965 1.024 1.039 1.069 1.100 1.147 1.396 1.449 1.632 1.670 1.748 1.767 1.767 2.315">
+<param name="vertAxis" value="0 90 0 10">
+<param name="horizAxis" value="0.3 2.5 0.5 0.5">
+<param name="residAxis" value="-10 10 -10 5">
+</applet>
+</div>
+
+<p>The relationship seems fairly linear and no outliers are evident in the scatterplot of the original data or the residual plot. The biggest tree has fairly high leverage but its area seems to conform to a linear model, so it is still reasonable to use a linear regression model.</p>
+<p>It is therefore valid to use the least squares estimates of the intercept and slope to predict the timber volumes of other black cherry trees from their cross-sectional area at 4.5 feet above ground level.</p>
+<p class="eqn"><em>Predicted volume (ft<sup>3</sup>)</em> &nbsp; = &nbsp; -3.35 + 33.21 × <em>Cross-sectional area (ft<sup>2</sup>)</em></p>
+<p>This equation leads to the following predictions.</p>
+<div class="centred"><table border="0" class="centred" cellpadding="5" cellspacing="0">
+	<tr>
+		<th>&nbsp;&nbsp;&nbsp;Cross-sectional area&nbsp;&nbsp;&nbsp;</th>
+		<th>&nbsp;&nbsp;&nbsp;Predicted timber volume&nbsp;&nbsp;&nbsp;</th>
+	</tr>
+	<tr>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">1 <em>ft<sup>2</sup></em></td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">29.9 <em>ft<sup>3</sup></em></td>
+	</tr>
+	<tr>
+		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">1.5 <em>ft<sup>2</sup></em></td>
+		<td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">46.5 <em>ft<sup>3</sup></em></td>
+	</tr>
+	<tr>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">2 <em>ft<sup>2</sup></em></td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">63.1 <em>ft<sup>3</sup></em></td>
+	</tr>
+</table></div>
+<p>Note however that we should not use the least squares equation to predict the timber volume of a tree whose cross-sectional area is 4  <em>ft<sup>2</sup></em> since this is extrapolation beyond the range of data that we have collected. Since there is no data for trees with cross-section greater than 2.5 <em>ft<sup>2</sup></em>, we have no information about whether the relationship remains linear or has some other shape at higher cross-sections.</p>
+</div>
+
+<p>Of course the quality of our prediction is affected by the quality of our training data, and the strength of the linear relationship between x and y.</p>
+<div class="centred"><div class="boxed">
+	<p>The remaining pages in this section look at how we quantify our uncertainty about predictions but are optional and will not be examined.</p>
+</div></div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

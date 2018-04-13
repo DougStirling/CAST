@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Independence</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="bivariate distribution, correlation, independence">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Weak relationships</p>
+
+<p>Strong linear relationships always correspond to correlation coefficients of +1 or –1. Weak relationships usually (but not always) result in correlation coefficients near zero.</p>
+
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Correlation of independent variables</p>
+<p>If two random variables, \(X\) and \(Y\), are independent</p>
+\[
+\Corr(X,Y) \;=\; 0
+\]
+</div>
+
+<div class="proof">
+<p>The proof is based on the <a href="javascript:showNamedPage('covariance1')">earlier result</a> that</p>
+\[
+		\Covar(X, Y) \;=\; E[XY] - E[X]E[Y]
+		\]
+<p>For independent discrete random variables,</p>
+\[ \begin{align}
+E[XY] \;&amp;=\; \sum_{\text{all }x} \sum_{\text{all }y} {xy \; p(x,y)} \\
+&amp;=\; \sum_{\text{all }x} \sum_{\text{all }y} {xy \; p_X(x)p_Y(y)} \\
+&amp;=\; \sum_{\text{all }x} {x\;p_X(x)} \times \sum_{\text{all }y} {y\;p_Y(y)} \\
+&amp;=\; E[X] E[Y]
+\end{align} \]
+<p>A similar results holds for continuous random variables, with summation replaced by integration.</p>
+<p>This proves that the covariance of \(X\) and \(Y\) is zero, so their correlation is zero too.</p>
+</div>
+</div>
+
+<p>It should be noted that we have <strong>not</strong> proved that two variables <strong>must</strong> be independent if their correlation is zero. It is possible to define joint distributions in which the variables are strongly related but their correlation is zero.</p>
+
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Nonlinear relationship</p>
+<p>Consider a discrete random variable \(X\) whose distribution is symmetric around zero. We now define a second random variable as \(Y = X^2\). The variables \(X\) and \(Y\) are <strong>strongly related</strong> — knowing the value of \(X\) tells you the exact value of \(Y\) — but</p>
+\[
+\Corr(X,Y) \;=\; 0
+\]
+</div>
+
+<div class="proof">
+
+\[
+		\Covar(X, Y) \;=\; E[XY] \;=\; E[X^3] \;=\; \sum_{\text{all }x} x^3 p_X(x)
+		\]
+<p>Now \(x^3 p_X(x) = -(-x)^3 p_X(-x)\) since the distribution is symmetric around zero. Each positive value in the summation (at value \(x\)) is therefore cancelled by a negative value of the same magnitude (at value \(-x\)). As a result, the covariance between \(X\) and \(Y\) is therefore zero and the variables are uncorrelated.</p>
+</div>
+</div>
+<p>It is important to remember that:</p>
+
+<div class="boxed">
+<p>Independent variables have zero correlation, but variables with zero correlation are not necessarily independent. </p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

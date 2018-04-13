@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Mean, variance and shape</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="f distribution, mean, variance">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>Like the t distribution, the F distribution is difficult to manipulate mathematically, so we  only state the formulae for its mean and variance without proof.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Mean and variance</p>
+		<p>If \(F \sim \FDistn(k_1,\; k_2 \text{ df})\), then</p>
+		\[
+		E[F] \;=\; \begin{cases} \dfrac {k_2}{k_2-2} &amp; \quad\text{if } k_2 > 2 \\[0.4em]
+		\infty &amp; \quad\text{otherwise}
+		\end{cases} \]
+		<p>and</p>
+		\[
+		\Var(F) \;=\; \begin{cases} 2\left(\dfrac {k_2}{k_2-2}\right)^2
+		\dfrac{k_1 + k_2 - 2}{k_1(k_2 - 4)}
+		 &amp; \quad\text{if } k_2 > 4 \\[0.4em]
+		\infty &amp; \quad\text{otherwise}
+		\end{cases}
+		\] </div>
+</div>
+<p>Note that</p>
+<ul>
+	<li>The distribution's mean does not depend on \(k_1\), only on \(k_2\).</li>
+	<li>If the denominator degrees of freedom, \(k_2\), are small, the distribution's mean and variance may be infinite.</li>
+</ul>
+<p class="heading">Shape of the distribution</p>
+<p>The F distribution is non-negative and skew with a long positive tail. The skewness is most extreme when \(k_2\) is small and can even result in an infinite mean and variance. The following diagram shows the shape of the distribution for some values of its degrees of freedom.</p>
+
+
+<div class="example" title="Illustration: F distribution's shape">
+	<p class="exampleHeading">Illustration of distribution's shape</p>
+	<p>The diagram below shows the shape of the F distribution for various different values of its degrees of freedom.</p>
+	<div class="centred">
+		<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="380">
+		<script type="text/javascript">writeAppletParams();</script>
+		<param name="appletName" value="varianceProg.FShapeApplet">
+		<param name="backgroundColor" value="FFFBF3">
+		<param name="horizAxis" value="0 10 0 2">
+		<param name="df" value="1 40 5">
+		<param name="areaUsed" value="0.07">
+		<param name="fName" value="F distn (#, # df)">
+		<param name="customText" value="Numerator d.f.=Numerator d.f.#Denominator d.f.=Denominator d.f.">
+		</applet>
+	</div>
+	<p><strong>Drag</strong> the sliders to see how the shape of the F distribution depends
+		on the degrees of freedom. Note that </p>
+	<ul>
+		<li>As the numerator's degrees of freedom increase, the distribution's mean does not change but its spread decreases and it becomes more symmetric.<br>
+		&nbsp;</li>
+		<li>When the denominator's degrees of freedom are small, the F distribution's right tail becomes <strong>extremely</strong> long.<br>
+		</li>
+	</ul>
+	<p>In most practical applications of the F distribution, the denominator's degrees of freedom are reasonably large.</p>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,634 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>5. Continuous Distributions</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/maths/mathStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/maths/theorems.js"></script>
+  <script src="../../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 5 &nbsp; Continuous Distributions</h1>
+<h1 class="sectionName">5.1 &nbsp; Finding probabilities</h1>
+<h2 class="pageName">5.1.1 &nbsp; Probabilities by integration</h2>
+<p class="heading">Probabilities as areas</p>
+<p>The distributions of a continuous random variable is defined by a type of histogram called a <strong>probability density function</strong> (pdf), with the following properties</p>
+<ul>
+	<li>\(f(x) \ge 0\) for all \(x\)</li>
+	<li>The total area under \(f(x)\) is 1.0</li>
+</ul>
+<p>Based on the properties of histograms, the probability of a value between any two constants is the <strong>area</strong> under the pdf above this range of values.</p>
+<p class="eqn"><img src="../../../en/continuousProbs/images/s_densityAreas.png" width="461" height="320"/></p>
+<p class="heading">Probabilities by integration</p>
+<p>Since probability density functions can usually be expressed as simple mathematical functions,  these areas can be found as <strong>integrals</strong>,</p>
+\[
+P(a \lt X \lt b) \;\; = \; \; \int_a^b {f(x)}\; dx
+\]
+
+
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Properties of a probability density function</p>
+		<p>A function \(f(x)\) can be the probability density function of a continuous random variable if and only if</p>
+\[
+f(x) \;\; \ge \; \; 0 \quad\quad \text{for all } x \text{, and}
+\]
+\[
+\int_{-\infty}^{\infty} {f(x)}\; dx \;\; = \; \; 1
+\]
+	<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+ 
+
+
+<h2 class="pageName">5.1.2 &nbsp; Rectangular distribution</h2>
+<p>The simplest kind of continuous distribution is a <strong>rectangular</strong> distribution (also called a <strong>continuous uniform</strong> distribution).</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>A random variable, \(X\), is said to have a <strong>rectangular</strong> distribution with parameters \(a\) and \(b\)</p>
+\[
+X \;\; \sim \; \; \RectDistn(a, b)
+\]
+	<p>if its probability density function is</p>
+\[
+f(x) = \begin{cases}
+\frac {\large 1} {\large b-a} &amp; \text{for } a \lt x \lt b \\[0.2em]
+0 &amp; \text{otherwise}
+\end{cases}
+\]
+</div>
+<p>Probabilities for rectangular random variables can be easily found using geometry.</p>
+<p class="eqn"><img class="svgImage" src="../../../en/continuousProbs/images/rectangularProb.png" width="342" height="243"></p>
+
+<p>Equivalently, using integration,</p>
+
+\[ \begin{align}
+P(c \lt X \lt d) \;\; &amp;= \; \; \int_c^d {f(x)}\; dx \\
+&amp;= \; \; \int_c^d {\frac 1 {b-a}}\; dx \\
+&amp;=\;\; \frac {d-c} {b-a}
+\end{align} \]
+
+
+
+<div class="example">
+	
+	<p class="exampleHeading">Example</p>
+
+<p>If \(X \;\; \sim \; \; \RectDistn(0, 10)\),</p>
+\[
+P(4 \lt X \lt 7) \;\;=\;\; \frac {7-4} {10-0} \;\;=\;\; 0.3
+\] </div>
+
+
+<h2 class="pageName">5.1.3 &nbsp; Other examples</h2>
+<p>In the next two examples, integration is  used to find probabilities.</p>
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Question</p>
+<p>If a continuous random variable, \(X\), has probability density function</p>
+\[
+f(x) = \begin{cases}
+1 - \dfrac x 2 &amp; \quad \text{for } 0 \lt x \lt 2 \\[0.2em]
+0 &amp; \quad \text{otherwise}
+\end{cases}
+\]
+<p>what is the probability of getting a value less than 1?</p>
+<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+<p>The next example involves a distribution called an<strong> exponential</strong> distribution; practical applications of this distribution will be described in the next chapter.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Question</p>
+		<p>If a continuous random variable, \(X\), has probability density function</p>
+		\[
+		f(x) = \begin{cases}
+		4\;e^{-4x} &amp; \quad \text{for } x \ge 0\\[0.2em]
+		0 &amp; \quad \text{otherwise}
+		\end{cases}
+		\]
+		<p>what is the probability of getting a value less than 1?</p>
+		<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">5.1.4 &nbsp; Cumulative distribution function</h2>
+<p>The cumulative distribution function has the same definition for a continuous random variable as for a discrete one.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>The <strong>cumulative distribution function</strong> (CDF) for a continuous random variable \(X\) is the function</p>
+	\[F(x) \;=\; P(X \le x)\]
+</div>
+
+<p>This probability can be expressed as an integral,</p>
+
+\[F(x) \;\; = \; \; \int_{-\infty}^x f(t)\;dt\]
+<p>Note that this also implies that</p>
+\[f(x) \;\; = \; \; \frac {d}{dx} F(x)\]
+
+<p>All cumulative distribution functions  monotonically rises from zero to one. However whereas a discrete distribution's CDF is a step function, that of a continuous distribution is a smooth function.</p>
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Question: Rectangular distribution</p>
+<p>Sketch the cumulative distribution function of a random variable with a rectangular distribution, \(X \sim  \RectDistn(1, 5)\).</p>
+</div><div class="question">
+		<p class="questionTitle">Question: Exponential distribution</p>
+		<p>If \(X\) has probability density function</p>
+\[
+		f(x) = \begin{cases}
+		4\;e^{-4x} &amp; \quad \text{for } x \ge 0\\[0.2em]
+		0 &amp; \quad \text{otherwise}
+		\end{cases}
+	\]	
+		<p>what is its cumulative distribution function?</p>
+		<p class="questionNote">(Both solved in full version)</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">5.1.5 &nbsp; Quantiles</h2>
+<p>A cumulative probability, \(P(X \le x)\), can be found by integration. It is sometimes useful to work in the opposite direction —  given  a cumulative probability, what is the corresponding value of \(x\)?</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>The <strong>\(p\)'th quantile</strong> of a continuous distribution is the value, \(x\), such that</p>
+\[
+P(X \le x) \;\; = \; \; p
+\]</div>
+
+<p>When \(p\) is expressed as a percentage, the value is called the \(100p\)'th <strong>percentile</strong>.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<ul>
+		<li>The 50th percentile of a continuous distribution is the distribution's <strong>median</strong>,</li>
+		<li>The 25th percentile is the <strong>lower quartile</strong>, and</li>
+		<li>The 75th percentile is the <strong>upper quartile</strong>.</li>
+	</ul>
+</div>
+<p>These three values split the probability density function into four equal areas.<strong></strong></p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Question</p>
+		<p>What are the median and quartiles of the \(\RectDistn(1, 5)\) distribution?</p>
+		<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+<p>The next example is a little harder.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Question</p>
+		<p>Find a formula for the \(p\)'th quantile of the exponential distribution with probability density function</p>
+\[
+		f(x) = \begin{cases}
+		4\;e^{-4x} &amp; \text{for } x \ge 0\\[0.2em]
+		0 &amp; \text{otherwise}
+		\end{cases}
+	\]	
+		<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+<h1 class="sectionName breakBefore">5.2 &nbsp; Mean and variance</h1>
+<h2 class="pageName">5.2.1 &nbsp; Expected values</h2>
+<p>For an infinitesimally small interval of width \(\delta x\),</p>
+\[
+P(x \lt X \lt x+\delta x) \;\approx\; f(x) \times 
+\delta x\]
+<p class="eqn"><img class="svgImage" src="../../../en/continuousMeanVar/images/sliceProb.png" width="322" height="239"></p>
+<p>If the whole range of possible x-values is split into  such slices, the definition of  an expected value for a <strong>discrete</strong> random variables would give</p>
+\[
+E[X] \;\approx\; \sum {x \times f(x) \; 
+\delta x}\]
+<p>In the limit, this summation becomes an integral, giving us the following definition.</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>The <strong>expected value</strong> of a continuous random variable with probability density function \(f(x)\) is</p>
+\[
+E[X] \;=\; \int_{-\infty}^{\infty} {x \times f(x) \; 
+d x}\]</div>
+
+<p>This can be generalised:</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>If \(X\) is  a continuous random variable with probability density function \(f(x)\), the expected value of any function \(g(X)\) is</p>
+	\[
+	E\big[g(X)\big] \;=\; \int_{-\infty}^{\infty} {g(x) \times f(x) \; 
+d x}\]</div>
+
+
+<h2 class="pageName">5.2.2 &nbsp; Mean and variance</h2>
+<p>We define the mean and variance of a continuous distribution in a similar way to those of a discrete distribution.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+<p>The <strong>mean</strong> of a continuous random variable is</p>
+\[
+E[X] \;=\; \mu
+\]
+<p>and its <strong>variance</strong> is</p>
+\[
+\Var(X) \;=\; \sigma^2 \;=\; E \left[(X - \mu)^2 \right]
+\]
+</div>
+
+<p>Their interpretations are also similar.</p>
+<ul>
+	<li>The mean can be interpreted as a 'typical value' from the distribution, and</li>
+	<li>the square root of the variance (also called the distribution's <strong>standard deviation</strong>) is a 'typical distance from the mean'.</li>
+</ul>
+<p>The following result is often useful for evaluating a continuous distribution's variance.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Alternative formula for the variance</p>
+		<p>A continuous random variable's variance can be written as</p>
+		\[
+		\Var (X) \;=\; E \left[(X - \mu)^2 \right]
+		\;=\; E[X^2] - \left( E[X] \right)^2
+		\] </div>
+</div>
+
+
+
+<h2 class="pageName">5.2.3 &nbsp; Example</h2>
+
+<p>In the next example, you should find the mean and variance of the distribution  by integration.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Question</p>
+		<p>What are the mean and variance of the \(\RectDistn(a, b)\) distribution?</p>
+		<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+
+
+<h1 class="sectionName breakBefore">5.3 &nbsp; Random samples</h1>
+<h2 class="pageName">5.3.1 &nbsp; Independence and random samples (Details will not be examined)</h2>
+<p>The same definition of independence holds for both discrete and continuous random variables.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+<p>Two  random variables, \(X\) and \(Y\), are independent if all events about the value of \(X\) are independent of all events about the value of \(Y\).</p>
+</div>
+<p>Independence of continuous random variables is usually deduced from the way that the variables are measured rather than from  mathematical calculations. For example,</p>
+<ul>
+	<li>If blood pressures are recorded from two patients admitted to hospital after heart attacks, we can argue that these variables should be unrelated and hence independent.</li>
+</ul>
+<p class="heading">Characterisation of independence</p>
+<p>For  independent continuous random variables, \(X\) and \(Y\),</p>
+
+\[ \begin{align}
+P(x \lt X \lt x+\delta x &amp;\textbf{ and } y \lt Y \lt y+\delta y) \\
+&amp;=\;\; P(x \lt X \lt x+\delta x) \times P(y \lt Y \lt y+\delta y) \\
+&amp;\approx\;\; f_X(x)\;f_Y(y) \times  \delta x \; \delta y
+\end{align} \]
+
+<p>so</p>
+\[
+P(X \approx x \textbf{ and } Y \approx y) \;\; \propto \;\; f_X(x)\;f_Y(y)
+\]
+<p>This is closely related to the corresponding result for two independent discrete random variables,</p>
+\[
+P(X=x \textbf{ and } Y=y) \;\;=\;\; p_X(x) \times p_Y(y)
+\]
+
+<p class="heading">Random samples</p>
+<p>A collection of \(n\) independent identically distributed  random variables from the same distribution is called a <strong>random sample</strong>.</p>
+<p>Extending our earlier characterisation of independence of <strong>two</strong> continuous random variables, </p>
+\[
+		P(X_1 \approx x_1, X_2 \approx x_2, ..., X_n \approx x_n) \;\; \propto \;\; \prod_{i=1}^n f(x_i)
+		\]
+<p>This is again closely related to the corresponding formula for a random sample from a discrete distribution</p>
+\[
+		P(X_1 = x_1, X_2 = x_2, ..., X_n = x_n) \;\; = \;\; \prod_{i=1}^n p(x_i)
+		\]
+
+
+<h2 class="pageName">5.3.2 &nbsp; Distribution of sample sum and mean</h2>
+<p>The results that we showed earlier about sums and means of discrete random variables also hold for variables with continuous distributions. We simply repeat them here.</p>
+
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Linear combination of independent variables</p>
+		<p>If the means of two independent  random variables, \(X\) and \(Y\), are \(\mu_X\) and \(\mu_Y\) and their variances are \(\sigma_X^2\) and \(\sigma_Y^2\), then the linear combination \((aX + bY)\) has mean and variance</p>
+		\[ \begin {align}
+		E[aX + bY] &amp; = a\mu_X + b\mu_Y \\[0.4em]
+		\Var(aX + bY) &amp; = a^2\sigma_X^2 + b^2\sigma_Y^2
+		\end {align} \] </div>
+		
+	<div class="theorem">
+		<p class="theoremTitle">Sum of a random sample</p>
+		<p>If \(\{X_1, X_2, ..., X_n\}\) is a random sample of <em>n</em> values from any  distribution with mean \(\mu\) and variance \(\sigma^2\), then the sum of the values has mean and variance</p>
+		\[\begin{aligned}
+		E\left[\sum_{i=1}^n {X_i}\right] &amp; \;=\; n\mu \\
+		\Var\left(\sum_{i=1}^n {X_i}\right) &amp; \;=\; n\sigma^2
+	\end{aligned} \] </div>
+	
+	<div class="theorem">
+		<p class="theoremTitle">Sample mean</p>
+		<p>If \(\{X_1, X_2, ..., X_n\}\) is a random sample of <em>n</em> values from any  distribution with mean \(\mu\) and variance \(\sigma^2\), then the sample mean has a distribution with mean and variance</p>
+		\[\begin{aligned}
+		E\big[\overline{X}\big] &amp; \;=\; \mu \\
+		\Var\big(\overline{X}\big) &amp; \;=\; \frac {\sigma^2} n
+		\end{aligned} \] </div>
+		
+	<div class="theorem">
+		<p class="theoremTitle">Central Limit Theorem (informal)</p>
+		<p>If \(\{X_1, X_2, ..., X_n\}\) is a random sample of <em>n</em> values from any distribution with mean \(\mu\) and variance \(\sigma^2\),</p>
+		\[\begin{aligned}
+		\sum_{i=1}^n {X_i} &amp; \;\; \xrightarrow[n \rightarrow \infty]{} \;\; \NormalDistn(n\mu, \;\;\sigma_{\Sigma X}^2=n\sigma^2) \\
+		\overline{X} &amp; \;\; \xrightarrow[n \rightarrow \infty]{} \; \; \NormalDistn(\mu, \;\;\sigma_{\overline X}^2 = \frac {\sigma^2} n)
+		\end{aligned} \] </div>
+</div>
+
+
+
+<h1 class="sectionName breakBefore">5.4 &nbsp; Estimating parameters</h1>
+<h2 class="pageName">5.4.1 &nbsp; Bias and standard error</h2>
+<p>Many continuous distributions have one or more  parameters whose values are unknown. An unknown parameter, \(\theta\), is often estimated from a random sample of \(n\) values from the distribution, </p>
+\[
+\hat{\theta} \;\; =\;\; 
+\hat{\theta}(X_1, X_2, \dots, X_n) \]
+
+<p>As when estimating parameters of discrete distributions, the concepts of bias and standard error are important ways to differentiate a good estimator from a bad one. The definitions of these quantities are the same for both discrete and continuous distributions; we repeat them here.</p>
+<div class="definition">
+	<p class='definitionTitle'>Bias</p>
+	<p>The <strong>bias</strong> of an estimator \(\hat{\theta}\) of a parameter \(\theta\) is</p>
+	\[
+	\Bias(\hat{\theta}) \;=\; E\big[\hat{\theta}\big] - \theta
+	\]
+	<p>If its bias is zero, \(\hat{\theta}\) is called an <strong>unbiased</strong> estimator of \(\theta\).</p>
+
+<p class='definitionTitle' style='border-top:1px dotted #0000FF;'>Standard error</p>
+<p>The <strong>standard error</strong> of an estimator \(\hat{\theta}\)  is  its standard deviation.</p>
+</div>
+
+<p>Bias and standard error can again be combined into a single value.</p>
+<div class="definition">
+	<p class='definitionTitle'>Mean squared error</p>
+	<p>The <strong>mean squared error</strong> of an estimator \(\hat{\theta}\) of a parameter \(\theta\) is</p>
+	\[
+	\MSE(\hat{\theta})\; =\; E\left[ (\hat{\theta} - \theta)^2 \right] \;=\; \Var(\hat{\theta}) + \Bias(\hat{\theta})^2 \] </div>
+
+<p>A further characteristic of estimators also applies to continuous distributions.</p>
+<div class="definition">
+	<p class='definitionTitle'>Consistency</p>
+	<p>An estimator \(\hat{\theta}(X_1, X_2, \dots, X_n)\)  is  a <strong>consistent</strong> estimator of \(\theta\) if</p>
+\[ \begin{align}
+		\Var(\hat{\theta}) \;\; &amp;\xrightarrow[n \rightarrow \infty]{} \;\; 0 \\[0.5em]
+		\Bias(\hat{\theta}) \;\; &amp;\xrightarrow[n \rightarrow \infty]{} \;\; 0 
+\end{align} \] </div>
+
+
+<h2 class="pageName">5.4.2 &nbsp; Method of moments</h2>
+<p>A simple way to obtain an estimate of a single unknown parameter from a random sample is  the <strong>method of moments</strong>. For both discrete and continuous distributions, it is the parameter value that makes the distribution's mean equal to that of the random sample and is therefore the solution to the equation</p>
+\[
+E[X] \;\; = \; \; \overline{X}
+\]
+
+<div class="example">
+	
+	<p class="exampleHeading">German tank problem</p>
+
+<p>Consider a rectangular distribution,</p>
+\[
+X \;\; \sim \; \; \RectDistn(0, \beta)
+\]
+<p>where the upper limit, \(\beta\), is an unknown parameter. The distribution's mean and variance  are</p>
+\[
+E[X] \;\; = \; \; \frac {\beta} 2 \spaced{and} \Var(X) = 
+\frac {\beta^2} {12} \]
+<p>so the method of moments estimator is</p>
+\[
+\hat{\beta} \;\;=\;\; 2\overline{X}\]
+<p>It is  unbiased  and has standard error</p>
+\[
+\se(\hat{\beta}) \;\;=\;\; \sqrt{\Var(2\overline{X})} \;\;=\;\; \sqrt{ \frac {4\Var(X)} n } \;\;=\;\; \frac {\beta} {\sqrt{3n}}
+\]
+<hr width="75%">
+<p>Despite being unbiased, this estimator has one major problem. From the random sample {<span class="eqn">12,17, 42, 97</span>}, the resulting estimate of \(\beta\) would be</p>
+\[
+\hat{\beta} \;\;=\;\; 2\overline{X} \;\;=\;\; 84\]
+<p>yet the maximum of the distribution <strong>cannot</strong> be 84 since we have already observed one value greater than this.</p>
+</div>
+
+<p>The method of moments <strong>usually</strong> gives reasonable parameter estimates, but can sometimes  result in estimates that are not feasible.</p>
+
+
+<h2 class="pageName">5.4.3 &nbsp; Maximum likelihood</h2>
+<p>We defined the likelihood function of a discrete data set to be the probability of obtaining these data values, treated as a function of the unknown parameter, \(\theta\).</p>
+\[
+L(\theta) \;=\; P(data \;| \; \theta)
+\]
+<p>If \(\{x_1, x_2, \dots, x_n\}\) is a random sample from a discrete distribution with probability function \(p(x \mid \theta)\), this is</p>
+\[
+L(\theta) \;=\; P(X_1 = x_1, X_2 = x_2, ..., X_n = x_n \;| \; \theta) \;\;=\;\; \prod_{i=1}^n {p(x_i \;| \; \theta)}
+\]
+<p>For a random sample from a <strong>continuous</strong> distribution with probability density function \(f(x\;|\; \theta)\),</p>
+\[
+		P(X_1 \approx x_1, X_2 \approx x_2, ..., X_n \approx x_n) \;\; \propto \;\; \prod_{i=1}^n f(x_i)
+		\]
+<p>so the product of the probability density functions plays the same role for continuous random variables as the product of probability functions for discrete ones.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+<p>If random variables \(\{X_1, X_2, \dots, X_n\}\) are a random sample from a continuous distribution with probability density function \(f(x \;|\; \theta)\), then the function</p>
+\[
+L(\theta) = \prod_{i=1}^n {f(x_i \;| \; \theta)}
+\]
+<p>is called the <strong>likelihood function</strong> of \(\theta\).</p>
+</div>
+
+<p class="heading">Maximum likelihood estimate</p>
+<p>The maximum likelihood estimate of \(\theta\) is again the value for which the observed data are most likely — the value that maximises \(L(\theta)\).</p>
+<p>This is usually (but not always) a turning point of the likelihood function and can be found as the solution of the equation</p>
+\[
+L'(\theta) \;\; =\;\; 0
+\]
+<p>As with discrete distributions, it is usually easier to solve the equivalent equation involving the logarithm of likelihood function</p>
+\[
+\ell'(\theta) \;\; =\;\; \frac d {d \theta} \log\big(L(\theta)\big) \;\; =\;\; 0
+\]
+
+
+
+<h2 class="pageName">5.4.4 &nbsp; Properties of maximum likelihood estimators</h2>
+<p>Maximum likelihood estimators have the same properties when used with continuous and discrete distributions. We repeat these properties, again in a slightly abbreviated form that is not mathematically rigorous.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Bias</p>
+		<p>The maximum likelihood estimator, \(\hat {\theta} \), of a parameter, \(\theta\), that is based on a random sample of size \(n\) is asymptotically unbiased, </p>
+		\[
+		E[\hat {\theta}] \;\; \xrightarrow[n \rightarrow \infty]{} \;\; \theta
+	\]
+	</div>
+		
+	<div class="theorem">
+			<p class="theoremTitle">Asymptotic normality</p>
+			<p>The maximum likelihood estimator, \(\hat {\theta} \), of a parameter, \(\theta\), that is based on a random sample of size \(n\) asymptotically has a normal distribution, </p>
+			\[
+			\hat {\theta} \;\; \xrightarrow[n \rightarrow \infty]{} \;\; \text{a normal distribution}
+			\]
+	</div>
+		
+	<div class="theorem">
+			<p class="theoremTitle">Approximate standard error</p>
+		<p>If  \(\hat {\theta} \) is the maximum likelihood estimator of a parameter \(\theta\) based on a large random sample, its standard error can be approximated  by: </p>
+\[
+\se(\hat {\theta}) \;\;\approx\;\; \sqrt {- \frac 1 {\ell''(\hat {\theta})}}
+\]</div>
+</div>
+<p>From these, we can find the approximate bias (zero) and standard error  of most maximum likelihood estimators based on large random samples. </p>
+
+
+<h2 class="pageName">5.4.5 &nbsp; Confidence intervals</h2>
+<p>If the estimator of any parameter, \(\theta\), is approximately unbiased and normally distributed, and if we can evaluate an approximate standard error, then the interval</p>
+\[
+\hat{\theta}-1.96 \times \se(\hat {\theta}) \quad \text{ to } \quad \hat{\theta}+1.96 \times \se(\hat {\theta})
+\]
+<p>has approximately probability  0.95 of including the true value of \(\theta\). The resulting interval is a <strong>95% confidence interval</strong> for \(\theta\) and  we have <strong>95% confidence</strong> that it will include the actual value of \(\theta\).</p>
+<p>This holds for random samples from both discrete and continuous distributions. In particular, it can be used for maximum likelihood estimators, due to their asymptotic properties.</p>
+<p class="heading">Other confidence levels</p>
+<p>Intervals with different confidence levels can be obtained by replacing &quot;1.96&quot; by other quantiles of the standard normal distribution. For example, a <strong>90% confidence interval for \(\theta\)</strong> is</p>
+\[
+\hat{\theta}-1.645 \times \se(\hat {\theta}) \quad \text{ to } \quad \hat{\theta}+1.645 \times \se(\hat {\theta})
+\] 
+
+<h2 class="pageName">5.4.6 &nbsp; Example: normal distribution mean</h2>
+
+<p>This page applies maximum likelihood to a normal distribution.</p>
+
+<div class="example">
+	
+	<p class="exampleHeading">Normal distribution with known σ</p>
+
+<p>Consider a random sample,</p>
+<p class="eqn">4.2   5.2   5.6   6.1   7.3   8.5</p>
+<p>from a normal distribution with known \(\sigma\),</p>
+\[
+X \;\; \sim \; \; \NormalDistn(\mu, \;\sigma = 1.3)
+\]
+<p>Its log-likelihood is</p>
+\[
+\ell(\mu) \;\;=\;\; \sum_{i=1}^n {\log(f(x_i \;|\; \mu))} \;\;=\;\; -\frac 1 {2 \times 1.3^2} \times \sum_{i=1}^n {(x_i-\mu)^2} + K
+\]
+<p>where \(K\) is a constant that does not depend on \(\mu\). To find the maximum likelihood estimate of \(\mu\), we solve</p>
+\[
+\ell'(\mu) \;\;=\;\; \frac 1 {1.3^2} \times \sum_{i=1}^n {(x_i-\mu)} \;\;=\;\; 0
+\]
+<p>Giving \(\displaystyle \hat{\mu} \;\;=\;\; \frac {\sum {x_i}} n \;\;=\;\; \overline{x}\).</p>
+<hr width="75%">
+<p>We now illustrate the method graphically. The likelihood function, \(L(\mu)\), is the product of the normal distribution's pdf's at the data values — the product of the bar heights at the bottom of the next diagram.</p>
+<p class="eqn"><img src="../../../en/continuousEst/images/s_badNormal.png" width="532" height="447"/></p>
+<p>The likelihood for the normal distribution with \(\mu = 4\) is low because the pdf is so small at the highest data values, f(7.3) and f(8.5). On the other hand, when \(\mu = \overline{x} = 6.15\), there are no small pdfs the likelihood function is maximised.</p>
+<p class="eqn"><img src="../../../en/continuousEst/images/s_goodNormal.png" width="532" height="447"/></p>
+<p class="heading">Standard error</p>
+<p>We can directly find the standard error of the MLE using the properties of sample means,</p>
+\[
+\se(\hat{\mu}) \;\;=\;\; \sqrt{\Var(\overline{X})} \;\;=\;\; \frac {\sigma} {\sqrt{n}} \;\;=\;\; \frac {1.3} {\sqrt n }\]
+<p>Finding the standard error from the second derivative of \(\ell(\mu)\) gives</p>
+
+\[
+\se(\hat {\mu}) \;\;\approx\;\; \sqrt {- \frac 1 {\ell''(\hat {\mu})}} \;\;=\;\;
+\sqrt {\frac {1.3^2} n}\]
+<p>For this example, the asymptotic formula gives the <strong>exact</strong> standard error of the maximum likelihood estimator.</p>
+<p class="heading">Confidence interval</p>
+<p>For this example, the maximum likelihood estimator is the sample mean. Since sample means from normal distributions have <strong> exactly</strong> normal distributions,</p>
+\[
+\overline{X} \;\; \sim \; \; \NormalDistn(\mu,\;\; \sigma_{\overline{X}} = \frac {1.3} {\sqrt n})
+\]
+<p>the interval estimate</p>
+\[
+\overline{x} \;\; \pm \; \; 1.96 \times \frac {1.3} {\sqrt n}
+\]
+<p>has <strong>exactly</strong> 95% confidence level. (The confidence level is only approximate for MLEs based on other distributions.)</p>
+</div>
+
+
+<h2 class="pageName">5.4.7 &nbsp; Example: Rectangular maximum</h2>
+
+<p>Maximum likelihood estimates can <strong>usually</strong> be found as turning points of the likelihood function (or equivalently the log-likelihood function) — i.e. by solving \(\ell'(\theta) = 0\). However  this method does not work in a few examples.</p>
+
+<div class="example">
+	
+	<p class="exampleHeading">Rectangular distribution</p>
+
+<p>The following six values,</p>
+<p class="eqn">0.12   0.32   0.36   0.51   0.63   0.69</p>
+<p>are a random sample from a rectangular distribution,</p>
+\[
+X \;\; \sim \; \; \RectDistn(0, \;\beta)
+\]
+<p>This  distribution has  likelihood is</p>
+\[
+L(\beta) \;\;=\;\; \prod_{i=1}^6 {f(x_i \;|\; \beta)} \;\;=\;\;
+\begin{cases}
+\left(\dfrac 1 {\beta}\right)^6 &amp;\text{for } \beta \ge \max(x_1, \dots, x_6) \\[0.4em]
+0 &amp;\text{otherwise}
+\end{cases}
+\]
+<p>This is illustrated below for a few values of \(\beta\). The red lines give the values of \(f(x \;|\; \beta)\) at the data points; their product gives the likelihood.</p>
+<p class="eqn"><img src="../../../en/continuousEst/images/s_rectangular.png" width="522" height="640" alt=""/></p>
+<p>When \(\beta\) is less than the maximum data value, 0.690, the pdf at this value is zero, so the likelihood is zero. As \(\beta\) increases above 0.690, the pdfs for all data values decrease, and so does the likelihood. The likelihood function is shown below.</p>
+<p class="eqn"><img src="../../../en/continuousEst/images/s_rectLikelihood.png" width="511" height="217" alt=""/></p>
+<p>The maximum likelihood estimate is at a discontinuity in the likelihood function <strong>not</strong> at a turning point, so the MLE <strong>cannot</strong>  be found solving \(\ell'(\beta) = 0\).</p>
+<p class="heading">Bias and standard error</p>
+<p>The 2nd derivative of the log-likelihood function is undefined at the MLE and cannot be used to obtain an approximate  standard error. However formulae for its mean and standard deviation can be found from first principles — we will derive them later.</p>
+
+\[
+E\left[\hat{\beta}\right] \;=\; \frac n {n+1} \beta \spaced{and} \se\left(\hat{\beta}\right) \;=\; \sqrt {\frac n {(n+1)^2(n+2)}}\times \beta \]
+<p>The estimator is therefore biased but is consistent since its bias and standard error both tend to zero as \(n \to \infty\).</p>
+</div>
+
+
+<h1 class="sectionName">5.5 &nbsp; What you need to learn</h1>
+
+
+<p class="heading">What you need to know in this chapter</p>
+<p>You should concentrate on the following material when studying the chapter about continuous random variables.</p>
+<p class="heading">5.1 Finding probabilities</p>
+<p>For any continuous distribution, you should be able to find probabilities (including cumulative ones) by integration. You should also be able to find any quantile (or at least the equation that must be solved to find it).</p>
+<p>The relationship between the pdf and cumulative distribution function through integration and differentiation is also important and will be used later in the e-book.</p>
+<p class="heading">5.2 Mean and variance</p>
+<p>You should be able to find the mean,  variance and any other expected value for a continuous random variable (by integration).</p>
+<p class="heading">5.3 Random samples</p>
+<p>The details of this section will not be  examined. All you need to know is that the results about sample means and variances for discrete random variables (section 2.3) also hold for continuous variables (page 5.3.2).</p>
+<p class="heading">5.4 Estimating parameters</p>
+<p>In a similar way, this section mainly states that all results and methods given in Chapter 4 for discrete random variables can also be used in the same way for continuous ones. (The continuous distribution's pdf is used in the same way as a discrete distribution's probability function, as justified on page 5.3.1.)</p>
+<p>You should now be able to find method of moments and maximum likelihood estimators for  continuous distributions that have a single unknown parameter, and find standard errors and confidence intervals when MLE is used. You should also be aware the likelihood cannot <strong>always</strong> be maximised by differentiating the log-likelihood — page 5.4.7 gives an example.</p>
+
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Marginal distributions</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="bivariate normal distribution, normal distribution, marginal distribution, mean, variance">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>One important property of the bivariate normal distribution is that its two marginal distributions are univariate normal distributions.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Marginal normal distributions</p>
+<p>If \((X,Y) \sim \NormalDistn(\mu_X, \sigma_X^2, \mu_Y, \sigma_Y^2, \rho)\) then the marginal distributions of \(X\) and \(Y\) are univariate normal,</p>
+\[ \begin{align}
+X \;\;&amp;\sim\;\; \NormalDistn(\mu_X, \sigma_X^2) \\
+Y \;\;&amp;\sim\;\; \NormalDistn(\mu_Y, \sigma_Y^2)
+\end{align} \]
+</div>
+
+<div class="proof">
+<p>We first prove the result for the standard bivariate normal distribution (where \(\mu_X = \mu_Y = 0\) and \(\sigma_X^2 = \sigma_Y^2 = 1\)). The joint pdf of this distribution is</p>
+\[ \begin{align}
+f(x,y) \;\;&amp;=\;\; \frac{1}{2\pi\sqrt{1 - \rho^2}} \exp\left(-\frac{1}{2(1-\rho^2)} \left(x^2 + y^2 - 2\rho x y\right)\right) \\
+&amp;=\;\; \frac{1}{2\pi\sqrt{1 - \rho^2}} \exp\left(-\frac{1}{2(1-\rho^2)} \left((y-\rho x)^2 + (1 - \rho^2)x^2\right)\right) \\
+&amp;=\;\; \frac{1}{\sqrt{2\pi}} \exp\left(-\frac{x^2}2\right) \times \frac{1}{\sqrt{2\pi}\sqrt{1 - \rho^2}} \exp\left(-\frac{(y-\rho x)^2}{2(1-\rho^2)}\right)
+\end{align} \]
+<p>The marginal pdf of \(X\) is found by integrating the joint pdf over \(Y\),</p>
+\[ \begin{align}
+f_X(x) \;\;&amp;=\;\; \int_{-\infty}^{\infty} f(x,y) \;dy \\
+&amp;=\;\; \frac{1}{\sqrt{2\pi}} \exp\left(-\frac{x^2}2\right) \times \int_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi}\sqrt{1 - \rho^2}} \exp\left(-\frac{(y-\rho x)^2}{2(1-\rho^2)}\right) \;dy
+\end{align} \]
+
+<p>Now the integral on the right is that of a normal distribution with mean \(\rho x\) and variance \((1-\rho^2)\), so it must be one. Therefore</p>
+
+\[
+f_X(x) \;\;=\;\; \frac{1}{\sqrt{2\pi}} \exp\left(-\frac{x^2}2\right)
+\]
+<p>which is the pdf of a \(\NormalDistn(0,1)\) distribution.</p>
+<p>Since a general bivariate normal distribution can be found by linearly transforming such standard normal variables</p>
+\[
+X = \mu_X + \sigma_X Z_X \spaced{and} Y = \mu_Y + \sigma_Y Z_Y 
+\]
+<p>their distributions must also be normal with means and variances given by this linear transformation, proving the general result.</p>
+</div>
+
+</div>
+<p>From the marginal distributions of \(X\) and \(Y\), we can find the means and variances of the two variables.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Means and variances</p>
+		<p>If \((X,Y) \sim \NormalDistn(\mu_X, \sigma_X^2, \mu_Y, \sigma_Y^2, \rho)\) then</p>
+		\[ \begin{align}
+		E[X] \;&amp;=\; \mu_X, \qquad &amp;\Var(X) \;=\; \sigma_X^2 \\
+		E[Y] \;&amp;=\; \mu_Y, \qquad &amp;\Var(Y) \;=\; \sigma_Y^2 \end{align} \] </div>
+</div>
+
+<p>The next diagram helps to explain the marginal distributions</p>
+
+<div class="example" title="Illustration: Bivariate normal's marginal distributions">
+	
+	<p class="exampleHeading">Illustration</p>
+
+<p>The following probability density function describes the joint distribution of  two variables,</p>
+\[
+(X,Y) \;\;\sim\;\; \NormalDistn(\mu_X=2, \sigma_X^2=1, \mu_Y=0, \sigma_Y^2=1, \rho)
+\]
+<p>The slider under the diagram can adjust the value of the parameter \(\rho\).</p>
+<div class="centred">
+	<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="610">
+		<script type="text/javascript">writeAppletParams();</script>
+		<param name="appletName" value="bivarDistnProg.ConditNormalApplet">
+		<param name="backgroundColor" value="FFFBF3">
+		<param name="yVarName" value="Var Y">
+		<param name="xVarName" value="Var X">
+		<param name="densityName" value="Density">
+		<param name="normalParams" value="2 1 0 1 0">
+		<param name="yAxis" value="-3 3 -3 1">
+		<param name="xAxis" value="-1 5 -1 1">
+		<param name="densityAxis" value="0 0.201 0 0.05">
+		<param name="axisSteps" value="80">
+		<param name="shadeCutoff" value="0 0.075 0.15">
+		<param name="ySliderLimits" value="-2.00 2.00 -1.00">
+		<param name="xSliderLimits" value="0.00 4.00 3.00">
+		<param name="customText" value="Condition=Slice#None=None">
+	</applet>
+</div>
+
+<p>Use the pop-up menu to set <strong>Slice</strong> to <strong>Y</strong>. This shows a slice through the joint pdf, initially at \(Y = -1.00\).</p>
+<p>The marginal pdf of \(Y\) at \(y=-1\), \(f_Y(y)\), is the <strong>area of this slice</strong>. Use the slider to show the slice at other values of \(Y\). Although the diagram does <strong>not</strong> directly show the shape of this marginal distribution, it should be clear that</p>
+<ul>
+	<li>the marginal pdf of \(Y\) (slice area) is greatest when \(y = 0\), its mean, and</li>
+	<li>the marginal pdf of \(Y\) is symmetric around this value.</li>
+</ul>
+<p>Use the pop-up menu to slice by \(X\). Its marginal pdf is given by the cross-sectional areas in the opposite direction. Again observe that this is highest at its mean, \(x=2\).</p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Taille de l'échantillon pour estimer la proportion</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="sample size, proportion">
+	<meta name="dataset" content="Hospitalisation survey">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading"><span onMouseOver="_tipon(this)" onMouseOut="_tipoff()">Quelle quantité de données que je dois recueillir?</span></p>
+
+<p><span onMouseOver="_tipon(this)" onMouseOut="_tipoff()">Dans la page précédente, nous avons étudié comment déterminer la taille de l'échantillon nécessaire pour estimer une moyenne de population à une précision spécifiée.</span>&nbsp;<span onMouseOver="_tipon(this)" onMouseOut="_tipoff()">Un calcul similaire peut être utilisé pour trouver la taille de l'échantillon nécessaire pour estimer une probabilité.</span></p>
+<p><span onMouseOver="_tipon(this)" onMouseOut="_tipoff()">Un intervalle de confiance à 95% pour une probabilité π est de la forme</span></p>
+<p class=eqn><img class="gif" src="../../en/estPropn/images/ciP.gif" width="141" height="46"> </p>
+<p><span onMouseOver="_tipon(this)" onMouseOut="_tipoff()">Si nous voulons que notre estimation soit au sein du π&nbsp;<em>k</em>&nbsp;avec une probabilité de 0.95, alors nous avons besoin d'être&nbsp;<em>n</em>&nbsp;assez grand pour que</span></p>
+<p class=eqn><img class="gif" src="../../en/ciExtra/images/propInequality.gif" width="138" height="43"> </p>
+
+<p><span onMouseOver="_tipon(this)" onMouseOut="_tipoff()">Pour utiliser cette inégalité, nous avons besoin de deviner la valeur de&nbsp;<em>p</em>&nbsp;-- il n'a pas besoin d'être particulièrement précis.</span></p>
+
+<center>
+<table border="1" cellspacing="0" cellpadding="5" bgcolor="white" width="75%">
+<tr> 
+<th align="CENTER"><span onMouseOver="_tipon(this)" onMouseOut="_tipoff()">Une petite enquête pilote est souvent effectuée pour obtenir une estimation préliminaire de la proportion.</span></th>
+</tr>
+</table>
+</center>
+
+<p><span onMouseOver="_tipon(this)" onMouseOut="_tipoff()">Si nous ne pouvons mieux faire, la valeur du «pire cas»,&nbsp;<em>p</em>&nbsp;= 0,5 peut être utilisé, mais la taille de l'échantillon qui en résulte peut être plus élevé que nécessaire.</span></p>
+<p><span onMouseOver="_tipon(this)" onMouseOut="_tipoff()">La taille de l'échantillon nécessaire peut être trouvée par essais et erreurs dans l'inégalité ci-dessus.</span></p>
+
+<div class="diagram"> 
+	
+	<p class="heading">Combien de personnes doivent être téléphoné?</p>
+
+<p><span onMouseOver="_tipon(this)" onMouseOut="_tipoff()">Un administrateur de l'hôpital veut mener un sondage téléphonique afin de déterminer la proportion de personnes dans une ville qui ont visité un hôpital dans la dernière année, soit en tant que patient ou le visiteur.</span></p>
+<center>
+<table border="1" cellspacing="0" cellpadding="5" bgcolor="white" width="75%">
+<tr> 
+<th align="CENTER"><span onMouseOver="_tipon(this)" onMouseOut="_tipoff()">Quelle taille d'échantillon est nécessaire pour être au moins à 95% que l'estimation qui en résulte sera à 0.04 de la proportion réelle de la population?</span></th>
+</tr>
+</table>
+</center>
+<p><span onMouseOver="_tipon(this)" onMouseOut="_tipoff()">Le schéma suivant permet les calculs.</span></p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="inferenceProg.FindNForPiApplet">
+<param name="maxWidth" value="9.0000">
+<param name="guessLimits" value="0.01 0.99 0.4 98">
+<param name="nLimits" value="100 1000 300">
+<param name="customText" value="Guess at value of * (and p)=Guess at value of * (and p)">
+</applet>
+</div>
+
+<p>Nous n'avons pas reçu de deviner la valeur de π, alors faites glisser le curseur à 0.5 &mdash; le pire des cas. <font color="#666666">(Utilisez les touches fléchées de votre clavier pour le réglage fin de π.)</font></p>
+<p><span onMouseOver="_tipon(this)" onMouseOut="_tipoff()">Faites glisser le curseur jusqu'à la taille de l'échantillon '±' valeur est inférieure à 0.04.</span>&nbsp;<span onMouseOver="_tipon(this)" onMouseOut="_tipoff()">Vérifiez que la taille de l'échantillon devrait être 625 ou supérieur.</span></p>
+<hr align="center" width="75%">
+<p><span onMouseOver="_tipon(this)" onMouseOut="_tipoff()">Si nous savons (peut-être d'une enquête pilote ou d'autres informations obtenues à partir des hôpitaux locaux) que la proportion ne sera plus que de 0.10, la taille de l'échantillon peut être réduit.</span>&nbsp;<span onMouseOver="_tipon(this)" onMouseOut="_tipoff()">Utilisez le curseur pour modifier la conjecture de π à 0.10 dans le diagramme ci-dessus et vérifier que sur un échantillon de 225 serait suffisant pour estimer π au sein de 0.04 avec une confiance de 95%.</span></p>
+</div>
+
+<p class="heading"><span onMouseOver="_tipon(this)" onMouseOut="_tipoff()">Obtention de la taille de l'échantillon par la résolution d'une équation</span></p>
+
+<p><span onMouseOver="_tipon(this)" onMouseOut="_tipoff()">Essai-erreur peut être évitée avec un peu d'algèbre.</span>&nbsp;<span onMouseOver="_tipon(this)" onMouseOut="_tipoff()">L'équation</span></p>
+<p class=eqn><img class="gif" src="../../en/ciExtra/images/propInequality.gif" width="138" height="43"> </p>
+<p><span onMouseOver="_tipon(this)" onMouseOut="_tipoff()">peut être ré-écrite sous la forme</span></p>
+<p class=eqn><img class="gif" src="../../en/ciExtra/images/nForPropn.gif" width="132" height="41"> </p>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

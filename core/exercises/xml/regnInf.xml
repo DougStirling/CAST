@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE topic SYSTEM "exerciseXmlDefn.dtd">
+
+<topic name='regnInf'>
+<longName>Inference for regression models</longName>
+
+
+<exercise name='conditResponseDistn'>
+	<description>Find the normal distribution of a model's response for a fixed value of X</description>
+	<applet>exerciseRegnProg.ResponseDistnApplet</applet>
+	<width>500</width>
+	<height>550</height>
+	
+	<variable name="yName" type="string(26)">Name for the response variable</variable>
+	<variable name="xName" type="string(26)">Name for the explanatory variable</variable>
+	<variable name="intercept" type="double">Intercept of linear model</variable>
+	<variable name="slope" type="double">Slope of linear model</variable>
+	<variable name="errorSd" type="double">Error standard deviation of linear model</variable>
+	<variable name="x0" type="double">Value of the explanatory variable at which response distn is required</variable>
+	<variable name="maxMean" type="double">Template for reporting normal distn's mean</variable>
+	<variable name="meanSlop" type="double">Allowed difference between correct mean and attempt</variable>
+	<variable name="sdSlop" type="double">Allowed difference between correct st devn and attempt</variable>
+	
+	<template>
+		<question>A response variable, #yName#, satisfies a linear model*eqn*where #epsilon# is normally distributed with zero mean and standard deviation #errorSd#.\\nWhat is the distribution of #yName# when #xName# is known to be #x0#?</question>
+		<qnParam>yName(Y)#xName(x)#intercept(5:10)#slope(-1.0:1.0)#errorSd(0.2:1.0)#x0(3:8)#maxMean(99.99)#meanSlop(0.005)#sdSlop(0.01)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>mammalWtLength</shortName>
+		<longName>Weight and length of mammal</longName>
+		<question>The weight of a small mammal (in grams) is related to its body length (in mm) by a normal linear model*eqn*where the error, #epsilon#, has a normal distribution with mean zero and standard deviation #errorSd# grams.\\nWhat is the distribution of #yName# for mammals whose length is known to be #x0# mm?</question>
+		<qnParam>yName(Weight)#xName(Length)#intercept[](500,600,700,800,900,1000)#slope(1.0:2.0)#errorSd[](40,50,60,70,80,90,100)#x0[](200,250,300,350,400)#maxMean(9999)#meanSlop(0.5)#sdSlop(0.1)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>surfaceFinish</shortName>
+		<longName>Surface finish of plastic component and curing temp</longName>
+		<question>The surface finish of a manufactured plastic component is related to the temperature (in #degrees#C) at which it is cured by a linear model*eqn*where #epsilon# is normally distributed with zero mean and standard deviation #errorSd#.\\nWhat is the distribution of #yName# for components cured at #x0##degrees#C?</question>
+		<qnParam>yName(Finish)#xName(Temperature)#intercept(20:40)#slope(-0.10:0.10)#errorSd(3:6)#x0[](70,80,90,100)#maxMean(99.99)#meanSlop(0.05)#sdSlop(0.01)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>carSatisfaction</shortName>
+		<longName>Satisfaction with car and purchase price</longName>
+		<question>The reported satisfaction of purchasers of new cars after owning the car for a year (on a scale of 0 to 100) is related to the purchase price (in $000) with the following linear model*eqn*where #epsilon# is normally distributed with zero mean and standard deviation #errorSd#.\\nWhat is the distribution of the #yName# for purchasers of cars costing $#x0#,000?</question>
+		<qnParam>yName(Satisfaction)#xName(Price)#intercept(80:90)#slope(-0.20:0.20)#errorSd(1:2)#x0[](15,20,25,30,35)#maxMean(99.99)#meanSlop(0.05)#sdSlop(0.01)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='effectsOnAccuracy'>
+	<description>Identify the characteristics of a data set that result in a more accurate estimate of the model's slope</description>
+	<applet>exerciseRegnProg.EffectOnAccuracyApplet</applet>
+	<width>500</width>
+	<height>500</height>
+	
+	<variable name="nDirection" type="int">0 if statement about effect of n is true, 1 if false</variable>
+	<variable name="nText" type="string(40)">Text of statement about effect of n (usually indexed by nDirection)</variable>
+	<variable name="sigmaDirection" type="int">0 if statement about effect of spread around line is true, 1 if false</variable>
+	<variable name="sigmaText" type="string(40)">Text of statement about effect of spread around line (usually indexed by sigmaDirection)</variable>
+	<variable name="xSpreadDirection" type="int">0 if statement about effect of x-spread is true, 1 if false</variable>
+	<variable name="xSpreadText" type="string(40)">Text of statement about effect of x-spread (usually indexed by xSpreadDirection)</variable>
+	
+	<template>
+		<question>Which of the following would result in the least squares slope being a more accurate estimator of the slope of the true relationship between Y and X?</question>
+		<qnParam>nDirection(0:1)#nText[nDirection](A bigger sample size*A smaller sample size)#sigmaDirection(0:1)#sigmaText[sigmaDirection](The scatterplot crosses of the data being closer to the least squares line*The scatterplot crosses of the data being further from the least squares line)#xSpreadDirection(0:1)#xSpreadText[xSpreadDirection](Values of X being further apart*Values of X being closer to each other)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>slopeWording</shortName>
+		<longName>Wording of question in terms of slope</longName>
+		<question>Which of the following would result in the least squares slope being a more accurate estimator of the slope of the true relationship between a linear model's response and explanatory variable, X?</question>
+		<qnParam>nDirection(0:1)#nText[nDirection](A bigger sample size*A smaller sample size)#sigmaDirection(0:1)#sigmaText[sigmaDirection](The scatterplot crosses of the data being closer to the least squares line*The scatterplot crosses of the data being further above and below the least squares line)#xSpreadDirection(0:1)#xSpreadText[xSpreadDirection](Values of X being further apart*Values of X being closer to each other)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>unitChangeWording</shortName>
+		<longName>Wording of question in terms of effect of unit change in X</longName>
+		<question>Which of the following would result in the least squares slope being a more accurate estimator of how much a unit change in the explanatory variable will affect the response?</question>
+		<qnParam>nDirection(0:1)#nText[nDirection](A bigger sample size*A smaller sample size)#sigmaDirection(0:1)#sigmaText[sigmaDirection](The scatterplot crosses of the data being closer to the least squares line*The scatterplot crosses of the data being further above and below the least squares line)#xSpreadDirection(0:1)#xSpreadText[xSpreadDirection](Values of the explanatory variable being further apart*Values of the explanatory variable being closer to each other)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='effectsOnAccuracy'>
+	<description>Use the standard error of the LS slope to find how close the LS slope is likely to be to the model slope (twice SE)</description>
+	<applet>exerciseRegnProg.SlopeStdErrorApplet</applet>
+	<width>600</width>
+	<height>650</height>
+	
+	<variable name="xVarName" type="string(10)">Name of explanatory variable</variable>
+	<variable name="yVarName" type="string(10)">Name of response variable</variable>
+	<variable name="xAxis" type="axis">Scale for x-axis</variable>
+	<variable name="yAxis" type="axis">Scale for y-axis</variable>
+	<variable name="decimals" type="int(0)">Decimals used when residual is given in solution</variable>
+	<variable name="count" type="int(3)">Number of values in scatterplot</variable>
+	<variable name="corr" type="double">Correlation between X and Y in scatterplot</variable>
+	<variable name="interceptDecimals" type="int(0)">Decimals for intercept given in LS line</variable>
+	<variable name="slopeDecimals" type="int(0)">Decimals for slope given in LS line</variable>
+	<variable name="answerSlop" type="double">Maximum allowed distance from correct answer</variable>
+	<variable name="maxSe" type="double">Template for reporting standard error of slope</variable>
+	
+	<template>
+		<question>Values of #xVarName(X)# and #yVarName(Y)# were recorded from a sample of #count(50)# items. The least squares line for predicting Y from X is drawn on the scatterplot of their widths and lengths.\\nHow close do you expect the least squares slope to be to the underlying relationship's slope (with about 95% probability)?</question>
+		<qnParam>xAxis(10 30 10 5)#yAxis(5 15 6 2)#corr(0.7)#decimals(4)#interceptDecimals(2)#slopeDecimals(3)#answerSlop(0.001)#maxSe(9.9999)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>leaves</shortName>
+		<longName>Length and width of leaves</longName>
+		<question>A sample of #count[](20,50,100)# leaves was collected from a bush. The least squares line for predicting the width (mm) of the leaves from their lengths (mm) is drawn on the scatterplot of their widths and lengths.\\nHow close do you expect the least squares slope to be to the underlying relationship's slope (with about 95% probability)?</question>
+		<qnParam>index(0:2)#xVarName(Length)#xAxis[index](10 30 10 5*60 100 60 10*100 200 100 20)#yVarName(Width)#yAxis[index](5 15 6 2*30 50 30 5*50 100 50 10)#corr[](-0.9,-0.7,-0.5,-0.3,0.3,0.5,0.7,0.8)#decimals[index](4,4,4)#interceptDecimals[index](2,1,1)#slopeDecimals[index](3,3,3)#answerSlop(0.001)#maxSe(9.9999)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>tomatoes</shortName>
+		<longName>Weight and sugar content of tomatoes</longName>
+		<question>Researchers measured the weight (gm) and sugar content (%) of a sample of #count[](20,50,100)# tomatoes of one variety. A least squares line was fitted to predict sugar content from weight.\\nHow close do you expect the least squares slope to be to the underlying relationship's slope (with about 95% probability)?</question>
+		<qnParam>xVarName(Weight)#xAxis[](150 250 160 20*100 200 100 20)#yVarName(Sugar)#yAxis(2.5 3.5 2.6 0.2)#corr[](-0.9,-0.7,-0.5,-0.3,0.3,0.5,0.7,0.8)#decimals(2)#interceptDecimals(2)#slopeDecimals(4)#answerSlop(0.00002)#maxSe(9.99999)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='ciForSlope'>
+	<description>Find a confidence interval for a regression model's slope</description>
+	<applet>exerciseRegnProg.CiSlopeApplet</applet>
+	<width>600</width>
+	<height>750</height>
+	
+	<option name="lowHigh">When this option is used, the template for the CI is of the format xxx to yyy; otherwise it is xxx +/- yyy</option>
+	<option name="only95">Restrict the confidence level to 95% (default is randomly 90, 95 or 99%)</option>
+	<option name="showSummaryTable">Show a table with parameter estimates and their standard errors, rather than the model equation and the se of the slope</option>
+	
+	<variable name="xVarName" type="string(10)">Name of explanatory variable</variable>
+	<variable name="yVarName" type="string(10)">Name of response variable</variable>
+	<variable name="xAxis" type="axis">Scale for x-axis</variable>
+	<variable name="yAxis" type="axis">Scale for y-axis</variable>
+	<variable name="count" type="int(3)">Number of values in scatterplot</variable>
+	<variable name="corr" type="double">Correlation between X and Y in scatterplot</variable>
+	<variable name="interceptDecimals" type="int(0)">Decimals for intercept given in LS line</variable>
+	<variable name="slopeDecimals" type="int(0)">Decimals for slope given in LS line</variable>
+	<variable name="maxParam" type="double">Template for longest possible value for slope and intercept</variable>
+	<variable name="maxSe" type="double">Template for longest possible value for standard errors</variable>
+	<variable name="ciLevel" type="random"></variable>
+	<variable name="units" type="string(optional)">Units for response variable</variable>
+	<variable name="maxPlusMinus" type="double">Template for printing the plus/minus value for the CI</variable>
+	
+	<template>
+		<question>A sample of #count(20)# leaves was collected from a bush. The least squares line for predicting the width (mm) of the leaves from their lengths (mm) is drawn on the scatterplot of their widths and lengths.\\nFind a #ciLevel(:)#% confidence interval for the regression model's slope.</question>
+		<qnParam>xVarName(Length)#xAxis(10 30 10 5)#yVarName(Width)#yAxis(5 15 6 2)#corr[](-0.9,-0.7,-0.5,-0.3,0.3,0.5,0.7,0.8)#interceptDecimals(2)#slopeDecimals(3)#maxParam(99.999)#maxSe(99.9999)#maxPlusMinus(9.999)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>leaves</shortName>
+		<longName>Length and width of leaves</longName>
+		<question>A sample of #count[](20,50,100)# leaves was collected from a bush. The least squares line for predicting the width (mm) of the leaves from their lengths (mm) is drawn on the scatterplot of their widths and lengths.\\nFind a #ciLevel(:)#% confidence interval for the regression model's slope.</question>
+		<qnParam>index(0:2)#xVarName(Length)#xAxis[index](10 30 10 5*60 100 60 10*100 200 100 20)#yVarName(Width)#yAxis[index](5 15 6 2*30 50 30 5*50 100 50 10)#corr[](-0.9,-0.7,-0.5,-0.3,0.3,0.5,0.7,0.8)#interceptDecimals[index](2,1,1)#slopeDecimals[index](3,3,3)#maxParam(99.999)#maxSe(99.9999)#maxPlusMinus(9.999)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>tomatoes</shortName>
+		<longName>Weight and sugar content of tomatoes</longName>
+		<question>Researchers measured the weight (kg) and sugar content (%) of a sample of #count[](20,50,100)# tomatoes of one variety. A least squares line was fitted to predict sugar content from weight.\\nFind a #ciLevel(:)#% confidence interval for the regression model's slope</question>
+		<qnParam>xVarName(Weight)#xAxis[](0.15 0.25 0.16 0.02*0.1 0.2 0.1 0.02)#yVarName(Sugar)#yAxis(2.5 3.5 2.6 0.2)#corr[](-0.9,-0.7,-0.5,-0.3,0.3,0.5,0.7,0.8)#interceptDecimals(3)#slopeDecimals(2)#maxParam(99.99)#maxSe(9.9999)#maxPlusMinus(99.99)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='testForZeroSlope'>
+	<description>Apply a test for whether a regression model's slope is zero</description>
+	<applet>exerciseRegnProg.TestSlopeApplet</applet>
+	<width>600</width>
+	<height>800</height>
+	
+	<variable name="tail" type="int_choice(Low tail, null greater#Low tail, null equals#High tail, null lower#High tail, null equals#Two-tailed)"/>
+	<variable name="conclusions" type="string_array">Start of strings for p-value over 0.1, 0.05 to 0.1, 0.01 to 0.05, 0.001 to 0.1 and under 0.001</variable>
+	<variable name="conclusionEnding" type="string">End of string for conclusions. It is usually indexed by tail.</variable>
+	<variable name="count" type="int(3)" forceToParam="true">Number of data values</variable>
+	<variable name="xMean" type="double">Mean of explanatory variable</variable>
+	<variable name="yMean" type="double">Mean of response variable</variable>
+	<variable name="seSlope" type="double">Standard error of LS slope</variable>
+	<variable name="slopeDecimals" type="int(0)">Decimals for slope when printed in summary table</variable>
+	<variable name="slope" type="random"></variable>
+	<variable name="seIntercept" type="double">Standard error of LS intercept</variable>
+	<variable name="interceptDecimals" type="int(0)">Decimals for intercept when printed in summary table</variable>
+	<variable name="interceptName" type="string(optional)">Name for intercept parameter (default is Intercept)</variable>
+	<variable name="slopeName" type="string(optional)">Name for slope parameter (default is Slope)</variable>
+	
+	<template>
+		<question>A sample of #count# leaves was collected from a bush. The researchers were interested in whether the lengths and widths of the leaves are related and fitted a least squares line regressing the leaf lengths (response) against their widths (explanatory variable). The table below gives the least squares intercept and slope for this model, with their standard errors.\\nTest whether #?:string[tail](long leaves tend to be narrower*???*long leaves tend to be wider*???*the leaf lengths and widths are related)#.</question>
+		<qnParam>tail[](0,2,4)#count(10:30)#xMean(10:20)#yMean(20:40)#seSlope(0.100:0.200)#seIntercept(2.00:3.00)#slopeDecimals(3)#interceptDecimals(2)#slope(:)#conclusions(There_is_no_evidence_that There_is_only_weak_evidence_that There_is_moderately_strong_evidence_that There_is_very_strong_evidence_that It_is_almost_certain_that)#conclusionEnding[tail]( Long leaves tend to be Narrower*???* Long leaves tend to be Wider*???* Width and Length are related)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>leaves</shortName>
+		<longName>Length and width of leaves</longName>
+		<question>A sample of #count# leaves was collected from a bush. The researchers were interested in whether the lengths and widths of the leaves are related and fitted a least squares line regressing the leaf lengths (response) against their widths (explanatory variable). The table below gives the least squares intercept and slope for this model, with their standard errors.\\nTest whether #?:string[tail](long leaves tend to be narrower*???*long leaves tend to be wider*???*the leaf lengths and widths are related)#.</question>
+		<qnParam>tail[](0,2,4)#count(10:30)#xMean(10:20)#yMean(20:40)#seSlope(0.100:0.200)#seIntercept(2.00:3.00)#slopeDecimals(3)#interceptDecimals(2)#slope(:)#conclusions(There_is_no_evidence_that There_is_only_weak_evidence_that There_is_moderately_strong_evidence_that There_is_very_strong_evidence_that It_is_almost_certain_that)#conclusionEnding[tail]( Long leaves tend to be Narrower*???* Long leaves tend to be Wider*???* Width and Length are related)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>tomatoes</shortName>
+		<longName>Weight and sugar content of tomatoes</longName>
+		<question>Researchers measured the weight (kg) and sugar content (%) of a sample of #count# tomatoes of one variety. A least squares line was fitted to the data to summarise how sugar content (response) was related to the tomato weight (explanatory variable). The table below gives the least squares intercept and slope for this model, with their standard errors.\\nTest whether #?:string[tail](heavier tomatoes tend to have lower sugar content*???*heavier tomatoes tend to have higher sugar content*???*sugar content is related to tomato weight)#.</question>
+		<qnParam>tail[](0,2,4)#count[](20,50,100)#xMean(0.150:0.250)#yMean(2.0)#seSlope(5.00:6.00)#seIntercept(0.100:0.200)#slopeDecimals(2)#interceptDecimals(3)#slope(:)#conclusions(There_is_no_evidence_that There_is_only_weak_evidence_that There_is_moderately_strong_evidence_that There_is_very_strong_evidence_that It_is_almost_certain_that)#conclusionEnding[tail]( heavier tomatoes have less sugar*???* heavier tomatoes have more sugar*???* sugar content is related to weight)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>mbaSalaries</shortName>
+		<longName>Salary and height of MBA graduates</longName>
+		<question>Information was found from a sample of #count# recent MBA graduates from a university. A regression model was used to examine how the monthly income ($) of the graduates was related to their heights (in). The table below gives the least squares intercept and slope for this model, with their standard errors.\\nTest whether #?:string[tail](taller graduates tend to earn less than shorter ones*???*taller graduates tend to earn more than shorter ones*???*the salaries are related to the student heights)#.</question>
+		<qnParam>tail[](0,2,4)#count(20:40)#xMean(67:73)#yMean(3000)#seSlope(10.0:20.0)#seIntercept(100:200)#slopeDecimals(1)#interceptDecimals(0)#slope(:)#conclusions(There_is_no_evidence_that There_is_only_weak_evidence_that There_is_moderately_strong_evidence_that There_is_very_strong_evidence_that It_is_almost_certain_that)#conclusionEnding[tail]( taller graduates tend to earn less*???* taller graduates tend to earn more*???* salary is related to height)</qnParam>
+	</variation>
+</exercise>
+
+
+</topic>

@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Predicting future values</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="outliers">
+	<meta name="dataset" content="Oxford rainfall">
+</head>
+
+
+<body class="lecture">
+<script type="text/javascript">writePageStart();</script>
+
+
+
+<p class=heading>Annual rainfall in Oxford, 1963 to 2012</p>
+<div class="centred"><table class="centred" style="border:2px; padding:3px; border-style:ridge; background-color:#FFFFFF" border="0" cellpadding="3" cellspacing="0">
+<caption style="padding:0px 0px 5px 0px; font-weight:bold;">
+Annual rainfall (mm)
+</caption>
+<tr>
+	<td style="padding: 5px 12px">639.9</td>
+	<td style="padding: 5px 12px">494.6</td>
+	<td style="padding: 5px 12px">577.7</td>
+	<td style="padding: 5px 12px">723.6</td>
+	<td style="padding: 5px 12px">530.5</td>
+</tr>
+<tr>
+	<td style="padding: 5px 12px">418.5</td>
+	<td style="padding: 5px 12px">783.8</td>
+	<td style="padding: 5px 12px">608.7</td>
+	<td style="padding: 5px 12px">703.5</td>
+	<td style="padding: 5px 12px">727.4</td>
+</tr>
+<tr>
+	<td style="padding: 5px 12px">658.4</td>
+	<td style="padding: 5px 12px">538.4</td>
+	<td style="padding: 5px 12px">662.0</td>
+	<td style="padding: 5px 12px">683.4</td>
+	<td style="padding: 5px 12px">504.7</td>
+</tr>
+<tr>
+	<td style="padding: 5px 12px">751.2</td>
+	<td style="padding: 5px 12px">509.2</td>
+	<td style="padding: 5px 12px">704.1</td>
+	<td style="padding: 5px 12px">457.6</td>
+	<td style="padding: 5px 12px">765.1</td>
+</tr>
+<tr>
+	<td style="padding: 5px 12px">700.0</td>
+	<td style="padding: 5px 12px">710.6</td>
+	<td style="padding: 5px 12px">595.6</td>
+	<td style="padding: 5px 12px">599.6</td>
+	<td style="padding: 5px 12px">753.9</td>
+</tr>
+<tr>
+	<td style="padding: 5px 12px">813.1</td>
+	<td style="padding: 5px 12px">576.8</td>
+	<td style="padding: 5px 12px">571.1</td>
+	<td style="padding: 5px 12px">765.3</td>
+	<td style="padding: 5px 12px">820.9</td>
+</tr>
+<tr>
+	<td style="padding: 5px 12px">609.2</td>
+	<td style="padding: 5px 12px">751.9</td>
+	<td style="padding: 5px 12px">598.8</td>
+	<td style="padding: 5px 12px">736.7</td>
+	<td style="padding: 5px 12px">620.5</td>
+</tr>
+<tr>
+	<td style="padding: 5px 12px">641.6</td>
+	<td style="padding: 5px 12px">634.3</td>
+	<td style="padding: 5px 12px">473.0</td>
+	<td style="padding: 5px 12px">826.7</td>
+	<td style="padding: 5px 12px">603.7</td>
+</tr>
+<tr>
+	<td style="padding: 5px 12px">740.6</td>
+	<td style="padding: 5px 12px">682.9</td>
+	<td style="padding: 5px 12px">526.8</td>
+	<td style="padding: 5px 12px">677.0</td>
+	<td style="padding: 5px 12px">480.9</td>
+</tr>
+<tr>
+	<td style="padding: 5px 12px">575.7</td>
+	<td style="padding: 5px 12px">654.5</td>
+	<td style="padding: 5px 12px">795.6</td>
+	<td style="padding: 5px 12px">813.5</td>
+	<td style="padding: 5px 12px">984.4</td>
+</tr>
+</table>
+</div>
+<p>&nbsp;</p>
+
+<div class="centred"><div class="boxed">
+  <p>What is the chance that the annual rainfall in Oxford will be under 400 mm in a <strong>future</strong> year?</p>
+</div></div>
+
+<script type="text/javascript">
+	writeLecturerNotesLink(withDataNotes);
+</script>
+
+<div class="lecturerNote" id="lecturerNote">
+<p>It may be interesting to try to explain some of the variation in annual rainfall in terms of  the &quot;El Nino/La Nina&quot; climatic cycle in the Pacific Ocean or gradual climate change. However these effects are  minor compared to the natural variation in rainfall.</p>
+  
+	<div class="centred"><div class="boxed percent50">
+    <p>Variation  in the table gives an idea of the likely variation in the future.</p>
+  </div></div>
+	
+  <p>Rainfall is particularly important to farmers. For countries that are susceptible to drought, the variability in past 
+	weather records might give information about:</p>
+  <ul>
+    <li>The chance of rain at different times in the year.</li>
+    <li>The chance that annual rainfall will be less than 200 mm.</li>
+    <li>The chance of rain being so late that crops will fail.</li>
+  </ul>
+<p>This information can potentially help farmers to decide which crops to plant 
+	and when to plant them.</p>
+</div>
+
+<div class="lecturerNote" id="dataNote">
+  <p>The data are annual rainfalls (mm) in Oxford, England from 1959 to 2008. The values should be read down columns, so they are:</p>
+  <ul>
+    <li>1959 &nbsp; &nbsp; &nbsp; &nbsp;618.4 mm</li>
+    <li>1960 &nbsp; &nbsp; &nbsp; &nbsp;964.7 mm</li>
+    <li>...</li>
+    <li>2008 &nbsp; &nbsp; &nbsp; &nbsp;823.6 mm</li>
+  </ul>
+  <br>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

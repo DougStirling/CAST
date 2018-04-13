@@ -1,0 +1,228 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Analysis of variance</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="explained sum of squares, residual sum of squares, anova, analysis of variance, anova, f ratio, f test">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Hypotheses</p>
+
+	<p> Testing whether the factor affects the response involves two hypotheses. The null hypothesis is that the factor does not affect the response, and the alternative hypothesis is that there is some relationship between the factor level and the mean response. These hypotheses are  expressed in terms of model parameters in different ways, depending on the type of model.</p>
+	<dl>
+		<dt>Categorical factor</dt>
+		<dd>If the model is written in the form</dd>
+	</dl>
+	<div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+		<tr>
+			<td align="center"><span class="black em">y<sub>ij</sub></span> &nbsp;= &nbsp;</td>
+			<td align="center"><span class="green">µ<em><sub>i</sub></em></span></td>
+			<td align="center">&nbsp;&nbsp;+&nbsp;&nbsp;</td>
+			<td align="center" class="red">ε<em><sub>ij</sub></em></td>
+			<td width="30" align="center">&nbsp;</td>
+			<td align="center">for <em>i</em> = 1 to <em>g</em> and <em>j</em> = 1 to <em>n<sub>i</sub></em></td>
+		</tr>
+	</table></div>
+	<dl>
+		<dd>then the two hypotheses can be expressed as:</dd>
+	</dl>
+	<div class="centred"><table border="0" class="centred" cellpadding="3" cellspacing="0">
+		<tr>
+			<td class="black arial bold">H<sub>0</sub> : &nbsp; </td>
+			<td class="green">µ<em><sub>i</sub> </em>= µ<em><sub>j</sub></em></td>
+			<td width="20" class="black">&nbsp;</td>
+			<td class="black"><em>for all i and j</em></td>
+		</tr>
+		<tr>
+			<td class="black arial bold">H<sub>A</sub> : &nbsp;</td>
+			<td class="green">µ<em><sub>i</sub> </em>≠ µ<em><sub>j</sub></em></td>
+			<td class="black">&nbsp;</td>
+			<td class="black"><em>for at least some i, j</em></td>
+		</tr>
+	</table></div>
+	<dl>
+		<dt>Linear model for numerical factor</dt>
+		<dd>The linear model is written in the form</dd>
+	</dl>
+	<div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+		<tr>
+			<td align="center"><span class="black em">y<sub>ij</sub></span> &nbsp;= &nbsp;</td>
+			<td align="center"><span class="green">β<sub>0</sub>&nbsp;&nbsp;+&nbsp;&nbsp;β<sub>1</sub> <em> x<sub>i</sub></em></span></td>
+			<td align="center">&nbsp;&nbsp;+&nbsp;&nbsp;</td>
+			<td align="center" class="red">ε<em><sub>ij</sub></em></td>
+			<td width="30" align="center">&nbsp;</td>
+			<td align="center">for <em>i</em> = 1 to <em>g</em> and <em>j</em> = 1 to <em>n<sub>i</sub></em></td>
+		</tr>
+	</table></div>
+	<dl>
+		<dd>then the hypotheses can be expressed as:</dd>
+	</dl>
+	<div class="centred"><table border="0" class="centred" cellpadding="3" cellspacing="0">
+		<tr>
+			<td class="black arial bold">H<sub>0</sub> : &nbsp; </td>
+			<td class="green">β<sub>1 &nbsp;</sub>= &nbsp;0<em><sub></sub></em></td>
+		</tr>
+		<tr>
+			<td class="black arial bold">H<sub>A</sub> : &nbsp;</td>
+			<td class="green">β<sub>1 &nbsp;</sub>≠ &nbsp;0<em><sub></sub></em></td>
+		</tr>
+	</table></div>
+	<br>
+	<div class="centred"><div class="boxed">
+	<p>You should use computer software to evaluate the p-value for the test, but we 
+		will briefly describe some of the steps. </p>
+</div></div>
+<p class="heading">Sums of squares</p>
+<p>A test of these hypotheses is based on the relative sizes of the explained and residual sums of squares. The table below repeats their interpretation.</p>
+<div class="centred"><table border="0" class="centred" cellpadding="4" cellspacing="0">
+	<tr>
+		<th align="left" style="border-bottom:1px solid #999999;">Sum&nbsp;of&nbsp;squares</th>
+		<th style="border-bottom:1px solid #999999;">Interpretation</th>
+	</tr>
+	<tr>
+		<td align="left"><span class="green">SS<sub>Total</sub></span><br>
+		<td>Overall variability of <em>Y</em>, taking no account of the factor.</td>
+	</tr>
+	<tr>
+		<td align="left"><span class="blue">SS<sub>Residual</sub></span>
+				</td>
+		<td>Describes variability within factor levels and other variation that  cannot be explained by the model.</td>
+	</tr>
+	<tr>
+		<td align="left" style="border-bottom:1px solid #999999;"><span class="red">SS<sub>Explained</sub></span>
+				</td>
+		<td style="border-bottom:1px solid #999999;">Describes the spread of fitted values and hence the variability between the treatment means that is <strong>explained</strong> by the model.</td>
+	</tr>
+</table></div>
+<br>
+<p class="heading">Degrees of freedom</p>
+<p>Each sum of squares is associated with a value called its <strong>degrees of freedom</strong>.</p>
+<div class="centred"><table border="0" class="centred" cellpadding="4" cellspacing="0">
+	<tr>
+		<th align="left" style="border-bottom:1px solid #999999;">Degrees of freedom</th>
+		</tr>
+	<tr>
+		<td align="left"><span class="green">df<sub>Total</sub> &nbsp; = &nbsp; <em>n</em>&nbsp;-&nbsp;1</span></td>				
+	</tr>
+	<tr>
+		<td align="left"><span class="blue">df<sub>Residual</sub>&nbsp; = &nbsp; <em>n</em>&nbsp;-&nbsp;<em>k</em></span></td>
+	</tr>
+	<tr>
+		<td align="left" style="border-bottom:1px solid #999999;"><span class="red">df<sub>Explained</sub> = &nbsp; <em>k</em>&nbsp;-&nbsp;1 </span></td>
+	</tr>
+</table></div>
+<p>where <em>k</em> is the number of parameters in the explained part of the model being used. Therefore <em>k</em>&nbsp;=&nbsp;<em>g</em> for a categorical model, <em>k</em>&nbsp;=&nbsp;2 for a linear model and <em>k</em>&nbsp;=&nbsp;3 for a quadratic model.</p>
+<p>Note that the explained and residual degrees of freedom add to give the total degrees of freedom (in the same way that the corresponding sums of squares add up).</p>
+<p class="heading">Mean sums of squares, F ratio and p-value</p>
+<p>The first step in evaluating the p-value for the test is to divide each of 
+	the three sums of squares by  its <strong>degrees of freedom</strong> to obtain a <strong>mean sum of squares</strong>.</p>
+<div class="centred"><div class="boxed">
+	<p>If the factor does not affect the response, all mean sums of squares are expected to be of similar size.</p>
+</div></div>
+<p>The test statistic is the ratio of the explained and residual mean sums 
+	of square. It is called an <strong>F-ratio</strong>.</p>
+<p class=eqn><img src="images/fGroupRatio.gif" width="115" height="37"></p>
+<p>This test statistic compares explained and unexplained (residual) variation.</p>
+<div class="centred"><div class="boxed">
+	<p>Large values of F suggest that H<sub>0</sub> does not hold &mdash; 
+		that the level means differ more than might be expected by chance.<br>
+</p>
+</div></div>
+<p>The p-value for the test gives the probability of such a high F ratio if <strong>H<sub>0</sub></strong> is true (all treatment means are the same). It is based on a standard distribution 
+	called an <strong>F distribution</strong> and is interpreted in the same way as 
+	other p-values. </p>
+
+<div class="centred"><div class="boxed">
+<p>The closer the p-value to zero, the stronger the evidence 
+				that H<sub>0</sub> does not hold.</p>
+</div></div>
+
+<p class="heading">Analysis of variance table</p>
+<p>The calculations are usually presented in a table called an <strong>analysis 
+	of variance table</strong>. (This is often abbreviated to an <strong>anova table</strong>.)</p>
+<p class=eqn><img src="images/anovaGroupTable.gif" width="596" height="192"></p>
+<p>Note here that <em>k</em> is the number of parameters in the model being fitted &mdash; the number of factor levels, <em>g</em>, for a categorical factor, 2 for a linear model and 3 for a quadratic model.</p>
+
+<div class="diagram">
+<p class="heading">Illustration of calculations: categorical factor</p>
+<p>The dot plots on the left below show results from a completely randomised experiment with 3 replicates at each of 4 factor levels. </p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="380">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.AnovaTableApplet">
+<param name="yVarName" value="Yield of reaction">
+<param name="xVarName" value="Type of enzyme">
+<param name="xLabels" value="#Type A# #Type B# #Type C# #Type D#">
+<param name="anovaModel" value="7 1 14 1 12 1 4 1">
+<param name="randomSeed" value="614945782">
+<param name="yAxis" value="0 20 0 5">
+<param name="decimals" value="3">
+<param name="maxSummaries" value="9999.99 999.99 999.99 9.999">
+<param name="initialR2" value="0.75">
+<param name="componentName" value="Total#Explained#Residual">
+<param name="noOfDataSets" value="3">
+<param name="dataName" value="3 replicates">
+<param name="xValues" value="3@0 3@1 3@2 3@3">
+<param name="dataName2" value="5 replicates">
+<param name="xValues2" value="5@0 5@1 5@2 5@3">
+<param name="dataName3" value="20 replicates">
+<param name="xValues3" value="20@0 20@1 20@2 20@3">
+<param name="customText" value="Variability=Variability#All unexplained=All unexplained#All explained=All explained#Variation in Data=Variation in Data">
+</applet>
+</div>
+
+<p>The slider adjusts the relative size of the explained and unexplained variation. Observe how this affects the p-value for the test.</p>
+<ul>
+<li>The greater the proportion of explained variation, the larger the F-ratio and 
+	the closer the p-value becomes to zero.</li>
+</ul>
+<p>Use the pop-up menu to increase the number of replicates and observe that a smaller 
+amount of explained variation is needed to obtain a small p-value (and hence strong 
+evidence that the underlying treatment means are different).</p>
+
+<p class="heading">Illustration: linear model for numerical factor</p>
+<p>The diagram below is similar but uses a linear model for a numerical factor.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="380">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.AnovaTableApplet">
+<param name="yVarName" value="Impurities, y">
+<param name="xVarName" value="Temperature, x">
+<param name="regnModel" value="-11.0 0.3 1.5">
+<param name="randomSeed" value="623645782">
+<param name="xAxis" value="48 92 50 10">
+<param name="yAxis" value="0 22 0 5">
+<param name="decimals" value="3">
+<param name="maxSummaries" value="9999.99 999.99 999.99 9.999">
+<param name="initialR2" value="0.75">
+<param name="componentName" value="Total#Explained#Residual">
+<param name="noOfDataSets" value="3">
+<param name="dataName" value="3 replicates">
+<param name="xValues" value="3@50 3@60 3@70 3@80 3@90">
+<param name="dataName2" value="5 replicates">
+<param name="xValues2" value="5@50 5@60 5@70 5@80 5@90">
+<param name="dataName3" value="20 replicates">
+<param name="xValues3" value="20@50 20@60 20@70 20@80 20@90">
+<param name="customText" value="Variability=Variability#All unexplained=All unexplained#All explained=All explained#Variation in Data=Variation in Data">
+</applet>
+</div>
+
+<p>Again adjust the slider to see how the strength of the relationship affects the sums of squares and hence the p-value of the test.</p>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

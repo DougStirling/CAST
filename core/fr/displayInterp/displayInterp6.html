@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Dangers de la surinterprétation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="overinterpretation">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">En petits ensembles de données, les caractéristiques des écrans peuvent ne pas être significatifs</p>
+
+<p>Attention à <strong>ne pas surinterpréter</strong> les modèles de petits ensembles de données. Clusters, les valeurs aberrantes ou asymétrie peuvent apparaître par hasard, même s'il n'ya pas de base sérieuse à ces caractéristiques.</p>
+<div class="diagram">
+	<p class="heading">Les données aléatoires</p>
+
+	<p>Afin d'étudier plus loin, nous allons examiner quelques échantillons de 50 valeurs à partir d'un processus homogène, <strong>sans sous-groupes distincts ou des clusters</strong>.<br>
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="530" height="390">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="stemLeafProg.RandomStemLeafApplet">
+<param name="stemAxis" value="0 1 0 20 0">
+<param name="varName" value="Y">
+<param name="random" value="50 10.0 5.0 58879473 2.0">
+</applet>
+</div>
+
+		<p>La tige et les feuilles tracer sur la gauche décrit ci-dessus 50 valeurs de ce processus. Pensez-vous qu'il existe des groupes ou des valeurs aberrantes?</p>
+	<p>Cliquez sur le bouton <strong>Un autre échantillon</strong> à plusieurs reprises afin d'examiner d'autres échantillons. Même si la taille de l'échantillon n'est pas particulièrement petit, il existe une variabilité surprenante dans la forme de la distribution. Par chance, il ya parfois des lacunes et, parfois, des valeurs qui sont séparés des autres et semblent être les valeurs aberrantes.</p>
+	<p>Regardez plusieurs échantillons et cliquez N'oubliez pas de conserver l'ensemble de données qui donne la plus grande apparence de séparer en deux groupes. Puis faire la même chose, tout en conservant l'ensemble de données qui ressemble le plus susceptibles d'avoir une valeur aberrante.</p>
+<table width="75%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+			<tr> 
+				<td><strong>Dans cet exemple, nous savons que ces caractéristiques dans les échantillons ne reflètent pas les grappes <font color="#FF0000">réelles</font> ou aberrantes dans les processus sous-jacent..</strong></td>
+		</tr>
+		</table>
+
+		<p class="heading">Steel Works Slag</p>
+	<p>Dans les aciéries, le minerai de fer est fondu pour en extraire le fer, autant que possible, mais certains de fer reste dans les déchets du processus (scories) sous la forme d'oxyde de fer (FeO). Le tracé de points empilés ci-dessous montre le pourcentage de FeO dans le laitier échantillonné à partir de 20 lots de minerai de fer.<br>
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="250" height="200">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="stemLeafProg.StemAndLeaf2Applet">
+<param name="stemAxis" value="0 1 0 9 0 pour cent FeO">
+<param name="varName" value="FeO dans les scories">
+<param name="values" value="6.1 1.4 5.1 5.5 5.2 5.3 6.9 2.0 7.9 7.1 6.1 1.3 2.3 3.2 3.4 4.9 3.4 2.8 5.2 6.4">
+<param name="discardDigits" value="0">
+</applet>
+</div>
+
+	<p>L'affichage semble se scinder en deux pôles. Toutefois, sans preuves à l'appui extérieur, vous ne devriez pas conclure que l'écart de ce genre <strong>-</strong> correspondre à un regroupement significatif des lots de minerai de fer en deux groupes - l'apparition de clusters peuvent être causées uniquement par le caractère aléatoire des données.<br>
+</p>
+</div>
+
+<br>
+
+<div class="boxed">
+	<p>Si les valeurs aberrantes ou grappes sont prononcées, elles peuvent être prises comme une indication de quelque chose de significatif dans le processus sous-jacents. Cependant <strong>aberrantes moins prononcés ou les grappes doivent être étayées par des preuves à l'extérieur</strong> avant ces caractéristiques peuvent être interprétées comme significatives.</p>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Modelling nonlinearity with g groups</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="curvature, nonlinear model, nonlinear relationship, sums of squares, sequential sums of squares">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Curvature that is not quadratic</p>
+<p>Our previous analysis of linearity in the normal linear model</p>
+<p class=eqn><img src="images/linModel.gif" width="159" height="20"> </p>
+<p>involved comparing the fit of the model to that of a quadratic model,</p>
+<p class=eqn><img src="images/quadModel.gif" width="217" height="22"> </p>
+<p>The only problem with this approach is the assumption that any curvature must 
+be quadratic. If the curvature in the model is of a different form, the test is 
+usually conservative and is therefore less likely to detect the curvature.</p>
+<p class="heading">Data sets with several response measurements at some x-values</p>
+<p>Another approach is possible if there are multiple response measurements for 
+each x-value. This type of data set usually arises from experiments in which only 
+a few x-values have been used by the experimenter, but it may also be obtained 
+from observational studies if the explanatory variable is discrete (counts).</p>
+<div class="diagram"> 
+<p class="heading">Lettuce and nitrogen fertiliser</p>
+<p>An experiment was conducted to test the effects of nitrogen fertiliser on lettuce 
+production. Five rates of ammonium nitrate were used in a completely randomised 
+design with four replicates (plots). The data are the number of heads of lettuce 
+harvested from each plot.</p>
+
+<p class=eqn><img src="images/lettuceScatter.gif" width="267" height="286"> </p>
+
+<p>In this data set there were four response measurements at each x-value.</p>
+</div>
+
+<p class="heading">A different approach to testing for linearity</p>
+<p>An alternative model that does not constrain the shape of the curvature simply 
+states that the response at each x-value has a different mean. This is equivalent 
+to treating each of the <em>g</em> distinct x-values as a separate <strong>factor 
+level</strong> or <strong>group</strong> and using the normal model for <em>g</em> 
+groups.</p>
+<p>To express this model mathematically, we need two subscripts for the values. 
+Writing the <em>j</em>'th of the repeat measurements at the <em>i</em>'th value 
+of the explanatory variable, <em>x<sub>i</sub></em>, as <em>y<sub>ij</sub></em>, 
+the model is:</p>
+<p class=eqn><img src="images/factorModel.gif" width="107" height="17"> </p>
+<p>This again is a generalisation of the linear model. The linear model constrains 
+the <em>g</em> 'group means' to lie on a straight line.We therefore again have 
+a sequance of <strong>three</strong> potential models of increasing complexity, 
+each of which can be fitted to the data by least squares and provides fitted values.</p>
+
+<div class="centred"><table border="1" cellpadding="7" cellspacing="0" bordercolor="#CCCCCC" class="centred">
+<tr> 
+<th align="center">&nbsp;</th>
+<th align="center">Model</th>
+<th>Fitted values (predicted response)</th>
+</tr>
+<tr> 
+<th align="left">Constant</th>
+<td align="center" bgcolor="#FFFFFF"><img src="images/univarModel2.gif" width="103" height="17"></td>
+<td align="center" bgcolor="#FFFFFF"><img src="images/univarFit2.gif" width="63" height="25"></td>
+</tr>
+<tr> 
+<th align="left">Linear model</th>
+<td align="center" bgcolor="#FFFFFF"><img src="images/linModel2.gif" width="166" height="20"></td>
+<td align="center" bgcolor="#FFFFFF"><img src="images/linFit2.gif" width="131" height="26"></td>
+</tr>
+<tr> 
+<th align="left">Factor model</th>
+<td align="center" bgcolor="#FFFFFF"><img src="images/factorModel.gif" width="107" height="17"></td>
+<td align="center" bgcolor="#FFFFFF"><img src="images/factorFit.gif" width="66" height="26"></td>
+</tr>
+</table></div>
+
+<p class="heading">Components</p>
+<p>Using this sequence of models, we can identify how the successive models improve 
+the fit. (We omit the double subscripts from now on to simplify the notation.)</p>
+<p class=eqn><img src="images/factorComponents.gif" width="392" height="41"> </p>
+<p class="heading">Sums of squares</p>
+<p>The sums of squares of these three components obey a similar relationship when 
+the models are fitted by least squares:</p>
+<p class=eqn><img src="images/factorSsqs.gif" width="464" height="41"> </p>
+
+<div class="centred"><div class="boxed">
+<p>The diagram below helps to interpret the three 
+components (and their sums of squares).</p>
+</div></div>
+
+<br>
+
+<div class="diagram"> 
+<p class="heading">Lettuce and nitrogen fertiliser</p>
+<p>The scatterplot below shows the relationship between the number of heads of 
+lettuce harvested and nitogen applied. The overall mean (grey), the least squares 
+line (light blue) and group means (pink) are also shown on the diagram.</p>
+
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="510" height="460">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="varianceProg.PureComponentsApplet">
+<param name="yVarName" value="Lettuce/plot">
+<param name="yValues" value="104 114 90 140 134 130 144 174 146 142 152 156 147 160 160 163 131 148 154 163">
+<param name="yAxis" value="80 180 80 20">
+<param name="xVarName" value="Nitrogen (lb/acre)">
+<param name="xValues" value="4@0 4@1 4@2 4@3 4@4">
+<param name="xLabels" value="0 50 100 150 200">
+<param name="xAxis" value="-15 210 0 50">
+<param name="componentAxis" value="-60 40 -60 20">
+<param name="decimals" value="2">
+<param name="labelAxes" value="true">
+<param name="dotPlotWidth" value="110">
+<param name="maxSsq" value="9999.9">
+<param name="ssqNames" value="Total variation#Linear component#Nonlinear component#Residuals">
+<param name="customText" value="Component=Component">
+</applet>
+</div>
+
+<p>Click the cross corresponding to the lowest yield at the bottom left of the 
+scatterplot. Observe how the three components add to the total component. <span class="gray">(The 
+same relationship holds for the other crosses, but most involve a mixture of positive 
+and negative components so the visual effect is weaker.)</span></p>
+<p>Use the pop-up menu to display the linear, quadratic and residual components 
+for all data values together on the scatterplot.</p>
+
+<dl>
+<dt>Linear components</dt>
+<dd>These are identical to the linear components that were defined for linear 
+regression. They again describe how far the least squares line is from horizontal.</dd>
+<dt>Nonlinear components</dt>
+<dd>These describe how far the group means are from the least squares line. They 
+therefore hold information about how close the data are to linearity.</dd>
+<dt>Residual components</dt>
+<dd>These are the 'within-group' residuals and depend only on the normal error 
+standard deviation, σ.</dd>
+</dl>
+<br>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

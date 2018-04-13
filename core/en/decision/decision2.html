@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Decision rules</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="hypothesis test, decision rule, type I error, type II error">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Using a sample mean to make decisions</p>
+<p>We now introduce the idea of decision rules with a test about whether a population 
+mean is a particular value, µ<sub>0</sub>, 
+or greater. We assume initially that the population is normally distributed 
+and that its standard deviation, σ, 
+is known.</p>
+<p class=eqn><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong>&nbsp;&nbsp;=&nbsp;&nbsp;</strong>&mu;<sub>0</sub><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</strong>&mu;<sub>0</sub></p>
+<p>The decision about whether to accept or reject <strong>H<sub>0</sub></strong> 
+should depend on the value of the sample mean, <img src="../../images/symbol.xBar.png" width="10" height="10" align="baseline">. 
+Large values throw doubt on <strong>H<sub>0</sub></strong>.</p>
+<div class="centred"><table border="0" class="centred" cellpadding="4" cellspacing="0">
+<tr> 
+	<th><span class="black">Data</span></th>
+	<th>Decision</th>
+</tr>
+<tr bgcolor="#FFFFFF"> 
+	<td align="center" style="border-top:1px solid #999999; border-bottom:1px solid #999999;"><img src="../../images/symbol.xBar.png" width="10" height="10" align="baseline"> 
+		&lt; <em>k</em></td>
+	<td style="border-top:1px solid #999999; border-bottom:1px solid #999999;">&nbsp;&nbsp;&nbsp;accept <strong>H<sub>0</sub></strong></td>
+</tr>
+<tr bgcolor="#FFFFFF"> 
+	<td align="center" style="border-bottom:1px solid #999999;"><img src="../../images/symbol.xBar.png" width="10" height="10" align="baseline"> 
+		is <em>k</em> or higher</td>
+	<td style="border-bottom:1px solid #999999;">&nbsp;&nbsp;&nbsp;reject<strong> H<sub>0</sub></strong>&nbsp;&nbsp;&nbsp;</td>
+</tr>
+</table></div>
+<p>We want to choose the value <em>k</em> to make the probability of errors 
+low. This is however complicated because of the two different types of error.</p>
+<div class="centred"><table border="0" class="centred" cellpadding="6" cellspacing="0">
+<tr> 
+	<td></td>
+	<td></td>
+	<th colspan="2">Decision</th>
+</tr>
+<tr> 
+	<td></td>
+	<td></td>
+	<th>&nbsp;&nbsp;accept <strong>H<sub>0</sub></strong>&nbsp;&nbsp;</th>
+	<th>&nbsp;&nbsp;reject<strong> H<sub>0</sub></strong>&nbsp;&nbsp;</th>
+</tr>
+<tr> 
+	<th rowspan="2">Truth</th>
+	<th><strong>H<sub>0</sub></strong>&nbsp;is true&nbsp;&nbsp;&nbsp;</th>
+	<td align="center" bgcolor="#00FF00" style="border-top:1px solid #999999; border-left:1px solid #999999;">&nbsp;</td>
+	<td align="center" bgcolor="#FF0000"><img class="gif" src="images/pErrorNull.gif" width="105" height="35"></td>
+</tr>
+<tr> 
+	<th><strong>H<sub>A</sub></strong> (<strong>H<sub>0</sub></strong> is false)&nbsp;&nbsp;&nbsp;&nbsp;</th>
+	<td align="center" bgcolor="#FF0000"><img class="gif" src="images/pErrorAlt.gif" width="106" height="35"></td>
+	<td align="center" bgcolor="#00FF00" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">&nbsp;</td>
+</tr>
+</table></div>
+<p>Increasing the value of <em>k</em> to make the Type I error probability small 
+(top right) also increases the Type II error probability (bottom left) so 
+the choice of <em>k</em> for the decision rule is a trade-off between the 
+acceptable sizes of the two types of error.</p>
+
+<div class="diagram" title="Illustration of two types of error"> 
+<p class="heading">Illustration</p>
+<p>The diagram below relates to a normal population whose standard deviation 
+	is known to be σ&nbsp;=&nbsp;4. 
+	We will test the hypotheses</p>
+<p class=eqn><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> = 10</strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> &gt; 10</strong> 
+</p>
+<p>The test is based on the sample mean of <em>n</em>&nbsp;=&nbsp;16 values 
+	from this distribution. The sample mean has a normal distribution,</p>
+	
+	<div class="centred"><table border="0" cellpadding="0" cellspacing="0" class="centred"><tr>
+<td valign="middle"><img src="../../images/symbol.xBarCap.png" width="11" height="15" align="baseline"></td>
+<td valign="middle">&nbsp; ~ &nbsp;<font face="Arial, Helvetica, sans-serif">normal</font> (&mu;, &nbsp;</td>
+<td valign="middle"><img src="../../images/symbol.sigmaOverRootN.png" width="26" height="31" align="baseline"></td>
+<td valign="middle"> = 1)</td>
+</tr></table></div>
+	<p>This normal distributions can be used to calculate the probabilities of 
+		the two types of error. The diagram below illustrates how the probabilities 
+		of the two types of error depend on the critical value for the test, <em>k</em>. 
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="testProg.DecisionsApplet">
+<param name="nullModel" value="10 4">
+<param name="sampleSize" value="16">
+<param name="altMeanSlider" value="10.1 15.0 13.0">
+<param name="criticalSlider" value="7.00 16.00 12.00">
+<param name="axisInfo" value="7 17 8 2">
+<param name="customText" value="Reject H0 if sample mean=Reject H0 if sample mean#Decision rule=Decision rule#If H0=If H0#If HA=If HA#distn of sample mean=distn of sample mean#accept H0=accept H0#reject H0=reject H0">
+</applet>
+</div>
+
+<p>Drag the slider at the top of the diagram to adjust <em>k</em>. Observe 
+	that making <em>k</em> large reduces the probability of a Type I error, 
+	but makes a Type II error more likely. It is impossible to simultaneously 
+	make both probabilities small with only <em>n</em>&nbsp;=&nbsp;16 observations.</p>
+<hr width="75%">
+<p>Note also that there is not a single value for the probability of a Type 
+	II error &mdash; the probability depends on how far above 10 the mean µ 
+	lies. Drag the slider on the row for the alternative hypothesis to observe 
+	that:</p>
+
+<div class="centred"><div class="boxed">
+<p>The probability of a Type II error is always high if µ 
+				is close to 10, but is lower if µ 
+				is far above 10.</p>
+</div></div>
+
+<p> This is as should be expected &mdash; the further above 10 the population mean, 
+	the more likely we are to detect that it is higher than 10 from the sample 
+	mean.</p>
+
+</div>
+
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

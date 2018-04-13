@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Standard error of least squares slope</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<script type="text/javascript">
+		var svgNames = new Array();
+		svgNames[0] = "images/radiationCancer.svg";
+		svgNames[1] = "images/catHeartWt.svg";
+		svgNames[2] = "images/soyAndOzone.svg";
+		svgNames[3] = "images/alcoholStrength.svg";
+		
+		function changeSvgImage(select) {
+			var newIndex = select.selectedIndex;
+			var image = document.getElementById('dataImage');
+			image.src = svgNames[newIndex];
+		}
+	</script>
+
+	<meta name="index" content="slope">
+	<meta name="dataset" content="Cancer deaths and radiation">
+	<meta name="dataset" content="Cat body and heart weight">
+	<meta name="dataset" content="Soybeans and ozone">
+	<meta name="dataset" content="Alcoholism and strength">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">How accurate is the least squares estimate of the slope?</p>
+
+<p>In the previous page, we explained that the least squares slope has a normal 
+distribution with mean</p>
+
+<p class=eqn><img class="gif" src="../../en/regnEst/images/meanSlope.gif" width="64" height="22">
+</p>
+
+<p>When <em>b</em><sub>1 </sub> 
+is used as an estimate of β<sub>1</sub>, 
+there is therefore an error that has a normal distribution centred on zero,</p>
+<p class=eqn style="color:#000000; font-weight:bold">error in estimate of β<sub>1</sub> &nbsp; = &nbsp; <object data="images/slopeErrorDistn.svg" alt="eqn" width="212" height="30" align="absmiddle"></object></p>
+<table width="75%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+<tr> 
+<td><strong>The standard deviation of this distribution describes the likely size 
+of the estimation error.</strong></td>
+</tr>
+</table>
+<p>It can be shown mathematically that... </p>
+<p class=eqn><img class="gif" src="../../en/regnEst/images/sdSlopeEqn.gif" width="227" height="42"> 
+</p>
+
+<p>where <em>s</em><sub>x </sub> 
+is the standard deviation of the explanatory variable, <em>X</em>.</p>
+<table width="75%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+<tr> 
+<td><strong>This formula is not important enough to warrant remembering, but we 
+will use it later to explain some properties of the estimate.</strong></td>
+</tr>
+</table>
+<p>Since σ is unknown, the above formulae for the standard deviation of <em>b</em><sub>1</sub> cannot be evaluated. However we can approximate it by replacing σ with an estimate from the data,</p>
+
+<p class=eqn><img class="gif" src="../../en/regnEst/images/errorSdEst.gif" width="95" height="41"> 
+</p>
+
+<div class="diagram"> 
+<p class=heading>Examples</p>
+<p>For each data set below, the least squares estimate of the slope is shown. 
+The distribution of the error in this estimate, (<em>b</em><sub>1</sub>&nbsp;-&nbsp;β<sub>1</sub>) 
+is evaluated on the right.</p>
+<form>
+<select name="dataset" onChange="changeSvgImage(this)">
+<option value="0" selected>Cancer deaths and radiation</option>
+<option value="1">Cat body and heart weight</option>
+<option value="2">Soybeans and ozone</option>
+<option value="3">Alcoholism and strength</option>
+</select>
+</form>
+
+<p align="center"><iframe src="images/radiationCancer.svg" id="dataImage" width="589" height="404" frameborder="0"></iframe></p>
+
+<p>The normal distribution in the bottom right describes how far the least squares 
+estimate is likely to be from β<sub>1</sub>.</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

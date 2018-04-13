@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>More about bias</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="mean, median, standard error, bias">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Biased estimators</p>
+
+<p>In statistics, we mostly use estimators that are unbiased &mdash; their error 
+	distributions are centred on zero. However you may sometimes meet estimators 
+	that are biased &mdash; the mean of their error distribution (the <strong>bias</strong>) 
+	is <strong>not</strong> zero.</p>
+
+<p>Although bias is undesirable, a little bias may be acceptable in an estimator 
+	if its standard error is also small.</p>
+
+
+<div class="diagram" title="Example: Estimating a skew distribution's mean">
+	<p class="heading">Estimating the mean of a skew distribution</p>
+
+	
+	<p>The diagram below compares the error distributions of the sample mean and 
+		median when estimating the population mean of a very skew distribution. 
+		Such skew distributions are often appropriate for lifetimes of biological 
+		organisms and manufactured products.</p>
+	<p>For all distributions, whether or not they are skew, the sample mean is 
+		an unbiased estimator of the population mean. However the sample mean is 
+		further into the tail of a skew distribution than the median, so the sample 
+		median tends to under-estimate the population mean &mdash; it has negative bias.</p>
+
+	<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="stdErrorProg.MeanMedTheoryApplet">
+<param name="varName" value="Lifetime">
+<param name="popnDistn" value="gamma">
+<param name="popnParams" value="1 4">
+<param name="dataAxis" value="0 20 0 5">
+<param name="meanErrorName" value="Error in mean">
+<param name="medianErrorName" value="Error in median">
+<param name="errorAxis" value="-5 5 -4 2">
+<param name="errorSdDecimals" value="2">
+<param name="sampleSize" value="10 100 16">
+<param name="customText" value="Population*distribution=Population*distribution#Error*distribution*(approx)=Error*distribution*(approx)#skew=skew">
+</applet>
+</div>
+
+		
+	
+	<p>The diagram above shows the error distributions for the sample mean and 
+		the median. Observe that:</p>
+	<ul>
+		<li>Both estimators have similar standard errors</li>
+		<li>The sample median is biased &mdash; the mean of its error distribution is 
+			negative. </li>
+	</ul>
+	<p>Observe also that when the sample size is large, the bias of the median 
+		results in errors that are <strong>considerably</strong> further from zero.</p>
+	<p class="gray">(Note: The error distribution shown for the mean 
+		is exact, but that of the median is only approximate &mdash; the exact distribution 
+		of the sample median is difficult to obtain.)</p>
+	
+</div>
+
+
+	
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

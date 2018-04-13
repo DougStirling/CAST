@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Model parameters</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="linear model, regression model, slope, intercept">
+	<meta name="dataset" content="Cotton yield and irrigation">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Three parameters of the normal linear model</p>
+
+<p>A normal linear model,
+</p>
+
+<p class=eqn style="color:#000000">µ<sub><em>y</em></sub> &nbsp; = &nbsp; β<sub>0</sub> &nbsp; + &nbsp; β<sub>1 </sub><em>x</em></p>
+<p class=eqn style="color:#000000">σ<sub><em>y</em></sub> &nbsp; = &nbsp; σ</p>
+<p>involves 3 parameters,
+β<sub>0</sub>, β<sub>1</sub> and σ.
+These parameters provide considerable flexibility to the model.</p>
+
+<div class="diagram">
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="420">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="linModProg.DragRegnParamApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="interceptLimits" value="2.50 7.50 3.50">
+<param name="slopeLimits" value="-1.00 1.00 0.50">
+<param name="sdLimits" value="0.10 0.80 0.30">
+<param name="randomX" value="20 2.5 1.0 5876299 2.0">
+<param name="horizAxis" value="0.5 4.5 1 1">
+<param name="vertAxis" value="2.5 7.5 3 1">
+<param name="random" value="20 0.0 1.0 345945782 3.0">
+<param name="labelAxes" value="true">
+</applet>
+</div>
+
+<p>Drag the three red arrows to adjust the parameters of the normal
+linear model.
+</p>
+
+<p>Click <strong>Take sample</strong> a few times to verify that approximately 95%
+of values are within the grey band.
+</p>
+
+<p><font color="#666666">(Note that the values of <i>X</i> are not fixed in this 
+example &mdash; they vary from sample to sample. The normal linear model does not attempt 
+to describe variability in <i>X</i>, though a standard univariate distribution 
+such as a normal distribution might fit the distribution of <em>X</em> in this 
+example.)</font> </p>
+
+</div>
+
+<p class="heading">Interpreting the model's slope and intercept</p>
+<p>The most important parameters of a linear model are its slope, β<sub>1</sub>, 
+and intercept, β<sub>0</sub>. 
+These can be interpreted in a similar way to the slope and intercept of the least 
+squares lines that were <a href="javascript:showNamedPage('leastSqrs4')">fitted 
+to data in an earlier chapter</a>.</p>
+
+<dl>
+<dt>Slope</dt>
+<dd>The slope parameter, β<sub>1</sub>, 
+is the more important of the two. It specifies the increase in the mean response 
+per unit increase in <i>X</i>.</dd>
+<dt>Intercept</dt>
+<dd>The intercept, β<sub>0</sub>, 
+is the mean response when <em>X</em> = 0. (In some contexts, this may not have 
+an easily interpreted meaning.)</dd>
+</dl>
+<br>
+
+<center>
+<table border="1" cellpadding="8" cellspacing="0" bordercolor="#CCCCCC">
+<tr> 
+<th align="CENTER" width="300">Context</th>
+<th width="33%" align="CENTER">Interpretation of β<sub>1</sub></th>
+<th width="33%" align="CENTER">Interpretation of β<sub>0</sub></th>
+</tr>
+<tr bgcolor="#FFFFFF"> 
+<td width="300"><i>Y</i> = Yield of wheat per acre <br>
+<i>X</i> = Fertiliser (kg per m<sup>2</sup>)</td>
+<td width="33%">Increase in mean yield per acre for each additional kg/m<sup>2</sup> 
+of fertiliser</td>
+<td width="33%">Mean yield per acre if no fertiliser is used</td>
+</tr>
+<tr bgcolor="#FFFFFF"> 
+<td width="300"><i>Y</i> = Exam mark <br> <i>X</i> = Hours of study by student 
+before exam</td>
+<td width="33%">Increase in expected mark for each additional hour of study</td>
+<td width="33%">Expected mark if there is no study</td>
+</tr>
+<tr bgcolor="#FFFFFF"> 
+<td width="300"><i>Y</i> = Hospital stay (days) <br> <i>X</i> = Age of patient</td>
+<td width="33%">Average extra days in hospital per extra year of age</td>
+<td width="33%">Average days in hospital at age 0. Not particularly meaningful 
+here. </td>
+</tr>
+</table>
+</center>
+<p class="heading">Esimating the parameters by eye</p>
+
+<p>The regression line (i.e. the straight line showing how the mean depends on 
+<em>x</em>) and the band that is 2σ above and below it are a good way to understand the normal linear model. Indeed 
+they can be used as an informal way to estimate the parameters of the model 'by 
+eye'. (We will give better methods in the next section.)</p>
+
+<div class="diagram">
+<p class="heading">Artificial data</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="420">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="linModProg.DragRegnParamApplet">
+<param name="xVarName" value="Explanatory variable, x">
+<param name="yVarName" value="Response, y">
+<param name="interceptLimits" value="-999 999 500">
+<param name="slopeLimits" value="-999 999 -50">
+<param name="sdLimits" value="10 200 100">
+<param name="xValues" value="2.05 3.27 3.14 1.47 3.77 1.35 3.32 1.89 3.53 2.72 1.66 2.22 1.38 2.16 1.21 1.82 1.77 2.00 3.78 1.57 1.61 3.15 3.17 1.82 1.28 3.73 3.27 3.22 3.64 2.48 3.83 2.79 3.64 2.05 2.01 2.87 1.64 2.03 3.37 1.18 3.25 3.22 2.08 1.69 2.94 2.66 2.38 2.23 2.34 3.15 3.71 3.31 3.70 1.37 3.31 1.45 1.25 1.59 3.62 3.27 1.42 3.40 3.20 3.61 2.85 1.37 2.54 1.70 2.57 3.22 2.76 3.48 3.30 1.28 3.07 2.19 3.61 1.79 2.61 1.48 3.14 3.31 2.64 1.81 2.12 2.48 1.43 3.67 1.82 3.74 3.05 1.19 3.38 3.27 2.64 2.65 2.41 3.83 2.00 2.41">
+<param name="yValues" value="292 438 404 216 485 204 462 321 452 384 276 259 236 329 241 223 229 243 508 221 258 376 382 253 211 512 470 462 488 333 527 366 487 320 328 357 265 296 500 227 445 456 285 262 411 364 312 275 313 374 514 433 545 229 432 263 264 288 461 480 216 412 429 459 454 176 326 219 343 436 357 513 427 204 373 297 481 279 346 228 441 423 398 260 298 361 225 482 281 530 392 211 434 447 286 405 354 503 277 329">
+<param name="horizAxis" value="1.0 4.0 1.0 0.5">
+<param name="vertAxis" value="0 700 0 100">
+<param name="labelAxes" value="true">
+<param name="customText" value="Best values=Best values">
+</applet>
+</div>
+
+    
+<p>A normal linear model might be used to describe how the response depends on the explanatory variable.</p>
+<ul>
+  <li>Firstly drag the two red arrows on the regression line to position it centrally 
+    in the data.</li>
+  <li>Then drag the third red arrow to adjust the parameter σ. 
+    You should aim for the grey region to include about 95% of the crosses.</li>
+</ul>
+<p>In the next section, we will explain how to objectively estimate the parameters 
+  to match a data set. Click <strong>Best values</strong> to see these 'best' parameter 
+  values.</p>
+<p>If there are fewer values or if the relationship is weaker, it is harder to position the band by eye.</p>
+<p class="heading">Cotton yield and irrigation</p>
+<p>The data set below gives the yield of Pima cotton (pounds per acre) and irrigation levels (water applied in feet per acre) in the Salt River Valley for different plots of land. Each plot was on Maricopa sandy loam soil.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="420">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="linModProg.DragRegnParamApplet">
+<param name="xVarName" value="Irrigation (ft of water)">
+<param name="yVarName" value="Cotton yield (lb/acre)">
+<param name="interceptLimits" value="-999 999 500">
+<param name="slopeLimits" value="-999 999 -50">
+<param name="sdLimits" value="10 200 100">
+<param name="xValues" value="1.8 1.9 2.5 1.4 1.3 2.1 2.3 1.5 1.5 1.2 1.3 1.8 3.5 3.5">
+<param name="yValues" value="260 370 450 160 90 440 380 280 230 180 220 180 400 650">
+<param name="horizAxis" value="1.0 4.0 1.0 0.5">
+<param name="vertAxis" value="0 700 0 100">
+<param name="labelAxes" value="true">
+<param name="customText" value="Best values=Best values">
+</applet>
+</div>
+
+    
+<p>Again drag the three arrows to obtain estimates of the three model parameters. It is much harder by eye than for the previous data set.</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

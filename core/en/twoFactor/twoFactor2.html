@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Transformations</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="transformation, error variance">
+	<meta name="dataset" content="Torque of locknuts">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Error variance</p>  
+<p>All models used in this e-book have the general form</p>
+<div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+	<tr>
+		<td align="center"><br>
+				<span class="em black">y<sub>i</sub></span>  &nbsp;= &nbsp;</td>
+		<td align="center" class="blue">(<em>explained</em>)<br>
+			µ<em><sub>i</sub></em></td>
+		<td align="center"><br>
+			&nbsp;+&nbsp;</td>
+		<td align="center" class="red">(<em>unexplained</em>)<br>
+			ε<em><sub>i</sub></em></td>
+	</tr>
+</table></div>
+<p>where</p>
+<p class=eqn><span class="red">ε<em><sub>i</sub></em> &nbsp; ∼ &nbsp; normal&nbsp;(0, σ)</span></p>
+<p>One important requirement of this model is that the error standard deviation is a value <span class="red">σ</span>. This means that:</p>
+<div class="centred"><div class="boxed">
+	<p>The response values have the same standard deviation for all treatments.</p>
+</div></div>
+<p class="heading">Transformations of the response</p>
+<p>In some experiments, the response is more variable for some treatments than for others. This often happens when the response is a quantity that must, by definition, be greater than zero, such as weights and concentrations.</p>
+<div class="centred"><div class="boxed">
+	<p>Non-constant response variation can often be cured by analysing the logarithms of the values.</p>
+</div></div>
+<p>Although it is <strong>not</strong> a certain way to spot when a logarithmic transformation will help, if the distribution of the raw response measurements is skew with a long tail of large values, a logarithmic transformation <strong>often</strong> helps.<br>
+</p>
+<div class="diagram"> 
+<p class="heading">Torque of locknuts</p>
+	<p>A manufacturer was finding unwanted differences in the torque values of a locknut that it made. Torque is the work (i.e.&nbsp;force&nbsp;×&nbsp;distance) required to tighten the nut. An experiment was therefore conducted to determine what factors affected the torque values. The type of plating process was isolated as the most probably factor to impact torque. Researchers also wanted to assess the difference in torque between threading the locknut onto a bolt or a mandrel (like a bolt but harder). Twenty locknuts were manufactured with different types of plating: cadmium and wax (C&amp;W), no plating (HT) and phosphate and oil (P&amp;O); ten were tested on bolts and ten on mandrels. A manual torque wrench was used to determine the torque of each.</p>
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoFactorProg.RotateDragFactorsApplet">
+<param name="yVarName" value="Torque">
+<param name="yValues" value="20 16 17 18 15 16 19 14 15 24 26 40 28 38 38 30 26 38 45 38 25 40 30 17 16 45 49 33 30 20 24 18 17 17 15 23 14 18 12 11 32 22 30 35 32 28 27 28 30 30 10 13 17 16 15 14 11 14 15 16">
+<param name="yAxis" value="9 50 10 5">
+<param name="zVarName" value="Bolt type">
+<param name="zValues" value="30@0 30@1">
+<param name="zLabels" value="Bolt Mandrel">
+<param name="xVarName" value="Plating">
+<param name="xValues" value="10@0 10@1 10@2 10@0 10@1 10@2">
+<param name="xLabels" value="C&W HT P&O">
+<param name="zModelTerms" value="factor">
+<param name="xModelTerms" value="factor">
+<param name="interaction" value="false">
+<param name="initialModel" value="ls">
+<param name="maxRss" value="99.999">
+<param name="initialRotation" value="45 60">
+<param name="customText" value="None=None#Linear=Linear#Factor=Factor">
+</applet> 
+</div>
+
+<p>The diagram above shows the data and displays a   model for the data (fitted by least squares). Observe that:</p>
+<div class="centred"><div class="boxed">
+	<p>The torques are more variable when the P&amp;O plating was used on bolts than for the other five treatments.</p>
+</div></div>
+<p>Again click <strong>Least squares</strong> then click the <strong>y-z</strong> rotation button. The three coloured sets of lines now represent the three observers and they are also parallel as a consequence of our additive model. Again drag the red arrows to see that this is always true for  models without interaction.</p>
+<p class="heading">Analysis of log(torque)</p>
+<p>The diagram below is similar but uses the natural logarithms of the torques as the response.         </p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoFactorProg.RotateDragFactorsApplet">
+<param name="yVarName" value="log(Torque)">
+<param name="yValues" value="2.9957 2.7726 2.8332 2.8904 2.7081 2.7726 2.9444 2.6391 2.7081 3.1781 3.2581 3.6889 3.3322 3.6376 3.6376 3.4012 3.2581 3.6376 3.8067 3.6376 3.2189 3.6889 3.4012 2.8332 2.7726 3.8067 3.8918 3.4965 3.4012 2.9957 3.1781 2.8904 2.8332 2.8332 2.7081 3.1355 2.6391 2.8904 2.4849 2.3979 3.4657 3.0910 3.4012 3.5553 3.4657 3.3322 3.2958 3.3322 3.4012 3.4012 2.3026 2.5649 2.8332 2.7726 2.7081 2.6391 2.3979 2.6391 2.7081 2.7726">
+<param name="yAxis" value="2.3 4.0 2.5 0.5">
+<param name="zVarName" value="Bolt type">
+<param name="zValues" value="30@0 30@1">
+<param name="zLabels" value="Bolt Mandrel">
+<param name="xVarName" value="Plating">
+<param name="xValues" value="10@0 10@1 10@2 10@0 10@1 10@2">
+<param name="xLabels" value="C&W HT P&O">
+<param name="zModelTerms" value="factor">
+<param name="xModelTerms" value="factor">
+<param name="interaction" value="false">
+<param name="initialModel" value="ls">
+<param name="maxRss" value="99.999">
+<param name="initialRotation" value="45 60">
+<param name="customText" value="None=None#Linear=Linear#Factor=Factor">
+</applet> 
+</div>
+
+		<p>Although the variation of log(torque) is still a little on the high side for the P&amp;O plating on bolts but the assumption of equal treatment standard errors is much more reasonable for log(torque) than for torque itself.</p>
+		<div class="centred"><div class="boxed">
+			<p>Analyse a transformed response if it conforms to the assumption of equal treatment variation better then the raw data.</p>
+		</div></div>
+
+<br>
+</div>
+
+  
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Removing block effects</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="randomised block design">
+	<meta name="dataset" content="Amino acid uptake by fish">
+	<meta name="dataset" content="Grazing of cattle in Uganda">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Making all block means equal</p>
+
+<p>We showed earlier that it is poor to test for equal treatment means with 
+	an Analysis of Variance (anova) table that ignores the blocks. The extra variability 
+	in the response that is caused by differences between the blocks makes it 
+	far harder to detect treatment differences.</p>
+<p>Adding or subtracting a value from each block to make all block means equal 
+	would get rid of the differences between the blocks. Although the resulting 
+	anova table is not completely correct for testing whether the treatment means 
+are equal, its sums of squares are the <strong>basis</strong> for the test.</p>
+
+
+<div class="diagram" title="Examples showing removal of block effects">
+	<p class="heading">Amino acid uptake by fish</p>
+
+	<p>To examine how NaCN (sodium cyanide) affected the uptake of an amino acid 
+		by intestinal preparations from a species of fish, a randomised block experiment 
+		was conducted. Six of these preparations were obtained from each of four 
+		fish (the blocks) and three preparations from each block were randomly chosen 
+		to get the NaCN treatment, the other three being controls.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="pairBlockProg.RemoveBlockEffectApplet">
+<param name="yVarName" value="Amino acid uptake">
+<param name="yValues" value="1.74 1.92 2.26 1.60 1.92 1.54 1.52 2.02 1.91 1.31 1.15 1.51 1.00 1.12 1.13 0.79 0.84 0.86 1.58 1.78 1.52 1.24 0.81 1.32">
+<param name="xVarName" value="Treatment">
+<param name="xLabels" value="#Without NaCN# #With NaCN#">
+<param name="xValues" value="3@0 3@1 3@0 3@1 3@0 3@1 3@0 3@1">
+<param name="blockVarName" value="Block (fish)">
+<param name="blockLabels" value="#Fish 1# #Fish 2# #Fish 3# #Fish 4#">
+<param name="blockValues" value="6@0 6@1 6@2 6@3">
+<param name="yAxis" value="0.5 2.5 0.5 0.5">
+<param name="maxSummaries" value="999.999 999.999 99.99 9.999">
+<param name="componentName" value="Total#Between treatments#Residual">
+<param name="jitter" value="0.3">
+<param name="initialR2" value="0.0">
+<param name="customText" value="Make all block means equal=Make all block means equal">
+</applet>
+</div>
+
+	<p>The mean amino acid uptake from each fish (block) is shown as a coloured 
+		vertical line. (Click on any cross to see the 6 response values in the block.) 
+		Click <strong>Make all block means equal</strong> to add or subtract a constant 
+		from the values in each block in order to make the four block means equal.</p>
+	<p>Observe that:</p>
+	<ul>
+		<li>The treatment (between observers) sum of squares, degrees of freedom 
+			and mean sum of squares remain the same.</li>
+		<li>The residual sum of squares decreases considerably.</li>
+	</ul>
+	<p>Because the residual sum of squares decreases so much, the F-ratio becomes 
+		large and the p-value becomes close to zero. From this anova table, we would 
+		now conclude that there is strong evidence that the NaCN treatment affects 
+		amino acid uptake.</p>
+	
+<div class="centred"><div class="boxed">
+<p>This analysis is not 
+				perfect however. The anova table still needs a further small modification 
+				that will be described on the next page.</p>
+</div></div>
+
+	<br>
+	<p class="heading">Grazing cattle in Uganda</p>
+	<p>Five observers watched a group of 10 Zebu cattle for 88 minutes in Uganda. 
+		Each person reported the number of minutes that each animal was observed 
+		grazing.</p>
+	
+	<p>The experiment was conducted in order to compare the five observers, but 
+		there is also considerable variation between the animals (blocks).</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="pairBlockProg.RemoveBlockEffectApplet">
+<param name="yVarName" value="No of minutes animal was observed">
+<param name="yValues" value="34 33 35 34 33 76 76 78 77 77 75 72 76 71 70 31 29 30 29 27 61 60 65 60 59 82 82 86 78 81 82 84 88 83 82 67 67 66 67 67 72 72 76 72 70 38 36 37 37 33">
+<param name="xVarName" value="Observer">
+<param name="xLabels" value="A B C D E">
+<param name="xValues" value="0 1 2 3 4 0 1 2 3 4 0 1 2 3 4 0 1 2 3 4 0 1 2 3 4 0 1 2 3 4 0 1 2 3 4 0 1 2 3 4 0 1 2 3 4 0 1 2 3 4">
+<param name="blockVarName" value="Block (animal)">
+<param name="blockLabels" value="1 2 3 4 5 6 7 8 9 10">
+<param name="blockValues" value="5@0 5@1 5@2 5@3 5@4 5@5 5@6 5@7 5@8 5@9">
+<param name="yAxis" value="25 90 30 10">
+<param name="maxSummaries" value="9999.99 999.99 99.99 9.999">
+<param name="componentName" value="Total#Between observers#Residual">
+<param name="jitter" value="0.0">
+<param name="initialR2" value="0.0">
+<param name="customText" value="Make all block means equal=Make all block means equal">
+</applet>
+</div>
+
+	<p>Again click <strong>Make all block means equal</strong> to add or subtract 
+		a constant from the values in each block in order to make the block means 
+		equal.</p>
+	<p>Again, removing the block effect does not change the treatment sum of squares 
+		but reduces the residual sum of squares considerably. The p-value becomes 
+		close to zero, giving strong evidence of a difference between observers.</p>
+</div>
+
+<p>The treatment and residual sums of squares shown above are the <strong>basis</strong> 
+for testing whether the treatment means are all equal. However:</p>
+
+<div class="boxed" style="background-color:#FFFF00">
+<p><span class="darkred">The analysis described 
+			on this page is not completely correct &mdash; the residual degrees of freedom 
+			are too high.</span></p>
+</div>
+
+<p>On the next page, we describe the correct anova table for testing equal treatment 
+	means for randomised block data.</p>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

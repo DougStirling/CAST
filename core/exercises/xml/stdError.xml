@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE topic SYSTEM "exerciseXmlDefn.dtd">
+
+<topic name='stdError'>
+<longName>Standard error</longName>
+
+
+<exercise name='seFromSd'>
+	<description>Find standard error of the mean from a sample sd</description>
+	<comment>The stacked dot plot for a sample is shown with its mean and standard deviation. The standard error of the sample mean is requested.</comment>
+	<applet>exerciseEstimProg.FindSeApplet</applet>
+	<width>500</width>
+	<height>600</height>
+	
+	<variable name="varName" type="string(14)">Name of variable</variable>
+	<variable name="units" type="string(14)">Units for variable</variable>
+	<variable name="axis" type="axis">Axis for dot plot</variable>
+	<variable name="mean" type="double">Mean of normal distn used to generate data</variable>
+	<variable name="sd" type="double">SD of normal distn used to generate data</variable>
+	<variable name="maxSe" type="double">Template for maximum possible standard error</variable>
+	<variable name="noOfValues" type="int(1)">Sample size</variable>
+	
+	<template>
+		<question>The stacked dot plot below shows n=#noOfValues[](16,25,36,49,64,81,100)# values.\\nWhat is the standard error of the mean?</question>
+		<qnParam>varName(Variable, Y)#units()#axis(100 130 100 5)#mean(110:120)#sd(5)#maxSe(99.9999)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>appleWeight</shortName>
+		<longName>Weights of apples</longName>
+		<question>The stacked dot plot below shows the weights of n=#noOfValues[](16,25,36,49,64,81,100)# apples that were sampled by a supermarket from a large batch that was delivered by a supplier.\\nWhat is the standard error of their mean weight?</question>
+		<qnParam>varName(Weight, grams)#units(grams)#axis(100 130 100 5)#mean(110:120)#sd(5)#maxSe(99.9999)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>heights</shortName>
+		<longName>Heights of patients with disease</longName>
+		<question>A researcher measured the heights of n=#noOfValues[](16,25,36,49,64,81,100)# adult female patients who suffered from a particular disease. The stacked dot plot below summarises their heights.\\nWhat is the standard error of the mean height of the patients?</question>
+		<qnParam>varName(Height, cm)#units(cm)#axis(150 200 150 10)#mean(170:180)#sd(10)#maxSe(99.999)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>callTimes</shortName>
+		<longName>Time to deal with calls to bank</longName>
+		<question>The call centre for a bank samples n=#noOfValues[](16,25,36,49,64,81,100)# incoming phone calls and records the time taken to answer each. The call times for one day are shown in the diagram below and are used to estimate the mean call duration for that day.\\nWhat is the standard error of the mean call time in the sample?</question>
+		<qnParam>varName(Call time, sec)#units(seconds)#axis(0 200 0 50)#mean(80:120)#sd(30)#maxSe(99.999)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>calories</shortName>
+		<longName>Calorie intake in African village</longName>
+		<question>The calorie intake was recorded from a sample of n=#noOfValues[](16,25,36,49,64,81,100)# adults in an African village.\\nWhat is the standard error of the mean calorie intake per person in the village?</question>
+		<qnParam>varName(Calorie intake)#units(calories)#axis(1800 2800 1800 200)#mean(2150:2450)#sd(170)#maxSe(999.99)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='sVsSe'>
+	<description>Find 2s or 2se(mean) when given s or se(mean)</description>
+	<applet>exerciseEstimProg.StErrorBoundsApplet</applet>
+	<width>500</width>
+	<height>500</height>
+	
+	<variable name="sesd" type="int_choice(Question give standard error#Question gives standard deviation)">Whether the question gives the standard error or standard deviation.</variable>
+	<variable name="statementType" type="int_choice(Statement is about a 95% CI for mean#Statement is about 95% interval for population values#Statement is about 95% of values in this sample)">Whether statement to be completed is for a 95% CI or interval containing 95% of values in popn or sample</variable>
+	<variable name="baseSd" type="int_choice(Lowest#Middle#Highest)">Used to index the 3 alternative choices for the se or sd. The values are anonymous params and should differ by a factor of root(n)</variable>
+	<variable name="units" type="string(10)">Units for values</variable>
+	<variable name="options" type="double_array">List of menu choices for interval plus/minus value, all differing by a factor of root(n). The first should be twice the smallest se or sd, divided by root(n), and the highest should be the biggest se or sd, times root(n)</variable>
+	<variable name="seFactor" type="double">Square root of the sample size, root(n)</variable>
+	<variable name="statementStart0" type="string(40)">Start of statement about 95% CI</variable>
+	<variable name="statementStart1" type="string(40)">Start of statement about 95% of population values</variable>
+	<variable name="statementStart2" type="string(40)">Start of statement about 95% of values in sample</variable>
+	<variable name="statementEnd" type="string(40)">Common end to all three types of statement</variable>
+	
+	<template>
+		<question>A random sample of n=100 values is selected.\\nThe #?:string[sesd](standard error of their mean *standard deviation of the sample vaoues)# is #?:string[baseSd](0.03*0.3*3)#.</question>
+		<qnParam>sesd(0:1)#statementType(0:2)#baseSd(0:2)#options(0.006 0.06 0.6 6 60)#units()#seFactor(10)#statementStart0(The mean in such a sample of 100 components has approximately 95% probability of being within ...)#statementStart1(Approximately 95% of this type of value are within ...)#statementStart2(Approximately 95% of the sample values will be within ...)#statementEnd(... of the population mean.)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>componentLength</shortName>
+		<longName>Lengths of plastic components</longName>
+		<question>Plastic components are manufactured in a production line. A quality control engineer randomly selects n=100 of the components produced in one day and measures their lengths.\\nThe #?:string[sesd](standard error of their mean length*standard deviation of the sample of lengths)# is #?:string[baseSd](0.03*0.3*3)# #units#.</question>
+		<qnParam>sesd(0:1)#statementType(0:2)#baseSd(0:2)#options(0.006 0.06 0.6 6 60)#units[baseSd](cm*mm*mm)#seFactor(10)#statementStart0(The mean length in such a sample of 100 components has approximately 95% probability of being within ...)#statementStart1(Approximately 95% of components produced in the day have lengths that are within ...)#statementStart2(Approximately 95% of the lengths in the sample of components will be within ...)#statementEnd(... of the mean length of all components produced in the day.)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>mammalWeight</shortName>
+		<longName>Weights of trapped mammals</longName>
+		<question>A biologist traps and weighs a random sample of n=100 mammals of one species from a region.\\nThe #?:string[sesd](standard error of their mean weight*standard deviation of the sample of weights)# is #?:string[baseSd](0.2*2*20)# #units#.</question>
+		<qnParam>sesd(0:1)#statementType(0:2)#baseSd(0:2)#options(0.04 0.4 4 40 400)#units[baseSd](kg*kg*grams)#seFactor(10)#statementStart0(The mean weight in such a sample has approximately 95% probability of being within ...)#statementStart1(Approximately 95% of mammals of this species in the region have weights that are within ...)#statementStart2(Approximately 95% of the weights in the sample will be within ...)#statementEnd(... of the mean weight of all such mammals in the region.)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>rainfall</shortName>
+		<longName>Annual rainfall</longName>
+		<question>The annual rainfall in a region has been recorded in each of the last n=25 years.\\nThe #?:string[sesd](standard error of the mean annual rainfall in these 25 years was calculated to be*standard deviation of the 25 annual rainfalls is)# #?:string[baseSd](2*10*50)# #units#.</question>
+		<qnParam>sesd(0:1)#statementType(0:2)#baseSd(0:2)#options(0.8 4 20 100 500)#units[baseSd](cm*mm*mm)#seFactor(5)#statementStart0(The mean annual rainfall in these 25 years has approximately 95% probability of being within ...)#statementStart1(Approximately 95% of future years will have annual rainfall that is within ...)#statementStart2(Approximately 95% of the annual rainfalls in these 25 years will be within ...)#statementEnd(... of the expected annual rainfall in the region, assuming no change in climate.)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='factorsAffectingSeAndS'>
+	<description>Complete three statements about the differences between the sample standard deviation and the standard error of the mean.</description>
+	<applet>exerciseEstimProg.StErrorStatementApplet</applet>
+	<width>520</width>
+	<height>570</height>
+	
+	<coreParam name="noOfStatements">3</coreParam>
+	<coreParam name="statementStart0">As the sample size #?:string[q0_incDec](increases*decreases)#, the #?:string[q0_sesd](standard error of an estimator*standard deviation of the sample)# usually ...</coreParam>
+	<coreParam name="options0">q0_incDec(0:1)#q0_sesd(0:1)#q0_menu(stays about the same*increases*decreases)</coreParam>
+	<coreParam name="messages0">The more data that is collected, the more accurate the estimate and hence the smaller its standard error.*The standard deviation describes the spread of values in the sample and this does not depend on</coreParam>
+	<coreParam name="statementStart1">A random sample is selected from a population and the sample mean is used to estimate the underlying population mean. The #?:string[q1_sesd](standard error of the estimator*standard deviation of the sample)# describes the ...</coreParam>
+	<coreParam name="options1">q1_sesd(0:1)#q1_menu(variability of values in the sample*the sample-to-sample variability of the estimate)</coreParam>
+	<coreParam name="statementStart2">A random sample of n=#?:int[](20,30,40,50)# values is selected from a population; the #?:string[q2_sdFirst](sample standard deviation*standard error of the sample mean)# is ...</coreParam>
+	<coreParam name="statementEnd2">... the #?:string[q2_sdFirst](standard error of the sample mean*sample standard deviation)#.</coreParam>
+	<coreParam name="options2">q2_sdFirst(0:1)#q2_menu(equal to*smaller than*greater than)</coreParam>
+	
+	<!--       no template for this question    -->
+	
+	<variation>
+		<shortName>generic</shortName>
+		<longName>Generic</longName>
+		<question>The three boxes below show statements about standard deviations and/or standard errors. Use the pop-up menus to correct any wrong statements.</question>
+	</variation>
+</exercise>
+
+
+</topic>

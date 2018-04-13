@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Inference about differences</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="paired data, paired t-test, confidence interval">
+	<meta name="dataset" content="IQ and environment">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Approach</p>
+
+<p>In a randomised block experiment with <em>g</em> matched pairs, all information about the difference between the  factor levels is contained in the <em>g</em> differences within the matched pairs (blocks). These differences can be considered to 'correct' for differences between blocks.</p>
+<p>Questions about the effect of the factor on the response can be expressed as:</p>
+<div class="centred"><div class="boxed">
+	<p>Is the mean of the differences zero?</p>
+	<p>What is a 95% CI for the mean difference?</p>
+</div></div>
+<p>Standard univariate inference can be used to answer these questions.</p>
+<p class="heading">Confidence intervals</p>
+<p>In terms of the differences, a 95% confidence interval for the mean effect of changing the factor level is</p>
+<p class="eqn"><img src="images/ciDiff.gif" width="98" height="35"></p>
+<p>where <em>t<sub>g-1</sub></em> is the 97.5th percentile of the t distribution with <em>g</em>&nbsp;-&nbsp;1 degrees of freedom.</p>
+<p class="heading">Paired t-test</p>
+<p>Testing whether there is any difference between the factor levels can be expressed with the hypotheses</p>
+<p class="eqn"><span style="font-size:larger; font-weight:bold; color:#000000; line-height:120%">H<sub>0 </sub>: µ<sub>D</sub> = 0<br>
+  H<sub>A </sub>: µ<sub>D</sub> ≠ 0</span><br>
+  </p>
+<p>The hypotheses are  assessed using a standard t-test with test statistic</p>
+<p class="eqn"><img src="images/tDiff.gif" width="96" height="54"></p>
+<p>This value is compared to a t distribution with <em>g</em>&nbsp;-&nbsp;1 degrees 
+of freedom to find the p-value for the test.</p>
+<div class="diagram"> 
+
+<p class="heading">Twin study</p>
+<p>The diagram below shows the IQs of the twin study that was used earlier in this section.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="560">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="pairBlockProg.PairedInferenceApplet">
+<param name="responseName" value="IQ from twin">
+<param name="x1Name" value="#Poor environment#">
+<param name="x1Values" value="100 65 60 125 85 145 55 180 60 135">
+<param name="x2Name" value="#Good environment#">
+<param name="x2Values" value="125 95 100 120 120 185 80 210 105 175">
+<param name="diffName" value="DIfference in IQ (Good - Poor)">
+<param name="rawAxis" value="50 220 50 50">
+<param name="diffAxis" value="-10 50 -10 10">
+<param name="alternative" value="not equal">
+<param name="meanSdDecimals" value="2">
+<param name="ciDecimals" value="1">
+<param name="summaryDecimals" value="3 3 4">
+<param name="formulaGif" value="test/dn2">
+<param name="tAxis" value="-4 8 -4 2">
+<param name="customText" value="95% Confidence Interval=95% Confidence Interval#t distn=t distn">
+</applet>
+</div>
+
+<p>The p-value on the right is for a test of whether the differences (good minus poor environment) are a sample from a population with mean zero. From it, we  conclude that the mean of the differences is not zero.</p>
+<div class="centred"><div class="boxed">
+  <p>It is almost certain that children raised in a good environment have a different mean IQ from those raised in a poor environment.</p>
+</div></div>
+<p>The  interval on the left is a 95% confidence interval for the mean difference.</p>
+<div class="centred"><div class="boxed">
+  <p>We have 95% confidence that being raised in a good environment increases IQ by between 20.3 and 40.7</p>
+</div></div>
+
+<br>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

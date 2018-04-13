@@ -1,0 +1,750 @@
+<html>
+<head>
+  <title>10. Testing Hypotheses</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 10 &nbsp; Testing Hypotheses</h1>
+<h1 class="sectionName">10.1 &nbsp; Introduction to hypothesis tests</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Inference</li>
+<li>Soccer league simulation</li>
+<li>Simulation to test a proportion</li>
+<li>Test for a mean</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='5'>
+<li>Randomisation tests</li>
+<li>Randomisation test for correlation</li>
+<li>Common patterns in tests</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">10.1.1 &nbsp; Inference</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Inference</p>
+<p><strong>Statistical inference</strong> refers to statistical
+	techniques for obtaining information about a population parameter (or parameters) from
+	a  random sample. There are two branches of inference:</p>
+<p class=heading>Estimation</p>
+<p>Point estimates and confidence intervals give answers to questions of the form:</p>
+<div class="centred"><div class="boxed"><p>What parameter values would be consistent with the sample data?</p></div></div>
+<p class=heading>Hypothesis tests</p>
+<p>This chapter deals with a related type of question:</p>
+<div class="centred"><div class="boxed"><p>Are the sample data consistent with some statement about the parameters?</p></div></div>
+<p class=heading>Errors and strength of evidence</p>
+<p>A single random sample can rarely provide enough information 
+	about a population parameter to allow us to be sure whether or not any statement (hypothesis)
+	about that parameter will be true. The best we can hope for is an indication of 
+	the <strong>strength of the evidence</strong> against it. </p>
+
+
+
+
+<h2 class="pageName">10.1.2 &nbsp; Soccer league simulation</h2><!DOCTYPE HTML>
+
+
+<p class=heading>Randomness in sports results</p>
+<p>Although we like to think that the 'best' team wins in sports competitions, 
+there is actually considerable variability in the results that 
+can only be explained through randomness. For example when  two teams play a series
+of matches, the same team rarely wins all matches.</p>
+<p class=heading>English Premier Soccer League, 2008/09</p>
+<p>In the English Premier Soccer league, each team plays every other 
+team twice (home and away) during the season. Three points are awarded for a win 
+and one point for a draw. The table below shows the wins, draws, losses and total 
+points for all teams at the end of the 2008/09 season.</p>
+<div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+<tr>
+<th>&nbsp;</th>
+<th><div>Team</div></th>
+<th width="60" align="center">Wins</th>
+<th width="60" align="center">Draws</th>
+<th width="60" align="center">Losses</th>
+<th width="60" align="center">Points</th>
+</tr>
+<tr>
+<td>1.<br>
+2.<br>
+3.<br>
+4.<br>
+5.<br>
+6.<br>
+7.<br>
+8.<br>
+9.<br>
+10.<br>
+11.<br>
+12.<br>
+13.<br>
+14.<br>
+15.<br>
+16.<br>
+17.<br>
+18.<br>
+19.<br>
+20.</td>
+<td bgcolor="#FFFFFF"  class="top bottom" style="padding-left:10px"><strong>Manchester_U<br>
+Liverpool<br>
+Chelsea<br>
+Arsenal<br>
+Everton<br>
+Aston_Villa<br>
+Fulham<br>
+Tottenham<br>
+West_Ham<br>
+Manchester_C<br>
+Wigan<br>
+Stoke_City<br>
+Bolton<br>
+Portsmouth<br>
+Blackburn<br>
+Sunderland<br>
+Hull_City<br>
+Newcastle<br>
+Middlesbrough<br>
+West_Brom_Albion </strong></td>
+<td width="60" align="center" bgcolor="#FFFFFF" class="top bottom">28<br>
+25<br>
+25<br>
+20<br>
+17<br>
+17<br>
+14<br>
+14<br>
+14<br>
+15<br>
+12<br>
+12<br>
+11<br>
+10<br>
+10<br>
+9<br>
+8<br>
+7<br>
+7<br>
+8</td>
+<td width="60" align="center" bgcolor="#FFFFFF" class="top bottom">6<br>
+11<br>
+8<br>
+12<br>
+12<br>
+11<br>
+11<br>
+9<br>
+9<br>
+5<br>
+9<br>
+9<br>
+8<br>
+11<br>
+11<br>
+9<br>
+11<br>
+13<br>
+11<br>
+8</td>
+<td width="60" align="center" bgcolor="#FFFFFF" class="top bottom">4<br>
+2<br>
+5<br>
+6<br>
+9<br>
+10<br>
+13<br>
+15<br>
+15<br>
+18<br>
+17<br>
+17<br>
+19<br>
+17<br>
+17<br>
+20<br>
+19<br>
+18<br>
+20<br>
+22</td>
+<td width="60" align="center" bgcolor="#FFFFFF" class="top bottom">90<br>
+86<br>
+83<br>
+72<br>
+63<br>
+62<br>
+53<br>
+51<br>
+51<br>
+50<br>
+45<br>
+45<br>
+41<br>
+41<br>
+41<br>
+36<br>
+35<br>
+34<br>
+32<br>
+32</td>
+</tr>
+</table></div>
+<p class=heading>Were all teams evenly matched?</p>
+<p>A simulation can help us to investigate this question. We could be used to generate results from all 380 matches in the season for evenly matched teams, each result having probabilities 0.372, 0.372 and 0.255 of being a win, loss or draw for the home team. (A proportion 0.255 of games in the actual league resulted in draws.)</p>
+<p>If there are differences between teams, we would expect the worst teams to have very few points at the end of the season and the best to have many. On the other hand, for evenly matched teams, we would expect all 20 finals points to be similar. The <strong>spread of final points</strong> in the league table should tell us something about whether the teams are evenly matched.</p>
+<p>In the actual league table, the standard deviation of the final points for the 20 teams was 18.236. The diagram below shows the standard deviations in 200 simulated league tables with evenly matched teams.</p>
+<p class="eqn"><img src="../../../en/testIntro/images/s_leagueSdSim.gif" width="357" height="150"> </p>
+<p>Since the probabilities in one tail of the distribution are added, this is
+called a <strong>one-tailed test</strong>.</p>
+<p class="heading">P-value for a two-tailed test</p>
+<p>If the alternative hypothesis allows <strong>either high or low</strong> values
+of <em>x</em>, the test is called a <strong>two-tailed</strong> test, </p>
+<p class=eqn><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;=&nbsp; </strong>&pi;<strong><sub>0</sub></strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;&ne;&nbsp; </strong>&pi;<strong><sub>0</sub></strong></span></p>
+<p>The p-value is then <strong>double the smaller tail probability</strong> since
+values of <em>x</em> in <strong>both</strong> tails of the binomial distribution
+would provide evidence for <b>H<sub>A</sub></b>.</p>
+<p class="heading">Example</p>
+<p>A survey of  124 companies  found that 97
+had their own ethics codes. Two years previously, it was believed that 72%
+of companies had ethics codes, so is there any evidence that the proportion has changed?
+This question can be expressed with the hypotheses</p>
+<p class=eqn><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;=&nbsp; 0.72</strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;&ne;&nbsp; 0.72</strong></span></p>
+<p>If the current proportion of companies with ethics codes is π = 0.72,
+the sampled number out of 124  would have the binomial distribution
+below.</p>
+<p class="eqn"><img src="../../../en/testPropn/images/s_binom2Tail_c.gif" width="356" height="212"> </p>
+<p class="heading">Approximate p-value</p>
+<p>We  again
+test the hypotheses </p>
+<p class=eqn><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;=&nbsp; </strong>&pi;<strong><sub>0</sub></strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;&lt;&nbsp; </strong>&pi;<strong><sub>0</sub></strong></span> </p>
+<p>If <em>n</em> is large, the approximate normal distribution for <em>x</em> can
+be used to obtain the p-value for the test.</p>
+<p class=eqn><img class="gif" src="../../../en/testPropn/images/normalPValue2.gif" width="471" height="266"> </p>
+<p class="heading">Home-based businesses owned by women</p>
+<p>A  study found that 369 out of 
+899 sampled home-based businesses  were owned by women. Are
+they less likely to be owned by females than by males? The hypotheses are... </p>
+ <p class="eqn"><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;=&nbsp; 0.5</strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;&lt;&nbsp; 0.5</strong></span></p>
+<p>where  π = P(owned
+by female).</p>
+<p class="eqn"><img src="../../../en/testPropn/images/s_normalApprox.gif" width="352" height="165"> </p>
+<p>with a standard normal distribution. Since <em>x</em> is discrete,</p>
+<p class="eqn">P(<em>X</em> ≤ 369) &nbsp; = &nbsp;P(<em>X</em> ≤ 369.5) &nbsp; = &nbsp; P(<em>X</em> ≤
+369.9) &nbsp; = &nbsp; ...</p>
+<p>To find this tail probability, any value of <em>x</em> between 369 and 370
+might have been used when evaluating the z-score. The p-value can be more accurately
+estimate by using 369.5. This is called a <strong>continuity correction</strong>.</p>
+<div class="centred"><div class="boxed">
+<p>The continuity correction involves <strong>either adding or subtracting 0.5</strong> from
+the observed count, <em>x</em>, before finding the z-score.</p>
+</div></div>
+
+
+
+
+<h2 class="pageName">10.2.6 &nbsp; Statistical distance</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Difference between parameter and estimate</p>
+<p>If the  value of a parameter
+specified by the null hypothesis (e.g. a population proportion, π<sub>0</sub>) is
+close to the corresponding sample statistic (e.g. the sample proportion, <em>p</em>)
+then there is no reason to doubt the null hypothesis. However if they
+are far apart, the data are not consistent with the null hypothesis and we should
+conclude that the alternative hypothesis holds.</p>
+<div class="centred"><div class="boxed">
+<p>A large distance between the estimate and hypothesized value gives evidence
+against the null hypothesis.</p>
+</div></div>
+<p class="heading">Statistical distance</p>
+<p>To help assess this difference, we express it as a <strong>number of standard
+errors</strong> since we know from the 70-95-100 rule of thumb that that
+2 (standard errors) is a large distance, 3 is a very large distance, and 1 is
+not much.</p>
+<p>For a proportion, the number of standard errors is</p>
+<p class="eqn"><img class="gif" src="../../../en/testPropn/images/zForP.gif" width="186" height="56"></p>
+<p>In general, the <strong>statistical distance</strong> of an estimate to a
+hypothesised value of the underlying parameter is</p>
+<p class="eqn"><img class="gif" src="../../../en/testMean/images/zGeneral.gif" width="185" height="37"></p>
+<p>Values more than 2, or less than -2,  suggests that the hypothesized
+value is wrong. However if <em>z</em> is close to zero, <em>p</em> is reasonably
+close to π<sub>0</sub> and we should not doubt the null hypothesis.</p>
+
+
+
+
+<h2 class="pageName">10.2.7 &nbsp; Tests based on statistical distance</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Test statistic and p-value</p>
+<p>The <strong>statistical distance</strong> of an estimate to a hypothesised
+value of the underlying parameter is</p>
+<p class="eqn"><img class="gif" src="../../../en/testMean/images/zGeneral.gif" width="185" height="37"></p>
+<p>If the null hypothesis holds, <em>z</em> has
+approximately a standard normal distribution and it can be used as a test statistic
+for tests about the parameter. The p-value can be determined from the tail areas
+of this standard normal distribution.</p>
+<p class="eqn"><img class="gif" src="../../../en/testMean/images/pValueFromZ.gif" width="471" height="212"></p>
+<p>For a two-tailed test, the p-value is the red tail area and can be looked
+up using either normal tables or in Excel.</p>
+<p class=heading>Example</p>
+<p>We again examine a data set in which 369 out of 899 home-based businesses
+were owned by women. Are less than 50% of such businesses owned by women?</p>
+<p class="eqn"><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;=&nbsp; 0.5</strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;&lt;&nbsp; 0.5</strong></span></p>
+<p>The diagram below shows how the 'statistical distance' of the sample proportion
+from 0.5 is calculated.</p>
+<p class="eqn"><img src="../../../en/testPropn/images/s_testP.gif" width="419" height="224"> </p>
+<dl>
+<dd>For <b>H<sub>A</sub></b> : µ  &lt;  µ<sub> 0</sub>,  the opposite tail of the
+distribution is used.</dd>
+</dl>
+<dl>
+<dt>Two-tailed test</dt>
+<dd>The p-value is the sum of the two tail areas below. It would be calculated
+as <strong>twice</strong> the smaller tail area.</dd>
+</dl>
+<p class=eqn><img class="gif" src="../../../en/testMean/images/normalTwoTailArea.gif" width="267" height="155"></p>
+
+
+
+
+<h2 class="pageName">10.3.3 &nbsp; P-value from statistical distance</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Statistical distance and p-value</p>
+<p>If σ is a known value, the calculation to find the p-value for testing the
+mean  can be expressed in terms of the general formula for the statistical distance
+between a parameter and its estimate,</p>
+<p class="eqn"><img class="gif" src="../../../en/testMean/images/zGeneral.gif" width="185" height="37"></p>
+<p>In the context of a test about means,</p>
+<p class="eqn"><img class="gif" src="../../../en/testMean/images/zForMean.gif" width="164" height="52"></p>
+<p>Since <em>z</em> has a standard normal(0, 1) distribution when the null hypothesis
+holds, it can be used as a test statistic and the  p-value for the test can be
+determined from its tail areas.</p>
+<p class="eqn"><img class="gif" src="../../../en/testMean/images/pValueFromZ.gif" width="471" height="212"></p>
+<p>For a two-tailed test, the p-value is the red tail area.</p>
+<p class="heading">Example</p>
+<p>The mean of a sample of <em>n</em> = 30 values is 16.8. Does the population
+have mean µ = 18.3 and standard deviation σ = 7.1, or is the mean now lower than
+18.3?</p>
+<p class=eqn><span class="black"><b>H<sub>0</sub></b> :   µ  =  18.3<sub></sub></span></p>
+<p class=eqn><span class="black"><b>H<sub>A</sub></b> :   µ  &lt;  18.3<sub></sub></span></p>
+<p>The p-value for the test is shown below:</p>
+<p class="eqn"><img src="../../../en/testMean/images/s_pValue1.gif" width="297" height="195"></p>
+<p>as a test statistic &mdash; it cannot be evaluated even  when <b>H<sub>0</sub></b> is
+true. Instead,  we must use a closely related type of 'statistical
+distance' between the sample mean and µ<sub>0</sub>,</p>
+<p class=eqn><img class="gif" src="../../../en/testMean/images/tStatDefn.gif" width="90" height="46"></p>
+<p>where <i>s</i> is the <strong>sample</strong> standard deviation. This test
+statistic no longer has a normal distribution &mdash; it has greater spread due to
+the extra variability that results from estimating <i>s</i>, and
+has a standard distribution called a <strong>t distribution
+with (<i>n</i> - 1) degrees of freedom</strong>.</p>
+<p class="eqn"><img src="../../../en/testMean/images/s_tDistn.gif" width="298" height="202"></p>
+<p>This has a t distribution (with <em>n</em>&nbsp;&minus;&nbsp;1 degrees of
+freedom) when <b>H<sub>0</sub></b> is true, so the p-value is found from a tail
+area of this distribution. </p>
+<p class="heading">One-tailed test</p>
+<p class=eqn><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> &nbsp;=&nbsp; </strong>&mu;<strong><sub>0</sub></strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> &nbsp;&lt;&nbsp; </strong>&mu;<strong><sub>0</sub></strong></span></p>
+<p>The steps for testing these hypotheses are shown in the diagram below. </p>
+<p class=eqn><img class="gif" src="../../../en/testMean/images/oneTailedT.gif" width="424" height="266"> </p>
+<p class="heading">Example</p>
+<p>Consider a sample of <em>n</em> = 13 values with mean  <span class="black"><img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline"> = </span>16.14
+and standard deviation <em>s</em> = 2.15. A test for whether the population mean
+is more than 15.0 uses the hypotheses:</p>
+<p class=eqn><span class="black"><b>H<sub>0</sub></b> :   µ  =  15<sub></sub></span></p>
+<p class=eqn><span class="black"><b>H<sub>A</sub></b> :   µ  &gt;  15<sub></sub></span></p>
+<p>Since the population standard deviation, σ, is unknown, the test must be based
+on a t statistic.</p>
+<p class="eqn"><img src="../../../en/testMean/images/s_tExample.gif" width="294" height="198"></p>
+
+
+
+
+<h1 class="sectionName breakBefore">10.4 &nbsp; Decisions and significance</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Hypothesis tests and decisions</li>
+<li>Decision rules</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='3'>
+<li>Significance level and p-values</li>
+<li>Sample size and power</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">10.4.1 &nbsp; Hypothesis tests and decisions</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Decisions from tests</p>
+<p>Many hypothesis tests are followed by some action that depends on whether
+we conclude that <strong>H<sub>0</sub></strong> or <strong>H<sub>A</sub></strong> is
+true. This decision depends on the data.</p>
+<div class="centred"><table class="centred" cellpadding="4" cellspacing="0">
+<tr>
+<th align="left">Decision</th>
+<th align="left"><span class="top bottom">&nbsp;&nbsp;&nbsp;</span>Action</th>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td class="top bottom" align="center">accept <strong>H<sub>0</sub></strong></td>
+<td class="top bottom">&nbsp;&nbsp;&nbsp;some action (often the status quo)&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td class="bottom" align="center">reject<strong> H<sub>0</sub></strong></td>
+<td class="bottom">&nbsp;&nbsp;&nbsp;a different action (often a change to a
+process)&nbsp;&nbsp;&nbsp;</td>
+</tr>
+</table></div>
+<p>There are two ways in which
+an error might be made &mdash; wrongly rejecting <strong>H<sub>0</sub></strong> when it
+is true (called a <strong>Type I error</strong>), and wrongly accepting <strong>H<sub>0</sub></strong> when
+it is false (called a <strong>Type II error</strong>).</p>
+<div class="centred"><table border="0" class="centred" cellpadding="6" cellspacing="0">
+<tr>
+<td></td>
+<td></td>
+<th colspan="2">Decision</th>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<th>&nbsp;&nbsp;accept <strong>H<sub>0</sub></strong>&nbsp;&nbsp;</th>
+<th>&nbsp;&nbsp;reject<strong> H<sub>0</sub></strong>&nbsp;&nbsp;</th>
+</tr>
+<tr>
+<th rowspan="2">True state of nature</th>
+<th><strong>H<sub>0</sub></strong>&nbsp;is true&nbsp;&nbsp;&nbsp;</th>
+<td align="center" bgcolor="#00FF00" class="top left bigger black">correct</td>
+<td align="center" bgcolor="#FF0000" class="top right black bigger">Type I error</td>
+</tr>
+<tr>
+<th><strong>H<sub>A</sub></strong> (<strong>H<sub>0</sub></strong> is false)&nbsp;&nbsp;&nbsp;&nbsp;</th>
+<td align="center" bgcolor="#FF0000" class="bottom left black bigger">Type II error</td>
+<td align="center" bgcolor="#00FF00" class="bottom right black bigger">correct</td>
+</tr>
+</table></div>
+<p>A good decision rule about whether to accept or reject <strong>H<sub>0</sub></strong> (and
+perform the corresponding action) should ideally have small probabilities for both
+kinds of error.</p>
+
+
+
+
+
+<h2 class="pageName">10.4.2 &nbsp; Decision rules</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Using a sample mean to make decisions</p>
+<p>We assume initially that a
+population is normally distributed with known standard deviation, σ, and that we
+want a test for the hypotheses:</p>
+<p class=eqn><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> &nbsp;=&nbsp; </strong>&mu;<strong><sub>0</sub></strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> &nbsp;&gt;&nbsp; </strong>&mu;<strong><sub>0</sub></strong></span> </p>
+<p>Large values of <img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline"> throw
+doubt on <strong>H<sub>0</sub></strong>, so our decision should be of the form:</p>
+<div class="centred"><table border="0" class="centred" cellpadding="4" cellspacing="0">
+<tr>
+<th><span class="black">Data</span></th>
+<th>Decision</th>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td align="center" class="top bottom"><span class="black"><img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline"> &lt; <em>k</em></span></td>
+<td class="top bottom">&nbsp;&nbsp;&nbsp;accept <strong>H<sub>0</sub></strong></td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td align="center" class="bottom black"><img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline"> is <em>k</em> or
+higher</td>
+<td class="bottom">&nbsp;&nbsp;&nbsp;reject<strong> H<sub>0</sub></strong>&nbsp;&nbsp;&nbsp;</td>
+</tr>
+</table></div>
+<p>The probabilities of Type I and Type II errors are shown in the red cells
+of the table below:</p>
+<div class="centred"><table border="0" class="centred" cellpadding="6" cellspacing="0">
+<tr>
+<td></td>
+<td></td>
+<th colspan="2">Decision</th>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<th>&nbsp;&nbsp;accept <strong>H<sub>0</sub></strong>&nbsp;&nbsp;</th>
+<th>&nbsp;&nbsp;reject<strong> H<sub>0</sub></strong>&nbsp;&nbsp;</th>
+</tr>
+<tr>
+<th rowspan="2">Truth</th>
+<th><strong>H<sub>0</sub></strong>&nbsp;is true&nbsp;&nbsp;&nbsp;</th>
+<td align="center" bgcolor="#00FF00" class="top left">&nbsp;</td>
+<td align="center" bgcolor="#FF0000" class="top right black"><img class="gif" width="105" height="35"></td>
+</tr>
+<tr>
+<th><strong>H<sub>A</sub></strong> (<strong>H<sub>0</sub></strong> is false)&nbsp;&nbsp;&nbsp;&nbsp;</th>
+<td align="center" bgcolor="#FF0000" class="bottom left black"><img class="gif" src="../../../en/decision/images/pErrorAlt.gif" width="106" height="35"></td>
+<td align="center" bgcolor="#00FF00" class="bottom right">&nbsp;</td>
+</tr>
+</table></div>
+<p class="heading">Example: Test for the hypotheses:</p>
+<p class=eqn><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> = 10</strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> &gt; 10</strong></p>
+<p>If it is known that σ = 4, then the mean of a random sample of <em>n</em> = 16
+values is approximately normal with mean µ and standard deviation 1. If the decision
+rule rejects H<sub>0</sub> when the sample mean is less than <em>k</em>, the
+diagram below illustrates the probabilities of Type I and Type II errors.</p>
+<p class="eqn"><img src="../../../en/decision/images/s_errorAreas.gif" width="424" height="241"> </p>
+<p class=heading>Simulation</p>
+<p>Consider a test for whether a population mean is zero:</p>
+<p class=eqn><span class="black"><b>H<sub>0</sub></b> :   µ  =  0.0<sub></sub></span></p>
+<p class=eqn><span class="black"><b>H<sub>A</sub></b> :   µ  ≠  0.0<sub></sub></span></p>
+<p>The  diagram below shows the p-values from a t-test for these hypotheses,
+based on several random samples from a normal distribution for which <b>H<sub>0</sub></b> is
+true. Note that the p-value is equally likely to be anywhere between 0 and 1.</p>
+<p class="eqn"><img src="../../../en/testPValue/images/s_pValueNullDistn.gif" width="282" height="135"> </p>
+<p>On the other hand, when <b>H<sub>A</sub></b> holds, p-values are more likely to
+be near zero and</p>
+<ul>
+<li>the probability of obtaining a p-value of 0.1 or lower is <strong>more than</strong> 0.1, etc.</li>
+</ul>
+<p class=heading>Examples</p>
+<dl>
+<dt>p-value = 0.0023</dt>
+<dd>From this, we know that there would be only 0.0023 probability of getting such
+a small p-value if <b>H<sub>0</sub></b> was true. This is unlikely, so there is strong
+evidence that <b>H<sub>0</sub></b> does not hold.</dd>
+
+<dt>p-value = 0.4</dt>
+<dd>There is probability 0.4 of seeing such a low p-value if <b>H<sub>0</sub></b> is
+true, so there is no evidence against <b>H<sub>0</sub></b>.</dd>
+</dl>
+<p>Of course, we may be wrong. A p-value of 0.0023 <strong>could</strong> arise when
+either <b>H<sub>0</sub></b> or <b>H<sub>A</sub></b> holds but it is  more likely
+under <b>H<sub>A</sub></b>. And a p-value of 0.4 could also arise when either hypothesis
+is true.</p>
+<p class=heading>Interpretation of p-values for all tests</p>
+<div class="centred"><table cellpadding="5" cellspacing="0" class="centred">
+<tr>
+<th align="left">p-value</th>
+<th align="left">Interpretation</th>
+</tr>
+<tr bgcolor="white">
+<td class="top"><strong>over 0.1</strong></td>
+<td class="top">no evidence that <b>H<sub>0</sub></b> does not hold</td>
+</tr>
+<tr bgcolor="white">
+<td class="top"><strong>0.05 to 0.1</strong></td>
+<td class="top">very weak evidence that <b>H<sub>0</sub></b> does not hold</td>
+</tr>
+<tr bgcolor="white">
+<td class="top"><strong> 0.01 to 0.05  </strong></td>
+<td class="top">moderately strong evidence that <b>H<sub>0</sub></b> does not
+hold</td>
+</tr>
+<tr bgcolor="white">
+<td class="top bottom"><strong>under 0.01</strong></td>
+<td class="top bottom">strong evidence that <b>H<sub>0</sub></b> does not hold</td>
+</tr>
+</table></div>
+
+
+
+<h2 class="pageName">10.5.5 &nbsp; P-values for other tests</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Applying the general properties of p-values to different tests </p>
+<p>P-values for <strong>all</strong> hypothesis tests have the  properties that were
+described earlier in this section. You should now be able to  interpret any p-value
+if you know the null and alternative hypotheses that it tests. <span class="gray">(A
+statistical computer program is generally used to perform hypothesis tests, so knowing
+the details of how the p-value is obtained is of little importance.)</span> </p>
+<p class="heading">Example</p>
+<p>The following data have been collected. Are they sampled from a normally distributed
+population?</p>
+<div class="centred"><table class="centred" border="0" cellspacing="0" cellpadding="7" style="background-color:#FFFFFF">
+<tr>
+<td align="right" class="top bottom left">41.9<br>
+90.6<br>
+29.9<br>
+10.2<br>
+33.7<br>
+26.9<br>
+88.5<br>
+6.5<br>
+16.6<br>
+19.2<br>
+12.6<br>
+32.0<br>
+3.6<br>
+8.1</td>
+<td align="right" class="top bottom">68.1<br>
+57.9<br>
+-3.0<br>
+42.2<br>
+14.5<br>
+25.7<br>
+28.1<br>
+78.4<br>
+126.2<br>
+42.0<br>
+66.6<br>
+20.6<br>
+54.6<br>
+31.7</td>
+<td align="right" class="top bottom">2.3<br>
+45.5<br>
+55.5<br>
+37.2<br>
+51.6<br>
+97.1<br>
+80.3<br>
+41.1<br>
+7.3<br>
+31.0<br>
+30.2<br>
+1.7<br>
+27.0<br>
+38.0</td>
+<td align="right" class="top bottom">144.9<br>
+27.8<br>
+121.9<br>
+26.0<br>
+-11.5<br>
+15.5<br>
+16.9<br>
+27.3<br>
+23.9<br>
+61.1<br>
+68.2<br>
+10.0<br>
+37.8<br>
+77.1</td>
+<td align="right" class="top bottom">24.3<br>
+63.2<br>
+-0.6<br>
+1.0<br>
+12.1<br>
+134.5<br>
+53.8<br>
+60.4<br>
+9.0<br>
+-6.4<br>
+31.0<br>
+-2.8<br>
+114.6<br>
+19.8</td>
+<td align="right" class="top bottom">11.5<br>
+39.6<br>
+59.0<br>
+20.7<br>
+37.3<br>
+23.1<br>
+32.7<br>
+13.0<br>
+70.6<br>
+87.3<br>
+-3.2<br>
+-20.8<br>
+119.1<br>
+-0.1</td>
+<td align="right" class="top bottom">104.4<br>
+-4.6<br>
+72.5<br>
+7.7<br>
+31.4<br>
+36.9<br>
+47.2<br>
+74.7<br>
+29.1<br>
+70.5<br>
+77.7<br>
+81.0<br>
+191.8<br>
+1.6</td>
+<td align="right" class="top bottom">-0.8<br>
+59.4<br>
+-2.2<br>
+-12.5<br>
+81.6<br>
+44.0<br>
+63.6<br>
+114.3<br>
+33.6<br>
+83.0<br>
+70.8<br>
+50.1<br>
+55.8<br>
+28.3</td>
+<td align="right" class="top bottom">-7.9<br>
+51.3<br>
+37.7<br>
+48.3<br>
+88.9<br>
+59.4<br>
+126.9<br>
+35.0<br>
+51.0<br>
+91.1<br>
+-2.7<br>
+79.2<br>
+0.1<br>
+12.9</td>
+<td align="right" class="top bottom right">16.2<br>
+23.0<br>
+22.4<br>
+64.4<br>
+10.2<br>
+7.6<br>
+27.7<br>
+8.0<br>
+23.5<br>
+25.3<br>
+22.5<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;</td>
+</tr>
+</table></div>
+<p>The diagram below shows a histogram of the data and the best-fitting normal
+distribution.  Could the skewness
+in the data have occurred by chance from a normal population? </p>
+<p class="eqn"><img src="../../../en/testPValue/images/s_mutualHisto.gif" width="391" height="226"></p>
+<p>The Shapiro-Wilkes W test can be used to test whether data come from a normal
+distribution:</p>
+<p style="padding-left:20px"><b>H<sub>0</sub></b> :  population distribution is normal<br>
+<b>H<sub>A</sub></b> :  population distribution is not normal</p>
+<p>Computer software reports the p-value for this test as &quot;under 0.01&quot;.
+We conclude that the probability of obtaining such a non-normal looking sample
+from a normal distribution is less than 0.01, so there is  strong evidence
+that the data do not come from a normal population.</p>
+
+
+
+
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Generating Numerical Values</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p>We explained earlier
+<a href="aboutGenerateCat.html" onMouseOver="window.status='Generating categorical values'; return true;">how
+to generate categorical pseudo-random values</a>, based on
+the probabilities for the different categories. In this page, we
+show how to generate pseudo-random numerical values from a distribution
+such as a normal distribution.</p>
+
+<div class="diagram">
+
+<p class="heading">Discrete introduction
+</p>
+
+<p>Consider a discrete distribution with the following probabilities.
+</p>
+
+<div class="centred"><table border="0" cellspacing="0" cellpadding="0" class="centred">
+<tr><td>
+	<table border="1" cellspacing="0" cellpadding="5">
+	<tr>
+	<th align="CENTER">Value, x</th>
+	<th align="CENTER">Probability, p<sub>x</sub></th></tr>
+	<tr>
+	<td align="CENTER" style="border-top:1px solid #999999; border-bottom:1px solid #999999; background-color:#FFFFFF
+">0.6<br>0.7<br>0.8<br>0.9<br>1.0<br>1.1<br>1.2<br>1.3<br>1.4<br>1.5</td>
+	<td align="CENTER" style="border-top:1px solid #999999; border-bottom:1px solid #999999; background-color:#FFFFFF
+;">0.01<br>0.06<br>0.10<br>0.12<br>0.12<br>0.11<br>0.10<br>0.08<br>0.06<br>0.05</td></tr>
+	</table>
+</td>
+<td width="20">&nbsp;</td>
+<td>
+	<table border="1" cellspacing="0" cellpadding="5">
+	<tr>
+	<th align="CENTER">Value, x</th>
+	<th align="CENTER">Probability, p<sub>x</sub></th></tr>
+	<tr>
+	<td align="CENTER" style="border-top:1px solid #999999; border-bottom:1px solid #999999; background-color:#FFFFFF
+;">1.6<br>1.7<br>1.8<br>1.9<br>2.0<br>2.1<br>2.2<br>2.3<br>2.4<br>2.5<br></td>
+	<td align="CENTER" style="border-top:1px solid #999999; border-bottom:1px solid #999999; background-color:#FFFFFF
+;">0.04<br>0.03<br>0.03<br>0.02<br>0.02<br>0.01<br>0.01<br>0.01<br>0.01<br>0.01</td></tr>
+	</table>
+</td>
+</tr>
+</table></div>
+
+<p>The diagram below shows a histogram for the distribution, with each square representing
+a probability of 0.01. The squares are numbered (left to right) from 1 to 100; click on any
+box to display its index and the corresponding value. 
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="310">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="simulationProg.RandomDiscreteApplet">
+<param name="simVarName" value="Simulated value">
+<param name="simIndexName" value="Simulated index">
+<param name="sourceName" value="Value =">
+<param name="indexName" value="Cell index =">
+<param name="discreteStep" value="0.1">
+<param name="values" value="1@0.6 6@0.7 10@0.8 12@0.9 12@1.0 11@1.1 10@1.2 8@1.3 6@1.4 5@1.5 4@1.6 3@1.7 3@1.8 2@1.9 2@2.0 1@2.1 1@2.2 1@2.3 1@2.4 1@2.5">
+<param name="indexAxis" value="0 100 0 20">
+<param name="valueAxis" value="0.5 3.0 0.5 0.5">
+<param name="customText" value="Next value=Next value#Distribution=Distribution">
+</applet>
+</div>
+
+<p>A random value from the distribution is found by randomly selecting one of the
+squares in the histogram (i.e. by generating an index between 1 and 100 with equal probability
+for each index). The generated value is the one associated with the square in the
+histogram. Click <strong>Next Value</strong> a few times to randomly generate indices and
+hence values.
+</p>
+
+<p>Hold down the button <strong>Next Value</strong> until 100 or more values have been
+generated. Observe from the stacked dot plots that the distribution of the index
+is uniform between 0 and 100, but the distribution of the simulated values conforms
+to the underlying model.
+</p>
+
+</div>
+
+<p class="heading">Cumulative distribution function
+</p>
+
+<p>Pseudo-random numbers can be generated from a random variable's cumulative distribution function</p>
+
+<div class="diagram">
+
+<p>The next diagram simulates values from the distribution in the same way, but displays
+the simulation mechanism differently. The vertical axis shows the indices for the histogram
+cells (between 1 and 100) and the stepped black line shows how the indices correspond to
+values. Note that the height of each step equals the number of histogram cells at that
+value of <em>x</em>.
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="simulationProg.RandomDiscCumApplet">
+<param name="sourceName" value="Simulated value =">
+<param name="indexName" value="Index =">
+<param name="indexName2" value="Index (No of cells">
+<param name="horizAxisName" value="Value, x">
+<param name="discreteStep" value="0.1">
+<param name="values" value="1@0.6 6@0.7 10@0.8 12@0.9 12@1.0 11@1.1 10@1.2 8@1.3 6@1.4 5@1.5 4@1.6 3@1.7 3@1.8 2@1.9 2@2.0 1@2.1 1@2.2 1@2.3 1@2.4 1@2.5">
+<param name="cumAxis" value="0 100 0 10">
+<param name="valueAxis" value="0.5 2.6 0.5 0.5">
+<param name="customText" value="Next value=Next value">
+</applet>
+</div>
+
+<p>Click <strong>Next Value</strong> a few times and observe how the indices (which
+are uniformly distributed on the vertical axis) are mapped by the stepped line to
+simulated values from the distribution.
+</p>
+
+<hr width="50%">
+
+<p>The vertical axis has been labelled 'Index', but the height of the stepped line at
+any value <em>x</em>
+is also equal to the number of histogram cells corresponding to values
+less than or equal to
+ <em>x</em>.
+For example, the height at  <em>x</em>&nbsp;=&nbsp;1.04
+is 41 which is the number of histogram cells corresponding to values
+0.6, 0.7,&nbsp;...,&nbsp;1.0.
+</p>
+
+<p>If the labels on the vertical axis are divided by the total number of histogram
+cells (100 here), the stepped line gives the <strong>probability</strong> of a value of
+ <em>x</em> or less from the distribution. This is called the <strong>cumulative distribution function</strong> of the distribution and is often written
+as F(<em>x</em>). </p>
+
+</div>
+
+<p class="heading">Generating values from a continuous distribution
+</p>
+
+<p>This mechanism can be extended to generate random values from a continuous
+numerical distribution. It is
+also based on the cumulative distribution function for the distribution,
+F(<em>x</em>). </p>
+
+<ol>
+<li>Generate a value,
+	<em>p</em>,
+	that is rectangularly distributed between 0 and 1.
+	(A pseudo-random number generated by a congruential random number generator
+	will do.)</li>
+<li>Find the value
+	 <em>x</em> for which F(<em>x</em>)&nbsp;=&nbsp;<em>p</em>.
+	Mathematically, this is expressed as  <em>x</em> &nbsp;=&nbsp;F<sup>-1</sup>(<em>p</em>).
+	The value  <em>x</em> is a pseudo-random number from the target distribution.</li>
+</ol>
+
+
+<div class="diagram">
+
+<p>The diagram below illustrates this method for generating values from a normal distribution
+with mean 2.0 and standard deviation 0.5.
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="simulationProg.RandomNormCumApplet">
+<param name="distnName" value="Normal distn">
+<param name="simRectName" value="Random index">
+<param name="simValueName" value="Simulated normal">
+<param name="horizAxisName" value="Value, x">
+<param name="valueAxis" value="0.4 3.6 0.5 0.5">
+<param name="cumAxis" value="0 1.0 0 0.1">
+<param name="normalDistn" value="2.0 0.5">
+<param name="maxValue" value="2.000">
+<param name="customText" value="Next value=Next value">
+</applet>
+</div>
+
+<p>Click <strong>Next Value</strong> a few times to see how a simulated value from
+a rectangular distribution leads to a simulated value from the target normal distribution.
+</p>
+
+<p><font color="#666666">(If you are uncertain about this diagram, look at
+the previous diagram again &mdash; the concepts are the same in both.)</font>
+</p>
+
+<p>Click <strong>Accumulate</strong> then generate a few more values. The jittered dot plot
+on the vertical axis shows the rectangularly distributed probabilities, whereas the jittered
+dot plot on the horizontal axis shows that the distribution of the generated values
+is indeed the target normal distribution.
+</p>
+
+</div>
+
+<p class="heading">Generating random numbers in Excel
+</p>
+
+<p>Excel contains a built-in function RAND() that generates a pseudo-random value
+that is rectangularly distributed between 0 and 1. It also contains built-in functions to
+evaluate the cumulative distribution functions and their inverses for several standard
+distributions. For example, the function NORMINV() finds the inverse of a normal
+distribution's cumulative distribution function.
+</p>
+
+<p>To obtain a pseudo-random value from a normal distribution with mean 2.0 and
+standard deviation 0.5, you can therefore type into a spreadsheet cell the formula
+</p>
+
+<div class="centred"><table border="1" cellspacing="0" cellpadding="5" class="centred">
+<tr><td bgcolor="white">
+=NORMINV(RAND(), 2.0, 0.5)
+</td></tr>
+</table></div>
+
+<p>Copying the formula down a spreadsheet column allows you to generate a random
+sample of values from this normal distribution.
+</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

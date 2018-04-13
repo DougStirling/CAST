@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Cumulative distribution function</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="negative binomial distribution, cumulative distribution function">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Direct evaluation of cumulative probabilities</p>
+
+<p>As with the binomial distribution, there is no simple formula for the negative binomial distribution's cumulative distribution function, \(F(x)\).</p>
+<p>It is possible to simply evaluate negative binomial probabilities and add them,</p>
+\[
+F(x) = \sum_{u=k}^{\lfloor x \rfloor} {{u-1} \choose {k-1}} \pi^k(1-\pi)^{u-k}
+\]
+<p>where \(\lfloor x \rfloor \) denotes the smallest integer less than or equal to \(x\).</p>
+
+<p class="heading">Cumulative probabilities from binomial distribution</p>
+<p>There is however a simpler method if \(k\) is much smaller than \(x\). It is based on the fact that taking more than \(x\) trials to get the \(k\)'th success is equivalent to there being fewer than \(k\) successes in the first \(x\) trials. This can be found by adding \(k\) <strong>binomial</strong> probabilities.</p>
+\[ \begin{align}
+P(X \gt x) &amp; = P(\text{fewer than } k \text{ successes in first } x \text{ trials}) \\
+&amp; = \sum_{v=0}^{k-1} {x \choose v} \pi^v (1-\pi)^{x-v}
+\end{align}\]
+
+<p>The cumulative probability is \(F(x) = 1 - P(X \gt x)\).</p>
+<p class="heading">Cumulative probabilities in Excel</p>
+<p>These formulae can be avoided if Excel is used to find cumulative probabilities. Again the function &quot;NEGBINOM.DIST()&quot; is used. To find the probability that the \(k\)'th success in a series of Bernoulli trials occurs on <strong>or before</strong> the \(x\)'th trial, \(F(x)\), the function takes four parameters:</p>
+<ol>
+	<li>The number of failures, \(x-k\)</li>
+	<li>The number of successes, \(k\)</li>
+	<li>The probability of success, \(\pi\)</li>
+	<li><em><strong>true</strong></em></li>
+</ol>
+
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Example</p>
+<p>If a fair six-sided die is rolled repeatedly, what is the probability that it will take more than 20 rolls before three sixes are observed?</p>
+</div>
+
+<div class="solution">
+<p>If \(X\) denotes the toss when the third six appears,</p>
+\[
+X \;\; \sim \; \; \NegBinDistn(3, \frac 1 6)
+\]
+<p>The answer is therefore</p>
+\[
+P(X > 20) = (1 - F(20))
+\]
+<p>This can be found by typing into an Excel spreadsheet cell</p>
+<p class="eqn">= 1 - NEGBINOM.DIST(17, 3, 1/6, true)</p>
+
+<p>To find the probability on a calculator, we would note that this event corresponds to 2 or fewer sixes in the first 20 rolls and this can be evaluated using the distribution of the number of sixes in the first 20 rolls, \(Y \sim \BinomDistn(20, \frac 1 6)
+\).</p>
+\[ \begin{align}
+P(X > 20) &amp; = P(Y \le 2) = p_Y(0) + p_Y(1) + p_y(2) \\
+&amp; = {{20} \choose 0} \left(\frac 1 6\right)^0 \left(\frac 5 6\right)^{20} + {{20} \choose 1} \left(\frac 1 6\right)^1 \left(\frac 5 6\right)^{19} + {{20} \choose 2} \left(\frac 1 6\right)^2 \left(\frac 5 6\right)^{18} \\
+&amp; = \left(\frac 5 6\right)^{20} + 20 \times \left(\frac 1 6\right) \left(\frac 5 6\right)^{19} + 190 \times \left(\frac 1 6\right)^2 \left(\frac 5 6\right)^{18} \\[0.5em]
+&amp; = 0.3287
+\end{align} \]
+</div>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

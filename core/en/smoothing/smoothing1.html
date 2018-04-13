@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Moving averages</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="smoothing, moving average, running mean">
+	<meta name="dataset" content="Southern oscillation">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Moving averages</p>
+	<p>In a time series, random fluctuations can usually be treated as <strong>noise</strong> that can obscure trend and other <strong>signal</strong> in the series. Various <strong>smoothing methods</strong> have been proposed to reduce these random fluctuations and show 
+    the systematic movement in the series more clearly. These methods replace each value in the series with 
+  a function of it and the adjacent values. </p>
+	<p class=eqn><span class="black"><strong>smoothed value</strong> &nbsp; = &nbsp;<em><strong>centre</strong></em> ( <strong>original value</strong> <em>and</em> <strong>adjacent values</strong> )</span>
+</p>
+
+  <p>For example, each value might be replaced by the mean of it and the two adjacent 
+    values, replacing the value at time <i>i</i> by </p>
+
+<p class=eqn><img class="gif" src="images/runningMeanEqn.gif" width="210" height="25">
+</p>
+
+  <p>This smoothed fit is called a <strong>3-point moving average</strong>. Moving 
+		averages are also called <strong>running means</strong>. Greater smoothing 
+		is obtained with means of more adjacent values. For example, a 7-point 
+		moving average replaces each value with the mean of it and the 3 adjacent 
+		values on each side.</p>
+    
+	<p class="heading">Ends of the series</p>
+	<p>Moving averages are effective at highlighting the trend in the centre of 
+    a time series, but cannot be used at the ends since the moving average requires 
+    values both <strong>before and after</strong> each value being smoothed. As 
+    the amount of smoothing increases, the number of unsmoothed values at the 
+    ends of the series also increases. For example, if 7-point moving averages 
+    are used, 3 values at each end of the series cannot be smoothed.</p>
+
+<div class="diagram" title="Example: Southern oscillation">
+<p class="heading">Southern Oscillation</p>
+
+		<p>The Southern Oscillation Index is defined as the barometric pressure difference between Tahiti and the Darwin Islands at sea level. The southern oscillation is a predictor of El Nino which in turn is thought to be a driver of world-wide weather. Specifically, repeated southern oscillation values less than -1 typically defines an El Nino. The time series plot shows the index between January 2005 and December 2013.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.RunningMeanApplet">
+<param name="varName" value="Pressure difference">
+  <param name="values" value="0.3 -3.1 0.3 -0.6 -0.8 0.4 0.2 -0.3 0.4 1.2 -0.2 0.0 1.7 0.1 1.8 1.1 -0.5 -0.2 -0.6 -1.0 -0.6 -1.3 0.1 -0.3 -0.8 -0.1 0.2 -0.1 -0.1 0.5 -0.3 0.4 0.2 0.7 0.9 1.7 1.8 2.6 1.4 0.7 -0.1 0.6 0.3 1.0 1.2 1.3 1.3 1.4 1.1 1.9 0.4 0.8 -0.1 0.1 0.2 -0.2 0.3 -1.2 -0.6 -0.7 -1.1 -1.5 -0.7 1.2 0.9 0.4 1.8 1.8 2.2 1.7 1.3 2.9 2.3 2.7 2.5 1.9 0.4 0.2 1.0 0.4 1.0 0.8 1.1 2.5 1.1 0.5 0.7 -0.3 0.0 -0.4 0.0 -0.2 0.2 0.3 0.3 -0.6 -0.1 -0.2 1.5 0.2 0.8 1.2 0.8 0.2 0.3 -0.1 0.7 0.1">
+  <param name="vertAxis" value="-3.2 3.0 -3 1">
+<param name="timeAxisName" value="Month">
+<param name="seasonName" value="12 Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec">
+<param name="seasonInfo" value="0 0 2005">
+<param name="smoothName" value="Smoothed">
+<param name="showEnds" value="false">
+<param name="labelAxes" value="true">
+<param name="maOrderLabel" value="Moving average of">
+<param name="rawName" value="Raw data">
+<param name="runs" value="15 odd">
+</applet>
+</div>
+
+	<p>Click the arrows to adjust the number of adjacent values used to smooth 
+		the series. Click on any data point on the graph to display the raw and 
+		smoothed values. Observe that...</p>
+	<ul>
+		<li>1-point moving averages are simply the original values.</li>
+		
+<li>As the amount of smoothing increases, more years at the end of the series 
+cannot be smoothed. (They are shaded in red.)</li>
+	</ul>
+	<p>Click  on any point on the graph to highlight 
+		the adjacent values that are used in finding the moving average at that time.</p>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

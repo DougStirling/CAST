@@ -1,0 +1,549 @@
+<html>
+<head>
+  <title>7. Comparing Many Means</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 7 &nbsp; Comparing Many Means</h1>
+<h1 class="sectionName">7.1 &nbsp; Randomised blocks</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Generalising the idea of paired data</li>
+<li>Example with baseline treatment</li>
+<li>Use of blocking information</li>
+<li>Randomised block designs</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='5'>
+<li>Model for randomised blocks</li>
+<li>Removing block effects</li>
+<li>Sums of squares</li>
+<li>Anova table and examples</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">7.1.1 &nbsp; Generalising the idea of paired data</h2><!DOCTYPE HTML>
+
+
+<p>In paired data, two related measurements, <em>X</em> and <em>Y</em>, are made
+from each sampled individual and we are interested in testing whether their means
+are equal.</p>
+<p class="heading">Groups of 3 or more values</p>
+<p>The idea of paired data can be extended to situations in which 3 or more related
+measurements are made from each 'individual'. Two important situations that give
+rise to this type of data are:</p>
+<dl>
+<dt>Experiment with blocks</dt>
+<dd>Paired data can arise when the experimental units are grouped into blocks of
+size 2 (e.g. matched pairs) and two treatments are used. This can be extended to <em>g</em> treatments
+with blocks of <em>g</em> experimental units and the treatments randomised within
+each block.</dd>
+<dt>Repeated measure data</dt>
+<dd>Several comparable measurements may be made from each individual, often measurements
+of the same quantity at different times.</dd>
+</dl>
+<p class="heading">Example (randomised blocks) </p>
+<p>In an experiment to assess the effect of  codeine and acupuncture
+for relieving dental pain, 32 subjects  were grouped into
+blocks of 4 according to an initial assessment of their tolerance to pain. Four treatments
+were randomly given to the four subjects in each block and pain relief scores were
+recorded.</p>
+<div class="centred">
+<table border="0" class="centred" cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th>
+<th colspan="4">Pain relief score</th>
+</tr>
+<tr>
+<th>Tolerance<br>
+group</th>
+<th>&nbsp;&nbsp;Control&nbsp;&nbsp;</th>
+<th>Codeine<br>
+only</th>
+<th>Acupuncture<br>
+only</th>
+<th>Codeine +<br>
+Acupuncture</th>
+</tr>
+<tr align="center">
+<td><table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="right">1<br>
+2<br>
+3<br>
+4<br>
+5<br>
+6<br>
+7<br>
+8</td>
+</tr>
+</table></td>
+<td bgcolor="#FFFFFF"><table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="right">0.0<br>
+0.3<br>
+0.4<br>
+0.4<br>
+0.6<br>
+0.9<br>
+1.0<br>
+1.2</td>
+</tr>
+</table></td>
+<td bgcolor="#FFFFFF"><table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="right">0.6<br>
+0.7<br>
+0.8<br>
+0.9<br>
+1.5<br>
+1.6<br>
+1.7<br>
+1.6</td>
+</tr>
+</table></td>
+<td bgcolor="#FFFFFF"><table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="right">0.5<br>
+0.6<br>
+0.8<br>
+0.7<br>
+1.0<br>
+1.4<br>
+1.8<br>
+1.7</td>
+</tr>
+</table></td>
+<td bgcolor="#FFFFFF"><table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="right">1.2<br>
+1.3<br>
+1.6<br>
+1.5<br>
+1.9<br>
+2.3<br>
+2.1<br>
+2.4</td>
+</tr>
+</table></td>
+</tr>
+</table>
+</div>
+<p class="heading">Example (repeated measures)</p>
+<p>An experiment investigated the use of nicotine to control tics in patients with
+Tourette's syndrome. For each patient, the number
+of tics was recorded before a nicotine gum was chewed and at different times afterwards.</p>
+<div class="centred">
+<table border="0" class="centred" cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th>
+<th colspan="4">Number of tics during 30-min period</th>
+</tr>
+<tr>
+<th>Patient</th>
+<th>&nbsp;&nbsp;Baseline&nbsp;&nbsp;</th>
+<th>  Chewing gum  </th>
+<th>  0-30 min after  </th>
+<th>  30-60 min after  </th>
+</tr>
+<tr align="center">
+<td><table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="right">1<br>
+2<br>
+3<br>
+4<br>
+5<br>
+6<br>
+7<br>
+8<br>
+9<br>
+10</td>
+</tr>
+</table></td>
+<td bgcolor="#FFFFFF"><table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="right">249<br>
+1095<br>
+83<br>
+569<br>
+368<br>
+326<br>
+324<br>
+95<br>
+413<br>
+332</td>
+</tr>
+</table></td>
+<td bgcolor="#FFFFFF"><table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="right">108<br>
+593<br>
+27<br>
+363<br>
+141<br>
+134<br>
+126<br>
+41<br>
+365<br>
+293</td>
+</tr>
+</table></td>
+<td bgcolor="#FFFFFF"><table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="right">93<br>
+600<br>
+32<br>
+342<br>
+167<br>
+144<br>
+312<br>
+63<br>
+282<br>
+525</td>
+</tr>
+</table></td>
+<td bgcolor="#FFFFFF"><table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="right">59<br>
+861<br>
+61<br>
+312<br>
+180<br>
+158<br>
+260<br>
+71<br>
+321<br>
+455</td>
+</tr>
+</table></td>
+</tr>
+</table>
+</div>
+
+
+<h2 class="pageName">7.1.2 &nbsp; Example with baseline treatment</h2><!DOCTYPE HTML>
+
+
+<p>We start with a simple example in which  one of the <em>g</em> treatments is a
+standard or 'baseline' treatment. The other (<em>g</em> &minus; 1)
+treatments can be compared to it using standard confidence intervals for paired data.
+These confidence intervals are usually narrower than the corresponding confidence
+intervals that would be found for independent samples.</p>
+<p class="heading">Example</p>
+<p>In a randomised experiment about pain relief treatments in dental patients, 32
+subjects were grouped into blocks of four according to an initial assessment of their
+tolerance to pain. One treatment was a placebo (dummy treatment) that the others
+could be compared to.</p>
+<p class="eqn"><img src="../../../en/randBlock/images/s_indepCIs.gif" width="453" height="474"></p>
+<p>If the initial grouping of paitents into blocks is ignored, 95% confidence intervals
+for the improvement in pain relief over the placebo are wide. Taking account of the
+initial grouping, differences are far more accurately estimated.</p>
+<p class="eqn"><img src="../../../en/randBlock/images/s_pairedCIs.gif" width="453" height="474"></p>
+
+
+
+
+<h2 class="pageName">7.1.3 &nbsp; Use of blocking information</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Testing for equal treatment means</p>
+<p>If  there is no baseline treatment, analysis should start with a single hypothesis
+test for whether all treatment means are equal. The standard multi-group analysis
+of variance test for equal means in a completely randomised experiment (ignoring
+the blocks) should <strong>not</strong> be used for experiments with
+blocks.</p>
+<div class="centred"><div class="boxed"><p>Ignoring the existence of blocks makes it much harder to detect differences
+between treatments.</p></div></div>
+<p class="heading">Example</p>
+<p>Five different observers each watched the same group of 10 cattle and reported
+how long each animal spent grazing.</p>
+<p style="color:#F00; font-weight:bold; font-size:larger; margin-bottom:0px">Wrong analysis</p>
+<p style="margin-top:5px">Ignoring the fact that the same animals were observed by all five observers, the
+data would be analysed with the anova table below. From the large p-value, we would
+conclude that there were no differences between the observers.</p>
+<p class="eqn"><img src="../../../en/randBlock/images/s_indepPvalue.gif" width="482" height="433"></p>
+<p style="color:#F00; font-weight:bold; font-size:larger; margin-bottom:0px">Correct analysis</p>
+<p style="margin-top:5px">Much of the variability in the data is due to differences
+between the animals (blocks),
+and an analysis that ignores this is much less sensitive to differences between the
+observers. We will not explain the correct test for blocked data until later in this
+section, but it gives a p-value that is interpreted in the same way as the p-value
+above. It is shown below and
+shows that there are almost certainly differences between the observers.</p>
+<p class="eqn"><img src="../../../en/randBlock/images/s_blockedPvalue.gif" width="482" height="380"></p>
+
+
+
+<h2 class="pageName">7.1.4 &nbsp; Randomised block designs</h2><!DOCTYPE HTML>
+
+
+<p>In paired data, each of the two treatments is used once within each block (pair).
+The previous
+pages generalised this to more than two treatments, but each treatment was still
+used once in each block. We now generalise further to allow the
+block
+size to be any multiple of the number of treatments.</p>
+<p class="heading">Reducing unexplained variability</p>
+<p>To assess the significance of differences between experimental treatments, variation
+in the treatment means is compared to the amount of unexplained (random) variation.
+With less unexplained variation, there is less chance of the differences between
+treatment means having arisen by chance. There are two ways to reduce unexplained
+variation:</p>
+<dl>
+<dt>Use experimental units that are as similar as possible.</dt>
+<dd>Identical experimental units cannot usually be found but similar experimental
+units give best accuracy.</dd>
+<dt>Group the experimental units into blocks of similar units.</dt>
+<dd>If the experimental units vary but can be grouped into blocks of similar units,
+then these blocks 'explain' some of the variability, and unexplained variability
+is reduced.</dd>
+</dl>
+<p>The simplest way to use blocks in an experiment is with a <strong>randomised block
+design</strong>. In this, the block size is a multiple of the number of treatments.
+Each treatment is used for the same number of experimental units within each block,
+and the treatments are randomly allocated to units within the blocks.</p>
+<p class="heading">Example</p>
+<p>An experiment was conducted in which the experimental units were intestinal preparations
+from fish, but each fish would only give six preparations. The six preparations from
+each fish constitute a block of units. Two treatments were used, with  the six preparations
+from each of four fish randomly split into three preparations for each treatment
+(a randomised block experiment).</p>
+<p style="color:#F00; font-weight:bold; font-size:larger; margin-bottom:0px">Wrong
+analysis</p>
+<p style="margin-top:5px">Ignoring possible differences between the four fish and
+treating the data as a completely randomised experiment with 24 experimental units,
+we would conclude that there is moderately strong evidence of a difference between
+the two treatments.</p>
+<p class="eqn"><img src="../../../en/randBlock/images/s_indepPvalue2.gif" width="466" height="300"></p>
+<p style="color:#F00; font-weight:bold; font-size:larger; margin-bottom:0px">Correct
+analysis</p>
+<p style="margin-top:5px">There are considerable differences between the four fish
+(blocks), with much lower variability within any single fish. The correct analysis
+is explained later in this section and the resulting p-value gives much stronger
+evidence of a difference between the two treatments.</p>
+<p class="eqn"><img src="../../../en/randBlock/images/s_blockedPvalue2.gif" width="466" height="300"></p>
+
+
+
+
+<h2 class="pageName">7.1.5 &nbsp; Model for randomised blocks</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Three-dimensional scatterplot of data</p>
+<p>Data from a randomised block experiment can be displayed in a three-dimensional
+scatterplot:</p>
+<p class="eqn"><img src="../../../en/randBlock/images/s_threeD.gif" width="392" height="369"></p>
+<p class="heading">Model</p>
+<p>Both blocks and treatments explain some variability in the response measurement,
+<em>Y</em>, but...</p>
+<ul>
+<li>Blocks are a grouping of the experimental units whereas treatments are allocated
+by the researcher.</li>
+<li>We are mainly interested in comparing the treatments.</li>
+</ul>
+<p>Blocks and treatments are modelled
+in the same way:</p>
+
+<div class="centred"><div class="boxed">
+<p><em>y</em> = (overall
+mean) + (effect depending on block)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; + (effect depending on treatment)
++ error</p>
+</div></div>
+
+<p>The error is again assumed to have a normal distribution with mean zero and constant
+standard deviation. Within any block, changing the treatment simply adds or subtracts
+a constant to the response.</p>
+
+
+
+
+<h2 class="pageName">7.1.6 &nbsp; Removing block effects</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Making all block means equal</p>
+<p>Our model for randomised block data explains the effect of the blocks on <em>Y</em> as
+a  addition  of a &quot;block effect&quot; to all values within each block. This
+suggests eliminating differences between the blocks by adjusting the values in all
+blocks to have the same block means.</p>
+<p class="heading">Example</p>
+<p>The diagram below shows results from an experiment with blocks of size five and
+five treatments. Different colours are used for the different blocks and the block
+means are shown with vertical lines.</p>
+<p class="eqn"><img src="../../../en/randBlock/images/s_blockMeans.gif" width="482" height="217"></p>
+<p>A lot of the variability in the response, <em>Y</em>, is caused by differences
+between the blocks. The diagram below adjusts the values by adding a constant to
+all values in each block, givving all blocks the same mean response.</p>
+<p class="eqn"><img src="../../../en/randBlock/images/s_blockSameMeans.gif" width="482" height="217"></p>
+<p>Since there is now much less 'unexplained' variation and there are now no differences
+between blocks, applying the standard anova test for equal treatment means to the
+adjusted data seems reasonable and is much more sensitive to treatment differences:</p>
+<p class="eqn"><img src="../../../en/randBlock/images/s_adjustedAnova.gif" width="387" height="87"></p>
+<p>The treatment and residual sums of squares shown here are the <strong>basis</strong> for
+testing whether the treatment means are  equal, but the analysis is not completely
+correct.</p>
+<div class="centred"><table width="80%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFF00" class="centred">
+<tr>
+<td align="center" class="darkred bold">The  residual degrees of freedom
+are too high.</td>
+</tr>
+</table></div>
+<p>The correct analysis of variance table for testing equal treatment
+means is a little more complex for randomised block data; it will be explained in
+the following pages.</p>
+
+
+
+
+<h2 class="pageName">7.1.7 &nbsp; Sums of squares</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Notation</p>
+<p>For randomised block data, we use the following notation:</p>
+<div class="centred"><table width="90%" border="0" class="centred" cellpadding="6" cellspacing="0" style="background-color:#FFFFFF">
+<tr>
+<td align="center"><span class="em black">y<sub>bgr</sub></span> </td>
+<td>the <em>r</em><sup>th</sup> of the observations in block <em>b</em> that get
+treatment <em>g</em></td>
+</tr>
+<tr>
+<td align="center"><em><span style="position:relative; top:3px"><img src="../../../en/../images/symbol.yBar.png" width="9" height="15" align="baseline"></span><sub><em><span class="black">b</span></em></sub></em></td>
+<td>mean response in block <em>b</em></td>
+</tr>
+<tr>
+<td align="center"><em><span style="position:relative; top:3px"><img src="../../../en/../images/symbol.yBar.png" width="9" height="15" align="baseline"></span><sub><em><span class="black">g</span></em></sub></em></td>
+<td>mean response for all observations getting treatment <em>g</em></td>
+</tr>
+<tr>
+<td align="center"><em><span style="position:relative; top:3px"><img src="../../../en/../images/symbol.yBar.png" width="9" height="15" align="baseline"></span></em></td>
+<td>overall mean response for all observations</td>
+</tr>
+</table></div>
+<p>In many examples, there is only a single observation for each combination of block
+and treatment, but our notation allows for two or more.</p>
+<p class="heading">Sums of squares</p>
+<p>For randomised block data, we again split the total sum of squares into components,
+but now need to use <strong>three </strong>components.</p>
+<p class=eqn><img class="gif" src="../../../en/randBlock/images/ssqEqn.gif" id="gif_image_1_7_1" width="453" height="50"><iframe class="svg" src="../../../en/randBlock/images/ssqEqn.svg" id="svg_image_1_7_1" width="453" height="50" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_1_7_1");</script></p>
+<p>The block and treatment sums of squares describe variation that is <strong>explained</strong> by
+the randomised block model whereas the residual sum of squares is <strong>unexplained</strong>.</p>
+<div class="centred"><table width="90%" border="0" class="centred" cellpadding="6" cellspacing="0" style="background-color:#FFFFFF">
+<tr>
+<td><img class="gif" src="../../../en/randBlock/images/totalSsq.gif" id="gif_image_1_7_3" width="84" height="28"><iframe class="svg" src="../../../en/randBlock/images/totalSsq.svg" id="svg_image_1_7_3" width="84" height="28" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_1_7_3");</script></td>
+<td class="purple">The <strong>total sum of squares</strong> reflects the
+total variability of the response.</td>
+</tr>
+<tr>
+<td><img class="gif" src="../../../en/randBlock/images/blockSsq.gif" id="gif_image_1_7_4" width="73" height="26"><iframe class="svg" src="../../../en/randBlock/images/blockSsq.svg" id="svg_image_1_7_4" width="73" height="26" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_1_7_4");</script></td>
+<td class="green">The <strong> sum of squares between blocks</strong> measures
+the variability of the block means.</td>
+</tr>
+<tr>
+<td><img class="gif" src="../../../en/randBlock/images/treatSsq.gif" id="gif_image_1_7_5" width="73" height="28"><iframe class="svg" src="../../../en/randBlock/images/treatSsq.svg" id="svg_image_1_7_5" width="73" height="28" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_1_7_5");</script></td>
+<td class="red">The <strong> sum of squares between treatments</strong> measures
+the variability of the treatment means.</td>
+</tr>
+<tr>
+<td><img class="gif" src="../../../en/randBlock/images/residSsq.gif" id="gif_image_1_7_2" width="95" height="28"><iframe class="svg" src="../../../en/randBlock/images/residSsq.svg" id="svg_image_1_7_2" width="95" height="28" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_1_7_2");</script></td>
+<td class="blue">The <strong> residual sum of squares </strong> describes the
+variation that is <strong>unexplained</strong> by blocks or treatments.</td>
+</tr>
+</table></div>
+<p>Note that all summations are  over<strong> all observations in the data set</strong>.</p>
+<p class="heading">Residuals and residual variation</p>
+<p>As in regression, we define residuals to be the difference between the recorded
+response values and the closest we can get from our model. For a randomised block
+model, the best estimate is:</p>
+<p class=eqn><span class="black"><span style="position:relative; top:4px"><img src="../../../en/../images/symbol.yiHat.png" width="11" height="18" align="baseline"></span>&nbsp;=&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x<sub>i</sub></em></span></p>
+<p>This can be interpreted as:</p>
+<ul>
+<li>the block mean, with an adjustment for how far the treatment mean is different
+from the overall mean, or</li>
+<li>the treatment mean, with an adjustment for how far the observation's block mean
+is different from the overall mean.</li>
+</ul>
+
+
+
+
+<h2 class="pageName">7.1.8 &nbsp; Anova table and examples</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Anova table</p>
+<p>The three components that add to total sum of squares 
+are usually laid out in an <strong>analysis of variance</strong> table
+(or simply <strong>anova</strong> table).</p>
+<p class=eqn><img class="gif" src="../../../en/randBlock/images/randBlockAnovaTable.gif" id="gif_image_1_8_1" width="592" height="186"><iframe class="svg" src="../../../en/randBlock/images/randBlockAnovaTable.svg" id="svg_image_1_8_1" width="592" height="186" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_1_8_1");</script> </p>
+<p>The anova table adds a few extra columns:</p>
+<dl>
+<dt>Degrees of freedom</dt>
+<dd>They also add up to the value in the <em>Total</em> row, (<em>n</em> &minus; 1).</dd>
+<dt>Mean sums of squares</dt>
+<dd>These are the sums of squares divided by their degrees of freedom.</dd>
+<dt>F-ratios</dt>
+<dd>For the blocks and treatments, the F-ratio divides the mean sum of squares by
+the mean residual sum of squares.</dd>
+</dl>
+<p class="heading">Tests</p>
+<p>The F-ratio for differences between the treatments compares the variability explained
+by the treatments to the residual (unexplained) variation. The larger the F-ratio,
+the stronger the evidence for a difference between treatments. A formal hypothesis
+test is based on the F-ratio and its p-value is the probability of getting as big
+an F-ratio as that recorded if all treatment means were equal. It is interpreted
+in the same way as all other p-values.</p>
+<dl>
+<dt>p-value &gt; 0.1</dt>
+<dd>No evidence of a difference between treatments</dd>
+<dt>0.1 &lt; p-value &lt; 0.05</dt>
+<dd>Very mild evidence of a difference between treatments</dd>
+<dt>0.05 &lt; p-value &lt; 0.01</dt>
+<dd>Moderately strong evidence of a difference between treatments</dd>
+<dt>p-value &lt; 0.01</dt>
+<dd> Strong evidence of a difference between treatments</dd>
+</dl>
+<p>A p-value can also be found to test whether there are differences between the
+blocks, but this is usually of less interest.</p>
+<div class="centred"><div class="boxed">
+<p>In practice, computer software will produce the anova table for you, so you only
+need to interpret the p-value associated with the treatments.</p>
+</div></div>
+<p class="heading">Examples</p>
+<p align="center"><img src="../../../en/randBlock/images/painRelief.gif" width="550" height="544" class="summaryPict"></p>
+<p align="center"><img src="../../../en/randBlock/images/penicillin.gif" width="550" height="544" class="summaryPict"></p>
+
+
+
+
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>La courbure et les valeurs aberrantes</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="regression model, linear model, curvature, outliers">
+	<meta name="dataset" content="Temperatures and locations of US cities">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Un simple modèle linéaire n'est pas toujours approprié</p>
+
+  <p>Un modèle linéaire simple pour une réponse Y en termes d'une variable explicative X est souvent un résumé utile d'une relation, mais il n'est pas approprié pour tous les ensembles de données.</p>
+  <div class="boxed">
+  	<p>Un modèle linéaire simple est appropriée que lorsque le nuage de croix dans un nuage de points de données est régulièrement réparties autour d'une ligne droite.</p>
+</div>
+  <p>Si les croix sont dispersés autour d'une courbe, la relation est appelée&nbsp;<strong>non-linéaire</strong>&nbsp;et d'autres modèles doivent être utilisés.&nbsp;Nous allons considérer des modèles non linéaires dans la section suivante.</p>
+<p>Dans cette page, nous allons examiner un autre problème.</p>
+<p class="heading">Les valeurs aberrantes devraient être étudiées</p>
+	<p>Une&nbsp;<strong>valeur aberrante</strong>&nbsp;est une observation qui n'est pas conforme à la tendance et la variabilité manifestée par le reste des données.&nbsp;Dans un modèle linéaire, le plus important type de valeur aberrante est un point de données qui se trouve à une distance de la ligne qui correspondrait à travers le reste des données.</p>
+
+<p>L'individu correspondant à aucune valeur aberrante doivent être soigneusement examinés.&nbsp;Les erreurs d'enregistrement ou de transcription peut être la cause.Alternativement, il peut être possible de déterminer certaines caractéristiques distinctives de l'individu qui sous-tend la mesure de la réponse inhabituel.</p>
+
+<p>Si une valeur aberrante est assez extrême, ou si une cause spéciale pour son comportement inhabituel peut être trouvé à partir d'informations à l'extérieur, l'individu peut être classé comme aberrante et supprimé du jeu de données.</p>
+
+<div class="boxed">
+	<p>Il est important de <strong>regarder tout ensemble de données sous forme graphique</strong> avant le montage d'un modèle linéaire pour vérifier qu'aucune courbure ou aberrantes sont présentes.</p>
+</div>
+<div class="diagram">
+
+<p class="heading">La température et de latitude</p>
+
+<p>Le diagramme de dispersion ci-dessous montre la température maximale Janvier (degrés Fahrenheit) et la latitude (degrés au nord de l'équateur) pour les différentes villes des Etats-Unis, tel que publié dans le livre <cite>Data Analysis and Regression</cite>, par F.Mosteller et J.W.Tukey en 1977. Les moindres carrés est superposée sur les données. </p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="350" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.LSMapApplet">
+<param name="xVarName" value="Latitude">
+<param name="yVarName" value="Jan Temp">
+<param name="zVarName" value="Longitude">
+<param name="labelName" value="City">
+<param name="xValues" value="30 32 58 33 34 34 37 39 41 39 38 38 24 25 33 21 43 41 39 41 42 37 38 29 43 39 42 42 46 44 38 46 41 43 39 35 42 40 35 35 46 39 41 35 45 40 39 32 44 36 35 29 29 40 44 36 47 47 43 43 41 18">
+<param name="yValues" value="61 59 30 64 51 65 55 42 37 41 44 67 74 76 52 79 36 33 37 29 27 42 44 64 32 44 37 33 23 22 40 29 32 32 43 46 31 40 51 52 20 41 35 46 44 39 40 61 34 49 50 61 64 37 25 50 44 31 26 28 37 81">
+<param name="zValues" value="88 86 134 112 92 118 122 104 72 75 77 81 81 80 84 157 116 87 86 93 90 97 85 90 70 76 71 83 84 93 90 112 95 71 74 106 73 73 80 78 100 84 81 97 122 76 75 79 103 86 101 94 95 111 73 76 122 117 89 87 104 66">
+<param name="labels" value="#Mobile, Ala# #Montgomery, Ala# #Juneau, Alaska# #Phoenix, Ariz# #Litle Rock, Ark# #Los Angeles, Calif# #San Francisco, Calif# #Denver, Col# #New Haven, Conn# #Wilmington, Del# #Washington, DC# #Jacksonville, Fla# #Key West, Fla# #Miami, Fla# #Atlanta, Ga# #Honolulu, Hawaii# #Boise, Idaho# #Chicago, Ill# #Indianapolis, Ind# #Des Moines, Iowa# #Dubuque, Iowa# #Wichita, Kansas# #Louisville, Ky# #New Orleans, La# #Portland, Maine# #Baltimore, Md# #Boston, Mass# #Detroit, Mich# #Sault Ste Marie, Mich# #Minn St Paul, Minn# #St Louis, Missouri# #Helena, Montana# #Omaha, Nebraska# #Concord, NH# #Atlantic City, NJ# #Albuquerque, NM# #Albany, NY# #New York, NY# #Charlotte, NC# #Raleigh, NC# #Bismarck, ND# #Cincinnati, Ohio# #Cleveland, Ohio# #Oklahoma City, Okla# #Portland, Ore# #Harrisburg, Pa# #Philadelphia, Pa# #Charlestown, SC# #Rapid City, SD# #Nashville, Tenn# #Amarillo, Tx# #Galveston, Tx# #Houston, Tx# #Salt Lake City, Utah# #Burlington, Vt# #Norfolk, Va# #Seattle Tacoma, Wash# #Spokane, Wash# #Madison, Wisc# #Milwaukee, Wisc# #Cheyenne, Wyoming# #San Juan, Puerto Rico#">
+<param name="model" value="111.67 -1.67 1.0">
+<param name="horizAxis" value="15 60 20 10">
+<param name="vertAxis" value="0 85 0 10">
+<param name="decimals" value="2 2 2 2">
+<param name="change1" value="#11 38 30#">
+<param name="change1Name" value="Correcte Jacksonville">
+<param name="change2" value="#2 58 *# #44 45 *# #56 47 *#">
+<param name="change2Name" value="Supprimer Nord-Ouest">
+</applet>
+</div>
+
+<p>Il ya quatre résidus anormalement élevé qui pourrait être considéré comme aberrantes.&nbsp;Ils sont tous nettement plus chaud que le modèle prédirait pour leur latitude. <strong>Faisant glisser</strong>&nbsp;avec la souris sur les quatre points révèle leurs noms et souligne leurs positions sur une carte des USA.</p>
+
+    <p>Vous avez peut être remarqué que l'une des valeurs aberrantes, Jacksonville est trop loin vers le nord sur la carte.&nbsp;<strong>La latitude de Jacksonville a été mal enregistrées</strong>&nbsp;dans les données publiées fixé comme 38 degrés au lieu de 30 degrés.&nbsp;Cliquez sur la case&nbsp;<strong>Correcte Jacksonville</strong>&nbsp;à changer de latitude de Jacksonville à 30 degrés.&nbsp;Notez que la position de l'moindres carrés n'est pas affecté beaucoup plus.</p>
+
+<p>Les trois autres sont aberrantes Portland, Seattle et Juneau.&nbsp;Ce sont tous dans le nord-ouest des Etats-Unis, et un peu de recherche géographique montre qu'ils sont chauffés par un courant marin en hiver.&nbsp;Conserver ces villes nous amène à surestimer les températures d'autres latitudes élevées villes.&nbsp;Leur caractéristique commune suggère que nous devrions peut-être le modèle nord-ouest de l'USA séparément du reste du pays.&nbsp;Cochez la case&nbsp;<strong>Supprimer Nord-Ouest</strong>&nbsp;pour enlever les trois villes.&nbsp;Les moindres carrés s'intègre désormais beaucoup plus près des points de données restantes.</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

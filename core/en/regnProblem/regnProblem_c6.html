@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Non-normal errors</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="probability plot, normal scores, outliers, curvature">
+	<meta name="dataset" content="British Airways share price">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Normal errors</p>
+<p>Another assumption in the normal linear model is that the model errors are 
+  normally distributed.</p>
+<p class=eqn><span class="black">&epsilon;&nbsp; ~ &nbsp;<font face="Arial, Helvetica, sans-serif">normal</font> (0<sub></sub>&nbsp;, &sigma;)</span> </p>
+<p>If the model holds, the least squares residuals will also be normally distributed, 
+  so a histogram of the residuals can be examined for normality.</p>
+
+<div class="centred"><div class="boxed">
+<p>Normal errors are the least important of the model assumptions. If 
+      the other assumptions hold, it is reasonable to continue with the analysis, even 
+      if the errors have a skew distribution.</p>
+</div></div>
+
+<p class="heading">Normal probability plot</p>
+<p>A better way to graphically examine a data set for normality is with a <strong><a href="javascript:showNamedPage('normalDistn10')">normal 
+  probability plot</a></strong> of the residuals. As with other probability plots, if the residuals are from a normal distribution, the crosses in the normal probability 
+  plot should lie close to a straight line.</p>
+<p class="heading">How much curvature is needed to suggest non-normality?</p>
+<p>In some data sets, linearity or nonlinearity in the probability plot is 
+  clear. In practice however, the randomness of real data means that the probability 
+  plot will not be exactly straight even for values that are sampled from a normal 
+  population.</p>
+
+<div class="centred"><div class="boxed">
+<p>How much curvature is needed to conclude that the underlying distribution 
+      is not normal?</p>
+</div></div>
+
+<p>This is a difficult question to answer. There are formal tests of normality 
+  that can be used in conjunction with a probability plot. (We <a href="javascript:showNamedPage('testPValue5')">discussed 
+    one in an earlier chapter</a> about hypothesis tests.) We however take a less 
+  formal approach in the example below.</p>
+
+<div class="diagram" title="Example: Share prices and volume traded">
+<p class="heading">Share prices and volume traded</p>
+<p>The scatterplot below shows the volume of British Petroleum shares traded in 
+each of the first 60 full trading days of 2014 &mdash; between 2nd January and 19th March 
+&mdash; and the closing share price. A probability plot of the residuals from the least 
+squares line are also shown on the right.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="loessProg.ProbPlotRandomApplet">
+<param name="yVarName" value="Volume traded (mil)">
+<param name="xVarName" value="Closing price (pounds)">
+<param name="yValues" value="17.1 15.5 16.1 19.5 15.4 21.5 21.0 21.0 19.2 20.3 23.1 21.5 41.3 41.3 14.2 18.3 22.6 24.6 29.0 29.0 21.0 18.3 22.4 18.1 22.3 17.2 33.5 23.3 28.4 33.6 16.5 25.7 24.9 19.0 15.9 19.8 31.5 27.9 27.6 37.6 37.6 37.6 29.3 52.1 21.0 22.9 37.0 37.8 33.5 27.2 17.8 31.7 33.2 27.8 24.1 19.6 24.8 27.9 28.2 21.0">
+<param name="xValues" value="488.85 487.90 488.95 494.00 492.85 495.30 497.00 497.00 495.80 491.05 492.85 489.45 491.05 491.05 494.30 491.30 493.60 488.15 486.65 486.65 475.80 476.90 476.90 477.90 478.00 473.60 473.80 470.05 482.15 481.70 482.05 491.75 487.05 485.20 486.40 487.70 495.10 495.00 499.55 501.70 501.70 501.70 505.90 508.00 506.80 503.30 504.40 492.90 491.50 486.00 486.90 480.05 484.00 484.00 482.60 478.50 477.25 476.85 477.00 476.95">
+<param name="horizAxis" value="470 510 470 10">
+<param name="vertAxis" value="10 60 10 10">
+<param name="residAxis" value="-20 30 -20 10">
+<param name="nscoreAxis" value="-2.5 2.5 -2 1">
+<param name="random" value="3.0 384958677">
+<param name="labelAxes" value="true">
+<param name="customText" value="Actual Data=Actual Data#Random Normal Data=Random Normal Data#Ordered residual=Ordered residual">
+</applet>
+</div>
+
+<p>There is a little curvature in the probability plot, suggesting that the error distribution 
+could be skew with a long tail towards the high values.</p>
+<p>Could this amount of curvature have occurred by chance? Select <strong>Random 
+Normal Data</strong> from the pop-up menu to generate random data from a normal 
+linear model whose parameters β<sub>0</sub>, 
+β<sub>1 </sub>and σ are the same as the least squares estimates from our data. Click <strong>Take 
+Sample</strong> several times to see the variability in the probability plot when 
+a normal linear model <strong>does</strong> hold.</p>
+<p>The probability plot from the data does not seem much more curved than many of the random ones, 
+so the apparent curvature could be simply randomness in the data — we cannot conclude that the regression model assumptions are violated.</p>
+</div>
+
+<p class="heading">Warning</p>
+<p>If the assumptions of linearity and constant variance are violated, or if there 
+are outliers, the probability plot of residuals will often be curved, irrespective 
+of the error distribution.</p>
+
+<div class="centred"><div class="boxed">
+<p>Only draw a probability plot if you are sure that the data are linear, 
+have constant variance and have no outliers.</p>
+</div></div>
+
+
+<br>
+
+<div class="diagram" title="Example: Share prices and volume traded">
+<p class="heading">Share price and volume traded</p>
+<p>In the British Airways example above, there appears to be greater variability 
+in the volumes traded when the share price is high. This suggests that a transformation 
+of the response might improve the fit of the model. The scatterplot below shows 
+that a normal linear model would be a better description of the relationship between 
+the logarithms of the volume traded and the share price &mdash; the distribution of 
+points around the line is more symmetrical and there are no obvious problems with 
+the other assumptions.</p>
+<p class="eqn"><img class="gif" src="images/logShareVol.gif" width="330" height="281"></p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

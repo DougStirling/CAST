@@ -1,0 +1,145 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Equal means in two distributions</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="hypothesis test, test, normal distribution, mean, equal means, t distribution, pooled variance">
+	<meta name="dataset" content="Growth of dwarf peas">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Comparing normal distributions</p>
+
+<p>In an earlier section, we derived a <a href="javascript:showNamedPage('tDistn6')">confidence interval for the difference between the means</a> of two normal distributions, provided the variances of the distributions were equal. This was based on two independent random samples,</p>
+\[
+X_{1,i} \;\;\sim\;\; \NormalDistn(\mu_1,\;\sigma^2) \qquad \text{for } i=1,\dots,n_1 \\
+X_{2,i} \;\;\sim\;\; \NormalDistn(\mu_2,\;\sigma^2) \qquad \text{for } i=1,\dots,n_2
+\]
+<p>We showed that the difference between the sample means was normally distributed,</p>
+\[
+\overline{X}_1 - \overline{X}_2 \;\;\sim\;\; \NormalDistn\left(\mu_1 - \mu_2,\;\sigma^2\left(\frac 1{n_1} + \frac 1{n_2}\right)\right)
+\]
+<p>and that the best estimate of the common variance, \(\sigma^2\), is</p>
+\[
+S_{\text{pooled}}^2 \;\;=\;\; \frac{(n_1 - 1)S_1^2 + (n_2 - 1)S_2^2}{n_1 + n_2 - 2}
+\]
+<p>The distribution of the pooled estimate of the variance is proportional to a chi-squared distribution,</p>
+\[
+\frac{n_1 + n_2 - 2}{\sigma^2}S_{\text{pooled}}^2 \;\;\sim\;\; \ChiSqrDistn(n_1 + n_2 - 2 \text{ df})
+\]
+<p>Our best estimate of the standard error of  \(
+\overline{X}_1 - \overline{X}_2\) was therefore shown to be</p>
+\[
+\se(\overline{X}_1 - \overline{X}_2) \;=\; \sqrt{S_{\text{pooled}}^2 \left(\frac 1{n_1} + \frac 1{n_2}\right) }
+\]
+<p class="heading">Testing for equal means</p>
+<p>We now consider a hypothesis test for whether the two means are equal,</p>
+<p class=eqn><strong><font size="+1">H</font><sub>0</sub></strong>&nbsp;:&nbsp;&nbsp;&nbsp;\(\mu_1 = \mu_2\)<br>
+	<strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>\(\mu_1 \ne \mu_2\)</p>
+<p>(or the corresponding one-tailed alternative). The following function of the data can be used as a test statistic since its distribution is fully known when the null hypothesis holds.</p>
+
+<div class="theoremProof">
+<div class="theorem">
+<p class="theoremTitle">Test statistic</p>
+<p>If \(\overline{X}_1\) and \(S_1^2\) are the mean and variance of a sample of \(n_1\) values from a \(\NormalDistn(\mu_1, \sigma^2)\) distribution and  \(\overline{X}_2\) and \(S_2^2\) are the mean and variance of an independent sample of \(n_2\) values from a \(\NormalDistn(\mu_2, \sigma^2)\) distribution,</p>
+\[
+T \;\;=\;\; \frac{\overline{X}_1 - \overline{X}_2}{\se(\overline{X}_1 - \overline{X}_2)}
+\;\;\sim\;\; \TDistn(n_1 + n_2 - 2 \text{ df})
+\]
+<p>provided \(\mu_1 = \mu_2\).</p>
+</div>
+
+<div class="proof">
+<p>The T variable can be rewritten as</p>
+
+\[ \begin{align}
+T \;\;&amp;=\;\; \frac{\overline{X}_1 - \overline{X}_2}{\sqrt{\sigma^2\left(\large \frac 1{n_1} + \frac 1 {n_2}\right)}} \div \sqrt{\frac{\left(\frac{\large n_1 + n_2 - 2}{\large \sigma^2} S_{\text{pooled}}^2 \right)} {n_1 + n_2 - 2}} \\
+&amp;\sim\;\; \NormalDistn(0,1) \div \sqrt{\frac{\ChiSqrDistn(n_1 + n_2 - 2 \text{ df})}{n_1 + n_2 - 2}} \\
+&amp;=\;\; \TDistn(n_1 + n_2 - 2 \text{ df})
+\end{align} \]
+</div>
+
+</div>
+
+<p>A p-value for the test is the probability of a value from this t distribution that is further from zero than the  value that is evaluated from the actual data. This will be demonstrated in a numerical example.</p>
+
+<div class="questionSoln">
+<div class="question">
+<p class="questionTitle">Example</p>
+<p>A botanist is interested in comparing the growth response of dwarf pea stems to two different levels of the hormone indoleacetic acid (IAA).  Using 16 day old pea plants the botanist obtains 5 millimetre sections and floats these sections on solutions with different hormone concentrations to observe the effect of the hormone on the growth of the pea stem.  Let \(X\) and \(Y\) denote respectively the independent growths that can be attributed to the hormone during the first 26 hours after sectioning for \((0.5 \times 10^{-4})\) and \(10^{-4}\) levels of concentration of  IAA. </p>
+<p>The botanist measured the growths of pea stem segments in millimetres for \(n_X = 11\) observations of \(X\):</p>
+<div class="centred">
+	<table border="0" cellpadding="5" cellspacing="0" class="centred" style="background-color:#FFFFFF; border:1px solid #999999;">
+		<tr>
+			<td style="padding:5px 10px;">0.8</td>
+			<td style="padding:5px 10px;">1.8</td>
+			<td style="padding:5px 10px;">1.0</td>
+			<td style="padding:5px 10px;">0.1</td>
+			<td style="padding:5px 10px;">0.9</td>
+			<td style="padding:5px 10px;">1.7</td>
+			<td style="padding:5px 10px;">1.0</td>
+			<td style="padding:5px 10px;">1.4</td>
+			<td style="padding:5px 10px;">0.9</td>
+			<td style="padding:5px 10px;">1.2</td>
+			<td style="padding:5px 10px;">0.5</td>
+		</tr>
+	</table>
+</div>
+<p>and \(n_Y = 13\) observations of \(Y\):</p>
+<div class="centred">
+	<table border="0" cellpadding="5" cellspacing="0" class="centred" style="background-color:#FFFFFF; border:1px solid #999999;">
+		<tr>
+			<td style="padding:5px 10px;">1.0<br>
+				1.8</td>
+			<td style="padding:5px 10px;">0.8<br>
+				2.5</td>
+			<td style="padding:5px 10px;">1.6<br>
+				1.4</td>
+			<td style="padding:5px 10px;">2.6<br>
+				1.9</td>
+			<td style="padding:5px 10px;">1.3<br>
+				2.0</td>
+			<td style="padding:5px 10px;">1.1<br>
+				1.2</td>
+			<td style="padding:5px 10px;">2.4<br>
+				&nbsp;</td>
+		</tr>
+	</table>
+</div>
+<p>Test whether the larger hormone concentration results in greater growth of the pea plants.</p>
+</div>
+
+<div class="solution">
+<p>This is a <strong>one-tailed test</strong> of the hypotheses</p>
+<p class=eqn><strong><font size="+1">H</font><sub>0</sub></strong>&nbsp;:&nbsp;&nbsp;&nbsp;\(\mu_X = \mu_Y\)<br>
+	<strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>\(\mu_X \lt \mu_Y\)</p>
+<p>For these data, \(\overline{x} = 1.027\), \(s_X^2 = 0.244\), \(\overline{y} = 1.662\) and \(s_Y^2 = 0.353\).</p>
+<p>Assuming that the variance, \(\sigma^2\), is the same in both groups, its pooled estimate is</p>
+\[
+s_{\text{pooled}}^2 \;=\; \frac{10\times s_X^2 + 12\times s_Y^2}{22} \;=\; 0.3033
+\]
+<p>The two-sample test statistic is</p>
+\[
+t \;\;=\;\; \frac{1.027 - 1.662}{\sqrt{0.3033 \left(\large \frac 1{11} + \frac 1{13}\right)}} \;\;=\;\; -2.81
+\]
+<p>The p-value for the test is the lower tail area of the \(\TDistn(22 \text{ df})\) distribution below this value,</p>
+<p class="eqn">p-value   =   \(P(T \le -2.81) \;\;=\;\; 0.0051\)</p>
+<p>We therefore conclude that there is very strong evidence that the mean growth of the  peas is higher at the higher hormone concentration.</p>
+</div>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

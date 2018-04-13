@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Confidence level if sigma is replaced by s</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="interval estimate, estimation, mean">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Unknown population standard deviation</p>
+
+<p>If we know the value of the population standard deviation, σ, 
+an interval estimate of the form</p>
+  <p class=eqn><img class="gif" src="../../en/ciMean/images/ci.gif" width="87" height="31"> 
+  </p>
+<p>has a confidence level of 0.95 &mdash; i.e. it is a 95% confidence interval.</p>
+<center>
+<table border="1" cellspacing="0" cellpadding="5" bgcolor="white" width="75%">
+<tr> 
+<th align="CENTER">In practice however, the value of σ 
+is rarely known.</th>
+</tr>
+</table>
+</center>
+<p>It is tempting to simply replace σ in the formula by its sample equivalent, <em>s</em>.</p>
+<p class=eqn><img class="gif" src="../../en/ciMean/images/bad95CI.gif" width="86" height="31"> 
+</p>
+<p>However the confidence level for an interval of this form is lower than 95% 
+-- the extra variability caused by estimating σ means that it is less likely that the interval will include µ. 
+When the sample size is large, the confidence level is close to 95% but the confidence 
+level can be much lower if the sample size is small.</p>
+<p>A confidence interval of this form would therefore give a misleading impression 
+of accuracy &mdash; we would be claiming to be 95% confident that it included µ, 
+but the true confidence level would be lower.</p>
+<center>
+<table border="1" cellspacing="0" cellpadding="5" bgcolor="white" width="75%">
+<tr> 
+<th align="CENTER">A different formula should be used if σ is unknown.</th>
+</tr>
+</table>
+</center>
+
+<br>
+
+<div class="diagram">
+
+<p class="heading">Simulation</p>
+
+<p>The diagram below initially shows a random sample of <em>n</em>&nbsp;=&nbsp;30 
+values from a normal population with µ&nbsp;=&nbsp;12 
+and σ&nbsp;=&nbsp;1. 
+It can show interval estimates calculated using σ&nbsp;=&nbsp;1 
+or using the sample standard deviation, <em>s</em>, 
+depending on the setting of the checkbox <strong>Use sample sd</strong>.</p>
+
+<table border="0" class="centred" cellpadding="10" cellspacing="0">
+<tr>
+<th>Using known σ&nbsp;=&nbsp;1</th>
+<th>Using sample sd, <em>s</em></th>
+</tr>
+<tr align="center" bgcolor="#FFFFFF"> 
+        <td><img class="gif" src="../../en/ciMean/images/ci.gif" width="87" height="31"></td>
+<td><img class="gif" src="../../en/ciMean/images/bad95CI.gif" width="86" height="31"></td>
+</tr>
+</table>
+
+<br>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="580" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="inferenceProg.EstimateSIntervalApplet">
+<param name="varName" value="Sample data">
+<param name="random" value="30 12 2 6497052 2.5">
+<param name="dataDecimals" value="2">
+<param name="meanName" value="Interval estimate is">
+<param name="summaryDecimals" value="3">
+<param name="horizAxis" value="6.8 17.2 8 2">
+<param name="summaryAxis" value="7.0 17.0 8 2">
+<param name="knownPopnSD" value="2.0">
+<param name="sampleSize" value="3 5 12 *30">
+<param name="kValue" value="1.96">
+<param name="customText" value="Propn including=Propn including#Use sample sd=Use sample sd">
+</applet>
+</div>
+
+<p>Click <strong>Accumulate</strong> and take about 100 samples. Observe that...</p>
+
+<ul>
+<li>When using intervals based on known σ&nbsp;=&nbsp;1, 
+about 95% include µ&nbsp;=&nbsp;12. 
+(Theory states that the probability is exactly 0.95.)</li>
+<li>Intervals based on <em>s</em> 
+are similar and again about 95% include µ&nbsp;=&nbsp;12. 
+The long-term probability is close to 0.95, but slightly less &mdash; not enough to 
+be noticeable in this type of simulation.</li>
+</ul>
+
+<p>Reduce the sample size to 5 and take another 100 samples. Observe now that...</p>
+
+<ul>
+<li>When using intervals based on known σ&nbsp;=&nbsp;1, 
+about 95% still include µ&nbsp;=&nbsp;12.</li>
+<li>When the intervals are based on <em>s</em>, 
+their widths vary from sample to sample. Click on the narrowest intervals and 
+observe that they correspond to samples whose values happen to be close together.</li>
+<li>Intervals based on <em>s</em> 
+now include µ&nbsp;=&nbsp;12 
+<strong>much less often than 95% of the time</strong>. (The theory is advanced, 
+but the confidence level of the interval is actually 88%, not 95%.)</li>
+</ul>
+
+<p>Repeat with a sample size of 3. When using the sample standard deviation, the 
+confidence level is even lower &mdash; 81% instead of 95%.</p>
+
+</div>
+
+<p>The interval estimate clearly needs to be modified in order to have a confidence 
+level of 95%, especially for small samples.</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

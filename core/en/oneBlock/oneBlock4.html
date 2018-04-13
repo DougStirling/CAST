@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Confidence intervals for differences</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	<meta name="index" content="randomised block design, confidence interval, paired data">
+	<meta name="dataset" content="Acupuncture and codiene">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<div class="centred"><div class="boxed">
+  	<p>The importance of grouping experimental units into blocks and allocating treatments in a randomised block design cannot be overemphasised. </p>
+  </div></div>
+  <p class="heading">Another illustration of the benefits from using blocks</p>
+  <p>The example below arises from a randomised block experiment with:</p>
+  <ul>
+  	<li>one control treatment against which we want to compare the other treatments</li>
+  	<li>a single replicate for each treatment per block</li>
+ 	</ul>
+  <p>For each comparison of a treatment to the control, the data are a paired sample of the form that was analysed in the previous section. In particular, we can calculate the difference between the treatment and control within each block and find a 95% confidence interval for the difference.</p>
+  <p>If the experiment had been conducted as a completely randomised experiment, we would have simply had two independent samples to use for each comparison &mdash; the set of response measurements for the control and those for the treatment that we are comparing to it. A two-sample 95% confidence interval for the difference between the means would be appropriate.</p>
+  <div class="centred"><div class="boxed">
+  	<p>In the example, we show that the confidence intervals are much narrower when using paired differences, supporting our claim that the randomised block design is more accurate.</p>
+  </div></div>
+	<br>
+	
+  <div class="diagram">
+		<p class="heading">Codeine and acupuncture for dental pain relief</p>
+  	<p>In a randomised block experiment, 32 subjects were grouped into blocks 
+  		of four according to an initial assessment of their tolerance to pain. Four 
+  		pain relief treatments were randomly allocated to the four patients in each 
+  		group and pain relief scores were recorded from each subject two hours after 
+  		dental treatment.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="pairBlockProg.BlockPairedDiffApplet">
+<param name="yVarName" value="Pain relief score">
+<param name="yValues" value="0.0 0.6 0.5 1.2 0.3 0.7 0.6 1.3 0.4 0.8 0.8 1.6 0.4 0.9 0.7 1.5 0.6 1.5 1.0 1.9 0.9 1.6 1.4 2.3 1.0 1.7 1.8 2.1 1.2 1.6 1.7 2.4">
+<param name="xVarName" value="Treatment">
+<param name="xLabels" value="Placebo Codeine Acupuncture #(Cod + Acu)#">
+<param name="xValues" value="0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3">
+<param name="blockVarName" value="Block (pain tolerance)">
+<param name="blockLabels" value="#Tol 1# #Tol 2# #Tol 3# #Tol 4# #Tol 5# #Tol 6# #Tol 7# #Tol 8#">
+<param name="blockValues" value="4@0 4@1 4@2 4@3 4@4 4@5 4@6 4@7">
+<param name="yAxis" value="0 2.5 0 0.5">
+<param name="jitter" value="0.0">
+<param name="initialR2" value="0.0">
+<param name="ciLabelName" value="95% CI for increase in mean Pain relief score">
+<param name="diffAxis" value="-0.3 2.0 0 0.5">
+<param name="decimals" value="3">
+<param name="blockName" value="blocks of subjects">
+<param name="customText" value="Show=Show#Analysis ignoring differences between=Analysis ignoring differences between#Correct analysis using paired differences=Correct analysis using paired differences">
+</applet>
+</div>
+  	<p>There is a control treatment (the placebo with no codeine and inactive 
+  		acupuncture points) so we will compare the three other treatments to this 
+  		one.</p>
+  	<dl>
+			<dt><span class="red">Incorrect analysis</span> based on independent 
+				samples</dt>
+  		<dd>The diagram initially shows 95% confidence intervals for the increase 
+  			in mean pain relief score based on a naive analysis that treats the data 
+  			as four independent samples &mdash; i.e. it shows two-sample confidence intervals 
+  			to compare each pair of treatments.</dd>
+ 		</dl>
+		<br>
+		<div class="centred"><div class="boxed">
+			<ul>
+				<li>With this incorrect analysis, all 
+					confidence intervals are wide. There seems to be considerable uncertainty 
+					about how much the treatments improve pain relief.
+				</li>
+			</ul>
+		</div></div>
+		<dl>
+			<dt><span class="red">Correct analysis</span> using paired differences</dt>
+			<dd>The samples are not independent &mdash; the 4 subjects in a block have similar 
+				pain relief scores. Click <strong>Show blocks of subjects</strong> then 
+				select <strong>Correct analysis using paired differences</strong> from 
+				the pop-up menu.</dd>
+		</dl>
+		<br>
+		<div class="centred"><div class="boxed">
+			<ul>
+				<li>There is a similar pattern within 
+					each block of subjects.</li>
+				<li>The 95% confidence intervals are 
+					much narrower and give strong evidence that the three treatments 
+					do improve pain relief.
+					</li>
+			</ul>
+		</div></div>
+
+<br>
+</div>
+		
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

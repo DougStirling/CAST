@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Distributions of sums of squares</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="sums of squares, chi-squared distribution, residual sum of squares, explained sum of squares">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class=heading>Chi-squared distributions and degrees of freedom</p>
+<p>As with other partitions of the total sum of squares, the explained and residual 
+sums of squares have chi-squared distributions when the data are sampled from 
+a model with certain characteristics. The degrees of freedom associated with these 
+sums of squares again add to the total degrees of freedom, <em>n</em>&nbsp;-&nbsp;1.</p>
+
+<p class=heading>Distribution of the residual sum of squares</p>
+<dl>
+<dt>Always...</dt>
+<dd>Irrespective of the underlying model's slope, β<sub>1</sub>,</dd>
+</dl>
+
+<p class=eqn><img src="images/ssResidDistn.gif" width="195" height="26"> </p>
+<br>
+
+
+<div class="diagram"> 
+<p class="heading">Demonstration</p>
+<p>The diagram allows samples to be selected from a normal linear model with σ&nbsp;=&nbsp;1. 
+The value of β<sub>1</sub> can be adjusted with the slider on the right.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.ResidSsqDistnApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="regnModel" value="5.5 0.0 1.0">
+<param name="randomSeed" value="3895705671">
+<param name="xAxis" value="0.5 4.5 1 1">
+<param name="yAxis" value="2.5 8.5 3 1">
+<param name="decimals" value="3">
+<param name="maxSsq" value="999.999">
+<param name="ssqAxis" value="0 40 0 5">
+<param name="slopeLimits" value="-1.00 1.00 0.00">
+<param name="noOfDataSets" value="3">
+<param name="dataName" value="5">
+<param name="dataName2" value="10">
+<param name="dataName3" value="20">
+<param name="xValues" value="1 1.75 2.5 3.25 4">
+<param name="xValues2" value="1.00 1.33 1.67 2.00 2.33 2.67 3.00 3.33 3.67 4.00">
+<param name="xValues3" value="1.00 1.16 1.32 1.47 1.63 1.79 1.95 2.11 2.26 2.42 2.58 2.74 2.89 3.05 3.21 3.37 3.53 3.68 3.84 4.00">
+<param name="customText" value="Residual sum of squares=Residual sum of squares">
+</applet> 
+</div>
+
+<p>Use the slider to adjust the underlying model's slope and observe that the 
+residuals (and residual sum of squares) remain the same. A non-zero slope therefore 
+has no effect on the distribution of the residual sum of squares.</p>
+<p>Click <strong>Take sample</strong> several times to build up the distribution 
+of the residual sum of squares and repeat for different sample sizes and underlying 
+model slopes. Observe that:</p>
+
+<div class="centred"><div class="boxed">
+<p>The distribution of the residual sum of squares is the same whether 
+or not the model's slope is zero.</p>
+</div></div>
+
+<br>
+
+</div>
+
+<p class=heading>Estimate of the error variance</p>
+<p>Since the mean of a chi-squared distribution equals its degrees of freedom, 
+the <strong>mean residual sum of squares</strong> is always a good (unbiased) 
+estimate of the error variance of the model, σ<sup>2</sup>.</p>
+<p class=eqn><img src="images/mssResidMean.gif" width="338" height="33" alt="MSSexplained and MSSresidual"> 
+</p>
+<p class=heading>Distribution of the explained sum of squares</p>
+<p><strong>Only when the explanatory variable has no effect on the response (the population 
+slope is zero)...</strong></p>
+<p class=eqn><img src="images/ssRegnDistn.gif" width="166" height="26"> </p>
+<p>The explained sum of squares only has a chi-squared distribution when β<sub>1</sub> is zero. If it is non-zero, the distribution of the explained sum of squares has 
+a larger mean.</p>
+
+<div class="diagram"> 
+<p class="heading">Demonstration</p>
+<p>In the next diagram, the underlying normal linear model's slope can again be 
+adjusted using the slider.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.ExplainedSsq2Applet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="regnModel" value="5.5 0.0 1.0">
+<param name="randomSeed" value="3895705671">
+<param name="xAxis" value="0.5 4.5 1 1">
+<param name="yAxis" value="2.5 8.5 3 1">
+<param name="decimals" value="3">
+<param name="maxSsq" value="999.999">
+<param name="ssqAxis" value="0 50 0 5">
+<param name="slopeLimits" value="-1.00 1.00 0.00">
+<param name="noOfDataSets" value="3">
+<param name="dataName" value="5">
+<param name="dataName2" value="20">
+<param name="dataName3" value="50">
+<param name="xValues" value="1 1.75 2.5 3.25 4">
+<param name="xValues2" value="1.00 1.16 1.32 1.47 1.63 1.79 1.95 2.11 2.26 2.42 2.58 2.74 2.89 3.05 3.21 3.37 3.53 3.68 3.84 4.00">
+<param name="xValues3" value="1.00 1.06 1.12 1.18 1.24 1.31 1.37 1.43 1.49 1.55 1.61 1.67 1.73 1.80 1.86 1.92 1.98 2.04 2.10 2.16 2.22 2.29 2.35 2.41 2.47 2.53 2.59 2.65 2.71 2.78 2.84 2.90 2.96 3.02 3.08 3.14 3.20 3.27 3.33 3.39 3.45 3.51 3.57 3.63 3.69 3.76 3.82 3.88 3.94 4.00">
+<param name="customText" value="Explained sum of squares=Explained sum of squares">
+</applet>
+</div>
+
+<p>Change the slope to 1.0 and take several samples. Observe that the distribution 
+of the explained sum of squares is higher than the chi-squared distribution that 
+would be expected if the underlying slope was zero.</p>
+<p>Observe also that the explained sum of squares tends to be highest:</p>
+
+<ul><li>when the sample size is large, and</li>
+<li>when the underlying slope is furthest from zero.</li></ul>
+
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Partial residual plots</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="partial residual plot, component plus residual plot, curvature, nonlinear relationship">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">'Importance' of the curvature</p>
+  <p>Scatterplots of residuals against <em>X</em> and <em>Z</em> are useful ways 
+		to detect whether a nonlinear function of <em>X</em> or <em>Z</em> should 
+		be used in the regression model. But what transformation of <em>X</em> or 
+		<em>Z</em> should be used in the model?</p>
+	
+<div class="centred"><div class="boxed">
+<p>The residual plots do not suggest the nature of the curvature 
+				or show its importance, relative to the linear relationship.</p>
+</div></div>
+
+	<p>To help show the nature of the curvature for each variable, <strong>partial 
+		residual plots</strong> (also called a <strong>component plus residual plot</strong>s) 
+		are often used. The partial residual plot for <em>X</em> simply adds the linear 
+		function of <em>X</em> back onto the residual before plotting against <em>X</em>.</p>
+	<p class=eqn>plot &nbsp; (<em>b<sub>1</sub>x<sub>i</sub></em> + <em>e<sub>i</sub></em>) 
+		&nbsp; against <em>&nbsp; x<sub>i</sub></em></p>
+	<p>A partial residual plot for <em>Z</em> is similar:</p>
+	<p class=eqn>plot &nbsp; (<em>b<sub>2</sub>z<sub>i</sub></em> + <em>e<sub>i</sub></em>) 
+		&nbsp; against <em>&nbsp; z<sub>i</sub></em></p>
+	
+<div class="centred"><div class="boxed">
+<p>Note that ordinary residual plots should be used to detect whether 
+				there is <strong>any</strong> curvature. Only use partial 
+				residual plots <strong>after</strong> you have discovered 
+				that there is some curvature.</p>
+</div></div>
+
+	<p class="gray">(Using a similar definition for simple linear regression 
+		with only a single explanatory variable, <em>X</em>, the partial residual 
+		plot would be simply a plot of <em>Y</em> against <em>X</em>.)</p>
+	<div class="diagram">
+    <p class="heading">Artificial illustration</p>
+
+    <p>The diagram below again shows the artificial data set from the previous 
+			page in which the residual plots indicated nonlinearity in the relationship 
+			of <em>Y</em> with <em>Z</em>.</p>
+    <div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="380">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="residTwoProg.PartialResidApplet">
+<param name="yVarName" value="Response, Y">
+<param name="xVarName" value="X">
+<param name="zVarName" value="Z">
+<param name="yValues" value="21.095 28.179 19.819 20.970 16.309 26.416 26.106 17.782 17.433 27.369 14.255 18.507 17.566 21.764 23.600 28.329 19.638 12.526 19.386 10.890 16.886 27.742 26.023 18.347 17.390 15.421 7.403 12.318 17.596 8.003 16.699 16.363 21.269 13.662 15.546 18.389 13.054 22.151 18.024 30.142 5.016 17.929 16.461 5.450 29.170 13.279 12.547 31.718 13.795 22.499">
+<param name="xValues" value="3.524 4.175 2.861 1.943 2.905 4.691 4.440 3.555 3.118 3.205 2.422 3.243 2.689 3.569 4.601 4.249 3.454 2.242 4.121 2.118 3.724 3.925 3.676 3.471 3.653 2.879 1.940 3.083 2.502 2.143 2.976 2.409 4.587 2.243 2.022 3.274 2.182 2.721 1.506 4.141 1.370 2.358 2.900 1.131 4.891 2.182 2.340 4.337 3.366 4.429">
+<param name="zValues" value="6.421 8.465 7.460 9.570 5.451 6.374 6.857 5.406 5.737 9.416 6.082 6.234 7.034 7.030 5.217 8.194 5.975 5.356 4.229 5.672 3.645 8.157 8.549 5.440 4.320 4.946 2.320 1.210 7.099 2.172 5.704 6.979 2.859 6.145 7.305 6.440 5.891 8.399 9.129 8.985 3.525 7.602 5.740 5.680 7.334 6.172 5.394 9.212 2.312 4.787">
+<param name="yAxis" value="0 35 0 5">
+<param name="xAxis" value="1 5 1 1">
+<param name="zAxis" value="1 10.2 2 2">
+<param name="residAxis" value="-3 3 -3 1">
+<param name="partialResidAxis" value="0 25 0 5">
+<param name="customText" value="Color crosses=Color crosses#Rotate to Comp+Resid=Rotate to Comp+Resid#Component plus residual=Component plus residual">
+</applet> 
+</div>
+
+    <p>Select <strong>Component plus residual</strong> from the pop-up menu on 
+			the top to display the partial residual plot for <em>X</em>. This simply 
+			adds back the linear trend in <em>X</em>.</p>
+		<p>Repeat for the variable <em>Z</em>.</p>
+		
+<div class="centred"><div class="boxed">
+<p>The partial residual plot suggests that the relationship of 
+					<em>Y</em> with <em>Z</em> is flatter at low z-values.</p>
+</div></div>
+
+	  <p>Display a partial residual plot for <em>Z</em> on the right, then click 
+			the y-z rotation button to rotate the 3-dimensional scatterplot to plot 
+			<em>Y</em> against <em>Z</em>. Now click <strong>Rotate to Comp+Resid</strong>. 
+			The resulting rotation of the 3-dimensional scatterplot removes the linear 
+			trend in <em>X</em> and is identical to the partial residual plot on the 
+			right.</p>
+		</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Applications of classical definition</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="probability">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Calculations using the classical definition of probability</p>
+
+<p>In phenomena where we can argue that outcomes are equally likely, calculating the probabilities of  events involves counting outcomes — both counting the outcomes in the event itself and those in the sample space. The following result is often useful.</p>
+
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Mathematical result (should be known from maths)</p>
+		<p>The number of ways to choose \(x\) items from a population of \(n\) items when the order of choosing them is unimportant is</p>
+		\[
+		{n \choose x} \;=\; \frac {n!} {x!\;(n-x)! }
+		\]
+	</div>
+
+	<div class="proof">
+		<p>There are \(n\) different ways to pick the first of the items. After it has been selected, there are \((n &minus; 1)\) ways to select a second item. Similarly, there are \((n &minus; 2)\) ways to select the third item, ..., and \((n &minus; x + 1)\) ways to select the \(x\)'th item. The total number of these choices of items is therefore</p>
+		\[
+		n(n-1)(n-2)...(n-x+1) = \frac {n!} {(n-x)!}
+		\]
+		<p>However the same choice of \(x\) items can be chosen in different orders. For example, it might include (A,B,C) and also (A,C,B) and all other orderings of these three items. In general, there are \(x!\) ways that \(x\) items could be ordered, so each distinct selection is included \(x!\) times in the above count of choices.</p>
+		<p>If we ignore the order of choosing the items, the number of distinct choices is therefore</p>
+		\[
+		\frac {n!} {(n-x)! \times x!}
+		\]
+	</div>
+</div>
+<p>We now give an example involving counting of outcomes.</p>
+
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Example</p>
+		<p>If five cards are dealt at random from a pack of 52, what is the probability that all five cards are of the same suit?</p>
+	</div>
+
+	<div class="solution">
+		<p>Each outcome from this experiment is a distinct choice of five cards from the 52, so the sample space contains all possible choices of five cards. If the cards are fairly selected from a well-shuffled pack, each choice of five cards is equally likely.</p>
+		<p>There are \(52 \choose 5\) ways to choose 5 cards from the 52, so this is the number of outcomes in our sample space.</p>
+		<p>We now need to count the number of these outcomes that result in all five cards having the same suit — the event of interest. There are \(13 \choose 5\) ways that five clubs might be chosen from the 13 in the pack, and the same numbers of outcomes resulting in five spades, hearts and diamonds. The number of outcomes resulting in five cards of the same suit (called a <em>flush</em>) is therefore \(4 \times {13 \choose 5}\).</p>
+		<p>The probability of getting a flush is therefore</p>
+		\[
+		P(flush) = \frac {4 \times {13 \choose 5}} {52 \choose 5} = \frac {4 \times \frac {13!} {5!8!}} {\frac {52!} {5! 47!}}
+		= \frac {4 \times 13 \times 12 \times 11 \times 10 \times 9} {52 \times 51 \times 50 \times 49 \times 48}
+		= 0.00198
+		\]
+	</div>
+
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

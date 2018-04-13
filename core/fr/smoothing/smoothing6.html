@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Lissage Lowess de diagrammes de dispersion</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="lowess">
+	<meta name="dataset" content="US defence investment">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Lissage local de diagrammes de dispersion</p>
+<p>Lowess peut être utilisée pour lisser les séries chronologiques, mais a été initialement développée comme une manière générale pour dessiner une courbe lisse sur tout type de diagramme de dispersion. Encore une fois, la valeur lissée pour toute observation est obtenue en ajustant une ligne de carrés au moins les observations avec des valeurs voisines de la variable explicative. Les valeurs ajustées qui sont obtenus de cette façon sont rejoints par des lignes.</p>
+<p>(La plupart des logiciels d'ordinateur implémente une version de lowess qui est une réalité peu plus complexe que a été décrite ici, mais notre version simplifiée donne un bon goût de la méthode.)</p>
+<div class="diagram">
+<p class="heading">Rose oïdium</p>
+
+	<p>Le nuage de points suivant montre les résultats d'une expérience qui a été menée afin de déterminer comment la période de latence (temps en jours de l'infection initiale à sporation) de rose oïdium est affectée par la température.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="370">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="loessProg.LoessApplet">
+<param name="xVarName" value="Temp (C)">
+<param name="yVarName" value="Péériode de latence (jours)">
+<param name="xValues" value="18.0 20.8 23.7 18.0 25.7 9.7 13.6 25.6 18.4 25.4 17.2 10.5 25.1 10.9 21.6 17.9 11.4 20.0 23.6 11.8 21.8 23.9 19.3 19.5 23.3 8.4 24.6 17.8 15.5 16.9 9.4 21.7 17.4 8.4 25.5 23.8 14.2 23.3 15.8 13.7 9.0 17.8 19.7 13.0 22.5 17.9 16.8 8.5 17.5 15.1 22.1 23.5 24.9 26.0 16.0 15.7 10.2 21.7 24.5">
+<param name="yValues" value="6.5 7.1 7.0 5.9 7.0 10.5 9.7 7.6 6.8 7.3 7.3 11.7 7.2 10.5 6.2 6.5 11.5 5.9 5.8 9.1 5.9 6.5 6.4 6.5 6.3 13.4 7.0 8.0 8.3 7.7 12.7 6.8 7.3 14.5 7.2 7.2 8.4 6.6 7.7 9.4 13.5 6.1 5.4 9.6 6.3 8.1 6.6 14.3 6.6 6.9 5.5 6.6 5.7 8.1 8.0 8.0 10.6 6.3 7.8">
+<param name="horizAxis" value="7 27 8 2">
+<param name="vertAxis" value="4 16 4 2">
+<param name="windowWidth" value="-1 -1">
+<param name="labelAxes" value="true">
+<param name="customText" value="Window width=Largeur de fenêtre">
+</applet>
+</div>
+
+		<p>Comme dans la page précédente, faites glisser sur la croix pour voir les 'voisins' les valeurs qui sont utilisées pour les moindres carrés qui fournit chaque «lissée» valeur.</p>
+	<p>Utilisez le curseur pour régler la &quot;largeur de la fenêtre». Fenêtres d'environ 10 points adjacents donnent une courbe assez lisse.</p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Likelihood function</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="estimation, likelihood function, binomial distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Alternative to the method of moments</p>
+
+<p>The method of moments often provides a good estimator when there is a <strong>single</strong> unknown parameter, but another general estimation method called <strong>maximum likelihood</strong> is far more general. It can be used for models with several unknown parameters and even situations in which the available data are not a random sample.</p>
+<p class="heading">Likelihood function</p>
+<p>The joint probability of  \(\{X_1, X_2, \dots, X_n\}\) may involve an unknown parameter, \(\theta\).</p>
+\[
+p(x_1, x_2, \dots, x_n \;| \; \theta)
+\]
+<p>For example, if the variables are a random sample from a \(\GeomDistn(\pi)\) distribution, independence means that the joint probability is</p>
+\[
+P(X_1=x_1 \textbf{ and } X_2=x_2 \textbf{ and } \dots \textbf{ and } X_n=x_n) = \prod_{i=1}^n {\pi (1-\pi)^{x_i-1}} \]
+<p>The likelihood function is defined from this.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+<p>If random variables \(\{X_1, X_2, \dots, X_n\}\) have joint probability</p>
+\[
+p(x_1, x_2, \dots, x_n \;| \; \theta)
+\]
+<p>then the function</p>
+\[
+L(\theta \; | \; x_1, x_2, \dots, x_n) \;=\; p(x_1, x_2, \dots, x_n \;| \; \theta)
+\]
+<p>is called the <strong>likelihood function</strong> of \(\theta\).</p>
+</div>
+
+<p>The likelihood function  tells you the probability of getting the data that were observed, for different values of the parameter, \(\theta\). More informally,</p>
+<div class="boxed">
+	<p class="eqn">\(L(\theta) = Prob(\text{getting the data that were observed})\) if the parameter value was really \(\theta\).</p>
+</div>
+<p>We now give a simple example.</p>
+<div class="example">
+	
+	<p class="exampleHeading">Binomial random variable</p>
+
+<p>If \(X\)  is the number of successes in \(n=20\) independent trials, each with probability \(\pi\) of success, its probability function is</p>
+\[
+p(x \; | \; \pi) = {{20} \choose x} \pi^x(1-\pi)^{20-x} \quad \quad \text{for } x=0, 1, \dots, 20
+\]
+<p>If  we observed \(x=6\) successes, this would have probability</p>
+\[
+p(6 \; | \; \pi) = {{20} \choose 6} \pi^6(1-\pi)^{14} = (38,760) \times 
+\pi^6(1-\pi)^{14} \]
+<p>The likelihood function treats this as a function of \(\pi\),</p>
+\[
+L(\pi) \;=\; p(6 \; | \; \pi) \;=\; (38,760) \times 
+\pi^6(1-\pi)^{14} \]
+<p>The likelihood function gives the probability of getting the data that we observed (6 successes) for different values of \(\pi\). For example, if \(\pi = 0.4\), the probability of observing \(x = 6\) would be 0.124.</p>
+<p class="eqn"><img src="images/s_likelihood.png" width="520" height="225"  alt=""/></p>
+<p>From the likelihood function we could also find:</p>
+<ul>
+	<li>If \(\pi = 0.1\), the probability of getting 6 successes is only 0.0089.</li>
+</ul>
+
+<p>Since there would be such a low probability of observing our actual data if \(\pi\) was 0.1, this throws some doubt on whether this would be the <strong>correct</strong> value of the parameter \(\pi\).</p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

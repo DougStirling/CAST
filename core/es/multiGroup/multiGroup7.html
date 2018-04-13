@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Test for differences between groups</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="comparing groups, hypothesis test, sums of squares, f ratio, analysis of variance">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Hypothesis test</p>
+<p>The coefficient of determination, R<sup>2</sup>, summarises the proportion 
+of variation in the data that can be explained by differences between the groups. It 
+does not however indicate whether this is bigger than could be expected by chance. 
+Formally, we want to test whether the group means are the same:</p>
+<p style="margin-left:200; color:#000000"><font size="+1" face="Arial, Helvetica, sans-serif"><strong>H</strong></font><font face="Arial, Helvetica, sans-serif"><strong><sub>0</sub></strong></font> : &nbsp; µ<sub><em>i</em></sub> &nbsp;=&nbsp; µ<sub><em>j</em></sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>for all i and j</em><br>
+		<font size="+1" face="Arial, Helvetica, sans-serif"><strong>H</strong></font><font face="Arial, Helvetica, sans-serif"><strong><sub>A</sub></strong></font>: &nbsp; µ<sub><em>i</em></sub> &nbsp;≠&nbsp; µ<sub><em>j</em></sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>for at least some i, j</em></p>
+<p>This hypothesis test also depends on the sums of squares but uses them in a 
+different way.</p>
+<center>
+<table border="1" cellspacing="0" cellpadding="5" bgcolor="white" width="75%">
+<tr> 
+<th align="CENTER"><strong>The hypothesis test cannot be fully explained here. 
+You should use computer software to evaluate the p-value for the test, but we 
+will briefly describe some of the steps.</strong></th>
+</tr>
+</table>
+</center>
+<p class="heading">Mean sums of squares</p>
+
+<p>The first step in evaluating the p-value for the test is to divide each of 
+the three sums of squares by a value called its <strong>degrees of freedom</strong> 
+to obtain a <strong>mean sum of squares</strong>.</p>
+<table width="90%" border="0" class="centred" cellpadding="6" cellspacing="0" bgcolor="#FFFFFF">
+<tr> 
+<td><object data="images/totalMss.svg" width="139" height="45" alt="SStotal"></object></td>
+<td><font color="#009900">The <strong>mean total sum of squares</strong> is the 
+sample variance of the response (ignoring groups).</font></td>
+</tr>
+<tr> 
+<td><object data="images/residMss.svg" width="143" height="45" alt="SStotal"></object></td>
+<td><font color="#0000FF">The <strong>mean within-group sum of squares</strong> 
+is the pooled estimate of the variance within groups.</font></td>
+</tr>
+<tr> 
+<td><object data="images/regnMss.svg" width="167" height="45" alt="SStotal"></object></td>
+<td><font color="#FF0000">The <strong>mean between-group sum of squares</strong> 
+is harder to directly interpret.</font></td>
+</tr>
+</table>
+
+<p>We explained earlier that the total sum of squares equals the sum of the within-group and between-group sums of squares. Note that the same relationship also holds for the degrees of freedom (the denominators of the above definitions) &mdash; the total degrees of freedom are  the sum of the within-group and between-group degrees of freedom.</p>
+<p class="heading">F ratio and p-value</p>
+<p>The test statistic is the ratio of the between- and within-group mean sums 
+of square. It is called an <strong>F-ratio</strong>.</p>
+
+<p class=eqn><object data="images/fRatio.svg" width="116" height="41"></object></p>
+<p>This test statistic compares between- and within-group variation:</p>
+
+<ul>
+<li>The further apart the group means, the bigger the between-group mean sum of 
+squares and hence the higher the F-ratio.</li>
+<li>The lower the variation within each group, the smaller the within-group mean 
+sum of squares and hence the higher the F-ratio.</li>
+</ul>
+
+<br>
+
+<center>
+<table border="1" cellspacing="0" cellpadding="7" bgcolor="white" width="75%">
+<tr> 
+<th align="CENTER"><strong>Large values of F suggest that H<sub>0</sub> does not hold &mdash; 
+that the group means are not the same.</strong></th>
+</tr>
+</table>
+</center>
+<p>The p-value for the test gives the probability of such a high F ratio if <strong>H<sub>0</sub></strong> 
+is true (all group means are the same). It is based on a standard distribution 
+called an <strong>F distribution</strong> and is interpreted in the same way as 
+other p-values. </p>
+<center>
+<table border="1" cellspacing="0" cellpadding="7" bgcolor="white" width="75%">
+<tr> 
+<th align="CENTER"><strong>The closer the p-value to zero, the stronger the evidence 
+that H<sub>0</sub> does not hold.</strong></th>
+</tr>
+</table>
+</center>
+<p class="heading">Analysis of variance table</p>
+<p>The calculations are usually presented in a table called an <strong>analysis 
+of variance table</strong>. (This is often abbreviated to an <strong>anova table</strong>.)</p>
+<p class=eqn><object data="images/anovaTable2.svg" width="596" height="192"></object></p>
+<div class="diagram"> 
+<p class="heading">Illustration of calculations</p>
+<p>The dot plots on the left below show 3 numerical measurements from each of 
+4 groups. </p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="380">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.AnovaTableApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="xLabels" value="#Group A# #Group B# #Group C# #Group D#">
+<param name="anovaModel" value="7 1 14 1 12 1 4 1">
+<param name="randomSeed" value="614945782">
+<param name="yAxis" value="0 20 0 5">
+<param name="decimals" value="3">
+<param name="maxSummaries" value="9999.99 999.99 999.99 9.999">
+<param name="initialR2" value="0.75">
+<param name="componentName" value="Total#Between groups#Within groups">
+<param name="noOfDataSets" value="3">
+<param name="dataName" value="3 per group">
+<param name="xValues" value="3@0 3@1 3@2 3@3">
+<param name="dataName2" value="5 per group">
+<param name="xValues2" value="5@0 5@1 5@2 5@3">
+<param name="dataName3" value="20 per group">
+<param name="xValues3" value="20@0 20@1 20@2 20@3">
+<param name="customText" value="Variability=Variability#All unexplained=All unexplained#All explained=All explained#Variation in Data=Variation in Data">
+</applet>
+</div>
+
+<p>The slider adjusts the relative size of the between-group and within-group 
+sums of squares. Observe how this affects the p-value for the test.</p>
+<ul><li>The greater the proportion of explained variation, the larger the F-ratio and 
+the closer the p-value becomes to zero.</li></ul>
+<p>Use the pop-up menu to increase the sample size and observe that a smaller 
+amount of explained variation is needed to obtain a small p-value (and hence strong 
+evidence that the underlying group means are different).</p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

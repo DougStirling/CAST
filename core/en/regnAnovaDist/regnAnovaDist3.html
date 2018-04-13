@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Analysis of variance test</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Is the model's slope zero?</p>
+<p>We now use analysis of variance to test whether there is a relationship between 
+the response, <em>Y</em>, and an explanatory variable, <em>X</em>. This is expressed 
+in terms of the normal linear model parameters as:</p>
+<p class=eqn><span class="blue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&beta;<sub>1</sub> &nbsp;=&nbsp; 0<br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&beta;<sub>1</sub>  &nbsp;&ne;&nbsp;  0</span> 
+</p>
+<p class="heading">Test statistic</p>
+<p>The F ratio can be used as a test statistic since its distribution is known 
+when the null hypothesis is true. High values of F suggest that β<sub>1</sub> is not zero. </p>
+<div class="centred"><table width="75%" border="0" class="centred" cellpadding="0" cellspacing="4">
+<tr> 
+<td>When β<sub>1</sub> 
+is zero,</td>
+      <td><img src="../regnAnova/images/fDistn.gif" width="235" height="38" alt="SStotal = SSexplained + SSresidual"></td>
+</tr>
+<tr> 
+<td>When β<sub>1</sub> 
+is non-zero,</td>
+<td><span class="bold black">The F ratio will tend to be higher</span> </td>
+</tr>
+</table></div>
+
+<p class=heading>P-value</p>
+<p>The p-value for the test is therefore the upper tail area of the F distribution 
+&mdash; the probability of getting such a high F ratio if the null hypothesis were 
+true. </p>
+  <p class=eqn><img src="../regnAnova/images/fPValue.gif" width="450" height="261"> 
+  </p>
+<br>
+
+<div class="diagram"> 
+
+<p class="heading">Illustration</p>
+
+<p>The next diagram again allows samples to be selected from a normal linear model 
+with σ&nbsp;=&nbsp;10.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.FTailAreaApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="regnModel" value="55 0 10">
+<param name="randomSeed" value="3895705671">
+<param name="xAxis" value="0.5 4.5 1 1">
+<param name="yAxis" value="25 85 30 10">
+<param name="decimals" value="3">
+<param name="maxSsq" value="9999.999">
+<param name="maxMeanSsq" value="9999.999">
+<param name="maxF" value="999.99">
+<param name="ssqAxis" value="0 15 0 2">
+<param name="slopeLimits" value="-10.0 10.0 0.0">
+<param name="areaProportion" value="0.05">
+<param name="noOfDataSets" value="3">
+<param name="dataName" value="5">
+<param name="dataName2" value="20">
+<param name="dataName3" value="50">
+<param name="xValues" value="1 1.75 2.5 3.25 4">
+<param name="xValues2" value="1.00 1.16 1.32 1.47 1.63 1.79 1.95 2.11 2.26 2.42 2.58 2.74 2.89 3.05 3.21 3.37 3.53 3.68 3.84 4.00">
+<param name="xValues3" value="1.00 1.06 1.12 1.18 1.24 1.31 1.37 1.43 1.49 1.55 1.61 1.67 1.73 1.80 1.86 1.92 1.98 2.04 2.10 2.16 2.22 2.29 2.35 2.41 2.47 2.53 2.59 2.65 2.71 2.78 2.84 2.90 2.96 3.02 3.08 3.14 3.20 3.27 3.33 3.39 3.45 3.51 3.57 3.63 3.69 3.76 3.82 3.88 3.94 4.00">
+<param name="customText" value="Explained=Explained#F distn if true slope is zero=F distn if true slope is zero">
+</applet> 
+</div>
+
+<p>The grey distribution at the bottom is the theoretical F distribution for the 
+F-ratio if the model's slope is really zero (<strong>H<sub>0</sub></strong>). 
+The tail-area above the F-ratio from the current sample is highlighted &mdash; it is 
+the p-value for the test.</p>
+<p>Click <strong>Another Data Set</strong> several times when the underlying slope 
+is zero (i.e. <strong>H<sub>0</sub></strong> holds). Observe that the p-values 
+are usually fairly large, though about 1 in 20 will be below 0.05 and about 1 
+in 100 will be below 0.01.</p>
+<p>Increase the slope to 10.0 and take more samples. Observe that the F-ratio 
+is often high with the p-value for the test close to zero, which we interpret 
+as giving strong evidence that the underlying slope is non-zero (<strong>H<sub>A</sub></strong>).</p>
+<p>Increase the sample size and repeat. If the underlying slope is non-zero, increasing 
+the sample size tends to result in a larger F-ratio and smaller p-value. In other 
+words, if the slope really is non-zero, a larger sample size is more likely to 
+detect it!</p>
+
+<div class="boxed"><p>Note that about 10% of the area under the F distribution is higher 
+than 5.0 when <em>n</em>&nbsp;=&nbsp;5 (and about 4% when <em>n</em>&nbsp;=&nbsp;50). 
+It is a very skew distribution with an <strong>extremely</strong> 
+long tail!!</p></div>
+<br>
+  </div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Scale and location examples</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="scale parameter, location parameter, rectangular distribution, gamma distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p class="heading">Reparameterisation of a family of distributions</p>
+<p>Reparameterisation of a family of distributions may be necessary before we can identify location and scale parameters.</p>
+<div class="example">
+	<p class="exampleHeading">Rectangular distribution</p>
+	<p>If the family of rectangular distributions is defined with parameters \(\alpha\) and \(\beta\) so that the pdf of \(X\) is</p>
+	\[
+f(x) = \begin{cases}
+\frac {\large 1} {\large \beta-\alpha} &amp; \quad\text{for } \alpha \lt x \lt \beta \\[0.2em]
+0 &amp; \quad\text{otherwise}
+\end{cases}
+\]
+<p>then neither \(\alpha\) nor \(\beta\) can be considered to be location or scale parameters.</p>
+\[
+Y = a + bX \sim \RectDistn(a + b\alpha, a + b\beta)
+\]
+<p> However if the distribution is reparameterised as having pdf</p>
+\[
+f(x) = \begin{cases}
+\frac {\large 1} {\large \phi} &amp; \quad\text{for } \alpha \lt x \lt \alpha + \phi\\[0.2em]
+0 &amp; \quad\text{otherwise}
+\end{cases}
+\]
+<p>then \(Y = a + bX\) has a rectangular distribution with pdf</p>
+\[
+f_Y(y) = \begin{cases}
+\frac {\large 1} {\large b\phi} &amp; \quad\text{for } (a + b\alpha) \lt y \lt (a + b\alpha) + b\phi\\[0.2em]
+0 &amp; \quad\text{otherwise}
+\end{cases}
+\]
+<p>This is a rectangular distribution with parameters \(\alpha^* = a + b\alpha\) and \(\phi^* = b\phi\) so \(\alpha\) and \(\phi\) are location and scale parameters.</p>
+</div>
+
+<p>In the following example, reparameterisation is again necessary before a scale parameter can be found.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Example</p>
+		<p>In a \(\GammaDistn(\alpha, \beta)\) distribution, show that \(\phi = \frac {\large 1}{\large \beta}\) is a scale parameter.</p>
+	</div>
+	<div class="solution">
+		<p>If \(X \sim \GammaDistn(\alpha, \beta)\), it has pdf </p>
+\[
+	f_X(x) \;\;=\;\; \begin{cases} \dfrac {\beta^\alpha}{\Gamma(\alpha)} x^{\alpha - 1} e^{-x\beta}&amp; \quad\text{if }x \gt 0 \\[0.2em]
+	0 &amp; \quad\text{otherwise}
+	\end{cases} \]
+		<p>In terms of parameters \(\alpha\)	and	\(\phi\), this can be written as</p>
+\[
+	f_X(x) \;\;=\;\; \begin{cases} \dfrac {1}{\phi^\alpha\Gamma(\alpha)} x^{\alpha - 1} e^{-\frac x{\phi}}&amp; \quad\text{if }x \gt 0 \\[0.2em]
+	0 &amp; \quad\text{otherwise}
+	\end{cases} \]
+		<p>The pdf of \(Y = aX\) can be found from the general result about the pdf of a monotonic transformation of a variable.</p>
+\[ \begin{align}
+f_Y(y) \;\;=\;\;\frac 1 a f_X\left(\frac y a\right) \;\;&amp;=\;\; \dfrac {1}{a \phi^\alpha \Gamma(\alpha)} \left(\frac y a\right)^{\alpha - 1} e^{-\frac {y}{a \phi}} \\[0.4em]
+&amp;=\;\; \dfrac {1}{(a \phi)^\alpha \Gamma(\alpha)} y^{\alpha - 1} e^{-\frac {y}{a \phi}}
+\end{align} \]
+		<p>for \(y \gt 0\). This is the pdf of a Gamma distribution with the parameter \(\phi\) replaced by \((a\phi)\), showing that \(\phi\) is a scale parameter.</p>
+	</div>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

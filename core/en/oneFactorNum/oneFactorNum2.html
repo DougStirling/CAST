@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Linear and quadratic models</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="numerical factor, model, normal model, linear model, quadratic model">
+	<meta name="dataset" content="Antibiotic effectiveness">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Model with linear term</p>
+<p>The most general model for the effect of a factor is</p>
+<p class="eqn"><span class="black em">y<sub>ij</sub></span> &nbsp;= &nbsp;<span class="green">µ</span> &nbsp; + &nbsp; <span class="blue">β<em><sub>i</sub></em></span> &nbsp; + &nbsp; <span class="red">ε<em><sub>ij</sub></em></span> &nbsp; &nbsp; &nbsp; for <em>i</em> = 1 to <em>g</em> and <em>j</em> = 1 to <em>n<sub>i</sub></em></p>
+<p>where <span class="black em">y<sub>ij</sub></span> is the <em>j</em>'th of the <em>n<sub>i</sub></em> replicates getting factor level <em>i </em>and <span class="eqn"><span class="red">ε<em><sub>ij</sub></em></span> is the normally distributed&nbsp;(0, σ)</span> term representing unexplained variation within factor levels.</p>
+<p>A simple model that ensures  smoothness in how a numerical factor affects the response replaces the term <span class="blue">β<em><sub>i</sub></em></span> with a  linear term in the numerical value for the factor,<em> x<sub>i</sub></em>.</p>
+<p class="eqn"><span class="black em">y<sub>ij</sub></span> &nbsp;= &nbsp;<span class="green">µ</span> &nbsp; + &nbsp; <span class="blue">β&nbsp;<em>x<sub>i</sub></em></span> &nbsp; + &nbsp; <span class="red">ε<em><sub>ij</sub></em></span> &nbsp; &nbsp; &nbsp; for <em>i</em> = 1 to <em>g</em> and <em>j</em> = 1 to <em>n<sub>i</sub></em></p>
+<p>This constrains the mean response to change linearly with <em>x<sub>i</sub></em>.</p>
+<p class="heading">Model allowing some curvature</p>
+<p>A more flexible model that still specified smoothness in the relationship but also allows some curvature  adds a quadratic term,</p>
+<p class="eqn"><span class="black em">y<sub>ij</sub></span> &nbsp;= &nbsp;<span class="green">µ</span> &nbsp; + &nbsp; <span class="blue">β&nbsp;<em>x<sub>i</sub></em></span> &nbsp; + &nbsp;<span class="purple">γ<em>&nbsp;x<sub>i</sub></em><sup>2</sup></span>&nbsp; + &nbsp; <span class="red">ε<em><sub>ij</sub></em></span> &nbsp; &nbsp; &nbsp; for <em>i</em> = 1 to <em>g</em> and <em>j</em> = 1 to <em>n<sub>i</sub></em></p>
+<p>It is important to look at a scatterplot of the data to investigate whether the relationship seems reasonably linear or quadratic  before fitting these models.</p>
+<p class="heading">Least squares</p>
+<p>As with all other models that we have previously considered, the parameters of the linear and quadratic models<span class="blue em"><sub></sub></span>  can be estimated to minimise the sum of squares of the model residuals &mdash;  i.e. by least squares.</p>
+<div class="diagram">
+<p class="heading">Antibiotic effectiveness</p>
+
+    <p>An experiment was conducted to assess how well an antibiotic, <em>polymyxin 
+      B</em>, killed the bacterium, <em>Brucella bronchiseptica</em>. Petri dishes 
+      containing the bacterium (grown in agar) were used and different doses of 
+      the antibiotic were added. The diameter of the area cleared around the addition 
+      point were recorded. Each of 6 different doses of antibiotic was used 10 
+    times.</p>
+    <p>(Note that the crosses have been jittered a little (randomly moved) to separate them in 
+			the scatterplot.)</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="exper2Prog.DragFactorMeansApplet">
+<param name="yVarName" value="Inhibition diameter(mm)">
+<param name="yValues" value="13.6 13.5 14.9 14.5 14.5 14.8 14.4 14.5 13.9 14.7 14.5 14.4 15.8 15.4 15.4 15.7 15.3 15.4 14.8 15.6 15.6 15.4 16.2 15.9 16.2 16.0 15.9 15.5 16.1 16.5 15.8 15.6 16.8 16.6 16.6 17.0 16.0 15.8 16.2 16.6 16.2 16.0 17.4 17.2 17.2 16.8 17.2 17.4 16.2 17.1 16.5 16.4 17.8 17.7 18.1 17.5 17.3 17.2 16.5 16.7">
+<param name="xVarName" value="Conc of antibiotic">
+<param name="xValues" value="10@0 10@1 10@2 10@3 10@4 10@5">
+<param name="xLabels" value="40 60 80 100 120 140">
+<param name="yAxis" value="13.0 18.5 13 1">
+<param name="modelType" value="mean linear quadratic factor">
+<param name="initialise" value="ls">
+<param name="showRss" value="true">
+<param name="maxRss" value="999.99">
+<param name="showResiduals" value="true">
+<param name="customText" value="Mean only=Mean only#Linear=Linear#Quadratic=Quadratic#means=means">
+</applet>
+</div>
+
+    <p>The pop-up menu can display the four different types of model on the diagram &mdash; the simplest model where the antibiotic does not affect the response, the linear and quadratic models and the most general model that does not impose any smoothness in the response means at the different factor levels.</p>
+    <p>Investigate all four models in turn. For each model,  red arrows can be dragged to adjust the fit of the model.</p>
+    <div class="centred"><div class="boxed">
+    	<p>The number of  arrows that can be dragged for each model equals the number of unknown parameters. </p>
+    </div></div>
+    <p>After dragging the arrows to improve the fit, click <strong>Least squares</strong> to see the model with the minimum residual sum of squares.</p>
+  </div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

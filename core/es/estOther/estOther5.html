@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Standard error of correlation from bootstrap</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="bootstrap samples, error, correlation">
+	<meta name="dataset" content="Capital value and rental">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Bootstrap for bivariate data</p>
+<p>Bootstrap sampling can be used to obtain an approximate error distribution in any situation where individuals are randomly sampled from a population. Again we start with a sample of <em>n</em> individuals &mdash; our actual data. Each bootstrap sample is a random sample  with replacement of <em>n</em> values from these individuals.</p>
+<p>Bivariate data can fit into this framework &mdash; two numerical measurements, <em>X</em> and <em>Y</em> are obtained from each individual. Using bootstrap sampling, we can obtain an approximation to the error distribution of summary statistics describing the relationship between <em>X</em> and <em>Y</em>, such as their correlation coefficient.</p>
+<div class="diagram">
+
+<p class=heading>Capital value and annual rental of domestic properties</p>
+<p>Data were collected from a sample of 96 Auckland domestic properties in 1991. The capital value of each property was obtained and the annual rental was also found. The correlation coefficient between these two variables is 0.787, indicating a reasonably strong relationship.</p>
+<div class="boxed">
+  <p>How accurately does this value (0.787) estimate the correlation coefficient for <strong>all</strong> domestic properties in Auckland? </p>
+</div>
+
+<p>The diagram below performs a bootstrap simulation from the 96 pairs of values.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="470">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="stdErrorProg.CorrelBootstrapApplet">
+<param name="xVarName" value="Capital value ($000)">
+<param name="yVarName" value="Annual rental ($000)">
+<param name="xValues" value="61.5 67.5 75 75 76 77 80 81 81 85 90 90 90 94 94 95 102 104 106 110 115 115 120 121 124 125 125 126 127 130 130 135 135 135 135 140 140 140 140 145 145 148 151 155 163 165 165 165 170 170 170 170 170 174 175 178 189 190 191 194 195 200 200 200 200 200 200 200 200 208 210 214 225 225 231 240 240 240 240 240 241 244.5 250 262 270 270 275 289 295 300 300 303 304 310 315 325">
+<param name="yValues" value="6.656 6.864 4.992 7.28 6.656 4.576 4.992 6.656 4.784 7.072 6.24 6.24 4.576 8.736 5.2 7.904 9.568 7.904 6.656 7.072 5.824 7.904 11.44 12.064 8.528 7.904 8.5 6.24 8.944 9.776 7.696 8.32 7.28 7.488 8.736 9.152 9.36 9.568 10.816 8.32 11.232 8.32 7.904 7.488 11.024 8.528 9.152 13.312 8.5 12.688 8.736 9.568 11.232 10.4 9.152 11.856 12.272 8.32 12.064 11.232 11.024 10.608 10 12.272 9.36 8.32 13.312 10.4 12.48 10.4 11.232 8.528 10.4 12.48 12.896 11.648 11.648 12.064 11.024 10.192 9.152 11.232 12.5 10.192 12.48 12.896 13.312 11.648 11.232 12.48 12.896 12.272 12.272 12.48 12.896 12.48">
+<param name="xAxis" value="0 350 0 50">
+<param name="yAxis" value="4 14 4 1">
+<param name="errorName" value="Error in estimate">
+<param name="errorAxis" value="-0.15 0.15 -0.15 0.05">
+<param name="decimals" value="3">
+<param name="maxBiasSe" value="9.999">
+<param name="customText" value="Estimate s.e. & bias=Estimate s.e. & bias#Error=Error#from data=from data#from bootstrap=from bootstrap#Bias=Bias">
+</applet>
+</div>
+
+  
+
+<p>The blue crosses (and digits) show a bootstrap sample from the original 96 crosses (grey). The digits describe original crosses that have been sampled more than once.</p>
+<p>The correlation coefficient from the bootstrap sample is shown and its error &mdash; the difference between it and the correlation coefficient for the 96 crosses from which we have sampled (0.787).</p>
+<p>Click <strong>Accumulate</strong> and take about 100 bootstrap samples. 
+  (Hold down the <strong>Take sample</strong> button.) From the error distribution, 
+  it can be seen that...</p>
+<div class="boxed">
+  <p>The estimation error could be as much as 0.1 but is unlikely to be greater.</p>
+  </div>
+<p>Our sample correlation coefficient of 0.787 could therefore be as much as 0.1 different from the correlation coefficient for <strong>all</strong> Auckland properties.</p>
+<p>Finally, click <strong>Estimate s.e. and bias</strong>. The mean and standard deviation of the error distribution are estimates of the bias and standard error of the estimate.</p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Factorial experiments in four blocks</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="fractional factorial design">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Smaller blocks</p>  
+  <p>A 2<sup><em>k</em></sup> complete factorial experiment can be split into <strong>four</strong>  in a similar way. <strong>Two</strong> extra 'factors' can be confounded with high-order interactions between the factors to define which treatments are used in which blocks.</p>
+  <p>In such a design, the two main effects for these 'extra factors' are confounded with interactions between the factors but their interaction is also confounded with one of the interactions between the factors. It is important to ensure that this 'block interaction' is not confounded with a main effect or treatment interaction of interest.</p>
+  <div class="diagram"> 
+<p class="heading">Three factors in four blocks of size 2</p>
+<p>The red and green rows above the table are used to specify how two extra factors D and E are confounded with treatment main effects or interactions.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="factorialProg.BlockFractionalApplet">
+<param name="allTerms" value="A B C D E">
+<param name="nComplete" value="3">
+<param name="highLevels" value="a b c">
+<param name="blockNames" value="Block 1*Block 2*Block 3*Block 4">
+</applet> 
+</div>
+
+<p>Click in the red row to confound D with the ABC interaction, then click in the green row to confound E with the BC interaction. The -1 and +1 values in these columns define the treatments that are used in the four blocks.</p>
+<p>Although it seems reasonable to confound ABC and BC with blocks, the DE interaction is confounded with the main effect of factor A, so:</p>
+<div class="centred"><div class="boxed">
+	<p>This is a bad design since the main effect of A cannot be estimated.</p>
+</div></div>
+<p>A better design confounds D and E with the AB and BC interactions since it also confounds DE with AC. Click the red and green rows to see the allocation of treatments to blocks. With this design, all three main effects can be estimated.</p>
+  </div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

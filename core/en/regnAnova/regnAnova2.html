@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Sums of squares</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="linear model, regression model, sums of squares, explained sum of squares, residual sum of squares">
+	<meta name="dataset" content="Airline complaints">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Explained and residual sums of squares</p>
+<p>The relative sizes of the explained and residual components reflect the proportion 
+of response variation that is explained by a linear model. Their sizes can be 
+summarised by their <strong>sums of squares</strong>. </p>
+
+<div class="centred"><table width="90%" border="0" cellspacing="0" cellpadding="6" class="centred">
+<tr> 
+<td style="border-top:1px solid #999999; border-bottom:1px solid #999999;"><img src="images/ssqTotalAnova.gif" width="74" height="26" alt="SStotal"></td>
+<td class="green" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">The total sum of squares reflects the total variability 
+of the response &mdash; the response standard deviation is the square root of this 
+divided by (n-1).</td>
+</tr>
+<tr> 
+<td style="border-bottom:1px solid #999999;"><img src="images/ssqRegnAnova.gif" width="75" height="26" alt="SSexplained"></td>
+<td class="red" style="border-bottom:1px solid #999999;">The explained sum of squares measures the variability of 
+the fitted values from the least squares fit. This is the variability that is 
+explained by the model.</td>
+</tr>
+<tr> 
+<td style="border-bottom:1px solid #999999;"><img src="images/ssqResidAnova.gif" width="79" height="26" alt="SSresidual"></td>
+<td class="blue" style="border-bottom:1px solid #999999;">The residual sum of squares quantifies the spread of values 
+around the least squares line. This is a measure of the unexplained variability 
+in the response.</td>
+</tr>
+</table></div>
+
+<p>The explained and residual sums of squares add to give the total sum of squares, 
+</p>
+<p class="eqn"><img src="images/ssqEqnAnova.gif" width="300" height="47" alt="SStotal = SSexplained + SSresidual"> 
+</p>
+<p class="gray">(This relationship requires a fair bit of algebra to 
+prove!)</p>
+
+<div class="boxed"><p>The relative sizes of the explained and residual sums of squares describe 
+how much of the variability is explained by the model.</p></div>
+
+<br>
+
+<div class="diagram">
+
+<p class="heading">Simulation: Impurities in plastic</p>
+<p>The next diagram shows simulated data that might describe the impurities recorded 
+from batches of plastic produced at different temperatures (degrees Fahrenheit).</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="360">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.ComponentsSsqApplet">
+<param name="yVarName" value="Impurities, y">
+<param name="xVarName" value="Temperature, x">
+<param name="xRandom" value="30 70 8 445945782 2.0">
+<param name="regnModel" value="-25.0 0.5 2.0">
+<param name="randomSeed" value="623945782">
+<param name="xAxis" value="50 90 50 10">
+<param name="yAxis" value="0 20 0 5">
+<param name="decimals" value="3">
+<param name="residAxis" value="-20 20 -20 10">
+<param name="initialR2" value="0.75">
+<param name="maxSsq" value="999.99">
+<param name="componentName" value="Total#Explained#Residual">
+<param name="customText" value="Variability=Variability#All unexplained=All unexplained#All explained=All explained">
+</applet>
+</div>
+
+<p>Click on the jittered dot plots on the right to display the different components 
+as coloured vertical lines on the scatterplot.</p>
+<p><strong>Drag the slider</strong> to change the strength of the relationship 
+between the impurities and temperature. Observe that:</p>
+
+<div class="boxed"><dl>
+<dt>When the relationship is strong,</dt>
+<dd>...the residuals are much smaller than the explained components and their 
+sum of squares is also a small part of the total sum of squares.</dd>
+
+<dt>When the relationship is weak,</dt>
+<dd>...the residuals are larger than the explained components and their sum of 
+squares is a large part of the total sum of squares.</dd>
+</dl></div>
+
+<p>The relative sizes of the sums of squares therefore hold information about the
+strength and significance of the relationship.</p>
+
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Summary and examples</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="leverage, residual, influence">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Summary</p>
+
+  <dl>
+		<dt>Leverage</dt>
+		<dd>Describes whether the data point has the <strong>potential</strong> to 
+			influence the results, due to its value of <em>x</em>, but does not describe 
+			whether there is any actual influence.</dd>
+		<dt>Residual</dt>
+		<dd>Describes the difference between the response value and what would be 
+			expected from a normal linear model. Externally studentised residuals effectively 
+			highlight outliers and can be compared with ±2 and ±3 as guidelines 
+			for what can be expected.</dd>
+		<dt>Influence</dt>
+		<dd>A function of both leverage and residual that describes how much <strong>actual</strong> 
+			influence the point has on the fitted values and regression coefficients. 
+			<em>DFITS</em> and Cook's <em>D</em> do a similar job. </dd>
+	</dl>
+	<p>The diagram below shows how the residuals and measures of influence are related.</p>
+
+<div class="centred"><div class="boxed">
+<p><img src="images/flowchart.gif" width="567" height="405"></p>
+</div></div>
+
+<p class="heading">Reason for using these diagnostic summaries</p>
+
+<div class="centred"><div class="boxed">
+<p>Why have we defined residuals, leverage and influence? 
+						Are the problems not evident by looking at a scatterplot?</p>
+</div></div>
+
+
+  <p>Yes, high-leverage points, outliers and influential points (high leverage 
+		and large residuals) are usually evident in a scatterplot for simple linear 
+		regression with a single explanatory variable.</p>
+	<p>However for more advanced models in which the response depends on two or 
+		more explanatory variables, it will be much harder to just 'look at the data'. 
+		For these models, outliers, high-leverage points and influential points must 
+		be detected from summary statistics, such as <em>t<sub>i</sub></em>, <em>h<sub>ii</sub></em> 
+		and <em>DFITS<sub>i</sub></em>. </p>
+
+<div class="diagram">
+		<p class="heading">Examples</p>
+
+		<p>The diagram below shows diagnostics for outliers, leverage and influence 
+			in several data sets.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="residProg.DiagnosticsApplet">
+<param name="noOfDataSets" value="3">
+<param name="customText" value="Data=Data#Externally studentised residuals=Externally studentised residuals#Leverage=Leverage#DFITS=DFITS#Conclusion=Conclusion#Peek at data=Peek at data">
+
+<param name="dataName" value="Cancer deaths and radiation">
+<param name="description" value="Radioactive waste from the Hanford Atomic Energy Plant in Washington has seeped into the Columbia River. The diagram below shows an exposure index based on distance from the river and distance from the plant, and cancer deaths per 100,000 residents.">
+<param name="question" value="There is one high-leverage observation. Its residual is also close to -2 (though not unusual in its own right) so its influence is large. Check whether your conclusions would be affected by omitting this single observation.">
+<param name="yVarName" value="Deaths">
+<param name="xVarName" value="Exposure">
+<param name="yValues" value="147 130 130 114 138 162 208 178 210">
+<param name="xValues" value="2.5 2.6 3.4 1.3 1.6 3.8 11.6 6.4 8.3">
+<param name="xAxis" value="0 12 0 2">
+<param name="yAxis" value="100 250 100 50">
+<param name="decimals" value="2">
+<param name="leverageAxis" value="0 0.8 0 0.2">
+<param name="dfitsAxis" value="-3 3 -3 1">
+
+<param name="dataName2" value="Cat body and heart weight">
+<param name="description2" value="The heart and body weights of 47 female cats were measured.">
+<param name="question2" value="One cat has a very small residual and its measurements should be checked. However it has low leverage and is not influential. Of several high-leverage values, only one also has high influence. Check that your conclusions are not affected much by omitting it.">
+<param name="xVarName2" value="Body wt (kg)">
+<param name="yVarName2" value="Heart wt (g)">
+<param name="xValues2" value="2.3 3 2.9 2.4 2.3 2 2.2 2.1 2.3 2.1 2.1 2.2 2 2.3 2.2 2.3 2.1 2 2.9 2.7 2.6 2.3 2.6 2.1 2.1 2.7 2.2 2.3 2.1 2.4 2.7 2.3 2.1 2.2 2.3 2.1 2.9 3 2.2 2.4 2.4 2.5 2.5 2.3 2.3 2.6 2.3">
+<param name="yValues2" value="9.6 10.6 9.9 8.7 10.1 7 11 8.2 9 7.3 8.5 9.7 7.4 7.3 7.1 9 7.6 9.5 10.1 10.2 10.1 9.5 8.7 7.2 9.8 10.8 9.1 11.2 8.1 10.2 8.5 10.1 8.7 10.9 7.9 8.3 10.1 13 8.7 6.3 8.8 10.9 9 9.7 8.4 10.1 10.6">
+<param name="xAxis2" value="1.7 3.2 2.0 0.5">
+<param name="yAxis2" value="5.8 14 6 2">
+<param name="decimals2" value="2">
+<param name="leverageAxis2" value="0 0.17 0 0.05">
+<param name="dfitsAxis2" value="-1 1 -1 0.5">
+
+<param name="dataName3" value="Soybeans and ozone">
+<param name="description3" value="An experiment was conducted to assess how chronic levels of ozone affected the yield of soybeans. Four different ozone levels (ppm) were used.">
+<param name="question3" value="Two observations have low residuals. Although their leverage is not particularly high, they have high influence. Check that your conclusions are not badly affected by leaving out either of these observations.">
+<param name="yVarName3" value="Soybean yield">
+<param name="xVarName3" value="Ozone level (ppm)">
+<param name="yValues3" value="238.3 270.7 210.0 248.7 242.4 235.1 228.9 236.2 255.0 228.9 236.2 208.0 243.5 233.0 233.0 178.7 186.0 206.9 215.3 219.5">
+<param name="xValues3" value="5@0.02 5@0.07 5@0.11 5@0.15">
+<param name="xAxis3" value="0 0.17 0 0.05">
+<param name="yAxis3" value="170 280 180 20">
+<param name="decimals3" value="2">
+<param name="leverageAxis3" value="0 0.25 0 0.05">
+<param name="dfitsAxis3" value="-1.5 1.5 -1.5 0.5">
+</applet>
+</div>
+
+		<p>The stacked dot plots on the left show the externally studentised residuals, 
+			leverages and <em>DFITS</em>, with shaded bands corresponding to the usual 
+			guidelines for 'extreme' values. Click any cross to highlight all three 
+			diagnostics for that observation.</p>
+		<p>Simply from an examination of these diagnostic summaries, it is possible 
+			to obtain information about the adequacy of the model and the influence 
+			that a single point may have on the results. (Click <strong>Peek at data</strong> 
+			to see a scatterplot of the data that helps to explain the conclusion.)</p>
+		<p>Select other data sets from the pop-up menu and check the conclusions.</p>
+
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Equal means in two distributions</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="hypothesis test, test, normal distribution, mean, equal means, t distribution, pooled variance">
+	<meta name="dataset" content="Growth of dwarf peas">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>We now consider random samples from <strong>two</strong> normal population,</p>
+\[ \begin{align}
+X_{1,i} \;\;&amp;\sim\;\; \NormalDistn(\mu_1,\;\sigma^2) \qquad \text{for } i=1,\dots,n_1 \\
+X_{2,i} \;\;&amp;\sim\;\; \NormalDistn(\mu_2,\;\sigma^2) \qquad \text{for } i=1,\dots,n_2
+\end{align}\]
+<p>The difference between the sample means is normally distributed,</p>
+\[
+\overline{X}_1 - \overline{X}_2 \;\;\sim\;\; \NormalDistn\left(\mu_1 - \mu_2,\;\sigma^2\left(\frac 1{n_1} + \frac 1{n_2}\right)\right)
+\]
+<p>The best estimate of the common variance, \(\sigma^2\), is</p>
+\[
+S_{\text{pooled}}^2 \;\;=\;\; \frac{(n_1 - 1)S_1^2 + (n_2 - 1)S_2^2}{n_1 + n_2 - 2}
+\]
+<p>and we showed earlier that its distribution is proportional to a chi-squared distribution,</p>
+\[
+\frac{n_1 + n_2 - 2}{\sigma^2}S_{\text{pooled}}^2 \;\;\sim\;\; \ChiSqrDistn(n_1 + n_2 - 2 \text{ df})
+\]
+<p>Our best estimate of the standard error of  \(
+\overline{X}_1 - \overline{X}_2\) is therefore </p>
+\[
+\se(\overline{X}_1 - \overline{X}_2) \;=\; \sqrt{S_{\text{pooled}}^2 \left(\frac 1{n_1} + \frac 1{n_2}\right) }
+\]
+<p class="heading">Testing for equal means</p>
+<p>We now consider a hypothesis test for whether the two means are equal,</p>
+<p class=eqn><strong><font size="+1">H</font><sub>0</sub></strong>&nbsp;:&nbsp;&nbsp;&nbsp;\(\mu_1 = \mu_2\)<br>
+	<strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>\(\mu_1 \ne \mu_2\)</p>
+<p>(or the corresponding one-tailed alternative). The following function of the data can be used as a test statistic — its distribution is fully known when the null hypothesis holds.</p>
+
+<div class="theoremProof">
+<div class="theorem">
+<p class="theoremTitle">Test statistic</p>
+<p>If \(\overline{X}_1\) and \(S_1^2\) are the mean and variance of a sample of \(n_1\) values from a \(\NormalDistn(\mu_1, \sigma^2)\) distribution and  \(\overline{X}_2\) and \(S_2^2\) are the mean and variance of an independent sample of \(n_2\) values from a \(\NormalDistn(\mu_2, \sigma^2)\) distribution,</p>
+\[
+T \;\;=\;\; \frac{\overline{X}_1 - \overline{X}_2}{\se(\overline{X}_1 - \overline{X}_2)}
+\;\;\sim\;\; \TDistn(n_1 + n_2 - 2 \text{ df})
+\]
+<p>provided \(\mu_1 = \mu_2\).</p>
+<p class="theoremNote">(Proved in full version)</p>
+</div>
+</div>
+
+<p>A p-value for the test is the probability of a value from this t distribution that is further from zero than the  value that is evaluated from the actual data.</p>
+
+<div class="questionSoln">
+<div class="question">
+<p class="questionTitle">Example</p>
+<p>A botanist is interested in comparing the growth response of dwarf pea stems to two different levels of the hormone indoleacetic acid (IAA).  Using 16 day old pea plants the botanist obtains 5 millimetre sections and floats these sections on solutions with different hormone concentrations to observe the effect of the hormone on the growth of the pea stem.  Let \(X\) and \(Y\) denote respectively the independent growths that can be attributed to the hormone during the first 26 hours after sectioning for \((0.5 \times 10^{-4})\) and \(10^{-4}\) levels of concentration of  IAA. </p>
+<p>The botanist measured the growths of pea stem segments in millimetres for \(n_X = 11\) observations of \(X\):</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred" style="background-color:#FFFFFF; border:1px solid #999999;">
+<tr><td style="padding:5px 10px;">0.8</td><td style="padding:5px 10px;">1.8</td><td style="padding:5px 10px;">1.0</td><td style="padding:5px 10px;">0.1</td><td style="padding:5px 10px;">0.9</td><td style="padding:5px 10px;">1.7</td><td style="padding:5px 10px;">1.0</td><td style="padding:5px 10px;">1.4</td><td style="padding:5px 10px;">0.9</td><td style="padding:5px 10px;">1.2</td><td style="padding:5px 10px;">0.5</td></tr>
+</table>
+</div>
+
+<p>and \(n_Y = 13\) observations of \(Y\):</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred" style="background-color:#FFFFFF; border:1px solid #999999;">
+	<tr>
+		<td style="padding:5px 10px;">1.0<br>
+			1.8</td>
+		<td style="padding:5px 10px;">0.8<br>
+			2.5</td>
+		<td style="padding:5px 10px;">1.6<br>
+			1.4</td>
+		<td style="padding:5px 10px;">2.6<br>
+			1.9</td>
+		<td style="padding:5px 10px;">1.3<br>
+			2.0</td>
+		<td style="padding:5px 10px;">1.1<br>
+			1.2</td>
+		<td style="padding:5px 10px;">2.4<br>&nbsp;</td>
+	</tr>
+</table>
+</div>
+
+<p>Test whether the larger hormone concentration results in greater growth of the pea plants.</p>
+<p class="questionNote">(Solved in full version)</p>
+</div>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

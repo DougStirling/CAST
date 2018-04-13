@@ -1,0 +1,512 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>6. Testing a Mean</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/maths/mathStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/maths/theorems.js"></script>
+  <script src="../../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 6 &nbsp; Testing a Mean</h1>
+<h1 class="sectionName">6.1 &nbsp; Tests about means</h1>
+<h2 class="pageName">6.1.1 &nbsp; Introduction</h2>
+
+<p class="heading">Tests about numerical populations</p>
+<p>The most important characteristic of a numerical population is usually its mean,
+µ. Hypothesis tests therefore usually question the value of this parameter.</p>
+<p class=heading>Null and alternative hypotheses</p>
+<p><strong>Two-tailed tests</strong> about a population mean  involve the  hypotheses</p>
+<p class=eqn><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> &nbsp;=&nbsp; </strong>&mu;<strong><sub>0</sub></strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> &nbsp;&ne;&nbsp; </strong>&mu;<strong><sub>0</sub></strong></span></p>
+<p>where µ<sub>0</sub> is the constant that we think may be the true mean.</p>
+<p>In a <strong>one-tailed test</strong>, the alternative
+hypothesis  involves only high (or low) values of µ,
+such as</p>
+<p class=eqn><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> &nbsp;=&nbsp; </strong>&mu;<strong><sub>0</sub></strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> &nbsp;&gt;&nbsp; </strong>&mu;<strong><sub>0</sub></strong></span></p>
+
+
+
+
+<h2 class="pageName">6.1.2 &nbsp; Test for mean (known σ)</h2>
+
+<p class="heading notPrinted">Hypotheses and p-value</p>
+<p>We initially assume that
+the population standard deviation σ is a known value. The null
+hypothesis is usually</p>
+<p class=eqn><span class="black"><b>H<sub>0</sub></b> :   µ  =  µ<sub> 0</sub></span></p>
+<p>The test is based on the sample mean, <img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline">.
+This
+has a distribution that is approximately normal and has mean and standard
+deviation</p>
+<div class="centred">
+	<table border="0" cellpadding="0" cellspacing="0" class="centred">
+		<tr>
+			<td valign="middle"><img src="../../../en/../images/symbol.muXbar.png" width="19" height="16" align="baseline"></td>
+			<td valign="middle">&nbsp;<span class="black">=&nbsp; &mu;</td>
+		</tr>
+	</table>
+</div>
+<div class="centred">
+	<table border="0" cellpadding="0" cellspacing="0" class="centred">
+		<tr>
+			<td valign="middle"><img src="../../../en/../images/symbol.sigmaXbar.png" width="19" height="16" align="baseline"></td>
+			<td valign="middle">&nbsp;<span class="black">=</span>&nbsp; </td>
+			<td valign="middle"><img src="../../../en/../images/symbol.sigmaOverRootN.png" width="26" height="31" align="baseline"></td>
+		</tr>
+	</table>
+</div>
+<p>Since the distribution of <img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline">
+	is fully known when<b> H<sub>0</sub></b> is true, a tail area of its distribution
+	gives the p-value for the test. The tail of the distribution to use 
+depends on the form of the alternative hypothesis.</p>
+<dl>
+<dt>One-tailed test (<b>H<sub>A</sub></b> : µ  &gt;  µ<sub> 0</sub>)</dt>
+<dd>The p-value is the upper tail area (shown in green below).</dd>
+</dl>
+<p class=eqn><img class="gif" src="../../../en/testMean/images/normalOneTailArea.gif" width="267" height="155"> </p>
+<dl>
+<dd>For <b>H<sub>A</sub></b> : µ  &lt;  µ<sub> 0</sub>,  the opposite tail of the
+distribution is used.</dd>
+</dl>
+<dl>
+<dt>Two-tailed test</dt>
+<dd>The p-value is the sum of the two tail areas below. It would be calculated
+as <strong>twice</strong> the smaller tail area.</dd>
+</dl>
+<p class=eqn><img class="gif" src="../../../en/testMean/images/normalTwoTailArea.gif" width="267" height="155"></p>
+
+
+
+
+<h2 class="pageName">6.1.3 &nbsp; P-value from statistical distance</h2>
+
+<p class="heading notPrinted">Statistical distance and p-value</p>
+<p>If σ is a known value, the calculation to find the p-value for testing the
+mean  can be expressed in terms of the general formula for the statistical distance
+between a parameter and its estimate,</p>
+<p class="eqn"><img class="gif" src="../../../en/testMean/images/zGeneral.gif" width="185" height="37"></p>
+<p>In the context of a test about means,</p>
+<p class="eqn"><img class="gif" src="../../../en/testMean/images/zForMean.gif" width="164" height="52"></p>
+<p>Since <em>z</em> has a standard normal(0, 1) distribution when the null hypothesis
+holds, it can be used as a test statistic and the  p-value for the test can be
+determined from its tail areas.</p>
+<p class="eqn"><img class="gif" src="../../../en/testMean/images/pValueFromZ.gif" width="471" height="212"></p>
+<p>For a two-tailed test, the p-value is the red tail area.</p>
+<p class="heading">Example</p>
+<p>The mean of a sample of <em>n</em> = 30 values is 16.8. Does the population
+have mean µ = 18.3 and standard deviation σ = 7.1, or is the mean now lower than
+18.3?</p>
+<p class=eqn><span class="black"><b>H<sub>0</sub></b> :   µ  =  18.3<sub></sub></span></p>
+<p class=eqn><span class="black"><b>H<sub>A</sub></b> :   µ  &lt;  18.3<sub></sub></span></p>
+<p>The p-value for the test is shown below:</p>
+<p class="eqn"><img src="../../../en/testMean/images/s_pValue1.gif" width="297" height="195"></p>
+<p>The p-value can be evaluated using the statistical distance of 16.8 from 18.3
+(a z statistic),</p>
+<p class="eqn"><img src="../../../en/testMean/images/s_pValue2.gif" width="277" height="221"></p>
+<p>The p-value is reasonably large, meaning that a sample mean as low as 16.8
+would not be unusual if µ = 18.3, so there is no evidence against µ = 18.3.</p>
+
+
+
+
+<h2 class="pageName">6.1.4 &nbsp; The t distribution</h2>
+
+<p class="heading notPrinted">Test statistic if σ is unknown</p>
+<p>In practical problems,  the value of σ is rarely known so we cannot use</p>
+<p class=eqn><img class="gif" src="../../../en/testMean/images/zStatDefn.gif" width="92" height="47"></p>
+<p>as a test statistic &mdash; it cannot be evaluated even  when <b>H<sub>0</sub></b> is
+true. Instead,  we must use a closely related type of 'statistical
+distance' between the sample mean and µ<sub>0</sub>,</p>
+<p class=eqn><img class="gif" src="../../../en/testMean/images/tStatDefn.gif" width="90" height="46"></p>
+<p>where <i>s</i> is the <strong>sample</strong> standard deviation. This test
+statistic no longer has a normal distribution &mdash; it has greater spread due to
+the extra variability that results from estimating <i>s</i>, and
+has a standard distribution called a <strong>t distribution
+with (<i>n</i> - 1) degrees of freedom</strong>.</p>
+<p class="eqn"><img src="../../../en/testMean/images/s_tDistn.gif" width="298" height="202"></p>
+
+
+
+
+<h2 class="pageName">6.1.5 &nbsp; The t test for a mean</h2>
+
+<p class="heading notPrinted">Finding a p-value from the t distribution</p>
+<p>When testing the value of  µ when σ is unknown, we use the test statistic</p>
+<p class=eqn><img class="gif" src="../../../en/testMean/images/tStatDefn.gif" width="90" height="46"></p>
+<p>This has a t distribution (with <em>n</em>&nbsp;&minus;&nbsp;1 degrees of
+freedom) when <b>H<sub>0</sub></b> is true, so the p-value is found from a tail
+area of this distribution. </p>
+<p class="heading">One-tailed test</p>
+<p class=eqn><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> &nbsp;=&nbsp; </strong>&mu;<strong><sub>0</sub></strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> &nbsp;&lt;&nbsp; </strong>&mu;<strong><sub>0</sub></strong></span></p>
+<p>The steps for testing these hypotheses are shown in the diagram below. </p>
+<p class=eqn><img class="gif" src="../../../en/testMean/images/oneTailedT.gif" width="424" height="266"> </p>
+<p class="heading">Example</p>
+<p>Consider a sample of <em>n</em> = 13 values with mean  <span class="black"><img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline"> = </span>16.14
+and standard deviation <em>s</em> = 2.15. A test for whether the population mean
+is more than 15.0 uses the hypotheses:</p>
+<p class=eqn><span class="black"><b>H<sub>0</sub></b> :   µ  =  15<sub></sub></span></p>
+<p class=eqn><span class="black"><b>H<sub>A</sub></b> :   µ  &gt;  15<sub></sub></span></p>
+<p>Since the population standard deviation, σ, is unknown, the test must be based
+on a t statistic.</p>
+<p class="eqn"><img src="../../../en/testMean/images/s_tExample.gif" width="294" height="198"></p>
+
+
+
+
+<h1 class="sectionName breakBefore">6.2 &nbsp; Properties of p-values</h1>
+<h2 class="pageName">6.2.1 &nbsp; Null and alternative hypotheses</h2>
+
+<p class="heading">Symmetric hypotheses</p>
+<p>In some situations there is a kind of symmetry between  two competing hypotheses.
+For example, if two candidates, A and B, stand in an election and π is the population
+proportion who will vote for A, we are interested in which candidate will
+win:</p>
+<p class=eqn><span class="black"><b>H<sub>1</sub></b> :   π  &gt;  0.5<sub></sub></span></p>
+<p class=eqn><span class="black"><b>H<sub>2</sub></b> :   π  &lt;  0.5<sub></sub></span></p>
+<p class="heading">Null and alternative hypotheses</p>
+<p>In statistical hypothesis testing, the two hypotheses are <strong>not</strong> treated
+symmetrically in this way. Instead, we ask whether the sample data are consistent
+with one particular hypothesis (the <strong>null hypothesis</strong>, denoted by <b>H<sub>0</sub></b>).
+If the data are not consistent with <b>H<sub>0</sub></b>, then we can conclude that
+the competing hypothesis (the <strong>alternative hypothesis</strong>, denoted by <b>H<sub>A</sub></b>)
+must be true.</p>
+<p>The two possibilities are:</p>
+<ul>
+<li>The data are consistent with <b>H<sub>0</sub></b>.</li>
+<li>The data are not consistent with <b>H<sub>0</sub></b>, so <b>H<sub>A</sub></b> must
+be true.</li>
+</ul>
+
+<p>We should <strong>never</strong> conclude that <strong>H<sub>0</sub></strong> is
+likely to be true.</p>
+<p class="heading">Example</p>
+<p>Consider a test for whether a population mean is zero:</p>
+<p class=eqn><span class="black"><b>H<sub>0</sub></b> :   µ  =  0.0<sub></sub></span></p>
+<p class=eqn><span class="black"><b>H<sub>A</sub></b> :   µ  ≠  0.0<sub></sub></span></p>
+<p>Based on a random sample, we might conclude:</p>
+<ul>
+<li>The sample mean is close  to 0.0, so data are consistent with µ = 0.0.</li>
+<li>The sample mean is far enough from 0.0 to be inconsistent with µ = 0.0, so it
+appears that µ ≠ 0.0.</li>
+</ul>
+
+
+
+
+
+<h2 class="pageName">6.2.2 &nbsp; Consistency with null hypothesis</h2>
+
+<p class="heading notPrinted">Describing the credibility of the null hypothesis</p>
+<p>A p-value is a numerical description of the strength
+of the evidence against <b>H<sub>0</sub></b> that is provided by the data .</p>
+
+<div class="centred"><div class="boxed">
+<p>A p-value is a numerical summary statistic that describes the
+strength of the evidence against <b>H<sub>0</sub></b></p>
+</div></div>
+
+<p>P-values are interpreted in the same way for <strong>all</strong> hypothesis tests.</p>
+
+
+
+
+<h2 class="pageName">6.2.3 &nbsp; Distribution of p-values</h2>
+
+<p class="heading notPrinted">Interpretation of p-values</p>
+<p>In all hypothesis tests,</p>
+<ul><li>A p-value provides a numerical summary of the evidence against <b>H<sub>0</sub></b>.</li>
+<li>The p-value is the probability of such 'extreme' data when <b>H<sub>0</sub></b> is
+true.</li>
+<li>The closer the p-value to zero, the stronger the evidence against <b>H<sub>0</sub></b>.</li>
+</ul>
+<p class=heading>Distribution of p-values</p>
+<p>P-values are found from random samples so they have  distributions.
+Regardless of the  hypothesis
+test, </p>
+<ul>
+<li>When  <b>H<sub>0</sub></b> is true, all p-values between
+0 and 1 are equally likely.<br>
+</li>
+<li>If <b>H<sub>A</sub></b> is true, then the p-values have a
+distribution for which p-values near zero are more likely than p-values near 1.</li>
+</ul>
+<p class=eqn><img class="gif" src="../../../en/testPValue/images/pValueDistn.gif" width="525" height="187"> </p>
+<p class=heading>Simulation</p>
+<p>Consider a test for whether a population mean is zero:</p>
+<p class=eqn><span class="black"><b>H<sub>0</sub></b> :   µ  =  0.0<sub></sub></span></p>
+<p class=eqn><span class="black"><b>H<sub>A</sub></b> :   µ  ≠  0.0<sub></sub></span></p>
+<p>The  diagram below shows the p-values from a t-test for these hypotheses,
+based on several random samples from a normal distribution for which <b>H<sub>0</sub></b> is
+true. Note that the p-value is equally likely to be anywhere between 0 and 1.</p>
+<p class="eqn"><img src="../../../en/testPValue/images/s_pValueNullDistn.gif" width="282" height="135"></p>
+<p>The next diagram shows p-values calculated in the same way, but based on random
+samples from a normal distribution for which<b> H<sub>A</sub></b> is true. Note that
+the p-value is more likely to be near zero.</p>
+<p class="eqn"><img src="../../../en/testPValue/images/s_pValueAltDistn.gif" width="282" height="133"></p>
+<p>Although it is <strong>possible</strong> to obtain a low p-value when <b>H<sub>0</sub></b> holds
+and a high p-value when <b>H<sub>A</sub></b> holds, low p-values are more likely
+under <b>H<sub>A</sub></b> than under <b>H<sub>0</sub></b>. </p>
+
+
+
+
+<h2 class="pageName">6.2.4 &nbsp; Interpretation of a p-value</h2>
+
+<p class="heading notPrinted">P-values and probability</p>
+<p>When <b>H<sub>0</sub></b> holds,</p>
+<ul>
+<li>the probability
+of obtaining a p-value of 0.1 or lower is exactly 0.1</li>
+<li>the probability of obtaining a p-value of 0.01 or lower is exactly 0.01, etc.</li>
+</ul>
+<p class=eqn><img class="gif" src="../../../en/testPValue/images/pValueProbs.gif" width="525" height="187"> </p>
+<p>On the other hand, when <b>H<sub>A</sub></b> holds, p-values are more likely to
+be near zero and</p>
+<ul>
+<li>the probability of obtaining a p-value of 0.1 or lower is <strong>more than</strong> 0.1, etc.</li>
+</ul>
+<p class=heading>Examples</p>
+<dl>
+<dt>p-value = 0.0023</dt>
+<dd>From this, we know that there would be only 0.0023 probability of getting such
+a small p-value if <b>H<sub>0</sub></b> was true. This is unlikely, so there is strong
+evidence that <b>H<sub>0</sub></b> does not hold.</dd>
+
+<dt>p-value = 0.4</dt>
+<dd>There is probability 0.4 of seeing such a low p-value if <b>H<sub>0</sub></b> is
+true, so there is no evidence against <b>H<sub>0</sub></b>.</dd>
+</dl>
+<p>Of course, we may be wrong. A p-value of 0.0023 <strong>could</strong> arise when
+either <b>H<sub>0</sub></b> or <b>H<sub>A</sub></b> holds but it is  more likely
+under <b>H<sub>A</sub></b>. And a p-value of 0.4 could also arise when either hypothesis
+is true.</p>
+<p class=heading>Interpretation of p-values for all tests</p>
+<div class="centred">
+	<table cellpadding="5" cellspacing="0" class="centred">
+		<tr>
+			<th align="left">p-value</th>
+			<th align="left">Interpretation</th>
+		</tr>
+		<tr bgcolor="white">
+			<td style="border-top:1px solid #999999;"><strong>over 0.1</strong></td>
+			<td style="border-top:1px solid #999999;">no evidence that the null hypothesis does not hold</td>
+		</tr>
+		<tr bgcolor="white">
+			<td style="border-top:1px solid #999999;"><strong>between 0.05 and 0.1</strong></td>
+			<td style="border-top:1px solid #999999;">very weak evidence that the null hypothesis does not hold</td>
+		</tr>
+		<tr bgcolor="white">
+			<td style="border-top:1px solid #999999;"><strong>between 0.01 and 0.05  </strong></td>
+			<td style="border-top:1px solid #999999;">moderately strong evidence that the null hypothesis does not
+				hold</td>
+		</tr>
+		<tr bgcolor="white">
+			<td style="border-top:1px solid #999999; border-bottom:1px solid #999999;"><strong>under 0.01</strong></td>
+			<td style="border-top:1px solid #999999; border-bottom:1px solid #999999;">strong evidence that the null hypothesis does not hold</td>
+		</tr>
+	</table>
+</div>
+
+
+<h2 class="pageName">6.2.5 &nbsp; P-values for other tests</h2>
+
+<p class="heading notPrinted">Applying the general properties of p-values to different tests </p>
+<p>P-values for <strong>all</strong> hypothesis tests have the  properties that were
+described earlier in this section. You should now be able to  interpret any p-value
+if you know the null and alternative hypotheses that it tests. <span class="gray">(A
+statistical computer program is generally used to perform hypothesis tests, so knowing
+the details of how the p-value is obtained is of little importance.)</span> </p>
+<p class="heading">Example</p>
+<p>The following data have been collected. Are they sampled from a normally distributed
+population?</p>
+<div class="centred"><table class="centred" border="0" cellspacing="0" cellpadding="7" style="background-color:#FFFFFF; border:1px solid #999999;">
+<tr>
+<td align="right">41.9<br>
+90.6<br>
+29.9<br>
+10.2<br>
+33.7<br>
+26.9<br>
+88.5<br>
+6.5<br>
+16.6<br>
+19.2<br>
+12.6<br>
+32.0<br>
+3.6<br>
+8.1</td>
+<td align="right">68.1<br>
+57.9<br>
+-3.0<br>
+42.2<br>
+14.5<br>
+25.7<br>
+28.1<br>
+78.4<br>
+126.2<br>
+42.0<br>
+66.6<br>
+20.6<br>
+54.6<br>
+31.7</td>
+<td align="right">2.3<br>
+45.5<br>
+55.5<br>
+37.2<br>
+51.6<br>
+97.1<br>
+80.3<br>
+41.1<br>
+7.3<br>
+31.0<br>
+30.2<br>
+1.7<br>
+27.0<br>
+38.0</td>
+<td align="right">144.9<br>
+27.8<br>
+121.9<br>
+26.0<br>
+-11.5<br>
+15.5<br>
+16.9<br>
+27.3<br>
+23.9<br>
+61.1<br>
+68.2<br>
+10.0<br>
+37.8<br>
+77.1</td>
+<td align="right">24.3<br>
+63.2<br>
+-0.6<br>
+1.0<br>
+12.1<br>
+134.5<br>
+53.8<br>
+60.4<br>
+9.0<br>
+-6.4<br>
+31.0<br>
+-2.8<br>
+114.6<br>
+19.8</td>
+<td align="right">11.5<br>
+39.6<br>
+59.0<br>
+20.7<br>
+37.3<br>
+23.1<br>
+32.7<br>
+13.0<br>
+70.6<br>
+87.3<br>
+-3.2<br>
+-20.8<br>
+119.1<br>
+-0.1</td>
+<td align="right">104.4<br>
+-4.6<br>
+72.5<br>
+7.7<br>
+31.4<br>
+36.9<br>
+47.2<br>
+74.7<br>
+29.1<br>
+70.5<br>
+77.7<br>
+81.0<br>
+191.8<br>
+1.6</td>
+<td align="right">-0.8<br>
+59.4<br>
+-2.2<br>
+-12.5<br>
+81.6<br>
+44.0<br>
+63.6<br>
+114.3<br>
+33.6<br>
+83.0<br>
+70.8<br>
+50.1<br>
+55.8<br>
+28.3</td>
+<td align="right">-7.9<br>
+51.3<br>
+37.7<br>
+48.3<br>
+88.9<br>
+59.4<br>
+126.9<br>
+35.0<br>
+51.0<br>
+91.1<br>
+-2.7<br>
+79.2<br>
+0.1<br>
+12.9</td>
+<td align="right">16.2<br>
+23.0<br>
+22.4<br>
+64.4<br>
+10.2<br>
+7.6<br>
+27.7<br>
+8.0<br>
+23.5<br>
+25.3<br>
+22.5<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;</td>
+</tr>
+</table></div>
+<p>The diagram below shows a histogram of the data and the best-fitting normal
+distribution.  Could the skewness
+in the data have occurred by chance from a normal population? </p>
+<p class="eqn"><img src="../../../en/testPValue/images/s_mutualHisto.gif" width="391" height="226"></p>
+<p>The Shapiro-Wilkes W test can be used to test whether data come from a normal
+distribution:</p>
+<p style="padding-left:20px"><b>H<sub>0</sub></b> :  population distribution is normal<br>
+<b>H<sub>A</sub></b> :  population distribution is not normal</p>
+<p>Computer software reports the p-value for this test as &quot;under 0.01&quot;.
+We conclude that the probability of obtaining such a non-normal looking sample
+from a normal distribution is less than 0.01, so there is  strong evidence
+that the data do not come from a normal population.</p>
+
+
+
+
+</body>
+</html>

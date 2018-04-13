@@ -1,0 +1,232 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Theory behind anova test (advanced)</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="chi-squared distribution, sums of squares, f test, f distribution, analysis of variance">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Distribution of between-group sum of squares</p>
+<p>In the two-group model, when the null hypothesis holds (the group means are 
+equal), the between-group sum of squares has a chi-squared distribution with 1 
+degree of freedom. This result generalises to models with <em>g</em> groups:</p>
+<p class="eqn"><img src="images/ssBetweenDistn.gif" width="168" height="26"></p>
+<p>SS<sub>Between</sub> is said to have (<em>g</em>&nbsp;-&nbsp;1) degrees of 
+freedom.</p>
+<p>When the alternative hypothesis holds (at least two group means are different), 
+the between-group sum of squares tends to be bigger &mdash; its distribution has a 
+bigger mean.</p>
+
+<div class="centred"><table border="0" class="centred" cellpadding="4" cellspacing="0">
+<tr> 
+<th style="border-bottom:1px solid #999999;">&nbsp;</th>
+<th align="center" style="border-bottom:1px solid #999999;"><span class="black">Mean of distn of SS<sub>Between</sub></span></th>
+</tr>
+<tr bgcolor="#FFFFFF"> 
+<td align="left"><span class="black">H<sub>0</sub>: all population means equal</span></td>
+<td align="center"><span class="black">(<em>g</em> - 1) σ<sup>2</sup></span></td>
+</tr>
+<tr bgcolor="#FFFFFF"> 
+<td align="left" style="border-bottom:1px solid #999999;"><span class="black">H<sub>A</sub>: at least two group means are different</span></td>
+<td align="center" style="border-bottom:1px solid #999999;"><span class="black">&gt;&nbsp;(<em>g</em> - 1) σ<sup>2</sup></span></td>
+</tr>
+</table></div>
+
+<p>Large values of SS<sub>Between</sub> therefore suggest that the alternative 
+hypothesis is true.</p>
+<p class="heading">Distribution of within-group sum of squares</p>
+<dl>
+<p>In the two-group model, the within-group sum of squares has a chi-squared distribution 
+whether or not the null hypothesis holds,</p>
+<p class="eqn"><img src="images/ssWithin2Distn.gif" width="233" height="26"></p>
+<p>For the <em>g</em>-group model, this generalises to:</p>
+		<p class="eqn"><img src="images/ssWithinGDistn.gif" width="191" height="26"></p>
+<p>where the total number of observations in all groups is denoted by <em>n</em>. 
+SS<sub>Within</sub> is therefore said to have (<em>n</em>&nbsp;-&nbsp;<em>g</em>) 
+degrees of freedom.</p>
+</dl>
+
+<div class="diagram">
+<p class="heading">Simulation of the between-group sum of squares</p>
+<p>The diagram below generates sample data from a <em>g</em>-group normal model 
+in which the null hypothesis holds &mdash; all groups have the same distribution with 
+mean 10 and standard deviation 1.</p>
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="420" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="varianceProg.GroupSsqDistnApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Group">
+<param name="anovaModel" value="10 1 10 1 10 1 10 1 10 1">
+<param name="randomSeed" value="614945782">
+<param name="yAxis" value="7 13 7 1">
+<param name="decimals" value="3">
+<param name="maxSummaries" value="9999.99 999.99 999.99 9.999">
+<param name="sampleSize" value="2 *5 20">
+<param name="chi2Axis" value="0 15 0 2">
+<param name="areaProportion" value="0.13">
+<param name="noOfDataSets" value="4">
+
+<param name="dataName" value="2 groups">
+<param name="xValues" value="5@0 5@1">
+<param name="xLabels" value="A B">
+<param name="dataName2" value="3 groups">
+<param name="xValues2" value="5@0 5@1 5@2">
+<param name="xLabels2" value="A B C">
+<param name="dataName3" value="4 groups">
+<param name="xValues3" value="5@0 5@1 5@2 5@3">
+<param name="xLabels3" value="A B C D">
+<param name="dataName4" value="5 groups">
+<param name="xValues4" value="5@0 5@1 5@2 5@3 5@4">
+<param name="xLabels4" value="A B C D E">
+<param name="customText" value="Between groups=Between groups#Within groups=Within groups#Between groups sum of squares=Between groups sum of squares#per group=per group">
+</applet>
+</div>
+
+<p>The bottom of the diagram shows the theoretical chi-squared distribution of 
+the explained sum of squares. Use the pop-up menus to change the number of groups 
+and the sample size in each group. Observe that:</p>
+<ul>
+<li><strong>The distribution is most skew when there are 2 or 3 groups but becomes 
+more symmetric with more groups.</strong></li>
+<li><strong>The sample size per group does not affect the distribution.</strong></li>
+</ul>
+
+<p>Click <strong>Take sample</strong> several times for any combination of number 
+of groups and sample size per group to build up the sampling distribution and 
+verify that the theory is indeed true.</p>
+<p class="gray">(When there are <em>g</em>&nbsp;=&nbsp;2 groups, the 
+diagram cuts off a sizeable part of the chi-squared distribution near zero &mdash; 
+the peak is much higher than it appears in the diagram.)</p>
+
+</div>
+<p class="heading">F ratio</p>
+  <p>The anova table's F ratio is found as shown below.</p>
+<p class="eqn"><img src="images/anovaTable.gif" width="520" height="138"></p>
+  <p>If <strong>H<sub>0</sub></strong> is true (all groups have the same mean), 
+		the F ratio will have an F distribution,</p>
+<p class="eqn"><img src="images/fRatioDistn.gif" width="261" height="38"></p>
+<p>Since the distribution of the F ratio involves no unknown parameters, it can 
+be used as a test statistic &mdash; we can look up tables of the F distribution to 
+assess whether it is unusually high.</p>
+<div class="diagram">
+		<p class="heading">Simulation: distribution of F ratio when H<sub>0</sub> 
+			is true</p>
+		<p>The diagram below generates samples from a 4-group normal model in which 
+			the <strong>null hypothesis holds</strong> &mdash; all groups have normal distributions 
+			with the same mean.</p>
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.FDistnApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="xLabels" value="#Group A# #Group B# #Group C# #Group D#">
+<param name="anovaModel" value="50 10 50 10 50 10 50 10">
+<param name="randomSeed" value="8582705671">
+<param name="yAxis" value="25 85 30 10">
+<param name="decimals" value="3">
+<param name="maxSsq" value="9999.999">
+<param name="maxMeanSsq" value="9999.999">
+<param name="maxF" value="999.99">
+<param name="ssqAxis" value="0 15 0 2">
+<param name="areaProportion" value="0.08">
+<param name="noOfDataSets" value="3">
+<param name="dataName" value="2 per group">
+<param name="dataName2" value="5 per group">
+<param name="dataName3" value="10 per group">
+<param name="xValues" value="2@0 2@1 2@2 2@3">
+<param name="xValues2" value="5@0 5@1 5@2 5@3">
+<param name="xValues3" value="10@0 10@1 10@2 10@3">
+<param name="customText" value="Explained=Explained">
+</applet>
+</div>
+
+<p>Click <strong>Another Data Set</strong> several times to build up the sampling 
+distribution of the F ratio. Observe that it matches the theoretical F distribution 
+reasonably well.</p>
+<p>Use the pop-up menu to adjust the sample size within each group. Observe that 
+the tails of the distribution become shorter when the sample size within each 
+group increases &mdash; the denominator of the F ratio is the pooled estimate of σ<sup>2</sup> 
+and this estimate becomes less variable (more accurate) with large sample sizes.</p>
+</div>
+
+  <p>The next simulation demonstrates the how the p-value for the anova test is 
+		calculated and the properties of the p-value.</p>
+<div class="diagram">
+<p class="heading">Calculating the p-value</p>
+		<p>The diagram below again takes samples from a 4-group normal model. Initially 
+			the null hypothesis holds &mdash; all group means are equal.</p>
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.FTailAreaApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="xLabels" value="#Group A# #Group B# #Group C# #Group D#">
+<param name="anovaModel" value="50 5 50 5 50 5 50 5">
+<param name="randomSeed" value="8582705671">
+<param name="yAxis" value="25 85 30 10">
+<param name="decimals" value="3">
+<param name="maxSsq" value="9999.999">
+<param name="maxMeanSsq" value="9999.999">
+<param name="maxF" value="999.99">
+<param name="ssqAxis" value="0 15 0 2">
+<param name="maxEffects" value="35 65 55 42">
+<param name="areaProportion" value="0.08">
+<param name="noOfDataSets" value="3">
+<param name="dataName" value="2 per group">
+<param name="dataName2" value="5 per group">
+<param name="dataName3" value="10 per group">
+<param name="xValues" value="2@0 2@1 2@2 2@3">
+<param name="xValues2" value="5@0 5@1 5@2 5@3">
+<param name="xValues3" value="10@0 10@1 10@2 10@3">
+<param name="customText" value="Explained=Explained#F distn if all groups are identical=F distn if all groups are identical#Effect size=Effect size#None=None#Strong=Strong">
+</applet>
+</div>
+
+<p>Click <strong>Take sample</strong> several times and observe how the p-value 
+is obtained as the blue upper tail area of the F distribution. Observe also that:</p>
+<ul>
+<li><strong>The p-value is equally likely to be any value between 0 and 1 since 
+the null hypothesis holds.</strong></li>
+<li><strong>A p-value below 0.01 is very unlikely &mdash; indeed it occurs with probability 
+0.01 when all group means are the same.</strong></li>
+</ul>
+
+		<p>Use the pop-up menu to adjust the sample size within each group and repeat. 
+			Although the degrees of freedom within groups and the shape of the F distribution 
+			change a little, the p-values have the same properties.</p>
+		<hr width="75%">
+		<p>Finally, use the slider to change the underlying group means (so the alternative 
+hypothesis now holds). When the alternative hypothesis holds, observe that:</p>
+<ul>
+<li><strong>The F ratio is likely to be higher.</strong></li>
+<li><strong>Small p-values are more likely.</strong></li>
+</ul>
+
+<br>
+
+<div class="centred"><div class="boxed">
+<p>A p-value near zero therefore provides evidence that the underlying 
+group means are not all equal.</p>
+</div></div>
+
+<br>
+
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

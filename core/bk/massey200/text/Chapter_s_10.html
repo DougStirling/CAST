@@ -1,0 +1,769 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>10. Normal-based distributions</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/maths/mathStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/maths/theorems.js"></script>
+  <script src="../../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 10 &nbsp; Normal-based distributions</h1>
+<h1 class="sectionName">10.1 &nbsp; Chi-squared distribution</h1>
+<h2 class="pageName">10.1.1 &nbsp; Chi-squared with 1 degree of freedom</h2>
+<p>A simple transformation of a standard normal random variable has a distribution called a <strong>chi-squared</strong> distribution.</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>If a random variable, \(Z\), has a standard normal distribution,</p>
+\[
+Z \;\;\sim\;\; \NormalDistn(0, 1)
+\]
+<p>then we say that its square, \(Y = Z^2\), has a <strong>chi-squared distribution</strong> with 1 degree of freedom,</p>
+\[
+Y \;\;\sim\;\; \ChiSqrDistn(1\;\text{df})
+\]
+</div>
+
+<p>This also means that</p>
+\[
+\frac{(X - \mu)^2}{\sigma^2}  \;\;\sim\;\; \ChiSqrDistn(1\;\text{df})
+\]
+
+
+
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Probability density function</p>
+<p>The random variable \(Y \sim \ChiSqrDistn(1\;\text{df})\) has probability density function</p>
+
+\[
+f(y) \;=\; \frac 1 {\sqrt{2\pi}} y^{\large{-\frac 1 2}}e^{\large{-\frac y 2}} \qquad\text{if } y \gt 0
+\]
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+<p>The Chi-squared distribution is actually a special case from the family of Gamma distributions.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Relationship to gamma distribution</p>
+		<p>The \(\ChiSqrDistn(1\;\text{df})\) distribution is identical to a \(\GammaDistn(\frac 1 2, \frac 1 2)\) distribution.</p>
+		<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">10.1.2 &nbsp; Properties of Chi-squared (1 df)</h2>
+
+<p class="heading">Shape of the distribution</p>
+
+<p>The \(\ChiSqrDistn(1\;\text{df})\) distribution is  <strong>very</strong> skew. Its pdf is <strong>infinite</strong> at zero —  \(f(0) = \infty\) and its right tail is <strong>very</strong> long.</p>
+<p class="eqn"><img src="../../../en/chiSquared/images/s_chiSqr1.png" width="470" height="297" alt=""/></p>
+<p>The mean and variance of the  \(\ChiSqrDistn(1\;\text{df})\) distribution can be found directly from the following integrals.</p>
+\[
+		E[X] = \int_0^{\infty}x\;f(x) dx \spaced{and} E[X^2] = \int_0^{\infty}x^2\;f(x) dx
+		\]
+<p>However since the distribution is a special case of the Gamma distribution, we can use the formulae for the mean and variance of the Gamma distribution.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Mean and variance</p>
+<p>If a random variable \(X\) has a \(\ChiSqrDistn(1\;\text{df})\) distribution, its mean and variance are</p>
+		\[
+		E[X] \;=\; 1
+		\spaced{and} \Var(X) \;=\; 2
+		\]
+		<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">10.1.3 &nbsp; General chi-squared distribution</h2>
+
+<p class="heading">Sum of squared standard normals</p>
+
+<p>We now generalise from the distribution of a <strong>single</strong> squared \(\NormalDistn(0, 1)\) variable to the sum of squares of \(k\) independent ones.</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>If \(\{Z_1, Z_2, \dots, Z_k\}\) are independent  variables with standard normal distributions, then \(Y = \sum_{i=1}^k {Z_i^2}\) is said to have a <strong>Chi-squared</strong> distribution with \(k\) degrees of freedom,</p>
+\[
+Y \;\;\sim\;\; \ChiSqrDistn(k\;\text{df})
+\]</div>
+
+<p>Since z-scores have a standard normal distribution, this  means that</p>
+\[
+\sum_{i=1}^k \frac{(X_i - \mu)^2}{\sigma^2}  \;\;\sim\;\; \ChiSqrDistn(k\;\text{df})
+\]
+
+<p>The properties of \(Y\) can be found by noting that</p>
+<ul>
+	<li>\(\{Z_1^2, Z_2^2, \dots, Z_k^2\}\) are independent \(\ChiSqrDistn(1)\) variables,</li>
+	<li>The \(\ChiSqrDistn(1)\) distribution is identical to a \(\GammaDistn(\frac 1 2, \frac 1 2)\) distribution, and</li>
+	<li>The sum of Gamma random variables also has a Gamma distribution, provided their second parameters are the same.</li>
+</ul>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Relationship to the Gamma distribution</p>
+		<p>The \(\ChiSqrDistn(k\;\text{df})\) distribution is identical to a \(\GammaDistn(\frac k 2, \frac 1 2)\) distribution</p>
+\[
+		\ChiSqrDistn(k\;\text{df}) \;\;\equiv\;\;  \GammaDistn(\frac k 2, \frac 1 2)
+		\]
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p>The Chi-squared distribution's pdf can be found directly from that of the Gamma distribution.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Probability density function</p>
+<p>A random variable \(Y \sim \ChiSqrDistn(k\;\text{df})\) has probability density function</p>
+\[
+f(y) \;=\; \frac 1 {\Gamma({\large\frac k 2}) 2^{\large\frac k 2}} y^{\large{\frac k 2} - 1}e^{\large{-\frac y 2}} \qquad\text{if } y \gt 0
+\]
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">10.1.4 &nbsp; General chi-squared properties</h2>
+<p>The mean and variance of a \(\ChiSqrDistn(k\;\text{df})\) random variable can be found from its equivalence to a Gamma distribution.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Mean and variance</p>
+<p>If  \(Y \sim \ChiSqrDistn(k\;\text{df})\), its mean and variance are</p>
+\[
+E[Y] = k \spaced{and}  
+\Var(Y) = 2k\]
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+<p class="heading">Shape of the distribution</p>
+<p>The \(\ChiSqrDistn(k\;\text{df})\) distribution is skew with a longer tail to the right. However since</p>
+\[
+Y = \sum_{i=1}^k {Z_i^2}
+\]
+<p>where the \(\{Z_i^2\}\) are independent  \(\ChiSqrDistn(1)\) random variables, the Central Limit Theorem shows that the distribution approaches the shape of a Normal distribution as \(k \to \infty\).</p>
+<p class="eqn"><img src="../../../en/chiSquared/images/s_chiSqrShapes.png" width="463" height="680" alt=""/></p>
+
+
+<h2 class="pageName">10.1.5 &nbsp; Sample variance (Proof not examined)</h2>
+<p>The following theorem is important but its proof is long and difficult.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Sample variance from a normal distribution</p>
+<p>If \(\{X_1, X_2, \dots, X_n\}\) is a random sample from a \(\NormalDistn(\mu, \sigma^2)\) distribution, the sample variance, \(S^2\) has a scaled Chi-squared distribution</p>
+
+\[
+\frac {n-1}{\sigma^2} S^2 \;\sim\; \ChiSqrDistn(n - 1\;\text{df})
+\]
+
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+<p>We will also write the distribution of \(S^2\) in the form</p>
+
+\[
+S^2 \;\;\sim\;\; \frac{\sigma^2}{n-1} \;\times\; \ChiSqrDistn(n - 1\;\text{df})
+\]
+<p>Knowing the distribution of \(S^2\) lets you find probabilities relating to the variance or standard deviation of a sample from a normal distribution.</p>
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Example</p>
+<p>In a random sample of \(n = 20\) values from a \(\NormalDistn(\mu,\;\sigma^2)\) distribution, what is the probability that the sample standard deviation will be more than 20% higher than the normal distribution's standard deviation, \(\sigma\)?</p>
+<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">10.1.6 &nbsp; Confidence interval for normal variance</h2>
+
+<p class="heading">Pivot for a normal sample's variance</p>
+
+<p>To find a confidence interval for \(\sigma^2\) based on a random sample, \(\{X_1, X_2, \dots, X_n\}\), from a \(\NormalDistn(\mu,\;\sigma^2)\) distribution, we will find a pivot — a function of the data and \(\sigma^2\) whose distribution is completely known with no unknown parameters. A suitable pivot is</p>
+
+\[
+g(\sigma^2, X_1, \dots, X_n) \;\;=\;\; \frac{n-1}{\sigma^2} S^2 \;\;\sim\;\;\ChiSqrDistn(n-1\;\text{df})
+\]
+
+<p>where \(S^2\) is the sample variance.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Confidence interval for a normal distribution's variance</p>
+<p>If \(s^2\) is the variance of a random sample from a \(\NormalDistn(\mu,\;\sigma^2)\) distribution, a 95% confidence interval for \(\sigma^2\) is</p>
+
+\[
+\frac{(n-1)s^2}{\chi_{n-1,\;0.975}^2} \;\;\lt\;\; \sigma^2 \;\;\lt\;\; \frac{(n-1)s^2}{\chi_{n-1,\;0.025}^2}
+\]
+
+<p>where \(\chi_{n-1,\;0.025}^2\) and \(\chi_{n-1,\;0.975}^2\) are the 2½th and 97½th percentiles of the Chi-squared distribution with \((n-1)\) degrees of freedom.</p>
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+<p>This can be generalised in an obvious way to find interval estimates with other confidence levels by replacing \(\chi_{n-1,\;0.025}^2\) and \(\chi_{n-1,\;0.975}^2\) with other quantiles from the Chi-squared distribution. For example, to find a 90% confidence interval, \(\chi_{n-1,\;0.05}^2\) and \(\chi_{n-1,\;0.95}^2\) would be used.</p>
+<p>These quantiles can be found using Excel. Type into a spreadsheet cell</p>
+<p class="eqn">=CHISQ.INV(\(\langle p \rangle\), \(\langle df \rangle\))</p>
+<p>when looking for the  <span class="eqn">\(\langle p \rangle\)</span>th quantile of the Chi-squared distribution with <span class="eqn">\(\langle df \rangle\)</span> degrees of freedom.</p>
+
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Question</p>
+<p>In an experiment that investigated the grazing behaviour of dairy cows, four cows were studied while they grazed on 48 different plots of grass. The grass intake was estimated in each plot by sampling before and after the experiment, and the number of bites made by each cow was recorded. This table gives  the grass intake per bite in each of the plots.</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred" bgcolor="#FFFFFF" style="border:1px solid #999999;">
+<tr><td>1.09</td>
+	<td>1.41</td>
+	<td>1.20</td>
+	<td>1.04</td>
+	<td>1.07</td>
+	<td>1.39</td>
+	<td>1.06</td>
+	<td>1.14</td></tr>
+
+<tr><td>0.88</td><td>0.92</td><td>1.07</td><td>1.07</td><td>1.18</td><td>0.57</td><td>0.01</td><td>0.31</td></tr>
+
+<tr><td>1.14</td><td>1.18</td><td>0.58</td><td>0.74</td><td>0.14</td><td>0.48</td><td>0.91</td><td>0.37</td></tr>
+
+<tr><td>2.19</td><td>1.17</td><td>2.34</td><td>1.69</td><td>1.97</td><td>1.04</td><td>1.76</td><td>1.26</td></tr>
+
+<tr><td>1.62</td><td>0.81</td><td>1.81</td><td>2.06</td><td>2.27</td><td>1.24</td><td>0.02</td><td>1.46</td></tr>
+
+<tr><td>2.29</td><td>2.28</td>
+	<td>1.40</td>
+	<td>0.60</td>
+	<td>1.41</td>
+	<td>0.49</td>
+	<td>1.06</td>
+	<td >1.58</td>
+</tr>
+</table>
+</div>
+
+<p>There are only 48 observations, so it is impossible to be sure of the shape of the underlying population distribution. However a histogram does seem reasonably symmetrical, so a normal distribution is a reasonable model.</p>
+<p class="eqn"><img class="svgImage" src="../../../en/chiSquared/images/grassHisto.png" width="401" height="262"></p>
+<p>Assuming that the data come from a \(\NormalDistn(\mu,\;\sigma^2)\) distribution, find a 95% confidence interval for the standard deviation, \(\sigma\).</p>
+<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">10.1.7 &nbsp; Pooled variance from several samples (Optional)</h2>
+<p>We now consider data sets that arise as random samples from two or more groups. </p>
+<p class="heading">A normal model</p>
+<p>We often assume that all groups have normal distributions, with a \(\NormalDistn(\mu_i,\;\sigma_i^2)\) distribution in the \(i\)'th of the \(g\) groups. It is also common to assume that the variances is the same in all groups, so</p>
+
+\[
+Y_{ij} \;\;\sim\;\; \NormalDistn(\mu_i, \sigma^2) \qquad \text{for }i = 1,\dots,g \text{ and }j = 1,\dots,n_i
+\]
+<p>where \(Y_{ij}\) is the \(j\)'th value in group \(i\). Note that we are using \(n_i\) to denote the number of values in the \(i\)'th group and the total number of values is \(n = \sum_{i=1}^g n_i\).</p>
+<p>The maximum likelihood estimates of the group means \(\{\mu_i\}\) are</p>
+\[
+\hat{\mu}_{i} \;\;=\;\; \overline{Y}_i
+\]
+<p>but how should we estimate the common group variance, \(\sigma^2\)? </p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>The <strong>pooled estimate</strong> of the common group variance is</p>
+\[
+S_{\text{pooled}}^2 \;=\; \frac{\sum_{i=1}^g (n_i - 1)S_i^2}{\sum_{i=1}^g (n_i - 1)}
+\]
+<p>where</p>
+\[
+S_i^2 \;=\; \frac{\sum_{j=1}^{n_i} (Y_{ij} - \overline{Y}_i)^2} {n_i - 1}
+\]
+<p>is the sample variance in group \(i\).</p>
+</div>
+
+<p>We now give its distribution.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Distribution of pooled variance</p>
+<p>The pooled estimator \(S_{\text{pooled}}^2\) is an unbiased estimator of \(\sigma^2\) and</p>
+\[
+\frac{n-g}{\sigma^2}S_{\text{pooled}}^2 \;\;\sim\;\; \ChiSqrDistn(n-g\;\text{df})
+\]
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+<p>Since the quantity on the left is a pivot for \(\sigma^2\), it can be used to find a confidence interval for the parameter, in a very similar way to how one was found from a <strong>single</strong> random sample.</p>
+
+
+<h1 class="sectionName breakBefore">10.2 &nbsp; T distribution</h1>
+<h2 class="pageName">10.2.1 &nbsp; Definition of t distribution</h2>
+<p>The t distribution is another that is closely associated with random samples from a normal distribution.</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>If \(Z \sim \NormalDistn(0, 1)\) and \(Y \sim \ChiSqrDistn(k \text{ df})\) are independent random variables, then</p>
+\[
+T \;\;=\;\; \frac{Z}{\sqrt{\diagfrac{Y}{k}}}
+\]
+<p>has a distribution called a <strong>t distribution</strong> with k degrees of freedom,</p>
+\[
+T \;\;\sim\;\; \TDistn(k \text{ df})
+\]
+</div>
+
+<p>We cannot derive the pdf of the t distribution here, but simply state it without proof.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Probability density function of t distribution</p>
+<p>If a random variable has a t distribution with \(k\) degrees of freedom then its probability density function is</p>
+\[
+f(x) \;\;=\;\; \frac{\Gamma(\frac{k+1}{2})}{\Gamma(\frac{k}{2}) \sqrt{k\pi}} \left(1 + \frac{x^2}{k} \right)^{-\frac {k+1}{2}}
+\]</div>
+</div>
+
+<p class="heading">Probabilities and quantiles</p>
+<p>Probabilities and quantiles for t distributions must be evaluated numerically. In Excel, you can find  \(P(Y \lt \langle y \rangle)\) for a t distribution with  \(\langle df \rangle\) degrees of freedom with</p>
+
+<p class="eqn">=T.DIST(\(\langle y \rangle\), \(\langle df \rangle\), TRUE)</p>
+
+<p>In a similar way, its \(\langle p \rangle\)'th quantile is</p>
+<p class="eqn">=T.INV(\(\langle p \rangle\), \(\langle df \rangle\))</p>
+
+
+<h2 class="pageName">10.2.2 &nbsp; Mean, variance and shape</h2>
+<p>The t distribution's mean and variance are stated (without proof) below.</p>
+
+<div class="theoremProof">
+<div class="theorem">
+<p class="theoremTitle">Mean and variance</p>
+<p>If \(T \sim \TDistn(k \text{ df})\), then</p>
+\[
+E[T] \;=\; \begin{cases} 0 &amp; \quad\text{if } k > 1 \\[0.2em]
+\text{undefined} &amp; \quad\text{otherwise}
+\end{cases}
+\]
+<p>and</p>
+\[
+\Var(T) \;=\; \begin{cases} \dfrac {k}{k-2} &amp; \quad\text{if } k > 2 \\[0.5em]
+\infty &amp; \quad\text{otherwise}
+\end{cases}
+\]
+</div>
+</div>
+
+<p class="heading">Shape of the distribution</p>
+<p>Since \(f(x)\) is a function of \(x^2\) for a t distribution, it symmetric around zero. It was defined as</p>
+\[
+	T \;\;=\;\; \frac{Z}{\sqrt{\diagfrac{Y}{k}}} \;\;=\;\; Z \times \frac{1}{\sqrt{\diagfrac{Y}{k}}}
+\]
+<p>where \(Z \sim \NormalDistn(0,1)\) and the second term is independent of it. The t distribution is therefore more variable than the  \(\NormalDistn(0,1)\) distribution.</p>
+<p>However  \(Y\) has a \(\ChiSqrDistn(k \text{ df})\) distribution with \(E[Y] = k\) and  \(\Var(Y) = 2k\), so</p>
+\[
+E\left[\diagfrac Y k\right] = 1 \spaced{and} \Var\left(\diagfrac Y k\right) = \diagfrac 2 k
+\]
+<p>Therefore as \(k \to \infty\), \(\Var\left(\diagfrac Y k\right) \to 0\) and \(\displaystyle \frac{1}{\sqrt{\diagfrac{Y}{k}}} \to 1\).</p>
+<div class="boxed"><p>As \(k \to \infty\), the t distribution therefore approaches the shape of a standard normal distribution.</p></div>
+
+<p>When its degrees of freedom are small, the t distribution's tails are much longer than those of a normal distribution.</p>
+<p class="eqn"><img src="../../../en/tDistn/images/s_t1df.png" width="458" height="280"  alt=""/></p>
+<p>When its degrees of freedom get larger, the distribution's shape approaches a normal distribution, but its tail probabilities are still noticably different until the degrees of freedom reach about 30.</p>
+<p class="eqn"><img src="../../../en/tDistn/images/s_t10df.png" width="458" height="280"  alt=""/></p>
+<p>By the time the degrees of freedom reach 50, the t distribution can be closely approximated by a standard normal distribution.</p>
+<p class="eqn"><img src="../../../en/tDistn/images/s_t50df.png" width="458" height="280"  alt=""/></p>
+
+
+<h2 class="pageName">10.2.3 &nbsp; Pivot for normal mean</h2>
+
+<p class="heading">When &sigma;<sup>2</sup> is known</p>
+
+<p>If \(\{X_1, X_2,\dots, X_n\}\) is a random sample from a \(\NormalDistn(\mu, \sigma^2)\) distribution and  \(\sigma^2\) is <strong>known</strong>, then</p>
+\[
+\overline{X} \;\;\sim\;\; \NormalDistn(\mu,\;\frac{\sigma^2}{n})
+\]
+<p>and</p>
+\[
+\frac{\overline{X} - \mu}{\diagfrac{\sigma}{\sqrt{n}}} \;\;\sim\;\; \NormalDistn(0,\;1)
+\]
+<p>is a pivot for the parameter \(\mu\). From this, we can find a 95% confidence interval for \(\mu\)</p>
+
+\[
+\overline{X} -1.96 \frac{\sigma}{\sqrt{n}} \;\;\lt\;\; \mu \;\;\lt\;\; \overline{X} +1.96 \frac{\sigma}{\sqrt{n}}
+\]
+
+<p class="heading">Unknown &sigma;<sup>2</sup></p>
+<p>When \(\sigma^2\) is an unknown parameter, the quantity \(\displaystyle \frac{\overline{X} - \mu}{\diagfrac{\sigma}{\sqrt{n}}}\) cannot be used as a pivot since it involves both \(\mu\) and \(\sigma^2\).</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Pivot for μ when σ² is unknown</p>
+<p>If \(\overline{X}\) and \(S^2\) are the mean and variance of a random sample of size \(n\) from a \(\NormalDistn(\mu, \sigma^2)\) distribution,</p>
+\[
+\frac{\overline{X} - \mu}{\diagfrac{S}{\sqrt{n}}} \;\;\sim\;\; \TDistn(n-1 \text{ df})
+\]
+<p>is a pivot for the parameter \(\mu\).</p>
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+
+
+
+<h2 class="pageName">10.2.4 &nbsp; Confidence interval for normal mean</h2>
+<p>When \(\sigma^2\) is unknown, the pivot for \(\mu\),</p>
+\[
+\frac{\overline{X} - \mu}{\diagfrac{S}{\sqrt{n}}} \;\;\sim\;\; \TDistn(n-1 \text{ df})
+\]
+<p>can be used to obtain a 95% confidence interval for \(\mu\). Writing the 2½th and 97½th percentiles of the \(\TDistn(n-1\text{ df})\) as \(-t_{n-1,\;0.975}\) and \(t_{n-1,\;0.975}\),</p>
+\[
+P\left(-t_{n-1,\;0.975} \;\;\lt\;\; \frac{\overline{X} - \mu}{\diagfrac{S}{\sqrt{n}}} \;\;\lt\;\; t_{n-1,\;0.975} \right) \;\;=\;\;0.95
+\]
+<p>This leads to the following 95% confidence interval for \(\mu\)</p>
+\[
+\overline{x} -t_{n-1,\;0.975} \frac{s}{\sqrt{n}} \;\;\lt\;\; \mu \;\;\lt\;\; \overline{x} +t_{n-1,\;0.975} \frac{s}{\sqrt{n}}
+\]
+<p>In general, a \((1-\alpha)\) confidence interval is</p>
+\[
+\overline{x} -t_{n-1,\;1-\diagfrac{\alpha}{2}} \frac{s}{\sqrt{n}} \;\;\lt\;\; \mu \;\;\lt\;\; \overline{x} +t_{n-1,\;1-\diagfrac{\alpha}{2}} \frac{s}{\sqrt{n}}
+\]
+
+
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Question</p>
+<p>An experiment was conducted about the grazing behaviour of dairy cows. This table gives the grass intake rate (in grams dry mass per bite) in the 48 plots of grass used.</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred" bgcolor="#FFFFFF" style="border:1px solid #999999;">
+	<tr>
+		<td>1.09</td>
+		<td>1.41</td>
+		<td>1.20</td>
+		<td>1.04</td>
+		<td>1.07</td>
+		<td>1.39</td>
+		<td>1.06</td>
+		<td>1.14</td>
+	</tr>
+	<tr>
+		<td>0.88</td>
+		<td>0.92</td>
+		<td>1.07</td>
+		<td>1.07</td>
+		<td>1.18</td>
+		<td>0.57</td>
+		<td>0.01</td>
+		<td>0.31</td>
+	</tr>
+	<tr>
+		<td>1.14</td>
+		<td>1.18</td>
+		<td>0.58</td>
+		<td>0.74</td>
+		<td>0.14</td>
+		<td>0.48</td>
+		<td>0.91</td>
+		<td>0.37</td>
+	</tr>
+	<tr>
+		<td>2.19</td>
+		<td>1.17</td>
+		<td>2.34</td>
+		<td>1.69</td>
+		<td>1.97</td>
+		<td>1.04</td>
+		<td>1.76</td>
+		<td>1.26</td>
+	</tr>
+	<tr>
+		<td>1.62</td>
+		<td>0.81</td>
+		<td>1.81</td>
+		<td>2.06</td>
+		<td>2.27</td>
+		<td>1.24</td>
+		<td>0.02</td>
+		<td>1.46</td>
+	</tr>
+	<tr>
+		<td>2.29</td>
+		<td>2.28</td>
+		<td>1.40</td>
+		<td>0.60</td>
+		<td>1.41</td>
+		<td>0.49</td>
+		<td>1.06</td>
+		<td>1.58</td>
+	</tr>
+</table>
+</div>
+
+<p>Assuming that the data come from a  \(\NormalDistn(\mu,\;\sigma^2)\) distribution, find a 95% confidence interval for the mean grass intake per bite, \(\mu\).</p>
+<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+<p class="heading">Robustness</p>
+<p>The above confidence interval was based on the assumption that  the data were a random sample from a \(\NormalDistn(\mu\;, \sigma^2)\) distribution, but we are rarely certain about the shape of the underlying distribution in practical problems. However</p>
+<div class="boxed">
+<p>Provided the shape of the underlying distribution is <strong>not far</strong> from normal, a confidence interval based on the t-distribution has <strong>approximately</strong> the correct confidence level.</p></div>
+
+
+
+<h2 class="pageName">10.2.5 &nbsp; Two samples from normal distributions</h2>
+
+<p class="heading">Difference between two sample means</p>
+
+<p>If we have two independent samples from normal distributions with the <strong>same</strong> variance,</p>
+\[ \begin{align}
+X_{1,i} \;\;&amp;\sim\;\; \NormalDistn(\mu_1,\;\sigma^2) \qquad \text{for } i=1,\dots,n_1 \\
+X_{2,i} \;\;&amp;\sim\;\; \NormalDistn(\mu_2,\;\sigma^2) \qquad \text{for } i=1,\dots,n_2
+\end{align} \]
+<p>then the two sample means are independent with</p>
+\[
+\overline{X}_1 \;\sim\; \NormalDistn\left(\mu_1,\;\frac{\sigma^2}{n_1}\right) \spaced{and} \overline{X}_2 \;\sim\; \NormalDistn\left(\mu_2,\;\frac{\sigma^2}{n_2}\right)
+\]
+<p>and their difference also has a normal distribution,</p>
+\[
+\overline{X}_1 - \overline{X}_2 \;\;\sim\;\; \NormalDistn\left(\mu_1 - \mu_2,\;\sigma^2\left(\frac 1{n_1} + \frac 1{n_2}\right)\right)
+\]
+<p class="heading">Pooled estimate of variance</p>
+<p>The pooled estimate of the \(\sigma^2\) for  two groups is</p>
+\[
+S_{\text{pooled}}^2 \;=\; \frac{(n_1 - 1)S_1^2 + (n_2 - 1)S_2^2}{n_1 + n_2 - 2}
+\]
+<p>We also earlier that this has a Chi-squared distribution.</p>
+\[
+\frac{n_1 + n_2 - 2}{\sigma^2}S_{\text{pooled}}^2 \;\sim\; \ChiSqrDistn(n_1 + n_2 - 2 \text{ df})
+\]
+
+
+
+<h2 class="pageName">10.2.6 &nbsp; Estimating difference between means (Not examined)</h2>
+<p>The difference between the sample means of the two normal distributions is</p>
+\[
+\overline{X}_1 - \overline{X}_2 \;\;\sim\;\; \NormalDistn\left(\mu_1 - \mu_2,\;\sigma^2\left(\frac 1{n_1} + \frac 1{n_2}\right)\right)
+\]
+<p>and the best estimate of the common variance, \(\sigma^2\), is</p>
+\[
+\hat{\sigma}^2 \;=\; S_{\text{pooled}}^2 \;=\; \frac{(n_1 - 1)S_1^2 + (n_2 - 1)S_2^2}{n_1 + n_2 - 2}
+\]
+<p>If \(\sigma^2\) is unknown, our best estimate of the standard error of \(
+\overline{X}_1 - \overline{X}_2\) is therefore</p>
+\[
+\se(\overline{X}_1 - \overline{X}_2) \;=\; \sqrt{S_{\text{pooled}}^2 \left(\frac 1{n_1} + \frac 1{n_2}\right) }
+\]
+
+<p>We can use this and the chi-squared distribution of the pooled variance to find a pivot for \(\mu_1 - \mu_2\).</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Pivot for μ₁ − μ₂</p>
+<p>If \(\overline{X}_1\) and \(S_1^2\) are the mean and variance of a sample of \(n_1\) values from a \(\NormalDistn(\mu_1, \sigma^2)\) distribution and  \(\overline{X}_2\) and \(S_2^2\) are the mean and variance of an independent sample of \(n_2\) values from a \(\NormalDistn(\mu_2, \sigma^2)\) distribution,</p>
+\[
+\frac{(\overline{X}_1 - \overline{X}_2) - (\mu_1 - \mu_2)}{\se(\overline{X}_1 - \overline{X}_2)}
+\;\;\sim\;\; \TDistn(n_1 + n_2 - 2 \text{ df})
+\]
+<p>is a pivot for \(\mu_1 - \mu_2\).</p>
+</div>
+</div>
+
+<p class="heading">Confidence interval</p>
+<p>A 95% confidence interval for \(\mu_1 - \mu_2\) is therefore</p>
+\[
+(\overline{x}_1 -\overline{x}_2)\;\; \pm \;\; t_{n_1 + n_2-2,\;0.975}\;\times \se(\overline{x}_1 -\overline{x}_2)
+\]
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Question</p>
+<table style="margin-left:0px; margin-top:10px;"><tr>
+<td valign="top">
+<p style="margin-top:5px">Is a badly burned or decomposed body male or female? Male and female teeth have different properties. The data on the right were collected from 8 males and 8 females, describing the extent to which X-rays can penetrate tooth enamel at different wavelengths.</p>
+</td>
+<td valign="top"><img class="svgImage" src="../../../en/tDistn/images/teethGender.png" width="174" height="310" style="margin:8px 5px 0 0;"></td>
+</tr></table>
+
+<p>The sample mean and standard deviation of the males are \(\overline{x}_m = 5.425\) and \(s_m = 0.744\), and the corresponding values for the females are \(\overline{x}_f = 4.512\) and \(s_f = 0.761\).</p>
+<p>Assuming that the distributions for males and females are both normal and that they have equal variances, find a 99% confidence interval for the difference between the mean spectroscopic gradients for males and females.</p>
+<br clear="all">
+<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+
+
+<h1 class="sectionName breakBefore">10.3 &nbsp; F distribution</h1>
+<h2 class="pageName">10.3.1 &nbsp; Ratio of chi-squared variables</h2>
+<p>The F distribution is also closely associated with random samples from normal distributions.</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>If \(X_1\) and \(X_2\) have chi-squared distributions,</p>
+\[
+X_1 \;\sim\; \ChiSqrDistn(k_1 \text{ df}) \spaced{and} X_2 \;\sim\; \ChiSqrDistn(k_2 \text{ df})
+\]
+<p>then</p>
+\[
+F \;\;=\;\; \frac{\diagfrac{X_1}{k_1}} {\diagfrac{X_2}{k_2}}
+\]
+<p>is said to have an <strong>F distribution</strong> with \(k_1\) and \(k_2\) degrees of freedom.</p>
+\[
+F \;\;\sim\;\; \FDistn(k_1,\;k_2 \text{ df})
+\]</div>
+
+<p>Its pdf is complex and cannot be proved here.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Probability density function</p>
+		<p>If a random variable has an F distribution with \(k_1\) and \(k_2\) degrees of freedom then its probability density function is</p>
+		\[
+		f(x) \;\;=\;\; \frac{\Gamma\left(\frac{k_1+k_2}{2}\right)}{\Gamma\left(\frac{k_1}{2}\right) \Gamma\left(\frac{k_2}{2}\right)}
+		\left(\frac{k_1}{k_2}\right)^{\frac{k_1}{2}}
+		x^{\frac{k_1}{2} - 1}
+		 \left(1 + \frac{k_1x}{k_2} \right)^{-\frac {k_1+k_2}{2}} \qquad\text{for }x > 0
+		\]</div>
+</div>
+
+<p class="heading">Probabilities and quantiles</p>
+<p>Cumulative probabilities and quantiles of the F distribution must be evaluated numerically. In Excel, the probability of an \(\FDistn(\langle k_1 \rangle, \langle k_2 \rangle)\) distribution being less than a value \(\langle x \rangle\), \(P(X \lt \langle x \rangle)\) can be found with</p>
+<p class="eqn">=F.DIST(\(\langle x \rangle\), \(\langle k_1 \rangle\), \(\langle k_2 \rangle\), TRUE)</p>
+<p>In a similar way, its \(\langle p \rangle\)'th quantile is</p>
+<p class="eqn">=F.INV(\(\langle p \rangle\), \(\langle k_1 \rangle\), \(\langle k_2 \rangle\)) </p>
+
+
+<h2 class="pageName">10.3.2 &nbsp; Mean, variance and shape</h2>
+<p>The F distribution's mean and variance are stated below without proof.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Mean and variance</p>
+		<p>If \(F \sim \FDistn(k_1,\; k_2 \text{ df})\), then</p>
+		\[
+		E[F] \;=\; \begin{cases} \dfrac {k_2}{k_2-2} &amp; \quad\text{if } k_2 > 2 \\[0.4em]
+		\infty &amp; \quad\text{otherwise}
+		\end{cases} \]
+		<p>and</p>
+		\[
+		\Var(F) \;=\; \begin{cases} 2\left(\dfrac {k_2}{k_2-2}\right)^2
+		\dfrac{k_1 + k_2 - 2}{k_1(k_2 - 4)}
+		 &amp; \quad\text{if } k_2 > 4 \\[0.4em]
+		\infty &amp; \quad\text{otherwise}
+		\end{cases}
+		\] </div>
+</div>
+<p>The F distribution is non-negative and skew with a long positive tail. The skewness is most extreme when \(k_2\) is small and can even result in an infinite mean and variance. The diagram below shows its shape for a few values of the degrees of freedom.</p>
+<p class="eqn"><img src="../../../en/fDistn/images/s_fShape.png" width="461" height="740"  alt=""/></p>
+
+
+
+
+<h2 class="pageName">10.3.3 &nbsp; Comparing sample variances</h2>
+<p>One application of the F distribution arises when comparing two random samples from normal distributions. If \(S_1^2\) and \(S_2^2\) are the the sample variances of a random samples of \(n_1\) and  \(n_1\) values from two normal distributions,</p>
+\[ \begin{align}
+\frac {n_1-1}{\sigma_1^2} S_1^2 \;&amp;\sim\; \ChiSqrDistn(n_1 - 1\;\text{df}) \\[0.3em]
+\frac {n_2-1}{\sigma_2^2} S_2^2 \;&amp;\sim\; \ChiSqrDistn(n_2 - 1\;\text{df})
+\end{align} \]
+<p>This can also be expressed as</p>
+\[ \begin{align}
+\frac {S_1^2}{\sigma_1^2} \;&amp;\sim\; \frac{\ChiSqrDistn(n_1 - 1\;\text{df})}{n_1 - 1}\\[0.5em]
+\frac{S_2^2}{\sigma_2^2} \;&amp;\sim\; \frac{\ChiSqrDistn(n_2 - 1\;\text{df})}{n_2 - 1}
+\end{align} \]
+
+<p>Since the ratio of the two distributions on the right gives an F distribution, this gives us a pivot for the ratio of the two group variances.</p>
+
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Ratio of two sample variances</p>
+\[
+\frac {S_1^2\;/\;S_2^2} {\sigma_1^2\;/\;\sigma_2^2} \;\;\sim\;\; \FDistn(n_1 - 1,\;n_2 - 1\;\text{df})
+\]
+<p>is a pivot for the ratio \(\diagfrac{\sigma_1^2}{\sigma_2^2}\).</p>
+</div>
+</div>
+<p>Since</p>
+\[
+P\left(F_{0.025} \;\lt\; \frac {S_1^2\;/\;S_2^2} {\sigma_1^2\;/\;\sigma_2^2} \;\lt\; F_{0.975}\right) \;\;=\;\; 0.95
+\]
+<p>where \(F_{0.025}\) and \(F_{0.975}\) are the 2½th and 97½th percentiles of the \(\FDistn(n_1 - 1,\;n_2 - 1\;\text{df})\) distribution, a 95% confidence interval can be found by rearranging the inequality,</p>
+\[
+\frac {s_1^2\;/\;s_2^2}{F_{0.975}} \;\;\lt\;\; \frac{\sigma_1^2}{\sigma_2^2} \;\;\lt\;\; \frac {s_1^2\;/\;s_2^2}{F_{0.025}}
+\]
+
+<p>Interval estimates with different confidence levels can be found by replacing \(F_{0.025}\) and \(F_{0.975}\) with other quantiles of the \(\FDistn(n_1 - 1,\;n_2 - 1\;\text{df})\) distribution.</p>
+
+<div class="questionSoln">
+<div class="question">
+<p class="questionTitle">Question</p><table style="margin-left:0px; margin-top:10px;"><tr>
+<td valign="top">
+<p>Remote sensing from satellites is often used to determine land use.</p>
+<p>Near-infrared intensities were recorded by the Satellite Landsat Multispectral Scanner from 118 areas that were known to contain forest, and from another 40 areas that were known to be urban. These measurements are shown in the jittered dot plot on the right.</p>
+</td>
+<td valign="top"><img src="../../../en/fDistn/images/remoteSense.png" width="178" height="313" style="margin:8px 5px 0 0;">
+<!-- The SVG version cannot be used since its dot plot does not display in Safari --></td>
+</tr></table>
+
+<p>The sample mean and variance of the values from forested areas are \(\overline{x}_1= 92.93\) and \(s_1^2 = 48.06\), and the corresponding values for the urban areas are \(\overline{x}_2= 82.08\) and \(s_2^2 = 24.79\).</p>
+<p>We will model the data as random samples from \(\NormalDistn(\mu_1, \sigma_1^2)\) and \(\NormalDistn(\mu_2, \sigma_2^2)\) distributions. The mean near-infrared intensities are clearly different in forested and urban areas. Assess whether it is reasonable to assume that the variances are the same for the two types of land use.</p>
+<p class="questionNote">(Solved in full version)</p>
+</div>
+</div>
+
+
+<h2 class="pageName">10.3.4 &nbsp; Relationship between t and F distributions</h2>
+<p>The t and F distributions are closely related.</p>
+
+<div class="theoremProof">
+<div class="theorem">
+<p class="theoremTitle">Relationship between F and t distributions</p>
+<p>If a random variable \(T\) has a t distribution with \(k\) degrees of freedom, then</p>
+\[
+T^2 \sim \FDistn(1,k \text{ df})
+\]
+<p class="theoremNote">(Proved in full version)</p>
+</div>
+</div>
+
+
+<h1 class="sectionName">10.4 &nbsp; What you need to learn</h1>
+
+
+<p class="heading">What you need to know in this chapter</p>
+<p>You should concentrate on the following material when studying the  chapter about distributions related to the normal distribution.</p>
+<div class="boxed">
+	<p>Remember that  the probability (or probability density) functions, means and variances of these distributions are provided in a formula sheet in the exam — you do not need to remember them.</p>
+</div>
+<p class="heading">10.1 Chi-squared distribution</p>
+<p>You should be able to derive the pdf of a variable defined as the square of a standard normal variable — a &chi;&sup2;(1 df) distribution — and show that it is identical to that of a Gamma(&frac12;, &frac12;) distribution. You should also be able to derive the pdf of the sum of <em>k</em> such squared independent standard normal variables — a &chi;&sup2;(<em>k</em> df) distribution. The mean, variance and other properties of the distribution follow from those of the Gamma distribution.</p>
+<p>You also need to know how the distribution of the sample variance from a normal distribution is related to a chi-squared distribution (but not prove it) and use this chi-squared distribution to obtain probabilities about sample variances and a confidence interval.</p>
+<p class="heading">10.2 T distribution</p>
+<p>You need to know how the t distribution is defined from a standard normal and an independent chi-squared variable. You should also be able to derive a pivot with a t distribution from the sample mean and variance of an arbitrary normal distribution and explain how this leads to the standard 100-level confidence interval for the normal distribution's mean.</p>
+<p class="heading">10.3 F distribution</p>
+<p>You should know how the F distribution is defined from two independent chi-squared variables. You also need to be able to find a pivot for the ratio of two independent sample variances and use it to evaluate a confidence interval for the ratio between the underlying population variances. You should also be able to prove that a squared variable with a t distribution has an F distribution.</p>
+
+
+</body>
+</html>

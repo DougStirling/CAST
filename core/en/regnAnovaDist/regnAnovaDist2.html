@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>F ratio</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="f ratio, f distribution, analysis of variance">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class=heading>Distribution of F ratio</p>
+<p>Continuing our analysis in the same way as was done for the multi-group normal 
+model, the mean residual and explained sums of squares are the sums of squares 
+divided by their degrees of freedom. We define an <strong>F ratio</strong>,</p>
+  <p class=eqn><img src="../regnAnova/images/fDistn.gif" width="235" height="38" alt="F=MSSexplained/MSSresidual"> 
+  </p>
+<dl>
+<dt>If the underlying model's slope is zero (so <em>X</em> and <em>Y</em> are 
+unrelated),</dt>
+<dd>...the two sums of squares have chi-squared distributions so the F ratio has 
+an F distribution with (1, <em>n</em>&nbsp;-&nbsp;2) degrees of freedom.</dd>
+<dt>If the underlying model's slope is non-zero,</dt>
+<dd>...the F ratio is expected to be higher.</dd>
+</dl>
+<p>The calculations are again organised in an <strong>analysis of variance table</strong>. 
+</p>
+  <p class=eqn><img src="../regnAnova/images/anovaTable.gif" width="514" height="176" alt="Anova table"> 
+  </p>
+
+<div class="diagram"> 
+
+<p class="heading">Simulation illustrating distribution of <em>F</em></p>
+
+<p>The diagram allows samples to be selected from a normal linear model with β<sub>1</sub>&nbsp;=&nbsp;0 
+and σ&nbsp;=&nbsp;10.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.FDistnApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="regnModel" value="55 0 10">
+<param name="randomSeed" value="8582705671">
+<param name="xAxis" value="0.5 4.5 1 1">
+<param name="yAxis" value="25 85 30 10">
+<param name="decimals" value="3">
+<param name="maxSsq" value="9999.999">
+<param name="maxMeanSsq" value="9999.999">
+<param name="maxF" value="999.99">
+<param name="ssqAxis" value="0 15 0 2">
+<param name="areaProportion" value="0.05">
+<param name="noOfDataSets" value="3">
+<param name="dataName" value="5">
+<param name="dataName2" value="20">
+<param name="dataName3" value="50">
+<param name="xValues" value="1 1.75 2.5 3.25 4">
+<param name="xValues2" value="1.00 1.16 1.32 1.47 1.63 1.79 1.95 2.11 2.26 2.42 2.58 2.74 2.89 3.05 3.21 3.37 3.53 3.68 3.84 4.00">
+<param name="xValues3" value="1.00 1.06 1.12 1.18 1.24 1.31 1.37 1.43 1.49 1.55 1.61 1.67 1.73 1.80 1.86 1.92 1.98 2.04 2.10 2.16 2.22 2.29 2.35 2.41 2.47 2.53 2.59 2.65 2.71 2.78 2.84 2.90 2.96 3.02 3.08 3.14 3.20 3.27 3.33 3.39 3.45 3.51 3.57 3.63 3.69 3.76 3.82 3.88 3.94 4.00">
+<param name="customText" value="Explained=Explained">
+</applet> 
+</div>
+
+<p>Click <strong>Take sample</strong> several times to build up the distribution 
+of the F ratio. Observe that it has an <strong>extremely</strong> skew distribution.</p>
+<p>The theoretical F distribution is also shown in grey. The tail of the F distribution 
+is longest when the sample size is small &mdash; the difference is not clear in the 
+diagram here, but is important.</p>
+
+<div class="centred"><div class="boxed">
+<p>Note that the underlying slope is zero in this 
+simulation &mdash; the explanatory variable does not affect <em>Y</em>. If the slope 
+was non-zero, the F ratio's distribution would have a higher mean.</p>
+</div></div>
+
+<br>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

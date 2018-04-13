@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Curvature &mdash; transforming X</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="nonlinear relationship, nonlinear model, curvature, transformations">
+	<meta name="dataset" content="Vitamin B2 and rat growth">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Linearising the relationship between Y and X</p>
+
+<p>Even though two variables, <em>X</em> and <em>Y</em>, are nonlinearly related, 
+applying a nonlinear transformation to one or other of the variables can linearise 
+the relationship. In other words, some transformation of <em>X</em> may be linearly 
+related to some transformation of <em>Y</em>.</p>
+<p>For example, it may happen that the <em>Y</em><sup>2</sup> is linearly related 
+to log(<em>X</em>), satisfying the following model.</p>
+<p class=eqn><span class="black"><em>y<sup>2</sup><sub></sub></em> &nbsp; = &nbsp; &beta;<sub>0 &nbsp;</sub>+ &nbsp; &beta;<sub>1 </sub><strong>log</strong><em> x</em> &nbsp;+ &nbsp;&epsilon;</span> </p>
+<p class=eqn><span class="black">&epsilon;&nbsp; ~ &nbsp;<font face="Arial, Helvetica, sans-serif">normal</font> (0<sub></sub>&nbsp;, &sigma;)</span> 
+</p>
+<p>The parameters of this model could again be estimated by least squares, based 
+on the transformed values of the two variables, and confidence intervals and hypothesis 
+tests would be valid.</p>
+<p class="heading">Transformation of X</p>
+<p>In the following example, only transformations of the explanatory variable, 
+<em>X</em>, will be considered.</p>
+
+<div class="diagram" title="Example: Vitamin B and weight gain of rats">
+<p class="heading">Vitamin B and weight gain of rats</p>
+<p>The following data set was obtained from an experiment in which 18 rats were 
+given diets containing different quantities of riboflavin (vitamin B2). The doses 
+used in the experiment were 2.5, 5, 10 and 20 mug per day and the weight gains 
+of the rats (grams) were recorded over a period of 4 weeks. The relationship between 
+weight gain and dose is nonlinear &mdash; weight gains seem to be less affected by 
+increasing the dose once it is over 10 mug per day.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="loessProg.TransformScatterApplet">
+<param name="xVarName" value="B2 Dose">
+<param name="yVarName" value="Growth (g)">
+<param name="xValues" value="5@2.5 4@5 4@10 5@20">
+<param name="yValues" value="24.8 32.8 40.0 24.0 36.0 57.2 52.4 52.8 42.0 63.6 65.2 68.0 77.6 84.8 95.2 94.0 97.2 88.8">
+<param name="horizAxis" value="2 25 5 5 0.2 0.5 1 2">
+<param name="vertAxis" value="0 110 0 20">
+<param name="transXAxis" value="(0,-3) (75,-2) (90,-3) (183,-4) (195,-5) (200,-2) (201,-5) (206,-4) (209,-3) (217,-2) (225,-1) (250,0) (270,1) (290,2) (325,3) (350,4) (370,5) (390,6) (410,7) (427,8) (450,9) (470,10) (490,11)">
+<param name="maxXTransformed" value="-1.000 1000">
+<param name="labelAxes" value="true">
+<param name="extraAxisSpace" value="10 15">
+<param name="doLoess" value="false">
+</applet>
+</div>
+
+<p>Drag the red line on the horizontal axis towards the right to apply a power 
+transformation to the dose. Observe that a log transformation (between a power 
+of 0.01 and -0.01) linearises the relationship reasonably well. <span class="gray">(Use 
+the arrow keys on the keyboard to make fine adjustments to the power.)</span></p>
+<p>A normal linear model explaining weight gain in terms of log(dose) is therefore 
+reasonable. Note that a linear model between weight gain and log(dose) implies 
+a nonlinear model between weight gain and dose.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="650" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="loessProg.TransformXLSApplet">
+<param name="xVarName" value="B2 Dose">
+<param name="yVarName" value="Growth (g)">
+<param name="xValues" value="5@2.5 4@5 4@10 5@20">
+<param name="yValues" value="24.8 32.8 40.0 24.0 36.0 57.2 52.4 52.8 42.0 63.6 65.2 68.0 77.6 84.8 95.2 94.0 97.2 88.8">
+<param name="horizAxis" value="2 25 5 5 0.2 0.5 1 2">
+<param name="vertAxis" value="0 110 0 20">
+<param name="transAxis" value="(0,-3) (75,-2) (90,-3) (183,-4) (195,-5) (200,-2) (201,-5) (206,-4) (209,-3) (217,-2) (225,-1) (250,0) (270,1) (290,2) (325,3) (350,4) (370,5) (390,6) (410,7) (427,8) (450,9) (470,10) (490,11)">
+<param name="maxTransformed" value="-1.000 1000">
+<param name="labelAxes" value="true">
+<param name="extraAxisSpace" value="10 15">
+<param name="horizAxis2" value="2 25 5 5">
+<param name="betaExtremes" value="3 4 99.999 3 4 99.999">
+<param name="customText" value="Least Squares Fit=Least Squares Fit#Original Scale=Original Scale">
+</applet>
+</div>
+
+<p>Again drag the red line to apply a log transformation to the dose of vitamin 
+B2. The least squares line is drawn on the diagram on the left and its equation 
+is shown below. The diagram on the right shows this equation on a the original 
+untransformed axes; observe that it is curved.</p>
+</div>
+
+<p>In the next page, we will examine how transformations of the response, <em>Y</em>, 
+may also be used when there is curvature.</p>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

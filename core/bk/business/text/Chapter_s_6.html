@@ -1,0 +1,531 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>6. Multivariate Data</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/maths/mathStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/maths/theorems.js"></script>
+  <script src="../../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 6 &nbsp; Multivariate Data</h1>
+<h1 class="sectionName">6.1 &nbsp; Displaying multivariate data</h1>
+<h2 class="pageName">6.1.1 &nbsp; Representing a third variable</h2>
+
+<p class="heading">Different plotting symbols for a third variable</p>
+	<p>The simplest way to show the relationship between <strong>three</strong> numerical variables is based on a scatterplot of two of the variables, with the third 
+		variable being represented by  differing symbols instead of identical 
+		'crosses'. Possibilities are:</p>
+	<ul>
+		<li>Colour</li>
+		<li>Size</li>
+		<li>Angle</li>
+	</ul>
+	<p>Although this kind of scatterplot is easy to draw, it is usually hard to 
+		interpret. The decision about  which of the three variables to represent using 
+				the plotting symbol  can make interpretation easier.</p>
+	<p class="eqn"><img src="../../../en/multivariate/images/s_symbols.gif" width="408" height="257"></p>
+
+
+
+
+<h2 class="pageName">6.1.2 &nbsp; Rotating 3D scatterplots</h2>
+
+<p class="heading">3-dimensional scatterplots</p>
+	<p>The most direct way to extend a standard scatterplot of two variables, <em>X</em> and <em>Y</em>, to include a third variable, <em>Z</em>, is to add a third dimension to become an axis for <em>Z</em>. Each individual would be represented by a cross in a 3-dimensional cube.</p>
+	<p class="eqn"><img src="../../../en/multivariate/images/s_3dScatter.gif" width="348" height="326"></p>
+	<p>Although a computer screen is only 2-dimensional, it can display a projection of
+		such a 3-dimensional scatterplot. Rotating such a display with the mouse gives a good
+	feel for the shape of the underlying 3-dimensional scatter of points. This is a <strong>dynamic</strong> display that
+	is only effective on a computer &mdash; the information in the display is conveyed by <strong>movement</strong>. On paper, we can only present information in two dimensions.</p>
+	<p>Three-dimensional scatterplots are an interesting (and occasionally useful)
+		way to display data. They are however <strong>much overrated</strong> as an analysis
+		technique and simpler displays are usually
+		more effective for extracting information from multivariate data.</p>
+
+
+
+
+<h2 class="pageName">6.1.3 &nbsp; Scatterplot matrix and brushing</h2>
+
+<p class="heading">Scatterplots of all pairs of variables</p>
+	<p>The problem of displaying relationships becomes even more difficult when there
+		are more than three variables. It is possible to gain some insight into their relationships 
+		with an array of <strong>scatterplots of all pairs of variables</strong>, called a <strong> scatterplot matrix</strong>.</p>
+	<p class="heading">Brushing</p>
+	<p>Although a <strong>static</strong>  scatterplot matrix reveals some aspects of 
+		the relationships between the variables, more insight into the data is obtained 
+		by adding <strong>dynamic</strong> features. </p>
+	<p>On a computer display, the scatterplots can be dynamically linked, so that clicking on a cross on one
+		scatterplot highlights that individual in <strong>all</strong> scatterplots.
+		<strong>Brushing</strong> extends this to allow highlighting of multiple crosses on
+	a scatterplot with a 'brush' tool. </p>
+	<p class="eqn"><img src="../../../en/multivariate/images/s_scatMatrixBrush.gif" width="551" height="500"></p>
+
+
+
+
+<h2 class="pageName">6.1.4 &nbsp; Brushing example</h2>
+
+<p class="heading">More about brushing</p>
+	<p>Brushing can be used on <strong>any</strong> linked displays of the same data set. </p>
+	<p class="eqn"><img src="../../../en/multivariate/images/s_brushUsa.gif" width="551" height="420"></p>
+
+
+
+
+<h2 class="pageName">6.1.5 &nbsp; Slicing</h2>
+
+<p class="heading">Slicing a scatterplot using a third variable</p>
+	<p><strong>Slicing</strong> is a dynamic technique that only displays a subset of the individuals, based on a restricted range of values for one particular variable. For example, we might display a scatterplot of <em>Y</em> against <em>X</em>, but only for individuals whose values of <em>Z</em> are between 20 and 30. The subset can be dynamically changed with a slider or other control to show whether the relationship between <em>X</em> and <em>Y</em> is different for individuals with low <em>Z</em> and high <em>Z</em>.</p>
+	<p class="heading">Trellis plot</p>
+	<p>Slicing is a dynamic method and must therefore be performed on a computer. Although less effective, an alternative is to show a series of static plots for different slices of the data. This is called a <strong>trellis plot</strong>.</p>
+	<p class="eqn"><img src="../../../en/multivariate/images/s_trellis_c.gif" width="550" height="460"></p>
+
+
+
+
+<h1 class="sectionName breakBefore">6.2 &nbsp; Groups and regression</h1>
+<h2 class="pageName">6.2.1 &nbsp; Additional variables in regression</h2>
+
+<p class="heading">Three or more variables</p>
+	<p>We previously described the relationship between two numerical variables, <em>X</em> and <em>Y</em>.</p>
+	<ul>
+		<li>The correlation coefficient summarises the strength of their relationship.</li>
+		<li>The least squares line summarises the 'shape' of the relationship &mdash; it 
+			can be used to predict <em>Y</em> from <em>X</em>.</li>
+	</ul>
+	<p>In many applications, more than two measurements are made from each individual and the  additional variables may throw light on the relationship.</p>
+	<p>Use of this extra information may lead to  more accurate predictions of <em>Y</em>.</p>
+
+
+
+
+<h2 class="pageName">6.2.2 &nbsp; Displaying groups</h2>
+
+<p class="heading">Distinguishing groups in a  scatterplot</p>
+	<p>We now consider  how a categorical variable, <em>Z</em>, can  help explain the relationship between two numerical variables, <em>X</em> and <em>Y</em>. It equivalently examines whether the relationship between <em>X</em> and <em>Y</em> is the same in each of several groups.</p>
+	<p>As in most other situations, data analysis should  start by examining the data graphically. Differences between the groups can be shown with different symbols and/or colours for the crosses in a scatterplot of  <em>Y</em> against <em>X</em>.</p>
+	<p class="eqn"><img src="../../../en/regnGroups/images/s_scatterGroups.gif" width="419" height="395"></p>
+
+
+
+
+<h2 class="pageName">6.2.3 &nbsp; Regression with grouped data</h2>
+
+<p class="heading">Least squares in each group</p>
+	<p>We can separately examine the relationship between <em>X</em> and <em>Y</em> in each group (or equivalently for each value of a categorical variable, <em>Z</em>). If the 
+		relationship between <em>X</em> and <em>Y</em> is different in the different groups, this 
+	should lead to more accurate predictions of <em>Y</em> from <em>X</em>.</p>
+	<p>A regression line can be separately fitted by least squares in each group.</p>
+	<p class="eqn"><img src="../../../en/regnGroups/images/s_twoLines.gif" width="458" height="382"></p>
+
+
+
+
+
+<h2 class="pageName">6.2.4 &nbsp; Parallel regression lines</h2>
+
+<p class="heading">Separate   regression lines</p>
+	<p>The problem with fitting separate regression lines by least squares in the different groups is that it is difficult to concisely explain the difference between the groups &mdash; the difference between the predicted response in the groups  depends on the value of the explanatory variable.</p>
+	<p class="eqn"><img class="gif" src="../../../en/regnGroups/images/twoLines.gif" width="313" height="274"></p>
+	<p class="heading">Parallel regression lines</p>
+	<p>Interpretation is considerably simplified if we constrain the  regression lines for the different groups to have the same slope. In the diagram below, the difference between the groups is the same for all values of <em>X</em>.</p>
+	<p class="eqn"><img class="gif" src="../../../en/regnGroups/images/parallelLines.gif" width="313" height="274"></p>
+	<p>Parallel lines are not appropriate descriptions of all data sets. Always check a scatterplot first.</p>
+	<p class="heading">Least squares</p>
+	<p>The principle behind fitting  parallel lines to two or more groups is the same as in ordinary simple regression &mdash; we choose the parameters to minimise the sum of squared residuals (vertical distances between the data crosses and their corresponding line). The resulting formulae are complicated, but most statistical software will do the calculations for you.</p>
+
+
+
+
+
+<h2 class="pageName">6.2.5 &nbsp; Transformed variables and groups ((advanced))</h2>
+
+<p class="heading">Transformation of the response</p>
+	<p>It is much easier to interpret the parameters when parallel lines are fitted to different groups than when their slopes are different, but the data or the context may not justify such a simplification.</p>
+	<p class="eqn"><img src="../../../en/regnGroups/images/s_beforeLog.gif" width="436" height="331"></p>
+	<p>After a nonlinear transformation of the response, the relationships in the two groups may be closer to parallel. A  transformation to reduce skewness in the reponse often works well.</p>
+	<p class="eqn"><img src="../../../en/regnGroups/images/s_afterLog.gif" width="436" height="331"></p>
+	<p class="heading">Understanding the model for ln(<em>y</em>)</p>
+	<p>Logarithmic transformations are particularly useful because the parallel least squares lines have a simple interpretation. For the above data they are:</p>
+	<p align="center">Female:    ln (<em>y</em>) = 0.391 + 0.0747 <em>x<br>
+	</em>Male:       ln (<em>y</em>) = 1.192 + 0.0747 <em>x</em></p>
+	<p>This means that:</p>
+	<div class="centred"><div class="boxed">
+		<p><em>ln(y) </em> is (1.192&nbsp;-&nbsp;0.391)&nbsp;=&nbsp;0.801 higher for females than for males with the same <em>x</em>.</p>
+	</div></div>
+	<p>We can now concisely summarise the difference between males and females:</p>
+	<div class="centred"><div class="boxed">
+		<p><em>y </em> for females is e<sup>0.810</sup>&nbsp;=&nbsp;2.23 times that for males with the same <em>x</em>.</p>
+	</div></div>
+
+
+
+
+<h2 class="pageName">6.2.6 &nbsp; Grouping with a numerical variable ((optional))</h2>
+
+<p class="heading">Definition of groups</p>
+	<p>A categorical variable naturally splits the individuals into groups, but a numerical variable, <em>Z</em>, can also be used to define groups.</p>
+	<p class="eqn"><img src="../../../en/regnGroups/images/s_groupedNum.gif" width="432" height="346"></p>
+
+
+
+
+<h2 class="pageName">6.2.7 &nbsp; Displaying groups</h2>
+
+<p class="heading">Distinguishing groups in a scatterplot matrix</p>
+	<p>A scatterplot matrix can help to describe the relationships between 3 or more numerical variables. If each individual belongs to one of several known groups, different symbols or colours can be used to distinguish the groups.</p>
+	<p class="eqn"><img src="../../../en/regnGroups/images/s_scatMatrix.gif" width="520" height="495"></p>
+
+
+
+
+<h1 class="sectionName breakBefore">6.3 &nbsp; Multiple regression</h1>
+<h2 class="pageName">6.3.1 &nbsp; More than one explanatory variable</h2>
+
+<p class="heading">Response and explanatory variables</p>
+	<p>We are often interested in how 
+		a  'response' variable, <em>Y</em>, depends on other explanatory variables. If there is a <strong>single</strong> explanatory variable, <em>X</em>,  we can predict <em>Y</em> from <em>X</em> with a simple linear model of the form,</p>
+	<p class=eqn><span class="black"><em>y</em> &nbsp;=&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x</em></span>
+	<p>However if other explanatory variables have been recorded from each individual,  we should be able to use them to predict the response more accurately.</p>
+	
+
+
+
+<h2 class="pageName">6.3.2 &nbsp; Multiple regression equation</h2>
+
+<p class="heading">Adding extra variables</p>
+	<p>A simple linear model for a single explanatory variable,</p>
+	<p class=eqn><span class="black"><em>y</em> &nbsp;=&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x</em></span>
+	<p>can be easily extended to describe the effect of a  second explanatory variable, <em>Z</em>, with an extra linear term,</p>
+	<p class="eqn"><span class="black"><em>y</em> &nbsp;=&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x</em> + <em>b</em><sub>2 </sub><em>z</em></span></p>
+	<p>and so on with more explanatory variables,</p>
+	<p class="eqn"><span class="black"><em>y</em> &nbsp;=&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x</em> + <em>b</em><sub>2 </sub><em>z</em> + <em>b</em><sub>3 </sub><em>w</em> + ...</span></p>
+	<p>This type of model is called a <strong>multiple regression</strong> model.</p>
+	<p class="heading">Coefficients</p>
+	<p>Despite our use of the same symbols (<em>b</em><sub>0</sub>, <em>b</em><sub>1</sub>, ...) for all three models above, their 'best' values are often different for the different models. An example will be given in the next page.</p>
+
+
+
+
+<h2 class="pageName">6.3.3 &nbsp; Interpreting coefficients</h2>
+
+<p class="heading">Marginal and conditional relationships</p>
+	<p>In a linear model that predicts a response from several explanatory variables, the least squares coefficient associated with any explanatory variable describes its effect on the response <strong>if all other variables are held constant</strong>. 
+		This is also called the variable's <strong>conditional effect</strong> on 
+		the response.</p>
+	<p>This may be very different from the size and even the sign of the coefficient when a linear model is fitted with <strong>only that single explanatory variable</strong>. This simple linear model describes the <strong>marginal</strong> relationship between the response and that variable.</p>
+	<p class="heading">Example</p>
+	<p>In a model for predicting the percentage body fat of men, the best model (as determined by least squares) in a simple model with <em>weight</em>, is</p>
+	<p class="eqn"><em>Predicted body fat</em>   =   -10.00  +  0.162 <em>Weight</em></p>
+	<p>However if we add <em>Abdomen circumference</em> to the model, the best values for the coefficients are</p>
+	<p class="eqn"><em>Predicted body fat</em>   =   -41.35  -  0.136 <em>Weight</em>  +  0.915 <em>Abdomen</em></p>
+	<ul>
+		<li>For each 1lb extra <em>Weight</em>, men have, on average, 0.162% <strong>more</strong> body fat.</li>
+		<li>For each 1lb extra <em>Weight</em>, men have, on average, 0.136% <strong>less</strong> body fat <strong>than others with the same <em>Abdomen circumference</em></strong>.</li>
+	</ul>
+
+
+
+
+<h2 class="pageName">6.3.4 &nbsp; Scatterplot of three variables</h2>
+
+<p class="heading">Graphical display of data and models</p>
+	<p>Before applying statistical methods to any data set, we should try to display the data graphically. For a situation with response <em>Y</em> and two explanatory variables, <em>X</em> and <em>Z</em>, a rotating 3-dimensional scatterplot can display the data.</p>
+	<p class="eqn"><img src="../../../en/multiRegn/images/s_3dScatter.gif" width="348" height="326"></p>
+	<p>This kind of 3-dimensional diagram can also effectively illustrate linear models and their parameters.</p>
+	<p>(Similar graphical displays are not possible when there are 3 or more explanatory variables, but the concepts are the same.)</p>
+
+
+
+
+<h2 class="pageName">6.3.5 &nbsp; Regression plane</h2>
+
+<p class="heading">Graphical display of the equation</p>
+	<p>The linear equation to predict a response from a single explanatory variable can be displayed as a straight line on a scatterplot of <em>Y</em> against <em>X</em>.</p>
+	<p class="eqn"><span class="black"><em>y</em> &nbsp;=&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x</em></span></p>
+	<p>The corresponding equation for predicting <em>Y</em> from <em>X</em> and <em>Z</em> is</p>
+	<p class="eqn"><span class="black"><em>y</em> &nbsp;=&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x</em> + <em>b</em><sub>2 </sub><em>z</em></span></p>
+	<p>This <strong>linear model</strong> can be displayed as a plane on a 3-dimensional scatterplot of <em>Y</em> against <em>X</em> and <em>Z</em>.</p>
+	<p class="eqn"><img src="../../../en/multiRegn/images/s_lsPlane.gif" width="453" height="317"></p>
+
+
+
+
+<h2 class="pageName">6.3.6 &nbsp; Fitted values and residuals</h2>
+
+<p class="heading">Fitted values</p>
+	<p>A linear model provides a prediction of<em> y</em> for any values of <em>x</em> and <em>z</em>. For the <em>i</em>'th individual, the prediction  is called 
+	its <strong>fitted value</strong>,</p>
+	<div class="centred">
+		<table border="0" cellpadding="0" cellspacing="0" class="centred">
+			<tr>
+				<td valign="middle"><span class="black"><strong>fitted value,</strong> &nbsp; </td>
+				<td valign="middle"><img src="../../../en/../images/symbol.yiHatBlue.png" width="11" height="18" align="baseline"></td>
+				<td valign="middle">&nbsp;=&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x<sub>i</sub></em> + <em>b</em><sub>2 </sub><em>z<sub>i</sub></em></td>
+			</tr>
+		</table>
+	</div>
+	<p class="heading">Residuals</p>
+	<p>The difference between the fitted value and the actual response is called the 
+		individual's <strong>residual</strong>.</p>
+	<div class="centred">
+		<table border="0" cellpadding="0" cellspacing="0" class="centred">
+			<tr>
+				<td valign="middle"><span class="black"><strong>residual,</strong> &nbsp; <span class="red"><em>e</em><sub><em>i</em></sub></span> <span class="black">&nbsp;=&nbsp; <em>y<sub>i</sub></em> &minus;</span></td>
+				<td valign="middle"><img src="../../../en/../images/symbol.yiHatBlue.png" width="11" height="18" align="baseline"></td>
+			</tr>
+		</table>
+	</div>
+	<p>Residuals correspond to vertical distances between crosses in a 3-dimensional scatterplot and the plane representing the model.</p>
+	<p class="eqn"><img src="../../../en/multiRegn/images/s_fitResid.gif" width="401" height="316"></p>
+
+
+
+
+<h2 class="pageName">6.3.7 &nbsp; Least squares estimation</h2>
+
+<p class="heading">Goal of small residuals</p>
+	<p>When fitting a model to data, the  fitted values are unlikely to match exactly the observed response values 
+		and the prediction 'errors' are  the residuals, </p>
+
+<div class="centred"><table border="0" cellpadding="0" cellspacing="0" class="centred"><tr>
+<td valign="middle"><span class="red"><em>e</em><sub><em>i</em></sub></span> <span class="black">&nbsp;=&nbsp; <em>y<sub>i</sub></em> &minus;</span> </td>
+<td valign="middle"><img src="../../../en/../images/symbol.yiHatBlue.png" width="11" height="18" align="baseline"></td>
+</tr></table></div>
+
+	<p>'Small' residuals are desirable.</p>
+	<p class="heading">Least squares</p>
+	<p>The size of the residuals is described by their sum of squares,</p>
+
+<div class="centred"><table border="0" cellpadding="0" cellspacing="0" class="centred"><tr>
+<td valign="middle"><span class="black">SS<sub>Residual</sub></span> &nbsp;</td>
+<td valign="middle"><img class="gif" src="../../../en/multiRegn/images/residSsqMulti.gif" width="110" height="29"></td>
+<td valign="middle"> &nbsp;</td>
+<td valign="middle"><img class="gif" src="../../../en/multiRegn/images/residSsq2Multi.gif" width="222" height="37"></td>
+</tr></table></div>
+
+<p>The least squares estimates of <em>b</em><sub>0</sub>, <em>b</em><sub>1</sub> and <em>b</em><sub>2</sub> are the values that minimise this.</p>
+	<p class="eqn"><img src="../../../en/multiRegn/images/s_redSquares.gif" alt="" width="428" height="342"></p>
+	<p>The solution can be obtained algebraically but the formulae are relatively complex and a computer should be used to evaluate the least squares estimates.</p>
+
+
+
+
+<h1 class="sectionName breakBefore">6.4 &nbsp; Marginal relationships</h1>
+<h2 class="pageName">6.4.1 &nbsp; Misleading marginal correlation</h2>
+
+<p class="heading">Relationship between two numerical variables</p>
+	<p>Scatterplots, correlation coefficients and least squares lines honestly summarise the relationship between two numerical variables, <em>Y</em> and <em>X</em>.</p>
+	<p>However they can sometimes give 
+		a misleading impression about the relationship. The problem arises when other variables are also associated with both <em>Y</em> and <em>X</em>.</p>
+	<dl>
+		<dt>Marginal relationship between <em>Y</em> and <em>X</em></dt>
+		<dd>The relationship that is evident in a scatterplot of the two variables 
+		without taking into account any other variables.</dd>
+		<dt>Conditional relationship between <em>Y</em> and <em>X</em>, given <em>Z</em></dt>
+		<dd>The relationship between <em>Y</em> and <em>X</em> that is evident within subsets of the data corresponding 
+		to different values of <em>Z</em>.</dd>
+	</dl>
+	<p>The marginal and conditional relationships between <em>Y</em> and <em>X</em> are often different and may even be in a different direction.</p>
+	<p class="eqn"><img src="../../../en/lurking/images/s_margCondit.gif" width="550" height="269"></p>
+	<p class="heading">Lurking (or hidden) variables</p>
+	<p>If the marginal relationship between <em>X</em> and <em>Y</em> is different 
+		from their conditional relationship given <em>Z</em>, but <em>Z</em> has either 
+		not been recorded or is ignored when analysing the data, then <em>Z</em> is 
+		called a <strong>lurking </strong>variable (or a <strong>hidden</strong> variable).</p>
+	
+<div class="centred"><div class="boxed">
+<p>Always think about whether there might be a lurking 
+					variable, <em>Z</em>, that is distorting the relationship that is observed 
+					between <em>Y</em> and <em>X</em>.</p>
+</div></div>
+
+
+
+
+
+<h2 class="pageName">6.4.2 &nbsp; Misleading marginal difference in means</h2>
+
+<p class="heading">Relationship between a numerical and a categorical variable</p>
+	<p>The previous page showed that the marginal relationship between two numerical 
+		variables, <em>X</em> and <em>Y</em>, can be very different from their conditional 
+		relationship for specific values of <em>Z</em>. The same can happen when <em>X</em> is a categorical variable, perhaps defining different groups. </p>
+	<p class="eqn"><img src="../../../en/lurking/images/s_margMeans.gif" width="496" height="537"></p>
+
+
+
+
+<h2 class="pageName">6.4.3 &nbsp; Simpsons paradox</h2>
+
+<p class="heading">Lurking variables and relationships between categorical variables</p>
+	<p>When the direction of the relationship reverses, the effect is called <strong>Simpson's 
+		paradox</strong>. As with other 'paradoxes', there is no real contradiction; it 
+		just takes a bit more thought to understand why your initial intuition is wrong.</p>
+	<p class="heading">College admission and gender</p>
+	<p>The table below describes admission rates of male and female students into
+the Business and Law Schools of a university.</p>
+<div class="centred"><table border="0" cellspacing="0" cellpadding="3" class="centred">
+<tr>
+			<td>&nbsp;</td>
+			<th colspan="2">Admission</th>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<th align="left">Gender</th>
+			<td>  Admit  </td>
+			<td>  Deny  </td>
+			<th>  Total  </th>
+			<th>  P(Admit)  </th>
+		</tr>
+		<tr>
+			<td>  Male</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">490</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">210</td>
+		<td align="center">700</td>
+			<td align="center">0.700</td>
+		</tr>
+		<tr>
+			<td>  Female  </td>
+			<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">280</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">220</td>
+		<td align="center">500</td>
+			<td align="center">0.560</td>
+		</tr>
+	</table></div>
+<p>A naive examination of the data suggests that females have a lower probability
+of being admitted, but the opposite is true if the applicants are split into
+the two different degrees.</p>
+	<div class="centred"><table border="0" cellspacing="0" cellpadding="3" class="centred">
+<tr>
+			<td colspan="6" style="color:#900; font-weight:bold">Business</td>
+		</tr>
+		<tr>
+			<td width="40">&nbsp;</td>
+			<td>&nbsp;</td>
+			<th colspan="2">Admission</th>
+		<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<th align="left">&nbsp;</th>
+			<th align="left">Gender</th>
+<td>  Admit  </td>
+<td>  Deny  </td>
+<th>  Total  </th>
+<th>  P(Admit)  </th>
+</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>  Male</td>
+<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">480</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">120</td>
+		<td align="center">600</td>
+			<td align="center">0.800</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>  Female  </td>
+<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">180</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;"><span class="white">0</span>20</td>
+		<td align="center">200</td>
+			<td align="center">0.900</td>
+		</tr>
+		<tr>
+			<td colspan="6" style="color:#900; font-weight:bold">Law</td>
+		</tr>
+		<tr>
+			<td width="40">&nbsp;</td>
+			<td>&nbsp;</td>
+			<th colspan="2">Admission</th>
+		<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<th align="left">&nbsp;</th>
+			<th align="left">Gender</th>
+<td>  Admit  </td>
+<td>  Deny  </td>
+<th>  Total  </th>
+<th>  P(Admit)  </th>
+</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>  Male</td>
+<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;"><span class="white">0</span>10</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;"><span class="white">0</span>90</td>
+		<td align="center">100</td>
+			<td align="center">0.100</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>  Female  </td>
+<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">100</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">200</td>
+		<td align="center">300</td>
+			<td align="center">0.333</td>
+		</tr>
+	</table></div>
+<p class="heading">Proportional Venn diagram</p>
+	<p>Simpson's paradox is explained in the proportional Venn diagram below &mdash; in it, each rectangle is proportional to the number of women with these values for the variables.</p>
+	<p class="eqn"><img src="../../../en/lurking/images/s_propnVenn_c.gif" width="500" height="370"></p>
+	<p>Most of the males applied to the Business school (where admittance rates
+were high) and this increased their overall admittance rate compared to the females.</p>
+
+
+
+
+<h2 class="pageName">6.4.4 &nbsp; Other examples with lurking variables</h2>
+
+<p class="heading">Analysis using 'lurking' variables</p>
+	<p>Variables are only called 'lurking' variables if they are either <strong>unrecorded </strong>or are<strong> unused</strong> when analysing the data. In this section's examples, we presented two analyses of the data sets:</p>
+	<ol type="a">
+		<li>A simple naive analysis ignoring the lurking variable, and</li>
+		<li>A more complete analysis using this variable (which should therefore no 
+			longer be called 'lurking')</li>
+	</ol>
+	<p>Although the simple analysis can result in wrong conclusions, a full analysis 
+		using the 'lurking' variable is always more complex.</p>
+	
+<div class="centred"><div class="boxed">
+<p>Do not ignore lurking variables to simplify the analysis &mdash; 
+				you could reach the wrong conclusions from the data.</p>
+</div></div>
+
+
+
+
+
+</body>
+</html>

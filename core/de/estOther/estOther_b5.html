@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Standardfehler der Korrelation mit Bootstrap</title>
+
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="bootstrap samples, error, correlation">
+	<meta name="dataset" content="Body fat">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Bootstrap f&uuml;r bivariate Daten</p>
+
+<p>Bootstrap Stichprobenziehung kann dazu benutzt werden eine
+ann&auml;hernde Fehlerverteilung in jeder Situation zu erhalten, in
+der
+Einzelne Werte von einer Population zuf&auml;llig
+ausgew&auml;hlt
+werden. Wir starten wieder mit einer Stichprobe von<em> n</em> Individuen
+&ndash; unsere
+aktuellen Daten. Jede Bootstrap Stichprobe ist eine Zufallsstichprobe
+mit Zur&uuml;cklegen von <em>n</em>
+Werten dieser Individuen.</p>
+
+<p>Bivariate Daten k&ouml;nnen in dieses Bezugssystem passen
+&ndash;
+zwei numerische Messwerte <em>X</em>
+und <em>Y</em>
+werden von jedem
+Individuum erhalten. Mittels Bootstrap Stichprobenziehung
+k&ouml;nnen
+wir einen N&auml;herungswert zur Fehlerverteilung einer
+zusammenfassenden Statistik bekommen, welche die Beziehung zwischen<em> X</em> und <em>Y</em> beschreibt, so
+wie ihren
+Korrelationskoeffizient.</p>
+
+<div class="diagram">
+<p class="heading">Bauch- und H&uuml;ftumfang</p>
+
+<p>Von einer Gruppe von 252 M&auml;nnern wurden verschiedenen
+Messungen
+der K&ouml;rperform aufgenommen. Der Korrelationskoeffizient
+zwischen
+ihrem Bauchumfang und H&uuml;ftumfang war 0,874, was auf eine
+ziemlich
+starke Beziehung hindeutet.</p>
+
+<div class="boxed">
+<p>Wie genau sch&auml;tzt dieser Wert (0.874) den
+Korrelationskoeffizienten f&uuml;r <strong>alle</strong>
+M&auml;nner? </p>
+
+</div>
+
+<p>Das untere Diagramm f&uuml;hrt eine Bootstrap Simulation
+der 252
+Wertepaare durch.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" height="470" width="550">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="stdErrorProg.CorrelBootstrapApplet"><param name="xVarName" value="Bauchumfang (cm)"><param name="yVarName" value="H&uuml;ftumfang (cm)"><param name="xValues" value="85.2 83.0 87.9 86.4 100.0 94.4 90.7 88.5 82.5 88.6 83.6 90.9 91.6 101.8 96.4 92.8 96.4 97.5 89.6 100.5 95.9 98.8 76.4 80.0 76.3 79.7 74.6 88.7 73.9 83.5 88.7 84.5 79.1 100.5 115.6 113.1 100.9 98.8 148.1 108.1 126.2 104.3 111.2 104.3 76.0 81.5 73.7 79.5 83.4 70.4 86.7 77.9 82.0 79.6 77.6 100.0 99.8 104.2 105.3 98.3 104.8 94.7 102.4 99.7 105.5 100.3 83.9 86.6 78.4 84.6 91.5 82.8 82.9 76.0 83.3 81.8 78.8 95.0 95.4 98.6 95.8 89.0 97.8 94.9 99.8 89.7 88.1 90.9 86.0 86.5 95.6 93.2 83.1 97.5 88.8 99.2 91.6 86.7 88.2 94.0 95.0 92.0 89.2 95.5 98.6 87.3 102.8 101.6 88.7 92.3 90.6 105.0 95.0 89.6 92.4 86.6 90.0 90.0 92.4 87.5 99.2 98.1 83.3 86.1 84.1 89.9 92.1 78.0 93.5 87.0 90.1 90.3 99.8 89.4 87.2 101.1 86.1 98.6 88.5 106.6 93.1 93.0 91.0 77.1 85.3 81.9 99.1 100.5 76.5 106.8 77.6 102.9 72.8 88.2 100.1 83.5 105.0 90.8 76.6 92.4 81.2 95.6 92.1 83.4 106.0 95.1 90.4 100.4 115.9 90.8 81.9 75.0 90.3 90.3 108.8 79.4 83.2 110.3 92.7 104.5 104.6 69.4 83.6 86.8 90.4 83.7 109.3 98.9 98.0 101.2 80.6 113.7 94.1 105.7 85.6 96.6 86.0 89.7 78.0 89.7 89.2 85.7 103.1 89.1 113.9 96.3 93.9 101.3 83.9 84.4 79.4 104.0 89.7 97.6 87.6 122.1 81.1 81.5 100.0 88.7 91.8 110.4 87.6 82.8 95.3 78.2 91.1 96.7 89.4 93.0 86.4 96.7 88.1 94.9 93.3 95.6 98.2 113.8 82.8 100.5 79.7 118.0 109.0 113.4 106.1 84.3 107.6 83.6 105.0 111.5 101.3 108.5"><param name="yValues" value="94.5 98.7 99.2 101.2 101.9 107.8 100.3 97.1 99.9 104.1 98.2 107.7 103.9 108.6 100.1 99.2 105.2 107.0 102.4 109.0 104.9 104.8 94.6 93.4 95.8 96.5 85.3 94.7 88.5 98.7 99.8 100.6 94.5 108.3 116.1 113.8 106.2 104.8 147.7 102.5 125.6 115.5 114.1 106.0 88.2 97.2 88.5 92.7 90.4 87.2 98.3 91.0 89.1 91.6 88.6 99.6 102.5 105.8 97.0 99.6 103.1 100.8 99.4 99.7 108.3 104.2 93.9 91.8 96.1 94.3 98.5 95.5 96.3 88.6 93.0 94.8 94.3 98.3 99.3 100.2 97.1 96.9 99.6 95.0 96.2 96.2 96.9 93.8 99.3 98.3 102.2 100.6 95.4 100.6 101.4 107.5 102.4 96.2 92.8 103.7 101.7 98.3 98.3 101.6 99.5 96.6 103.6 100.7 102.1 100.6 99.3 103.0 98.6 99.8 97.5 92.6 99.7 96.4 104.3 101.0 104.1 101.4 97.5 95.2 94.0 100.0 98.5 93.2 99.5 97.8 95.8 99.1 103.2 92.3 98.4 102.1 95.6 100.6 98.3 107.7 101.6 99.3 98.9 93.9 102.5 95.3 110.1 106.2 92.1 113.9 93.5 114.4 91.1 95.2 105.0 98.3 106.4 102.5 89.8 99.3 91.5 105.1 103.5 89.6 108.8 104.5 95.6 106.8 111.9 98.1 92.8 89.2 98.7 99.9 114.4 89.2 96.4 113.9 101.9 109.9 109.8 85.0 91.6 96.1 95.5 98.1 108.8 104.1 101.8 103.1 92.3 112.4 102.7 111.8 96.5 100.6 96.2 101.0 99.0 94.2 99.2 96.9 105.5 102.6 107.1 102.0 100.1 101.7 91.8 94.0 89.0 109.0 99.1 104.2 96.1 112.8 96.3 94.4 105.0 94.5 96.2 105.5 95.6 91.9 98.2 87.5 97.1 106.6 98.4 97.0 90.1 100.7 97.8 100.2 94.0 93.7 101.1 111.8 94.5 100.5 87.6 114.3 109.1 109.8 101.6 94.4 110.0 88.8 104.5 101.7 97.8 107.1"><param name="xAxis" value="65 150 80 20"><param name="yAxis" value="80 150 80 20"><param name="errorName" value="Sch&auml;tzfehler"><param name="errorAxis" value="-0.07 0.07 -0.06 0.02"><param name="decimals" value="3"><param name="maxBiasSe" value="9.999"><param name="customText" value="Estimate s.e. &amp; bias=Sch&auml;tzung Standardfehler &amp; Bias#Error=Fehler#from data=aus Daten#from bootstrap=aus Bootstrap#Bias=Bias"></applet></div>
+
+<p>Die blauen Kreuze (und Ziffern) zeigen eine Bootstrap
+Stichprobe der
+originalen 252 Kreuze (grau). Die Ziffern beschreiben originale Kreuze,
+die mehr als einmal gezogen wurden.</p>
+
+<p>Der Korrelationskoeffizient der Bootstrap Stichprobe und sein
+Fehler
+werden dargestellt- der Unterschied zum Korrelationskoeffizient
+f&uuml;r die 252 Kreuze&nbsp;(z.B. 0,874).</p>
+
+<p>Klicke <strong>Akkumulieren</strong> und nehme
+&uuml;ber 100
+Bootstrap Stichproben. (Halte den Schalter f&uuml;r <strong>Stichprobe
+ziehen</strong> gedr&uuml;ckt.) Druch die Fehlerverteilung
+kann man
+sehen, dass...</p>
+
+<div class="boxed">
+<p>Der Sch&auml;tzfehler 0,05 sein k&ouml;nnte, aber es
+unwahrscheinlich ist, dass er h&ouml;her ist.</p>
+
+</div>
+
+<p>Unser Korrelationskoeffizient von 0,874 der Stichprobe
+k&ouml;nnte
+daher 0,05 vom Korrelationskoeffizient f&uuml;r <strong>alle</strong> M&auml;nner
+abweichen.</p>
+
+<p>Klicke zum Schluss <strong>Sch&auml;tzung SE und
+Bias</strong>. Der
+Mittelwert und die Standardabweichung der Fehlerverteilung sind
+Sch&auml;tzungen des Bias und dem Standfehler der
+Sch&auml;tzung.</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

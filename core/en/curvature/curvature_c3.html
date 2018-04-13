@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Quadratic models</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="regression model, nonlinear model, curvature, quadratic model">
+	<meta name="dataset" content="GDP in the USA">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Adding a quadratic term</p>  <p>An alternative solution to the problem of curvature is to extend the simple 
+		linear model with the addition of a quadratic term, </p>
+
+<p class=eqn><span class="black"><em>y</em>&nbsp;&nbsp;=&nbsp;&nbsp;<em>b</em><sub>0</sub>&nbsp;&nbsp;+&nbsp;&nbsp;<em>b</em><sub>1 </sub><em>x</em>&nbsp;&nbsp;+&nbsp;&nbsp;<em>b</em><sub>2 </sub><em>x</em><sup>2</sup></span>
+</p>
+
+  <p>Fitted values and residuals are defined (and interpreted) in a similar way 
+    to those for a linear model,</p>
+
+<p class=eqn><span class="black"><span style="position:relative; top:4"><img src="../../images/symbol.yiHat.png" width="11" height="18" align="baseline"></span>&nbsp;&nbsp;=&nbsp;&nbsp;<em>b</em><sub>0</sub>&nbsp;&nbsp;+&nbsp;&nbsp;<em>b</em><sub>1 </sub><em>x<sub>i</sub></em>&nbsp;&nbsp;+&nbsp;&nbsp;<em>b</em><sub>1 </sub><em>x<sub>i</sub></em><sup>2</sup></span>
+<br><span class="black"><em>e<sub>i</sub></em>&nbsp;&nbsp;=&nbsp;&nbsp;<em>y<sub>i</sub></em> &minus; <span style="position:relative; top:4"><img src="../../images/symbol.yiHat.png" width="11" height="18" align="baseline"></span></span>
+</p>
+
+  <p>As in a linear model, the quadratic model's residuals are the vertical distances 
+		between the crosses in a scatterplot and the curve. We again use <strong>least 
+		squares</strong> to estimate the unknown parameters &mdash; choose values of the 
+		three parameters to minimise the residual sum of squares, </p>
+
+<p class=eqn><img class="gif" src="../curvature/images/residSsqEqn.gif" width="369" height="28">
+</p>
+
+<div class="diagram" title="Illustration of a quadratic model">
+<p>The scatterplot below shows a data set with a nonlinear relationship.
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="370" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.DragQuadraticApplet">
+<param name="xVarName" value="x">
+<param name="yVarName" value="y">
+<param name="xValues" value="1.5 22.5 6.4 8.5 18.9 14.5 37.4 20.6 22.9 7.7 29.9 31.5 35.9 38 7 20 19.5 18.3 37.4 5.4 36.8 27.4 25.7 1.1 9.8 17.1 39.1 32.3 28.7 29.6">
+<param name="yValues" value="0.4 3.9 1.8 2.1 5.1 4.2 12.9 4.9 4.1 1.3 10.9 10.4 9.8 10.4 0.5 6.5 2.9 5.8 16.7 1.3 14.8 7.2 8 0.4 3 4.5 17 12.7 6.2 8.2">
+<param name="horizAxis" value="0 40 0 5">
+<param name="vertAxis" value="0 20 0 2">
+<param name="interceptLimits" value="0.0 20.0 5.0">
+<param name="slopeLimits" value="-0.50 0.50 0.20">
+<param name="curvatureLimits" value="-0.050 0.050 0.000">
+<param name="labelAxes" value="true">
+</applet>
+</div>
+
+    <p><strong>Drag</strong> the three red arrows to adjust the position of the 
+      quadratic curve. Observe that&nbsp;... </p>
+
+<ul>
+  <li>The constant term is the y-value corresponding to <i>x</i> = 0.</li>
+  <li>The coefficient of <i>x</i> is the slope of the curve at <i>x</i> = 0.</li>
+  <li>The third coefficient describes the curvature; it is small when the curve is
+  nearly linear.</li>
+</ul>
+
+<p>Click the checkbox <strong>Show residuals</strong>. The residuals are displayed with
+blue vertical lines on the scatterplot. Adjust the coefficients using the red arrows to
+make the residuals as small as possible, then click the button <strong>Least squares</strong>
+to minimise the residual sum of squares.
+</p>
+
+</div>
+
+  <p>If a relationship is nonlinear, residuals from a quadratic model are likely 
+    to be smaller than those for a linear model. This also suggests that the errors 
+    are likely to be smaller if the model is used to predict future response values.</p>
+	<p>The next example illustrates the potential improvement from using a quadratic 
+    model.</p>
+
+<div class="diagram" title="Example: GDP in the USA">
+		<p class="heading">GDP in the USA</p>
+
+<p>We tried earlier to use a linear model to explain how the  Gross Domestic 
+			Product (GDP) in the USA changed between 1960 and 2013. Initially we only look at the data up to 2007. The curvature in 
+			the scatterplot of residuals  below shows that a linear model 
+			is not appropriate.</p>
+
+	<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="550">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.Residual2PlotApplet">
+<param name="vertical" value="true">
+<param name="yVarName" value="GDP">
+<param name="yUnits" value="billion dollars">
+<param name="xVarName" value="Year">
+<param name="yValues" value="3105.8 3185.1 3379.9 3527.1 3730.5 3972.9 4234.9 4351.2 4564.7 4707.9 4717.7 4873.0 5128.8 5418.2 5390.2 5379.5 5669.3 5930.6 6260.4 6459.2 6443.4 6610.6 6484.3 6784.7 7277.2 7585.7 7852.1 8123.9 8465.4 8777.0 8945.4 8938.9 9256.7 9510.8 9894.7 10163.7 10549.5 11022.9 11513.4 12071.4 12565.2 12684.4 12909.7 13270.0 13774.0 14235.6 14615.2 14876.8 14833.6 14417.9 14779.4 15052.4 15470.7 15761.3">
+<param name="xValues" value="1960 1961 1962 1963 1964 1965 1966 1967 1968 1969 1970 1971 1972 1973 1974 1975 1976 1977 1978 1979 1980 1981 1982 1983 1984 1985 1986 1987 1988 1989 1990 1991 1992 1993 1994 1995 1996 1997 1998 1999 2000 2001 2002 2003 2004 2005 2006 2007 ? ? ? ? ? ?">
+<param name="vertAxis" value="3000 16000 4000 2000">
+<param name="horizAxis" value="1960 2013 1960 10">
+<param name="residAxis" value="-1200 1300 -1000 500">
+<param name="change1" value="#48 * 2008# #49 * 2009# #50 * 2010# #51 * 2011# #52 * 2012# #53 * 2013#">
+<param name="change1Name" value="Extend to 2013">
+<param name="customText" value="Residual, e=Residual, e#Linear fit=Linear fit#Quadratic fit=Quadratic fit">
+</applet>
+</div>
+
+<p>Choose the option <strong>Quadratic fit</strong> from the pop-up menu. The 
+	least squares quadratic curve is displayed at the top, and the residual 
+	plot at the bottom displays the residuals from the quadratic model. Note 
+	that ... </p>
+
+<ul>
+  <li>The magnitude of the residuals is smaller, so the quadratic model describes
+  	GDP more accurately.</li>
+	<li>The relatively low GDP between 1991 and 1995 is particularly evident in the residual plot. However most of the nonlinearity in the residual plot has now been removed.</li>
+	</ul>
+<p>Click the checkbox <strong>Extend to 2013</strong> to add the American GDP from 2008 to 2013 to the plot. Although the model still captures most of the curvature in the data, the most recent years are not modelled as well by a quadratic model and the residuals after 2000 are considerably larger.</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>Exponentiale Gl&auml;ttung</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+<meta name="index" content="smoothing, exponential smoothing">
+	<meta name="dataset" content="British Airways share price">
+<meta name="dataset" content="World rice production"></head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Gl&auml;ttung bis zum Ende der
+Reihen</p>
+<p>Ein Problem im Gebrauch von gleitenden Mittelwerten, um
+Zeitreihen
+zu gl&auml;tten, ist , dass nicht f&uuml;r gegl&auml;ttete
+Werte
+f&uuml;r die letzten Zeiten gesorgt sein kann. Zum Beispiel, wenn
+die
+Laufl&auml;nge 9 ist, ist der letzte gegl&auml;ttete Wert der
+Mittelwert der letzten 9 Werte und stellt einen gegl&auml;tteten
+Wert,
+der 5 Zeitr&auml;ume von dem Ende der Reihe entfernt&nbsp; ist,
+bereit
+&ndash; gegl&auml;ttete Werte k&ouml;nnen nicht
+f&uuml;r die letzten 4
+Zeiten gefunden werden.&nbsp;</p>
+<p>Eine L&ouml;sung ist der Gebrauch der <strong>exponentiellen Gl&auml;ttung</strong>.
+Der
+erste gegl&auml;ttete Wert wird als selber Wert, wie der erste Wert
+in
+der Reihe, definiert,</p>
+<p class="eqn"><img class="gif" src="../../en/smoothing/images/expSmoothInitial.gif" width="59" height="18"> </p><p>Anschlie&szlig;ende
+exponentiell gegl&auml;ttete Werte
+sind &ldquo;
+gewichtete Mittelwerte&ldquo; des aktuellen Wertes zu dieser Zeit
+und
+des vorhergehenden gegl&auml;tteten Wertes, </p>
+<div class="boxed percent50"><p class="eqn"><img class="gif" src="../../en/smoothing/images/expSmoothEqn.gif" width="175" height="25"> </p>
+</div><p>wenn die gegl&auml;ttete Konstante <em>a
+</em>ein Wert zwischen 0 und 1 ist. &nbsp;</p>
+<p class="heading">Alternative Formeln</p>
+<p>Mit einer kleinen algebraischen Manipulation kann die Formel
+auch so
+ausgedr&uuml;ckt werden </p>
+<p class="eqn"><img class="gif" src="../../en/smoothing/images/expSmoothEqn2.gif" width="486" height="26"></p><p>Der gegl&auml;ttete Wert
+ist daher nur von
+fr&uuml;heren Werten der
+Reihen abh&auml;ngig, so k&ouml;nnen wir exponentiell
+gegl&auml;ttete
+Werte bis zum Ende der Reihen erhalten. Zum Beispiel, wenn <em>a = &frac12;&nbsp;</em>
+</p><p class="eqn"><img class="gif" src="../../en/smoothing/images/expSmoothHalf.gif" width="299" height="26"> </p>
+<p>Beachte hier, dass der gegl&auml;ttete Wert mehr Gewicht
+in der
+j&uuml;ngsten Vergangenheit bringt (was eine sinnvolle Sache ist).
+Je
+n&auml;her <em>a</em>
+an 1 heran
+kommt, desto kleiner ist der Einfluss der fr&uuml;heren Werte in
+der
+Reihe.</p>
+<p class="heading">Prognose zuk&uuml;nftiger Werte </p>
+<p>Der letzte exponentiell gegl&auml;ttete Wert in der Reihe
+kann als
+Prognose zuk&uuml;nftiger Werte genutzt werden. Wenn Daten
+einschlie&szlig;lich bis zur Zeit <em>i</em>
+verf&uuml;gbar sind, dann ist die Prognose f&uuml;r den
+n&auml;chsten
+Zeitraum (<em>i</em>
++ 1) der
+exponentiell gegl&auml;ttete Wert zur Zeit<em> i</em>. Wir schreiben
+das als</p>
+<p class="eqn"><img class="gif" src="../../en/smoothing/images/expPredict2.gif" width="81" height="22"> </p><p>&nbsp;<em>x</em>
+beschreibt eine
+Prognose und&nbsp;<em> x</em>
+beschreibt den exponentiell gegl&auml;tteten Wert. Um in weiterer
+Zukunft zu prognostizieren, brauchen wir deshalb denselben exponentiell
+gegl&auml;tteten Wert, im Allgemeinen,&nbsp;</p>
+<p class="eqn"><img class="gif" src="../../en/smoothing/images/expPredict.gif" width="252" height="23"> </p><p>Wenn die exponentiell
+gegl&auml;tteten Werte von der
+gegl&auml;tteten Konstante abh&auml;ngen, so beginne mit der
+Prognose.</p>
+<ul> <li>Wenn <em>a</em>
+= 1, ist die
+Prognose nur der zuletzt beobachtete Wert in der Zeitreihe.</li> <li>Ist
+<em>a</em>
+kleiner, wird die
+Prognose st&auml;rker von fr&uuml;heren Werten in der Reihe
+beeinflusst.</li>
+</ul><br>
+<div class="diagram"><p class="heading">British
+Airways Aktienhandel</p>
+<p>Das Zeitreihendiagramm unten zeigt die Anzahl der gehandelten
+British Airways Aktien in den ersten 57 Handelstagen des Jahres 2002
+&ndash; zwischem dem 02. Januar und dem 21. M&auml;rz.&nbsp;</p>
+<div class="centred"><applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" height="370" width="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.ExpSmoothApplet"><param name="varName" value="gehandelte BA Aktien (Millionen)"><param name="values" value="13.7 8.0 39.6 22.7 19.0 11.8 10.9 7.4 9.3 10.8 9.8 9.7 4.3 3.2 12.6 5.0 9.5 23.7 27.3 14.9 9.7 21.7 11.1 10.4 16.3 18.8 8.6 5.6 5.1 7.2 12.3 8.9 9.9 5.2 7.9 9.6 7.7 5.1 5.7 20.3 15.2 20.8 30.3 34.7 52.2 23.3 28.8 15.3 9.6 33.9 12.5 15.8 10.3 16.1 25.1 24.6 8.0"><param name="vertAxis" value="0 60 0 10"><param name="timeAxis" value="0 10 0 10"><param name="smoothName" value="Gegl&auml;ttet"><param name="labelAxes" value="true"><param name="timeAxisName" value="Tag"><param name="customText" value="Smoothing const=Gl&auml;ttungskonstante"></applet></div><p>In
+den meisten kurzen Zeitr&auml;umen ist die
+Haupt-Determinante von
+Aktienkursen oder Volumenbewegungen eher Autokorrelation als der
+Trend.( Allgemeine Trends an der B&ouml;rse sind in der Regel
+ziemlich
+langsam.) Wir werden hierf&uuml;r eine exponentielle
+Gl&auml;ttung der
+Rohdaten nutzen, ohne zuerst einen Trend der Daten zu entfernen.</p>
+<p>Nutze den Schieberegler, um die Werte der gegl&auml;tteten
+Konstante
+<em>a</em>
+anzupassen und beobachte
+ihre Auswirkung auf die Gl&auml;ttung der Reihe.&nbsp;</p>
+<strong>Klicke auf Datenwerte</strong>;
+die
+gr&uuml;ne Schattierung zeigt, welcher der Ausgangswerte
+irgendeinen
+gegl&auml;tteten Wert beeinflusst &ndash; je dunkler das
+gr&uuml;n,
+desto gr&ouml;&szlig;er ist der Einfluss.&nbsp;</div>
+<p class="heading">Zeitreihen mit Trend</p>
+<p>Das obige Beispiel hat keinen langfristigen Trend. Jedoch
+untersch&auml;tzt bei einer Zeitreihe mit einem steigenden Trend
+die
+exponentielle Gl&auml;ttung der Rohdaten tendenziell den Trend.
+&Auml;hnlich werden die gegl&auml;tteten Reihen zu hoch, wenn
+dort ein
+abnehmender Trend ist.</p>
+<div class="boxed"><p>Verwende exponentielle
+Gl&auml;ttung nicht bei einer
+Zeitreihe mit
+Trend.</p>
+</div><p>(Dort sind &Auml;nderungen an exponentieller
+Gl&auml;ttung
+vorhanden, die in Gegenwart eines Trends gebraucht werden
+k&ouml;nnen,
+aber diese sind anspruchsvoller.)</p>
+<div class="diagram"><p class="heading">Weltweite
+Reisproduktion (Millionen
+Tonnen)</p>
+<p>Die Zeitreihe unten zeigt einen steigenden linearen Trend.</p>
+<div class="centred"><applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" height="400" width="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.ExpSmoothApplet"><param name="varName" value="Weltreisproduktion"><param name="values" value="? 215.7 226.6 247.1 263.0 254.1 261.2 277.5 288.7 295.7 316.4 317.8 307.3 335.0 332.0 357.0 347.7 369.5 385.1 375.1 396.8 410.0 421.9 447.8 465.1 467.9 468.4 461.1 487.0 514.0 518.2 518.5 528.2 529.8 538.8 547.0 568.5 576.8 578.8 609.9 598.2 585.1"><param name="vertAxis" value="200 650 200 50"><param name="timeAxis" value="0 10 1960 10"><param name="labelAxes" value="true"><param name="timeAxisName" value="Jahr"><param name="timeSequence" value="1960 1 43"><param name="smoothName" value="Gegl&auml;ttet"><param name="customText" value="Smoothing const=Gl&auml;ttungskonstante"></applet></div><p>Verringere
+die exponentielle Gl&auml;ttungskonstante und
+beobachte,
+dass die exponentiell gegl&auml;tteten Werte systematisch unter der
+Reihe liegen.&nbsp;</p>
+</div><script type="text/javascript">writePageEnd();</script>
+</body></html>

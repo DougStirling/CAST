@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Interactions</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="factorial design, model, normal model, main effect, interaction, hierarchical models">
+	<meta name="dataset" content="Soft drink bottling">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Models with one two-factor interaction</p>  
+  <p>The main effects model on the previous page assumes that the effect of changing any factor is 
+		the same whatever the values of the other factors. In many practical experiment, 
+		the effects of the factors are <strong>not</strong> additive &mdash; there is <strong>interaction</strong> 
+		between their effects.</p>
+	<p>The simplest types of interaction are two-factor interactions. A two-factor 
+		interaction between B and C means that the effect of changing B can depend 
+		on the value of C but not on D.</p>
+	<div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+		<tr>
+			<td align="center"><br>
+					<span class="em black">y<sub>ijkl</sub></span>  &nbsp;= &nbsp;µ</td>
+			<td align="center"><br>
+				&nbsp;+&nbsp;</td>
+			<td align="center" class="darkblue">(<em>explained by </em>B)<br>
+				β<em><sub>i</sub></em></td>
+			<td align="center"><br>
+				&nbsp;+&nbsp;</td>
+			<td align="center" class="green">(<em>explained by </em>C)<br>
+				γ<em><sub>j</sub></em></td>
+			<td align="center"><br>
+				&nbsp;+&nbsp;</td>
+			<td align="center" class="purple">(<em>explained by </em>D)<br>
+				δ<em><sub>k</sub></em></td>
+		</tr>
+		<tr>
+			<td colspan="5">&nbsp;</td>
+			<td align="center"><br>
+				&nbsp;+&nbsp;</td>
+			<td align="center">(B-C<em> interaction</em>)<br>
+			θ<em><sub>ij</sub></em></td>
+			<td align="center"><br>
+				&nbsp;+&nbsp;</td>
+			<td align="center" class="red">(<em>unexplained</em>)<br>
+				ε<em><sub>ijkl</sub></em></td>
+		</tr>
+	</table></div>
+	<p>In this model, there is no interaction between factor D and the other factors so 
+		the effect of changing D is still the same whatever the values of B and C.</p>
+	<p class="heading">Models with several two-factor interactions</p>
+	<p>This model can be extended by adding two-factor interactions between other 
+		explanatory variables. Models with a single interaction term can be understood relatively easily but:</p>
+	<div class="centred"><div class="boxed">
+		<p>It is   slightly harder to interpret models with two or three  interaction terms. </p>
+	</div></div>
+	<p class="heading">Three-factor interaction</p>
+	<p>The most complex model for three factors contains all three 2-factor interactions 
+		and also a 3-factor interaction term between all three factors,</p>
+	<div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+		<tr>
+			<td align="center"><br>
+					<span class="em black">y<sub>ijkl</sub></span>  &nbsp;= &nbsp;µ</td>
+			<td align="center"><br>
+				&nbsp;+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;&nbsp;</td>
+			<td align="center">(<em>B-C-D interaction</em>)<br>
+	θ<em><sub>ijk</sub></em></td>
+			<td align="center"><br>
+	&nbsp;+&nbsp;</td>
+			<td align="center" class="red">(<em>unexplained</em>)<br>
+	ε<em><sub>ijkl</sub></em></td>
+		</tr>
+	</table></div>
+	<p>This model is the most flexible possible model for three factors &mdash; it places no restrictions on the mean response for the different combinations of factor levels (treatments) so the least squares estimate for each treatment is the mean observed response at that treatment.</p>
+	<p class="heading">Hierarchical models</p>
+	<p>A model with a 2-factor interaction between factors B and C implies that the effect of B may depend on the 
+	value of C. It therefore implies that we are allowing B to have an effect on the mean 
+	response so a main effect for B should also be included in the model.</p>
+	<div class="centred"><div class="boxed">
+		<p>If a model has a B-C interaction term, it should also include main effect terms for B and C. </p>
+	</div></div>
+	<p>Generalising to also include the 3-factor interaction term,</p>
+	<div class="centred"><div class="boxed">
+		<p>If a model has any interaction term, all main effects for these factors and all lower-level 
+			interaction terms between them should also be included in the 
+			model. </p>
+	</div></div>
+	<p>Models of this form are called <strong>hierarchical</strong> models.</p>
+	<div class="diagram"> 
+    <p class="heading">Soft drink bottling</p>
+    <p>The diagram below illustrates the flexibility of hierarchical models for the 
+			soft drink bottling experiment.</p>
+		
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="factorialProg.DragFactorialApplet">
+<param name="yVarName" value="Fill height deviation">
+<param name="yAxis" value="-3 11 -2 2">
+<param name="xLongName" value="Carbonation">
+<param name="zLongName" value="Pressure">
+<param name="wLongName" value="Line speed">
+<param name="xKeys" value="C P S">
+<param name="PVarName" value="Press">
+<param name="PValues" value="12@0 12@1">
+<param name="PLabels" value="#25 psi# #30 psi#">
+<param name="SVarName" value="Spd">
+<param name="SValues" value="6@0 6@1 6@0 6@1">
+<param name="SLabels" value="200 250">
+<param name="CVarName" value="Carb">
+<param name="CValues" value="2@0 2@1 2@2 2@0 2@1 2@2 2@0 2@1 2@2 2@0 2@1 2@2">
+<param name="CLabels" value="10% 12% 14%">
+<param name="startMean" value="3.0">
+<param name="startModel" value="0 + 1 + 2">
+<param name="customText" value="Model terms=Model terms">
+</applet> 
+</div>
+
+		<p>The diagram initially shows a model with all main effects but no interactions. 
+			There are five red arrows corresponding to the five non-zero parameters of this model, but two are initially superimposed, so 
+			start by dragging one arrow for low carbonisation and pressure to separate them. Drag the five arrows 
+			to investigate the flexibility of this model.</p>
+		<p>Click the checkbox to allow an interaction between <em>Carbonation</em> and 
+			<em>Pressure</em>. With this interaction term, we allow the effect of changing <em>Carbonation</em> to be different for the two pressures. Two additional draggable arrows appear, corresponding to this model's extra flexibility. Again drag the arrows to investigate.</p>
+		<p>Click the <strong>y-x</strong> rotation button. Since there is no interaction 
+			between <em>Line speed</em> and the other variables, the pattern of interaction 
+			between <em>Carbonation</em> and <em>Pressure</em> is the same for low line 
+			speed (purple lines) and high line speed (green lines).</p>
+		<p class="heading">Other interactions</p>
+		<p>Add other 2-factor interaction terms to the model and observe the increasing 
+			flexibility.</p>
+		<div class="centred"><div class="boxed">
+			<p>Note that the diagram only allows you to specify 
+				hierarchical models.</p>
+		</div></div>
+		<p>Finally add all 2-factor interactions and the 3-factor interaction. This 
+			model is the most flexible possible and allows the mean <em>Fill height deviation</em> 
+		for all 12 treatments to be independently adjusted.</p>
+	</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

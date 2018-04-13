@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Test for any discrete distribution</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="frequency table, chi-squared test, goodness-of-fit test">
+	<meta name="dataset" content="Sex of children in family">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>This approach  can be applied to test whether a discrete data set of \(n\) values is a random sample from <strong>any</strong> distribution.</p>
+<ol>
+	<li>Estimate  the model's \(p\) unknown parameters.</li>
+	<li>The frequencies in a frequency table are our observed counts, \(\{O_x\}\).</li>
+	<li>Use the model's probability function (with estimated parameters) to get probabilities for the table cells.</li>
+	<li>The expected counts, \(\{E_x\}\), are these probabilities times \(n\).</li>
+	<li>Combine cells in the frequency table to avoid small expected counts.</li>
+	<li>The test statistic is,</li>
+</ol>
+
+\[
+X^2 \;=\; \sum_{x} {\frac{\left(O_x - E_x\right)^2}{E_x}} \]
+<ol start="7">
+	<li>The number of 'constraints' is  \(c = (p+1)\), the last one being because \(\sum{E_i} \;=\; \sum{O_i}\). The degrees of freedom are the number of combined counts minus \(c\).</li>
+	<li>The p-value is the upper tail of the chi-squared distribution with this number of degrees of freedom.</li>
+	<li>Interpret the p-value — small values give evidence that the data do <strong>not</strong> fit the distribution.</li>
+</ol>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Example</p>
+		<p>The following table gives the number of male children among the first 12 children in 6,115 families of size 13, taken from hospital records in 19th century Saxony. (The 13th child has been ignored to avoid the possible distortion of families stopping when a desired sex is reached.)</p>
+		
+		<div class="centred">
+		<table border="0" cellpadding="5" cellspacing="0" class="centred">
+			<tr>
+				<th>Males</th>
+				<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">0</td>
+				<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">1</td>
+				<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">2</td>
+				<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">3</td>
+				<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">4</td>
+				<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">5</td>
+				<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">6</td>
+				<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">7</td>
+				<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">8</td>
+				<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">9</td>
+				<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">10</td>
+				<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">11</td>
+				<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">12</td>
+			</tr>
+			<tr>
+				<th>Frequency</th>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">3</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">24</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">104</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">286</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">670</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">1033</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">1343</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">1112</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">829</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">478</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">181</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">45</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">7</td>
+			</tr>
+		</table>
+		</div>
+		
+		<p>Assuming independence and that each child has the same probability of being male, \(\pi\), this would be a random sample from a \(\BinomDistn(n=12, \; \pi)\) distribution.</p>
+		<p>Is there evidence that the probability of a birth being male differs from family to family?</p>
+		<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<html>
+<head>
+<title>4. Zeitreihen</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../structure/tocPrintStyles.css" type="text/css">
+<script type='text/javascript'>
+	function toggleDescriptions() {
+		var showNotHide = document.getElementById('descriptionCheck').checked;
+		var descriptions = document.getElementsByTagName('p');
+		for (var i=0 ; i<descriptions.length ; i++)
+			descriptions[i].style.display = showNotHide ? 'block' : 'none';
+	}
+</script>
+</head>
+
+<body>
+<div style='position:absolute; top:3em; right:5; color:#FF0000; border:solid 1px #FF0000; background-color:#FFFFCC; padding:4px; margin:0px; line-height:0.8em'>
+<input type='checkbox' id='descriptionCheck' checked onChange='toggleDescriptions()'/>Long page<br>descriptions
+</div>
+<h1>Chapter 4 &nbsp; Zeitreihen</h1>
+<h2>4.1 &nbsp; Grafische Darstellung von Zeitreihen</h2>
+<h3>4.1.1 &nbsp; Time series plots</h3>
+<p>Zeireihen werden üblicherweise durch Streudiagramme dargestellt, bei denen die Zeit als Variable auf der x-Achse abgetragen ist. Die Werte können durch Linien verbunden werden, um die Veränderungen deutlicher darzustellen.</p>
+<h3>4.1.2 &nbsp; Patterns in time series</h3>
+<p>Einige Beispiele von Zeitreihen mit Trend, saisonalen Mustern und anderen Schwankungen.</p>
+<h3>4.1.3 &nbsp; Multiple Zeitreihen</h3>
+<p>Beispiel mit vier verschiedenen Zeitreihen in einem Graf.</p>
+<h2>4.2 &nbsp; Glätten</h2>
+<h3>4.2.1 &nbsp; Gleitender Durchschnitt</h3>
+<p>Der einfachste Weg eine Zeitreihe zu glätten ist der gleitende Durchschnitt.</p>
+<h3>4.2.2 &nbsp; Gleitender Durchschnitt (Fortsetzung)</h3>
+<p>Bei einer geraden Anzahl an Werten befinden sich die Werte, die durch den gleitenden Durchschnitt geglättet wurden, zwischen den Originalwerten. Die Methode kann so modifiziert werden, dass die geglätteten Werte an der Position der Originaldaten erscheinen.</p>
+<h3>4.2.3 &nbsp; Robuste Gl&auml;ttung</h3>
+<p>Die Effekte von Ausreissern können durch Verwendung des gleitenden Medians verhindert werden. Diese Zeitreihen wirken oft jedoch etwas stufig. Ein guter Kompromiss ist die Verwendung des gleitenden Medians und anschließend des gleitenden Durchschnitts.</p>
+<h3>4.2.4 &nbsp; Exponentiale Gl&auml;ttung</h3>
+<p>Exponentiale Glättung verwendet gewichtete gleitende Durchschnitte.</p>
+<h3>4.2.5 &nbsp; Lowess Gl&auml;ttung von Zeitreihen</h3>
+<p>Auch die Glättung der Kurve durch Verwendung der Methode der kleinsten Quadrate ist möglich.</p>
+<h3>4.2.6 &nbsp; Lowess Gl&auml;ttung von Streudiagrammen</h3>
+<p>Bei nichtlinearen Zusammenhängen kann eine ähnliche Methode zur Glättung verwendet werden.</p>
+<h2>4.3 &nbsp; Langzeit-Trends</h2>
+<h3>4.3.1 &nbsp; Lineare Trends</h3>
+<p>Viele Zeitreihen steigen bzw. fallen stetig und können durch ein lineares Modell beschrieben werden. Dies lässt sich durch die Methode der kleinsten Quadrate bestimmen.</p>
+<h3>4.3.2 &nbsp; Quadratische Trends</h3>
+<p>Ist der Trend nicht linear, kann ein quadratisches Modell den Trend möglicherweise besser beschreiben, als ein einfaches lineares Modell.</p>
+<h3>4.3.3 &nbsp; Vorhersagen</h3>
+<p>Zukünftige Werte können mit den Modellen vorhergesagt werden.</p>
+<h3>4.3.4 &nbsp; Polynomiale Trends</h3>
+<p>Beschreibt ein quadratisches Modell die nichtlinearen Trends nicht in adequater Weise, so sind auch Polynome höherer Ordnung möglich. Polynomiale Modelle sollten nicht für Vorhersagen verwendet werden, geben jedoch eine geglättete Anpassung an die beobachteten Werte.</p>
+<h3>4.3.5 &nbsp; Trends aus Zeitreihen herausrechnen</h3>
+<p>Zur Beschreibung von Langzeittrends sind poynomiale Modelle hilfreich. Kurzzeittrends werden durch Darstellung der Residuen (beobachteter Wert minus Trend) anschaulich hervorgehoben.</p>
+<h2>4.4 &nbsp; Short-term fluctuations</h2>
+<h3>4.4.1 &nbsp; Autocorrelation</h3>
+<p>Even after removal of trend, successive values in a time series are often correlated -- values above the trend are often followed by others above it and, similarly, values below the trend often occur together.</p>
+<h3>4.4.2 &nbsp; AR(1) model for autocorrelation</h3>
+<p>The similarity of successive values in a time series (or detrended time series) can be modelled by a linear model that forecasts each value (or detrended value) as a linear function of the previous one.</p>
+<h3>4.4.3 &nbsp; AR(1) model and trend</h3>
+<p>The trend should be removed before fitting an autoregressive model then added back to forecast future values.</p>
+<h3>4.4.4 &nbsp; Dangers of over-interpretation</h3>
+<p>A simple mechanism of autocorrelation of successive residuals can give the impression of trend when none is present in the underlying process.</p>
+<h3>4.4.5 &nbsp; Cyclical patterns</h3>
+<p>Some time series vary in regular or irregular cycles. Irregular cycles can be modelled and forecast using the methods of this section but regular cycles (seasonal patterns) should be forecast with different methods.</p>
+<h2>4.5 &nbsp; Seasonal data</h2>
+<h3>4.5.1 &nbsp; Seasonal patterns</h3>
+<p>Seasonal data may show a pattern that repeats at regular intervals.</p>
+<h3>4.5.2 &nbsp; Smoothing out seasonal variation</h3>
+<p>Moving averages with order equal to the number of seasons can smooth out seasonal variation.</p>
+<h3>4.5.3 &nbsp; Estimating the seasonal effect</h3>
+<p>The average difference between the data and the corresponding smoothed values in any month is called the seasonal effect for that month.</p>
+<h3>4.5.4 &nbsp; Deseasonalised data</h3>
+<p>Subtracting the seasonal effect from the raw data is called seasonally adjusting the data and the resulting values are called deseasonalised.</p>
+<h3>4.5.5 &nbsp; Putting it all together</h3>
+<p>Seasonal data can be split into four components -- seasonal, trend, cyclical and residual.</p>
+<h3>4.5.6 &nbsp; Forecasting with seasonal data</h3>
+<p>The seasonal, trend and cyclical components of a time series can each be forecast into the future. Adding them provides a forecast for future values. </p>
+<h2>4.6 &nbsp; Multiplicative models</h2>
+<h3>4.6.1 &nbsp; Additive and multiplicative models</h3>
+<p>In some time series, the different components affect the data multiplicatively rather than additively. If the data are replaced by their logs, a multiplicative model becomes additive.</p>
+<h3>4.6.2 &nbsp; Properties of multiplicative models</h3>
+<p>In a multiplicative model, the seasonal pattern has greater amplitude when the trend is higher.</p>
+<h3>4.6.3 &nbsp; Forecasting with multiplicative models</h3>
+<p>A multiplicative model is fitted by using an additive model with the log data. The resulting forecasts are also of the log data, and so must be back-transformed to give a forecast in the original units.</p>
+<h3>4.6.4 &nbsp; Analysing the right data</h3>
+<p>Many types of data should be modified before attempting to interpret them in a time series plot. Seasonal adjustment, transforming to constant dollars and use of per capita data are examples.</p>
+<h3>4.6.5 &nbsp; Types of time series data</h3>
+<p>Time series can describe processes that are discrete or continuous, and the measurements of continuous processes can be aggregates or snap-shots. The values can also be either discrete or continuous.</p>
+<h2>4.7 &nbsp; Index numbers</h2>
+<h3>4.7.1 &nbsp; Introduction</h3>
+<p>Index numbers are widely used in business and industry to measure the changes of one or more related quantities over time.</p>
+<h3>4.7.2 &nbsp; Simple price index</h3>
+<p>A simple price index measures the price of a single item or commodity as a percentage of its price at a base time.</p>
+<h3>4.7.3 &nbsp; Aggregate price index</h3>
+<p>An aggregate price index combines the prices of several related items into a single index number.</p>
+<h3>4.7.4 &nbsp; Laspeyres and Paasche indices</h3>
+<p>These indices allow aggregate price indices to give differing weights to the items that make up the index.</p>
+<h3>4.7.5 &nbsp; Deflating a time series</h3>
+<p>The effect of a quantity such as inflation can be removed from a time series by deflating it.</p>
+</html>

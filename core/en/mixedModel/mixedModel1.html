@@ -1,0 +1,200 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Model for X and 2 groups</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="comparing groups, indicator variable, general linear model">
+	<meta name="dataset" content="Gas consumption and insulation">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Regression model for two groups</p>
+	<p>We now consider a response variable, <em>y</em>, that can be modelled as 
+		a linear function of a numerical explanatory variable, <em>x</em>, in each 
+		of two groups. The simplest model for the resulting data allows the mean response 
+		in the second group to be δ<sub>2</sub> 
+		higher than the corresponding mean in the first group at any value for <em>x</em>.</p>
+	<p class=eqn><img src="images/regn2GroupModel.gif" width="450" height="75"></p>
+	<p class="heading">Expressing model as a GLM</p>
+	<p>The models for the two groups can be combined into a single general linear 
+		model (GLM) using an indicator variable for the groups.</p>
+	<p class=eqn><img src="images/regn2GroupModel2.gif" width="425" height="76"></p>
+	<p>The design matrix, X, for this model therefore has 3 columns &mdash; a column 
+		of 1's for the constant term in the model, a column containing <em>x<sub>i</sub></em>, 
+		and a column of 0/1 that specifies the group for the observation.</p>
+	
+	
+	
+	<div class="diagram"> 
+		<p class="heading">Gas consumption and insulation</p>
+
+		<p>Data were collected in the 1960s at a house in south-east England about 
+			weekly gas consumption (in 1000 cubic feet) and the average outside temperature 
+			(in degrees Celsius) for 26 weeks before and 18 weeks after cavity-wall 
+			insulation had been installed. The house thermostat was set at 20°C 
+			throughout.</p>
+		
+<div class="centred"><div class="boxed">
+<p>To simplify the design matrix, we only 
+				show 20 weeks of data below &mdash; 10 weeks before and 10 weeks after insulation.</p>
+</div></div>
+
+		
+    <p>The model is expressed in matrix notation below.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="matrixProg.GenericModelEqnApplet">
+<param name="nXColumns" value="2">
+<param name="fullNameX1" value="Temp, t">
+<param name="shortNameX1" value="t">
+<param name="valuesX1" value="6.9 7.0 7.4 7.5 7.5 7.6 8.0 8.5 9.1 10.2 -0.7 0.8 1.0 1.4 1.5 1.6 2.3 2.5 2.5 3.1">
+<param name="fullNameX2" value="Insulation">
+<param name="shortNameX2" value="ins">
+<param name="valuesX2" value="10@0 10@1">
+<param name="labelsX2" value="Before After">
+<param name="yName" value="Gas, Y">
+<param name="errorName" value="error">
+<param name="matrixFont" value="standard">
+<param name="groupKeyIndex" value="2">
+<param name="customText" value="effect=effect">
+</applet> 
+
+</div>
+
+		<p>Click on any y-value to see how it is modelled. Observe that the indicator 
+			variable adds δ<sub>2</sub> 
+			to the mean response in all weeks after insulation was installed.</p>
+
+</div>
+  
+  <p class="heading">Estimating the model parameters</p>
+	<p>As in all other GLMs, the three parameters of this model, β<sub>0</sub>, 
+		β<sub>1</sub> 
+		and δ<sub>2</sub>, 
+		can be estimated by the values that minimise the sum of squared residuals 
+		&mdash; <strong>least squares</strong>. The least squares estimates can be expressed 
+		using matrices as</p>
+	
+  <p class=eqn><img src="../glm/images/lsEquation.gif" width="138" height="23"></p>
+	<p>but this formula does not simplify into easily-understood formulae for the 
+		individual parameter estimates.</p>
+	
+<div class="centred"><div class="boxed">
+<p>In practice, a computer is used to find the least squares estimates.</p>
+</div></div>
+
+	<p class="heading">Graphical representation of model</p>
+	<p>This model can be respresented by two <strong>parallel</strong> lines on 
+		a scatterplot of <em>y</em> against <em>x</em>, each showing the relationship 
+		between the mean response and <em>x</em> for one group. The distance between 
+		the lines is δ<sub>2</sub>.</p>
+	<p>Note that the residual for any observation is the vertical distance between 
+		its cross and the line representing the model for its group. Least squares 
+		minimises the sum of squares of these distances.</p>
+
+	
+	<div class="diagram">
+		<p class="heading">Gas consumption and insulation</p>
+
+		<p>The scatterplot below shows the relationship between gas consumption and 
+			outside temperature for the full data set (26 weeks before and 18 weeks 
+			after cavity-wall insulation was installed), with different colours representing 
+			the two groups (before and after insulation). As might be expected, gas 
+			consumption decreases as the outside temperature increases for both groups.</p>
+		<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="indicatorProg.DragParallelLinesApplet">
+<param name="yVarName" value="Gas consumption">
+<param name="yValues" value="7.2 6.9 6.4 6.0 5.8 5.8 5.6 4.7 5.8 5.2 4.9 4.9 4.3 4.4 4.5 4.6 3.7 3.9 4.2 4.0 3.9 3.5 4.0 3.6 3.1 2.6 4.8 4.6 4.7 4.0 4.2 4.2 4.1 4.0 3.5 3.2 3.9 3.5 3.7 3.5 3.5 3.7 3.5 3.4">
+<param name="xVarName" value="Temperature">
+<param name="xValues" value="-0.8 -0.7 0.4 2.5 2.9 3.2 3.6 3.9 4.2 4.3 5.4 6.0 6.0 6.0 6.2 6.3 6.9 7.0 7.4 7.5 7.5 7.6 8.0 8.5 9.1 10.2 -0.7 0.8 1.0 1.4 1.5 1.6 2.3 2.5 2.5 3.1 3.9 4.0 4.0 4.2 4.3 4.6 4.7 4.9">
+<param name="zVarName" value="Insulation">
+<param name="zValues" value="26@0 18@1">
+<param name="zLabels" value="Before After">
+<param name="yAxis" value="0 9 0 1">
+<param name="xAxis" value="-1 11 0 2">
+<param name="initModelParams" value="8.000 -0.500 -3.00 0">
+<param name="shortNames" value="Gas Temp D/After">
+<param name="maxCoeffs" value="9.999 -9.999 -9.99">
+</applet>
+</div>
+
+		<p>The three red arrows can be dragged to adjust the model parameters.</p>
+		<ul>
+			<li>Firstly adjust the upper (grey) line to lie close to the 'before-insulation' 
+				data points.</li>
+			<li>Now drag the red arrow on the lower (red) line to make it lie close 
+				to the 'after-insulation' data points. Observe that the parameter δ<sub>2</sub> 
+				is the distance between the two lines.</li>
+		</ul>
+		<p>Finally, click the checkbox <strong>Show residuals</strong> and click the 
+			button <strong>Least squares</strong> to set the parameters to their least 
+			squares estimates.</p>
+		<p>The least squares estimates mean that we estimate that:</p>
+		
+			
+<div class="centred"><div class="boxed">
+<ul>
+	<li>For each extra 1&deg;C in outside temperature, 
+			gas consumption decreased by 0.368.</li>
+	<li>Installation of cavity-wall insulation decreased gas 
+		consumption by 1.79.</li>
+</ul>
+</div></div>
+
+
+		<br>
+	</div>
+
+  
+  <p class="heading">3-dimensional representation of model (optional)</p>
+	<p>The model described above was expressed as a GLM with two explanatory variables. 
+		The second of these was an indicator variable that could only take the values 
+		0 or 1, but both variables are treated as <strong>numerical</strong> explanatory 
+		variables in the GLM. The model can therefore be represented as a plane in 
+		3 dimensions in the same way as other models for 2 numerical explanatory variables.</p>
+	<div class="diagram"> 
+		<p class="heading">Gas consumption and insulation</p>
+
+		<p>The diagram below represents the least squares estimates as a plane.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="indicatorProg.TwoGroup3DApplet">
+<param name="yVarName" value="Gas consumption">
+<param name="yValues" value="7.2 6.9 6.4 6.0 5.8 5.8 5.6 4.7 5.8 5.2 4.9 4.9 4.3 4.4 4.5 4.6 3.7 3.9 4.2 4.0 3.9 3.5 4.0 3.6 3.1 2.6 4.8 4.6 4.7 4.0 4.2 4.2 4.1 4.0 3.5 3.2 3.9 3.5 3.7 3.5 3.5 3.7 3.5 3.4">
+<param name="xVarName" value="Temperature">
+<param name="xValues" value="-0.8 -0.7 0.4 2.5 2.9 3.2 3.6 3.9 4.2 4.3 5.4 6.0 6.0 6.0 6.2 6.3 6.9 7.0 7.4 7.5 7.5 7.6 8.0 8.5 9.1 10.2 -0.7 0.8 1.0 1.4 1.5 1.6 2.3 2.5 2.5 3.1 3.9 4.0 4.0 4.2 4.3 4.6 4.7 4.9">
+<param name="zVarName" value="Insulation">
+<param name="zValues" value="26@0 18@1">
+<param name="zLabels" value="0=Before 1=After">
+<param name="yAxis" value="0 8 0 1">
+<param name="xAxis" value="-1 11 0 2">
+<param name="zAxis" value="-0.3 1.3 0 1">
+<param name="paramDecimals" value="3 3 3">
+</applet>
+</div>
+
+		<p>Click the <strong>y-x</strong> rotation button to see the 2-dimensional 
+			diagram that was used earlier.</p>
+
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Randomisation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="randomisation, completely randomised design, experimental design">
+	<meta name="dataset" content="Weight gain of calves">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Design of an experiment</p>  
+  <p>There are two main aspects to the design of an experiment.</p>
+  <dl>
+  	<dt>Treatments</dt>
+  	<dd>The treatments that will be used in the experiment must first be chosen. These are combinations of levels of the different factors that will be varied and all possible combinations may not be used the same number of times. Indeed, some such treatments may not be used at all.</dd>
+  	<dt>Allocation of treatments to experimental units</dt>
+  	<dd>Once the treatments have been chosen, they must be allocated to the experimental units. If the treatments are badly allocated, the experimental results can be misleading and can result in wrong conclusions being made.</dd>
+ 	</dl>
+  <p>Allocation of treatments to the experimental units should involve some form of <strong>randomisation</strong>. In a <strong>completely randomised experiment</strong>, randomisation involves randomly picking experimental units for each treatment.</p>
+  <br>
+  <div class="diagram"> 
+    <p class="heading">Assembly times for components: bad design</p>
+		<p>A component must be assembled by  human operators and an engineer has devised a new assembly method and want to test whether it results in faster assembly times than the original assembly method. In order to compare assembly times with the two methods (original and new), the first nine operators who arrive one morning are told to use the original assembly method and the next nine operators  are told to use the new method.</p>
+<p>We will conduct a simulation of this experiment in which the new method reduces assembly time by exactly 5 minutes.</p>
+		<p>The circles on the left of the diagram below represent the 18 operators.</p>
+		<div class="centred"> 
+	<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="580" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="experProg.SelectTreatmentsApplet">
+<param name="yVarName" value="Average assembly time">
+<param name="yRegn" value="-38 0.5 1">
+<param name="yAxis" value="0 35 0 5">
+<param name="lurkingVarName" value="Skill level:">
+<param name="lurkingValues" value="118 113 119 107 100 123 105 130 115 108 110 120 115 101 111 120 112 125">
+<param name="lurkingMinMax" value="100#130">
+<param name="unitName" value="Operator">
+<param name="circleCols" value="3">
+<param name="treatVarName" value="Assembly method">
+<param name="treatLabels" value="New Original">
+<param name="treatEffect" value="5.0">
+<param name="lurkingRegn" value="0.0 1.0 12.0">
+<param name="effectName" value="Improvement from new method">
+<param name="noInLowGroup" value="9">
+<param name="maxDiff" value="99.99">
+<param name="randomSeed" value="54329311 23498564">
+<param name="customText" value="Theoretical=Theoretical#Estimated=Estimated#Allocate*Treatments=Allocate*Treatments#Run*Experiment=Run*Experiment">
+</applet> 
+</div>
+
+		<p>Click <strong>Allocate treatments</strong> to simulate the selection of 
+			nine of the operators (the first nine to arrive in the morning) who will be told to use the new assembly method. Now click <strong>Run experiment</strong> to simulate the 
+			average time taken to assemble components for each operator during the morning shift.</p>
+		<p>Repeat the experiment a few times and observe that most runs of the experiment 
+			estimate that the new method will reduce assemble time
+			by between 6 and 11 minutes.</p>
+		
+<div class="centred"><div class="boxed">
+<p><span class="red">Why does the experiment consistently 
+					over-estimate the improvement caused by the new method?</span></p>
+</div></div>
+
+		
+    <p>The problem lies in the method of choosing which operators use the new method. 
+			Faster operators tend to arrive earlier, so the operators 
+		using the new method tend to be inherently faster. (The colour of the circles representing the operators show their inherent skill level and those getting the new method have a slight tendency to be redder.)</p>
+  	
+	<p class=heading>Random allocation</p>
+
+		
+    <p>Randomising the allocation of the two assembly methods to the operators reduces 
+			the chance of any association between the treatment used and the operator skill level. In the simulation below, the new assembly method again decreases assembly time by exactly 5.0 minutes.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="580" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="experProg.SelectTreatmentsApplet">
+<param name="yVarName" value="Average assembly time">
+<param name="yRegn" value="-38 0.5 1">
+<param name="yAxis" value="0 35 0 5">
+<param name="lurkingVarName" value="Skill level:">
+<param name="lurkingValues" value="118 113 119 107 100 123 105 130 115 108 110 120 115 101 111 120 112 125">
+<param name="lurkingMinMax" value="100#130">
+<param name="unitName" value="Operator">
+<param name="circleCols" value="3">
+<param name="treatVarName" value="Assembly method">
+<param name="treatLabels" value="New Original">
+<param name="treatEffect" value="5.0">
+<param name="lurkingRegn" value="0.0 0.0 12.0">
+<param name="effectName" value="Improvement from new method">
+<param name="noInLowGroup" value="9">
+<param name="maxDiff" value="99.99">
+<param name="randomSeed" value="54329311 23498564">
+<param name="customText" value="Theoretical=Theoretical#Estimated=Estimated#Allocate*Treatments=Allocate*Treatments#Run*Experiment=Run*Experiment">
+</applet> 
+</div>
+
+	  
+		<p>Click <strong>Allocate treatments</strong> to randomly pick which operators will use the new assembly method then click <strong>Run experiment</strong> to find the resulting assembly times and estimate the improvement from using the new assembly method.</p>
+		<p>Repeat a few times and observe that the new method is usually 
+			estimated to reduce assembly time by between 2 and 8 minutes. The results are therefore consistent with 
+			the <strong>true</strong> effect that was built into the simulation, 5.0.</p>
+		
+<div class="centred"><div class="boxed">
+<p><span class="red">With randomisation, there is no tendency 
+					to over- or under-estimate the effect of using the new assembly method.</span></p>
+</div></div>
+
+		<br>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

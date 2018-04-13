@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE topic SYSTEM "exerciseXmlDefn.dtd">
+
+<topic name='univarDisplay'>
+<longName>Displaying a numerical variable</longName>
+
+<exercise name='drawStemLeaf'>
+	<description>Draw stem and leaf plot by dragging leaves</description>
+	<comment>This question shows a column of values. The leaf digits of the values must be dragged into the correct place against a column of stems.\\nSome of the variations are set up with repeated (split) stems.</comment>
+	<applet>exerciseNumGraphProg.BuildStemLeafApplet</applet>
+	<width>500</width>
+	<height>570</height>
+	
+	<option name="smallestAtBottom">Makes smallest stem at bottom (default has smallest stem at top)</option>
+	
+	<variable name="count" type="int">Number of values in data set</variable>
+	<variable name="mean" type="double">Mean of normal distribution from which data values are selected</variable>
+	<variable name="sd" type="double">SD of normal distribution from which data values are selected</variable>
+	<variable name="axis" type="stemAxis">Definition of the column of stems</variable>
+	<variable name="decimals" type="int">Number of decimals in values</variable>
+	<variable name="maxLeaves" type="int">Maximum leaves that are likely on any stem</variable>
+	<variable name="varName" type="string(14)">Name of variable</variable>
+	
+	<template>
+		<question>#count(20)# values are listed below. Draw a stem and leaf plot of them.</question>
+		<qnParam>mean(300)#sd(30)#axis(240 360 1 1)#decimals(1)#maxLeaves(8)#varName(Variable, Y)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>fruitWeight</shortName>
+		<longName>Weights of fruit in supermarket</longName>
+		<question>A consumer group weighed #count[](12,20)# #?:string[index](oranges from a carton*apples in a supermarket)#.\\nDraw a stem and leaf plot of the weights.</question>
+		<qnParam>index(0:1)#mean[index](300,240)#sd(30)#axis[index](240 360 1 1*180 300 1 1)#decimals(1)#maxLeaves(8)#varName(Weight, gm)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>milkFat</shortName>
+		<longName>Fat content in milk from cows in herd</longName>
+		<question>The list on the left shows measurements of milk fat content from #count[](10,20)# cows in a herd.\\nDraw a stem and leaf plot of the milk fat content.</question>
+		<qnParam>axis(2.2 3.6 -1 1)#mean(3.0)#sd(0.3)#decimals(3)#maxLeaves(8)#varName(Milk fat %)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>fruitWeight2</shortName>
+		<longName>Weights of fruit (split stems)</longName>
+		<question>A consumer group weighed #count[](12,20)# #?:string[](oranges*apples*pears)# that were sampled from a supermarket.\\nDraw a stacked dot plot of the weights.</question>
+		<qnParam>index(0:1)#mean[index](325,270)#sd(12)#axis[index](300 350 1 2*245 295 1 2)#decimals(1)#maxLeaves(8)#varName(Weight, gm)</qnParam>
+		</variation>
+	
+	<variation>
+		<shortName>milkFat2</shortName>
+		<longName>Milk fat (split stems)</longName>
+		<question>The list on the left shows measurements of milk fat content from #count[](10,20)# cows in a herd.\\nDraw a stacked dot plot of the milk fat content.</question>
+		<qnParam>index(0:1)#axis[index](2.8 3.1 -1 5*2.84 3.14 -1 5)#mean[index](2.95,2.99)#sd(0.075)#decimals(3)#maxLeaves(8)#varName(Milk fat %)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='finishStackedDot'>
+	<description>Drag crosses for last 2 values to finish stacked dot plot</description>
+	<comment>This question shows a column of values and a stacked dot plot that is almost complete. The last two crosses must be dragged into the correct stacks of crosses to complete the display.</comment>
+	<applet>exerciseNumGraphProg.FinishDotPlotApplet</applet>
+	<width>550</width>
+	<height>470</height>
+	
+	<variable name="count" type="int">Number of values in data set</variable>
+	<variable name="mean" type="double">Mean of normal distribution from which data values are selected</variable>
+	<variable name="sd" type="double">SD of normal distribution from which data values are selected</variable>
+	<variable name="axis" type="crossAxis">Definition of the axis and classes used for crosses</variable>
+	<variable name="decimals" type="int">Number of decimals in values</variable>
+	<variable name="dragCount" type="int">Number of values whose crosses that must be dragged. (Others are already completed.)</variable>
+	<variable name="varName" type="string(14)">Name of variable</variable>
+	
+	<template>
+		<question>#count(20)# values are listed below. Complete the stacked dot plot of the values.</question>
+		<qnParam>mean(300)#sd(30)#axis(240 360 5 0 4 0)#decimals(1)#varName(Variable, Y)#dragCount(2)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>orangeWeight</shortName>
+		<longName>Weights of oranges in carton</longName>
+		<question>A consumer group weighed #count[](20,40,50)# oranges from a carton.\\nComplete the stacked dot plot of the weights.</question>
+		<qnParam>index(0:1)#mean[index](300,325)#sd[index](30,12)#axis[index](240 360 5 0 4 0*300 350 2 0 5 0)#decimals(1)#varName(Weight, gm)#dragCount(2)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>milkFat</shortName>
+		<longName>Fat content in milk from cows in herd</longName>
+		<question>The list on the left shows measurements of milk fat content from #count[](20,40,50)# cows in a herd.\\nDraw a stacked dot plot of the milk fat content.</question>
+		<qnParam>axis(2.2 3.6 0.05 0 4 1)#mean(3.0)#sd(0.3)#decimals(3)#varName(Milk fat %)#dragCount(2)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='drawBoxplot'>
+	<description>Draw box plot by dragging quartiles</description>
+	<comment>This question shows a column of values (sorted into order) and a box plot. The box plot must be adjusted to match the extremes, quartiles and median of the data by dragging.\\nIf the option to show outliers is chosen, the whiskers should extend no further than 1.5 IQR from the central box. (Pick variations with outliers.)</comment>
+	<applet>exerciseNumGraphProg.BuildBoxPlotApplet</applet>
+	<width>500</width>
+	<height>570</height>
+	
+	<option name="showOutliers">Whiskers should take account of outliers (default whiskers go to extremes)</option>
+	
+	<variable name="count" type="int">Number of values in data set</variable>
+	<variable name="axis" type="axis">Axis for data</variable>
+	<variable name="decimals" type="int">Number of decimals in values</variable>
+	<variable name="shape" type="double">Shape parameter of gamma distribution used to generate data</variable>
+	<variable name="varName" type="string(14)">Name of variable</variable>
+	
+	<template>
+		<question>#count(20)# values are listed below. Draw a box plot of the values.</question>
+		<qnParam>shape[](4,8,-4)#axis(240 360 240 20)#decimals(1)#varName(Variable, Y)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>fruitWeight</shortName>
+		<longName>Weights of apples/oranges in a carton</longName>
+		<question>A consumer group weighed #count[](20,40,60)# #?:string[index](oranges*apples)# from a carton.\\nDraw a box plot of the weights.</question>
+		<qnParam>index(0:1)#shape[](4,8,-4)#axis[index](240 360 240 20*180 300 180 20)#decimals(1)#varName(Weight, gm)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>milkFat</shortName>
+		<longName>Fat content in milk from cows in herd</longName>
+		<question>The list on the left shows measurements of milk fat content from #count[](20,40,60)# cows in a herd.\\nDraw a box plot of the milk fat content.</question>
+		<qnParam>axis(2.2 3.6001 2.2 0.2)#shape[](4,8,-4)#decimals(3)#varName(Milk fat %)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>fruitWeight2</shortName>
+		<longName>Weights of apples/oranges in a carton (outliers)</longName>
+		<question>A consumer group weighed #count[](20,40)# #?:string[index](oranges*apples)# from a carton.\\nDraw a box plot of the weights.</question>
+		<qnParam>index(0:1)#shape[](1,2,8,-2,-1)#axis[index](240 360 240 20*180 300 180 20)#decimals(1)#varName(Weight, gm)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>milkFat2</shortName>
+		<longName>Fat content in milk from cows in herd (outliers)</longName>
+		<question>The list on the left shows measurements of milk fat content from #count[](20,40)# cows in a herd.\\nDraw a box plot of the milk fat content.</question>
+		<qnParam>axis(2.2 3.6001 2.2 0.2)#shape[](1,2,8,-2,-1)#decimals(3)#varName(Milk fat %)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='drawHisto'>
+	<description>Draw histogram by dragging tops of class rectangles</description>
+	<comment>A list of sorted values is shown on the left and a histogram must be drawn by dragging the tops of the histogram bars.\\nIf the option for mixed class widths is chosen, variations with mixed class widths should be selected</comment>
+	<applet>exerciseNumGraphProg.BuildHistoApplet</applet>
+	<width>500</width>
+	<height>550</height>
+	
+	<option name="mixedClassWidths">Set for examples with mixed class widths</option>
+	
+	<variable name="count" type="int">Number of values in data set</variable>
+	<variable name="axis" type="axis">Axis for data</variable>
+	<variable name="decimals" type="int">Number of decimals in values</variable>
+	<variable name="shape" type="double">Shape parameter of gamma distribution used to generate data</variable>
+	<variable name="classInfo" type="histo">Definition of histogram classes</variable>
+	<variable name="varName" type="string(14)">Name of variable</variable>
+	
+	<template>
+		<question>#count(20)# values are listed below. Drag the tops of the histogram rectangles on the right to draw a histogram of the values.</question>
+		<qnParam>decimals(1)#axis(240 360 240 20)#shape(6.0)#classInfo(240 20)#varName(Variable, Y)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>appleWeights</shortName>
+		<longName>Weights of apples</longName>
+		<question>The weights of #count[index](20,40)# apples are shown on the left. Drag the tops of the histogram rectangles on the right to draw a histogram of the weights.</question>
+		<qnParam>index(0:1)#decimals(1)#axis(240 360 240 20)#shape(6.0)#classInfo[index](240 20*240 10)#varName(Weight, gm)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>milkFat</shortName>
+		<longName>Fat content in milk from cows in herd</longName>
+		<question>The milk fat content from a herd of #count[index](20,40)# cows is shown in the list on the left. Drag the tops of the histogram rectangles on the right to draw a histogram of the weights.</question>
+		<qnParam>index(0:1)#decimals(3)#axis(2.2 3.6001 2.2 0.2)#shape(6.0)#classInfo[index](2.2 0.2*2.2 0.1)#varName(Milk fat %)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>appleWeights2</shortName>
+		<longName>Weights of apples (mixed class widths)</longName>
+		<question>The weights of #count[](40,50)# apples are shown on the left. Drag the tops of the histogram rectangles on the right to draw a histogram of the weights.</question>
+		<qnParam>index(0:1)#decimals(1)#axis(240 360 240 20)#shape[index](1,-1)#classInfo[index](240 10 2 1 1 2 2 2 4*240 10 2 4 2 2 2 1 1)#varName(Weight, gm)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>milkFat2</shortName>
+		<longName>Milk fat content from cows (mixed class widths)</longName>
+		<question>The milk fat content from a herd of #count[](40,50)# cows is shown in the list on the left. Drag the tops of the histogram rectangles on the right to draw a histogram of the weights.</question>
+		<qnParam>index(0:1)#decimals(3)#axis(2.2 3.6001 2.2 0.2)#shape[index](1,-1)#classInfo[index](2.2 0.1 2 1 1 2 2 4 4*2.2 0.1 2 4 4 2 2 1 1)#varName(Milk fat %)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='matchDisplays'>
+	<description>Match different displays of four distributions</description>
+	<comment>The questions here present a column of graphical displays of 4 distributions on the left and a shuffled column of other displays of the same distributions on the right. They must be matched by dragging to reorder the displays.\\nDepending on the options chosen, the column on the left can show stacked dot plots or histograms. The column on the right can show either box plots or cumulative distribution functions.</comment>
+	<applet>exerciseNumGraphProg.MatchDistnApplet</applet>
+	<width>600</width>
+	<height>700</height>
+	
+	<option name="histogram">Left column shows histograms (stacked dot plots are default)</option>
+	<option name="boxplot">Right column shows boxplots (cumulative distn functions are default)</option>
+	<option name="easy">This option makes the shapes of the four distributions more distinct (differences are more subtle without this option)</option>
+	
+	<variable name="varName" type="string(14)">Name of variable</variable>
+	<variable name="count" type="int">Number of values in data set</variable>
+	<variable name="axis" type="axis">Axis for data</variable>
+	<variable name="classLimits" type="histo">Definition of histogram classes</variable>
+	
+	<template>
+		<question>Match the four graphical summaries on the left with those on the right by dragging them up or down.</question>
+		<qnParam>count[](30,50)#axis(240 360 240 20)#classLimits(240 20)#varName(Variable, Y)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>fruitWeight</shortName>
+		<longName>Weights of fruit from four farms</longName>
+		<question>The four graphical summaries on the left show the distributions of weights of #count[](30,50)# #?:string[](apples*pears)# that an exporter sampled from each of four farms. Which of the grahpical summaries on the right describes each farm's apples?\\nDrag the displays up or down to align the matching distributions.</question>
+		<qnParam>index[](0,1)#axis[index](240 360 240 20*180 300 180 20)#classLimits[index](240 20*180 20)#varName(Weight, gm)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>milkFat</shortName>
+		<longName>Fat content of milk from cows in four herds</longName>
+		<question>The four graphical summaries on the left describe measurements of milk fat content from four herds of #count[](50,100)# cows. Which of the graphical summaries on the right describes each herd?\\nDrag the displays up or down to align the matching distributions.</question>
+		<qnParam>axis(2.2 3.6001 2.2 0.2)#classLimits(2.2 0.2)#varName(Milk fat %)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='pFromHisto'>
+	<description>Find proportion/probability in interval from a histogram</description>
+	<comment>This type of question shows a histogram and asks for the proportion of values in an interval.\\nIf the option to display class counts is selected, the proportion can be accurately found; otherwise it must be estimated roughly by eye.</comment>
+	<applet>exerciseNumGraphProg.HistoAreaApplet</applet>
+	<width>550</width>
+	<height>550</height>
+	
+	<option name="showCounts">Displays the counts in each class, allowing the proportion to be exactly found (default needs estimation 'by eye')</option>
+	<option name="allowHints">Shows a pop-up menu that will highlight the required histogram area.</option>
+	
+	<variable name="varName" type="string(16)">Name for variable</variable>
+	<variable name="intervalType" type="int_choice(Less than cutoff#Greater than cutoff#Between two cutoffs#Outside two cutoffs)"></variable>
+	<variable name="axis" type="axis"></variable>
+	<variable name="shape" type="double">Shape parameter of gamma distribution used to generate data</variable>
+	<variable name="cut-offs" type="random">Defines the minimum and maximum cutoff values (or the z-scores between which they ar randomly generated)</variable>
+	<variable name="classInfo" type="histo">Definition of histogram classes</variable>
+	<variable name="count" type="int(1)">Sample size</variable>
+	
+	<template>
+		<question>A histogram of #count[](50,100)# values is shown below. What proportion of values are #cut-offs(:)#?</question>
+		<qnParam>shape(2)#axis(240 360 240 20)#classInfo(240 10)#intervalType(0:3)#varName(Weight, gm)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>appleWeights</shortName>
+		<longName>Weights of apples</longName>
+		<question>The weights of #count[](50,100)# apples are summarised in the histogram below. What proportion of apples have weights #cut-offs(:)# grams?</question>
+		<qnParam>shape[](2,8,-2)#axis(240 360 240 20)#classInfo(240 10)#intervalType(0:3)#varName(Weight, gm)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>milkFat</shortName>
+		<longName>Fat content of milk</longName>
+		<question>The milk fat content from a herd of #count[](50,100)# cows is summarised in the histogram below. What proportion of the cows have milk fat percentages #cut-offs(:)#?</question>
+		<qnParam>shape[](2,8,-2)#axis(2.2 3.6001 2.2 0.2)#classInfo(2.2 0.1)#intervalType(0:3)#varName(Milk fat %)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>birthWeight</shortName>
+		<longName>Birth weight of babies</longName>
+		<question>The birth weights of #count(40:80)# full-term babies born in a hospital in a 3-month period are summarised in the histogram below. What proportion of weights are #cut-offs(:)# kg?</question>
+		<qnParam>shape[](2,8,-2)#axis(2.0 4.5001 2.0 0.2)#classInfo(2.0 0.2)#intervalType(0:3)#varName(Birth weight, kg)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='interpretShape'>
+	<description>Interpret shape of stacked dot plot in context of data set</description>
+	<comment>This is a multiple choice question that shows a stacked dot plot and asks for an interpretation of its shape in wording relevant to the context. The distribution may be symmetric, skew, clustered or have an outlier.</comment>
+	<applet>exerciseNumGraphProg.InterpretShapeApplet</applet>
+	<width>550</width>
+	<height>600</height>
+	
+	<variable name="varName" type="string(16)">Name for variable</variable>
+	<variable name="count" type="int(1)">Sample size</variable>
+	<variable name="axis" type="axis">Axis for stacked dot plot</variable>
+	<variable name="shapeValue" type="int_choice(Normal#Positively skew#High outlier#Equal sized clusters#Negatively skew#Low outlier#Clusters of different sizes)">Shape of distribution</variable>
+	<variable name="cut-offs" type="random">Defines the minimum and maximum cutoff values</variable>
+	<variable name="classInfo" type="histo">Definition of histogram classes</variable>
+	<variable name="count" type="int(1)">Sample size</variable>
+	<variable name="optionText" type="string_array(40)">Sample size</variable>
+	
+	<template>
+		<question>The stacked dot plot below describes a sample of #count(80:140)# values. What would you conclude from the shape of the distribution?</question>
+		<qnParam>index(0:7)#shapeValue[index](0,0,1,2,3,4,5,6)#axis(240 360 240 20)#varName(Variable, Y)#optionText(There_is_a_reasonably_large_spread_of_values,_but_nothing_else_stands_out_in_their_distribution. Most_values_are_fairly_low_but_there_are_a_few_that_are_larger. One_value_may_have_been_recorded_wrongly. There_may_be_two_different_types_of_individual. Most_values_are_fairly_high_but_there_are_a_few_that_are_lower.)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>appleWeight</shortName>
+		<longName>Weights of apples</longName>
+		<question>The stacked dot plot below shows the weights of #count(80:140)# apples. What would you conclude from the shape of the distribution?</question>
+		<qnParam>index(0:7)#shapeValue[index](0,0,1,2,3,4,5,6)#axis(240 360 240 20)#varName(Weight, gm)#optionText(There_is_a_reasonably_large_spread_of_weights_for_the_apples,_but_nothing_else_stands_out_in_their_distribution. Most_apples_have_fairly_low_weights_but_there_are_a_few_that_are_heavier. It_looks_as_though_one_apple's_weight_may_have_been_recorded_wrongly. There_may_be_two_different_types_of_apple_in_the_batch,_or_they_could_have_come_from_two_different_trees_or_suppliers. Most_apples_have_fairly_high_weights_but_there_are_a_few_that_are_lighter.)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>milkFat</shortName>
+		<longName>Fat content of milk</longName>
+		<question>The milk fat content from a herd of #count(80:140)# cows is shown in the stacked dot plot below. What would you conclude from the shape of the distribution?</question>
+		<qnParam>index(0:7)#shapeValue[index](0,0,1,2,3,4,5,6)#axis(2.2 3.6001 2.2 0.2)#varName(Milk fat %)#optionText(There_is_a_reasonably_large_spread_of_milk_fat_content,_but_nothing_else_stands_out_in_their_distribution. Most_cows_have_fairly_low_milk_fat_contents_but_there_are_a_few_whose_milk_fat_content_is_a_fair_bit_higher. It_looks_as_though_one_cow's_milk_fat_content_may_have_been_recorded_wrongly. The_cows_seem_to_split_into_two_groups_with_different_milk_fat_contents._The_cows_may_be_of_two_different_ages_or_breeds_or_come_from_two_different_herds. Most_cows_have_fairly_high_milk_fat_contents_but_there_are_a_few_whose_milk_fat_content_is_a_fair_bit_lower.)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>childHeight</shortName>
+		<longName>Heights of children</longName>
+		<question>The heights of #count(80:140)# children were recorded and are shown in the stacked dot plot below. What would you conclude from the shape of the distribution?</question>
+		<qnParam>index(0:7)#shapeValue[index](0,0,1,2,3,4,5,6)#axis(120 160 120 5)#varName(Height, cm)#optionText(The_heights_of_the_children_are_fairly_variable,_but_nothing_else_stands_out_in_their_distribution. Most_children_in_the_group_are_fairly_short,_but_a_smaller_number_are_taller. One_child's_height_may_have_been_incorrectly_recorded. There_seem_to_be_two_distinct_groups_of_children_with_different_heights._The_groups_could_be_boys_and_girls_or_different_ages. The_majority_of_the_children_are_reasonably_tall,_but_there_are_a_few_who_are_much_shorter.)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='drawCdf'>
+	<description>Draw cumulative distn function from dot plot or histogram</description>
+	<comment>This question shows a dot plot (or histogram) and a CDF directly above. Markers on the CDF must be dragged up or down to complete the CDF.\\nIf a variation showing a dot plot is chosen, the steps are 1/n at each data point; if the variation shows a histogram, the values of the CDF must be set at the class boundaries.</comment>
+	<applet>exercisePercentProg.DrawCumulativeApplet</applet>
+	<width>500</width>
+	<height>620</height>
+	
+	<variable name="varName" type="string(16)">Name for variable</variable>
+	<variable name="count" type="int(1)">Sample size</variable>
+	<variable name="axis" type="axis">Axis for stacked dot plot</variable>
+	<variable name="distnType" type="int_choice(Normal#Two clusters#Right skew#Left skew)">Shape of distribution</variable>
+	<variable name="classLimits" type="histo(optional)">Class limits for histogram (leave blank for dot plot)</variable>
+	
+	<template>
+		<question>The dot plot below shows describes #count(20)# values. Drag the blue dots to draw the cumulative distribution function for the values.</question>
+		<qnParam>axis(235 365 240 20)#classLimits()#varName(Variable, Y)#distnType(0:3)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>fruitWeight</shortName>
+		<longName>Weights of fruit (from dot plot)</longName>
+		<question>The dot plot below shows the distributions of weights of #count[](10,20)# #?:string[](apples*pears)# that an exporter sampled from a farm. Drag the blue dots to draw the cumulative distribution function for the values.</question>
+		<qnParam>axis(235 365 240 20)#classLimits()#varName(Weight, gm)#distnType(0:3)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>milkFat</shortName>
+		<longName>Fat content of milk (from dot plot)</longName>
+		<question>The dot plot below shows measurements of milk fat content from four herds of #count[](10,20)# cows. Drag the blue dots to draw the cumulative distribution function for the values.</question>
+		<qnParam>axis(2.15 3.65 2.2 0.2)#classLimits()#varName(Milk fat %)#distnType(0:3)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>fruitWeight2</shortName>
+		<longName>Weights of fruit (from histogram)</longName>
+		<question>The histogram below shows the distributions of weights of #count[](30,50)# #?:string[](apples*pears)# that an exporter sampled from a farm. Drag the blue dots to draw the cumulative distribution function for the values.</question>
+		<qnParam>axis(235 365 240 20)#classLimits(240 20)#varName(Weight, gm)#distnType(0:3)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>milkFat2</shortName>
+		<longName>Fat content of milk (from histogram)</longName>
+		<question>The histogram below shows measurements of milk fat content from four herds of #count[](50,100)# cows. Drag the blue dots to draw the cumulative distribution function for the values.</question>
+		<qnParam>axis(2.15 3.65 2.2 0.2)#classLimits(2.2 0.2)#varName(Milk fat %)#distnType(0:3)</qnParam>
+	</variation>
+</exercise>
+
+</topic>

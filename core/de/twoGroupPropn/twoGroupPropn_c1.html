@@ -1,0 +1,158 @@
+<html>
+<head>
+	<title>Modelling two proportions</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<script type="text/javascript">
+		var svgNames = new Array();
+		svgNames[0] = "images/ethics.svg";
+		svgNames[1] = "images/tractor.svg";
+		svgNames[2] = "images/binge.svg";
+		svgNames[3] = "images/pizza.svg";
+		
+		function changeSvgImage(select) {
+			var newIndex = select.selectedIndex;
+			var image = document.getElementById('dataImage');
+			image.src = svgNames[newIndex];
+		}
+	</script>
+
+	<meta name="index" content="comparing groups, probability, difference, proportion, estimation">
+	<meta name="dataset" content="Business ethics and gender">
+	<meta name="dataset" content="Tractor driveline shields">
+	<meta name="dataset" content="Binge drinking">
+	<meta name="dataset" content="Pizza and price">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Modelling two-group data</p>
+
+<p>For data that consist of independent samples from two groups, we use a separate 
+univariate model for each group.</p>
+
+<table width="75%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+<tr> 
+<td><strong>The data in each group are separately modelled as a random sample 
+from a univariate distribution.</strong></td>
+</tr>
+</table>
+<p>The details depend on the type of measurement from each group.</p>
+
+<dl>
+<dt>Numerical measurements</dt>
+<dd>A numerical distribution (e.g. a normal distribution) is used to model each 
+group. The earlier sections of this chapter described models of this form and 
+related inference.</dd>
+<dt>Categorical measurements</dt>
+<dd>In each group, the data are assumed to be a random sample of categorical values 
+from a population whose population proportions (probabilities) are usually unknown.</dd>
+<dt>Categorical measurements with <font color="#000000">only two categories</font></dt>
+<dd>In this section, we will consider a special case in which there are only two 
+possible categories that we generically denote by 'success' and 'failure'.</dd>
+</dl>
+
+<p class=eqn>
+	<object data="images/model.svg" width="368" height="196" alt="popn to sample">
+	</object>
+</p>
+ 
+<p class="heading">Are the two groups the same?</p>
+  
+<p>We are often interested in differences between two groups. The model for two-group 
+'success/failure' data involves only two parameters, π<sub>1</sub> 
+and π<sub>2</sub>, 
+so we will assess the difference between the probabilities, π<sub>2</sub>&nbsp;-&nbsp;π<sub>1</sub>. 
+If this difference is zero, then both groups are the same.</p>
+<table width="75%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+<tr> 
+<td><strong>The value of π<sub>2</sub>&nbsp;-&nbsp;π<sub>1</sub> 
+concisely describes any difference between the two groups.</strong></td>
+</tr>
+</table>
+<p>In practice, the value of π<sub>2</sub>&nbsp;-&nbsp;π<sub>1</sub> 
+is unknown, but it can be estimated from sample data. The difference between the 
+sample proportions, <em>p</em><sub>2</sub>&nbsp;-&nbsp;<em>p</em><sub>1</sub>, 
+is an estimate. However <em>p</em><sub>2</sub>&nbsp;-&nbsp;<em>p</em><sub>1</sub> 
+is a random quantity that varies from sample to sample, so its variability must 
+be taken into account when interpreting its value.</p>
+
+<div class="diagram"> 
+<p class="heading">Typical data sets</p>
+<p>The diagram below shows a few data sets in which either 'success' or 'failure' 
+is recorded from each individual in two groups.</p>
+
+<form>
+<select name="dataset" onChange="changeSvgImage(this)">
+<option value="0" selected>Business ethics and gender</option>
+<option value="1">Tractor driveline shield removal</option>
+<option value="2">Binge drinking by students</option>
+<option value="3">Pizza buying and price</option>
+</select>
+</form>
+
+<p align="center"><iframe src="images/ethics.svg" id="dataImage" width="514" height="336" frameborder="0"></iframe></p>
+
+<p>Each data set is summarised by a contingency table.</p>
+
+<p>Note that the red questions do not refer to the specific individuals in the 
+study. They ask about differences between the groups 'in general'.</p>
+
+<table width="75%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+<tr> 
+<td><strong>We are interested in the population difference π<sub>2</sub>&nbsp;-&nbsp;π<sub>1</sub> 
+rather than the sample difference <em>p</em><sub>2</sub>&nbsp;-&nbsp;<em>p</em><sub>1</sub>.<br>
+<font color="#FF0000">We need to understand the accuracy of our point estimate.</font></strong></td>
+</tr>
+</table>
+<p class="heading">Simulation of sample-to-sample variability</p>
+<p>The diagram below selects samples of size 100 from each of two categorical 
+populations.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="340">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoGroupProg.PDiffSampleApplet">
+<param name="yVarName" value="Response">
+<param name="yLabels" value="success failure">
+<param name="continProbs" value="0.3 0.7 0.4 0.6">
+<param name="xVarName" value="Group">
+<param name="xValues" value="100@0 100@1">
+<param name="xLabels" value="#Group A# #Group B#">
+<param name="summaryDecimals" value="2">
+<param name="randomSeed" value="330045782">
+<param name="propnDecimals" value="3">
+</applet>
+</div>
+
+<p>Initially the probability of a success in Group A is π<sub>1</sub>&nbsp;=&nbsp;0.30, 
+so we <strong>expect</strong> 30 successes and 70 failures from a sample of 100 
+values. In Group B, π<sub>2</sub>&nbsp;=&nbsp;0.40, 
+so we expect 40 successes. The table above shows these expected counts and a random 
+sample from the model.</p>
+<p>Click <strong>Take sample</strong> a few times to observe the variability of 
+the sample counts of successes and failures. The sample proportions and their 
+difference are shown on the right.</p>
+<div class="boxed">
+	<p>The difference, <em>p</em><sub>2</sub>&nbsp;-&nbsp;<em>p</em><sub>1</sub>, 
+		varies from sample to sample and is often not equal to the population difference, 
+		π<sub>2</sub>&nbsp;-&nbsp;π<sub>1</sub>.</p>
+</div>
+<p>Finally, use the two sliders to adjust the values of the population probabilities, 
+	π<sub>1</sub> and π<sub>2</sub>. 
+	Observe that:</p>
+<div class="boxed">
+	<p>If π<sub>1</sub> and π<sub>2</sub> are the same, positive and negative values for <em>p</em><sub>2</sub>&nbsp;-&nbsp;<em>p<sub>1</sub></em> occur similar numbers of times &mdash; its distribution is centred on zero.</p>
+</div>
+<p>We will examine the distribution of <em>p</em><sub>2</sub>&nbsp;-&nbsp;<em>p<sub>1</sub></em> more carefully in the next page.</p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Maximum of a rectangular distribution</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="rectangular distribution, maximum likelihood, method of moments, transformation">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>From a random sample of \(n\) values from a rectangular distribution,</p>
+\[
+X \;\;\sim\;\; \RectDistn(0, \;\beta)
+\]
+
+<p>the maximum likelihood estimate of \(\beta\) is the maximum of the values in the sample,</p>
+\[
+\hat{\beta} \;\;=\;\; \max(x_1, x_2, \dots, x_n)
+\]
+<p class="heading">Distribution of estimator</p>
+<p>Writing \(Y = \max(X_1, X_2, \dots, X_n)\), its CDF is</p>
+\[ \begin{align}
+F_Y(y) \;\;&amp;=\;\; P(Y \le y) \\[0.4em]
+&amp;=\;\; P(X_1 \le y \textbf{  and  } X_2 \le y \textbf{  and  }\dots,  \textbf{  and  } X_n \le y) \\[0.4em]
+&amp;=\;\; P(X_1 \le y) \times P(X_2 \le y) \times \cdots \times P(X_n \le y) \\[0.2em]
+&amp;=\;\; \left(\frac y{\beta} \right)^n
+\end{align} \]
+<p>Its pdf is therefore</p>
+\[
+f(y) \;=\; F'(y) \;=\; \frac {n\;y^{n-1}}{\beta^n} \qquad\text{for } 0 \le y \le \beta
+\]
+<p>The  pdf of this estimator is shown below, together with the pdf for the method of moments estimator — twice the sample mean.</p>
+<p class="eqn"><img src="images/s_maxDistn.png" width="574" height="400"  alt=""/></p>
+<p>Note that the method of moments estimator is unbiased, whereas the maximum likelihood estimator is biased — it is always less than \(\beta\). However the method of moments estimator is far more variable — its standard error is much higher.</p>
+<p class="heading">Mean,  variance, bias and standard error</p>
+<p>It can be shown that the mean of \(Y\) is</p>
+\[
+E[Y] \;=\; \frac {n\;\beta}{n+1}
+\]
+<p>The maximum likelihood estimator is therefore biased,</p>
+\[
+\Bias(\hat{\beta}) \;=\; E[\hat{\beta}] - \beta \;=\; -\frac {\beta}{n+1}
+\]
+<p> though the bias decreases as \(n \to \infty\).</p>
+<p>Since</p>
+\[
+E[Y^2] \;=\; \frac {n\;\beta^2}{n+2}
+\]
+
+<p>its variance is</p>
+\[
+\Var(Y) \;=\; E[Y^2] - \left(E[Y]\right)^2 \;=\; \frac{n\;\beta^2}{(n+1)^2(n+2)}
+\]
+<p>The standard error of the maximum likelihood estimator is therefore</p>
+\[
+\se(\hat{\beta}) \;=\; \sqrt {\Var(\hat{\beta})} \;=\; \beta \sqrt{\frac{n}{(n+1)^2(n+2)}}
+\]
+
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

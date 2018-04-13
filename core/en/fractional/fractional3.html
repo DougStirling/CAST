@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Design principles</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="confounding, aliased effects, fractional factorial design">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Designs based on complete factorial designs</p>  
+  <p>In incomplete designs, some main effects are inevitably confounded with interactions. The best way to create such a design starts from a complete design &mdash; if there are 2<em><sup>k</sup></em> experimental units, this would be a complete design for <em>k</em> factors.</p>
+  <div class="centred"><div class="boxed">
+  	<p>The levels of the extra factors should be allocated based on the columns of +/-1 for interactions between the original factors.</p>
+  </div></div>
+  <p>There are often alternative possibilities here, but we would ideally prefer designs in which the main effects are only confounded 3-factor and higher-order interactions.</p>
+  <div class="centred"><div class="boxed">
+		<p>A design that is obtained in this way for <em>k</em> factors in 2<em><sup>k</sup></em><sup>-<em>r</em></sup> experimental units is called a <strong>2<em><sup>k</sup></em><sup>-<em>r</em></sup> fractional factorial design</strong>.</p>
+ 	</div></div>
+  <p class="heading">Confounding</p>
+  <p>In fractional factorial experiments, many interactions are confounded, not just the interactions that define the 'extra' factors. For example, consider a 2<sup>3</sup> factorial design for factors A, B and C in which the levels of D are defined by the 3-factor interaction between the three original factors,</p>
+  <p class="eqn">D&nbsp; = &nbsp; ABC</p>
+	<p>Several other effects are confounded in this design. They can be found using 
+		arithmetic on the columns of ±1, noting that squaring any column gives 
+		+1, </p>
+	<p class="eqn">A<sup>2</sup>&nbsp; = &nbsp; B<sup>2</sup>&nbsp; = &nbsp; C<sup>2</sup>&nbsp; 
+    = &nbsp; D<sup>2</sup>&nbsp; = &nbsp; 1</p>
+  <p>Therefore</p>
+  <p class="eqn">A &nbsp; = &nbsp; AD<sup>2</sup> &nbsp; = &nbsp; (AD)D &nbsp; 
+    = &nbsp; (AD)(ABC) &nbsp; = &nbsp; A<sup>2</sup>BCD &nbsp; = &nbsp; BCD</p>
+  <p>and similarly,</p>
+  <p class="eqn">B&nbsp; = &nbsp; ACD</p>
+  <p class="eqn">C&nbsp; = &nbsp; ABD</p>
+  <p class="eqn">AB&nbsp; = &nbsp; CD</p>
+  <p class="eqn">AC&nbsp; = &nbsp; BD</p>
+  <p class="eqn">AD&nbsp; = &nbsp; BC</p>
+  <p class="eqn">ABCD&nbsp; = &nbsp; 1</p>
+
+<div class="diagram"> 
+<p class="heading">2<sup>4-1</sup> fractional factorial design</p>
+<p>The columns on the left below show the levels for a complete 2<sup>3</sup> factorial design for factors A, B and C. We now consider varying a fourth factor, D, in this experiment..</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="350" height="390">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="factorialProg.AddFractionalApplet">
+<param name="allTerms" value="A B C D">
+<param name="nComplete" value="3">
+<param name="highLevels" value="a b c d">
+<param name="colsRows" value="4 2">
+<param name="showTreats" value="true">
+</applet> 
+</div>
+
+<p>In the diagram above, it is possible to decide which of the interactions will be confounded with factor D in the design by clicking the red heading above the table. Observe that:</p>
+<ul><li>If D is confounded with the ABC interaction, <strong>none</strong> of the main effects are confounded with 2-factor interactions.</li>
+	<li>If D is confounded with the ABC interaction, our assessment of the relative effects of the four factors is not affected by 2-factor interactions between them.</li>
+</ul>
+<ul>
+	<li>If  D is confounded with any of the 2-factor interactions, the apparent sizes of three of the main effects might be caused by 2-factor interactions between other factors.</li>
+</ul>
+<p>Since it is more reasonable to assume that there are no 3-factor interactions,</p>
+<div class="centred"><div class="boxed">
+	<p>The best design uses the column of +/-1 for the ABC interaction to define the levels of factor D.</p>
+</div></div>
+
+<p class="heading">Another way to describe the treatments</p>
+<p>The treatments that are used in the design are displayed in a different way under the table &mdash; each 'word' describes the factors that are at their 'high' level for one of the experimental units. For example:</p>
+<ul>
+	<li>&quot;cd&quot; means that factors C and D are at their high level and A and B are at their low level for one experimental unit.</li>
+	<li>&quot;a&quot; means that only factor A is at its high level and the others are at their low level for one experimental unit.</li>
+	<li>&quot;(1)&quot; means that all factors are at their low level.</li>
+</ul>
+<p>Click on rows of the table or 'words' under it to see how the 'words' correspond to the levels of the factors.</p>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

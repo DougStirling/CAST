@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Response surface models</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="linear model, quadratic model, numerical factor, response surface, anova, analysis of variance, interaction">
+	<meta name="dataset" content="Chemical process yield">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Smooth models for two numerical factors</p>  
+  <p>Some experiments, especially in industrial applications, are conducted to find the combination of two numerical factors that <strong>optimises</strong> some response measurement. In these experiments, it is particularly important to obtain a smooth formula for the effects of the two factors. Such a model is called a <strong>response surface model</strong>.</p>
+  <p>The following response surface model contains quadratic terms in both variables.</p>
+  <p class=eqn><span class="black em">y<sub>ij</sub></span> &nbsp;= &nbsp;µ &nbsp; + &nbsp; <span class="blue">β<sub>1</sub>&nbsp;<em>x<sub>i</sub></em> &nbsp; + &nbsp;β<sub>2</sub><em>&nbsp;x<sub>i</sub></em><sup>2</sup></span> &nbsp; + &nbsp; <span class="green">γ<sub>1</sub>&nbsp;<em>z<sub>i</sub></em> &nbsp; + &nbsp;γ<sub>2</sub><em>&nbsp;z<sub>i</sub></em><sup>2</sup></span>&nbsp; + &nbsp; <span class="red">ε<em><sub>ij</sub></em></span></p>
+  <p class="heading">Model with interaction</p>
+  <p>The above model is not flexible enough for most situations. The most commonly used response surface model adds an <strong>interation</strong> term to the model involving the product of the two factor values.</p>
+  <p class=eqn><span class="black em">y<sub>ij</sub></span> &nbsp;&nbsp;= &nbsp;&nbsp;µ &nbsp; + &nbsp; <span class="blue">β<sub>1</sub>&nbsp;<em>x<sub>i</sub></em> &nbsp; + &nbsp;β<sub>2</sub><em>&nbsp;x<sub>i</sub></em><sup>2</sup></span> &nbsp;&nbsp;&nbsp; + &nbsp;&nbsp;&nbsp; <span class="green">γ<sub>1</sub>&nbsp;<em>z<sub>i</sub></em> &nbsp; + &nbsp;γ<sub>2</sub><em>&nbsp;z<sub>i</sub></em><sup>2</sup></span>&nbsp;&nbsp;&nbsp; + &nbsp;&nbsp;&nbsp; <span class="red"><span class="purple">δ<em>&nbsp;x<sub>i</sub>&nbsp;z<sub>i</sub></em></span>&nbsp; + &nbsp; ε<em><sub>ij</sub></em></span></p>
+  <p>This model has enough flexibility to model data from many experiments.</p>
+  <div class="centred"><div class="boxed">
+  	<p>We can only briefly give a flavour of  models for response surfaces here. </p>
+  </div></div>
+	
+	<p>The most commonly used experimental designs for estimating response surfaces use relatively complex combinations of values for the two factors, as in the example below.</p>
+	
+  <div class="diagram"> 
+		<p class="heading">Chemical process yield</p>
+		<p>The diagram below shows experimental results from an experiment for the yield of a chemical process with factors <em>Time</em> and <em>Temperature</em>.</p>
+		<p>The diagram below shows how the response surface changes when the quadratic 
+			terms and interaction are added to the model</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="responseSurfaceProg.QuadSurfaceTermsApplet">
+<param name="yVarName" value="Yield">
+<param name="xVarName" value="Time">
+<param name="zVarName" value="Temperature (C)">
+<param name="shortNames" value="Y T C">
+<param name="yValues" value="78.8 91.2 84.5 77.4 89.7 86.8 87 86 83.3 81.2 81.2 79.5">
+<param name="xValues" value="2@80 2@100 4@90 75.86 104.14 90 90">
+<param name="zValues" value="140 150 140 150 4@145 145 145 137.93 152.07">
+<param name="yAxis" value="75 95 75 5">
+<param name="xAxis" value="74 106 75 5">
+<param name="zAxis" value="137 153 138 2">
+<param name="paramDecimals" value="0 2 2 3 3 3">
+<param name="shadeCutoff" value="70 80 90">
+<param name="contour" value="86">
+<param name="contourAxis" value="70 90 70 2">
+<param name="fixedContours" value="72 74 76 78 80 82 84 86 88 90">
+<param name="maxCoeffs" value="-9999 99.99 -99.99 -9.999 -9.999 -9.999">
+<param name="customText" value="Quadratic term in=Quadratic term in#Interaction term=Interaction term#Display type=Display type#Shaded surface=Shaded surface#Selected contours=Selected contours">
+</applet>
+</div>
+
+		<p>Firstly click the checkbox <strong>Interaction term</strong> to add an 
+			interaction to the model. </p>
+		<p>Next add the quadratic term in temperature by clicking the checkbox <strong>Quadratic 
+			term in Temperature</strong>.</p>
+		<p>Now click the <strong>x-z</strong> rotation button and investigate the 
+			different models, both when displayed as colours and as contours.</p>
+		<p>Finally add the quadratic term in time to the model and observe that the 
+			response surface again changes. From the response surfaces with and without 
+			the quadratic term in time, we would conclude that:</p>
+		
+<div class="centred"><div class="boxed">
+<p style="text-align:left">The highest yield results from a high temperature (150 or 
+					higher) and low reaction time (80 minutes or less). Combinations of 
+					(high temperature &amp; high reaction time) and (low temperature &amp; 
+					low reaction time) result in very poor yield.</p>
+</div></div>
+
+		<br>
+	</div>
+
+  
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

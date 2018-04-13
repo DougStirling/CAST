@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Autres niveaux de confiance</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="confidence level, confidence interval">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class=heading>Intervalle de confiance à la moyenne (écart-type connu)</p>
+<p>Au début de ce chapitre, nous avons développé un intervalle de confiance à 95% pour une moyenne de population, μ, quand l'écart-type, σ, est une valeur connue. Ce fut de la forme</p>
+  <p class=eqn><img class="gif" src="../../en/ciMean/images/ci.gif" width="87" height="31"> 
+  </p>
+<p>Nous avons montré que les intervalles de cette forme ont probabilité de 0.95 contenant la moyenne de population, μ.</p>
+<p class=heading>Modification de la constante de 1.96</p>
+<p>Nous avons ensuite généraliser à considérer estimations par intervalle de la forme</p>
+<p class=eqn><img class="gif" src="../../en/ciMean/images/ciK.gif" width="83" height="31"> 
+</p>
+<p>où&nbsp;<em>k</em>&nbsp;peut prendre des valeurs autres que 1.96.</p>
+<p>Lorsque&nbsp;<em>k</em>&nbsp;devient plus petit, les intervalles deviennent plus étroites afin qu'ils aient une probabilité plus faible de μ, y compris &mdash; en d'autres termes, le niveau de confiance devient plus faible.&nbsp;La relation entre&nbsp;<em>k</em>&nbsp;et le niveau de confiance est déterminé par la distribution normale standard,</p>
+
+<p class=eqn><object data="images/ciLevel.svg" width="267" height="155" alt="xBar +/- s/root(n)"> </object>
+</p>
+
+<p>Le tableau ci-dessous donne quelques exemples de&nbsp;<em>k</em>&nbsp;et le niveau de confiance qui en résulte.</p>
+<table border="0" class="centred" cellpadding="4" cellspacing="0">
+<tr> 
+<th><em>k</em></th>
+<th>Le niveau de confiance</th>
+</tr>
+<tr align="center" bgcolor="#FFFFFF"> 
+<td>1</td>
+<td>0.683</td>
+</tr>
+<tr align="center" bgcolor="#FFFFFF"> 
+<td>2</td>
+<td>0.954</td>
+</tr>
+<tr align="center" bgcolor="#FFFFFF"> 
+<td>3</td>
+<td>0.997</td>
+</tr>
+<tr align="center" bgcolor="#FFFFFF"> 
+<td>1.645</td>
+<td>0.90</td>
+</tr>
+<tr align="center" bgcolor="#FFFFFF"> 
+<td>1.960</td>
+<td>0.95</td>
+</tr>
+<tr align="center" bgcolor="#FFFFFF"> 
+<td>2.576</td>
+<td>0.99</td>
+</tr>
+</table>
+<p>Bien que les intervalles de confiance à 95% sont les plus fréquemment rapportés, parfois&nbsp;<em>k</em>&nbsp;est choisi pour donner un 90% ou un intervalle de confiance de 99%.</p>
+<div class="diagram"> 
+<p class="heading">Simulation</p>
+<p>Le diagramme ci-dessous montre un échantillon aléatoire d'une population normale avec μ = 12 et σ = 2.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="580" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="inferenceProg.AdjustZIntervalApplet">
+<param name="varName" value="Sample data">
+<param name="random" value="20 12 2 6497052 2.5">
+<param name="dataDecimals" value="2">
+<param name="meanName" value="Interval estimate is">
+<param name="summaryDecimals" value="3">
+<param name="horizAxis" value="6.8 17.2 8 2">
+<param name="summaryAxis" value="10.0 14.0 10 1">
+<param name="knownPopnSD" value="2.0">
+<param name="kLimits" value="0.00 3.00 1.96">
+<param name="customText" value="Constant=Constant#Propn including=Propn including">
+</applet>
+</div>
+
+<p>Cliquez&nbsp;<strong>accumuler</strong>&nbsp;et prendre environ 50 échantillons.&nbsp;Maintenant, utilisez le curseur pour régler la constante&nbsp;<em>k.</em></p>
+
+<ul>
+<li>Réduire&nbsp;<em>k</em>&nbsp;diminue la largeur des intervalles de confiance, afin que moins d'entre eux comprennent μ = 12.</li>
+<li>Lorsque&nbsp;<em>k</em>&nbsp;= 1, observons que les <sup>2</sup>/<sub>3</sub> des intervalles comprennent μ = 12.&nbsp;Le niveau de confiance théorique est 0.683.</li>
+<li>Lorsque&nbsp;<em>k</em>&nbsp;= 3, d'observer que tous (ou presque tous) les intervalles comprennent μ = 12.&nbsp;Le niveau de confiance théorique est 0.997. </li>
+</ul>
+
+</div>
+
+<p class=heading>Estimation d'une probabilité avec différents niveaux de confiance</p>
+
+<p>Un intervalle de confiance à 95% pour une probabilité, π, a la forme</p>
+  <p class=eqn><img class="gif" src="../../en/estPropn/images/ciP.gif" width="141" height="46"> 
+  </p>
+<p>Les deux constantes dans cette formule à nouveau est née de la distribution normale standard.&nbsp;Son remplacement par 1.645 donne un intervalle d'environ un niveau de confiance de 90%, et en utilisant 2.576 résultats dans un niveau de confiance de 99%.</p>
+<p class=heading>Estimation d'une moyenne de la population (écart-type inconnu)</p>
+<p>Lorsque l'écart type de population, σ, est inconnu, un intervalle de confiance à 95% pour μ est de la forme</p>
+  <p class=eqn><img class="gif" src="../../en/ciMean/images/plusMinusTSE.gif" width="93" height="32"> 
+  </p>
+<p>où <em>t<sub>n-1</sub></em> 
+est obtenu à partir d'une table.&nbsp;Changer le niveau de confiance à 90% ou 99% implique de changer cette constante.&nbsp;La valeur appropriée peut à nouveau être obtenue à partir d'un tableau.&nbsp;(Nous donnons aucun autre détail ici.)</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

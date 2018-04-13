@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Mechanics of randomisation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="randomisation, completely randomised design, experimental design">
+	<meta name="dataset" content="Teaching method experiment">
+</head>
+
+
+<body class="lecture">
+<script type="text/javascript">writePageStart();</script>
+
+
+
+<p class=heading>Randomisation of teaching methods (A, B and C) to 30 children</p>
+
+<div class="divChoice">
+<form>
+<select name="dataset" onChange="changeBlock(this, 2)" id="dataChoice">
+    <option value="0" selected>Choosing random indices</option>
+    <option value="1">Choosing random treatments</option>
+  </select>
+</form>
+		
+		
+<div id="example1">
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="320">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="samplingProg.SimRandomisationApplet">
+<param name="random" value="738402167 52885678">
+<param name="catVarName" value="Gender">
+<param name="catLabels" value="Male Female">
+<param name="popnInfo" value="5 6 2 7 5 0.5 432563625">
+<param name="treatName" value="Treatment">
+<param name="treatLabels" value="#???# A B C">
+<param name="treatCounts" value="10 10 10">
+<param name="customText" value="Next=Next#Random index=Random index#Clear selection=Clear selection#Ignored: no item has index=Ignored: no item has index#Item * gets treatment=Item * gets treatment#Ignored: item * already has treatment=Ignored: item * already has treatment">
+</applet> 
+</div>
+</div>
+
+<div id="example2" style="display:none">
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="370">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="samplingProg.SimRandomisation2Applet">
+<param name="random" value="438402167 32885678 587823652 786346503">
+<param name="catVarName" value="Gender">
+<param name="catLabels" value="Male Female">
+<param name="popnInfo" value="5 6 2 7 5 0.5 632563625">
+<param name="treatName" value="Treatment">
+<param name="treatLabels" value="#???# A B C">
+<param name="treatCounts" value="10 10 10">
+<param name="customText" value="Generate next=Generate next#Update probs=Update probs#Clear selection=Clear selection#Ignored: no item has index=Ignored: no item has index#Item * gets treatment=Item * gets treatment#Ignored: item * already has treatment=Ignored: item * already has treatment">
+</applet> 
+</div>
+</div>
+
+</div>
+
+  
+<script type="text/javascript">
+	writeLecturerNotesLink(withoutDataNotes);
+</script>
+
+<div class="lecturerNote" id="lecturerNote">
+<p>The two diagrams on this page show two different ways of randomly allocating treatments to the experimental units.</p>
+<p>In the first method, random indices are generated (0 to 29) to decide on which unit gets each treatment in turn. As allocation of treatments progresses, it is often found that the selected unit already has a treatment, slowing the process.</p>
+<p>The second method works through each unit in turn, randomly allocating treatments. The complication is that the probabilities must be revised each time a treatment is used, reflecting the number of treatments of each kind that remain to be allocated.</p>
+<p>The best method uses two spreadsheet columns, with random numbers in the second.</p>
+<p align="center"><img src="images/excelUnsorted.gif" width="184" height="176"></p>
+<p>Then sort the two columns in increasing order of column B. This gives a random permutation of the indices of the units.</p>
+</div>
+	  
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

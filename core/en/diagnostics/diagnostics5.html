@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Deleted residuals</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="deleted residual, outliers">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Need for a better way to detect outliers</p>
+  <p>Standardised residuals are an improvement &mdash; they all have equal variance 
+		when the model is correct. However they do not fully compensate for the effect 
+		of high leverage points if there are outliers.</p>
+<div class="diagram">
+		<p class="heading">Effect of outlier on standardised residuals</p>
+
+		<p>In the diagram below, you can alter the top-right data point in the scatterplot 
+			on the left by dragging it. The diagram initially shows how the ordinary 
+			residuals are affected.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="residProg.DragStdOutlierApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="xValues" value="0.6 0.8 1.0 1.2 1.4 1.6 1.8 2.0 2.2 4.0">
+<param name="yValues" value="37 36 40 43 44 42 45 48 49 66">
+<param name="horizAxis" value="0.5 4.5 1 1">
+<param name="vertAxis" value="30 75 30 10">
+<param name="residAxis" value="-20 30 -20 10">
+<param name="customText" value="Ordinary residual=Ordinary residual#Standardised residual=Standardised residual">
+</applet>
+</div>
+
+		<p>Change the pop-up menu to display the standardised residuals on the right. 
+			Observe that this plot is more likely to be show up an outlier as a large 
+			or small standardised residual.</p>
+		
+<div class="centred"><div class="boxed">
+<p>Even standardised residuals do not show 
+							up outliers well, especially if they are high leverage points.</p>
+</div></div>
+
+		<br>
+</div>
+		
+	<p class="heading">Deleted residuals</p>
+
+		
+	<p>An alternative approach to highlighting outliers is to use <strong>deleted 
+		residuals</strong>. These are defined as</p>
+	<p class="eqn"><img src="images/deletedResid.gif" width="115" height="21" align="absmiddle"></p>
+	<p>where <img src="images/yiMinusi.gif" width="24" height="17" align="absmiddle"> 
+		is the prediction for the <em>i</em>'th point from the least squares line 
+		<strong>fitted to all data except the <em>i</em>'th observation</strong>.</p>
+		
+<div class="diagram">
+		<p class="heading">Illustration</p>
+
+		<p>The diagram below shows a data set with a single high-leverage outlier. 
+			The least squares line (grey) is pulled close to this point so its residual 
+			does not stand out. (Its standardised residual is not exceptional either.)</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="residProg.DeletedResidApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="xValues" value="0.6 0.8 1.0 1.2 1.4 1.6 1.8 2.0 2.2 4.0">
+<param name="yValues" value="37 36 40 43 44 42 45 48 49 46">
+<param name="xAxis" value="0.5 4.5 1 1">
+<param name="yAxis" value="30 75 30 10">
+<param name="residAxis" value="-30 20 -30 10">
+<param name="customText" value="Deleted residual=Deleted residual">
+</applet>
+</div>
+
+		<p>The deleted residuals are plotted against <em>x</em> on the right of the 
+			diagram. Click on the rightmost cross in the scatterplot on the left. The 
+			blue line is the least squares line fitted to all data points except this 
+			one. The deleted residual is the red vertical distance from the point to 
+			this line.</p>
+		<p>Click on other crosses to see how their deleted residuals are calculated.</p>
+</div>
+
+  <p class="heading">Calculating deleted residuals</p>
+	<p>Although it would seem from the definition of the deleted residuals that 
+		it is necessary to fit <em>n</em> separate least squares lines (omitting each 
+		observation once), there is a simpler formula for the deleted residuals that 
+		only depends on the ordinary residuals and the leverages,</p>
+	<p class="eqn"><img src="images/deletedResid2.gif" width="107" height="36" align="absmiddle"></p>
+	<p>This formula explains why the deleted residuals give extra weight to the 
+		high-leverage points.</p>
+	<p class="heading">Problem with deleted residuals</p>
+	<p>Although the deleted residuals do highlight the outlier in the example above, 
+		they have one major problem. Whereas the ordinary residuals have smaller variance 
+		for high leverage points, the deleted residuals have <strong>larger</strong> 
+		variance for the same points. It can be shown that</p>
+	<p class="eqn"><img src="images/deletedResidVar.gif" width="173" height="66" align="absmiddle"></p>
+	<p>Standardising the deleted residuals therefore results in the same values 
+		as standardising the ordinary residuals.</p>
+	<p class="eqn"><img src="images/standardResid2.gif" width="123" height="42" align="absmiddle"></p>
+<br>
+	
+<div class="centred"><div class="boxed">
+<p>Ordinary deleted residuals do not offer anything new.</p>
+</div></div>
+
+	<br>
+
+<script type='text/javascript'>writePageEnd();</script>
+</p>
+</div>
+
+</body>
+</html>

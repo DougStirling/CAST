@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Another way to describe the model</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="linear model, regression model, error">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Description of the model in terms of a response distribution</p>
+<p>The normal linear model describes the distribution of <em>Y</em> for any value 
+of <em>X</em>. It can be expressed in the form...</p>
+
+<p class=eqn><span class="black"><em>Y</em>&nbsp; ~ &nbsp;<font face="Arial, Helvetica, sans-serif">normal</font> (&mu;<sub>y</sub>&nbsp;, &sigma;<sub>y</sub>)</span> 
+</p>
+<p>where</p>
+<p class=eqn><span class="black">&mu;<sub><em>y</em></sub> &nbsp;=&nbsp; &beta;<sub>0</sub> &nbsp;+&nbsp; &beta;<sub>1</sub><em>x</em></span> 
+</p>
+<p class=eqn><span class="black">&sigma;<sub><em>y</em></sub> &nbsp;=&nbsp; &sigma;</span> 
+</p>
+<p class="heading">Description of the model in terms of 'errors'</p>
+<p>An equivalent way to write the same model is...</p>
+<p class=eqn><span class="black"><em>y<sub></sub></em> &nbsp;=&nbsp; &beta;<sub>0</sub> &nbsp;+&nbsp; &beta;<sub>1</sub><em>x</em> &nbsp;+&nbsp; &epsilon;</span> 
+</p>
+<p>where &epsilon; is called the model <strong>error</strong> and has a distribution</p>
+<p class=eqn><span class="black">&epsilon;&nbsp; ~ &nbsp;<font face="Arial, Helvetica, sans-serif">normal</font> (0<sub></sub>&nbsp;, &sigma;)</span> 
+</p>
+<p>It is helpful to observe that the error, ε  , 
+for a data point is</p>
+<p class=eqn><span class="black">&epsilon;&nbsp; = &nbsp;<em>y</em> &nbsp;&minus;&nbsp; ( &beta;<sub>0</sub> &nbsp;+&nbsp; &beta;<sub>1</sub><em>x</em> )</span> 
+</p>
+<p>which is the <strong>vertical distance</strong> between the cross on a scatterplot and the regression 
+line.</p>
+<p class=eqn><img class="gif" src="images/errorDiagram.gif" width="355" height="274"> 
+</p>
+<p>It is worth stressing here that in practical situations,</p>
+
+<div class="centred"><div class="boxed">
+<p>The slope and intercept of the regression line, β<sub>0</sub> and β<sub>1</sub>, 
+are unknown parameters. The errors, ε, 
+therefore cannot be determined exactly.</p>
+</div></div>
+
+<p>In the next section, we will see how these quantities can be estimated.</p>
+<p class="heading">Band containing about 95% of values</p>
+
+<p>The <a href="javascript:showNamedPage('centerSpread7')">70-95-100 
+rule</a> states that approximately 95% of values in any sample are within 2 standard 
+deviations of the mean. In the context of a normal linear model, approximately 
+95% of the errors will therefore be within 2 standard deviations of zero &mdash; i.e. 
+between ±2σ.</p>
+<p>Since the errors are the vertical distances of points from the regression line, 
+this means that...</p>
+
+<div class="centred"><div class="boxed">
+<p>Approximately 95% of the crosses will be within &nbsp;±2σ  
+of the regression line (vertically).</p>
+</div></div>
+
+<p>There is therefore a band 2σ on each side of the regression line that contains approximately 95% of the crosses 
+on a scatterplot of the data.</p>
+<p class=eqn><img class="gif" src="images/band95.gif" width="297" height="274"> 
+</p>
+
+
+<div class="diagram" title="Illustration of model bands">
+<p class="heading">Example</p>
+<p>The diagram below shows a normal linear model with parameters</p>
+
+<p class=eqn><span class="black">&mu;<sub><em>y</em></sub> &nbsp;=&nbsp; 2.5<sub></sub> &nbsp;+&nbsp; 1.5<sub></sub><em>x</em></span>
+</p>
+<p class=eqn><span class="black">&sigma;<sub><em>y</em></sub> &nbsp;=&nbsp; 0.8</span>
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="linModProg.RotateModelApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="regnModel" value="2.5 1.5 0.8">
+<param name="xValues" value="0.6 0.8 1 1.2 1.4 1.6 1.8 2 2.2 2.4 2.6 2.8 3 3.2 3.4 3.6 3.8 4 4.2 4.4">
+<param name="xAxis" value="0.5 4.5 1 1">
+<param name="yAxis" value="1 11.5 2 2">
+<param name="random" value="20 0.0 1.0 345945782 3.0">
+<param name="xLimits" value="0.5 4.5 0.1 2.5">
+</applet>
+</div>
+
+    
+<p>The blue regions in the tails of the normal probability density function are 
+more than 2σ (i.e. 1.6 for this model) on each side of µ<sub>y</sub>. 
+They are approximately 5% of the normal distribution's area, so about 95% of y-values 
+sampled from this distribution will be within the bounds. This is true for each 
+<i>X</i> &mdash; drag the slider to verify &mdash; so approximately 95% of sampled values 
+will lie in the gray band on the x-y plane. </p>
+
+<p>Click <strong>Take sample</strong> a few times to verify that approximately 95%
+of values are within the grey band.
+</p>
+
+<p>Finally, click the button at the top right of the diagram to look down on the x-y plane.
+In later pages, we will represent a normal linear model with a 2-dimensional diagram
+of this form.
+</p>
+
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

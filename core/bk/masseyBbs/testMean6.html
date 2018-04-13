@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Testing with non-normal populations</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="hypothesis test, mean, t test">
+	<meta name="dataset" content="Anorixic girls">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Assumptions about population</p>
+<p>The theory behind the t-test is based on the data being a random sample from a population with a normal distribution. For samples from a normal population with mean µ<sub>0</sub>,</p>
+<p class=eqn><img class="gif" src="../../en/testMean/images/tStatDefn.gif" width="90" height="46"></p>
+<p>has a t distribution with <em>n&nbsp;</em>-&nbsp;1 degrees of freedom. To test whether the population mean is really µ<sub>0</sub>,  this test statistic and t-distribution are used to find the test's p-value.</p>
+<p>If the population distribution is <strong>not</strong> normal, the test statistic does not have exactly a t distribution &mdash; its exact shape depends on the shape of the population distribution. However the Central Limit Theorem shows that the sample mean, <img src="../../images/symbol.xBar.png" width="10" height="10" align="baseline">, has approximately a normal distribution if the sample size, <em>n</em>, is large enough and the t-test statistic also has approximately a t-distribution.</p>
+<div class="centred">
+<div class="boxed">
+<p>The p-value from a t-test can be used for testing the mean of non-normal populations, <strong>provided <em>n</em> is fairly large</strong>.</p>
+</div>
+</div>
+<p>This does not hold for small samples.</p>
+
+<div class="boxed">
+<p>The t-test should not be used with small samples if the population distribution is clearly non-normal.</p>
+</div>
+<br>
+
+<div class="diagram"> 
+<p class="heading">Weight gain for anorexic girls</p>
+
+<p>A study investigated the effectiveness of cognitive behavioural therapy in getting anorexic girls to gain weight. The stacked dot plot below shows the weight gains of the 29 girls in the study who received this treatment. (Negative values correspond to girls who lost weight during the study.)</p>
+<p class=eqn><img src="images/anorexic.gif" width="396" height="99" alt="H0:mu=20, HA:mu!=20"></p>
+
+<p>We are interested in testing whether the mean weight gain is positive:</p>
+<p style="text-align:center; font-weight:bold">H<sub>0</sub> :   µ &le; 0<br>
+H<sub>A</sub> :   µ &gt; 0</p>
+<p>The distribution of weight losses seems a little skew with a long tail towards  positive weight gains, but the sample size, <em>n</em> = 29, is fairly large, so the p-value from a t-test will give a good assessment of these hypotheses.</p>
+<p class="eqn"><img src="images/anorexic_calc.gif" width="179" height="104"></p>
+<p>Since this is a 1-tailed test and the high values of the test statistic suggest that <span style="text-align:center; font-weight:bold">H<sub>A</sub></span> holds, the p-value is the upper tail area of a t-distribution (28 d.f.) above 2.21,</p>
+<p class="eqn">p-value = 0.036</p>
+<p>From this we would conclude that there is moderately strong evidence that the average weight gain is above zero.</p>
+<p class="heading">Smaller data set</p>
+<p>On the other hand, if we had only used 8 girls in our study and their weight losses were as shown below:</p>
+<p class="eqn"><img src="images/anorexic2.gif" width="396" height="99" alt="H0:mu=20, HA:mu!=20"></p>
+<p>then the small sample size and apparent skewness of the distribution &mdash; most girls did not change weight but a small number had large weight gains &mdash; means that we should not use a t-test to compare the hypotheses.</p>
+<div class="centred"></div>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

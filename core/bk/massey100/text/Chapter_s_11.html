@@ -1,0 +1,2367 @@
+<html>
+<head>
+  <title>11. Regression and Correlation</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 11 &nbsp; Regression and Correlation</h1>
+<h1 class="sectionName">11.1 &nbsp; Linear regression models</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Interest in generalising from data</li>
+<li>Distribution of Y for each X</li>
+<li>Normal linear model</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='4'>
+<li>Another way to describe the model</li>
+<li>Model parameters</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">11.1.1 &nbsp; Interest in generalising from data</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Bivariate data: population or sample?</p>
+<p>In most bivariate data sets, we have no interest in the specific individuals from
+which the data are collected. The individuals are 'representative' of a larger population
+or process, and our main interest is in this underlying population. </p>
+<p class="heading">Example</p>
+<p>Data  were collected by biologists from 15 lakes
+in central Ontario to assess how zinc concentrations in an aquatic plant were related
+to zinc concentrations in the lake sediment.</p>
+<p class="eqn"><img src="../../../en/regnModel/images/s_sampleScatter.gif" width="403" height="316"></p>
+<p>The biologists want to <strong>generalise</strong> from
+these specific lakes (and sediment samples) to describe the relationship between
+zinc concentrations in sediments and plants in a way that might be used to predict
+plant zinc from sediment samples in <strong>other
+similar </strong> lakes.</p>
+
+
+
+
+<h2 class="pageName">11.1.2 &nbsp; Distribution of Y for each X</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Response distribution at each X</p>
+<p>In an experiment, several response measurements are often made at each  distinct
+value of <i>X</i>. The diagram below shows one such data set using a histogram for
+the distribution of <em>Y</em> at
+each x-value.</p>
+<p class="eqn"><img src="../../../en/regnModel/images/s_histos.gif" width="380" height="331"></p>
+<p class="heading">Model for data</p>
+<p>The response measurements at any x-value can be modelled as a random sample from
+a normal distribution. The collection of distributions of <em>Y</em> at different
+values of <em>X</em> is called a <strong>regression model</strong>.</p>
+<p class="eqn"><img src="../../../en/regnModel/images/s_pdfs.gif" width="349" height="373"></p>
+
+
+
+
+<h2 class="pageName">11.1.3 &nbsp; Normal linear model</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Normal linear model for the response</p>
+<p>The most commonly used regression
+model is a <strong>normal linear model</strong>. It  involves: </p>
+<dl>
+<dt><strong>Normality</strong></dt>
+<dd>At each value of <i>X</i>, <i>Y</i> has a normal distribution.</dd>
+<dt><strong>Constant variance</strong></dt>
+<dd>The standard deviation of <i>Y</i> is the same for all values of <i>X</i>.</dd>
+<dt><strong>Linearity</strong></dt>
+<dd>The mean of <i>Y</i> is linearly related to <i>X</i>.</dd>
+</dl>
+<p>The last two properties of the normal linear model can be expressed as </p>
+<p class=eqn><span class="black">&sigma;<sub><em>y</em></sub> &nbsp;=&nbsp; &sigma;</span> </p>
+<p class=eqn><span class="black">&mu;<sub><em>y</em></sub> &nbsp;=&nbsp; &beta;<sub>0</sub> &nbsp;+&nbsp; &beta;<sub>1</sub><em>x</em></span> </p>
+<p>The diagram below illustrates these three properties of the normal linear model:
+the distributions at different x-values have  normal distributions with the same
+spread and the mean increases linearly with <em>x</em>.</p>
+<p class=eqn><img src="../../../en/regnModel/images/s_pdfs2.gif" width="362" height="385"></p>
+<p class="heading">Note: only the response is modelled</p>
+<p>A normal linear model does not try to explain the distribution of x-values. In
+experimental data, they are fixed by the experimenter. In observational data, the
+x-values are usually random, but the regression model only explains how the y-values
+are related to them and treats them as constants.</p>
+<div class="centred"><div class="boxed"><p>The regression model only describes the <strong>conditional</strong> distribution
+of <em>Y</em> at each <em>X</em>.</p></div></div>
+
+
+
+
+<h2 class="pageName">11.1.4 &nbsp; Another way to describe the model</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Alternative descriptions of the model</p>
+<p>The normal linear model describes the distribution of <em>Y</em> for any value
+of <em>X</em>:</p>
+<p class=eqn><span class="black"><em>Y</em>&nbsp; ~ &nbsp;<font face="Arial, Helvetica, sans-serif">normal</font> (&mu;<sub>y</sub>&nbsp;, &sigma;<sub>y</sub>)</span> </p>
+<p>where</p>
+<p class=eqn><span class="black">&mu;<sub><em>y</em></sub> &nbsp;=&nbsp; &beta;<sub>0</sub> &nbsp;+&nbsp; &beta;<sub>1</sub><em>x</em></span> </p>
+<p class=eqn><span class="black">&sigma;<sub><em>y</em></sub> &nbsp;=&nbsp; &sigma;</span> </p>
+<p>An equivalent way to write the same model is...</p>
+<p class=eqn><span class="black"><em>y<sub></sub></em> &nbsp;=&nbsp; &beta;<sub>0</sub> &nbsp;+&nbsp; &beta;<sub>1</sub><em>x</em> &nbsp;+&nbsp; &epsilon;</span> </p>
+<p>where  &epsilon; is
+called the model <strong>error</strong> and has a distribution</p>
+<p class=eqn><span class="black">&epsilon;&nbsp; ~ &nbsp;<font face="Arial, Helvetica, sans-serif">normal</font> (0<sub></sub>&nbsp;, &sigma;)</span> </p>
+<p>The error, ε , for a data point is the <strong>vertical distance</strong> between the cross on a scatterplot and the regression
+line.</p>
+<p class=eqn><img class="gif" src="../../../en/regnModel/images/errorDiagram.gif" id="gif_image_1_4_2" width="355" height="274"><iframe class="svg" src="../../../en/regnModel/images/errorDiagram.svg" id="svg_image_1_4_2" width="355" height="274" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_1_4_2");</script> </p>
+<p class="heading">Band containing about 95% of values</p>
+<p>Applying the 70-95-100 rule of thumb to the errors, about 95% of them
+will be within 2 standard deviations of zero &mdash; i.e. between ±2σ.</p>
+<p>Since the errors are vertical distances of data points to the regression line,
+a  band
+2σ on each side of it should contain about 95% of the crosses
+on a scatterplot of the data.</p>
+<p class=eqn><img class="gif" src="../../../en/regnModel/images/band95.gif" id="gif_image_1_4_1" width="297" height="274"><iframe class="svg" src="../../../en/regnModel/images/band95.svg" id="svg_image_1_4_1" width="297" height="274" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_1_4_1");</script></p>
+
+
+
+
+<h2 class="pageName">11.1.5 &nbsp; Model parameters</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Slope and intercept</p>
+<p>A normal linear model, </p>
+<p class=eqn><span class="black">&mu;<sub><em>y</em></sub> &nbsp;=&nbsp; &beta;<sub>0</sub> &nbsp;+&nbsp; &beta;<sub>1</sub><em>x</em></span> </p>
+<p class=eqn><span class="black">&sigma;<sub><em>y</em></sub> &nbsp;=&nbsp; &sigma;</span> </p>
+<p>involves 3 parameters, β<sub>0</sub>, β<sub>1</sub> and σ. The model's slope,
+β<sub>1</sub>,
+and intercept, β<sub>0</sub>, can be interpreted in a similar way to the slope
+and intercept of a least squares line.</p> 
+<dl>
+<dt>Slope</dt>
+<dd>Increase in the mean response per unit increase in <i>X</i>.</dd>
+<dt>Intercept</dt>
+<dd>Mean response when <em>X</em> = 0.</dd>
+</dl>
+
+<p class="heading" style="margin-bottom:5px; margin-top:35px">Examples of interpretation</p>
+
+<div class="centred"><table class="centred" border="0" cellpadding="8" cellspacing="0" style="margin-top:0px">
+<tr>
+<th align="CENTER" width="300">Context</th>
+<th width="33%" align="CENTER">Interpretation of β<sub>1</sub></th>
+<th width="33%" align="CENTER">Interpretation of β<sub>0</sub></th>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td width="300" class="top bottom left right"><i>Y</i> = Yield of wheat per acre <br>
+<i>X</i> = Fertiliser (kg per m<sup>2</sup>)</td>
+<td width="33%" class="top bottom right">Increase in mean yield per acre for
+each additional kg/m<sup>2</sup> of fertiliser</td>
+<td width="33%" class="top bottom right">Mean yield per acre if no fertiliser
+is used</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td width="300" class="bottom left right"><i>Y</i> = Exam mark <br>
+<i>X</i> = Hours of study by student before exam</td>
+<td width="33%" class="bottom right">Increase in expected mark for each additional
+hour of study</td>
+<td width="33%" class="bottom right">Expected mark if there is no study</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td width="300" class="bottom left right"><i>Y</i> = Hospital stay (days) <br>
+<i>X</i> = Age of patient</td>
+<td width="33%" class="bottom right">Average extra days in hospital per extra
+year of age</td>
+<td width="33%" class="bottom right">Average days in hospital at age 0. Not particularly
+meaningful here. </td>
+</tr>
+</table></div>
+
+
+<h1 class="sectionName breakBefore">11.2 &nbsp; Estimating parameters</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Estimating the slope and intercept</li>
+<li>Estimating the error standard devn</li>
+<li>Distn of least squares estimates</li>
+<li>Standard error of least squares slope</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='5'>
+<li>95% confidence interval for slope</li>
+<li>Properties of confidence interval</li>
+<li>Influences on accuracy</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">11.2.1 &nbsp; Estimating the slope and intercept</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Least squares</p>
+<p>In practical situations, we must estimate β<sub>0</sub>,
+β<sub>1</sub> and σ from a data set that we believe satisfies the normal linear model.</p>
+
+<div class="centred"><div class="boxed">
+<p>The best estimates of β<sub>0</sub> and β<sub>1</sub> are the slope and
+intercept of the least squares line, <em>b</em><sub>0</sub> and <em>b</em><sub>1</sub></p>
+</div></div>
+
+<p>Since<em> b</em><sub>0 </sub>and <em>b</em><sub>1</sub> are functions of a
+data set that we assume to be a random sample from the normal linear model, <em>b</em><sub>0</sub> and <em>b</em><sub>1</sub> are
+themselves random quantities and have distributions.</p>
+<p class="heading">Simulated example</p>
+<p>The diagram below represents a regression model with a grey band. A sample
+of 20 values has been generated from this model and the least squares line (shown
+in blue) has been fitted to the simulated data. The least squares line provides
+estimates of the slope and intercept but they are not exactly equal to the underlying
+model values.</p>
+<p class="eqn"><img src="../../../en/regnEst/images/s_lsAndModel.gif" width="406" height="357"></p>
+<p>A different sample would give 20 different  points and a different least squares
+line, so the least squares slope and intercept are random.</p>
+
+
+
+
+<h2 class="pageName">11.2.2 &nbsp; Estimating the error standard devn</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Errors and residuals</p>
+<p>The error, ε, for any data point is its <a href="javascript:showNamedPage('regnModel4')">vertical
+distance from the regression line</a>. </p>
+<p class=eqn><img class="gif" src="../../../en/regnModel/images/errorDiagram.gif" id="gif_image_2_2_3" width="355" height="274"><iframe class="svg" src="../../../en/regnModel/images/errorDiagram.svg" id="svg_image_2_2_3" width="355" height="274" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_2_3");</script> </p>
+<p>In practice, the slope and intercept of the regression line are unknown, so <strong>the
+errors are also unknown values</strong>, but  the least squares residuals provide
+<strong>estimates</strong>.</p>
+<p class=eqn><img class="gif" src="../../../en/regnEst/images/residDiagram.gif" id="gif_image_2_2_1" width="355" height="274"><iframe class="svg" src="../../../en/regnEst/images/residDiagram.svg" id="svg_image_2_2_1" width="355" height="274" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_2_1");</script> </p>
+<p class="heading">Estimating the error standard deviation</p>
+<p>The third unknown parameter of the normal linear model, σ, is the standard deviation
+of the errors,</p>
+<p class=eqn><span class="black">&sigma; &nbsp;=&nbsp;<strong>st devn</strong>( &epsilon; )</span> </p>
+<p>σ can be estimated from the least squares residuals, {<em>e<sub>i</sub></em>},</p>
+<p class=eqn><img class="gif" src="../../../en/regnEst/images/errorSdEst.gif" id="gif_image_2_2_2" width="95" height="41"><iframe class="svg" src="../../../en/regnEst/images/errorSdEst.svg" id="svg_image_2_2_2" width="95" height="41" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_2_2");</script> </p>
+<p>This is similar to the formula for the standard deviation of the residuals,
+but uses the divisor (<em>n</em> &minus; 2) instead of (<em>n</em> &minus; 1).
+It describes the size of a 'typical' residual.</p>
+<p class="heading">Example</p>
+<p class="eqn"><img src="../../../en/regnEst/images/s_residSd.gif" width="463" height="291"></p>
+
+
+
+
+<h2 class="pageName">11.2.3 &nbsp; Distn of least squares estimates</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Distribution of the least squares slope and intercept</p>
+<p>The least squares line<sub></sub> varies from sample
+to sample &mdash; it is random.</p>
+<p class="eqn"><img src="../../../en/regnEst/images/s_randomLines.gif" width="550" height="290"></p>
+<p>The least squares estimates <em>b</em><sub>0</sub> and <em>b</em><sub>1</sub> of
+the two linear model parameters β<sub>0</sub> and β<sub>1</sub> therefore also
+vary from sample to sample and have normal distributions that are centered
+on β<sub>0</sub> and β<sub>1</sub> respectively.</p>
+<p class="eqn"><img src="../../../en/regnEst/images/s_slopeInterceptDistn.gif" width="541" height="321"></p>
+
+
+
+
+<h2 class="pageName">11.2.4 &nbsp; Standard error of least squares slope</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Standard error of slope</p>
+<p>When <em>b</em><sub>1 </sub> is used as an estimate of β<sub>1</sub>, the
+estimation error has a normal distribution,</p>
+<p class=eqn><span class="black"><strong>error in estimate of &beta;<sub>1</sub></strong> &nbsp; = &nbsp; (<em>b</em><sub>1</sub> &minus; &beta;<sub>1</sub>) &nbsp; ~ &nbsp; <font face="Arial, Helvetica, sans-serif">normal</font> ( 0, &nbsp;&sigma;<sub><em>b</em><sub>1</sub></sub> )</span> </p>
+<p>This standard deviation is the  <strong>standard error</strong> of
+the estimate,</p>
+<p class=eqn><img class="gif" src="../../../en/regnEst/images/sdSlopeEqn.gif" id="gif_image_2_4_2" width="227" height="42"><iframe class="svg" src="../../../en/regnEst/images/sdSlopeEqn.svg" id="svg_image_2_4_2" width="227" height="42" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_4_2");</script> </p>
+<p>where <em>s</em><sub>x </sub> is the standard deviation of  <em>X. </em>Since
+σ is unknown, we must replace it with an estimate from
+the data to obtain a numerical value for the standard error,</p>
+<p class=eqn><img class="gif" src="../../../en/regnEst/images/errorSdEst.gif" id="gif_image_2_4_1" width="95" height="41"><iframe class="svg" src="../../../en/regnEst/images/errorSdEst.svg" id="svg_image_2_4_1" width="95" height="41" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_4_1");</script> </p>
+<p class=heading>Example</p>
+<p align="center"><img src="../../../en/regnEst/images/radiationCancer.gif" width="550" height="377" class="summaryPict"></p>
+<p>The estimated error distribution  gives in indication of how close our least
+squares estimate, <em>b</em><sub>1</sub> = 9.27, is likely to be to the population
+regression slope, &beta;<sub>1</sub>.</p>
+
+
+
+
+<h2 class="pageName">11.2.5 &nbsp; 95% confidence interval for slope</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Confidence interval for the slope</p>
+<p>When the least squares slope, <em>b</em><sub>1</sub>, is used to estimate
+β<sub>1</sub>,
+the error  has a normal distribution,</p>
+<p class=eqn><span class="black"><strong>error in estimate of &beta;<sub>1</sub></strong> &nbsp; = &nbsp; (<em>b</em><sub>1</sub> &minus; &beta;<sub>1</sub>) &nbsp; ~ &nbsp; <font face="Arial, Helvetica, sans-serif">normal</font> ( 0, &nbsp;&sigma;<sub><em>b</em><sub>1</sub></sub> )</span> </p>
+<p>This suggests a 95% confidence interval of
+the form </p>
+<p class=eqn><img class="gif" src="../../../en/regnEst/images/slopeCIFormula2.gif" id="gif_image_2_5_4" width="124" height="24"><iframe class="svg" src="../../../en/regnEst/images/slopeCIFormula2.svg" id="svg_image_2_5_4" width="124" height="24" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_5_4");</script></p>
+<p>In practice, we must replace σ in the formula for the standard error with
+an estimate (based on the sum of squared residuals),</p>
+<p class=eqn><img class="gif" src="../../../en/regnEst/images/sdSlopeEqn2.gif" id="gif_image_2_5_2" width="234" height="52"><iframe class="svg" src="../../../en/regnEst/images/sdSlopeEqn2.svg" id="svg_image_2_5_2" width="234" height="52" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_5_2");</script> </p>
+<p>so the constant 1.96 must be replaced by a larger
+value from the t distribution with
+(<em>n</em>&nbsp;-&nbsp;2) degrees of freedom. </p>
+
+<div class="centred"><div class="boxed"><p><strong>A 95% confidence interval for the slope is</strong></p>
+<p class=eqn><img class="gif" src="../../../en/regnEst/images/slopeCIFormula.gif" id="gif_image_2_5_3" width="121" height="26"><iframe class="svg" src="../../../en/regnEst/images/slopeCIFormula.svg" id="svg_image_2_5_3" width="121" height="26" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_5_3");</script></p></div></div>
+<p>Most statistical software will evaluate <em>b</em><sub>1</sub> and its standard
+error for you when you fit a normal linear model, so it is fairly easy to evaluate
+the confidence interval in practice &mdash; you will not need to use any of the formulae
+above!</p>
+<p class="heading">Example</p>
+<p>For the example on the previous page, the least squares estimate of the slope
+and its standard error were:
+</p>
+<p class="eqn"><em>b</em><sub>1</sub> = 9.27,        se (<em>b</em><sub>1</sub>)
+= 1.42</p>
+<p>Since there were <em>n</em> = 9 data points, <em>t</em><sub><em>n</em> &minus; 2</sub> =
+t<sub>7</sub> = 2.365,  so a 95%
+confidence interval for the slope is </p>
+<p class=eqn><img class="gif" src="../../../en/regnEst/images/radiationCI.gif" id="gif_image_2_5_1" width="284" height="39"><iframe class="svg" src="../../../en/regnEst/images/radiationCI.svg" id="svg_image_2_5_1" width="284" height="39" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_5_1");</script></p>
+<p>We are 95% confident that the expected number of deaths per 100,000
+is between 5.9 and 12.6 higher for each unit increase in the exposure index.</p>
+
+
+
+
+<h2 class="pageName">11.2.6 &nbsp; Properties of confidence interval</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Properties of 95% confidence interval</p>
+<p>Since a confidence interval for the slope, β<sub>1</sub>, is evaluated from
+random sample data, it will vary from sample to sample. In 95% of such samples,
+the 95% confidence interval will include the true population slope, but in 5%
+of samples it will not.</p>
+
+<div class="centred"><div class="boxed">
+<p>We cannot tell whether or not our single data set is one of the 'lucky'
+ones.</p>
+</div></div>
+
+<p class="heading">Simulation</p>
+<p class="eqn"><img src="../../../en/regnEst/images/s_ciSimulation.gif" width="437" height="344"></p>
+
+
+
+
+<h2 class="pageName">11.2.7 &nbsp; Influences on accuracy</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">What affects the accuracy of the least squares slope?</p>
+<p>The standard deviation of <em>b</em><sub>1</sub> (its standard error) is</p>
+<p class=eqn><img class="gif" src="../../../en/regnEst/images/sdSlopeEqn.gif" id="gif_image_2_7_3" width="227" height="42"><iframe class="svg" src="../../../en/regnEst/images/sdSlopeEqn.svg" id="svg_image_2_7_3" width="227" height="42" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_7_3");</script> </p>
+<p>where </p>
+<ul>
+<li>σ is the standard deviation of the errors &mdash; i.e. the spread of points<i></i> around
+the regression line,</li>
+<li><i>n</i> is the number of data points, and</li>
+<li><em>s</em><sub>x</sub> is the sample standard deviation of <i>X</i>.</li>
+</ul>
+<div class="centred"><div class="boxed">
+<p style="text-align:left">The standard error of  <em>b</em><sub>1</sub>
+is lowest when: </p>
+<ol>
+<li>the response standard deviation, σ, is low</li>
+<li>the sample size, <i>n</i>, is large</li>
+<li>the spread of x-values is high</li>
+</ol>
+</div></div>
+<p class=heading>Implications for experimental design </p>
+<p>To get the most accurate estimate of the slope from experimental data,</p>
+<dl>
+<dt>Reduce σ</dt>
+<dd>σ can be reduced by ensuring that the experimental units
+are as similar as possible.</dd>
+<dt>Increase <em>n</em></dt>
+<dd>Collect as much data as possible.</dd>
+<dt>Increase <em>s<sub>x</sub></em></dt>
+<dd>Choose to run the experiment with x-values that are widely spread.</dd>
+</dl>
+<br>
+<p>However if the spread of x-values is increased too much, the relationship
+may not be sufficiently linear for a linear model to be used.</p>
+<p class=eqn><img class="gif" src="../../../en/regnEst/images/nonlinearity.gif" id="gif_image_2_7_1" width="271" height="210"><iframe class="svg" src="../../../en/regnEst/images/nonlinearity.svg" id="svg_image_2_7_1" width="271" height="210" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_7_1");</script> </p>
+<p>Nonlinearity is a major problem, so it is important to be able to assess whether
+a relationship is linear. Don't just collect data at the ends of the 'acceptable'
+range of x-values, even though this maximises <em>s</em><sub>x</sub>. </p>
+<p class=eqn><img class="gif" src="../../../en/regnEst/images/nonlinearity2.gif" id="gif_image_2_7_2" width="271" height="210"><iframe class="svg" src="../../../en/regnEst/images/nonlinearity2.svg" id="svg_image_2_7_2" width="271" height="210" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_7_2");</script></p>
+
+
+
+
+<h1 class="sectionName breakBefore">11.3 &nbsp; Testing regression parameters</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Importance of zero slope</li>
+<li>Testing whether slope is zero</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='3'>
+<li>Strength of evidence and relationship</li>
+<li>Properties of p-values</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">11.3.1 &nbsp; Importance of zero slope</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Does the response depend on X?</p>
+<p>In a normal linear model, the response has a distribution whose mean, µ<sub>y</sub>,
+depends linearly on the explanatory variable,</p>
+<p class=eqn><span class="black"><em>Y</em>&nbsp; ~ &nbsp;<font face="Arial, Helvetica, sans-serif">normal</font> (&mu;<sub>y</sub>&nbsp;, &sigma;<sub>y</sub>)</span> </p>
+<p>If the slope parameter, β<sub>1</sub>, is zero, then the response has a normal
+distribution that <strong>does not depend on <i>X</i></strong>.</p>
+<p class=eqn><span class="black"><em>Y</em> &nbsp; ~ &nbsp; <font face="Arial, Helvetica, sans-serif">normal</font> (&beta;<sub>0</sub> , &nbsp;&sigma;)</span> </p>
+<p>This can be tested formally with a hypothesis test for whether β<sub>1</sub> is
+zero.</p>
+
+
+
+
+<h2 class="pageName">11.3.2 &nbsp; Testing whether slope is zero</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Testing for zero slope</p>
+<p>To assess whether the explanatory variable affects the response, we test the
+hypotheses </p>
+<p class=eqn><span class="blue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&beta;<sub>1</sub> &nbsp;=&nbsp; 0<br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&beta;<sub>1</sub>  &nbsp;&ne;&nbsp;  0</span> </p>
+<p>The test is based on how far the least squares slope, <em>b</em><sub>1</sub>,
+is from zero. To assess this, we must take into account its standard deviation
+(standard error),</p>
+<p class=eqn><img class="gif" src="../../../en/regnTest/images/sdSlopeEqn.gif" id="gif_image_3_2_1" width="129" height="42"><iframe class="svg" src="../../../en/regnTest/images/sdSlopeEqn.svg" id="svg_image_3_2_1" width="129" height="42" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_3_2_1");</script> </p>
+<p>If we knew the value of σ, we could  standardise <em>b</em><sub>1</sub> to
+get a test statistic,</p>
+<p class=eqn><span class="black bold">standardised value,</span>  &nbsp;<img class="gif" src="../../../en/regnTest/images/standardisedSlope.gif" id="gif_image_3_2_4" width="85" height="43"><iframe class="svg" src="../../../en/regnTest/images/standardisedSlope.svg" id="svg_image_3_2_4" width="85" height="43" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_3_2_4");</script></p>
+<p>If β<sub>1</sub> was really zero (<strong>H<sub>0</sub></strong>), the probability
+of getting a least squares slope as far from zero as that recorded would be the
+p-value,</p>
+<p class=eqn><img class="gif" src="../../../en/regnTest/images/zForTestingSlope.gif" id="gif_image_3_2_3" width="294" height="141"><iframe class="svg" src="../../../en/regnTest/images/zForTestingSlope.svg" id="svg_image_3_2_3" width="294" height="141" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_3_2_3");</script></p>
+<p>Unfortunately σ is usually unknown and the standard deviation of <em>b</em><sub>1</sub> must
+be <a href="javascript:showNamedPage('regnEst4')">estimated from the sample
+data</a>. We therefore use a test statistic of the form </p>
+<p class=eqn><span class="black bold">t ratio,</span>  &nbsp;<img class="gif" src="../../../en/regnTest/images/standardisedSlope2.gif" id="gif_image_3_2_5" width="69" height="48"><iframe class="svg" src="../../../en/regnTest/images/standardisedSlope2.svg" id="svg_image_3_2_5" width="69" height="48" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_3_2_5");</script></p>
+<p>and refer to a t distribution with <i><span class="black">n</span></i><span class="black">&nbsp;-&nbsp;2</span> degrees
+of freedom to find the p-value.</p>
+<p class=eqn><img class="gif" src="../../../en/regnTest/images/slopeTestP.gif" id="gif_image_3_2_2" width="426" height="268"><iframe class="svg" src="../../../en/regnTest/images/slopeTestP.svg" id="svg_image_3_2_2" width="426" height="268" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_3_2_2");</script> </p>
+<p>The p-value is interpreted in the same way as for other hypothesis tests &mdash;
+a p-value close to zero means that the sample slope is far enough from zero to
+be inconsistent with <strong>H<sub>0</sub>: &beta;<sub>1</sub> = 0</strong>.</p>
+<p class="heading">Examples</p>
+<p align="center"><img src="../../../en/regnTest/images/possumDamage.gif" width="550" height="442" class="summaryPict"></p>
+<p align="center"><img src="../../../en/regnTest/images/alcoholStrength.gif" width="550" height="442" class="summaryPict"></p>
+
+
+
+
+
+<h2 class="pageName">11.3.3 &nbsp; Strength of evidence and relationship</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Strength of  relationship vs strength of <span class="darkred">evidence</span> for
+relationship</p>
+<p>It is important to distinguish between the correlation coefficient, <em>r</em>,
+and the p-value for testing whether there is a relationship between <em>X</em> and <em>Y</em>. </p>
+<dl>
+<dt>Correlation coefficient</dt>
+<dd>Describes the strength of the relationship between <em>X</em> and <em>Y</em></dd>
+<dt>The p-value for testing whether <em>X</em> and <em>Y</em> are related</dt>
+<dd>Describes the strength of <strong>evidence</strong> for whether <em>X</em> and <em>Y</em> are
+related <strong>at all</strong></dd>
+</dl>
+<p>It is important not to confuse these two values when interpreting the p-value
+for a test.</p>
+<ul>
+<li>A p-value  close to zero does <strong>not</strong> imply that there must
+be a strong relationship. It
+just means that we are <strong>sure</strong> that
+there is <strong>some</strong> relationship, however weak.</li>
+<li>A large p-value  does <strong>not</strong> imply that the relationship
+must be weak. The sample size might just be too small to be sure that the relationship
+exists.</li>
+</ul>
+<p>This is partly explained by an alternative formula for the test statistic,</p>
+<p class=eqn><img class="gif" src="../../../en/regnTest/images/s_tFromR.gif" id="gif_image_3_3_2" width="162" height="48"><iframe class="svg" src="../../../en/regnTest/images/s_tFromR.svg" id="svg_image_3_3_2" width="162" height="48" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_3_3_2");</script></p>
+<p>The test statistic and  the p-value therefore both depend on both <em>r</em> and
+the sample size, <em>n</em>. Increasing <em>n</em> and increasing <em>r</em> <strong>both</strong> result
+in a lower p-value.</p>
+<p class=eqn><img class="gif" src="../../../en/regnTest/images/rnEffect.gif" id="gif_image_3_3_1" width="550" height="440"><iframe class="svg" src="../../../en/regnTest/images/rnEffect.svg" id="svg_image_3_3_1" width="550" height="440" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_3_3_1");</script></p>
+
+
+
+
+<h2 class="pageName">11.3.4 &nbsp; Properties of p-values</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Properties of p-value</p>
+<p>P-values for testing whether a linear model's slope is zero have the same
+properties as p-values for other hypothesis tests. In particular, </p>
+<ul>
+<li>When <b>H<sub>0</sub></b> is true (i.e. <i>Y</i> is not related to <i>X</i>),
+all p-values between 0 and 1 are equally likely.</li>
+<li>If <b>H<sub>A</sub></b> is true (i.e. <i>Y</i> and <i>X</i> are
+related), then  p-values  near zero
+are more likely than p-values near 1.</li>
+</ul>
+<p>When <em>Y</em> and <em>X</em> are not related
+(β<sub>1</sub> = 0), it is still possible to get small p-values, suggesting that
+β<sub>1</sub> is <strong>not</strong> zero. However there is only probability
+0.01 of getting a p-value as low as 0.01 &mdash; it is unlikely but possible. Such
+a p-value is more likely if the variables <strong>are</strong> related so we
+interpret it as giving strong evidence of a relationship.</p>
+
+
+
+
+<h1 class="sectionName breakBefore">11.4 &nbsp; Predicting the response</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Estimated response distn at X</li>
+<li>Variability of estimate at X</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='3'>
+<li>Estimating the mean vs prediction</li>
+<li>Confidence and prediction intervals</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">11.4.1 &nbsp; Estimated response distn at X</h2><!DOCTYPE HTML>
+
+
+<p>A normal linear model provides
+a response distribution <strong>for all <i>X</i></strong>. With estimates for
+all three model parameters, we can obtain the approximate response distribution
+at <strong>any</strong> x-value, even if we have no data at that x-value. </p>
+<p class="eqn"><img src="../../../en/regnPred/images/s_estimDistn.gif" width="434" height="369"></p>
+
+
+
+
+<h2 class="pageName">11.4.2 &nbsp; Variability of estimate at X</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">What affects the accuracy of a prediction?</p>
+<p>The predicted response at <i>X</i> is</p>
+<p class=eqn><span class="black"><span style="position:relative; top:4px"><img src="../../../en/../images/symbol.yHat.png" width="10" height="17" align="baseline"></span>&nbsp; =&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x</em></span> </p>
+<p>and has a normal distribution
+with mean</p>
+<p class=eqn><span class="black">&mu;<sub><em>y</em></sub> &nbsp;=&nbsp; &beta;<sub>0</sub> &nbsp;+&nbsp; &beta;<sub>1</sub><em>x</em></span> </p>
+<p>Its standard deviation   depends on the value <i>x</i> at which the prediction
+is being made. The further <i>x</i> is from
+its mean in the training data, <img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline">,
+the greater the variability in the prediction.</p>
+<p class="heading">Simulation</p>
+<p>The effect of the x-value on the variability of the predicted response can
+be shown using least squares lines fitted to simulated data:</p>
+<p class="eqn"><img src="../../../en/regnPred/images/s_lsVariability.gif" width="550" height="294"></p>
+<p>The diagram below shows two theoretical distributions from the above model.
+(The spread would be even greater for predicting at <em>x</em> = 10.)</p>
+<p class="eqn"><img src="../../../en/regnPred/images/s_predictDistn.gif" width="348" height="281"></p>
+
+
+
+
+<h2 class="pageName">11.4.3 &nbsp; Estimating the mean vs prediction</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Estimating the <span class="red">mean</span> response</p>
+<p>In some situations, we are interested in estimating the mean response at some
+x-value,</p>
+<p class=eqn><span class="black">&mu;<sub><em>y</em></sub> &nbsp;=&nbsp; &beta;<sub>0</sub> &nbsp;+&nbsp; &beta;<sub>1</sub><em>x</em></span> </p>
+<p>The least squares estimate, </p>
+<p class=eqn><span class="black"><span style="position:relative; top:4px"><img src="../../../en/../images/symbol.yHat.png" width="10" height="17" align="baseline"></span>&nbsp; =&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x</em></span> </p>
+<p>becomes increasingly accurate as the sample size increases (since  <em>b</em><sub>0</sub> and <em>b</em><sub>1</sub> become
+more accurate estimates of β<sub>0</sub> and β<sub>1</sub>).</p>
+<p class=heading>Predicting a <span class="red">single item's</span> response</p>
+<p>To predict the response for a <strong>single</strong> new
+individual with a known x-value, the
+same prediction would be used,</p>
+<p class=eqn><span class="black"><span style="position:relative; top:4px"><img src="../../../en/../images/symbol.yHat.png" width="10" height="17" align="baseline"></span>&nbsp; =&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x</em></span> </p>
+<p>However no matter how accurately we estimate the <strong>mean</strong> response
+for such individuals, a single new individual's response will have a distribution
+with standard deviation σ around this mean and we have no information to help
+us predict how far it will be from its mean. The 
+prediction error <strong>cannot</strong> have a standard deviation
+that is less than σ.</p>
+<div class="centred"><div class="boxed"><p>The error in predicting an individual's response is usually greater than the
+error in estimating the mean response.</p></div></div>
+<p class=heading>Simulation</p>
+<p>The diagram below contrasts estimation of the mean response and prediction
+of a new individual's response at <em>x</em> = 5.5. Least squares lines have
+been fitted to several simulated data sets, one of which is shown on the left.
+The two kinds of errors from the simulations are shown on the right, showing
+that the prediction errors are usually greater.</p>
+<p class="eqn"><img src="../../../en/regnPred/images/s_estimPredict.gif" width="453" height="525"></p>
+
+
+
+
+<h2 class="pageName">11.4.4 &nbsp; Confidence and prediction intervals</h2><!DOCTYPE HTML>
+
+
+<p>The same value,</p>
+<p class=eqn><span class="black"><span style="position:relative; top:4px"><img src="../../../en/../images/symbol.yHat.png" width="10" height="17" align="baseline"></span>&nbsp; =&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x</em></span> </p>
+<p>is used both to estimate the mean response at <em>x</em> and to predict a
+new individual's response at <em>x</em>, but the errors are different in
+the two situations &mdash; they tend to be larger for predicting a new value.</p>
+<p class="heading">95% confidence interval for  mean response </p>
+<p class=eqn><img class="gif" src="../../../en/regnPred/images/ciForMeanY.gif" id="gif_image_4_4_1" width="224" height="26"><iframe class="svg" src="../../../en/regnPred/images/ciForMeanY.svg" id="svg_image_4_4_1" width="224" height="26" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_4_4_1");</script> </p>
+<p>A formula for the standard error on the right exists, but you should rely
+on statistical software to find its value.</p>
+<p class=heading>95% prediction interval for a new individual's response</p>
+<p>For prediction, a similar interval is used:</p>
+<p class=eqn><img class="gif" src="../../../en/regnPred/images/predInterval.gif" id="gif_image_4_4_2" width="169" height="21"><iframe class="svg" src="../../../en/regnPred/images/predInterval.svg" id="svg_image_4_4_2" width="169" height="21" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_4_4_2");</script> </p>
+<p>where  <em>k</em> is greater than the corresponding standard error
+for the confidence interval. Statistical software should again be used to find
+its value.</p>
+<p class=heading>Example</p>
+<p>The diagram below shows 95% confidence intervals for the mean response at <em>x</em> and
+95% prediction intervals for a new response at <em>x</em> as bands for a small
+data set with <em>n</em> = 7 values. </p>
+<p class="eqn"><img src="../../../en/regnPred/images/s_bands.gif" width="402" height="284"></p>
+<p class=heading>Extrapolation</p>
+<p>These 95% confidence intervals and 95% prediction intervals are valid within
+the range of x-values about which we have collected data, but <strong>they should
+not be relied on for extrapolation</strong>.
+Both intervals assume that the normal linear model describes the process, but
+we have no information about linearity beyond the x-values that have been collected.</p>
+
+
+
+
+<h1 class="sectionName breakBefore">11.5 &nbsp; Linear model assumptions</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Assumptions in a normal linear model</li>
+<li>Curvature &mdash; transforming X</li>
+<li>Curvature and non-constant variance</li>
+<li>Transformations and prediction</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='5'>
+<li>Outliers and leverage</li>
+<li>Non-normal errors</li>
+<li>Correlated errors</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">11.5.1 &nbsp; Assumptions in a normal linear model</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Assumptions</p>
+<p>The normal linear model is:</p>
+<p class=eqn><span class="black"><em>y<sub></sub></em> &nbsp;=&nbsp; &beta;<sub>0</sub> &nbsp;+&nbsp; &beta;<sub>1</sub><em>x</em> &nbsp;+&nbsp; &epsilon;</span> </p>
+<p class=eqn><span class="black">&epsilon;&nbsp; ~ &nbsp;<font face="Arial, Helvetica, sans-serif">normal</font> (0<sub></sub>&nbsp;, &sigma;)</span> </p>
+<p>The following four requirements are implicit in the model but
+may be violated, as illustrated by the examples. </p>
+
+<div class="centred"><table border="0" cellspacing="0" cellpadding="0" class="centred">
+<tr>
+<td width="50%" align="LEFT" valign="top"><p class=heading>Linearity</p>
+<p>The response may change nonlinearly with <em>x</em>.</p>
+<p class="eqn"><img class="gif" src="../../../en/regnProblem/images/nonlinear.gif" id="gif_image_5_1_2" width="246" height="166"><iframe class="svg" src="../../../en/regnProblem/images/nonlinear.svg" id="svg_image_5_1_2" width="246" height="166" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_5_1_2");</script></p></td>
+<td width="220" align="LEFT" valign="top"><p class=heading>Constant standard deviation</p>
+<p>The response may be more variable at some <em>x</em> than others.</p>
+<p class="eqn"><img class="gif" src="../../../en/regnProblem/images/hetroskedastic.gif" id="gif_image_5_1_3" width="246" height="166"><iframe class="svg" src="../../../en/regnProblem/images/hetroskedastic.svg" id="svg_image_5_1_3" width="246" height="166" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_5_1_3");</script></p></td>
+</tr>
+<tr>
+<td align="LEFT" valign="top"><p class=heading>Normal distribution for errors</p>
+<p>The errors may have skew distributions.</p>
+<p class="eqn"><img class="gif" src="../../../en/regnProblem/images/skewError.gif" id="gif_image_5_1_4" width="246" height="166"><iframe class="svg" src="../../../en/regnProblem/images/skewError.svg" id="svg_image_5_1_4" width="246" height="166" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_5_1_4");</script></p></td>
+<td align="LEFT" valign="top"><p class=heading>Independent errors</p>
+<p>When the observations are ordered in time, successive errors may be correlated.</p>
+<p class="eqn"><img class="gif" src="../../../en/regnProblem/images/autoCorr.gif" id="gif_image_5_1_1" width="246" height="166"><iframe class="svg" src="../../../en/regnProblem/images/autoCorr.svg" id="svg_image_5_1_1" width="246" height="166" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_5_1_1");</script></p></td>
+</tr>
+</table></div>
+
+<p class="heading">Residual plots</p>
+<p>The above problems may be evident in a scatterplot of the raw data, but a <a href="javascript:showNamedPage('leastSqrs6')">residual
+plot</a> often highlights any problems.</p>
+<p class="eqn"><img src="../../../en/regnProblem/images/s_residPlot.gif" width="550" height="266"></p>
+
+
+
+
+<h2 class="pageName">11.5.2 &nbsp; Curvature &mdash; transforming X</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Linearising the relationship between Y and X</p>
+<p>Even if  <em>X</em> and <em>Y</em> are nonlinearly related,
+some transformation of <em>X</em> may be linearly
+related to some transformation of <em>Y</em>. For example, the data may satisfy
+the model</p>
+<p class=eqn><span class="black"><em>y<sup>2</sup><sub></sub></em> &nbsp; = &nbsp; &beta;<sub>0 &nbsp;</sub>+ &nbsp; &beta;<sub>1 </sub><strong>log</strong><em> x</em> &nbsp;+ &nbsp;&epsilon;</span> </p>
+<p class=eqn><span class="black">&epsilon;&nbsp; ~ &nbsp;<font face="Arial, Helvetica, sans-serif">normal</font> (0<sub></sub>&nbsp;, &sigma;)</span> </p>
+<p>The parameters of this model could again be estimated by least squares, based
+on the transformed values of the two variables, and confidence intervals and
+hypothesis tests would be valid.</p>
+<p class="heading">Example: Transformation of X</p>
+<p class="eqn"><img src="../../../en/regnProblem/images/s_curvatureX.gif" width="279" height="244"></p>
+<p>For this data set, a linear model seems reasonable after a log transformation
+of <em>X</em>.</p>
+<p class="eqn"><img src="../../../en/regnProblem/images/s_curvatureX2.gif" width="550" height="256"></p>
+
+
+
+
+<h2 class="pageName">11.5.3 &nbsp; Curvature and non-constant variance</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Transformation and the error standard deviation</p>
+<p>Transforming <em>X</em>  does not affect the <strong>spread</strong> of
+response values at each value of <em>X</em>. Transformation of <em>X</em> therefore
+does not affect whether or not the linear model's assumption of constant error
+standard deviation holds.</p>
+<p>However, transforming <em>Y</em> not only affects
+linearity of the relationship, but <strong>also affects whether
+or not the error standard deviation is constant</strong>.</p>
+<p class="heading">Example</p>
+<p>The raw data shown in the scatterplot on the top left shows both curvature
+and non-constant variance &mdash; the y-values are much more variable when X is near
+0 than when X is high.</p>
+<p class="eqn"><img src="../../../en/regnProblem/images/s_curvatureY.gif" width="550" height="551"></p>
+<p>A log transformation of Y both linearises the relationship <strong>and</strong> removes
+the non-constant variance.</p>
+
+<div class="centred"><div class="boxed">
+<p>Fortunately, the same transformation of the response that linearises
+the relationship often <strong>also</strong> results in fairly constant
+error standard deviation.</p>
+</div></div>
+
+
+
+
+
+<h2 class="pageName">11.5.4 &nbsp; Transformations and prediction</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Prediction using transformed variables</p>
+<p>To predict <em>Y</em> at any value <em>x,</em> we use the least squares line
+that was fitted to the transformed data.
+</p>
+<ol>
+<li>Transform <em>x</em></li>
+<li>Put this transformed <em>x</em>-value into the least squares equation to
+obtain a prediction of the <strong>transformed</strong> <em>Y</em>.</li>
+<li>Apply the <strong>inverse transformation</strong> to the one that was used
+on <em>Y</em> to obtain the prediction of <em>Y</em> itself</li>
+</ol>
+<p class="heading">Example</p>
+<p>In the example below, a linear model can be used to describe the relationship
+between log<sub>10</sub>(<em>y</em>)
+and log<sub>10</sub>(<em>x</em>). The diagram shows how it can be used to predict <em>y</em> from
+<em>x</em>.</p>
+<p class="eqn"><img src="../../../en/regnProblem/images/s_predictNonlin.gif" width="548" height="306"></p>
+<p><strong>Prediction intervals</strong> can be obtained in a similar way. A prediction interval
+is found using the transformed variables, then its end-points are back-transformed
+into values of <em>Y</em> on its original scale.</p>
+<p>For example, if the square root of <em>Y</em> is linearly related to <em>X</em>,
+we find a prediction interval for sqrt(<em>Y</em>), then square both ends of
+this interval to get a prediction interval for <em>Y</em> itself.</p>
+
+
+
+
+<h2 class="pageName">11.5.5 &nbsp; Outliers and leverage</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Outliers and errors</p>
+<p>In a scatterplot,  cross that is unusually far above or below
+the regression line is an <strong>outlier</strong>. It would correspond to a large error, ε.</p>
+<p class=eqn> <img class="gif" src="../../../en/regnProblem/images/outlierError.gif" id="gif_image_5_5_2" width="297" height="274"><iframe class="svg" src="../../../en/regnProblem/images/outlierError.svg" id="svg_image_5_5_2" width="297" height="274" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_5_5_2");</script> </p>
+<p class="heading">Standardised residuals</p>
+<p>The least squares residuals are estimates of the unknown errors and
+can be used in a similar way to give information about whether there is an outlier.</p>
+<p class=eqn> <img class="gif" src="../../../en/regnProblem/images/errorsDiagram.gif" id="gif_image_5_5_1" width="297" height="274"><iframe class="svg" src="../../../en/regnProblem/images/errorsDiagram.svg" id="svg_image_5_5_1" width="297" height="274" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_5_5_1");</script>    <img class="gif" src="../../../en/regnProblem/images/residualsDiagram.gif" id="gif_image_5_5_3" width="297" height="274"><iframe class="svg" src="../../../en/regnProblem/images/residualsDiagram.svg" id="svg_image_5_5_3" width="297" height="274" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_5_5_3");</script> </p>
+<p>To help assess the residuals, we usually standardise them &mdash; dividing
+each by an estimate of its standard deviation.</p>
+<table border="0" cellspacing="0" cellpadding="0" class="centred" style="margin-top:0; margin-bottom:0; color:#000000">
+<tr>
+<td rowspan="3"><strong>standardised residual </strong>&nbsp;= &nbsp;</td>
+<td style="text-align:center"><em><font size="+1">e</font></em></td>
+</tr>
+<tr>
+<td style="border-bottom:1px solid #000000" height="3px"><img src="../../../en/../images/blankSquare.gif"></td>
+</tr>
+<tr>
+<td style="text-align:center"><em><font size="+1">s<sub>e</sub></font></em></td>
+</tr>
+</table>
+<p>The standardised residuals are each approximately normal (0, 1) if the normal
+linear model fits, so only about 5% 
+will be outside the range ±2, and hardly any outside the range ±3.</p>
+
+<div class="centred"><div class="boxed">
+<p>Standadised residual greater than 3 or less than -3 are often taken
+to indicate possible outliers.</p>
+</div></div>
+
+<p>Note however that in a large data set of 1,000 values, we would <strong>expect</strong> 50
+values outside ±2 and 3
+values outside ±3. Values a little outside ±3 <strong>can</strong> occur by chance.</p>
+<p class="heading">Problems with residuals as indicators of outliers</p>
+<p>All data points pull the least squares line towards themselves &mdash; the line
+is positioned to minimise the sum of squares of the residuals</p>
+<p class=eqn><span class="bold black">minimise</span>  &nbsp; <img class="gif" src="../../../en/regnProblem/images/minResidSsq.gif" id="gif_image_5_5_4" width="37" height="20"><iframe class="svg" src="../../../en/regnProblem/images/minResidSsq.svg" id="svg_image_5_5_4" width="37" height="20" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_5_5_4");</script></p>
+<p>Large residuals pull very strongly on the line since they are <strong>squared</strong> in
+the least squares criterion. As a result,</p>
+
+<div class="centred"><div class="boxed">
+<p>Outliers will strongly pull the least squares line towards themselves,
+making their residuals smaller than you might otherwise expect.</p>
+</div></div>
+
+<p class="heading">Leverage</p>
+<p>If an outlier corresponds to an <em>x</em>-value near its mean, it usually
+will have a large residual,</p>
+<p class="eqn"><img src="../../../en/regnProblem/images/s_outlier.gif" width="553" height="321"></p>
+<p>However if the outlier occurs at an extreme <em>x</em>-value, it has a stronger
+influence on the position of the least squares line than the other data points.
+Such points are called <strong>high leverage</strong> points and pull the least
+squares line strongly towards them. Outliers that are high leverage points may
+therefore result in residuals that do not stand out from the other residuals.</p>
+<p class="eqn"><img src="../../../en/regnProblem/images/s_leverage.gif" width="557" height="319"></p>
+
+
+
+
+
+<h2 class="pageName">11.5.6 &nbsp; Non-normal errors</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Normal probability plot of residuals</p>
+<p>The normal linear model assumes that the model errors are
+normally distributed,</p>
+<p class=eqn><span class="black">&epsilon;&nbsp; ~ &nbsp;<font face="Arial, Helvetica, sans-serif">normal</font> (0<sub></sub>&nbsp;, &sigma;)</span> </p>
+<p>A histogram of the residuals can be examined for normality but a better way
+ is with a <strong><a href="javascript:showNamedPage('normalDistn10')">normal
+probability plot</a></strong> of the residuals. If the residuals are normally
+distributed, the crosses in the normal probability plot should lie close to a
+straight line.</p>
+<p class="eqn"><img src="../../../en/regnProblem/images/s_probPlot.gif" width="550" height="274"></p>
+<p class="heading">Warning</p>
+<p>If the assumptions of linearity and constant variance are violated, or if
+there are outliers, the probability plot of residuals will often be curved, irrespective
+of the error distribution.</p>
+
+<div class="centred"><div class="boxed">
+<p>Only draw a probability plot if you are sure that the data are linear,
+have constant variance and have no outliers.</p>
+</div></div>
+
+
+
+
+
+<h2 class="pageName">11.5.7 &nbsp; Correlated errors</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Independence of the errors</p>
+<p>The normal
+linear model assumes that the  errors are uncorrelated with each other, but correlated
+errors sometimes arise.</p>
+<p>Correlated errors may arise in an experiment in a greenhouse where adjacent
+plants will be grown in similar conditions (light, moisture, air flow). An
+unusually high growth rate for one plant may be associated with environmental
+conditions that also cause unusually high growth rates in adjacent plants.</p>
+<p>Correlated errors are most common when the observations are made sequentially
+in time. This is called <strong>serial correlation</strong>.</p>
+<p class="heading">Assessing serial correlation</p>
+<p>Strong serial correlation may be visible in a plot of residuals against time.
+A more formal test uses a test statistic called the <strong>Durbin-Watson
+statistic, <em>d</em></strong>. Writing the successive
+residuals as <em>e</em><sub>1</sub>, <em>e</em><sub>2</sub>, ..., <em>e<sub>n</sub></em>,</p>
+<p class=eqn><img class="gif" src="../HregnProblem/durbWatson.gif" id="gif_image_5_7_1" width="127" height="51"><iframe class="svg" src="../HregnProblem/durbWatson.svg" id="svg_image_5_7_1" width="127" height="51" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_5_7_1");</script> </p>
+<p>If successive residuals are  similar,
+<em>d</em> will be close to zero. An approximate p-value can be obtained  from
+a computer, special statistical tables or with a simulation such as that below.</p>
+<p class="eqn"><img src="../../../en/regnProblem/images/s_durbinWatson.gif" width="530" height="451"></p>
+<p class="heading">Warning</p>
+<p>If a linear model is used for a time series, but the relationship is actually
+nonlinear, successive residuals also tend to be similar and the Durbin-Watson
+statistic will also be small.</p>
+
+<div class="centred"><div class="boxed">
+<p>An unusually small Durbin-Watson statistic can be caused by <strong>either
+serial correlation or nonlinearity</strong>.</p>
+</div></div>
+
+
+
+
+
+<h1 class="sectionName breakBefore">11.6 &nbsp; Least squares for Y vs (X and Z)</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>More than one explanatory variable</li>
+<li>Three-dimensional scatterplots</li>
+<li>Linear equation and least squares plane</li>
+<li>Understanding the parameters</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='5'>
+<li>Fitted values and residuals</li>
+<li>Estimating the parameters</li>
+<li>Least squares estimation</li>
+<li>Interpreting the coefficients</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">11.6.1 &nbsp; More than one explanatory variable</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Simple linear model</p>
+<p>Statistical analysis by researchers often examines the relationship between 
+a single 'response' variable, <em>Y</em>, and other explanatory variables. </p>
+<ul>
+<li>How do changes to temperature, moisture, fertiliser use, etc, affect the yield 
+of a crop?</li>
+<li>What characteristics of convicted criminals affect the length of sentence 
+imposed by courts?</li>
+<li>How can you predict house prices at auction from other information about the 
+houses? </li>
+</ul>
+
+<p>In earlier chapters of CAST, we have used a simple linear model to describe 
+the effect of a single numerical explanatory variable, <em>X</em>, on a response 
+variable, <em>Y</em>,</p>
+<p class="eqn"><img src="../../../en/leastSqrsTwo/images/regnModel.gif" width="199" height="21"></p>
+<p>Inference about the parameters in this model describe how <em>Y</em> is related 
+to <em>X</em>.</p>
+<p class="heading">Two or more explanatory variables</p>
+<p>In many situations, more than one explanatory variable could potentially be 
+related to the response. </p>
+
+<div class="centred"><div class="boxed">
+<p>In this chapter, we extend the simple linear model 
+to explain how <strong>two</strong> explanatory variables, <em>X</em> 
+and <em>Z</em>, affect the response.</p>
+</div></div>
+
+<br>
+
+<div class="diagram">
+<p class="heading">Body fat</p>
+
+<p>Percentage body fat of individuals is an important measure of their health, 
+but is a difficult quantity to measure. Accurate measurement of a person's body 
+fat involves weighing the individual submersed in water, so is rarely done in 
+fitness checks. </p>
+<p>It is however possible to estimate percentage body fat from other body measurements 
+that are easier to obtain. In order to determine how effectively body fat could 
+be estimated from simple body measurements, scientists accurately determined body 
+fat from a group of 252 men. Several other easily obtained measurements were also 
+recorded from each subject.</p>
+
+<div class="centred"><table border="0" cellspacing="0" cellpadding="4" class="centred">
+<tr> 
+<th align="LEFT">Measurement</th>
+<th align="CENTER">&nbsp;&nbsp;Person 1&nbsp;&nbsp;</th>
+<th align="CENTER">&nbsp;&nbsp;Person 2&nbsp;&nbsp;</th>
+<th align="CENTER">&nbsp;&nbsp;Person 3&nbsp;&nbsp;</th>
+<th align="CENTER">&nbsp;&nbsp;...&nbsp;&nbsp;</th>
+</tr>
+<tr bgcolor="#ffffff"> 
+<th align="LEFT" class="top left">Body fat (percent)</th>
+<td align="CENTER" class="top">12.6</td>
+<td align="CENTER" class="top">6.9</td>
+<td align="CENTER" class="top">24.6</td>
+<td align="CENTER" class="top right">...</td>
+</tr>
+<tr bgcolor="#ffffff"> 
+<th align="LEFT" class="left">Weight (lbs)</th>
+<td align="CENTER">154.25</td>
+<td align="CENTER">173.25</td>
+<td align="CENTER">154.00</td>
+<td align="CENTER" class="right">...</td>
+</tr>
+<tr bgcolor="#ffffff"> 
+<th align="LEFT" class="left">Age (yrs)</th>
+<td align="CENTER">23</td>
+<td align="CENTER">22</td>
+<td align="CENTER">22</td>
+<td align="CENTER" class="right">...</td>
+</tr>
+<tr bgcolor="#ffffff"> 
+<th align="LEFT" class="left">Height (inches)</th>
+<td align="CENTER">67.75</td>
+<td align="CENTER">72.25</td>
+<td align="CENTER">66.25</td>
+<td align="CENTER" class="right">...</td>
+</tr>
+<tr bgcolor="#ffffff"> 
+<th align="LEFT" class="left">Neck circumference (cm)</th>
+<td align="CENTER">36.2</td>
+<td align="CENTER">38.5</td>
+<td align="CENTER">34.0</td>
+<td align="CENTER" class="right">...</td>
+</tr>
+<tr bgcolor="#ffffff"> 
+<th align="LEFT" class="left">Chest circumference (cm)</th>
+<td align="CENTER">93.1</td>
+<td align="CENTER">93.6</td>
+<td align="CENTER">95.8</td>
+<td align="CENTER" class="right">...</td>
+</tr>
+<tr bgcolor="#ffffff"> 
+<th align="LEFT" class="left">Abdomen circumference (cm)</th>
+<td align="CENTER">85.2</td>
+<td align="CENTER">83.0</td>
+<td align="CENTER">87.9</td>
+<td align="CENTER" class="right">...</td>
+</tr>
+<tr bgcolor="#ffffff"> 
+<th align="LEFT" class="left">Hip circumference (cm)</th>
+<td align="CENTER">94.5</td>
+<td align="CENTER">98.7</td>
+<td align="CENTER">99.2</td>
+<td align="CENTER" class="right">...</td>
+</tr>
+<tr bgcolor="#ffffff"> 
+<th align="LEFT" class="left">Thigh circumference (cm)</th>
+<td align="CENTER">59.0</td>
+<td align="CENTER">58.7</td>
+<td align="CENTER">59.6</td>
+<td align="CENTER" class="right">...</td>
+</tr>
+<tr bgcolor="#ffffff"> 
+<th align="LEFT" class="left">Knee circumference (cm)</th>
+<td align="CENTER">37.3</td>
+<td align="CENTER">37.3</td>
+<td align="CENTER">38.9</td>
+<td align="CENTER" class="right">...</td>
+</tr>
+<tr bgcolor="#ffffff" class="left"> 
+<th align="LEFT" class="left">Ankle circumference (cm)</th>
+<td align="CENTER">21.9</td>
+<td align="CENTER">23.4</td>
+<td align="CENTER">24.0</td>
+<td align="CENTER" class="right">...</td>
+</tr>
+<tr bgcolor="#ffffff" class="left"> 
+<th align="LEFT" class="left">Extended biceps circumference (cm)</th>
+<td align="CENTER">32.0</td>
+<td align="CENTER">30.5</td>
+<td align="CENTER">28.8</td>
+<td align="CENTER" class="right">...</td>
+</tr>
+<tr bgcolor="#ffffff" class="left"> 
+<th align="LEFT" class="left">Forearm circumference (cm)</th>
+<td align="CENTER">27.4</td>
+<td align="CENTER">28.9</td>
+<td align="CENTER">25.2</td>
+<td align="CENTER" class="right">...</td>
+</tr>
+<tr bgcolor="#ffffff" class="bottom left"> 
+<th align="LEFT" class="bottom left">Wrist circumference (cm)</th>
+<td align="CENTER" class="bottom">17.1</td>
+<td align="CENTER" class="bottom">18.2</td>
+<td align="CENTER" class="bottom">16.6</td>
+<td align="CENTER" class="bottom right">...</td>
+</tr>
+</table></div>
+
+<p>The diagram below shows scatterplots of body fat against the other variables.</p>
+
+<div class="centred"> 
+<applet codebase="../../../java" code="corrProg.MultiXApplet.class" archive="coreCAST.jar" width="500" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="yVarName" value="Body fat">
+<param name="yValues" value="12.6 6.9 24.6 10.9 27.8 20.6 19.0 12.8 5.1 12.0 7.5 8.5 20.5 20.8 21.7 20.5 28.1 22.4 16.1 16.5 19.0 15.3 15.7 17.6 14.2 4.6 8.5 22.4 4.7 9.4 12.3 6.5 13.4 20.9 31.1 38.2 23.6 27.5 33.8 31.3 33.1 31.7 30.4 30.8 8.4 14.1 11.2 6.4 13.4 5.0 10.7 7.4 8.7 7.1 4.9 22.2 20.1 27.1 30.4 24.0 25.4 28.8 29.6 25.1 31.0 28.9 21.1 14.0 7.1 13.2 23.7 9.4 9.1 13.7 12.0 18.3 9.2 21.7 21.1 18.6 30.2 26.0 18.2 26.2 26.1 25.8 15.0 22.6 8.8 14.3 20.2 18.1 9.2 24.2 9.6 17.3 10.1 11.1 17.7 21.7 20.8 20.1 19.8 21.9 24.7 17.8 19.1 18.2 17.2 21.0 19.5 27.1 21.6 20.9 25.9 16.7 19.8 14.1 25.1 17.9 27.0 24.6 14.8 16.0 14.0 17.4 26.4 17.4 20.4 15.0 18.0 22.2 23.1 25.3 23.8 26.3 21.4 28.4 21.8 20.1 24.3 18.1 22.7 9.9 10.8 14.4 19.0 28.6 6.1 24.5 9.9 19.1 10.6 16.5 20.5 17.2 30.1 10.5 12.8 22.0 9.9 14.8 13.3 15.2 26.5 19.0 21.4 20.0 34.7 16.5 4.1 1.9 20.2 16.8 24.6 10.4 13.4 28.8 22.0 16.8 25.8 0.0 11.9 12.4 17.4 9.2 23.0 20.1 20.2 23.8 11.8 36.5 16.0 24.0 22.3 24.8 21.5 17.6 7.3 22.6 12.5 21.7 27.7 6.8 33.4 16.6 31.7 31.5 10.1 11.3 7.8 26.4 19.3 18.5 19.3 45.1 13.8 8.2 23.9 15.1 12.7 25.3 11.9 6.1 11.3 12.8 14.9 24.5 15.0 16.9 11.1 16.1 15.5 25.9 25.5 18.4 24.0 26.4 12.7 28.8 17.0 33.6 29.3 31.4 28.1 15.3 29.1 11.5 32.3 28.3 25.3 30.7">
+<param name="vertAxis" value="0 50 0 10">
+<param name="xVarName" value="Weight">
+<param name="xValues" value="154.25 173.25 154.00 184.75 184.25 210.25 181.00 176.00 191.00 198.25 186.25 216.00 180.50 205.25 187.75 162.75 195.75 209.25 183.75 211.75 179.00 200.50 140.25 148.75 151.25 159.25 131.50 148.00 133.25 160.75 182.00 160.25 168.00 218.50 247.25 191.75 202.25 196.75 363.15 203.00 262.75 205.00 217.00 212.00 125.25 164.25 133.50 148.50 135.75 127.50 158.25 139.25 137.25 152.75 136.25 198.00 181.50 201.25 202.50 179.75 216.00 178.75 193.25 178.00 205.50 183.50 151.50 154.75 155.25 156.75 167.50 146.75 160.75 125.00 143.00 148.25 162.50 177.75 161.25 171.25 163.75 150.25 190.25 170.75 168.00 167.00 157.75 160.00 176.75 176.00 177.00 179.75 165.25 192.50 184.25 224.50 188.75 162.50 156.50 197.00 198.50 173.75 172.75 196.75 177.00 165.50 200.25 203.25 194.00 168.50 170.75 183.25 178.25 163.00 175.25 158.00 177.25 179.00 191.00 187.50 206.50 185.25 160.25 151.50 161.00 167.00 177.50 152.25 192.25 165.25 171.75 171.25 197.00 157.00 168.25 186.00 166.75 187.75 168.25 212.75 176.75 173.25 167.00 159.75 188.15 156.00 208.50 206.50 143.75 223.00 152.25 241.75 146.00 156.75 200.25 171.50 205.75 182.50 136.50 177.25 151.25 196.00 184.25 140.00 218.75 217.00 166.25 224.75 228.25 172.75 152.25 125.75 177.25 176.25 226.75 145.25 151.00 241.25 187.25 234.75 219.25 118.50 145.75 159.25 170.50 167.50 232.75 210.50 202.25 185.00 153.00 244.25 193.50 224.75 162.75 180.00 156.25 168.00 167.25 170.75 178.25 150.00 200.50 184.00 223.00 208.75 166.00 195.00 160.50 159.75 140.50 216.25 168.25 194.75 172.75 219.00 149.25 154.50 199.25 154.50 153.25 230.00 161.75 142.25 179.75 126.50 169.50 198.50 174.50 167.75 147.75 182.25 175.50 161.75 157.75 168.75 191.50 219.15 155.25 189.75 127.50 224.50 234.25 227.75 199.50 155.50 215.50 134.25 201.00 186.75 190.75 207.50">
+<param name="horizAxis" value="100 400 100 100">
+<param name="x1VarName" value="Age">
+<param name="x1Values" value="23 22 22 26 24 24 26 25 25 23 26 27 32 30 35 35 34 32 28 33 28 28 31 32 28 27 34 31 27 29 32 29 27 41 41 49 40 50 46 50 45 44 48 41 39 43 40 39 45 47 47 40 51 49 42 54 58 62 54 61 62 56 54 61 57 55 54 55 54 55 62 55 56 55 61 61 57 69 81 66 67 64 64 70 72 67 72 64 46 48 46 44 47 46 47 53 38 50 46 47 49 48 41 49 43 43 43 52 43 40 43 43 47 42 48 40 48 51 40 44 52 44 40 47 50 46 42 43 40 42 49 40 47 50 41 44 39 43 40 49 40 40 52 23 23 24 24 25 25 26 26 26 27 27 27 28 28 28 30 31 31 33 33 34 34 35 35 35 35 35 35 35 35 36 36 37 37 37 38 39 39 40 40 40 40 40 41 41 41 41 41 42 42 42 42 42 42 42 42 43 43 43 43 44 44 44 44 47 47 47 49 49 49 50 50 51 51 51 52 53 54 54 54 55 55 55 55 55 56 56 57 57 58 58 60 62 62 63 64 65 65 65 66 67 67 68 69 70 72 72 72 74">
+<param name="horiz1Axis" value="20 85 20 10">
+<param name="x2VarName" value="Height">
+<param name="x2Values" value="67.75 72.25 66.25 72.25 71.25 74.75 69.75 72.50 74.00 73.50 74.50 76.00 69.50 71.25 69.50 66.00 71.00 71.00 67.75 73.50 68.00 69.75 68.25 70.00 67.75 71.50 67.50 67.50 64.75 69.00 73.75 71.25 71.25 71.00 73.50 65.00 70.00 68.25 72.25 67.00 68.75 69.50 70.00 71.50 68.00 73.25 67.50 71.25 68.50 66.75 72.25 69.00 67.75 73.50 67.50 72.00 68.00 69.50 70.75 65.75 73.25 68.50 70.25 67.00 70.00 67.50 70.75 71.50 69.25 71.50 71.50 68.75 73.75 64.00 65.75 67.50 69.50 68.50 70.25 69.25 67.75 67.25 72.75 70.00 69.25 67.50 67.25 65.75 72.50 73.00 70.00 69.50 70.50 71.75 74.50 77.75 73.25 66.50 68.25 72.00 73.50 72.00 71.25 73.75 69.25 68.50 73.50 74.25 75.50 69.25 68.50 70.00 70.00 70.25 71.75 69.25 72.75 72.00 74.00 72.25 74.50 71.50 68.75 66.75 66.50 67.00 68.75 67.75 73.25 69.75 71.50 70.50 73.25 66.75 69.50 69.75 70.75 74.00 71.25 75.00 71.00 69.50 67.75 72.25 77.50 70.75 72.75 69.75 72.50 70.25 69.00 74.50 72.25 67.25 73.50 75.25 69.00 72.25 68.75 71.50 72.25 73.00 68.75 70.50 72.00 73.75 68.00 72.25 69.50 69.50 67.75 65.50 71.00 71.50 71.75 69.25 67.00 71.50 69.25 74.50 74.25 68.00 67.25 69.75 74.25 71.50 74.25 72.00 72.50 68.25 69.25 76.00 70.50 74.75 72.75 68.25 69.00 71.50 72.75 67.50 70.25 69.25 71.50 74.00 69.75 73.00 65.50 72.50 70.25 70.75 68.00 74.50 71.75 70.75 73.00 64.00 69.75 70.00 71.75 69.25 70.50 72.25 67.50 67.25 68.75 66.75 68.25 74.25 69.50 68.50 65.75 71.75 71.50 67.25 67.50 67.50 72.25 69.50 69.50 65.75 65.75 68.25 72.00 72.75 68.50 69.25 70.50 67.00 69.75 66.00 70.50 70.00">
+<param name="horiz2Axis" value="63 78 65 5">
+<param name="x3VarName" value="Neck">
+<param name="x3Values" value="36.2 38.5 34.0 37.4 34.4 39.0 36.4 37.8 38.1 42.1 38.5 39.4 38.4 39.4 40.5 36.4 38.9 42.1 38.0 40.0 39.1 41.3 33.9 35.5 34.5 35.7 36.2 38.8 36.4 36.7 38.7 37.3 38.1 39.8 42.1 38.4 38.5 42.1 51.2 40.2 43.2 36.6 37.3 41.5 31.5 35.7 33.6 34.6 32.8 34.0 34.9 34.3 36.5 35.1 37.8 39.9 39.1 40.5 40.5 38.4 41.4 35.6 38.0 37.4 40.1 40.9 35.6 36.9 37.5 36.3 35.5 38.7 36.4 33.2 36.5 36.0 38.7 38.7 37.8 37.4 38.4 38.1 39.3 38.7 38.5 36.5 37.7 36.5 38.0 36.7 37.2 39.2 37.5 38.0 37.3 41.1 37.5 38.7 35.9 40.0 40.1 37.0 36.3 40.7 39.6 31.1 38.6 42.0 38.5 34.2 37.2 37.1 40.2 35.3 38.0 36.3 36.8 41.0 38.3 38.0 40.8 39.5 36.9 36.9 37.7 36.6 38.9 37.5 39.8 38.3 35.5 36.3 37.8 37.8 36.5 37.8 37.0 37.7 34.3 40.8 37.4 36.5 37.5 35.5 38.0 35.7 39.2 40.9 35.2 40.6 35.4 41.8 34.1 37.9 38.2 35.6 38.5 37.0 35.9 36.2 35.0 38.5 40.7 36.0 39.5 40.5 38.5 43.9 40.4 37.6 37.0 34.0 38.4 38.7 41.5 36.0 35.3 42.1 38.0 42.8 40.0 33.8 35.5 35.3 37.7 39.4 41.9 38.5 40.8 38.0 36.4 41.8 40.7 38.5 35.4 38.5 35.5 36.5 37.6 37.4 37.8 35.2 37.9 37.9 40.9 41.9 39.1 40.2 36.0 34.5 35.8 40.2 38.3 39.0 37.4 41.2 34.8 36.9 39.4 37.6 38.5 42.5 37.4 35.2 41.1 33.4 37.2 38.3 38.1 37.4 35.2 39.4 38.0 35.1 40.4 38.3 40.6 40.2 37.9 40.8 34.7 38.8 41.4 41.3 40.7 36.3 40.8 34.9 40.9 38.9 38.9 40.8">
+<param name="horiz3Axis" value="30 53 30 10">
+<param name="x4VarName" value="Chest">
+<param name="x4Values" value="93.1 93.6 95.8 101.8 97.3 104.5 105.1 99.6 100.9 99.6 101.5 103.6 102.0 104.1 101.3 99.1 101.9 107.6 106.8 106.2 103.3 111.4 86.0 86.7 90.2 89.6 88.6 97.4 93.5 97.4 100.5 93.5 93.0 111.7 117.0 118.5 106.5 105.6 136.2 114.8 128.3 106.0 113.3 106.6 85.1 96.6 88.2 89.8 92.3 83.4 90.2 89.2 89.7 93.3 87.6 107.6 100.0 111.5 115.4 104.8 112.3 102.9 107.6 105.3 105.3 103.0 90.0 95.4 89.3 94.4 97.6 88.5 93.6 87.7 93.4 91.6 91.6 102.0 96.4 102.7 97.7 97.1 103.1 101.8 101.4 98.9 97.5 104.3 97.3 96.7 99.7 101.9 97.2 106.6 99.6 113.2 99.1 99.4 95.1 107.5 106.5 99.1 96.7 103.5 104.0 93.1 105.2 110.0 110.1 97.8 96.3 108.0 99.7 93.5 100.7 97.0 96.0 99.2 95.4 101.8 104.3 99.2 99.3 94.0 98.9 101.0 98.7 95.9 103.9 96.2 97.8 94.6 103.6 100.4 98.4 104.6 92.9 97.8 98.3 104.7 98.6 99.5 102.7 92.1 96.6 92.7 102.0 110.9 92.3 114.1 92.9 108.3 88.5 94.0 101.1 92.1 105.6 98.5 88.7 101.1 94.0 103.8 98.9 89.2 111.4 107.5 99.1 108.2 114.9 99.1 92.2 90.8 100.5 98.2 115.3 96.8 92.6 119.2 102.7 109.5 108.5 79.3 95.5 92.3 98.9 89.5 117.5 107.4 109.2 103.4 91.4 115.2 104.9 106.7 92.2 101.6 97.8 92.0 94.0 103.7 102.7 91.1 107.2 100.8 121.6 105.6 100.6 102.7 99.8 92.9 91.2 115.6 98.3 103.7 98.7 119.8 92.8 93.3 106.8 93.9 99.0 119.9 94.2 92.7 106.9 88.8 101.7 105.3 104.0 98.6 99.6 103.4 100.2 94.9 97.2 104.7 104.0 117.6 95.8 106.4 93.0 119.6 119.7 115.8 118.3 97.4 113.7 89.2 108.5 111.1 108.3 112.4">
+<param name="horiz4Axis" value="75 140 80 20">
+<param name="x5VarName" value="Abdomen">
+<param name="x5Values" value="85.2 83.0 87.9 86.4 100.0 94.4 90.7 88.5 82.5 88.6 83.6 90.9 91.6 101.8 96.4 92.8 96.4 97.5 89.6 100.5 95.9 98.8 76.4 80.0 76.3 79.7 74.6 88.7 73.9 83.5 88.7 84.5 79.1 100.5 115.6 113.1 100.9 98.8 148.1 108.1 126.2 104.3 111.2 104.3 76.0 81.5 73.7 79.5 83.4 70.4 86.7 77.9 82.0 79.6 77.6 100.0 99.8 104.2 105.3 98.3 104.8 94.7 102.4 99.7 105.5 100.3 83.9 86.6 78.4 84.6 91.5 82.8 82.9 76.0 83.3 81.8 78.8 95.0 95.4 98.6 95.8 89.0 97.8 94.9 99.8 89.7 88.1 90.9 86.0 86.5 95.6 93.2 83.1 97.5 88.8 99.2 91.6 86.7 88.2 94.0 95.0 92.0 89.2 95.5 98.6 87.3 102.8 101.6 88.7 92.3 90.6 105.0 95.0 89.6 92.4 86.6 90.0 90.0 92.4 87.5 99.2 98.1 83.3 86.1 84.1 89.9 92.1 78.0 93.5 87.0 90.1 90.3 99.8 89.4 87.2 101.1 86.1 98.6 88.5 106.6 93.1 93.0 91.0 77.1 85.3 81.9 99.1 100.5 76.5 106.8 77.6 102.9 72.8 88.2 100.1 83.5 105.0 90.8 76.6 92.4 81.2 95.6 92.1 83.4 106.0 95.1 90.4 100.4 115.9 90.8 81.9 75.0 90.3 90.3 108.8 79.4 83.2 110.3 92.7 104.5 104.6 69.4 83.6 86.8 90.4 83.7 109.3 98.9 98.0 101.2 80.6 113.7 94.1 105.7 85.6 96.6 86.0 89.7 78.0 89.7 89.2 85.7 103.1 89.1 113.9 96.3 93.9 101.3 83.9 84.4 79.4 104.0 89.7 97.6 87.6 122.1 81.1 81.5 100.0 88.7 91.8 110.4 87.6 82.8 95.3 78.2 91.1 96.7 89.4 93.0 86.4 96.7 88.1 94.9 93.3 95.6 98.2 113.8 82.8 100.5 79.7 118.0 109.0 113.4 106.1 84.3 107.6 83.6 105.0 111.5 101.3 108.5">
+<param name="horiz5Axis" value="65 150 80 20">
+<param name="x6VarName" value="Hip">
+<param name="x6Values" value="94.5 98.7 99.2 101.2 101.9 107.8 100.3 97.1 99.9 104.1 98.2 107.7 103.9 108.6 100.1 99.2 105.2 107.0 102.4 109.0 104.9 104.8 94.6 93.4 95.8 96.5 85.3 94.7 88.5 98.7 99.8 100.6 94.5 108.3 116.1 113.8 106.2 104.8 147.7 102.5 125.6 115.5 114.1 106.0 88.2 97.2 88.5 92.7 90.4 87.2 98.3 91.0 89.1 91.6 88.6 99.6 102.5 105.8 97.0 99.6 103.1 100.8 99.4 99.7 108.3 104.2 93.9 91.8 96.1 94.3 98.5 95.5 96.3 88.6 93.0 94.8 94.3 98.3 99.3 100.2 97.1 96.9 99.6 95.0 96.2 96.2 96.9 93.8 99.3 98.3 102.2 100.6 95.4 100.6 101.4 107.5 102.4 96.2 92.8 103.7 101.7 98.3 98.3 101.6 99.5 96.6 103.6 100.7 102.1 100.6 99.3 103.0 98.6 99.8 97.5 92.6 99.7 96.4 104.3 101.0 104.1 101.4 97.5 95.2 94.0 100.0 98.5 93.2 99.5 97.8 95.8 99.1 103.2 92.3 98.4 102.1 95.6 100.6 98.3 107.7 101.6 99.3 98.9 93.9 102.5 95.3 110.1 106.2 92.1 113.9 93.5 114.4 91.1 95.2 105.0 98.3 106.4 102.5 89.8 99.3 91.5 105.1 103.5 89.6 108.8 104.5 95.6 106.8 111.9 98.1 92.8 89.2 98.7 99.9 114.4 89.2 96.4 113.9 101.9 109.9 109.8 85.0 91.6 96.1 95.5 98.1 108.8 104.1 101.8 103.1 92.3 112.4 102.7 111.8 96.5 100.6 96.2 101.0 99.0 94.2 99.2 96.9 105.5 102.6 107.1 102.0 100.1 101.7 91.8 94.0 89.0 109.0 99.1 104.2 96.1 112.8 96.3 94.4 105.0 94.5 96.2 105.5 95.6 91.9 98.2 87.5 97.1 106.6 98.4 97.0 90.1 100.7 97.8 100.2 94.0 93.7 101.1 111.8 94.5 100.5 87.6 114.3 109.1 109.8 101.6 94.4 110.0 88.8 104.5 101.7 97.8 107.1">
+<param name="horiz6Axis" value="80 150 80 20">
+<param name="x7VarName" value="Thigh">
+<param name="x7Values" value="59.0 58.7 59.6 60.1 63.2 66.0 58.4 60.0 62.9 63.1 59.7 66.2 63.4 66.0 69.0 63.1 64.8 66.9 64.2 65.8 63.5 63.4 57.4 54.9 58.4 55.0 51.7 57.5 50.1 58.9 57.5 58.5 57.3 67.1 71.2 61.9 63.5 66.0 87.3 61.3 72.5 70.6 67.7 65.0 50.0 58.4 53.3 52.7 52.0 50.6 52.6 51.4 49.3 52.6 51.9 57.2 62.1 61.8 59.1 60.6 61.6 60.9 61.0 60.8 65.0 64.8 55.0 54.3 56.0 51.2 56.6 58.9 52.9 50.9 55.5 54.5 56.7 55.0 53.5 56.5 54.8 54.8 58.9 56.0 56.3 54.7 57.2 57.8 61.0 60.4 58.3 58.9 56.9 58.9 57.4 61.7 60.6 62.1 54.7 62.7 59.0 59.3 60.0 59.1 59.5 54.7 61.2 55.8 57.5 57.5 61.9 63.7 62.3 61.5 59.3 55.9 58.8 56.8 64.6 58.5 58.5 57.1 60.5 58.1 58.5 60.7 60.7 53.5 61.7 57.4 57.0 60.3 61.2 56.1 56.0 58.9 58.8 63.6 58.1 66.5 59.1 60.4 57.1 56.1 59.1 56.4 71.2 68.4 51.9 67.6 56.9 72.9 53.6 56.8 62.1 57.3 68.6 60.8 50.1 59.4 52.5 61.4 64.0 52.4 63.8 64.8 55.5 63.3 74.4 60.1 54.7 50.0 57.8 59.2 69.2 50.3 60.0 69.8 64.7 69.5 68.1 47.2 54.1 58.0 55.4 57.3 67.7 63.5 62.8 61.5 54.3 68.5 60.6 65.3 60.2 61.1 57.7 62.3 57.5 58.5 60.2 55.5 68.8 60.6 63.5 63.3 58.9 60.7 53.0 56.0 51.1 63.7 56.3 60.0 57.1 62.5 53.8 54.7 63.9 53.7 57.7 64.2 59.7 54.4 57.4 50.8 56.6 64.0 58.4 55.4 53.0 59.3 57.1 56.8 54.3 54.4 59.3 63.4 61.2 59.2 50.7 61.3 63.7 65.6 58.2 54.3 63.3 49.6 59.6 60.3 56.0 59.3">
+<param name="horiz7Axis" value="45 90 50 10">
+<param name="x8VarName" value="Knee">
+<param name="x8Values" value="37.3 37.3 38.9 37.3 42.2 42.0 38.3 39.4 38.3 41.7 39.7 39.2 38.3 41.5 39.0 38.7 40.8 40.0 38.7 40.6 38.0 40.6 35.3 36.2 35.5 36.7 34.7 36.0 34.5 35.3 38.7 38.8 36.2 44.2 43.3 38.3 39.9 41.5 49.1 41.1 39.6 42.5 40.9 40.2 34.7 38.2 34.5 37.5 35.8 34.4 37.2 34.9 33.7 37.6 34.9 38.0 39.6 39.8 38.0 37.7 40.9 38.0 39.4 40.1 41.2 40.2 36.1 35.4 37.4 37.4 38.6 37.6 37.5 35.4 35.2 37.0 39.7 38.3 37.5 39.3 38.2 38.0 39.0 36.5 36.6 37.8 37.7 39.5 38.4 39.9 38.2 39.7 38.3 40.5 39.6 42.3 39.4 39.3 37.3 39.0 39.4 38.4 38.4 39.8 36.1 39.0 39.3 38.7 40.0 36.8 38.0 40.0 38.1 37.8 38.1 36.3 38.4 38.8 41.1 39.2 39.3 40.5 38.7 36.5 36.6 36.0 36.8 35.8 39.0 36.9 38.7 38.5 38.1 35.6 36.9 37.9 36.1 39.2 38.4 42.5 39.6 38.2 36.7 36.1 37.6 36.5 43.5 40.8 35.7 42.7 35.9 43.5 36.8 37.4 40.0 37.8 40.0 38.5 34.8 39.0 36.6 40.6 37.3 35.6 42.0 41.3 34.2 41.7 40.6 39.1 36.2 34.8 37.3 37.7 42.4 34.8 38.1 42.6 39.5 43.1 42.8 33.5 36.2 39.4 38.9 39.7 41.3 39.8 41.3 40.4 36.3 45.0 38.6 43.3 38.9 38.4 38.6 38.0 40.0 39.0 39.2 35.7 38.3 39.0 40.3 39.8 37.6 39.4 36.2 38.2 35.0 40.3 38.8 40.9 38.1 36.9 36.5 39.0 39.2 36.2 38.1 42.7 40.2 35.2 37.1 33.0 38.5 42.6 37.4 38.8 35.0 38.6 38.9 35.9 35.7 37.1 40.3 41.1 39.1 38.1 33.4 42.1 42.4 46.0 38.8 37.5 44.0 34.8 40.8 37.3 41.6 42.2">
+<param name="horiz8Axis" value="32 50 35 5">
+<param name="x9VarName" value="Ankle">
+<param name="x9Values" value="21.9 23.4 24.0 22.8 24.0 25.6 22.9 23.2 23.8 25.0 25.2 25.9 21.5 23.7 23.1 21.7 23.1 24.4 22.9 24.0 22.1 24.6 22.2 22.1 22.9 22.5 21.4 21.0 21.3 22.6 33.9 21.5 24.5 25.2 26.3 21.9 22.6 24.7 29.6 24.7 26.6 23.7 25.0 23.0 21.0 23.4 22.5 21.9 20.6 21.9 22.4 21.0 21.4 22.6 22.5 22.0 22.5 22.7 22.5 22.9 23.1 22.1 23.6 22.7 24.7 22.7 21.7 21.5 22.4 21.6 22.4 21.6 23.1 19.1 20.9 21.4 24.2 21.8 21.5 22.7 23.7 22.0 23.0 24.1 22.0 33.7 21.8 23.3 23.8 24.4 22.5 23.1 22.1 24.5 24.6 23.2 22.9 23.3 21.9 22.3 22.3 22.4 23.2 25.4 22.0 24.8 23.5 23.4 24.8 22.8 22.3 23.6 23.9 21.9 21.8 22.1 22.8 23.3 24.8 24.5 24.6 23.2 22.6 22.1 23.5 21.9 22.2 20.8 21.8 22.2 23.2 23.0 22.6 20.5 23.0 22.7 22.4 23.8 22.5 24.5 21.6 22.0 22.3 22.7 23.2 22.0 25.2 24.6 22.0 24.7 20.4 25.1 23.8 22.8 24.9 21.7 25.2 25.0 21.8 24.6 21.0 25.0 23.5 20.4 23.4 25.6 21.9 24.6 24.0 23.4 22.1 22.0 22.4 21.5 24.0 22.2 22.0 24.8 24.7 25.8 24.1 20.2 21.8 22.7 22.4 22.6 24.7 23.5 24.8 22.9 21.8 25.5 24.7 26.0 22.4 24.1 24.0 22.3 22.5 24.1 23.8 22.0 23.7 24.0 21.8 24.1 21.4 23.3 22.5 22.6 21.7 23.2 23.0 25.5 21.8 23.6 21.5 22.6 22.9 22.0 23.9 27.0 23.4 22.5 21.8 19.7 22.6 23.4 22.5 23.2 21.3 22.8 23.6 21.0 21.0 22.7 23.0 22.3 22.3 24.0 20.1 23.4 24.6 25.4 24.1 22.6 22.6 21.5 23.2 21.5 22.7 24.6">
+<param name="horiz9Axis" value="18 35 20 5">
+<param name="x10VarName" value="Biceps">
+<param name="x10Values" value="32.0 30.5 28.8 32.4 32.2 35.7 31.9 30.5 35.9 35.6 32.8 37.2 32.5 36.9 36.1 31.1 36.2 38.2 37.2 37.1 32.5 33.0 27.9 29.8 31.1 29.9 28.7 29.2 30.5 30.1 32.5 30.1 29.0 37.5 37.3 32.0 35.1 33.2 45.0 34.1 36.4 33.6 36.7 35.8 26.1 29.7 27.9 28.8 28.8 26.8 26.0 26.7 29.6 38.5 27.7 35.9 33.1 37.7 31.6 34.5 36.2 32.5 32.7 33.6 35.3 34.8 29.6 32.8 32.6 27.3 31.5 30.3 29.7 29.3 29.4 29.3 30.2 30.8 31.4 30.3 29.4 29.9 34.3 31.2 29.7 32.4 32.6 29.2 30.2 28.8 29.1 31.4 30.1 33.3 30.3 32.9 31.6 30.6 31.6 35.3 32.2 27.9 31.0 31.0 30.1 31.0 30.5 35.1 35.1 32.1 33.3 33.5 35.3 30.7 31.8 29.8 29.9 33.4 33.6 32.1 33.9 33.0 34.4 30.6 34.4 35.6 33.8 33.9 33.3 31.6 27.5 31.2 33.5 33.6 34.0 30.9 32.7 34.3 31.7 35.5 30.8 32.0 31.6 30.5 31.8 33.5 36.1 33.3 25.8 36.0 31.6 38.5 27.8 30.6 33.7 32.2 35.2 31.6 27.0 30.1 27.0 31.3 33.5 28.3 34.0 36.4 30.2 37.2 36.1 32.5 30.4 24.8 31.0 32.4 35.4 31.0 31.5 34.4 34.8 39.1 35.6 27.7 31.4 30.0 30.5 32.9 37.2 36.4 36.6 33.4 29.6 37.1 34.0 33.7 31.7 32.9 31.2 30.8 30.6 33.8 31.7 29.4 32.1 32.9 34.8 37.3 33.1 36.7 31.4 29.0 30.9 36.8 29.5 32.7 28.6 34.7 31.3 27.5 35.7 28.5 31.4 38.4 27.9 29.4 34.1 25.3 33.4 33.2 34.6 32.4 31.7 31.8 30.9 27.8 31.3 30.3 32.6 35.1 29.8 35.9 28.5 34.9 35.6 35.3 32.1 29.2 37.5 25.6 35.2 31.3 30.5 33.7">
+<param name="horiz10Axis" value="24 46 25 5">
+<param name="x11VarName" value="Forearm">
+<param name="x11Values" value="27.4 28.9 25.2 29.4 27.7 30.6 27.8 29.0 31.1 30.0 29.4 30.2 28.6 31.6 30.5 26.4 30.8 31.6 30.5 30.1 30.3 32.8 25.9 26.7 28.0 28.2 27.0 26.6 27.9 26.7 27.7 26.4 30.0 31.5 31.7 29.8 30.6 30.5 29.0 31.0 32.7 28.7 29.8 31.5 23.1 27.4 26.2 26.8 25.5 25.8 25.8 26.1 26.0 27.4 27.5 30.2 28.3 30.9 28.8 29.6 31.8 29.8 29.9 29.0 31.1 30.1 27.4 27.4 28.1 27.1 27.3 27.3 27.3 25.7 27.0 27.0 29.2 25.7 26.8 28.7 27.2 25.2 29.6 27.3 26.3 27.7 28.0 28.4 29.3 29.6 27.7 28.4 28.2 29.6 27.9 30.8 30.1 27.8 27.5 30.9 31.0 26.2 29.2 30.3 27.2 29.4 28.5 29.6 30.7 26.0 28.2 27.8 31.1 27.6 27.3 26.3 28.0 29.8 29.5 28.6 31.2 29.6 28.0 27.5 29.2 30.2 30.3 28.2 29.6 27.8 26.5 28.4 28.6 29.3 29.8 28.8 28.3 28.4 27.4 29.8 27.9 28.5 27.5 27.2 29.7 28.3 30.3 29.7 25.2 30.4 29.0 33.8 26.3 28.3 29.2 27.7 30.7 28.0 34.9 28.2 26.3 29.2 30.6 26.2 31.2 33.7 28.7 33.1 31.8 29.8 27.4 25.9 28.7 28.4 21.0 26.9 26.6 29.5 30.3 32.5 29.0 24.6 28.3 26.4 28.9 29.3 31.8 30.4 32.4 29.2 27.3 31.2 30.1 29.9 27.1 29.8 27.3 27.8 30.0 28.8 28.4 26.6 28.9 29.2 30.7 23.1 29.5 31.6 27.5 26.2 28.8 31.0 27.9 30.0 26.7 29.1 26.3 25.9 30.4 25.7 29.9 32.0 27.0 26.8 31.1 22.0 29.3 30.0 30.1 29.7 27.3 29.1 29.6 26.1 28.7 26.3 28.5 29.6 28.9 30.5 24.8 30.1 30.7 29.8 29.3 27.3 32.6 25.7 28.6 27.2 29.4 30.0">
+<param name="horiz11Axis" value="20 36 20 5">
+<param name="x12VarName" value="Wrist">
+<param name="x12Values" value="17.1 18.2 16.6 18.2 17.7 18.8 17.7 18.8 18.2 19.2 18.5 19.0 17.7 18.8 18.2 16.9 17.3 19.3 18.5 18.2 18.4 19.9 16.7 17.1 17.6 17.7 16.5 17.0 17.2 17.6 18.4 17.9 18.8 18.7 19.7 17.0 19.0 19.4 21.4 18.3 21.4 17.4 18.4 18.8 16.1 18.3 17.3 17.9 16.3 16.8 17.3 17.2 16.9 18.5 18.5 18.9 18.5 19.2 18.2 18.5 20.2 18.3 19.1 18.8 18.4 18.7 17.4 18.7 18.1 17.3 18.6 18.3 18.2 16.9 16.8 18.3 18.1 18.8 18.3 19.0 19.0 17.7 19.0 19.2 18.0 18.2 18.8 18.1 18.8 18.7 17.7 18.8 18.4 19.1 17.8 20.4 18.5 18.2 18.2 18.3 18.6 17.0 18.4 19.7 17.7 18.8 18.1 19.1 19.2 17.3 18.1 17.4 19.8 17.4 17.5 17.3 18.1 19.5 18.5 18.0 19.5 18.4 17.6 17.6 18.0 17.6 17.2 17.4 18.1 17.7 17.6 17.1 17.9 17.3 18.1 17.6 17.1 17.7 17.6 18.7 16.6 17.8 17.9 18.2 18.3 17.3 18.7 18.4 16.9 18.4 17.8 19.6 17.4 17.9 19.4 17.7 19.1 18.6 16.9 18.2 16.5 19.1 19.7 16.5 18.5 19.4 17.7 19.8 18.8 17.4 17.7 16.9 17.7 17.8 20.1 16.9 16.7 18.4 18.1 19.9 19.0 16.5 17.2 17.4 17.7 18.2 20.0 19.1 18.8 18.5 17.9 19.9 18.7 18.5 17.1 18.8 17.4 16.9 18.5 18.8 18.6 17.4 18.7 18.4 17.4 19.4 17.3 18.4 17.7 17.6 17.4 18.9 18.6 19.0 18.0 18.4 17.8 18.6 19.2 17.1 18.9 19.6 17.8 17.0 19.2 15.8 18.8 18.4 18.8 19.0 16.9 19.0 18.0 17.6 18.3 18.3 19.0 18.5 18.3 19.1 16.5 19.4 19.5 19.5 18.5 18.5 18.8 18.5 20.1 18.0 19.8 20.9">
+<param name="horiz12Axis" value="15 22 16 2">
+<param name="labelAxes" value="true">
+<param name="paramDecimals" value="2 3 2 2 2 2 2 2 2 2 2 2 2 2 2">
+<param name="biggestParams" value="999.99 999.99">
+<param name="extraXPixels" value="20">
+<param name="customText" value="sd of residuals=sd of residuals">
+</applet> 
+</div>
+
+<p>Use the popup menu to examine the relationship between 
+body fat and each of the variables in turn. The correlation coefficients 
+are also shown in the diagram &mdash; they provide a useful summary of the strength 
+of the relationship. </p>
+
+<div class="centred"><div class="boxed">
+<p>Which variables are most strongly related to body fat?</p>
+</div></div>
+
+<p>Click <strong>Least Squares Line</strong> to show the least squares line that 
+might be used to predict body fat from any single explanatory variable.</p>
+
+<div class="centred"><div class="boxed">
+<p><div class="centred">Could we improve the prediction by using two or 
+more of the measurements?</div></div></p>
+</div>
+
+</div>
+
+
+
+
+<h2 class="pageName">11.6.2 &nbsp; Three-dimensional scatterplots</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Graphical display of data with three variables</p>
+<p>The relationship between two numerical variables, <em>Y</em> and <em>X</em>, 
+can be effectively displayed in a 2-dimensional scatterplot. For each additional 
+variable, an extra dimension would be needed to produce a corresponding display. 
+This is clearly impossible for three or more explanatory variables, but a 3-dimensional 
+scatterplot can be produced for data sets with a response and two explanatory variables.</p>
+<p>A reasonable impression of such a 3-dimensional scatterplot can be obtained 
+on a computer screen by showing it rotating.</p>
+<p class="heading">Notation</p>
+<p>In this chapter, we call the response variable <em>Y</em> when we are describing 
+methods in general (but we use more meaningful names like 'Body fat' when discussing 
+particular data sets). Similarly, the two explanatory variables will be denoted 
+by <em>X</em> and <em>Z</em>.</p>
+<p>By convention, the response variable is drawn on the vertical axis of the scatterplot.</p>
+<div class="diagram">
+		<p class="heading">Body fat (observational data)</p>
+
+		<p>We saw on the previous page that abdomen circumference had the highest 
+			correlation with body fat of the 13 measurements that were made from each 
+			of the 252 men. The diagram below initially shows a scatterplot of these 
+			two variables.</p>
+<div class="centred"> 
+<applet codebase="../../../java" code="multiRegnProg.ArrowXYZApplet.class" archive="coreCAST.jar" width="450" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="yVarName" value="Body fat">
+<param name="yValues" value="12.6 6.9 24.6 10.9 27.8 20.6 19.0 12.8 5.1 12.0 7.5 8.5 20.5 20.8 21.7 20.5 28.1 22.4 16.1 16.5 19.0 15.3 15.7 17.6 14.2 4.6 8.5 22.4 4.7 9.4 12.3 6.5 13.4 20.9 31.1 38.2 23.6 27.5 33.8 31.3 33.1 31.7 30.4 30.8 8.4 14.1 11.2 6.4 13.4 5.0 10.7 7.4 8.7 7.1 4.9 22.2 20.1 27.1 30.4 24.0 25.4 28.8 29.6 25.1 31.0 28.9 21.1 14.0 7.1 13.2 23.7 9.4 9.1 13.7 12.0 18.3 9.2 21.7 21.1 18.6 30.2 26.0 18.2 26.2 26.1 25.8 15.0 22.6 8.8 14.3 20.2 18.1 9.2 24.2 9.6 17.3 10.1 11.1 17.7 21.7 20.8 20.1 19.8 21.9 24.7 17.8 19.1 18.2 17.2 21.0 19.5 27.1 21.6 20.9 25.9 16.7 19.8 14.1 25.1 17.9 27.0 24.6 14.8 16.0 14.0 17.4 26.4 17.4 20.4 15.0 18.0 22.2 23.1 25.3 23.8 26.3 21.4 28.4 21.8 20.1 24.3 18.1 22.7 9.9 10.8 14.4 19.0 28.6 6.1 24.5 9.9 19.1 10.6 16.5 20.5 17.2 30.1 10.5 12.8 22.0 9.9 14.8 13.3 15.2 26.5 19.0 21.4 20.0 34.7 16.5 4.1 1.9 20.2 16.8 24.6 10.4 13.4 28.8 22.0 16.8 25.8 0.0 11.9 12.4 17.4 9.2 23.0 20.1 20.2 23.8 11.8 36.5 16.0 24.0 22.3 24.8 21.5 17.6 7.3 22.6 12.5 21.7 27.7 6.8 33.4 16.6 31.7 31.5 10.1 11.3 7.8 26.4 19.3 18.5 19.3 45.1 13.8 8.2 23.9 15.1 12.7 25.3 11.9 6.1 11.3 12.8 14.9 24.5 15.0 16.9 11.1 16.1 15.5 25.9 25.5 18.4 24.0 26.4 12.7 28.8 17.0 33.6 29.3 31.4 28.1 15.3 29.1 11.5 32.3 28.3 25.3 30.7">
+<param name="xVarName" value="Abdomen">
+<param name="xValues" value="85.2 83.0 87.9 86.4 100.0 94.4 90.7 88.5 82.5 88.6 83.6 90.9 91.6 101.8 96.4 92.8 96.4 97.5 89.6 100.5 95.9 98.8 76.4 80.0 76.3 79.7 74.6 88.7 73.9 83.5 88.7 84.5 79.1 100.5 115.6 113.1 100.9 98.8 148.1 108.1 126.2 104.3 111.2 104.3 76.0 81.5 73.7 79.5 83.4 70.4 86.7 77.9 82.0 79.6 77.6 100.0 99.8 104.2 105.3 98.3 104.8 94.7 102.4 99.7 105.5 100.3 83.9 86.6 78.4 84.6 91.5 82.8 82.9 76.0 83.3 81.8 78.8 95.0 95.4 98.6 95.8 89.0 97.8 94.9 99.8 89.7 88.1 90.9 86.0 86.5 95.6 93.2 83.1 97.5 88.8 99.2 91.6 86.7 88.2 94.0 95.0 92.0 89.2 95.5 98.6 87.3 102.8 101.6 88.7 92.3 90.6 105.0 95.0 89.6 92.4 86.6 90.0 90.0 92.4 87.5 99.2 98.1 83.3 86.1 84.1 89.9 92.1 78.0 93.5 87.0 90.1 90.3 99.8 89.4 87.2 101.1 86.1 98.6 88.5 106.6 93.1 93.0 91.0 77.1 85.3 81.9 99.1 100.5 76.5 106.8 77.6 102.9 72.8 88.2 100.1 83.5 105.0 90.8 76.6 92.4 81.2 95.6 92.1 83.4 106.0 95.1 90.4 100.4 115.9 90.8 81.9 75.0 90.3 90.3 108.8 79.4 83.2 110.3 92.7 104.5 104.6 69.4 83.6 86.8 90.4 83.7 109.3 98.9 98.0 101.2 80.6 113.7 94.1 105.7 85.6 96.6 86.0 89.7 78.0 89.7 89.2 85.7 103.1 89.1 113.9 96.3 93.9 101.3 83.9 84.4 79.4 104.0 89.7 97.6 87.6 122.1 81.1 81.5 100.0 88.7 91.8 110.4 87.6 82.8 95.3 78.2 91.1 96.7 89.4 93.0 86.4 96.7 88.1 94.9 93.3 95.6 98.2 113.8 82.8 100.5 79.7 118.0 109.0 113.4 106.1 84.3 107.6 83.6 105.0 111.5 101.3 108.5">
+<param name="zVarName" value="Height">
+<param name="zValues" value="67.75 72.25 66.25 72.25 71.25 74.75 69.75 72.50 74.00 73.50 74.50 76.00 69.50 71.25 69.50 66.00 71.00 71.00 67.75 73.50 68.00 69.75 68.25 70.00 67.75 71.50 67.50 67.50 64.75 69.00 73.75 71.25 71.25 71.00 73.50 65.00 70.00 68.25 72.25 67.00 68.75 69.50 70.00 71.50 68.00 73.25 67.50 71.25 68.50 66.75 72.25 69.00 67.75 73.50 67.50 72.00 68.00 69.50 70.75 65.75 73.25 68.50 70.25 67.00 70.00 67.50 70.75 71.50 69.25 71.50 71.50 68.75 73.75 64.00 65.75 67.50 69.50 68.50 70.25 69.25 67.75 67.25 72.75 70.00 69.25 67.50 67.25 65.75 72.50 73.00 70.00 69.50 70.50 71.75 74.50 77.75 73.25 66.50 68.25 72.00 73.50 72.00 71.25 73.75 69.25 68.50 73.50 74.25 75.50 69.25 68.50 70.00 70.00 70.25 71.75 69.25 72.75 72.00 74.00 72.25 74.50 71.50 68.75 66.75 66.50 67.00 68.75 67.75 73.25 69.75 71.50 70.50 73.25 66.75 69.50 69.75 70.75 74.00 71.25 75.00 71.00 69.50 67.75 72.25 77.50 70.75 72.75 69.75 72.50 70.25 69.00 74.50 72.25 67.25 73.50 75.25 69.00 72.25 68.75 71.50 72.25 73.00 68.75 70.50 72.00 73.75 68.00 72.25 69.50 69.50 67.75 65.50 71.00 71.50 71.75 69.25 67.00 71.50 69.25 74.50 74.25 68.00 67.25 69.75 74.25 71.50 74.25 72.00 72.50 68.25 69.25 76.00 70.50 74.75 72.75 68.25 69.00 71.50 72.75 67.50 70.25 69.25 71.50 74.00 69.75 73.00 65.50 72.50 70.25 70.75 68.00 74.50 71.75 70.75 73.00 64.00 69.75 70.00 71.75 69.25 70.50 72.25 67.50 67.25 68.75 66.75 68.25 74.25 69.50 68.50 65.75 71.75 71.50 67.25 67.50 67.50 72.25 69.50 69.50 65.75 65.75 68.25 72.00 72.75 68.50 69.25 70.50 67.00 69.75 66.00 70.50 70.00">
+<param name="yAxis" value="0 50 0 10">
+<param name="xAxis" value="65 150 80 20">
+<param name="zAxis" value="63 78 65 5">
+<param name="initialRotation" value="0 0">
+</applet> 
+</div>
+
+		<p>This display is actually 3-dimensional and the 3rd dimension (which initially 
+			points towards you and therefore cannot be seen) represents the heights 
+			of the men. Position the mouse in the centre of the display and drag towards 
+			the bottom right of the screen. This rotates the display and should give 
+			you a reasonable impression of the 3-dimensional nature of this scatterplot. 
+			The buttons under the display can also be used for rotation.</p>
+		<p>Click on crosses to see how the three measurements from each man relate 
+			to the position of its cross on the three axes.</p>
+		<p class="heading">Energy expenditure of bees (experimental data)</p>
+<p>In an experiment, an entomologist recorded energy expenditure (joules/sec) 
+for bees drinking water with different sucrose concentrations (%) and at different 
+temperatures. Energy expenditure is the response measurement.</p>
+<div class="centred"> 
+<applet codebase="../../../java" code="multiRegnProg.ArrowXYZApplet.class" archive="coreCAST.jar" width="450" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="yVarName" value="Energy">
+<param name="xVarName" value="Temperature">
+<param name="zVarName" value="Sucrose">
+<param name="yValues" value="3.1 3.7 4.7 5.5 6.7 7.3 7.9 9.2 9.3 6.0 6.9 7.5 11.5 12.9 13.4 17.5 15.8 14.7 7.7 8.3 9.5 15.7 14.3 15.9 19.1 18.0 19.9">
+<param name="xValues" value="9@20 9@30 9@40">
+<param name="zValues" value="3@20 3@40 3@60 3@20 3@40 3@60 3@20 3@40 3@60">
+<param name="yAxis" value="0 20 0 5">
+<param name="xAxis" value="17 43 20 10">
+<param name="zAxis" value="15 65 20 20">
+</applet> 
+</div>
+		<p>Note that the data are experimental so the values of the two explanatory 
+			variables have been fixed by the entomologist. There were 3 replications 
+			of the experiment &mdash; 3 measurements were made for each combination of levels 
+			of sucrose and temperature. Again rotate the diagram to help understand 
+			how energy expenditure is related to sucrose concentration and temperature.</p>
+</div>
+
+
+
+
+<h2 class="pageName">11.6.3 &nbsp; Linear equation and least squares plane</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Adding another variable to the equation predicting <em>Y</em> 
+from <em>X</em></p>
+<p>We often use a straight line to describe how a response variable is related 
+to a single explanatory variable &mdash; its equation can be used to predict <em>Y</em> 
+from <em>X.</em> </p>
+
+<p class="eqn"><span class="black"><em>y</em> &nbsp;=&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x</em></span></p>
+
+  
+<p>The simplest way to describe how a second explanatory variable <em>Z</em> also 
+affects the response, is to add a further term to this equation,</p>
+
+  <p class="eqn"><span class="black"><em>y</em> &nbsp;=&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x</em> + <em>b</em><sub>2 </sub><em>z</em></span></p>
+
+  
+<p>This equation is also called a <strong>linear model</strong> for the response.</p>
+<p class="heading">Graphical display</p>
+
+<div class="centred"><div class="boxed">
+<p>On a 3-dimensional display whose axes represent 
+<em>Y</em>, <em>X</em> and <em>Z</em>, the equation corresponds to a <strong>plane</strong>.</p>
+</div></div>
+
+<br>
+<div class="diagram">
+<p class="heading">Body fat</p>
+
+<p>We saw earlier that abdomen circumference and height were related to body fat 
+in the 252 men whose body fat was measured by an underwater weighing technique. 
+(Abdomen circumference had the highest correlation with body fat.) We will now 
+consider how a prediction of body fat might be made using both abdomen circumference 
+<strong>and</strong> height. Consider the equation</p>
+<p class="eqn"><em>body fat</em> &nbsp; = &nbsp; 30.0 &nbsp;+&nbsp; 0.53 <em>abdomen</em> &nbsp;&minus;&nbsp; 0.80 <em>height</em></p>
+<p>The diagram below represents this equation.</p>
+<div class="centred"> 
+<applet codebase="../../../java" code="multiRegnProg.Predict3DApplet.class" archive="coreCAST.jar" width="450" height="460">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="yAxis" value="0 50 0 10">
+<param name="xAxis" value="65 120 70 10">
+<param name="zAxis" value="63 76 65 5">
+<param name="yVarName" value="Body fat">
+<param name="xVarName" value="Abdomen">
+<param name="zVarName" value="Height">
+<param name="modelParams" value="30.0 0.53 -0.80 0.0">
+<param name="predictMinMax" value="0.00 50.00 65.0 120.0 63.0 76.0">
+</applet> 
+</div>
+
+<p>Click anywhere between the abdomen and height axes (in the yellow area of the 
+diagram) to see how the plane translates any pair of values (abdomen, height) 
+into a predicted value of body fat, via the equation.</p>
+</div>
+
+
+
+
+<h2 class="pageName">11.6.4 &nbsp; Understanding the parameters</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Parameters</p>
+<p>The three parameters in an equation of the form</p>
+<p class="eqn"><span class="black"><em>y</em> &nbsp;=&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x</em> + <em>b</em><sub>2 </sub><em>z</em></span></p>
+<p>are interpreted in a similar way to the corresponding parameters for an equation 
+with one explanatory variable.</p>
+
+<dl>
+<dt>Intercept</dt>
+<dd>The parameter <em>b</em><sub>0</sub> 
+is called the <strong>intercept</strong> and is the y-value when both x and z 
+are zero.</dd>
+<dt>Slopes</dt>
+<dd>The other two parameters are <strong>slope</strong> parameters. The value 
+of each is the expected increase in the response when the corresponding explanatory 
+variable increases by 1. For example, when <em>x</em> increases by 1, <em>y</em> 
+increases by <em>b</em><sub>1</sub>.</dd>
+</dl>
+<br>
+
+<div class="diagram">
+<p class="heading">Illustration</p>
+
+<p>The diagram below represents a linear model. The diagonal grey line that is 
+initially visible shows how <em>y</em> is related to <em>x</em> only.</p>
+<div class="centred"> 
+<applet codebase="../../../java" code="multiRegnProg.DragParamsApplet.class" archive="coreCAST.jar" width="450" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="yAxis" value="0 50 0 10">
+<param name="xAxis" value="-0.2 1.2 0 0.2">
+<param name="zAxis" value="-0.3 2.3 0 0.5">
+<param name="yVarName" value="Y">
+<param name="xVarName" value="X">
+<param name="zVarName" value="Z">
+<param name="initialParams" value="5.0 10.0 0.0 0">
+<param name="paramMinMax" value="-100.0 100.0 -100.00 100.00 -100.00 100.00">
+<param name="initialRotation" value="0 0">
+</applet> 
+</div>
+
+<p>The two red arrows that are initially visible represent the parameters <em>b</em><sub>0</sub> 
+and <em>b</em><sub>1</sub>. 
+Adjust these parameters by dragging the arrows vertically. Observe that <em>b</em><sub>0</sub> 
+is the y-value when x=0, and that <em>b</em><sub>1</sub> 
+is the increase in y when x increases by 1.</p>
+<p>Now drag the centre of the diagram a little towards the bottom right to rotate 
+the diagram (or click the x-y-z button). A third arrow becomes visible that allows 
+you to change the third parameter. Adjust all three parameters and observe how 
+they affect the positioning of the plane. </p>
+</div>
+
+
+
+
+<h2 class="pageName">11.6.5 &nbsp; Fitted values and residuals</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Fitted values</p>
+
+<p>For most data sets, a linear equation of the form</p>
+
+<p class="eqn"><span class="black"><em>y</em> &nbsp;=&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x</em> + <em>b</em><sub>2 </sub><em>z</em></span></p>
+
+<p>cannot exacty predict the response from the two explanatory variables &mdash; the 
+crosses on the 3-dimensional scatterplot do not fall exactly on a plane. For the 
+<em>i</em>'th individual, the prediction that is made from the equation is called 
+the <strong>fitted value</strong> for that individual.</p>  
+<p class="eqn"><img src="../../../en/leastSqrsTwo/images/fitVal.gif" width="273" height="22"></p>
+<p class="heading">Residuals</p>
+<p>The difference between the fitted value and the actual response is called the 
+individual's <strong>residual</strong>.</p>
+
+<p class="eqn"><img src="../../../en/leastSqrsTwo/images/resid.gif" width="170" height="22"></p>
+
+	
+  <div class="diagram">
+<p class="heading">Body fat</p>
+
+
+  
+<p>At the start of this section, we displayed the relationship between percentage 
+body fat and various other measurements from 252 men. To make the diagrams clearer, 
+we will now only consider a selection of 25 of these men.</p>
+<p>The diagram below shows a scatterplot of body fat, abdomen circumference and 
+height, and the plane representing a linear equation that might be used to predict 
+body fat,</p>
+<p class="eqn"><em>Body fat</em> &nbsp; = &nbsp; 22 &nbsp;+&nbsp; 0.53 <em>Abdomen</em> &nbsp;&minus;&nbsp; 0.80 <em>Height</em></p>
+<p>We will see later how this equation can be improved.</p>
+<div class="centred">
+<applet codebase="../../../java" code="multiRegnProg.ShowResidApplet.class" archive="coreCAST.jar" width="450" height="470">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="yAxis" value="0 50 0 10">
+<param name="xAxis" value="65 120 70 10">
+<param name="zAxis" value="63 76 65 5">
+<param name="yVarName" value="Body fat">
+<param name="xVarName" value="Abdomen">
+<param name="zVarName" value="Height">
+<param name="yValues" value="12 16.5 9.4 31.3 5 24 13.2 18.6 14.3 21.7 21 17.9 15 20.1 24.5 22 16.5 16.8 23.8 22.6 11.3 15.1 16.9 28.8 28.3">
+<param name="xValues" value="88.6 100.5 83.5 108.1 70.4 98.3 84.6 98.6 86.5 94 92.3 87.5 87 106.6 106.8 92.4 90.8 104.5 101.2 89.7 84.4 88.7 93 100.5 111.5">
+<param name="zValues" value="73.5 73.5 69 67 66.75 65.75 71.5 69.25 73 72 69.25 72.25 69.75 75 70.25 71.5 69.5 74.5 68.25 67.5 70.75 69.25 68.5 65.75 66">
+<param name="modelParams" value="22.0 0.53 -0.80 0.0">
+<param name="predictMinMax" value="0.00 50.00">
+<param name="xzyMax" value="120.0 76.0 100.00">
+</applet>
+</div>
+
+  
+<p>Click on crosses to display the actual and fitted body fat percentages for 
+our group of 25 men. The residuals are shown as red vertical lines.</p>
+
+<div class="centred"><div class="boxed">
+<p>The residuals are vertical distances between the 
+crosses and the plane.</p>
+</div></div>
+
+
+<p>Rotate the scatterplot to see better how the residuals relate to the plane.</p>
+
+</div>
+
+
+
+
+<h2 class="pageName">11.6.6 &nbsp; Estimating the parameters</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Parameter estimation</p>
+<p>Since the residuals can be considered to be prediction errors, a good linear 
+equation should result in small residuals.</p>
+<p>A good principle is therefore to estimate the three parameters of the model 
+(the intercept and the two slope parameters) by adjusting them to make the residuals 
+'as small as possible'.</p>
+<div class="diagram">
+<p class="heading">Illustration</p>
+
+
+  
+<p>The diagram below shows an artificial data set.</p>
+<div class="centred">
+<applet codebase="../../../java" code="multiRegnProg.DragParamResidApplet.class" archive="coreCAST.jar" width="450" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="yAxis" value="0 50 0 10">
+<param name="xAxis" value="-0.2 1.2 0 0.2">
+<param name="zAxis" value="-0.3 2.3 0 0.5">
+<param name="yVarName" value="Y">
+<param name="xVarName" value="X">
+<param name="zVarName" value="Z">
+<param name="initialParams" value="5.0 10.0 0.0 0">
+<param name="paramMinMax" value="-100.0 100.0 -100.00 100.00 -100.00 100.00">
+<param name="yValues" value="32.5 22.8 25.8 32.1 16.5 15.7 34.9 16.4 21.2 19.2 31.8 31.2 25.1 11.7 29.5 31.0 37.3 27.2 25.5 22.7 21.6 24.4 16.3 22.2 31.9 23.4 35.8 36.2 24.7 5.7 26.9 16.9 32.9 21.2 16.3 29.6 32.3 35.9 10.6 13.4">
+<param name="xValues" value="0.79 0.71 0.72 0.81 0.42 0.56 0.62 0.32 0.37 0.86 0.96 0.93 0.34 0.43 0.44 0.81 0.87 0.81 0.73 0.02 0.18 0.25 0.50 0.46 0.96 0.11 0.95 0.70 0.71 0.02 0.66 0.10 0.59 0.28 0.39 0.72 0.99 0.96 0.15 0.15">
+<param name="zValues" value="0.16 0.71 1.88 0.49 1.82 1.83 0.06 1.59 0.25 1.46 0.55 0.97 0.56 1.95 0.47 0.48 1.06 1.18 0.52 0.31 0.16 0.42 1.83 2.00 0.11 0.69 0.59 0.16 1.36 1.89 0.96 0.02 0.83 1.65 1.61 0.27 1.76 0.01 1.28 1.45">
+</applet>
+</div>
+
+  
+<p>Drag the three red arrows vertically to adjust the three parameters of the 
+model. Find parameter estimates to make the residuals as small as possible.</p>
+<p>Hint: It can be tricky getting the residuals small for all combinations of 
+<em>X</em> and <em>Z</em>. Adjusting the parameters in the following order helps.</p>
+<ol>
+<li>Firstly adjust the intercept to give small residuals when <em>X</em> and <em>Z</em> 
+are close to zero.</li>
+<li>Next, adjust the slope for <em>X</em> to make the residuals small for all 
+crosses where <em>Z</em> is close to zero.</li>
+<li>Finally, adjust the slope for <em>Z</em> to make all residuals small.</li>
+</ol>
+<br>
+
+</div>
+
+
+
+
+<h2 class="pageName">11.6.7 &nbsp; Least squares estimation</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Need for an objective estimation method</p>
+<p>Recapping, any linear equation provides <strong>fitted values</strong> &mdash; predictions 
+of the response for each combination of values of the explanatory variables,</p>
+<p class="eqn"><span class="black"><span style="position:relative; top:4px"><img src="../../../en/../images/symbol.yiHatBlue.png" width="11" height="18" align="baseline"></span> &nbsp;=&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x<sub>i</sub></em> + <em>b</em><sub>2 </sub><em>z<sub>i</sub></em></span></p>
+<p>These fitted values are unlikely to match exactly the observed response values 
+and the prediction 'errors' are called the <strong>residuals</strong>, </p>
+<p class="eqn"><span class="red"><em>e</em><sub><em>i</em></sub></span> <span class="black">&nbsp;=&nbsp; <em>y<sub>i</sub></em> &minus;</span> <span style="position:relative; top:4px"><img src="../../../en/../images/symbol.yiHatBlue.png" width="11" height="18" align="baseline"></span></p>
+<p>'Small' residuals are desirable but adjusting the parameters 'by eye' is neither 
+a scientifically objective nor a practical method to achieve small residuals.</p>
+<p class="heading">Residual sum of squares</p>
+<p>A combined measure of the size of the residuals is their sum of squares,</p>
+<p class="eqn"><img src="../../../en/leastSqrsTwo/images/residSsqTwo.gif" width="177" height="26"></p>
+<p>An objective estimation method estimates the parameters with the values that 
+<strong>minimise the residual sum of squares</strong>. This is called the method 
+of <strong>least squares</strong> and is similar to least squares estimation for 
+the simple linear model.</p>
+<p class="heading">Obtaining the least squares estimates</p>
+<p>A display of the residual sum of squares could be a useful guide to manually 
+adjusting the parameters. However the principle of least squares reduces parameter 
+estimation to a relatively straightforward mathematical problem &mdash; find the values 
+of <em>b</em><sub>0</sub>, <em>b</em><sub>1</sub> and <em>b</em><sub>2</sub> to 
+minimise:</p>
+<p class="eqn"><img src="../../../en/leastSqrsTwo/images/residSsqTwo2.gif" width="288" height="37"></p>
+<p>Although the formulae for the least squares estimates (that solve this mathematical 
+problem) are more complicated than those for simple linear regression, they can 
+nonetheless be algebraically derived.</p>
+
+<div class="centred"><div class="boxed">
+<p>In practice, statistical software should be used 
+to obtain least squares parameter estimates. The formulae are therefore not worth 
+showing here.</p>
+</div></div>
+
+<p class="gray">(It is actually possible to write the formulae for these 
+least squares estimates concisely, but this requires matrix notation so we will 
+leave it until the next chapter of CAST.)</p>
+<div class="diagram">
+<p class="heading">Illustration</p>
+
+
+  
+<p>The following diagram shows the same data set that was used in the previous 
+page. A square is drawn beside each residual &mdash; its area is the squared residual. 
+The total red area is therefore the sum of the squared residuals.</p>
+<div class="centred">
+<applet codebase="../../../java" code="multiRegnProg.DragResidSquareApplet.class" archive="coreCAST.jar" width="450" height="480">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="yAxis" value="0 50 0 10">
+<param name="xAxis" value="-0.2 1.2 0 0.2">
+<param name="zAxis" value="-0.3 2.3 0 0.5">
+<param name="yVarName" value="Y">
+<param name="xVarName" value="X">
+<param name="zVarName" value="Z">
+<param name="initialParams" value="20.00 15.00 0.00 0">
+<param name="paramMinMax" value="-100.0 100.0 -100.00 100.00 -100.00 100.00">
+<param name="yValues" value="32.5 22.8 25.8 32.1 16.5 15.7 34.9 16.4 21.2 19.2 31.8 31.2 25.1 11.7 29.5 31.0 37.3 27.2 25.5 22.7 21.6 24.4 16.3 22.2 31.9 23.4 35.8 36.2 24.7 5.7 26.9 16.9 32.9 21.2 16.3 29.6 32.3 35.9 10.6 13.4">
+<param name="xValues" value="0.79 0.71 0.72 0.81 0.42 0.56 0.62 0.32 0.37 0.86 0.96 0.93 0.34 0.43 0.44 0.81 0.87 0.81 0.73 0.02 0.18 0.25 0.50 0.46 0.96 0.11 0.95 0.70 0.71 0.02 0.66 0.10 0.59 0.28 0.39 0.72 0.99 0.96 0.15 0.15">
+<param name="zValues" value="0.16 0.71 1.88 0.49 1.82 1.83 0.06 1.59 0.25 1.46 0.55 0.97 0.56 1.95 0.47 0.48 1.06 1.18 0.52 0.31 0.16 0.42 1.83 2.00 0.11 0.69 0.59 0.16 1.36 1.89 0.96 0.02 0.83 1.65 1.61 0.27 1.76 0.01 1.28 1.45">
+<param name="maxRss" value="99999.99">
+</applet>
+</div>
+
+  
+<p>Again drag the arrows to adjust the parameters. Your aim should be to minimise 
+the red area or, numerically, to minimise the residual sum of squares that is 
+displayed at the top right of the diagram.</p>
+<p>Finally, click the button <strong>Least squares</strong> to see the parameter 
+values that the computer calculates to minimise the residual sum of squares.</p>
+</div>
+
+
+
+
+<h2 class="pageName">11.6.8 &nbsp; Interpreting the coefficients</h2><!DOCTYPE HTML>
+
+
+<p class="heading">What do the values of the coefficients tell you?</p>
+<p>The coefficients of the least squares line are interpreted in a similar way 
+to the corresponding coefficients for the simple linear model.</p>
+<p class="eqn"><span class="black"><em>y</em> &nbsp;=&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x</em> + <em>b</em><sub>2 </sub><em>z</em></span></p>
+<dl>
+<dt>Intercept</dt>
+<dd>The intercept, <em>b</em><sub>0</sub>, 
+is the predicted response when <strong>both</strong> <em>x</em> and <em>z</em> 
+are zero.</dd>
+<dt>Slope for <em>X</em></dt>
+<dd>The parameter <em>b</em><sub>1</sub> 
+is the predicted increase in the response when <em>x</em> increases by 1, <strong>provided 
+the value of <em>z</em> remains the same</strong>. For observational data, the 
+two explanatory variables may be correlated so an increase of 1 in <em>x</em> 
+may be associated with a change in <em>z</em> so this interpretation is of less 
+practical use.</dd>
+<dt>Slope for <em>Z</em></dt>
+<dd>The parameter <em>b</em><sub>2</sub> 
+is similarly the predicted increase in <em>y</em> when <em>z</em> increases by 
+1, <strong>provided <em>x</em> does not change</strong>.</dd>
+</dl>
+
+<br>
+
+
+<div class="centred"><div class="boxed">
+<p>It is important to remember that the slope parameters 
+only describe the effect of the variables <strong>if the other variable 
+remains constant</strong>.</p>
+</div></div>
+
+
+<br>
+
+<div class="diagram">
+<p class="heading">Energy expenditure of bees</p>
+  
+		<p>A researcher recorded energy expenditure (joules/sec) for bees drinking 
+			water with different sucrose concentrations (%) and at different temperatures 
+			(degrees Celsius). The diagram below shows the least squares equation on 
+			the top right and displays it as a plane on the left.</p>
+<div class="centred">
+<applet codebase="../../../java" code="multiRegnProg.ConditZApplet.class" archive="coreCAST.jar" width="550" height="600">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="yVarName" value="Energy, E">
+<param name="xVarName" value="Temperature, T">
+<param name="zVarName" value="Sucrose, S">
+<param name="yValues" value="3.1 3.7 4.7 5.5 6.7 7.3 7.9 9.2 9.3 6.0 6.9 7.5 11.5 12.9 13.4 17.5 15.8 14.7 7.7 8.3 9.5 15.7 14.3 15.9 19.1 18.0 19.9">
+<param name="xValues" value="9@20 9@30 9@40">
+<param name="zValues" value="3@20 3@40 3@60 3@20 3@40 3@60 3@20 3@40 3@60">
+<param name="yAxis" value="0 20 0 5">
+<param name="xAxis" value="17 43 20 10">
+<param name="zAxis" value="15 65 20 20">
+<param name="modelParams" value="-10.00 0.000 0.000 5">
+<param name="paramMinMax" value="-99.999 99.999 -99.999 99.999 -99.999 99.999">
+<param name="zLimits" value="15.0 65.0 30.0">
+<param name="shortVarNames" value="E T S">
+<param name="allowBand" value="false">
+<param name="allowVarSelection" value="true">
+<param name="customText" value="Variables in Model=Variables in Model#Mean of *, for=Mean of *, for">
+</applet>
+</div>
+
+		<p>At any <strong>fixed</strong> sucrose concentration, the model predicts 
+			that energy expenditure will increase by 0.394 joules/sec for each increase 
+			in temperature of 1 degree. This prediction is shown by the red equation 
+			at the bottom. Use the slider to adjust the sucrose concentration and observe 
+			that only the intercept of this line changes &mdash; its slope remains 0.394.</p>
+		<p>Click the <strong>y-x</strong> button to rotate the 3-dimensional diagram 
+			to show energy vs temperature. The diagram at the bottom is simply a cross-section 
+			of the full regression plane.</p>
+		<hr width="75%">
+		<p>The next diagram is similar but focuses on the relationship between energy 
+			expenditure and sucrose an fixed temperatures.</p>
+<div class="centred">
+<applet codebase="../../../java" code="multiRegnProg.ConditZApplet.class" archive="coreCAST.jar" width="550" height="600">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="yVarName" value="Energy, E">
+<param name="xVarName" value="Temperature, T">
+<param name="zVarName" value="Sucrose, S">
+<param name="yValues" value="3.1 3.7 4.7 5.5 6.7 7.3 7.9 9.2 9.3 6.0 6.9 7.5 11.5 12.9 13.4 17.5 15.8 14.7 7.7 8.3 9.5 15.7 14.3 15.9 19.1 18.0 19.9">
+<param name="xValues" value="9@20 9@30 9@40">
+<param name="zValues" value="3@20 3@40 3@60 3@20 3@40 3@60 3@20 3@40 3@60">
+<param name="yAxis" value="0 20 0 5">
+<param name="xAxis" value="17 43 20 10">
+<param name="zAxis" value="15 65 20 20">
+<param name="modelParams" value="-10.00 0.000 0.000 5">
+<param name="paramMinMax" value="-99.999 99.999 -99.999 99.999 -99.999 99.999">
+<param name="xLimits" value="17.0 43.0 30.0">
+<param name="shortVarNames" value="E T S">
+<param name="allowBand" value="false">
+<param name="allowVarSelection" value="true">
+<param name="customText" value="Variables in Model=Variables in Model#Mean of *, for=Mean of *, for">
+</applet>
+</div>
+		<p>At any <strong>fixed</strong> <strong>temperature</strong>, the model predicts 
+			that energy expenditure will increase by 0.206 joules/sec for each increase 
+			of 1% in sucrose concentration. This prediction is again shown at the bottom 
+			. Use the slider to adjust the temperature and observe that only the intercept 
+			of this line changes &mdash; its slope remains 0.206.</p>
+		<p>Click the <strong>y-z</strong> button to rotate the 3-dimensional diagram 
+			to show energy vs sucrose. Again the diagram at the bottom is simply a cross-section 
+			of the full regression plane.</p>
+		<p class="heading">Heart catheter length</p>
+  
+		<p>In heart catheterisation, a catheter is passed through a major vein or 
+			artery from the leg into the heart. X-rays are used to position the tip 
+			of the catheter. The catheter length (cm), height (in) and weight (lb) were 
+			recorded from 12 children. Surgeons want to estimate the length of catheter 
+			to use, based on the height and weight of a child.</p>
+<div class="centred">
+<applet codebase="../../../java" code="multiRegnProg.ConditZApplet.class" archive="coreCAST.jar" width="550" height="600">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="yVarName" value="Catheter, C">
+<param name="xVarName" value="Height, H">
+<param name="zVarName" value="Weight, W">
+<param name="yValues" value="37 50 34 36 43 28 37 20 34 30 38 47">
+<param name="xValues" value="42.8 63.5 37.5 39.5 45.5 38.5 43.0 22.5 37.0 23.5 33.0 58.0">
+<param name="zValues" value="40.0 93.5 35.5 30.0 52.0 17.0 38.5 8.5 33.0 9.5 21.0 79.0">
+<param name="yAxis" value="15 55 20 10">
+<param name="xAxis" value="20 65 20 10">
+<param name="zAxis" value="0 100 0 20">
+<param name="modelParams" value="-10.00 0.000 0.000 5">
+<param name="paramMinMax" value="-99.999 99.999 -99.999 99.999 -99.999 99.999">
+<param name="xLimits" value="20.0 65.0 50.0">
+<param name="shortVarNames" value="C H W">
+<param name="allowBand" value="false">
+<param name="allowVarSelection" value="true">
+<param name="customText" value="Variables in Model=Variables in Model#Mean of *, for=Mean of *, for">
+</applet>
+</div>
+
+		<p>The least squares equation (and plane) for these data predicts that:</p>
+<ul>
+<li>The length of the catheter is predicted to be 0.211 cm greater for any child 
+than for a similar child <strong>with the same weight</strong> but who is 1 inch 
+shorter.</li>
+<li>The catheter is predicted to be 0.191 cm longer for any child than for a similar 
+child <strong>with the same height</strong> who is 1 lb lighter.</li>
+</ul>
+		<p>These data are observational and that the heights and weights of the children 
+			are highly correlated &mdash; taller children also tend to be heavier. Since 
+			both explanatory variables measure different aspects of the same thing, 
+			the sizes of the children, we will now investigate a model with only the 
+			variable weight.</p>
+<p>Click the checkbox for <strong>Height</strong> to remove this variable from 
+the model. The least squares line for predicting catheter length from weight alone 
+has slope 0.284.</p>
+<ul>
+<li>The length of the catheter is predicted to be 0.284 cm greater for any child 
+than another who is 1 lb lighter if no account is taken of the heights of the 
+children. (The lighter child is also likely to be shorter which explains the higher 
+coefficient for weight than in the full model.)</li>
+</ul>
+
+<br>
+
+
+<div class="centred"><div class="boxed">
+<p>We will discuss the consequences of correlated 
+explanatory variables in much greater depth in a later section.</p>
+</div></div>
+
+
+<br>
+</div>
+
+
+
+
+<h1 class="sectionName breakBefore">11.7 &nbsp; Normal linear model and inference</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Normal linear model</li>
+<li>Sampling variability of least squares plane</li>
+<li>Distribution of estimated coefficients</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='4'>
+<li>Estimate of error standard deviation</li>
+<li>95% confidence intervals for coefficients</li>
+<li>Hypothesis tests for coefficients</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">11.7.1 &nbsp; Normal linear model</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Modelling randomness in linear models</p>
+<p>For stimulus-response data sets, the least squares line provides a useful descriptive 
+summary of the way that the explanatory variable is related to the response. However 
+most such data sets are random &mdash; if data collection was repeated, different response 
+values would be recorded &mdash; and the resulting least squares estimates are therefore 
+also random. To properly interpret the values of the parameter estimates, you 
+must understand their variability.</p>
+<p>For data with a single explanatory variable, the randomness is modelled by 
+assuming an underlying <strong>population</strong> regression line (whose intercept, 
+β<sub>0</sub>, 
+and slope, β<sub>1</sub>, 
+are usually unknown values). The response is modelled as a normal random variable 
+whose mean is given by this population regression line.</p>
+
+<p class="eqn"><img src="../../../en/regnInfTwo/images/normModelUni.gif" width="199" height="21"></p>
+
+<p>This model is often expressed in the equivalent form,</p>
+<p class="eqn"><img src="../../../en/regnInfTwo/images/normModelUni2.gif" width="359" height="21"></p>
+<p class="heading">Normal linear model with two explanatory variables</p>
+<p>The simple normal linear model can be easily extended to model data with two 
+explanatory variables,</p>
+
+<p class="eqn"><img src="../../../en/regnInfTwo/images/normModelTwo.gif" width="257" height="21"></p>
+<p>An equivalent way to write the model is:</p>
+<p class="eqn"><img src="../../../en/regnInfTwo/images/normModelTwo2.gif" width="418" height="21"></p>
+  <p>The random part of the model, ε<sub><em>i</em></sub>, 
+		is again called the model's <strong>error</strong> term.</p>
+	<p class="heading">General linear model</p>
+	<p>Both the simple linear model (with one explanatory variable) and this linear 
+		model are special cases of the <strong>general linear model</strong> which 
+		can have any number of explanatory variables,</p>
+	<p class="eqn"><img src="../../../en/regnInfTwo/images/generalLinearModel.gif" width="522" height="23"></p>
+	<p>We will mostly concentrate on models with two explanatory variables in this 
+		chapter since they are easier to illustrate with 3-dimensional diagrams, but 
+		it should be noted that all the concepts and methods can be generalised to 
+		this wider class of models.</p>
+	<div class="diagram">
+		<p class="heading">Illustration of the model</p>
+
+<p>The diagram below shows a normal linear model that could possibly underlie 
+the Body Fat data,</p>
+<p class="eqn"><img src="../../../en/regnInfTwo/images/bodyFatModel.gif" width="397" height="44"></p>
+<p>The diagram initially shows a scatterplot of the two explanatory variables. 
+The model treats the values of <em>Abdomen</em> and <em>Height</em> as fixed (non-random) 
+for the 25 individuals.</p>
+<div class="centred"> 
+<applet codebase="../../../java" code="multiRegnProg.Model3dApplet.class" archive="coreCAST.jar" width="450" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="yAxis" value="0 50 0 10">
+<param name="xAxis" value="65 120 70 10">
+<param name="zAxis" value="63 76 65 5">
+<param name="yVarName" value="Body fat">
+<param name="xVarName" value="Abdomen">
+<param name="zVarName" value="Height">
+<param name="xValues" value="88.6 100.5 83.5 108.1 70.4 98.3 84.6 98.6 86.5 94 92.3 87.5 87 106.6 106.8 92.4 90.8 104.5 101.2 89.7 84.4 88.7 93 100.5 111.5">
+<param name="zValues" value="73.5 73.5 69 67 66.75 65.75 71.5 69.25 73 72 69.25 72.25 69.75 75 70.25 71.5 69.5 74.5 68.25 67.5 70.75 69.25 68.5 65.75 66">
+<param name="error" value="25 48763562">
+<param name="modelParams" value="30.0 0.53 -0.80 5.0">
+<param name="paramMinMax" value="0.0 30.0 0.00 0.53 -0.80 0.00">
+<param name="initialRotation" value="90 90">
+</applet> 
+</div>
+
+<p>Click the y-x-z button to rotate the diagram. The grey plane is</p>
+<p class="eqn"><img src="../../../en/regnInfTwo/images/bodyFatMeanEqn.gif" width="312" height="16"></p>
+<p>For each individual a vertical red line has been drawn 2&sigma; 
+on each side of the regression plane. The grey planes outlined on each side of 
+the regression plane are also 2&sigma; above and below it.</p>
+<p>Click on any such vertical line &mdash; the normal distribution of the response 
+that is randomly generated by the model is displayed in blue.</p>
+<p>Click <strong>Take sample</strong> a few times to randomly generate sets of 
+response measurements from this model.</p>
+
+<div class="centred"><div class="boxed">
+<p>Since about 95% of normal values are within 2&sigma; of their mean, about 95% of the generated crosses will be within the two outlined 
+planes in the diagram.</p>
+</div></div>
+
+<p>Rotate the diagram to look end-on at the planes to verify that only about 5% 
+of the crosses are outside the two outline planes.</p>
+</div>
+
+
+
+
+<h2 class="pageName">11.7.2 &nbsp; Sampling variability of least squares plane</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Sample-to-sample variability</p>
+<p>The simple normal linear model,</p>
+
+<p class="eqn"><img src="../../../en/regnInfTwo/images/normModelTwo2.gif" width="418" height="21"></p>
+<p>implies that the recorded data are random &mdash; if the data were collected again, 
+the response values would be different.</p>
+<p>This randomness is also evident in the least squares plane that is fitted to 
+the data &mdash; its position varies from sample to sample.</p>
+<div class="diagram">
+<p class="heading">Simulation</p>
+
+<p>The diagram below takes random samples from a normal linear model that could 
+possibly describe how percentage body fat relates to abdomen circumference and 
+height.</p>
+<p class="eqn"><img src="../../../en/regnInfTwo/images/bodyFatModel.gif" width="397" height="44"></p>
+<p>A random sample from the model is shown and the least squares plane is outlined 
+in red.</p>
+<div class="centred"> 
+<applet codebase="../../../java" code="multiRegnProg.PlaneSampleApplet.class" archive="coreCAST.jar" width="450" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="yAxis" value="0 50 0 10">
+<param name="xAxis" value="65 120 70 10">
+<param name="zAxis" value="63 76 65 5">
+<param name="yVarName" value="Body fat">
+<param name="xVarName" value="Abdomen">
+<param name="zVarName" value="Height">
+<param name="xValues" value="88.6 100.5 83.5 108.1 70.4 98.3 84.6 98.6 86.5 94 92.3 87.5 87 106.6 106.8 92.4 90.8 104.5 101.2 89.7 84.4 88.7 93 100.5 111.5">
+<param name="zValues" value="73.5 73.5 69 67 66.75 65.75 71.5 69.25 73 72 69.25 72.25 69.75 75 70.25 71.5 69.5 74.5 68.25 67.5 70.75 69.25 68.5 65.75 66">
+<param name="error" value="25 48763562">
+<param name="modelParams" value="30.0 0.53 -0.80 5.0">
+<param name="paramMinMax" value="0.0 30.0 0.00 0.53 -0.80 0.00">
+<param name="decimals" value="1 2 2">
+</applet> 
+</div>
+
+<p>Click <strong>Take sample</strong> several times and observe that the least 
+squares plane varies &mdash; it is also a random entity. Click <strong>Accumulate</strong> 
+then take a few more samples.</p>
+</div>
+
+
+
+
+<h2 class="pageName">11.7.3 &nbsp; Distribution of estimated coefficients</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Distribution of the least squares plane</p>
+<p>We have shown that the normal linear model implies randomness in the least 
+squares plane,</p>
+
+<p class="eqn"><img src="../../../en/regnInfTwo/images/lsPlaneEqn.gif" width="168" height="17"></p>
+<p>It is however difficult to describe the distribution of something as complex 
+as a plane.</p>
+<p class="heading">Distribution of the individual parameter estimates</p>
+<p>We therefore only describe the distributions of the individual parameter estimates 
+since they have ordinary univariate distributions. Each of the three parameter 
+estimates has a normal distribution that is centred on the corresponding population 
+parameter.</p>
+<p>The standard deviations of the parameter estimates depend on the x- and z-values 
+in the data set and also on the error standard deviation, σ. 
+We do not present their formulae fully here but only indicate that they involve 
+a function of the {<em>x<sub>i</sub></em>} and the {<em>z<sub>i</sub></em>} times 
+σ,</p>
+<p class="eqn"><img src="../../../en/regnInfTwo/images/lseDistn.gif" width="245" height="69"></p>
+<p>Note that:</p>
+
+<div class="centred"><div class="boxed">
+<p>The three least squares estimates are <strong>unbiased 
+estimators</strong> of the underlying model parameters &mdash; their distributions' means 
+equal the true population parameters.</p>
+</div></div>
+
+<br>
+<div class="diagram">
+<p class="heading">Simulation</p>
+
+<p>The diagram below again takes random samples from the normal linear model,</p>
+<p class="eqn"><img src="../../../en/regnInfTwo/images/bodyFatModel.gif" width="397" height="44"></p>
+<div class="centred"> 
+<applet codebase="../../../java" code="multiRegnProg.CoeffSampleApplet.class" archive="coreCAST.jar" width="500" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="yAxis" value="0 50 0 10">
+<param name="xAxis" value="65 120 70 10">
+<param name="zAxis" value="63 76 65 5">
+<param name="yVarName" value="Body fat">
+<param name="xVarName" value="Abdomen">
+<param name="zVarName" value="Height">
+<param name="dataName" value="n = 25">
+<param name="xValues" value="88.6 100.5 83.5 108.1 70.4 98.3 84.6 98.6 86.5 94 92.3 87.5 87 106.6 106.8 92.4 90.8 104.5 101.2 89.7 84.4 88.7 93 100.5 111.5">
+<param name="zValues" value="73.5 73.5 69 67 66.75 65.75 71.5 69.25 73 72 69.25 72.25 69.75 75 70.25 71.5 69.5 74.5 68.25 67.5 70.75 69.25 68.5 65.75 66">
+<param name="multiRegnModel" value="30.0 0.53 -0.80 5.0">
+<param name="randomSeed" value="755945782">
+<param name="decimals" value="3">
+<param name="maxCoeff" value="999.99 99.999 99.999">
+<param name="coeffAxis0" value="-50 150 -50 50">
+<param name="coeffAxis1" value="0 1 0 0.2">
+<param name="coeffAxis2" value="-2 0.5 -2 0.5">
+<param name="customText" value="Slope for=Slope for#Show theory=Show theory">
+</applet> 
+</div>
+
+<p>Click <strong>Accumulate</strong> then take several samples. Observe that all 
+three least squares estimates vary from sample to sample and have distributions 
+that are centred on the true underlying population parameters (30, 0.53 and -0.808).</p>
+<p>Click <strong>Show theory</strong> to see the theoretical normal distributions 
+of the parameter estimates. (Although we have not given complete formulae for 
+their standard deviations, CAST can work them out.)</p>
+</div>
+
+
+
+
+<h2 class="pageName">11.7.4 &nbsp; Estimate of error standard deviation</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Need to estimate the error standard deviation</p>
+<p>We stated on the previous page that the three least squares estimates have 
+normal distributions whose standard deviations depend on the x-values and z-values 
+in the data set and also on the population error standard deviation, σ</p>
+
+<p class="eqn"><img src="../../../en/regnInfTwo/images/lseDistn.gif" width="245" height="69"></p>
+<p>The standard deviations of the parameter estimates are particularly important 
+since they describe the accuracy of the estimates.</p>
+<p>The green functions depend only on the x- and z-values in the data, so they 
+can be evaluated from a single data set, but the value of σ 
+is unknown in practice. We therefore need an estimate of σ 
+in order to get information about the accuracy of the estimates.</p>
+<p class="heading">Estimate of the error variance</p>
+
+<div class="centred"><div class="boxed">
+<p>For notational convenience, we will describe estimation 
+of the error variance, rather than its square root, the error standard deviation.</p>
+</div></div>
+
+<p>The sum of squared residuals from the least squares equation form the basis 
+of our estimate of σ<sup>2</sup>.</p>
+<p class="eqn"><img src="../../../en/regnInfTwo/images/residSsqTwo.gif" width="177" height="26"></p>
+<p>The residual sum of squares has a distribution called a chi-squared distribution 
+with (<em>n</em>&nbsp;-&nbsp;3) degrees of freedom.</p>
+<p class="eqn"><img src="../../../en/regnInfTwo/images/residSsqDistn.gif" width="201" height="26"></p>
+<p>Since the mean of a chi-squared distribution equals its degrees of freedom, 
+our best estimate of σ<sup>2</sup> 
+is the mean residual sum of squares,</p>
+<p class="eqn"><img src="../../../en/regnInfTwo/images/errorVarEst.gif" width="231" height="44"></p>
+<div class="diagram">
+<p class="heading">Simulation</p>
+
+<p>The diagram below again generates random responses from the model</p>
+<p class="eqn"><img src="../../../en/regnInfTwo/images/bodyFatModel.gif" width="397" height="44"></p>
+<div class="centred"> 
+<applet codebase="../../../java" code="multiRegnProg.ResidSsqDistnApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="yAxis" value="0 50 0 10">
+<param name="xAxis" value="65 120 70 10">
+<param name="zAxis" value="63 76 65 5">
+<param name="yVarName" value="Body fat">
+<param name="xVarName" value="Abdomen">
+<param name="zVarName" value="Height">
+<param name="noOfDataSets" value="3">
+<param name="dataName" value="n = 8">
+<param name="xValues" value="88.6 100.5 83.5 108.1 70.4 98.3 84.6 98.6">
+<param name="zValues" value="73.5 73.5 69 67 66.75 65.75 71.5 69.25">
+<param name="dataName2" value="n = 25">
+<param name="xValues2" value="88.6 100.5 83.5 108.1 70.4 98.3 84.6 98.6 86.5 94 92.3 87.5 87 106.6 106.8 92.4 90.8 104.5 101.2 89.7 84.4 88.7 93 100.5 111.5">
+<param name="zValues2" value="73.5 73.5 69 67 66.75 65.75 71.5 69.25 73 72 69.25 72.25 69.75 75 70.25 71.5 69.5 74.5 68.25 67.5 70.75 69.25 68.5 65.75 66">
+<param name="dataName3" value="n = 100">
+<param name="xValues3" value="85.2 83.0 87.9 86.4 100.0 94.4 90.7 88.5 82.5 88.6 83.6 90.9 91.6 101.8 96.4 92.8 96.4 97.5 89.6 100.5 95.9 98.8 76.4 80.0 76.3 79.7 74.6 88.7 73.9 83.5 88.7 84.5 79.1 100.5 115.6 113.1 100.9 98.8 108.1 104.3 111.2 104.3 76.0 81.5 73.7 79.5 83.4 70.4 86.7 77.9 82.0 79.6 77.6 100.0 99.8 104.2 105.3 98.3 104.8 94.7 102.4 99.7 105.5 100.3 83.9 86.6 78.4 84.6 91.5 82.8 82.9 76.0 83.3 81.8 78.8 95.0 95.4 98.6 95.8 89.0 97.8 94.9 99.8 89.7 88.1 90.9 86.0 86.5 95.6 93.2 83.1 97.5 88.8 91.6 86.7 88.2 94.0 95.0 92.0 89.2">
+<param name="zValues3" value="67.75 72.25 66.25 72.25 71.25 74.75 69.75 72.50 74.00 73.50 74.50 76.00 69.50 71.25 69.50 66.00 71.00 71.00 67.75 73.50 68.00 69.75 68.25 70.00 67.75 71.50 67.50 67.50 64.75 69.00 73.75 71.25 71.25 71.00 73.50 65.00 70.00 68.25 67.00 69.50 70.00 71.50 68.00 73.25 67.50 71.25 68.50 66.75 72.25 69.00 67.75 73.50 67.50 72.00 68.00 69.50 70.75 65.75 73.25 68.50 70.25 67.00 70.00 67.50 70.75 71.50 69.25 71.50 71.50 68.75 73.75 64.00 65.75 67.50 69.50 68.50 70.25 69.25 67.75 67.25 72.75 70.00 69.25 67.50 67.25 65.75 72.50 73.00 70.00 69.50 70.50 71.75 74.50 73.25 66.50 68.25 72.00 73.50 72.0 71.25">
+<param name="multiRegnModel" value="30.0 0.53 -0.80 5.0">
+<param name="randomSeed" value="755945782">
+<param name="decimals" value="3">
+<param name="maxSsq" value="9999.9 999.99 9.999 99.99">
+<param name="ssqAxis" value="0 4000 0 1000">
+<param name="meanSsqAxis" value="0 100 0 20">
+</applet> 
+</div>
+
+<p>Click <strong>Take sample</strong> several times to build up the sampling distribution 
+of the residual sum of squares and the best estimate of σ<sup>2</sup>, 
+the mean residual sum of squares.</p>
+<ul>
+<li>Observe that the sampling distribution matches the theoretical chi-squared 
+distributions for these statistics.</li>
+</ul>
+<p>Increase the sample size, <em>n</em>, with the pop-up menu.</p>
+
+
+<ul>
+<li>Observe that the estimate of σ<sup>2</sup> 
+has lower spread when the sample size is bigger &mdash; it becomes a more accurate 
+estimate.</li>
+</ul>
+<br>
+</div>
+
+
+<p class="heading">Reason for dividing by (<em>n</em>&nbsp;-&nbsp;3)</p>
+<p>You may be wondering why different divisors have been used when estimating 
+σ<sup>2</sup> 
+for the models that we have encountered so far. In particular,</p>
+
+<div class="centred"><table border="1" class="centred" cellpadding="4" cellspacing="0">
+<tr> 
+<th>Model</th>
+<th>Estimate of variance</th>
+</tr>
+<tr bgcolor="#FFFFFF"> 
+<td valign="middle"><img src="../../../en/regnInfTwo/images/normModel0.gif" width="137" height="21"></td>
+<td><img src="../../../en/regnInfTwo/images/errorVarEst0.gif" width="138" height="42"></td>
+</tr>
+<tr bgcolor="#FFFFFF"> 
+<td valign="middle"><img src="../../../en/regnInfTwo/images/normModelUni.gif" width="199" height="21"></td>
+<td><img src="../../../en/regnInfTwo/images/errorVarEst1.gif" width="138" height="42"></td>
+</tr>
+<tr bgcolor="#FFFFFF"> 
+<td valign="middle"><img src="../../../en/regnInfTwo/images/normModelTwo.gif" width="257" height="21"></td>
+<td><img src="../../../en/regnInfTwo/images/errorVarEst2.gif" width="138" height="44"></td>
+</tr>
+</table></div>
+
+<p>As extra parameters are added to the model, it is <strong>expected</strong> 
+that the least squares residuals will become smaller. After all, the parameter 
+estimates are chosen specifically to make the residual sum of squares as small 
+as possible, so adding parameters to the model should allow us to reduce the residual 
+sum of squares.</p>
+
+<div class="centred"><div class="boxed">
+<p>The greater the number of parameters in a model, 
+the smaller the denominator for the best estimate of the error variance.</p>
+</div></div>
+
+
+<p class="gray">(You may spot the pattern here and may be able to make 
+a good guess at the denominator to use for models with other numbers of explanatory 
+variables!)</p>
+
+<div class="diagram">
+<p class="heading">Simulation</p>
+
+<p>To illustrate the need for a lower divisor when more explanatory variables 
+are used, we again investigate models for percentage body fat. However we will 
+now use two explanatory variables that are <strong>unrelated</strong> to body 
+fat.</p>
+<ul>
+<li>Birthday, coded as 1 for 1st January to 356 for 31st December</li>
+<li>Last two digits of phone number (00 to 99)</li>
+</ul>
+
+<p>We therefore simulate the body fat of the 25 men using the simple model,</p>
+<p class="eqn"><img src="../../../en/regnInfTwo/images/bodyFatModel0.gif" width="183" height="21"></p>
+<p>A scatterplot of percentage body fat against birthday for a sample of men is 
+shown below. </p>
+<div class="centred"> 
+<applet codebase="../../../java" code="multiRegnProg.ResidSsqSampleApplet.class" archive="coreCAST.jar" width="600" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="yAxis" value="0 50 0 10">
+<param name="xAxis" value="-5 370 0 50">
+<param name="zAxis" value="0 100 0 20">
+<param name="yVarName" value="Body fat">
+<param name="xVarName" value="Birthday">
+<param name="zVarName" value="Phone no">
+<param name="randomSeed" value="6456893">
+<param name="multiRegnModel" value="25 0 0 7">
+<param name="xValues" value="357 64 165 108 12 278 335 9 322 56 16 354 348 278 187 114 247 62 108 354 30 255 29 194 265">
+<param name="zValues" value="18 25 30 1 6 78 17 63 99 74 35 11 68 23 64 50 6 64 73 34 35 67 66 14 61">
+<param name="modelParams" value="10.00 0.000 0.000 5">
+<param name="biggestRss" value="99999">
+<param name="paramMinMax" value="-99.99 99.99 -9.999 9.999 -9.999 9.999">
+<param name="initialRotation" value="0 0">
+<param name="customText" value="resid=resid#Another data set=Another data set#Parameter=Parameter#Zero=Zero#Drag=Drag#Fix at best=Fix at best#Constant=Constant#Min resid ssq=Min resid ssq">
+</applet>
+</div>
+
+<ol>
+<li><strong>Drag</strong> the red arrow to minimise the residual sum of squares. 
+(The minimum occurs at the mean of the body fat measurements.)</li>
+<li>Now select the option <strong>Best</strong> from the pop-up menu associated 
+with 'Constant' on the right. A new arrow appears allowing you to predict body 
+fat as a linear function of birthday. Observe that the residual sum of squares 
+can be reduced from the lowest value from the model with no explanatory variables.</li>
+<li>Finally, click the y-x-z rotation button to rotate the display and select 
+the option <strong>Best</strong> from the pop-up menu associated with 'Birthday'. 
+Drag the arrow corresponding to Phone number to again minimise the residual sum 
+of squares.</li>
+</ol>
+<br>
+
+
+<div class="centred"><div class="boxed">
+<p>Each additional explanatory variable in the model 
+allows the residual sum of squares to be reduced, <strong>even though 
+the explanatory variables are totally unrelated to the response</strong>.</p>
+</div></div>
+
+<p>Click <strong>Another data set</strong> and verify that this happens whatever 
+the data set.</p>
+</div>
+
+
+
+
+<h2 class="pageName">11.7.5 &nbsp; 95% confidence intervals for coefficients</h2><!DOCTYPE HTML>
+
+
+<p class="heading">If the error variance was known</p>
+<p>The three parameter estimates have normal distributions,</p>
+
+<p class="eqn"><img src="../../../en/regnInfTwo/images/lseDistn.gif" width="245" height="69"></p>
+<p>If the value of the error standard deviation, σ, 
+was known, a 95% confidence interval for each parameter would be 1.96 standard 
+deviations on each side of the estimate. For example, a 95% CI for β<sub>1</sub> 
+could be evaluated as:</p>
+<p class="eqn"><img src="../../../en/regnInfTwo/images/ci95Known.gif" width="186" height="21"></p>
+<p class="heading">Using an estimate of the error variance</p>
+<p>In practice, σ<sup>2</sup> 
+is rarely a known value, so it must be replaced by an estimate,</p>
+<p class="eqn"><img src="../../../en/regnInfTwo/images/errorVarEst2.gif" width="138" height="44"></p>
+<p>To take account of the additional uncertainty caused by this estimate, the 
+constant 1.96 must also be replaced by a larger value that is obtained from t-tables 
+with (<em>n</em>&nbsp;-&nbsp;3) degrees of freedom. For example,</p>
+<p class="eqn"><img src="../../../en/regnInfTwo/images/ci95Unknown.gif" width="189" height="22"></p>
+<p class="heading">Properties</p>
+<p>As with all earlier confidence intervals, there is a 95% chance that the 95% 
+confidence interval will include the true parameter value.</p>
+
+<div class="centred"><div class="boxed">
+<p>There is a 5% chance that the confidence interval 
+will <strong>not</strong> include the true parameter value.</p>
+</div></div>
+
+<br>
+<div class="diagram">
+<p class="heading">Simulation</p>
+
+<p>The diagram below generates random responses from the model</p>
+    <p class="eqn"><img src="../../../en/regnInfTwo/images/bodyFatModel.gif" width="397" height="44"></p>
+    <p>The diagram initially shows the 95% CI for the slope parameter associated 
+      with Abdomen.</p>
+    <div class="centred"> 
+<applet codebase="../../../java" code="multiRegnProg.CoeffCIApplet.class" archive="coreCAST.jar" width="500" height="550">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="yAxis" value="0 50 0 10">
+<param name="xAxis" value="65 120 70 10">
+<param name="zAxis" value="63 76 65 5">
+<param name="yVarName" value="Body fat">
+<param name="xVarName" value="Abdomen">
+<param name="zVarName" value="Height">
+<param name="randomSeed" value="6456893">
+<param name="multiRegnModel" value="30.0 0.53 -0.81 5">
+<param name="xValues" value="88.6 100.5 83.5 108.1 70.4 98.3 84.6 98.6 86.5 94 92.3 87.5 87 106.6 106.8 92.4 90.8 104.5 101.2 89.7 84.4 88.7 93 100.5 111.5">
+<param name="zValues" value="73.5 73.5 69 67 66.75 65.75 71.5 69.25 73 72 69.25 72.25 69.75 75 70.25 71.5 69.5 74.5 68.25 67.5 70.75 69.25 68.5 65.75 66">
+<param name="ciDecimals" value="2 3 3">
+<param name="coeffAxis0" value="-100 180 -100 50">
+<param name="coeffAxis1" value="-0.05 1.05 0 0.2">
+<param name="coeffAxis2" value="-3 1.3 -3 1">
+<param name="maxCoeff" value="-99.99 99.999 99.999">
+<param name="overallMaxCoeff" value="999.99">
+<param name="customText" value="Slope for=Slope for#CI=CI#resid=resid#Propn including=Propn including#to=to">
+</applet> 
+</div>
+
+    <p> Click <strong>Accumulate</strong> then take several samples to see the variability 
+      of these confidence intervals and observe that about 95% of them do include 
+      the true parameter (0.53).</p>
+<p>Use the pop-up menu to repeat this exercise for the other two parameters of 
+the model.</p>
+</div>
+
+
+<p class="heading">Calculating the confidence intervals</p>
+<p>We have not given full formulae for the confidence intervals, only an indication 
+of how they are calculated &mdash; we have not given enough detail for you to find 
+the confidence intervals by hand.</p>
+
+
+<div class="centred"><div class="boxed">
+<p>In practice, statistical software should always 
+be used to fit linear models and to evaluate confidence intervals.</p>
+</div></div>
+
+
+
+
+
+<h2 class="pageName">11.7.6 &nbsp; Hypothesis tests for coefficients</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Importance of zero slopes</p>
+<p>It is of particular importance to ask whether both explanatory variables are 
+needed in the model. If a variable is unimportant, its slope parameter will be 
+zero, so we are interested in testing the two pairs of hypotheses</p>
+<p class="eqn"><img src="../../../en/regnInfTwo/images/slope1Hypoth.gif" width="87" height="43" align="absmiddle"> 
+&nbsp; &nbsp; and &nbsp; &nbsp; <img src="../../../en/regnInfTwo/images/slope2Hypoth.gif" width="87" height="43" align="absmiddle"> 
+</p>
+<p class="heading">Test statistics</p>
+<p>The test statistics for these two tests are based on the two parameter estimates 
+and the same estimates of their standard deviations that were used to obtain confidence 
+intervals (the <strong>standard errors</strong> of the estimates). For example, 
+the test statistic for β<sub>1</sub> 
+is </p>
+<p class="eqn"><img src="../../../en/regnInfTwo/images/tStatistic.gif" width="224" height="41"></p>
+<p class="heading">P-values</p>
+<p>If the null hypotheses are true, the two test statistics have t distributions 
+with (<em>n</em>&nbsp;-&nbsp;3) degrees of freedom. The p-values for the tests 
+are therefore the tail-areas of this t-distribution, as illustrated in the diagram 
+below.</p>
+<div class="diagram">
+<p class="heading">Simulation to illustrate calculations</p>
+
+<p>In order to show how the p-values are calculated, we will generate data from 
+a model that explains percentage body fat in terms of abdomen circumference. We 
+also record telephone numbers (last two digits) for the individuals as a second 
+explanatory variable that is unrelated to body fat.</p>
+<p class="eqn"><img src="../../../en/regnInfTwo/images/bodyFatModel1.gif" width="347" height="44"></p>
+<p>A single sample from this model is shown in the diagram below with the least 
+squares plane.</p>
+<div class="centred"> 
+<applet codebase="../../../java" code="multiRegnProg.CoeffTestApplet.class" archive="coreCAST.jar" width="550" height="600">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="yAxis" value="0 50 0 10">
+<param name="xAxis" value="65 120 70 10">
+<param name="zAxis" value="0 100 0 20">
+<param name="yVarName" value="Body fat">
+<param name="xVarName" value="Abdomen">
+<param name="zVarName" value="Phone no">
+<param name="randomSeed" value="6456893">
+<param name="multiRegnModel" value="-30.0 0.5 0.0 5">
+<param name="xValues" value="88.6 100.5 83.5 108.1 70.4 98.3 84.6 98.6 86.5 94 92.3 87.5 87 106.6 106.8 92.4 90.8 104.5 101.2 89.7 84.4 88.7 93 100.5 111.5">
+<param name="zValues" value="18 25 30 1 6 78 17 63 99 74 35 11 68 23 64 50 6 64 73 34 35 67 66 14 61">
+<param name="maxCoeff" value="-99.99 99.999 99.9999">
+<param name="maxT" value="-99.999">
+<param name="customText" value="Slope for=Slope for#St error=St error">
+</applet> 
+</div>
+
+<p>The diagram shows the test statistics for testing whether the coefficients 
+of the two potential explanatory variables are zero.</p>
+<ul>
+<li>The t-statistic for <em>Abdomen</em> is usually well into the right tail of 
+the t distribution, so the p-value (i.e. tail area) is usually very small.</li>
+<li>The t-statistic for <em>Phone no</em> is much less likely to be as extreme 
+and the resulting p-value is less likely to be small.</li>
+</ul>
+<p>Take a few samples and observe that for most data sets we would conclude that 
+there is strong evidence that the variable <em>Abdomen</em> is needed in the model, 
+but that there is little evidence of the need for the variable <em>Phone no</em>.</p>
+<p class="heading">Examples</p>
+<p>The diagram below shows the calculations for four real data sets. Read the 
+conclusions carefully.</p>
+
+<div class="centred"> 
+<applet codebase="../../../java" code="multiRegnProg.CoeffTestDataApplet.class" archive="coreCAST.jar" width="550" height="600">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="maxCoeff" value="-99.99 99.999 99.999">
+<param name="maxT" value="-99.999">
+<param name="noOfDataSets" value="4">
+<param name="customText" value="Slope for=Slope for#St error=St error">
+
+<param name="dataName" value="Bee energy expenditure">
+<param name="description" value="In an experiment, an entomologist recorded energy expenditure (joules/sec) for bees drinking water with different sucrose concentrations (%) and at different temperatures.">
+<param name="question" value="There is extremely strong evidence that both Temperature and Sucrose concentration affect energy expenditure of the bees. Neither variable should be omitted from the model.">
+<param name="yVarName" value="Energy">
+<param name="xVarName" value="Temperature">
+<param name="zVarName" value="Sucrose">
+<param name="yValues" value="3.1 3.7 4.7 5.5 6.7 7.3 7.9 9.2 9.3 6.0 6.9 7.5 11.5 12.9 13.4 17.5 15.8 14.7 7.7 8.3 9.5 15.7 14.3 15.9 19.1 18.0 19.9">
+<param name="xValues" value="9@20 9@30 9@40">
+<param name="zValues" value="3@20 3@40 3@60 3@20 3@40 3@60 3@20 3@40 3@60">
+<param name="yAxis" value="0 20 0 5">
+<param name="xAxis" value="17 43 20 10">
+<param name="zAxis" value="15 65 20 20">
+
+<param name="dataName2" value="Blood pressures">
+<param name="description2" value="This data set contains the systolic blood pressures of the mother, father and first-born child from each of 20 families.">
+<param name="question2" value="There is strong evidence that both mother's and father's blood pressure affects the child's blood pressure. Both variables should be used in a model to predict child's blood pressure.">
+<param name="yVarName2" value="Child BP">
+<param name="xVarName2" value="Mother BP">
+<param name="zVarName2" value="Father BP">
+<param name="yValues2" value="90 85 120 100 105 100 110 140 115 105 100 80 70 115 90 90 115 110 90 100">
+<param name="xValues2" value="130 125 140 110 145 160 120 180 120 130 125 110 90 120 150 145 130 155 110 125">
+<param name="zValues2" value="140 120 180 150 175 120 145 160 190 135 150 125 140 170 150 155 160 125 140 150">
+<param name="yAxis2" value="60 145 60 20">
+<param name="xAxis2" value="80 190 80 20">
+<param name="zAxis2" value="110 200 120 20">
+
+<param name="dataName3" value="Body fat for 25 men">
+<param name="description3" value="Body fat was measured using an underwater weighing technique from 251 men. This data set shows percentage body fat, abdomen circumference (cm) and height (cm) from 25 of the men.">
+<param name="question3" value="There is strong evidence that both abdomen circumference and height help in predicting body fat. Note that these data are observational so we cannot conclude that the relationship is causal.">
+<param name="yVarName3" value="Body fat">
+<param name="xVarName3" value="Abdomen">
+<param name="zVarName3" value="Height">
+<param name="yAxis3" value="0 50 0 10">
+<param name="xAxis3" value="65 120 70 10">
+<param name="zAxis3" value="63 76 65 5">
+<param name="yValues3" value="12 16.5 9.4 31.3 5 24 13.2 18.6 14.3 21.7 21 17.9 15 20.1 24.5 22 16.5 16.8 23.8 22.6 11.3 15.1 16.9 28.8 28.3">
+<param name="xValues3" value="88.6 100.5 83.5 108.1 70.4 98.3 84.6 98.6 86.5 94 92.3 87.5 87 106.6 106.8 92.4 90.8 104.5 101.2 89.7 84.4 88.7 93 100.5 111.5">
+<param name="zValues3" value="73.5 73.5 69 67 66.75 65.75 71.5 69.25 73 72 69.25 72.25 69.75 75 70.25 71.5 69.5 74.5 68.25 67.5 70.75 69.25 68.5 65.75 66">
+
+<param name="dataName4" value="Heart catheter length">
+<param name="description4" value="In heart catheterisation, a catheter is passed through a major vein or artery from the leg and positioned by X-rays in the heart. How might the surgeon predict the length of catheter to use? Catheter length (cm), height (in) and weight (lb) were recorded from 12 children.">
+<param name="question4" value="There is no evidence that the slope coefficient for Height is non-zero. Similarly, there is no evidence that the Weight variable is needed in the model. However although either of the two variables could be dropped from the model on its own, you should NOT conclude that BOTH variables can be omitted from the model together.">
+<param name="yVarName4" value="Catheter">
+<param name="xVarName4" value="Height">
+<param name="zVarName4" value="Weight">
+<param name="yValues4" value="37 50 34 36 43 28 37 20 34 30 38 47">
+<param name="xValues4" value="42.8 63.5 37.5 39.5 45.5 38.5 43.0 22.5 37.0 23.5 33.0 58.0">
+<param name="zValues4" value="40.0 93.5 35.5 30.0 52.0 17.0 38.5 8.5 33.0 9.5 21.0 79.0">
+<param name="yAxis4" value="15 55 20 10">
+<param name="xAxis4" value="20 65 20 10">
+<param name="zAxis4" value="0 100 0 20">
+</applet> 
+</div>
+
+</div>
+
+<p>Pay particular attention to the conclusion for the <em>Catheter length</em> 
+data set above. Even though both p-values are large, you should not conclude that 
+<strong>neither</strong> variable is needed to predict catheter length. It is 
+reasonable to drop either one of the variables (since their p-values are both 
+greater than 0.2) but not necessarily both variables <strong>together</strong>.</p>
+<p>The next section of CAST explains this problem with the interpretation of the 
+two t-tests in more detail &mdash; it is related to the high correlation of the two 
+explanatory variables.</p>
+
+
+
+
+</html>

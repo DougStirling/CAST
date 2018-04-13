@@ -1,0 +1,1183 @@
+<html>
+<head>
+  <title>8. Simple Linear Regression</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 8 &nbsp; Simple Linear Regression</h1>
+<h1 class="sectionName">8.1 &nbsp; Leverage, outliers and influence</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Leverage</li>
+<li>Outliers and leverage</li>
+<li>Variances of the residuals</li>
+<li>Standardised residuals</li>
+<li>Deleted residuals</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='6'>
+<li>Externally studentised residuals</li>
+<li>Influence on fitted values</li>
+<li>Influence on regression coefficients</li>
+<li>Summary and examples</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">8.1.1 &nbsp; Leverage</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Normal regression model</p>
+	<p>In this chapter, we return to the normal linear model, in which the <em>i</em>'th 
+		response value in the data set has distribution,</p>
+	
+  <p class="eqn"><img src="../../../en/ssq/images/regnModel.gif" width="199" height="21" align="absmiddle"></p>
+	<p>This model is often expressed in the equivalent form,</p>
+	<p class="eqn"><img src="../../../en/regnAnova/images/normModel.gif" width="359" height="21" align="absmiddle"></p>
+	<p>The least squares estimates of β<sub>0</sub> and β<sub>1</sub> 
+		are again denoted by <em>b</em><sub>0</sub> 
+		and <em>b</em><sub>1</sub>.</p>
+	<p class="heading">Variability of the least squares line</p>
+	<p>The variability of the least squares line can be described in terms of the 
+		variability of the predictions that are made from it at different <span class="em red">x</span> .</p>
+	<p class=eqn><img src="../../../en/diagnostics/images/prediction.gif" width="112" height="20" alt="eqn"> 
+	</p>
+	<p>These predictions have standard deviation,</p>
+	<p class=eqn><img src="../../../en/diagnostics/images/predictionSD.gif" width="218" height="55" alt="eqn"> 
+	</p>
+	<p>From this equation, it is clear that the standard deviation is lowest when 
+		predicting at a value <span class="red em">x</span>  that is close 
+		to the mean of the x-values in the data, <img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline">.</p>
+	<div class="diagram"> 
+		<p class="heading">Variability of predictions</p>
+		<p>The diagram below simulates data from a normal linear model.</p>
+
+<div class="centred"> 
+<applet codebase="../../../java" code="linModProg.LeverageGraphApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="regnModel" value="3.30 0.75 0.6">
+<param name="xValues" value="2.8 3.8 2.81 3.14 3.1 2.35 3.67 1.46 3.5 3.71 1.92 2.56 3.48 3.95 3.66 2.99 1.93 2.1">
+<param name="horizAxis" value="0.5 5.5 1 1">
+<param name="vertAxis" value="2.5 8.0 3 1">
+<param name="randomSeed" value="345945782">
+<param name="fitVarAxis" value="0 0.3025 0 0.1">
+<param name="fitSDAxis" value="0 0.55 0 0.1">
+<param name="customText" value="Scale for prediction spread=Scale for prediction spread#St devn of prediction=St devn of prediction#Variance of prediction=Variance of prediction">
+</applet> 
+</div>
+
+		<p>Click <strong>Accumulate</strong> then take about 30 samples. Observe that 
+			the least squares line is most variable at values of <span class="em red">x</span>  
+			to the left and right of the diagram (away from <img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline">).</p>
+		<p>The standard deviation of the predictions is shown as the graph at the 
+			bottom of the diagram. Use the pop-up menu to change the scale in this graph 
+			to show the variances of the predictions (the square of their standard deviation). 
+			This is a quadratic function of <span class="em red">x</span> .</p>
+		
+	</div>
+		
+	<p class="heading">Choosing the x-values</p>
+	<p>In an experiment, the researcher often has control over the x-values that 
+		are used for runs of the experiment. Looking again at the standard deviation 
+		of predictions,</p>
+	<p class=eqn><img src="../../../en/diagnostics/images/predictionSD.gif" width="218" height="55" alt="eqn"> 
+	</p>
+	<p>it can be seen from the blue sum of squares that the predictions are less 
+		variable (more accurate) when the spread of x-values in the data is large. 
+		The most 'important' observations in the data set are therefore those that 
+		increase this sum of squares &mdash; observations that are far from <img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline">.</p>
+	<p class="heading">Choosing the x-value for <span class="red">one</span> 
+		extra run of an experiment</p>
+	<p>Another way to look at the importance of observations at different x-values 
+		is to consider the effect of taking an <strong>extra</strong> observation 
+		at <span class="em red">x</span> . The best value for <span class="em red">x</span>  
+		is one that increases the spread of x-values &mdash; a value far from the mean 
+		of the earlier observations, <img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline">.</p>
+	<p>Another equivalent way to describe this choice can be more easily extended 
+		in later chapters. A new observation at <span class="em red">x</span>  
+		will have most direct effect on improving predictions at <span class="em red">x</span>  
+		itself. The improvement will be greatest if the prediction at <span class="em red">x</span>  
+		was poor (large variance) before the new observation.</p>
+	
+<div class="centred"><div class="boxed">
+<p>The best place to make an extra observation 
+						is at an x-value <strong>where the fitted values have 
+						greatest variance</strong>.</p>
+</div></div>
+
+	<p>The potential benefit of making a new observation at <span class="em red">x</span>  
+		can therefore be described by its <strong>leverage</strong>.</p>
+	<p class=eqn><img src="../../../en/diagnostics/images/leverageAtX.gif" width="319" height="53" alt="eqn"> 
+	</p>
+	<div class="diagram"> 
+		<p class="heading">Effect of an extra observation at <span class="em red">x</span> </p>
+		<p>The diagram below describes the normal linear model</p>
+		<p class=eqn><img src="../../../en/diagnostics/images/exampleModel.gif" width="349" height="21" alt="eqn"> 
+		</p>
+		<p>where observations are made at <em>x</em>&nbsp;=&nbsp;15, 18, 25 and 26.</p>
+		<p>The band contains 95% of the least squares lines that would be obtained 
+			from a simulation such as the simulation earlier in this page. (More precisely, 
+			the band contains 95% of the predictions that would be obtained at each 
+			<em>x</em>.)</p>
+
+<div class="centred"> 
+<applet codebase="../../../java" code="linModProg.AddPointEffectApplet.class" archive="coreCAST.jar" width="400" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="regnModel" value="10 2 5">
+<param name="xValues" value="15 18 25 26 ?">
+<param name="vertAxis" value="0 100 0 20">
+<param name="horizAxis" value="5 35 5 5">
+<param name="xLimits" value="5.0 35.0 0.1 20.0">
+<param name="labelAxes" value="true">
+<param name="customText" value="Extra point at=Extra point at">
+</applet> 
+</div>
+
+		<p>Click <strong>Extra point at</strong> to see how the distribution of the 
+			predictions changes when a fifth data point is added. The response distribution 
+			at this <span class="em red">x</span>  is represented by a red 
+			arrow ±2σ 
+			on each side of the response mean &mdash; i.e. on each side of the regression 
+			line at <span class="em red">x</span> .</p>
+		<p>Use the slider to see how the distribution of the predictions is affected 
+			by the x-value at which the new observation is made. The prediction band 
+			is narrowed by the new observation and this narrowing is most pronounced 
+			when <span class="em red">x</span>  is furthest from <img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline">&nbsp;=&nbsp;21. 
+		</p>
+		</div>
+	
+	<p class="heading">Leverage of existing data points</p>
+	<p>Leverage can be used to describe the potential effect of a new observation 
+		at <strong>any</strong> x-value, but it is most often used to describe the 
+		importance of the <strong>existing</strong> data points.</p>
+	<p class=eqn><img src="../../../en/diagnostics/images/leverageAtXi.gif" width="303" height="53" alt="eqn"> 
+	</p>
+	
+<div class="centred"><div class="boxed">
+<p>Note that leverage does not depend on 
+						the response, only on the explanatory variable.</p>
+</div></div>
+
+	
+	
+
+<h2 class="pageName">8.1.2 &nbsp; Outliers and leverage</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Problem with high-leverage observations</p>
+  <p>High leverage is a good thing if you <strong>know</strong> that all data arose 
+		from a normal linear model of the form</p>
+	<p class="eqn"><img src="../../../en/regnAnova/images/normModel.gif" width="359" height="21" align="absmiddle"></p>
+	<p>However in practice, we are never certain that all data came from such a 
+		model. Possible problems include outliers, curvature, non-constant variance 
+		and non-normal errors. If a normal linear model does not underlie all the 
+		data, high leverage points can badly affect the least squares estimates of 
+		the parameters.</p>
+	<p>The potential damage from high-leverage points is greatest when there are 
+		outliers in the data &mdash; response values that are unusually far from the regression 
+		line.</p>
+	
+<div class="centred"><div class="boxed">
+<p>If a high-leverage point is also an outlier, 
+						it will cause the least squares line to be much less accurate.</p>
+</div></div>
+
+	<p class="heading">Outliers and errors</p>
+	<p>An outlier is a measurement that does not fit in with the pattern exhibited 
+		by the rest of the data. By definition, an outlier does not satisfy the normal 
+		linear model that fits the rest of the data, so it should be omitted from 
+		the analysis. </p>
+	
+<div class="centred"><div class="boxed">
+<p>In a regression situation, an outlier corresponds to a large 
+				error, &epsilon;.</p>
+</div></div>
+
+	<p>In a scatterplot, the point is unusually far above or below the regression 
+		line.</p>
+	<p class=eqn> <img class="gif" src="../../../en/regnProblem/images/outlierError.gif" id="gif_image_1_2_2" width="297" height="274"><iframe class="svg" src="../../../en/regnProblem/images/outlierError.svg" id="svg_image_1_2_2" width="297" height="274" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_1_2_2");</script> 
+</p>
+	<p class="heading">Outliers and residuals</p>
+	<p>Unfortunately, in a real data set, the errors are unknown, so we must use 
+		the residuals from the least squares line as estimates of the errors. The 
+		residuals can be used in a similar way to give information about whether there 
+		is an outlier.</p>
+	<p class=eqn> <img class="gif" src="../../../en/regnProblem/images/errorsDiagram.gif" id="gif_image_1_2_1" width="297" height="274"><iframe class="svg" src="../../../en/regnProblem/images/errorsDiagram.svg" id="svg_image_1_2_1" width="297" height="274" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_1_2_1");</script> 
+		<img class="gif" src="../../../en/regnProblem/images/residualsDiagram.gif" id="gif_image_1_2_3" width="297" height="274"><iframe class="svg" src="../../../en/regnProblem/images/residualsDiagram.svg" id="svg_image_1_2_3" width="297" height="274" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_1_2_3");</script> 
+</p>
+	<p>It might be expected that the outlier could be detected by an examination 
+		of the residuals from the model. However the high leverage usually results 
+		in a residual that is no larger than the others.</p>
+	
+<div class="centred"><div class="boxed">
+<p>An examination of residuals often fails 
+						to detect an outlier if it is a high-leverage point.</p>
+</div></div>
+
+	<br>
+	
+	<div class="diagram">
+		<p class="heading">Illustration</p>
+
+<p>The scatterplot below shows a data set and the corresponding residuals.</p>
+
+<div class="centred">
+<applet codebase="../../../java" code="residProg.DragOutlierApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="xValues" value="0.6 0.8 1.0 1.2 1.4 1.6 1.8 2.0 2.2 4.0">
+<param name="yValues" value="37 36 40 43 44 42 45 48 49 66">
+<param name="horizAxis" value="0.5 4.5 1 1">
+<param name="vertAxis" value="30 75 30 10">
+<param name="residAxis" value="-40 40 -40 20">
+<param name="customText" value="What you would like to see=What you would like to see#What you actually get=What you actually get">
+</applet>
+</div>
+
+<p>The cross on the far right can be dragged with the mouse. Initially, the diagram 
+shows what we would ideally have <span class="darkred bold">hoped</span>  
+to see in the residuals &mdash; the other points are close to a straight line, so if 
+the final cross is dragged away from this line, we would have <span class="bold darkred">hoped</span>  
+that it would result in a large residual.</p>
+<p><span class="darkred bold">This is not what actually happens.</span>  
+Choose <strong>What you actually get...</strong> from the pop-up menu at the top 
+and drag the point again. The least squares line is pulled towards the point, 
+so when it is dragged away from the line followed by the other points, its residual 
+is smaller than might be expected and the residuals for the other points are larger.</p>
+<p>This is especially evident when the point being dragged has an x-value of around 
+4 &mdash; i.e. when it is a high leverage point. Drag it down to a y-value of about 
+40 and observe that its residual is no more extreme than those of the other points.</p>
+
+<div class="centred"><div class="boxed">
+<p>Do not rely on an extreme residual to tell you whether a high-leverage 
+point is an outlier.</p>
+</div></div>
+
+
+<br>
+
+</div>
+
+  <p class="heading">High-leverage points</p>
+
+  <p>High-leverage points have a large <strong>potential</strong> to affect the 
+		results of an analysis if they correspond to observations that do not follow 
+		the linear model, but the resulting problem may not be evident in an examination 
+		of residuals. It is therefore important to identify high-leverage points.</p>
+	<p>From their definition, it can be easily shown that all leverages sum to 2.</p>
+	<p class=eqn><img src="../../../en/diagnostics/images/leverageAtXi.gif" width="303" height="53" alt="eqn"> 
+	</p>
+	<p>They therefore have an average value of <sup>2</sup>/<sub><em>n</em></sub> 
+		and their minimum possible value is <sup>1</sup>/<sub><em>n</em></sub>. A 
+		rule-of-thumb is therefore to carefully examine any points whose leverage 
+		is more than twice their average value:</p>
+	
+<div class="centred"><div class="boxed">
+<p>Carefully examine points with leverage <em>h<sub>ii</sub></em> 
+				&gt; <sup>4</sup>/<sub><em>n</em></sub></p>
+</div></div>
+
+
+  <p>It is important to note that high leverage does not necessarily mean that 
+		there is a problem.</p>
+	
+<div class="centred"><div class="boxed">
+<p>High leverage on its own does <span class="bold red">not</span>  
+				indicate that something is <span class="bold red">wrong</span>  
+				with the normal linear model. Leverage only depends on the explanatory 
+				variable and the actual response value may still be consistent with the 
+				model</p>
+</div></div>
+
+	<p>Later in this section, we will investigate whether a high-leverage point 
+		actually <strong>does</strong> influence the results.</p>
+
+
+
+
+<h2 class="pageName">8.1.3 &nbsp; Variances of the residuals</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Variance of the errors</p>
+  <p>A key assumption of the normal linear model is that all errors have the same 
+		variance,</p>
+	<p class=eqn> <img src="../../../en/diagnostics/images/errorVar.gif" width="93" height="20" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<p>All responses, <em>y<sub>i</sub></em>, therefore also have variance σ<sup>2</sup>.</p>
+	<p class="heading">Variances of the residuals</p>
+	<p>The response can be written as,</p>
+	<p class=eqn> <img src="../../../en/diagnostics/images/yComponents.gif" width="327" height="55" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<p>Now since the variances of the responses and the fitted values are,</p>
+	<p class=eqn> <img src="../../../en/diagnostics/images/yAndFitVar.gif" width="114" height="48" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<p>where <em>h<sub>ii</sub></em> is the leverage of the <em>i</em>'th observation, it can 
+		be proved that</p>
+	<p class=eqn> <img src="../../../en/diagnostics/images/residVar.gif" width="159" height="20" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<p class="gray">(A full proof involves showing that the fitted values 
+		and residuals are uncorrelated.)</p>
+	<p>Therefore although the residuals from the least squares line, <span class="em red">e<sub>i</sub></span> , 
+		can be considered to be estimates of the errors, their variances are all lower 
+		than σ<sup>2</sup>. 
+		Moreover,</p>
+
+<div class="centred"><div class="boxed">
+<p>The higher the leverage, the lower the residual variance.</p>
+</div></div>
+
+<br>
+
+<div class="diagram">
+		<p class="heading">Simulation</p>
+
+		<p>The diagram below demonstrates that all residuals do not have the same 
+			standard deviations. Response values are simulated from the model,</p>
+		<p class=eqn> <img src="../../../en/diagnostics/images/exampleModel2.gif" width="375" height="21" alt="log(wt) = log(a) + p log(len)"> 
+		</p>
+		<p>at <em>x</em>&nbsp;=&nbsp;1.0, 3.5, 4.0, 4.5 and 5.0. The residuals from 
+			the least squares line are plotted against <em>x</em> on the right of the 
+			diagram.</p>
+
+<div class="centred">
+<applet codebase="../../../java" code="linModProg.AllResidualsApplet.class" archive="coreCAST.jar" width="500" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="regnModel" value="3.30 0.75 0.6">
+<param name="xValues" value="1 3.5 4 4.5 5">
+<param name="xAxis" value="0.5 5.5 1 1">
+<param name="yAxis" value="2.0 9.0 3 1">
+<param name="randomSeed" value="345945782">
+<param name="errorAxis" value="-2 2 -2 1">
+<param name="customText" value="Display of residuals=Display of residuals">
+</applet>
+</div>
+
+		<p>Click <strong>Accumulate</strong> and take about 50 samples. Observe that 
+			the residuals have lower spread at <em>x</em>&nbsp;=&nbsp;1.0 than at the 
+			other x-values, because of its higher leverage.</p>
+		<p>Choose <strong>Box plots</strong> and <strong>±&nbsp;2&nbsp;sd</strong> 
+			from the pop-up menu to show the differences between the standard deviations 
+			of the residuals more clearly.</p>
+		<p class="heading">Theoretical distributions of the residuals</p>
+
+		<p>The diagram below shows the above regression model and the theoretical 
+			distributions of the residuals in rotating displays.</p>
+
+<div class="centred">
+<applet codebase="../../../java" code="linModProg.ResidDistnApplet.class" archive="coreCAST.jar" width="550" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="regnModel" value="3.30 0.75 1.0">
+<param name="xValues" value="1 3.5 4 4.5 5">
+<param name="xAxis" value="0.5 5.5 1 1">
+<param name="yAxis" value="0.0 11.0 0 2">
+<param name="randomSeed" value="345945782">
+<param name="errorAxis" value="-3 3 -3 1">
+<param name="initialRotation" value="35 50">
+<param name="initialResidRotation" value="5 35">
+<param name="customText" value="Distn of residuals=Distn of residuals">
+</applet>
+</div>
+<br>
+</div>
+
+
+
+
+<h2 class="pageName">8.1.4 &nbsp; Standardised residuals</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Need for standardisation</p>
+<p>In the previous page, we showed that all residuals do not have the same variance,</p>
+	<p class=eqn> <img src="../../../en/diagnostics/images/residVar.gif" width="159" height="20" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<p>Since the residuals at the high-leverage points have lower variances, they 
+		are <strong>expected</strong> to be smaller and fewer than 95% will be outside 
+		the ±2σ
+	limits that are often used to suggest outliers.</p>
+	<p class="heading">Standardisation</p>
+	<p>We therefore standardise the residuals before examining or plotting them,</p>
+	<p class=eqn> <img src="../../../en/diagnostics/images/standardResid.gif" width="303" height="42" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<p>(Remember that the mean square residual is the best estimate of σ<sup>2</sup>.
+		This has the effect of scaling up the residuals, especially for the high leverage 
+		points.</p>
+
+<div class="centred"><div class="boxed">
+<p>If the normal linear model holds, the standardised 
+						residuals will have approximately normal(0,&nbsp;1) distributions.</p>
+</div></div>
+
+<br>
+
+<div class="diagram">
+<p class="heading">Examples</p>
+
+<p>The diagram below shows a few regression data sets.
+The ordinary residuals are initially displayed on the right.</p>
+
+<div class="centred">
+<applet codebase="../../../java" code="residProg.StudentResidApplet.class" archive="coreCAST.jar" width="550" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="noOfDataSets" value="4">
+
+<param name="dataName" value="Cancer deaths and radiation">
+<param name="description" value="Radioactive waste from the Hanford Atomic Energy Plant in Washington has seeped into the Columbia River. The diagram below shows an exposure index based on distance from the river and distance from the plant, and cancer deaths per 100,000 residents.">
+<param name="yVarName" value="Deaths">
+<param name="xVarName" value="Exposure">
+<param name="yValues" value="147 130 130 114 138 162 208 178 210">
+<param name="xValues" value="2.5 2.6 3.4 1.3 1.6 3.8 11.6 6.4 8.3">
+<param name="xAxis" value="0 12 0 2">
+<param name="yAxis" value="100 250 100 50">
+<param name="decimals" value="2">
+<param name="residAxis" value="-30 30 -30 10">
+
+<param name="dataName2" value="Cat body and heart weight">
+<param name="description2" value="The heart and body weights of 47 female cats were measured.">
+<param name="xVarName2" value="Body wt (kg)">
+<param name="yVarName2" value="Heart wt (g)">
+<param name="xValues2" value="2.3 3 2.9 2.4 2.3 2 2.2 2.1 2.3 2.1 2.1 2.2 2 2.3 2.2 2.3 2.1 2 2.9 2.7 2.6 2.3 2.6 2.1 2.1 2.7 2.2 2.3 2.1 2.4 2.7 2.3 2.1 2.2 2.3 2.1 2.9 3 2.2 2.4 2.4 2.5 2.5 2.3 2.3 2.6 2.3">
+<param name="yValues2" value="9.6 10.6 9.9 8.7 10.1 7 11 8.2 9 7.3 8.5 9.7 7.4 7.3 7.1 9 7.6 9.5 10.1 10.2 10.1 9.5 8.7 7.2 9.8 10.8 9.1 11.2 8.1 10.2 8.5 10.1 8.7 10.9 7.9 8.3 10.1 13 8.7 6.3 8.8 10.9 9 9.7 8.4 10.1 10.6">
+<param name="xAxis2" value="1.7 3.2 2.0 0.5">
+<param name="yAxis2" value="5.8 14 6 2">
+<param name="decimals2" value="2">
+<param name="residAxis2" value="-3 3 -3 1">
+
+<param name="dataName3" value="Soybeans and ozone">
+<param name="description3" value="An experiment was conducted to assess how chronic levels of ozone affected the yield of soybeans. Four different ozone levels (ppm) were used.">
+<param name="yVarName3" value="Soybean yield">
+<param name="xVarName3" value="Ozone level (ppm)">
+<param name="yValues3" value="238.3 270.7 210.0 248.7 242.4 235.1 228.9 236.2 255.0 228.9 236.2 208.0 243.5 233.0 233.0 178.7 186.0 206.9 215.3 219.5">
+<param name="xValues3" value="5@0.02 5@0.07 5@0.11 5@0.15">
+<param name="xAxis3" value="0 0.17 0 0.05">
+<param name="yAxis3" value="170 280 180 20">
+<param name="decimals3" value="2">
+<param name="residAxis3" value="-50 50 -40 20">
+
+<param name="dataName4" value="Alcoholism and strength">
+<param name="description4" value="50 alcoholic men were selected from a larger group of alcoholic patients to be as similar as possible in age and physical characteristics. The total lifetime consumption of alcohol (kg per kg body wt) was determined and the strength of the non-dominant arm was measured.">
+<param name="xVarName4" value="Alcohol consumption">
+<param name="yVarName4" value="Strength (kg)">
+<param name="xValues4" value="36.2 39.7 39.5 18.2 29.2 32.5 13.2 14.8 28.6 30.8 34.5 39.7 28.3 34.5 40.3 19.1 27.7 40.8 17.7 22.8 28.3 4 5.2 11.7 12.5 13.7 15.7 17.4 18.9 20 32.3 3.5 9.8 14 18.3 19.7 29.8 9.7 11.1 32.9 10.8 14 17.5 12.6 22.6 5.2 9.4 13.5 19.1 7.4">
+<param name="yValues4" value="10 10 10.8 12.2 13.1 14 15.5 15.5 15.2 15.2 15.2 15.5 16.2 16.2 16.2 17.9 18.2 18.2 19.1 18.8 19.3 20.9 20.9 20.9 20.9 20.9 20.9 20.9 21.1 21.1 21.2 22.3 22.1 21.8 22.2 22.2 23.3 23.9 24 24.1 25.1 25.1 25.1 26.2 26.3 28.2 28.2 28.4 28.2 29.5">
+<param name="xAxis4" value="0 45 0 10">
+<param name="yAxis4" value="5 31 5 5">
+<param name="decimals4" value="2">
+<param name="residAxis4" value="-10 10 -10 5">
+
+<param name="customText" value="Data set=Data set#Ordinary residual=Ordinary residual#Standardised residual=Standardised residual">
+</applet>
+</div>
+
+		<p>Select <strong>Standardised residual</strong> from the pop-up menu to display 
+			the standardised residuals. This makes the residuals on the left and right 
+			(with higher leverage) slightly larger, relative to the residuals in the 
+			centre.</p>
+		<p>Repeat with other data sets.</p>
+</div>
+  <p class="heading">Guidelines for interpreting standardised residuals</p>
+
+  <p>If the normal linear model holds, the standardised residuals have approximately 
+		standard normal distributions. Therefore approximately 95% of them will be 
+		between -2 and +2, and almost all will be between -3 and +3.</p>
+	
+<div class="centred"><div class="boxed">
+<p>Many statistical programs automatically 
+						flag standardised residuals outside these ranges as being possible 
+						outliers.</p>
+</div></div>
+
+	<p>Note however that you should <strong>expect</strong> 5% of standardised residuals 
+		to be &gt;2 or &lt;-2, so in large data sets it is not unusual to find several 
+		residuals outside ±2 and even a few outside ±3. (There is probability 
+		0.003 that a value from the standard normal distribution will be outside ±3, 
+		so it would be <strong>expected</strong> that 3 values would be outside this 
+		range in a data set of 1,000 values.)</p>
+	
+<div class="centred"><div class="boxed">
+<p>In large data sets, do not assume that 
+						standardised residuals outside ±3 <strong>must</strong> 
+						be outliers &mdash; values a little outside can also occur by chance.</p>
+</div></div>
+
+	<br>
+	<div class="diagram">
+		<p class="heading">Illustration</p>
+
+		<p>The diagram below simulates data from a normal linear model.</p>
+
+<div class="centred">
+<applet codebase="../../../java" code="residProg.StdResidApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="xValues0" value="0.6 0.8 1.0 1.2 1.4 1.6 1.8 2.0 2.2 2.4 2.6 2.8 3.0 3.2 3.4 3.6 3.8 4.0 4.2 4.4">
+<param name="xValues1" value="0.8 3@0.9 3@1.0 3@1.1 3@1.2 3@1.3 3@1.4 3@1.5 3@1.6 3@1.7 3@1.8 3@1.9 3@2.0 3@2.1 3@2.2 3@2.3 3@2.4 3@2.5 3@2.6 3@2.7 3@2.8 3@2.9 3@3.0 3@3.1 3@3.2 3@3.3 3@3.4 3@3.5 3@3.6 3@3.7 3@3.8 3@3.9 3@4.0 2@4.1 4.2">
+<param name="xValues2" value="4@0.65 4@0.68 4@0.71 4@0.74 4@0.77 4@0.8 4@0.83 4@0.86 4@0.89 4@0.92 4@0.95 4@0.98 4@1.01 4@1.04 4@1.07 4@1.1 4@1.13 4@1.16 4@1.19 4@1.22 4@1.25 4@1.28 4@1.31 4@1.34 4@1.37 4@1.4 4@1.43 4@1.46 4@1.49 4@1.52 4@1.55 4@1.58 4@1.61 4@1.64 4@1.67 4@1.7 4@1.73 4@1.76 4@1.79 4@1.82 4@1.85 4@1.88 4@1.91 4@1.94 4@1.97 4@2 4@2.03 4@2.06 4@2.09 4@2.12 4@2.15 4@2.18 4@2.21 4@2.24 4@2.27 4@2.3 4@2.33 4@2.36 4@2.39 4@2.42 4@2.45 4@2.48 4@2.51 4@2.54 4@2.57 4@2.6 4@2.63 4@2.66 4@2.69 4@2.72 4@2.75 4@2.78 4@2.81 4@2.84 4@2.87 4@2.9 4@2.93 4@2.96 4@2.99 4@3.02 4@3.05 4@3.08 4@3.11 4@3.14 4@3.17 4@3.2 4@3.23 4@3.26 4@3.29 4@3.32 4@3.35 4@3.38 4@3.41 4@3.44 4@3.47 4@3.5 4@3.53 4@3.56 4@3.59 4@3.62 4@3.65 4@3.68 4@3.71 4@3.74 4@3.77 4@3.8 4@3.83 4@3.86 4@3.89 4@3.92 4@3.95 4@3.98 4@4.01 4@4.04 4@4.07 4@4.1 4@4.13 4@4.16 4@4.19 4@4.22 4@4.25 4@4.28 4@4.31 4@4.34 4@4.37">
+<param name="sampleSize" value="20 100 500">
+<param name="regnModel" value="33.0 7.5 6.0">
+<param name="horizAxis" value="0.5 4.5 1 1">
+<param name="vertAxis" value="25 80 30 10">
+<param name="randomSeed" value="345945782">
+<param name="residName" value="Standardised residual">
+</applet>
+</div>
+
+		<p>Initially the sample size is 20. Generate a few data sets and observe that 
+			it is not unusual to find a standardised residual outside ±2.</p>
+		<p>Increase the sample size and take a few more samples. Observe that standardised 
+			residuals outside ±3 occasionally occur.</p>
+
+</div>
+
+
+
+
+<h2 class="pageName">8.1.5 &nbsp; Deleted residuals</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Need for a better way to detect outliers</p>
+  <p>Standardised residuals are an improvement &mdash; they all have equal variance 
+		when the model is correct. However they do not fully compensate for the effect 
+		of high leverage points if there are outliers.</p>
+<div class="diagram">
+		<p class="heading">Effect of outlier on standardised residuals</p>
+
+		<p>In the diagram below, you can alter the top-right data point in the scatterplot 
+			on the left by dragging it. The diagram initially shows how the ordinary 
+			residuals are affected.</p>
+
+<div class="centred">
+<applet codebase="../../../java" code="residProg.DragStdOutlierApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="xValues" value="0.6 0.8 1.0 1.2 1.4 1.6 1.8 2.0 2.2 4.0">
+<param name="yValues" value="37 36 40 43 44 42 45 48 49 66">
+<param name="horizAxis" value="0.5 4.5 1 1">
+<param name="vertAxis" value="30 75 30 10">
+<param name="residAxis" value="-20 30 -20 10">
+<param name="customText" value="Ordinary residual=Ordinary residual#Standardised residual=Standardised residual">
+</applet>
+</div>
+
+		<p>Change the pop-up menu to display the standardised residuals on the right. 
+			Observe that this plot is more likely to be show up an outlier as a large 
+			or small standardised residual.</p>
+		
+<div class="centred"><div class="boxed">
+<p>Even standardised residuals do not show 
+							up outliers well, especially if they are high leverage points.</p>
+</div></div>
+
+		<br>
+</div>
+		
+	<p class="heading">Deleted residuals</p>
+
+		
+	<p>An alternative approach to highlighting outliers is to use <strong>deleted 
+		residuals</strong>. These are defined as</p>
+	<p class="eqn"><img src="../../../en/diagnostics/images/deletedResid.gif" width="115" height="21" align="absmiddle"></p>
+	<p>where <img src="../../../en/diagnostics/images/yiMinusi.gif" width="24" height="17" align="absmiddle"> 
+		is the prediction for the <em>i</em>'th point from the least squares line 
+		<strong>fitted to all data except the <em>i</em>'th observation</strong>.</p>
+		
+<div class="diagram">
+		<p class="heading">Illustration</p>
+
+		<p>The diagram below shows a data set with a single high-leverage outlier. 
+			The least squares line (grey) is pulled close to this point so its residual 
+			does not stand out. (Its standardised residual is not exceptional either.)</p>
+
+<div class="centred">
+<applet codebase="../../../java" code="residProg.DeletedResidApplet.class" archive="coreCAST.jar" width="550" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="xValues" value="0.6 0.8 1.0 1.2 1.4 1.6 1.8 2.0 2.2 4.0">
+<param name="yValues" value="37 36 40 43 44 42 45 48 49 46">
+<param name="xAxis" value="0.5 4.5 1 1">
+<param name="yAxis" value="30 75 30 10">
+<param name="residAxis" value="-30 20 -30 10">
+<param name="customText" value="Deleted residual=Deleted residual">
+</applet>
+</div>
+
+		<p>The deleted residuals are plotted against <em>x</em> on the right of the 
+			diagram. Click on the rightmost cross in the scatterplot on the left. The 
+			blue line is the least squares line fitted to all data points except this 
+			one. The deleted residual is the red vertical distance from the point to 
+			this line.</p>
+		<p>Click on other crosses to see how their deleted residuals are calculated.</p>
+</div>
+
+  <p class="heading">Calculating deleted residuals</p>
+	<p>Although it would seem from the definition of the deleted residuals that 
+		it is necessary to fit <em>n</em> separate least squares lines (omitting each 
+		observation once), there is a simpler formula for the deleted residuals that 
+		only depends on the ordinary residuals and the leverages,</p>
+	<p class="eqn"><img src="../../../en/diagnostics/images/deletedResid2.gif" width="107" height="36" align="absmiddle"></p>
+	<p>This formula explains why the deleted residuals give extra weight to the 
+		high-leverage points.</p>
+	<p class="heading">Problem with deleted residuals</p>
+	<p>Although the deleted residuals do highlight the outlier in the example above, 
+		they have one major problem. Whereas the ordinary residuals have smaller variance 
+		for high leverage points, the deleted residuals have <strong>larger</strong> 
+		variance for the same points. It can be shown that</p>
+	<p class="eqn"><img src="../../../en/diagnostics/images/deletedResidVar.gif" width="173" height="66" align="absmiddle"></p>
+	<p>Standardising the deleted residuals therefore results in the same values 
+		as standardising the ordinary residuals.</p>
+	<p class="eqn"><img src="../../../en/diagnostics/images/standardResid2.gif" width="123" height="42" align="absmiddle"></p>
+	
+<div class="centred"><div class="boxed">
+<p>Ordinary deleted residuals do not offer anything new.</p>
+</div></div>
+
+	<br>
+
+
+
+<h2 class="pageName">8.1.6 &nbsp; Externally studentised residuals</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Deleted estimate of standard deviation</p>
+  <p>Although ordinary deleted residuals do not offer anything new for detecting 
+		outliers, a variation is more useful. The ordinary standardised residuals 
+		use the mean residual sum of squares (MS<sub>Resid</sub>) from the full data 
+		set as an estimate of σ<sup>2</sup>,</p>
+	<p class="eqn"><img src="../../../en/diagnostics/images/standardResid3.gif" width="428" height="51" align="absmiddle"></p>
+	<p>Instead, we define the <strong>externally studentised residuals</strong>,</p>
+	<p class="eqn"><img src="../../../en/diagnostics/images/extStudentResid.gif" width="428" height="51" align="absmiddle"></p>
+	<p>where σ 
+		is now separately estimated for the <em>i</em>'th residual from the data set 
+		without the <em>i</em>'th data point. (This requires a separate calculation 
+		of MS<sub>Resid</sub> for each of the <em>n</em> deleted subsets of the data.)</p>
+
+<div class="diagram">
+		<p class="heading">Illustration</p>
+
+		<p>The diagram below shows a data set and its ordinary standardised residuals.</p>
+
+<div class="centred">
+<applet codebase="../../../java" code="residProg.ExtStudentResidApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="xValues" value="0.6 0.8 1.0 1.2 1.4 1.6 1.8 2.0 2.2 4.0">
+<param name="yValues" value="37 36 40 43 44 42 45 48 49 46">
+<param name="xAxis" value="0.5 4.5 1 1">
+<param name="yAxis" value="30 65 30 10">
+<param name="residAxis" value="-6 6 -6 2">
+<param name="sdLeftUp" value="60 30">
+<param name="sdDecimals" value="3">
+<param name="maxValues" value="-99.99 9.999 9.999 -9.99">
+<param name="customText" value="Ordinary standardised residual=Ordinary standardised residual#Externally studentised residual=Externally studentised residual">
+</applet>
+</div>
+
+		<p>Click on any cross on the left to see how the standardised residuals are 
+			calculated from the deleted residuals. (They could alternatively be found 
+			from the ordinary residuals.) Note that the denominator, <img src="../../../en/../images/symbol.sigmaHat.png" width="9" height="14" align="baseline">, 
+			is the same for each standardised residual.</p>
+		<p>Select <strong>Externaly studentised residual</strong> from the pop-up 
+			menu and repeat. Observe that the estimates of σ 
+			are different for the different observations. In particular, note that the 
+			estimate is much smaller for the high-leverage outlier, which therefore 
+			makes the externally studentised residual stand out more than the ordinary 
+			standardised one.</p>
+</div>
+
+  <p class="heading">Guidelines</p>
+
+  <p>The externally studentised residuals have approximately standard normal distributions, 
+		so they can be compared with ±2 (or ±3) to help detect outliers. 
+		Remember however that you should <strong>expect</strong> about 5% of the residuals 
+		to be outside ±2 and about 0.3% to be outside ±3, even if there 
+		are no outliers, so do <strong>not</strong> conclude that a residual outside 
+		±3 must be an outlier in large data sets.</p>
+	<p class="gray">(If the sample size, <em>n</em>, is small, the proportions 
+		outside ±2 and ±3 are actually <strong>greater</strong> than 
+		5% and 0.3%. It is actually better to replace 
+		±2 with the 95% point of the t(<em>n</em>&nbsp;-&nbsp;1) distribution, 
+		but this refinement is usually unimportant since the residuals are not used 
+		for formal testing.)</p>
+	<p>It is best to plot the externally studentised residuals against <em>x</em> 
+		or the fitted values to see whether any seem unusually large.</p>
+
+<div class="diagram">
+		<p class="heading">Illustration</p>
+
+		<p>The scatterplot on the left below shows a data set in which one observation 
+			can be altered by dragging.</p>
+
+<div class="centred">
+<applet codebase="../../../java" code="residProg.DragStdResidApplet.class" archive="coreCAST.jar" width="550" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="xValues" value="0.6 0.8 1.0 1.2 1.4 1.6 1.8 2.0 2.2 4.0">
+<param name="yValues" value="37 36 40 43 44 42 45 48 49 46">
+<param name="xAxis" value="0.5 4.5 1 1">
+<param name="yAxis" value="30 65 30 10">
+<param name="residAxis" value="-10 10 -10 5">
+<param name="customText" value="Ordinary standardised residual=Ordinary standardised residual#Externally studentised residual=Externally studentised residual">
+</applet>
+</div>
+
+		<p>The ordinary standardised residuals are plotted against <em>x</em> on the 
+			right and bands are shaded at ±1, ±2 and ±3. Drag the 
+			top-right observation and observe that the standardised residual is never 
+			outside the range ±3.</p>
+		<p>Select <strong>Externally studentised residual</strong> from the pop-up 
+			menu. When the point is dragged, observe that this residual becomes far 
+			more 'extreme' when the point is far from the line passing through the other 
+			observations (an outlier).</p>
+		
+<div class="centred"><div class="boxed">
+<p>Externally studentised residuals highlight 
+							outliers better than ordinary standardised residuals.</p>
+</div></div>
+
+		<br>
+	</div>
+		<br>
+		
+<div class="centred"><div class="boxed">
+<p>Externally studentised residuals are best for finding outliers.</p>
+</div></div>
+
+		<br>
+
+
+
+
+<h2 class="pageName">8.1.7 &nbsp; Influence on fitted values</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Leverage and influence</p>
+  <p>High-leverage points have the <strong>potential</strong> to strongly influence 
+		the conclusions from a data set.</p>
+	<p>Leverage is only a function of the explanatory variable, and we also need 
+		to take into account the response values for any high-leverage points to see 
+		whether they are <strong>actually</strong> influential.</p>
+
+<div class="diagram">
+		<p class="heading">Examples</p>
+
+		<p>The two diagrams below show data sets with one high-leverage point.</p>
+
+<div class="centred">
+<applet codebase="../../../java" code="residProg.DeleteInfluenceApplet.class" archive="coreCAST.jar" width="550" height="280">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="xValues" value="0.6 0.8 1.0 1.2 1.4 1.6 1.8 2.0 2.2 4.2">
+<param name="yValues" value="37 36 40 43 44 42 45 48 49 63">
+<param name="y2Values" value="37 36 40 43 44 42 45 48 49 40">
+<param name="horizAxis" value="0.5 4.5 1 1">
+<param name="vertAxis" value="30 65 30 10">
+<param name="customText" value="high leverage=high leverage#high influence=high influence#low influence=low influence#Delete high leverage points=Delete high leverage points">
+</applet>
+</div>
+
+		<p>Click <strong>Delete high leverage points</strong> to delete the point 
+			with high leverage from both data sets. Observe that deleting the point...</p>
+		<ul>
+			<li>... has little effect on the least squares line on the left &mdash; the point 
+				has low influence.</li>
+			<li>... greatly affects the least squares line on the right &mdash; it has high 
+				influence. </li>
+		</ul>
+</div>
+
+  <p class="heading">Measuring influence</p>
+
+  <p>We have described a point's 'influence' as its effect on the conclusions 
+		that are reached from the data set. To obtain a numerical description of influence, 
+		we can describe how each point affects:</p>
+	<ul>
+		<li>The fitted values</li>
+		<li>The least squares estimates</li>
+	</ul>
+	<p class="gray">(It would also be possible to describe the influence 
+		of each point on the residual sum of squares or other statistics, but the 
+		above two are the most common ones.)</p>
+	<p class="heading">Influence on fitted values</p>
+	<p>In this page, we consider how deletion of the <em>i</em>'th point affects 
+		the fitted value at the same point,</p>
+	<p class=eqn> <img src="../../../en/diagnostics/images/fitChange.gif" width="61" height="21" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<div class="diagram">
+		<p class="heading">Illustration</p>
+
+		<p>The scatterplot on the left below shows a dataset with one high-leverage 
+			point. The changes in the fitted values are plotted against <em>x</em> on 
+			the right.</p>
+
+<div class="centred">
+<applet codebase="../../../java" code="residProg.FitInfluenceApplet.class" archive="coreCAST.jar" width="550" height="280">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="xValues" value="0.6 0.8 1.0 1.2 1.4 1.6 1.8 2.0 2.2 4.2">
+<param name="yValues" value="370 360 400 430 440 420 450 480 490 450">
+<param name="xAxis" value="0.5 4.5 1 1">
+<param name="yAxis" value="320 650 350 50">
+<param name="fitChangeAxis" value="-170 100 -150 50">
+<param name="dfitsAxis" value="-14 10 -10 5">
+<param name="customText" value="Change in fitted value=Change in fitted value#DFITS=DFITS">
+</applet>
+</div>
+
+	  <p>Click on any point to see how the least squares line changes when it is 
+			deleted. The change in that point's fitted value from its deletion is shown 
+			in red and ploted on the right against <em>x</em>.</p>
+</div>
+
+	<p class="heading">DFITS</p>
+	<p>Since the fitted values do not all have the same variance,</p>
+	<p class=eqn> <img src="../../../en/diagnostics/images/fitVar.gif" width="114" height="20" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<p>we adjust the difference by dividing by the square root of an estimate (using 
+		the deleted standard deviation),</p>
+	<p class=eqn> <img src="../../../en/diagnostics/images/dfits.gif" width="149" height="51" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<p>(Note that this is not equivalent to standardisation since we use the standard 
+		devation of the fitted value, not of the difference.)</p>
+	<p class="heading">Guidelines</p>
+	<p>Observations are often classified as 'influential' if,</p>
+	<p class=eqn> <img src="../../../en/diagnostics/images/dfitsGuideline.gif" width="147" height="36" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<p>Note that this is <strong>not</strong> a hypothesis test and plotting <em>DFITS</em> 
+		against <em>x</em> or the fitted values is recommended to help assess whether 
+		one or two points have excessive influence.</p>
+	<p>It can be proved that <em>DFITS</em> is a simple function of the externally 
+		studentised residual and the leverage,</p>
+	<p class=eqn> <img src="../../../en/diagnostics/images/dfits2.gif" width="154" height="41" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<p>Therefore standardising <em>DFITS</em> simply gives the externallly studentised 
+		deleted residuals.</p>
+
+
+
+
+<h2 class="pageName">8.1.8 &nbsp; Influence on regression coefficients</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Change in least squares coefficients</p>
+<p>A second measure of influence looks at how deletion of each point affects 
+		the regression coefficients,</p>
+	<p class=eqn> <img src="../../../en/diagnostics/images/bChange.gif" width="83" height="48" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<p>High influence points correspond to large differences.</p>
+	<div class="diagram">
+		<p class="heading">Illustration</p>
+
+		<p>A data set with a single high-leverage point is shown in the scatterplot 
+			on the left below.</p>
+
+<div class="centred">
+<applet codebase="../../../java" code="residProg.ParamInfluenceApplet.class" archive="coreCAST.jar" width="550" height="330">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="shortYVarName" value="y">
+<param name="shortXVarName" value="x">
+<param name="xValues" value="0.6 0.8 1.0 1.2 1.4 1.6 1.8 2.0 2.2 4.2">
+<param name="yValues" value="370 360 400 430 440 420 450 480 490 450">
+<param name="xAxis" value="0.5 4.5 1 1">
+<param name="yAxis" value="320 650 350 50">
+<param name="intChangeAxis" value="-30 80 -20 20">
+<param name="slopeChangeAxis" value="-60 30 -60 20">
+<param name="maxParam" value="-999.99 -99.99">
+<param name="customText" value="Change in intercept=Change in intercept#Change in slope=Change in slope#Full model=Full model#Deleted model=Deleted model">
+</applet>
+</div>
+
+		<p>Click on any point to see how the least squares coefficients change when 
+			it is deleted from the data set. The scatterplot on the left shows how the 
+			intercept changes.</p>
+		<p>Select <strong>Change in slope</strong> from the pop-up menu and repeat. 
+			Clicking on a point now shows the resulting change in the least squares 
+			slope. </p>
+
+</div>
+  
+  <p class="heading">Combining the differences</p>
+  <p>Although we could examine separately the influence of each point on the slope 
+		and intercept, it is usual to combine the two differences to give a single 
+		measure of influence called <strong>Cook's D</strong>. Although its formula 
+		in terms of the differences is hard to write and explain, it can also be written 
+		as,</p>
+	<p class=eqn> <img src="../../../en/diagnostics/images/cooksD.gif" width="134" height="43" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<p>so it depends on the leverage and a kind of residual (the standardised residual).</p>
+	<p>Significance would be equivalent to comparing <em>r<sub>i</sub></em> with 
+		±2 and ±3, but that is not the purpose of influence statistics. 
+		They are evaluated to assess whether one or two data points are exceptionally 
+		important.</p>
+	<p class="heading">Relationship between Cook's D and DFITS</p>
+	<p class=eqn> <img src="../../../en/diagnostics/images/dfits2.gif" width="154" height="41" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<p class=eqn> <img src="../../../en/diagnostics/images/cooksD.gif" width="134" height="43" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<p>Since the two types of residuals, <em>t<sub>i</sub></em> and <em>r<sub>i</sub></em>, 
+		are expected to be similar if the linear regression model holds,</p>
+	<p class=eqn> <img src="../../../en/diagnostics/images/influenceReln.gif" width="311" height="36" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<p>The two influence measures are related and both depend on both leverage and 
+		a residual, so</p>
+	
+<div class="centred"><div class="boxed">
+<p>Both high leverage and a large residual are needed to make a point influential.</p>
+</div></div>
+
+	<p class="heading">Guidelines for Cook's D</p>
+	<p>The guideline for high influence based on DFITS,</p>
+	<p class=eqn> <img src="../../../en/diagnostics/images/dfitsGuideline.gif" width="147" height="36" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<p> translates roughly into a guideline for D,</p>
+	<p class=eqn> <img src="../../../en/diagnostics/images/cooksDGuideline.gif" width="89" height="32" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<p>Again, we are not doing a hypothesis test and this inequality does not correspond 
+		to any significance level. It may however indicate that some data points should 
+		be given further investigation.</p>
+	
+
+<h2 class="pageName">8.1.9 &nbsp; Summary and examples</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Summary</p>
+
+  <dl>
+		<dt>Leverage</dt>
+		<dd>Describes whether the data point has the <strong>potential</strong> to 
+			influence the results, due to its value of <em>x</em>, but does not describe 
+			whether there is any actual influence.</dd>
+		<dt>Residual</dt>
+		<dd>Describes the difference between the response value and what would be 
+			expected from a normal linear model. Externally studentised residuals effectively 
+			highlight outliers and can be compared with ±2 and ±3 as guidelines 
+			for what can be expected.</dd>
+		<dt>Influence</dt>
+		<dd>A function of both leverage and residual that describes how much <strong>actual</strong> 
+			influence the point has on the fitted values and regression coefficients. 
+			<em>DFITS</em> and Cook's <em>D</em> do a similar job. </dd>
+	</dl>
+	<p>The diagram below shows how the residuals and measures of influence are related.</p>
+
+<div class="centred"><div class="boxed">
+<p><img src="../../../en/diagnostics/images/flowchart.gif" width="567" height="405"></p>
+</div></div>
+
+<p class="heading">Reason for using these diagnostic summaries</p>
+
+<div class="centred"><div class="boxed">
+<p>Why have we defined residuals, leverage and influence? 
+						Are the problems not evident by looking at a scatterplot?</p>
+</div></div>
+
+
+  <p>Yes, high-leverage points, outliers and influential points (high leverage 
+		and large residuals) are usually evident in a scatterplot for simple linear 
+		regression with a single explanatory variable.</p>
+	<p>However for more advanced models in which the response depends on two or 
+		more explanatory variables, it will be much harder to just 'look at the data'. 
+		For these models, outliers, high-leverage points and influential points must 
+		be detected from summary statistics, such as <em>t<sub>i</sub></em>, <em>h<sub>ii</sub></em> 
+		and <em>DFITS<sub>i</sub></em>. </p>
+
+<div class="diagram">
+		<p class="heading">Examples</p>
+
+		<p>The diagram below shows diagnostics for outliers, leverage and influence 
+			in several data sets.</p>
+
+<div class="centred">
+<applet codebase="../../../java" code="residProg.DiagnosticsApplet.class" archive="coreCAST.jar" width="550" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="noOfDataSets" value="3">
+<param name="customText" value="Data=Data#Externally studentised residuals=Externally studentised residuals#Leverage=Leverage#DFITS=DFITS#Conclusion=Conclusion#Peek at data=Peek at data">
+
+<param name="dataName" value="Cancer deaths and radiation">
+<param name="description" value="Radioactive waste from the Hanford Atomic Energy Plant in Washington has seeped into the Columbia River. The diagram below shows an exposure index based on distance from the river and distance from the plant, and cancer deaths per 100,000 residents.">
+<param name="question" value="There is one high-leverage observation. Its residual is also close to -2 (though not unusual in its own right) so its influence is large. Check whether your conclusions would be affected by omitting this single observation.">
+<param name="yVarName" value="Deaths">
+<param name="xVarName" value="Exposure">
+<param name="yValues" value="147 130 130 114 138 162 208 178 210">
+<param name="xValues" value="2.5 2.6 3.4 1.3 1.6 3.8 11.6 6.4 8.3">
+<param name="xAxis" value="0 12 0 2">
+<param name="yAxis" value="100 250 100 50">
+<param name="decimals" value="2">
+<param name="leverageAxis" value="0 0.8 0 0.2">
+<param name="dfitsAxis" value="-3 3 -3 1">
+
+<param name="dataName2" value="Cat body and heart weight">
+<param name="description2" value="The heart and body weights of 47 female cats were measured.">
+<param name="question2" value="One cat has a very small residual and its measurements should be checked. However it has low leverage and is not influential. Of several high-leverage values, only one also has high influence. Check that your conclusions are not affected much by omitting it.">
+<param name="xVarName2" value="Body wt (kg)">
+<param name="yVarName2" value="Heart wt (g)">
+<param name="xValues2" value="2.3 3 2.9 2.4 2.3 2 2.2 2.1 2.3 2.1 2.1 2.2 2 2.3 2.2 2.3 2.1 2 2.9 2.7 2.6 2.3 2.6 2.1 2.1 2.7 2.2 2.3 2.1 2.4 2.7 2.3 2.1 2.2 2.3 2.1 2.9 3 2.2 2.4 2.4 2.5 2.5 2.3 2.3 2.6 2.3">
+<param name="yValues2" value="9.6 10.6 9.9 8.7 10.1 7 11 8.2 9 7.3 8.5 9.7 7.4 7.3 7.1 9 7.6 9.5 10.1 10.2 10.1 9.5 8.7 7.2 9.8 10.8 9.1 11.2 8.1 10.2 8.5 10.1 8.7 10.9 7.9 8.3 10.1 13 8.7 6.3 8.8 10.9 9 9.7 8.4 10.1 10.6">
+<param name="xAxis2" value="1.7 3.2 2.0 0.5">
+<param name="yAxis2" value="5.8 14 6 2">
+<param name="decimals2" value="2">
+<param name="leverageAxis2" value="0 0.17 0 0.05">
+<param name="dfitsAxis2" value="-1 1 -1 0.5">
+
+<param name="dataName3" value="Soybeans and ozone">
+<param name="description3" value="An experiment was conducted to assess how chronic levels of ozone affected the yield of soybeans. Four different ozone levels (ppm) were used.">
+<param name="question3" value="Two observations have low residuals. Although their leverage is not particularly high, they have high influence. Check that your conclusions are not badly affected by leaving out either of these observations.">
+<param name="yVarName3" value="Soybean yield">
+<param name="xVarName3" value="Ozone level (ppm)">
+<param name="yValues3" value="238.3 270.7 210.0 248.7 242.4 235.1 228.9 236.2 255.0 228.9 236.2 208.0 243.5 233.0 233.0 178.7 186.0 206.9 215.3 219.5">
+<param name="xValues3" value="5@0.02 5@0.07 5@0.11 5@0.15">
+<param name="xAxis3" value="0 0.17 0 0.05">
+<param name="yAxis3" value="170 280 180 20">
+<param name="decimals3" value="2">
+<param name="leverageAxis3" value="0 0.25 0 0.05">
+<param name="dfitsAxis3" value="-1.5 1.5 -1.5 0.5">
+</applet>
+</div>
+
+		<p>The stacked dot plots on the left show the externally studentised residuals, 
+			leverages and <em>DFITS</em>, with shaded bands corresponding to the usual 
+			guidelines for 'extreme' values. Click any cross to highlight all three 
+			diagnostics for that observation.</p>
+		<p>Simply from an examination of these diagnostic summaries, it is possible 
+			to obtain information about the adequacy of the model and the influence 
+			that a single point may have on the results. (Click <strong>Peek at data</strong> 
+			to see a scatterplot of the data that helps to explain the conclusion.)</p>
+		<p>Select other data sets from the pop-up menu and check the conclusions.</p>
+
+</div>
+
+
+
+
+<h1 class="sectionName breakBefore">8.2 &nbsp; Logistic regression</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Categorical responses</li>
+<li>Fitted values and predictions</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='3'>
+<li>Logistic curve</li>
+<li>Obtaining a good fit</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">8.2.1 &nbsp; Categorical responses</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Comparing the response distributions at different
+x-values</p>
+	<p>If a response, <em>Y</em>, is numerical and  explanatory variable, <em>X</em>,
+is categorical, box plots can be used to compare the response distribution at
+the different <em>x</em>-values.</p>
+<p class=eqn><img class="gif" src="../../../en/logistic/images/incomeEducBox.gif" id="gif_image_2_1_1" width="176" height="183"><iframe class="svg" src="../../../en/logistic/images/incomeEducBox.svg" id="svg_image_2_1_1" width="176" height="183" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_1_1");</script></p>
+	<p>If the response, <em>Y</em>, is categorical and the explanatory variable,
+<em>X</em>,  is numerical, we are again interested in comparing the response
+distribution at different <em>x</em>-values.
+We might use <em>X</em> to define 'groups' by splitting its values
+into classes (as might be done to draw a histogram) and this allows us to use
+stacked bar charts to describe the relationship.</p>
+<p class=eqn><img class="gif" src="../../../en/logistic/images/incomePensionStacked.gif" id="gif_image_2_1_2" width="173" height="162"><iframe class="svg" src="../../../en/logistic/images/incomePensionStacked.svg" id="svg_image_2_1_2" width="173" height="162" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_1_2");</script> </p>
+	<p>It is not necessary for the 'classes' to be of equal width. For example, some of the age groups below are of width 3 months, whereas others are 6 months and the extreme classes are wider still.</p>
+	<p class="eqn"><img src="../../../en/logistic/images/s_stackedBars.gif" width="550" height="289"></p>
+
+
+
+
+<h2 class="pageName">8.2.2 &nbsp; Fitted values and predictions</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Linear model</p>
+	<p>It is tempting to try a  linear
+		model to explain how the proportion in one response category is affected by the explanatory
+	variable, </p>
+<p class=eqn style="color:#000000"><strong>predicted proportion</strong>, &nbsp; <img class="gif" src="../../../en/logistic/images/linearPredictEqn.gif" id="gif_image_2_2_1" width="104" height="24"><iframe class="svg" src="../../../en/logistic/images/linearPredictEqn.svg" id="svg_image_2_2_1" width="104" height="24" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_2_1");</script></p>
+	<p>Unfortunately this may result in predicted proportions greater than 1 or less than 0.</p>
+	<p class="eqn"><img src="../../../en/logistic/images/s_linearModel.gif" width="506" height="322"></p>
+	<p class="heading">Nonlinear models</p>
+	<p>We should use a model that gives values between 0 and 1<strong> for all possible
+values of <em>X</em></strong>. This means that the equation must be <strong>nonlinear</strong> in <em>X</em>.</p>
+	<p class="eqn"><img src="../../../en/logistic/images/s_logisticModel.gif" width="506" height="322"></p>
+
+
+
+
+<h2 class="pageName">8.2.3 &nbsp; Logistic curve</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">A curve that lies between 0 and 1 for all values of x</p>
+	<p>Various 
+		nonlinear equations have values between 0 
+		and 1 for all values of <em>x</em>, but the simplest of these is a <strong>logistic 
+			curve</strong>, </p>
+	<p class=eqn style="color:#000000"><strong>predicted proportion</strong>, &nbsp; <img class="gif" src="../../../en/logistic/images/logisticPredEqn.gif" id="gif_image_2_3_1" width="196" height="51"><iframe class="svg" src="../../../en/logistic/images/logisticPredEqn.svg" id="svg_image_2_3_1" width="196" height="51" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_3_1");</script></p>
+	<p class="heading">The parameters of the logistic curve</p>
+	<p>The parameter <em>b</em><sub>1</sub> is called the <strong>slope</strong> of the curve. Increasing it makes the curve steeper, and 
+	its sign determines whether the curve slopes upwards or downwards.</p>
+<p class="eqn"><img src="../../../en/logistic/images/s_slope.gif" width="407" height="259"></p>
+	<p>The parameter <em>b</em><sub>0</sub> is the curve's <strong>intercept</strong> and it determines the horizontal position of the curve. Increasing it shifts the curve 
+	to the left.</p>
+<p class="eqn"><img src="../../../en/logistic/images/s_intercept.gif" width="407" height="259"></p>
+
+
+
+
+<h2 class="pageName">8.2.4 &nbsp; Obtaining a good fit</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Estimating the logistic parameters</p>
+	<p>Estimating the parameters <em>b</em><sub>0</sub> and <em>b</em><sub>1</sub> of a logistic model is more difficult than estimating the parameters for a linear model by least squares, but  many statistical programs will do the appropriate calculations for 
+	you.</p>
+	<p>We therefore take a 'black box' approach and simply show what parameter estimation 
+		gives without further justification. </p>
+	<p class="eqn"><img src="../../../en/logistic/images/s_maxLikelihood.gif" width="404" height="334"></p>
+
+
+
+
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Analyisis of variance</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="anova, analysis of variance, f ratio, f test">
+	<meta name="dataset" content="Drilling thrust">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Explained sums of squares</p>  
+  <p>Adding linear terms for a numerical factor X and another numerical factor Y both decrease the residual sum of squares. These reductions are <strong>explained</strong> sums of squares and can be shown in an analysis of variance table.</p>
+  <p>Similarly, generalising from a linear term for a factor to a term that models it as a categorical variable also reduces the residual sum of squares. This reduction is a sum of squares <strong>explained by curvature in the relationship</strong>.</p>
+  <p>These explained sums of squares all have degrees of freedom that are equal to the difference in the numbers of unknown parameters in the models.</p>
+  <ul>
+		<li>The explained sum of squares for adding a categorical term for a factor 
+			with <em>a</em> levels has (<em>a</em>&nbsp;-&nbsp;1) degrees of freedom.</li>
+  	<li>The explained sum of squares for a linear term  has 1 degree of freedom.</li>
+  	<li>The explained sum of squares for replacing a linear term with a categorical factor term 
+  		has (<em>a</em>&nbsp;-&nbsp;2) degrees of freedom.</li>
+ 	</ul>
+  <p class="heading">Analysis of variance table</p>
+  <p>The analysis of variance table uses these sums of squares and adds columns with:</p>
+  <dl>
+    <dt>Mean sums of squares</dt>
+    <dd>Each sum of squares is divided by its degrees of freedom</dd>
+    <dt>F ratios</dt>
+    <dd>Each mean explained sum of squares is then divided by the mean residual 
+      sum of squares to form an F-ratio.</dd>
+    <dt>p-values</dt>
+    <dd>Finally the significance of each F-ratio is assessed by comparing its 
+      value to an F distribution to give a p-value.</dd>
+  </dl>
+  
+  <p class="heading">Interpretation of p-values</p>
+  <p>The p-values are interpreted as follows:</p>
+	
+
+<div class="centred"><table border="0" cellpadding="5" cellspacing="0"0 class="centred">
+<tr> 
+<th align="CENTER" style="border-bottom:1px solid #999999;">p-value</th>
+<th align="CENTER" style="border-bottom:1px solid #999999;">Interpretation</th>
+</tr>
+<tr bgcolor="white"> 
+<td>over 0.1</td>
+        <td>no evidence that the more complex model is needed</td>
+</tr>
+<tr bgcolor="white"> 
+<td>between 0.05 and 0.1</td>
+        <td>very weak evidence that the more complex model is needed</td>
+</tr>
+<tr bgcolor="white"> 
+<td>between 0.01 and 0.05</td>
+        <td>moderately strong evidence that the more complex model is needed</td>
+</tr>
+<tr bgcolor="white"> 
+<td style="border-bottom:1px solid #999999;">under 0.01</td>
+        <td style="border-bottom:1px solid #999999;">strong evidence that the more complex model is needed</td>
+</tr>
+</table></div>
+
+
+  <br>
+  
+  <div class="diagram">
+  	<p class="heading">Drilling thrust</p>
+    <p>The diagram below shows the analysis of variance table for the copper plate 
+      warping experiment. Since the two explanatory variables (copper percentage 
+      and temperature) are numerical, each variable can be included in the model 
+      as either a linear term (with 1 degree of freedom) or as a factor (with 
+      a total of 3 degrees of freedom for each factor).</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="550">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoFactorProg.FactorAnovaSeqApplet">
+<param name="yVarName" value="Thrust">
+<param name="yValues" value="322 310 308 285 308 260 266 250 280 260 532 530 476 510 448 395 448 475 476 510 840 700 812 700 543 650 812 810 835 770">
+<param name="yAxis" value="200 900 200 100">
+<param name="xVarName" value="Feed rate">
+<param name="xValues" value="10@0 10@1 10@2">
+<param name="xLabels" value="40 90 140">
+<param name="zVarName" value="Drill speed">
+<param name="zValues" value="2@0 2@1 2@2 2@3 2@4 2@0 2@1 2@2 2@3 2@4 2@0 2@1 2@2 2@3 2@4">
+<param name="zLabels" value="100 275 450 625 800">
+<param name="xVariables" value="Fe FeF Sp SpF">
+<param name="xTypes" value="xLin xFac zLin zFac">
+<param name="FeVarName" value="Linear feed">
+<param name="FeValues" value="10@-1 10@0 10@1">
+<param name="FeFVarName" value="Nonlin feed">
+<param name="FeFValues" value="10@1 10@-2 10@1">
+<param name="SpVarName" value="Linear speed">
+<param name="SpValues" value="2@0 2@1 2@2 2@3 2@4 2@0 2@1 2@2 2@3 2@4 2@0 2@1 2@2 2@3 2@4">
+<param name="SpFVarName" value="Nonlin speed">
+<param name="SpFValues" value="4@0 2@1 2@2 2@3 4@0 2@1 2@2 2@3 4@0 2@1 2@2 2@3">
+<param name="SpFLabels" value="12 3 4 5">
+<param name="maxSsq" value="9999999 99 9999999 99.99">
+<param name="componentNames" value="Feed (linear)#Feed (nonlin)#Speed (linear)#Speed (nonlin)">
+<param name="initVariables" value="0">
+</applet> 
+</div>
+
+    <p>Drag the red arrows to add linear and then categorical terms to the model. From the p-values, we conclude:</p>
+    <ul>
+      <li>The linear effect of feed rate is highly significant &mdash; feed rate almost certainly affects drilling thrust.</li>
+      <li>The p-value for generalising from a linear term in feed rate to a categorical term is between 0.05 and 0.1, so there is very little evidence of curvature in the effect of feed rate.</li>
+      <li>The p-value for nonlinearity in the effect of drill speed is 0.0138, so there is moderately strong evidence of a nonlinear relationship between drill speed and thrust.</li>
+    </ul>
+		<p>Since there is evidence of a nonlinear effect of drill speed, there is little point in trying to interpret the the p-value associated with the linear term in drill speed.</p>
+	</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Variance of transformed variable</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="transformation, variance, delta method, estimation">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Distribution of \(Y = g(X)\)</p>
+
+<p>If \(X\) has pdf \(f_X(x)\) and \(g(\cdot)\) is a monotonic function, then the transformed variable \(Y = g(X)\) has pdf</p>
+\[
+f_Y(y) \;\;=\;\; f_X(h(y)) \times \left| h'(y) \right| 
+\]
+<p>where \(x = h(y)\) is the inverse function to \(g(x)\). Its mean and variance are however often difficult to find from this pdf.</p>
+<p class="heading">Delta method</p>
+<p>We now informally present a way to get <strong>approximate</strong> values for \(E[Y]\) and \(\Var(Y)\).</p>
+<p>If \(X\) has mean \(\mu\) and variance \(\sigma^2\),  a Taylor series approximation of \(g(X)\) around \(\mu\) is</p>
+\[
+Y \;\;=\;\; g(X) \;\;\approx\;\; g(\mu) + (X - \mu) g'(\mu)
+\]
+<p>We can find the mean and variance of the linear function of \(X\) on the right, giving the approximation,</p>
+\[
+E[Y] \;\approx\; g(\mu) \spaced{and} \Var(Y) \;\approx\; \left(g'(\mu)\right)^2 \sigma^2
+\]
+<p>This is called the <strong>delta method</strong>.</p>
+
+<div class="boxed">
+<p>The approximation relies on the transformation being nearly linear for the values of \(X\) that are likely to be observed. \(\Var(X)\) must therefore be small.</p>
+</div>
+<p class="heading">Application to estimators of parameters</p>
+<p>If \((X = \hat{\theta})\) is a consistent estimator of a parameter, \(\theta\), then\(\Var(\hat{\theta}) \to 0\) as the sample size, \(n\), increases. The delta method therefore gives an approximate mean and variance for any continuous <strong>function</strong> of it, \(g(\hat{\theta})\), in large samples.</p>
+<div class="example">
+	<p class="exampleHeading">Quadratic transformation</p>
+	<p>We now consider a random variable, \(X\), that is assumed to arise from a family of distributions with mean \(\mu\) and variance \(\sigma^2\). For example, its distribution might be as shown below.</p>
+	<p class="eqn"><img src="images/s_skewDistn.png" width="514" height="232" alt=""/></p>
+	<p>The  mean of a random sample, \(\overline X\), might be used to estimate \(\mu\), so we now consider \(\overline X ^2\) as an estimator of \(\mu^2\). The delta method states that in large samples, </p>
+\[
+E\Big[\overline{X}^2\Big] \approx \mu^2 \spaced{and} \Var\Big(\overline{X}^2\Big) \approx \left(g'(\mu)\right)^2 \frac{\sigma^2}{n} = (2\mu)^2 \frac{\sigma^2}{n}
+\]
+	<p>This approximation relies on the transformation being close to linear around the values of \(\overline{X}^2\) that are most likely to be observed.</p>
+	<p class="eqn"><img src="images/s_quadratics.png" width="515" height="460" alt=""/></p>
+	<p>When \(n = 10\), the sample mean is likely to be between 1.0 and 3.5, but the quadratic (blue) is far from linear (red) so the delta method will not give accurate values for \(E\Big[\overline{X}^2\Big]\) or \(\Var\Big(\overline{X}^2\Big)\).</p>
+	<p>However when \(n = 1,000\), the quadratic curve is almost linear within the range of likely x-values (1.9 to 2.1) so the delta method will work well.</p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

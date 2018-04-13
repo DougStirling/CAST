@@ -1,0 +1,659 @@
+<html>
+<head>
+  <title>12. Two Means or Proportions</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 12 &nbsp; Two Means or Proportions</h1>
+<h1 class="sectionName">12.1 &nbsp; Paired t test</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Paired data</li>
+<li>Analysis of differences</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='3'>
+<li>Paired t-test</li>
+<li>Pairing and experimental design</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">12.1.1 &nbsp; Paired data</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Paired data</p>
+<p>When two types measurements, <em>X</em> and <em>Y</em>, are made from each
+individual (or other unit), the data are called <strong>bivariate</strong>. Sometimes
+the two measurements are of  closely related quantities and
+may even describe the same quantity at different times. </p>
+<div class="centred"><div class="boxed"><p>When the sum or difference of <em>X</em> and <em>Y</em> is a meaningful quantity,
+the data are called <strong>paired data</strong>.</p></div></div>
+<p class="heading">Hypotheses of interest</p>
+<p>For paired data, We often want to test whether the means of the two variables
+are equal,</p>
+<p class="eqn"><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong><sub><em>X</em></sub> = </strong>&mu;<strong><sub><em>Y</em></sub></strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong><sub><em>X</em></sub> &ne; </strong>&mu;<strong><sub><em>Y</sub></em></strong></span></p>
+<p>Sometimes a one-tailed test is required, such as</p>
+<p class="eqn"><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong><sub><em>X</em></sub> = </strong>&mu;<strong><sub><em>Y</em></sub></strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong><sub><em>X</em></sub> &gt; </strong>&mu;<strong><sub><em>Y</sub></em></strong></span></p>
+<p class="heading">Examples</p>
+<dl>
+<dt>Pre-test, post-test data</dt>
+<dd>This arises when a measurement is made from each individual, then a second
+measurement of the same type is made after some kind of intervention (e.g. training
+or medication). Has the intervention &quot;improved&quot; the measurement?</dd>
+<dt>Twin studies</dt>
+<dd>Some experiments or other studies are conducted with
+identical twins, either human or animal. The  members
+of each pair experience different environments &mdash; either two different experimental
+treatments or two other differences. Are there differences between the two treatments?</dd>
+<dt>Other types of pairing</dt>
+<dd>For example, damaged cars may each be taken to two garages for estimates
+of the cost of repair. The two estimates for each car are paired data. Does one
+garage overcharge?</dd>
+</dl>
+
+
+
+
+
+<h2 class="pageName">12.1.2 &nbsp; Analysis of differences</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Differences</p>
+<p>Information about the difference between the means of <em>X</em> and <em>Y</em> is
+contained in the values <em>D</em> = (<em>Y</em> - <em>X</em>)  for
+each individual. The hypotheses</p>
+<p class="eqn"><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong><sub><em>X</em></sub> = </strong>&mu;<strong><sub><em>Y</em></sub></strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong><sub><em>X</em></sub> &ne; </strong>&mu;<strong><sub><em>Y</sub></em></strong></span></p>
+<p>can then be expressed as</p>
+<p class="eqn"><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong><sub><em>D</em></sub> = 0</strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong><sub><em>D</em></sub> &ne; 0</strong></span></p>
+<p>This reduces the paired data set to a <strong>univariate</strong> data set of
+differences,
+<em>D</em>, and reduces questions about (µ<sub><em>Y</em></sub> - µ<sub><em>X</em></sub>)
+to questions about the mean of <em>D</em>.</p>
+<p class="heading">Analysis of paired data</p>
+<p>By taking differences between <em>Y</em> and <em>X</em>, much of the variability
+between the individuals is eliminated, making it easier to see whether their means
+are different. The example below shows paired data on the left with blue lines
+joining the x- and y-values in each pair. The differences on the right make it clearer
+that the y-values are usually higher than the corresponding x-values.</p>
+<p class="eqn"><img src="../../../en/testPaired/images/s_pairing.gif" width="404" height="322"></p>
+
+
+
+
+
+<h2 class="pageName">12.1.3 &nbsp; Paired t-test</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Approach (paired t-test)</p>
+<p>Testing whether two paired measurements, <em>X</em> and <em>Y</em>,
+have equal means is done in terms of the differences</p>
+<p class="eqn"><em><strong>D</strong></em><strong> = <em>Y</em> - <em>X</em></strong></p>
+<p>The test is then expressed as</p>
+<p class="eqn"><strong>H<sub>0</sub></strong>:&nbsp; &nbsp;µ<em><sub>D</sub></em> =
+0</p>
+<p class="eqn"><strong>H<sub>A</sub></strong>:&nbsp; &nbsp;µ<em><sub>D</sub></em> ≠
+0</p>
+<p>or a one-tailed variant. The hypotheses are therefore assessed with a standard
+univariate t-test using test statistic</p>
+<p class="eqn"><img class="gif" src="../../../en/testPaired/images/testStat.gif" id="gif_image_1_3_1" width="86" height="58"><iframe class="svg" src="../../../en/testPaired/images/testStat.svg" id="svg_image_1_3_1" width="86" height="58" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_1_3_1");</script></p>
+<p>This is compared to a t distribution with <em>n</em>&nbsp;-&nbsp;1
+degrees of freedom to find the p-value.</p>
+<p class="heading">Example</p>
+<p>The diagram below illustrates a 2-tailed test for equal means, based on <em>n</em> = 15
+paired observations.</p>
+<p class="eqn"><img src="../../../en/testPaired/images/s_example.gif" width="475" height="384"></p>
+<p>From the p-value, we conclude that there is very strong evidence that the
+means for <em>Y</em> and <em>X</em> are different.</p>
+
+
+
+
+
+<h2 class="pageName">12.1.4 &nbsp; Pairing and experimental design</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Choice between paired data or two independent samples</p>
+<p>It is sometimes possible to answer questions about the difference
+between two means by collecting two alternative types of data.</p>
+<dl>
+<dt>Two independent samples</dt>
+<dd>Measurements are made from two samples of individuals from the groups whose
+means are to be compared. A 2-sample t-test can be used to compare the means.</dd>
+<dt>One paired sample</dt>
+<dd>The 'individuals' can be re-defined as pairs of related values from the two
+groups and a single sample of these pairs can be collected. A paired t-test
+can be performed on the differences to compare the means.</dd>
+</dl>
+<div class="centred"><div class="boxed"><p>If the individuals in the 2 groups can be paired so that the pairs
+are relatively similar, a paired design gives more accurate results.</p></div></div>
+<p class="heading">Matched pairs in experiments</p>
+<p>In experiments to compare two treatments, it may be possible to group the
+experimental units into pairs that are similar in some way. These are called <strong>matched
+pairs</strong>.
+If the two experimental units in each pair are randomly assigned to the two
+treatments, the data can be analysed as described in this section.</p>
+<p>The difference between the treatments is estimated more accurately than in
+a completely randomised experiment.</p>
+
+
+
+
+<h1 class="sectionName breakBefore">12.2 &nbsp; Models for two groups</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Interest in underlying population</li>
+<li>Model for two groups</li>
+<li>Parameters of the normal model</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='4'>
+<li>Parameter estimates</li>
+<li>Difference between means</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">12.2.1 &nbsp; Interest in underlying population</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Data from two groups</p>
+<p>When data are  collected from two groups, we are usually interested in  differences
+between the groups
+<strong>in general</strong>. The <strong>specific</strong> individuals  are of
+less interest. Questions are therefore about the characteristics of the populations
+or processes that we assume <strong>underlie</strong> the
+data.</p>
+<p class="heading">Example</p>
+<p class="eqn"><img src="../../../en/twoGroupModel/images/hypnosis.gif" width="523" height="299" class="summaryPict"></p>
+<p>The  questions do not refer to the 16 specific subjects &mdash; they ask about
+whether anticipation of hypnosis affects the ventilation rate <strong>in general</strong>.
+We
+would like to use the answers to predict what will happen to other people.</p>
+
+
+
+
+<h2 class="pageName">12.2.2 &nbsp; Model for two groups</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Data and model</p>
+<p>Data from two groups can be displayed with two histograms:</p>
+<p class="eqn"><img src="../../../en/twoGroupModel/images/s_histos.gif" width="325" height="281"></p>
+<p>They are often
+modelled as <strong>two</strong> independent random samples from <strong>two</strong> underlying
+ populations. Normal distributions are again commonly used
+as models. </p>
+<p class=eqn><img class="gif" src="../../../en/twoGroupModel/images/model.gif" id="gif_image_2_2_1" width="322" height="160"><iframe class="svg" src="../../../en/twoGroupModel/images/model.svg" id="svg_image_2_2_1" width="322" height="160" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_2_1");</script> </p>
+<p>The diagram below illustrates a possible model for the data above.</p>
+<p class="eqn"><img src="../../../en/twoGroupModel/images/s_pdfs.gif" width="321" height="251"></p>
+
+
+
+
+<h2 class="pageName">12.2.3 &nbsp; Parameters of the normal model</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Parameters</p>
+<p>A normal model for two groups has four unknown parameters (the mean and standard
+deviation for each normal distribution). These parameters give considerable flexibility
+and allow the model to be used for a variety of different data sets.</p>
+<p>(The number of parameters can be reduced to three if it is assumed that the two
+standard deviations are the same, but we will not consider this type of model here.)</p>
+
+
+
+
+<h2 class="pageName">12.2.4 &nbsp; Parameter estimates</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Parameter estimates</p>
+<p>A normal model for 2-group data involves 4 unknown parameters, µ<sub>1</sub>,
+µ<sub>2</sub>, σ<sub>1</sub> and σ<sub>2</sub>. The means and standard deviations
+in the two samples provide objective estimates of the four parameters.</p>
+<p class="eqn"><img src="../../../en/twoGroupModel/images/s_bestFit.gif" width="330" height="289"></p>
+
+
+
+
+<h2 class="pageName">12.2.5 &nbsp; Difference between means</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Comparing the populations</p>
+<p>Although  standard deviations in the two populations may also differ, we are usually
+most interested in the difference between the population means. Differences between
+the means can be expressed in terms of the model parameters with the following questions.</p>
+<ul>
+<li>Is µ<sub>2</sub>&nbsp;-&nbsp;µ<sub>1</sub> = 0?</li>
+<li>What is the value of µ<sub>2</sub>&nbsp;-&nbsp;µ<sub>1</sub>?</li>
+</ul>
+<p class="heading">Randomness of sample difference</p>
+<p>These questions  are about µ<sub>2</sub>&nbsp;-&nbsp;µ<sub>1</sub> and the
+best estimate of it is <span style="position:relative; top:5px"><img src="../../../en/../images/symbol.xBarDiff.png" width="36" height="15" align="baseline"></span>.
+However, <span style="position:relative; top:5px"><img src="../../../en/../images/symbol.xBarDiff.png" width="36" height="15" align="baseline"></span> cannot
+give  definitive answers <sub></sub> since
+it is  random   &mdash; it varies from sample to sample.</p>
+<p class="eqn"><img class="gif" src="../../../en/twoGroupModel/images/birthWt2.gif" id="gif_image_2_5_1" width="523" height="296"><iframe class="svg" src="../../../en/twoGroupModel/images/birthWt2.svg" id="svg_image_2_5_1" width="523" height="296" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_5_1");</script></p>
+<p>Without an understanding of the distribution of <span style="position:relative; top:5px"><img src="../../../en/../images/symbol.xBarDiff.png" width="36" height="15" align="baseline"></span>,
+it is impossible to properly interpret what the sample difference, 0.104&nbsp;kg,
+tells you about the difference between the underlying population means.</p>
+
+
+
+
+<h1 class="sectionName breakBefore">12.3 &nbsp; Distn of sums and differences</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Means and sums of samples</li>
+<li>Sum and difference</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='3'>
+<li>Sum and difference (cont)</li>
+<li>Probabilities for sums and differences</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">12.3.1 &nbsp; Means and sums of samples</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Sample mean and sum</p>
+<p>The mean of a random
+sample, <img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline">,
+has a distribution that is approximately normal if the sample size, <em>n</em>, is
+large and alway has a
+mean and standard deviation that depend on the population mean, µ, and standard deviation,
+σ,</p>
+<p class=eqn><span style="position:relative; top:6px"><img src="../../../en/../images/symbol.muXbar.png" width="19" height="16" align="baseline"></span> &nbsp;<span class="black">=&nbsp; &mu;</span></p>
+<p class=eqn><span style="position:relative; top:5px"><img src="../../../en/../images/symbol.sigmaXbar.png" width="19" height="16" align="baseline"></span> &nbsp;<span class="black">=</span>&nbsp; <span style="position:relative; top:12px"><img src="../../../en/../images/symbol.sigmaOverRootN.png" width="26" height="31" align="baseline"></span> </p>
+<p>Occasionally the sum of values in a random sample values is more useful than the
+mean,</p>
+<p class=eqn><img class="gif" src="../../../en/sumDiff/images/sampleSum.gif" id="gif_image_3_1_1" width="220" height="18"><iframe class="svg" src="../../../en/sumDiff/images/sampleSum.svg" id="svg_image_3_1_1" width="220" height="18" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_3_1_1");</script></p>
+<p>Its distribution is
+a scaled version of the distribution of the mean &mdash; the same shape but different
+mean and standard deviation.</p>
+<p class=eqn><img class="gif" src="../../../en/sumDiff/images/sumMean.gif" id="gif_image_3_1_3" width="75" height="14"><iframe class="svg" src="../../../en/sumDiff/images/sumMean.svg" id="svg_image_3_1_3" width="75" height="14" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_3_1_3");</script></p>
+<p class=eqn><img class="gif" src="../../../en/sumDiff/images/sumSD.gif" id="gif_image_3_1_4" width="89" height="21"><iframe class="svg" src="../../../en/sumDiff/images/sumSD.svg" id="svg_image_3_1_4" width="89" height="21" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_3_1_4");</script></p>
+<p class="heading">Mean vs Sum</p>
+<p>As the sample size increases,</p>
+<ul>
+<li>the standard deviation of the mean decreases, but</li>
+<li>the standard deviation of the sum <strong>increases</strong>.</li>
+</ul>
+<p class=eqn><img class="gif" src="../../../en/sumDiff/images/sdInequality.gif" id="gif_image_3_1_2" width="130" height="16"><iframe class="svg" src="../../../en/sumDiff/images/sdInequality.svg" id="svg_image_3_1_2" width="130" height="16" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_3_1_2");</script></p>
+
+
+
+
+<h2 class="pageName">12.3.2 &nbsp; Sum and difference</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Sum and difference of two  variables</p>
+<p>Applying the result about the sum of a random sample to a sample of size <em>n</em> = 2, <em>X</em><sub>1</sub>
+and <em>X</em><sub>2</sub>,</p>
+<p class=eqn><img class="gif" src="../../../en/sumDiff/images/sum2Distn.gif" id="gif_image_3_2_2" width="119" height="50"><iframe class="svg" src="../../../en/sumDiff/images/sum2Distn.svg" id="svg_image_3_2_2" width="119" height="50" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_3_2_2");</script></p>
+<p>If we generalise by allowing <em>X</em><sub>1</sub> and <em>X</em><sub>2</sub> to
+have different means, µ<sub>1</sub> and µ<sub>2</sub>, but the same σ,</p>
+<p class=eqn><img class="gif" src="../../../en/sumDiff/images/sum2Distn2.gif" id="gif_image_3_2_3" width="146" height="47"><iframe class="svg" src="../../../en/sumDiff/images/sum2Distn2.svg" id="svg_image_3_2_3" width="146" height="47" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_3_2_3");</script> </p>
+<p>A similar result holds for the difference between <em>X</em><sub>1</sub> and <em>X</em><sub>2</sub>:</p>
+<p class=eqn><img class="gif" src="../../../en/sumDiff/images/diff2Distn2.gif" id="gif_image_3_2_1" width="146" height="47"><iframe class="svg" src="../../../en/sumDiff/images/diff2Distn2.svg" id="svg_image_3_2_1" width="146" height="47" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_3_2_1");</script></p>
+<p>If <em>X</em><sub>1</sub> and <em>X</em><sub>2</sub> are independent and have
+normal distributions, their sum and difference are also normally distributed.</p>
+
+
+
+
+<h2 class="pageName">12.3.3 &nbsp; Sum and difference (cont)</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">General result</p>
+<p>The results generalise further to independent variables that may have different
+means <strong>and</strong> standard deviations.</p>
+<p class=eqn><img class="gif" src="../../../en/sumDiff/images/sumDiffSD.gif" id="gif_image_3_3_1" width="250" height="161"><iframe class="svg" src="../../../en/sumDiff/images/sumDiffSD.svg" id="svg_image_3_3_1" width="250" height="161" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_3_3_1");</script></p>
+<p>The formulae for the standard deviations are more easily remembered in terms of
+the <strong>variances</strong> of
+the  quantities. For example,</p>
+<p class=eqn><img class="gif" src="../../../en/sumDiff/images/sum2Variance.gif" id="gif_image_3_3_2" width="151" height="25"><iframe class="svg" src="../../../en/sumDiff/images/sum2Variance.svg" id="svg_image_3_3_2" width="151" height="25" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_3_3_2");</script></p>
+
+
+
+
+<h2 class="pageName">12.3.4 &nbsp; Probabilities for sums and differences</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Finding probabilities</p>
+<p>To find the probability that a sum or difference satisfies an inequality, the
+inequality should be translated into ones about a z-score, using the mean and standard
+deviation of the quantity,</p>
+<p class=eqn><img class="gif" src="../../../en/sumDiff/images/standardiseEqn.gif" id="gif_image_3_4_3" width="95" height="31"><iframe class="svg" src="../../../en/sumDiff/images/standardiseEqn.svg" id="svg_image_3_4_3" width="95" height="31" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_3_4_3");</script></p>
+<p>The standard normal distribution can then be used to find the  probabilities. The
+examples below illustrate the method. </p>
+<p class="heading">Example (total of several variables)</p>
+<p class=eqn><img class="gif" src="../../../en/sumDiff/images/totalExample.gif" id="gif_image_3_4_2" width="496" height="516"><iframe class="svg" src="../../../en/sumDiff/images/totalExample.svg" id="svg_image_3_4_2" width="496" height="516" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_3_4_2");</script> </p>
+<p class="heading">Example (sum of two variables with different sd)</p>
+<p class=eqn><img class="gif" src="../../../en/sumDiff/images/sumExample.gif" id="gif_image_3_4_1" width="496" height="516"><iframe class="svg" src="../../../en/sumDiff/images/sumExample.svg" id="svg_image_3_4_1" width="496" height="516" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_3_4_1");</script> </p>
+
+
+
+
+<h1 class="sectionName breakBefore">12.4 &nbsp; Comparing means in two groups</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Distn of difference between means</li>
+<li>SE of difference between means</li>
+<li>CI for difference between means</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='4'>
+<li>Testing a hypothesis</li>
+<li>One-tailed tests for differences</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">12.4.1 &nbsp; Distn of difference between means</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Difference between  means</p>
+<p>The difference between <strong>any</strong> two independent
+quantities <em>X</em><sub>1</sub> and <em>X</em><sub>2</sub> has a distribution
+with</p>
+<p class=eqn><img class="gif" src="../../../en/twoGroupInf/images/meanSDDiff2.gif" id="gif_image_4_1_2" width="113" height="51"><iframe class="svg" src="../../../en/twoGroupInf/images/meanSDDiff2.svg" id="svg_image_4_1_2" width="113" height="51" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_4_1_2");</script> </p>
+<p>Applying this to  the difference between the
+means of two random samples,</p>
+<p class=eqn><img class="gif" src="../../../en/twoGroupInf/images/diffMeanSD.gif" id="gif_image_4_1_1" width="340" height="163"><iframe class="svg" src="../../../en/twoGroupInf/images/diffMeanSD.svg" id="svg_image_4_1_1" width="340" height="163" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_4_1_1");</script> </p>
+<dl>
+<dt>If the distributions are normal in each group,&nbsp;...</dt>
+<dd>... the  sample means are normal, so their difference
+also has a normal distribution.</dd>
+<dt>Otherwise,&nbsp;...</dt>
+<dd>... the two sample means are approximately normal if the sample sizes are
+large,  so their difference is also close to normal.</dd>
+</dl>
+
+<div class="centred"><div class="boxed">
+<p>Irrespective of the distributions within the
+two groups, <br>
+<img class="gif" src="../../../en/twoGroupInf/images/normalDistn.gif" id="gif_image_4_1_3" width="331" height="44"><iframe class="svg" src="../../../en/twoGroupInf/images/normalDistn.svg" id="svg_image_4_1_3" width="331" height="44" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_4_1_3");</script></p>
+</div></div>
+
+
+
+
+
+<h2 class="pageName">12.4.2 &nbsp; SE of difference between means</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Estimation error</p>
+<p>The difference between the sample means, <span class="eqn"><span style="position:relative; top:5px"><img src="../../../en/../images/symbol.xBarDiff.png" width="36" height="15" align="baseline"></span></span>,
+is a point estimate of the difference between the means of the underlying populations, <span class="black">µ<sub>2</sub>&nbsp;-&nbsp;µ<sub>1</sub></span>.
+In order to properly interpret it, we must understand the distribution of
+the estimation error.</p>
+<p class=eqn><img class="gif" src="../../../en/twoGroupInf/images/errorTwoDistn.gif" id="gif_image_4_2_1" width="372" height="42"><iframe class="svg" src="../../../en/twoGroupInf/images/errorTwoDistn.svg" id="svg_image_4_2_1" width="372" height="42" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_4_2_1");</script> </p>
+<p>Replacing σ<sub>1</sub><sup>2</sup> and σ<sub>2</sub><sup>2</sup> by <em>s</em><sub>1</sub><sup>2</sup> and
+<em>s</em><sub>2</sub><sup>2</sup> gives an approximate error distribution,</p>
+<p class=eqn><img class="gif" src="../../../en/twoGroupInf/images/estErrorDistn2.gif" id="gif_image_4_2_2" width="172" height="42"><iframe class="svg" src="../../../en/twoGroupInf/images/estErrorDistn2.svg" id="svg_image_4_2_2" width="172" height="42" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_4_2_2");</script> </p>
+<p>The standard deviation of these errors is the <strong>standard error</strong> of
+the estimator.</p>
+<p class="heading">Examples</p>
+<p align="center"><img src="../../../en/twoGroupInf/images/hypnosisError.gif" width="514" height="417" class="summaryPict"></p>
+<p>Our best estimate is that anticipation of hypnosis results in a mean ventilation
+rate that is 0.491 higher than the control group.
+From the error distribution, the error in this estimate is unlikely to be more
+than about 0.6.</p>
+
+
+
+
+<h2 class="pageName">12.4.3 &nbsp; CI for difference between means</h2><!DOCTYPE HTML>
+
+
+<p class="heading">If <span class="black">σ<sub>1</sub></span> and <span class="black">σ<sub>2</sub></span> were known...</p>
+<p class=eqn><span class="black"><strong>Prob</strong> ( <span style="position:relative; top:6px"><img src="../../../en/../images/symbol.xBarDiffRed.png" width="42" height="21" align="baseline"></span> &nbsp;<strong>is within</strong> &nbsp; &plusmn; &nbsp;1.96 &nbsp;<span style="position:relative; top:7px"><img src="../../../en/../images/symbol.sdDiffGreen.png" width="41" height="26" align="baseline"></span> &nbsp; of &nbsp; <span style="color:#00F; font-weight:bold">&mu;<sub>2</sub>&nbsp;-&nbsp;&mu;<sub>1</sub></span>) &nbsp; = &nbsp; 0.95</span> </p>
+<p>so a 95% confidence interval for <span class="eqn"><span class="black">µ<sub>2</sub>&nbsp;-&nbsp;µ<sub>1</sub></span></span> would
+be</p>
+<p class=eqn><span class="black"><span style="position:relative; top:6px"><img src="../../../en/../images/symbol.xBarDiffRed.png" width="42" height="21" align="baseline"></span>&nbsp; &plusmn; &nbsp; 1.96 &nbsp;<span style="position:relative; top:7px"><img src="../../../en/../images/symbol.sdDiffGreen.png" width="41" height="26" align="baseline"></span></span></p>
+<p class="heading">When <span class="black">σ<sub>1</sub></span> and <span class="black">σ<sub>2</sub></span> are
+unknown...</p>
+<p>We must replace <span class="heading"><span class="black">σ<sub>1</sub></span> and <span class="black">σ<sub>2</sub></span></span> by <span class="heading"><span class="black"><em>s</em><sub>1</sub></span> and <span class="black"><em>s</em><sub>2</sub></span></span> in
+the confidence interval, and the constant '1.96' must  be replaced by a slightly
+larger value from t-tables, </p>
+<p class=eqn><img class="gif" src="../../../en/twoGroupInf/images/diffCIWithT.gif" id="gif_image_4_3_1" width="257" height="70"><iframe class="svg" src="../../../en/twoGroupInf/images/diffCIWithT.svg" id="svg_image_4_3_1" width="257" height="70" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_4_3_1");</script></p>
+<p>where the degrees of freedom for the t-value are </p>
+<p class=eqn><span class="black">&nu; &nbsp; = &nbsp; min (<em>n</em><sub>1</sub>&minus;1, &nbsp;<em>n</em><sub>2</sub>&minus;1)</span> </p>
+<p class="gray">(A more complex formula is available that gives a higher
+value for &nu;. It is slightly better but the difference is usually
+negligible.)</p>
+<p class="heading">Example</p>
+<p align="center"><img src="../../../en/twoGroupInf/images/hypnosisCI.gif" width="514" height="401" class="summaryPict"></p>
+
+
+
+
+<h2 class="pageName">12.4.4 &nbsp; Testing a hypothesis</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Testing for a difference between  two  means</p>
+<p>The difference between two groups that is of most practical
+importance is a difference between their <strong>means</strong>. </p>
+<p class=eqn><span class="blue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong><sub>2</sub> &minus; </strong>&mu;<strong><sub>1</sub> &nbsp;=&nbsp; 0</strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong><sub>2</sub> &minus; </strong>&mu;<strong><sub>1</sub> &nbsp;&ne;&nbsp; 0</strong></span></p>
+<p>The summary statistic that throws most light on these hypotheses is the difference
+between the sample means, <span style="position:relative; top:5px"><img src="../../../en/../images/symbol.xBarDiff.png" width="36" height="15" align="baseline"></span>.
+Testing therefore involves assessment of whether this difference is unusually
+far from zero. </p>
+<p class=eqn><img class="gif" src="../../../en/twoGroupInf/images/pValue.gif" id="gif_image_4_4_1" width="454" height="266"><iframe class="svg" src="../../../en/twoGroupInf/images/pValue.svg" id="svg_image_4_4_1" width="454" height="266" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_4_4_1");</script> </p>
+<p>As with all other hypothesis tests, a p-value near zero gives evidence that
+the null hypothesis does not hold &mdash; evidence of a difference between the group
+means. </p>
+<p class="heading">Example</p>
+<p align="center"><img src="../../../en/twoGroupInf/images/hypnosisTest.gif" width="514" height="468" class="summaryPict"></p>
+<p class="heading">General properties of p-values</p>
+<p>A statistical hypothesis test cannot provide
+a definitive answer about whether two groups have different means. The randomness
+of sample data means that p-values are also random quantities.</p>
+<p>It is possible to get a small p-value (supporting H<sub>A</sub>) when H<sub>0</sub> is
+true, and it is possible to get a large p-value (consistent with H<sub>0</sub>)
+when H<sub>A</sub> is true.</p>
+<div class="centred"><div class="boxed"><p>There is some chance of being misled by an 'unlucky sample.</p></div></div>
+<dl>
+<dt>If H<sub>0</sub> is true</dt>
+<dd>All p-values between 0 and 1 are equally likely. For example, there is a
+5% probability of getting a p-value less than 0.05.</dd>
+<dt>If H<sub>A</sub> is true</dt>
+<dd>The p-value is more likely to be near zero, though there is still some chance
+of a larger p-value.</dd>
+</dl>
+<p class="heading">Effect of increasing the sample size</p>
+<dl>
+<dt>If H<sub>0</sub> is true</dt>
+<dd>The p-values remain equally likely between 0 and 1.</dd>
+<dt>If H<sub>A</sub> is true</dt>
+<dd>The distribution of p-values becomes more concentrated near zero, so you
+are more likely to conclude that the population means are really different.</dd>
+</dl>
+
+
+
+
+<h2 class="pageName">12.4.5 &nbsp; One-tailed tests for differences</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">One- and two-tailed tests for differences</p>
+<p>In a <strong>two-tailed test</strong>, the alternative hypothesis is that the two population
+means are different. A <strong>one-tailed test</strong> arises when we want to test whether one
+mean is <strong>higher</strong> than the other (or <strong>lower</strong> than the other).</p>
+<p class=eqn><img class="gif" src="../../../en/twoGroupInf/images/hypotheses.gif" id="gif_image_4_5_2" width="441" height="84"><iframe class="svg" src="../../../en/twoGroupInf/images/hypotheses.svg" id="svg_image_4_5_2" width="441" height="84" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_4_5_2");</script> </p>
+<p class="heading">Test statistic, p-value and conclusion</p>
+<p>Consider a test for the hypotheses,</p>
+<p class=eqn><span class="blue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong><sub>1</sub> &nbsp;=&nbsp; </strong>&mu;<strong><sub>2</sub></strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong><sub>1</sub> &nbsp;&gt;&nbsp; </strong>&mu;<strong><sub>2</sub></strong></span> </p>
+<p>The alternative hypothesis is only supported by very small values of <span style="position:relative; top:5px"><img src="../../../en/../images/symbol.xBarDiff.png" width="36" height="15" align="baseline"></span>.
+This also corresponds to small values of the test statistic <span class="em black">t</span> ,
+so the p-value is the <strong>lower</strong> tail probability of the t distribution. </p>
+<p class=eqn><img class="gif" src="../../../en/twoGroupInf/images/oneTailedP.gif" id="gif_image_4_5_1" width="453" height="265"><iframe class="svg" src="../../../en/twoGroupInf/images/oneTailedP.svg" id="svg_image_4_5_1" width="453" height="265" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_4_5_1");</script> </p>
+<p>A small  p-value is interpreted as giving evidence that H<sub>0</sub> is false, in a
+similar way to all other kinds of hypothesis test.</p>
+<p class="heading">Examples</p>
+<p align="center"><img src="../../../en/twoGroupInf/images/bacteriaCarpetsTest.gif" width="514" height="468" class="summaryPict"></p>
+<p class="heading">Properties of p-values</p>
+<p>We again stress that a statistical hypothesis test cannot provide a definitive
+answer. The randomness of sample data means that p-values are also random quantities,
+so there is some chance of us being misled by an 'unlucky' sample:</p>
+<ul>
+<li>If µ<sub>1</sub> = µ<sub>2</sub>, it is still possible to get a small p-value
+(e.g. a 5% probability of getting a p-value less than 0.05).</li>
+<li>If µ<sub>1</sub> and µ<sub>2</sub> are different, large p-values are still
+possible (though less likely than small p-values).</li>
+</ul>
+
+
+
+
+<h1 class="sectionName breakBefore">12.5 &nbsp; Comparing two proportions</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Modelling two proportions</li>
+<li>Distribution of difference in proportions</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='3'>
+<li>CI for difference in proportions</li>
+<li>Testing for difference in probabilities</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">12.5.1 &nbsp; Modelling two proportions</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Two groups of successes and failures</p>
+<p>We now consider data that are obtained as random samples from two populations,
+with the sampled individuals being categorised into <em>successes</em> and <em>failures</em>.</p>
+<p class=eqn><img class="gif" src="../../../en/twoGroupPropn/images/propnModel.gif" id="gif_image_5_1_1" width="368" height="196"><iframe class="svg" src="../../../en/twoGroupPropn/images/propnModel.svg" id="svg_image_5_1_1" width="368" height="196" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_5_1_1");</script> </p>
+<p>Since our  model  involves only two parameters, π<sub>1</sub> and π<sub>2</sub>,
+ the two groups are the same only if π<sub>2</sub> - π<sub>1</sub> = 0. The value
+of π<sub>2</sub>&nbsp;-&nbsp;π<sub>1</sub> is usually unknown
+but  can be estimated by <em>p</em><sub>2</sub>&nbsp;-&nbsp;<em>p</em><sub>1</sub>.
+However   <em>p</em><sub>2</sub>&nbsp;-&nbsp;<em>p</em><sub>1</sub> is
+a random quantity so its variability must
+be taken into account when interpreting its value.</p>
+<p class="heading">Example</p>
+<p align="center"><img src="../../../en/twoGroupPropn/images/birthSex.gif" width="514" height="336" class="summaryPict"></p>
+<p>Note that the  questions do not refer to the specific 141  births in the
+study. They ask about differences between winter and summer births 'in general'.</p>
+
+<div class="centred"><div class="boxed"><p>We are interested in  π<sub>2</sub>&nbsp;-&nbsp;π<sub>1</sub> rather
+than  <em>p</em><sub>2</sub>&nbsp;-&nbsp;<em>p</em><sub>1</sub>, so we need
+to understand the accuracy of our point estimate.</p></div></div>
+
+
+
+
+
+<h2 class="pageName">12.5.2 &nbsp; Distribution of difference in proportions</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Difference between two proportions</p>
+<p>Within each group, the sample proportion of successes,<em> p</em>, has
+a distribution that is approximately normal in large samples and has mean and
+standard deviation</p>
+<p class=eqn><img class="gif" src="../../../en/twoGroupPropn/images/meanSDOfP.gif" id="gif_image_5_2_3" width="175" height="42"><iframe class="svg" src="../../../en/twoGroupPropn/images/meanSDOfP.svg" id="svg_image_5_2_3" width="175" height="42" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_5_2_3");</script></p>
+<p>Applying the  general results about the difference between two independent
+random quantities:</p>
+<p class=eqn><img class="gif" src="../../../en/twoGroupPropn/images/meanSD.gif" id="gif_image_5_2_2" width="554" height="120"><iframe class="svg" src="../../../en/twoGroupPropn/images/meanSD.svg" id="svg_image_5_2_2" width="554" height="120" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_5_2_2");</script> </p>
+<p>Since the individual proportions are approximately normal (in large samples),
+their difference is also approximately normal:</p>
+<p class=eqn><img class="gif" src="../../../en/twoGroupPropn/images/diffPDistn.gif" id="gif_image_5_2_1" width="417" height="70"><iframe class="svg" src="../../../en/twoGroupPropn/images/diffPDistn.svg" id="svg_image_5_2_1" width="417" height="70" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_5_2_1");</script></p>
+
+
+
+
+<h2 class="pageName">12.5.3 &nbsp; CI for difference in proportions</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Standard error of <em>p</em><sub>2</sub>&nbsp;-&nbsp;<em>p</em><sub>1</sub></p>
+<p>The  standard deviation of <em>p</em><sub>2</sub>&nbsp;-&nbsp;<em>p</em><sub>1</sub> is
+also its standard error when it<sub></sub> is
+used to estimate π<sub>2</sub>&nbsp;-&nbsp;π<sub>1</sub>,</p>
+<p class=eqn><img class="gif" src="../../../en/twoGroupPropn/images/sdDiffEqn.gif" id="gif_image_5_3_2" width="228" height="45"><iframe class="svg" src="../../../en/twoGroupPropn/images/sdDiffEqn.svg" id="svg_image_5_3_2" width="228" height="45" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_5_3_2");</script></p>
+<p>In practice, π<sub>1</sub> and π<sub>2</sub> must be replaced by their sample
+equivalents to estimate the standard error. </p>
+<p class=eqn><img class="gif" src="../../../en/twoGroupPropn/images/sdDiffEqn2.gif" id="gif_image_5_3_3" width="228" height="45"><iframe class="svg" src="../../../en/twoGroupPropn/images/sdDiffEqn2.svg" id="svg_image_5_3_3" width="228" height="45" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_5_3_3");</script></p>
+<p class="heading">Confidence interval for difference</p>
+<p>Most 95% confidence intervals are of the form</p>
+<p class="eqn"><em>estimate</em>   ±   1.96 &times; se(<em>estimate</em>)</p>
+<p>perhaps with a refinement of using a slightly higher value than 1.96 (e.g.
+a t-value) if the standard error is estimated. Applying this to our estimate
+of π<sub>2</sub>&nbsp;-&nbsp;π<sub>1</sub>and using 2 instead of 1.96 gives the
+approximate 95% confidence interval</p>
+<p class=eqn><img class="gif" src="../../../en/twoGroupPropn/images/diffCIEqn2.gif" id="gif_image_5_3_1" width="278" height="48"><iframe class="svg" src="../../../en/twoGroupPropn/images/diffCIEqn2.svg" id="svg_image_5_3_1" width="278" height="48" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_5_3_1");</script></p>
+<p class="heading">Example</p>
+<p align="center"><img src="../../../en/twoGroupPropn/images/bingeCI.gif" width="514" height="373" class="summaryPict"></p>
+
+
+
+
+<h2 class="pageName">12.5.4 &nbsp; Testing for difference in probabilities</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Two-tailed test</p>
+<p class=eqn><span class="blue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong><sub>1</sub> &nbsp;=&nbsp; </strong>&pi;<strong><sub>2</sub></strong><br>
+<strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong><sub>1</sub> &nbsp;&ne;&nbsp; </strong>&pi;<strong><sub>2</sub></strong></span></p>
+<p>For this test, the steps involved in obtaining a p-value are: </p>
+<p class=eqn><img class="gif" src="../../../en/twoGroupPropn/images/pValCalc.gif" id="gif_image_5_4_1" width="436" height="261"><iframe class="svg" src="../../../en/twoGroupPropn/images/pValCalc.svg" id="svg_image_5_4_1" width="436" height="261" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_5_4_1");</script> </p>
+<p>The p-value is interpreted in the same way as for all previous tests. A p-value
+close to zero is unlikely when <b>H<sub>0</sub></b> is true, but is more likely
+when <b>H<sub>A</sub></b> holds. Small p-values therefore provide evidence of
+a difference between the population probabilities. </p>
+<p class="heading">One-tailed test</p>
+<p>In a 1-tailed test, the alternative hypothesis is</p>
+<p class=eqn><span class="blue"><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong><sub>1</sub> &nbsp;&minus;&nbsp; </strong>&pi;<strong><sub>2</sub> &nbsp;&gt;&nbsp; 0</strong></span> &nbsp;&nbsp; <span class="red"><strong>or</strong></span> &nbsp;&nbsp; <span class="blue"><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong><sub>1</sub> &nbsp;&minus;&nbsp; </strong>&pi;<strong><sub>2</sub> &nbsp;&lt;&nbsp; 0</strong></span></p>
+<p>The test statistic is identical to that for a 2-tailed test and the p-value
+is obtained in a similar way, but it is found from only a <strong>single</strong> tail
+of the standard normal distribution. </p>
+<p class="heading"><span class="black">Alternative test statistic</span></p>
+<p>Since π<sub>1</sub> and
+π<sub>2</sub> are equal if <b>H<sub>0</sub></b> is true, the overall proportion
+of successes, <em>p</em>, can be used in the formula for the standard error
+of <em>p</em><sub>2</sub>&nbsp;-&nbsp;<em>p</em><sub>1</sub>.</p>
+<p class=eqn><img class="gif" src="../../../en/twoGroupPropn/images/diffSDEstEqn.gif" id="gif_image_5_4_2" width="476" height="95"><iframe class="svg" src="../../../en/twoGroupPropn/images/diffSDEstEqn.svg" id="svg_image_5_4_2" width="476" height="95" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_5_4_2");</script> </p>
+<p>This refinement makes little difference in practice,
+so the examples below use the 'simpler' formula that we gave earlier.</p>
+<p class="heading">Two-tailed example</p>
+<p align="center"><img src="../../../en/twoGroupPropn/images/birthSexTest.gif" width="541" height="476" class="summaryPict"></p>
+<p class="heading">One-tailed example</p>
+<p align="center"><img src="../../../en/twoGroupPropn/images/asprinTest.gif" width="541" height="476" class="summaryPict"></p>
+
+
+
+
+</html>

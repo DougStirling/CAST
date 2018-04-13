@@ -1,0 +1,778 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>6. Events in Time</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/maths/mathStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/maths/theorems.js"></script>
+  <script src="../../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 6 &nbsp; Events in Time</h1>
+<h1 class="sectionName">6.1 &nbsp; Poisson distribution</h1>
+<h2 class="pageName">6.1.1 &nbsp; Poisson process</h2>
+
+<p class="heading">Simple model for events in time</p>
+
+<p>There are many situations in which 'events' happen at random times. For example,</p>
+<ul>
+	<li>Patients arriving at a hospital's Accident and Emergency Clinic</li>
+</ul>
+<p>The simplest kind of model for such events  is  a <strong>homogeneous Poisson process</strong>. </p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>A <strong>homogeneous Poisson process</strong> is a series of events that occur over time in which:</p>
+<ol>
+	<li>Multiple events cannot happen at exactly the same time.</li>
+	<li>The occurrence of events during any interval of time is independent of whether events occurred in other non-overlapping intervals.</li>
+	<li>The probability of an event happening in any infinitesimally small interval \((t, t+\delta t]\) is \(\lambda \times \delta t\).</li>
+</ol>
+</div>
+
+<p>Less formally,</p>
+<ol>
+	<li>events happen singly,</li>
+	<li>occurrence of events at different times are independent, and</li>
+	<li>the chance of an event happening is the same at all times.</li>
+</ol>
+<p>The parameter \(\lambda\) is the <strong>rate </strong>of events occurring and is expressed as &quot;events per unit time&quot;. For example,  a model for emergency requests for ambulances from a hospital might have \(\lambda = 1.5\) call-outs per hour.</p>
+<p>This model is often an over-simplification of reality. It might be possible for two ambulances to be called out simultaneously after a bad road accident (not satisfying condition 1). Moreover, the rate of call-outs is likely to vary between different times of day (not satisfying condition 3). However a homogeneous Poisson is an <strong>approximation</strong> that might still be able to give reasonable insight.</p>
+<p>The model can be generalised to a <strong>non-homogeneous</strong> Poisson process if we allow the chance of an event happening to vary over time, replacing the constant \(\lambda\) with a function of time \(\lambda(t)\).</p>
+<p class="heading">Single events</p>
+<p>There are some scenarios in which only <strong>one</strong> such event  may happen. For example,</p>
+<ul>
+	<li>A light bulb failing</li>
+</ul>
+<p>The time until the event happens is also random, and  can be modelled as the time to the <strong>first</strong> event in a homogeneous Poisson process.</p>
+
+
+<h2 class="pageName">6.1.2 &nbsp; Events in fixed time (Proof not examined)</h2>
+<p>In a homogeneous Poisson process with events that occur at a rate of \(\lambda\) per unit time, we  now define a discrete random variable, \(X\), to be the number of events that occur in one unit of time.</p>
+<p>If the unit of time is split into infinitessimally small periods, each of length \(\delta t\), the requirements of a homogeneous Poisson process mean that</p>
+<ol>
+	<li>No more than one event can occur in each period.</li>
+	<li>The occurrences of events in different small periods are independent.</li>
+	<li>The probability of an event in any interval is \(\lambda \times \delta t\).</li>
+</ol>
+<p class="heading">Binomial approximation</p>
+<p>To derive the probability function of \(X\), we start with a situation in which the above three conditions hold, but \(\delta t\) is larger. If unit time is split into \(n\) intervals, each of length \(\frac 1 n\), the three conditions would mean that the number of events is the number of successes in a series of \(n\) independent Bernoulli trials, each with probability \(\pi = \frac {\lambda} n\) of success, so</p>
+\[
+X \;\sim\; \BinomDistn \left(n, \pi = \frac {\lambda} n\right)
+\]
+<p>The probability function for the number of events in a homogeneous Poisson process can be found as the limit of the probability function of this binomial distribution, as \(n \to \infty\).</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Poisson probability function</p>
+		<p>The number of events in unit time in a Poisson process with rate \(\lambda\) per unit time has probability function</p>
+\[
+p(x) \;\;=\;\;  \frac {\lambda^x e^{-\lambda}} {x!} \quad\quad \text{ for } x=0, 1, \dots
+\]
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p>A distribution of this form is called a  <strong>Poisson distribution</strong>.</p>
+
+
+<h2 class="pageName">6.1.3 &nbsp; Poisson probability function</h2>
+<p>A formal definition of the  <strong>Poisson</strong> distribution is now given.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>A random variable has a <strong>Poisson</strong> distribution with parameter \(\lambda\)</p>
+\[
+X \;\; \sim \; \; \PoissonDistn(\lambda)
+\]
+	<p>if its probability  function is</p>
+\[
+p(x) \;\;=\;\;  \frac {\lambda^x e^{-\lambda}} {x!} \quad\quad \text{ for } x=0, 1, \dots
+\]</div>
+
+<p>A Poisson distribution describes the number of events in <strong>any</strong> period of a Poisson process, not just unit time.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Poisson distribution for number of events</p>
+		<p>In a Poisson process with rate \(\lambda\) events per unit time, the number of events, \(X\) in a period of time of length \(t\) has a Poisson distribution</p>
+\[
+X \;\; \sim \; \; \PoissonDistn(\lambda t)
+\]	
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p class="heading">Some properties of Poisson distributions</p>
+<p>If events in a Poisson process occur at rate \(\lambda\) per unit time, then the number of events in time \(t_1 + t_2\) is the sum of the events in time \(t_1\) and those in \(t_2\). The events in  \(t_1\) and  \(t_2\) are independent and  all three variables have  Poisson distributions.</p>
+<p class="eqn"><img class="svgImage" src="../../../en/poisson/images/poissonSum.png" width="438" height="189"></p>
+<p>Adding two independent Poisson variables therefore results in another Poisson variable that also has a Poisson distribution.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Sum of independent Poisson variables</p>
+		<p>If \(X_1\) and \(X_2\) are independent Poisson random variables with parameters \(\lambda_1\) and \(\lambda_2\), then</p>
+		\[
+		X_1 + X_2 \;\; \sim \; \; \PoissonDistn(\lambda_1 + \lambda_2)
+		\] </div>
+</div>
+<p>This extends in an obvious way to the sum of any number of independent Poisson random variables.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Normal approximation for large λ</p>
+		<p>The shape of a Poisson distribution with parameter \(\lambda\) becomes close to a normal distribution as \(\lambda\) increases.</p>
+		<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p class="heading">Shape of Poisson distribution</p>
+<p>Here are a few examples of Poisson distributions.</p>
+<p class="eqn"><img src="../../../en/poisson/images/s_poissonShapes.png" width="514" height="580" alt=""/></p>
+<p>Note that</p>
+<ul>
+	<li>The distribution is very skew when \(\lambda\) is small</li>
+	<li>The maximum probability is at \(x = 0\) when \(\lambda \lt 1\), but is higher than this when \(\lambda \gt 1\).</li>
+	<li>As \(n\) increases, the shape of the distribution becomes more symmetric — it approaches a normal distribution's shape.	</li>
+</ul>
+
+
+<h2 class="pageName">6.1.4 &nbsp; Mean and variance (Proof not examined)</h2>
+<p>The  Poisson distribution's mean and variance can also be found as a limit of the  binomial distribution's mean and variance.</p>
+
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Mean and variance</p>
+<p>If \(X\) has a \(\PoissonDistn(\lambda)\) distribution with probability function</p>
+\[
+p(x) \;\;=\;\;  \frac {\lambda^x e^{-\lambda}} {x!} \quad\quad \text{ for } x=0, 1, \dots
+\]
+<p>then its mean and variance are</p>
+\[
+E[X] \;=\;  \lambda \spaced{and} \Var[X] \;=\;  \lambda
+\] 
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+<p class="heading">Approximate normal distribution</p>
+<p>We can now be more precise about the parameters of the normal approximation to the Poisson distribution.</p>
+\[
+\PoissonDistn(\lambda) \;\;\xrightarrow[\lambda \to \infty]{} \;\; \NormalDistn(\mu = \lambda,\; \sigma^2 = \lambda)
+\]
+<p>This approximation is reasonably good even when \(\lambda\) is as low as 20.</p>
+
+
+
+<h2 class="pageName">6.1.5 &nbsp; Example</h2>
+<p>We now give an example where Poisson probabilities are required.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Question: Arrival of phone calls</p>
+		<p>A homogeneous Poisson process might be used to model arrival of telephone calls in an office. We will assume that calls arrive at a constant rate of \(\lambda = 3\) per hour during the morning (8:30 am to 12:30 pm).</p>
+		<ol>
+			<li>What are the mean and standard deviation of the number of calls arriving in a single hour?</li>
+			<li>What is the probability of getting three or more calls in a single hour?</li>
+			<li>What is the probability of getting no calls in a 20-minute period?</li>
+		</ol>
+		<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">6.1.6 &nbsp; Maximum likelihood</h2>
+<p>In practical applications, we may be able to assume that the conditions for a Poisson process hold at least approximately, but the rate of events, \(\lambda\), is usually an unknown value that must be estimated from data.</p>
+<p>Given a random sample, \(\{x_1, x_2, \dots, x_n\}\), from a \(\PoissonDistn(\lambda)\) distribution, we will use maximum likelihood to estimate \(\lambda\). The logarithm of the Poisson probability function is</p>
+\[
+\log(p(x | \lambda)) \;=\; x \log(\lambda) - \lambda - \log(x!)
+\]
+<p>so the log-likelihood function is</p>
+\[
+\ell( \lambda) \;=\; \sum_{i=1}^n {x_i} \log(\lambda) - n\lambda + K
+\]
+<p>where \(K\) is a constant that does not depend on \(\lambda\). To find the maximum likelihood estimate, we solve</p>
+\[
+\ell'( \lambda) \;=\; \frac {\sum {x_i}} {\lambda} - n \;=\; 0
+\]
+<p>so</p>
+\[
+\hat{\lambda} \;=\; \frac {\sum {x_i}} n \;=\; \overline{x}
+\]
+
+
+<h2 class="pageName">6.1.7 &nbsp; Confidence interval for rate</h2>
+
+<p class="heading">Properties of maximum likelihood estimator</p>
+<p>From the properties of a sample mean,</p>
+\[
+E[\hat{\lambda}] \;=\; E[X] \;=\; \lambda
+\]
+<p>so the estimator is unbiased. Its standard error is</p>
+\[
+\se(\hat{\lambda}) \;=\; \sqrt {\Var(\overline{X})} \;=\; \sqrt {\frac {\Var(X)} n} \;=\; \sqrt{\frac {\lambda} n}
+\]
+<p>From the Central Limit Theorem (or from the asymptotic properties of MLEs), we also know that \(\hat{\lambda}\) is approximately normal in large samples.</p>
+<p class="heading">Normal-based confidence interval</p>
+
+<p>An approximate 95% confidence interval for any parameter is the estimate ± 1.96 standard errors. Applying this to the maximum likelihood estimate of \(\lambda\), and replacing \(\lambda\) by its estimate, \(\hat{\lambda} = \overline{x}\) in the formula for the standard error,  gives the following 95% CI:</p>
+\[
+\hat{\lambda} \pm 1.96 \times \se(\hat{\lambda})\;\; = \; \; \overline{x} \pm 1.96 \sqrt{\frac {\overline{x}} n}
+\]
+
+
+
+<h1 class="sectionName breakBefore">6.2 &nbsp; Exponential distribution</h1>
+<h2 class="pageName">6.2.1 &nbsp; Time until first event</h2>
+<p>In this section, we consider the time it takes for the <strong>first</strong> event to occur in a homogeneous Poisson process — a continuous random variable.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Exponential distribution</p>
+<p>In a homogeneous Poisson process with rate \(\lambda\) events per unit time, the time until the first event, \(Y\), has a distribution called an <strong>exponential</strong> distribution,</p>
+\[
+Y \;\; \sim \; \; \ExponDistn(\lambda)
+\]
+<p>with probability density function</p>
+\[
+f(y) \;\; = \; \; \lambda\; e^{-\lambda y}
+\]
+<p>and cumulative distribution function</p>
+\[
+F(y) \;\; = \; \; 1 - e^{-\lambda y} 
+\]
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p>The diagram below shows the shapes of a few typical exponential distribution.</p>
+<p class="eqn"><img src="../../../en/exponential/images/s_exponentialPdf.png" width="511" height="376"/></p>
+<p>All exponential distributions have their highest probability density at \(x = 0\) and steadily decrease as \(x\) increases.</p>
+
+
+<h2 class="pageName">6.2.2 &nbsp; Other exponential probabilities</h2>
+<p>The cumulative distribution function, \(F(x)\), can be used to find the probability that an exponentially distributed variable, \(X\), lies within any two limits</p>
+\[ \begin{align}
+P(a \lt X \lt b) \;\;=\;\; P(X \lt b) - P(X \lt a) \;\;&amp;=\;\; F(b) - F(a) \\
+&amp;=\;\; e^{-a\lambda} - e^{-b\lambda}
+\end{align} \]
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Question</p>
+		<p>An organisation's web site is accessed at a constant rate of 20 times per hour between 9am and 5pm. After an update to the site at 10am, what is the probability that the first access is between 10:05am and 10:10am?</p>
+		<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+<p class="heading">Conditional probabilities</p>
+<p>The exponential distribution has an important property called its <strong>memoryless</strong> property.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Memoryless property of exponential distribution</p>
+		<p>If \(X \sim  \ExponDistn(\lambda) \),</p>
+\[
+P(X \gt s+t \;|\; X \gt s) \;\; = \; \; P(X \gt t) \quad\quad \text{for all }s,t \ge 0\]
+		<p>In other words, knowing that there were no events in the interval \((0, s]\) gives no information about how long it will take for the first event to occur <strong>after</strong> time \(s\).</p>
+		<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+<p class="heading">Time between events</p>
+<p>The memoryless property of a Poisson process with rate \(\lambda\) also means that if it is known that an event happened at time \(s\), the time from then until the <strong>next</strong> event in the process <strong>also</strong> has an \(\ExponDistn(\lambda) \) distribution.</p>
+<p>The exponential distribution therefore also describes the time <strong>between </strong> events in a Poisson process.</p>
+
+
+<h2 class="pageName">6.2.3 &nbsp; Gamma functions</h2>
+<p class="heading">Mathematical interlude</p>
+<p>Various results relating to Poisson processes can be derived most easily using a particular kind of mathematical function called a <strong>gamma</strong> function.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>The gamma function has a single argument and is defined by</p>
+\[
+\Gamma(t) \;\;=\;\; \int_0^{\infty} {x^{t-1} e^{-x}} \; dx
+\]</div>
+<p>Gamma functions have various useful properties.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Recursive formula</p>
+		<p>For any \(t\), </p>
+\[
+\Gamma(t+1) \;\;=\;\; t \times \Gamma(t) \] </div>
+	<div class="theorem">
+		<p class="theoremTitle">Two specific values</p>
+		\[
+		\Gamma(1) \;\;=\;\; 1 \spaced{and} \Gamma \left(\frac 1 2\right) = \sqrt{\pi} \] </div>
+	<div class="theorem">
+		<p class="theoremTitle">Relationship to factorials</p>
+		<p>For any integer \(t \ge 0\), </p>
+		\[
+		\Gamma(t+1) \;\;=\;\; t! \] 
+		<p class="theoremNote">(All proved in full version)</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">6.2.4 &nbsp; Mean and variance</h2>
+<p>Gamma functions are useful in proving the following result.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Exponential mean and variance</p>
+		<p>If \(X\) has an \(\ExponDistn(\lambda) \) distribution with pdf</p>
+\[
+f(x) \;\;=\;\; \lambda e^{-\lambda x}
+\]
+		<p>then its mean and variance are</p>
+\[
+E[X] \;\;=\;\; \frac 1 {\lambda} \spaced{and} \Var(X) \;\;=\;\; \frac 1 {\lambda^2}
+\] 
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">6.2.5 &nbsp; Maximum likelihood</h2>
+<p>If  \(\{x_1, x_2, \dots, x_n\}\) is a random sample of times between events in a Poisson process — a random sample from an \(\ExponDistn(\lambda)\) distribution — the parameter \(\lambda\) can be estimated by  maximum likelihood. Since</p>
+\[
+\log f(x\;|\;\lambda) \;\;=\;\; \log(\lambda) - \lambda x
+\]
+<p> the log-likelihood is</p>
+\[
+\ell(\lambda) \;\;=\;\; \sum_{i=1}^n \log f(x_i\;|\;\lambda) \;\;=\;\; n\log(\lambda) - \lambda \sum {x_i}
+\]
+<p>The maximum likelihood estimate is the solution to</p>
+\[
+\ell'(\lambda) \;\;=\;\; \frac n{\lambda} - \sum {x_i} \;\;=\;\; 0
+\]
+<p>so</p>
+\[
+\hat{\lambda} \;\;=\;\; \frac n{\sum {x_i}} \;\;=\;\; \frac 1 {\overline{x}}\]
+
+<div class="example">
+	<p class="exampleHeading">Question: Aircraft air-conditioner failures</p>
+	<p>The table below shows the number of operating hours between successive failures of air-conditioning equipment in ten aircraft.</p>
+
+<div class="centred">
+	<table border="0" cellpadding="4" cellspacing="0" class="centred">
+		<tr>
+			<th colspan="10">Aircraft number</th>
+		</tr>
+		<tr>
+			<th>2</th>
+			<th>3</th>
+			<th>4</th>
+			<th>5</th>
+			<th>6</th>
+			<th>7</th>
+			<th>8</th>
+			<th>9</th>
+			<th>12</th>
+			<th>13</th>
+		</tr>
+		<tr>
+			<td valign="top" style="padding:0px 12px; text-align:right; background-color:#FFFFFF; border:1px solid #999999; border-right:0px;">413<br>
+				14<br>
+				58<br>
+				37<br>
+				100<br>
+				65<br>
+				9<br>
+				169<br>
+				447<br>
+				184<br>
+				36<br>
+				201<br>
+				118<br>
+				34<br>
+				31<br>
+				18<br>
+				18<br>
+				67<br>
+				57<br>
+				62<br>
+				7<br>
+				22<br>
+				34</td>
+			<td valign="top"  style="padding:0px 12px; text-align:right; background-color:#FFFFFF; border-top:1px solid #999999; border-bottom:1px solid #999999;">90<br>
+				10<br>
+				60<br>
+				186<br>
+				61<br>
+				49<br>
+				14<br>
+				24<br>
+				56<br>
+				20<br>
+				79<br>
+				84<br>
+				44<br>
+				59<br>
+				29<br>
+				118<br>
+				25<br>
+				156<br>
+				310<br>
+				76<br>
+				26<br>
+				44<br>
+				23<br>
+				62<br>
+				130<br>
+				208<br>
+				70<br>
+				101<br>
+				208</td>
+			<td valign="top"  style="padding:0px 12px; text-align:right; background-color:#FFFFFF; border-top:1px solid #999999; border-bottom:1px solid #999999;">74<br>
+				57<br>
+				48<br>
+				29<br>
+				502<br>
+				12<br>
+				70<br>
+				21<br>
+				29<br>
+				386<br>
+				59<br>
+				27<br>
+				153<br>
+				26<br>
+				326</td>
+			<td valign="top"  style="padding:0px 12px; text-align:right; background-color:#FFFFFF; border-top:1px solid #999999; border-bottom:1px solid #999999;">55<br>
+				320<br>
+				65<br>
+				104<br>
+				220<br>
+				239<br>
+				47<br>
+				246<br>
+				176<br>
+				182<br>
+				33<br>
+				15<br>
+				104<br>
+				35</td>
+			<td valign="top"  style="padding:0px 12px; text-align:right; background-color:#FFFFFF; border-top:1px solid #999999; border-bottom:1px solid #999999;">23<br>
+				261<br>
+				87<br>
+				7<br>
+				120<br>
+				14<br>
+				62<br>
+				47<br>
+				225<br>
+				71<br>
+				246<br>
+				21<br>
+				42<br>
+				20<br>
+				5<br>
+				12<br>
+				120<br>
+				11<br>
+				3<br>
+				14<br>
+				71<br>
+				11<br>
+				14<br>
+				11<br>
+				16<br>
+				90<br>
+				1<br>
+				16<br>
+				52<br>
+				95</td>
+			<td valign="top" style="padding:0px 12px; text-align:right; background-color:#FFFFFF; border-top:1px solid #999999; border-bottom:1px solid #999999;">97<br>
+				51<br>
+				11<br>
+				4<br>
+				141<br>
+				18<br>
+				142<br>
+				68<br>
+				77<br>
+				80<br>
+				1<br>
+				16<br>
+				106<br>
+				206<br>
+				82<br>
+				54<br>
+				31<br>
+				216<br>
+				46<br>
+				111<br>
+				39<br>
+				63<br>
+				18<br>
+				191<br>
+				18<br>
+				163<br>
+				24</td>
+			<td valign="top"  style="padding:0px 12px; text-align:right; background-color:#FFFFFF; border-top:1px solid #999999; border-bottom:1px solid #999999;">50<br>
+				44<br>
+				102<br>
+				72<br>
+				22<br>
+				39<br>
+				3<br>
+				15<br>
+				197<br>
+				188<br>
+				79<br>
+				88<br>
+				46<br>
+				5<br>
+				5<br>
+				36<br>
+				22<br>
+				139<br>
+				210<br>
+				97<br>
+				30<br>
+				23<br>
+				13<br>
+				14</td>
+			<td valign="top"  style="padding:0px 12px; text-align:right; background-color:#FFFFFF; border-top:1px solid #999999; border-bottom:1px solid #999999;">359<br>
+				9<br>
+				12<br>
+				270<br>
+				603<br>
+				3<br>
+				104<br>
+				2<br>
+				438</td>
+			<td valign="top"  style="padding:0px 12px; text-align:right; background-color:#FFFFFF; border-top:1px solid #999999; border-bottom:1px solid #999999;">487<br>
+				18<br>
+				100<br>
+				7<br>
+				98<br>
+				5<br>
+				85<br>
+				91<br>
+				43<br>
+				230<br>
+				3<br>
+				130</td>
+			<td valign="top"  style="padding:0px 12px; text-align:right; background-color:#FFFFFF; border:1px solid #999999; border-left:0px;">102<br>
+				209<br>
+				14<br>
+				57<br>
+				54<br>
+				32<br>
+				67<br>
+				59<br>
+				134<br>
+				152<br>
+				27<br>
+				14<br>
+				230<br>
+				66<br>
+				61<br>
+				34</td>
+		</tr>
+	</table>
+</div>
+
+	<p>Assuming that each aircraft has the same failure rate for its air-conditioning equipment, and the occurrence of a failure in any hour is independent of whether or not the equipment has just been repaired, what is the MLE of the failure rate in this type of aircraft?</p>
+	<p class="exampleNote">(Solved in full version)</p>
+</div>
+
+
+<h2 class="pageName">6.2.6 &nbsp; Confidence intervals</h2>
+
+<p class="heading">Standard error</p>
+<p>The asymptotic formula for the standard error of maximum likelihood estimators can be used to get an approximate value for the standard error of \(\hat{\lambda} = \frac 1 {\overline{X}}\).</p>
+
+\[
+\ell''(\lambda) \;\; = \;\; -\frac n {\lambda^2}
+\]
+\[
+\se(\hat{\lambda}) \;\;\approx\;\; \sqrt {- \frac 1 {\ell''(\hat {\lambda})}} \;\;=\;\; \frac {\hat{\lambda}} {\sqrt n}
+\]
+
+<p class="heading">Confidence interval</p>
+<p>An approximate 95% confidence interval for \(\lambda\) can be found using the asymptotic normality of the maximum likelihood estimator as</p>
+\[ \begin{align}
+\hat{\lambda} \; \pm\; 1.96 \times \se(\hat{\lambda}) \;\;&amp;=\;\; \frac 1 {\overline{x}} \; \pm\; 1.96 \times \frac 1 {\sqrt n \;\overline{x}} \\
+&amp;=\;\; \frac 1 {\overline{x}} \left(1 - \frac {1.96}{\sqrt n}\right) \quad\text{to}\quad \frac 1 {\overline{x}} \left(1 + \frac {1.96}{\sqrt n}\right)
+\end{align} \]
+
+<div class="example">
+	
+	<p class="exampleHeading">Question: Aircraft air-conditioner failures</p>
+
+<p>The mean time between failures of the \(n = 199\) air-conditioners on the previous page was \(\overline{X} = 90.92\) hours with estimated failure rate \(\hat{\lambda} = 0.0110\) failures per hour. Find an approximate 95% confidence interval for the failure rate.</p>
+<p class="exampleNote">(Solved in full version)</p>
+</div>
+
+
+<h1 class="sectionName breakBefore">6.3 &nbsp; Lifetimes</h1>
+<h2 class="pageName">6.3.1 &nbsp; Survivor and hazard functions</h2>
+
+<p class="heading">Lifetimes</p>
+<p>Manufactured items usually fail at some time after they start to be used, and biological entities also have limited lifetimes. An item's lifetime is denoted by\(X\), with probability density function  \(f(x)\) and  cumulative distribution function  \(F(x) = \int_0^x {f(u) \; du}\).</p>
+<p>The survivor function describes the probability that an item's lifetime will be greater than any constant, \(x\).</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>The <strong>survivor function</strong> of random variable \(X\) is</p>
+\[
+S(x) \;\; = \; \; P(X \gt x) \;\;=\;\; 1 - F(x)
+\]</div>
+<p>The <strong>conditional</strong> probability of failing in the interval  \((x, x+\delta x]\), given survival until at least time \(x\) is</p>
+\[ \begin{align}
+P(x \lt X \le x+\delta x \;|\; X \gt x) \;\;&amp;=\;\; \frac {P(x \lt X \le x+\delta x \textbf{ and } X \gt x)}{P(X \gt x)} \\
+&amp;\approx \; \; \frac {f(x)}{S(x)} \times \delta x
+\end{align} \]
+<p>The quantity \(f(x) / S(x)\) therefore describes the failure rate at time \(x\), conditional on having survived until at least time \(x\).</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>The <strong>hazard function</strong> of random variable \(X\) is</p>
+	\[
+	h(x) \;\; = \; \; \frac {f(x)}{S(x)} \;\;=\;\; \frac {f(x)}{1 - F(x)}
+	\]</div>
+<p>The hazard function is particularly informative — it describes how an item's age, \(x\) affects its risk of failure.</p>
+
+
+<h2 class="pageName">6.3.2 &nbsp; Relationship to Poisson process</h2>
+
+<p class="heading">Lifetimes</p>
+<p>Consider a light fitting in which the light bulb is replaced whenever it fails. If the failure rate, \(\lambda\), remains constant over time and the risk of failure at any time does not depend on what happened previously, failures would be a homogeneous Poisson process.</p>
+<p>We will now concentrate on a <strong>single</strong> light bulb. Its lifetime is the time until the first event in this Poisson process and would have an \(\ExponDistn(\lambda)\) distribution.</p>
+<div class="boxed">
+	<p>Lifetimes may be modelled as the time until the first event of a Poisson process.</p></div>
+<p class="heading">Exponential hazard function</p>
+
+<p>The survivor function for the exponential distribution is</p>
+\[
+	S(x) \;\; = \; \; 1 - F(x) \;\;=\;\; e^{-\lambda x}\]
+<p>and its hazard function is</p>
+\[
+	h(x) \;\; = \; \; \frac {\lambda e^{-\lambda x}}{e^{-\lambda x}}
+	\;\;=\;\; \lambda\]
+<p>This constant hazard function corresponds to the &quot;memoryless&quot; property of Poisson processes — the chance of failing does not depend on what happened before and, in particular, how long the item has already survived.</p>
+
+
+<h1 class="sectionName breakBefore">6.4 &nbsp; Time until k'th event</h1>
+<h2 class="pageName">6.4.1 &nbsp; Erlang distribution (Proof not examined)</h2>
+<p>The time until the <strong>first</strong> event in a homogeneous Poisson process  has an exponential distribution. We next  find the distribution of the time until the <strong>second</strong> event in the process.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Time until second event</p>
+<p>If \(X\) is the time until the second event in a Poisson process with rate \(\lambda\), it has probability density function</p>
+\[
+f(x) \;\;=\;\; \begin{cases} \lambda^2 x e^{-\lambda x} &amp; x \gt 0 \\[0.3em]
+0 &amp; \text{otherwise}
+\end{cases} \]
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p>The pdf of the time until the third event in the Poisson process can be found in a similar way.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Time until third event</p>
+		<p>If \(X\) is the time until the third event in a Poisson process with rate \(\lambda\), it has probability density function</p>
+		\[
+		f(x) \;\;=\;\; \begin{cases} \dfrac{\lambda^3}{2!} x^2 e^{-\lambda x} &amp; x \gt 0 \\[0.5em]
+		0 &amp; \text{otherwise}
+		\end{cases} \]
+		<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p>We now generalise this to the time until the \(k\)'th event.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Time until k'th event</p>
+		<p>The time until the \(k\)'th event in a Poisson process with rate \(\lambda\), has a distribution called an <strong>Erlang</strong> distribution</p>
+\[
+X \;\; \sim \; \; \ErlangDistn(k, \lambda)
+\]
+		<p> with probability density function</p>
+		\[
+		f(x) \;\;=\;\; \begin{cases} \dfrac{\lambda^k}{(k-1)!} x^{k-1} e^{-\lambda x} &amp; x \gt 0 \\[0.5em]
+		0 &amp; \text{otherwise}
+		\end{cases} \]
+		<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">6.4.2 &nbsp; Mean and variance</h2>
+<p class="heading">Sum of independent exponential variables</p>
+<p>In a homogeneous Poisson process, the time until the \(k\)'th event is</p>
+
+\[
+X \;\; = \; \; \sum_{i=1}^k {Y_i}
+\]
+<p>where \(Y_1\) is the time to the first event, \(Y_2\) is the time from the first event to the second, and so on. From the memoryless property of a homogeneous Poisson process, the \(\{Y_i\}\) are independent and they  all have \(\ExponDistn(\lambda)\) distributions. </p>
+<p>Since \(X\) is the sum of a random sample of size \(k\) from an exponential distribution,  we can use general results about the sum of a random sample to find its mean and variance.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Mean and variance of Erlang distribution</p>
+<p>If a random variable, \(X\), has an Erlang distribution with probability density function</p>
+\[
+		f(x) \;\;=\;\; \begin{cases} \dfrac{\lambda^k}{(k-1)!} x^{k-1} e^{-\lambda x} &amp; x \gt 0 \\[0.3em]
+		0 &amp; \text{otherwise}
+		\end{cases} \]
+		<p>its mean and variance are</p>
+\[
+E[X] \;=\; \frac k{\lambda}\spaced{and} \Var(X) \;=\; \frac k{\lambda^2}
+\] 
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p>A final useful property of Erlang distributions that adding together two independent Erlang variables (with the same \(\lambda\)) results in a variable that also has an Erlang distribution.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Additive property of Erlang distributions</p>
+		<p>If \(X_1 \sim \ErlangDistn(k_1,\; \lambda)\) and \(X_2 \sim \ErlangDistn(k_2,\; \lambda)\) are independent, then</p>
+		\[
+		X_1 + X_2 \;\;\sim\;\; \ErlangDistn(k_1 + k_2,\; \lambda)
+		\] 
+		<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">6.4.3 &nbsp; Probabilities</h2>
+<p class="heading">Gamma distribution</p>
+<p>The Erlang distribution is a special case of a more general distribution called the Gamma distribution — it generalises the Erlang distribution by allowing for non-integer values of the parameter <em>k</em>.</p>
+	<p class="heading">Probabilities</p>
+	<p>Because of the strong relationship between Erlang and Gamma distributions, we will wait until the section about Gamma distributions in the next chapter before explaining how to find probabilities for Erlang random variables.</p>
+	<p class="heading">&nbsp; </p>
+
+
+<h1 class="sectionName">6.5 &nbsp; What you need to learn</h1>
+
+
+<p class="heading">What you need to know in this chapter</p>
+<p>You should concentrate on the following material when studying the chapter about events in time.</p>
+<p>From a described scenario, it is important that you can tell whether it involves events in time (this chapter) or a sequence of successes and failures (Chapter 3). If dealing with events in time, you must also be able to tell whether a random variable should be modelled by a Poisson, exponential or Erlang distribution.</p>
+<p class="heading">6.1 Poisson distribution</p>
+<p>You will need to understand the assumptions that underly a Poisson process and how the Poisson distribution arises, but will <strong>not</strong> need to derive the Poisson probability function or its mean and variance. You should also be able to justify the fact that the sum of independent Poisson variables also has a Poisson distribution, and use this to derive a normal approximation.</p>
+<p>Maximum likelihood estimation of \(\lambda\) and a confidence interval for it are simply applications of the general results from Chapter 4.</p>
+<p class="heading">6.2 Exponential distribution</p>
+<p>You must understand how the exponential distribution relates to a homogeneous Poisson process and be able to derive its pdf. You should also be able to find the distribution's mean and variance. Maximum likelihood estimation of \(\lambda\) from an exponential sample and a confidence interval for it are simply applications of the general results.</p>
+<p class="heading">6.3 Lifetimes</p>
+<p>The definitions and meanings of the survivor and hazard functions are important and you should be able to prove that the hazard function is  constant if an item's lifetime has an exponential distribution.</p>
+<p class="heading">6.4 Time until k'th event</p>
+<p>You should know how the Erlang distribution arises but will not need to know how to derive its pdf. You should however be able to find the formulae for its mean and variance from those of the exponential distribution. After studying Section 7.3, you should be able to find probabilities relating to Erlang distributions on a computer (but not in the exam).</p>
+
+
+</body>
+</html>

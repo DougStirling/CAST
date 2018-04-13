@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Anova for non-orthogonal factors</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="unequal replicates, orthogonal factors, anova, analysis of variance, sequential sums of squares">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Alternative analysis of variance tables</p>  
+<p>If an experiment has equal replicates of all treatments or if the  two factors are orthogonal in other ways (as described on the previous page), the sums of squares explained by the two factors are the same whichever order the factors are added to the model.</p>
+<p>Experiments are usually designed in this way, but poor design or missing values can result in data that are not orthogonal. If the factors are <strong>not</strong> orthogonal, there are <strong>two different</strong> analysis of variance tables corresponding to the two orders of adding the factors.</p>
+
+<div class="diagram"> 
+<p class="heading">Example</p>
+<p>The diagram below initially shows results from an experiment with two factors. Eight replicates have been used for the two treatments with X at level X1 and four replicates for the two treatments with X at level X2.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="600">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoFactorProg.UnbalancedReorderApplet">
+<param name="yVarName" value="Response, Y">
+<param name="yValues" value="29.84 26.67 27.12 28.30 18.07 19.16 24.09 18.57 28.32 34.02 35.34 31.53 31.91 32.67 31.81 35.75 27.77 23.58 23.58 22.41 23.93 28.90 30.25 25.35">
+<param name="yAxis" value="15 40 15 5">
+<param name="xVariables" value="X Z">
+<param name="XVarName" value="Factor X">
+<param name="XValues" value="8@0 16@1">
+<param name="XLabels" value="X1 X2">
+<param name="ZVarName" value="Factor Z">
+<param name="ZValues" value="4@0 4@1 8@0 8@1">
+<param name="ZLabels" value="Z1 Z2">
+<param name="maxSsq" value="99.999 99">
+<param name="maxBarSsq" value="400">
+<param name="noToDelete" value="7">
+<param name="highRepsName" value="Reps at highest levels">
+</applet> 
+</div>
+
+<p>Since the two factors are initially orthogonal, their explained sums of squares do not depend on the the order of adding them to the model. Drag the red arrows to the left of the sums of squares table to change the order of adding the factors and observe that the sum of squares explained by X is the same whether it is added first to the model or after Z has already been added. (The sum of squares for Z similarly does not depend on the order of adding the terms.)</p>
+<p>Now drag the slider to the left to reduce the number of replicates for X&nbsp;=&nbsp;X2 and Z&nbsp;=&nbsp;Z2. (These might be missing values in practice.) The resulting data are <strong>not</strong> orthogonal, so the sums of squares differ depending on the order of adding the two factors to the model. Drag to reorder the two rows of the table and observe that the sum of squares for X  depends on whether the term is added first or second.</p>
+<div class="centred"><div class="boxed">
+	<p>The bars to the right of the table are proportional to the sums of squares. The red section is the difference between the sum of squares when the term is added first or second.</p>
+</div></div>
+<p>Note that the difference between the alternative sums of squares (the length of the red section) depends on <strong>how far</strong> the design is from orthogonality. If there is only a single missing value, there is vary little difference. Some software will <strong>estimate</strong> the missing value so that a balanced anova table can be presented. The resulting sums of squares are intermediate between those of the two orders of adding the terms to the model.</p>
+<p class="heading">Yield of chemical process</p>
+<p>The diagram below  shows results from an experiment in which two amounts of catalyst and two concentrations of the main ingredient are used. This experiment is badly unbalanced with only two replicates when both factors are at their high level and  when both factors are at their low level, but seven replicates for the other two treatments.</p>
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoFactorProg.FactorAnovaReorderApplet">
+<param name="yVarName" value="Yield of chemical process">
+<param name="yValues" value="29.84 26.67 27.12 28.30 18.07 19.16 24.09 18.57 28.32 34.02 35.34 31.53 31.91 32.67 31.81 35.75 27.77 23.58">
+<param name="yAxis" value="15 40 15 5">
+<param name="xVariables" value="X Z">
+<param name="XVarName" value="Concentration, X">
+<param name="XValues" value="9@0 9@1">
+<param name="XLabels" value="15% 25%">
+<param name="ZVarName" value="Catalyst, Z">
+<param name="ZValues" value="2@0 7@1 7@0 2@1">
+<param name="ZLabels" value="0.5 1.0">
+<param name="maxSsq" value="99.999 99 99.999 99.9">
+<param name="maxBarSsq" value="400">
+</applet> 
+</div>
+
+<p>The two red arrows to the left of the anova table can again be dragged to change the order of adding the two factors. There are major differences between the p-values with the two orderings.</p>
+<ul>
+	<li>When <em>Catalyst</em> is added after <em>Concentration</em>, its p-value is 0.0052, so there is strong evidence that <em>Catalyst</em> is needed in the model<strong> even when <em>Concentration </em>is already in the model</strong>.</li>
+	<li>When <em>Concentration</em> is added after <em>Catalyst</em>, its p-value is 0.0741, so there is only very weak evidence that <em>Concentration</em> is important if <em>Catalyst</em> is in the model.</li>
+</ul>
+<p>We would therefore conclude that <em>Catalyst</em> affects the yield of the chemical process &mdash; it is important whether or not <em>Concentration</em> is used in the model. However there is only very weak evidence of the additional importance of <em>Concentration</em>.<br>
+</p>
+  </div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

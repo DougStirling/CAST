@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Exhibición de afloramientos</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="box plot, outliers/display of outliers in box plot, interquartile range">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Diagrama mejorado de la caja</p> 
+	<p>Un problema con el diagrama básico de la caja que fue descrito en las páginas anteriores es que no puede demostrar si hay afloramientos en el conjunto de datos. Una modificación común dibuja algunos de los valores más extremos como cruces separadas en el diagrama de la caja y amplía la “barba” solamente hasta las observaciones más extremas que no se dibujan por separado.</p> 
+	<center> 
+		<table border="1" cellspacing="0" cellpadding="5" bgcolor="white" width="75%"> 
+			<tr> 
+				<th align="CENTER">El diagrama modificado de la caja hace que los afloramientos se destacan.</th> 
+			</tr> 
+		</table> 
+	</center> 
+	<p>(La regla que se utiliza para decidir sobre qué valores a exhibir como cruces se explica abajo.)</p> 
+	<div class="diagram"> 
+		<p>En muchos usos prácticos, las distribuciones oblicuas con una cola larga hacia los valores más altos son comunes. Por ejemplo, los experimentos que implican tiempos de supervivencia de plantas o de insectos, o épocas hasta la falta de artículos manufacturados dan lugar generalmente a datos con elevados valores ocasionales.</p> 
+		<p>En el conjunto de datos abajo está una distribución oblicua sin afloramientos y ningunos valores se destacan como inusuales.  </p> 
+			
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="210"> 
+<script type="text/javascript">writeAppletParams();</script> 
+<param name="appletName" value="boxPlotProg.WeightedBoxApplet"> 
+<param name="varName" value="Distn asimétrica"> 
+<param name="varName2" value="Atípicos"> 
+<param name="values" value="1 3 4 5 7 8 10 12 17 18 20 22 26 28 33 36 40 51 83 94 119"> 
+<param name="values2" value="1 3 4 5 7 8 10 12 17 18 20 22 26 28 33 36 40 40 42 45 119"> 
+<param name="initialWt" value="1.0"> 
+<param name="horizAxis" value="0 120 0 20"> 
+<param name="showOutliers" value="choice"> 
+<param name="customText" value="Basic box plot=Diagrama de caja básica#Box plot showing outliers=Diagrama de cajas muestra valores extremos"> 
+</applet> 
+		</div> 
+		
+		<p><strong>Arrastre el resbalador</strong> para cambiar el conjunto de datos en uno con una distribución bastante simétrica y un solo afloramiento. El diagrama básico de la caja no demuestra la existencia del afloramiento.</p> 
+		<center> 
+			<table border="1" cellspacing="0" cellpadding="5" bgcolor="white" width="75%"> 
+				<tr> 
+					<th align="CENTER">El diagrama básico de la caja no puede distinguir entre una distribución muy long-tailed y un afloramiento.</th> 
+				</tr> 
+			</table> 
+		</center> 
+		<p><strong>El diagrama</strong> ahora selecto de la <strong>caja que demuestra afloramientos del</strong> menú móvil y utiliza otra vez el resbalador para considerar cómo el diagrama mejorado de la caja distingue entre una distribución oblicua y la que está con un afloramiento.</p> 
+	</div> 
+ 
+  <p class="heading">¿Qué valores extremos se exhiben como cruces?</p> 
+ 
+  <p>En primer lugar definimos la <strong>gama intercuartil</strong> para ser la distancia entre las cuartilas superiores y más bajas (es decir la longitud de la caja central en el diagrama de la caja). Cualquier valor más de 1.5 veces esta distancia de la caja se exhibe con una cruz separada. Las “barbas” que se dibujan a los lados de la caja central extienden solamente hasta los valores más extremos dentro de estos límites.  </p>
+
+<p class=eqn><object data="images/outlierDefn.svg" width="504" height="124"></object>
+</p>
+
+<div class="diagram"> 
+ 
+		<p>El diagrama abajo permite que usted investigue éstos los diagramas mejorados de la caja.</p> 
+ 
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="180"> 
+<script type="text/javascript">writeAppletParams();</script> 
+<param name="appletName" value="boxPlotProg.DragBoxValueApplet"> 
+<param name="varName" value="test"> 
+<param name="values" value="2.2 2.4 2.4 2.6 2.7 2.9 3.2 3.3 3.5 3.8 3.9 4.1 4.6 5.1 6.1 6.5"> 
+<param name="horizAxis" value="-0.5 10 0 1"> 
+</applet> 
+</div> 
+ 
+		<p>Arrastre la cruz en el diagrama inquieto del punto que corresponde al valor más alto (6.5) al derecho, aumentando su valor para darle vuelta en un afloramiento.</p> 
+		<p>Las otras cruces en el diagrama inquieto del punto se pueden arrastrar semejantemente para cambiar las distribuciones de valores. ¿Cuándo los valores extremos se exhiben por separado mientras que las cruces en la caja trazan?</p> 
+ 
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

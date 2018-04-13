@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Binomial examples</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+	
+	<script type="text/javascript">
+		setupChoiceImages("../../randomPropn/images/g_multichoice", "../../randomPropn/images/g_defectives", "../../randomPropn/images/g_studentWork", "../../randomPropn/images/g_voters");
+	</script>
+
+	<meta name="index" content="binomial distribution, continuity correction">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Evaluating binomial probabilities</p>
+<p>If we are satisfied that a binomial distribution is appropriate, it can be 
+	used to obtain the probability of any number of successes. Binomial probabilities may be obtained using ... </p>
+<ul>
+	<li>a computer (preferred),</li>
+	<li>a mathematical formula, or</li>
+	<li>tables of binomial probabilities.</li>
+</ul>
+<p class="heading">Excel</p>
+<p>In Excel, the function &quot;BINOM.DIST()&quot; can be used to find binomial probabilities. For example, if \(X \sim \BinomDistn(n=20, \pi=0.3)\) then Excel can easily evaluate the following probabilities:</p>
+<dl>
+	<dt>\(\mathbf {P(X = 4)}\)</dt>
+	<dd>Type in an Excel spreadsheet cell &quot;=BINOM.DIST(4, 20, 0.3, false)&quot;</dd>
+	<dt>\(\mathbf {P(X ≤ 2)}\)</dt>
+	<dd>Type in an Excel spreadsheet cell &quot;=BINOM.DIST(2, 20, 0.3, true)&quot;</dd>
+</dl>
+<p>(The last parameter to the Excel function determines whether a single probability is returned or a cumulative probability.)</p>
+<p class="heading">Scientific calculator</p>
+<p>The formula for the probability function can be used directly. For example, if \(X  \sim \BinomDistn(n=20, \pi=0.3)\) then a scientific calculator can be used to evaluate the following probabilities:</p>
+<dl>
+	<dt>\(\mathbf {P(X = 4)}\)</dt>
+</dl>
+	\[
+		p(4)= {20 \choose 4} {0.3}^4(1-0.3)^{20-4}
+	\]
+	
+	<dl>
+	<dt>\(\mathbf {P(X ≤ 2)}\)</dt>
+	</dl>
+	\[ \begin {align}
+		p(0) + p(1) + p(2) &amp;= {20 \choose 0} {0.3}^{0}0.7^{20} + {20 \choose 1} {0.3}^{1}0.7^{19} + {20 \choose 2} {0.3}^{2}0.7^{18} \\
+		&amp; =\;\; 0.7^{20} \;+\; 20 \times 0.3 \times 0.7^{19} \;+\; 190 \times {0.3}^{2}0.7^{18}
+	\end {align}\]
+<p class="heading">Probabilities for ranges of counts</p>
+<p>When finding the probability that the number of successes is within any interval, care must be taken with the wording of the question &mdash; think carefully about whether the 'extreme' value that is mentioned in the wording of the interval should be included.</p>
+<div class="centred">
+	<table border="0" class="centred" cellpadding="3" cellspacing="0">
+		<tr>
+			<th align="center" scope="col">In words...</th>
+			<th align="center" scope="col">&nbsp;&nbsp;&nbsp;&nbsp;In terms of X&nbsp;&nbsp;&nbsp;&nbsp;</th>
+			<th align="center" scope="col">&nbsp;&nbsp;&nbsp;&nbsp;Using <sup>1</sup>/<sub>2</sub>&nbsp;&nbsp;&nbsp;&nbsp;</th>
+		</tr>
+		<tr>
+			<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">More than 5</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">X &gt; 5</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">X&nbsp;&gt;&nbsp;5.5</td>
+		</tr>
+		<tr>
+			<td align="center" bgcolor="#FFFFFF">Greater than or equal to 5</td>
+			<td align="center" bgcolor="#FFFFFF">X ≥ 5</td>
+			<td align="center" bgcolor="#FFFFFF">X &gt; 4.5</td>
+		</tr>
+		<tr>
+			<td align="center" bgcolor="#FFFFFF">No more than 5</td>
+			<td align="center" bgcolor="#FFFFFF">X ≤ 5</td>
+			<td align="center" bgcolor="#FFFFFF">X &lt; 5.5</td>
+		</tr>
+		<tr>
+			<td align="center" bgcolor="#FFFFFF">At least 5</td>
+			<td align="center" bgcolor="#FFFFFF">X ≥ 5</td>
+			<td align="center" bgcolor="#FFFFFF">X &gt; 4.5</td>
+		</tr>
+		<tr>
+			<td align="center" bgcolor="#FFFFFF">Fewer than 5</td>
+			<td align="center" bgcolor="#FFFFFF">X &lt; 5</td>
+			<td align="center" bgcolor="#FFFFFF">X &lt; 4.5</td>
+		</tr>
+		<tr>
+			<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">5 or fewer</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">X ≤ 5</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">X &lt; 5.5</td>
+		</tr>
+	</table>
+</div>
+<p>The above table translates a few possible wordings for an interval into a range of counts. The final column provides an interpretation of each interval that most clearly expresses which counts are included.</p>
+<div class="centred">
+	<div class="boxed">
+		<p>We recommend translating any interval into its form using <sup>1</sup>/<sub>2</sub> before finding its probability.</p>
+	</div>
+</div>
+
+<p>Translating the interval in this way is particularly useful when using a normal approximation to evaluate the probability. In this context, it is called a <strong>continuity correction</strong>.</p>
+
+<div class="example">
+	
+	<p class="exampleHeading">Examples</p>
+
+<p>Each of the following questions involves a binomial distribution.</p>
+
+<form>
+  <select name="dataset" onChange="changeImage('image', this)">
+    <option value="0" selected>Multichoice test results</option>
+    <option value="1">Defective parts</option>
+    <option value="2">Student work</option>
+    <option value="3">Voting intentions</option>
+  </select>
+</form>
+
+<p class="eqn">
+	<img class="gif" id="image" src="../randomPropn/images/g_multichoice.gif" width="595" height="286">
+</p>
+
+<p>The binomial distribution of the number of 'successes' is displayed  in a bar chart, with the values specified in the question highlighted. The sum of these probabilities (the bar heights) has been evaluated  and is displayed on the right to give the answer.</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

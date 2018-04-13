@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Selecting a random sample</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="random numbers">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Selecting a sample manually</p>
+
+<p>When choosing a random sample, each population member must have the same chance 
+of being included in the sample. How can we select a random sample in practice? 
+One method of selecting a random sample of size <em>n</em> is...</p>
+<ol>
+<li>write the names (or other identification) of all population members on identical 
+pieces of paper,</li>
+<li>mix them thoroughly in a box</li>
+<li>select <em>n</em> pieces of paper (with or without replacement).</li>
+</ol>
+
+<p>This method is however impractical for large populations.</p>
+<p class="heading">Random digits</p>
+<p>An alternative method of selecting a random sample involves generating random 
+digits (0, 1, ..., 9). There are several ways to generate random digits such that 
+each has the same chance of appearing.</p>
+
+<ul>
+<li><img src="../../en/popSamp/images/die.jpg" width="150" height="123" align="right">Roll a 10-sided 
+die several times. (6-sided dice are more common, but 10-sided dice are also used 
+in various games &mdash; especially fantasy games.)</li>
+<li>Books of random digits have been published. Open a page at random then use 
+a sequence of digits starting from an arbitrary position on the page.</li>
+<li>Some computer programs (e.g. Microsoft Excel) contain functions that generate 
+random numbers. (Computer-generated values should strictly be called <em>pseudo-random 
+numbers</em>, but the distinction is not important here.)</li>
+<li>Many calculators have a 'random number' key that generates (pseudo-) random numbers.</li>
+</ul>
+
+<p>Concatenating 2 or more of these random digits gives a larger random number.</p>
+
+<div class="diagram"> 
+<p>Click the button <strong>Generate digit</strong> to generate a random digit.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="300" height="100">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="samplingProg.RandomDigitApplet">
+<param name="random" value="538402167">
+<param name="customText" value="Generate digit=Generate digit">
+</applet>
+</div>
+
+<p>Concatenating three such random digits gives a random number between 0 and 999.
+Click <strong>Generate value</strong> to find a random number in this range.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="100">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="samplingProg.RandomValueApplet">
+<param name="random" value="538402167 387345678 13059746">
+<param name="customText" value="Generate value=Generate value">
+</applet>
+</div>
+
+</div>
+  
+<p class="heading">Selecting the sample</p>
+
+<p>To select a random sample without replacement using random numbers,</p>
+
+<ol>
+<li>Number all population members, starting from 0.</li>
+		<li>Generate a random value with the same number of digits as the largest 
+			number associated with a population member.</li>
+<li>If the generated value belongs to a population member, and this member is 
+not already included in the sample, add it to the sample. (Otherwise, ignore this 
+random number and continue, generating another.)</li>
+<li>Repeat steps 2. and 3. until a large enough sample has been selected.</li>
+</ol>
+
+<p>Note that values are 'rejected' in step 3 for two different reasons.</p>
+
+<ul>
+<li>The random number may not belong to a population member (e.g. the random number 
+may be 653 when the population members are numbered 0 to 357)</li>
+<li>The population member may have already been selected.</li>
+</ul>
+
+<p>The proportion of rejected values therefore depends on the population size 
+and the relative size of the sample and population.</p>
+<div class="diagram"> 
+<p>The diagram below illustrates sampling without replacement from a population 
+of 56 individuals. They have been numbered from 0 to 55.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="samplingProg.SimulateSampleApplet">
+<param name="random" value="438402167 287345678">
+<param name="catVarName" value="Gender">
+<param name="catLabels" value="Male Female">
+<param name="popnInfo" value="7 8 2 7 5 0.5 632563625">
+<param name="customText" value="Clear sample=Clear sample#Random index=Random index#Faster=Faster#Ignored: no item has index=Ignored: no item has index#Item * has been selected=Item * has been selected#Ignored: item * was previously selected=Ignored: item * was previously selected">
+</applet>
+</div>
+
+<p>Click <strong>Random index</strong>. If the resulting two digits are between 
+0 and 55, the corresponding individual is added to the sample. Otherwise, an error 
+message appears and a new random value must be generated.</p>
+<p>Repeat several times to add more individuals to the sample. Note that</p>
+
+<ul><li>almost half of the values generated are rejected because they are outside the 
+range 0 to 55, and</li>
+<li>occasionally a population member is selected that is already in the sample 
+-- it cannot be added twice. This happens more often as the sample size increases.</li>
+</ul>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Problems with high leverage</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="leverage, outliers">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Advantages of high leverage</p>
+  <p>Selecting a new observation at a point, <span class="red">(<em>x</em>,&nbsp;<em>z</em>)</span>, 
+		with high leverage should give good improvement in the accuracy of the least 
+		squares parameter estimates, but <strong>only if the new observation conforms 
+		to the same linear model as the rest of the data</strong>.</p>
+	<p class="heading">Problems with high leverage</p>
+	<p>We are rarely sure that the relationship is linear for all <span class="red">(<em>x</em>,&nbsp;<em>z</em>)</span>. 
+		Even though linearity is often reasonable in a restricted range of <span class="red">(<em>x</em>,&nbsp;<em>z</em>)</span>, 
+		this may not be true at high leverage points on the 'outskirts' of the data.</p>
+	<p>Even more seriously, it is always possible that an observation may have been 
+		incorrectly recorded or the individual may have different characteristics 
+		from the bulk of the data &mdash; it could be an <strong>outlier</strong>. An observation 
+		at a high leverage point has the potential to strongly influence the results 
+		if it is also an outlier.</p>
+	<p>Unfortunately, outliers often do not show up as residuals that are unusually 
+		far from zero. Because a high leverage point pulls the least squares plane 
+		so much, the outlier may have a residual that has similar size to the other 
+		residuals.</p>
+	
+<div class="centred"><div class="boxed">
+<p>Do not rely on the residuals to show up an outlier if it is 
+				also a high leverage point.</p>
+</div></div>
+
+	<br>
+	
+	
+	<div class="diagram">
+    <p class="heading">Illustration</p>
+
+    <div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="380">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="residTwoProg.DragXZOutlierApplet">
+<param name="yVarName" value="Response, Y">
+<param name="xVarName" value="X">
+<param name="zVarName" value="Z">
+<param name="yValues" value="16.33 16.42 18.23 18.50 20.11 13.77 17.24 17.34 20.54 12.13 14.32 10.13 22.75 24.60 23.10 24.93 23.64 23.26 13.27 25.66 44.45">
+<param name="xValues" value="0.72 1.02 1.90 2.16 3.16 0.28 2.92 2.62 1.40 0.79 0.43 1.13 3.71 3.77 2.30 2.26 2.53 2.62 0.64 3.00 4.8">
+<param name="zValues" value="6.00 5.21 3.89 3.70 2.07 5.45 1.13 1.93 6.32 4.05 5.56 2.05 1.84 2.44 5.78 6.31 5.18 4.83 4.43 4.87 9.6">
+<param name="yAxis" value="0 60 0 10">
+<param name="xAxis" value="0 5 0 1">
+<param name="zAxis" value="0 10 0 2">
+<param name="residAxis" value="-24 37 -20 10">
+<param name="dragPoints" value="2#17#Low leverage#20#High leverage">
+<param name="customText" value="Drag point with=Drag point with">
+</applet> 
+</div>
+
+    <p>Rotate the 3-dimensional scatterplot by dragging the centre with the mouse 
+			(but avoiding the red arrow.) All points lie near to a plane, so a normal 
+			linear model is appropriate.</p>
+		<p>Click the y-x-z button, then drag the cross in the centre of the diagram 
+			to make it an outlier. Observe that the residual plot will show this point 
+			as an extreme residual.</p>
+		<p>Select <strong>High leverage</strong> from the pop-up menu then drag the 
+			cross on the right. Because it is a high leverage point, it strongly pulls 
+			the least squares plane towards itself, so its residual does not stand out 
+			much from the other residuals, even though it is an outlier.</p>
+		
+	</div>
+		
+	<p class="heading">Rule-of-thumb for high leverage points</p>
+	<p>It can be shown that the leverages of all data points sum to <em>p</em>, 
+		where <em>p</em> is the number of linear parameters in the model (with <em>p</em>&nbsp;=&nbsp;3 
+		for the linear model with two explanatory variables), so their average value 
+		is <em><sup>p</sup></em>/<em><sub>n</sub></em>. A rule-of-thumb is therefore 
+		to call a point 'high leverage' if its leverage is more than double this value.</p>
+	
+<div class="centred"><div class="boxed">
+<p>Examine carefully points with <em>h<sub>ii</sub></em>&nbsp;&gt;&nbsp;&nbsp;<sup>2<em>p</em></sup>/<em><sub>n</sub></em>.</p>
+</div></div>
+
+		
+	<p>Note that high leverage does <strong>not</strong> mean that there is anything 
+		wrong with an observation &mdash; only that its explanatory variables are 'unusual' 
+		in some way that <strong>could</strong> unduely influence the results.</p>
+		
+	
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

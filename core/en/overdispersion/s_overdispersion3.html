@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Generalised negative binomial distribution</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="negative binomial distribution, generalised negative binomial distribution, mean, variance, poisson distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Model for overdispersion</p>
+
+<p>The Poisson distribution's variance always equals its mean. Another distribution with <strong>two</strong> parameters is needed to allow the variance to be <strong>greater</strong> than the mean.</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>A random variable, \(X\), is said to have a <strong>generalised negative binomial distribution</strong></p>
+\[
+X \;\;\sim\;\; \NegBinDistn(\kappa, \pi)
+\]
+<p>if its probability function is</p>
+\[
+p(x) \;\;=\;\; \begin{cases} \displaystyle \frac{\Gamma(\kappa + x)}{x! \; \Gamma(\kappa)} \pi^{\kappa} (1-\pi)^x  &amp;\text{for }x = 0, 1, 2, \dots \\[0.2em]
+0 &amp; \text{otherwise}
+\end{cases} \]
+<p>where \(\kappa \gt 1\) and \(0 \le \pi \lt 1\). The two parameters \(\kappa\) and \(\pi\) are usually two unknown.</p>
+</div>
+
+<p>This is a generalisation of the negative binomial distribution for the number failures before the \(\kappa\)'th success in a sequence of independent success/failure trials with probability \(\pi\) of success, but we now allow non-integer values of \(\kappa\).</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Mean and variance</p>
+		<p>The mean and variance of the generalised negative binomial distribution are</p>
+\[
+E[X] = \frac {\kappa(1-\pi)} \pi \spaced{and} \Var(X) =  \frac {\kappa(1-\pi)} {\pi^2}
+\]
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p>From these formulae,</p>
+\[
+\Var(X) \;=\;  E[X] \times \frac 1 {\pi}
+\]
+<p>Since \(\pi \lt 1\), \(\Var(X) \gt E[X]\), allowing it to model data with overdispersion.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Asymptotic distribution</p>
+		<p>If \(\kappa \to \infty\) and \(\pi \to 1\) simultaneously with \(\displaystyle \frac{\kappa(1-\pi)}{\pi} = \lambda\), the negative binomial distribution approaches a \(\PoissonDistn(\lambda)\) distribution.</p>
+		<p class="theoremNote">(Not proved)</p>
+	</div>
+</div>
+<p>This shows that the negative binomial distribution can be made arbitrarily close to a Poisson distribution with appropriate choice of \(\kappa\) and \(\pi\).</p>
+<p class="heading">Justification for the negative binomial distribution</p>
+<p>The negative binomial distribution is often simply used as an empirical model with the flexibility to model overdispersed count data.. However it can also be theoretically derived in two different ways:</p>
+<dl>
+	<dt>Varying \(\lambda\)</dt>
+	<dd>If the rate of events in a Poisson process, \(\lambda\), varies according to a particular distribution called a Gamma distribution, the number of events has a negative binomial distribution.</dd>
+	<dt>Clusters of events</dt>
+	<dd>Events sometimes arise in clusters. If the clusters arise as a Poisson process and the number of events per cluster has a log-series distribution, then the number of events has a negative binomial distribution. </dd>
+</dl>
+
+<p class="heading">Shape of distribution</p>
+<p>We now illustrate the additional flexibility provided by the negative binomial.</p>
+
+<p class="eqn"><img src="images/s_negBinomShape.png" width="522" height="435" alt=""/></p>
+<p>The top diagram shows the distribution of the number of events in a homogeneous Poisson process in which \(E[X] = \Var(X) = 3\).</p>
+<p>The two negative binomial distributions also have \(E[X] = 3\), but \(\Var(X) \gt 3\), so they might be used to fit over-dispersed counts with more zeros and high values than would be expected from a homogeneous Poisson process.</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

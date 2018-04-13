@@ -1,0 +1,245 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Outliers</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="outliers">
+	<meta name="dataset" content="Aircraft emissions">
+	<meta name="dataset" content="Storm duration">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class=heading>Outliers
+</p>
+
+<p>Values that are considerably larger or smaller than the bulk of the data are 
+called <strong>outliers</strong>.</p>
+
+  <p>Detection of outliers is particularly important. An outlier may have been 
+    incorrectly recorded, or there may have been other anomalous circumstances 
+    associated with it. Outliers must be carefully checked if possible. If anything 
+    atypical can be found, outliers should be deleted from the data set and their deletion noted in any reports about the data. </p>
+
+<div class="diagram" title="Example: Aircraft pollution">
+<p class="heading">Aircraft pollution</p>
+<p>The table below shows emissions of CO<sub>2</sub> per takeoff/landing cycle 
+for several jet aircraft in the mid 1990s.</p>
+
+
+<div class="centred"><table width="80%" border="0" cellspacing="0" cellpadding="10" class="centred">
+  <tr> 
+	<th align="center">Aircraft</th>
+	<th align="center">CO<sub>2</sub> emissions<br>
+		(kg per cycle)
+	</th>
+	<th align="center">Weight<br>
+	  (1000 kg)</th>
+	<th align="center">CO<sub>2</sub> emissions<br>
+		per 1000 kg
+	</th>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+	<td align="center"> 
+	  <table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+	<td><nobr>B747-400<br>
+	  B747-200<br>
+	  MD-11<br>
+	  DC10-30<br>
+	  L1011-200<br>
+	  A300<br>
+	  DC8-63<br>
+	  A310<br>
+	  B707-320B<br>
+	  B767-300<br>
+	  B757-200<br>
+	  B727-200<br>
+	  A320<br>
+	  B737-300<br>
+	  B737-100<br>
+	  DC9-50<br>
+	  BAe-146<br>
+	  BAC 111-400<br>
+	  Fokker 28<br>
+	  Dassault Falcon 20<br>
+	  Gates Learjet 36<br>
+	  Gates Learjet 35<br>
+	  Gates Learjet 24D<br>
+	  Cessna Citation</nobr></td></tr></table>
+	</td>
+	<td align="center"> 
+	  <table border="0" cellspacing="0" cellpadding="0"><tr><td align="right">
+	  10822.72<br>
+	  11673.04<br>
+	  8115.23<br>
+	  7313.15<br>
+	  8283.17<br>
+	  5633.66<br>
+	  6246.50<br>
+	  4880.16<br>
+	  6246.50<br>
+	  5351.02<br>
+	  4614.96<br>
+	  4866.75<br>
+	  2898.05<br>
+	  2758.79<br>
+	  3244.50<br>
+	  3272.23<br>
+	  1855.08<br>
+	  2516.73<br>
+	  2034.24<br>
+	  1117.43<br>
+	  536.79<br>
+	  536.79<br>
+	  1221.07<br>
+	  462.08</td>
+	  </tr></table>
+	</td>
+	<td align="center"> 
+	  <table border="0" cellspacing="0" cellpadding="0"><tr><td align="right">
+	  394.0<br>
+	  351.5<br>
+	  274.0<br>
+	  251.7<br>
+	  195.0<br>
+	  165.0<br>
+	  161.0<br>
+	  150.0<br>
+	  148.3<br>
+	  137.0<br>
+	  108.8<br>
+	  88.3<br>
+	  73.5<br>
+	  63.0<br>
+	  52.3<br>
+	  48.9<br>
+	  40.5<br>
+	  39.4<br>
+	  29.4<br>
+	  12.8<br>
+	  8.1<br>
+	  7.7<br>
+	  6.1<br>
+	  5.2</td>
+	  </tr></table>
+	</td>
+	<td align="center"> 
+	  <table border="0" cellspacing="0" cellpadding="0"><tr><td align="right">
+	  27.469<br>
+	  33.209<br>
+	  29.618<br>
+	  29.055<br>
+	  42.478<br>
+	  34.143<br>
+	  38.798<br>
+	  32.534<br>
+	  42.121<br>
+	  39.059<br>
+	  42.417<br>
+	  55.116<br>
+	  39.429<br>
+	  43.790<br>
+	  62.036<br>
+	  66.917<br>
+	  45.804<br>
+	  63.876<br>
+	  69.192<br>
+	  87.299<br>
+	  66.270<br>
+	  69.713<br>
+	  200.175<br>
+	  88.862</td>
+	  </tr></table>
+	</td>
+  </tr>
+</table></div>
+
+    <p>The CO<sub>2</sub> emmissions cannot be compared meaningfully &mdash; it is 
+      hardly surprising that the larger aircraft tend to emit more than smaller 
+      ones! A more useful comparison of CO<sub>2</sub> emmissions can be obtained 
+      by first dividing by aircraft weight. The last column in the table gives 
+      emissions in each takeoff/landing cycle <strong>per 1000 kg aircraft weight</strong>.</p>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td valign="top">
+<p>These values are displayed in the stem and leaf plot on the right.</p>
+	<p>The display shows one outlier. The Gates Learjet 24D emits over 200kg CO<sub>2</sub> 
+	  per 1000 kg aircraft weight in each takeoff/landing cycle &mdash; more than double 
+	  that of the other aircraft.</p>
+	<p>An engineer would question which characteristics of the plane might explain 
+	  its emissions. Is it smaller than the other planes? Older? Using a different 
+	  engine technology?</p></td>
+<td><img class="gif" src="images/aircraftCO2.gif" width="230" height="265"></td>
+</tr></table>
+<br>
+</div>
+
+  <p class="heading">Outliers and skew distributions</p>
+
+  <p>An extreme data value that stands out from the rest of the data does not necessarily 
+    indicate that there is a mistake in the data or something unusual about the 
+    individual. Our interpretation of the extreme value should also take into 
+    account the shape of the distribution of values for the rest of the data.</p>
+	<dl>
+    <dt>Symmetric distribution</dt>
+  </dl>
+  <p class=eqn><img class="gif" src="images/outlierSymmetric.gif" width="443" height="156"> 
+  </p>
+  <dl>
+    <dt>Skew distribution</dt>
+    <dd>If the distribution of values has its peak at one side and a long tail 
+      to the other side, the distribution is called <strong>skew</strong>. It 
+      is not unusual for the extreme value in a very skew distribution to be a 
+      fair distance from the other values.</dd>
+  </dl>
+  <p class=eqn><img class="gif" src="images/outlierSkew.gif" width="443" height="156"> 
+  </p>
+  <dl>
+    <dd>If the tail is to the right we call this a right of positively skewed distribution. Similarly, if the tail is to the left the distribution is left (or negatively) skewed.</dd>
+  </dl>
+	<br>
+  
+  <div class="diagram">
+
+		<p class="heading">Storm duration</p>
+
+		<p>The stem and leaf plot below shows the durations (in minutes) of the first 
+			50 storms in the 1983/4 rainy season in the Bvumbwe catchment in Malawi.</p>
+		<p class=eqn><img class="gif" src="images/stormDurationStemLeaf.gif" width="255" height="260"> 
+		</p>
+		<p>One storm lasted much longer than the others (880 minutes). It is certainly 
+			worth checking the records for this storm (was the duration perhaps really 
+			88 minutes?). However the value is not necessarily a mistake.</p>
+		<p>Most storms are short, with durations less than 100 minutes, so the longest 
+			rows of leaves are at the bottom of the stem and leaf plot. There are fewer 
+			storms lasting 100-200 minutes, fewer still of 200-300 minutes and this 
+			pattern continues, with the frequency of storms decreasing steadily up the 
+			stem and leaf plot. This shape of distribution is called a <strong>skew</strong> 
+			distribution, as opposed to a <strong>symmetric</strong> distribution whose 
+			tails decrease at similar speed on both sides of the peak density.</p>
+		
+	<div class="centred"><div class="boxed">
+		<p>Perhaps this 'outlier' is a continuation of the pattern into 
+          the tail of the distribution and is just a long storm that could be 
+          <strong>expected</strong> once every hundred or so storms.</p>
+		</div></div>
+<br>
+
+</div>
+	
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

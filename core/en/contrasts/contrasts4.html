@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Analysis of variance for constraints</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="constraint, anova, analysis of variance">
+	<meta name="dataset" content="Fertiliser and tomato yield">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Analysis of variance</p>
+<p>Each linear constraint on the model parameters increases the residual sum of squares. This corresponds to an explained sum of squares (explained by going in the opposite direction and releasing the constraint) and has 1 degree of freedom. A set of <em>k</em> such constraints corresponds to an explained sum of squares with <em>k</em> degrees of freedom.</p>
+<p>The constraints define intermediate models between the full model (without constraints) and the model for which none of the treatments affect the response. The explained sums of squares corresponding to the constraints therefore effectively partitions of the treatments sum of squares in a standard analysis of variance table.</p>
+<div class="diagram">
+<p class="heading">Effect of fertiliser on the yield of tomato plants</p>
+<p>The analysis of variance table below initially shows a single entry for the sum of squares explained by the five treatments (four fertilisers and control).</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="200">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="glmAnovaProg.CombineSsqApplet">
+<param name="yVarName" value="Yield">
+<param name="yValues" value="9.71 11.51 9.81 10.24 8.91 13.79 13.29 13.72 11.70 12.42 14.09 13.73 16.54 13.48 14.39 13.29 13.32 15.04 12.40 12.95 16.60 14.27 14.44 14.55 14.48">
+<param name="xVariables" value="C F">
+<param name="CVarName" value="Control vs fert">
+<param name="CValues" value="5@0 20@1">
+<param name="FVarName" value="Between ferts">
+<param name="FValues" value="10@0 5@1 5@2 5@3">
+<param name="FLabels" value="CF1 F2 F3 F4">
+<param name="maxSsq" value="999.99 99 99.99 99.99">
+<param name="componentNames" value="Control vs fert#Between ferts">
+<param name="split" value="1:2:Split treatments:Treatments">
+</applet>
+</div>
+
+<p>Click <strong>Split treatments</strong> to see:</p>
+<ul>
+	<li>The sum of squares explained by differences between the four fertilisers &mdash; the increase in the residual sum of squares caused by the constraint <span class="red">β<sub>2</sub>&nbsp;=&nbsp;β<sub>3</sub>&nbsp;=&nbsp;β<sub>4</sub>&nbsp;=&nbsp;β<sub>5</sub></span>.</li>
+	<li>The sum of squares explained by the difference between the control level and the four fertilisers &mdash; caused by the further constraint <span class="red">β<sub>1</sub>&nbsp;=&nbsp;(β<sub>2</sub>&nbsp;+&nbsp;β<sub>3</sub>&nbsp;+&nbsp;β<sub>4</sub>&nbsp;+&nbsp;β<sub>5</sub></span><span class="red">)&nbsp;/&nbsp;4</span>.</li>
+</ul>
+<p>From the p-values associated with these sums of squares, we can conclude that there is only moderate evidence of a difference between the four fertiliser types (p =&nbsp;0.0272) but it is almost certain that the fertilisers are different from the control group (p&nbsp;=&nbsp;0.0000).</p>
+</div>
+
+<p class="heading">Order of applying constraints</p>
+<p>The explained sums of squares in analysis of variance tables are always ordered &mdash; they give the changes to the residual sum of squares when sequentially adding terms to the model (from top to bottom) or when sequentially applying constraints (from bottom to top).</p>
+<p>However with many common experimental designs, some of the rows can be exchanged. For example, in a factorial experiment with equal replicates for all factor combinations, the sums of squares explained by the two main effects can be written in either order. The terms are then called <strong>orthogonal</strong>.</p>
+<p>In a similar way, the two sets of constraints described above are orthogonal, so their explained sums of squares can be written in either order.</p>
+<div class="diagram">
+	<div class="centred">
+  <applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="200">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="glmAnovaProg.AnovaTableReorderApplet">
+  <param name="yVarName" value="Yield">
+  <param name="yValues" value="9.71 11.51 9.81 10.24 8.91 13.79 13.29 13.72 11.70 12.42 14.09 13.73 16.54 13.48 14.39 13.29 13.32 15.04 12.40 12.95 16.60 14.27 14.44 14.55 14.48">
+  <param name="xVariables" value="C F1 F2 F3">
+  <param name="CVarName" value="Control vs fert">
+  <param name="CValues" value="5@0 20@1">
+  <param name="F1VarName" value="Fert 1 vs 4">
+  <param name="F1Values" value="5@0 5@1 10@0 5@-1">
+  <param name="F2VarName" value="Fert 2 vs 4">
+  <param name="F2Values" value="10@0 5@1 5@0 5@-1">
+  <param name="F3VarName" value="Fert 3 vs 4">
+  <param name="F3Values" value="15@0 5@1 5@-1">
+  <param name="maxSsq" value="999.99 99 99.99 99.99">
+  <param name="maxBarSsq" value="130">
+  <param name="xGroups" value="1:C:Control vs fert#3:F:Between ferts">
+  </applet>
+</div>
+
+<p>Drag to reorder the sums of squares explained by the two sets of constraints. Note that the order does not matter since the constraints are <strong>orthogonal</strong>.</p>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

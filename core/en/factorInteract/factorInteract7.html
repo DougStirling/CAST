@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Tranformations and interaction</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="interaction, transformation">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Effect of transformation on the interaction</p>  
+  <p>Consider a response variable, Y, that satisfies a normal model with two factors X and Z that do not interact in their effect on the mean response.</p>
+	<p>If a nonlinear function of this response, such as log(Y) or exp(Y), is modelled 
+		instead, there is likely to appear to be an interaction.</p>
+		
+<div class="centred"><div class="boxed">
+<p>The appearance of interaction depends on the 
+				function of the response that is modelled.</p>
+</div></div>
+
+	<p>It is therefore important to consider nonlinear transformations of the response 
+		as part of the modelling process.</p>
+	
+<div class="centred"><div class="boxed">
+<p>Response variables that are 'quantities' of something 
+				are often routinely replaced by their logs before analysis.</p>
+</div></div>
+
+	<p class="heading">Other effects of transforming the response</p>
+	<p>Note that nonlinear transformations of the response have several different 
+		effects on the model:</p>
+	<ul>
+		<li>If either factor corresponds to different numerical values of some quantity, the linearity of the relationship between the factor and the response is affected.</li>
+		<li>The interaction between the explanatory variables is chanaged</li>
+		<li>The nonlinear transformation also affects whether the error variance is the same for all treatments</li>
+  </ul>
+	<p>It is therefore important to look simultaneously for all three problems when 
+		deciding on whether a transformation of the response is advisable.</p>
+	<div class="diagram"> 
+    <p class="heading">Example with interaction</p>
+    <p>The diagram below shows a data set for which there is clear evidence of 
+			interaction between the effects of the two factors &mdash; when X is at its lowest level, changing Z has little effect on the response, but when X is higher, increasing Z has more effect.</p>
+    <div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoFactorProg.FactorAnovaSeqApplet">
+<param name="yVarName" value="Response, y">
+<param name="yValues" value="10.7 12.0 86.9 139.4 301.0 201.7 13.6 19.8 36.1 60.8 183.1 487.4 30.3 17.6 156.2 349.3 581.1 805.9 30.0 70.7 194 155.4 1619.7 1180.9">
+<param name="yAxis" value="0 1800 0 500">
+<param name="xVarName" value="Factor X">
+<param name="xValues" value="2@0 2@1 2@2 2@0 2@1 2@2 2@0 2@1 2@2 2@0 2@1 2@2">
+<param name="xLabels" value="X1 X2 X3">
+<param name="zVarName" value="Factor Z">
+<param name="zValues" value="6@0 6@1 6@2 6@3">
+<param name="zLabels" value="Z1 Z2 Z3 Z4">
+<param name="xVariables" value="A B Interaction">
+<param name="xTypes" value="xFac zFac Int">
+<param name="AVarName" value="Factor X">
+<param name="AValues" value="2@0 2@1 2@2 2@0 2@1 2@2 2@0 2@1 2@2 2@0 2@1 2@2">
+<param name="ALabels" value="A1 A2 A3">
+<param name="BVarName" value="Factor Z">
+<param name="BValues" value="6@0 6@1 6@2 6@3">
+<param name="BLabels" value="B1 B2 B3 B4">
+<param name="InteractionVarName" value="Interaction">
+<param name="InteractionValues" value="6@0 2@0 2@1 2@2 2@0 2@3 2@4 2@0 2@5 2@6">
+<param name="InteractionLabels" value="int0 int1 int2 int3 int4 int5 int6 int7">
+<param name="maxSsq" value="999999 99 999999 999.99">
+<param name="componentNames" value="X#Z#Interaction">
+<param name="initVariables" value="0">
+</applet> 
+</div>
+
+    <p>Drag the red arrows to add the factors X and Z to the model, then add an interaction. 
+			Observe that the interaction is highly significant.</p>
+    <p class="heading">Transformed response</p>
+    <p>In this example, the interaction can be completely removed by analysing 
+			the logarithms of the response. This nonlinear transformation compresses 
+			the top of the response scale and expands the lower end of the scale.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoFactorProg.FactorAnovaSeqApplet">
+<param name="yVarName" value="log(y)">
+<param name="yValues" value="2.370 2.485 4.465 4.937 5.707 5.307 2.610 2.986 3.586 4.108 5.21 6.189 3.411 2.868 5.051 5.856 6.365 6.692 3.401 4.258 5.268 5.046 7.39 7.074">
+<param name="yAxis" value="2 7.5 2 1">
+<param name="xVarName" value="Factor X">
+<param name="xValues" value="2@0 2@1 2@2 2@0 2@1 2@2 2@0 2@1 2@2 2@0 2@1 2@2">
+<param name="xLabels" value="X1 X2 X3">
+<param name="zVarName" value="Factor Z">
+<param name="zValues" value="6@0 6@1 6@2 6@3">
+<param name="zLabels" value="Z1 Z2 Z3 Z4">
+<param name="xVariables" value="A B Interaction">
+<param name="xTypes" value="xFac zFac Int">
+<param name="AVarName" value="Factor X">
+<param name="AValues" value="2@0 2@1 2@2 2@0 2@1 2@2 2@0 2@1 2@2 2@0 2@1 2@2">
+<param name="ALabels" value="A1 A2 A3">
+<param name="BVarName" value="Factor Z">
+<param name="BValues" value="6@0 6@1 6@2 6@3">
+<param name="BLabels" value="B1 B2 B3 B4">
+<param name="InteractionVarName" value="Interaction">
+<param name="InteractionValues" value="6@0 2@0 2@1 2@2 2@0 2@3 2@4 2@0 2@5 2@6">
+<param name="InteractionLabels" value="int0 int1 int2 int3 int4 int5 int6 int7">
+<param name="maxSsq" value="999.9 99 999.9 999.99">
+<param name="componentNames" value="X#Z#Interaction">
+<param name="initVariables" value="0">
+</applet> 
+</div>
+
+    <p>Again drag the arrows to add main effects and an interaction to the model. 
+			When analysing the log transformation of the response, there is no significant 
+			interaction between the effects of X and Z.</p>
+    </div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

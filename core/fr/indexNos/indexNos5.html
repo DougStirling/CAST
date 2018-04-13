@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Dégonflage une série temporelle</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="deflation">
+	<meta name="dataset" content="GDP in New Zealand">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Autres ajustements des séries chronologiques</p>
+
+<p>Beaucoup de séries chronologiques d'affichage des effets de plus d'une variable change au fil du temps. Par exemple, les changements dans le prix d'un article NZ provenant des Etats-Unis tiendront compte des changements dans la NZ$ / US$ taux de change ainsi que des changements dans le prix de US$.</p>
+<p>Si un index est disponible qui mesure l'effet d'une telle variable, puis son effet peut être éliminé par un processus de dégonflement. L'idée est similaire à celle de l'annulation de tendance ou de deseasonalising une série chronologique.</p>
+<p>Si <em>X<sub>i</sub></em> représente la valeur des séries temporelles à tout moment <em>i</em> et <em>N<sub>i</sub></em> et <em>N</em><sub>0</sub> désignent les valeurs de l'indice au temps <em>i</em> et le temps de base, respectivement, puis la valeur déflatée <em>D<sub>i</sub></em> est donnée par</p>
+<p class="eqn"><img class="gif" src="../../en/indexNos/images/deflateEqn.gif" width="91" height="44"></p>
+  <p class="heading">Correction de l'inflation</p>
+<p>Ce type d'ajustement est souvent utilisée pour tenir compte de l'inflation. Bien qu'il soit intéressant de savoir que Tarakihi coût $25.43 par kg en 2008 mais seulement $19.20 par kg en 2005, soit une hausse de prix n'est guère surprenant lorsque les salaires et tous les autres prix ont augmenté dans cette période.</p>
+<p>L'Indice des prix à la consommation (IPC) est souvent utilisé pour ajuster à l'inflation. Comme l'IPC était de 953 en 2005 et 1044 en 2008 (basé sur un IPC de 1000 à Juin 2006), le prix du Tarakihi en 2008 peut être exprimée en «dollars de 2005» comme suit:</p>
+<p class="eqn"><img class="gif" src="../../en/indexNos/images/fish_deflate.gif" width="170" height="40"></p>
+  <p>En dollars de 2005, le prix du Tarakihi a augmenté de $19.20 en 2005 à $23.21 en 2008.</p>
+  <div class="diagram">
+  	
+  	<p class="heading">Nouvelle-Zélande Produit intérieur brut</p>
+
+		<p>Le tableau ci-dessous montre la Nouvelle-Zélande produit intérieur brut de 2002 à 2008 en collaboration avec l'IPC (<em>Source</em>: site Web Statistics NZ). Notez que l'IPC utilise un facteur de 1000 au lieu de 100 et a un quart de base de Juin 2006.</p>
+		<table border="0" class="centred" cellpadding="5" cellspacing="0">
+			<tr>
+				<td>&nbsp;</td>
+				<th colspan="7">Nouvelle-Zélande, le PIB (en millions $) et IPC</th>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<th>&nbsp;&nbsp;2002&nbsp;&nbsp;</th>
+				<th>&nbsp;&nbsp;2003&nbsp;&nbsp;</th>
+				<th>&nbsp;&nbsp;2004&nbsp;&nbsp;</th>
+				<th>&nbsp;&nbsp;2005&nbsp;&nbsp;</th>
+				<th>&nbsp;&nbsp;2006&nbsp;&nbsp;</th>
+				<th>&nbsp;&nbsp;2007&nbsp;&nbsp;</th>
+				<th>&nbsp;&nbsp;2008&nbsp;&nbsp;</th>
+			</tr>
+			<tr>
+				<th align="left">PIB</th>
+				<td align="center" bgcolor="#FFFFFF">101,794</td>
+				<td align="center" bgcolor="#FFFFFF">107,597</td>
+				<td align="center" bgcolor="#FFFFFF">115,678</td>
+				<td align="center" bgcolor="#FFFFFF">122,337</td>
+				<td align="center" bgcolor="#FFFFFF">127,444</td>
+				<td align="center" bgcolor="#FFFFFF">133,642</td>
+				<td align="center" bgcolor="#FFFFFF">143,496</td>
+			</tr>
+			<tr>
+				<th align="left">IPC</th>
+				<td align="center" bgcolor="#FFFFFF">891</td>
+				<td align="center" bgcolor="#FFFFFF">913</td>
+				<td align="center" bgcolor="#FFFFFF">928</td>
+				<td align="center" bgcolor="#FFFFFF">953</td>
+				<td align="center" bgcolor="#FFFFFF">985</td>
+				<td align="center" bgcolor="#FFFFFF">1010</td>
+				<td align="center" bgcolor="#FFFFFF">1044</td>
+			</tr>
+		</table>
+<p>Pour dégonfler les valeurs du PIB, nous allons utiliser la première année (2002), notre année de référence pour exprimer les valeurs déflatées que &quot;2002 dollars&quot;. (Il n'a pas besoin d'être la même année de base qui a été utilisé pour calculer l'IPC.) La valeur du PIB pour 2003 est dégonflé</p>
+<p class="eqn"><img class="gif" src="../../en/indexNos/images/gdp_2003.gif" width="174" height="40"></p>
+<p>Toutes les valeurs déflatées PIB sont présentés dans le tableau ci-dessous</p>
+<table border="0" class="centred" cellpadding="5" cellspacing="0">
+	<tr>
+		<td>&nbsp;</td>
+		<th colspan="7">Nouvelle-Zélande, le PIB (en millions $) en dollars de 2002</th>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<th>&nbsp;&nbsp;2002&nbsp;&nbsp;</th>
+		<th>&nbsp;&nbsp;2003&nbsp;&nbsp;</th>
+		<th>&nbsp;&nbsp;2004&nbsp;&nbsp;</th>
+		<th>&nbsp;&nbsp;2005&nbsp;&nbsp;</th>
+		<th>&nbsp;&nbsp;2006&nbsp;&nbsp;</th>
+		<th>&nbsp;&nbsp;2007&nbsp;&nbsp;</th>
+		<th>&nbsp;&nbsp;2008&nbsp;&nbsp;</th>
+	</tr>
+	<tr>
+		<th align="left">PIB</th>
+		<td align="center" bgcolor="#FFFFFF">101,794</td>
+		<td align="center" bgcolor="#FFFFFF">107,597</td>
+		<td align="center" bgcolor="#FFFFFF">115,678</td>
+		<td align="center" bgcolor="#FFFFFF">122,337</td>
+		<td align="center" bgcolor="#FFFFFF">127,444</td>
+		<td align="center" bgcolor="#FFFFFF">133,642</td>
+		<td align="center" bgcolor="#FFFFFF">143,496</td>
+	</tr>
+	<tr>
+		<th align="left">Déflaté du PIB</th>
+		<td align="center" bgcolor="#FFFFFF">101,794</td>
+		<td align="center" bgcolor="#FFFFFF">104,951</td>
+		<td align="center" bgcolor="#FFFFFF">111,113</td>
+		<td align="center" bgcolor="#FFFFFF">114,331</td>
+		<td align="center" bgcolor="#FFFFFF">115,281</td>
+		<td align="center" bgcolor="#FFFFFF">117,898</td>
+		<td align="center" bgcolor="#FFFFFF">122,468</td>
+	</tr>
+</table>
+<p>Ainsi, bien que premières PIB a augmenté de près de $43 millions de 2002 à 2008, l'augmentation dégonflé (c'est à dire éliminer les effets de l'inflation) a été un peu moins de $21 million.</p>
+<p>Le graphique chronologique ci-dessous illustre la différence entre les variations du PIB premières et ajusté.</p>
+<p class="eqn"><object data="images/gdp_graph.svg" width="534" height="292"></object></p>
+<p>Notez comment le PIB corrigé des variations aplati entre 2005 et 2006, indiquant des problèmes de l'économie à cette époque.</p>
+
+	</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Outliers</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="outliers, leverage">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Outliers and errors</p>
+<p>An outlier is an observation that does not conform to the pattern and variability exhibited by the rest of the data. In a scatterplot, the point is unusually far above or below the regression 
+	line.</p>
+<p class=eqn> <img class="gif" src="../../en/regnProblem/images/outlierError.gif" width="297" height="274"> </p>
+<p>The individual corresponding to any outlier should be carefully examined. Recording or transcription errors may be the cause. Alternatively, it may be possible to determine some distinguishing characteristic of the individual that underlies the unusual response measurement. If an outlier is extreme enough, or if a special cause for its unusual behavior can be found from outside information, the individual can be classified as aberrant and deleted from the data set.</p>
+<div class="diagram">
+	<p class="heading">Temperature and latitude</p>
+	<p>The scatterplot below shows the maximum January temperature (degrees Fahrenheit) and
+		latitude (degrees north of the equator) for various cities in the USA, as published in the book <cite>Data Analysis and Regression</cite>, by F.Mosteller and J.W.Tukey in 1977. The least
+		squares line is superimposed on the data. </p>
+	<div class="centred">
+		<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="350" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.LSMapApplet">
+		<param name="xVarName" value="Latitude">
+		<param name="yVarName" value="Jan Temp">
+		<param name="zVarName" value="Longitude">
+		<param name="labelName" value="City">
+		<param name="xValues" value="30 32 58 33 34 34 37 39 41 39 38 38 24 25 33 21 43 41 39 41 42 37 38 29 43 39 42 42 46 44 38 46 41 43 39 35 42 40 35 35 46 39 41 35 45 40 39 32 44 36 35 29 29 40 44 36 47 47 43 43 41 18">
+		<param name="yValues" value="61 59 30 64 51 65 55 42 37 41 44 67 74 76 52 79 36 33 37 29 27 42 44 64 32 44 37 33 23 22 40 29 32 32 43 46 31 40 51 52 20 41 35 46 44 39 40 61 34 49 50 61 64 37 25 50 44 31 26 28 37 81">
+		<param name="zValues" value="88 86 134 112 92 118 122 104 72 75 77 81 81 80 84 157 116 87 86 93 90 97 85 90 70 76 71 83 84 93 90 112 95 71 74 106 73 73 80 78 100 84 81 97 122 76 75 79 103 86 101 94 95 111 73 76 122 117 89 87 104 66">
+		<param name="labels" value="#Mobile, Ala# #Montgomery, Ala# #Juneau, Alaska# #Phoenix, Ariz# #Litle Rock, Ark# #Los Angeles, Calif# #San Francisco, Calif# #Denver, Col# #New Haven, Conn# #Wilmington, Del# #Washington, DC# #Jacksonville, Fla# #Key West, Fla# #Miami, Fla# #Atlanta, Ga# #Honolulu, Hawaii# #Boise, Idaho# #Chicago, Ill# #Indianapolis, Ind# #Des Moines, Iowa# #Dubuque, Iowa# #Wichita, Kansas# #Louisville, Ky# #New Orleans, La# #Portland, Maine# #Baltimore, Md# #Boston, Mass# #Detroit, Mich# #Sault Ste Marie, Mich# #Minn St Paul, Minn# #St Louis, Missouri# #Helena, Montana# #Omaha, Nebraska# #Concord, NH# #Atlantic City, NJ# #Albuquerque, NM# #Albany, NY# #New York, NY# #Charlotte, NC# #Raleigh, NC# #Bismarck, ND# #Cincinnati, Ohio# #Cleveland, Ohio# #Oklahoma City, Okla# #Portland, Ore# #Harrisburg, Pa# #Philadelphia, Pa# #Charlestown, SC# #Rapid City, SD# #Nashville, Tenn# #Amarillo, Tx# #Galveston, Tx# #Houston, Tx# #Salt Lake City, Utah# #Burlington, Vt# #Norfolk, Va# #Seattle Tacoma, Wash# #Spokane, Wash# #Madison, Wisc# #Milwaukee, Wisc# #Cheyenne, Wyoming# #San Juan, Puerto Rico#">
+		<param name="model" value="111.67 -1.67 1.0">
+		<param name="horizAxis" value="15 60 20 10">
+		<param name="vertAxis" value="0 85 0 10">
+		<param name="decimals" value="2 2 2 2">
+		<param name="change1" value="#11 38 30#">
+		<param name="change1Name" value="Correct Jacksonville">
+		<param name="change2" value="#2 58 *# #44 45 *# #56 47 *#">
+		<param name="change2Name" value="Delete NorthWest">
+		</applet>
+	</div>
+	<p>There are four unusually large residuals that might be considered to be outliers.
+		They are all considerably warmer than the model would predict for their latitude. <strong>Dragging</strong> with the mouse over the four points reveals their names and
+		highlights their positions on a map of the USA. </p>
+	<p>You may have noticed that one of the outliers, Jacksonville, is too far 
+		north on the map. <strong>The latitude of Jacksonville was wrongly recorded</strong> in the published data set as 38 degrees instead of 30 degrees. Click the 
+		checkbox <strong>Correct Jacksonville</strong> to change Jacksonville's 
+		latitude to 30 degrees. Note that the position of the least squares line 
+		is not affected much. </p>
+	<p>The remaining three outliers are Portland, Seattle and Juneau. These are all
+		in the northwest of the USA, and a little geographical research shows that they are
+		warmed by a sea current in the winter. Retaining these cities causes us to overestimate the
+		temperatures of other high-latitude cities. Their common characteristic suggests that
+		we should perhaps model the northwest of the USA separately from the remainder of the country.
+		Click the checkbox <strong>Delete NorthWest</strong> to remove the three cities.
+		The least squares line now fits much closer to the remaining data points. </p>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

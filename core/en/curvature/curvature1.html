@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Transformations and correlation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="transformations, correlation coefficient/transform to linearity first">
+	<meta name="dataset" content="Bacteria survival after X-rays/high correlation after linearising">
+	<meta name="dataset" content="Lifespan and metabolic rate of mammals/higher correlation after linearising">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Correlation coefficient and nonlinear relationships</p>
+
+  <p>The correlation coefficient, <i>r</i>, is a good description of the strength 
+		of linear relationship but
+		<a href="javascript:showNamedPage('correlation4')">not 
+		nonlinear ones</a>. If a scatterplot shows marked curvature, the correlation 
+		coefficient can considerably understate the strength of the relationship.</p>
+	<p>How can you summarise the strength of a nonlinear relationship? One solution 
+    is to use a different summary statistic that has better properties than <i>r</i>. 
+    In this page, we describe an alternative solution to the problem.</p>
+	
+	<p class="heading">Transform the variables to linearise the relationship</p>
+	
+	<p><a href="javascript:showNamedPage('transform2')">Applying 
+		a nonlinear transformation</a> (such as a log transformation) to a single 
+		variable changes the shape of its distribution and can be used to eliminate 
+		skewness.</p>
+	<p>Nonlinear transformation of a variable has a more important effect on bivariate 
+		data &mdash; it alters the shape of the relationship. (It is easier to explain 
+		how this happens in the diagram below than in words!) It is often possible 
+		to linearise a relationship by transforming one or both variables.</p>
+	<p>Therefore one way to use <i>r</i> to describe nonlinear relationships is 
+		to apply a transformation to one or both variables to <strong>remove the nonlinearity</strong> 
+		before evaluating <i>r</i>.</p>
+
+<div class="diagram" title="Example: Marine bacteria surviving X-rays">
+<p class=heading>Marine bacteria surviving X-rays</p>
+		<p>The scatterplot below shows the numbers of a marine bacterium surviving 
+			exposure to 200 kilovolt X-rays for periods ranging from t=1 to t=15 intervals 
+			of 6 minutes. The relationship is clearly nonlinear with a steep initial 
+			decline in numbers followed by a more gradual decrease.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="350" height="370">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="corrProg.CorrelTransApplet">
+<param name="xVarName" value="X-ray dose">
+<param name="yVarName" value="survivors">
+<param name="xValues" value="1 2 3 4 5 6 7 8 9 10 11 12 13 14 15">
+<param name="yValues" value="355 211 197 166 142 106 104 60 56 38 36 32 21 19 15">
+<param name="horizAxis" value="0 16 0 2">
+<param name="vertAxis" value="14 360 50 50">
+<param name="labelAxes" value="true">
+<param name="transformAxes" value="true">
+</applet>
+</div>
+
+		<p>The correlation coefficient is <i>r</i> = -0.907, indicating a fairly strong 
+			relationship between the numbers of survivors and the dose of X-rays, but 
+			the nonlinearity means that the strength of the relationship is understated 
+			by this. </p>
+
+		<p>Drag the red line on the vertical axis upwards to apply a power transformation 
+			to the number of survivors. When the power becomes close to zero (which 
+			corresponds to a log transformation of the response), the relationship becomes 
+			nearly linear. Since the relationship between log(survivors) and dose is 
+			approximately linear, the correlation coefficient between these two variables, 
+			<i>r</i> = -0.994, is a better description of the strength of the relationship. 
+		</p>
+		</div>
+
+<p class=heading>Choosing the transformation</p>
+
+  <p><strong>How do you decide which variable to transform to linearise a relationship?</strong> 
+    There is no easy answer that works for all data sets, but a useful approach 
+    is to look at the marginal distributions of each variable separately and to 
+    initially try transformations that remove any skewness in these distributions. 
+  </p>
+
+<div class="diagram" title="Example: Metabolic rate and lifespan">
+<p class=heading>Metabolic rate and lifespan</p>
+
+<p>The scatterplot below shows the lifespan (in years) and metabolic rate
+(measured by oxygen intake per gram of weight) of a selection of mammals.
+The box plots on the two axes show that each of the variables has a skew distribution, and
+the scatterplot shows that the relationship is nonlinear.
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="350" height="390">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="corrProg.CorrelTransBoxApplet">
+<param name="xVarName" value="Metabolic rate">
+<param name="yVarName" value="Lifespan">
+<param name="labelName" value="Species">
+<param name="xValues" value="0.22 0.52 0.75 1.90 2.00 0.51 0.83 0.43 0.25 0.22 0.25 0.42 0.87 0.93 0.86 1.49 0.74 0.32 0.52 0.52 0.39 0.44 0.07 0.15 0.19 0.24 0.13">
+<param name="yValues" value="50.0 5.0 6.0 3.5 20.5 12.0 20.0 29.0 50.0 100.0 6.5 18.0 9.0 3.9 4.7 3.2 7.6 16.2 9.8 14.0 13.7 28.0 69.0 46.0 20.0 20.0 30.0">
+<param name="labels" value="#Echidna# #N American opossum# #European hedgehog# #E American mole# #Little brown bat# #Owl monkey# #Squirrel monkey# #Rhesus monkey# #Chimpanzee# #Man# #Nine-banded armadillo# #Rabbit# #Ground squirrel# #Golden hamster# #Rat# #Mouse# #Guinea pig# #Gray wolf# #Red fox# #Arctic fox# #Raccoon# #Cat# #Asian elephant# #Horse# #Goat# #Sheep# #Cow#">
+<param name="horizAxis" value="0.06 2.1 0.5 0.5">
+<param name="vertAxis" value="3 105 20 20">
+<param name="labelAxes" value="true">
+<param name="transformAxes" value="true">
+</applet>
+</div>
+
+    <p>Drag the red lines on the axes to remove marginal skewness. For these data 
+      (and many others), the transformations that remove marginal skewness <strong>also</strong> 
+      linearise the relationship. The correlation coefficient between the transformed 
+      variables (about -0.7) is therefore a fairer description of the strength 
+      of the relationship than that of the original measurements (-0.47).</p>
+
+<div class="boxed"><p>You probably found that metabolic rate<sup>0.2</sup> had a reasonably 
+            symmetric distribution. It is however hard to interpret values on 
+            these scales, so drag to a log transformation of both variables &mdash; 
+            their relationship is equally linear and the graph is easier to interpret.</p></div>
+
+    <p>After linearising the relationship, man no longer seems to be an outlier. 
+      Which mammals now seem to be the most unusual?</p>
+  </div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

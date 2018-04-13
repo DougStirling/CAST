@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Variation between and within treatments</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="variation, explained variation, unexplained variation">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Does the factor affect the response?</p>
+<p>In this section, we  assume  data from a completely randomised experiment that satisfy a normal model of the form</p>
+<div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+	<tr>
+		<td align="center"><br>
+				<br>
+				<span class="em black">y<sub>ij</sub></span>  &nbsp;= &nbsp;</td>
+		<td align="center" class="green">(<em>explained <br>
+			by factor</em>)<br>
+			µ<em><sub>i</sub></em></td>
+		<td align="center"><br>
+				<br>
+			&nbsp;+&nbsp;</td>
+		<td align="center" class="red"><br>
+			(<em>unexplained</em>)<br>
+			ε<em><sub>ij</sub></em></td>
+		<td width="30" align="center">&nbsp;</td>
+		<td align="center"><span class="eqn"><br>
+					<br>
+			for <em>i</em> = 1 to <em>g</em> and <em>j</em> = 1 to <em>n<sub>i</sub></em></span></td>
+	</tr>
+</table></div>
+<p class="eqn">where <span class="red">ε<em><sub>ij</sub></em></span> &nbsp;∼&nbsp; normal (0<em><sub></sub></em>, σ)</p>
+<p>If the factor does not affect the response, the treatment means in the model will all be equal. A test for this therefore involves the hypotheses,</p>
+<p style="margin-left:200; color:#000000"><span class="arial"><strong><span class="bigger">H</span><sub>0</sub></strong></span> : &nbsp; µ<sub><em>i</em></sub> &nbsp;=&nbsp; µ<sub><em>j</em></sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>for all i and j</em><br>
+<span class="arial"><strong><span class="bigger">H</span><sub>A</sub></strong></span>: &nbsp; µ<sub><em>i</em></sub> &nbsp;≠&nbsp; µ<sub><em>j</em></sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>for at least some i, j</em></p>
+<p>However unexplained (random) variation will result in <strong>sample</strong> treatment means that are  unlikely to be equal, even if the factor really has no effect.</p>
+<div class="centred"><div class="boxed">
+	<p>How much variation in the observed treatment means is needed for us to conclude that the factor does affect the response? </p>
+</div></div>
+<p>Both variation between treatment means (explained variation) and variation within treatments (unexplained variation) must be used to answer this question.</p>
+<p> In the remaining pages of this section, we will introduce   statistics that summarise explained and unexplained variation and will show how they are used in a formal test for whether the factor affects the response. </p>
+<div class="diagram"> 
+<p class="heading">Variation <span class="red">between</span> treatment means (explained variation)</p>
+<p>The jittered dot plots below show artificial data that should be considered to have arisen from a completely randomised experiment in which 10 experimental units are given each of 4 levels of a factor. </p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.VariabilityApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="xLabels" value="A B C D">
+<param name="xValues" value="10@0 10@1 10@2 10@3">
+<param name="anovaModel" value="3.0 0.9 8.0 0.9 5.5 0.9 4.0 0.9">
+<param name="randomSeed" value="223945782">
+<param name="yAxis" value="1.0 9.5 1 1">
+<param name="decimals" value="3">
+<param name="initialPropns" value="1.0 0.5">
+<param name="explainedName" value="Variation between levels">
+<param name="customText" value="Low=Low#High=High">
+</applet>
+</div>
+
+    
+<p>Use the slider to alter the difference between the treatment means. Observe that:</p>
+<ul>
+<li>When the between-treatment variation is high, we become more certain that the 
+differences between the treatment means could not have occurred by chance.</li>
+</ul>
+
+<p class="heading">Variation <span class="red">within</span> treatments  (unexplained variation)</p>
+
+<p>The diagram below is similar, but the slider adjusts the spread of values observed within 
+each factor level, leaving the treatment means unaltered.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.VariabilityApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="xLabels" value="A B C D">
+<param name="xValues" value="10@0 10@1 10@2 10@3">
+<param name="anovaModel" value="4.0 1.2 6.0 1.2 5.5 1.2 4.0 1.2">
+<param name="randomSeed" value="123945782">
+<param name="yAxis" value="1.0 9.5 1 1">
+<param name="decimals" value="3">
+<param name="initialPropns" value="0.5 1.0">
+<param name="unexplainedName" value="Variation within levels">
+<param name="customText" value="Low=Low#High=High">
+</applet>
+</div>
+
+<p>Observe that ... </p>
+
+<ul>
+	<li>The lower the within-treatment variation, the more certain we become that
+		there really is a difference between the underlying model means.</li>
+</ul>
+
+<p class="heading">Are the underlying means equal?</p>
+
+		<p>The evidence for a difference between the treatment means depends on both the 
+			variation between <strong>and</strong> within treatments. It is strongest when:</p>
+		<div class="centred"><div class="boxed"><ul>
+			<li>the between-treatment variation is relatively high, and</li>
+			<li>the within-treatment variation is relatively low.</li>
+		</ul>
+		</div></div>
+
+<br>
+</div>
+
+  
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

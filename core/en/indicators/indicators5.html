@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Explained and residual sums of squares</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="comparing groups, sums of squares, analysis of variance">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Are the group means equal?</p>
+  <p>The model that allows for different means in <em>g</em> groups is:</p>
+  <p class="eqn"><img src="images/factorModel2.gif" width="483" height="27"></p>
+  <p>In this model, testing for equal group means is equivalent to testing whether 
+    the (<em>g</em>-1) slope parameters are all zero.</p>
+  
+<div class="centred"><div class="boxed">
+<p>We require a simultaneous test for whether 
+            all (<em>g</em>-1) slope parameters are zero, not separate t-tests 
+            for the individual parameters.</p>
+</div></div>
+
+  <p>To simultaneously test whether all (g-1) of the δ-parameters 
+		are zero, <strong>analysis of variance</strong> is required. This uses the 
+		methods that were described earlier to <a href="javascript:showNamedPage('multiRegnAnova4')">test 
+		whether all explanatory variables in a GLM have zero coefficients</a>.</p>
+	
+  
+  <p class="heading">Components</p>
+  <p>General GLM methodology uses analysis of variance (anova) to simultaneously 
+		test whether all explanatory variables in a GLM have zero coefficients. This 
+		is based on the following components of variation:</p>
+  <p class="eqn"><img src="../multiRegnAnova/images/componentsSimple.gif" width="290" height="47" align="absmiddle"></p>
+  <p>Rewriting this with double subscripts (with <em>i</em> denoting the group 
+		and <em>j</em> denoting the observation within its group) and using the fact 
+		that the fitted value for any observation is its group mean, this is equivalent 
+		to:</p>
+	<p class="eqn"><img src="images/componentEqn.gif" width="283" height="51" align="absmiddle"></p>
+	<p>These components can be shown graphically as follows.</p>
+  <p class="eqn"><img src="images/componentPict.gif" width="528" height="252"></p>
+  <p class="heading">Sums of squares</p>
+  <p>The general theory of GLMs shows that sums of squares of these components 
+		satisfy a similar equation.</p>
+  <p class="eqn"><img src="images/componentSsqEqn.gif" width="329" height="53" align="absmiddle"></p>
+  <p>All summations in this equation are over all individuals in the data set. 
+		Since the explained components are identical for all <em>n<sub>i</sub></em> values in 
+		the <em>i</em>'th group, this can be simplified into:</p>
+	<p class="eqn"><img src="images/componentSsqEqn2.gif" width="341" height="50" align="absmiddle"></p>
+	<p>Since the regression sum of squares describes variation in the group means, 
+		it is often called the <strong>between groups</strong> sum of squares. In 
+		a similar way, the residual sum of squares describes the differences between 
+		values and their group mean, so it is often called the <strong>within groups</strong> 
+		sum of squares.</p>
+  <div class="diagram">
+		<p class="heading">Illustration</p>
+		<p>The diagram below illustrates the three components whose sums of squares 
+			are central to anova. The jittered dot plot on the left shows a data set 
+			that might describe the yields per acre of four viarieties of wheat that 
+			were each planted in 8 fields.</p>
+		<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="370">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.ComponentsSsqApplet">
+<param name="yVarName" value="Yield, y">
+<param name="xVarName" value="Variety of wheat">
+<param name="xLabels" value="A B C D">
+<param name="xValues" value="8@0 8@1 8@2 8@3">
+<param name="anovaModel" value="9 0.9 16 0.9 14 0.9 6 0.9">
+<param name="randomSeed" value="5836280">
+<param name="yAxis" value="0 25 0 5">
+<param name="decimals" value="3">
+<param name="residAxis" value="-15 15 -15 5">
+<param name="initialR2" value="0.75">
+<param name="maxSsq" value="999.99">
+<param name="componentName" value="Total#Explained#Residual">
+<param name="r2Labels" value="Reason for variation:#All random#Groups">
+</applet>
+</div>
+
+		<p>The three jittered dot plots on the right show the total, explained (between-groups) 
+			and residual (within-groups) components. Their sums of squares are the total, 
+			explained and residual sums of square. <strong>Click</strong> on each of 
+			these jittered dot plots to display the corresponding components as vertical 
+			lines on the plot of the raw data. </p>
+		<p>The slider alters the data, keeping the total sum of squares constant. 
+			Change the slider and observe that:</p>
+<ul>
+			<li><strong>When the slider is close to the right, most variability in yields 
+				results from differences between the varieties, and the between-group 
+				sum of squares is relatively large.</strong> <br>
+&nbsp;</li>
+			<li><strong>When the slider is near the left, the mean yields for the varieties 
+				are similar, so the sum of squares within groups is relatively large.</strong></li>
+</ul>
+
+<br>
+
+
+<div class="centred"><div class="boxed">
+<p>The relative sizes of the within-group and between-group 
+sums of squares therefore hold information about whether the underlying group 
+means are equal.</p>
+</div></div>
+
+
+<br>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

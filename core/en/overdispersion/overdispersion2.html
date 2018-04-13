@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Overdispersion in Poisson distribution</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="poisson process, homogeneous poisson process, overdispersion">
+	<meta name="dataset" content="House location near tokyo">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p class="heading">Overdispersion</p>
+<p>The assumptions underlying a homogeneous Poisson process are sometimes violated.</p>
+<dl>
+	<dt>Constant \(\lambda\)</dt>
+	<dd>It may be found that the rate of events, \(\lambda\) is <strong>not</strong> constant but varies over time or space. In the Tokyo housing example, some parts of the village may be more suitable for housing than others. When counting hourly admissions to a hospital's A&amp;E department, the rate will be different at different times of day.</dd>
+	<dt>Independence</dt>
+	<dd>The occurrence of events may be affected by the occurrence of events in neighbouring times or places. In the Tokyo housing example, there may be a tendency to build houses either close to others (in  clusters) or at a distance from others.</dd>
+</dl>
+<p>These two problems often result in a <strong>more variable  counts</strong> than would be expected from a Poisson distribution — called <strong>overdispersion</strong>.</p>
+<div class="example">
+	<p class="exampleHeading">Location of houses</p>
+	<p>Assuming a homogeneous Poisson process with rate \(\lambda\) houses per unit area, the maximum likelihood estimate of \(\lambda\) is</p>
+\[
+\hat{\lambda} \;\;=\;\; \overline{X} \;\;=\;\; \frac {911}{1200} \;\;=\;\; 0.7592
+\]
+	<p>The table below shows the sample proportions for each of the counts and the best-fitting Poisson probabilities using \(\hat{\lambda}\) above.</p>
+
+<div class="centred">
+	<table border="0" cellpadding="5" cellspacing="0" class="centred">
+		<tr>
+			<th>    No of houses,     <br>
+			\(x\)</th>
+			<th>Sample<br>proportion</th>
+			<th>Poisson probability,<br>\(p(x)\)</th>
+		</tr><tr><td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">0</td><td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">0.4867</td><td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">0.4681</td></tr>
+<tr><td align="center" bgcolor="#FFFFFF">1</td><td align="center" bgcolor="#FFFFFF">0.3317</td><td align="center" bgcolor="#FFFFFF">0.3553</td></tr>
+<tr><td align="center" bgcolor="#FFFFFF">2</td><td align="center" bgcolor="#FFFFFF">0.1400</td><td align="center" bgcolor="#FFFFFF">0.1349</td></tr>
+<tr><td align="center" bgcolor="#FFFFFF">3</td><td align="center" bgcolor="#FFFFFF">0.0292</td><td align="center" bgcolor="#FFFFFF">0.0341</td></tr>
+<tr><td align="center" bgcolor="#FFFFFF">4</td><td align="center" bgcolor="#FFFFFF">0.0075</td><td align="center" bgcolor="#FFFFFF">0.0065</td></tr>
+<tr><td align="center" bgcolor="#FFFFFF">5</td><td align="center" bgcolor="#FFFFFF">0.0033</td><td align="center" bgcolor="#FFFFFF">0.0010</td></tr>
+<tr><td align="center" bgcolor="#FFFFFF">6</td><td align="center" bgcolor="#FFFFFF">0.0000</td><td align="center" bgcolor="#FFFFFF">0.0001</td></tr>
+<tr><td align="center" bgcolor="#FFFFFF">7</td><td align="center" bgcolor="#FFFFFF">0.0008</td><td align="center" bgcolor="#FFFFFF">0.0000</td></tr>
+<tr><td align="center" bgcolor="#FFFFFF">8</td><td align="center" bgcolor="#FFFFFF">0.0000</td><td align="center" bgcolor="#FFFFFF">0.0000</td></tr>
+<tr><td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">9</td><td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">0.0008</td><td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">0.0000</td></tr>
+
+		<tr>
+			<th>Total</th>
+			<th>1.0000</th>
+			<th>1.0000</th>
+		</tr>
+	</table>
+</div>
+
+	<p>Zeros and large counts arise more often than expected from a Poisson distribution.</p>
+	<p>The sample variance is \(S^2 = 0.8902\) which is greater than the sample mean, \(\overline{X} = 0.7592\). Since the mean and variance of a Poisson distribution are equal, this also suggests some overdispersion in the distribution.</p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

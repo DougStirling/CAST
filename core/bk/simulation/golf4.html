@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Better handicapping method</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Handicapping Based on Quantiles
+</p>
+
+<p>Handicapping to give all players in a tournament the same mean score clearly
+penalises the more consistent golfers &mdash; they are less likely to improve on their
+mean score enough to win.
+</p>
+
+<p>In a competition with <i>n</i> golfers of <strong>identical</strong> abilities, 
+  the winning score is the minimum of the resulting <i>n</i> random scores. This 
+  minimum has a distribution that is centred on the lower <sup>1</sup>/<sub>(n+1)</sub>'th 
+  quantile of the distribution of the individual scores. (A bit <a href="javascript:showNamedPage('orderStats1')">more detail about the minimum of a random sample will be given later</a>.)</p>
+
+<p>This suggests that in a competition of 24 golfers, a fairer handicapping
+would make the lower <sup>1</sup>/<sub>25</sub>'th quantile of
+all competitors equal.</p>
+
+<div class="diagram">
+
+<p>The diagram below calculates handicaps to make these equal to 70. </p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="sportProg.HandicapScoreApplet">
+<param name="distnName" value="Golf score, X">
+<param name="parameters" value="5 1">
+<param name="meanLimits" value="75 100 80">
+<param name="horizAxis" value="65 85 65 5">
+<param name="probAxis" value="0 0.3 7 0.1">
+<param name="biggestX" value="15.00">
+<param name="sdScaling" value="-2.6666667 0.06666667 2">
+<param name="maxX" value="110.0">
+<param name="handicapName" value="Handicapped score, X">
+<param name="handicap" value="70 0.04 -30.0">
+<param name="customText" value="mean score=mean score#Handicap=Handicap">
+</applet>
+</div>
+
+<p>Drag the slider to see the distribution of
+handicapped scores for different golfers.
+Note that the poorer golfers are given a lower handicap with this scheme so their mean
+handicapped scores are higher than the mean scores for the better players.
+</p>
+
+<p>Click on the diagram above 70 on the axis.
+(Again drag to the left or right to get exactly 70.) Observe that all
+players now have the same probability, 0.04, of getting a handicapped score of 70 or less.
+</p>
+
+<p class="heading">Simulation of a Handicapped Golf Tournament
+</p>
+
+<p>The diagram below simulates a tournament with 26 players whose mean scores
+on a par-70 course are 75, 76, ...,&nbsp;100, using the handicapping scheme
+described above. The black crosses on the scatterplot on the left below show the scores
+achieved by each player and the red circles are their handicapped scores.
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="sportProg.HandicapWinnerApplet">
+<param name="actualName" value="Actual golf score">
+<param name="abilityName" value="Mean score (ability)">
+<param name="handicappedName" value="Handicapped score">
+<param name="actualAxis" value="60 110 60 10">
+<param name="abilityAxis" value="69 101 70 10">
+<param name="randomSeed" value="14793625">
+<param name="maxAbility" value="100">
+<param name="winnerName" value="Winner's ability">
+<param name="abilityScaling" value="-2.6666667 0.06666667">
+<param name="abilityData" value="75 1 26 1">
+<param name="handicap" value="70 0.1">
+<param name="customText" value="Run Tournament=Run Tournament">
+</applet>
+</div>
+
+<p>Click <strong>Accumulate</strong> then 
+click <strong>Play Tournament</strong> a few times to build up the distribution of
+the winner's ability. Hold the mouse button down over the button until the tournament has
+been played 200 times.
+</p>
+
+<p>Observe that all players have similar probabilities of winning this tournament.
+</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

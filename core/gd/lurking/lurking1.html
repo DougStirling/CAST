@@ -1,0 +1,175 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Misleading marginal correlation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="lurking variable, hidden variable, marginal relationship, conditional relationship">
+	<meta name="dataset" content="Reading ability, height and age">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Relationship between two numerical variables</p>
+	<p>In an earlier chapter, we described various methods to describe the relationship 
+		between two numerical variables, <em>Y</em> and <em>X</em>.</p>
+	<ul>
+		<li>A scatterplot displays the raw data</li>
+		<li>Their correlation coefficient describes the strength of the relationship</li>
+		<li>A least squares line can be used to predict <em>Y</em> from <em>X</em>.</li>
+	</ul>
+	<p>Although these methods honestly describe the data, they can sometimes give 
+		a misleading impression of how the two variables are related.</p>
+	<p class="heading">Marginal and conditional relationships</p>
+	<p>The problem arises when other variables are also associated with both <em>Y</em> 
+		and <em>X</em>. This can arise when the extra variables are either numerical 
+		or categorical, but is easiest to explain with an extra categorical explanatory 
+		variable, <em>Z</em>.</p>
+	<p>The <strong>marginal relationship between <em>Y</em> and <em>X</em></strong> 
+		is the relationship that is evident in a scatterplot of the two variables 
+		without taking into account any other variables. In contrast, the <strong>conditional 
+		relationship between <em>Y</em> and <em>X</em> given <em>Z</em></strong> is 
+		the relationship that is evident within subsets of the data corresponding 
+		to different values of <em>Z</em>.</p>
+	<center>
+		<table border="1" cellspacing="0" cellpadding="5" bgcolor="white" width="75%">
+			<tr> 
+				<th align="CENTER">The strength and direction of the marginal relationship 
+					between <em>Y</em> and <em>X</em> may be different from those of the 
+					conditional relationships given <em>Z</em>.</th>
+			</tr>
+		</table>
+	</center>
+	<p>It is possible for the marginal relationship between <em>Y</em> and <em>X</em> 
+		to show positive correlation, when the conditional distributions all have 
+		zero or even negative correlation.</p>
+	<center>
+		<table border="1" cellspacing="0" cellpadding="5" bgcolor="white" width="75%">
+			<tr> 
+				<th align="CENTER">When the marginal and conditional relationships differ, 
+					the conditional relationships are usually more meaningful.</th>
+			</tr>
+		</table>
+	</center>
+	<p>(However we give an example at the end of this section where the marginal 
+		relationship is more easily interpreted.)</p>
+	<p class="heading">Lurking (or hidden) variables</p>
+	<p>It is possible to examine the marginal <strong>and</strong> conditional distributions 
+		of <em>Y</em> and <em>X</em> if the third variable, <em>Z</em>, has been recorded. 
+		However <em>Z</em> might not be one of the variables in our data set.</p>
+	<p>If the marginal relationship between <em>X</em> and <em>Y</em> is different 
+		from their conditional relationship given <em>Z</em>, but <em>Z</em> has either 
+		not been recorded or is ignored when analysing the data, then <em>Z</em> is 
+		called a <strong>lurking </strong>variable (or a <strong>hidden</strong> variable).</p>
+	<center>
+		<table border="1" cellspacing="0" cellpadding="5" bgcolor="white" width="75%">
+			<tr> 
+				<th align="CENTER">Always think about whether there might be a lurking 
+					variable, <em>Z</em>, that is distorting the relationship that is observed 
+					between <em>Y</em> and <em>X</em>.</th>
+			</tr>
+		</table>
+	</center>
+	<p>The following example illustrates the difference between the marginal and 
+		conditional relationships between two numerical variables, <em>X</em> and 
+		<em>Y</em>, and shows how the marginal relationship can be misleading.</p>
+
+<div class="diagram"> 
+<p class="heading">Reading ability and height</p>
+		<p>A scientist examining genetic factors affecting reading ability in primary 
+			children collects a variety of information from each child at a particular 
+			school. A scatterplot of the <em>reading ability</em> and <em>height</em> 
+			of the children is shown below. </p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="300" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="multivarProg.SliderSliceApplet">
+<param name="yVarName" value="Reading ability">
+<param name="xVarName" value="Height (metres)">
+<param name="zVarName" value="Age">
+<param name="yValues" value="25 18 39 23 19 34 20 21 32 14 36 23 24 20 16 18 12 26 23 21 43 33 37 48 37 30 41 25 42 42 33 35 60 35 39 29 25 57 50 50 45 49 56 32 61 53 59 67 49 44 57 34 60 32 51 54 70 58 46 56 73 59 71 73 63 76 68 51 84 38 36 47 74 54 32 61 78 52 70 91 73 78 64 89 80 37 62 43 75 40 73 78 48 86 68 70 73 42 68 87">
+<param name="xValues" value="1.06 0.95 1.06 0.93 1.03 0.99 0.93 1.04 0.97 1.04 0.98 0.98 0.96 1.02 0.95 0.92 1.05 0.91 0.99 1.02 1.03 1.11 1.08 1.11 1.06 1.14 1.10 1.06 1.11 1.08 1.16 1.03 1.20 1.03 1.08 1.12 1.08 1.13 1.08 1.11 1.20 1.19 1.12 1.20 1.16 1.19 1.24 1.21 1.16 1.29 1.20 1.21 1.16 1.27 1.13 1.19 1.17 1.17 1.17 1.23 1.32 1.34 1.28 1.26 1.19 1.31 1.28 1.30 1.34 1.22 1.30 1.31 1.37 1.22 1.27 1.26 1.38 1.29 1.31 1.25 1.30 1.31 1.43 1.36 1.45 1.35 1.43 1.39 1.37 1.36 1.39 1.40 1.42 1.37 1.40 1.41 1.39 1.39 1.30 1.46">
+<param name="zValues" value="20@6 20@7 20@8 20@9 20@10">
+<param name="horizAxis" value="0.89 1.51 0.9 0.1">
+<param name="vertAxis" value="0 100 0 20">
+<param name="labelAxes" value="true">
+</applet>
+</div>
+
+		<p>The marginal relationship between <em>reading ability</em> and <em>height</em> 
+			shows a positive correlation, so it might be taken to imply that there is 
+			a genetic effect on reading ability since taller children tend to be better 
+			readers.</p>
+
+		<p>However this conclusion is flawed. The ages of the children in the study 
+			ranged from 6 to 10 years old, and <em>age</em> is a third variable that 
+			affects both height and reading ability.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="300" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="multivarProg.SliderSliceApplet">
+<param name="yVarName" value="Reading ability">
+<param name="xVarName" value="Height (metres)">
+<param name="zVarName" value="Age">
+<param name="yValues" value="25 18 39 23 19 34 20 21 32 14 36 23 24 20 16 18 12 26 23 21 43 33 37 48 37 30 41 25 42 42 33 35 60 35 39 29 25 57 50 50 45 49 56 32 61 53 59 67 49 44 57 34 60 32 51 54 70 58 46 56 73 59 71 73 63 76 68 51 84 38 36 47 74 54 32 61 78 52 70 91 73 78 64 89 80 37 62 43 75 40 73 78 48 86 68 70 73 42 68 87">
+<param name="xValues" value="1.06 0.95 1.06 0.93 1.03 0.99 0.93 1.04 0.97 1.04 0.98 0.98 0.96 1.02 0.95 0.92 1.05 0.91 0.99 1.02 1.03 1.11 1.08 1.11 1.06 1.14 1.10 1.06 1.11 1.08 1.16 1.03 1.20 1.03 1.08 1.12 1.08 1.13 1.08 1.11 1.20 1.19 1.12 1.20 1.16 1.19 1.24 1.21 1.16 1.29 1.20 1.21 1.16 1.27 1.13 1.19 1.17 1.17 1.17 1.23 1.32 1.34 1.28 1.26 1.19 1.31 1.28 1.30 1.34 1.22 1.30 1.31 1.37 1.22 1.27 1.26 1.38 1.29 1.31 1.25 1.30 1.31 1.43 1.36 1.45 1.35 1.43 1.39 1.37 1.36 1.39 1.40 1.42 1.37 1.40 1.41 1.39 1.39 1.30 1.46">
+<param name="zValues" value="20@6 20@7 20@8 20@9 20@10">
+<param name="horizAxis" value="0.89 1.51 0.9 0.1">
+<param name="vertAxis" value="0 100 0 20">
+<param name="slicerExtreme" value="6 10">
+<param name="labelAxes" value="true">
+<param name="customText" value="Slice=Slice">
+</applet>
+</div>
+
+		<p>Click the checkbox <strong>Slice</strong>, then use the slider to display 
+			the relationship separately for the children of each <em>age</em>. We now 
+			see that there is no clear relationship between height and reading ability 
+			in the conditional relationship <strong>within each age group</strong>. 
+		</p>
+
+<table width="75%" border="1" class="centred" cellpadding="10" cellspacing="0" bgcolor="#FFFFFF">
+<tr> 
+				<td><strong>The observed marginal relationship between <em>reading ability</em> 
+					and <em>height</em> was caused by a lurking variable, <em>age</em>.</strong></td>
+</tr>
+</table>
+<p class="heading">Nutrition and exam performance</p>
+		<p>A different investigator is studying child nutrition in developing countries. 
+			The number of calories eaten daily by each child taking a particular school 
+			examination and the exam mark are recorded. There is a positive relationship 
+			between <em>food intake</em> and <em>exam results</em>. The investigator 
+			claims that this shows that some children are performing poorly because 
+			they are not eating enough and these findings are published widely. </p>
+
+    <table width="75%" border="1" class="centred" cellpadding="10" cellspacing="0" bgcolor="#FFFFFF">
+      <tr> 
+        <td><strong>Can you see the flaw in this conclusion?</strong></td>
+      </tr>
+    </table>
+    <p>The nutritionalist should have considered what lurking variables might 
+			affect both <em>exam results</em> and <em>food intake</em>. Families whose 
+			parents are well educated are likely to have children who are better nourished, 
+			and they are also likely to have children who perform well at school (either 
+			for genetic reasons or because greater encouragement and help is given). 
+		</p>
+
+		<p><em>Family background</em> is therefore a lurking variable that could underlie 
+			the observed relationship between <em>food intake</em> and <em>exam results</em>, 
+			even if increasing food intake does not directly <strong>cause</strong> 
+			improved exam results. </p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Chi-squared test statistic</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+  <style type="text/css">
+<!--
+.style4 {color: #000000;
+	font-style: italic;
+}
+-->
+  </style>
+
+	<meta name="index" content="contingency table, independence, chi-squared test, chi-squared distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">A better test statistic</p>
+  
+<p>The raw sum of squares on the previous page is a poor way to assess whether 
+a contingency table has been sampled from a population with independence. A better 
+statistic is χ<sup>2</sup> (pronounced <i>chi-squared</i>), defined by </p>
+
+<p class=eqn><img class="gif" src="../../en/indep/images/chiSquaredEqn.gif" width="145" height="47">
+</p>
+
+<p>This more fairly assesses differences between <span class="style4">n<sub>xy</sub></span> and <span class="style4">e<sub>xy</sub></span> when the <span class="style4">e<sub>xy</sub></span> vary in magnitude. Its distribution still depends on the number of rows and columns 
+in the contingency table, but is no longer affected by either the number of individuals 
+(the total count for the table) or the margins of the table.</p>
+<table width="80%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+<tr> 
+<td align="center"><strong>Only the number of rows and number of columns in the table have 
+much influence on the distribution of χ<sup>2</sup>.</strong></td>
+</tr>
+</table>
+<br>
+
+<div class="diagram">
+
+<p class=heading>Simulation</p>
+
+<p>The diagram below again samples from two independent categorical variables.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="continProg.Chi2SampleApplet">
+<param name="dataName" value="Margins all 1/3">
+<param name="yVarName" value="Y variable">
+<param name="xVarName" value="X variable">
+<param name="yLabels" value="col1 col2 col3">
+<param name="xLabels" value="row1 row2 row3">
+<param name="xMargin" value="0.333 0.333 0.333">
+<param name="yCondit" value="0.333 0.333 0.333 0.333 0.333 0.333 0.333 0.333 0.333">
+<param name="sampleSize" value="*100 1000 10000">
+<param name="maxExpected" value="1000.00">
+<param name="maxDiff" value="-99.00">
+<param name="maxChi2" value="99999.00">
+<param name="chi2Type" value="correct">
+<param name="dataName2" value="Margins .6 .3 .1">
+<param name="xMargin2" value="0.6 0.3 0.1">
+<param name="yCondit2" value="0.6 0.3 0.1 0.6 0.3 0.1 0.6 0.3 0.1">
+<param name="horizAxis" value="0 20 0 5">
+</applet>
+</div>
+
+<p>Click <strong>Accumulate</strong> then take several samples to build up the 
+distribution of the χ<sup>2</sup> statistic.</p>
+<p>Now increase the sample size and repeat. Observe that χ<sup>2</sup> is approximately the same magnitude (usually between 0.5 and 15.0) regardless 
+of the sample size. </p>
+
+<p>Finally, use the pop-up menu labelled <strong>Model</strong> to change the 
+model to one where the marginal probabilities for the two categorical variables 
+are unequal (but there is still independence). Observe that the distribution of 
+χ<sup>2</sup> remains approximately the same.</p>
+</div>
+
+<p class="heading">Distribution of chi-squared statistic</p>
+
+<p>When there is independence, the χ<sup>2</sup> statistic has approximately a standard distribution called a <strong>chi-squared</strong> 
+distribution whose shape only depends on the number of rows and columns in the 
+table but not the sample size or the underlying joint probabilities.</p>
+<p>If a contingency table with <i>r</i> rows and <i>c</i> columns is sampled from 
+a population with independence, χ<sup>2</sup> has a chi-squared distribution with (<i>r</i>&nbsp;-&nbsp;1)(<i>c</i>&nbsp;-&nbsp;1) 
+<strong>degrees of freedom</strong>.</p>
+<p>The chi-squared distribution is skew, and</p>
+<table width="80%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+<tr> 
+<td align="center"><strong>The mean of the chi-squared distribution equals its 
+degrees of freedom.</strong></td>
+</tr>
+</table>
+
+<br>
+
+<div class="diagram">
+
+<p class=heading>Shape of the chi-squared distribution</p>
+
+<p>The diagram below shows the probability density function for the chi-squared 
+distribution. </p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="380">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="continProg.Chi2PDFApplet">
+<param name="horizAxis" value="0 40 0 10">
+<param name="nRows" value="2 *3 4 5">
+<param name="nCols" value="2 *3 4 5">
+<param name="chi2Name" value="chi-squared distn (# df)">
+<param name="customText" value="No of rows=No of rows#No of cols=No of cols">
+</applet>
+</div>
+
+<p>Use the pop-up menus to change the number of rows and columns in the table. 
+Observe that:</p>
+
+<ul>
+<li>The chi-squared distribution is skew, but becomes closer to symmetric when 
+the degrees of freedom are large (i.e. when the number of rows and columns in 
+the table is large).</li>
+<li>The mean of the distribution equals its degrees of freedom.</li>
+</ul>
+<br>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

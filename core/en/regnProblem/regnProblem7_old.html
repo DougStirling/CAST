@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Correlated errors</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="serial correlation, durbin-watson statistic">
+	<meta name="dataset" content="World rice production">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Independence of the errors</p>
+<p>Although we have not stressed it earlier, an important assumption in the normal 
+linear model is that the different errors are uncorrelated with each other. Occasionally 
+some individuals are 'close' in a way that means an 'unusually' high response 
+measurement will be associated with unusually high measurements in nearby individuals 
+&mdash; their errors are correlated.</p>
+<p>For example, in an experiment in a greenhouse, adjacent plants will be grown 
+in similar conditions (light, moisture, air flow) so an unusually high growth 
+rate for one plant may be associated with environmental conditions that also cause 
+unusually high growth rates in adjacent plants.</p>
+
+<div class="centred"><div class="boxed">
+<p>Good experimental design tries to ensure that all experimental units 
+are similar, but correlation between 'adjacent' errors is sometimes unavoidable.</p>
+</div></div>
+
+<p class="heading">Correlated errors and time series</p>
+<p>Correlated errors are most common when the observations are made sequentially 
+in time. There are often influences on the response that are not explicitly recorded 
+or modelled but that change gradually over time resulting in successive errors 
+being correlated. This is called <strong>serial correlation</strong>.</p>
+<p>Serial correlation is especially common when modelling time series &mdash; i.e. 
+when we are using a normal linear model with time as the explanatory variable.</p>
+<p class="heading">Assessing serial correlation</p>
+<p>Strong serial correlation may be visible in a plot of residuals against time, 
+but it is often difficult to assess whether the pattern could have arisen by chance. 
+A test statistic called the <strong>Durbin-Watson statistic</strong> is often 
+used to assess whether there is serial correlation. Writing the successive residuals 
+as <em>e</em><sub>1</sub>, <em>e</em><sub>2</sub>, ..., <em>e<sub>n</sub></em>, 
+this statistic is defined as:</p>
+<p class=eqn><img class="gif" src="../regnProblem/images/durbWatson.gif" width="127" height="51"> 
+</p>
+<p>When the serial correlation is high, successive residuals will be similar, 
+their differences will be small and the test statistic will be close to zero.</p>
+<p>The p-value for the test based on the Durbin-Watson statistic is the probability 
+of getting such a low value of <em>d</em> when there is no serial correlation. 
+An approximate p-value can be obtained from special statistical tables, but it 
+can also be determined with a simulation, as described in the example below.</p>
+<div class="diagram"> 
+<p class="heading">World rice production</p>
+<p>The time series below shows the total world rice production (million tonnes) 
+between 1961 and 2001.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="530">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="loessProg.DurbinWatsonApplet">
+<param name="xVarName" value="Year">
+<param name="yVarName" value="World rice production (million tonnes)">
+<param name="yValues" value="215.7 226.6 247.1 263.0 254.1 261.2 277.5 288.7 295.7 316.4 317.8 307.3 335.0 332.0 357.0 347.7 369.5 385.1 375.1 396.8 410.0 421.9 447.8 465.1 467.9 468.4 461.1 487.0 514.0 518.2 518.5 528.2 529.8 538.8 547.0 568.5 576.8 578.8 609.9 598.2 585.1">
+<param name="xValues" value="1961 1962 1963 1964 1965 1966 1967 1968 1969 1970 1971 1972 1973 1974 1975 1976 1977 1978 1979 1980 1981 1982 1983 1984 1985 1986 1987 1988 1989 1990 1991 1992 1993 1994 1995 1996 1997 1998 1999 2000 2001">
+<param name="horizAxis" value="1960 2001 1960 10">
+<param name="vertAxis" value="0 700 0 100">
+<param name="residAxis" value="-30 30 -30 10">
+<param name="durbinWatsonAxis" value="1.0 3.0 1.0 0.2">
+<param name="random" value="3.0 384958677">
+<param name="labelAxes" value="true">
+<param name="customText" value="Actual Data=Actual Data#Random Normal Data=Random Normal Data#Durbin-Watson=Durbin-Watson#propn as extreme=propn as extreme">
+</applet>
+</div>
+
+<p>The scatterplot on the left shows the data and a least squares line. The residuals 
+on the right do not indicate any problems with curvature or non-constant variance.</p>
+<p>To assess whether there is serial correlation in the errors, the Durbin-Watson 
+statistic has been evaluated. Is a value of 1.291 indicative of serial correlation?</p>
+<p>Select <strong>Random Normal Data</strong> from the pop-up menu. This shows 
+a randomly generated data set from a linear model with β<sub>0</sub>, 
+β<sub>1</sub> and σ 
+the same as the least squares estimates from the actual time series.</p>
+<p>Click <strong>Accumulate</strong>, then click <strong>Simulate</strong> about 
+100 times to build up the sampling distribution of the Durbin-Watson statistic. 
+You should see that a value as low as 1.291 is very unlikely for data like this 
+from a normal linear model, so there is strong evidence that successive errors 
+are correlated.</p>
+
+<div class="centred"><div class="boxed">
+<p>There is strong evidence that years with unusually high (or low) yield 
+tend to follow each other.</p>
+</div></div>
+
+<br>
+</div>
+
+<p class="heading">Warning</p>
+<p>If a linear model is used for a time series, but the relationship is actually 
+nonlinear, successive residuals also tend to be similar and the Durbin-Watson 
+statistic will also be small.</p>
+
+
+<div class="centred"><div class="boxed">
+<p>An unusually small Durbin-Watson statistic can be caused by <strong>either 
+serial correlation or nonlinearity</strong>.</p>
+</div></div>
+
+
+<p>The test only suggests serial correlation if you are sure that the data are 
+linear.</p>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

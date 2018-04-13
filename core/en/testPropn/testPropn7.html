@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Tests based on statistical distance</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="hypothesis test, statistical distance, test statistic">
+	<meta name="dataset" content="Home-based businesses">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Test statistic and p-value</p>
+<p>The <strong>statistical distance</strong> of an estimate to a
+hypothesised value of the underlying parameter is</p>
+<p class="eqn"><img class="gif" src="../testMean/images/zGeneral.gif" width="185" height="37"></p>
+<p>This can be used at test statistic. If the null hypothesis
+holds, it approximately has a standard normal distribution &mdash; a normal distribution
+with zero mean and unit standard deviation.</p>
+<p>The p-value for a test can be determined from the tail areas of this standard
+normal distribution.</p>
+<p class="eqn"><img class="gif" src="../testMean/images/pValueFromZ.gif" width="471" height="212"></p>
+<p>In the above diagram, the null hypothesis is consistent with with estimates
+close to the hypothesised value and the alternative hypothesis is suggested by
+estimates that are either much bigger or smaller than this value (called a two-tailed
+test). For a two-tailed test, the p-value is the red tail area and can be looked
+up using either normal tables or in Excel.</p>
+<p class="heading">Refinements</p>
+<p>If the standard error of the estimate must itself be estimated from the sample
+data, the above test statistic is only approximately normally distributed. In
+some tests that we will describe in later sections, the test statistic has a
+t distribution (which has slightly longer tails than the standard normal distribution).
+This refinement will be described fully in the next section.</p>
+
+<div class="diagram" title="Example: Home-based businesses owned by women">
+<p class=heading>Home-based businesses owned by women</p>
+
+<p>The diagram below repeats the simulation that we used earlier to test whether
+the proportion of home-based businesses owned by women was less than 0.5:</p>
+<p class="eqn"><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;=&nbsp; 0.5</strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;&lt;&nbsp; 0.5</strong></span></p>
+<p>The  proportion owned by women in a sample of <em>n</em> = 899 businesses
+was <sup>369</sup>/<sub>899</sub> = 0.410.</p>
+<p>Again click <strong>Accumulate</strong> and hold down the <strong>Simulate</strong> button
+until about 100 samples of 899 businesses have been generated with a population
+probability of being owned by women of 0.5.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="460">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="randomisationProg.PropnSimApplet">
+<param name="sampleInfo" value="899 0.5">
+<param name="summaryAxis" value="0.40 0.56 0.4 0.05">
+<param name="zAxis" value="-6.000 3.598 -6 1">
+<param name="actualProb" value="0.410">
+<param name="catVarName" value="Gender">
+<param name="catLabels" value="Female Male">
+<param name="probLabel" value="Prob (Female)">
+<param name="nLabel" value="Number of home-based businesses =">
+<param name="showTheory" value="true">
+<param name="propnDecimals" value="3">
+<param name="tail" value="low">
+<param name="customText" value="P(propn below=P(propn below#Summarise sample propn with=Summarise sample propn with#Raw value=Raw value#'Statistical distance' from='Statistical distance' from#Distn of propn=Distn of propn#'Statistical distance' of propn from * as z-value='Statistical distance' of propn from * as z-value">
+</applet>
+</div>
+
+<p>Select <strong>Statistical distance from 0.5</strong> from the top pop-up
+menu to translate the  proportions of female owners in the simulated samples
+into z-scores. Observe that most of these 'statistical distances from 0.5' are
+between -1 and +1.</p>
+<p>The observed proportion owned by females was 0.410, corresponding to a statistical
+distance of <em>z</em> = -5.37, an unlikely value if the population proportion
+was 0.5.</p>
+<p>Select <strong>Normal distribution</strong> from the lower pop-up menu to
+show the theoretical distribution of the z-scores. The p-value for the test is
+the tail area of this normal(0, 1) distribution below -5.37 and is virtually
+zero, so we again conclude that:</p>
+<div class="centred"><div class="boxed">
+	<p>It is almost certain that π is <strong>less than</strong> 0.5.</p>
+</div></div>
+
+<br>
+</div>
+
+<p class="heading">Relation to previous test</p>
+<p>The p-value obtained in this way using a 'statistical distance' as the test
+statistic is <strong>identical</strong> to the p-value  that
+was found from a normal approximation to the number of successes
+<strong>without</strong> a continuity correction. (The p-value is slightly different
+if a continuity correction is used.)</p>
+<p>The use of 'statistical distances' does not add anything when testing a sample
+proportion, but it is a general method that will be used to obtain test statistics
+in many other situations later in this e-book.</p>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

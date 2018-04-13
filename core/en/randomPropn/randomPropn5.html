@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Normal approximation to binomial</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="proportion, binomial distribution, indicator variable, normal distribution/approximation to binomial, continuity correction">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Problems with using a binomial distribution when <em>n</em> 
+is large</p>
+
+<p>Although the number of 'successes' in a random sample always has a binomial 
+distribution, it is computationally difficult to obtain probabilities from a binomial 
+distribution when <span class="em black">n</span>  is large. In a large random sample of say <span class="em black">n</span>  = 10,000 categorical values, probabilities of interest usually involve summing 
+the probabilities for a large number of individual values for the number of successes.</p>
+<p class=eqn>P(X < 5,600)&nbsp; =&nbsp; P(X = 0) + P(X = 1) + ... + P(X = 5,599)
+</p>
+
+<p>We next describe a way to approximate such probabilities without summing so 
+many values. </p>
+
+<p class="heading">Proportions and means</p>
+<p>If we assign a code of '1' to the successes and '0' to the failures in the 
+random sample, then the resulting values are called an <strong>indicator variable</strong>. 
+</p>
+
+<div class="centred"><table border="0" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC" class="centred">
+<tr>
+<th align="CENTER">&nbsp;Individual&nbsp;</th>
+<th align="CENTER">&nbsp;Categorical variable&nbsp;</th>
+<th align="CENTER">&nbsp;Indicator variable&nbsp;</th></tr>
+<tr>
+<td align="CENTER" bgcolor="white" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">1<br>2<br>3<br>4<br>5<br>6<br>7<br>...</td>
+<td align="CENTER" bgcolor="white" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">success<br>success<br>failure<br>success<br>failure<br>failure<br>success<br>...</td>
+<td align="CENTER" bgcolor="white" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">1<br>1<br>0<br>1<br>0<br>0<br>1<br>...</td></tr>
+</table></div>
+
+
+<p>The mean of the indicator variable is identical to the proportion of successes.
+</p>
+
+<p class=eqn><img class="gif" src="images/propnAsMeanEqn.gif" width="397" height="100">
+</p>
+
+<div class="boxed"><p>A sample proportion is really a kind of mean.</p></div>
+
+  <p>Therefore the results that we met earlier about the distribution of sample 
+		means can also be applied to sample proportions. In particular, when the sample 
+		size is large, <strong>the distribution of a sample proportion <a href="javascript:showNamedPage('randomMean5')">becomes 
+		close to a normal distribution</a></strong>. </p>
+
+
+<div class="diagram" title="Illustration: Shape of the binomial distribution"> 
+<p>In the diagram below, use the sliders to observe that for any fixed π, 
+the shape of the binomial distribution becomes closer to normal as <em>n</em> 
+increases. </p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="350" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="randomStatProg.BinomialDistnApplet">
+<param name="n" value="100 10">
+<param name="customText" value="propn=propn#success=success">
+</applet>
+</div>
+
+</div>
+
+  
+<p class="heading">Formulae for the binomial mean and standard deviation</p>
+  
+<p>Not only does the proportion of successes, <span class="em black">p</span> , 
+have a distribution that is close to normal when <span class="em black">n</span>  increases, but it is also possible to obtain formulae for the mean and standard 
+deviation for this approximating distribution. Since the number of successes,<span class="em black"> x</span> <span class="black">&nbsp;=&nbsp;<em>np</em></span>, 
+is a constant times <span class="em black">p</span> , 
+there are similar formulae for the mean and standard deviation of <span class="em black">x</span> .</p>
+
+<p class=eqn><img class="gif" src="images/normalApprox.gif" width="389" height="126"> 
+</p>
+
+<br>
+
+<div class="diagram" title="Illustration: Normal approximation to the binomial distribution"> 
+<p>The diagram below shows a binomial distribution and its normal approximation.
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="randomStatProg.BinomApproxApplet">
+<param name="n" value="100 10">
+<param name="customText" value="success=success">
+</applet>
+</div>
+
+<p>Use the sliders to verify that the binomial distribution has a very similar 
+shape to its normal approximation when <em>n</em> 
+is large. </p>
+
+<p>With <em>n</em> 
+fairly large and π 
+moderate, drag over the bars of the binomial barchart. The binomial probability 
+of getting a count less than <em>x</em> 
+is shown beneath the barchart. The corresponding probability from the normal approximation 
+is shown on the right. </p>
+
+<p>Observe that probabilities obtained from the normal approximation are close 
+to the true binomial probabilities when <em>n</em><i> 
+is </i> fairly large. </p>
+
+<p>Finally, note how we use values of
+<em>x</em>
+that end in '.5' for the normal approximation. This is sometimes called a
+<strong>continuity correction</strong>.</p>
+
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

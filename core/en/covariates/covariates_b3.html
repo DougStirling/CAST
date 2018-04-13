@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Model for numerical covariate</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="covariate, model, normal model, linear model">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Model for single factor and covariate</p>
+  <p>The usual model for a completely randomised design with a single factor is:</p>
+  <div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+		<tr>
+			<td align="center"><br>
+					<br>
+					<span class="black em">y<sub>ij</sub></span> &nbsp;= &nbsp;<span class="blue">µ</span></td>
+			<td align="center"><br>
+					<br>
+				&nbsp;+&nbsp;</td>
+			<td align="center"><span class="red"><em>explained <br>
+				by factor</em><br>
+				β<em><sub>i</sub></em></span></td>
+			<td align="center"><br>
+					<br>
+				&nbsp;+&nbsp;</td>
+			<td align="center"><br>
+					<br>
+				ε<em><sub>ij</sub></em></td>
+		</tr>
+	</table></div>
+  <p>where the term ε<em><sub>ij</sub></em> has a normal distribution that describes the unexplained variation in the response. If a numerical covariate is recorded, a linear term can be added to the model.</p>
+  <div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+		<tr>
+			<td align="center"><br>
+					<br>
+					<span class="em black">y<sub>ij</sub></span>  &nbsp;= &nbsp;<span class="blue">µ</span></td>
+			<td align="center"><br>
+					<br>
+				&nbsp;+&nbsp;</td>
+			<td align="center"><span class="red"><em>explained <br>
+				by factor</em><br>
+				β<em><sub>i</sub></em></span></td>
+			<td align="center"><br>
+					<br>
+				&nbsp;+&nbsp;</td>
+			<td align="center" class="green"><em>explained <br>
+			by covariate</em><br>
+γ&nbsp;<em>x<sub>ij</sub></em></td>
+			<td align="center"><br>
+					<br>
+				&nbsp;+&nbsp;</td>
+			<td align="center"><br>
+					<br>
+				ε<em><sub>ij</sub></em></td>
+		</tr>
+	</table></div>
+  <p>where <span class="green em">x<sub>ij</sub></span>  is the value of the covariate.</p>
+  <p class="heading">Parallel regression lines</p>
+  <p>Since the base level of the term for a factor is always defined to be zero, <span class="red">β<sub>1</sub>&nbsp;=&nbsp;0</span>, this model implies a standard linear regression model between the response and covariate for the base factor level,</p>
+  <p class="eqn"><span class="em black">y</span> <span class="black"><sub>1</sub><em><sub>j</sub></em></span> &nbsp;&nbsp;= &nbsp;&nbsp;<span class="blue">µ</span>&nbsp;&nbsp;+&nbsp;&nbsp;<span class="green">γ&nbsp;<em>x</em><sub>1</sub><em><sub>j</sub></em></span>&nbsp;&nbsp;+&nbsp;&nbsp;ε<sub>1</sub><em><sub>j</sub></em></p>
+  <p>At any other factor level, <em>i</em>, the regression line is <span class="red">β<em><sub>i</sub></em></span> higher.</p>
+  <p class="heading">Increase in accuracy</p>
+  <div class="centred"><div class="boxed">
+  	<p>If the covariate is really related to variability in the experimental units, the unexplained variation will be reduced. </p>
+  </div></div>
+	<p>The lower unexplained variation (and hence lower residual sum of squares) means that the effect of the factor of interest can be more accurately estimated when the model is fitted by least squares.</p>
+  <div class="diagram">
+		<p class="heading">Difference between two barley varieties</p>
+  	<p>The diagram below is the same as that on the previous page, but it allows the option of fitting a model with the covariate <em>moisture</em> to the data and estimating the difference between the varieties from this model. (It is the least squares estimate of <span class="red">β<sub>2</sub></span> in the model above.)</p>
+			
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="indicatorProg.CovarBiasApplet">
+<param name="yVarName" value="Barley yield">
+<param name="xVarName" value="Soil moisture">
+<param name="zVarName" value="Variety">
+<param name="zLabels" value="V2 V1">
+<param name="yAxis" value="0 10 0 1">
+<param name="xAxis" value="15 25 16 2">
+<param name="theoryParams" value="-6 0.5 2.1 0.5">
+<param name="maxParam" value="9.999 -9.999 -9.99">
+<param name="nValues" value="20">
+<param name="sliderNames" value="V2 used more at:#Low moisture#High moisture">
+<param name="lsWithCovar" value="check">
+<param name="customText" value="Display=Display#Artificial data=Artificial data#Randomised experiment=Randomised experiment#LS with covariate=LS with covariate#Extra variation=Extra variation">
+</applet>
+</div>
+		
+  	<p>Select <strong>Artificial data</strong> from the pop-up menu. Use the slider to see the effect of unbalanced allocation of the soil moisture if the effect of moisture is ignored. Click the checkbox <strong>LS with covariate</strong> to estimate the effect of the varieties from a model that also explains variability caused by moisture.</p>
+  	<div class="centred"><div class="boxed">
+  		<p>Using the covariate moisture in the model removes all unexplained variation, so the difference between the varieties is always estimated to be 2.1 however unbalanced the experiment.</p>
+ 		</div></div>
+  	<p>Click  <strong>Extra variation</strong> to add more unexplained random variation to the data. This introduces some variability in the estimated difference between the varieties, but it is smaller than would occur in the model without the covariate.</p>
+ 	</div>
+  
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

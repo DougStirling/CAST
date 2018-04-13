@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Interactions</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="factorial design, main effect, interaction">
+	<meta name="dataset" content="Soft drink bottling">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">One two-factor interaction</p>  
+  <p>The main effects model assumes that the effect of changing any factor is 
+		the same whatever the values of the other factors. In many practical experiment, 
+		the effects of the factors are <strong>not</strong> additive &mdash; there is <strong>interaction</strong> 
+		between their effects.</p>
+	<p>The simplest types of interaction are two-factor interactions. A two-factor 
+		interaction between X and Z means that the effect of changing X can depend 
+		on the value of Z but not on W.</p>
+	<p class=eqn><img src="images/xzInteractModel.gif" width="502" height="91"> 
+	</p>
+	<p>In this model, there is no interaction between W and the other factors so 
+		the effect of changing W is still the same whatever the values of X and Z.</p>
+	<p class="heading">Several two-factor interactions</p>
+	<p>This model can be extended by adding two-factor interactions between other 
+		explanatory variables.</p>
+	<p class="heading">Three-factor interaction</p>
+	<p>The most complex model for three factors contains all three 2-factor interactions 
+		and also a 3-factor interaction term between all three factors,</p>
+	<p class=eqn><img src="images/xzwInteractModel.gif" width="414" height="39"> 
+	</p>
+	<p>In this model, the effect of any factor depends on the combination of levels 
+		of the other two factors. Each combination of levels for the three factors 
+		has an independently adjustable mean.</p>
+	<p class="heading">Hierarchical models</p>
+	<p>If two factors X and Z have an interaction, the effect of X depends on the 
+		value of Z. This implies that we are allowing X to have an effect on the mean 
+		response so a main effect for X should also be included in the model.</p>
+	
+<div class="centred"><div class="boxed">
+<p>If a model has an interaction term, all lower-level 
+					interaction terms between these factors should also be included in the 
+					model.</p>
+</div></div>
+
+	<p>Models of this form are called <strong>hierarchical</strong> models.</p>
+	<p class="heading">Degrees of freedom</p>
+	<p>As in 1- and 2-factor models, 3-factor models have <strong>degrees of freedom</strong> 
+		that describe the level of flexibility of the model. A model's degrees of 
+		freedom equals the number of independently adjustable parameters in the model. 
+		The table below shows the degrees of freedom corresponding to the main effects 
+		and interactions in a hierarchical model for factors X (<em>a</em> levels), 
+		Z (<em>b</em> levels) and W (<em>c</em> levels).</p>
+	
+	<div class="centred"><table border="0" class="centred" cellpadding="4" cellspacing="0">
+		<tr align="center"> 
+			<th style="border-bottom:1px solid #999999;">&nbsp;&nbsp;Model term&nbsp;&nbsp;</th>
+			<th style="border-bottom:1px solid #999999;">&nbsp;&nbsp;Degrees of freedom&nbsp;&nbsp;</th>
+		</tr>
+	  <tr align="center" bgcolor="#FFFFFF"> 
+			<td>(<em>mean</em>)</td>
+			<td>1</td>
+		</tr>
+	  <tr align="center" bgcolor="#FFFFFF"> 
+			<td>X</td>
+			<td><em>a</em>&nbsp;-&nbsp;1</td>
+		</tr>
+	  <tr align="center" bgcolor="#FFFFFF"> 
+			<td>Z</td>
+			<td><em>b</em>&nbsp;-&nbsp;1</td>
+		</tr>
+	  <tr align="center" bgcolor="#FFFFFF"> 
+			<td>W</td>
+			<td><em>c</em>&nbsp;-&nbsp;1</td>
+		</tr>
+	  <tr align="center" bgcolor="#FFFFFF"> 
+			<td>X*Z</td>
+			<td>(<em>a</em>&nbsp;-&nbsp;1)(<em>b</em>&nbsp;-&nbsp;1)</td>
+		</tr>
+	  <tr align="center" bgcolor="#FFFFFF"> 
+			<td>X*W</td>
+			<td>(<em>a</em>&nbsp;-&nbsp;1)(<em>c</em>&nbsp;-&nbsp;1)</td>
+		</tr>
+	  <tr align="center" bgcolor="#FFFFFF"> 
+			<td>Z*W</td>
+			<td>(<em>b</em>&nbsp;-&nbsp;1)(<em>c</em>&nbsp;-&nbsp;1)</td>
+		</tr>
+	  <tr align="center" bgcolor="#FFFFFF"> 
+			<td style="border-bottom:1px solid #999999;">X*Z*W</td>
+			<td style="border-bottom:1px solid #999999;">(<em>a</em>&nbsp;-&nbsp;1)(<em>b</em>&nbsp;-&nbsp;1)(<em>c</em>&nbsp;-&nbsp;1)</td>
+		</tr>
+	</table></div>
+	
+	<p>The full hierarchical model with a 3-factor interaction has all the above 
+		terms and therefore has the sum of these degrees of freedom, <em>abc</em>. 
+		(This model allows all <em>abc</em> combinations of factor levels to have 
+		separately adjustable mean responses.)</p>
+	
+	<div class="diagram"> 
+    <p class="heading">Soft drink bottling</p>
+    <p>The diagram below shows the flexibility of hierarchical models for the 
+			soft drink bottling experiment.</p>
+		
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="factorialProg.DragFactorialApplet">
+<param name="yVarName" value="Fill height deviation">
+<param name="yAxis" value="-3 11 -2 2">
+<param name="xLongName" value="Carbonation">
+<param name="zLongName" value="Pressure">
+<param name="wLongName" value="Line speed">
+<param name="xKeys" value="C P S">
+<param name="PVarName" value="Press">
+<param name="PValues" value="12@0 12@1">
+<param name="PLabels" value="#25 psi# #30 psi#">
+<param name="SVarName" value="Spd">
+<param name="SValues" value="6@0 6@1 6@0 6@1">
+<param name="SLabels" value="200 250">
+<param name="CVarName" value="Carb">
+<param name="CValues" value="2@0 2@1 2@2 2@0 2@1 2@2 2@0 2@1 2@2 2@0 2@1 2@2">
+<param name="CLabels" value="10% 12% 14%">
+<param name="startMean" value="3.0">
+<param name="startModel" value="0 + 1 + 2">
+<param name="customText" value="Model terms=Model terms">
+</applet> 
+</div>
+
+		<p>The diagram initially shows a model with all main effects but no interactions. 
+			Two of the draggable handles (red arrows) are initially superimposed, so 
+			drag one arrow for low carbonisation and pressure to separate them. This 
+			model has 5 degrees of freedom and hence 5 draggable arrows. Drag the arrows 
+			to investigate the flexibility of the model.</p>
+		<p>Click the checkbox to add an interaction between <em>Carbonation</em> and 
+			<em>Pressure</em>. This model has 2 extra degrees of freedom. Again drag 
+			the arrows to investigate the flexibility of the model.</p>
+		<p>Click the <strong>y-x</strong> rotation button. Since there is no interaction 
+			between <em>Line speed</em> and the other variables, the pattern of interaction 
+			between <em>Carbonation</em> and <em>Pressure</em> is the same for low line 
+			speed (purple lines) and high line speed (green lines).</p>
+		<p>Add other 2-factor interaction terms to the model and observe the increasing 
+			flexibility.</p>
+		
+<div class="centred"><div class="boxed">
+<p>Note that the diagram only allows you to specify 
+						hierarchical models.</p>
+</div></div>
+
+		<p>Finally add all 2-factor interactions and the 3-factor interaction. This 
+			model has 12 degrees of freedom and the mean <em>Fill height deviation</em> 
+			for all 12 factor level combinations can be independently adjusted.</p>
+
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Probabilities for normal distributions</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="normal distribution, cumulative distribution function, z-score">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Cumulative distribution function</p>
+
+<p>The cumulative distribution function for a \(\NormalDistn(\mu,\; \sigma^2)\) distribution is</p>
+\[
+F(x) \;\;=\;\; \int_{-\infty}^x {\frac 1{\sqrt{2\pi}\;\sigma} e^{- \frac{\large (u-\mu)^2}{\large 2 \sigma^2}}} du \]
+<p>Unfortunately this integration cannot be performed algebraically. However numerical algorithms have been written to evaluate cumulative probabilities for any specific values of \(\mu\), \(\sigma\) and \(x\). For example, Excel can find normal cumulative probabilities by typing into a spreadsheet cell</p>
+<p class="eqn">= NORM.DIST( \(x\), \(\mu\), \(\sigma\), true)</p>
+<p class="heading">Normal probabilities from z-scores</p>
+<p>Although  probabilities for any normal distribution can be found as described above, we now describe an alternative method using z-scores. This allows probabilities about any normal random variable, \(X\), to be translated into probabilities about the standard normal distribution.</p>
+
+<div class="example" title="Example: Weights of apples">
+	<p class="exampleHeading">Weights of apples</p>
+	<p>The diagram below shows the distribution of weights of Fuji apples arriving 
+		at a packhouse. The distribution is normal&nbsp;(µ&nbsp;=&nbsp;180 g, 
+		σ&nbsp;=&nbsp;10 g).</p>
+	<div class="centred">
+		<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="500">
+			<script type="text/javascript">writeAppletParams();</script>
+			<param name="appletName" value="normalProg.ZScoreProbApplet">
+			<param name="backgroundColor" value="FFFBF3">
+			<param name="modelParams" value="180 10">
+			<param name="xSlider" value="150 210 170">
+			<param name="sliderQn" value="Probability that wt of an apple is less than X">
+			<param name="varName" value="Apple wt">
+		</applet>
+	</div>
+	<p>Use the slider to translate apple weights, <em>x</em>, into z-scores.</p>
+	<p>The probability of a lower apple weight is translated into a probability 
+		about the z-score. The probability (area) is highlighted on the standard 
+		normal distribution of the z-score at the bottom of the diagram.</p>
+</div>
+<p>After translating an x-value into a z-score, \(z = \dfrac{x - \mu}{\sigma}\), we can find the cumulative probability \(P(X \le x)\) by evaluating \(P(Z \le z)\). For example, this can be done in Excel with the function</p>
+<p class="eqn">=NORM.S.DIST(z, true)</p>
+<p>Although this offers few practical advantages when a computer is used,</p>
+<ul>
+	<li>If a computer is unavailable, tables of cumulative probabilities for the standard normal distribution exist and can be used to find normal probabilities.</li>
+	<li>The z-score itself is an informative value — for example, we know that z-scores below -3 or above +3 are very unlikely.</li>
+</ul>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

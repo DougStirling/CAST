@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Test statistic</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="variance, f distribution, f ratio">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Hypotheses</p>
+<p>We assume that the data consist of independent random samples of size <em>n</em><sub>1</sub> 
+and <em>n</em><sub>2</sub> from two normal populations,</p>
+<div class="centred">
+<table border="0" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC" class="centred" style="margin-top:0; margin-bottom:0">
+<tr>
+<td>Group 1:&nbsp;&nbsp;</td>
+<td class="black"><span style="position:relative; top:2px"><em>Y</em> &nbsp; ~ &nbsp; <span class="arial">normal</span> (µ<sub>1&nbsp;</sub>, σ<sub>1</sub>)</span></td>
+</tr>
+<tr>
+<td>Group 2:&nbsp;&nbsp;</td>
+<td class="black"><span style="position:relative; top:2px"><em>Y</em> &nbsp; ~ &nbsp; <span class="arial">normal</span> (µ<sub>2&nbsp;</sub>, σ<sub>2</sub>)</span></td>
+</tr>
+</table>
+</div>
+<p>We will <strong>not</strong> consider whether the two means, µ<sub>1 </sub> 
+and µ<sub>2</sub>, 
+are the same at present. (A t-test for this hypothesis was described earlier.) 
+Instead, we only examine whether the standard deviations (or equivalently variances) 
+are equal,</p>
+<p class="eqn"><img src="images/equalSDHypoth.gif" width="92" height="46"></p>
+<p class="heading">Test statistic</p>
+<p>The test statistic for assessing these hypotheses is based on the sample standard 
+deviations in the two groups, <em>s</em><sub>1</sub> 
+and <em>s</em><sub>2</sub>.</p>
+
+<dl>
+<dt>Difference?</dt>
+<dd>It might initially be thought that the difference between the two standard 
+deviations (or the two variances) could be used as the basis of a test statistic. 
+However the difference does not have a standard distribution. Also, linear transformation 
+of the data (e.g. translating temperatures from degrees Celsius to Farhrenheit) 
+alters the test statistic.</dd>
+<dt>Ratio?</dt>
+<dd>A better test statistic is obtained from the <strong>ratio</strong> of the 
+two standard deviations. Its square is the ratio of the two sample variances and 
+is called an <strong>F ratio</strong>.</dd>
+</dl>
+
+<p class="eqn"><img src="images/fRatioDefn.gif" width="68" height="47"></p>
+<dl>
+<dd>This test statistic is invariant to linear transformations of the sample data. 
+For example, changing temperatures from degrees Celsius to Farhrenheit results 
+in the same F ratio.</dd>
+</dl>
+<p class="heading">F distribution</p>
+<p>Provided the data are sampled from normal populations, the F ratio has a standard 
+distribution called an <strong>F distribution</strong>. The shape of this distribution 
+depends on the sample sizes of the two groups &mdash; the F distribution has two parameters 
+called its 'degrees of freedom' that are one less than the sample sizes in the 
+groups. In its most general form, the F distribution is scaled by the two population 
+variances,</p>
+<p class="eqn"><img src="images/fRatioGeneralDistn.gif" width="261" height="48"></p>
+<p>However if the two groups really have the same population standard deviations 
+(the null hypothesis for the test), then this simplifies and the distribution 
+does not involve any unknown parameters:</p>
+<p class="eqn"><img src="images/fRatioDistn.gif" width="214" height="47"></p>
+<br>
+
+<div class="diagram">
+<p class="heading">Shape of the F distribution</p>
+
+<p>The diagram below shows the shape of the F distribution.</p>
+			
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="380">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="varianceProg.FShapeApplet">
+<param name="horizAxis" value="0 10 0 2">
+<param name="df" value="1 40 5">
+<param name="areaUsed" value="0.07">
+<param name="fName" value="F distn (#, # df)">
+<param name="customText" value="Numerator d.f.=Numerator d.f.#Denominator d.f.=Denominator d.f.">
+</applet> 
+</div>
+
+<p>Use the sliders to adjust the degrees of freedom for the distribution (one 
+fewer than the sample sizes in the two groups for the F variance-ratio statistic). 
+Observe that:</p>
+
+<ul>
+<li>The distribution is skew. (Values cannot be less than zero but can be arbitrarily 
+high.)</li>
+<li>The distribution is particularly skew when the numerator degrees of freedom 
+are 1 or 2.</li>
+<li> As the degrees of freedom increase (i.e. the sample sizes increase), the 
+distribution becomes less variable.</li>
+<li>The value 1.0 is near the centre of the distribution but, because of its skewness, 
+the distribution's mean is higher than 1.0.</li>
+</ul>
+<p>In practice, we usually only want to compare variances when both sample sizes 
+are reasonably high.</p>
+<p class="heading">Simulation</p>
+<p>The following diagram shows samples of size <em>n</em><sub>1</sub>&nbsp;=&nbsp;7 
+and <em>n</em><sub>2</sub>&nbsp;=&nbsp;20 from normal populations that both have 
+the same standard deviation (σ<sub>1</sub>&nbsp;=&nbsp;σ<sub>2</sub>&nbsp;=&nbsp;1.3).</p>
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="varianceProg.TwoGroupFApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Group, x">
+<param name="xLabels" value="#Group 1# #Group 2#">
+<param name="anovaModel" value="4.5 1.3 5.5 1.3">
+<param name="randomSeed" value="223945782">
+<param name="yAxis" value="1.0 9.5 1 1">
+<param name="decimals" value="3">
+<param name="maxSummaries" value="999.999 99.999 99.999 9.999">
+<param name="xValues" value="20@0 7@1">
+<param name="df" value="19 6">
+<param name="summaryAxis" value="0 6 0 1">
+<param name="customText" value="F ratio=F ratio">
+</applet> 
+</div>
+
+<p>Click <strong>Accumulate</strong> then take several samples from the two groups. 
+Observe that the variability of the F ratio matches the theoretical F distribution 
+with 19 and 6 degrees of freedom.</p>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

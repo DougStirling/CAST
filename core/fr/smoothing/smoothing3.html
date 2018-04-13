@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Lissage robuste</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="smoothing, running medians, outliers">
+	<meta name="dataset" content="British Airways share price">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Les valeurs aberrantes et les médianes courir</p>
+<p>Bien que les moyennes mobiles sont une technique de lissage efficace, nous avons vu précédemment que les médianes sont beaucoup moins sensibles aux valeurs aberrantes que de moyens. Une technique de lissage plus robuste remplace donc chaque valeur par la <strong>médiane</strong> de celui-ci et les valeurs adjacentes. Par exemple, une <strong>médiane à 3 points de fonctionnement</strong> seraient lisse la valeur au moment de <em>i</em> avec</p>
+
+<p class=eqn>
+	<object data="images/runningMedianEqn.svg" width="250" height="25">
+	</object>
+</p>
+
+  <p>Comme avec les moyennes mobiles, d'ordre supérieur médianes courir l'utilisation des valeurs plus voisines pour le lissage.</p>
+
+<p class="heading">Comparaison des moyennes et médianes</p>
+<p>Médianes des moyennes mobiles et l'exécution ont chacun leurs avantages et leurs inconvénients.</p>
+<ul>
+		<li>Les moyennes mobiles sont plus touchés par les valeurs aberrantes dans les séries</li>
+		<li>Médianes du film ont souvent un «intensifié» l'apparence &mdash; la série lissée est de niveau pour des périodes, suivie par des sauts relativement forte.</li>
+	</ul>
+	
+<br>
+
+<div class="diagram">
+<p class="heading">British Airways prix part</p>
+
+	<p>La série chronologique ci-dessous montre le prix des actions de British Airways dans les 57 premiers jours de bourse de 2002 &mdash; entre le 2 Janvier et le 21 Mars.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="530" height="420">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.RunningMultiApplet">
+<param name="varName" value="Prix des actions - British Airways">
+<param name="values" value="202.92 213.5 238.75 242.97 234.97 234.63 230.54 228.5 220.27 218.74 221.5 218 219.65 216.89 221.5 220.75 229.62 214.8 207.23 217.69 212.12 204 212.5 211.43 204.33 200.48 196.58 196.25 197 200.25 200 205.73 199.75 200 193.17 191.32 190.35 188.55 190.75 198 193.5 203.5 214.42 233.9 233 236 242.92 236.5 248.5 245.47 238 240 237.94 253.25 250.45 246.56 242.02">
+<param name="vertAxis" value="180 260 180 20">
+<param name="timeAxis" value="0 10 1 10">
+<param name="timeAxisName" value="Jour">
+<param name="timeSequence" value="1 1 57">
+<param name="smoothName" value="moyennes mobiles">
+<param name="smooth2Name" value="médianes courir">
+<param name="showEnds" value="false">
+<param name="labelAxes" value="true">
+<param name="dragIndex" value="30">
+<param name="customText" value="Run length=Longueur de l'exécution#Drag outlier=Glisser aberrantes#Smooth with running=Lisser avec courir">
+</applet>
+</div>
+
+		<p>Les cases sont initialement configurés pour montrer les moyennes mobiles (course moyenne). Tout d'abord augmenter la longueur d'exécution de voir comment le fonctionnement des moyens lissage de la série.</p>
+	<p>Ensuite, réglez <strong>Glisser aberrantes</strong>. La valeur 30e de la série est mis en évidence et peuvent être traîné pour en faire une valeur aberrante. Changez à environ 260 et à nouveau observer l'effet de changer la longueur d'exécution. Même lorsque la longueur d'exécution est de 7 ou 9, la valeur aberrante a un effet assez fort sur la série lissée.</p>
+	<p>Maintenant, placez les <strong>Médianes</strong> case à cocher et décocher <strong>Moyenness</strong> et <strong>Glisser aberrantes</strong>. Encore une fois examiner l'effet d'augmenter la longueur de tirage sur les médianes en marche. Observez que la série a une apparence plus intensifié que par des moyens cours d'exécution.</p>
+	<p>Encore une fois mis <strong>Glisser aberrantes</strong> case et faites glisser la valeur en surbrillance à environ 260. L'exception a un effet minime sur les médianes en marche.</p>
+</div>
+	
+<p class=heading>Médianes du film, suivie par les moyennes mobiles</p>
+
+<p>Pour profiter des meilleures fonctionnalités des deux moyennes mobiles et les médianes course, ces deux techniques sont souvent appliquées de manière séquentielle.</p>
+
+<ul>
+  <li> Tout d'abord, d'ordre faible médianes de fonctionnement sont utilisés pour éliminer l'influence des valeurs aberrantes.</li>
+    <li>La série qui en résulte est ensuite lissée avec peu d'ordre des moyennes mobiles.</li>
+</ul>
+
+<br>
+
+<div class="diagram">
+<p class="heading">British Airways prix part</p>
+
+<p>Le schéma ci-dessous applique cette technique à des prix britanniques part Airways.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="530" height="390">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.RunningMMApplet">
+<param name="varName" value="Prix des actions - British Airways">
+<param name="values" value="202.92 213.5 238.75 242.97 234.97 234.63 230.54 228.5 220.27 218.74 221.5 218 219.65 216.89 221.5 220.75 229.62 214.8 207.23 217.69 212.12 204 212.5 211.43 204.33 200.48 196.58 196.25 197 200.25 200 205.73 199.75 200 193.17 191.32 190.35 188.55 190.75 198 193.5 203.5 214.42 233.9 233 236 242.92 236.5 248.5 245.47 238 240 237.94 253.25 250.45 246.56 242.02">
+<param name="vertAxis" value="180 260 180 20">
+<param name="timeAxis" value="0 10 0 10">
+<param name="timeAxisName" value="Jour">
+<param name="timeSequence" value="0 1 57">
+<param name="smoothName" value="Lissée">
+<param name="showEnds" value="false">
+<param name="labelAxes" value="true">
+<param name="dragIndex" value="30">
+<param name="customText" value="Running median of=Médianes courir#then mean of=puis moyenne de#Drag outlier=Glisser aberrantes">
+</applet>
+</div>
+
+<p>Cliquez <strong>Glisser aberrantes</strong> et faites glisser le prix des actions sur le 30ème jour à environ 260.</p>
+<p>Utilisez le contrôleur de gauche pour montrer les médianes de fonctionnement des trois. Cela supprime l'influence des valeurs aberrantes. Maintenant, utilisez la droite du contrôleur pour ensuite appliquer des moyens de fonctionnement 3. Le fonctionnement des moyens lisser l'apparence gradins qui se poseraient à un ordre supérieur médianes cours d'exécution.</p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

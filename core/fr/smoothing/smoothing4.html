@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Lissage exponentiel</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="smoothing, exponential smoothing">
+	<meta name="dataset" content="British Airways share price">
+	<meta name="dataset" content="World rice production">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Lissage jusqu'à la fin de la série</p>
+<p>Un problème avec l'utilisation de moyennes mobiles pour lisser une série temporelle est qu'elle ne peut pas fournir des valeurs lissées pour les temps plus récents. Par exemple, si la longueur d'exécution est de 9, la valeur lissée finale est la moyenne des 9 valeurs les plus récentes et fournit une valeur lissée qui est de 5 périodes de la fin de la série &mdash; valeurs lissées ne peut pas être trouvé pour le 4 de finale fois.</p>
+<p>Une solution consiste à utiliser le <strong>lissage exponentiel</strong>. Le premier «lissée» la valeur est définie pour être la même que la valeur première de la série,</p>
+<p class=eqn><img class="gif" src="../../en/smoothing/images/expSmoothInitial.gif" width="59" height="18"> </p>
+<p>Après les valeurs exponentiellement lissée sont «moyennes pondérées» de la valeur réelle à cette époque et la valeur lissée précédent,</p>
+
+<div class="boxed percent50">
+	<p class=eqn><img class="gif" src="../../en/smoothing/images/expSmoothEqn.gif" width="175" height="25"> </p>
+</div>
+
+<p>où la constante de lissage, <em>a</em>, est une valeur entre 0 et 1.</p>
+<p class="heading">Formule alternative</p>
+<p>Avec un peu de manipulations algébriques, la formule peut aussi être exprimée comme</p>
+<p class=eqn><img class="gif" src="../../en/smoothing/images/expSmoothEqn2.gif" width="486" height="26"></p>
+
+<p>La valeur lissée ne dépend donc que des valeurs antérieures de la série, donc nous pouvons obtenir une valeur exponentielle lissée jusqu'à la fin de la série. Par exemple, si  <em>a</em>&nbsp;=&nbsp;<sup>1</sup>/<sub>2 </sub>, </p>
+<p class=eqn><img class="gif" src="../../en/smoothing/images/expSmoothHalf.gif" width="299" height="26"> </p>
+<p>Notez ici que la valeur lissée met plus de poids sur le passé récent (qui est une chose sensée à faire intuitivement). Plus <em>a</em> devient l'un, plus l'influence des valeurs plus tôt dans la série.</p>
+<p class="heading">Prévision des valeurs futures</p>
+<p>La valeur finale de façon exponentielle lissée de la série peuvent être utilisés pour prévoir les valeurs futures. Si les données sont disponibles jusqu'à et y compris le temps <em>i</em>, alors les prévisions pour la période suivante (<em>i</em>&nbsp;+&nbsp;1) est la valeur exponentielle lissée à l'instant <em>i</em>. Nous écrire ce que</p>
+<p class=eqn><img class="gif" src="../../en/smoothing/images/expPredict2.gif" width="81" height="22"> </p>
+<p>où <img src="../../images/symbol.xHat.png" width="10" height="13" align="baseline"> indique une prévision et <img src="../../images/symbol.xTwiddle.png" width="11" height="13" align="baseline"> désigne la valeur exponentielle lissée. Afin de prévoir plus loin dans l'avenir, nous utilisons la même valeur exponentielle lissée oui, en général,</p>
+<p class=eqn><img class="gif" width="252" height="23"> </p>
+<p>Comme les valeurs de façon exponentielle lissée dépendent de la constante de lissage, alors ne les prévisions.</p>
+<ul>
+		<li>Si <i>a</i>&nbsp;=&nbsp;1, la prévision est juste la dernière valeur observée dans les séries chronologiques.</li>
+  	<li>Comme <i>a</i> est réduit, la prévision devient plus affectée par les valeurs précédentes de la série.</li>
+ 	</ul>
+<br>
+	
+<div class="diagram">
+<p class="heading">British Airways négoce part</p>
+
+	<p>Le graphique chronologique ci-dessous montre le volume d'actions négociées British Airways dans les 57 premiers jours de bourse de 2002 &mdash; entre le 2 Janvier et le 21 Mars.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="370">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.ExpSmoothApplet">
+<param name="varName" value="Part BA échangés (million)">
+<param name="values" value="13.7 8.0 39.6 22.7 19.0 11.8 10.9 7.4 9.3 10.8 9.8 9.7 4.3 3.2 12.6 5.0 9.5 23.7 27.3 14.9 9.7 21.7 11.1 10.4 16.3 18.8 8.6 5.6 5.1 7.2 12.3 8.9 9.9 5.2 7.9 9.6 7.7 5.1 5.7 20.3 15.2 20.8 30.3 34.7 52.2 23.3 28.8 15.3 9.6 33.9 12.5 15.8 10.3 16.1 25.1 24.6 8.0">
+<param name="vertAxis" value="0 60 0 10">
+<param name="timeAxis" value="0 10 0 10">
+<param name="smoothName" value="lissée">
+<param name="labelAxes" value="true">
+<param name="timeAxisName" value="Jour">
+<param name="customText" value="Smoothing const=Constante de lissage">
+</applet>
+</div>
+
+		<p>Dans les périodes les plus courtes de temps, le principal déterminant du prix des actions ou des mouvements de volume est autocorrélation, plutôt que des tendances. (Les tendances globales sur le marché boursier sont généralement assez lent.) Nous allons donc appliquer le lissage exponentiel aux données brutes sans d'abord enlever une tendance à partir des données.</p>
+	<p>Utilisez le curseur pour ajuster la valeur de la constante de lissage, <em>a</em>, et d'observer ses effets sur le lissage de la série.</p>
+	<p><strong>Cliquez sur les valeurs de données</strong>; la montre verte qui ombrage des valeurs d'origine affectent toute valeur lissée - le plus sombre de la verdure, plus l'influence.</p>
+</div>
+
+<p class="heading">Des séries temporelles avec la tendance</p>
+<p>L'exemple ci-dessus n'ont pas tendance à long terme. Toutefois, pour une série temporelle avec une tendance croissante, le lissage exponentiel des données brutes aura tendance à sous-estimer la tendance. De même, la série lissée sera trop élevé s'il ya une tendance à la baisse.</p>
+
+
+<div class="boxed">
+    <p>Ne pas utiliser le lissage exponentiel sur une série de temps avec la tendance.</p>
+</div>
+  
+<p>(Il ya des modifications à un lissage exponentiel qui peut être utilisé en présence d'une tendance, mais ils sont plus avancés.)</p>
+  
+<div class="diagram">
+<p class=heading>La production mondiale de riz (millions de tonnes)</p>
+
+<p>La série chronologique ci-dessous a une tendance linéaire croissante.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.ExpSmoothApplet">
+<param name="varName" value="Production mondiale de riz">
+<param name="values" value="? 215.7 226.6 247.1 263.0 254.1 261.2 277.5 288.7 295.7 316.4 317.8 307.3 335.0 332.0 357.0 347.7 369.5 385.1 375.1 396.8 410.0 421.9 447.8 465.1 467.9 468.4 461.1 487.0 514.0 518.2 518.5 528.2 529.8 538.8 547.0 568.5 576.8 578.8 609.9 598.2 585.1">
+<param name="vertAxis" value="200 650 200 50">
+<param name="timeAxis" value="0 10 1960 10">
+<param name="labelAxes" value="true">
+<param name="timeAxisName" value="An">
+<param name="timeSequence" value="1960 1 43">
+<param name="smoothName" value="lissée">
+<param name="customText" value="Smoothing const=Constante de lissage">
+</applet>
+</div>
+
+<p>Diminuer le lissage exponentiel constant et d'observer que les valeurs de façon exponentielle lissée sont systématiquement en dessous de la série.</p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

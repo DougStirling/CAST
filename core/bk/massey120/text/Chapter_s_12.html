@@ -1,0 +1,614 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>12. More Data Collection</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/maths/mathStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/maths/theorems.js"></script>
+  <script src="../../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 12 &nbsp; More Data Collection</h1>
+<h1 class="sectionName">12.1 &nbsp; Lurking variables</h1>
+<h2 class="pageName">12.1.1 &nbsp; Misleading marginal correlation</h2>
+
+<p class="heading">Relationship between two numerical variables</p>
+	<p>Scatterplots, correlation coefficients and least squares lines honestly summarise the relationship between two numerical variables, <em>Y</em> and <em>X</em>.</p>
+	<p>However they can sometimes give 
+		a misleading impression about the relationship. The problem arises when other variables are also associated with both <em>Y</em> and <em>X</em>.</p>
+	<dl>
+		<dt>Marginal relationship between <em>Y</em> and <em>X</em></dt>
+		<dd>The relationship that is evident in a scatterplot of the two variables 
+		without taking into account any other variables.</dd>
+		<dt>Conditional relationship between <em>Y</em> and <em>X</em>, given <em>Z</em></dt>
+		<dd>The relationship between <em>Y</em> and <em>X</em> that is evident within subsets of the data corresponding 
+		to different values of <em>Z</em>.</dd>
+	</dl>
+	<p>The marginal and conditional relationships between <em>Y</em> and <em>X</em> are often different and may even be in a different direction.</p>
+	<p class="eqn"><img src="../../../en/lurking/images/s_margCondit.gif" width="550" height="269"></p>
+	<p class="heading">Lurking (or hidden) variables</p>
+	<p>If the marginal relationship between <em>X</em> and <em>Y</em> is different 
+		from their conditional relationship given <em>Z</em>, but <em>Z</em> has either 
+		not been recorded or is ignored when analysing the data, then <em>Z</em> is 
+		called a <strong>lurking </strong>variable (or a <strong>hidden</strong> variable).</p>
+	
+<div class="centred"><div class="boxed">
+<p>Always think about whether there might be a lurking 
+					variable, <em>Z</em>, that is distorting the relationship that is observed 
+					between <em>Y</em> and <em>X</em>.</p>
+</div></div>
+
+
+
+
+
+<h2 class="pageName">12.1.2 &nbsp; Misleading marginal difference in means</h2>
+
+<p class="heading">Relationship between a numerical and a categorical variable</p>
+	<p>The previous page showed that the marginal relationship between two numerical 
+		variables, <em>X</em> and <em>Y</em>, can be very different from their conditional 
+		relationship for specific values of <em>Z</em>. The same can happen when <em>X</em> is a categorical variable, perhaps defining different groups. </p>
+	<p class="eqn"><img src="../../../en/lurking/images/s_margMeans.gif" width="496" height="537"></p>
+
+
+
+
+<h2 class="pageName">12.1.3 &nbsp; Simpsons paradox</h2>
+
+<p class="heading">Lurking variables and relationships between categorical variables</p>
+	<p>When the direction of the relationship reverses, the effect is called <strong>Simpson's 
+		paradox</strong>. As with other 'paradoxes', there is no real contradiction; it 
+		just takes a bit more thought to understand why your initial intuition is wrong.</p>
+	<p class="heading">Smoking and survival</p>
+	<p>In a health survey, 1,314 women were classified as smokers or non-smokers, and their survival after 20 years was recorded.</p>
+	<div class="centred"><table border="0" cellspacing="0" cellpadding="3" class="centred">
+<tr>
+			<td>&nbsp;</td>
+			<th colspan="2">Survival</th>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<th align="left">Smoker?</th>
+			<td>  Dead  </td>
+			<td>  Alive  </td>
+			<th>  Total  </th>
+			<th>  P(Dead)  </th>
+		</tr>
+		<tr>
+			<td>  Smoker</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">139</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">443</td>
+		<td align="center">582</td>
+			<td align="center">0.239</td>
+		</tr>
+		<tr>
+			<td>  Non-smoker  </td>
+			<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">230</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">502</td>
+		<td align="center">732</td>
+			<td align="center">0.314</td>
+		</tr>
+	</table></div>
+<p>A naive examination of the data suggests that smoking decreases the probability of dying, but the opposite is true if the women are split into age groups.</p>
+	<div class="centred"><table border="0" cellspacing="0" cellpadding="3" class="centred">
+<tr>
+			<td colspan="6" style="color:#900; font-weight:bold">Age 18-44</td>
+		</tr>
+		<tr>
+			<td width="40">&nbsp;</td>
+			<td>&nbsp;</td>
+			<th colspan="2">Survival</th>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<th align="left">&nbsp;</th>
+			<th align="left">Smoker?</th>
+			<td>  Dead  </td>
+			<td>  Alive  </td>
+			<th>  Total  </th>
+			<th>  P(Dead)  </th>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>  Smoker</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">19</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">269</td>
+		<td align="center">288</td>
+			<td align="center">0.066</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>  Non-smoker  </td>
+			<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">13</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">327</td>
+		<td align="center">340</td>
+			<td align="center">0.038</td>
+		</tr>
+		<tr>
+			<td colspan="6" style="color:#900; font-weight:bold">Age 45-64</td>
+		</tr>
+		<tr>
+			<td width="40">&nbsp;</td>
+			<td>&nbsp;</td>
+			<th colspan="2">Survival</th>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<th align="left">&nbsp;</th>
+			<th align="left">Smoker?</th>
+			<td>  Dead  </td>
+			<td>  Alive  </td>
+			<th>  Total  </th>
+			<th>  P(Dead)  </th>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>  Smoker</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">78</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">167</td>
+		<td align="center">245</td>
+			<td align="center">0.318</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>  Non-smoker  </td>
+			<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">52</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">147</td>
+		<td align="center">199</td>
+			<td align="center">0.261</td>
+		</tr>
+		<tr>
+			<td colspan="6" style="color:#900; font-weight:bold">Age 65+</td>
+		</tr>
+		<tr>
+			<td width="40">&nbsp;</td>
+			<td>&nbsp;</td>
+			<th colspan="2">Survival</th>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<th align="left">&nbsp;</th>
+			<th align="left">Smoker?</th>
+			<td>  Dead  </td>
+			<td>  Alive  </td>
+			<th>  Total  </th>
+			<th>  P(Dead)  </th>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>  Smoker</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">42</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">7</td>
+		<td align="center">49</td>
+			<td align="center">0.857</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>  Non-smoker  </td>
+			<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">165</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">28</td>
+		<td align="center">193</td>
+			<td align="center">0.855</td>
+		</tr>
+	</table></div>
+<p class="heading">Proportional Venn diagram</p>
+	<p>Simpson's paradox is explained in the proportional Venn diagram below &mdash; in it, each rectangle is proportional to the number of women with these values for the variables.</p>
+	<p class="eqn"><img src="../../../en/lurking/images/s_propnVenn.gif" width="500" height="370"></p>
+	<p>Most of the women aged 65+ were non-smokers. This increased the overall death rate of the non-smokers.</p>
+
+
+
+
+<h2 class="pageName">12.1.4 &nbsp; Other examples with lurking variables</h2>
+
+<p class="heading">Analysis using 'lurking' variables</p>
+	<p>Variables are only called 'lurking' variables if they are either <strong>unrecorded </strong>or are<strong> unused</strong> when analysing the data. In this section's examples, we presented two analyses of the data sets:</p>
+	<ol type="a">
+		<li>A simple naive analysis ignoring the lurking variable, and</li>
+		<li>A more complete analysis using this variable (which should therefore no 
+			longer be called 'lurking')</li>
+	</ol>
+	<p>Although the simple analysis can result in wrong conclusions, a full analysis 
+		using the 'lurking' variable is always more complex.</p>
+	
+<div class="centred"><div class="boxed">
+<p>Do not ignore lurking variables to simplify the analysis &mdash; 
+				you could reach the wrong conclusions from the data.</p>
+</div></div>
+
+
+
+
+
+<h1 class="sectionName breakBefore">12.2 &nbsp; Different sampling schemes</h1>
+<h2 class="pageName">12.2.1 &nbsp; Stratified sampling</h2>
+
+<p>A simple random sample of individuals from a population is the easiest sampling scheme to understand, but other sampling schemes may give more accurate estimates of population characteristics.</p>
+	<p class="heading">Grouping of individuals</p>
+	<p>If the individuals in the population can be split into different groups (called <strong>strata</strong> in sampling terminology), it is often better to take a 
+		simple random sample <strong>within each separate group</strong> than to sample 
+		randomly from the whole population. This is called a <strong>stratified random 
+			sample</strong>.</p>
+	<p>The  proportion sampled from the different strata are usually fixed to be the same as the proportions of individuals in the strata in the population. In a simple random sample, the proportions sampled from the strata might not match the population proportions, so a stratified random sample should be more 'representative'.</p>
+	<p class="eqn"><img src="../../../en/sampPractice/images/s_stratified.gif" width="418" height="351"></p>
+
+
+
+
+<h2 class="pageName">12.2.2 &nbsp; Cluster sampling</h2>
+
+<p class="heading">Sampling frame</p>
+	<p>Before taking a simple random sample or stratified random sample, a complete 
+		list of all individuals in the target population must be available. This is called a <strong>sampling 
+			frame</strong>.</p>
+	<p class="heading">Cluster sampling</p>
+	<p>If a complete sampling frame is not available, it may be possible to group the target individuals into reasonably 
+	small groups, called <strong>clusters</strong>, for which a complete list is available.</p>
+	<p>Clusters are similar to the strata that are used for stratified sampling, but 
+		are usually much smaller. For example, a cluster might contain all of the houses in a street, or all of the individuals in a household. It is not necessary to know beforehand how many individuals are in each of the clusters.</p>
+	<p>For cluster sampling, a <strong>simple random sample of clusters</strong> is 
+		selected, with all individuals in these clusters selected.</p>
+	<p class="heading">Cost advantages</p>
+	<p>Even when a complete sampling frame is available, cluster sampling might be 
+		used to reduce the cost of sampling (or to increase the sample size for the same 
+		cost) since it is often cheaper to record information from individuals in the 
+		same cluster than from different parts of the sampling frame.</p>
+	<p class="heading">Accuracy of cluster sampling</p>
+	<p>The disadvantage of cluster sampling is that estimates are usually less accurate than the corresponding estimates from 
+	a simple random sample of the same size.</p>
+	<p>However the cost advantages would permit a larger sample size, so cluster sampling may give the best estimates <strong>for a fixed cost</strong>.</p>
+
+
+
+
+<h2 class="pageName">12.2.3 &nbsp; Two-stage sampling</h2>
+
+<p class="heading">Sampling from large populations</p>
+	<p>Two-stage sampling is a sampling scheme that is related to cluster sampling, 
+		but is of most use for large populations when the individuals are very widely 
+		separated in some sense. For example, many polls are conducted to obtain <strong>national</strong> information about voting intentions or consumer purchases, and there is a high 
+		cost associated with travelling between different regions.</p>
+	<p>In two-stage sampling, the population is separated into groups of adjacent 
+		individuals called <strong>primary sampling units</strong>. These primary sampling 
+		units are typically large &mdash; for example a country might be split into 20 or more 
+		regions. A small number of these are selected according to some sampling scheme, 
+		then individuals are sub-sampled within each selected primary unit.</p>
+	<p>Costs are reduced by limiting sampling to a small number of primary units. 
+		For example, if individuals are only sampled from within say 5 regions, travelling 
+		and accommodation costs will be considerably reduced.</p>
+	
+
+<h1 class="sectionName breakBefore">12.3 &nbsp; Experiments with blocks</h1>
+<h2 class="pageName">12.3.1 &nbsp; Variability of experimental units</h2>
+
+<p class="heading notPrinted">Aim of similar experimental units</p>
+<p>In experiments, we usually try to use experimental units that are as similar
+as possible. Variability between experimental units increases the variability
+in resulting response measurements and this 'noise' in the data makes it harder
+to detect the effect of the experimental treatments.</p>
+<p>In the simulation below, the units (animals) have varying initial weights,
+so the estimated effect of a new diet is varies considerably between repeats
+of the experiment.</p>
+<p class="eqn"><img src="../../../en/blockIntro/images/s_varyingUnits.gif" width="543" height="414"></p>
+
+
+<p>In contrast, if the experimental units are similar, the effect of the new
+diet can be estimated much more accurately.</p>
+<p class="eqn"><img src="../../../en/blockIntro/images/s_similarUnits.gif" width="543" height="414"></p>
+
+
+<h2 class="pageName">12.3.2 &nbsp; Blocks of similar experimental units</h2>
+
+<p class="heading notPrinted">Blocks</p>
+<p>In practice, experiments must often be conducted with experimental units that
+are quite variable.</p>
+<p>The inaccuracy that results from varying experimental units in a completely
+randomised experimental design can be reduced if the units can be grouped into
+<strong>blocks of similar units</strong>.</p>
+<p>This may be done based on measurements from the units before the experiment
+is conducted, or may be based on their location or other known characteristics.</p>
+<p class="heading">Example</p>
+<p>An experiment was conducted on a dairy farm owned by Massey University in
+New Zealand to assess three different pasture management strategies (early, late
+and very late severe grazing).</p>
+<p class="eqn"><img src="../../../en/blockIntro/images/masseyPaddocks.gif" width="550" height="427" class="summaryPict"></p>
+
+
+<p>For operational reasons, it was decided to use paddocks numbered 6, 9, 11,
+16 and 17 in the experiment and each paddock was divided into three parts (the
+experimental units) &mdash; the minimum size to apply a different management strategy.</p>
+<p>It
+is fairly obvious that the five paddocks are not identical; creeks affect some
+and they probably have different histories of fertiliser use. However the three
+experimental units in each paddock are likely to be relatively similar to each
+other, so we can consider each paddock to be a block of three experimental units.</p>
+
+
+
+<h2 class="pageName">12.3.3 &nbsp; Randomised block design</h2>
+
+<p class="heading notPrinted">Blocks of similar experimental
+units</p>
+<p>The differences between the experimental treatments can be estimated more
+accurately if the experimental units can be grouped into blocks of similar units.</p>
+<div class="centred"><div class="boxed">
+<p>A randomised block design is equivalent to a separate completely randomised
+design within each of the blocks.</p>
+</div></div>
+<p>In the simplest randomised block designs, all block sizes are all equal, and
+all treatments are used the same number of times
+within each block.</p>
+<p class="bold">Don't forget to randomise allocation of the treatments to experimental units
+within each block.</p>
+<p class="eqn"><img src="../../../en/oneBlock/images/s_randomisation.gif" width="494" height="364"></p>
+
+
+
+
+<h2 class="pageName">12.3.4 &nbsp; Randomised block examples</h2>
+
+<p class="heading">Effect of cultivar on plant height</p>
+<p>An experiment was conducted to compare the differences in growth among four
+different cultivars of a house plant. The greenhouse had three benches in different
+locations which form natural blocks. Two pots of each cultivar (replicates) were
+randomly assigned to each bench for a total of six pots per cultivar and eight
+pots per bench.</p>
+<div class="centred"><table border="0" class="centred" cellpadding="5" cellspacing="0">
+<tr>
+<th valign="bottom">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bench&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+<th>&nbsp;</th>
+<th>&nbsp;</th>
+<th>&nbsp;</th>
+<th>&nbsp;</th>
+<th><sub></sub></th>
+<th>&nbsp;</th>
+<th><sub></sub></th>
+<th>&nbsp;</th>
+</tr>
+<tr align="center">
+<td>1</td>
+<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">B<br>
+19.4</td>
+<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">D<br>
+16.6</td>
+<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">D<br>
+15.7</td>
+<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">C<br>
+17.4</td>
+<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">A<br>
+17.2</td>
+<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">B<br>
+20.1</td>
+<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">C<br>
+16.6</td>
+<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">A<br>
+19.3</td>
+</tr>
+<tr align="center">
+<td>2</td>
+<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">A<br>
+15.5</td>
+<td align="center" bgcolor="#FFFFFF">C<br>
+14.4</td>
+<td align="center" bgcolor="#FFFFFF">B<br>
+20.8</td>
+<td align="center" bgcolor="#FFFFFF">A<br>
+16.7</td>
+<td align="center" bgcolor="#FFFFFF">B<br>
+21.2</td>
+<td align="center" bgcolor="#FFFFFF">D<br>
+12.9</td>
+<td align="center" bgcolor="#FFFFFF">C<br>
+13.6</td>
+<td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">D<br>
+13.5</td>
+</tr>
+<tr align="center">
+<td>3</td>
+<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">C<br>
+17.4</td>
+<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">D<br>
+12.8</td>
+<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">A<br>
+17.7</td>
+<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">B<br>
+21.9</td>
+<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">C<br>
+15.8</td>
+<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">D<br>
+14.7</td>
+<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">A<br>
+19.8</td>
+<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">B<br>
+20.0</td>
+</tr>
+</table></div>
+<p>Note that the results may be <strong>reported</strong> without specifically
+mentioning the details of the randomisation on the benches:</p>
+<div class="centred">
+<table border="0" class="centred" cellpadding="5" cellspacing="0">
+<tr>
+<th>&nbsp;</th>
+<th colspan="4">Cultivar</th>
+</tr>
+<tr>
+<th valign="bottom">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bench&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+<th>&nbsp;&nbsp;&nbsp;A&nbsp;&nbsp;&nbsp;<sub></sub></th>
+<th>&nbsp;&nbsp;&nbsp;B&nbsp;&nbsp;&nbsp;</th>
+<th>&nbsp;&nbsp;&nbsp;C&nbsp;&nbsp;&nbsp;</th>
+<th>&nbsp;&nbsp;&nbsp;D&nbsp;&nbsp;&nbsp;</th>
+</tr>
+<tr align="center">
+<td>1</td>
+<td bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;"><table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="right">19.3<br>
+17.2</td>
+</tr>
+</table></td>
+<td bgcolor="#FFFFFF" style="border-top:1px solid #999999;"><table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="right">20.1<br>
+19.4</td>
+</tr>
+</table></td>
+<td bgcolor="#FFFFFF" style="border-top:1px solid #999999;"><table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="right">17.4<br>
+16.6</td>
+</tr>
+</table></td>
+<td bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;"><table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="right">16.6<br>
+15.7</td>
+</tr>
+</table></td>
+</tr>
+
+<tr align="center">
+<td>2</td>
+<td bgcolor="#FFFFFF" style="border-left:1px solid #999999;"><table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="right">16.7<br>
+15.5</td>
+</tr>
+</table></td>
+<td bgcolor="#FFFFFF"><table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="right">21.2<br>
+20.8</td>
+</tr>
+</table></td>
+<td bgcolor="#FFFFFF"><table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="right">14.4<br>
+13.6</td>
+</tr>
+</table></td>
+<td bgcolor="#FFFFFF" style="border-right:1px solid #999999;"><table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="right">13.5<br>
+12.9</td>
+</tr>
+</table></td>
+</tr>
+
+<tr align="center">
+<td>3</td>
+<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;"><table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="right">17.7<br>
+19.8</td>
+</tr>
+</table></td>
+<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;"><table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="right">21.0<br>
+21.9</td>
+</tr>
+</table></td>
+<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;"><table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="right">15.8<br>
+17.4</td>
+</tr>
+</table></td>
+<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;"><table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="right">12.8<br>
+14.7</td>
+</tr>
+</table></td>
+</tr>
+</table>
+</div>
+
+
+<h2 class="pageName">12.3.5 &nbsp; Comparison of designs</h2>
+
+<p class="heading">Variability in a completely
+randomised design</p>
+<p>In a completely randomised design, it is possible that one treatment may,
+by chance, be over-represented in a block whose response, <em>Y</em>, is <strong>naturally</strong> high,
+inflating its apparent effect. For example, treatment A would appear to have
+too high a response mean in the example below.</p>
+<div class="centred"><table border="0" class="centred" cellpadding="4" cellspacing="0">
+<tr>
+<th colspan="3">Block 1<br>
+<em>(high Y)</em></th>
+<th width="30">&nbsp;</th>
+<th colspan="3">Block 2<br>
+<em>(low Y)</em></th>
+</tr>
+<tr>
+<td bgcolor="#FFFFFF" style="border:1px solid #999999;"> C </td>
+<td bgcolor="#FF0000" style="border:1px solid #999999; border-left:0px;"> A </td>
+<td bgcolor="#FF0000" style="border:1px solid #999999; border-left:0px;"> A </td>
+<td>&nbsp;</td>
+<td bgcolor="#FFFFFF" style="border:1px solid #999999;"> B&nbsp;</span></td>
+<td bgcolor="#FFFFFF" style="border:1px solid #999999; border-left:0px;"> B&nbsp;</td>
+<td bgcolor="#FF0000" style="border:1px solid #999999; border-left:0px;"> A&nbsp;</td>
+</tr>
+<tr>
+<td bgcolor="#FF0000" style="border:1px solid #999999; border-top:0px;"> A </td>
+<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;"> C </td>
+<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;"> B </td>
+<td>&nbsp;</td>
+<td bgcolor="#FFFFFF" style="border:1px solid #999999; border-top:0px;"> C </td>
+<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;"> C </td>
+<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;"> B </td>
+</tr>
+<tr>
+<td bgcolor="#FFFFFF" style="border:1px solid #999999; border-top:0px;"> B </td>
+<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;"> C </td>
+<td bgcolor="#FF0000" style="border-bottom:1px solid #999999; border-right:1px solid #999999;"> A </td>
+<td>&nbsp;</td>
+<td bgcolor="#FFFFFF" style="border:1px solid #999999; border-top:0px;"> B </td>
+<td bgcolor="#FF0000" style="border-bottom:1px solid #999999; border-right:1px solid #999999;"> A </td>
+<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;"> C </td>
+</tr>
+</table></div>
+<p>Of course, treatment A could also be under-represented in the first block,
+resulting in high variability in its estimated effect.</p>
+<p>A randomised block design would ensure that treatment A is used for exactly
+3 units in each block, so the high response values in Block 1 could not distort
+its effect relative to the other treatments. Therefore its estimated effect would
+be less variable (and hence more accurately estimated).</p>
+
+
+</body>
+</html>

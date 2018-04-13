@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Survivor and hazard functions</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="survivor function, hazard function">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Lifetimes</p>
+<p>Manufactured items usually  fail at some time after they start to be used. For example, light bulbs and computer hard disks don't keep going for ever — we know that they will fail at some time after purchase but don't know when. </p>
+<p>Biological entities (bacteria, animals, plants, ...) also have limited lifetimes — they die at some random age.</p>
+<p>In this section, we will describe a simple model for the  lifetimes of such items.</p>
+<p class="heading">Survivor and hazard functions</p>
+<p>Consider an item whose lifetime is denoted by \(X\), whose probability density function is \(f(x)\) and whose cumulative distribution function is \(F(x) = \int_0^x {f(u) \; du}\). We now define two further functions that are particularly meaningful for lifetime data.</p>
+<p>The survivor function describes the probability that an item's lifetime will be greater than any constant, \(x\).</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>The <strong>survivor function</strong> of random variable \(X\) is</p>
+\[
+S(x) \;\; = \; \; P(X \gt x) \;\;=\;\; 1 - F(x)
+\]</div>
+<p>The second function that we will define describes the  chance of failure, <strong>conditional on having survived until time \(x\)</strong>. More precisely, the probability of failure in a very short interval of time \((x, x+\delta x]\) is</p>
+\[
+P(x \lt X \le x+\delta x) \;\; \approx \; \; f(x) \times \delta x
+\]
+<p>The <strong>conditional</strong> probability of failing in the interval  \((x, x+\delta x]\), given survival until at least time \(x\) is</p>
+\[ \begin{align}
+P(x \lt X \le x+\delta x \;|\; X \gt x) \;\;&amp;=\;\; \frac {P(x \lt X \le x+\delta x \textbf{ and } X \gt x)}{P(X \gt x)} \\
+&amp;\approx \; \; \frac {f(x)}{S(x)} \times \delta x
+\end{align} \]
+<p>The quantity \(f(x) / S(x)\) therefore describes the failure rate at time \(x\), conditional on having survived until at least time \(x\). It is called the distribution's <strong>hazard function</strong>.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>The <strong>hazard function</strong> of random variable \(X\) is</p>
+	\[
+	h(x) \;\; = \; \; \frac {f(x)}{S(x)} \;\;=\;\; \frac {f(x)}{1 - F(x)}
+	\]</div>
+<p>The hazard function is particularly informative — it describes how an item's age, \(x\) affects its risk of failure.</p>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

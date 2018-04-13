@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Mean and variance</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="exponential distribution, erlang distribution, mean, variance">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p class="heading">Sum of independent exponential variables</p>
+<p>If the time until the first event in a homogeneous Poisson process with rate \(\lambda\) is \(Y_1\), the time from the first event until the second one is \(Y_2\), ..., and the time from the \((k-1)\)'th until the \(k\)'th event is \(Y_k\), then the <strong>total</strong> time until the \(k\)'th event can be written as</p>
+\[
+X \;\; = \; \; \sum_{i=1}^k {Y_i}
+\]
+<p>From the memoryless property of a homogeneous Poisson process, the \(\{Y_i\}\) are independent and they all have \(\ExponDistn(\lambda)\) distributions. The time until the \(k\)'th event \(X\) can therefore be treated as the sum of a random sample of size \(k\) from this exponential distribution.</p>
+<p>Since a random variable with an \(\ErlangDistn(k, \lambda)\) distribution  has the same distribution as the sum of \(k\) independent \(\ExponDistn(\lambda)\) random variables, we can use the properties of the sum of a random sample to find its mean and variance.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Mean and variance of Erlang distribution</p>
+<p>If a random variable, \(X\), has an Erlang distribution with probability density function</p>
+\[
+		f(x) \;\;=\;\; \begin{cases} \dfrac{\lambda^k}{(k-1)!} x^{k-1} e^{-\lambda x} &amp; x \gt 0 \\[0.3em]
+		0 &amp; \text{otherwise}
+		\end{cases} \]
+		<p>its mean and variance are</p>
+\[
+E[X] \;=\; \frac k{\lambda}\spaced{and} \Var(X) \;=\; \frac k{\lambda^2}
+\] </div>
+
+<div class="proof">
+<p>Since
+\(X  =  \sum_{i=1}^k {Y_i}\),</p>
+\[
+E[X] \;=\; k \times E[Y_i] \;=\; \frac k{\lambda}
+\]
+<p>and</p>
+\[
+\Var(X) \;=\; k \times \Var(Y_i) \;=\; \frac k{\lambda^2}
+\]</div>
+
+</div>
+<p>A final useful property of Erlang distributions that adding together two independent Erlang variables (with the same \(\lambda\)) results in a variable that also has an Erlang distribution.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Additive property of Erlang distributions</p>
+		<p>If \(X_1 \sim \ErlangDistn(k_1,\; \lambda)\) and \(X_2 \sim \ErlangDistn(k_2,\; \lambda)\) are independent, then</p>
+		\[
+		X_1 + X_2 \;\;\sim\;\; \ErlangDistn(k_1 + k_2,\; \lambda)
+		\] </div>
+	<div class="proof">
+		<p>Since we can write
+			\(X_1  =  \sum_{i=1}^{k_1} {Y_i}\) and \(X_2  =  \sum_{i=k_1 + 1}^{k_1 + k_2} {Y_i}\) where the \(\{Y_i\}\) are independent exponential variables,</p>
+		\[
+		X_1 + X_2 \;=\;   \sum_{i=1}^{k_1 + k_2} {Y_i}
+		\]
+		<p>which therefore has an \(\ErlangDistn(k_1 + k_2,\; \lambda)\) distribution.</p>
+	</div>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Example: Rectangular maximum</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="maximum likelihood, rectangular distribution, bias, standard error">
+	<meta name="dataset" content="German tank problem">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p>Maximum likelihood estimates can <strong>usually</strong> be found as turning points of the likelihood function (or equivalently the log-likelihood function) — i.e. by solving \(\ell'(\theta) = 0\).</p>
+<p>However there are a few distributions for which this method does not work. Estimation of the maximum of a \(\RectDistn(0, \beta)\) distribution (the &quot;German Tank Problem&quot;) is one.</p>
+
+<div class="example" title="Example: Estimating a rectangular distribution's maximum">
+	
+	<p class="exampleHeading">Rectangular distribution</p>
+
+<p>The following six values,</p>
+<p class="eqn">0.12   0.32   0.36   0.51   0.63   0.69</p>
+<p>are a random sample from a rectangular distribution whose minimum is zero but whose maximum is unknown.</p>
+\[
+X \;\; \sim \; \; \RectDistn(0, \;\beta)
+\]
+<p>This  distribution has probability density function</p>
+\[
+f(x\;|\; \beta) = \begin{cases}\dfrac 1 {\beta} &amp;\text{for } 0 \le x \le \beta \\[0.4em]
+0 &amp;\text{otherwise}
+\end{cases}
+\]
+
+<p>Its likelihood is</p>
+\[
+L(\beta) \;\;=\;\; \prod_{i=1}^6 {f(x_i \;|\; \beta)} \;\;=\;\;
+\begin{cases}
+\left(\dfrac 1 {\beta}\right)^6 &amp;\text{for } \beta \ge \max(x_1, \dots, x_6) \\[0.4em]
+0 &amp;\text{otherwise}
+\end{cases}
+\]
+<p>(Since it is impossible to get data values greater than \(\beta\), any such data values have zero probability, making the likelihood zero too.)</p>
+<p>The diagram below illustrates this. The bottom half shows the rectangular pdf with a slider that can be used to adjust the value of the parameter \(\beta\). The six data values are marked by vertical red lines.</p>
+	<div class="centred">
+		<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="500">
+			<script type="text/javascript">writeAppletParams();</script>
+			<param name="appletName" value="estimationProg.RectangularLikelihoodApplet">
+			<param name="backgroundColor" value="FFFBF3">
+			<param name="rectangular" value="0.600 1.200 0.800">
+			<param name="likelihoodAxis" value="0 9.5 0 2">
+			<param name="varName" value="normal sample data">
+			<param name="dataAxis" value="0 1.3 0 0.2">
+			<param name="paramAxis" value="0.6 1.2 0.6 0.1">
+			<param name="densityAxis" value="0 1.8 0 0.5">
+			<param name="values" value="0.12 0.32 0.36 0.51 0.63 0.69">
+			<param name="customText" value="Likelihood=Likelihood#Unknown parameter=Unknown parameter#Rectangular distribution max=Rectangular distribution max#Max likelihood=Max likelihood#Rectangular probability density=Rectangular probability density#Data values=Data values">
+		</applet>
+	</div>
+<p>The heights of the red bars are  \( f(x \;|\; \beta) = \frac 1 {\beta}\) at the data values and the likelihood is the product of these heights, as shown in the top half of the diagram. <strong>Drag</strong> the slider to see how the likelihood depends on the heights of these bars. Observe that the likelihood has a discontinuity at its maximum, which arises when \(\beta\) is the maximum of the data values. (When \(\beta\) is less than any of the data values, they have zero probability, making the likelihood  zero.)</p>
+<p>The maximum likelihood estimator is therefore</p>
+\[
+\hat{\beta} \;\; = \;\; \max(x_1, \dots, x_6) 
+\]
+<p>Observe that the maximum likelihood estimate is at a discontinuity in the likelihood function <strong>not</strong> at a turning point. In this example, the maximum likelihood estimator <strong>cannot</strong> therefore be found solving \(\ell'(\beta) = 0\).</p>
+<p class="heading">Bias and standard error</p>
+<p>Since the maximum likelihood estimate of \(\beta\) is at a discontinuity of the likelihood function, the 2nd derivative of the log-likelihood function is undefined and cannot be used to obtain an approximate value for the estimator's standard error.</p>
+<p>It is however possible to find the distribution of the sample maximum from a rectangular distribution from first principles. We will <a href="javascript:showNamedPage('transformWithCdf2')">derive this distribution later</a>, but simply give formulae for the mean and variance here, based on a sample of size \(n\).</p>
+\[
+E\left[\hat{\beta}\right] \;=\; \frac n {n+1} \beta \spaced{and} \se\left(\hat{\beta}\right) \;=\; \sqrt {\frac n {(n+1)^2(n+2)}}\times \beta \]
+<p>The estimator is therefore biased with</p>
+\[
+\Bias(\hat{\beta}) \;=\; -\frac 1 {n+1} \beta \]
+<p>It is however consistent since its bias and standard error both tend to zero as \(n \to \infty\).</p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Confidence interval from a test</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="confidence interval, hypothesis test, test, binomial distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p>There are two reasons why hypothesis tests may be easier than confidence intervals:</p>
+<ul>
+	<li>The underlying theory is easier in some applications</li>
+	<li>Sometimes conventional confidence intervals involve  approximations that can be avoided in hypothesis tests.</li>
+</ul>
+<p>In these situations, good approach to finding a confidence interval  may  be through hypothesis tests.</p>
+<p class="heading">Binomial probability</p>
+<p>The earlier confidence intervals that we showed for the binomial distribution's parameter \(\pi\)  were based on normal approximations to the number or proportion of successes. However a hypothesis test can be performed using binomial probabilities without the need for this normal approximation.</p>
+<p>A \((1 - \alpha)\) confidence interval for a parameter \(\theta\) can be found as follows:</p>
+<ol>
+	<li>For different values of \(\theta_0\), perform a 2-tailed test for whether \(\theta = \theta_0\) at significance level \(\alpha\).</li>
+	<li>A \((1 - \alpha)\) confidence interval for \(\theta\) consists of the values \(\theta_0\) that are not rejected by these tests.</li>
+</ol>
+<div class="example">
+	
+	<p class="exampleHeading">Exact confidence interval for π when n = 20 and x = 7</p>
+	<p>For a 2-tailed hypothesis test with  <strong>H<sub>0</sub></strong>: \(\pi = \pi_0\), we can use the test statistic</p>
+\[
+X \;\;\sim\;\; \BinomDistn(n=20, \pi_0)
+\]
+<p>For any value of \(\pi_0\), the p-value is double the smaller tail probability from this binomial distribution,</p>
+\[
+2 \times P(X \le 7 \mid \pi = \pi_0) \spaced{or} 2 \times P(X \ge 7 \mid \pi = \pi_0)
+\]
+<p>For a test at significance level \(\alpha = 5%\), we  reject <strong>H<sub>0</sub></strong> if the p-value is less than 0.05.</p>
+<hr width="75%">
+<p>A 95% confidence interval for \(\pi\) consists of the values \(\pi_0\) that are <strong>not</strong> rejected in this  test. By trial-and-error with different values of \(\pi_0\), we find the following p-values,</p>
+<p class="eqn"><img src="images/s_binomialCiTests.png" width="511" height="600"  alt=""/></p>
+<p><strong>H<sub>0</sub></strong> is only accepted at the 5% significance level for values of \(\pi_0\) between these, so the exact 95% confidence interval is</p>
+\[
+0.154 \;\;\lt\;\; \pi \;\;\lt\;\; 
+0.592\]</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

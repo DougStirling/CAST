@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Difference between means</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="comparing groups, mean, difference, estimation">
+	<meta name="dataset" content="Births by season">
+	<meta name="dataset" content="Zinc lozenges and cold duration">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Comparing the populations</p>
+
+<p>For two-group data sets, we usually want to compare the underlying populations. 
+In particular, the main questions of interest are:</p>
+<ul>
+<li>Are the two population distributions the same?</li>
+<li>If the populations are different, how big is the difference?</li>
+</ul>
+<p class="heading">Comparing the population means</p>
+
+  
+  <p>The two standard deviations in the groups may differ, but we are usually 
+    more interested in differences between the population means. The earlier questions 
+    can be asked in terms of the difference between these means,</p>
+<p class=eqn><span class="black">&delta; &nbsp;=&nbsp; &mu;<sub>2</sub> &nbsp;&minus;&nbsp; &mu;<sub>1</sub></span></p>
+<p>If the group means are equal (and µ<sub>2</sub>&nbsp;-&nbsp;µ<sub>1</sub> 
+is therefore zero), then values from neither group are higher than from the other, 
+on average. Indeed, if the distributions are normal and σ<sub>1</sub> and σ<sub>2</sub> are also equal, then a zero value for µ<sub>2</sub>&nbsp;-&nbsp;µ<sub>1</sub> also implies that the distributions in the two groups are identical. </p>
+<table width="75%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+<tr> 
+<td><strong>µ<sub>2</sub>&nbsp;-&nbsp;µ<sub>1</sub> 
+describes how much higher the values in group 2 are (on average) than the values 
+in group 1.</strong></td>
+</tr>
+</table>
+<p>The best estimate of µ<sub>2</sub>&nbsp;-&nbsp;µ<sub>1</sub> is, naturally, the difference between the means of the two samples, <span style="position:relative; top:5px"><img src="../../images/symbol.xBarDiff.png" width="36" height="15" align="baseline"></span>.</p>
+<p class="heading">Randomness of sample difference</p>
+<p>Unfortunately, <span style="position:relative; top:5px"><img src="../../images/symbol.xBarDiff.png" width="36" height="15" align="baseline"></span> 
+cannot give a definitive answer to questions about µ<sub>2</sub>&nbsp;-&nbsp;µ<sub>1</sub> since it is a random summary statistic &mdash; it varies from sample to sample. The 
+distribution of <span style="position:relative; top:5px"><img src="../../images/symbol.xBarDiff.png" width="36" height="15" align="baseline"></span> 
+must be understood before we can make any inference about µ<sub>2</sub>&nbsp;-&nbsp;µ<sub>1</sub>.</p>
+<div class="diagram"> 
+<p class="heading">Simulation: Effect of zinc on colds</p>
+<p>An experiment was conducted on volunteers who developed a cold within the previous 
+24 hours. They were randomised to take either zinc acetate lozenges or placebo 
+lozenges (identical but with no active ingredient). The duration of cold symptoms 
+for the subjects who received zinc had mean&nbsp;4.5 days, and standard deviation1.6 
+days. The control group's duration had mean 8.1 days, and standard deviation&nbsp;1.8 
+days.</p>
+<p>We will conduct a simulated experiment based on this scenario. In the simulation, 
+we will generate 'symptom durations' for 24 patients with the zinc treatment from 
+a normal distribution with µ<sub>1</sub>&nbsp;=&nbsp;4.5 and σ<sub>1</sub>&nbsp;=&nbsp;1.6. 
+Another 24 patients in the placebo group will have normal durations with µ<sub>2</sub>&nbsp;=&nbsp;8.1 
+days and σ<sub>2</sub>&nbsp;=&nbsp;1.8 
+days.</p>
+<p>Note that the duration of symptoms is, on average, µ<sub>2</sub>&nbsp;-&nbsp;µ<sub>1</sub>&nbsp;=&nbsp;3.6 
+days lower for those who get the zinc lozenges.</p>
+<p><font color="#666666">(The normal distributions from which the data are sampled are represented by a pale blue band at µ&nbsp;±&nbsp;2σ. The narrower darker blue band    includes half of the population distribution.)</font></p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoGroupProg.SampleDiff2Applet">
+<param name="yVarName" value="Cold duration (days)">
+<param name="yAxis" value="0 13.5 0 2">
+<param name="anovaModel" value="4.5 1.6 8.1 1.8">
+<param name="xVarName" value="Type of lozenge">
+<param name="xValues" value="24@0 24@1">
+<param name="xLabels" value="#Zinc# #Placebo#">
+<param name="jitterPropn" value="0.5">
+<param name="summaryDecimals" value="3">
+<param name="maxSummary" value="99.999">
+<param name="summaryAxis" value="2.1 5.1 2.5 0.5">
+<param name="randomSeed" value="330045782">
+<param name="customText" value="Difference between means=Difference between means">
+</applet>
+</div>
+
+<p>Click <strong>Accumulate</strong>, then take several samples. Observe that 
+the difference between the sample means is a random quantity whose distribution 
+is centred on µ<sub>2</sub>&nbsp;-&nbsp;µ<sub>1</sub>&nbsp;=&nbsp;3.6 
+days.</p>
+<p>The difference in means from a single data set, <span style="position:relative; top:5px"><img src="../../images/symbol.xBarDiff.png" width="36" height="15" align="baseline"></span>, 
+is therefore an <strong>estimate</strong> of µ<sub>2</sub>&nbsp;-&nbsp;µ<sub>1</sub>, 
+but is unlikely to be exactly equal to it.</p>
+
+<p class="heading">Birth weights in summer and winter</p>
+
+<p>In practice, the underlying population means (and their difference) are unknown, 
+and only a single sample from each group is available. The data set below is a 
+typical example.</p>
+
+<p class="eqn"><object data="images/birthWt2.svg" width="523" height="296"></object></p>
+
+<p>Without an understanding of the distribution of <span style="position:relative; top:5px"><img src="../../images/symbol.xBarDiff.png" width="36" height="15" align="baseline"></span>, 
+it is impossible to properly interpret what the sample difference, 0.104&nbsp;kg, 
+tells you about the difference between the underlying population means.</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

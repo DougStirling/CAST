@@ -1,0 +1,189 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Model parameters</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="linear model, regression model, slope, intercept">
+	<meta name="dataset" content="Grandfather clock price">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Three parameters of the normal linear model</p>
+
+<p>A normal linear model,</p>
+
+<p class=eqn style="color:#000000">µ<sub><em>y</em></sub> &nbsp; = &nbsp; β<sub>0</sub> &nbsp; + &nbsp; β<sub>1 </sub><em>x</em></p>
+<p class=eqn style="color:#000000">σ<sub><em>y</em></sub> &nbsp; = &nbsp; σ</p>
+<p>involves 3 parameters,
+β<sub>0</sub>, β<sub>1</sub> and σ.
+These parameters provide considerable flexibility to the model.</p>
+
+<div class="diagram">
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="420">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="linModProg.DragRegnParamApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="interceptLimits" value="2.50 7.50 3.50">
+<param name="slopeLimits" value="-1.00 1.00 0.50">
+<param name="sdLimits" value="0.10 0.80 0.30">
+<param name="randomX" value="20 2.5 1.0 5876299 2.0">
+<param name="horizAxis" value="0.5 4.5 1 1">
+<param name="vertAxis" value="2.5 7.5 3 1">
+<param name="random" value="20 0.0 1.0 345945782 3.0">
+<param name="labelAxes" value="true">
+</applet>
+</div>
+
+<p>Drag the three red arrows to adjust the parameters of the normal
+linear model.
+</p>
+
+<p>Click <strong>Take sample</strong> a few times to verify that approximately 95%
+of values are within the grey band.
+</p>
+
+<p><font color="#666666">(Note that the values of <i>X</i> are not fixed in this 
+example &mdash; they vary from sample to sample. The normal linear model does not attempt 
+to describe variability in <i>X</i>, though a standard univariate distribution 
+such as a normal distribution might fit the distribution of <em>X</em> in this 
+example.)</font> </p>
+
+</div>
+
+<p class="heading">Interpreting the model's slope and intercept</p>
+<p>The most important parameters of a linear model are its slope, β<sub>1</sub>, 
+and intercept, β<sub>0</sub>. 
+These can be interpreted in a similar way to the slope and intercept of the least 
+squares lines that were <a href="javascript:showNamedPage('leastSqrs4')">fitted 
+to data in an earlier chapter</a>.</p>
+
+<dl>
+<dt>Slope</dt>
+<dd>The slope parameter, β<sub>1</sub>, 
+  is the more important of the two. It specifies the increase in the mean response 
+  per unit</dd>
+<dd>increase in <i>X</i>.</dd>
+<dt>Intercept</dt>
+<dd>The intercept, β<sub>0</sub>, 
+  is the mean response when <em>X</em> = 0. (In some contexts, this may not have 
+  an easily interpreted </dd>
+<dd>meaning.)</dd>
+</dl>
+<br>
+
+<center>
+<table border="1" cellpadding="8" cellspacing="0" bordercolor="#CCCCCC">
+<tr> 
+<th align="CENTER" width="300">Context</th>
+<th width="33%" align="CENTER">Interpretation of β<sub>1</sub></th>
+<th width="33%" align="CENTER">Interpretation of β<sub>0</sub></th>
+</tr>
+<tr bgcolor="#FFFFFF"> 
+<td width="300"><i>Y</i> = Sales of music CD ($)<br>
+<i>X</i> = Money spent on advertising ($)</td>
+<td width="33%">Increase in mean sales for each extra dollar spent on advertising</td>
+<td width="33%">Mean sales if there was no advertising</td>
+</tr>
+<tr bgcolor="#FFFFFF"> 
+<td width="300"><i>Y</i> = Exam mark <br> <i>X</i> = Hours of study by student 
+before exam</td>
+<td width="33%">Increase in expected mark for each additional hour of study</td>
+<td width="33%">Expected mark if there is no study</td>
+</tr>
+<tr bgcolor="#FFFFFF"> 
+<td width="300"><i>Y</i> = Hospital stay (days) <br> <i>X</i> = Age of patient</td>
+<td width="33%">Average extra days in hospital per extra year of age</td>
+<td width="33%">Average days in hospital at age 0. Not particularly meaningful 
+here. </td>
+</tr>
+</table>
+</center>
+<p class="heading">Esimating the parameters by eye</p>
+
+<p>The regression line (i.e. the straight line showing how the mean depends on <em>x</em>) and the band that is 2σ above and below it are a good way to understand the normal linear model. Indeed 
+they can be used as an informal way to estimate the parameters of the model 'by 
+eye'. (We will give better methods in the next section.)</p>
+
+<div class="diagram"> 
+<p class="heading">Artificial data</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="420">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="linModProg.DragRegnParamApplet">
+<param name="xVarName" value="Explanatory variable, x">
+<param name="yVarName" value="Response, y">
+<param name="interceptLimits" value="-2000 2000 2154">
+<param name="slopeLimits" value="-15.0 15.0 -5.2">
+<param name="sdLimits" value="30 300 275">
+<param name="xValues" value="161 106 185 125 117 136 170 111 154 136 106 121 107 152 144 176 151 172 107 150 192 172 150 177 180 126 176 178 119 154 145 175 114 192 174 147 158 174 155 183 182 156 173 168 134 135 170 139 190 178 105 153 172 111 141 135 170 172 114 183 179 121 148 188 113 118 194 161 171 118 163 165 134 153 117 171 194 139 141 176 132 134 150 156 194 127 129 128 162 191 178 125 146 157 166 133 124 192 186 115">
+<param name="yValues" value="1397 608 1213 814 533 879 1365 713 958 1031 414 564 594 1069 946 1303 955 1308 612 1149 1705 1480 1093 1385 1509 682 1383 1477 697 1226 792 1547 443 1678 1305 876 931 1445 932 1427 1336 1185 1071 1223 1004 680 1249 845 1714 1275 499 1176 1202 716 839 665 1331 1337 873 1512 1593 897 900 1284 526 623 1739 1140 1467 573 1114 1328 863 762 618 1133 1793 990 966 1230 775 892 1064 1184 1496 1171 987 784 1018 1420 1320 953 1144 1245 1254 941 558 1716 1525 728">
+<param name="horizAxis" value="100 200 100 20">
+<param name="vertAxis" value="0 2500 0 500">
+<param name="labelAxes" value="true">
+<param name="customText" value="Best values=Best values">
+</applet>
+</div>
+<p>A normal linear model might be used to describe how the response depends on the explanatory variable.</p>
+<ul>
+  <li>Firstly drag the two red arrows on the regression line to position it centrally 
+    in the data.</li>
+  <li>Then drag the third red arrow to adjust the parameter σ. 
+    You should aim for the grey region to include about 95% of the crosses.</li>
+</ul>
+<p>In the next section, we will explain how to objectively estimate the parameters 
+  to match a data set. Click <strong>Best values</strong> to see these 'best' parameter 
+  values.</p>
+<p>If there are fewer values or if the relationship is weaker, it is harder to position the band by eye.</p>
+<p class="heading">Auction price for grandfather clocks</p>
+<p>The data set below shows the auction prices of 32 grandfather clocks and their 
+ages (years). The data might be used to predict the sale price of another clock 
+from its age.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="420">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="linModProg.DragRegnParamApplet">
+<param name="xVarName" value="Age (years)">
+<param name="yVarName" value="Auction price (dollars)">
+<param name="interceptLimits" value="-2000 2000 2154">
+<param name="slopeLimits" value="-15.0 15.0 -5.2">
+<param name="sdLimits" value="30 300 275">
+<param name="xValues" value="127 115 127 150 156 182 156 132 137 113 137 117 137 153 117 126 170 182 162 184 143 159 108 175 108 179 111 187 111 115 194 168">
+<param name="yValues" value="1235 1080 845 1522 1047 1979 1822 1253 1297 946 1713 1024 1147 1092 1152 1336 2131 1550 1884 2041 845 1483 1055 1545 729 1792 1175 1593 785 744 1356 1262">
+<param name="horizAxis" value="100 200 100 20">
+<param name="vertAxis" value="0 2500 0 500">
+<param name="labelAxes" value="true">
+<param name="customText" value="Best values=Best values">
+</applet>
+</div>
+
+    
+<p>A normal linear model might be used to describe how auction price depends on 
+age.</p>
+
+<ul>
+<li>Firstly drag the two red arrows on the regression line to position it centrally 
+in the data.</li>
+<li>Then drag the third red arrow to adjust the parameter σ. 
+You should aim for the grey region to include about 95% of the crosses.</li>
+</ul>
+<p>In the next section, we will explain how to objectively estimate the parameters 
+to match a data set.</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

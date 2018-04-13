@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>P-value from statistical distance</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="hypothesis test, statistical distance, test statistic, z-score">
+	<meta name="dataset" content="Corn flake packet weight">
+	<meta name="dataset" content="Weights of courier packages">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Statistical distance and test statistic</p>
+<p>The p-value for testing a hypothesis about the mean, µ, when σ is known, is
+a tail area from the normal distribution of the sample mean and can be evaluated
+in the usual way using a z-score. This
+calculation can be expressed in terms of the statistical distance between the
+parameter and its estimate,</p>
+<p class="eqn"><img class="gif" src="images/zGeneral.gif" width="185" height="37"></p>
+<p>In the context of a test about means,</p>
+<p class="eqn"><img class="gif" src="../testMean/images/zForMean.gif" width="164" height="52"></p>
+<p>Since <em>z</em> has a standard normal distribution (zero mean and unit standard
+deviation) when the null hypothesis holds, it can be used as a test statistic.</p>
+<p class="heading">P-value</p>
+<p>The p-value for the test can be determined from the tail areas of the standard
+normal distribution.</p>
+<p class="eqn"><img class="gif" src="images/pValueFromZ.gif" width="471" height="212"></p>
+<p>For a two-tailed test, the p-value is the red tail area.</p>
+<div class="diagram"> 
+<p class=heading>Quality control for cornflake packets</p>
+
+<p>The diagram below repeats the simulation that we used earlier to test whether a sample mean weight of 10 cornflake packets of 529&nbsp;gm is consistent with a packing machine that is set to give normally distributed weights with µ&nbsp;=&nbsp;520&nbsp;gm and σ = 10&nbsp;gm.</p>
+<p>Again click <strong>Accumulate</strong> and hold down the <strong>Simulate</strong> button
+until about 100 samples of 10 packets have been selected and weighed. The p-value
+is the probability of getting a sample mean further from 520&nbsp;gm than 529&nbsp;gm
+&mdash; either below 511&nbsp;gm or above 529&nbsp;gm and the simulation provides
+an estimate. However <strong>a simulation is unnecessary</strong> since we can evaluate the p-value
+exactly.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="460">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="randomisationProg.MeanSimApplet">
+<param name="sampleInfo" value="10 520 10">
+<param name="yAxis" value="490 550 490 10">
+<param name="summaryAxis" value="505 535 505 5">
+<param name="zAxis" value="-4.743 4.743 -4 1">
+<param name="actualMean" value="529">
+<param name="varName" value="Packet weight (gm)">
+<param name="meanLabel" value="Mean weight">
+<param name="sdLabel" value="SD of weight">
+<param name="nLabel" value="Number of packets =">
+<param name="showTheory" value="true">
+<param name="meanSdDecimals" value="1">
+<param name="tail" value="both">
+<param name="customText" value="P(mean as far as * from *)=P(mean as far as * from *)#Summarise sample mean with=Summarise sample mean with#Raw value=Raw value#'Statistical distance' from='Statistical distance' from#Distn of mean=Distn of mean#'Statistical distance' of mean from * as z-value='Statistical distance' of mean from * as z-value">
+</applet>
+</div>
+
+<p>Select <strong>Normal distribution</strong> from the pop-up menu on the bottom
+right to replace the simulation with the normal distribution of the mean,</p>
+<p class="eqn"><img class="gif" src="../testMean/images/cornflakeMeanMean.gif" width="105" height="19"></p>
+<p class="eqn"><img class="gif" src="../testMean/images/cornflakeMeanSd.gif" width="144" height="24"></p>
+<p>From its tail area, we can calculate (without a simulation) that the probability
+of getting a sample mean as far from 520 as 529 is exactly 0.0044. This is the
+exact p-value for the test.</p>
+<p class=heading>P-value from statistical distance</p>
+<p>Finally, consider the statistical distance of our estimate of µ, 529&nbsp;gm, from the hypothesised value, 520&nbsp;gm.</p>
+<p class="eqn"><img class="gif" src="../testMean/images/cornflakeZ.gif" width="341" height="52"></p>
+<p>Select <strong>'Statistical distance' from 520</strong> from the middle pop-up
+menu to show how the p-value is found using this z-score.</p>
+<div class="centred"><div class="boxed">
+<p>Since the p-value is so small (0.0044), we conclude that there is strong evidence
+that the population mean, µ, is <strong>not</strong> 520.</p>
+</div></div>
+<p class=heading>Weights of courier packages</p>
+<p>A courier company suspected that the weight of recently shipped packages had
+dropped. From past records, the mean weight of packages was 18.3 kg and their
+standard deviation was 7.1 kg. These figures were based on a very large number
+of packages and can be treated as exact.</p>
+<p>Thirty packages were sampled from the previous week and their mean weight
+was found to be 16.8 kg. The data are displayed in the jittered dot plot below.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="330">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="testProg.ZPValueApplet">
+<param name="varName" value="package weight (kg)">
+<param name="horizAxis" value="0 40 0 10">
+<param name="values" value="21.6 31.5 13.5 15.4 10.8 18.7 7.1 18.3 9.6 12.2 5.8 18.8 13.9 36.2 13.5 5.8 26.2 8.1 15 22.7 9.9 13.5 18.4 23.1 20.1 16.4 16.8 19.8 14.6 26.8">
+<param name="testInfo" value="18.3 7.1">
+<param name="alternative" value="low">
+<param name="dataDecimals" value="2">
+<param name="means" value="14.0 23.0 0.02">
+<param name="summaryDecimals" value="3 3 4">
+<param name="formulaGif" value="test/z18.3">
+<param name="customText" value="Actual Data=Actual Data#Modified Data=Modified Data#Sample mean=Sample mean#Distn of mean=Distn of mean">
+</applet>
+</div>
+<p>If the null hypothesis was true, the sample mean would have the normal distribution
+shown in pale blue. Although the sample mean weight is lower than 18.3 kg, it
+is not particularly unusual for this distribution, so we conclude that there
+is no evidence that the mean weight has reduced.</p>
+<p>The right of the diagram shows how the p-value is calculated from a
+statistical distance (z-score).</p>
+<hr width="75%">
+<p>Choose <strong>Modified Data</strong> from the pop-up menu. The slider allows
+you to investigate how low the sample mean must become in order to give strong
+evidence that µ is less than 18.3.</p>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

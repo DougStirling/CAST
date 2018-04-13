@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Mínimos cuadrados</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="regression model, linear model, least squares, residual/minimising sum of squares">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Colocación de la línea para dar pequeñas residuales</p> 
+ 
+  <p>Las residuales de un modelo linear son las distancias verticales de las cruces a la línea en un scatterplot. Indican cómo las predicciones de la línea (los valores cabidos) emparejan de cerca las respuestas reales en los datos.  </p> 
+ 
+  <p>Por lo tanto la colocación de la línea para hacer las residuales pequeñas mejora el ajuste del modelo a los datos. Los parámetros<em> b</em><sub>0</sub> y <em>b</em><sub>1</sub> del modelo linear se deben fijar para hacer las residuales tan pequeñas como sea posible.  </p> 
+ 
+<div class="diagram"> 
+ 
+<p>En el diagrama abajo, las residuales para todas las observaciones se exhiben como líneas azules verticales. 
+</p> 
+ 
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="350" height="350"> 
+<script type="text/javascript">writeAppletParams();</script> 
+<param name="appletName" value="regnProg.DragLineApplet"> 
+<param name="xVarName" value="x"> 
+<param name="yVarName" value="y"> 
+<param name="xValues" value="27.6 23 20.8 31.9 17.6 8.1 28.5 12.7 38 26.5 6.4 2.5 8.4 26.1 17.7 9.8 36.7 35.4 13.9 23.6 8.6 31.3 4.6 5 28.2 1.3 27.2 8.1 36.9 38.1"> 
+<param name="yValues" value="14.3 9.3 9.4 15.1 7.9 4.4 12 9 18.6 12.1 3.4 3.8 6.6 12.3 9.6 6 16.3 14.5 8.1 11.5 7.4 16.4 5.8 4.2 12.7 2.7 14.8 4.3 16.3 19.2"> 
+<param name="horizAxis" value="0 40 0 5"> 
+<param name="vertAxis" value="0 20 0 2"> 
+<param name="interceptLimits" value="0.0 20.0 5.0"> 
+<param name="slopeLimits" value="-0.50 0.50 0.20"> 
+<param name="labelAxes" value="true"> 
+</applet> 
+</div> 
+ 
+<p><strong>Arrastre las</strong> flechas rojas en el diagrama para ajustar la intercepción y la cuesta de la línea para hacer las residuales pequeñas. 
+</p> 
+ 
+</div> 
+ 
+  <p class="heading">Minimos cuadraticos: reducción al mínimo de la suma de cuadrados de residuales</p> 
+  <p>Para dar vuelta a esto en un procedimiento objetivo, debemos definir qué es querida decir con “hacer las residuales pequeñas”. La medida total más útil del tamaño de las residuales es la <strong>suma de cuadrados residual</strong>,  </p> 
+ 
+<p class="eqn"><img class="gif" src="../../en/leastSqrs/images/residSsq.gif" width="317" height="28"> 
+</p> 
+ 
+  <p>Los valores de<em> b</em><sub>0</sub> y <em>b</em><sub>1</sub> que reduzcan al mínimo la suma de cuadrados residual se llaman las <strong>estimaciones de los minimos cuadraticos de los</strong> parámetros y del método se llaman el <strong>método de minimos cuadraticos</strong>.  </p> 
+ 
+<div class="diagram"> 
+ 
+<p>En el diagrama abajo, las residuales ajustadas son representadas por las áreas de las cajas en cada punto de referencias. <strong>Arrastre las</strong> flechas rojas para colocar la línea de una manera tal que la suma de los cuadrados residual (la superficie total de las cajas) sea tan pequeña como usted puede alcanzar. 
+</p> 
+ 
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="350" height="400"> 
+<script type="text/javascript">writeAppletParams();</script> 
+<param name="appletName" value="regnProg.DragLineRssApplet"> 
+<param name="dataNames" value="Ejemplo 1#Ejemplo 2#Ejemplo 3"> 
+<param name="xVarName" value="x"> 
+<param name="yVarName" value="y"> 
+<param name="xValues" value="20 22 24 26 28 30"> 
+<param name="yValues" value="8.5 9.3 12.7 14.1 16.8 17.5"> 
+<param name="y2Values" value="8.5 10.1 9.3 12.9 15.2 16.4"> 
+<param name="y3Values" value="16.5 15.4 14.5 13.4 12.2 7.9"> 
+<param name="horizAxis" value="19.5 30.5 20 2"> 
+<param name="vertAxis" value="7 19 8 2"> 
+<param name="interceptLimits" value="-20.0 20.0 8.0"> 
+<param name="slopeLimits" value="-2.00 2.00 0.20"> 
+<param name="labelAxes" value="true"> 
+<param name="biggestRss" value="48000.00"> 
+<param name="customText" value="resid=resid"> 
+</applet> 
+</div> 
+ 
+<p>Después de intentar a mano, chasque los <strong>m3inimos cuadr3aticos del</strong> botón para dejar la computadora determinar los mejores valores. 
+</p> 
+ 
+    <p>Repita este ejercicio con el <strong>ejemplo 2 de los</strong> conjuntos de datos y el <strong>ejemplo 3.</strong> En el tercer conjunto de datos, observe que la línea se puede colocar para hacer cinco de las seis residuales muy pequeños, pero la 6ta residual ajustada es entonces muy grande. La línea de los m3inimos cuadr3aticos tiene varias residuales moderado grandes.  </p> 
+ 
+</div> 
+ 
+  <p>El problema de reducir al mínimo la suma de cuadrados residual no es difícil matemáticamente, pero usted requerirá raramente o utilizar las fórmulas resultantes para <em>b0</em> y <em>b1</em> desde las hojas de balance, los programas estadísticos e incluso las calculadoras científicas hará los cálculos para usted. Sin embargo, para lo completo, las fórmulas están  </p> 
+ 
+  <p class="eqn"><img class="gif" src="../../en/leastSqrs/images/lsFormulae.gif" width="350" height="57"> </p> 
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Sample size for estimating mean</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="sample size, mean">
+	<meta name="dataset" content="Account valuations for brokerage">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">How much data do I need to collect?</p>
+
+<p>This is one of the most common questions that statistical consultants are asked. 
+Data collection is expensive, so there is a clear desire to keep sample sizes 
+as low as possible. However insufficient data means that the parameters of interest 
+cannot be estimated accurately enough.</p>
+<p>Consider estimation of a population mean, µ, 
+from a random sample of size <em>n</em>. A 95% confidence interval will be of 
+the form</p>
+<p class=eqn><img class="gif" src="../../en/ciMean/images/plusMinusTSE.gif" width="93" height="32"> 
+</p>
+<p>If we want our estimate to be within <em>k</em> of µ 
+with probability 0.95, then we need <em>n</em> to be large enough that</p>
+<p class=eqn><img class="gif" src="../../en/ciExtra/images/meanInequality.gif" width="105" height="29"> </p>
+<p>Provided we can make a reasonable guess at the likely value of the sample standard 
+deviation, <em>s</em>, 
+it is possible to determine the necessary sample size by trial-and-error in the 
+above inequality.</p>
+
+<div class="diagram"> 
+
+<p class="heading">Account valuation</p>
+
+<p>As part of an annual review of its accounts, a discount brokerage selected 
+a random sample of 36 customers. Their accounts were reviewed for total account 
+valuation, which showed a mean of $32,000 and a sample standard deviation of $8,200.</p>
+<p>The mean account valuation was estimated from this survey with the 95% confidence 
+interval $32,000 ±&nbsp;2,780. The brokerage decided that this estimate 
+was not accurate enough.</p>
+<center>
+<table border="1" cellspacing="0" cellpadding="5" bgcolor="white" width="75%">
+<tr> 
+<th align="CENTER">How many accounts should be examined to estimate the mean account 
+valuation to within $1,000 with probability 0.95?</th>
+</tr>
+</table>
+</center>
+<p>The following diagram helps with the calculations.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="inferenceProg.FindNForMeanApplet">
+<param name="maxWidth" value="9999.00">
+<param name="guessLimits" value="100 10000 5000 198">
+<param name="nLimits" value="20 400 100">
+<param name="customText" value="Guess at value of * (and s)=Guess at value of * (and s)">
+</applet>
+</div>
+
+<p>Drag the slider to set the standard deviation to $8,200 &mdash; our best estimate 
+from the pilot survey.</p>
+<p>Drag the sample size slider until the '±' value is less than 1000.Verify 
+that the sample size should be 260 or higher. </p>
+<p><font color="#999999">(The diagram can also be used if a maximum standard error 
+or confidence interval width has been specified.)</font></p>
+
+</div>
+
+<p class="heading">Obtaining the sample size by solving an equation</p>
+
+<p>Provided the sample size will be reasonably large, it is possible to replace 
+the t-value in the above inequality by 1.96. For our estimate to be within <em>k</em> 
+of µ 
+with probability 0.95, we therefore need</p>
+<p class=eqn><img class="gif" src="../../en/ciExtra/images/meanInequality2.gif" width="94" height="29"> </p>
+<p>This inequality can be re-written in the form</p>
+<p class=eqn><img class="gif" src="../../en/ciExtra/images/nForMean.gif" width="99" height="41"> </p>
+<p>In practice, it is best to increase <em>n</em> a little over this value in 
+case the sample standard deviation was wrongly guessed.</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

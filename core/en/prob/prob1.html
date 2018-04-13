@@ -1,0 +1,223 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Joint probabilities</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="bivariate data, categorical data, contingency table, joint probability">
+	<meta name="dataset" content="Patients taking prescription medicine">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Data sets with two categorical variables</p>
+
+<p>In this section, we explain how to model data sets that consist of pairs of 
+categorical values &mdash; bivariate categorical data.</p>
+
+<p>Examples where pairs of categorical variables are measured from 'individuals' are:
+</p>
+    
+<div class="centred"><table class="centred" border="0" cellspacing="0" cellpadding="5">
+<tr> 
+<th align="CENTER" width="22%"><span class="black">'Individuals'</span></th>
+<th align="CENTER" width="22%"><span class="black">Variable X</span></th>
+<th align="CENTER" width="22%"><span class="black">Variable Y</span></th>
+</tr>
+<tr bgcolor="#FFFFFF"> 
+<td style="border:1px solid #999999;">Employees in a large company</td>
+<td style="border:1px solid #999999; border-left:0px;">Sex (M or F)</td>
+<td style="border:1px solid #999999; border-left:0px;">Education (none, high school or tertiary)</td>
+</tr>
+<tr bgcolor="#FFFFFF"> 
+<td style="border:1px solid #999999; border-top:0px;">Rose plants</td>
+<td style="border-bottom:1px solid #999999; border-right:1px solid #999999;">Aphids (yes or no)</td>
+<td style="border-bottom:1px solid #999999; border-right:1px solid #999999;">Quality of blooms (poor, OK or good)</td>
+</tr>
+<tr bgcolor="#FFFFFF"> 
+<td  style="border:1px solid #999999; border-top:0px;">TVs leaving a production line</td>
+<td style="border-bottom:1px solid #999999; border-right:1px solid #999999;">Assembler (A, B, C or D)</td>
+<td style="border-bottom:1px solid #999999; border-right:1px solid #999999;">Status (defective or OK)</td>
+</tr>
+</table></div>
+
+<p>In each case, the data that are collected are pairs of categorical values that 
+are measurements of the two variables. Data of this form are usually summarised 
+in a <a href="javascript:showNamedPage('sec_bivarCat')">contingency 
+table</a>. </p>
+
+<div class="diagram">
+
+<p class="heading">Patients taking prescribed medicine</p>
+
+<p>Many patients do not adhere to the medical regimes prescribed for them. Predicting 
+which patients are likely to stop taking their prescribed medication would help 
+treatment. </p>
+<p>One study in the USA examined 62 patients who had been diagnosed as having 
+glaucoma (a disease that affects vision) and who had been prescribed eye drops 
+to take at home. Each patient was classified by whether or not they complied with 
+the treatment prescribed (i.e. took their eye drops regularly) and by racial group.</p>
+<div class="centred"><table border="0" class="centred" cellpadding="3" cellspacing="0">
+<tr> 
+<th>Patient</th>
+<th>&nbsp;&nbsp;&nbsp;Race&nbsp;&nbsp;&nbsp;</th>
+<th>&nbsp;&nbsp;&nbsp;&nbsp;Compliance&nbsp;&nbsp;&nbsp;&nbsp;</th>
+</tr>
+<tr align="center" bgcolor="#FFFFFF"> 
+<td style="border-top:1px solid #999999; border-left:1px solid #999999;">1</td>
+<td style="border-top:1px solid #999999;">White</td>
+<td style="border-top:1px solid #999999; border-right:1px solid #999999;">Complier</td>
+</tr>
+<tr align="center" bgcolor="#FFFFFF"> 
+<td style="border-left:1px solid #999999;">2</td>
+<td>Black</td>
+<td style="border-right:1px solid #999999;">Non-complier</td>
+</tr>
+<tr align="center" bgcolor="#FFFFFF"> 
+<td style="border-left:1px solid #999999;">3</td>
+<td>White</td>
+<td style="border-right:1px solid #999999;">Non-complier</td>
+</tr>
+<tr align="center" bgcolor="#FFFFFF"> 
+<td style="border-bottom:1px solid #999999; border-left:1px solid #999999;">...</td>
+<td style="border-bottom:1px solid #999999;">...</td>
+<td style="border-bottom:1px solid #999999; border-right:1px solid #999999;">...</td>
+</tr>
+</table></div>
+
+<p>The data from the 62 patients are summarised in the contingency table below.</p>
+
+<div class="centred"><table border="0" class="centred" cellpadding="3" cellspacing="0">
+<tr> 
+<th align="left">Race</th>
+<th align="center">&nbsp;&nbsp;&nbsp;&nbsp;Compliers&nbsp;&nbsp;&nbsp;&nbsp;</th>
+<th align="center">Non-compliers</th>
+<th align="center">&nbsp;&nbsp;&nbsp;Total&nbsp;&nbsp;&nbsp;</th>
+</tr>
+<tr> 
+<th align="left">&nbsp;&nbsp;White</th>
+<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">13</td>
+<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">10</td>
+<td align="center">23</td>
+</tr>
+<tr> 
+<th align="left">&nbsp;&nbsp;Non-white&nbsp;&nbsp;&nbsp;</th>
+<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">13</td>
+<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">26</td>
+<td align="center">39</td>
+</tr>
+<tr> 
+<th align="left">Total</th>
+<td align="center">26</td>
+<td align="center">36</td>
+<td align="center">62</td>
+</tr>
+</table></div>
+
+<br>
+
+</div>
+
+  <p class="heading">Joint probabilities</p>
+  
+<p>To model bivariate categorical data, we assume an underlying population of 
+pairs of categorical values. The data are treated as <strong>a random sample of 
+pairs of values</strong> from this population. A real finite population occasionally 
+underlies the data, but we must usually hypothesise an infinite underlying population.</p>
+<p>The proportion of times that the pair of categorical values (x,&nbsp;y) occurs 
+in the population &mdash; its <strong>probability</strong> &mdash; is denoted by <em>p<sub>xy</sub></em>. 
+The probabilities <em>p<sub>xy</sub></em> are called the <strong>joint probabilities</strong> for the two variables. </p>
+
+
+<div class="diagram" title="Example: Gambling simulation"> 
+
+<p class="heading">Gambling simulation</p>
+	
+<p>A gambler draws a card from a shuffled deck and also tosses a coin, resulting
+in a pair of categorical values,
+</p>
+
+<div class="centred"><table class="centred" border="0" cellpadding="5" cellspacing="0">
+<tr>
+<th align="CENTER"><span class="blue">Variable</span></th>
+<th align="CENTER"><span class="blue">Possible values</span></th>
+</tr>
+<tr>
+<td bgcolor="white" style="border-top:1px solid #999999;"><strong>Coin side, X  </strong></td>
+<td bgcolor="white" style="border-top:1px solid #999999;">Head or Tail</td></tr>
+<tr>
+<td bgcolor="white" style="border-bottom:1px solid #999999;"><strong>Card suit, Y  </strong></td>
+<td bgcolor="white" style="border-bottom:1px solid #999999;">Heart, Club, Diamond or Spade</td></tr>
+</table></div>
+
+<p>Each of the eight possible combinations of coin side and card suit is equally 
+likely and would occur in the same proportions in the underlying population.</p>
+<p class=eqn><img src="../prob/images/cardAndCoin.png" width="284" height="117" alt="pxy = 1/8"> 
+</p>
+<p>The probabilities for all pairs are therefore the same, </p>
+
+<p class=eqn><span class="black"><em>p</em><sub style="font-family:sans-serif; font-size:small;">head, heart</sub> &nbsp;= &nbsp;<em>p</em><sub style="font-family:sans-serif; font-size:small;">head, club</sub> &nbsp;= &nbsp;... &nbsp;= &nbsp;<em>p</em><sub style="font-family:sans-serif; font-size:small;">tail, spade</sub> &nbsp;= &nbsp;<sup>1</sup>/<sub>8</sub> &nbsp;= &nbsp;0.125</span>
+</p>
+
+<p>These joint probabilities are shown in blue in the table below.
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="continProg.SampleContinApplet">
+<param name="yVarName" value="Y variable">
+<param name="xVarName" value="X variable">
+<param name="yLabels" value="heart club diamond spade">
+<param name="xLabels" value="head tail">
+<param name="xMargin" value="0.50 0.50">
+<param name="yCondit" value="0.125 0.125 0.125 0.125 0.125 0.125 0.125 0.125">
+<param name="sampleSize" value="25 *100 500">
+<param name="maxCount" value="99">
+<param name="customText" value="Sample proportions=Sample proportions#Sample counts=Sample counts#Joint probabilities=Joint probabilities">
+</applet>
+</div>
+
+<p>The two lower tables (in black) describe 100 pairs of values sampled from this population
+&mdash; 100 coin-card pairs. The first of these tables shows the sample as a contingency
+table of counts; the other table displays the counts as proportions.
+</p>
+
+<p>Click <strong>Take sample</strong> a few times to see the variability
+in samples of 100 coin-card pairs. Increase the sample size to 500 and repeat.
+Observe that the sample proportions are less variable when the sample size is large.
+</p>
+</div>
+
+<p class="heading">Interest in the model</p>
+<p>We are usually interested in the joint probabilities in the underlying model, 
+rather than the corresponding proportions from the sample data that have been 
+collected (the contingency table). However the joint probabilities are unknown 
+parameters in most practical situations and must be <strong>estimated</strong> 
+from the sample data. </p>
+
+<div class="diagram">
+
+<p class="heading">Patients taking prescribed medicine</p>
+<p>In situations of practical importance, the underlying probabilities are unknown. 
+In the data set that was collected to examine which patients take prescribed medicine, 
+the 61 glaucoma patients in the study were not the focus of attention &mdash; the researcher 
+wanted to generalise to <strong>all other similar patients</strong>.</p>
+<p class=eqn><img class="gif" src="images/glaucoma.gif" width="510" height="308"> 
+</p>
+<p>The population proportions are unknown, but the sample proportions provide 
+<strong>estimates</strong> of them. </p>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

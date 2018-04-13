@@ -1,0 +1,236 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Parameters that cannot be estimated</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="missing treatments, inestimable parameters, degrees of freedom">
+	<meta name="dataset" content="Warping of copper plates">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Missing treatments</p>  
+  <p>Up to this point, we have only considered  experiments in which all treatments are present, even if replicated in an unbalanced way. If there are missing treatments, some model terms cannot be estimated but, except in extreme situations, it is only high-order interactions that are inestimable.</p>
+  <p>For example, if a completely randomised experiment for two factors A (with 4 levels) and B (with 5 levels) results in the replicates shown in the table below, there is no information about the response when A is at level 4 and B is at levels 4 or 5, so we cannot estimate the interaction between the factors at these levels.</p>
+  <div class="centred"><table border="0" class="centred" cellpadding="3" cellspacing="0">
+		<tr>
+			<td>&nbsp;</td>
+			<th colspan="4" align="center">Number of replicates</th>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td align="center">&nbsp;A level 1&nbsp;</td>
+			<td align="center">&nbsp;A level 2&nbsp;</td>
+			<td align="center">&nbsp;A level 3&nbsp;</td>
+			<td align="center">&nbsp;A level 4&nbsp;</td>
+		</tr>
+		<tr>
+			<td>B level 1&nbsp;&nbsp;</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">2</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">2</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">2</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">2</td>
+		</tr>
+		<tr>
+			<td>B level 2&nbsp;&nbsp;</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">2</td>
+			<td align="center" bgcolor="#FFFFFF">2</td>
+			<td align="center" bgcolor="#FFFFFF">1</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">2</td>
+		</tr>
+		<tr>
+			<td>B level 3&nbsp;&nbsp;</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">2</td>
+			<td align="center" bgcolor="#FFFFFF">1</td>
+			<td align="center" bgcolor="#FFFFFF">2</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">2</td>
+		</tr>
+		<tr>
+			<td>B level 4&nbsp;&nbsp;</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">2</td>
+			<td align="center" bgcolor="#FFFFFF">2</td>
+			<td align="center" bgcolor="#FFFFFF">1</td>
+			<td align="center" bgcolor="#DDDDDD" style="border-right:1px solid #999999;">0</td>
+		</tr>
+		<tr>
+			<td>B level 5&nbsp;&nbsp;</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">2</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">2</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">1</td>
+			<td align="center" bgcolor="#DDDDDD" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">0</td>
+		</tr>
+	</table></div>
+  <p>Analysis can proceed but since only 10 interaction parameters can be estimated (instead of the 12 interaction parameters that could be estimated if data were available from all treatments), the interaction sum of squares in the analysis of variance table will only have 10 degrees of freedom.</p>
+  <p>A more extreme example occurs with the replicates shown in the table below. Now there are so many missing treatment combinations that no interaction parameters can be estimated and we can only estimate the main effects of the two factors and show their explained sums of squares in an analysis of variance table. (There are no degrees of freedom for the interaction.)</p>
+  <div class="centred"><table border="0" class="centred" cellpadding="3" cellspacing="0">
+		<tr>
+			<td>&nbsp;</td>
+			<th colspan="4" align="center">Replicates</th>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td align="center">&nbsp;A level 1&nbsp;</td>
+			<td align="center">&nbsp;A level 2&nbsp;</td>
+			<td align="center">&nbsp;A level 3&nbsp;</td>
+			<td align="center">&nbsp;A level 4&nbsp;</td>
+		</tr>
+		<tr>
+			<td>B level 1&nbsp;&nbsp;</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">3</td>
+			<td align="center" bgcolor="DDDDDD" style="border-top:1px solid #999999;">0</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">3</td>
+			<td align="center" bgcolor="DDDDDD" style="border-top:1px solid #999999; border-right:1px solid #999999;">0</td>
+		</tr>
+		<tr>
+			<td>B level 2&nbsp;&nbsp;</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">3</td>
+			<td align="center" bgcolor="DDDDDD">0</td>
+			<td align="center" bgcolor="DDDDDD">0</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">2</td>
+		</tr>
+		<tr>
+			<td>B level 3&nbsp;&nbsp;</td>
+			<td align="center" bgcolor="DDDDDD" style="border-left:1px solid #999999;">0</td>
+			<td align="center" bgcolor="#FFFFFF">2</td>
+			<td align="center" bgcolor="DDDDDD">0</td>
+			<td align="center" bgcolor="DDDDDD" style="border-right:1px solid #999999;">0</td>
+		</tr>
+		<tr>
+			<td>B level 4&nbsp;&nbsp;</td>
+			<td align="center" bgcolor="DDDDDD" style="border-left:1px solid #999999;">0</td>
+			<td align="center" bgcolor="DDDDDD">0</td>
+			<td align="center" bgcolor="#FFFFFF">3</td>
+			<td align="center" bgcolor="DDDDDD" style="border-right:1px solid #999999;">0</td>
+		</tr>
+		<tr>
+			<td>B level 5&nbsp;&nbsp;</td>
+			<td align="center" bgcolor="DDDDDD" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">0</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">3</td>
+			<td align="center" bgcolor="DDDDDD" style="border-bottom:1px solid #999999;">0</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">3</td>
+		</tr>
+	</table></div>
+	<br>
+	
+<div class="diagram"> 
+<p class="heading">Warping of copper plates</p>
+<p>An experiment was conducted to investigate warping of copper plates. The 
+	two factors studied in the experiment were the temperature and the copper 
+	content of the plates. The response variable measured the amount of warping and is modelled by:</p>
+<div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+	<tr>
+		<td align="center"><br>
+			<br>
+				<span class="em black">y<sub>ijk</sub></span>  &nbsp;= &nbsp;<span class="blue">µ</span></td>
+		<td align="center"><br>
+			<br>
+			&nbsp;+&nbsp;</td>
+		<td align="center"><span class="red">(<em>explained <br>
+			by Copper</em>)<br>
+			β<em><sub>i</sub></em></span></td>
+		<td align="center"><br>
+			<br>
+			&nbsp;+&nbsp;</td>
+		<td align="center" class="green">(<em>explained <br>
+	by Temp</em>)<br>
+			γ<em><sub>j</sub></em></td>
+		<td align="center"><br>
+			<br>
+			&nbsp;+&nbsp;</td>
+		<td align="center" class="purple"><br>
+			(<em>interaction</em>)<br>
+			δ<em><sub>ij</sub></em></td>
+		<td align="center"><br>
+			<br>
+			&nbsp;+&nbsp;</td>
+		<td align="center"><br>
+			(<em>unexplained</em>)<br>
+			ε<em><sub>ijk</sub></em></td>
+	</tr>
+</table></div>
+<p>where parameters involving the baseline levels of the factors are defined to be zero.</p>
+<ul>
+	<li><span class="red">β<sub>1</sub> = &nbsp;</span><span class="green">γ<sub>1</sub> </span>= &nbsp;0</li>
+	<li class="purple">δ<em><sub>ij</sub></em> = 0 &nbsp; &nbsp; &nbsp;if <em>i</em> = 1 or <em>j</em> = 1</li>
+</ul>
+<p>The diagram below shows the resulting parameter estimates for <em>temperature</em>, <em>copper</em> and their interaction.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="490" height="550">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="exper2Prog.IncompleteAnovaApplet">
+<param name="yVarName" value="Warping of plate">
+<param name="yValues" value="17 20 16 21 12 9 24 28 16 18 17 18 27 25 30 22 13 12 27 12 21 31 23 23">
+<param name="xVarName" value="Copper">
+<param name="xValues" value="0 0 1 1 0 0 2 3 0 1 2 1 3 2 3 2 1 0 3 2 1 3 2 3">
+<param name="xLabels" value="40% 60% 80% 100%">
+<param name="zVarName" value="Temperature">
+<param name="zValues" value="0 0 0 0 1 1 0 0 2 1 1 2 1 2 2 0 1 2 0 1 2 1 2 2">
+<param name="zLabels" value="50#degrees#C 75#degrees#C 100#degrees#C">
+<param name="wVarName" value="Interaction">
+<param name="maxParam" value="-99.999">
+<param name="fitDecimals" value="3">
+<param name="maxSsq" value="999.99 999.99 99.99 9.9999">
+<param name="maxMissing" value="15">
+<param name="displayType" value="param">
+<param name="customText" value="Main effects=Main effects#Interactions=Interactions">
+</applet>
+</div>
+<p> The experiment is initially balanced with equal replicates for all treatments. Drag the slider on the right to delete some of the observations. Observe that:</p>
+<ul>
+	<li>Provided there is at least one replicate for each treatment, all model parameters can be estimated.</li>
+	<li>However when there are no replicates for some treatments, the corresponding interaction parameters cannot be estimated &mdash; there is no information in the data about that aspect of the interaction and the interaction parameter is greyed out.</li>
+</ul>
+<p>When 15 observations are missing, there is no information at all in the data about whether there is any interaction.</p>
+</div>
+
+<p class="heading">Missing treatments and degrees of freedom</p>
+<p>A consequence of inestimable parameters caused by missing treatments is that the corresponding sum of squares in the analysis of variance table has fewer degrees of freedom.</p>
+<div class="diagram">
+<p class="heading">Warping of copper plates</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="490" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="exper2Prog.IncompleteAnovaApplet">
+<param name="yVarName" value="Warping of plate">
+<param name="yValues" value="17 20 16 21 12 9 24 28 16 18 17 18 27 25 30 22 13 12 27 12 21 31 23 23">
+<param name="xVarName" value="Copper">
+<param name="xValues" value="0 0 1 1 0 0 2 3 0 1 2 1 3 2 3 2 1 0 3 2 1 3 2 3">
+<param name="xLabels" value="40% 60% 80% 100%">
+<param name="zVarName" value="Temperature">
+<param name="zValues" value="0 0 0 0 1 1 0 0 2 1 1 2 1 2 2 0 1 2 0 1 2 1 2 2">
+<param name="zLabels" value="50#degrees#C 75#degrees#C 100#degrees#C">
+<param name="wVarName" value="Interaction">
+<param name="maxParam" value="-99.999">
+<param name="fitDecimals" value="3">
+<param name="maxSsq" value="999.99 999.99 99.99 9.9999">
+<param name="maxMissing" value="15">
+<param name="displayType" value="anova">
+</applet>
+</div>
+<p>Again use the slider to delete some of the response measurements. Observe that:</p>
+<ul>
+<li>Provided that at least one replicate for each treatment remains, deleting an observation only reduces the degrees of freedom for the <strong>residual</strong> sum of squares.</li>
+<li>When all replicates for a treatment are removed, the degrees of freedom for the <strong>interaction</strong> sum of squares reduces by one.</li>
+<li>When 15 observations are missing, there is no information in the data about the interaction, so the interaction sum of squares has zero degrees of freedom and the term cannot be tested.</li>
+</ul>
+<p>The residual sum of squares reflects the <strong>unexplained</strong> variation in the data and the pairs of replicate observations within any treatment each supply one 'piece of information' about this. Observe that:</p>
+<ul>
+	<li>The residual degrees of freedom are <strong>always</strong> the number of treatments with two replicates.</li>
+	<li>The factor, interaction and residual degrees of freedom always sum to give the total degrees of freedom (<em>n</em>&nbsp;-&nbsp;1).<br>
+	</li>
+</ul>
+<br>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

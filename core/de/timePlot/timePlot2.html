@@ -1,0 +1,145 @@
+<html>
+<head>
+	<title>Patterns in time series</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+  <style type="text/css">
+<!--
+.style1 {
+	color: #FF0000;
+	font-weight: bold;
+}
+-->
+  </style>
+
+	<meta name="index" content="time series, trend, seasonal pattern, cyclic pattern, autocorrelation">
+	<meta name="dataset" content="World rice production">
+	<meta name="dataset" content="Tourist arrivals in Fiji">
+	<meta name="dataset" content="US defence investment">
+	<meta name="dataset" content="British Airways share price">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Types of pattern</p>
+<p>A few patterns in time series are particularly important.</p>
+
+<table>
+<tr valign="top">
+	<td><dl><dt>Trend</dt>
+  <dd>This refers to long-term increases and decreases in the values. Identifying trend is important since we might use it to help forecast future values.</dd>
+	</dl>
+  </td>
+	<td><p><img src="../../en/timePlot/images/pattern_trend.gif" width="204" height="135"></p></td>
+ </tr>
+ 
+<tr valign="top">
+	<td><dl><dt>Seasonal variation</dt>
+  <dd>Seasonal variation is often evident in monthly or quarterly data and refers to a pattern that is repeated each year. For example, temperature is  lowest in the winter months and highest in the summer of every year.</dd>
+  </dl>
+  </td>
+	<td><p><img src="../../en/timePlot/images/pattern_seasonal.gif" width="204" height="135"></p></td>
+ </tr>
+ 
+<tr valign="top">
+	<td><dl>
+		<dt>Cyclic variation (autocorrelation)</dt>
+		<dd>In some time series, successive values tend to be similar to the adjacent values but, unlike in a situation where there is trend, there is no systematic tendency to increase or decrease. The time series plot often appears to have irregular waves or cycles.</dd>
+		<dt>&nbsp;</dt>
+  </dl>
+  </td>
+	<td><p><img src="../../en/timePlot/images/pattern_cyclical.gif" width="204" height="135"></p></td>
+ </tr>
+ 
+<tr valign="top">
+	<td><dl><dt>Random fluctuations</dt>
+  <dd>These are 'ups and downs' in a time series that do not correspond to trend, seasonal variation or autocorrelation.</dd>
+	</dl>
+	</td>
+	<td><p><img src="../../en/timePlot/images/pattern_random.gif" width="204" height="135"></p></td>
+ </tr>
+ 
+</table>
+
+<p>Most time series  show more than one of these patterns to some degree.</p>
+
+<div class="diagram">
+<p class="heading">World rice production</p>
+<p>The time series plot below shows the total world rice production each year from 1961 to 2001.<font color="#666666"></font></p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.TimePlotApplet">
+<param name="varName" value="World rice production (million tonnes)">
+<param name="values" value="? 215.7 226.6 247.1 263.0 254.1 261.2 277.5 288.7 295.7 316.4 317.8 307.3 335.0 332.0 357.0 347.7 369.5 385.1 375.1 396.8 410.0 421.9 447.8 465.1 467.9 468.4 461.1 487.0 514.0 518.2 518.5 528.2 529.8 538.8 547.0 568.5 576.8 578.8 609.9 598.2 585.1">
+<param name="vertAxis" value="200 650 200 50">
+<param name="timeAxis" value="0 10 1960 10">
+<param name="labelAxes" value="true">
+<param name="timeAxisName" value="Year">
+<param name="timeSequence" value="1960 1 43">
+</applet>
+</div>
+<p>The dominant feature of this time series is the  <span class="style1">upward trend</span> over the period.</p>
+
+<p class="heading">Tourist arrivals in Fiji</p>
+<p>This time series shows the total number of tourists arriving in Fiji each month between January 2004 and December 2007.<font color="#666666"></font></p>
+<div class="centred">
+  <applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.TimePlotApplet">
+  <param name="varName" value="International tourists">
+  <param name="values" value="35486 32072 37497 36460 39058 45168 51272 49047 48188 44376 41225 44226 41647 34407 42769 39820 40818 50134 58238 53013 48893 46923 42039 46444 40959 34406 39621 43207 41677 52110 59052 53865 54076 50519 39493 39604 36998 31743 39992 42140 38365 49497 55924 50557 53059 48326 43246 50034">
+  <param name="vertAxis" value="30000 62000 30000 5000">
+  <param name="labelAxes" value="false">
+  <param name="timeAxisName" value="Month">
+  <param name="seasonName" value="12 Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec">
+  <param name="seasonInfo" value="0 0 2004">
+  </applet>
+</div>
+<p>Tourist arrivals are highly seasonal. In most tourist destinations, there is a single peak in the summer of each year but in Fiji, the peak is in the winter months of July to September which have less rainfall and are cooler. This is a  <span class="style1">seasonal pattern</span>.</p>
+<p class="heading">US defence expenditure</p>
+<p>The time series below shows the investment in defence in the USA between 1947 
+and 2006, with all values reported in '2000 dollars'.<font color="#666666"></font></p>
+<div class="centred">
+  <applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.TimePlotApplet">
+  <param name="varName" value="US defence expenditure ($billion)">
+  <param name="values" value="4.9 9.4 13.8 10.8 38.5 55.7 62.4 50.8 41.1 39.3 37.3 39.7 47.3 42.7 47.3 48.9 42.3 38.4 33.5 38.7 43.7 38.3 34.0 30.9 19.7 14.7 16.6 20.2 22.5 24.5 25.0 24.8 28.4 30.4 33.5 37.7 44.2 50.5 60.7 69.6 76.0 70.3 70.7 72.9 68.7 66.1 57.8 53.8 50.9 51.3 45.1 45.6 47.6 48.8 50.8 56.7 61.7 68.0 71.7 76.6">
+  <param name="vertAxis" value="0 80 0 20">
+  <param name="timeAxis" value="3 10 1950 10">
+  <param name="labelAxes" value="true">
+  <param name="timeAxisName" value="Year">
+  <param name="timeSequence" value="1947 1 60">
+  </applet>
+</div>
+<p>The 'wavy' appearance indicates <span class="style1">autocorrelation</span> &mdash; if there is high expenditure in one year, there is usually high expenditure in the adjacent years too.</p>
+
+<p class="heading">British Airways share volumes traded</p>
+<p>The final example shows the number of British Airways shares that were traded in each of the first 
+  57 trading days of 2002 &mdash; between 2nd January and 21st March.</p>
+<div class="centred">
+  <applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.TimePlotApplet">
+  <param name="varName" value="BA Shares traded (million)">
+  <param name="values" value="13.7 8.0 39.6 22.7 19.0 11.8 10.9 7.4 9.3 10.8 9.8 9.7 4.3 3.2 12.6 5.0 9.5 23.7 27.3 14.9 9.7 21.7 11.1 10.4 16.3 18.8 8.6 5.6 5.1 7.2 12.3 8.9 9.9 5.2 7.9 9.6 7.7 5.1 5.7 20.3 15.2 20.8 30.3 34.7 52.2 23.3 28.8 15.3 9.6 33.9 12.5 15.8 10.3 16.1 25.1 24.6 8.0">
+  <param name="vertAxis" value="0 60 0 10">
+  <param name="timeAxis" value="0 10 1 10">
+  <param name="labelAxes" value="true">
+  <param name="timeAxisName" value="Day">
+  <param name="timeSequence" value="1 1 57">
+  </applet>
+</div>
+<p>This time series is dominated by <span class="style1">random fluctuations</span> &mdash; the volume of shares traded seems to vary unpredicably.</p>
+<p class="heading"></p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

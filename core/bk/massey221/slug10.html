@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Predictions from log data</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="confidence interval, prediction">
+	<meta name="dataset" content="Slug weight and length">
+</head>
+
+
+<body style="background-color:#FFE1B6">
+<script type="text/javascript">writePageStart();</script>
+
+
+<p class="heading">Prediction Intervals from Log Data</p>
+
+  <p>The previous page showed how to back-transform a prediction of log(weight) 
+	to predict the weight of a slug. In the same way, the end-points of a prediction 
+	interval for log(weight) can be back-transformed to give a prediction interval 
+	for the actual weight of the slug. For example, consider prediction of a 7&nbsp;cm 
+	slug's weight. Since the log (base 10) of its length is log(7) = 0.845, we 
+	ask Minitab to make a prediction at this value for the explanatory variable:</p>
+
+
+<div class="centred"><table border="0" cellspacing="0" cellpadding="5" class="centred">
+<tr><td bgcolor="white" class="black">
+<tt><pre width="60">
+MTB > Regress 'logWt' 1 'logLen';
+SUBC>   Constant;
+SUBC>   Predict 0.845.
+
+...
+
+     Fit  Stdev.Fit       95.0% C.I.           95.0% P.I.
+  0.6424     0.0203   (  0.6022,  0.6826)  (  0.3708,  0.9139)
+</pre></tt>
+</td></tr>
+</table></div>
+
+
+  <p>The point prediction of logWt, 0.6424, can be back-transformed to a predicted 
+	slug weight of</p>  <p class=eqn> <img src="images/predWt.gif" width="192" height="26" alt="wtHat = 10**.6424 = 4.39"></p>  <p>In a similar way, the limits of the 95% prediction interval for the weight 
+	of a new slug of length 7&nbsp;cm is</p>  <p class=eqn> <img src="images/backTransPI.gif" width="330" height="25" alt="2.349 to 8.202"></p>  <p>Note that the prediction interval is fairly wide &mdash; this reflects the considerable 
+	variability in the weights of slugs of any length around the fitted line on 
+	a scatterplot.</p>
+
+<div align="center">
+<script type="text/javascript">startApplet("loessProg.LogLogPIApplet", 650, 350, "", "FFE1B6");</script>
+<param name="xVarName" value="Len">
+<param name="yVarName" value="Wt">
+<param name="xValues" value="7.3 7.8 7.5 6.9 6.0 7.4 8.5 8.6 8.2 8.5 7.0 4.3 3.2 4.7 4.2 9.0 4.6 3.8 4.0 3.9 3.2 1.0 4.1 6.1 4.2 4.4 5.6 5.7 1.7 4.5 4.5 3.5 2.0 2.9 2.1 2.6 2.6 3.6 1.6 3.5 3.6 2.2 2.4 4.2 3.3 3.9 5.6 4.6 2.2 1.2 2.7 3.4 3.2 2.3 2.8 1.4 2.2 1.7 1.0 2.3 3.5 2.9 2.6 2.1 1.6 1.6 2.0 7.5 7.8 2.2 6.1 5.9 7.8 9.0 9.3 7.1 9.4 8.5 8.5 2.4 2.5 5.7 4.5 1.0 1.0 1.0 1.1 1.9 1.6 3.1 2.3 1.9 1.8 2.3 2.5 3.3 4.2 2.1 9.0 9.4">
+<param name="yValues" value="3.68 5.48 4.94 3.47 3.26 4.36 6.44 8.37 6.40 8.23 4.99 1.69 0.39 2.14 1.07 8.75 1.02 1.07 0.88 0.76 0.48 0.04 0.98 3.34 1.02 1.10 2.35 3.93 0.10 0.65 1.64 0.50 0.12 0.40 0.14 0.35 0.29 0.88 0.12 0.66 0.62 0.17 0.25 2.28 1.26 2.20 4.78 3.27 0.20 0.09 0.30 0.52 0.47 0.19 0.28 0.08 0.18 0.13 0.06 0.20 0.60 0.39 0.31 0.16 0.06 0.04 0.16 4.94 5.48 0.36 3.16 1.91 8.44 13.62 8.70 4.39 8.23 6.30 6.06 0.24 0.27 2.04 1.30 0.03 0.03 0.02 0.03 0.14 0.08 ? 0.18 0.10 0.09 0.23 0.26 0.71 0.85 0.18 12.00 11.22">
+<param name="horizAxis" value="0.49 10.01 2 2 0.5 1">
+<param name="horizAxis2" value="0 10 0 2">
+<param name="vertAxis" value="0.0009 30 5 5 0.001 0.01 0.1 1">
+<param name="vertAxis2" value="0 25 0 5">
+<param name="transXAxis" value="(200,-1) (500,-1)">
+<param name="maxXTransformed" value="0.0 1.0">
+<param name="transYAxis" value="(200,0) (500,0)">
+<param name="maxYTransformed" value="-1.00 1.00">
+<param name="labelAxes" value="true">
+<param name="extraAxisSpace" value="10 10">
+<param name="xLimits" value="0.5 10.0 0.1 3.0">
+<param name="maxPrediction" value="15.000">
+<param name="predictName" value="Wt of Slug">
+<param name="betaExtremes" value="3 4 99.99 3 4 99.99">
+</applet>
+</div>
+
+  <p><span class="instruction">Drag the slider</span> in the above diagram to display 
+	prediction intervals for slugs of different lengths. Observe that the prediction 
+	intervals are all of roughly the same width in the scatterplot of log(weight) 
+	against log(length) since they are based on the assumption of constant variance 
+	in that plot. <span class="gray">(The prediction intervals are actually 
+	slightly wider for very long or short slugs than for 'average' slugs.)</span></p>  <p>However when the prediction intervals are translated back onto a scatterplot 
+	of the raw weight against length, they are much wider for long slugs than 
+	for short ones &mdash; as would be expected from the spread of values on the scatterplot 
+	itself!</p>
+	
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

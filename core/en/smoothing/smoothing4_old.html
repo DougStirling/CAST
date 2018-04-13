@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Exponential smoothing</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="smoothing, exponential smoothing">
+	<meta name="dataset" content="British Airways share price">
+	<meta name="dataset" content="World rice production">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Smoothing up to the end of the series</p>
+	<p>One problem with the use of moving averages to smooth a time series is that it cannot provide smoothed values for the most recent times. For example, if the run length is 9, the final smoothed value is the average of the most recent 9 values and provides a smoothed value that is 5 time periods from the end of the series &mdash; smoothed values cannot be found for the final 4 times.</p>
+	<p>One solution is to use <strong>exponential 
+  smoothing</strong>. The first 'smoothed' value is defined to be the same as the first value in the series,</p>
+	<p class=eqn><img class="gif" src="../smoothing/images/expSmoothInitial.gif" width="59" height="18"> </p>
+<p>Subsequent exponentially smoothed values are  'weighted averages' of the actual 
+		value at that time and the previous smoothed value, </p>
+
+<div class="centred"><div class="boxed percent50">
+	<p class=eqn><img class="gif" src="../smoothing/images/expSmoothEqn.gif" width="175" height="25"> </p>
+</div></div>
+
+<p>where the smoothing constant, <i>a</i>, is a value between 0 and 1.</p>
+<p class="heading">Alternative formula</p>
+<p>With a little algebraic manipulation, the formula can also be expressed as </p>
+<p class=eqn><img class="gif" src="../smoothing/images/expSmoothEqn2.gif" width="486" height="26"></p>
+
+<p>The smoothed value therefore depends only on earlier values from the series, 
+    so we can obtain an exponentially smoothed values up to the end of the series. For example, if <em>a</em>&nbsp;=&nbsp;<sup>1</sup>/<sub>2 </sub>, </p>
+  <p class=eqn><img class="gif" src="../smoothing/images/expSmoothHalf.gif" width="299" height="26"> </p>
+<p>Note here that the smoothed value puts more weight on the recent past (which is an intuitively sensible thing to do). The closer <em>a</em> becomes to one, the smaller the influence of the earlier values in the series.</p>
+  <p class="heading">Forecasting future values</p>
+  <p>The final exponentially smoothed value in the series can be used to forecast 
+    future values. If data are available up to and including time <i>i</i>, 
+    then the forecast for the next time period (<i>i</i>&nbsp;+&nbsp;1) is the 
+  exponentially smoothed value at time <i>i</i>. We write this as</p>
+  <p class=eqn><img class="gif" src="../smoothing/images/expPredict2.gif" width="81" height="22"> </p>
+<p>where <img src="../../images/symbol.xHat.png" width="10" height="13" align="baseline"> denotes a forecast and <img src="../../images/symbol.xTwiddle.png" width="11" height="13" align="baseline"> denotes the exponentially smoothed value. To forecast further into the future, 
+  	we use the same exponentially smoothed value so, in general,</p>
+  <p class=eqn><img class="gif" width="252" height="23"> </p>
+<p>Since the exponentially smoothed values depend on the smoothing constant, 
+  	so do the forecasts.</p>
+  <ul>
+		<li>If <i>a</i>&nbsp;=&nbsp;1, the forecast is just the last observed value 
+			in the time series.</li>
+  	<li>As <i>a</i> is reduced, the forecast becomes more affected by earlier 
+  		values in the series.</li>
+ 	</ul>
+	<br>
+	
+<div class="diagram">
+<p class="heading">British Airways share trading</p>
+
+		<p>The time series plot below shows the volume of British Airways shares traded 
+      in the first 57 trading days of 2002 &mdash; between 2nd January and 21st March.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="370">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.ExpSmoothApplet">
+<param name="varName" value="BA Shares traded (million)">
+<param name="values" value="13.7 8.0 39.6 22.7 19.0 11.8 10.9 7.4 9.3 10.8 9.8 9.7 4.3 3.2 12.6 5.0 9.5 23.7 27.3 14.9 9.7 21.7 11.1 10.4 16.3 18.8 8.6 5.6 5.1 7.2 12.3 8.9 9.9 5.2 7.9 9.6 7.7 5.1 5.7 20.3 15.2 20.8 30.3 34.7 52.2 23.3 28.8 15.3 9.6 33.9 12.5 15.8 10.3 16.1 25.1 24.6 8.0">
+<param name="vertAxis" value="0 60 0 10">
+<param name="timeAxis" value="0 10 0 10">
+<param name="smoothName" value="smoothed">
+<param name="labelAxes" value="true">
+<param name="timeAxisName" value="Day">
+<param name="customText" value="Smoothing const=Smoothing const">
+</applet>
+</div>
+
+		<p>In most short periods of time, the main determinant of share price or volume 
+			movements is autocorrelation rather than trend. (Overall trends on the stock 
+			market are usually fairly slow.) We will therefore apply exponential smoothing 
+			to the raw data without first removing a trend from the data.</p>
+		<p>Use the slider to adjust the value of the smoothing constant, <i>a</i>, 
+			and observe its effect on the smoothing of the series.</p>
+		<p><strong>Click on data values</strong>; the green shading shows which of the original values affect any smoothed value &mdash; the darker the green, the greater the influence.</p>
+  </div>
+
+	<p class="heading">Time series with trend</p>
+	<p>The above example  had no long-term trend. However for a time 
+		series with an increasing trend, exponential smoothing of the raw data will 
+		tend to underestimate the trend. Similarly, the smoothed series will be too high if 
+		there is a decreasing trend.</p>
+
+
+  <div class="centred"><div class="boxed">
+    <p>Do not use exponential smoothing on a time series with trend.</p>
+  </div></div>
+  
+  <p>(There are modifications to exponential smoothing that can be used in the presence of trend, but these are more advanced.)</p>
+  
+  <div class="diagram">
+<p class=heading>World rice production (million tonnes)</p>
+
+<p>The time series below has an increasing linear trend.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.ExpSmoothApplet">
+<param name="varName" value="World rice production">
+<param name="values" value="? 215.7 226.6 247.1 263.0 254.1 261.2 277.5 288.7 295.7 316.4 317.8 307.3 335.0 332.0 357.0 347.7 369.5 385.1 375.1 396.8 410.0 421.9 447.8 465.1 467.9 468.4 461.1 487.0 514.0 518.2 518.5 528.2 529.8 538.8 547.0 568.5 576.8 578.8 609.9 598.2 585.1">
+<param name="vertAxis" value="200 650 200 50">
+<param name="timeAxis" value="0 10 1960 10">
+<param name="labelAxes" value="true">
+<param name="timeAxisName" value="Year">
+<param name="timeSequence" value="1960 1 43">
+<param name="smoothName" value="smoothed">
+<param name="customText" value="Smoothing const=Smoothing const">
+</applet>
+</div>
+
+<p>Decrease the exponential smoothing constant and observe that the exponentially 
+  smoothed values are systematically below the series.</p>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

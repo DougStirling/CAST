@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Components of variation for Y vs X and Z</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="normal linear model, linear model, variation">
+	<meta name="dataset" content="Body fat">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Components for simple linear model</p>
+  <p>In the simple linear model,</p>
+  <p class="eqn"><img src="../regnAnova/images/normModel.gif" width="359" height="21" align="absmiddle"> 
+    ,</p>
+  <p>fitted values are obtained from the least squares estimates,</p>
+  <p class="eqn"><img src="images/fittedValSimple.gif" width="128" height="22" align="absmiddle"></p>
+  <p>The difference between <em>y<sub>i</sub></em> and the overall mean response 
+    can be written as the sum of two components,</p>
+  <p class="eqn"><img src="images/componentsSimple.gif" width="290" height="47" align="absmiddle"></p>
+  <p>The components can be displayed graphically as follows:</p>
+  <p class="eqn"><img src="images/compGraphSimple.gif" width="315" height="239" align="absmiddle"></p>
+  <p>In particular, the explained components are the distances between the least 
+    squares line and the horizontal line representing the mean.</p>
+  <p class="heading">Regression model with two explanatory variables</p>
+  <p>A similar result holds for regression models with two explanatory variables,</p>
+  <p class="eqn"><img src="../regnInfTwo/images/normModelTwo2.gif" width="418" height="21" align="absmiddle"> 
+    ,</p>
+  <p>where the fitted values are</p>
+  <p class="eqn"><img src="images/fittedValTwo.gif" width="178" height="22" align="absmiddle"></p>
+  <p>Again we can write:</p>
+  <p class="eqn"><img src="images/componentsSimple.gif" width="290" height="47" align="absmiddle"></p>
+  <p>The components can also be represented graphically, but this requires a 3-dimensional 
+		scatterplot of the data.</p>
+  <div class="diagram">
+    <p class="heading">Body fat</p>
+
+    <p>The diagram below again shows the relationship between the body fat of 
+      25 men and their abdomen circumference and height.</p>
+    <p>The mean is represented by a blue plane that is parallel to the x-z axes. 
+      The total components are the green vertical lines from the crosses to this 
+      plane. Drag the centre of the diagram to rotate (or use the buttons underneath).</p>
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="multiRegnProg.ComponentsApplet">
+<param name="yVarName" value="Body fat">
+<param name="xVarName" value="Abdomen">
+<param name="zVarName" value="Height">
+<param name="yAxis" value="0 40 0 10">
+<param name="xAxis" value="65 120 70 10">
+<param name="zAxis" value="63 76 65 5">
+<param name="yValues" value="12 16.5 9.4 31.3 5 24 13.2 18.6 14.3 21.7 21 17.9 15 20.1 24.5 22 16.5 16.8 23.8 22.6 11.3 15.1 16.9 28.8 28.3">
+<param name="xValues" value="88.6 100.5 83.5 108.1 70.4 98.3 84.6 98.6 86.5 94 92.3 87.5 87 106.6 106.8 92.4 90.8 104.5 101.2 89.7 84.4 88.7 93 100.5 111.5">
+<param name="zValues" value="73.5 73.5 69 67 66.75 65.75 71.5 69.25 73 72 69.25 72.25 69.75 75 70.25 71.5 69.5 74.5 68.25 67.5 70.75 69.25 68.5 65.75 66">
+<param name="meanDecimals" value="2">
+<param name="maxSsq" value="999.999">
+<param name="ssqNames" value="Total variation#Explained by regression#Residual">
+<param name="componentDotWidth" value="120">
+<param name="summaryAxis" value="-20 20 -20 10">
+<param name="customText" value="Component=Component">
+</applet> 
+</div>
+
+    <p>Select <strong>Residual</strong> from the pop-up menu. The least squares 
+      equation is represented by the grey plane and the residuals are the vertical 
+      distances from the crosses to this plane. Again rotate to get a better feel 
+      for these components.</p>
+    <p>Finally select <strong>Explained by regression</strong> from the pop-up 
+      menu and rotate. The explained components are the vertical distances between 
+      the two planes at each data point.</p>
+</div>
+
+
+  <p class="heading">Interpretation</p>
+
+    <div class="centred"><table width="90%" border="0" cellspacing="0" cellpadding="6" class="centred">
+      <tr> 
+        <td class="green" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">Total components</td>
+        <td style="border-top:1px solid #999999; border-bottom:1px solid #999999;"><img src="images/totalComponentAnova.gif" width="53" height="23" alt="total"></td>
+        <td class="green" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">These differences reflect the total variability 
+          of the response &mdash; without taking account of either of the two explanatory 
+          variables.</td>
+      </tr>
+      <tr> 
+        <td class="red" style="border-bottom:1px solid #999999;">Explained components</td>
+        <td style="border-bottom:1px solid #999999;"><img src="images/regnComponentAnova.gif" width="53" height="23" alt="explained"></td>
+        <td class="red" style="border-bottom:1px solid #999999;">These components describe how much the predicted 
+          response changes from using the least squares line (as opposed to simply 
+          using the overall mean as a prediction).</td>
+      </tr>
+      <tr> 
+        <td class="blue" style="border-bottom:1px solid #999999;">Residual components</td>
+        <td style="border-bottom:1px solid #999999;"><img src="images/residComponentAnova.gif" width="57" height="23" alt="residual"></td>
+        <td class="blue" style="border-bottom:1px solid #999999;">The residuals describe the extent to which the 
+          two explanatory variables fail to predict the response. Their variation 
+          is not explained by the model.</td>
+      </tr>
+    </table></div>
+
+  
+  
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

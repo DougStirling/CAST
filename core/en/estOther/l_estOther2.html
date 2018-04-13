@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Simulation from normal approximation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="simulation, error distribution, standard error, bias, quartiles">
+	<meta name="dataset" content="Silkworm poisoning">
+</head>
+
+
+<body class="lecture">
+<script type="text/javascript">writePageStart();</script>
+
+
+
+<p class="heading">Silkworm survival after dose of arsenic</p>
+
+  <div class="centred"><div class="boxed">
+  <p>Upper quartile of survival times from 80 silkworm larvae = 292 sec </p>
+</div></div>
+<p class=heading>Normal approximation</p>
+<p class=eqn><img class="gif" src="images/silkwormModel.gif" width="388" height="128"></p>
+<p class=heading>Simulation</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="390">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="stdErrorProg.ErrorSampleApplet">
+<param name="varName" value="Simulated survival times (sec)">
+<param name="random" value="80 272.6 30.7 875636431 2.5">
+<param name="dataAxis" value="180 380 200 50">
+<param name="errorName" value="Error in estimate (sec)">
+<param name="errorAxis" value="-15 15 -15 5">
+<param name="percentile" value="0.75">
+<param name="paramName" value="Target (UQ)">
+<param name="statisticName" value="Estimate (sample UQ)">
+<param name="decimals" value="2">
+<param name="units" value="sec">
+<param name="maxBiasSe" value="99.99">
+<param name="showBiasSe" value="true">
+<param name="customText" value="Estimate s.e. & bias=Estimate s.e. & bias#Bias=Bias">
+<param name="fontSize" value="big">
+</applet>
+</div>
+
+			
+		
+<script type="text/javascript">
+	writeLecturerNotesLink(withDataNotes);
+</script>
+
+<div class="lecturerNote" id="lecturerNote">
+  <p>Use this page to explain how a simulation can give the approximate standard error for an estimator when  no formula is available.</p>
+  <p>In this case, we are estimating an upper quartile and samples are simulated from a normal distribution that is probably close to the population distn. The upper quartile for this normal distribution is 293.3, so we can find the estimation error from any sample and build up the error distribution.</p>
+  <p>Click <strong>Accumulate</strong> then take 100 or more samples to build the 
+    error distribution (hold down the <strong>Take sample</strong> button). Then 
+    click <strong>Estimate s.e. and bias</strong>.</p>
+  <div class="centred"><div class="boxed"><p>From the simulation, the error in our estimate of the population 
+				upper quartile, 292&nbsp;sec, is likely to be less than 8&nbsp;sec and 
+				will almost certainly be less than 12&nbsp;sec.</p>
+  </div></div>
+
+<br>
+</div>
+<div class="lecturerNote" id="dataNote">
+<p>Silkworms must be killed after spinning their cocoons since the silk is damaged when the moths break free. Heat is often used to kill the caterpillars, but researchers performed experiments to investigate the toxic action of arsenic. As part of their research, the survival time of fourth-instar silkworm larvae weighing between 0.41 and 0.45 grams was examined after they were given 0.10 mg of sodium arsenate per gram of body weight.</p>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,141 @@
+<html>
+<head>
+	<title>Transformations and prediction</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="nonlinear model, nonlinear relationship, curvature, transformations">
+	<meta name="dataset" content="Slug weight and length">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Point prediction using transformed variables</p>
+<p>If a transformation of <em>Y</em> follows a normal linear model with an explanatory 
+variable that is a transformation of <em>X</em>, a least squares line that is 
+fitted to the transformed data is used for predictions.</p>
+<p>To obtain a prediction of <em>Y</em> at any value <em>x,</em></p>
+
+<ol>
+<li>Transform <em>x</em></li>
+<li>Put this transformed <em>x</em>-value into the least squares equation to obtain 
+a prediction of the <strong>transformed</strong> <em>Y</em>.</li>
+<li>Apply the <strong>inverse transformation</strong> to the one that was used 
+on <em>Y</em> to obtain the prediction of <em>Y</em> itself</li>
+</ol>
+
+<p>For example, if the square root of <em>Y</em> is linearly related to <em>X</em>, 
+we use the least squares line to obtain a prediction of sqrt(<em>Y</em>), then 
+square this to get a prediction of <em>Y</em> itself.</p>
+
+<div class="diagram"> 
+<p class="heading">Slug weight and length</p>
+<p>99 slugs of the species <em>Limax maximus</em> were collected by two researchers. 
+The slugs were preserved in a relaxed state and subsequently their weight (gm) 
+and length (cm) recorded.</p>
+<p class=eqn> <span class="reference"><img src="../../en/regnProblem/images/slugPicture.gif" width="395" height="132" alt="slug picture"> 
+<br>
+<i>Limax maximus:</i> A, lateral aspect; B, dorsal aspect </span></p>
+<p>Since weight is related to volume, it was anticipated that weight might be 
+proportional to (length)<sup>3</sup>. Generalising a little,</p>
+<p class=eqn><em>weight</em> &nbsp; = <em>a</em> × <em>length<sup> p</sup></em></p>
+<p class=eqn><strong>log </strong>(<em>wt</em>) &nbsp; = &nbsp; <strong>log</strong> (<em>a</em>) &nbsp;+ &nbsp;<em>p</em> × <strong>log</strong> (<em>len</em>)</p>
+<p>If this model holds, <strong>log</strong>&nbsp;(<em>wt</em>) will be linearly related to <strong>log&nbsp;</strong>(<em>len</em>). Indeed, 
+the model will allow us to test whether the appropriate power is <i>p</i>&nbsp;=&nbsp;3.</p>
+<p>The diagram below shows that the logs of weight and length are approximately 
+linearly related and seem to satisfy the normal linear model assumptions. The 
+least squares line is also shown, both on the transformed scatterplot and on a 
+scatterplot of the original data.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="650" height="380">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="loessProg.LogLogLSApplet">
+<param name="xVarName" value="Len">
+<param name="yVarName" value="Wt">
+<param name="xValues" value="7.3 7.8 7.5 6.9 6.0 7.4 8.5 8.6 8.2 8.5 7.0 4.3 3.2 4.7 4.2 9.0 4.6 3.8 4.0 3.9 3.2 1.0 4.1 6.1 4.2 4.4 5.6 5.7 1.7 4.5 4.5 3.5 2.0 2.9 2.1 2.6 2.6 3.6 1.6 3.5 3.6 2.2 2.4 4.2 3.3 3.9 5.6 4.6 2.2 1.2 2.7 3.4 3.2 2.3 2.8 1.4 2.2 1.7 1.0 2.3 3.5 2.9 2.6 2.1 1.6 1.6 2.0 7.5 7.8 2.2 6.1 5.9 7.8 9.0 9.3 7.1 9.4 8.5 8.5 2.4 2.5 5.7 4.5 1.0 1.0 1.0 1.1 1.9 1.6 3.1 2.3 1.9 1.8 2.3 2.5 3.3 4.2 2.1 9.0 9.4">
+<param name="yValues" value="3.68 5.48 4.94 3.47 3.26 4.36 6.44 8.37 6.40 8.23 4.99 1.69 0.39 2.14 1.07 8.75 1.02 1.07 0.88 0.76 0.48 0.04 0.98 3.34 1.02 1.10 2.35 3.93 0.10 0.65 1.64 0.50 0.12 0.40 0.14 0.35 0.29 0.88 0.12 0.66 0.62 0.17 0.25 2.28 1.26 2.20 4.78 3.27 0.20 0.09 0.30 0.52 0.47 0.19 0.28 0.08 0.18 0.13 0.06 0.20 0.60 0.39 0.31 0.16 0.06 0.04 0.16 4.94 5.48 0.36 3.16 1.91 8.44 13.62 8.70 4.39 8.23 6.30 6.06 0.24 0.27 2.04 1.30 0.03 0.03 0.02 0.03 0.14 0.08 ? 0.18 0.10 0.09 0.23 0.26 0.71 0.85 0.18 12.00 11.22">
+<param name="horizAxis" value="0.99 10.01 2 2 1">
+<param name="horizAxis2" value="0 10 0 2">
+<param name="vertAxis" value="0.01 15 5 5 0.01 0.1 1">
+<param name="vertAxis2" value="0 15 0 5">
+<param name="transXAxis" value="(200,-2) (500,-2)">
+<param name="maxXTransformed" value="0.0 1.0">
+<param name="transYAxis" value="(200,0) (500,0)">
+<param name="maxYTransformed" value="-1.00 1.00">
+<param name="labelAxes" value="true">
+<param name="extraAxisSpace" value="10 10">
+<param name="betaExtremes" value="3 4 99.99 3 4 99.99">
+<param name="maxValues" value="10.00 -1.000 10.000">
+<param name="factorDecimals" value="4">
+<param name="customText" value="Least Squares Fit=Least Squares Fit#Original Scale=Original Scale#Show prediction using=Show prediction using#Using log scale=Using log scale#Using original scale=Using original scale">
+</applet>
+</div>
+
+<p>Click on the scatterplot at any length (or log-length) to see how log(wt) is 
+predicted using the least squares slope and intercept. From this, the weight is 
+predicted by raising 10 to this power &mdash; the inverse transformation to log<sub>10</sub>.</p>
+</div>
+
+<p class="heading">Prediction intervals</p>
+<p>Prediction intervals can be obtained in a similar way.</p>
+<ol>
+<li>Transform <em>x</em></li>
+<li>Use the ordinary linear model methods to find a prediction interval for the 
+<strong>transformed</strong> <em>Y</em>.</li>
+<li>Apply the inverse transformation to <strong>both ends</strong> of the prediction 
+interval to get a prediction interval for <em>Y</em> itself.</li>
+</ol>
+<p>For example, if the square root of <em>Y</em> is linearly related to <em>X</em>, 
+we find a prediction interval for sqrt(<em>Y</em>), then square both ends of this 
+interval to get a prediction interval for <em>Y</em> itself.</p>
+<p>Although the prediction interval for the transformed <em>Y</em> has a similar 
+width over the range of x-values in the data, the resulting prediction interval 
+for <em>Y</em> itself may vary much more in width.</p>
+
+
+<div class="diagram"> 
+<p class="heading">Slug weight and length</p>
+<p>The red band on the scatterplot of log(wt) against log(length) on the left 
+below shows 95% prediction intervals. Use the slider under the diagram to display 
+the prediction interval for the weight of a slug of any length.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="650" height="370">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="loessProg.LogLogPIApplet">
+<param name="xVarName" value="Len">
+<param name="yVarName" value="Wt">
+<param name="xValues" value="7.3 7.8 7.5 6.9 6.0 7.4 8.5 8.6 8.2 8.5 7.0 4.3 3.2 4.7 4.2 9.0 4.6 3.8 4.0 3.9 3.2 1.0 4.1 6.1 4.2 4.4 5.6 5.7 1.7 4.5 4.5 3.5 2.0 2.9 2.1 2.6 2.6 3.6 1.6 3.5 3.6 2.2 2.4 4.2 3.3 3.9 5.6 4.6 2.2 1.2 2.7 3.4 3.2 2.3 2.8 1.4 2.2 1.7 1.0 2.3 3.5 2.9 2.6 2.1 1.6 1.6 2.0 7.5 7.8 2.2 6.1 5.9 7.8 9.0 9.3 7.1 9.4 8.5 8.5 2.4 2.5 5.7 4.5 1.0 1.0 1.0 1.1 1.9 1.6 3.1 2.3 1.9 1.8 2.3 2.5 3.3 4.2 2.1 9.0 9.4">
+<param name="yValues" value="3.68 5.48 4.94 3.47 3.26 4.36 6.44 8.37 6.40 8.23 4.99 1.69 0.39 2.14 1.07 8.75 1.02 1.07 0.88 0.76 0.48 0.04 0.98 3.34 1.02 1.10 2.35 3.93 0.10 0.65 1.64 0.50 0.12 0.40 0.14 0.35 0.29 0.88 0.12 0.66 0.62 0.17 0.25 2.28 1.26 2.20 4.78 3.27 0.20 0.09 0.30 0.52 0.47 0.19 0.28 0.08 0.18 0.13 0.06 0.20 0.60 0.39 0.31 0.16 0.06 0.04 0.16 4.94 5.48 0.36 3.16 1.91 8.44 13.62 8.70 4.39 8.23 6.30 6.06 0.24 0.27 2.04 1.30 0.03 0.03 0.02 0.03 0.14 0.08 ? 0.18 0.10 0.09 0.23 0.26 0.71 0.85 0.18 12.00 11.22">
+<param name="horizAxis" value="0.49 10.01 2 2 0.5 1">
+<param name="horizAxis2" value="0 10 0 2">
+<param name="vertAxis" value="0.0009 30 5 5 0.001 0.01 0.1 1">
+<param name="vertAxis2" value="0 25 0 5">
+<param name="transXAxis" value="(200,-1) (500,-1)">
+<param name="maxXTransformed" value="0.0 1.0">
+<param name="transYAxis" value="(200,0) (500,0)">
+<param name="maxYTransformed" value="-1.00 1.00">
+<param name="labelAxes" value="true">
+<param name="extraAxisSpace" value="10 10">
+<param name="xLimits" value="0.5 10.0 0.1 3.0">
+<param name="maxPrediction" value="15.000">
+<param name="predictName" value="Wt of Slug">
+<param name="betaExtremes" value="3 4 99.99 3 4 99.99">
+<param name="customText" value="Least Squares Fit=Least Squares Fit#Original Scale=Original Scale#to=to#95% P.I. for * with * is=95% P.I. for * with * is">
+</applet>
+</div>
+
+<p>The scatterplot on the right shows the corresponding data and prediction intervals 
+on a plot of the untransformed variables. Observe that the prediction interval 
+for the weight of a new long slug is much wider than that for a short slug.</p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

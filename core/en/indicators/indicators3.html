@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Least squares estimates</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="comparing groups, general linear model, indicator variable">
+	<meta name="dataset" content="Antibiotics">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Applying the GLM theory</p>
+  <p>Having expressed the g-group model as a GLM,</p>
+  <p class="eqn"><img src="images/factorModel2.gif" width="483" height="27"></p>
+  <p>we can apply standard GLM theory to find the least squares estimates of the 
+    model parameters,</p>
+  
+   <p class=eqn><img src="../glm/images/lsEquation.gif" width="138" height="23"></p>
+	 
+  <p>Expanding this matrix with the design matrix, <strong>X</strong>, from the 
+		previous page, it can be shown that the least squares estimates are:</p>
+	
+  <p class=eqn><img src="images/lsEstimates.gif" width="162" height="98"></p>
+	
+  <p>It is again simple to show that:</p>
+	
+<div class="centred"><div class="boxed">
+<p>The fitted values are the sample 
+            means from the <em>g</em> groups.</p>
+</div></div>
+
+	<br>
+  <p class=eqn><img src="images/fittedValues.gif" width="59" height="25"></p>
+	<br>
+
+<div class="diagram"> 
+
+    <p class="heading">Antibiotic effectiveness</p>  
+    <p>A percentage of any antibiotic binds to blood serum proteins, reducing 
+      the effectiveness of the medication. This is of considerable pharmacological 
+      importance since increased binding reduces the systemic uptake of the drug. 
+      An experiment was conducted using bovine serum to determine the binding 
+      percentage for five common antibiotics.</p>
+	<blockquote>
+	<ul>
+      <li>Penicillin</li>
+      <li>Tetracycline</li>
+      <li>Streptomycin</li>
+      <li>Erythromycin</li>
+      <li>Chloramphenicol</li>
+	</ul>
+	</blockquote>
+	<p>The experiment was repeated four 
+      times for each antibiotic.</p>
+    
+<div class="centred"><div class="boxed">
+<p>To keep the design matrix X to a reasonable 
+              size below, we have only modelled the data from the <strong>first 
+              four</strong> of these antibiotics.</p>
+</div></div>
+
+    <p>The following jittered dot plot shows the data. We have initially chosen 
+      <em>Penicillin</em> as the baseline antibiotic. The parameter &micro;<sub>1</sub> 
+      denotes its mean binding percentage. The other &delta; 
+      parameters denote the difference between the mean binding percentages of
+ the other antibiotics and <em>Penicillin</em>.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="600">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="matrixProg.FactorFittedValApplet">
+<param name="yName" value="Binding percentage">
+<param name="yValues" value="29.6 24.3 28.5 32.0 27.3 32.6 30.8 34.8 5.8 6.2 11.0 8.3 21.6 17.4 18.3 19.0">
+<param name="xRows" value="16">
+<param name="nXColumns" value="1">
+<param name="fullNameX1" value="Antibiotic">
+<param name="shortNameX1" value="x">
+<param name="valuesX1" value="4@0 4@1 4@2 4@3">
+<param name="labelsX1" value="Penic Tetra Strep Eryth">
+<param name="fitDecimals" value="2">
+<param name="lsDecimals" value="2 2 2 2 2">
+<param name="yAxis" value="0 40 0 10">
+<param name="oneFactor" value="baseline 0">
+<param name="matrixFont" value="standard">
+<param name="customText" value="Baseline=Baseline">
+</applet> 
+</div>
+
+    <p>Drag the red arrows to adjust the four parameters of the model and observe 
+      how the matrix equation for the fitted values changes. Note that the four 
+      group means can be set to any values with this model.</p>
+    <p>Click <strong>Least squares</strong> to set the parameters to their least 
+      squares estimates. The fitted values are now all equal to their group mean.</p>
+    <p>Finally, use the pop-up menu to change the baseline category. Observe that 
+      although the values of the parameters change, the fitted values from the 
+      model remain the same.</p>
+		
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

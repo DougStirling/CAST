@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>Robuste Gl&auml;ttung</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+<meta name="index" content="smoothing, running medians, outliers">
+	<meta name="dataset" content="British Airways share price"></head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Ausrei&szlig;er und laufende Mediane</p>
+<p>Obwohl gleitende Mittelwerte eine effektive
+Gl&auml;ttungsmethode
+darstellen, haben wir vorher gesehen, dass <strong>Mediane</strong> weit weniger
+empfindlich
+gegen&uuml;ber Ausrei&szlig;ern sind als Mittelwerte. Eine
+stabilere
+Gl&auml;ttungsmethode ersetzt daher jeden Wert durch den Median von
+ihm
+und benachbarten Werten. Beispielsweise w&uuml;rde ein laufender <strong>3-Punkte Median</strong> den
+Wert bei einem
+Zeitpunkt<em> i </em>mit...
+gl&auml;tten. </p>
+<p class="eqn"> <object data="images/runningMedianEqn.svg" height="25" width="250"> </object></p>
+<p>Wie mit gleitenden Mittelwerten, brauchen laufende Mediane
+h&ouml;herer Ordnung mehr benachbarte Werte f&uuml;r die
+Gl&auml;ttung.&nbsp; </p>
+<p class="heading">Vergleich der Mittelwerte und
+Mediane&nbsp;</p>
+<p>Gleitende Mittelwerte und laufende Mediane haben beide ihre
+Vor- und
+Nachteile </p>
+<ul> <li>Gleitende Mittelwerte sind st&auml;rker von
+Ausrei&szlig;ern in
+der Reihe betroffen.</li> <li>Laufende Mediane haben oft
+ein
+&ldquo;stufiges&rdquo; Aussehen
+&ndash; die gegl&auml;ttete Reihe ist die Ebene f&uuml;r
+die Zeiten,
+gefolgt von relativ scharfen Spr&uuml;ngen.</li>
+</ul><br>
+<div class="diagram"><p class="heading">British
+Airways Aktienpreise</p>
+<p>Die Zeitreihe unten zeigt den Preis der British Airways Aktien
+in
+den ersten 57 Handelstagen des Jahres 2002 &ndash; zwischen dem 02.
+Januar und dem 21. M&auml;rz.&nbsp;</p>
+<div class="centred"> <applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" height="420" width="530"><script type="text/javascript">writeAppletParams();</script><param name="appletName" value="timeProg.RunningMultiApplet"><param name="varName" value="Aktienpreis - British Airways"><param name="values" value="202.92 213.5 238.75 242.97 234.97 234.63 230.54 228.5 220.27 218.74 221.5 218 219.65 216.89 221.5 220.75 229.62 214.8 207.23 217.69 212.12 204 212.5 211.43 204.33 200.48 196.58 196.25 197 200.25 200 205.73 199.75 200 193.17 191.32 190.35 188.55 190.75 198 193.5 203.5 214.42 233.9 233 236 242.92 236.5 248.5 245.47 238 240 237.94 253.25 250.45 246.56 242.02"><param name="vertAxis" value="180 260 180 20"><param name="timeAxis" value="0 10 1 10"><param name="timeAxisName" value="Tag"><param name="timeSequence" value="1 1 57"><param name="smoothName" value="Ver&auml;nderung des Durchschnitts"><param name="smooth2Name" value="running median"><param name="showEnds" value="false"><param name="labelAxes" value="true"><param name="dragIndex" value="30"><param name="customText" value="Run length=Laufl&auml;nge#Drag outlier=Ziehe Ausrei&szlig;er#Smooth with running=Gl&auml;ttung durch"></applet></div>
+<p>Die Checkboxen sind zun&auml;chst einmal daf&uuml;r
+da, gleitende
+Mittelwerte ( laufende Mittelwerte ) zu zeigen. An erster Stelle
+steigere die Laufl&auml;nge, um zu sehen, wie die laufenden
+Mittelwerte
+die Reihe gl&auml;tten.</p>
+<p>Als n&auml;chstes aktiviere die Checkbox <strong>Ziehe Ausrei&szlig;er</strong>.
+Der 30. Wert
+in der Reihe ist hervorgehoben und kann gezogen werden bis er sich in
+einen Ausrei&szlig;er verwandelt. Ver&auml;ndere ihn
+ungef&auml;hr bis
+260 und beobachte wieder den Effekt auf die &Auml;nderung der
+Laufl&auml;nge. Sogar wenn die Laufl&auml;nge 7 oder 9
+betr&auml;gt,
+hat der Ausrei&szlig;er einen ziemlich starken Effekt auf die
+gegl&auml;ttete Reihe.&nbsp;</p>
+<p>Nun aktiviere die Checkbox <strong>Mediane</strong>
+und deaktiviere <strong>Mittelwerte</strong>
+und <strong>Ziehe
+Ausrei&szlig;er</strong>.
+Pr&uuml;fe wieder den Effekt auf die Steigerung der
+Laufl&auml;nge bei
+den laufenden Medianen. Beobachte, dass die Reihe ein gestufteres
+Aussehen hat als mit laufenden Mittelwerten.</p>
+<p>Aktiviere wieder die Checkbox <strong>Ziehe
+Ausrei&szlig;er</strong> und verschiebe den hervorgehobenen
+Wert auf etwa
+260. Der Ausrei&szlig;er hat nur einen kleinen Effekt auf die
+laufenden
+Mediane.</p>
+</div><p class="heading">Laufende Mediane, gefolgt
+von
+gleitenden Mittelwerten</p>
+<p>Um aus den besten Eigenschaften der beiden gleitenden
+Mittelwerten
+und den laufenden Medianen Vorteile zu ziehen, werden oft beide
+Techniken der Reihe nach angewendet. </p>
+<ul> <li>Zuerst werden laufende Mittelwerte niederer
+Ordnung
+gebraucht, um
+den Einfluss der Ausrei&szlig;er zu entfernen.</li> <li>Die
+resultierende Reihe ist dann zus&auml;tzlich mit
+gleitenden
+Mittelwerten niederer Ordnung gegl&auml;ttet.</li>
+</ul><br>
+<div class="diagram"><p class="heading">British
+Airways Aktienpreise</p>
+<p>Das Diagramm unten beschreibt diese Technik an Hand der
+British
+Airways Aktienpreise.
+</p><div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" height="390" width="530"><script type="text/javascript">writeAppletParams();</script><param name="appletName" value="timeProg.RunningMMApplet"><param name="varName" value="Share price - British Airways"><param name="values" value="202.92 213.5 238.75 242.97 234.97 234.63 230.54 228.5 220.27 218.74 221.5 218 219.65 216.89 221.5 220.75 229.62 214.8 207.23 217.69 212.12 204 212.5 211.43 204.33 200.48 196.58 196.25 197 200.25 200 205.73 199.75 200 193.17 191.32 190.35 188.55 190.75 198 193.5 203.5 214.42 233.9 233 236 242.92 236.5 248.5 245.47 238 240 237.94 253.25 250.45 246.56 242.02"><param name="vertAxis" value="180 260 180 20"><param name="timeAxis" value="0 10 0 10"><param name="timeAxisName" value="Day"><param name="timeSequence" value="0 1 57"><param name="smoothName" value="smoothed"><param name="showEnds" value="false"><param name="labelAxes" value="true"><param name="dragIndex" value="30"><param name="customText" value="Running median of=Laufende Mediane#then mean of=Laufende Mittelwerte#Drag outlier=Ziehe Ausrei&szlig;er"></applet></div>
+<p>Klicke auf <strong>Ziehe
+Ausrei&szlig;er</strong>
+und ziehe den Aktienpreis am 30. Tag auf ungef&auml;hr
+260.&nbsp;</p>
+<p>Benutze den linken Regler, um laufende Mediane von 3 zu
+zeigen. Dies
+entfernt den Einfluss des Ausrei&szlig;ers. Benutze den rechten
+Regler,
+um dann laufende Mittelwerte von 3 anzuwenden. Der laufende Mittelwert
+gl&auml;ttet das stufige Aussehen, das mit laufenden Medianen
+h&ouml;herer Ordnung auftreten w&uuml;rde.</p>
+</div><script type="text/javascript">writePageEnd();</script>
+</body></html>

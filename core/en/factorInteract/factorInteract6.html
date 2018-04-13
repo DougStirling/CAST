@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Experiments with a single replicate</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="replicates, single replicate, residual sum of squares, interaction, degrees of freedom">
+	<meta name="dataset" content="Herbicide, insecticide and cotton growth">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Mean residual sum of squares</p>  
+  <p>All normal models can be expressed as:</p>
+	<p class=eqn><img src="../linModIntro/images/generalModel.gif" width="218" height="34"> 
+	</p>
+	<p>where the error term has a normal distribution,</p>
+  <p class="eqn"><span class="red">ε<em><sub>i</sub></em> &nbsp; ∼ &nbsp; normal&nbsp;(0, σ)</span></p>
+<p>In any model, the mean residual sum of squares is an estimate of the error 
+		variance, σ<sup>2</sup>. 
+		This is an important summary of the model since it quantifies the amount of 
+		variation that is unexplained by the controlled factors &mdash; the 'randomness' 
+		of the data.</p>
+  <p>The mean residual sum of squares therefore provides a baseline measure of 
+		variability against which the explained sums of squares can be compared (with 
+		F ratios) to assess their significance.</p>
+	<p class="heading">Replicates and residual degrees of freedom</p>
+	<p>Since the mean residual sum of squares is the denominator of all F ratios, 
+		the more accurate it is as an estimate of σ<sup>2</sup>, 
+		the more powerful the test. Since the accuracy of this estimate depends on 
+		the residual degrees of freedom, we ideally want a large number of residual 
+		degrees of freedom.</p>
+  <p>Replicates of the experiment &mdash; two or more response values at each combination 
+		of factor levels &mdash; are the best way to get a reasonable number of residual 
+		degrees of freedom.</p>
+	<p class="heading">Data with a single replicate</p>
+	<p>Unfortunately experiments are not always conducted with replication. There are often so many treatment combinations that it would be too expensive 
+		to repeat each two or more times.</p>
+	<p>The need to have residual degrees of freedom to perform hypothesis tests 
+		means that either:</p>
+	<ul>
+	  <li>It must be assumed that there is no interaction (since no test is possible), allowing the main effects to be tested, or</li>
+	  <li>The data can simply be graphed and hypothesis testing ignored.</li>
+  </ul>
+  <br>
+
+<div class="diagram"> 
+		<p class="heading">Herbicide, insecticide and cotton growth</p>
+    <p>An agronomist conducted an experiment to determine the combined effects 
+      of a herbicide and an insecticide on the growth and development of cotton 
+      plants (<em>delta pine smoothleaf</em>). The insecticide and herbicide were 
+      incorporated into the soil used in the containers to grow the cotton plants. 
+      The response variable that was analysed was the mean dry weight of the roots 
+      (grams per plant) when 3 weeks old.</p>
+    <p>Although 20 cotton plants were used for each combination of five levels 
+      of herbicide and five levels of insecticide (both in units of lb/acre), 
+      only the mean response for each treatment combination was recorded. When 
+      analysing these mean root weights, there only a single replicate for each treatment.</p>
+    <div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoFactorProg.FactorAnovaSeqApplet">
+<param name="yVarName" value="Cotton root weight">
+<param name="yValues" value="122 82.75 65.75 68 57.5 72.5 84.75 68.75 70 60.75 52 71.5 79.5 68.75 63 36.25 80.5 65.75 77.25 69.25 29.25 72 82.5 68.25 73.25">
+<param name="yAxis" value="20 130 20 20">
+<param name="xVarName" value="Herbicide">
+<param name="xValues" value="5@0 5@1 5@2 5@3 5@4">
+<param name="xLabels" value="0 0.5 1 1.5 2">
+<param name="zVarName" value="Insecticide">
+<param name="zValues" value="0 1 2 3 4 0 1 2 3 4 0 1 2 3 4 0 1 2 3 4 0 1 2 3 4">
+<param name="zLabels" value="0 20 40 60 80">
+<param name="xVariables" value="x z Interaction">
+<param name="xTypes" value="xFac zFac Int">
+<param name="factorVariables" value="x z">
+<param name="InteractionVarName" value="Interaction">
+<param name="InteractionValues" value="6@0 1 2 3 4 0 5 6 7 8 0 9 10 11 12 0 13 14 15 16">
+<param name="InteractionLabels" value="0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16">
+<param name="maxSsq" value="999.9 99 999.9 999.99">
+<param name="componentNames" value="Herbicide (fac)#Insecticide (fac)#Interaction">
+<param name="initVariables" value="0">
+</applet> 
+</div>
+
+    <p><strong>Drag</strong> the red arrow to add  terms for the two 
+      factors and an interaction. Since there are no replicates, the model with 
+      interaction fits the data perfectly, so all residuals are zero. The residual 
+      sum of squares and degrees of freedom are therefore zero and we cannot test 
+    the significance of the interaction.</p>
+    <p>Click the <strong>y-x</strong> button to rotate the diagram. Try to describe 
+			the interaction in words.</p>
+		<hr width="75%">
+		<p>Finally drag the red arrow up to remove the interaction from the model. 
+			For these data, the no-interaction model does not fit well, but observe 
+			that this model does have residual degrees of freedom, so hypothesis tests 
+			for the main effects of insecticide and herbicide are technically possible.</p>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Test for mean, known σ</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="hypothesis test, test, normal distribution, mean">
+	<meta name="dataset" content="Active ingredient in medicine">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Tests about a normal distribution</p>
+
+<p>In this section, we concentrate on data that can be assumed to be a random sample from a \(\NormalDistn(\mu, \sigma^2)\) distribution. We will develop hypothesis tests about the normal distribution's parameters.</p>
+<p>Initially we assume that the normal distribution's variance, \(\sigma^2\), is a known value.</p>
+<div class="example">
+	<p class="exampleHeading">Active ingredient in medicine</p>
+	<p>Pharmaceutical companies routinely test their products to ensure that the amount of active ingredient is within tight limits. However the chemical analysis is not precise and repeated measurements of the same specimen usually differ slightly. One type of analysis gives results that are normally distributed with a mean that depend on the actual product being tested and standard deviation 0.0068 grams per litre.</p>
+	<p>A product is tested three times with the following concentrations of the active ingredient:</p>
+	<p class="eqn">0.8403, 0.8363 and 0.8447 grams per litre</p>
+	<p>Are the data consistent with the target concentration of 0.85 grams per litre? This can be expressed as a hypothesis test comparing...</p>
+	<ul>
+		<li>Null hypothesis, <strong>H<sub>0</sub></strong>: \(\mu = 0.85 \)</li>
+		<li>Alternative hypothesis, <strong>H<sub>A</sub></strong>: \(\mu \ne 0.85\)</li>
+	</ul>
+</div>
+<p>The test may be two-tailed as in the above example, but in some situations a one-tailed is needed, with the alternative hypothesis only specifying only high (or low) values of \(\mu\), such as</p>
+<ul>
+	<li>Null hypothesis, <strong>H<sub>0</sub></strong>: \(\mu = \mu_0 \)</li>
+	<li>Alternative hypothesis, <strong>H<sub>A</sub></strong>: \(\mu \gt \mu_0\)</li>
+</ul>
+<p>where \(\mu_0\) is a known constant.</p>
+<p class="heading">Test statistic</p>
+<p>The sample mean, \(\overline{X}\), could be used as a test statistic since</p>
+<ul>
+	<li>Its value is expected to be farther from the null hypothesis value, \(\mu_0 \), if the alternative hypothesis is true than would occur for the null hypothesis.</li>
+	<li>If the null hypothesis holds, \(\overline{X} \sim \NormalDistn\Big(\mu_0, \dfrac {\sigma^2}{n}\Big)\), where \(\mu_0\) and \(\sigma^2\) are both known values.</li>
+</ul>
+<p>However, in practice, it is easier to use its standardised version as the test statistic,</p>
+\[
+Z \;\;=\;\; \frac{\overline{X} - \mu_0}{\diagfrac{\sigma}{\sqrt{n}}}
+\]
+<p>This has a standard normal distribution, \(Z \sim \NormalDistn(0,1)\) if the null hypothesis is true.</p>
+<p class="heading">P-value and interpretation</p>
+<p>The p-value for the test is found by comparing the value of the test statistic (evaluated from the data set) to the standard normal distribution. For a one-tailed test, this is one tail area of the distribution, but for a two-tailed test, it is <strong>double the smaller</strong> tail area since values of \(\overline{X}\) below \(\mu_0\) give the same evidence against <strong>H<sub>0</sub></strong> as values above it.</p>
+<p>The p-value is interpreted in the same way as for all other hypothesis tests. A small value means that a value of \(\overline{X}\) as far as was observed from \(\mu_0\) would be unlikely if the null hypothesis was true, and this provides evidence suggesting that the alternative hypothesis is true. The diagram below illustrates for a 2-tailed test.</p>
+
+<p class="eqn"><img class="svgImage" src="images/pValueFromZ.png" width="471" height="212"></p>
+
+<div class="example">
+	
+	<p class="exampleHeading">Active ingredient in medicine</p>
+
+<p>For the above data set, \(\overline{x} = 0.8404\), giving a test statistic</p>
+\[
+z \;\;=\;\; \frac{0.8404 - 0.85}{0.0068\;/\;\sqrt{3}} \;\;=\;\; -2.437
+\]
+
+<p>The lower tail of the standard normal distribution below this value is</p>
+\[
+P(Z \le -2.437) \;\;=\;\; 0.00741
+\]
+<p>Since the test is two-tailed (and sample means as far above 0.85 as 0.8404 was below it would give equally strong evidence against \(\mu\) being 0.85), the p-value is double this,</p>
+<p class="eqn">p-value   =   \(2 \times 0.00741 \;\;=\;\; 0.0148\)</p>
+<p>This p-value is interpreted as meaning that there is moderately strong evidence that the true concentration of active ingredient in this product, \(\mu\), is no longer equal to 0.85 grams per litre.</p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>95% CI for P(win)</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p>By repeating a simulation several times, we can estimate the probabilities of
+events associated with the model.
+</p>
+
+<p class=eqn><img src="images/successFailure.gif" width="449" height="121" alt="simulations leading to p(success)">
+</p>
+
+<p>The proportion of runs in which the event occurs, <em>p</em> = <em>x</em>/<em>n</em>,
+provides a <strong>point estimate</strong> of the event's probability. For example, the
+proportion of simulated soccer leagues won by Team A is a point estimate
+of the probability of Team A ending the season top of the league,
+π.
+</p>
+
+<p>By performing enough simulations, we can estimate probabilities to arbitrary
+accuracy but, from a finite number of simulations, a
+<strong>confidence interval</strong> should be used to indicate the range of
+errors likely in our estimate.
+</p>
+
+<p class="heading">Binomial Distribution</p>
+
+<p>In a simulation,
+</p>
+
+<ul>
+	<li>different runs are independent, and
+	<li>each run is based on the same model, so has the same probabilities of
+events happenning.</li>
+</ul>
+
+<p>These are the main assumptions underlying the binomial distribution.
+Therefore the number of times, <em>x</em>,
+that an event occurs in <em>n</em>
+ runs of the simulation has a <strong>binomial</strong> distribution with parameters <em>n</em>
+and
+π where</p>
+
+<p class=eqn>π= P(event
+happens)
+</p>
+
+<p>The distribution of the proportion of successes,
+<em>p</em> = <em>x</em>/<em>n</em>,
+has the same shape as that of <em>x</em> but with different scaling. </p>
+
+<p><font color="#666666">(If you are not comfortable with the binomial distribution,
+study the sections about it in CAST.)</font>
+</p>
+
+<p class="heading">Normal Approximation to Binomial</p>
+
+<p>A confidence interval for
+π
+can be found directly from the binomial distribution of
+<em>x</em>,
+but we first describe a simpler approach. The binomial distribution
+is close in shape to a normal distribution whose mean and standard deviation are </p>
+
+<p class=eqn><img src="images/countMeanSD.gif" width="118" height="61" alt="muX, sX">
+</p>
+<br>
+
+
+<div class="diagram">
+
+<p>The diagram below shows the shape of the binomial distribution and its
+normal approximation. Drag the two sliders to adjust the two
+parameters <em>n</em>
+and
+π
+and confirm that the normal approximation is close in shape to the binomial distribution
+when
+<em>n</em>
+is large and
+π
+is not close to either 0 or 1..</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="randomStatProg.BinomApproxApplet">
+<param name="n" value="100 10">
+<param name="customText" value="success=success">
+</applet>
+</div>
+
+<p>Drag over the bars of the binomial barchart to check that probabilities obtained
+from the normal approximation are also close to the exact binomial probabilities when
+<em>n</em> is fairly large. </p>
+
+</div>
+
+<p>In a similar way, the <strong>proportion</strong> of successes,
+<em>p</em>,
+is approximately normal with parameters
+</p>
+
+<p class=eqn><img src="images/propnMeanSD.gif" width="105" height="64" alt="muP, sP">
+</p>
+
+<p class="heading">Confidence Interval for Proportion</p>
+
+<p>Since any normally distributed quantity has approximately 95% probability
+of being within 2 standard deviations of its mean,
+<em>p</em>
+will be within 2 standard deviations of
+π
+with 95% probability, so a 95% confidence interval is
+</p>
+
+<p class=eqn><img src="images/ciPApproxEqn.gif" width="236" height="43" alt="sigmaP = 2 x ...">
+</p>
+
+<p><font color="#666666">(If you are unfamiliar with the properties or interpretation
+of confidence intervals, study these sections in CAST.)</font>
+</p>
+
+
+<div class="diagram">
+
+<p class="heading">League Table Example</p>
+
+<p>We again simulate a league of 10 teams in which each pair of teams
+plays twice. All teams are evenly matched except for Team A
+whose probability of winning each game can be altered in the simulation.
+We again assume that P(draw)&nbsp;=&nbsp;0.2 for all matches.
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="simulationProg.PropnCIXApplet">
+<param name="tableName" value="League Table">
+<param name="drawProb" value="0.2">
+<param name="randomSeed" value="86435439">
+<param name="teamCount" value="10">
+<param name="rankName" value="Team A rank">
+<param name="teamAWinProbName" value="P(Team A wins match)">
+<param name="winnerName" value="Position">
+<param name="winnerLabels" value="#A top# #A not top#">
+<param name="matchWinProb" value="0.2 0.3 0.4 0.5 0.6 0.7">
+<param name="initialProbIndex" value="4">
+<param name="ciDecimals" value="4">
+<param name="horizAxis" value="0.15 0.75 0.2 0.1">
+<param name="vertAxis" value="-0.01 1.01 0.0 0.2">
+<param name="customText" value="Next run=Next run#Confidence Interval=Confidence Interval#Algorithm=Algorithm#From normal approx=From normal approx#Exact=Exact#P(Team A*wins match)=P(Team A*wins match)#Team A top=Team A top#95% CI for*P(Team A top)=95% CI for*P(Team A top)">
+</applet>
+</div>
+
+<p>Initially Team A has probability 0.6 of winning each match (and 0.2 of losing).
+Click <strong>Next Run</strong> several times to perform simulations. The proportion
+of simulated leagues in which Team A ended top is shown (highlighted in yellow) and the
+resulting 95% confidence interval is also displayed numerically and graphically.
+</p>
+
+<p>Click on other rows of the table to change the probability of Team A winning
+its matches, and perform more simulations. Perform about 100 simulations for each
+different value of
+π.
+<font color="#666666">(Hold down the button <strong>Next Run</strong>
+to speed up the simulations.)</font>
+</p>
+
+<p>Observe how the confidence intervals become narrower
+as more simulations are performed, but an extremely large number of simulations is needed
+to estimate the probabilities accurately.
+</p>
+
+</div>
+
+<p class="heading">Exact Confidence Interval</p>
+
+<p>The normal approximation to the binomial is poor when either
+<em>n</em>
+is small or
+π
+is near 0&nbsp;or&nbsp;1. Confidence interval based on this normal approximation are
+therefore also inaccurate in these circumstances.</p>
+
+<p>In the league simulation, click <strong>Reset</strong>. Based on a single run of the
+simulation, 
+<em>p</em> is
+either 0 or 1 and the confidence interval based on a
+normal approximation has zero &mdash; this clearly overestimates the accuracy of our estimate!!
+</p>
+
+<p>An <a href="aboutTestingRange.html#exactCI" onMouseOver="window.status='More about exact binomial CIs'; return true;">exact
+95% confidence interval</a> can be found directly from the
+binomial distribution but its formula is rather more complex. Use the pop-up menu
+under the simulation diagram to select the algorithm <strong>Exact</strong> to
+see the exact 95% confidence intervals.
+</p>
+
+<p>The endpoints of the exact 95% confidence intervals can be obtained in Excel by typing
+the following formulae into two cells:
+</p>
+
+<div class="centred"><table border="1" cellspacing="3" cellpadding="5" class="centred">
+<tr><td bgcolor="white">
+=<font color="blue">x</font>/(<font color="blue">x</font>+(<font color="blue">n</font>-<font color="blue">x</font>+1) *FINV(0.025, 2*(<font color="blue">n</font>-<font color="blue">x</font>+1), 2*<font color="blue">x</font> ))
+</td></tr>
+
+<tr><td bgcolor="white">
+=(<font color="blue">x</font>+1) * FINV(0.025, 2*(<font color="blue">x</font>+1), 2*(<font color="blue">n</font>-<font color="blue">x</font>) )/(<font color="blue">n</font>-<font color="blue">x</font>+(<font color="blue">x</font>+1) *FINV(0.025, 2*(<font color="blue">x</font>+1), 2*(<font color="blue">n</font>-<font color="blue">x</font>) ))
+</td></tr>
+</table></div>
+
+<p>where <font color="blue">x</font> and <font color="blue">n</font> should be
+replaced by the numbers of 'successes' and 'trials' in the your simulations.
+</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

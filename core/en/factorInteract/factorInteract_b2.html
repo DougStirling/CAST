@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Interaction between factors</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="interaction, model, normal model, parameterisation">
+	<meta name="dataset" content="Pigs and bait">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Model with interaction</p>  
+  <p>The two-factor model without interaction does not always fit the data that are recorded. The most general model for the effect of the two factors is one that does not place any restrictions on the mean responses &mdash; one with a different parameter for each factor combination,</p>
+  <div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+    <tr>
+      <td align="center"><br>
+          <span class="em black">y<sub>ijk</sub></span>  &nbsp;= </td>
+      <td align="center"><span class="red">(<em>explained by </em>X &amp; Z)<br>
+      µ<em><sub>ij</sub></em></span></td>
+      <td align="center"><br>
+        &nbsp;+&nbsp;</td>
+      <td align="center">(<em>unexplained</em>)<br>
+        ε<em><sub>ijk</sub></em></td>
+    </tr>
+  </table></div>
+  <p>A more useful way to express this model is in the form,</p>
+  <div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+    <tr>
+      <td align="center"><br>
+          <span class="em black">y<sub>ijk</sub></span>  &nbsp;= &nbsp;<span class="blue">µ</span></td>
+      <td align="center"><br>
+        &nbsp;+&nbsp;</td>
+      <td align="center" class="red">(<em>explained by </em>X)<br>
+        β<em><sub>i</sub></em></td>
+      <td align="center"><br>
+        &nbsp;+&nbsp;</td>
+      <td align="center" class="green">(<em>explained by </em>Z)<br>
+  γ<em><sub>j</sub></em></td>
+      <td align="center"><br>
+  &nbsp;+&nbsp;</td>
+      <td align="center" class="purple">(<em>interaction</em>)<br>        
+      δ<em><sub>ij</sub></em></td>
+      <td align="center"><br>
+        &nbsp;+&nbsp;</td>
+      <td align="center">(<em>unexplained</em>)<br>
+        ε<em><sub>ijk</sub></em></td>
+    </tr>
+  </table></div>
+  <p>There are redundant parameters here, so we take the  approach used in our earlier models without interaction by defining parameters that refer to baseline levels of X and Z to be zero,</p>
+  <ul>
+    <li class="red">β<sub>1</sub> = 0</li>
+    <li class="green">γ<sub>1</sub> = 0</li>
+    <li class="purple">δ<em><sub>ij</sub></em> = 0 &nbsp; &nbsp; &nbsp;if <em>i</em> = 1 or <em>j</em> = 1</li>
+  </ul>
+  <p>The <span class="purple">δ</span>-parameters are called the <strong>interaction terms</strong> and they describe how far the treatment means differ from what would be expected if there was no interaction &mdash; if there is no interaction, they will all be zero.</p>
+  <div class="centred"><div class="boxed">
+    <p>Note that there are (<em>g</em><sub>X</sub>&nbsp;-&nbsp;1)(<em>g</em><sub>Z</sub>&nbsp;-&nbsp;1) of the non-zero interaction parameters.<br>
+  </p>
+  </div></div>
+	<br>
+	
+  <div class="diagram"> 
+<p class="heading">Bait Acceptability by Feral Pigs</p>
+		<p>The diagram below initially shows a no-interaction model for the pig bait
+			data. Observe that there are <em>g</em><sub>X</sub>&nbsp;+&nbsp;<em>g</em><sub>Z</sub>&nbsp;-&nbsp;1&nbsp;=&nbsp;6 
+			draggable red arrows to adjust the parameters of the model &mdash; these are 
+			the degrees of freedom (number of non-zero parameters) for the no-interaction model.</p>
+	  <p>Click <strong>Least squares</strong> to see the best fit for this model.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoFactorProg.RotateDragFactorsApplet">
+<param name="yVarName" value="Change in intake">
+<param name="yValues" value="0.188 -0.058 0.05 -0.138 0.058 -0.082 -0.712 -1.28 -0.61 -0.83 -0.28 -0.062 -0.54 -0.336 -0.26 -0.123 -0.894 -0.672 -0.837 -1.202">
+<param name="yAxis" value="-1.5 0.3 -1.5 0.5">
+<param name="xVarName" value="Gender">
+<param name="xValues" value="10@0 10@1">
+<param name="xLabels" value="Male Female">
+<param name="zVarName" value="Feed">
+<param name="zValues" value="2@0 2@1 2@2 2@3 2@4 2@0 2@1 2@2 2@3 2@4">
+<param name="zLabels" value="Wh Wh&wa Wh,wa&dy Wh,wa&1080 Wh,wa,dy&1080">
+<param name="zModelTerms" value="factor">
+<param name="xModelTerms" value="factor">
+<param name="interaction" value="true">
+<param name="initialModel" value="-0.5">
+<param name="maxRss" value="9.999">
+<param name="customText" value="None=None#Linear=Linear#Factor=Factor#Terms in model=Terms in model#Interaction=Interaction">
+</applet> 
+</div>
+
+		
+    <p>Click the checkbox <strong>Interaction</strong> to add an interaction term 
+      to the model and observe that (<em>g</em><sub>X</sub>&nbsp;-&nbsp;1)(<em>g</em><sub>Z</sub>&nbsp;-&nbsp;1)&nbsp;=&nbsp;4 
+      extra draggable <span class="green bold">green</span>  arrows 
+      are added, allowing the model mean to be separately set for each combination 
+      of factor levels.</p>
+	  <p>Click <strong>Least squares</strong> to see the best-fitting model with 
+			interaction. Rotate to <strong>y-z</strong> to help understand this model.</p>
+		<div class="centred"><div class="boxed">
+			<p>Female pigs decrease their intake in Day 2 more than male pigs for <strong>most</strong> diets, but for <em>wheat, water &amp; 1080 <strong>without dye</strong></em>, male pigs decrease their intake more than females.<br>
+		</p>
+		</div></div>
+		<p>However we need to  test whether this interaction between gender and the feed may be simply randomness.</p>
+		</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

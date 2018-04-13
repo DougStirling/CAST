@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Mean squared error</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="estimation, bias, standard error, mean squared error">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Combining bias and standard error</p>
+
+<p>Standard error can be used to compare two unbiased estimators — the estimator with the lower standard error is better — but what is the best way to decide on which of two biased estimators performs better?</p>
+<p>The concepts of bias and standard error can be combined into a single value called the estimator's <strong>mean squared error</strong>.</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>The <strong>mean squared error</strong> of an estimator \(\hat{\theta}\) of a parameter \(\theta\) is</p>
+\[
+\MSE(\hat{\theta}) = E\left[ (\hat{\theta} - \theta)^2 \right]
+\]
+</div>
+
+<p>Its relationship to our earlier definitions of bias and standard error is given by the following result.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Mean squared error</p>
+<p>The mean squared error of an estimator \(\hat{\theta}\) of \(\theta\) is</p>
+\[
+\MSE(\hat{\theta}) = \Var(\hat{\theta}) + \Bias(\hat{\theta})^2
+\]	</div>
+
+<div class="proof">
+<p>Remembering that \(E[\hat{\theta}] \) need not be equal to \(\theta\),</p>
+\[ \begin{align}
+\MSE(\hat{\theta}) &amp; = E\left[ (\hat{\theta} - \theta)^2 \right] \\
+&amp; = E\left[ \left((\hat{\theta} - E[\hat{\theta}]) - (\theta - E[\hat{\theta}]) \right)^2 \right] \\
+&amp; = E\left[ (\hat{\theta} - E[\hat{\theta}])^2 + (\theta - E[\hat{\theta}])^2 - 2(\hat{\theta} - E[\hat{\theta}])(\theta - E[\hat{\theta}]) \right]
+\end{align} \]
+<p>Since \((\theta - E[\hat{\theta}])\) is a constant,</p>
+\[ \begin{align}
+\MSE(\hat{\theta}) &amp; = E\left[ (\hat{\theta} - E[\hat{\theta}])^2\right] + (\theta - E[\hat{\theta}])^2 - 2E\left[(\hat{\theta} - E[\hat{\theta}])\right] \times(\theta - E[\hat{\theta}]) \\
+&amp; = E\left[ (\hat{\theta} - E[\hat{\theta}])^2\right] + (\theta - E[\hat{\theta}])^2 \\
+&amp; = \Var(\hat{\theta}) + \Bias(\hat{\theta})^2
+\end{align} \]
+</div>
+
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

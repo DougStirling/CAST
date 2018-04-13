@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Smoothing out seasonal variation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="seasonal pattern, moving average/to remove seasonal pattern">
+	<meta name="dataset" content="Tourists in Hawaii">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Moving averages</p>
+
+  <p>We showed in the first section of this chapter that moving averages are effective 
+		for reducing the random fluctuations in a time series.</p>
+	<p>Moving averages can also be used to remove a seasonal effect, but the run 
+		length is critically important.</p>
+	<table width="75%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+		<tr> 
+			<td><strong>For seasonal data with cycle length n, an n-point moving average 
+				should be used.</strong></td>
+		</tr>
+	</table>
+	<p>For example, daily data have a cycle length of 7 days. Each 7-point running 
+		mean averages exactly <strong>one value from each day of the week</strong> 
+		(one value of each colour in the diagram below).</p>
+
+<p class=eqn>
+	<object data="images/weeklyMean.svg" width="413" height="131">
+	</object>
+</p>
+
+  <p>If, say, Saturday values are regularly lower than other days, the smoothed 
+		values for each day of the week will involve a Saturday and will be equally 
+		affected. The smoothed values for Saturdays will therefore not tend to be 
+	lower than other days. This removes the seasonal pattern. </p>
+	<p class=heading>Even cycle lengths </p>
+
+  <p>Unfortunately there is a complication when seasonal data have an even cycle 
+		length (such as monthly data with a cycle length of 12) since we have not 
+		defined what is meant by an n-point moving average where <i>n</i> is even. 
+		A 4-point moving average is defined to be </p>
+
+<p class=eqn><img class="gif" src="../../en/seasonal/images/quarterlySmoothEqn.gif" width="314" height="46"></p>
+
+<p>with similar definitions for other even values of <i>n</i>, using half-weights 
+		on the two end values. Note that a 4-point moving average therefore involves 
+		<strong>5</strong> values, not 4.</p>
+
+  <div class="diagram">
+    <p class="heading">International tourists in Hawaii</p>
+		<p>This diagram again shows the numbers 
+			of international tourists in Hawaii.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.RunningMeanApplet">
+<param name="varName" value="International tourists">
+<param name="values" value="44928 43338 40700 38685 34151 42268 46784 49602 36812 34401 37252 48317 43251 31401 31414 35283 36380 45122 49311 50746 45464 38306 42460 49572 48266 50406 43463 38857 42945 49839 48435 49771 47242 37320 41146 50352 53007 48377 47067 40084 43017 46050 49470 53368 46594 41057 44307 52182 48281 53656 52149 40012 42170 45673 49968 56207 50388 43446 46989 55866 48913 46126 50254 40403 47205 50306 59905 60791 55959 46120 50274 60341 52321 55398 53017 43916 45430 52245 58106 56445 53109 47054 48195 57372 48165 55118 53627 43181 44055 46804 52354 52371 53761 43458 45722 51743 52807 53451 46794 38760 37168 39614 47299 49882 42797 37829 44463 53265 55260 57112 51583 39087 35835 41322 50608 48960 44136 42522 43858 47485">
+<param name="vertAxis" value="30000 62000 30000 10000">
+<param name="seasonName" value="12 Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec">
+<param name="seasonInfo" value="0 0 1990">
+<param name="timeAxisName" value="Month">
+<param name="smoothName" value="Smoothed">
+<param name="runs" value="15 even">
+<param name="showEnds" value="false">
+<param name="customText" value="Running mean of=Running mean of">
+</applet>
+
+</div>
+
+		<p>Use the control under the plot to investigate the effect of different moving 
+			averages.</p>
+		<p>Observe that 6-point moving averages remove most of the seasonal effect 
+		  since there are <strong>two</strong> peaks each year. However the two halves 
+		  of the annual pattern are unlikely to be identical, so we should treat the 
+		  series as having a 12-month seasonal pattern and use 12-point moving averages.</p>
+		<p>After removing the seasonal pattern in this way, the trend in tourist numbers 
+			becomes much clearer.</p>
+	</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

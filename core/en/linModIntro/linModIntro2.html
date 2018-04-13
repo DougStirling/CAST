@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Categorical factors</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="categorical factor, numerical factor, normal model">
+	<meta name="dataset" content="Cereal bowl life">
+	<meta name="dataset" content="Cement packing machines">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Categorical factor with <em>g</em> levels</p>
+<p>If the explanatory variable is categorical with <em>g</em> levels, its effect can be modelled with a separately adjustable response 
+		mean for each level.</p>
+	<div class="centred"><table border="0" class="centred" cellpadding="3" cellspacing="0">
+		<tr>
+			<td colspan="2"><span class="em black">y<sub>i</sub></span>  &nbsp;= &nbsp;<span class="blue">µ<em><sub>k</sub></em></span>&nbsp;&nbsp;+&nbsp;<span class="red">&nbsp;ε<em><sub>i</sub></em></span></td>
+		</tr>
+		<tr>
+			<td width="40">&nbsp;</td>
+			<td>where &nbsp;<span class="red">ε<em><sub>i</sub></em> &nbsp; ∼ &nbsp; normal&nbsp;(0, σ)</span><br>
+				and <span class="blue">the <em>i</em>'th experimental unit gets the <em>k</em>'th level of the factor</span></td>
+		</tr>
+	</table></div>
+	<p>Since this model has <em>g</em> different parameters defining the explained 
+		variation (the <em>g</em> means), this model has <em><strong>g</strong></em><strong> 
+		degrees of freedom</strong>.</p>
+	<p>A more useful notation for this model uses with double subscripts in which the first subscript denotes the factor level and the second denotes the replicate within that factor level. If there are <em>n<sub>i</sub></em> replicates for factor level <em>i</em>, the model can be expressed as:</p>
+	<div class="centred"><table border="0" class="centred" cellpadding="3" cellspacing="0">
+		<tr>
+			<td colspan="2"><em>y<sub>ij</sub></em>  &nbsp;= &nbsp;<span class="blue">µ<em><sub>i</sub></em></span>&nbsp;&nbsp;+&nbsp;<span class="red">&nbsp;ε<em><sub>ij</sub></em></span> &nbsp; &nbsp; &nbsp; for &nbsp; <em>i</em>&nbsp;=&nbsp;1 to <em>g</em> &nbsp; and &nbsp; <em>j</em>&nbsp;=&nbsp;1 to <em>n<sub>i</sub></em></td>
+		</tr>
+		<tr>
+			<td width="40">&nbsp;</td>
+			<td>where &nbsp;<span class="red">ε<em><sub>ij</sub></em> &nbsp; ∼ &nbsp; normal&nbsp;(0, σ)</span>
+			</td>
+		</tr>
+</table></div>
+	<p class="heading">Using this model for a numerical factor</p>
+	<p>This model can also be used with numerical factors.  The model contains a parameter for the mean response at each level of the factor and does not impose any
+	  constrains of 'smoothness' in the relationship between the factor and response. </p>
+	
+  <div class="diagram">
+  	<p class="heading">Cement packing machines</p>
+		<p>The cement-packing data are shown below. The controlled factor (machine) is categorical so we can use a normal model with a separately adjustable mean for each machine. The three means can be adjusted by dragging the red arrows in the diagram. (The model therefore has three degrees of freedom.)</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="exper2Prog.DragFactorMeansApplet">
+<param name="yVarName" value="Actual bag weight">
+<param name="xVarName" value="Packing machine">
+<param name="yValues" value="49.89 48.80 49.22 49.34 48.77 48.71 50.06 49.51 49.11 49.98 49.64 48.91 50.30 49.67 50.39 50.18 49.09 48.72 49.46 49.30 50.69 51.50 52.09 50.87 50.69 51.05 51.60 50.69 50.48 51.13 51.16 51.49 50.84 51.11 50.94 51.15 52.12 50.84 50.39 51.48 49.36 49.92 49.52 50.22 50.23 49.78 48.67 49.98 50.86 50.51 48.95 49.85 49.49 49.29 49.16 50.07 49.64 49.93 49.68 49.62">
+<param name="xLabels" value="#M/C 1# #M/C 2# #M/C 3#">
+<param name="xValues" value="20@0 20@1 20@2">
+<param name="yAxis" value="48.5 52.2 48.5 0.5">
+<param name="modelType" value="factor">
+<param name="initialise" value="ls">
+<param name="showRss" value="false">
+<param name="maxRss" value="999.99">
+<param name="customText" value="Mean only=Mean only#Linear=Linear#Quadratic=Quadratic#means=means">
+</applet>
+</div>
+
+		<p>Adjust the three to make them close to the data points. The distances 
+			between the jittered crosses and the model means are called <strong>residuals</strong> and are displayed in pink. The best-fitting line will result in small residuals. 
+			(We will discuss an objective way to estimate the model parameters later.)</p>
+		<p class="heading">Cereal bowl-life</p>
+<p>In the cereal bowl-life experiment, the controlled factor (milk temperature) is numerical, but its effect can also be modelled with a separately adjustable mean for each of the four temperatures. The means can be adjusted using the red arrows below to investigate the flexibility of this model.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="exper2Prog.DragFactorMeansApplet">
+<param name="yVarName" value="Cereal bowl-life">
+<param name="xVarName" value="Temperature">
+<param name="yValues" value="13.8 14.8 11.1 11.3 9.7 8.7 12.5 12.7 10.9 10.5 6.5 7.1 10.5 10.2 8.7 8.2 6.5 5.2 8.7 8.7 6.8 6.6 3.6 4.3">
+<param name="xLabels" value="40 45 50 55">
+<param name="xValues" value="6@0 6@1 6@2 6@3">
+<param name="yAxis" value="0 16 0 2">
+<param name="modelType" value="factor">
+<param name="initialise" value="ls">
+<param name="showRss" value="false">
+<param name="maxRss" value="999.99">
+<param name="customText" value="Mean only=Mean only#Linear=Linear#Quadratic=Quadratic#means=means">
+</applet>
+</div>
+
+<p>Note that this model does not require that the mean bowl-life 
+	decreases smoothly with milk temperature. </p>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

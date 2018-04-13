@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Power transformations</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="transformations">
+	<meta name="dataset" content="African populations">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">A family of nonlinear transformations</p>
+
+  <p>Many data sets that arise in practice involve quantities that have skew distributions. 
+		A logarithmic transformation may remove skewness, but sometimes a more flexible 
+		class of transformations is needed.</p>
+	<p>A group of transformations called <strong>power transformations</strong> 
+		is often used. A power transformation <strong>raises each value in the data 
+		set to a power <i>p</i></strong>, where <i>p</i> is usually some constant 
+		between -2 and 2. Common examples are given in the table below.</p>
+		
+	<p class=eqn><img class="gif" src="images/powerTable.gif" width="363" height="254"> </p>
+	
+  <p>Although these values of <i>p</i> are most easily interpreted, intermediate 
+		values can also be used.</p>
+	<p>(<strong>Note</strong> that any value, <i>x</i>, raised to the power 0 is 
+		1.0, so it initially seems that <i>p</i>&nbsp;=&nbsp;0 would not give a useful 
+		transformation. However when <i>p</i> becomes <strong>close to 0</strong>, 
+		the effect is similar to a log transformation.)</p>
+
+<div class="diagram" title="Example: African populations">
+<p class="heading">African populations</p>
+
+<p>The dot plot below describes the populations of all
+countries in Africa in 2013. <strong>Drag</strong> over the crosses to investigate the outliers.
+We will use power transformations of the populations to spread out the countries with lower
+populations and reduce the visual impact of the outlier.
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="250">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="transformProg.PowerTransformApplet">
+<param name="varName" value="Popn (millions)">
+<param name="values" value="38.295 21.256 9.742 2.096 17.323 9.023 20.930 0.511 5.217 12.948 0.743 4.525 74.618 0.912 84.605 1.837 4.980 86.614 2.204 1.794 26.441 11.861 1.699 23.919 43.291 1.887 3.881 6.323 21.852 15.316 16.678 3.461 1.273 32.950 24.491 2.170 17.493 177.096 10.780 0.194 13.567 0.094 5.823 9.662 52.982 10.334 35.150 1.077 45.950 6.675 10.889 35.363 14.129 13.098">
+<param name="labelName" value="Country">
+<param name="labels" value="#Algeria# #Angola# #Benin# #Botswana# #Burkina Faso# #Burundi# #Cameroon# #Cape Verde# #Central African Rep# #Chad# #Comoros# #Congo (Rep)# #Congo (Zaire)# #Djibouti# #Egypt# #Equatorial Guinea# #Eritrea# #Ethiopia# #Gabon# #Gambia# #Ghana# #Guinea# #Guinea-Bissau# #Ivory Coast# #Kenya# #Lesotho# #Liberia# #Libya# #Madagascar# #Malawi# #Mali# #Mauritania# #Mauritius# #Morocco# #Mozambique# #Namibia# #Niger# #Nigeria# #Rwanda# #Sao Tome# #Senegal# #Seychelles# #Sierra Leone# #Somalia# #South Africa# #South Sudan# #Sudan# #Swaziland# #Tanzania# #Togo# #Tunisia# #Uganda# #Zambia# #Zimbabwe#">
+<param name="horizAxis" value="0.090 180 20 20 1 5 10">
+<param name="customText" value="Transformed values=Transformed values#Raw values=Raw values">
+</applet>
+</div>
+
+<p><strong>Drag</strong>
+the vertical red line on the axis towards the right. This reduces the power used in the
+transformation from its initial value of <i>p</i> = 1.
+<span class="gray">After clicking on the axis, the arrow keys on your
+keyboard may also be used for finer adjustment of <i>p</i>.</span> Note that ...
+</p>
+
+<ul>
+  <li><i>p</i> = 1 corresponds to no transformation.</li>
+  
+  <li>Decreasing <i>p</i> spreads out the lower values and
+  compresses the higher values.</li>
+  
+  <li>Increasing <i>p</i> spreads out the higher values and
+  compresses the lower values.</li>
+  
+  <li>When <i>p</i> &lt; 0, the least populous country (Seychelles) still appears at
+  the bottom of the plot. This results from the change of sign.</li>
+  
+  <li>As the value of <i>p</i> approaches 0, all values become closer to 1.0 (or -1.0 when
+  <i>p</i> is negative). The scale for the log transformation (corresponding to
+  <i>p</i>&nbsp;=&nbsp;0) is very different from those for <i>p</i>&nbsp;=&nbsp;0.01
+  or <i>p</i>&nbsp;=&nbsp;-0.01, but its effect on the <strong>shape</strong>
+  of the distribution is intermediate.</li>
+</ul>
+
+<p>We labelled the axis with the <strong>transformed</strong> values to help explain
+the mechanics of power transformations. In practice, it is better to label the axis with
+the original measurements. Select the option <strong>Raw Values</strong> from the pop-up menu.
+The labels on the axis become the populations of the countries.
+</p>
+
+		<p>Adjust the power again and observe the effect on the labels. Note the smooth 
+			transition between the logarithmic transformation and the powers on either 
+			side. </p>
+		<hr width="75%">
+		<p>For these data, a logarithmic transformation is again close to best for 
+			removing skewness. Observe that the 'outlier', Nigeria, no longer stands 
+			out from the rest of the countries &mdash; it is consistent with distribution 
+			of populations in the rest of Africa.</p>
+
+</div>
+
+  <p class="heading">Precise definition</p>
+	<p>Power transformations are flexible enough to reduce or eliminate the skewness 
+		in a wide range of data sets. </p>
+
+<p>The family of transformations that we use is:</p>
+
+<p class=eqn><img class="gif" src="images/boxCoxEqn.gif" width="409" height="106">
+</p>
+
+  <p>Note that if we did not change the sign of the values when <i>p</i> &lt; 0, 
+		the order of the values would be swapped. For example, </p>
+ 
+<p class=eqn><img class="gif" src="images/negativePower.gif" width="260" height="20">
+</p>
+
+<p>Changing the sign keeps the original ordering.
+</p>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

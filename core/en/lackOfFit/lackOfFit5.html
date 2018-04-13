@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Comparison of tests</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="curvature, nonlinear model, analysis of variance, randomisation">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Two tests for nonlinearity</p>
+  <p>We have now described <strong>two</strong> different approaches to testing 
+    a regression relationship for linearity. Both asked whether extending the 
+    linear model with a model that allowed for curvature gave an improvement in 
+    the model's fit.</p>
+  <dl>
+    <dt>Quadratic model</dt>
+    <dd><a href="javascript:showNamedPage('nonlinAnova3')">This 
+      test</a> asked whether a quadratic model explained significantly more response 
+      variability than a linear model.</dd>
+    <dt>Treating X as categorical</dt>
+    <dd>The test in this section asked whether significantly more response variability 
+      is explained by a categorical variable whose levels are the distinct x-valuse 
+      than a linear model.</dd>
+  </dl>
+  <p>We now consider the differences between these two approaches when both are 
+    possible &mdash; i.e. for data sets with multiple response values at some or all 
+    x-values.</p>
+
+<p class="heading">'Smooth' curvature</p>
+<p>We firstly consider situations where the curvature is fairly smooth over the 
+range of x-values.</p>
+
+<div class="centred"><div class="boxed">
+<p>If there is fairly smooth curvature in the relationship, 
+the quadratic test is more likely to detect it than the test involving a factor 
+model.</p>
+</div></div>
+
+<br>
+
+<div class="diagram"> 
+<p class="heading">Simulation</p>
+<p>The diagram below selects samples from a normal model in which the response 
+mean varies with the mean in a fairly smooth curve. (The grey rectangles stretch 
+two standard deviations on each side of the model mean at each x-value.)</p>
+
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="varianceProg.QuadFactorCompareApplet">
+<param name="yVarName" value="Response">
+<param name="randomSeed" value="2348573561">
+<param name="factorModel" value="110 17 140 17 150 17 155 17 145 17">
+<param name="yAxis" value="75 190 80 20">
+<param name="xVarName" value="Explanatory">
+<param name="xValues" value="4@0 4@1 4@2 4@3 4@4">
+<param name="xLabels" value="0 50 100 150 200">
+<param name="xAxis" value="-15 210 0 50">
+<param name="decimals" value="2">
+<param name="labelAxes" value="true">
+<param name="maxSummaries" value="99999.9 99999.9 999.99 9.999">
+<param name="factorName" value="Total#Linear#Nonlinear#Residual">
+<param name="quadName" value="Total#Linear#Quadratic#Residual">
+<param name="customText" value="Quadratic=Quadratic#Factor=Factor">
+</applet>
+</div>
+
+<p>Click <strong>Take sample</strong> a few times to select data sets from this 
+model. Observe that the green p-value for the quadratic test is usually closer 
+to zero than the corresponding p-value for the factor model.</p>
+
+<div class="centred"><div class="boxed">
+<p>The quadratic test is more likely to detect the 
+nonlinearity.</p>
+</div></div>
+
+<br>
+</div>
+
+<p class="heading">Other kinds of nonlinearity</p>
+<p>The reason for the lower power of the factor-model based test is that it is 
+testing for <strong>any</strong> nonlinear pattern in the means, not just a smooth 
+pattern.</p>
+<p>If the model nonlinearity is <strong>not</strong> close to a smooth quadratic 
+relationship, the quadratic test is less likely to detect the linearity but the 
+factor-model based test has the same power as for smooth curvature.</p>
+
+<div class="centred"><div class="boxed">
+<p>For 'non-smooth' relationships, the test involving 
+a factor model may be more likely to detect the nonlinearity.</p>
+</div></div>
+
+<p class="heading">Testing for bad experimental design</p>
+<p>This type of 'non-smooth' pattern in the means often arises in experiments 
+that have not been properly randomised. If the repetitions of the experiment at 
+each value of the explanatory variable have been conducted in blocks, then systematic 
+differences between these blocks (runs of the experiment) can also result in group 
+means that do not vary linearly.</p>
+
+<div class="centred"><div class="boxed">
+<p>The test for linearity based on a factor model 
+also tests for differences between these blocks of experiments.</p>
+</div></div>
+
+<br>
+
+<div class="diagram"> 
+<p class="heading">Simulation</p>
+<p>The diagram below again selects samples from a normal model. In this case, 
+the model means do not vary smoothly. Two possible reasons for this pattern are:</p>
+
+<ul>
+<li>The relationship is a curve that has a dip at around <em>x</em>&nbsp;=&nbsp;150.</li>
+<li>The mean response may increase fairly linearly with <em>x</em>, but each group 
+of 4 measurements at an <em>x</em>-value were conducted together as a block and 
+the block at <em>x</em>&nbsp;=&nbsp;150 involved experimental units with low responses.</li>
+</ul>
+
+<p>The factor-model based test is sensitive to both of these problems with the 
+linear model.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="varianceProg.QuadFactorCompareApplet">
+<param name="yVarName" value="Response">
+<param name="randomSeed" value="7438573561">
+<param name="factorModel" value="110 17 140 17 150 17 120 17 155 17">
+<param name="yAxis" value="75 190 80 20">
+<param name="xVarName" value="Explanatory">
+<param name="xValues" value="4@0 4@1 4@2 4@3 4@4">
+<param name="xLabels" value="0 50 100 150 200">
+<param name="xAxis" value="-15 210 0 50">
+<param name="decimals" value="2">
+<param name="labelAxes" value="true">
+<param name="maxSummaries" value="99999.9 99999.9 999.99 9.999">
+<param name="factorName" value="Total#Linear#Nonlinear#Residual">
+<param name="quadName" value="Total#Linear#Quadratic#Residual">
+<param name="customText" value="Quadratic=Quadratic#Factor=Factor">
+</applet>
+</div>
+
+<p>Click <strong>Take sample</strong> a few times to select data sets from this 
+model. Observe that the green p-value for the factor-model based test is more 
+likely than the quadratic test to detect this problem with the linear model &mdash; 
+its p-value is usually closer to zero.</p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

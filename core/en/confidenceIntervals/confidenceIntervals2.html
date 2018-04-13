@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Distribution of estimation error</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+	
+	<script type="text/javascript">
+		setupChoiceImages("../../estPropn/images/skiing", "../../estPropn/images/buffalo", "../../estPropn/images/marketResearch", "../../estPropn/images/church");
+	</script>
+
+	<meta name="index" content="estimation, proportion, standard error">
+	<meta name="dataset" content="Skiing injuries">
+	<meta name="dataset" content="Buffalo in Yellowstone">
+	<meta name="dataset" content="Market research for spice mix">
+	<meta name="dataset" content="Church attendance">
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Error distribution</p>
+
+<p>Most commonly used parameter estimates are either unbiased or can be proved to be <strong>asymptotically</strong> unbiased. For example, the expected value of a maximum likelihood estimator based on a random sample tends to the actual parameter value as the sample size \(n \to \infty\). For large samples,</p>
+\[
+E[\hat{\theta}] \;\; \approx \; \; \theta
+\]
+<p>We can often also find  the standard deviation of the estimator (or an approximation) — its standard error. In particular, for maximum likelihood estimators,</p>
+\[
+\se(\hat {\theta}) \;\;\approx\;\; \sqrt {- \frac 1 {\ell''(\hat {\theta})}}
+\]
+<p>Finally, maximum likelihood estimators are asymptotically normally distributed.</p>
+<p>This provides an approximate distribution for the <strong>estimation error</strong>,</p>
+\[
+error \;\;=\;\; \hat {\theta} - \theta \;\; \sim \;\; \NormalDistn\left(\mu=0, \;\;\sigma=\se(\hat{\theta})\right)
+	\]
+<div class="example">
+	<p class="exampleHeading">Binomial examples</p>
+	
+  <p>Each of the following data sets can be assumed to be  based on a series of independent Bernoulli trials with probability \(\pi\) of success, so the number of successes has a binomial distribution. </p>
+	<p>From the properties of the binomial distribution, we know that the sample proportion of successes is an unbiased estimator of \(\pi\) and we have an exact formula for its standard error. In each of the examples below,  the sample size is also reasonably large, so the estimator is approximately normally distributed.</p>
+\[
+\hat {\pi} \;\; \sim \;\; \NormalDistn\left(\pi, \;\;\sigma=\sqrt{\frac {\pi(1-\pi)} n} \right)
+	\]
+	<p>The calculations on the right find the point estimate of \(\pi\) and its standard error.</p>
+<form>
+<select name="dataset" onChange="changeImage('image', this)">
+<option value="0" selected>Skiing injuries for children</option>
+<option value="1">Buffalo ages at Yellowstone</option>
+<option value="2">Market research for spice mix</option>
+<option value="3">Church attendance</option>
+</select>
+</form>
+
+<p class="eqn">
+	<img class="gif" id="image" src="../estPropn/images/skiing.gif" width="594" height="307">
+</p>
+
+		<p>In each example, a numerical value for the standard error is found by replacing \(\pi\) by \(\hat{\pi}\) in its formula. The approximate 
+		normal distribution for the errors is shown on the bottom right.</p>
+
+
+<div class="centred"><div class="boxed">
+<p>In each example, the error distribution gives 
+						a good indication of how far the sample proportion is likely to be 
+						from the true probability of success, \(\pi\).</p>
+</div></div>
+
+<br>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

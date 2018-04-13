@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Confidence interval for binomial probability</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="confidence interval, pivot, binomial distribution">
+	<meta name="dataset" content="T-shirt size">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>Consider a single value, \(X\), from a \(\BinomDistn(n, \pi)\) distribution. The MLE of \(\pi\) is</p>
+\[
+\hat{\pi} \;\;=\;\; \frac X n
+\]
+<p>The binomial variable \(X\) has mean and variance</p>
+\[
+E[X] = n\pi \spaced{and} \Var(X) = n\pi(1 - \pi)
+\]
+<p>Standardising \(X\) (subtracting its mean and dividing by its standard deviation) gives a distribution that is approximately normal as the sample size, \(n\), increases. Therefore</p>
+\[
+\frac{X - n\pi}{\sqrt{n \pi(1 - \pi)}} \;\;\underset {\text{approx}}{\sim} \;\; \NormalDistn(0, 1)
+\]
+<p>This can be used as a pivot. An approximate 95% confidence interval is therefore the solution to</p>
+\[
+-1.96 \;\;\lt\;\; \frac{x - n\pi}{\sqrt{n \pi(1 - \pi)}} \;\;\lt\;\; 1.96
+\]
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Question</p>
+<p>A retail clothing outlet has collected the following data from random sampling of invoices for T-shirts over the past month.</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred">
+	<tr>
+		<th>&nbsp;</th>
+		<th width="50">Small</th>
+		<th width="50">Medium</th>
+		<th width="50">Large</th>
+		<th width="50">XL</th>
+		<th width="50">Total</th>
+	</tr>
+	<tr>
+		<th>North Island</th>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">2</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">15</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">24</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">9</td>
+		<td align="center">50</td>
+	</tr>
+	<tr>
+		<th>South Island</th>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">4</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">17</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">23</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">6</td>
+		<td align="center">50</td>
+	</tr>
+</table>
+</div>
+
+<p>Find a 95% confidence interval for the probability that a T-shirt purchased from one of the store's North Island shops is Small.</p>
+<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+<p>Using a pivot, the above 95% confidence interval is</p>
+\[
+0.011 \;\;\lt\;\; \pi \;\;\lt\;\; 0.135
+\]
+<p>whereas the conventional Wald-type 95% confidence interval would be</p>
+\[
+-0.014 \;\;\lt\;\; \pi \;\;\lt\;\; 0.094
+\]
+<p>This includes impossible negative values for \(\pi\), so the confidence interval found from a pivot is better.</p>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

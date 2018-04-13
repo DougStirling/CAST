@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Polynomial models</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="general linear model, sequential sums of squares, polynomial model">
+	<meta name="dataset" content="Onion yield and density">
+	<meta name="dataset" content="Traffic fatal crashes in NZ">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Nonlinear regression with polynomials</p>  
+  <p>We will now consider the use of a polynomial to model a nonlinear relationship 
+		between a single explanatory variable, <em>X</em>, and the response, <em>Y</em>.</p>
+	<p class="eqn"><img src="images/polyModel.gif" width="522" height="22"></p>
+	<p>For models of this type, we are interested in using the lowest possible degree 
+		of polynomial, but it makes no sense to have any power of <em>x</em> without 
+		all lower powers.</p>
+	
+<div class="centred"><div class="boxed">
+<p>The only meaningful order of adding variables 
+				is by increasing powers of <em>x</em>.</p>
+</div></div>
+
+  <p>It is possible to decide on the lowest order polynomial that fits the data 
+		from the resulting single anova table &mdash; the best degree of polynomial corresponds 
+		to the highest-order term that is significantly different from zero. (A p-value 
+		less than 0.05 is often used.)</p>
+	<p class="heading">Warning</p>
+	<p>A polynomial of degree 4 or higher might be found to fit the data best, but 
+		you will often find that it behaves in unreasonable ways outside the range 
+		of data that were collected. High-degree polynomials should <strong>never</strong> 
+		be used for extrapolation.</p>
+	
+<div class="centred"><div class="boxed">
+<p>Some other form of nonlinear function should 
+				always be considered before using high-order polynomials.</p>
+</div></div>
+
+	<p>For example, consider a nonlinear transformation of either <em>X</em> or 
+		<em>Y</em>. </p>
+  <div class="diagram">
+		<p class="heading">Onion yield</p>
+    <p>The data below arose from an experiment in Purnong Landing, South Australia 
+			involving production of white Spanish onions. The explanatory variable is 
+			the areal density of planting (plants per square metre) and the response 
+			is onion yield (grams per plant).</p>
+		
+		<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="glmAnovaProg.AnovaPolynomialApplet">
+<param name="yVarName" value="Yield">
+<param name="yValues" value="223 234 221 221 197 189 211 191 156 168 197 154 153 142 126 167 144 151 130 125 114 116 120 134 114 91 101 97 101 97 87 81 76 87 84 69 64 66 63 55 62 54">
+<param name="xVarName" value="Density">
+<param name="xValues" value="23 26 27 32 33 36 37 37 41 42 44 44 51 55 55 57 58 59 60 62 67 70 70 73 73 78 95 96 96 101 103 104 105 108 117 127 134 137 151 163 166 184">
+<param name="xCenter" value="100">
+<param name="maxSsq" value="99999.99 99 99999.99 999.99">
+<param name="polyDegree" value="6">
+<param name="xCenteredAxis" value="-100 100 -100 20">
+<param name="xAxis" value="0 200 0 20">
+<param name="yAxis" value="0 300 0 50">
+<param name="customText" value="Linear=Linear#Quadratic=Quadratic#Cubic=Cubic#Power=Power">
+</applet> 
+</div>
+
+		<p>A polynomial of degree 6 has been fitted to the data and is shown on the 
+			scatterplot in dark blue.</p>
+		<p>The terms of degree 6, 5 and 4 have high p-values, so we would conclude 
+			that a cubic polynomial (of degree 3) is adequate to model the data. Drag 
+			the red arrow up to display the cubic curve.</p>
+		<p>The display also shows the model with a polynomial whose degree is one 
+			lower. The distances between these two curves at the data points is the 
+			difference between the fitted values and are shown in red. (They are only 
+			clearly visible when the power is low.) The sum of squares of these red 
+			distances is the sequential sum of squares for the highest-order term.</p>
+		
+<div class="centred"><div class="boxed">
+<p>Observe that when the power of the polynomial 
+					is increased to 5 or 6, the curve remains fairly smooth over the range 
+					of densities used in the experiment, but fluctuates wildly at extreme 
+					densities and should not be used for extrapolation.</p>
+</div></div>
+
+	<p class="heading">Traffic fatal crashes in New Zealand</p>
+    <p>The next data set gives the number of fatal vehicle crashes in New Zealand 
+			per 100,000 population between 1970 and 2005.</p>
+		
+		<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="glmAnovaProg.AnovaPolynomialApplet">
+<param name="yVarName" value="Fatal crashes per 100,000 popn">
+<param name="yValues" value="20.3 20.7 21.0 24.5 19.8 18.3 17.0 19.7 18.6 15.9 16.8 18.3 18.7 17.4 18.6 20.0 19.8 20.6 18.7 19.2 18.7 16.1 15.6 14.7 13.9 13.8 12.3 12.4 11.5 11.4 10.0 10.3 9.3 10.1 9.2 8.3">
+<param name="xVarName" value="Year">
+<param name="xValues" value="1970 1971 1972 1973 1974 1975 1976 1977 1978 1979 1980 1981 1982 1983 1984 1985 1986 1987 1988 1989 1990 1991 1992 1993 1994 1995 1996 1997 1998 1999 2000 2001 2002 2003 2004 2005">
+<param name="xCenter" value="1990">
+<param name="maxSsq" value="999.99 99 999.99 99.99">
+<param name="polyDegree" value="7">
+<param name="xCenteredAxis" value="-21 16 -20 5">
+<param name="xAxis" value="1969 2006 1970 5">
+<param name="yAxis" value="5 30 5 5">
+<param name="customText" value="Linear=Linear#Quadratic=Quadratic#Cubic=Cubic#Power=Power">
+</applet> 
+</div>
+
+		<p>In this example, the term with power 6 is highly significant (p-value is 
+			approx 0). Polynomials of such high degree should be avoided and different 
+			methods should be used for such time series data.</p>
+
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Testing whether slope is zero</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<script type="text/javascript">
+		setupChoiceImages("../../../en/regnTest/images/whistleblowers", "../../../en/regnTest/images/hawaii", "../../../en/regnTest/images/grandfatherClocks", "../../../en/regnTest/images/bankMinorities", "../../../en/regnTest/images/signReadingDist");
+	</script>
+
+	<meta name="index" content="slope, hypothesis test">
+	<meta name="dataset" content="Whistleblowers">
+	<meta name="dataset" content="Tourists in Hawaii">
+	<meta name="dataset" content="Grandfather clock price">
+	<meta name="dataset" content="Banks and minorities">
+	<meta name="dataset" content="Distance to read sign">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Does the response depend on X?</p>
+<p>In a normal linear model, the response has a distribution whose mean,
+	µ<sub>y</sub>,
+	depends linearly on the explanatory variable,</p>
+<p class=eqn><span class="black"><em>Y</em>&nbsp; ~ &nbsp;<font face="Arial, Helvetica, sans-serif">normal</font> (&mu;<sub>y</sub>&nbsp;, &sigma;<sub>y</sub>)</span></p>
+<p>If the slope parameter, β<sub>1</sub>, 
+	is zero, then the response has a normal distribution that does not depend on <i>X</i>.</p>
+<p class=eqn><span class="black"><em>Y</em> &nbsp; ~ &nbsp; <font face="Arial, Helvetica, sans-serif">normal</font> (&beta;<sub>0</sub> , &nbsp;&sigma;)</span></p>
+<div class="centred"><div class="boxed">
+	<p>If the slope is zero, there is <span class="red">no association</span> between <em>Y</em> and <em>X</em>.</p>
+</div></div>
+<p class="heading">Testing for zero slope</p>
+
+<p>To assess whether the explanatory variable affects the response, we test the 
+  hypotheses </p>
+<p class=eqn><span class="blue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&beta;<sub>1</sub> &nbsp;=&nbsp; 0<br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&beta;<sub>1</sub>  &nbsp;&ne;&nbsp;  0</span> </p>
+<p>The least squares slope from a sample, <em>b</em><sub>1</sub>, 
+  is the obvious statistic to throw light on the value of β<sub>1</sub>, 
+  but <em>b</em><sub>1</sub> varies from sample to sample. We must therefore take account of its sampling distribution
+  to assess its distance from zero. </p>
+<p class="heading">Software output</p>
+<p>You will rely on computer software to perform the test for zero slope. We will first describe the typical output from such a test, then give a partial explanation about the information in the output. Most software provides regression output in the same format. Typical output from fitting a regression model to <em>n</em>&nbsp;=&nbsp;20 observations that use an explanatory variable &quot;Advertising&quot; to predict the response &quot;Sales&quot; is shown below.</p>
+<p class="eqn"><img src="images/test_anova.gif" width="323" height="53">
+</p>
+<p class="heading">Interpretation of p-value</p>
+<p>The p-value for a test of zero slope is interpreted in the same way as for other hypothesis tests. The table below may be regarded as an over-simplification, can be used as a guide. </p>
+
+
+	<div class="centred"><table border="0" cellpadding="5" cellspacing="0" class="centred">
+<tr>
+			<th align="CENTER">p-value</th>
+			<th align="CENTER">Interpretation</th>
+		</tr>
+		<tr bgcolor="white">
+			<td style="border-top:1px solid #999999;">over 0.1</td>
+			<td style="border-top:1px solid #999999;">no evidence that the null hypothesis does not hold<br>
+				(no evidence that the slope is non-zero)</td>
+		</tr>
+		<tr bgcolor="white">
+			<td>between 0.05 and 0.1</td>
+			<td>very weak evidence that the null hypothesis does not hold<br>
+				(very weak evidence that the slope is non-zero)</td>
+		</tr>
+		<tr bgcolor="white">
+			<td>between 0.01 and 0.05</td>
+			<td>moderately strong evidence that the null hypothesis does not hold<br>
+(moderately strong evidence that the slope is non-zero)</td>
+		</tr>
+		<tr bgcolor="white">
+			<td style="border-bottom:1px solid #999999;">under 0.01</td>
+			<td style="border-bottom:1px solid #999999;">strong evidence that the null hypothesis does not hold<br>
+(strong evidence that the slope is non-zero)</td>
+		</tr>
+	</table></div>
+
+<p>Consider a data set with least squares slope <em>b</em><sub>1</sub> and corresponding p-value,   0.0023. We should conclude that there is strong 
+	evidence that the linear model slope is not zero and therefore that the response 
+	is related to the explanatory variable. </p>
+<p>Similarly, if we calculate that the p-value for <em>b</em><sub>1</sub> is 0.4, this tells us that a least squares slope as far from zero as <em>b</em><sub>1</sub> would not be unusual if <em>Y</em> and <em>X</em> were unrelated. Our conclusion should be that there is no reason to doubt the null hypothesis &mdash;  there is no evidence of a relationship 
+	between the response and explanatory variables. </p>
+<div class="diagram"> 
+<p class="heading">Examples</p>
+<p>The following data sets show hypothesis tests for a few data sets and the conclusions that are reached. 
+</p>
+<form>
+<select name="dataset" onChange="changeImage('image', this)">
+<option value="0" selected>Whistleblower retaliation</option>
+<option value="1">Tourist arrivals in Hawaii</option>
+<option value="2">Grandfather clock auction prices</option>
+<option value="3">Banks and minorities</option>
+<option value="4">Distance to read sign</option>
+</select>
+</form>
+
+<p align="center"><img src="../../en/regnTest/images/whistleblowers.gif" id="image" width="589" height="473"></p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

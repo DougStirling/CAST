@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE topic SYSTEM "exerciseXmlDefn.dtd">
+
+<topic name='percentile'>
+<longName>Finding proportions and percentiles</longName>
+
+
+<exercise name='reexpressPropn'>
+	<description>Express proportion as a percentage, rate or return period</description>
+	<comment>The question gives information about previous occurances of some event and asks for this to be expressed in different ways.</comment>
+	<applet>exercisePercentProg.PercentRateApplet</applet>
+	<width>550</width>
+	<height>360</height>
+	
+	<variable name="trialName" type="string(16)">Name for the Bernouli trials</variable>
+	<variable name="successName" type="string(16)">Name for success event</variable>
+	<variable name="nSuccess" type="int">Number of successes in data</variable>
+	<variable name="nTrials" type="int">Number of trials in data</variable>
+	<variable name="returnPrefix" type="string(16)">This text and the returnSuffix give the text in the solution describing the return period.</variable>
+	<variable name="returnSuffix" type="string(16)"></variable>
+	<variable name="propnDecimals" type="int">Decimals displayed for proportions</variable>
+	<variable name="questionType" type="int_choice(Proportion#Percent#Rate per x#Return period)" extra="true"></variable>
+	<variable name="nTarget" type="int(optional)" extra="true">This is the number of years in questions about the rate per x years</variable>
+	
+	<variation>
+		<shortName>drought</shortName>
+		<longName>Years with drought</longName>
+		<question>A region in Africa suffered drought in #nSuccess(2:6)# out of the last #nTrials[](20,30)# years.\\n</question>
+		<qnParam>trialName(year)#successName(drought)#returnPrefix(Drought is a)#returnSuffix(-year event)#propnDecimals(3)</qnParam>
+		<ending>questionType(0)#In what proportion of years was there drought?</ending>
+		<ending>questionType(1)#In what percentage of years was there drought?</ending>
+		<ending>questionType(2)#What was the rate of drought years per #nTarget[](10,20,30,40,50)# years?</ending>
+		<ending>questionType(3)#Such a drought would be called a 'x-year' event. What is the value of x?</ending>
+	</variation>
+	
+	<variation>
+		<shortName>floods</shortName>
+		<longName>Years with floods</longName>
+		<question>Heavy rain caused winter flooding in a city in #nSuccess(2:6)# out of the last #nTrials[](20,30)# years.\\n</question>
+		<qnParam>trialName(year)#successName(flood)#returnPrefix(A year with a flood is a)#returnSuffix(-year event)#propnDecimals(3)</qnParam>
+		<ending>questionType(0)#In what proportion of years was there a flood?</ending>
+		<ending>questionType(1)#In what percentage of years was there a flood?</ending>
+		<ending>questionType(2)#What was the rate of flood years per #nTarget[](10,20,30,40,50)# years?</ending>
+		<ending>questionType(3)#Such a flood would be called a 'x-year' event. What is the value of x?</ending>
+	</variation>
+	
+	<variation>
+		<shortName>breakdowns</shortName>
+		<longName>Months with breakdown in production line</longName>
+		<question>In the previous #nTrials[](20,30)# months, a production line was stopped by a breakdown in #nSuccess(2:6)# months.\\n</question>
+		<qnParam>trialName(month)#successName(breakdown)#returnPrefix(Breakdowns are called a)#returnSuffix(-month event)#propnDecimals(3)</qnParam>
+		<ending>questionType(0)#In what proportion of months was there a breakdown?</ending>
+		<ending>questionType(1)#In what percentage of months was there a breakdown?</ending>
+		<ending>questionType(2)#What was the rate of breakdown months per #nTarget[](10,20,30,40,50)# months?</ending>
+		<ending>questionType(3)#Breakdowns occurred on average in one month per x months. What is the value of x?</ending>
+	</variation>
+</exercise>
+
+
+<exercise name='pFromCdf'>
+	<description>Find a proportion or percentage from CDF</description>
+	<comment>The question shows a cumulative distribution function and asks for the proportion of values more than (or less than) a specific value.\\nThe options may ask for this to be expressed as a percentage, a rate per x periods or a return period.</comment>
+	<applet>exercisePercentProg.CumulativeRateApplet</applet>
+	<width>550</width>
+	<height>700</height>
+	
+	<option name="template">Show template to help perform calculation (recommended if rate or return period options are chosen)</option>
+	<option name="propn">Question may ask for a proportion</option>
+	<option name="percent">Question may ask for a percentage</option>
+	<option name="rate">Question may ask for the occurances per x periods</option>
+	<option name="returnPeriod">Question may ask for a return period</option>
+	
+	<variable name="trialName" type="string(16)">Name for the Bernouli trials</variable>
+	<variable name="shortVarName" type="string(12)">Name for the Bernouli trials</variable>
+	<variable name="longVarName" type="string(18)">Name for the Bernouli trials</variable>
+	<variable name="propnDecimals" type="int">Number of decimals for proportion</variable>
+	<variable name="axis" type="axis">Horizontal axis for scatterplot</variable>
+	<variable name="data" type="string(30)">Values separated by spaces</variable>
+	<variable name="maxCutoff" type="double">Template for maximum value</variable>
+	
+	<variable name="questionType" type="int_choice(Proportion#Percent#Rate per x#Return period)" extra="true"></variable>
+	<variable name="directionName" type="string_choice(less#more)" extra="true">Direction for event of interest</variable>
+	<variable name="cutoff" type="double" extra="true">Cutoff value for event of interest</variable>
+	<variable name="nTarget" type="int" extra="true">This is the number of years in questions about the rate per x years</variable>
+	
+	<variation>
+		<shortName>rainfall</shortName>
+		<longName>Annual rainfall</longName>
+		<question>Annual rainfall was recorded in Samaru, Northern Nigeria between 1928 and 1983.\\n</question>
+		<qnParam>index(0:11)#trialName(year)#shortVarName(rainfall)#longVarName(annual rainfall in Samaru, Nigeria, mm)#propnDecimals(3)#axis(600 1600 600 200)#maxCutoff(1600)#data(1262.34 1284.18 1044.73 1197.82 1198.16 1311.61 1076.67 996.43 1150.32 982.98 987.06 1129.27 910.82 1033.97 935.74 1273.04 928.62 983.75 1425.41 1149.85 896.90 988.82 898.92 1159.99 1105.16 1155.41 1481.80 1345.45 927.12 1394.71 888.67 1063.55 1091.43 824.23 1301.97 1091.18 1055.04 977.65 1332.50 967.74 1059.45 1218.19 948.15 883.89 907.27 974.32 1115.32 987.04 1189.40 745.50 1149.90 1183.30 847.40 1019.10 766.50 608.20)</qnParam>
+		<ending>questionType(0)#In what proportion of years was rainfall #directionName[](less*more)# than #cutoff[](700,800,870,960,1000,1100,1230,1370,1459)#?</ending>
+		<ending>questionType(1)#In what percentage of years was rainfall #directionName[](less*more)# than #cutoff[](700,800,870,960,1000,1100,1230,1370,1459)#?</ending>
+		<ending>questionType(2)#What was the rate of years with rainfall #directionName[](less*more)# than #cutoff[](700,800,870,960,1000,1100,1230,1370,1459)# per #nTarget[](10,20,50,80)# years?</ending>
+		<ending>questionType(3)#Getting rainfall #directionName[index](less*less*less*less*less*less*more*more*more*more*more*more)# than #cutoff[index](700,800,840,920,940,960,1400,1320,1290,1250,1210,1170)# would be called a 'x-year' event. What is the value of x?</ending>
+	</variation>
+	
+	<variation>
+		<shortName>firstRain</shortName>
+		<longName>First rainfall after dry season</longName>
+		<question>In Africa, the arrival of the first rainfall after the dry season is important. The data set below describes the date of the first rain (days after 1 April) in Samaru, Northern Nigeria each year between 1928 and 1983.\\n</question>
+		<qnParam>index(0:7)#trialName(year)#shortVarName(first rain)#longVarName(date of first rain in Samaru, Nigeria)#propnDecimals(3)#axis(90 180 100 20)#maxCutoff(180)#data(115 126 108 118 115 156 116 134 113 126 118 134 118 138 120 140 160 158 129 134 109 122 136 95 131 125 114 118 143 94 143 115 147 99 111 123 154 160 107 111 110 129 127 136 108 144 119 109 100 151 96 127 140 109 152 176)</qnParam>
+		<ending>questionType(0)#In what proportion of years was the first rain #directionName[](before*after)# day #cutoff[](97,103,112,117,121,124,133,141,150,155)#?</ending>
+		<ending>questionType(1)#In what percentage of years was the first rain #directionName[](before*after)# day #cutoff[](97,103,112,117,121,124,133,141,150,155)#?</ending>
+		<ending>questionType(2)#What was the rate of years with the first rain #directionName[](before*after)# day #cutoff[](97,103,112,117,121,124,133,141,150,155)# per #nTarget[](10,20,50,80)# years?</ending>
+		<ending>questionType(3)#Getting rainfall #directionName[index](before*before*before*before*after*after*after*after)# day #cutoff[index](97,103,112,117,141,150,155,165)# would be called a 'x-year' event. What is the value of x?</ending>
+	</variation>
+</exercise>
+
+
+<exercise name='percentileFromCdf'>
+	<description>Find a percentile from CDF</description>
+	<comment>The question shows a cumulative distribution function and asks for a percentile of the distribution.\\nThe required percentile may be specified by the percentage of values more than (or less than) a specific value, a rate per x periods or a return period.</comment>
+	<applet>exercisePercentProg.PercentileApplet</applet>
+	<width>550</width>
+	<height>740</height>
+	
+	<coreParam name="customText">The*'th percentile is=The*'th percentile is</coreParam>
+	
+	<option name="template">Show template to help perform calculation (recommended if rate or return period options are chosen)</option>
+	<option name="percent">Question gives a percentage</option>
+	<option name="rate">Question gives the number of occurances per x periods</option>
+	<option name="returnPeriod">Question gives a return period</option>
+	
+	<variable name="trialName" type="string(16)">Name for the Bernouli trials</variable>
+	<variable name="shortVarName" type="string(12)">Name for the Bernouli trials</variable>
+	<variable name="longVarName" type="string(18)">Name for the Bernouli trials</variable>
+	<variable name="units" type="string(10)">Units for values</variable>
+	<variable name="axis" type="axis">Horizontal axis for scatterplot</variable>
+	<variable name="maxValue" type="double">Template for values</variable>
+	<variable name="data" type="string(30)">Values separated by spaces</variable>
+	
+	<variable name="questionType" type="int_choice(Proportion#Percent#Rate per x#Return period)" extra="true"></variable>
+	<variable name="directionName" type="string(8)" extra="true">Direction for event of interest</variable>
+	<variable name="percent" type="int(optional)" extra="true">Percentage in percentage questions</variable>
+	<variable name="rateNumer" type="int(optional)" extra="true">Numerator value in rate per xxx years questions</variable>
+	<variable name="rateDenom" type="int(optional)" extra="true">Denominator value in rate per xxx years questions</variable>
+	<variable name="returnPeriod" type="int(optional)" extra="true">Return period in these questions</variable>
+	
+	<template>
+		<question>Annual data are shown below.\\n</question>
+		<qnParam>trialName(year)#shortVarName(Y)#longVarName(variable, Y,)#units()#axis(600 1600 600 200)#maxValue(1600)#data(1262.34 1284.18 1044.73 1197.82 1198.16 1311.61 1076.67 996.43 1150.32 982.98 987.06 1129.27 910.82 1033.97 935.74 1273.04 928.62 983.75 1425.41 1149.85 896.90 988.82 898.92 1159.99 1105.16 1155.41 1481.80 1345.45 927.12 1394.71 888.67 1063.55 1091.43 824.23 1301.97 1091.18 1055.04 977.65 1332.50 967.74 1059.45 1218.19 948.15 883.89 907.27 974.32 1115.32 987.04 1189.40 745.50 1149.90 1183.30 847.40 1019.10 766.50 608.20)</qnParam>
+		<ending>questionType(0)#In #percent(2:98)# percent of years, the variable was #directionName[](under*over)# what value?</ending>
+	</template>
+	
+	<variation>
+		<shortName>rainfall</shortName>
+		<longName>Annual rainfall</longName>
+		<question>Annual rainfall was recorded in Samaru, Northern Nigeria between 1928 and 1983.\\n</question>
+		<qnParam>trialName(year)#shortVarName(rainfall)#longVarName(annual rainfall in Samaru, Nigeria, mm)#units(mm)#axis(600 1600 600 200)#maxValue(1600)#data(1262.34 1284.18 1044.73 1197.82 1198.16 1311.61 1076.67 996.43 1150.32 982.98 987.06 1129.27 910.82 1033.97 935.74 1273.04 928.62 983.75 1425.41 1149.85 896.90 988.82 898.92 1159.99 1105.16 1155.41 1481.80 1345.45 927.12 1394.71 888.67 1063.55 1091.43 824.23 1301.97 1091.18 1055.04 977.65 1332.50 967.74 1059.45 1218.19 948.15 883.89 907.27 974.32 1115.32 987.04 1189.40 745.50 1149.90 1183.30 847.40 1019.10 766.50 608.20)</qnParam>
+		<ending>questionType(0)#In #percent(2:98)# percent of years, the rainfall was #directionName[](under*over)# what value?</ending>
+		<ending>questionType(1)#Rainfall #directionName[](under*over)# what value occurred at a rate of #rateNumer[](2,3,4)# years per #rateDenom[](10,20,30)# years?</ending>
+		<ending>questionType(2)#Rainfall #directionName[](under*over)# what value would be called a #apos##returnPeriod[](10,15,20)#-year#apos# event?</ending>
+	</variation>
+	
+	<variation>
+		<shortName>firstRain</shortName>
+		<longName>First rainfall after dry season</longName>
+		<question>In Africa, the arrival of the first rainfall after the dry season is important. The data set below describes the date of the first rain (days after 1 April) in Samaru, Northern Nigeria each year between 1928 and 1983.\\n</question>
+		<qnParam>trialName(year)#shortVarName(first rain)#longVarName(date of first rain in Samaru, Nigeria)#units(days)#axis(90 180 100 20)#maxValue(180)#data(115 126 108 118 115 156 116 134 113 126 118 134 118 138 120 140 160 158 129 134 109 122 136 95 131 125 114 118 143 94 143 115 147 99 111 123 154 160 107 111 110 129 127 136 108 144 119 109 100 151 96 127 140 109 152 176)</qnParam>
+		<ending>questionType(0)#In #percent(2:98)# percent of years, the first rain occurred #directionName[](before*after)# what day?</ending>
+		<ending>questionType(1)#The first rain occurred #directionName[](before*after)# what day at a rate of #rateNumer[](2,3,4)# years per #rateDenom[](10,20,30)# years?</ending>
+		<ending>questionType(2)#First rain occurring #directionName[](before*after)# what day would be called a #apos##returnPeriod[](10,15,20)#-year#apos# event?</ending>
+	</variation>
+</exercise>
+
+</topic>

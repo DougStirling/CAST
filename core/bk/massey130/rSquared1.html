@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Sums of squares</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="linear model, regression model, sums of squares, explained sum of squares, residual sum of squares">
+	<meta name="dataset" content="Airline complaints">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Sums of squares</p>
+<p>An alternative description of the strength of a relationship is often used when the variables can be treated as a response measurement that may be affected by an explanatory variable. This description depends on three values called <strong>sums of squares</strong>.</p>
+<p class="heading">Residual sums of squares</p>
+<p>The residual sum of squares is the sum of squared vertical distances between scatterplot crosses and the least squares line,</p>
+<p class="eqn"><img src="images/ssResid.gif" width="286" height="230"></p>
+<p>This sum of squares describes response variation that is <strong> unexplained</strong> by the explanatory variable X and the method of least squares positions the line to make it as small as possible.</p>
+<p class="eqn">SS<sub>Resid</sub> &nbsp; = &nbsp; <span style="font-size:large">Σ</span>&nbsp;residual<sup>2</sup></p>
+<p class="heading">Total sums of squares</p>
+<p>The overall variation of the response, ignoring the existance of the explanatory variable, can be summarised by the sum of squared differences between the values and the overall mean response. These differences can be displayed on the scatterplot as vertical distances between the crosses and the mean response.</p>
+<p class="eqn"><img src="images/ssTotal.gif" width="286" height="230"></p>
+<p>The total sum of squares is the sum of the squared green lines above.</p>
+<p class="eqn">SS<sub>Total</sub> &nbsp; = &nbsp; <span style="font-size:large">Σ</span>&nbsp;(y - overall mean)<sup>2</sup></p>
+<p class="heading">Explained  sums of squares</p>
+<p>The difference between these two sums of squares is called the <strong>explained sum of squares</strong> and describes the response variation that is explained by the explanatory variable,</p>
+<p class="eqn">SS<sub>Explained</sub> &nbsp; = &nbsp; SS<sub>Total</sub> &nbsp; - &nbsp; SS<sub>Resid</sub></p>
+<p>This sum of squares can be described graphically as the sum of squared distances between the least squares line and the overall mean, evaluated at each data point.</p>
+<p class="eqn"><img src="images/ssExplained.gif" width="286" height="230"></p>
+<p>The explained sum of squares is the sum of the squared purple lines above.</p>
+<p class="eqn">SS<sub>Explained</sub> &nbsp; = &nbsp; <span style="font-size:large">Σ</span>&nbsp;(LS prediction &nbsp; - &nbsp; overall mean)<sup>2</sup></p>
+<div class="centred"><div class="boxed">
+	<p>The relative sizes of the explained and residual sums of squares describe how much of the variability is explained by the model.<br>
+	
+	<p></p>
+</div></div>
+<div class="diagram">
+
+<p class="heading">Simulation: Impurities in plastic</p>
+<p>The next diagram shows simulated data that might describe the impurities recorded 
+from batches of plastic produced at different temperatures (degrees Fahrenheit).</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="360">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.ComponentsSsqApplet">
+<param name="yVarName" value="Impurities, y">
+<param name="xVarName" value="Temperature, x">
+<param name="xRandom" value="30 70 8 445945782 2.0">
+<param name="regnModel" value="-25.0 0.5 2.0">
+<param name="randomSeed" value="623945782">
+<param name="xAxis" value="50 90 50 10">
+<param name="yAxis" value="0 20 0 5">
+<param name="decimals" value="3">
+<param name="residAxis" value="-20 20 -20 10">
+<param name="initialR2" value="0.75">
+<param name="maxSsq" value="999.99">
+<param name="componentName" value="Total#Explained#Residual">
+<param name="customText" value="Variability=Variability#All unexplained=All unexplained#All explained=All explained">
+</applet>
+</div>
+
+<p>Click on the jittered dot plots on the right to display the different components 
+as coloured vertical lines on the scatterplot.</p>
+<p><strong>Drag the slider</strong> to change the strength of the relationship 
+between the impurities and temperature. Observe that:</p>
+
+
+<div class="centred"><div class="boxed">
+<dl>
+<dt>When the relationship is strong,</dt>
+<dd>...the residuals are much smaller than the explained components and their 
+sum of squares is also a small part of the total sum of squares.</dd>
+
+<dt>When the relationship is weak,</dt>
+<dd>...the residuals are larger than the explained components and their sum of 
+squares is a large part of the total sum of squares.</dd>
+</dl>
+</div></div>
+
+
+<p>The relative sizes of the sums of squares therefore hold information about the
+strength and significance of the relationship.</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

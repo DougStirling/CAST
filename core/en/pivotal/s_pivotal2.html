@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Pivots</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="pivot, confidence interval">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Assumption of normality</p>
+
+<p>Wald-type confidence intervals  need  \(\hat{\theta}\) to be approximately <strong>normally</strong> distributed. Although this usually holds  for large enough sample sizes, it is often violated when the sample size is small.</p>
+<p>A better type of confidence interval  avoids the need to assume normality. It is based on a random quantity called a <strong>pivot</strong>.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+<p>If a random sample, \(\{X_1, X_2, \dots, X_n\}\) is selected from a distribution with unknown parameter \(\theta\), a <strong>pivot</strong> is a function of the data and \(\theta\) whose distribution is fully known (and therefore does not involve unknown parameters),</p>
+\[
+g(\theta, X_1, \dots, X_n) \;\;\sim\;\; \mathcal{Distn}
+\]</div>
+<p>Since the distribution \(\mathcal{Distn}\) has no unknown parameters,  its quantiles are constants that we can evaluate. For a  \((1 - \alpha)\) confidence interval, we need the quantiles giving  probability \(\dfrac{\alpha}2\) in each tail of the distribution.</p>
+<p class="eqn"><img class="svgImage" src="images/quantiles.png" width="412" height="246"></p>
+<p>For example, if the pivot had a \(\NormalDistn(0, 1)\) distribution, for a 95% confidence interval, we would find the quantiles  \(D_{2{\frac 1 2}\%} = -1.96\) and \(D_{97{\frac 1 2}\%} = +1.96\).</p>
+<p class="heading">Confidence interval</p>
+<p>From how we defined these quantiles,</p>
+\[
+P\left(D_{\alpha / 2} \;\lt\; g(\theta, X_1, \dots, X_n) \;\lt\; D_{1 - \alpha / 2} \right) \;\;=\;\; 1 - \alpha
+\]
+<p>We can therefore define a \((1 - \alpha)\) confidence interval to be the values of \(\theta\) such that</p>
+\[
+D_{\alpha / 2} \;\;\lt\;\; g(\theta, x_1, \dots, x_n) \;\;\lt\;\; D_{1 - \alpha / 2}
+\]
+<p>Since there is a probability \((1 - \alpha)\) of this holding for a random sample from the distribution, the resulting confidence interval has confidence level \((1 - \alpha)\).</p>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

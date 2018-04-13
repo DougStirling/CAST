@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Deciding on the sample size</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="significance level, power function, sample size">
+	<meta name="dataset" content="Failure of printed circuit boards">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>The only way to increase the power of a test without also increasing the significance level is to collect more data.</p>
+
+<div class="example" title="Example: Failure of printed circuit boards">
+	<p class="exampleHeading">Failure of printed circuit boards</p>
+	<p>Consider the above printed circuit board example. Let us assume that the engineers have decided that it is acceptable for the probability of a Type I error (deciding that \(\pi\) &lt; 0.06 when \(\pi\) is really 0.06) to be 5%:</p>
+	<p class="eqn">significance level  =  P(Type I error)  =  0.05</p>
+	<p>and that it is acceptable for the probability of a Type II error (deciding that \(\pi\) is 0.06) to be 10% if \(\pi\) is really 0.03.</p>
+	<p>With a sample size of \(n\) and decision rule to reject the null hypothesis if \(x \le k\), we therefore require</p>
+
+\[ \begin{align}
+\alpha \;&amp;=\; P\left(\text {reject }H_0 \mid \pi = 0.06\right) \\[0.4em]
+&amp;=\; P(X \le 7 \mid \pi = 0.06) \\
+&amp;=\; \sum_{x=0}^k {n \choose x} \; 0.06^x \; 0.94^{n-x} \\
+&amp;=\; 0.05
+\end{align} \]
+
+<p>and</p>
+
+\[ \begin{align}
+\beta \;&amp;=\; P\left(\text {accept }H_0 \mid \pi = 0.03\right) \\[0.4em]
+&amp;=\; 1 - P(X \le 7 \mid \pi = 0.03) \\
+&amp;=\; 1 - \sum_{x=0}^k {n \choose x} \; 0.03^x \; 0.97^{n-x} \\
+&amp;=\; 0.10
+\end{align} \]
+
+<p>The values of \(n\) (the sample size) and \(k\) (the cut-off for the decision rule) are the values that satisfy these two equations (or are as close as possible to this). The diagram below helps.</p>
+	<div class="centred">
+		<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="450">
+			<script type="text/javascript">writeAppletParams();</script>
+			<param name="appletName" value="estimationProg.BinomialPowerApplet">
+			<param name="backgroundColor" value="FFFBF3">
+			<param name="pSuccess" value="0.030">
+			<param name="paramAxis" value="0 0.06 0 0.01">
+			<param name="powerAxis" value="0 1 0 0.2">
+			<param name="sampleSize" value="100 500 200">
+			<param name="cutoff" value="1 30 7">
+			<param name="nullProb" value="0.06">
+			<param name="piName" value="Probability of board failing">
+			<param name="customText" value="Significance level=Significance level#Power function=Power function#reject=reject#Reject=Reject#when=when">
+		</applet>
+	</div>
+	<p>From trial and error with different \(n\) and \(k\), we can find that if \(n = 400\) and \(k = 16\), we get</p>
+\[
+\alpha \;\;=\;\; 0.051 \spaced{and} \beta = 0.098
+\]
+<p>which is close to the required values.</p>
+<p>The engineer should therefore test 400 circuit boards made with the new process and conclude that it is better than the old process if 16 or fewer fail.</p>
+</div>
+<p>For tests involving continuous distributions, it is often possible to find explicit solutions to the equations for the probabilities of Type I and II errors.</p>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Confidence interval for median</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="confidence interval, hypothesis test, test, median">
+	<meta name="dataset" content="Protein levels in dogs">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>We will now find a 95% confidence interval for the <strong>median</strong> of a data set from a random sample, without making any assumptions about the shape of the underlying distribution. This will be done by inverting a test for the hypotheses</p>
+<ul>
+	<li><strong>H<sub>0</sub></strong>: \(\theta = \theta_0\)</li>
+	<li><strong>H<sub>A</sub></strong>: \(\theta \ne \theta_0\)</li>
+</ul>
+<p>where the parameter \(\theta\) is the median of the distribution. This can be based on the<strong> number</strong> of values less than \(\theta_0\). If \(\theta_0\) really is the median (and <strong>H<sub>0</sub></strong> is true),</p>
+\[
+Y \;\;=\;\; \text{number of values below }\theta_0 \;\;\sim\;\; \BinomDistn(n, \pi=0.5)
+\]
+<p>The p-value for the test is the probability of \(Y\) being further from \(\diagfrac{n}{2}\) than was observed in the data.</p>
+<p>A 95% confidence interval can be found (by trial-and-error) as the values of \(\theta_0\) that would result in the null hypothesis being accepted — i.e. with p-values greater than 0.05.</p>
+
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Question</p>
+<p>A certain disease in dogs is characterized in the early stages by unusually high levels of a blood protein. This measurement has been proposed as a diagnostic test for infection: if the measured level is above a threshold value, the dog is diagnosed as having the disease. A &lsquo;false positive&rsquo; occurs when a healthy dog happens to have a level above the threshold and is wrongly diagnosed as having the disease.</p>
+<p>Measurements on a sample of 50 unaffected dogs gave the following results:</p>
+
+<div class="centred">
+	<table border="0" cellpadding="5" cellspacing="0" class="centred" style="border:1px solid #999999; background-color:#FFFFFF;">
+		<tr>
+			<td style="text-align:right; padding-right:7px; width:40px;">14.4<br>
+				16.1<br>
+				11.9<br>
+				7.5<br>
+				9.3</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">9.3<br>
+				16.4<br>
+				4.9<br>
+				12.8<br>
+				23.7</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">23.7<br>
+				13.5<br>
+				9.3<br>
+				8.6<br>
+				17.6</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">19.0<br>
+				20.3<br>
+				17.0<br>
+				30.4<br>
+				8.3</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">13.9<br>
+				20.1<br>
+				10.2<br>
+				23.6<br>
+				14.9</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">19.7<br>
+				20.9<br>
+				17.1<br>
+				14.2<br>
+				15.7</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">50.4<br>
+				8.5<br>
+				7.5<br>
+				23.0<br>
+				18.7</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">5.5<br>
+				11.2<br>
+				31.8<br>
+				20.4<br>
+				13.0</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">13.4<br>
+				11.7<br>
+				7.8<br>
+				19.4<br>
+				21.4</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">16.4<br>
+				28.2<br>
+				31.3<br>
+				30.3<br>
+				26.6</td>
+		</tr>
+	</table>
+</div>
+
+<p>Measurements on a sample of 27 diseased dogs gave the results:</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred" style="border:1px solid #999999; background-color:#FFFFFF;">
+	<tr>
+<td style="text-align:right; padding-right:7px; width:40px;">21.9<br>40.8<br>37.6</td>
+<td style="text-align:right; padding-right:7px; width:40px;">41.7<br>23.3<br>39.8</td>
+<td style="text-align:right; padding-right:7px; width:40px;">66.3<br>34.4<br>27.8</td>
+<td style="text-align:right; padding-right:7px; width:40px;">49.8<br>19.3<br>55.5</td>
+<td style="text-align:right; padding-right:7px; width:40px;">50.7<br>27.5<br>30.2</td>
+<td style="text-align:right; padding-right:7px; width:40px;">60.7<br>8.5<br>51.2</td>
+<td style="text-align:right; padding-right:7px; width:40px;">24.2<br>24.9<br>16.1</td>
+<td style="text-align:right; padding-right:7px; width:40px;">28.2<br>30.2<br>&nbsp;</td>
+<td style="text-align:right; padding-right:7px; width:40px;">15.7<br>18.3<br>&nbsp;</td>
+<td style="text-align:right; padding-right:7px; width:40px;">22.5<br>8.4<br>&nbsp;
+	</tr>
+</table>
+</div>
+
+<p>Find 95% confidence intervals for the median level of blood protein in the two groups.</p>
+<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

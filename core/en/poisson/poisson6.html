@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Maximum likelihood</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="poisson distribution, maximum likelihood, estimation">
+	<meta name="dataset" content="Deaths by horse kicks">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Unknown parameter</p>
+
+<p>In practical applications, we may be able to assume that the conditions for a Poisson process hold at least approximately, but the rate of events, \(\lambda\), is usually an unknown value that must be estimated from data.</p>
+<p>We now give an  example of one such data set — a rather unusual one!</p>
+<div class="example">
+	<p class="exampleHeading">Example</p>
+	<p>The following table shows the numbers of deaths by horse kicks in the Prussian army each year from 1875 to 1894, in each of 14 army corps.</p>
+
+<div class="centred">
+	<table border="0" cellpadding="5" cellspacing="0" class="centred">
+<tr><th>Corps</th>
+<tr><td>G</td><td bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">0</td>
+	<td bgcolor="#FFFFFF" style="border-top:1px solid #999999;">2</td>
+	<td bgcolor="#FFFFFF" style="border-top:1px solid #999999;">2</td>
+	<td bgcolor="#FFFFFF" style="border-top:1px solid #999999;">1</td>
+	<td bgcolor="#FFFFFF" style="border-top:1px solid #999999;">0</td>
+	<td bgcolor="#FFFFFF" style="border-top:1px solid #999999;">0</td>
+	<td bgcolor="#FFFFFF" style="border-top:1px solid #999999;">1</td>
+	<td bgcolor="#FFFFFF" style="border-top:1px solid #999999;">1</td>
+	<td bgcolor="#FFFFFF" style="border-top:1px solid #999999;">0</td>
+	<td bgcolor="#FFFFFF" style="border-top:1px solid #999999;">3</td>
+	<td bgcolor="#FFFFFF" style="border-top:1px solid #999999;">0</td>
+	<td bgcolor="#FFFFFF" style="border-top:1px solid #999999;">2</td>
+	<td bgcolor="#FFFFFF" style="border-top:1px solid #999999;">1</td>
+	<td bgcolor="#FFFFFF" style="border-top:1px solid #999999;">0</td>
+	<td bgcolor="#FFFFFF" style="border-top:1px solid #999999;">0</td>
+	<td bgcolor="#FFFFFF" style="border-top:1px solid #999999;">1</td>
+	<td bgcolor="#FFFFFF" style="border-top:1px solid #999999;">0</td>
+	<td bgcolor="#FFFFFF" style="border-top:1px solid #999999;">1</td>
+	<td bgcolor="#FFFFFF" style="border-top:1px solid #999999;">0</td>
+	<td bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">1</td>
+</tr>
+<tr><td>I</td><td bgcolor="#FFFFFF" style="border-left:1px solid #999999;">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">2</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">3</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">2</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">2</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">3</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF" style="border-right:1px solid #999999;">0</td></tr>
+<tr><td>II</td><td bgcolor="#FFFFFF" style="border-left:1px solid #999999;">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">2</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">2</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">2</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">2</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF" style="border-right:1px solid #999999;">0</td></tr>
+<tr><td>III</td><td bgcolor="#FFFFFF" style="border-left:1px solid #999999;">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">2</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">2</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">2</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF" style="border-right:1px solid #999999;">0</td></tr>
+<tr><td>IV</td><td bgcolor="#FFFFFF" style="border-left:1px solid #999999;">0</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF" style="border-right:1px solid #999999;">0</td></tr>
+<tr><td>V</td><td bgcolor="#FFFFFF" style="border-left:1px solid #999999;">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">2</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF" style="border-right:1px solid #999999;">0</td></tr>
+<tr><td>VI</td><td bgcolor="#FFFFFF" style="border-left:1px solid #999999;">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">2</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">2</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">3</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">3</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF" style="border-right:1px solid #999999;">0</td></tr>
+<tr><td>VII</td><td bgcolor="#FFFFFF" style="border-left:1px solid #999999;">1</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">2</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">2</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">2</td><td bgcolor="#FFFFFF" style="border-right:1px solid #999999;">0</td></tr>
+<tr><td>VIII</td><td bgcolor="#FFFFFF" style="border-left:1px solid #999999;">1</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF" style="border-right:1px solid #999999;">1</td></tr>
+<tr><td>IX</td><td bgcolor="#FFFFFF" style="border-left:1px solid #999999;">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">2</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">2</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">2</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF" style="border-right:1px solid #999999;">0</td></tr>
+<tr><td>X</td><td bgcolor="#FFFFFF" style="border-left:1px solid #999999;">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">2</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">2</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">2</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">3</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF" style="border-right:1px solid #999999;">1</td></tr>
+<tr><td>XI</td><td bgcolor="#FFFFFF" style="border-left:1px solid #999999;">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">2</td><td bgcolor="#FFFFFF">4</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">3</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">2</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">3</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">3</td><td bgcolor="#FFFFFF" style="border-right:1px solid #999999;">1</td></tr>
+<tr><td>XIV</td><td bgcolor="#FFFFFF" style="border-left:1px solid #999999;">1</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">2</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">3</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">4</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">3</td><td bgcolor="#FFFFFF">2</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF">2</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">1</td><td bgcolor="#FFFFFF">0</td><td bgcolor="#FFFFFF" style="border-right:1px solid #999999;">0</td></tr>
+<tr><td>XV</td><td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">0</td>
+	<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">1</td>
+	<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">0</td>
+	<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">0</td>
+	<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">0</td>
+	<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">0</td>
+	<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">0</td>
+	<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">1</td>
+	<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">0</td>
+	<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">1</td>
+	<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">1</td>
+	<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">0</td>
+	<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">0</td>
+	<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">0</td>
+	<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">2</td>
+	<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">2</td>
+	<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">0</td>
+	<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">0</td>
+	<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">0</td>
+	<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">0</td>
+</tr>
+</table>
+</div>
+
+	<p>It is reasonable to assume that events (i.e. horse-kick deaths) occur randomly over the 20 years at a constant rate — a homogeneous Poisson process within each corps. If we make a further assumption that the rate is the same for all 14 corps, the counts in the above table will be a random sample from a Poisson distribution.</p>
+	<p>However the rate of deaths per year in each corps, \(\lambda\), is unknown and must be <strong>estimated</strong> from the data.</p>
+</div>
+<p class="heading">Maximum likelihood</p>
+<p>Given a random sample, \(\{x_1, x_2, \dots, x_n\}\), from a \(\PoissonDistn(\lambda)\) distribution, we will use maximum likelihood to estimate \(\lambda\). The logarithm of the Poisson probability function is</p>
+\[
+\log(p(x | \lambda)) \;=\; x \log(\lambda) - \lambda - \log(x!)
+\]
+<p>so the log-likelihood function is</p>
+\[
+\ell( \lambda) \;=\; \sum_{i=1}^n {x_i} \log(\lambda) - n\lambda + K
+\]
+<p>where \(K\) is a constant that does not depend on \(\lambda\). To find the maximum likelihood estimate, we set the derivative of the log-likelihood to zero,</p>
+\[
+\ell'( \lambda) \;=\; \frac {\sum {x_i}} {\lambda} - n \;=\; 0
+\]
+<p>so</p>
+\[
+\hat{\lambda} \;=\; \frac {\sum {x_i}} n \;=\; \overline{x}
+\]
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

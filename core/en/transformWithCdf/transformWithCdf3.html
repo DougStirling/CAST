@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Monotonic transformations</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="transformation, lognormal distribution, weibull distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Transformation of a single variable</p>
+
+<p>The method of finding a continuous random variable's probability density function via its cumulative distribution function can be simplified considerably when the variable is a monotonic function of another whose pdf is known. (A monotonic function is one that steadily increases or decreases.)</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Monotonic function of X</p>
+		<p>If a continuous random variable \(X\) has probability density function \(f_X(x)\) and another variable is defined as \(Y = g(X)\) where the function \(g(\cdot)\) is a monotonic  function with inverse \(X = h(Y)\), then the pdf of \(Y\) is</p>
+\[
+f_Y(y) \;\;=\;\; f_X(h(y)) \times \left| h'(y) \right|
+\]</div>
+	<div class="proof">
+		<p>If \(g(X)\) is a monotonic <strong>increasing</strong> function, the cumulative distribution function for \(Y\) is</p>
+\[
+F_Y(y) \;\;=\;\; P(Y \le y) \;\;=\;\; P(X \le h(y)) \;\;=\;\; F_X(h(y))
+\]
+		<p>We now differentiate to find the probability density function of \(Y\),</p>
+\[
+f_Y(y) \;=\; F_Y'(y) \;=\;\; F_X'(h(y)) \times h'(y) \;\;=\;\; f_X(h(y)) \times h'(y)
+\]
+<p>If \(g(X)\) is  monotonic <strong>decreasing</strong>,</p>
+\[
+F_Y(y) \;\;=\;\; P(Y \le y) \;\;=\;\; P(X \ge h(y)) \;\;=\;\; 1 - F_X(h(y))
+\]
+<p>Since \(h'(y)\) is now <strong>negative, </strong> the result is the same but involving the <strong>absolute value</strong> of \(h'(y)\).</p>
+	</div>
+</div>
+<p>The method will be clearer in an example.</p>
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Example: Log-normal distribution</p>
+<p>If \(X \sim \NormalDistn(\mu,\; \sigma^2)\), what is the distribution of \(Y = \exp(X)\)?</p>
+</div>
+
+<div class="solution">
+<p>In this example, \(y = g(x) = \exp(x)\) with inverse function \(x = h(y) = \log(y)\), the natural logarithm. The probability density function of \(Y\) is therefore</p>
+\[ \begin{align}
+f_Y(y) \;\;=\;\; f_X(h(y)) \times h'(y) \;\;&amp;=\;\; f_X(\log(y)) \times \frac 1 y \\
+&amp;=\;\; \frac 1{y\sqrt{2\pi}\;\sigma} e^{- \frac{\large (\log(y)-\mu)^2}{\large 2 \sigma^2}}
+\end{align} \]
+<p>Since \(Y\) must be greater than zero, its pdf is therefore</p>
+\[
+f_Y(y) \;\;=\;\; \begin{cases} \displaystyle \frac 1{y\sqrt{2\pi}\;\sigma} e^{- \frac{\large (\log(y)-\mu)^2}{\large 2 \sigma^2}} &amp; \text{if } y \ge 0 \\[0.4em]
+0 &amp; \text{otherwise}
+\end{cases} \]
+<p>This distribution is called a <strong>log-normal</strong> distribution.</p>
+<hr width="75%">
+<p>Note that if a random variable \(Y\) has a log-normal distribution, we can show in a similar way that \(X = \log(Y)\) will have a normal distribution.</p>
+</div>
+
+</div>
+
+<p>Another example shows the relationship between the exponential and Weibull distributions.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Example</p>
+		<p>If \(X \sim \ExponDistn(\lambda)\), show that the distribution of \(Y = X^a\) has a \(\WeibullDistn(\diagfrac 1 a, \lambda^a)\) distribution.</p>
+	</div>
+	<div class="solution">
+		<p>To simplify the proof, we will write \(a = \large \frac 1 k\), so \(y = g(x) = x^{\large \frac 1 k}\) which has inverse function \(x = h(y) = y^k\). The probability density function of \(Y\) is therefore</p>
+		\[ \begin{align}
+		f_Y(y) \;\;=\;\; f_X\left(h(y)\right) \times h'(y) \;\;&amp;=\;\; f_X(y^k) \times k \; y^{k - 1}\\
+		&amp;=\;\; \lambda e^{-\lambda y^k}  \times k \; y^{k - 1} \\
+		&amp;=\;\; k\lambda y^{k-1} e^{-\lambda y^k}
+		\end{align} \]
+		<p>which is the pdf of a \(\WeibullDistn(k, \lambda^{\large \frac 1 k})\) distribution.</p>
+	</div>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

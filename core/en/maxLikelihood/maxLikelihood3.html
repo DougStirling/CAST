@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Examples</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="maximum likelihood, binomial distribution, geometric distribution">
+	<meta name="dataset" content="Tiger sex ratio">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p class="heading">Random sample</p>
+<p>If \(\{x_1, x_2, \dots, x_n\}\) is a random sample from a distribution with probability function \(p(x\;|\;\theta)\), then</p>
+\[
+L(\theta \;|\;x_1, x_2, \dots, x_n) = \prod_{i=1}^n p(x_i \;|\; \theta)
+\]
+<p>so the log-likelihood can be written as</p>
+\[
+\ell(\theta) = \sum_{i=1}^n \log\left(p(x_i \;|\; \theta)\right)
+\]
+<p>We now give two examples in which maximum likelihood estimates are found from random samples.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Example: Sex ratio of Siberian tigers</p>
+		<p>The probability of a newborn tiger being male is an unknown parameter, \(\pi\). A researcher recorded the number of males in a sample of \(n = 207\) litters, and these values are summarised in the following frequency table.</p>
+		<div class="centred">
+			<table border="0" cellspacing="0" class="centred">
+				<tr>
+					<th>Number of males</th>
+					<th>0</th>
+					<th>1</th>
+					<th>2</th>
+					<th>3</th>
+				</tr>
+				<tr>
+					<th>Frequency</th>
+					<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-right:0px; padding: 2pt 10pt">33</td>
+					<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999; padding: 2pt 10pt">66</td>
+					<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999; padding: 2pt 10pt">80</td>
+					<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-left:0px; padding: 2pt 10pt">28</td>
+				</tr>
+			</table>
+		</div>
+		<p>If it is assumed that the sexes of all tigers in a litter are independently determined, what is the maximum likelihood estimate of \(\pi\)?</p>
+	</div>
+	<div class="solution">
+		<p>The number of male tigers in a litter of size \(k\) is a binomial random variable with probability function</p>
+\[
+		p(x) = {k \choose x} \pi^x(1-\pi)^{k-x}
+\]
+		<p>The data are a random sample of \(n = 207\) values from this distribution, \(x_1, x_2, \dots, x_{207} \), so they have likelihood function</p>
+\[ \begin{align}
+	L(\pi) &amp; = \prod_{i=1}^n {{k \choose x_i} \pi^{x_i}(1-\pi)^{k-x_i}} \\
+	&amp; = \pi^{\sum {x_i}}(1-\pi)^{nk-\sum {x_i}} \times \prod_{i=1} {k \choose x_i}
+\end{align} \]
+		<p>The log-likelihood is</p>
+		\[
+		\ell(\pi) \;\;= \;\; \sum {x_i} \log(\pi) + \left(nk - \sum(x_i) \right) \log(1 - \pi) + K
+		\]
+		<p>where \(K\) is a constant that does not depend on \(\pi\). The maximum likelihood estimate can be found by setting the derivative of \(\ell(\pi)\) to zero,</p>
+\[
+	\frac {d \; \ell(\pi)} {d\; \pi} \;\; = \;\; \frac {\sum {x_i}} {\pi} - \frac {nk - \sum {x_i}} {1 - \pi} \;\; = \;\; 0
+\]
+<p>The solution to this equation gives the maximum likelihood estimate,</p>
+		<p>\[\hat{\pi} = \frac {\sum {x_i}} {nk} = \frac {\overline x} k = 
+			\frac {1.498} 3 = 0.499\] </p>
+	</div>
+</div>
+<p>For random samples from a binomial distribution, the maximum likelihood and method of moments estimators are equal. They are also equal for the next example, but  differ for data from some other models.</p>
+
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Example: Sample from a geometric distribution</p>
+		<p>If \(\{X_1, X_2, \dots, X_n\}\) is a random sample from a geometric distribution with probability function</p>
+		\[
+		p(x) = \pi (1-\pi)^{x-1} \quad \quad \text{for } x = 1, 2, \dots
+		\]
+	<p>what is the maximum likelihood estimate of \(\pi\)?</p>
+	</div>
+	<div class="solution">
+<p>The likelihood function is</p>
+\[
+	L(\pi)  = \prod_{i=1}^n {\pi(1-\pi)^{x_i - 1}} = \pi^n(1-\pi)^{\sum {x_i} - n} \]
+	<p>and the log-likelihood is</p>
+\[
+	\ell(\pi)  \;=\; n \log (\pi) + \left( \sum {x_i} - n \right) \log(1-\pi) \]
+	<p>The maximum likelihood estimate is found by solving</p>
+\[
+	\frac {d \; \ell(\pi)} {d\; \pi} \;\; = \;\; \frac n {\pi} - \frac {\sum {x_i} - n} {1 - \pi} \;\; = \;\; 0 \\
+	n - n\pi - \left(\sum {x_i}\right) \pi + n\pi \;\;=\;\; 0 \\
+	\pi \;\;=\;\; \frac n {\sum {x_i}} \;\;=\;\; \frac 1 {\overline x}
+\]
+	<p>The maximum likelihood estimator of the probability of success is therefore the inverse of the average number of trials until the first success.</p>
+	</div>
+</div>
+
+<p>The following diagram helps to illustrate the concepts with a numerical example.</p>
+
+
+<div class="example" title="Illustration of maximum likelihood for a geometric sample">
+	<p class="exampleHeading">Illustration</p>
+	<p>The diagram below is based on an artificial data set {1, 1, 1, 1, 2, 2, 4} which is assumed to be a random sample from a geometric distribution,</p>
+\[
+		X \;\; \sim \; \; \GeomDistn(\pi)
+\]
+	<p>The seven data values are displayed as red crosses in the bottom half of the diagram below.</p>
+	<div class="centred">
+		<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="500">
+			<script type="text/javascript">writeAppletParams();</script>
+			<param name="appletName" value="estimationProg.GeometricLikelihoodApplet">
+			<param name="backgroundColor" value="FFFBF3">
+			<param name="geom" value="0.500">
+			<param name="loglikelihoodAxis" value="-14 -7.7 -14 2">
+			<param name="varName" value="geometric data">
+			<param name="dataAxis" value="0.5 6.5 1 1">
+			<param name="values" value="1 1 1 1 2 2 4">
+			<param name="customText" value="Log-likelihood=Log-likelihood#Unknown parameter=Unknown parameter#Probability of success=Probability of success#Max likelihood=Max likelihood#Geometric probability function=Geometric probability function#Trials to first success=Trials to first success">
+		</applet>
+	</div>
+	<p>The bottom half of the diagram also displays a bar chart of the probabilities from a geometric distribution, initially with \(\pi = 0.5\).</p>
+	<p>The likelihood for this value or \(\pi\) is the product of the geometric probabilities for each of the 7 data values — the product of their bar heights. The log-likelihood is the sum of the log-probabilities for the values and is shown in the top half of the diagram.</p>
+	<p>Use the slider to investigate how \(\pi\) affects the log-likelihood, \(\ell(\pi)\). Observe that:</p>
+	<ul>
+		<li>When \(\pi\) is very high, the probability for the highest data value, \(p(4)\), is small, pulling down the log-likelihood.</li>
+		<li>When \(\pi\) is very low, \(p(4)\) is larger, but \(p(1)\) reduces, pulling down the log-likelihood.</li>
+	</ul>
+	<p>Finally click <strong>Max likelihood</strong> to show the maximum likelihood estimator,</p>
+
+\[
+\hat{\pi} = \frac 1 {\overline{X}} = 0.583
+\]
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Tendance linéaire</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="least squares/time series, linear model">
+	<meta name="dataset" content="World rice production">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Prévision</p>
+<p>Les moyennes mobiles fournissent une bonne <strong>description</strong> de la tendance dans une série chronologique. Toutefois, un objectif commun en matière d'analyse de séries chronologiques est de <strong>prévoir</strong> les valeurs de la série dans le futur. Par exemple, la prévision précise de la demande d'un produit permet une capacité de production pour être ajusté dans le temps pour répondre aux changements de la demande.</p>
+<p>Les moyennes mobiles peuvent pas lisse les valeurs de fin de la série et ne fournissent pas une méthode pour prolonger la tendance dans le futur. Le mieux qu'on puisse faire est d'étendre la tendance «à l'œil» &mdash; à peine une méthode de prévision objective!</p>
+	
+<p class="heading">Moindres carrés</p>
+
+<p>Une alternative est de décrire la tendance avec une équation mathématique qui modélise la tendance en fonction du temps,</p>
+
+<p class="eqn" style="color:#000000"><em>tendance</em> &nbsp; = &nbsp; function (<em> temps</em> )</p>
+
+<p>où la fonction implique généralement des constantes (paramètres) qui peuvent être ajustés pour améliorer l'ajustement du modèle. Le modèle le plus simple est un <strong>modèle linéaire</strong> de la forme</p>
+<p class="eqn" style="color:#000000"><em>tendance</em> &nbsp; = &nbsp; <em>b</em><sub>0</sub> &nbsp;+ &nbsp;<em>b</em><sub>1</sub><em> temps</em></p>
+<p>Ce modèle a la même forme que les modèles linéaires qui ont été utilisés
+	<a href="javascript:showNamedPage('sec_leastSqrs')">dans le chapitre bivarié de CAST</a> et les méthodes statistiques de ce chapitre peut être utilisé pour ajuster et d'analyser le modèle. En particulier, les résidus sont les différences entre les valeurs réelles de séries chronologiques, <em>y</em>, et les prédictions du modèle,</p>
+<p class="eqn" style="color:#000000"><em>e<sub>i</sub></em> &nbsp; = &nbsp; <em>y<sub>i</sub></em> &nbsp;− &nbsp;<em>tendance<sub>i</sub></em></p>
+<p>et les deux paramètres du modèle sont estimés par <strong>moindres carrés</strong> pour minimiser la somme des carrés des résidus,</p>
+<p class="eqn" style="color:#000000"><font size="+1">Σ</font> <em>e<sub>i</sub></em><sup>2</sup> &nbsp; = &nbsp;<font size="+1">Σ (</font> <em>y<sub>i</sub></em> &nbsp;− &nbsp;<em><span class="eqn" style="color:#000000"><em>b</em><sub>0</sub> &nbsp;<span class="eqn" style="color:#000000">−</span> &nbsp;<em>b</em><sub>1</sub><em> temps</em></span><sub>i</sub></em> <font size="+1">)</font><sup>2</sup></p>
+<div class="diagram">
+		<p class="heading">La production mondiale de riz</p>
+
+	<p>La série chronologique ci-dessous montre la production mondiale totale de riz (millions de tonnes) entre 1961 et 2001. Il ya une tendance en nette augmentation de ces chiffres.En estimant que cette tendance sous-jacente, on peut espérer pour prédire la production future.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.DragLine2Applet">
+<param name="xVarName" value="An">
+<param name="yVarName" value="Production mondiale de riz  (million tonnes)">
+<param name="xSequence" value="1961 1 41">
+<param name="yValues" value="215.7 226.6 247.1 263.0 254.1 261.2 277.5 288.7 295.7 316.4 317.8 307.3 335.0 332.0 357.0 347.7 369.5 385.1 375.1 396.8 410.0 421.9 447.8 465.1 467.9 468.4 461.1 487.0 514.0 518.2 518.5 528.2 529.8 538.8 547.0 568.5 576.8 578.8 609.9 598.2 585.1">
+<param name="horizAxis" value="1960 2001 1960 10">
+<param name="vertAxis" value="100 700 100 100">
+<param name="interceptLimits" value="-35000 35000 -7700">
+<param name="slopeLimits" value="-20.0 20.0 4.0">
+<param name="labelAxes" value="true">
+</applet>
+</div>
+
+		<p>Faites glisser les flèches aux deux extrémités de la ligne à la position qu'il proches des données. (Cliquer sur les <strong>Résidus case afficher</strong> affiche les résidus sous forme de lignes bleues. L'objectif est de réduire la taille de ces résidus.)</p>
+	<p>Cliquez <strong>Moindres carrés</strong> à la position de la ligne de minimiser la somme résiduelle des carrés.</p>
+	<p>L'équation de la ligne de tendance est présentée sous le graphique. Le coefficient de «l'Année» représente le taux annuel de croissance de la production de riz, dont le modèle linéaire suppose d'être constante. Les moindres carrés peut être utilisée pour prédire la production de riz dans le futur.</p>
+</div>
+	
+<p class="heading">Recodage des années</p>
+
+<p>Lorsque ajuster des modèles aux données annuelles, comme dans l'exemple ci-dessus le riz, en utilisant l'année comme variable explicative peut entraîner des coefficients de très grande taille. Pour le modèle d'ajustement des fins, il est préférable de recoder l'année de sorte que certains année dans la fourchette des données est codée comme l'année 0. (Recodage des années de cette manière est particulièrement important pour l'ajustement des modèles quadratiques qui sont décrits à la page suivante.)</p>
+<p>En d'autres termes, il vaut mieux pour s'adapter à un modèle tel que</p>
+
+<p class="eqn" style="color:#000000"><em>tendance</em> &nbsp; = &nbsp; <em>b</em><sub>0</sub> &nbsp;+ &nbsp;<em>b</em><sub>1</sub> <font size="+1">(</font><em>temps</em> − 1960<font size="+1">)</font></p>
+<p>Ce modèle est équivalent au modèle correspondant qui utilise les années premières &mdash; lorsqu'il est monté par les moindres carrés, les deux modèles donnent les mêmes valeurs, aménagée et prévisions, même si <em>b</em><sub>0</sub> 
+    est différent. </p>
+	
+<div class="diagram"> 
+<p class="heading">La production mondiale de riz</p>
+<p>Le schéma ci-dessous montre les données de rendement de riz contre un axe du temps recodées.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.DragLine2Applet">
+<param name="xVarName" value="(An-1960)">
+<param name="yVarName" value="Production mondiale de riz (million tonnes)">
+<param name="xSequence" value="1 1 41">
+<param name="yValues" value="215.7 226.6 247.1 263.0 254.1 261.2 277.5 288.7 295.7 316.4 317.8 307.3 335.0 332.0 357.0 347.7 369.5 385.1 375.1 396.8 410.0 421.9 447.8 465.1 467.9 468.4 461.1 487.0 514.0 518.2 518.5 528.2 529.8 538.8 547.0 568.5 576.8 578.8 609.9 598.2 585.1">
+<param name="horizAxis" value="0 41 0 10">
+<param name="vertAxis" value="100 700 100 100">
+<param name="interceptLimits" value="0 700 200">
+<param name="slopeLimits" value="-20.0 20.0 4.0">
+<param name="labelAxes" value="true">
+</applet>
+</div>
+
+		<p>Observez que ...</p>
+<ul>
+      <li>Ce modèle linéaire a la même souplesse que le précédent en décrivant la tendance.</li>
+      <li>La pente de moins carrés est le même que précédemment - il est l'augmentation de la production par an.</li>
+      <li>La valeur de l'ordonnée est plus petite &mdash; c'est la production que les prévisions du modèle pour 1960, plutôt que pour l'année 0.</li>
+    </ul>
+    
+<br>
+		</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

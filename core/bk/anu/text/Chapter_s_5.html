@@ -1,0 +1,405 @@
+<html>
+<head>
+  <title>5. Estimating Parameters</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 5 &nbsp; Estimating Parameters</h1>
+<h1 class="sectionName">5.1 &nbsp; Introduction to estimation</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Interest in populations</li>
+<li>Interest in parameters</li>
+<li>Applications of estimation</li>
+<li>Estimation error</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='5'>
+<li>Distribution of errors</li>
+<li>Standard error and bias</li>
+<li>Interval estimates</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">5.1.1 &nbsp; Interest in populations</h2><!DOCTYPE HTML>
+
+
+<p class=heading>Inference about a population</p>
+	<p>Data  are usually collected to provide information about some 
+		<strong>population or process underlying the data</strong>. The data are often modelled as a <strong>random sample </strong>from 
+		this population.</p>
+	<p class="eqn"><img src="../../../en/estIntro/images/d_silkworms.gif" width="550" height="275"> </p>
+	<p class=heading>Comparing beers</p>
+	<p>A brewery wishes to assess the effect of an additive on the alcohol content of its
+		premium beer. Several batches are brewed, both with and without the additive, and the
+		alcohol content of each batch is recorded.</p>
+	<p>Here there are two underlying populations &mdash; distributions describing the alcohol content of beer with and without the additive. The shapes of these distributions could potentially differ in various ways, but the brewer is mostly interested in whether the additive changes the <strong>mean</strong> alcohol content:</p>
+	<p class=eqn><img class="gif" src="../../../en/estIntro/images/equalMeans.gif" width="409" height="158"> </p>
+	<p>The sample means provide estimates of the corresponding population means 
+		and are the basis for answering the question. </p>
+	
+<div class="centred"><div class="boxed">
+<p>The difference in sample means is an estimate of the difference 
+					between the unknown population means.</p>
+</div></div>
+
+
+
+
+
+<h2 class="pageName">5.1.4 &nbsp; Estimation error</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Error in an estimate</p>
+	<p>When we use a summary statistic from a random sample to estimate a population 
+		parameter, the estimate will usually not be exactly the same as the parameter. The <strong>error</strong> is the difference between the parameter and its estimate.</p>
+	<div class="centred"><table border="0" cellpadding="3" cellspacing="0" class="centred">
+		<tr>
+			<th>Parameter</th>
+			<th>Sample statistic</th>
+			<th>Error</th>
+		</tr>
+		<tr>
+			<td style="background-color:#FFF; border-top:solid 1px #000; text-align:center">population mean, <span class="black">µ</span></td>
+			<td style="background-color:#FFF; border-top:solid 1px #000; text-align:center">sample mean, <img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline"></td>
+			<td style="background-color:#FFF; border-top:solid 1px #000; text-align:center"><span class="eqn"><img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline">&nbsp;-&nbsp;<span class="black">µ</span></span></td>
+		</tr>
+		<tr>
+			<td style="background-color:#FFF; border-bottom:solid 1px #000; padding:0 20 0 20; text-align:center">  population
+proportion, <span class="black">π  </span></td>
+			<td style="background-color:#FFF; border-bottom:solid 1px #000; padding:0 20 0 20; text-align:center">  sample
+proportion, <span class="em black">p  </span> </td>
+			<td style="background-color:#FFF; border-bottom:solid 1px #000; padding:0 20 0 20; text-align:center"><span class="eqn"><span class="em black">  p</span>  - <span class="black">π  </span></span></td>
+		</tr>
+	</table></div>
+	<p class=heading>Silkworm poisoning</p>
+	<p>Silkworms must be killed after spinning their cocoons since the silk is 
+		damaged when the moths break free. An experiment was conducted to estimate the mean survival time of silkworm larvae after poisoning with sodium arsenate.</p>
+	<p class=eqn><img class="gif" width="396" height="136"></p>
+	<p>Since we are not interested in the specific 80 silkworms,&nbsp;we <strong>estimate</strong> that the population mean survival time is 272.6 seconds.</p>
+	
+<div class="centred"><div class="boxed">
+<p>How big is the estimation error likely to be?</p>
+</div></div>
+
+
+
+
+
+<h2 class="pageName">5.1.5 &nbsp; Distribution of errors</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Error distribution</p>
+	<p>When a sample statistic (such as <img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline"> or <span class="em black">p</span> ) is used 
+		to estimate a population parameter, (<span class="black">µ</span> or <span class="black">π</span>) 
+		there is an error,</p>
+	<p class=eqn><span class="em black">error</span>  &nbsp;= &nbsp;(<span class="black em">estimate</span>  - <span class="black em">parameter</span> )</p>
+	<p>Since the error depends on  random sample data, it is a random quantity and has a distribution,</p>
+	<p class=eqn><img class="gif" width="429" height="85"></p>
+	<p>Although we cannot determine the actual error when there is only a single sample, it is often possible to find properties of its distribution.</p>
+	<div class="centred"><div class="boxed">
+		<p>For many types of estimate, we 
+		can find the error distribution or an approximation to it.</p>
+	</div></div>
+
+
+
+
+<h2 class="pageName">5.1.6 &nbsp; Standard error and bias</h2><!DOCTYPE HTML>
+
+
+<p class=heading>Target of small errors</p>
+	<p>Consider two possible sample statistics that could be used to estimate the centre of a  symmetric population distribution &mdash; the sample mean and sample median. For each, there is an error,</p>
+	<p class=eqn><span class="em black">error for mean</span>  &nbsp;= &nbsp;<img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline"> - <span class="black">µ</span></p>
+	<p class=eqn><span class="em black">error for median</span>  &nbsp;= &nbsp;<span class="em black">median</span>  - <span class="black">µ</span></p>
+	<p>The best estimator will be the one whose estimation erro is usually &quot;closer to zero&quot;. This corresponds to two desirable characteristics of the error distribution.</p>
+	<p class=heading>Centred on zero</p>
+	<p>Ideally, we want the error distribution to be centred on zero. Such an estimator 
+		is called <strong>unbiased</strong>.</p>
+	<p class=eqn><img class="gif" width="467" height="153"></p>
+	<p>Sample means and proportions are unbiased estimators of the corresponding population parameters.</p>
+	<p class=heading>Small spread</p>
+	<p>Ideally, we also want error distribution to be tightly concentrated on zero 
+		&mdash; i.e. to have a small spread.</p>
+	<p class=eqn><img class="gif" src="../../../en/estIntro/images/estimatorComparison2.gif" width="467" height="153"></p>
+	<p>We call the standard deviation of the 
+		error distribution the <strong>standard error</strong> of the estimator. We  ideally want an estimator with a <strong>small standard error</strong>.</p>
+	<p class="eqn black"><em>standard error</em> &nbsp; 
+		= &nbsp; standard deviation of the <strong>error</strong></p>
+	<p>Note also that</p>
+<p class="eqn black"><em>standard error</em> &nbsp; 
+		= &nbsp; standard deviation of the <strong>estimator</strong></p>
+<p>so a good estimator is one with a small standard deviation.
+</p>
+
+
+
+<h2 class="pageName">5.1.7 &nbsp; Interval estimates</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Describing accuracy with an interval estimate</p>
+	<p>Reporting a single value as a parameter estimate (a <strong>point estimate</strong>) 
+		does not convey any information about the estimator's accuracy &mdash; i.e. the 
+		likely size of the estimation error.</p>
+	<p>It is better to give an interval of values within which we are confident that the parameter will lie &mdash; an <strong>interval estimate</strong>. </p>
+	<p class="heading">Will an interval estimate include the actual parameter value?</p>
+	<p>If an interval estimate is too narrow, there will be very little chance of it containing the true parameter value, but intervals that are too wide do not convey much information.</p>
+	<p class=eqn><img class="gif" src="../../../en/estIntro/images/confidence.gif" width="363" height="166"> </p>
+	<p>We will later describe how to <strong>quantify</strong> this idea of &quot;confidence&quot;.</p>
+
+
+
+
+<h1 class="sectionName breakBefore">5.2 &nbsp; Standard error of mean</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Error distribution for mean</li>
+<li>Standard error when σ is known</li>
+<li>Interpreting the standard error</li>
+<li>Standard error when σ is unknown</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='5'>
+<li>Standard error vs standard deviation</li>
+<li>Using SEs to compare estimators</li>
+<li>More about bias</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">5.2.1 &nbsp; Error distribution for mean</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Distribution of the sample mean</p>
+	<p>A population mean, µ, 
+		is usually estimated by the mean from a random sample.</p>
+	<p class=eqn><img class="gif" src="../../../en/seMean/images/muHatEqualsXBar.gif" width="46" height="22"></p>
+	<p>If the population standard deviation is σ,	  <img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline"> 
+		has a distribution with</p>
+	<p class=eqn><span style="position:relative; top:6px"><img src="../../../en/../images/symbol.muXbar.png" width="19" height="16" align="baseline"></span> &nbsp;<span class="black">=&nbsp; &mu;</span> </p>
+	<p class=eqn><span style="position:relative; top:5px"><img src="../../../en/../images/symbol.sigmaXbar.png" width="19" height="16" align="baseline"></span> &nbsp;<span class="black">=</span>&nbsp; <span style="position:relative; top:12px"><img src="../../../en/../images/symbol.sigmaOverRootN.png" width="26" height="31" align="baseline"></span> </p>
+	<p>and is <a href="javascript:showNamedPage('randomMean5')">approximately 
+		normal</a> if the population is normal or <em>n</em> is reasonably 
+		large.</p>
+	<p class="heading">Distribution of the estimation error</p>
+	<p>Since the error in the estimate is simply the sample mean minus a constant (µ), its distribution has the same shape but is centred on zero,</p>
+	<p class=eqn style="color:#000000"><em>error</em><span class="eqn" style="color:#000000"> &nbsp; = &nbsp; <img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline">&nbsp;− µ</span> &nbsp; ~ &nbsp; <span class="arial">normal</span> (0,
+		<span style="position:relative; top:10px"><img src="../../../en/../images/symbol.sigmaOverRootN.png" width="26" height="31" align="baseline"></span>) </p>
+<p class=eqn style="color:#000000"><img src="../../../en/seMean/images/s_errorDistn.gif" width="428" height="344"> </p>
+	<p>Expressed in an equation,</p>
+	<p class=eqn> <span class="black">Prob (&nbsp;-<em>e*&nbsp; </em>&lt;&nbsp; <em>error</em> &nbsp;&lt;<em> &nbsp;e*</em> ) &nbsp;= &nbsp;0.95</span></p>
+	<p class="heading">95% confidence interval</p>
+	<p>Since the error is the difference between the estimator and the unknown parameter, this can be rewritten as:</p>
+	<p class=eqn> <span class="black">Prob (&nbsp;<em>estimate</em> - <em>e*&nbsp; </em>&lt;&nbsp; <em>parameter</em> &nbsp;&lt;<em> &nbsp;estimate</em> + <em>e*</em> ) &nbsp;= &nbsp;0.95</span></p>
+	<p>The interval</p>
+	<p class=eqn> <span class="black"><em>estimate</em> - <em>e*&nbsp; </em><strong>&nbsp;to</strong><em> &nbsp;&nbsp;estimate</em> + <em>e*</em></span> </p>
+	<p>is called a <strong>95% confidence interval</strong> and we have <strong>95% confidence</strong> that it will include the unknown parameter value.</p>
+	<p class="heading">Confidence interval from standard error</p>
+	<p>The 70-95-100 rule of thumb states that about 95% of values in most distributions 
+		are within 2 standard deviations of the mean. For unbiased estimators (with 
+		zero mean), we therefore have the approximation:</p>
+	<p class=eqn> <img class="gif" src="../../../en/ciMean/images/errorBounds2.gif" width="276" height="145"> </p>
+	<p>This leads to the approximate 95% confidence interval</p>
+	<p class="eqn"><span class="bold black"><em>estimate</em> - 2 <em>s.e.</em><em>&nbsp; </em><strong>&nbsp;to</strong><em> &nbsp;&nbsp;estimate</em> + 2 <em>s.e.</em></span>  </p>
+	<p>Since the standard error of most commonly used estimators can be readily found 
+		by either a formula or statistical software, a 95% confidence interval can be easily found for most estimators.</p>
+	<p class="heading">Refinements</p>
+	<p>If we can only find an approximation to the error distribution, the method above would only give an approximate 95% confidence interval. The '±&nbsp;2&nbsp;s.e.' 
+	approximation is a useful guide in most circumstances, but we will refine this type of confidence interval for some estimators to make the confidence level closer to 95%.</p>
+	
+
+
+
+<h2 class="pageName">5.3.2 &nbsp; Confidence interval for mean, known σ</h2><!DOCTYPE HTML>
+
+
+<p class=heading>Estimating a population mean </p>
+	<p>We first examine how to estimate the mean, µ, of a population <strong>when the population standard deviation, σ, 
+			is a known value</strong>. (In practice, σ is usually unknown, but we leave this until later in this section.)</p>
+	<p>The sample mean, <img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline">, is approximately normal, with</p>
+	<p class=eqn><span style="position:relative; top:6px"><img src="../../../en/../images/symbol.muXbar.png" width="19" height="16" align="baseline"></span> &nbsp;<span class="black">=&nbsp; &mu;</span> </p>
+	<p class=eqn><span style="position:relative; top:5px"><img src="../../../en/../images/symbol.sigmaXbar.png" width="19" height="16" align="baseline"></span> &nbsp;<span class="black">=</span>&nbsp; <span style="position:relative; top:12px"><img src="../../../en/../images/symbol.sigmaOverRootN.png" width="26" height="31" align="baseline"></span> </p>
+	<p>When <img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline"> is used to estimate µ, the error is approximately</p>
+	<p class="eqn black"><em>error</em> &nbsp; = &nbsp; <img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline">&nbsp;− µ &nbsp; ~ &nbsp; <span class="arial">normal</span> (0, <span style="position:relative; top:12px"><img src="../../../en/../images/symbol.sigmaOverRootN.png" width="26" height="31" align="baseline"></span>) </p>
+	<p>so the standard error of <img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline"> is <span style="position:relative; top:12px"><img src="../../../en/../images/symbol.sigmaOverRootN.png" width="26" height="31" align="baseline"></span>.</p>
+	<p class="heading">95% bounds for the error</p>
+	<p>Applying the 70-95-100 rule of thumb to the error distribution,</p>
+	<p class=eqn><span class="black">Prob( <em>error</em> is between ± 2<span style="position:relative; top:12px"><img src="../../../en/../images/symbol.sigmaOverRootN.png" width="26" height="31" align="baseline"></span> ) &nbsp;is approximately &nbsp;0.95</span></p>
+	<p>This can be refined using the properties of the  normal distribution to get an exact probability of 0.95.</p>
+	<p class=eqn><span class="black">Prob( error is between ± 1.96<span style="position:relative; top:12px"><img src="../../../en/../images/symbol.sigmaOverRootN.png" width="26" height="31" align="baseline"></span> ) &nbsp;= &nbsp;0.95</span></p>
+	<p class="heading">95% confidence interval</p>
+	<p>Since <img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline"> will be within 1.96 <span style="position:relative; top:12px"><img src="../../../en/../images/symbol.sigmaOverRootN.png" width="26" height="31" align="baseline"></span> of µ 
+		with probability 0.95, we are <strong>95% confident</strong> that µ 
+		is in the interval</p>
+	<p class=eqn><img class="gif" width="87" height="31"> </p>
+	<p>This  is  a <strong>95% confidence interval</strong> for µ and  the interval has a <strong>confidence level</strong> of 0.95.</p>
+	<p class="heading">Example</p>
+	<p>Consider a type of measurement that is normally distributed with known σ but unknown mean, µ:</p>
+	<p class="eqn"><em>X</em>&nbsp; ~ &nbsp;<font face="Arial, Helvetica, sans-serif">normal</font> (&mu;&nbsp;, &sigma; = 0.0068) </p>
+	<p>The mean of a random sample of <em>n</em> = 16 values will therefore be normally distributed with standard error</p>
+	<p class="eqn"><span style="position:relative; top:12px"><img src="../../../en/../images/symbol.sigmaOverRootN.png" width="26" height="31" align="baseline"></span> = 0.0068&nbsp;/&nbsp;4 = 0.0017</p>
+	<p>From this, we can obtain bounds on the error:</p>
+	<p class="eqn"><img src="../../../en/ciMean/images/s_errorDistn.gif" width="313" height="138"> </p>
+	<p>has a confidence level of 0.95 &mdash; i.e. it is a 95% confidence interval.</p>
+	
+<div class="centred"><div class="boxed">
+<p>In practice however, the value of σ 
+					is rarely known.</p>
+</div></div>
+
+	<p>It is tempting to simply replace σ in the formula by its sample equivalent, <em>s</em>.</p>
+	<p class=eqn><img class="gif" src="../../../en/ciMean/images/bad95CI.gif" width="86" height="31"> </p>
+	<p>However replacing σ with <em>s</em> makes the confidence interval more variable and this means that it is less likely include µ &mdash; the confidence level is less than 95%. If the sample size, <em>n</em>, is large, the confidence level is close to 95%, but with smaller sample sizes the true confidence level can be much less than the target 95%. For example,</p>
+	<ul>
+		<li>If <em>n</em> = 5, confidence intervals of this form only include µ in 88% of random samples, not 95%</li>
+	</ul>
+	<p>The confidence interval must be modified if σ is unknown.</p>
+	
+
+
+
+<h2 class="pageName">5.3.5 &nbsp; Confidence interval for mean, unknown σ</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Confidence interval using a t-value</p>
+	<p>The interval estimate</p>
+	<p class=eqn><img class="gif" src="../../../en/ciMean/images/bad95CI.gif" width="86" height="31"> </p>
+	<p>has a lower confidence level than 95%. In order to achieve a 95% confidence 
+		level, the interval must be widened. This is done by replacing 1.96 by a slightly larger number:</p>
+	<p class=eqn><img class="gif" src="../../../en/ciMean/images/plusMinusTSE.gif" width="93" height="32"></p>
+	<p>The replacement constant <em>t<sub>n-1</sub></em> is a value greater than 1.96 that depends on the sample size, <em>n</em>. The value <i>n</i> - 1 is called the <strong>degrees of freedom</strong> of the 
+	constant.</p>
+	<p class="eqn"><img src="../../../en/ciMean/images/s_tValues.gif" width="405" height="270"> </p>
+	<p>where <em>t</em><sub>19</sub> = 2.093.</p>
+	<p class="eqn"><img src="../../../en/ciMean/images/s_ciSimT.gif" width="550" height="361"></p>
+	<p>Since <span class="em black">p</span>  is based on a random sample, it varies from sample to sample and has a distribution. The estimation error is:</p>
+	<p class="eqn black"><em>error</em> = &nbsp; <em>p</em> - π</p>
+	<p>Since <span class="black">π</span> is unknown, we never know the value of the error, but we can find its approximate <strong>distribution</strong>. This will allow us to assess the likely size of the error.</p>
+	
+	
+
+
+<h2 class="pageName">5.4.3 &nbsp; Error distribution</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Distribution of proportion</p>
+	<p>The <strong> proportion</strong> of successes 
+		from a random sample with probability <span class="black">π</span> of success, <span class="em black">p</span> , 
+		has a distribution with  mean and standard deviation</p>
+	<p class=eqn><span class="black">&mu;<sub><em>p</em></sub> &nbsp;=&nbsp; &pi;</span> </p>
+	<p class=eqn><span class="black"><span style="position:relative; top:-14px">&sigma;<sub><em>p</em></sub>&nbsp; =&nbsp; </span><img src="../../../en/../images/symbol.sePi.png" width="89" height="46"></span> </p>
+	<p class="heading">Distribution of estimation error</p>
+	<p>The estimation error is <span class="black"><em>p</em>&nbsp;-&nbsp;π</span> and its distribution  has the same shape as that of<em> <span class="black">p</span></em>, 
+		but is shifted to have mean zero. The bias and standard error  are therefore</p>
+	<p class=eqn><span class="black"><span style="position:relative; top:-14px"><em>bias</em>&nbsp; =&nbsp; &mu;<sub>error</sub>&nbsp; =&nbsp; 0<br><em>standard error</em>&nbsp; =&nbsp; &sigma;<sub>error</sub>&nbsp; =&nbsp; </span><img src="../../../en/../images/symbol.sePi.png" width="89" height="46"></span></p>
+	<p class="heading">Standard error from data</p>
+	<p>Unfortunately, the formula for the standard error of <span class="em black">p </span>  involves <span class="black">π</span>, 
+		and this is unknown in practical problems. To get a numerical value for the 
+		standard error, we  therefore replace <span class="black">π</span> with our best estimate of its value, <span class="em black">p</span> .</p>
+	<p class=eqn><span class="black"><span style="position:relative; top:-14px"><em>bias</em>&nbsp; =&nbsp; &mu;<sub>error</sub>&nbsp; =&nbsp; 0<br><em>standard error</em>&nbsp; =&nbsp; &sigma;<sub>error</sub>&nbsp; =&nbsp; </span><img src="../../../en/../images/symbol.seP.png" width="80" height="44"></span></p>
+	<p class="heading">Example</p>
+	<p>In a random sample of <em>n</em> = 36 values, there were <em>x</em> = 17 successes. Our best estimate of <span class="black">π</span> is the sample proportion, <span class="black em">p</span>  = <sup>17</sup>/<sub>36</sub>. Using this estimate, the distribution of the number of successes in similar samples would be</p>
+	<p class="eqn">X ~ binomial (<em>n</em> = 36, <span class="black">π</span> = <sup>17</sup>/<sub>36</sub>)</p>
+	<p class="eqn"><img src="../../../en/estPropn/images/s_binomEx.gif" width="404" height="147"></p>
+	<p class="heading">Example</p>
+	<p>In a random sample of <em>n</em> = 36 values, there were <em>x</em> = 17 successes. We estimate the population proportion, <span class="black">π</span>, with <em>p</em> =<sup>&nbsp;17</sup>/<sub>36</sub>&nbsp;=&nbsp;0.472. The approximate normal distribution for the errors 
+	is shown below.</p>
+	<p class=eqn> <img src="../../../en/estPropn/images/s_errorBounds.gif" width="277" height="164"> </p>
+	<p>A 95% confidence interval for <span class="black">π</span>  is therefore</p>
+	<p class=eqn>0.472 ± 0.166</p>
+	<p class=eqn>i.e. 0.306 &nbsp; to &nbsp; 0.638</p>
+	<p>We are therefore 95% confident that  the population proportion of successes is between 30.6% and 
+		63.8%. A sample size of <em>n</em> = 36 is clearly too small to give a very accurate estimate.</p>
+	
+
+
+
+
+<h2 class="pageName">5.4.6 &nbsp; Properties of 95% CI for proportion</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Properties</p>
+<p>As with all other confidence intervals, a 95% confidence interval for a population proportion, π, is  random. Although it correctly includes π in 95% of random samples, there is a 5% probability that it will not include the true value of π.</p>
+<p>The  simulation below took 100 random samples of size <em>n</em> = 200 from a population with π = 0.6. Most of the confidence intervals included π = 0.6, but some did not. If the simulation was repeated many more times, the proportion including 0.6 would be close to 0.95.</p>
+<p class="eqn"><img src="../../../en/estPropn/images/s_ciSim.gif" width="550" height="299"></p>
+<p>In practice, you only have a single sample and a single confidence interval, but we have &quot;95% confidence&quot; that it will include the true (and usually unknown) value of π.</p>
+<p class="heading">Problems with small sample sizes</p>
+<p>This confidence interval for π was based on a normal approximation to the distribution of the sample proportion. If the sample size, <em>n</em>, is small or π 
+	is close to either 0 or 1, this normal approximation is inaccurate and the confidence level for the interval can be considerably less than 95%.</p>
+<p>Many textbooks give the following 
+	guideline for using the confidence interval:</p>
+<div class="centred">
+<table border="1" cellspacing="0" cellpadding="10" style="background-color:#FFFFFF" class="centred">
+<tr>
+<td align="left"><strong>Only use the confidence interval for π when <span class="red">all</span> of
+the following hold...</strong>
+<div class="centred">
+<table class="centred">
+<tr>
+<td align="center"><strong>&nbsp;&nbsp;<em>n</em>&nbsp;&nbsp;&gt;&nbsp;&nbsp;30<br>
+<em>np</em>&nbsp; &gt;&nbsp; 5<br>
+&nbsp;<em>n</em>(1-<em>p</em>)&nbsp; &gt;&nbsp; 5</strong></td>
+</tr>
+</table>
+</div></td>
+</tr>
+</table>
+</div>
+<p>These guidelines can be relaxed a little provided you accept that the confidence level may be a little less than 95%.</p>
+
+
+
+
+<h2 class="pageName">5.4.7 &nbsp; Confidence interval examples</h2><!DOCTYPE HTML>
+
+
+<p class=heading>Interpretation of a confidence interval</p>
+	<p>We never know in practice whether or not the confidence interval that we obtain 
+		actually includes π.</p>
+	
+<div class="centred"><div class="boxed">
+<p>Being right most of the time is the best one can hope for, 
+					since there is always the possibility of being misled by an unlucky sample.</p>
+</div></div>
+
+	<p>The <strong>method</strong> that we use to obtain the confidence interval has 
+		probability 0.95 of including π. 
+		We cannot tell whether the single interval that we evaluate from our data set 
+		is one of these 'lucky' intervals, but knowing that the <strong>method</strong> works so often gives us <strong>95% confidence</strong> in this interval.</p>
+	<p class=heading>Example</p>
+	<p class="eqn"><img src="../../../en/estPropn/images/mango2.gif" width="550" height="285" class="summaryPict"></p>
+
+
+
+
+</html>

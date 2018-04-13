@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>One- and two-tailed tests</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="hypothesis test, proportion, binomial distribution, one-tailed test, two-tailed test">
+	<meta name="dataset" content="Ethics codes in companies">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Finding the p-value for a one-tailed test</p>
+
+<p>The Australia Post hypothesis test involved a random sample of size <i>n</i> from a population with probability π 
+of success (delivery on time). The data collected were <em>x</em> successes, and we tested the hypotheses... </p>
+<p class=eqn><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;=&nbsp; </strong>&pi;<strong><sub>0</sub></strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;&lt;&nbsp; </strong>&pi;<strong><sub>0</sub></strong></span> </p>
+
+  
+<p>where π<sub>0</sub> was the constant of interest (e.g. 0.80 in this example). The following steps 
+were followed to obtain the p-value for the test.</p>
+
+<ol>
+  <li>The sample proportion of successes, <em>p</em>, 
+    was identified as the most informative summary statistic about π.</li>
+  <li>The number of successes, <em>x</em>&nbsp;=&nbsp;<em>np</em> has a standard binomial distribution with no unknown parameters when <b>H<sub>0</sub></b> holds, so it is a better test statistic.</li>
+  <li>The p-value is a sum of tail probabilities for this binomial distribution.</li>
+  </ol>
+
+<p>The diagram below illustrates these steps</p>
+
+<p class=eqn><object data="images/testProcessA.svg" width="441" height="265" alt="binomial test stat & p-value"></object>
+</p>
+<p>The telepathy example was similar, but the alternative hypothesis involved 
+high values of π 
+and the p-value was found by counting upper tail probabilities.</p>
+<p class="heading">Finding the p-value for a two-tailed test</p>
+  
+<p>The appropriate tail probability to use depends on the alternative hypothesis. 
+If the alternative hypothesis allows <strong>either high or low</strong> values 
+of <em>x</em>, 
+the test is called a <strong>two-tailed</strong> test, </p>
+
+<p class=eqn><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;=&nbsp; </strong>&pi;<strong><sub>0</sub></strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;&ne;&nbsp; </strong>&pi;<strong><sub>0</sub></strong></span> </p>
+
+<p>The p-value is then <strong>double the smaller tail probability</strong> since 
+values of <em>x</em> in <strong>both</strong> tails of the binomial distribution would provide evidence 
+for <b>H<sub>A</sub></b>. </p>
+
+<div class="diagram"> 
+<p class="heading">Ethics codes in companies</p>
+<p>In 1999, <em>The Conference Board</em> surveyed 124 companies and found that 
+97 had their own ethics codes (&quot;Business Bulletin&quot;, <em>Wall Street 
+Journal</em>, Aug 19, 1999).<em> </em>In 1997, it was believed that 72% of companies 
+had ethics codes, so is there any evidence that the proportion has changed?</p>
+<p>This question is equivalent to asking whether a sample proportion of 97 out 
+of 124 is consistent with sampling from a population with π&nbsp;=&nbsp;0.72. 
+This can be expressed as the hypotheses </p>
+<p class=eqn><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> &nbsp;=&nbsp; 0.86</strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> &nbsp;&ne;&nbsp; 0.86</strong></span></p>
+
+<p>We would expect about (0.72 x 124) = 89 of the companies to have ethics codes. 
+A sample count that is either much greater than 89 or much less than 89 would 
+suggest that the probability had changed. Use the slider below to obtain the p-value. 
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="280">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="testProg.SuccessPValueApplet">
+<param name="testParams" value="124 0.72 70">
+<param name="testTail" value="two-tailed">
+<param name="successName" value="companies with ethics code">
+<param name="customText" value="count of=count of">
+</applet>
+</div>
+
+<p>The probability of getting as many as 97 is 0.0718. Since this is a 2-tailed 
+test, we must also take account of the probability of getting a count that is 
+as unusually low, so the p-value is twice this, 0.1436. Getting 97 companies with 
+ethics codes is therefore not unlikely, so we conclude that there is no evidence 
+<strong>from these data</strong> of a change in the proportion of companies with 
+ethics codes since 1997. </p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

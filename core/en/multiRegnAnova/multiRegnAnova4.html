@@ -1,0 +1,194 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>All-or-nothing F test for any GLM</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="analysis of variance, hypothesis test">
+	<meta name="dataset" content="Water usage">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">General linear model (GLM)</p>
+  <p>The same methodology can be used for <strong>any</strong> GLM, irrespective 
+    of the number of explanatory variables.</p>
+  <p class="eqn"><img src="../glm/images/generalModel.gif" width="535" height="55"></p>
+  <p class="heading">Sums of squares</p>
+  <p>Again the individual values can be split into components.</p>
+  <p class="eqn"><img src="images/componentsSimple.gif" width="290" height="47" align="absmiddle"></p>
+  <p>and their sums of squares satisfy a similar equation.</p>
+  <p class="eqn"><img src="images/componentSSqEqn.gif" width="322" height="51" align="absmiddle"></p>
+  <p class="heading">Coefficient of determination</p>
+  <p>As in the 1- and 2-explanatory variable models, the relative sizes of the 
+		regression and residual sums of squares again reflect how well variation in 
+		the response is modelled by the explanatory variables. The <strong>proportion</strong> 
+		of the total variation that is explained by the explanatory variables is called 
+		<strong>the coefficient of determination</strong>, <em>R</em><sup>2</sup>, 
+	</p>
+  <p class=eqn><img src="../regnAnova/images/r2Defn3.gif" width="110" height="38" alt="R-squared = SSexplained / SStotal"> 
+  </p>
+  <p class="heading">Anova table</p>
+  <p>The component sums of squares can again be arranged in an analysis of variance 
+		table,</p>
+	<p class=eqn><img src="images/glmAnovaTable.gif" width="520" height="138"></p>
+	<p>Note that the explained sum of squares has (<em>p</em>&nbsp;-&nbsp;1) degrees 
+		of freedom since there are (<em>p</em>&nbsp;-&nbsp;1) explanatory variables 
+		and hence (<em>p</em>&nbsp;-&nbsp;1) slope parameters.</p>
+  <p class="heading">Are any explanatory variables related to <em>Y</em>?</p>
+	
+  <p>More formally, we want to test the following hypotheses.</p>
+	<div class="centred"><table border="0" cellpadding="5" cellspacing="0" style="background-color:#FFFFFF" class="centred">
+		<tr> 
+			<th>Hypotheses</th>
+			<th>Meaning</th>
+		</tr>
+		<tr> 
+			<td valign="middle"><img src="images/nullHypothGLM.gif" width="184" height="21"></td>
+			<td>&nbsp;&nbsp;none of the explanatory variables are related to <em>Y</em></td>
+		</tr>
+		<tr> 
+			<td valign="middle"><img src="images/altHypothGLM.gif" width="202" height="18"></td>
+			<td><strong>&nbsp;&nbsp;at least</strong> one explanatory variable is related 
+				to <em>Y</em></td>
+		</tr>
+	</table></div>
+	
+	<p>The F ratio in the anova table can be used as a test statistic for these 
+		hypotheses.</p>
+	
+<div class="centred"><div class="boxed">
+<p>Big F ratios provide evidence that H<sub>0</sub> 
+						is false and hence that at least one explanatory variable is related 
+						to Y.</p>
+</div></div>
+
+	<p>If the null hypothesis is true (i.e. all slope parameters are zero), the 
+		F ratio has a standard distribution called an F distribution with <em>(p</em>&nbsp;-&nbsp;1) 
+		and <em>(n</em>&nbsp;-&nbsp;<em>p</em>) degrees of freedom, but it tends to 
+		be higher if any slope parameter is non-zero.</p>
+	<p>The p-value for the test is therefore the probability of getting such a large 
+		F ratio when <strong>H<sub>0</sub></strong> is true and can be found from 
+		the upper tail area of this F distribution.</p>
+  <p class=eqn><img src="images/fPvalueGlmCalc.gif" width="355" height="115"> 
+	</p>
+<br>
+	
+<div class="centred"><div class="boxed">
+<p>In practice, computer software should 
+						be used to evaluate the p-value.</p>
+</div></div>
+
+	
+  <br>
+	
+  <div class="diagram">
+    <p class="heading">Water usage of production plant</p>
+
+    <p>A production plant cost-control engineer is responsible for cost reduction. 
+			One of the costly items in his plant is the amount of water used by the 
+			production facilities each month. He decided to investigate water usage 
+			by collecting seventeen observations on his plant's water usage and other 
+			variables.</p>
+		<div class="centred"><table border="0" class="centred" cellpadding="4" cellspacing="0">
+			<tr> 
+				<th>Variable</th>
+				<th>Description</th>
+			</tr>
+			<tr bgcolor="#FFFFFF"> 
+				<td style="border-top:1px solid #999999;"><em>Temperature</em></td>
+				<td style="border-top:1px solid #999999;">Average monthly temperature (â«F)</td>
+			</tr>
+			<tr bgcolor="#FFFFFF"> 
+				<td><em>Production</em></td>
+				<td>Amount of production (M pounds)</td>
+			</tr>
+			<tr bgcolor="#FFFFFF"> 
+				<td><em>Days</em></td>
+				<td>Number of plant operating days in the month</td>
+			</tr>
+			<tr bgcolor="#FFFFFF"> 
+				<td><em>Persons</em></td>
+				<td>Number of persons on the monthly plant payroll</td>
+			</tr>
+			<tr bgcolor="#CCFFFF"> 
+				<td style="border-bottom:1px solid #999999;"><em>Water</em></td>
+				<td style="border-bottom:1px solid #999999;">Monthly water usage (gallons)</td>
+			</tr>
+		</table></div>
+		
+		<p>Least squares resulted in the following linear model to explain water usage 
+			in terms of the four explanatory variables,</p>
+		
+<div class="centred"><div class="boxed">
+<p><em>Water</em> = 6360 + 13.9 <em>Temperature</em> 
+							+ 0.212&nbsp;<em>Production</em> - 127&nbsp;<em>Days</em> - 21.8&nbsp;<em>Persons</em></p>
+</div></div>
+
+		<p>The following anova table describes the fit of the model.</p>
+		<div class="centred"><table border="0" class="centred" cellpadding="4" cellspacing="0">
+			<tr> 
+				<th style="border-bottom:1px solid #999999;">Source</th>
+				<th style="border-bottom:1px solid #999999;" align="center">DF</th>
+				<th style="border-bottom:1px solid #999999;" align="center">SS</th>
+				<th style="border-bottom:1px solid #999999;" align="center">MS</th>
+				<th style="border-bottom:1px solid #999999;" align="center">F</th>
+				<th style="border-bottom:1px solid #999999;" align="center">p-value</th>
+			</tr>
+			<tr> 
+				<td bgcolor="#FFFFFF">Regression</td>
+				<td align="right" bgcolor="#FFFFFF">4&nbsp;</td>
+				<td align="right" bgcolor="#FFFFFF">&nbsp;2,448,834&nbsp;</td>
+				<td align="right" bgcolor="#FFFFFF">&nbsp;612,208&nbsp;</td>
+				<td align="right" bgcolor="#FFFFFF">&nbsp;9.88&nbsp;</td>
+				<td align="right" bgcolor="#FFFFFF">0.001&nbsp;</td>
+			</tr>
+			<tr> 
+				<td style="border-bottom:1px solid #999999;" bgcolor="#FFFFFF">Residual</td>
+				<td style="border-bottom:1px solid #999999;" align="right" bgcolor="#FFFFFF">12&nbsp;</td>
+				<td style="border-bottom:1px solid #999999;" align="right" bgcolor="#FFFFFF">743,797&nbsp;</td>
+				<td style="border-bottom:1px solid #999999;" align="right" bgcolor="#FFFFFF">61,983&nbsp;</td>
+				<td align="right">&nbsp;</td>
+				<td align="right">&nbsp;</td>
+			</tr>
+			<tr> 
+				<td>Total</td>
+				<td align="right">16&nbsp;</td>
+				<td align="right">&nbsp;3,192,632&nbsp;</td>
+				<td align="right">&nbsp;</td>
+				<td align="right">&nbsp;</td>
+				<td align="right">&nbsp;</td>
+			</tr>
+		</table></div>
+		
+		<p>From the p-value in the table, we conclude that there is extremely strong 
+			evidence that <strong>at least one</strong> explanatory variable is related 
+			to water usage.</p>
+		<p>The anova table also lets us calculate that R<sup>2</sup> = <sup>2,448,834</sup>/<sub>3,192,632</sub> 
+			= 76.7% of the variation in water usage can be explained by the four explanatory 
+			variables.</p>
+		<hr width="75%">
+		<p>Having concluded that at least one explanatory variable is related to water 
+			usage, we can investigate whether all four are needed, or perhaps a smaller 
+			number would be adequate. We described earlier how to <a href="javascript:showNamedPage('glm7')">test 
+			the significance of individual variables</a> in the 4-variable model.</p>
+		
+<div class="centred"><div class="boxed">
+<p>The overall F test for the whole model 
+							and the separate t-tests for individual variables complement each other.</p>
+</div></div>
+
+		<br>
+		</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

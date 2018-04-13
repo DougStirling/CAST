@@ -1,0 +1,175 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Anova test for interaction</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="randomised block design, interaction, anova, analysis of variance, degrees of freedom">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Degrees of freedom</p>  
+  <p>Each addition of a term to the model causes a reduction in the residual sum of squares &mdash; the sum of squares <strong>explained</strong> by the term. It also has degrees of freedom equal to the number of non-zero parameters in the term. The diagram below shows the degrees of freedom for each explained sum of squares associated with randomised block data.</p>
+  <div class="centred"><table class="centred" cellpadding="4">
+      <tr>
+        <td align="center"><span class="black em bold">No difference between blocks and factor does not affect Y</span><br>
+            <span class="black em">y<sub>ijk</sub></span> &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp;ε<em><sub>ijk</sub></em></td>
+      </tr>
+    <tr>
+      <td align="center"><img src="../factorInteract/images/downArrow.gif" width="24" height="42" align="absmiddle"><span class="red">(<em>g</em><sub>B</sub>&nbsp;-&nbsp;1) params<img src="../factorInteract/images/downArrow.gif" width="24" height="42" align="absmiddle"></span></td>
+    </tr>
+    <tr>
+      <td align="center"><strong><em><span class="bold black">The blocks differ, but factor does not affect Y</span> </em></strong><br>
+          <span class="black em">y<sub>ijk</sub></span> &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp; <span class="red">β<em><sub>i</sub></em></span> &nbsp;+ &nbsp; ε<em><sub>ijk</sub></em></td>
+    </tr>
+    <tr>
+      <td align="center" class="green"><img src="../factorInteract/images/downArrow.gif" width="24" height="42" align="absmiddle">(<em>g</em><sub>X</sub>&nbsp;-&nbsp;1) params<img src="../factorInteract/images/downArrow.gif" width="24" height="42" align="absmiddle"></td>
+    </tr>
+    <tr>
+      <td align="center"><strong><em><strong><em><span class="bold black">The blocks differ</span> </em><span class="black"> and factor  affects Y</span></strong></em></strong><br>
+          <span class="black em">y<sub>ijk</sub></span> &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp; <span class="red">β<em><sub>i</sub></em></span> &nbsp; + &nbsp; <span class="green">γ<em><sub>j</sub></em></span> &nbsp; + &nbsp; ε<em><sub>ijk</sub></em></td>
+    </tr>
+    
+    <tr>
+      <td align="center" class="purple"><img src="../factorInteract/images/downArrow.gif" width="24" height="42" align="absmiddle">(<em>g</em><sub>B</sub>&nbsp;-&nbsp;1)(<em>g</em><sub>X</sub>&nbsp;-&nbsp;1) params<img src="../factorInteract/images/downArrow.gif" width="24" height="42" align="absmiddle"></td>
+    </tr>
+    <tr>
+      <td align="center"><strong><em><strong><em><span class="bold black">The </span> </em><span class="black">factor  affects Y in different ways within different blocks</span></strong></em></strong><br>
+      <span class="black em">y<sub>ijk</sub></span> &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp; <span class="red">β<em><sub>i</sub></em></span> &nbsp; + &nbsp; <span class="green">γ<em><sub>j</sub></em></span> &nbsp; + &nbsp; <span class="purple">δ<em><sub>ij</sub></em></span> &nbsp; + &nbsp; ε<em><sub>ijk</sub></em></td>
+    </tr>
+  </table></div>
+  <p class="heading">Analysis of variance table</p>
+  <p>The test for whether the factor has the same effect in every block (i.e. for interaction between the blocks and factor) is based on the size of the interaction sum of squares.</p>
+  <p>The explained and residual sums of squares are again presented in an analysis of variance table. Each sum of squares is divided by its degrees of freedom to give mean sums of squares then the mean explained sums of squares are  divided by the mean residual sum of squares to give  F ratios. A p-value is then associated with each F ratio to test whether the corresponding term is needed in the model. (The p-values are found from  F distributions.)</p>
+  <div class="centred"><table border="0" class="centred" cellpadding="4" cellspacing="0">
+    <tr>
+      <th align="left" scope="col" class="black">Source of <br>variation</th>
+      <th scope="col" class="black">Sum of <br>sqrs</th>
+      <th scope="col" class="black">d.f.</th>
+      <th scope="col" class="black">Mean ssq</th>
+      <th scope="col" class="black">F-ratio</th>
+      <th scope="col" class="black">&nbsp;&nbsp;p-value&nbsp;&nbsp;</th>
+    </tr>
+    <tr>
+      <td bgcolor="#FFFFFF" style="border-top:1px solid #999999;"><span class="red">Blocks</span></td>
+      <td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;"><span class="red">SS<sub>B</sub></span></td>
+      <td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;"><span class="red">(<em>g</em><sub>B</span></sub>&nbsp;-&nbsp;1)</td>
+      <td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;"><span class="red">MS<sub>B</sub></span></td>
+      <td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;"><span class="red">MS<sub>B</sub> / </span><span class="blue">MS<sub>Resid</sub></span></td>
+      <td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;"><span class="red">(F distn)</span></td>
+    </tr>
+    <tr>
+      <td bgcolor="#FFFFFF"><span class="green"> Factor</span></td>
+      <td align="center" bgcolor="#FFFFFF" class="green">SS<sub>X</sub></td>
+      <td align="center" bgcolor="#FFFFFF" class="green">(<em>g</em><sub>X</sub>&nbsp;-&nbsp;1)</td>
+      <td align="center" bgcolor="#FFFFFF" class="green">MS<sub>X</sub></td>
+      <td align="center" bgcolor="#FFFFFF"><span class="green">MS<sub>X</sub> / </span><span class="blue">MS<sub>Resid</sub></span></td>
+      <td align="center" bgcolor="#FFFFFF" class="green">(F distn)</td>
+    </tr>
+    <tr>
+      <td bgcolor="#FFFFFF" class="purple">Interaction&nbsp;&nbsp;&nbsp;&nbsp;</td>
+      <td align="center" bgcolor="#FFFFFF" class="purple">SS<sub>BX</sub></td>
+      <td align="center" bgcolor="#FFFFFF" class="purple">&nbsp;&nbsp;(<em>g</em><sub>B</sub>&nbsp;-&nbsp;1)(<em>g</em><sub>X</sub>&nbsp;-&nbsp;1)&nbsp;&nbsp;</td>
+      <td align="center" bgcolor="#FFFFFF" class="purple">&nbsp;&nbsp;MS<sub>BX</sub>&nbsp;&nbsp;</td>
+      <td align="center" bgcolor="#FFFFFF">&nbsp;&nbsp;<span class="purple">MS<sub>BX</sub> /</span> <span class="blue">MS<sub>Resid</sub></span><sub>&nbsp;&nbsp;</sub></td>
+      <td align="center" bgcolor="#FFFFFF" class="purple">(F distn)</td>
+    </tr>
+    <tr>
+      <td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;"><span class="blue">Residual</span></td>
+      <td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;"><span class="blue">SS<sub>Resid</sub></span></td>
+      <td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;"><span class="blue"><em>n</em>&nbsp;-&nbsp;<em>g</em><sub>B</sub><em>g</em><sub>X</sub></span></td>
+      <td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;"><span class="blue">MS<sub>Resid</sub></span></td>
+      <td align="center">&nbsp;</td>
+      <td align="center">&nbsp;</td>
+    </tr>
+    <tr>
+      <th align="left" class="black">Total</th>
+      <th class="black">SS<sub>Total</sub></th>
+      <th class="black"><em>n</em>&nbsp;-&nbsp;1</th>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
+    </tr>
+  </table></div>
+  <p class="heading">Interpretation of p-values</p>
+  <p>The conclusion about whether there is interaction between blocks and the factor is based on the p-value associated with the interaction sum of squares:</p>
+
+<div class="centred"><table border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC" class="centred">
+<tr> 
+<th align="CENTER">p-value</th>
+<th align="CENTER">Interpretation</th>
+</tr>
+<tr bgcolor="white"> 
+<td style="border-top:1px solid #999999;">over 0.1</td>
+        <td style="border-top:1px solid #999999;">no evidence of interaction</td>
+</tr>
+<tr bgcolor="white"> 
+<td>between 0.05 and 0.1</td>
+        <td>very weak evidence of interaction</td>
+</tr>
+<tr bgcolor="white"> 
+<td>between 0.01 and 0.05</td>
+        <td>moderately strong evidence of interaction</td>
+</tr>
+<tr bgcolor="white"> 
+<td style="border-bottom:1px solid #999999;">under 0.01</td>
+        <td style="border-bottom:1px solid #999999;">strong evidence of interaction</td>
+</tr>
+</table></div>
+
+  <p class="heading">Order of testing</p>
+  <p>The analysis of variance table also includes F ratios and associated p-values for the main effects of the factor and the blocks. These p-values should not be used unless it is concluded that there is no interaction.</p>
+  <div class="centred"><div class="boxed">
+    <p>If there is an interaction, it is not meaningful to test the main effect for the factor. </p>
+  </div></div>
+  <p>It would make no sense to drop the main effect for the factor if there is evidence from the interaction p-value that the effect of the factor is different for different blocks!</p>
+  <div class="diagram"> 
+<p class="heading">Example</p>
+		<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoFactorProg.FactorAnovaSeqApplet">
+<param name="yVarName" value="Response">
+<param name="yValues" value="12 14 22 18 20 9 12 10 5 9 29 26 30 24 26 22 20 25 18 20 14 18 11 9 13 15 18 20 13 19">
+<param name="yAxis" value="0 30 0 5">
+<param name="xVarName" value="Block">
+<param name="xValues" value="15@0 15@1">
+<param name="xLabels" value="#Block 1# #Block 2#">
+<param name="zVarName" value="Factor">
+<param name="zValues" value="5@0 5@1 5@2 5@0 5@1 5@2">
+<param name="zLabels" value="#Level 1# #Level 2# #Level 3#">
+<param name="xVariables" value="x z Interaction">
+<param name="xTypes" value="xFac zFac Int">
+<param name="factorVariables" value="x z">
+<param name="InteractionVarName" value="Interaction">
+<param name="InteractionValues" value="20@0 5@0 5@1">
+<param name="InteractionLabels" value="I00 I11 I12">
+<param name="maxSsq" value="999.9 99 999.9 99.99">
+<param name="componentNames" value="Blocks#Factor#Interaction">
+<param name="initVariables" value="0">
+</applet> 
+</div>
+
+		<p>Drag the red arrow in the analysis of variance table to successively add 
+			 terms for the blocks and factor and then an 
+			interaction between blocks and the factor. Each successive term reduces the residual 
+		sum of squares.</p>
+	<p>The p-value corresponding to the interaction sum of squares is extremely small &mdash; it is reported as zero &mdash; so we should come to the following conclusion.</p>
+	
+	<div class="boxed"><p>There is extremely strong evidence that the 
+					factor affects the response in different ways in the different blocks.</p></div>
+
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

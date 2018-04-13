@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Effect of unmodelled covariate</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="covariate">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Random unbalance in allocation of treatments</p>
+  <p>Randomisation tries to ensure that the different treatments are <strong>on average</strong> applied to similar experimental units. However <strong>by chance</strong> there are usually some differences.</p>
+  <ul>
+  	<li>By chance, the animals getting a feed supplement may be heavier than these that do not get it.</li>
+ 		<li>By chance, plants of one variety may get more light.</li>
+  </ul>
+  <p>Because of randomisation, these differences are likely to be small, but they will still result in over- or under-estimation of the effect of the factor. The example below is more extreme than would be likely occur in a completely randomised experiment but it does illustrate how inbalance can affect results.</p>
+  
+	<div class="diagram">
+		<p class="heading">Effect of catalyst on reaction</p>
+  	<p>Addition of a catalyst to a chemical reaction increases its yield by 2.1. The yield  also increases as the reaction temperature increases, but the effect of the catalyst is the same whatever the temperature.</p>
+  	<div class="centred"><div class="boxed">
+  		<p>We shall pretent that the effect of temperature was unknown and observe how its variability affects our estimate of the effect of the catalyst. </p>
+  	</div></div>
+  	<p>Consider a completely randomised experiment involving 20 runs of the experiment that is conducted to estimate the effect of the catalyst. Temperature is not controlled but varies randomly between the runs of the experiment. Randomisation means that there is equal chance of the catalyst being used at high and low temperatures, but <strong>by chance</strong>, the runs of the experiment with the catalyst <strong>may</strong> be either hotter or colder than those without.</p>
+  	<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="indicatorProg.CovarBiasApplet">
+<param name="yVarName" value="Yield of chemical process">
+<param name="xVarName" value="Temperature">
+<param name="zVarName" value="Catalyst">
+<param name="zLabels" value="Used #Not used#">
+<param name="yAxis" value="0 10 0 1">
+<param name="xAxis" value="15 25 16 2">
+<param name="theoryParams" value="-6 0.5 2.1 0.5">
+<param name="maxParam" value="9.999 -9.999 -9.99">
+<param name="nValues" value="20">
+<param name="sliderNames" value="Catalyst used more at:#Low temperature#High temperature">
+<param name="lsWithCovar" value="never">
+<param name="customText" value="Display=Display#Artificial data=Artificial data#Randomised experiment=Randomised experiment#Extra variation=Extra variation">
+</applet>
+</div>
+		
+  	<p>Initially the diagram shows the effect of temperature and the catalyst on yield. Since we are not using the covariate in the analysis, the estimated effect is simply the difference between the mean yields of the runs with and without the catalyst. Select <strong>Artificial data</strong> from the pop-up menu to see possible results. Use the slider to see the effect of 'unbalance' in the allocation of treatments.</p>
+  	<div class="centred"><div class="boxed">
+  		<ul>
+  			<li>If the catalyst gets used more at low temperatures than at high temperatures, its effect is <strong>underestimated</strong>.</li>
+ 				<li>If it is used more at high temperatures, its effect is <strong>overestimated</strong>.</li>
+  		</ul>
+ 		</div></div>
+		
+  	<p>Variation in the experimental units (caused by variation in the temperatures) can therefore have a considerable effect on the accuracy of the estimated effect of the catalyst if it is not recorded and used in the model.</p>
+  	<p>Experiments in agriculture and biology usually have much more random variation. Click the checkbox <strong>Extra variation</strong> to add more unexplained random variation to the data and repeat. Observe that the same effect persists.</p>
+  	<p class="heading">Completely randomised experiment</p>
+  	<p>In a completely randomised experiment,  the most extreme forms of unbalance are unlikely. Select <strong>Randomised experiment</strong> from the pop-up menu then click <strong>Repeat experiment</strong> a few times to observe the variation in the estimated effect of the catalyst.</p>
+  	<p>Although the experimental units getting the catalyst are usually reasonably balanced between high and low temperature, even smaller degrees of unbalance add to the variability of the estimates.</p>
+	</div>
+  
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

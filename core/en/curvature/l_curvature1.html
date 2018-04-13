@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Transformations and correlation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="transformations, correlation coefficient/transform to linearity first">
+	<meta name="dataset" content="Bacteria survival after X-rays/high correlation after linearising">
+	<meta name="dataset" content="Lifespan and metabolic rate of mammals/higher correlation after linearising">
+</head>
+
+
+<body class="lecture">
+<script type="text/javascript">writePageStart();</script>
+
+
+<div class="divChoice">
+<form>
+<select name="dataset" onChange="changeBlock(this, 2)" id="dataChoice">
+<option value="0" selected>Marine bacteria surviving doses of X-rays</option>
+<option value="1">Lifespan and metabolic rate of mammals</option>
+</select>
+</form>
+
+
+<div id="example1">
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="420" height="460">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="corrProg.CorrelTransBoxApplet">
+<param name="xVarName" value="X-ray dose">
+<param name="yVarName" value="survivors">
+<param name="xValues" value="1 2 3 4 5 6 7 8 9 10 11 12 13 14 15">
+<param name="yValues" value="355 211 197 166 142 106 104 60 56 38 36 32 21 19 15">
+<param name="horizAxis" value="0 16 0 2">
+<param name="vertAxis" value="14 360 50 50">
+<param name="labelAxes" value="true">
+<param name="transformAxes" value="true">
+<param name="fontSize" value="big">
+</applet>
+</div>
+
+</div>
+
+<div id="example2" style="display:none">
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="420" height="460">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="corrProg.CorrelTransBoxApplet">
+<param name="xVarName" value="Metabolic rate">
+<param name="yVarName" value="Lifespan">
+<param name="labelName" value="Species">
+<param name="xValues" value="0.22 0.52 0.75 1.90 2.00 0.51 0.83 0.43 0.25 0.22 0.25 0.42 0.87 0.93 0.86 1.49 0.74 0.32 0.52 0.52 0.39 0.44 0.07 0.15 0.19 0.24 0.13">
+<param name="yValues" value="50.0 5.0 6.0 3.5 20.5 12.0 20.0 29.0 50.0 100.0 6.5 18.0 9.0 3.9 4.7 3.2 7.6 16.2 9.8 14.0 13.7 28.0 69.0 46.0 20.0 20.0 30.0">
+<param name="labels" value="#Echidna# #N American opossum# #European hedgehog# #E American mole# #Little brown bat# #Owl monkey# #Squirrel monkey# #Rhesus monkey# #Chimpanzee# #Man# #Nine-banded armadillo# #Rabbit# #Ground squirrel# #Golden hamster# #Rat# #Mouse# #Guinea pig# #Gray wolf# #Red fox# #Arctic fox# #Raccoon# #Cat# #Asian elephant# #Horse# #Goat# #Sheep# #Cow#">
+<param name="horizAxis" value="0.06 2.1 0.5 0.5">
+<param name="vertAxis" value="3 105 20 20">
+<param name="labelAxes" value="true">
+<param name="transformAxes" value="true">
+<param name="fontSize" value="big">
+</applet>
+</div>
+
+</div>
+</div>
+
+<script type="text/javascript">
+	writeLecturerNotesLink(withDataNotes);
+</script>
+
+<div class="lecturerNote" id="lecturerNote">
+<p>The correlation coefficient understates the strength of nonlinear relationships. Transformation of one or both variables may linearise the relationship &mdash; the higher correlation coefficient is more descriptive of the strength of the relationship. <strong>Drag the red lines</strong> on the axes to apply power transformations &mdash; <strong>the arrow keys can be used to fine-tune the transformation</strong>.</p>
+<p>In the first example, <i>r</i> = -0.907 understates strength of relationship. A log transformation of the response linearises the relationship and gives a more descriptive value, <em>r</em> = -0.994.</p>
+<p>In the second example, log transformations of <strong>both</strong> variables gives a reasonably linear relationship. Ask which mammals now seem most unusual.</p>
+<div class="centred"><div class="boxed">
+  <p>Transforming to remove skewness in the marginal distributions usually helps with linearity too.</p>
+</div></div>
+
+<br>
+</div>
+
+<div class="lecturerNote" id="dataNote">
+<p>The first data set shows the numbers of a marine bacterium surviving exposure to 200 kilovolt X-rays for periods ranging from t=1 to t=15 intervals of 6 minutes.</p>
+<p>The second data set contains the lifespan (in years) and metabolic rate (measured by oxygen intake per gram of weight) of a selection of mammals.</p>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

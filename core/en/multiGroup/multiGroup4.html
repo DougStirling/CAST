@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Variation between and within groups</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="comparing groups, variation, signal, noise">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Comparing several groups</p>
+<p>The methods for obtaining confidence intervals and hypothesis tests for two 
+groups do not extend to comparisons of the means of three or more groups.</p>
+
+<div class="centred"><div class="boxed">
+<p>A new approach is needed to compare the means of 3 
+or more groups.</p>
+</div></div>
+
+<p class="heading">Hypotheses for testing</p>
+
+<p>For the remainder of this section, we assume a normal model with equal standard 
+deviations.</p>
+<div class="centred">
+<table border="0" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC" class="centred" style="margin-top:0; margin-bottom:0">
+<tr>
+<td>Group <em>i</em>:&nbsp;&nbsp;</td>
+<td><span class="black" style="position:relative; top:3px"><em>Y</em> &nbsp; ~ &nbsp; <span class="arial">normal</span> (µ<sub><em>i&nbsp;</em></sub>,
+σ)</span></td>
+</tr>
+</table>
+</div>
+<p>If all means are the same in the model, then there are no differences between 
+the groups. We are therefore interested in testing the hypotheses,</p>
+
+<p style="margin-left:200px; color:#000000"><font size="+1" face="Arial, Helvetica, sans-serif"><strong>H</strong></font><font face="Arial, Helvetica, sans-serif"><strong><sub>0</sub></strong></font> : &nbsp; µ<sub><em>i</em></sub> &nbsp;=&nbsp; µ<sub><em>j</em></sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>for
+all i and j</em><br>
+<font size="+1" face="Arial, Helvetica, sans-serif"><strong>H</strong></font><font face="Arial, Helvetica, sans-serif"><strong><sub>A</sub></strong></font>: &nbsp; µ<sub><em>i</em></sub> &nbsp;≠&nbsp; µ<sub><em>j</em></sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>for
+at least some i, j</em></p>
+
+<p class="heading">Variation between and within groups</p>
+<p>If the model means are all equal, it would be expected that the sample means 
+would be similar. However they are unlikely to be identical. We therefore need 
+to assess whether the <strong>variation between the group means</strong> is unusually 
+great. To do this, we must also take account of the <strong>variation within the 
+groups</strong>. </p>
+
+<p>We will show in later pages that these two aspects of variation can be described 
+with summary statistics and used for a hypothesis test. </p>
+
+
+<div class="diagram" title="Illustration of two types of variation">
+<p class="heading">Variation between groups</p>
+<p>The jittered dot plots below show 10 numerical measurements from each of 4 
+groups. </p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.VariabilityApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="xLabels" value="A B C D">
+<param name="xValues" value="10@0 10@1 10@2 10@3">
+<param name="anovaModel" value="3.0 0.9 8.0 0.9 5.5 0.9 4.0 0.9">
+<param name="randomSeed" value="223945782">
+<param name="yAxis" value="1.0 9.5 1 1">
+<param name="decimals" value="3">
+<param name="initialPropns" value="1.0 0.5">
+<param name="explainedName" value="Variation between groups">
+<param name="customText" value="Low=Low#High=High">
+</applet>
+</div>
+
+    
+<p>Use the slider to alter the difference between the group means. Observe that:</p>
+<ul>
+<li>When the between-group variation is high, we become more certain that the 
+differences between the group means could not have occurred by chance.</li>
+</ul>
+
+<p class="heading">Variation within groups</p>
+
+<p>The diagram below is similar, but the slider adjusts the spread of values within 
+each group, leaving the group mean unaltered.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.VariabilityApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="xLabels" value="A B C D">
+<param name="xValues" value="10@0 10@1 10@2 10@3">
+<param name="anovaModel" value="4.0 1.2 6.0 1.2 5.5 1.2 4.0 1.2">
+<param name="randomSeed" value="123945782">
+<param name="yAxis" value="1.0 9.5 1 1">
+<param name="decimals" value="3">
+<param name="initialPropns" value="0.5 1.0">
+<param name="unexplainedName" value="Variation within groups">
+<param name="customText" value="Low=Low#High=High">
+</applet>
+</div>
+
+<p>Observe that ... </p>
+
+<ul>
+<li>The lower the within-group variation, the more certain we become that
+there really is a difference between the underlying model means.</li>
+</ul>
+
+<p class="heading">Are the underlying means equal?</p>
+
+<p>The evidence for a difference between the group means depends on both the 
+variation between <strong>and</strong> within groups. It is strongest when:</p>
+
+<div class="centred"><div class="boxed">
+<ul>
+<li>the between-group variation is relatively high, and</li>
+<li>the within-group variation is relatively low.</li>
+</ul>
+</div></div>
+
+<br>
+</div>
+
+<p class="heading">Signal and noise</p>
+<p>In the field of communications, the <strong>signal</strong> in a recorded 
+or transmitted message (e.g. music) is defined to be the information in 
+which we are interested. There is often other variability in the received message that contains no useful information; this variability can potentially obscure or corrupt the signal and is called <strong>noise</strong>.</p>
+<p>Applying this terminology to the comparison of several groups,</p>
+<dl>
+<dt>Signal</dt>
+<dd>The variation between group means is the signal in the data.</dd>
+<dt>Noise</dt>
+<dd>Variation within groups is noise.</dd>
+</dl>
+<p>The greater the noise, the harder it is to detect or estimate the signal. 
+We will next present numerical summaries of the signal and noise in multi-group 
+data.</p>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

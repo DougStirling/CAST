@@ -1,0 +1,886 @@
+<html>
+<head>
+  <title>9. Independence</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 9 &nbsp; Independence</h1>
+<h1 class="sectionName">9.1 &nbsp; Bivariate categorical distributions</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Relationships between variables</li>
+<li>3-dimensional bar charts</li>
+<li>Clustered bar charts</li>
+<li>Marginal distributions</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='5'>
+<li>Conditional distributions</li>
+<li>More about conditional distributions</li>
+<li>Conditional vs marginal distns</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">9.1.1 &nbsp; Relationships between variables</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Bivariate data without an explanatory variable</p>
+<p>In some bivariate categorical data sets, one variable can be treated as a <strong>response</strong> whose
+value depends on the other <strong>explanatory</strong> variable. The explanatory
+variable can then be used to split the individuals into groups.</p>
+<p>In other bivariate data, the relationship between the variables 
+		is more symmetrical but we still want to discover whether particular values
+of one variable are <strong>associated</strong> with values of the other. A contingency
+table again summarises the data.</p>
+<div class="centred"><table border="0" class="centred" cellpadding="5" cellspacing="0">
+		<tr>
+			<th>&nbsp;</th>
+			<th>&nbsp;</th>
+			<th colspan="3">Variable X</th>
+		</tr>
+		<tr>
+			<th colspan="2" align="left"><span class="darkblue">Variable Y   </span></th>
+			<th><span class="darkred">&nbsp;&nbsp;&nbsp;X<sub>1</sub>&nbsp;&nbsp;&nbsp;</span></th>
+			<th><span class="darkred">&nbsp;&nbsp;&nbsp;X<sub>2</sub>&nbsp;&nbsp;&nbsp;</span></th>
+			<th><span class="darkred">&nbsp;&nbsp;&nbsp;X<sub>3</sub>&nbsp;&nbsp;&nbsp;</span></th>
+		</tr>
+		<tr>
+			<th rowspan="4" align="left">&nbsp;</th>
+			<th align="left"><span class="darkblue">Y<sub>1</sub></span></th>
+			<td align="center" bgcolor="#FFFFFF" class="top left">105</td>
+			<td align="center" bgcolor="#FFFFFF" class="top"><span class="white">0</span>7</td>
+			<td align="center" bgcolor="#FFFFFF" class="top right">11</td>
+		</tr>
+		<tr>
+			<th align="left"><span class="darkblue">Y<sub>2</sub></span></th>
+			<td align="center" bgcolor="#FFFFFF" class="left"><span class="white">0</span>58</td>
+			<td align="center" bgcolor="#FFFFFF"><span class="white">0</span>5</td>
+			<td align="center" bgcolor="#FFFFFF" class="right">13</td>
+		</tr>
+		<tr>
+			<th align="left"><span class="darkblue">Y<sub>3</sub></span></th>
+			<td align="center" bgcolor="#FFFFFF" class="left"><span class="white">0</span>84</td>
+			<td align="center" bgcolor="#FFFFFF">37</td>
+			<td align="center" bgcolor="#FFFFFF" class="right">42</td>
+		</tr>
+		<tr>
+			<th align="left"><span class="darkblue">Y<sub>4</sub></span></th>
+			<td align="center" bgcolor="#FFFFFF" class="bottom left"><span class="white">0</span>57</td>
+			<td align="center" bgcolor="#FFFFFF" class="bottom">16</td>
+			<td align="center" bgcolor="#FFFFFF" class="bottom right">17</td>
+		</tr>
+	</table></div>
+
+
+
+
+
+<h2 class="pageName">9.1.2 &nbsp; 3-dimensional bar charts</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Graphical display in a bar chart</p>
+	<p>If we do not want to classify 
+		the variables in a contingency table as a response and explanatory variable, the data can be displayed  with a 3-dimensional bar chart.</p>
+	<p class="eqn"><img src="../../../en/bivarCat/images/s_3dBar.gif" width="390" height="351"></p>
+	<p>Three-dimensional bar charts are 'interesting' but there are more informative 
+ways to display the data.</p>
+	<p class="heading">Chartjunk and perspective displays</p>
+	<p>Beware of adding chartjunk and perspective viewpoints to the display &mdash; they 
+		just make it harder to understand the data.</p>
+	<p class="eqn"><img src="../../../en/bivarCat/images/s_perspectiveBar.gif" width="298" height="300"></p>
+
+
+  
+
+
+<h2 class="pageName">9.1.3 &nbsp; Clustered bar charts</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Clustering bars in 2-dimensional bar chart</p>
+	<p>Rather than using a 3-dimensional bar chart, it is usually easier to assess
+the relationships between two variables from 2-dimensional bar charts. The bars
+can be clustered by either variable and it is often informative to examine both
+of these displays.</p>
+<p class="eqn"><img src="../../../en/bivarCat/images/s_clustered.gif" width="540" height="413"></p>
+
+
+
+
+<h2 class="pageName">9.1.4 &nbsp; Marginal distributions</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Marginal counts</p>
+	<p>Although our main interest is usually on the relationship between two categorical
+ variables, it can also be of interest to examine the overall distribution of
+each  variable separately. These are called the <strong>marginal distributions</strong> of
+the two variables and are determined by the row and column totals of the  contingency
+table.</p>
+	<div class="centred"><table border="0" class="centred" cellpadding="5" cellspacing="0">
+		<tr>
+			<th>&nbsp;</th>
+			<th>&nbsp;</th>
+			<th colspan="4">Variable X</th>
+			<td></td>
+		</tr>
+		<tr>
+			<th colspan="2" align="left" valign="bottom">Variable Y&nbsp;&nbsp;&nbsp;</th>
+			<th>&nbsp;&nbsp;&nbsp;X<sub>1</sub>&nbsp;&nbsp;&nbsp;</th>
+		<th>&nbsp;&nbsp;&nbsp;X<sub>2</sub>&nbsp;&nbsp;&nbsp;</th>
+		<th>&nbsp;&nbsp;&nbsp;X<sub>3</sub>&nbsp;&nbsp;&nbsp;</th>
+		<th>&nbsp;&nbsp;&nbsp;X<sub>4</sub>&nbsp;&nbsp;&nbsp;</th>
+		<th>&nbsp;Total&nbsp;</th>
+</tr>
+		<tr>
+			<th rowspan="4" align="left">&nbsp;</th>
+			<th align="left">Y<sub>1</sub></th>
+		<td align="center" bgcolor="#FFFFFF" class="top left"><span color="white">00</span>2</td>
+		<td align="center" bgcolor="#FFFFFF" class="top"><span color="white">00</span>3</td>
+		<td align="center" bgcolor="#FFFFFF" class="top"><span class="white">0</span>57</td>
+		<td align="center" bgcolor="#FFFFFF" class="top right"><span class="white">0</span>6</td>
+		<td align="right" bgcolor="#FFFF00" class="top right">68&nbsp;</td>
+		</tr>
+		<tr>
+			<th align="left">Y<sub>2</sub></th>
+		<td align="center" bgcolor="#FFFFFF" class="left"><span class="white">0</span>52</td>
+			<td align="center" bgcolor="#FFFFFF">170</td>
+			<td align="center" bgcolor="#FFFFFF">163</td>
+			<td align="center" bgcolor="#FFFFFF" class="right">17</td>
+			<td align="right" bgcolor="#FFFF00" class="right">402&nbsp;</td>
+		</tr>
+		<tr>
+			<th align="left">Y<sub>3</sub></th>
+		<td align="center" bgcolor="#FFFFFF" class="left">156</td>
+			<td align="center" bgcolor="#FFFFFF">125</td>
+			<td align="center" bgcolor="#FFFFFF"><span class="white">0</span>61</td>
+			<td align="center" bgcolor="#FFFFFF" class="right"><span class="white">0</span>6</td>
+		<td align="right" bgcolor="#FFFF00" class="right">348&nbsp;</td>
+		</tr>
+		<tr>
+			<th align="left">Y<sub>4</sub></th>
+		<td align="center" bgcolor="#FFFFFF" class="bottom left">220</td>
+			<td align="center" bgcolor="#FFFFFF" class="bottom"><span class="white">0</span>83</td>
+		<td align="center" bgcolor="#FFFFFF" class="bottom"><span class="white">0</span>39</td>
+		<td align="center" bgcolor="#FFFFFF" class="bottom right"><span class="white">0</span>4</td>
+		<td align="right" bgcolor="#FFFF00" class="bottom right">346&nbsp;</td>
+		</tr>
+		<tr>
+			<td></td>
+			<th align="left">Total</th>
+			<td align="center" bgcolor="#99FF00" class="bottom left">430</td>
+			<td align="center" bgcolor="#99FF00" class="bottom">381</td>
+			<td align="center" bgcolor="#99FF00" class="bottom">320</td>
+			<td align="center" bgcolor="#99FF00" class="bottom right">33</td>
+			<td></td>
+		</tr>
+	</table></div>
+<p>The row and column totals correspond to the heights of the stacks in stacked
+bar charts. For example, the above row totals are the heights of the stacks in
+the following diagram.</p>
+<p class="eqn"><img src="../../../en/bivarCat/images/s_marginal.gif" width="455" height="272"></p>
+	<p class="heading">Marginal proportions</p>
+	<p>In a similar way, the marginal proportions for the variables are obtained
+by adding the cell proportions across rows and down columns.</p>
+<p class="eqn"><img class="gif" src="../../../en/bivarCat/images/xMarginEqn.gif" id="gif_image_1_4_1" width="89" height="31"><iframe class="svg" src="../../../en/bivarCat/images/xMarginEqn.svg" id="svg_image_1_4_1" width="89" height="31" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_1_4_1");</script>        and         <img class="gif" src="../../../en/bivarCat/images/yMarginEqn.gif" id="gif_image_1_4_2" width="88" height="27"><iframe class="svg" src="../../../en/bivarCat/images/yMarginEqn.svg" id="svg_image_1_4_2" width="88" height="27" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_1_4_2");</script></p>
+
+
+
+
+<h2 class="pageName">9.1.5 &nbsp; Conditional distributions</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Spliting into groups</p>
+	<p>If the values of <em>X</em> are used to split the individuals into groups,
+the <strong>conditional distributions</strong> of <em>Y</em> given <em>X</em> are
+the distributions within each of these groups. They are found by dividing the
+cell counts by the totals for each such group. The columns of the table below
+show the conditional distributions for a contingency table, expressed as percentages.</p>
+<div class="centred"><table border="0" class="centred" cellpadding="5" cellspacing="0">
+<caption>
+<strong>Conditional percentages for <em>Y</em>, given <em>X</em></strong>
+</caption>
+<tr>
+<th>&nbsp;</th>
+<th>&nbsp;</th>
+<th colspan="4">Variable X</th>
+</tr>
+<tr>
+<th colspan="2" align="left" valign="bottom">Variable Y&nbsp;&nbsp;&nbsp;</th>
+<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;X<sub>1</sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;X<sub>2</sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;X<sub>3</sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;X<sub>4</sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+</tr>
+<tr>
+<th rowspan="4" align="left">&nbsp;</th>
+<th align="left">Y<sub>1</sub></th>
+<td align="center" bgcolor="#FFFFFF" class="top left"><span style="color:#FFF">00</span>0.5</td>
+<td align="center" bgcolor="#FFFFFF" class="top"><span style="color:#FFF">00</span>0.8</td>
+<td align="center" bgcolor="#FFFFFF" class="top"><span style="color:#FFF">0</span>17.8</td>
+<td align="center" bgcolor="#FFFFFF" class="top right"><span style="color:#FFF">0</span>18.2</td>
+</tr>
+<tr>
+<th align="left">Y<sub>2</sub></th>
+<td align="center" bgcolor="#FFFFFF" class="left"><span style="color:#FFF">0</span>12.1</td>
+<td align="center" bgcolor="#FFFFFF"><span style="color:#FFF">0</span>44.6</td>
+<td align="center" bgcolor="#FFFFFF"><span style="color:#FFF">0</span>50.9</td>
+<td align="center" bgcolor="#FFFFFF" class="right"><span style="color:#FFF">0</span>51.5</td>
+</tr>
+<tr>
+<th align="left">Y<sub>3</sub></th>
+<td align="center" bgcolor="#FFFFFF" class="left"><span style="color:#FFF">0</span>36.3</td>
+<td align="center" bgcolor="#FFFFFF"><span style="color:#FFF">0</span>32.8</td>
+<td align="center" bgcolor="#FFFFFF"><span style="color:#FFF">0</span>19.1</td>
+<td align="center" bgcolor="#FFFFFF" class="right"><span style="color:#FFF">0</span>18.2</td>
+</tr>
+<tr>
+<th align="left">Y<sub>4</sub></th>
+<td align="center" bgcolor="#FFFFFF" class="bottom left"><span style="color:#FFF">0</span>51.2</td>
+<td align="center" bgcolor="#FFFFFF" class="bottom"><span style="color:#FFF">0</span>21.8</td>
+<td align="center" bgcolor="#FFFFFF" class="bottom"><span style="color:#FFF">0</span>12.2</td>
+<td align="center" bgcolor="#FFFFFF" class="bottom right"><span style="color:#FFF">0</span>12.1</td>
+</tr>
+<tr>
+<td></td>
+<th align="left">Total</th>
+<td align="center" bgcolor="#99FF00" class="bottom left">100.0</td>
+<td align="center" bgcolor="#99FF00" class="bottom">100.0</td>
+<td align="center" bgcolor="#99FF00" class="bottom">100.0</td>
+<td align="center" bgcolor="#99FF00" class="bottom right">100.0</td>
+</tr>
+</table></div>
+<p>The <strong>conditional distributions</strong> of <em>X</em> given <em>Y</em> are
+similarly found by using <em>Y</em> to create the groups of individuals. They
+are found by dividing the cell counts by the totals in the other margin of the
+original contingency table.</p>
+<div class="centred"><table border="0" class="centred" cellpadding="5" cellspacing="0">
+<caption>
+<strong>Conditional percentages for <em>X</em>, given <em>Y</em></strong>
+</caption>
+<tr>
+<th>&nbsp;</th>
+<th>&nbsp;</th>
+<th colspan="4">Variable X</th>
+<td></td>
+</tr>
+<tr>
+<th colspan="2" align="left" valign="bottom">Variable Y&nbsp;&nbsp;&nbsp;</th>
+<th>&nbsp;&nbsp;&nbsp;X<sub>1</sub>&nbsp;&nbsp;&nbsp;</th>
+<th>&nbsp;&nbsp;&nbsp;X<sub>2</sub>&nbsp;&nbsp;&nbsp;</th>
+<th>&nbsp;&nbsp;&nbsp;X<sub>3</sub>&nbsp;&nbsp;&nbsp;</th>
+<th>&nbsp;&nbsp;&nbsp;X<sub>4</sub>&nbsp;&nbsp;&nbsp;</th>
+<th>&nbsp;Total&nbsp;</th>
+</tr>
+<tr>
+<th rowspan="4" align="left">&nbsp;</th>
+<th align="left">Y<sub>1</sub></th>
+<td align="center" bgcolor="#FFFFFF" class="top left"><span style="color:#FFF">0</span>2.9</td>
+<td align="center" bgcolor="#FFFFFF" class="top"><span style="color:#FFF">0</span>4.4</td>
+<td align="center" bgcolor="#FFFFFF" class="top">83.8</td>
+<td align="center" bgcolor="#FFFFFF" class="top right">8.8</td>
+<td align="right" bgcolor="#FFFF00" class="top right">100.0&nbsp;</td>
+</tr>
+<tr>
+<th align="left">Y<sub>2</sub></th>
+<td align="center" bgcolor="#FFFFFF" class="left">12.9</td>
+<td align="center" bgcolor="#FFFFFF" class="middle">42.3</td>
+<td align="center" bgcolor="#FFFFFF" class="middle">40.5</td>
+<td align="center" bgcolor="#FFFFFF" class="right">4.2</td>
+<td align="right" bgcolor="#FFFF00" class="right">100.0&nbsp;</td>
+</tr>
+<tr>
+<th align="left">Y<sub>3</sub></th>
+<td align="center" bgcolor="#FFFFFF" class="left">44.8</td>
+<td align="center" bgcolor="#FFFFFF" class="middle">35.9</td>
+<td align="center" bgcolor="#FFFFFF" class="middle">17.5</td>
+<td align="center" bgcolor="#FFFFFF" class="right">1.7</td>
+<td align="right" bgcolor="#FFFF00" class="right">100.0&nbsp;</td>
+</tr>
+<tr>
+<th align="left">Y<sub>4</sub></th>
+<td align="center" bgcolor="#FFFFFF" class="bottom left">63.6</td>
+<td align="center" bgcolor="#FFFFFF" class="bottom">24.0</td>
+<td align="center" bgcolor="#FFFFFF" class="bottom">11.3</td>
+<td align="center" bgcolor="#FFFFFF" class="bottom right">1.2</td>
+<td align="right" bgcolor="#FFFF00" class="bottom right">100.0&nbsp;</td>
+</tr>
+</table></div>
+<p>Both tables of conditional proportions (or percentages) are often informative.</p>
+
+
+
+
+<h2 class="pageName">9.1.6 &nbsp; More about conditional distributions</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Conditional distributions of <em>X</em> given <em>Y</em> and <em>Y</em> given <em>X</em></p>
+	<p>The conditional proportions for <em>X</em> given <em>Y</em> can be quite
+different  from the corresponding conditional proportions for <em>Y</em> given <em>X</em> and
+you
+must be careful to distinguish between them.</p>
+	<p>As an extreme example, under 5% of women are pregnant at any time, but 100% of pregnant people are women!</p>
+
+
+
+
+<h2 class="pageName">9.1.7 &nbsp; Conditional vs marginal distns</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Conditional and marginal distributions</p>
+	<p>The distinction is between the marginal distribution for a variable 
+		and its conditional distributions is illustrated for the following contingency
+table that describes bruising of 96 apples in a packing plant.</p>
+	<div class="centred"><table border="0" class="centred" cellpadding="5" cellspacing="0">
+		<tr>
+			<td>&nbsp;</td>
+			<th>&nbsp;&nbsp;&nbsp;OK&nbsp;&nbsp;&nbsp;</th>
+			<th>Bruised</th>
+		</tr>
+		<tr>
+			<th align="left">Granny Smith</th>
+			<td align="center" bgcolor="#FFFFFF" class="left top">40</td>
+			<td align="center" bgcolor="#FFFFFF" class="right top">8</td>
+		</tr>
+		<tr>
+			<th align="left">Fuji</th>
+			<td align="center" bgcolor="#FFFFFF" class="bottom left">24</td>
+			<td align="center" bgcolor="#FFFFFF" class="bottom right">24</td>
+		</tr>
+	</table></div>
+	<p>The diagram below shows the apples, arranged in rows by variety.</p>
+	<p class="eqn"><img src="../../../en/bivarCat/images/s_propnVenn1.gif" width="500" height="347"></p>
+	<p>Observe that:</p>
+	<ul>
+		<li><sup>1</sup>/<sub>2</sub> of the apples are Granny Smiths (marginal proportion)</li>
+		<li><sup>1</sup>/<sub>6</sub> of the Granny Smiths are bruised (conditional proportion)</li>
+	</ul>
+<p>The apples can be rearranged as follows:</p>
+	<p class="eqn"><img src="../../../en/bivarCat/images/s_propnVenn2.gif" width="556" height="347"></p>
+	<p>Now observe that:</p>
+	<ul>
+		<li><sup>1</sup>/<sub>4</sub> of the bruised apples are Granny Smiths (conditional proportion)</li>
+		<li><sup>1</sup>/<sub>3</sub> of the apples are bruised (marginal proportion)</li></ul>
+
+
+
+
+<h1 class="sectionName breakBefore">9.2 &nbsp; Independence</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Association</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='2'>
+<li>Independence</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">9.2.1 &nbsp; Association</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Relationships</p>
+<p>The relationship between two numerical variables can be summarised by a correlation
+coefficient and least squares line. Two categorical variables may also be related.</p>
+<p>We say that two categorical variables are <strong>associated</strong> if knowledge of the value
+of one tells you something about the likely value of the other.</p>
+
+<div class="centred"><div class="boxed">
+<p>If the conditional distribution of <em>Y</em> given <em>X</em>&nbsp;=&nbsp;<em>x</em> depends
+on the value of <em>x</em>, we say that <em>X</em> and <em>Y</em> are <strong>associated</strong>.</p>
+</div></div>
+
+<p class="heading">Example</p>
+<p>We illustrate the idea of association with an artificial example relating athletic
+performance of high school children to their weight. The table below shows the joint
+probabilities for these children.</p>
+
+<div class="centred"><table class="centred" border="0" cellpadding="5" cellspacing="0">
+<caption>
+<strong>Joint Probabilities</strong>
+</caption>
+<tr>
+<th align="CENTER"></th>
+<th align="CENTER" colspan="3"><span class="blue">Athletic performance</span></th>
+<th align="CENTER"></th>
+</tr>
+<tr>
+<th align="CENTER"></th>
+<th align="CENTER"><span class="blue">Poor</span></th>
+<th align="CENTER"><span class="blue">Satisfactory</span></th>
+<th align="CENTER"><span class="blue">Above average</span></th>
+<th align="CENTER"><span class="red">Marginal</span></th>
+</tr>
+<tr>
+<th align="CENTER"><span class="blue">Underweight</span></th>
+<td align="CENTER" bgcolor="#FFFFFF" class="top left">0.0450</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="top">0.0900</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="top right">0.0150</td>
+<td align="CENTER"><span class="red">0.1500</span></td>
+</tr>
+<tr>
+<th align="CENTER"><span class="blue">Normal</span></th>
+<td align="CENTER" bgcolor="#FFFFFF" class="left">0.0825</td>
+<td align="CENTER" bgcolor="#FFFFFF">0.3025</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="right">0.1650</td>
+<td align="CENTER"><span class="red">0.5500</span></td>
+</tr>
+<tr>
+<th align="CENTER"><span class="blue">Overweight</span></th>
+<td align="CENTER" bgcolor="#FFFFFF" class="left">0.0500</td>
+<td align="CENTER" bgcolor="#FFFFFF">0.1200</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="right">0.0300</td>
+<td align="CENTER"><span class="red">0.2000</span></td>
+</tr>
+<tr>
+<th align="CENTER"><span class="blue">Obese</span></th>
+<td align="CENTER" bgcolor="#FFFFFF" class="bottom left">0.0300</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="bottom">0.0650</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="bottom right">0.0050</td>
+<td align="CENTER"><span class="red">0.1000</span></td>
+</tr>
+<tr>
+<th align="CENTER"><span class="red">Marginal</span></th>
+<td align="CENTER"><span class="red">0.1700</span></td>
+<td align="CENTER"><span class="red">0.5400</span></td>
+<td align="CENTER"><span class="red">0.2900</span></td>
+<td align="CENTER"><span class="red">1.0000</span></td>
+</tr>
+</table></div>
+<p>A proportional Venn diagram displays the conditional probabilities for performance,
+given weight category, graphically. </p>
+<p class=eqn><img class="gif" src="../../../en/indep/images/assocVenn.gif" id="gif_image_2_1_1" width="375" height="300"><iframe class="svg" src="../../../en/indep/images/assocVenn.svg" id="svg_image_2_1_1" width="375" height="300" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_1_1");</script></p>
+<p>If we know that a child has <em>normal</em> weight, there is a higher probability
+of having <em>above average</em> athletic performance than an <em>overweight</em> child. Since
+the conditional probabilities for performance, given weight are different for different
+weight categories, the two variables are <strong>associated</strong>.</p>
+
+
+
+
+<h2 class="pageName">9.2.2 &nbsp; Independence</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Independence</p>
+<p>If the conditional probabilities for <i>Y</i> are the same for all values of <i>X</i>,
+then <i>Y</i> is said to be <strong>independent</strong> of <i>X</i>.</p>
+
+<div class="centred"><div class="boxed">
+<p>If <em>X</em> and <em>Y</em> are independent, knowing the value of <em>X</em> does
+not give us any information about the likely value for <em>Y</em>.</p>
+</div></div>
+
+<p class="heading">Example</p>
+<p>An example of independence is given by the following table of joint probabilities
+for the weight category and mathematical ability of high school children.</p>
+<br>
+<div class="centred"><table class="centred" border="0" cellpadding="5" cellspacing="0">
+<caption>
+<strong>Joint Probabilities</strong>
+</caption>
+<tr>
+<th align="CENTER"></th>
+<th align="CENTER" colspan="3"><span class="blue">Mathematical performance</span></th>
+<th align="CENTER"></th>
+</tr>
+<tr>
+<th align="CENTER"></th>
+<th align="CENTER"><span class="blue">    Poor    </span></th>
+<th align="CENTER"><span class="blue">Satisfactory</span></th>
+<th align="CENTER"><span class="blue">Above average</span></th>
+<th align="CENTER"><span class="red">Marginal</span></th>
+</tr>
+<tr>
+<th align="CENTER"><span class="blue">Underweight</span></th>
+<td align="CENTER" bgcolor="#FFFFFF" class="top left">0.0225</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="top">0.1125</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="top right">0.0150</td>
+<td align="CENTER"><span class="red">0.1500</span></td>
+</tr>
+<tr>
+<th align="CENTER"><span class="blue">Normal</span></th>
+<td align="CENTER" bgcolor="#FFFFFF" class="left">0.0825</td>
+<td align="CENTER" bgcolor="#FFFFFF">0.4125</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="right">0.0550</td>
+<td align="CENTER"><span class="red">0.5500</span></td>
+</tr>
+<tr>
+<th align="CENTER"><span class="blue">Overweight</span></th>
+<td align="CENTER" bgcolor="#FFFFFF" class="left">0.0300</td>
+<td align="CENTER" bgcolor="#FFFFFF">0.1500</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="right">0.0200</td>
+<td align="CENTER"><span class="red">0.2000</span></td>
+</tr>
+<tr>
+<th align="CENTER"><span class="blue">Obese</span></th>
+<td align="CENTER" bgcolor="#FFFFFF" class="bottom left">0.0150</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="bottom">0.0750</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="bottom right">0.0100</td>
+<td align="CENTER"><span class="red">0.1000</span></td>
+</tr>
+<tr>
+<th align="CENTER"><span class="red">Marginal</span></th>
+<td align="CENTER"><span class="red">0.1500</span></td>
+<td align="CENTER"><span class="red">0.7500</span></td>
+<td align="CENTER"><span class="red">0.1000</span></td>
+<td align="CENTER"><span class="red">1.0000</span></td>
+</tr>
+</table></div>
+<p>The proportional Venn diagram for this model is shown below.</p>
+<p class=eqn><img class="gif" src="../../../en/indep/images/indepVenn.gif" id="gif_image_2_2_1" width="375" height="300"><iframe class="svg" src="../../../en/indep/images/indepVenn.svg" id="svg_image_2_2_1" width="375" height="300" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_2_1");</script></p>
+<p>The conditional probability of above average maths performance is the same for
+all weight categories &mdash; knowing a child's weight would not help you to predict maths
+performance. The two variables are therefore <strong>independent</strong>.</p>
+<p class="heading">Mathematical definition of independence</p>
+<p>If <i>Y</i> is independent of <i>X</i>, then:</p>
+<ul>
+<li><em>p<sub>x | y</sub>  =  p<sub>x</sub></em>  for all <em>x</em> and <em>y</em> (the
+marginal and conditional probabilities for <em>X</em> are equal)</li>
+<li><em>p<sub>y | x</sub>  =  p<sub>y</sub></em>  for all <em>x</em> and <em>y</em> (the
+marginal and conditional probabilities for <em>Y</em> are equal)</li>
+<li><em>p<sub>xy</sub>  =  p<sub>x</sub>&times;p<sub>y</sub></em>  for all <em>x</em> and <em>y</em></li>
+<li><em>X</em> is independent of <em>Y</em></li>
+</ul>
+
+
+
+
+<h1 class="sectionName breakBefore">9.3 &nbsp; Testing for independence</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Independence from samples</li>
+<li>Testing for independence</li>
+<li>Chi-squared test statistic</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='4'>
+<li>P-value for chi-squared test</li>
+<li>Examples</li>
+<li>Comparing groups</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">9.3.1 &nbsp; Independence from samples</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Assessing independence from a sample</p>
+<p>Independence is an important concept, but it is defined in terms of the joint <strong>population </strong> probabilites
+and in most practical situations these are unknown. We must assess independence
+from a <strong>sample</strong> of individuals  &mdash; a contingency
+table.</p>
+<p class="heading">Example</p>
+<p>The contingency table below categorises a sample of 214 individuals by gender
+and some other characteristic (possibly weight group or grade in a test). </p>
+<div class="centred"><table class="centred" border="0" cellpadding="5" cellspacing="0">
+<caption align="TOP">
+<strong>Sample Data</strong>
+</caption>
+<tr>
+<th align="CENTER">&nbsp;</th>
+<th align="CENTER"><span class="blue">  Male  </span></th>
+<th align="CENTER"><span class="blue">Female</span></th>
+<th align="CENTER"><span class="red">Total</span></th>
+</tr>
+<tr>
+<th align="CENTER"><span class="blue">A</span></th>
+<td align="CENTER" bgcolor="#FFFFFF" class="top left">20</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="top right">60</td>
+<td align="CENTER"><span class="red">80</span></td>
+</tr>
+<tr>
+<th align="CENTER"><span class="blue">B</span></th>
+<td align="CENTER" bgcolor="#FFFFFF" class="left">9</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="right">84</td>
+<td align="CENTER"><span class="red">93</span></td>
+</tr>
+<tr>
+<th align="CENTER"><span class="blue">C</span></th>
+<td align="CENTER" bgcolor="#FFFFFF" class="bottom left">2</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="bottom right">39</td>
+<td align="CENTER"><span class="red">41</span></td>
+</tr>
+<tr>
+<th align="CENTER"><span class="red">Total</span></th>
+<td align="CENTER"><span class="red">31</span></td>
+<td align="CENTER"><span class="red">183</span></td>
+<td align="CENTER"><span class="blue">214</span></td>
+</tr>
+</table></div>
+<p>Is this consistent with a model of independence of the characteristic and gender?
+(Are the probabilities of A, B and C grades the same for males and females?)</p>
+<p class=heading>Estimated cell counts under independence</p>
+<p>To assess independence, we first find the pattern of cell counts that is <strong>most
+consistent with independence</strong> in a contingency table with the observed marginal
+totals.</p>
+<div class="centred"><table class="centred" border="0" cellpadding="5" cellspacing="0">
+<tr>
+<th align="CENTER">&nbsp;</th>
+<th align="CENTER"><span class="blue">  Male  </span></th>
+<th align="CENTER"><span class="blue">Female</span></th>
+<th align="CENTER"><span class="red">Total</span></th>
+</tr>
+<tr>
+<th align="CENTER"><span class="blue">A</span></th>
+<td align="CENTER" bgcolor="#FFFFFF" class="top left">?</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="top right">?</td>
+<td align="CENTER"><span class="red">80</span></td>
+</tr>
+<tr>
+<th align="CENTER"><span class="blue">B</span></th>
+<td align="CENTER" bgcolor="#FFFFFF" class="left">?</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="right">?</td>
+<td align="CENTER"><span class="red">93</span></td>
+</tr>
+<tr>
+<th align="CENTER"><span class="blue">C</span></th>
+<td align="CENTER" bgcolor="#FFFFFF" class="bottom left">?</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="bottom right">?</td>
+<td align="CENTER"><span class="red">41</span></td>
+</tr>
+<tr>
+<th align="CENTER"><span class="red">Total</span></th>
+<td align="CENTER"><span class="red">31</span></td>
+<td align="CENTER"><span class="red">183</span></td>
+<td align="CENTER"><span class="blue">214</span></td>
+</tr>
+</table></div>
+<p>The pattern that is most consistent with independence has the following <strong>estimated
+cell counts</strong>:</p>
+<p class=eqn><img class="gif" src="../../../en/indep/images/expCountEqn.gif" id="gif_image_3_1_1" width="315" height="37"><iframe class="svg" src="../../../en/indep/images/expCountEqn.svg" id="svg_image_3_1_1" width="315" height="37" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_3_1_1");</script></p>
+<p>where <span class="em blue">n</span>  denotes the total for the whole
+table and <span class="em red">n<sub>x</sub></span>  and <span class="em red">n<sub>y</sub></span>  denote
+the marginal totals for row <em>x</em> and column <em>y</em>.</p>
+<p>Applying this to our example gives the following table:</p>
+<div class="centred"><table border="0" class="centred" cellpadding="5" cellspacing="0">
+<tr>
+<th align="CENTER">&nbsp;</th>
+<th width="143" align="CENTER"><span class="blue">Male</span></th>
+<th width="143" align="CENTER"><span class="blue">Female</span></th>
+<th align="CENTER"><span class="red">Total</span></th>
+</tr>
+<tr>
+<th height="48" align="CENTER"><span class="blue">A</span></th>
+<td height="48" colspan="2" rowspan="3" align="CENTER" bgcolor="#FFFFFF" class="top left bottom right"><img src="../../../en/indep/images/s_expectedTable.gif" width="279" height="134"></td>
+<td height="48" align="CENTER"><span class="red">80</span></td>
+</tr>
+<tr>
+<th height="48" align="CENTER"><span class="blue">B</span></th>
+<td height="48" align="CENTER"><span class="red">93</span></td>
+</tr>
+<tr>
+<th height="48" align="CENTER"><span class="blue">C</span></th>
+<td height="48" align="CENTER"><span class="red">41</span></td>
+</tr>
+<tr>
+<th align="CENTER"><span class="red">Total</span></th>
+<td align="CENTER"><span class="red">31</span></td>
+<td align="CENTER"><span class="red">183</span></td>
+<td align="CENTER"><span class="blue">214</span></td>
+</tr>
+</table></div>
+
+
+
+
+<h2 class="pageName">9.3.2 &nbsp; Testing for independence</h2><!DOCTYPE HTML>
+
+
+<p class=heading>Comparison of observed and estimated cell counts</p>
+<p>We test for independence with the hypotheses:</p>
+<p class=eqn><span class="black"><strong><font size="+1">H</font><sub>0</sub> :</strong>&nbsp; <em>X and Y are independent</em><br><strong><font size="+1">H</font><sub>A</sub> :</strong>&nbsp; <em>X and Y are dependent</em>&nbsp;&nbsp;</span></p>
+<p>The test asks whether the observed and
+estimated cell counts are 'sufficiently close' &mdash; are the observed counts consistent
+with the counts estimated under independence?</p>
+<div class="centred"><table class="centred" border="0" cellpadding="5" cellspacing="0">
+<caption align="TOP">
+<strong><span class="blue">Observed</span> and <span class="green">estimated</span> cell
+counts</strong>
+</caption>
+<tr>
+<th align="CENTER">&nbsp;</th>
+<th align="CENTER"><span class="blue">   Male   </span></th>
+<th align="CENTER"><span class="blue"> Female </span></th>
+<th align="CENTER"><span class="red">Total</span></th>
+</tr>
+<tr>
+<th align="CENTER"><span class="blue">A</span></th>
+<td align="CENTER" bgcolor="#FFFFFF" class="top left"><span class="blue">20</span><br>
+<span class="green">(11.59)</span></td>
+<td align="CENTER" bgcolor="#FFFFFF" class="top right"><span class="blue">60</span><br>
+<span class="green">(68.41)</span></td>
+<td align="CENTER"><span class="red">80</span></td>
+</tr>
+<tr>
+<th align="CENTER"><span class="blue">B</span></th>
+<td align="CENTER" bgcolor="#FFFFFF" class="left"><span class="blue">9</span><br>
+<span class="green">(13.47)</span></td>
+<td align="CENTER" bgcolor="#FFFFFF" class="right"><span class="blue">84</span><br>
+<span class="green">(79.53)</span></td>
+<td align="CENTER"><span class="red">93</span></td>
+</tr>
+<tr>
+<th align="CENTER"><span class="blue">C</span></th>
+<td align="CENTER" bgcolor="#FFFFFF" class="bottom left"><span class="blue">2</span><br>
+<span class="green">(5.94)</span></td>
+<td align="CENTER" bgcolor="#FFFFFF" class="bottom right"><span class="blue">39</span><br>
+<span class="green">(35.06)</span></td>
+<td align="CENTER"><span class="red">41</span></td>
+</tr>
+<tr>
+<th align="CENTER"><span class="red">Total</span></th>
+<td align="CENTER"><span class="red">31</span></td>
+<td align="CENTER"><span class="red">183</span></td>
+<td align="CENTER"><span class="blue">214</span></td>
+</tr>
+</table></div>
+<p class="heading">Possible test statistic?</p>
+<p>A simple summary of how close the observed counts, <span class="black em">n<sub>xy</sub></span>,
+are to the estimated cell counts, <span class="black em">e<sub>xy</sub></span>, is
+the sum of  the squared differences,</p>
+<p class=eqn><img class="gif" src="../../../en/indep/images/ssqErrorForm.gif" id="gif_image_3_2_1" width="100" height="26"><iframe class="svg" src="../../../en/indep/images/ssqErrorForm.svg" id="svg_image_3_2_1" width="100" height="26" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_3_2_1");</script> </p>
+<p>Unfortunately this would be a bad test statistic &mdash; its distribution depends not
+only on the numbers of rows and columns in the table, but also on the number of individuals
+classified &mdash; the overall total for the table. A better test statistic is presented
+in the next page.</p>
+
+
+
+
+<h2 class="pageName">9.3.3 &nbsp; Chi-squared test statistic</h2><!DOCTYPE HTML>
+
+
+<p class="heading">A better test statistic</p>
+<p>The following χ<sup>2</sup> (pronounced <i>chi-squared</i>) statistic has much
+better properties than the raw sum of squares on the previous page</p>
+<p class=eqn><img class="gif" src="../../../en/indep/images/chiSquaredEqn.gif" id="gif_image_3_3_1" width="145" height="47"><iframe class="svg" src="../../../en/indep/images/chiSquaredEqn.svg" id="svg_image_3_3_1" width="145" height="47" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_3_3_1");</script> </p>
+<p>Its distribution
+only depends on the number of rows and columns in the contingency table.</p>
+<p class="heading">Distribution of chi-squared statistic</p>
+<p>When there is independence, the χ<sup>2</sup> statistic for  a contingency table
+with <i>r</i> rows and <i>c</i> columns has approximately
+a standard distribution called a <strong>chi-squared</strong> distribution  with
+(<i>r</i>&nbsp;-&nbsp;1)(<i>c</i>&nbsp;-&nbsp;1) <strong>degrees of freedom</strong>.</p>
+<p>The mean of a chi-squared distribution equals its degrees of freedom and it is
+skew. Some examples are given below for contingency tables of different sizes:</p>
+<p class="eqn"><img src="../../../en/indep/images/s_chi2.gif" width="525" height="386"></p>
+
+
+
+
+<h2 class="pageName">9.3.4 &nbsp; P-value for chi-squared test</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Testing for independence</p>
+<p class=eqn><span class="black"><strong><font size="+1">H</font><sub>0</sub> :</strong>&nbsp; <em>X and Y are independent</em><br><strong><font size="+1">H</font><sub>A</sub> :</strong>&nbsp; <em>X and Y are dependent</em>&nbsp;&nbsp;</span> </p>
+<p>The following test statistic is used:</p>
+<p class=eqn><img class="gif" src="../../../en/indep/images/chiSquaredEqn.gif" id="gif_image_3_4_2" width="145" height="47"><iframe class="svg" src="../../../en/indep/images/chiSquaredEqn.svg" id="svg_image_3_4_2" width="145" height="47" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_3_4_2");</script> </p>
+<dl>
+<dt>If <em>X</em> and <em>Y</em> are independent</dt>
+<dd>χ<sup>2</sup> has (approximately) a chi-squared distribution with no unknown
+parameters</dd>
+<dt>If <em>X</em> and <em>Y</em> are associated</dt>
+<dd>The pattern of observed counts, <span class="black em">n<sub>xy</sub></span>, is
+expected to be different from that of the <span class="black em">e<sub>xy</sub></span>,
+so χ<sup>2</sup> is expected to be larger.</dd>
+</dl>
+<p class="heading">P-value</p>
+<p class=eqn><img class="gif" src="../../../en/indep/images/chi2PValue.gif" id="gif_image_3_4_1" width="456" height="262"><iframe class="svg" src="../../../en/indep/images/chi2PValue.svg" id="svg_image_3_4_1" width="456" height="262" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_3_4_1");</script> </p>
+<p>The p-values is interpreted in the same way as for other hypothesis tests &mdash; it
+describes the strength of evidence against the null hypothesis:</p>
+<div class="centred"><table class="centred" border="0" cellpadding="5" cellspacing="0">
+<tr>
+<th align="left">p-value</th>
+<th align="left">Interpretation</th>
+</tr>
+<tr bgcolor="white">
+<td class="top"><strong>over 0.1</strong></td>
+<td class="top">no evidence against the null hypothesis (independence)</td>
+</tr>
+<tr bgcolor="white">
+<td><strong>between 0.05 and 0.1   </strong></td>
+<td>very weak evidence of dependence between the row and column variables</td>
+</tr>
+<tr bgcolor="white">
+<td><strong>between 0.01 and 0.05   </strong></td>
+<td>moderately strong evidence of dependence between the row and column variables</td>
+</tr>
+<tr bgcolor="white">
+<td class="bottom"><strong>under 0.01</strong></td>
+<td class="bottom">strong evidence of dependence between the row and column variables</td>
+</tr>
+</table></div>
+<p class="heading">Warning about low estimated cell counts</p>
+<p>The χ<sup>2</sup> test statistic
+has only <strong>approximately</strong> a
+chi-squared distribution. The p-value found from it can be relied on if:</p>
+<ul>
+<li>All estimated cell counts are 1.0 or more</li>
+<li>At least 80% of the estimated cell counts are 5.0 or more</li>
+</ul>
+<p>If the cell counts are small enought that these conditions do not hold, the p-value
+is less reliable. (But advanced statistical methods are required to do better!)</p>
+
+
+
+
+<h2 class="pageName">9.3.5 &nbsp; Examples</h2><!DOCTYPE HTML>
+
+
+<p class=heading>Examples</p>
+<p align="center"><img src="../../../en/indep/images/skiingTest.gif" width="541" height="459" class="summaryPict"></p>
+<p align="center"><img src="../../../en/indep/images/jobSatisTest.gif" width="541" height="459" class="summaryPict"></p>
+
+
+
+
+<h2 class="pageName">9.3.6 &nbsp; Comparing groups</h2><!DOCTYPE HTML>
+
+
+<p class=heading>Contingency tables and groups</p>
+<p>Contingency tables can either arise from bivariate categorical data or from univariate
+categorical data that is recorded separately from several groups.</p>
+<p>The chi-squared test assesses independence in bivariate data. The <strong>same
+test</strong> can also be used to compare the different groups if there is grouped
+data.</p>
+<dl>
+<dt>Null hypothesis (corresponding to independence)</dt>
+<dd>The category probabilities are the same within each group.</dd>
+<dt>Alternative hypothesis (corresponding to association)</dt>
+<dd>The different groups have different probabilities.</dd>
+</dl>
+<p class=heading>Example</p>
+<p align="center"><img src="../../../en/indep/images/obeseTest.gif" width="541" height="459" class="summaryPict"></p>
+
+
+
+</html>

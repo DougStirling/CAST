@@ -1,0 +1,231 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>KIs durch Simulation</title>
+
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="confidence interval, simulation">
+	<meta name="dataset" content="Silkworm poisoning">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Konfidenzintervalle f&uuml;r andere
+Parameter</p>
+
+<p>Statistische Theorie kann Formeln f&uuml;r den
+Standardfehler der
+meisten &uuml;blicherweise verwendeten
+Parametersch&auml;tzungen
+liefern. Diese k&ouml;nnen benutzt werden, um ein
+ann&auml;hernd
+95%iges Konfidenzintervall zu bilden, in einer &auml;hnlichen Weise
+wie
+f&uuml;r Mittelwerte und Anteile,</p>
+
+<p class="eqn"><strong><font color="#000000"><em>Sch&auml;tzung</em>
+-
+2 <em>s.e.</em><em>&nbsp; </em><strong>&nbsp;bis</strong><em>
+&nbsp;
+Sch&auml;tzung</em> + 2 <em>s.e.</em></font></strong></p>
+
+<p>Dennoch kann der Standardfehler f&uuml;r manche
+Sch&auml;tzer nicht
+so einfach abgeleitet werden (oder nicht von leicht
+verf&uuml;gbarer
+Software ausgewertet werden).</p>
+
+<div class="diagram">
+<p class="heading">Seidenraupen-Vergiftung</p>
+
+<p>In einem Experimt zur Untersuchung der toxischen Wirkung von
+Arsen,
+wurde 80 Seidenraupen im vierten Larvenstadium, die zwischen 0,41 und
+0,45 Gramm gewogen haben, 0,10 mg Natrium-Arsenat pro Gramm
+K&ouml;rpergewicht gegeben.</p>
+
+<p class="eqn"><object data="images/silkwormUQ.svg" height="136" width="396"></object></p>
+
+<p>Wir wollen ein 95%iges Konfidenzintervall bilden, um die
+folgende
+Frage zu beaantworten.&nbsp;</p>
+
+<center>
+<table bgcolor="white" border="1" cellpadding="10" cellspacing="0" width="75%">
+
+  <tbody>
+
+    <tr>
+
+      <td><strong>Wie lange wird eine aus vier Larven
+&uuml;berleben?<strong> </strong></strong></td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+</center>
+
+<p>Es gibt keine einfache Formel f&uuml;r einen
+Konfidenzintervall des
+oberen Quartils, also wird eine andere Methode gebracuht.</p>
+
+</div>
+
+<p class="heading">Konfidenzintervall von Simulationen</p>
+
+<p>95% ige Konfidenzintervalle k&ouml;nnen direkt von der
+Fehlerverteilung gefunden werden.</p>
+
+<p class="eqn"> <object data="../DciMean/images/errorBounds.svg" height="114" width="276"></object> </p>
+
+<p>Vom Wert <em>e*</em>,</p>
+
+<p class="eqn"> <font color="#000000">Prob
+(&nbsp;-<em>e*&nbsp; </em>&lt;&nbsp;
+<em>Fehler</em> &nbsp;&lt;<em> &nbsp;e*</em>
+) &nbsp;= &nbsp;0.95</font></p>
+
+<p>und deshalb</p>
+
+<p class="eqn"> <font color="#000000"><em>Sch&auml;tzung</em>
+- <em>e*&nbsp;
+</em><strong>&nbsp;bis</strong><em>
+&nbsp; Sch&auml;tzung</em> + <em>e*</em></font></p>
+
+<p>ist ein <strong>95%iges Konfidenzinterval</strong>
+f&uuml;r den
+Parameter.</p>
+
+<center>
+<table bgcolor="white" border="1" cellpadding="10" cellspacing="0" width="75%">
+
+  <tbody>
+
+    <tr>
+
+      <td align="center"><strong>Wenn die
+Fehlerverteilung (oder
+Standardfehler) nicht von der statistischen Theorie gefunden werden
+kann, kann eine Simulation eine ann&auml;hernde Fehlerverteilung
+liefern.</strong></td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+</center>
+
+<p>Die Methode ist nun hier erkl&auml;rt.</p>
+
+<div class="diagram">
+<p class="heading">Simulierte Fehlerverteilung
+f&uuml;r das obere
+Quartil</p>
+
+<p>Wir werden eine Simulation anwenden, um die Fehlerverteilung
+f&uuml;r das obere Quartil der Verteilung der
+&Uuml;berlebenszeit der
+Seidenraupenlarven zu finden. Eine normale Population erscheint als
+wahrscheinliches Modell und die Normalverteilung, die am besten passt,
+wird unten gezeigt. </p>
+
+<p class="eqn"><object data="images/silkwormModel.svg" height="130" width="396"></object></p>
+
+<p>Wir vergessen jetzt unsere Daten und f&uuml;hren eine
+Simulation
+durch, die auf Stichproben aus der am besten angepassten normalen
+Population basiert. Das obere Quartil dieser Population ist 293,3, was
+den "Zielparameter" darstellt, den wir aus unseren simulierten Proben
+versuchen zu sch&auml;tzen.</p>
+
+<div class="centred"><applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" height="350" width="550">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="stdErrorProg.ErrorBoundsApplet"><param name="varName" value="Seidenraupen &Uuml;berlebensdauer (Sek)"><param name="random" value="80 272.6 30.7 875636431 2.5"><param name="dataAxis" value="180 380 200 50"><param name="errorName" value="Sch&auml;tzfehler (Sek)"><param name="errorAxis" value="-15 15 -15 5"><param name="percentile" value="0.75"><param name="paramName" value="Zielparameter (normal UQ)"><param name="statisticName" value="Sch&auml;tzung (Proben UQ)"><param name="decimals" value="2"><param name="maxErrorBound" value="-9.9"><param name="customText" value="Show 95% bounds for error=Zeige 95%ige Schranken f&uuml;r den Fehler#P( -* &lt; error &lt; * )=P( -* &lt; error &lt; * )"></applet></div>
+
+<p>Klicke <strong>Akkumulieren</strong> und nehme
+100 oder mehr
+Stichproben, um die Fehlerverteilung zur Sch&auml;tzung des oberen
+Quartils der Population aus einer Stichprobe von 80 Seidenraupenlarven
+zu bilden. (Halte den Schalter <strong>Stichprobe ziehen </strong>gedr&uuml;ckt,
+um wiederholt Stichproben zu ziehen.)</p>
+
+<p>Wenn die Fehlerverteilung 100 oder mehr Kreuze
+enth&auml;lt, klicke
+auf die Checkbox <strong>Zeige 95%ige Schranken f&uuml;r den
+Fehler</strong>.
+Das zeigt die Intervalle der Fehler, die in 95% der Proben aufgetreten
+sind.</p>
+
+<center>
+<table bgcolor="white" border="1" cellpadding="10" cellspacing="0" width="75%">
+
+  <tbody>
+
+    <tr>
+
+      <td align="center"><strong>Du solltest bemerkt
+haben, dass 95%
+der Fehlersch&auml;tzungen f&uuml;r diese Art von
+Sch&auml;tzer
+innerhalb von&nbsp; &plusmn;8 Sekunden liegen.</strong></td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+</center>
+
+<p>(Der exakte Wert variiert mit der Simulation.)</p>
+
+<p class="heading">95%oges Konfidenzinterval f&uuml;r
+obere Quartile</p>
+
+<p>Mit der Simualtion sind wir zu 95% sicher, dass der Fehler
+dieser
+Art von Sch&auml;tzer nicht mehr als 8 Sekunden betragen wird.</p>
+
+<p>Wir k&ouml;nnen diese Fehlerschramke nun auf unsere Daten
+anwenden.
+Da das obere Quartil f&uuml;r unsere aktuellen Seidenraupen-Daten
+292
+Sekunden war,&nbsp;</p>
+
+<center>
+<table bgcolor="white" border="1" cellpadding="10" cellspacing="0" width="75%">
+
+  <tbody>
+
+    <tr>
+
+      <td align="center"><strong>sind wir zu 95%
+sicher, dass das obere
+Quartil der Population zwischen
+(292&nbsp;-&nbsp;8)&nbsp;=&nbsp;284 und
+(292&nbsp;+&nbsp;8)&nbsp;=&nbsp;300 Sekunden liegt.</strong></td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+</center>
+
+<br>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

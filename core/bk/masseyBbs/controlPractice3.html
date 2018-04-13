@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Control charts for ranges</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="control chart, range">
+	<meta name="dataset" content="Paint primer thickness">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Detecting changes to process variability</p>
+
+<p>A control chart of sample means is used to detect shifts in the 'centre' of 
+  a process. In a similar way, a control chart to assess whether the process <strong>variability</strong> 
+  has changed can be based on the spread of successive samples. </p>
+
+<p>A control chart for changes in process variability can be based on the <strong>sample
+standard deviations</strong> of successive samples, but it is more
+common in practice to use a control chart based on the <strong>sample ranges</strong>.</p>
+<p class="heading">Control chart for range</p>
+<p>Although control charts for ranges are interpreted and used in the same way as all other control charts &mdash; there is very little chance of observations breaching the control limits if the process is in control &mdash; the control limits are obtained in a different way.</p>
+<p class=eqn><img src="images/rangeControlLimits.gif" width="103" height="50" alt="xBar +- 3s"> </p>
+<p>where <img src="images/rBar.gif" alt="r-bar" width="12" height="15" align="baseline"> is again the average of the training sample ranges. The constants <em>D</em><sub>3</sub> and <em>D</em><sub>4</sub>  relate the spread of the training samples (through the value of <img src="images/rBar.gif" alt="r-bar" width="12" height="15" align="baseline">) to the control limits. These constants depend on the common training sample size <em>n</em> and are tabulated below.</p>
+<div class="centred"><table class="centred" cellpadding="5" cellspacing="0">
+	<tr>
+		<th ALIGN=CENTER>&nbsp;&nbsp;&nbsp;&nbsp;Sample size, <em>n</em>&nbsp;&nbsp;&nbsp;&nbsp;</th>
+		<th ALIGN=CENTER><em>D</em><sub>3</sub></th>
+		<th ALIGN=CENTER><em>D</em><sub>4</sub></th>
+	</tr>
+	<tr ALIGN=CENTER>
+		<td style="border-top:1px solid #999999;" ALIGN=CENTER bgcolor="#FFFFFF">2</td>
+		<td style="border-top:1px solid #999999;" bgcolor="#FFFFFF">0</td>
+		<td style="border-top:1px solid #999999;" bgcolor="#FFFFFF">3.267</td>
+	</tr>
+	<tr ALIGN=CENTER>
+		<td bgcolor="#FFFFFF">3</td>
+		<td bgcolor="#FFFFFF">0</td>
+		<td bgcolor="#FFFFFF">2.575</td>
+	</tr>
+	<tr ALIGN=CENTER>
+		<td bgcolor="#FFFFFF">4</td>
+		<td bgcolor="#FFFFFF">0</td>
+		<td bgcolor="#FFFFFF">2.282</td>
+	</tr>
+	<tr ALIGN=CENTER>
+		<td bgcolor="#FFFFFF">5</td>
+		<td bgcolor="#FFFFFF">0</td>
+		<td bgcolor="#FFFFFF">2.115</td>
+	</tr>
+	<tr ALIGN=CENTER>
+		<td bgcolor="#FFFFFF">6</td>
+		<td bgcolor="#FFFFFF">0</td>
+		<td bgcolor="#FFFFFF">2.004</td>
+	</tr>
+	<tr ALIGN=CENTER>
+		<td bgcolor="#FFFFFF">7</td>
+		<td bgcolor="#FFFFFF">0.076</td>
+		<td bgcolor="#FFFFFF">1.924</td>
+	</tr>
+	<tr ALIGN=CENTER>
+		<td bgcolor="#FFFFFF">8</td>
+		<td bgcolor="#FFFFFF">0.136</td>
+		<td bgcolor="#FFFFFF">1.864</td>
+	</tr>
+	<tr ALIGN=CENTER>
+		<td bgcolor="#FFFFFF">9</td>
+		<td bgcolor="#FFFFFF">0.184</td>
+		<td bgcolor="#FFFFFF">1.816</td>
+	</tr>
+	<tr ALIGN=CENTER>
+		<td style="border-bottom:1px solid #999999;" bgcolor="#FFFFFF">10</td>
+		<td style="border-bottom:1px solid #999999;" bgcolor="#FFFFFF">&nbsp;&nbsp;&nbsp;0.223&nbsp;&nbsp;&nbsp;</td>
+		<td style="border-bottom:1px solid #999999;" bgcolor="#FFFFFF">&nbsp;&nbsp;&nbsp;1.777&nbsp;&nbsp;&nbsp;</td>
+	</tr>
+</table></div>
+<p>Note that the lower control limit is zero for sample sizes of 6 and lower.<br>
+</p>
+<div class="diagram"> 
+  <p class="heading">Paint primer thickness</p>
+  <p>The diagram below shows the ranges of successive paint primer samples, along 
+    with control limits that were obtained from the initial five training samples.</p>
+
+<p class="gray">The actual data values have also been drawn on the chart in grey to help you see the connection between the sample ranges and the raw data. They are not usually included in range charts.
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="controlProg.RangeControlApplet">
+<param name="varName" value="primer thickness">
+<param name="values" value="1.30 1.10 1.20 1.25 1.05 .95 1.10 1.16 1.37 .98 1.01 1.10 1.15 .97 1.25 1.12 1.10 .90 1.04 1.08 1.22 1.05 .93 1.08 1.15 1.27 .95 1.11 1.12 1.10 1.08 1.12 1.11 1.28 1.00 .95 1.15 1.14 1.28 1.31 .98 1.30 1.31 1.12 1.08 1.10 1.15 1.35 1.12 1.26 1.12 1.30 1.01 1.20 1.11 .93 1.02 1.25 1.05 1.10 .92 1.10 1.13 1.02 .93 1.17 1.24 .98 1.34 1.12 1.04 1.14 1.18 1.12 1.00 1.02 1.05 1.34 1.12 1.05 1.08 .92 1.14 1.20 1.02 1.04 .94 1.05 1.12 1.06 1.20 1.13 1.19 1.16 1.03 1.25 1.20 1.24 1.10 1.03 1.25 .91 .96 1.04 .93 1.08 1.29 1.42 1.10 1.00 1.24 1.34 1.40 1.26 1.13 1.15 1.08 1.02 1.05 1.18 1.13 1.16 1.12 1.22 1.12 1.07 1.04 1.28 1.12 1.10 1.08 1.31 1.12 1.18 1.15 1.17 .98 1.05 1.00 1.26 1.08 1.26 1.13 .94 1.30 1.15 1.07 1.02 1.22 1.18 1.14 1.02 1.14 .94 1.30 1.08 .94 1.12 1.15 1.36 1.06 1.12 .98 1.12 1.20 1.02 1.19 1.03 1.02 1.09 1.14 1.22 1.18 1.27 1.17 1.26 1.15 1.07 1.02 1.36 1.07 1.05 .97 1.05 1.16 1.02 1.02 1.14 1.07 1.00 1.13 .90 1.12 1.04 1.40 1.12 1.15 1.01 1.30 1.14">
+<param name="rawAxis" value="0.85 1.45 0.9 0.1">
+<param name="vertAxis" value="0.0 0.8 0.0 0.1">
+<param name="limitNames" value="LCL Centre UCL">
+<param name="groupInfo" value="10 5">
+<param name="timeAxis" value="0 1 1 1">
+<param name="customText" value="Training=Training#Production=Production#training=training#production=production#Value outside control limits=Value outside control limits#2 out of 3 values in Zone A=2 out of 3 values in Zone A#4 out of 5 values in Zones A or B on one side=4 out of 5 values in Zones A or B on one side#6 values in a row increasing or decreasing=6 values in a row increasing or decreasing#9 values on one side of centre=9 values on one side of centre">
+</applet>
+</div>
+
+  <p>Use the slider to display the ranges of the samples from the following 15 
+    half-days. The ranges are all within the control limits, so there is no indication 
+    of a change in the process variability.</p>
+  <p>The calculations for the upper and lower control limits for the range chart are shown below.</p>
+  <p class="eqn"><img src="images/primerRangeLimits.gif" width="291" height="110"></p>
+
+</div>
+
+<p>By separately targetting the process centre and variability with a control chart for means
+and a control chart for ranges, we can get better indications of any changes in the performance
+of the process, and we can therefore intervene more promptly to correct potential drops
+in quality.
+</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

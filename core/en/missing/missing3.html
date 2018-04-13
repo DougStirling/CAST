@@ -1,0 +1,184 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Missing treatments in block designs</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="confounding, transformation, anova, analysis of variance, missing treatments, randomised block design">
+	<meta name="dataset" content="Total suspended solids in water">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Randomised block experiments</p>  
+  <p>In previous randomised block experiments, all treatments have had one or more replicate within each block. If there are missing treatments within some blocks, there will be no information to estimate some interaction parameters.</p>
+  <p>However interactions between blocks and the controlled factors are of less interest in many experiments and it is more reasonable to assume that these interactions do not exist. Provided there are not too many missing treatments within blocks it is often possible to estimate interactions between the factors of interest.</p>
+  <p class="heading">Inference</p>
+  <p>Since we are usually only interested in models with a block term and are rarely interested in testing it, the term for blocks is <strong>always</strong> added first to an analysis of variance table. In a simple randomised block experiment in which there is only a single factor, we would therefore only consider a single analysis of variance table with blocks added before the factor. Analysis therefore usually proceeds in exactly the same way as for balanced designs.</p>
+  <p class="heading">Confounding</p>
+  <p>The only exception arises if  the blocks and treatments are <strong>confounded</strong> as shown in the example below.</p>
+  <div class="centred"><table border="0" class="centred" cellpadding="3" cellspacing="0">
+		<tr>
+			<td>&nbsp;</td>
+			<th colspan="2" align="center">Replicates</th>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td align="center">&nbsp;Block 1&nbsp;</td>
+			<td align="center">&nbsp;Block 2&nbsp;</td>
+		</tr>
+		<tr>
+			<td>Treatment 1&nbsp;&nbsp;</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">3</td>
+			<td align="center" bgcolor="#DDDDDD" style="border-top:1px solid #999999; border-right:1px solid #999999;">0</td>
+		</tr>
+		<tr>
+			<td>Treatment 2&nbsp;&nbsp;</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">3</td>
+			<td align="center" bgcolor="#DDDDDD" style="border-right:1px solid #999999;">0</td>
+		</tr>
+		<tr>
+			<td>Treatment 3&nbsp;&nbsp;</td>
+			<td align="center" bgcolor="#DDDDDD" style="border-left:1px solid #999999;">0</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">3</td>
+		</tr>
+		<tr>
+			<td>Treatment 4&nbsp;&nbsp;</td>
+			<td align="center" bgcolor="#DDDDDD" style="border-left:1px solid #999999;">0</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">3</td>
+		</tr>
+		<tr>
+			<td>Treatment 5&nbsp;&nbsp;</td>
+			<td align="center" bgcolor="#DDDDDD" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">0</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">3</td>
+		</tr>
+	</table></div>
+  <p>Although we can compare treatments 1 and 2, differences between the mean response for treatments 1 and 3 could be caused <strong>either</strong> by different treatment effects <strong>or</strong> differences between the two blocks. There is no information from the experimental data that could allow us to distinguish.</p>
+  <div class="centred"><div class="boxed">
+  	<p>Always try to design experiments to avoid confounding blocks and treatments. </p>
+  </div></div>
+<br>
+
+  <div class="diagram"> 
+<p class="heading">Water quality</p>
+    <p>The following data were collected to monitor the effect of a development on water quality in a river passing through the development. Water samples were taken upstream of the development, at the development and downstream from it during four different storm events. However for unrelated reasons, some samples could not be collected. Total suspended solids (TSS) were measured from each sample.</p>
+    <div class="centred"><table border="0" class="centred" cellpadding="3" cellspacing="0">
+			<tr>
+				<td>&nbsp;</td>
+				<th colspan="4" align="center">Total suspended solids (TSS)</th>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td align="center">&nbsp;Storm 1&nbsp;</td>
+				<td align="center">&nbsp;Storm 2&nbsp;</td>
+				<td align="center">&nbsp;Storm 3&nbsp;</td>
+				<td align="center">&nbsp;Storm 4&nbsp;</td>
+			</tr>
+			<tr>
+				<td>Upstream</td>
+				<td align="center" bgcolor="#DDDDDD" style="border-top:1px solid #999999; border-left:1px solid #999999;">&nbsp;</td>
+				<td align="center" bgcolor="#DDDDDD" style="border-top:1px solid #999999;">&nbsp;</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">25</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">20</td>
+			</tr>
+			<tr>
+				<td>At development&nbsp;&nbsp;</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">51</td>
+				<td align="center" bgcolor="#DDDDDD">&nbsp;</td>
+				<td align="center" bgcolor="#FFFFFF">100</td>
+				<td align="center" bgcolor="#DDDDDD" style="border-right:1px solid #999999;">&nbsp;</td>
+			</tr>
+			<tr>
+				<td>Downstream&nbsp;</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">173</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">137</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">170</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">110</td>
+			</tr>
+		</table></div>
+    <p>For this example, we will treat the storms as being blocks &mdash; there is no interest in assessing differences between the storms &mdash; we know that some will result in more suspended solids than others.</p>
+
+<div class="divChoice">
+<form>
+<select name="dataset" onChange="changeBlock(this, 2)" id="dataChoice">
+    <option value="0" selected>Raw data</option>
+    <option value="1">Logarithms</option>
+  </select>
+</form>
+
+<div id="example1">
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="160">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="glmAnovaProg.AnovaTableReorderApplet">
+<param name="yVarName" value="TSS">
+<param name="yValues" value="25 20 51 100 173 137 170 110">
+<param name="xVariables" value="S1 S2 S3 L1 L2">
+<param name="S1VarName" value="Storm1">
+<param name="S1Values" value="1 1 0 1 0 1 1 1">
+<param name="S2VarName" value="Storm2">
+<param name="S2Values" value="1 1 0 1 0 0 1 1">
+<param name="S3VarName" value="Storm3">
+<param name="S3Values" value="0 1 0 0 0 0 0 1">
+<param name="L1VarName" value="Location1">
+<param name="L1Values" value="0 0 1 1 1 1 1 1">
+<param name="L2VarName" value="Location2">
+<param name="L2Values" value="0 0 0 0 1 1 1 1">
+<param name="maxSsq" value="99999.9 9 99999.9 99.00">
+<param name="maxBarSsq" value="8000.0">
+<param name="xGroups" value="3:S:Storms (blocks)#2:L:Locations">
+</applet>
+</div>
+</div>
+
+<div id="example2" style="display:none">
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="160">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="glmAnovaProg.AnovaTableReorderApplet">
+<param name="yVarName" value="TSS">
+<param name="yValues" value="3.2189 2.9957 3.9318 4.6052 5.1533 4.9200 5.1358 4.7005">
+<param name="xVariables" value="S1 S2 S3 L1 L2">
+<param name="S1VarName" value="Storm1">
+<param name="S1Values" value="1 1 0 1 0 1 1 1">
+<param name="S2VarName" value="Storm2">
+<param name="S2Values" value="1 1 0 1 0 0 1 1">
+<param name="S3VarName" value="Storm3">
+<param name="S3Values" value="0 1 0 0 0 0 0 1">
+<param name="L1VarName" value="Location1">
+<param name="L1Values" value="0 0 1 1 1 1 1 1">
+<param name="L2VarName" value="Location2">
+<param name="L2Values" value="0 0 0 0 1 1 1 1">
+<param name="maxSsq" value="99.999 9 99.999 99.00">
+<param name="maxBarSsq" value="8000.0">
+<param name="xGroups" value="3:S:Storms (blocks)#2:L:Locations">
+</applet>
+</div>
+</div>
+
+</div>
+
+		<p>The above analysis of variance table  allows reordering of the two model terms (for storms and location) to be changed. Although the explained sums of squares depend on the order of adding the terms,  it only makes sense to add storms first since we know that they will affect TSS and are not interested in testing it.</p>
+		<p>From the p-value associated with location, 0.0867, we would conclude that there is only mild evidence of any difference between TSS at the different locations.</p>
+		<p class="heading">Logarithms</p>
+		<p>With quantity data such as these TSS values, the effects of the factors are often <strong>proportional</strong> changes in the response instead of additive changes. (The effect of the development may be to increase TSS by 10% downstream rather than by say 20.) It therefore makes sense to analyse the <strong>logarithms</strong> of the TSS  values rather than the raw measurements.</p>
+		<p>Select <strong>Raw data</strong> from the pop-up menu above the anova table. The p-value for comparing the locations is now 0.0382, so we would conclude from this analysis that there is moderately strong evidence that the locations affect TSS.</p>
+		<div class="centred"><div class="boxed">
+			<p>Note that the decision about whether to analyse the logarithms should be based on knowledge of the problem, not on the results of the analyses.</p>
+		</div></div>
+		<p class="heading">Warning</p>
+    <p>This is example is really observational, not  an experiment &mdash; it is difficult to consider the locations as being 'applied to experimental units'. It is therefore important to consider other possible reasons for there being more suspended solids downstream of the development. During storms, <strong>all</strong> rivers may collect more suspended solids as they flow down so the increase could be natural, not the result of the development.<br>
+   	</p>
+  </div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

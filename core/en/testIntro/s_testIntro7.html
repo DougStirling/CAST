@@ -1,0 +1,212 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Common patterns in tests</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	<script language="javascript">
+		var currentBlockName = "ex1";
+		function changeDataset() {
+			var menu = document.getElementById("dataset");
+			var option = menu.options[menu.selectedIndex];
+			var newBlockName = option.value;
+			
+			
+			var oldBlock = document.getElementById(currentBlockName);
+			oldBlock.style.display = "none";
+			var newBlock = document.getElementById(newBlockName);
+			newBlock.style.display = "block";
+			currentBlockName = newBlockName;
+		}
+	</script>
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">A general framework</p>
+<p>You may find it difficult to spot the
+common theme in the examples in this section, but they are all examples of <strong>hypothesis
+testing</strong> and  fit into a common framework that is used for <strong>all</strong> hypothesis
+tests.</p>
+<p class="heading">Data, model and question</p>
+<dl>
+<dt>Data (and model)</dt>
+<dd>The data were assumed to arise from a random
+mechanism (model), some of whose characteristics are unknown.</dd>
+<dt>Null hypothesis</dt>
+<dd>This is a statement about the characteristics of the model. We are particularly
+interested in whether the null hypothesis is true.</dd>
+<dt>Alternative hypothesis</dt>
+<dd>This is usually just the opposite of the null hypothesis.</dd>
+</dl>
+<p>We assess whether the null hypothesis is true by asking&nbsp;...</p>
+
+<div class="boxed" style="background-color:#FFFF00">
+<p><span class="darkred">Are the data consistent with the null hypothesis?</span></p>
+</div>
+
+<dl>
+<dt>Test statistic</dt>
+<dd>This is some function of the data that throws light on whether the null or alternative
+hypothesis holds.</dd>
+<dt>P-value</dt>
+<dd>This is the probability of obtaining a test statistic value as 'extreme' as the
+one recorded <strong>if the null hypothesis holds</strong>.</dd>
+<dt>Interpreting the p-value</dt>
+<dd>The following table  can be used as a guide:</dd>
+</dl>
+<div class="centred">
+	<table cellpadding="5" cellspacing="0" class="centred">
+		<tr>
+			<th align="left">p-value</th>
+			<th align="left">Interpretation</th>
+		</tr>
+		<tr bgcolor="white">
+			<td style="border-top:1px solid #999999;"><strong>over 0.1</strong></td>
+			<td style="border-top:1px solid #999999;">no evidence that the null hypothesis does not hold</td>
+		</tr>
+		<tr bgcolor="white">
+			<td style="border-top:1px solid #999999;"><strong>between 0.05 and 0.1</strong></td>
+			<td style="border-top:1px solid #999999;">very weak evidence that the null hypothesis does not hold</td>
+		</tr>
+		<tr bgcolor="white">
+			<td style="border-top:1px solid #999999;"><strong>between 0.01 and 0.05</strong></td>
+			<td style="border-top:1px solid #999999;">moderately strong evidence that the null hypothesis does not hold</td>
+		</tr>
+		<tr bgcolor="white">
+			<td style="border-top:1px solid #999999; border-bottom:1px solid #999999;"><strong>under 0.01</strong></td>
+			<td style="border-top:1px solid #999999; border-bottom:1px solid #999999;">strong evidence that the null hypothesis does not hold</td>
+		</tr>
+	</table>
+</div>
+<p class="heading">Soccer league in one season</p>
+<dl>
+<dt>Data (and model)</dt>
+<dd><strong>End-of-season points for the teams in the league.</strong> The model
+involves probabilities for wins, losses and draws in all matches, but we know little
+about these probabilities.</dd>
+<dt>Null hypothesis</dt>
+<dd>All teams have the same probability of winning each match.</dd>
+<dt>Alternative hypothesis</dt>
+<dd>All teams do <strong>not</strong> have the
+same probabilities of winning.</dd>
+<dt>Test statistic</dt>
+<dd><strong>The standard deviation of final points.</strong> It will be low if the
+teams have the same abilities (null hypothesis) and higher otherwise (alternative
+hypothesis).</dd>
+<dt>P-value</dt>
+<dd>Probability that the standard deviation is as high as 16.7 (the actual data) <strong>if
+all teams are equally matched</strong>. None of the simulated leagues had standard
+deviations as high as 16.7, so the p-value is zero. </dd>
+<dt>Interpreting the p-value</dt>
+<dd>There is extremely strong evidence that the teams do <strong>not</strong> have
+the same probability of winning.</dd>
+</dl>
+
+
+<p class="heading">Proportion</p>
+<dl>
+<dt>Data (and model)</dt>
+<dd><strong>Number of successes in 100 values.</strong> Our model assumes that P(success)
+is the same for all values and that they were independent.</dd>
+<dt>Null hypothesis</dt>
+<dd>The probability of success is 0.80.</dd>
+<dt>Alternative hypothesis</dt>
+<dd>The probability of success is <strong>less than</strong> 0.80.</dd>
+<dt>Test statistic</dt>
+<dd><strong>The number of successes in the 100 values.</strong> It will be near 80
+if the underlying probability of success is 0.80 (null hypothesis) and lower than
+80 if it is less (alternative hypothesis).</dd>
+<dt>P-value</dt>
+<dd>Probability of <sup>72</sup>/<sub>100</sub> or fewer successes (the actual data) <strong>if
+the underlying population proportion is 0.80</strong>. The p-value was 0.05.</dd>
+<dt>Interpreting the p-value</dt>
+<dd>Since 72 or fewer successes
+would be unlikely if the population proportion was 0.80, we have moderately strong
+evidence that it is lower than 0.80.</dd>
+</dl>
+
+
+<p class="heading">Process mean</p>
+<dl>
+<dt>Data (and model)</dt>
+<dd><strong>Sample of 10 values from a process.</strong> Our model is that they were
+sampled from a normally distribution with σ&nbsp;=&nbsp;10 and unknown µ.</dd>
+<dt>Null hypothesis</dt>
+<dd>The distribution of values has mean µ&nbsp;=&nbsp;520.</dd>
+<dt>Alternative hypothesis</dt>
+<dd>The alternative hypothesis is that µ&nbsp;≠&nbsp;520&nbsp;gm.</dd>
+<dt>Test statistic</dt>
+<dd><strong>The mean of our sample of 10 values.</strong> It will be close to 520
+if the process is working correctly (the null hypothesis) and farther from this if
+the process mean has drifted from 520 (alternative hypothesis).</dd>
+<dt>P-value</dt>
+<dd>Probability of a sample mean as far from 520 as the value in our actual data
+(529) <strong>if the underlying population mean is 520</strong>. Since none of the
+simulated samples had means as far from 520, the p-value is 0.0.</dd>
+<dt>Interpreting the p-value</dt>
+<dd>Since a mean as far from 520 as our actual mean (529) is very unlikely, there
+is strong evidence that the mean weight is <strong>no
+longer</strong> 520
+gm.</dd>
+</dl>
+
+
+<p class="heading">Comparison of groups</p>
+<dl>
+<dt>Data (and model)</dt>
+<dd><strong>Samples of values from two groups.</strong> No assumptions are made about
+the shape of the underlying distributions (model) but the data are assumed to be
+random samples from them.</dd>
+<dt>Null hypothesis</dt>
+<dd>The population distributions are the same in both groups.</dd>
+<dt>Alternative hypothesis</dt>
+<dd>The groups have different distributions.</dd>
+<dt>Test statistic</dt>
+<dd><strong>The difference between the means of the two groups.</strong> It should
+be near zero if the two populations are the same (null hypothesis) and only different
+from zero if the groups are different (alternative hypothesis).</dd>
+<dt>P-value</dt>
+<dd>Probability that the difference in means is further from zero than 0.902 (the
+actual data) <strong>if both samples come from the same population</strong>. Since
+this never happened in our randomised samples, the p-value is zero.</dd>
+<dt>Interpreting the p-value</dt>
+<dd>We conclude that it is almost certain that
+the null hypothesis does not hold &mdash;values are higher in Group A than in Group B.</dd>
+</dl>
+
+
+<p class="heading">Correlation coefficient</p>
+<dl>
+<dt>Data (and model)</dt>
+<dd><strong>Pairs of values from two variables (<em>Y</em> and <em>X</em>).</strong> No
+assumptions are made about a model underlying the data.</dd>
+<dt>Null hypothesis</dt>
+<dd>The correlation coefficient between <em>Y</em> and <em>X</em> in the population
+is zero.</dd>
+<dt>Alternative hypothesis</dt>
+<dd>The correlation is non-zero.</dd>
+<dt>Test statistic</dt>
+<dd><strong>The sample correlation coefficient between <em>Y</em> and <em>X</em>.</strong> It
+will be close to zero if the variables are uncorrelated in the underlying population
+(null hypothesis) and further from zero otherwise (alternative hypothesis).</dd>
+<dt>P-value</dt>
+<dd>Probability that the correlation coefficient is further from zero than 0.537
+(the actual data)<strong> if the variables are uncorrelated in the underlying population</strong>.
+Only 3.5% of the simulated samples had relationships as strong, so this is the p-value.</dd>
+<dt>Interpreting the p-value</dt>
+<dd>A correlation coefficient as far
+from zero would be unlikely if the null hypothesis was true, so there is moderately
+strong evidence that the variables are correlated.</dd>
+</dl>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

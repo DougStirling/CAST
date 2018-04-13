@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Generating Categorical Values</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Generating categorical values
+</p>
+
+<p>Simulations are usually based on a sequence of independent values from
+a rectangular distribution where every value between 0 and 1 is equally
+likely. We assume that we can generate such a sequence of random values r<sub>1</sub>,
+r<sub>2</sub>,&nbsp;...
+</p>
+
+<p class="eqn"><img src="images/rectangular.gif" width="227" height="138" border="0" alt="rect pdf"></p>
+
+<p>A random categorical value (an 'outcome') can be generated from any
+such rectangularly distributed value, r.
+Consider a point in a tennis match where P(A wins)&nbsp;=&nbsp;0.6. If we
+generate points with the rule,
+</p>
+
+<p class=eqn>
+<img src="images/rectToCat.gif" width="158" height="47" alt="r->win/lose">
+</p>
+
+<p>then the result 'A wins' will occur with probability 0.6,
+as specified in the model.
+</p>
+
+<div class="diagram">
+
+<p>The process is illustrated below. If the random number generated
+is below 0.6 (in the blue region of the jittered dot plot), the categorical outcome
+that is generated is 'A wins'.
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="simulationProg.RandomCatApplet">
+<param name="randomTemplate" value="0.0000">
+<param name="varName" value="Random">
+<param name="catVarName" value="Result">
+<param name="catLabels" value="#A wins# #A loses#">
+<param name="customText" value="Next value=Next value">
+</applet>
+</div>
+
+<p>Click <strong>Next Value</strong> a few times to generate results from
+successive points. Observe that about 60 percent of the crosses
+in the jittered dot plot lie in the blue region and therefore the outcome 'A wins' occurs
+about 60% of the times.
+</p>
+
+<p>Use the slider to adjust the probability of A winning and observe how this affects
+the mapping of random numbers into categories.
+</p>
+</div>
+
+<p>A similar method can be used to generate categorical values when there are three or more
+possible outcomes. The interval between 0 and 1 is allocated to the possible outcomes in
+proportion to their probabilities, and random numbers generate categorical outcomes
+based on the sub-intervals in which they fall.</p>
+
+<div class="diagram">
+
+<p>This is illustrated in the diagram below. </p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="simulationProg.RandomCat2Applet">
+<param name="randomTemplate" value="0.0000">
+<param name="varName" value="Random">
+<param name="noOfModels" value="2">
+<param name="modelName1" value="Eye Colour">
+<param name="modelLabels1" value="Brown Green Blue">
+<param name="modelProbs1" value="0.4 0.3 0.3">
+<param name="modelName2" value="Credit card type">
+<param name="modelLabels2" value="Visa Mastercard AmericanExpress Other">
+<param name="modelProbs2" value="0.4 0.4 0.1 0.1">
+<param name="maxCats" value="4*AmericanExpress">
+<param name="customText" value="Next value=Next value">
+</applet>
+</div>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Analysis of variance</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="balanced incomplete block design, anova, analysis of variance">
+
+	<index dataset="Pig diets" />
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Tests based only on intra-block information</p>  
+<p>Using the inter-block estimates to improve the accuracy of the intra-block estimates is relatively easy (at least for balanced designs) but it is harder to use the inter-block information to test whether the treatments have <strong>any </strong> effect on the response. Since most information about the treatments comes from the intra-block estimates,</p>
+<div class="centred"><div class="boxed">
+	<p>Researchers usually use the analysis of variance test described in Section 6.6 to test whether the treatments effect the response, ignoring the inter-block information.
+	</div></div>
+<p class="heading">Inter-block information about treatment differences</p>
+<p>If there are more blocks than treatments, the block sum of squares in an analysis of variance can be partitioned into two components, a component explained by the different treatment combinations in the blocks and a second component that is a 'residual' sum of squares at block level.</p>
+<p>There are therefore <strong>two</strong> different sums of squares relating to differences between treatments &mdash; one at block level and another at unit level. The usual intra-block analysis compares the unit-level treatment sum of squares to the unit-level residual sum of squares. It is however also valid to compare the block-level treatment sum of squares to the block-level residual sum of squares as a <strong>second</strong> independent test for differences between the treatments.</p>
+<p>We will not further investigate use of inter-block information to test for a treatment effect or the combination of the inter-block and intra-block test results. However we note that the split of the  block-level sums of squares and associated test is closely linked to the test used in nested experiments.</p>
+<div class="centred"><div class="boxed">
+	<ul>
+		<li>If the treatments are orthogonal to blocks, only the unit-level test can be used.</li>
+		<li>If the treatments are varied at block level, only the block-level test can be used.</li>
+		<li>In other experimental designs, both tests are valid but the unit-level (intra-block) test is usually more powerful.</li>
+	</ul>
+	</div></div>
+<br>
+
+<div class="diagram">
+<p class="heading">Pig diets</p>
+<p>The analysis of variance table below initially shows only the sum of squares explained by blocks and the remaining unit-level sum of squares (ignoring the nine treatments that were used in the experiment.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="200">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="glmAnovaProg.InterblockAnovaApplet">
+<param name="yVarName" value="Weight gain">
+<param name="yValues" value="2.20 1.84 2.18 2.05 0.85 1.86 0.73 1.60 1.76 1.19 1.20 1.15 2.26 1.07 1.45 2.12 2.03 1.63 1.81 1.16 1.11 1.76 2.16 1.80 1.71 1.57 1.13 1.77 1.57 1.43 1.50 1.60 1.42 2.04 0.93 1.78">
+<param name="blockVarName" value="Blocks">
+<param name="blockValues" value="3@0 3@1 3@2 3@3 3@4 3@5 3@6 3@7 3@8 3@9 3@10 3@11">
+<param name="blockLabels" value="B1 B2 B3 B4 B5 B6 B7 B8 B9 B10 B11 B12">
+<param name="factorVarName" value="Diet">
+<param name="factorValues" value="0 1 2 3 4 5 6 7 8  0 3 6 1 4 7 2 5 8  0 4 8 1 5 6 2 3 7  0 5 7 1 3 8 2 4 6">
+<param name="factorLabels" value="D1 D2 D3 D4 D5 D6 D7 D8 D9">
+<param name="maxSsq" value="9.999 9 99.999 99.99">
+<param name="componentNames" value="Diets (inter-block)#Blocks#Diets (intra-block)">
+<param name="denomIndex" value="0 2 4 4 4">
+<param name="decimals" value="3">
+</applet>
+</div>
+
+<p>Click <strong>Split units</strong> to split the unit-level sum of squares into a sum of squares explained by the feeding treatments and the residual sum of squares. The F-test comparing these has a p-value of 0.0084 so we conclude from the intra-block analysis that there is very strong evidence that the treatments do affect the weight gain of the pigs. (This is the test that was used in Section 6.6.)</p>
+<p>Now click <strong>Split block</strong> to split the between-blocks sum of squares into a component that can be explained by the different mixtures of treatments in the blocks and a 'residual' sum of squares at block level. Comparing these sums of squares in an F-test gives a p-value of 0.0400, so the block-level test only gives moderately strong evidence of a difference between the feeding treatments.</p>
+<p>As noted in the previous page, there is much more information about the treatment differences at unit level than at block level (the intra-block parameter estimates have lower standard errors than the inter-block estimates) so we would pay more attention to the intra-block test in our conclusions.</p>
+<p>&nbsp;</p>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

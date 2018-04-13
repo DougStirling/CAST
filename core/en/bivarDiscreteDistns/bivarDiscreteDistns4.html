@@ -1,0 +1,171 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Conditional distributions</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="joint probability function, bivariate distribution, discrete distribution, conditional distribution, conditional mean, conditional variance">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Conditional probabilities</p>
+
+<p>Although the marginal distributions of \(X\) and \(Y\) are important, they do not capture the <strong>relationship</strong> between the two variables. If the value of one variable is known, it may provide information about the likely values of the other variable. The relationship is captured by the  conditional probabilities about \(Y\) given \(X\).</p>
+
+\[
+P(Y = y \mid X=x) \;\;=\;\; \frac{P(Y = y \text{ and } X=x)}{P(X=x)} \;\;=\;\; \frac{p(x,y)}{p_X(x)} \]
+<p>For any fixed value of \(x\), these conditional probabilities add to 1.0, so they are a valid discrete probability function.</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>The <strong>conditional distribution</strong> of \(Y\) given \(X=x\) is the distribution with probability function</p>
+\[
+p_{Y \mid X=x}(y) \;\;=\;\; \frac{p(x,y)}{p_X(x)}
+\]
+</div>
+
+<p>Note that there are separate conditional distributions of \(Y\) for each possible value of \(X\).</p>
+<p>The conditional distribution of  \(X\) given \(Y=y\) can be similarly defined as</p>
+
+\[p_{X \mid Y=y}(x) = \frac{p(x,y)}{p_Y(y)}\]
+
+
+<div class="example" title="Example: Maximum and minimum of three rolled dice">
+  <p class="exampleHeading">Minimum and maximum of three dice</p>
+	<p>We previously showed the joint probability function of the minimum, \(Y\), and maximum, \(X\), of the values when three fair six-sided dice are rolled.</p>
+\[
+p(x,y) \;\;=\;\; \begin{cases} {\frac 1 {6^3}} &amp; \quad\text{if }x = y \;\;\text{ and }\;\; 1 \le x,y \le 6 \\[0.4em]
+{\frac {x-y}{6^2}} &amp; \quad\text{if } 1 \le y \lt x \le 6 \\[0.4em]
+0 &amp; \quad\text{otherwise}
+\end{cases} \]
+	<p>These joint probabilities are shown in tabular form below. </p>
+	<div class="centred">
+		<table border="0" cellpadding="5" cellspacing="0" class="centred">
+			<tr>
+				<th>&nbsp;</th>
+				<th colspan="6">Maximum, <em>x</em></th>
+			</tr>
+			<tr>
+				<th>Minimum, <em>y</em></th>
+				<th>1</th>
+				<th>2</th>
+				<th>3</th>
+				<th>4</th>
+				<th>5</th>
+				<th>6</th>
+			</tr>
+			<tr>
+				<th>1</th>
+				<td style="background-color:#FFFFFF; border-top:1px solid #999999; border-left:1px solid #999999;">\(\small\diagfrac 1{6^3}\)</td>
+				<td style="background-color:#FFFFFF; border-top:1px solid #999999;">\(\small\diagfrac 1{6^2}\)</td>
+				<td style="background-color:#FFFFFF; border-top:1px solid #999999;">\(\small\diagfrac 2{6^2}\)</td>
+				<td style="background-color:#FFFFFF; border-top:1px solid #999999;">\(\small\diagfrac 3{6^2}\)</td>
+				<td style="background-color:#FFFFFF; border-top:1px solid #999999;">\(\small\diagfrac 4{6^2}\)</td>
+				<td style="background-color:#FFFFFF; border-top:1px solid #999999; border-right:1px solid #999999;">\(\small\diagfrac 5{6^2}\)</td>
+			</tr>
+			<tr>
+				<th>2</th>
+				<td style="background-color:#FFFFFF; border-left:1px solid #999999;">0</td>
+				<td  style="background-color:#FFFFFF;">\(\small\diagfrac 1{6^3}\)</td>
+				<td  style="background-color:#FFFFFF;">\(\small\diagfrac 1{6^2}\)</td>
+				<td  style="background-color:#FFFFFF;">\(\small\diagfrac 2{6^2}\)</td>
+				<td  style="background-color:#FFFFFF;">\(\small\diagfrac 3{6^2}\)</td>
+				<td style="background-color:#FFFFFF; border-right:1px solid #999999;">\(\small\diagfrac 4{6^2}\)</td>
+			</tr>
+			<tr>
+				<th class="red">3</th>
+				<td style="border-left:1px solid #999999; background-color:#FFFF00">0</td>
+				<td style="background-color:#FFFF00">0</td>
+				<td style="background-color:#FFFF00">\(\small\diagfrac 1{6^3}\)</td>
+				<td style="background-color:#FFFF00">\(\small\diagfrac 1{6^2}\)</td>
+				<td style="background-color:#FFFF00">\(\small\diagfrac 2{6^2}\)</td>
+				<td style="border-right:1px solid #999999; background-color:#FFFF00">\(\small\diagfrac 3{6^2}\)</td>
+			</tr>
+			<tr>
+				<th>4</th>
+				<td style="background-color:#FFFFFF; border-left:1px solid #999999;">0</td>
+				<td  style="background-color:#FFFFFF;">0</td>
+				<td  style="background-color:#FFFFFF;">0</td>
+				<td  style="background-color:#FFFFFF;">\(\small\diagfrac 1{6^3}\)</td>
+				<td  style="background-color:#FFFFFF;">\(\small\diagfrac 1{6^2}\)</td>
+				<td style="background-color:#FFFFFF; border-right:1px solid #999999;">\(\small\diagfrac 2{6^2}\)</td>
+			</tr>
+			<tr>
+				<th>5</th>
+				<td style="background-color:#FFFFFF; border-left:1px solid #999999;">0</td>
+				<td  style="background-color:#FFFFFF;">0</td>
+				<td  style="background-color:#FFFFFF;">0</td>
+				<td  style="background-color:#FFFFFF;">0</td>
+				<td  style="background-color:#FFFFFF;">\(\small\diagfrac 1{6^3}\)</td>
+				<td style="background-color:#FFFFFF; border-right:1px solid #999999;">\(\small\diagfrac 1{6^2}\)</td>
+			</tr>
+			<tr>
+				<th>6</th>
+				<td style="background-color:#FFFFFF; border-bottom:1px solid #999999; border-left:1px solid #999999;">0</td>
+				<td style="background-color:#FFFFFF; border-bottom:1px solid #999999;">0</td>
+				<td style="background-color:#FFFFFF; border-bottom:1px solid #999999;">0</td>
+				<td style="background-color:#FFFFFF; border-bottom:1px solid #999999;">0</td>
+				<td style="background-color:#FFFFFF; border-bottom:1px solid #999999;">0</td>
+				<td style="background-color:#FFFFFF; border-bottom:1px solid #999999; border-right:1px solid #999999;">\(\small\diagfrac 1{6^3}\)</td>
+			</tr>
+		</table>
+	</div>
+	<p>We will now find the conditional distribution of the maximum value, \(Y\), if it is known that the minimum  is \(X = 3\). The marginal probability for the lowest value being 3 is the sum of the probabilities in the  highlighted row above.</p>
+\[
+p_Y(3) = \sum_{x=1}^{6} p(x,y) = \frac 1{6^3} + \frac 1 6
+\]
+  <p>The conditional probabilities for \(X\) are</p>
+\[
+p_{X\mid Y=3}(x) =\frac {p(x,3)}{p_Y(3)}
+\]
+	<p>This  divides the highlighted row in the table of joint probabilities by a constant, \(p_X(3)\), that is chosen to make them add to one. As a result, the row of conditional probabilities becomes a valid univariate probability function for \(X\). This is illustrated in the diagram below.</p>
+	<div class="centred">
+		<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="650" height="450">
+			<script type="text/javascript">writeAppletParams();</script>
+			<param name="appletName" value="continProg.RotateBarApplet">
+			<param name="backgroundColor" value="FFFBF3">
+			<param name="yVarName" value="Minimum, Y">
+			<param name="xVarName" value="Maximum, X">
+			<param name="yLabels" value="1 2 3 4 5 6">
+			<param name="xLabels" value="1 2 3 4 5 6">
+			<param name="xMargin" value="0.004630 0.032407 0.087963 0.171296 0.282407 0.421296">
+			<param name="yCondit" value="1 0 0 0 0 0 0.85714 0.14286 0 0 0 0 0.63158 0.31579 0.05263 0 0 0 0.48649 0.32432 0.16216 0.02703 0 0 0.39344 0.29508 0.19672 0.09836 0.01639 0 0.32967 0.26374 0.19780 0.13187 0.06593 0.01099">
+			<param name="probAxis" value="0 1 0 0.2">
+			<param name="initialRotation" value="30 45">
+			<param name="transitions" value="conditional">
+		</applet>
+	</div>
+	<p>The diagram initially shows the joint probabilities. Click <strong>Conditional for X</strong>. This scales the row of probabilities for each \(Y\) to add to one.</p>
+	<p>Note that</p>
+	<ul>
+		<li>Conditional on the minimum being \(Y = 6\), the  distribution of the maximum, \(X\), has the maximum also equal to 6 with probability 1.0.</li>
+		<li>When the minimum is lower, a maximum of \(Y=6\) still has the highest probability, but lower values are also possible.</li>
+	</ul>
+</div>
+
+<p class="heading">Conditional mean and variance</p>
+<p>The conditional distributions of \(X\) given \(Y=y\) and of \(Y\) given \(X=x\) are valid univariate distributions and therefore have means and variances. For example,</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>The <strong>conditional mean</strong> of \(Y\) given \(X=x\) is</p>
+	\[
+	E[Y \mid X=x] \;\;=\;\; \sum_{\text{all }y} {y \times p_{Y \mid X=x}(y)} \;\;=\;\; \sum_{\text{all }y} {y \times \frac{p(x,y)}{p_X(x)}}
+	\] </div>
+<p>Note that this conditional mean is a function of \(x\). The conditional mean  of \(Y\) may depend on the x-value that we are conditioning on.</p>
+<p>The <strong>conditional variance</strong> of \(Y\) given \(X=x\) is similarly defined as the variance of this conditional distribution.</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

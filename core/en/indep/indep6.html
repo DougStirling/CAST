@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>P-value for chi-squared test</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="contingency table, independence, chi-squared test, hypothesis test">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Testing for independence</p>
+<p>We now formally describe a hypothesis test for whether two categorical variables 
+are independent.</p>
+<p class=eqn><span class="black"><strong><font size="+1">H</font><sub>0</sub> :</strong>&nbsp; <em>X and Y are independent</em><br><strong><font size="+1">H</font><sub>A</sub> :</strong>&nbsp; <em>X and Y are dependent</em>&nbsp;&nbsp;</span> 
+</p>
+<p>We have seen that the χ<sup>2</sup> statistic</p>
+<p class=eqn><img class="gif" src="../indep/images/chiSquaredEqn.gif" width="145" height="47"> 
+</p>
+<p>describes whether the observed counts in a contingency table, <span class="black em">n<sub>xy</sub></span>, 
+are close to those expected for independent variables.</p>
+
+<dl>
+<dt><em>X</em> and <em>Y</em> are independent</dt>
+<dd>χ<sup>2</sup> 
+has (approximately) a chi-squared distribution with no unknown parameters</dd>
+<dt><em>X</em> and <em>Y</em> are associated</dt>
+<dd>The pattern of observed counts, <span class="black em">n<sub>xy</sub></span>, 
+is expected to be different from that of the <span class="black em">e<sub>xy</sub></span>, 
+so χ<sup>2</sup> is expected to be larger.</dd>
+</dl>
+
+<p class="heading">P-value</p>
+<p>In a similar way to other hypothesis tests, we evaluate a p-value &mdash; the probability 
+of getting such an extreme χ<sup>2</sup> when the two variables are independent (<strong>H<sub>0</sub></strong>).</p>
+<p class=eqn><img class="gif" src="images/chi2PValue.gif" width="456" height="262"> 
+</p>
+<p>If the p-value is close to zero, we conclude that the observed table would 
+be unlikely for independent variables, so there is evidence that the variables 
+are associated. </p>
+
+<div class="centred"><table class="centred" border="0" cellpadding="5" cellspacing="0">
+<tr>
+<th align="left">p-value</th>
+<th align="left">Interpretation</th></tr>
+
+<tr bgcolor="white">
+<td style="border-top:1px solid #999999;"><strong>over 0.1</strong></td>
+<td style="border-top:1px solid #999999;">no evidence against the null hypothesis (independence)</td></tr>
+
+<tr bgcolor="white">
+<td><strong>between 0.05 and 0.1   </strong></td>
+<td>very weak evidence of dependence between the row and column variables</td></tr>
+
+<tr bgcolor="white">
+<td><strong>between 0.01 and 0.05   </strong></td>
+<td>moderately strong evidence of dependence between the row and column variables</td></tr>
+
+<tr bgcolor="white">
+<td style="border-bottom:1px solid #999999;"><strong>under 0.01</strong></td>
+<td style="border-bottom:1px solid #999999;">strong evidence of dependence between the row and column variables</td></tr>
+</table></div>
+
+
+
+<p class="heading">Warning about low estimated cell counts</p>
+
+<p>The p-value for the test can be found because the χ<sup>2</sup> test statistic
+has <strong>approximately</strong> a
+chi-squared distribution. This approximation  is close for most data sets that are
+encountered, but is less so when the sample  size, <em>n</em>, is small. The guidelines
+that are often given suggest that the  p-value can be relied on if:</p>
+
+<ul>
+<li>All estimated cell counts are 1.0 or more</li>
+<li>At least 80% of the estimated cell counts are 5.0 or more</li>
+</ul>
+
+<p>If the cell counts are small enought that these conditions do not hold, the 
+p-value is less reliable. (But advanced statistical methods are required to do 
+better!)</p>
+
+
+<div class="diagram" title="Simulation: P-values from test">
+<p class="heading">Simulation: Independent variables</p>
+<p>The diagram below shows a random sample from a model in which the row and column 
+variables are independent. It also illustrates how the p-value is evaluated.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="300" name="chi2Distn">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="continProg.Chi2TailAreaApplet">
+<param name="dataName" value="Margins all 1/3">
+<param name="yVarName" value="Y variable">
+<param name="xVarName" value="X variable">
+<param name="yLabels" value="col1 col2 col3">
+<param name="xLabels" value="row1 row2 row3">
+<param name="xMargin" value="0.333 0.333 0.333">
+<param name="yCondit" value="0.333 0.333 0.333 0.333 0.333 0.333 0.333 0.333 0.333">
+<param name="sampleSize" value="*100 1000 10000">
+<param name="maxExpected" value="1000.00">
+<param name="maxChi2" value="99999.00">
+<param name="horizAxis" value="0 20 0 2">
+</applet>
+</div>
+
+<p>Click <strong>Take sample</strong> a few times to generate other samples from 
+the model. Observe that the p-value is usually quite large (since <strong>H<sub>0</sub></strong> 
+is true), but</p>
+
+<ul>
+<li>About 1 in 10 samples result in a p-value under 0.1</li>
+<li>About 1 in 20 samples result in a p-value under 0.05</li>
+<li>About 1 in 100 samples result in a p-value under 0.01</li>
+</ul>
+
+<br>
+
+<div class="boxed"><p>An 'unlucky sample' might mislead you into erroneously 
+concluding that the variables are dependent.</p></div>
+
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

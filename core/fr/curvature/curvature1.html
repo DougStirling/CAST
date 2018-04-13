@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Transformations et la corrélation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="transformations, correlation coefficient/transform to linearity first">
+	<meta name="dataset" content="Bacteria survival after X-rays/high correlation after linearising">
+	<meta name="dataset" content="Lifespan and metabolic rate of mammals/higher correlation after linearising">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Le coefficient de corrélation et de relations non linéaires</p>
+
+  <p>Le coefficient de corrélation,&nbsp;<em>r,</em>&nbsp;est une bonne description de la force de la relation linéaire, mais&nbsp;<a href="javascript:showNamedPage('correlation4')">ceux non linéaire</a>.&nbsp;Si un nuage de points montre la courbure marquée, le coefficient de corrélation peut être considérablement sous-estimer la force de la relation.</p>
+<p>Comment pouvez-vous résumer la force d'une relation non linéaire?&nbsp;Une solution consiste à utiliser une statistique sommaire différent qui a de meilleures propriétés que&nbsp;<em>r.</em>&nbsp;Dans cette page, nous décrivons une solution alternative au problème.</p>
+<p class="heading">Transformer les variables à linéariser la relation</p>
+	
+	<p><a href="javascript:showNamedPage('transform2')">Application d'une transformation non linéaire</a>&nbsp;(comme une transformation logarithmique) à une seule variable change la forme de sa distribution et peut être utilisé pour éliminer l'asymétrie.</p>
+	<p>Transformation non linéaire d'une variable a un effet plus important sur les données bidimensionnelles &mdash; il modifie la forme de la relation.&nbsp;(Il est plus facile d'expliquer comment cela se passe dans le diagramme ci-dessous que dans les mots!) Il est souvent possible de linéariser une relation en transformant un ou deux variables.</p>
+	<p>Par conséquent, une façon d'utiliser&nbsp;<em>r</em>&nbsp;pour décrire les relations non-linéaires est d'appliquer une transformation à une ou deux variables&nbsp;<strong>d'enlever la non-linéarité</strong>avant d'évaluer&nbsp;<em>r.</em></p>
+
+  <div class="diagram"> 
+	<p class=heading>Bactéries marines survivants rayons X</p>
+		<p>Le diagramme de dispersion ci-dessous montre les chiffres d'une exposition bactérie marine survivant à 200 kilovolts rayons X pour des périodes allant de t = 1 à t = 15 intervalles de 6 minutes.&nbsp;La relation est clairement non linéaire avec une forte baisse initiale en chiffres suivie d'une diminution plus graduelle.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="350" height="370">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="corrProg.CorrelTransApplet">
+<param name="xVarName" value="dose de rayons X">
+<param name="yVarName" value="survivants">
+<param name="xValues" value="1 2 3 4 5 6 7 8 9 10 11 12 13 14 15">
+<param name="yValues" value="355 211 197 166 142 106 104 60 56 38 36 32 21 19 15">
+<param name="horizAxis" value="0 16 0 2">
+<param name="vertAxis" value="14 360 50 50">
+<param name="labelAxes" value="true">
+<param name="transformAxes" value="true">
+</applet>
+</div>
+
+		<p>Le coefficient de corrélation est&nbsp;<em>r</em>&nbsp;= -0.907, indiquant une relation assez forte entre le nombre de survivants et de la dose de rayons X, mais la non-linéarité signifie que la force de la relation est sous-estimé par cela.</p>
+		<p>Faites glisser la ligne rouge sur le haut l'axe vertical à appliquer une transformation de puissance pour le nombre de survivants.&nbsp;Quand le pouvoir devient proche de zéro (ce qui correspond à une transformation logarithmique de la réponse), la relation devient presque linéaire.&nbsp;Comme la relation entre log (survivants) et la dose est approximativement linéaire, le coefficient de corrélation entre ces deux variables,&nbsp;<em>r</em>&nbsp;= -0.994, est une meilleure description de la force de la relation.</p>
+	</div>
+
+<p class=heading>Choisir la transformation</p>
+
+  <p><strong>Comment décidez-vous quelle variable pour transformer une relation de linéariser?</strong>&nbsp;Il n'ya pas de réponse facile qui fonctionne pour tous les ensembles de données, mais une approche utile consiste à regarder les distributions marginales de chaque variable séparément et à essayer d'abord les transformations qui enlèvent toute asymétrie dans les ces distributions.</p>
+
+<div class="diagram">
+<p class=heading>Le taux métabolique et la durée de vie</p>
+
+<p>Le diagramme de dispersion ci-dessous montre le taux d'espérance de vie (en années) et métabolique (mesurée par l'absorption d'oxygène par gramme de poids) d'une sélection de mammifères.&nbsp;Les tracés en boîtes sur les deux axes montrent que chacune des variables a une distribution de biais, et le nuage de points montre que la relation n'est pas linéaire.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="350" height="390">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="corrProg.CorrelTransBoxApplet">
+<param name="xVarName" value="Taux métabolique">
+<param name="yVarName" value="Durée de vie">
+<param name="labelName" value="Espèces">
+<param name="xValues" value="0.22 0.52 0.75 1.90 2.00 0.51 0.83 0.43 0.25 0.22 0.25 0.42 0.87 0.93 0.86 1.49 0.74 0.32 0.52 0.52 0.39 0.44 0.07 0.15 0.19 0.24 0.13">
+<param name="yValues" value="50.0 5.0 6.0 3.5 20.5 12.0 20.0 29.0 50.0 100.0 6.5 18.0 9.0 3.9 4.7 3.2 7.6 16.2 9.8 14.0 13.7 28.0 69.0 46.0 20.0 20.0 30.0">
+<param name="labels" value="Echidna #N américaine opossum# #Le hérisson européen# #E américaine taupe# #Petite chauve-souris brune# #Hibou le singe# #Singe écureuil# #Singe rhésus# Chimpanzé Man #Tatou à neuf bandes# LapinSpermophile #Hamster doré# Rat Souris #Guinée porc# #Le loup gris# #Le renard roux# #Le renard arctique# #Raton laveur# Chat #Éléphant d'Asie# Cheval Chèvre Moutons Vache">
+<param name="horizAxis" value="0.06 2.1 0.5 0.5">
+<param name="vertAxis" value="3 105 20 20">
+<param name="labelAxes" value="true">
+<param name="transformAxes" value="true">
+</applet>
+</div>
+
+    <p>Faites glisser les lignes rouges sur les axes de retirer asymétrie marginal.&nbsp;Pour ces données (et beaucoup d'autres), les transformations qui éliminent asymétrie marginale&nbsp;<strong>aussi</strong>&nbsp;linéariser la relation.&nbsp;Le coefficient de corrélation entre les variables transformées (environ -0,7) est donc une juste description de la force de la relation que celle de l'origine des mesures (-0.47).</p>
+    <table width="85%" border="1" class="centred" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+      <tr> 
+        <td><p>Vous avez probablement constaté que le taux métabolique<sup>0.2</sup> avait une répartition raisonnablement symétrique.&nbsp;Il est cependant difficile d'interpréter les valeurs sur ces échelles, ainsi glisser à une transformation logarithmique des deux variables &mdash; leur relation est tout aussi linéaire et le graphe est plus facile à interpréter.</p></td>
+      </tr>
+    </table>
+    <p>Après linéarisation de la relation, l'homme ne semble plus être une donnée aberrante.&nbsp;Quels mammifères semblent être désormais le plus insolite?</p>
+  </div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

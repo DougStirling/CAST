@@ -1,0 +1,137 @@
+<html>
+<head>
+	<title>A badly designed experiment</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="lurking variable, experimental design">
+	<meta name="dataset" content="Checkout operator speed">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Bad experimental design</p>
+  <p>We  noted earlier that the experimental units often have considerable variability. If the treatments are allocated to experimental units in a way that is associated with their characteristics, these varying characteristics can distort the apparent relationship between the treatments and the response.</p>
+  
+	<p class="eqn"><object data="images/lurking2.svg" width="297" height="120"></object></p>
+  
+	<p>In a badly designed experiment, the characteristics of the experimental units act in the same way as lurking variables in observational studies.</p>
+  <p class="heading">Good experimental design</p>
+  <p>Since variability in the experimental units is usually unavoidable, we cannot 
+		prevent their effect on the response. However, in an experiment it is possible 
+		to allocate treatments to the experimental units in a way that either eliminates, 
+		or at least reduces, the relationship between the treatment, <em>X</em>, and 
+		characteristics of the experimental units. </p>
+		
+  <p class="eqn"><object data="images/lurking3.svg" width="297" height="120"></object></p>
+	
+  <div class="boxed">
+    <p>Good experimental design can avoid the potential effect of lurking 
+      variables.<br>
+  </p>
+  </div>
+  <div class="diagram"> 
+    <p class="heading">Speed of checkout operators &mdash; a badly designed experiment</p>
+		
+		<p>The diagram below relates to the same 16 supermarket checkout operators who 
+			were examined on the previous page. In the experiment, the 8 operators who choose 
+			to work on a Saturday morning shift will be provided with a packer to load customer 
+			bags &mdash; the other 8 operators who work in the afternoon shift that day will pack 
+			customer bags themselves (the 'control' group). We will conduct a simulation of 
+			this experiment in which <strong>the packer decreases packing time by exactly 0.1 seconds 
+				per dollar</strong>.</p>
+		<p>The circles on the left of the diagram below represent the 16 operators 
+			with their initial ages represented by the colours of the circles.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="580" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="experProg.SelectTreatmentsApplet">
+<param name="yVarName" value="Time (sec/dollar)">
+<param name="yRegn" value="1.06 -0.03 0.03">
+<param name="yAxis" value="0.3 0.755 0.3 0.05">
+<param name="lurkingVarName" value="Age:">
+<param name="lurkingValues" value="17 20 22 16 16 20 18 21 17 18 22 19 17 18 21 18">
+<param name="lurkingMinMax" value="16#22">
+<param name="unitName" value="Operator">
+<param name="circleCols" value="3">
+<param name="treatVarName" value="Packer">
+<param name="treatLabels" value="#Packer# #No packer#">
+<param name="treatEffect" value="0.1">
+<param name="lurkingRegn" value="0.0 -1.0 4.0">
+<param name="effectName" value="Effect">
+<param name="noInLowGroup" value="8">
+<param name="maxDiff" value="-9.999">
+<param name="randomSeed" value="26438564 563329311">
+<param name="customText" value="Theoretical=Theoretical#Estimated=Estimated#Allocate*Treatments=Allocate*Treatments#Run*Experiment=Run*Experiment">
+</applet>
+</div>
+		<p>Click <strong>Allocate treatments</strong> to simulate the selection of 
+			eight of the operators to go on the morning shift (and be given the packer). 
+			Now click <strong>Run experiment</strong> to simulate the speeds of the 
+			operators in 3 hours.</p>
+		<p>Repeat the experiment a few times and observe that most runs of the experiment 
+			estimate the effect of the packer to be a decrease in packing time of between 0.12 
+			and 0.18 seconds per dollar.</p>
+		<table width="75%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+			<tr>
+				<td><strong><font color="#FF0000">Why does the experiment consistently 
+					over-estimate the effect of the packer?</font></strong></td>
+			</tr>
+		</table>
+		<p>The problem lies in the method of choosing the operators who got a packer. 
+			Checkout operators working in the morning tend to be older than those 
+			in the afternoon, so it is older operators who tend to get the packer.</p>
+		<p>We saw on the previous page that older checkout operators tend to be 
+			faster so the operators getting packers will tend to be faster even if the 
+			packer does not affect speed.</p>
+		<p class="heading">Difference in speeds if there was no packer effect</p>
+		<p>The reason for the misleading results is clearer in the following simulation 
+			in which the packer has <strong>zero effect</strong>.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="580" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="experProg.SelectTreatmentsApplet">
+<param name="yVarName" value="Time (sec/dollar)">
+<param name="yRegn" value="1.06 -0.03 0.03">
+<param name="yAxis" value="0.3 0.75 0.3 0.05">
+<param name="lurkingVarName" value="Age:">
+<param name="lurkingValues" value="17 20 22 16 16 20 18 21 17 18 22 19 17 18 21 18">
+<param name="lurkingMinMax" value="16#22">
+<param name="unitName" value="Operator">
+<param name="circleCols" value="3">
+<param name="treatVarName" value="Packer">
+<param name="treatLabels" value="#Packer# #No packer#">
+<param name="treatEffect" value="0.0">
+<param name="lurkingRegn" value="0.0 -1.0 4.0">
+<param name="effectName" value="Effect">
+<param name="noInLowGroup" value="8">
+<param name="maxDiff" value="-9.999">
+<param name="randomSeed" value="26438564 563329311">
+<param name="customText" value="Theoretical=Theoretical#Estimated=Estimated#Allocate*Treatments=Allocate*Treatments#Run*Experiment=Run*Experiment">
+</applet>
+</div>
+		<p>Repeat the simulation a few times and observe that the packer is usually 
+			estimated to increase speed even though <strong>we know that it 
+				has no effect</strong>.</p>
+		<p>Observe that the operators getting a packer tend to be older &mdash; their 
+			circles are bluer. The difference between the means of the two groups of 
+			operators is caused by the difference in their average ages, not the packers.</p>
+		<table width="75%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+			<tr>
+				<td><strong><font color="#000000">Good experimental design means ensuring 
+					that there are no major differences between the two groups of experimental 
+					units.</font></strong></td>
+			</tr>
+		</table>
+		<p>Later pages in this section describe some strategies to follow when designing 
+			experiments that avoid the problem of lurking variables.</p>
+  </div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

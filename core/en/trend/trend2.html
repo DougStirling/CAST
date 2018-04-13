@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Quadratic trend</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="least squares/time series, quadratic model">
+	<meta name="dataset" content="Credit card debt in NZ">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Quadratic models</p>
+
+  <p>A linear trend is not appropriate for all time series. Many trends have curvature 
+		which must be described with a more complex model. We now briefly describe 
+		fitting a quadratic trend of the form...</p>
+
+  <p class=eqn><span class="black"><em>trend</em> &nbsp; = &nbsp; <em>b</em><sub>0</sub> &nbsp;+ &nbsp;<em>b</em><sub>1</sub><em> time</em> &nbsp;+ &nbsp;<em>b</em><sub>2</sub><em> time</em><sup>2</sup></span> </p>
+
+  <p>A quadratic curve of this form has <strong>three</strong> parameters that 
+		can be adjusted to improve the fit of the model. We again define residuals 
+		to be the differences between the actual time series values, <i>y</i>, and 
+		the model's predictions,</p>
+	<p class=eqn><span class="black"><em>e<sub>i</sub></em>&nbsp;&nbsp;=&nbsp;&nbsp;<em>y<sub>i</sub></em>&nbsp;&minus;&nbsp;<em>trend<sub>i</sub></em></span> </p>
+	<p>The <strong>least squares</strong> estimates of the three parameters are 
+		again the values that minimise the residual sum of squares,</p>
+	<p class=eqn><span class="black"><font size="+1">&Sigma;</font> <em>e<sub>i</sub></em><sup>2</sup></span> </p>
+
+<div class="diagram" title="Example: Credit card debt">
+		<p class="heading">Credit card debt</p>
+
+		<p>The time series below shows the total debt owed to credit cards in New 
+			Zealand at the end of each December from 1990 to 2001. The trend is clearly 
+			nonlinear, so a quadratic model might be appropriate. (Note that we have 
+			again subtracted 1990 from the years to make the coefficients more manageable.)</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.DragQuadraticApplet">
+<param name="xVarName" value="(Year-1990)">
+<param name="yVarName" value="Credit card debt ($m)">
+<param name="xSequence" value="0 1 12">
+<param name="yValues" value="951.1 1027.8 1055.7 1129.2 1289.5 1481.7 1726.4 1897.7 2066.5 2403.0 2904.3 3390.1">
+<param name="horizAxis" value="-0.5 11.5 0 1">
+<param name="vertAxis" value="0 4000 0 1000">
+<param name="interceptLimits" value="0 4000 200">
+<param name="slopeLimits" value="-1200 1200 200">
+<param name="curvatureLimits" value="-200 200 0">
+<param name="labelAxes" value="true">
+</applet>
+</div>
+
+	<p>Drag the three red arrows to position the quadratic curve close to the 
+		data.</p>
+	<p>Click <strong>Least squares</strong> to position the line to minimise the 
+		residual sum of squares.</p>
+	<p>The equation of the trend line is shown under the graph. It can be used 
+		to predict credit card debt in future years.</p>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

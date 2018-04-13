@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta HTTP-EQUIV="content-type" CONTENT="text/html; charset=UTF-8">
+	<title>预测Y和X(高级部分)</title>
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	<meta name="dataset" content="Weights of brothers">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">使用不同的线预测Y和X</p>
+	<p>相关系数关于两个变量对称----X和Y的相关系数和Y和X的相关系数相同。
+然而，最小二乘直线给出的从X到Y的预测和从Y到X的预测是不同的(即使方程经过了重新安排)。</p>
+	<p> 如果散点图是以Y为竖轴，那么最小二乘线，
+<p class=eqn><span class="black"><em>y</em> &nbsp;=&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x</em></span></p>
+是由X预测Y。这样的线是通过极小化数据点到线的<strong>竖直</strong>距离的平方和而得到。另一方面，如果我们感兴趣用一条线
+<p class=eqn><span class="black"><em>x</em> &nbsp;=&nbsp; <em>c</em><sub>0</sub> + <em>c</em><sub>1 </sub><em>y</em></span></p>
+由Y的值预测X的值，那么这时残差成了点到线的<strong>水平</strong>距离，最小二乘是极小化这些水平距离的平方和。.</p>
+	<p class=eqn><img class="gif" src="images/predictAndInverse.gif" width="469" height="209"></p>
+	<p>不同的线分别是由最小化水平距离的平方和及最小化竖直距离的平方和而得到。</p>
+	<p class="heading">关于两种最小二乘直线</p>
+	<p>两种最小二乘直线可以表达成标准化变量的形式，</p>
+	<table border="0" cellspacing="0" cellpadding="10" align="center">
+		<tr> 
+			<th>由X的值预测Y的值的最小二乘直线方程</th>
+			<td><img class="gif" src="../../en/leastSqrs/images/yxLsLine.gif" width="135" height="44"></td>
+		</tr>
+		<tr> 
+			<th>由Y的值预测X的值的最小二乘直线方程</th>
+			<td><img class="gif" src="../../en/leastSqrs/images/xyLsLine.gif" width="136" height="44"></td>
+		</tr>
+	</table>
+	<p>其中 <i>r</i>是 <i>X</i> 和 <i>Y</i>的相关系数。因为 <i>r</i>总小於1，由X的值预测Y的值的最小二乘直线更‘平’(斜率小)。
+ </p>
+	<div class="diagram">
+		<p class="heading">两兄弟的体重</p>
+		<p>以下的散点图给出年龄在10到30岁的兄弟的体重(以公斤为单位)。
+</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.TwoWayResidApplet">
+<param name="xVarName" value="弟弟">
+<param name="yVarName" value="哥哥">
+<param name="xValues" value="77 74 82 81 84 78 67 92 77 69 81 85 77 95 79 80 82 84 75 82 89 77 83 84 81 76 82 85 77 87 86 85 67 89 70 78 82 83 84 70 80 71 84 83 73 70 92 82 76 76 80 83 83 85 82 84 74 86 88 68 77 87 83 85 78 82 77 75 78 86 87 90 73 88 80 77 77 88 77 85 86 86 72 91 74 76 75 87 86 73 80 78 81 85 75 77 87 76 78 77">
+<param name="yValues" value="80 83 83 85 82 84 74 86 88 68 77 87 83 85 78 82 77 75 78 86 87 90 73 88 80 77 77 88 77 85 86 86 72 91 74 76 75 87 86 73 80 78 81 85 75 77 87 76 78 77 77 74 82 81 84 78 67 92 77 69 81 85 77 95 79 80 82 84 75 82 89 77 83 84 81 76 82 85 77 87 86 85 67 89 70 78 82 83 84 70 80 71 84 83 73 70 92 82 76 76">
+<param name="horizAxis" value="60 100 60 10">
+<param name="vertAxis" value="60 100 60 10">
+<param name="initialLine" value="0 1">
+<param name="xRssAxis" value="0 8000 0 2000">
+<param name="yRssAxis" value="0 8000 0 2000">
+<param name="xRssDecimals" value="0">
+<param name="yRssDecimals" value="0">
+<param name="sliderHeight" value="60">
+<param name="labelAxes" value="true">
+<param name="customText" value="Response=响应#RSS=残差平方和#Resids for=预测残差">
+</applet>
+</div>
+		<p>最初画在散点图的直线看起来对数据拟合得很好。由这条线给出的预测是：每一对兄弟的体重是相同的。然而，这条线<strong>不是</strong>预测哥哥体重的最小二乘直线。</p>
+		<p>点击散点图下的小方框 <strong>哥哥</strong>。我们可以看到用弟弟体重预测哥哥体重的直线产生的残差。这些残差的平方和也在散点图下面给出。<strong>拖动红色的箭头</strong> 使散点图里的线旋转，观察当直线靠近水平轴时残差平方和变小。</p>
+		<p>现在不选小方框<strong>哥哥</strong>而选中小方框<strong>弟弟</strong>。我们可以看到用哥哥体重预测弟弟体重的直线产生的残差(由水平线给出)及这些残差的平方和。<strong>拖动</strong>这条直线，观察当直线靠近竖轴时残差平方和变小。</p>
+	</div>
+
+<script language="JavaScript">
+	top.writeNextButton(document);
+	showCopyright ();
+</script>
+</body>
+</html>

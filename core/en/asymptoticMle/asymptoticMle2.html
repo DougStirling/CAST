@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Standard error</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="maximum likelihood, standard error">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p class="heading">Practical problems</p>
+<p>There are two practical problems with the  approximate variance formula for \(\hat {\theta} \),</p>
+\[
+\Var(\hat {\theta})\; \approx \;- \dfrac 1 {n \times E\left[\frac {\large d^2\; \log\left(p(X \;|\; \theta)\right)} {\large d\;\theta^2} \right]} \]
+<dl>
+	<dt>Difficulty evaluating the expected value</dt>
+	<dd>For many distributions, it is impossible to find a simple formula for the expected value.</dd>
+	<dt>Unknown value of \(\theta\)</dt>
+	<dd>Even if this expected value can be found, it is usually  a function of \(\theta\), but \(\theta\)  is an unknown value.</dd>
+</dl>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Avoiding the expected value</p>
+		<p>A numerical value for the approximate variance of \(\hat {\theta}\) can be found with a further approximation,</p>
+\[
+\Var(\hat {\theta})\; \approx \;-  \frac 1 {\ell''(\hat {\theta})} \]</div>
+	<div class="proof">
+		<p>Instead of finding the <strong>expected value</strong> of \(\dfrac {d^2 \log\left(p(X \;|\; \theta)\right)} {d\;\theta^2}\) theoretically, we can approximate it with the <strong>sample mean</strong> of its values, giving</p>
+\[
+n \times E\left[\dfrac {d^2 \log\left(p(X \;|\; \theta)\right)} {d\;\theta^2}\right] \;\;\approx\;\; \sum_{i=1}^n \frac {d^2 \log\left(p(x_i \;|\; \theta)\right)} {d\theta^2} \;\;=\;\; 
+\dfrac {d^2} {d \theta^2} \sum_{i=1}^n {\log\left(p(x_i \;|\; \theta)\right)}
+\]
+<p>The sum of the log-probabilities on the right is the log-likelihood function, so</p>
+\[
+n \times E\left[\dfrac {d^2 \log\left(p(X \;|\; \theta)\right)} {d\;\theta^2}\right] \;\;\approx\;\; 
+\frac {d^2\;\ell(\theta)} {d\;\theta^2}
+\]
+<p>giving us the  approximation,</p>
+\[
+\Var(\hat {\theta}) \;\;\approx\;\; - \frac 1 {\ell''(\theta)}
+\]
+
+<p>We can avoid the unknown  value of \(\theta\)  with a further approximation, this time replacing \(\theta\) with \(\hat{\theta}\), giving </p>
+\[
+\Var(\hat {\theta}) \;\;\approx\;\; - \frac 1 {\ell''(\hat {\theta})}
+\]	</div>
+</div>
+<p>Its square root provides  us with a numerical value for the standard error of the maximum likelihood estimator, </p>
+\[
+\se(\hat {\theta}) \;\;\approx\;\; \sqrt {- \frac 1 {\ell''(\hat {\theta})}}
+\]
+<p>This formula lets us find an approximate numerical value for the standard error of almost any maximum likelihood estimator — even when based on models in which the data are not a simple random sample.</p>
+
+<div class="boxed">
+<p>We will use this  formula for the standard error of maximum likelihood estimators in the rest of the e-book.</p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

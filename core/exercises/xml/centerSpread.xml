@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE topic SYSTEM "exerciseXmlDefn.dtd">
+
+<topic name='centerSpread'>
+<longName>Summarising centre and spread</longName>
+
+
+<exercise name='compareDistns'>
+	<description>Interpret differences between centre and spread of two distns</description>
+	<comment>The question shows stacked dot plots for two samples that may differ in their centre and/or spread. Differences should be summarised in both contect-specific and generic terms by choosing multiple-choice options.</comment>
+	<applet>exerciseSDProg.CenterSpreadApplet</applet>
+	<width>600</width>
+	<height>700</height>
+	
+	<variable name="varName" type="string(16)">Name for variable</variable>
+	<variable name="groupNames" type="string_array(8)">Must be exactly two names for groups A and B. Only use 1-3 letters for each.</variable>
+	<variable name="count" type="int_array(1)">Number of values in the two groups -- there must be exactly 2 values.</variable>
+	<variable name="meanDiffType" type="int_choice(mean(A) = mean(B)#mean(A) &gt; mean(B)#mean(A) &lt; mean(B))"></variable>
+	<variable name="sdDiffType" type="int_choice(sd(A) = sd(B)#sd(A) &gt; sd(B)#sd(A) &lt; sd(B))"></variable>
+	<variable name="axis" type="axis">Axis under dot plots</variable>
+	<variable name="meanOptions" type="string_array(40)">3 strings describing the 3 types of difference between the means specified by meanDiffType</variable>
+	<variable name="sdOptions" type="string_array(40)">3 strings describing the 3 types of difference between the sds specified by sdDiffType</variable>
+	
+	<template>
+		<question>The dot plots below show values in two groups, A and B. Describe the differences between the distributions.</question>
+		<qnParam>Variable Y#groupNames(A B)#count(50 50)#meanDiffType(0:2)#sdDiffType(0:2)#axis(250 350 250 10)#meanOptions(The_values_have_similar_magnitudes_in_both_groups. Group_A_tends_to_have_higher_values_than_Group_B. Group_A_tends_to_have_lower_values_than_Group_B.)#sdOptions(The_values_in_both_groups_have_similar_variabity. Values_in_Group_A_are_more_variable_than_those_in_Group_B. Values_in_Group_A_are_less_variable_than_those_in_Group_B.)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>widgets</shortName>
+		<longName>Lengths of plastic widgets from 2 production lines</longName>
+		<question>Plactic widgets are manufactured in two different production lines, L1 and L2. The dot plots below show the lengths of samples of widgets from each line.\\nDescribe the differences between the lengths of widgets produced in the two production lines.</question>
+		<qnParam>varName(Length, cm)#groupNames(L2 L1)#count(50 50)#meanDiffType(0:2)#sdDiffType(0:2)#axis(250 350 250 10)#meanOptions(Neither_production_line_tends_to_produce_longer_widgets_than_the_other. Production_line_L1_tends_to_produce_longer_widgets_than_L2. Production_line_L1_tends_to_produce_shorter_widgets_than_L2.)#sdOptions(Both_productions_lines_produce_widgets_whose_lengths_are_equally_variable. Production_line_L1_produces_widgets_whose_lengths_are_less_consistent_than_L2. Production_line_L1_produces_widgets_whose_lengths_are_more_consistent_than_L2.)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>potatoes</shortName>
+		<longName>Weights of bags of potatoes filled by 2 employees</longName>
+		<question>Two different employees, A and B, fill bags of potatoes. The dot plots below show the weights of several bags filled by each.\\nDescribe the differences between the amounts of potatoes put into bags by the two operators.</question>
+		<qnParam>varName(Weight, kg)#groupNames(B A)#count(100 100)#meanDiffType(0:2)#sdDiffType(0:2)#axis(2.5 3.501 2.5 0.1)#meanOptions(Neither_employee_tends_to_fill_the_bags_with_a_greater_weight_of_potatoes_than_the_other. Bags_filled_by_Employee_A_tend_to_be_heavier_than_those_filled_by_B. Bags_filled_by_Employee_A_tends_to_be_lighter_than_those_filled_by_B.)#sdOptions(Both_employees_are_equally_consistent_in_the_weights_of_the_bags. Employee_A_fills_bags_to_a_more_variable_weight_than_B. Employee_A_fills_bags_to_a_less_variable_weight_than_B.)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='guessMeanMedian'>
+	<description>Roughly guess the mean and median of a data set</description>
+	<comment>The stacked dot plot of a data set is shown, either symmetric of skew. The values of the median and mean must be guessed (by dragging vertical lines on the dot plot).</comment>
+	<applet>exerciseSDProg.DragMeanMedianApplet</applet>
+	<width>500</width>
+	<height>500</height>
+	
+	<variable name="varName" type="string(16)">Name for variable</variable>
+	<variable name="axis" type="axis">Axis for dot plot</variable>
+	<variable name="count" type="int(2)">Number of values randomly generated</variable>
+	<variable name="shape" type="double">Absolute value is shape parameter for gamma distribution used to generate data. Sign determines whether +ve or -ve skewness.</variable>
+	<variable name="decimals" type="int(0)">Number of decimal digits shown when answer is given.</variable>
+	
+	<template>
+		<question>The stacked dot plot below describes #count(50)# values. Guess the approximate values of the mean and median.</question>
+		<qnParam>varName(Variable, Y)#axis[index](5.4 5.6 5.4 0.02)#shape[](0.5,1,1.5,8,-0.5,-1,-1.5,-8)#decimals(3)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>widgets</shortName>
+		<longName>Lengths of plastic widgets</longName>
+		<question>The stacked dot plot below describes the distribution of lengths of #count(50:100)# widgets. Guess the approximate values of the mean and median.</question>
+		<qnParam>index(0:2)#varName(Length, cm)#axis[index](5.4 5.6 5.4 0.02*1.0 1.1 1.0 0.01*11.5 12.5 11.5 0.1)#shape[](0.5,1,1.5,8,-0.5,-1,-1.5,-8)#decimals[index](3,3,2)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>fruitBats</shortName>
+		<longName>Body mass of fruit bats</longName>
+		<question>#count(20:40)# #?:string[index](male*male*female*female)# Indian fruit bats were captured and weighed. The stacked dot plot below shows the distribution of their body mass. Guess the approximate values of the mean and median.</question>
+		<qnParam>index(0:3)#varName(Body mass, gm)#axis[index](50 100 50 5*40 80 40 5*30 50 30 2*40 60 40 2)#shape[](0.5,1,1.5,8,-0.5,-1,-1.5,-8)#decimals(2)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='guessSdFromGraph'>
+	<description>Roughly guess the standard deviation from a graphical display</description>
+	<comment>A dot plot, histogram or box plot is shown and the standard deviation must be guessed.\\nAt least one of the options must be selected - if there are more than one, the graphical display will be randomly chosen.</comment>
+	<applet>exerciseSDProg.GuessSDApplet</applet>
+	<width>500</width>
+	<height>540</height>
+	
+	<option name="histo">Histogram</option>
+	<option name="boxPlot">Box plot</option>
+	
+	<variable name="varName" type="string(16)">Name for variable</variable>
+	<variable name="axis" type="axis">Axis for dot plot</variable>
+	<variable name="count" type="int(2)">Number of values randomly generated</variable>
+	<variable name="histoClasses" type="histo">Classes used in histogram (if the histo option is used)</variable>
+	<variable name="jointMeanSD" type="meanSd">Used to generate the correct mean and SD for the data set</variable>
+	
+	<template>
+		<question>Guess the standard deviation of the #count(50)# values described below.</question>
+		<qnParam>varName(Variable, Y)#axis(4 16 4 2)#histoClasses(4 1)#jointMeanSD(0.5:2)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>insectWeights</shortName>
+		<longName>Weights of insects</longName>
+		<question>The diagram below shows the weights of #count(20:100)# insects (in gm). Guess the standard deviation of the insect weights.</question>
+		<qnParam>index(0:1)#varName(Weight, gm)#axis[index](4 16 4 2*0 1 0 0.2)#histoClasses[index](4 1*0 0.2)#jointMeanSD(0.5:2)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>studentMarks</shortName>
+		<longName>Student marks in maths test</longName>
+		<question>A group of #count(20:100)# students sat a mathematics test; the diagram below shows their marks (out of 100). Guess the standard deviation of the marks.</question>
+		<qnParam>index(0:1)#varName(Mark out of 100)#axis[index](50 100 50 5*0 90 0 20)#histoClasses[index](50 5*0 10)#jointMeanSD(0.5:1)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>salaries</shortName>
+		<longName>Annual salaries of workers</longName>
+		<question>The following diagram shows the annual salaries of #count(20:100)# workers. Guess the standard deviation of the salaries.</question>
+		<qnParam>index(0:2)#varName(Monthly salary, $000)#axis[index](10 20 10 1*20 50 20 5*40 100 40 5)#histoClasses[index](10 2*20 5*40 5)#jointMeanSD(0.5:1)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>widgets</shortName>
+		<longName>Lengths of widgets</longName>
+		<question>The diagram below describes the distribution of lengths of #count(20:100)# widgets. Guess the standard deviation of the data.</question>
+		<qnParam>index(0:2)#varName(Length, cm)#axis[index](5.4 5.6 5.4 0.02*1.0 1.1 1.0 0.01*11.5 12.5 11.5 0.1)#histoClasses[index](5.4 0.02*1.0 0.01*11.5 0.1)#jointMeanSD(0.5:3)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>fruitBats</shortName>
+		<longName>Body mass of fruit bats</longName>
+		<question>#count(20:50)# #?:string[index](male*male*female*female)# Indian fruit bats were captured and weighed. The diagram below shows the distribution of their body mass. Guess the standard deviation.</question>
+		<qnParam>index(0:3)#varName(Body mass, gm)#axis[index](50 100 50 5*40 80 40 5*30 50 30 2*40 60 40 2)#histoClasses[index](50 5*40 5*30 2*40 2)#jointMeanSD(0.5:1)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='guessSdFromKnowledge'>
+	<description>Roughly guess a standard deviation from general knowledge</description>
+	<comment>This question shows a photo of several items and asks for a guess at the standard deviation of some measurement of them.\\nOnly a very rough guess is needed, based on general knowledge about the amount of variation present.</comment>
+	<applet>exerciseSDProg.GuessSDPhotoApplet</applet>
+	<width>550</width>
+	<height>600</height>
+	
+	<variable name="itemsName" type="string(16)">Name for individual items</variable>
+	<variable name="variable" type="string(16)">Name for variable</variable>
+	<variable name="mean" type="double">Mean for variable</variable>
+	<variable name="photoFile" type="string(16)">If this is xxx, there must be a file CAST/core/java/javaImages/guessSdPhotos/xxx.jpg with dimensions 500x230</variable>
+	<variable name="answer" type="answer">lowest acceptable, best and highest acceptable values for SD, separated by spaces</variable>
+	<variable name="units" type="string(16)">Units for values</variable>
+	
+	<variation>
+		<shortName>children</shortName>
+		<longName>Heights or weights of children on first day at school</longName>
+		<question>The photograph below shows some of a group of young #itemsName(children)# on their first day at school.\\nThe mean #variable[index](weight*height)# of the children is #mean[index](17,105)# #units#; guess their approximate standard deviation.</question>
+		<qnParam>index(0:1)#photoFile(newEntrants)#answer[index](1.5 3 5*10 15 20)#units[index](kg*cm)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>books</shortName>
+		<longName>Number of pages, width or height of books in a library</longName>
+		<question>The photograph below shows some of the #itemsName(books)# in a library.\\nThe mean #variable[index](number of pages*height*thickness)# of the books is #mean[index](250,20,22)# #units#; guess their approximate standard deviation.</question>
+		<qnParam>index(0:2)#photoFile(books)#answer[index](45 90 150*2 4 8*2 5 10)#units[index](pg*cm*mm)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>chickens</shortName>
+		<longName>Weights of young chickens</longName>
+		<question>The photograph below shows a few of a brood of recently born #itemsName(chickens)#.\\nThe mean #variable(weight)# of the chickens is #mean(40)# #units#; guess their approximate standard deviation.</question>
+		<qnParam>index(0)#photoFile(chickens)#answer(2 4 6)#units(gm)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>soccerFans</shortName>
+		<longName>Heights or weights of soccer supporters</longName>
+		<question>The photograph below shows a crowd of soccer #itemsName(supporters)# at a match.\\nThe mean #variable[index](weight*height)# of the supporters is #mean[index](80,175)# #units#; guess their approximate standard deviation.</question>
+		<qnParam>index(0:1)#photoFile(soccerCrowd)#answer[index](6 12 20*5 8 14)#units[index](kg*cm)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>carSpeed</shortName>
+		<longName>Speeds of cars on a motorway</longName>
+		<question>The photograph below shows #itemsName(cars)# on a motorway. The cars are moving fairly steadily in each lane.\\nThe mean #variable(speed)# of cars in the #?:string[index](slow*middle*fast)# lane is #mean[index](30,50,70)# #units# and very few travel slower than #?:string[index](25 kph*45 kph*60 kph)# or faster than #?:string[index](35 kph*55 kph*80 kph)#. Guess the approximate standard deviation of the speeds.</question>
+		<qnParam>index(0:2)#photoFile(traffic)#answer[index](1 2 4*1 2 4*2 5 10)#units(kph)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>eggWeight</shortName>
+		<longName>Weights of eggs (small, medium, large or very large grades)</longName>
+		<question>In Europe, #itemsName(eggs)# are sold in grades Small (43-53 gm), Medium (53-63 gm), Large (63-73 gm) and Very Large (73-83 gm).\\nWhat is the approximate standard deviation of the #variable(weights)# of #?:string[index](Small*Medium*Large*Very Large)# eggs?</question>
+		<qnParam>index(0:3)#mean[index](48,58,68,78)#photoFile(eggs)#answer(2.0 2.5 3.0)#units(gm)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='sketchDistnFromMeanSd'>
+	<description>Sketch a distribution to match a given mean and standard devn</description>
+	<comment>The distribution is drawn by dragging crosses, histogram bars or boxplot values. The answer is not unique but any distribution with approximately the specified mean and sd is acceptable.\\nIf the option to allow multiple axes is chosen, the question becomes a little harder - an appropriate axis must be chosen before adjusting the display.\\nChoose exactly one of the display types - it will be used for all variations.</comment>
+	<applet>exerciseSDProg.SketchDistnApplet</applet>
+	<width>550</width>
+	<height>650</height>
+	
+	<option name="multipleAxes">Show a menu of possible axes to be used for the diagram</option>
+	<option name="crosses">Dot plot (drag crosses)</option>
+	<option name="histo">Histogram (default, drag tops of class rectangles)</option>
+	<option name="boxplot">Box plot (drag median, quartiles and extremes)</option>
+	
+	<variable name="varName" type="string(16)">Name for variable</variable>
+	<variable name="count" type="int(1)">Number of random values</variable>
+	<variable name="mean" type="random"></variable>
+	<variable name="sd" type="random"></variable>
+	<variable name="correctAxis" type="int(0)">Index of axis that is used to generate the data</variable>
+	<variable name="allAxes" type="axis_array">Alternative axes, one of which will be correct</variable>
+	<variable name="allHistoClasses" type="histo_array">Only used when the histo option is used</variable>
+	<variable name="allAxisNames" type="string_array">Names for alternative axes, used in pop-up menu to change axis</variable>
+	<variable name="jointMeanSD" type="meanSd">Used to generate the correct mean and SD for the data set from the axis used</variable>
+	
+	<template>
+		<question>A data set with #count[](40)# values has mean #mean(:)# and standard deviation #sd(:)#. Sketch a distribution that might describe the data.</question>
+		<qnParam>correctAxis(0:1)#varName(Annual rainfall)#allAxes(0_400_0_50 500_1600_600_200)#allHistoClasses(0_50 500_100)#allAxisNames(0_to_400 500_to_1600)#jointMeanSD(0.5:-1)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>rainfall</shortName>
+		<longName>Annual rainfall in an African town</longName>
+		<question>Annual rainfall in an African town was recorded in each of #count[](20,30,40,50)# years. Its distribution has mean #mean(:)# mm and standard deviation #sd(:)# mm.\\nSketch a distribution that might describe these rainfalls.</question>
+		<qnParam>correctAxis(0:3)#varName(Annual rainfall)#allAxes(0_400_0_50 500_1600_600_200 0_1200_0_200 1000_1500_1000_100)#allHistoClasses(0_50 500_100 0_100 1000_50)#allAxisNames(0_to_400 500_to_1600 0_to_1200 1000_to_1500)#jointMeanSD(0.5:-1)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>temperature</shortName>
+		<longName>Maximum daily temperature</longName>
+		<question>In an Asian city, the maximum daily temperature was recorded in each of #count[](100,120,140,160,180,200)# days. The mean temperature is #mean(:)##degrees#C and its standard deviation is #sd(:)##degrees#C.\\nSketch a distribution that might describe these temperatures.</question>
+		<qnParam>correctAxis(0:4)#varName(Maximum daily temperature)#allAxes(22_30_22_1 26_30_26_1 20_24_20_1 15_25_15_1 10_20_10_1)#allHistoClasses(22_1 26_0.5 20_0.5 15_1 10_1)#allAxisNames(22_to_30 26_to_30 20_to_24 15_to_25 10_to_20)#jointMeanSD(0.5:1)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>wind</shortName>
+		<longName>Wind run in city</longName>
+		<question>The wind run in a New Zealand city was recorded during October for #count(20:30)# years. The mean of this distribution is #mean(:)# km and its standard deviation is #sd(:)# km.\\nSketch a distribution that could possibly describe these wind runs.</question>
+		<qnParam>correctAxis(0:3)#varName(Monthly wind run, km)#allAxes(200_300_200_20 150_200_150_10 250_350_260_20 100_300_100_50)#allHistoClasses(200_10 150_5 250_10 100_20)#allAxisNames(200_to_300 150_to_200 250_to_350 100_to_300)#jointMeanSD(0.5:0)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='meanSdWithOutlierClusters'>
+	<description>Find approx mean and sd for data with an outlier or combining two groups</description>
+	<comment>There are two variations in this exercise. The first shows 2 or 3 data sets with their means and sds and asks for the mean and sd of the combined data. The second asks how an outlier affects the mean and sd of a data set.\\nIn both cases, the mean and sd are multiple-choice with 3 options.</comment>
+	<applet>exerciseSDProg.GroupsSDApplet</applet>
+	<width>500</width>
+	<height>700</height>
+	
+	<variable name="varName" type="string">Name for variable</variable>
+	<variable name="groupNames" type="string_array">Names for the groups</variable>
+	<variable name="count" type="string(20)">Number of values in each group, separated by spaces. Must be same number of values as the number of groups.</variable>
+	<variable name="axis" type="axis">Axis for variable</variable>
+	<variable name="scales" type="string(20)">List of values separated by spaces, one for each group. If preceeded by a ?, all values in the group have this value; otherwise it is the proportion of the axis covered by the group's values.</variable>
+	<variable name="decimals" type="int">Number of decimals displayed for mean and sd</variable>
+	
+	<variation>
+		<shortName>componentLengths</shortName>
+		<longName>Lengths of components (3 groups)</longName>
+		<question>Plastic components are manufactured by three machines whose settings are often different. The stacked dot plots below describe component lengths from the three machines.\\nWhat are the mean and standard deviation of the combined data set?</question>
+		<qnParam>axis(25 30 25 0.5)#scales[](0.3 0.3 0.3*1.0 1.0 1.0*1.0 0.4 0.2)#decimals(2)#count[](10 10 10*30 30 30*50 50 50)#varName(Component length, mm)#groupNames(MachineA MachineB MachineC)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>windRuns</shortName>
+		<longName>Weekly wind run in city (summer and winter)</longName>
+		<question>The stacked dot plots below describe the weekly wind run in a city in summer (Apr-Sep) and winter (Oct-Mar) of one year.\\nWhat are the mean and standard deviation of the weekly wind run in the whole year?</question>
+		<qnParam>axis[](1000 3000 1000 500*500 1000 500 50)#scales[](0.3 0.3*0.5 1.0*1.0 0.3)#decimals(0)#count(26 26)#varName(Wind run, km)#groupNames(Winter Summer)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>birdWeights</shortName>
+		<longName>Weights of birds (male and female)</longName>
+		<question>The dot plots below show the weights of samples of male and female birds of the same species.\\nWhat would be the mean and standard deviation if the male and female birds were combined?</question>
+		<qnParam>axis[](10 20 10 1*50 150 60 20)#scales[](0.3 0.3*0.8 0.8)#decimals(3)#count[](20 10*40 40*70 30)#varName(Weight, gm)#groupNames(Female Male)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>orangeWeight</shortName>
+		<longName>Weights of oranges (outlier)</longName>
+		<question>Various measurements were made of the oranges from a tree. Later examination of the data suggested that one orange was incorrectly measured. This orange's weight is shown separately from the others below.\\nWhat are the mean and standard deviation of the combined data set?</question>
+		<qnParam>axis[](250 350 250 10*300 350 300 5)#scales[](1.0 0.3*1.0 0.5*5.0 1.0)#decimals(1)#count[](1 40*1 100)#varName(Weight, gm)#groupNames(Mistake? OK)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>milkFat</shortName>
+		<longName>Milk fat content from herd of cows (outlier)</longName>
+		<question>The top dot plot shows a set of measurements of milk fat content from a herd of cows. One measurement was lost and was 'coded' as a missing value.\\nIf the missing value was incorrectly used in the calculations, what would be the mean and standard deviation?</question>
+		<qnParam>axis(2.5 3.501 2.5 0.1)#scales[](?0 1.0*?-999 0.8*?999 1.0)#decimals(3)#count[](1 40*1 100)#varName(Milk fat %)#groupNames(MissingValue OK)</qnParam>
+	</variation>
+</exercise>
+
+
+</topic>

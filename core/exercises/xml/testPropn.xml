@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE topic SYSTEM "exerciseXmlDefn.dtd">
+
+<topic name='testPropn'>
+<longName>Testing a proportion</longName>
+
+
+<exercise name='testUsingBinom'>
+	<description>Test a proportion using binomial distribution</description>
+	<comment>This is a complex question with several steps. Firstly the hypotheses must be chosen, then the null hypothesis parameters must be set to display a binomial barchart of the null distribution. The p-value is then calculated as the probability of a count as 'extreme' as the observed count. Finally the strength of the evidence against the H0 must be described with a pop-up menu.</comment>
+	<applet>exerciseTestProg.BinomialTestApplet</applet>
+	<width>500</width>
+	<height>770</height>
+	
+	<variable name="trialsName" type="string(26)">Name for Bernoulli trials (plural)</variable>
+	<variable name="successesName" type="string(26)">Name for successes (plural)</variable>
+	<variable name="successName" type="string(26)">Name for a single success</variable>
+	<variable name="pSuccess" type="double">Probability of success</variable>
+	<variable name="nTrials" type="int">Number of Bernoulli trials</variable>
+	<variable name="nSuccess" type="random">Number of observed successes</variable>
+	<variable name="conclusions" type="string_array">Strings for p-value over 0.1, 0.05 to 0.1, 0.01 to 0.05, 0.001 to 0.1 and under 0.001</variable>
+	<variable name="maxSliderN" type="int">Maximum number of trials for binomial experiments</variable>
+	<variable name="tail" type="int_choice(Low tail, null greater#Low tail, null equals#High tail, null lower#High tail, null equals#Two-tailed)"></variable>
+	<variable name="maxValue" type="double">Template for cut-off values above barchart</variable>
+	
+	<template>
+		<question>We want to test whether π is#?:string[tail]( at least * equal to * no higher than * equal to * )##pSuccess(0.6)#.\\nIn #nTrials(20:30)# trials, there were #nSuccess(:)# successes. Perform a test for whether π is #?:string[tail](less than*less than*more than*more than*different from*not equal to)# #pSuccess#.</question>
+		<qnParam>maxValue(99.9)#tail[](0,1,2,3,4,4)#maxSliderN(40)#trialsName(trials)#successesName(successes)#successName(success)#conclusions(There_is_no_evidence_that_H%sub1%_is_true There_is_only_weak_evidence_that_H%sub1%_is_true There_is_moderately_strong_evidence_that_H%sub1%_is_true There_is_very_strong_evidence_that_H%sub1%_is_true It_is_almost_certain_that_H%sub1%_is_true)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>strawberryYoghurt</shortName>
+		<longName>Choice of strawberry yoghurt</longName>
+		<question>It is thought that the proportion of customers buying yoghurt who choose strawberry flavour is#?:string[tail]( at least * equal to * no higher than * equal to * )##pSuccess[index](0.6,0.5,0.4)#.\\nOut of #nTrials(20:30)# customers buying yoghurt, #nSuccess(:)# were observed to pick strawberry. Perform a test for whether its probability is #?:string[tail](less than*less than*more than*more than*different from*not equal to)# #pSuccess#.</question>
+		<qnParam>index(0:2)#maxValue(99.9)#tail[](0,1,2,3,4,4)#maxSliderN(40)#trialsName(customers)#successesName(strawberry choices)#successName(choosing strawberry)#conclusions(There_is_no_evidence_that_H%sub1%_is_true There_is_only_weak_evidence_that_H%sub1%_is_true There_is_moderately_strong_evidence_that_H%sub1%_is_true There_is_very_strong_evidence_that_H%sub1%_is_true It_is_almost_certain_that_H%sub1%_is_true)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>raspberryYoghurt</shortName>
+		<longName>Choice of raspberry yoghurt</longName>
+		<question>It is thought that the proportion of customers buying yoghurt who choose raspberry flavour is#?:string[tail]( at least * equal to * no higher than * equal to * )##pSuccess[index](0.6,0.5,0.4)#.\\nOut of #nTrials(20:30)# customers buying yoghurt, #nSuccess(:)# were observed to pick raspberry. Perform a test for whether its probability is #?:string[tail](less than*less than*more than*more than*different from*not equal to)# #pSuccess#.</question>
+		<qnParam>index(0:2)#maxValue(99.9)#tail[](0,1,2,3,4,4)#maxSliderN(40)#trialsName(customers)#successesName(raspberry choices)#successName(choosing raspberry)#conclusions(There_is_no_evidence_that_H%sub1%_is_true There_is_only_weak_evidence_that_H%sub1%_is_true There_is_moderately_strong_evidence_that_H%sub1%_is_true There_is_very_strong_evidence_that_H%sub1%_is_true It_is_almost_certain_that_H%sub1%_is_true)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>femaleLizards</shortName>
+		<longName>Female lizards hatching</longName>
+		<question>Researchers believe that the proportion of lizards of a particular species that are hatched female is#?:string[tail]( at least * equal to * no higher than * equal to * )##pSuccess[index](0.6,0.5,0.4)#.\\n#nTrials(20:30)# lizards were observed hatching and #nSuccess(:)# of these were female. Perform a test for whether the probability of being female is #?:string[tail](less than*less than*more than*more than*different from*not equal to)# #pSuccess#.</question>
+		<qnParam>index(0:2)#maxValue(99.9)#tail[](0,1,2,3,4,4)#maxSliderN(40)#trialsName(lizards)#successesName(females)#successName(being female)#conclusions(There_is_no_evidence_that_H%sub1%_is_true There_is_only_weak_evidence_that_H%sub1%_is_true There_is_moderately_strong_evidence_that_H%sub1%_is_true There_is_very_strong_evidence_that_H%sub1%_is_true It_is_almost_certain_that_H%sub1%_is_true)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>maleLizards</shortName>
+		<longName>Male lizards hatching</longName>
+		<question>Researchers believe that the proportion of lizards of a particular species that are hatched male is#?:string[tail]( at least * equal to * no higher than * equal to * )##pSuccess[index](0.6,0.5,0.4)#.\n#nTrials(20:30)# lizards were observed hatching and #nSuccess(:)# of these were male. Perform a test for whether the probability of being male is #?:string[tail](less than*less than*more than*more than*different from*not equal to)# #pSuccess#.</question>
+		<qnParam>index(0:2)#maxValue(99.9)#tail[](0,1,2,3,4,4)#maxSliderN(40)#trialsName(lizards)#successesName(males)#successName(being male)#conclusions(There_is_no_evidence_that_H%sub1%_is_true There_is_only_weak_evidence_that_H%sub1%_is_true There_is_moderately_strong_evidence_that_H%sub1%_is_true There_is_very_strong_evidence_that_H%sub1%_is_true It_is_almost_certain_that_H%sub1%_is_true)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>drugRecovery</shortName>
+		<longName>Recovery after 12 hours with throat lozenge</longName>
+		<question>A drug company claims that when patients with sore throats take a throat lozenge, the probability of recovery after 12 hours is#?:string[tail]( at least *equal to *??? *??? * )##pSuccess[index](0.6,0.5,0.4)#.\\nIn an experiment with #nTrials(20:30)# patients, #nSuccess(:)# had recovered after 12 hours. Perform a test for whether the probability of recovery is #?:string[tail](less than*less than*???*???*different from*not equal to)# #pSuccess#.</question>
+		<qnParam>index(0:2)#maxValue(99.9)#tail[](0,1,4,4)#maxSliderN(40)#trialsName(patients)#successesName(recovered patients)#successName(recovery)#conclusions(There_is_no_evidence_that_H%sub1%_is_true There_is_only_weak_evidence_that_H%sub1%_is_true There_is_moderately_strong_evidence_that_H%sub1%_is_true There_is_very_strong_evidence_that_H%sub1%_is_true It_is_almost_certain_that_H%sub1%_is_true)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>drugFailure</shortName>
+		<longName>Still ill after 12 hours with throat lozenge</longName>
+		<question>A drug company claims that when patients with sore throats take a throat lozenge, the probability of being still ill after 12 hours is#?:string[tail](??? *??? * no higher than * equal to * )##pSuccess[index](0.6,0.5,0.4)#.\\nIn an experiment with #nTrials(20:30)# patients, #nSuccess(:)# were still ill after 12 hours. Perform a test for whether the probability of being still ill is #?:string[tail](???*???*more than*more than*different from*not equal to)# #pSuccess#.</question>
+		<qnParam>index(0:2)#maxValue(99.9)#tail[](2,3,4,4)#maxSliderN(40)#trialsName(patients)#successesName(patients still ill)#successName(being still ill)#conclusions(There_is_no_evidence_that_H%sub1%_is_true There_is_only_weak_evidence_that_H%sub1%_is_true There_is_moderately_strong_evidence_that_H%sub1%_is_true There_is_very_strong_evidence_that_H%sub1%_is_true It_is_almost_certain_that_H%sub1%_is_true)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='testNormalApprox'>
+	<description>Test a propn with a normal approximation</description>
+	<comment>This is a complex question with several steps. Firstly the hypotheses must be chosen, then the observed count must be translated into a z-score (by typing a formula). The relevant area from a N(0,1) pdf should be identified to find the p-value then the strength of evidence against the H0 must be described with a pop-up menu.</comment>
+	<applet>exerciseTestProg.NormApproxTestApplet</applet>
+	<width>550</width>
+	<height>770</height>
+	
+	<option name="continuityCorrection">Require a continuity correction (default allows the observed count to be used without adjusting by 0.5)</option>
+	
+	<variable name="trialsName" type="string(26)">Name for Bernoulli trials (plural)</variable>
+	<variable name="successesName" type="string(26)">Name for successes (plural)</variable>
+	<variable name="successName" type="string(26)">Name for a single success</variable>
+	<variable name="pSuccess" type="double">Probability of success</variable>
+	<variable name="nTrials" type="int">Number of Bernoulli trials</variable>
+	<variable name="nSuccess" type="random">Number of observed successes</variable>
+	<variable name="conclusions" type="string_array">Strings for p-value over 0.1, 0.05 to 0.1, 0.01 to 0.05, 0.001 to 0.1 and under 0.001</variable>
+	<variable name="tail" type="int_choice(Low tail, null greater#Low tail, null equals#High tail, null lower#High tail, null equals#Two-tailed)"></variable>
+	
+	<template>
+		<question>We want to test whether π is#?:string[tail]( at least * equal to * no higher than * equal to * )##pSuccess(0.6)#.\\nIn #nTrials(300)# trials, there were #nSuccess(:)# successes. Perform a test for whether π is #?:string[tail](less than*less than*more than*more than*different from*not equal to)# #pSuccess#.</question>
+		<qnParam>tail[](0,1,2,3,4,4)#trialsName(trials)#successesName(successes)#successName(success)#conclusions(There_is_no_evidence_that_H%sub1%_is_true There_is_only_weak_evidence_that_H%sub1%_is_true There_is_moderately_strong_evidence_that_H%sub1%_is_true There_is_very_strong_evidence_that_H%sub1%_is_true It_is_almost_certain_that_H%sub1%_is_true)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>voting</shortName>
+		<longName>Voting intentions in poll</longName>
+		<question>A week before a city's election for mayor, the media claim that the proportion of voters who intend to vote for a candidate (Brown) is#?:string[tail]( at least * equal to * no higher than * equal to * )##pSuccess[index](0.3,0.4,0.5,0.6,0.7)#.\\n#nTrials[](300,400,500,600)# voters in the city are randomly selected and #nSuccess(:)# say they intend to vote for Brown. Perform a test for whether #?:string[tail](less than*less than*more than*more than*different from*not equal to)# #?:string[index](30%*40%*50%*60%*70%)# of the city intends to vote for Brown.</question>
+		<qnParam>index(0:4)#tail[](0,1,2,3,4,4)#trialsName(sampled voters)#successesName(Brown supporters)#successName(voting for Brown)#conclusions(There_is_no_evidence_that_H%sub1%_is_true There_is_only_weak_evidence_that_H%sub1%_is_true There_is_moderately_strong_evidence_that_H%sub1%_is_true There_is_very_strong_evidence_that_H%sub1%_is_true It_is_almost_certain_that_H%sub1%_is_true)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>cola</shortName>
+		<longName>Cola preference</longName>
+		<question>A consumer group claims that#?:string[tail]( at least * * no higher than * * )##pSuccess[index](0.4,0.5,0.6)# of students prefer Coca Cola to Pepsi.\\nTo assess this claim, #nTrials[](200,300,400,500)# students on a campus are randomly selected and #nSuccess(:)# say they prefer Coca Cola. Perform a test for whether #?:string[tail](less than*less than*more than*more than*a percentage different from)# #?:string[index](40%*50%*60%)# of the students on that campus prefer Coke.</question>
+		<qnParam>index(0:2)#tail[](0,1,2,3,4,4)#trialsName(sampled students)#successesName(students preferring Coke)#successName(preferring Coke)#conclusions(There_is_no_evidence_that_H%sub1%_is_true There_is_only_weak_evidence_that_H%sub1%_is_true There_is_moderately_strong_evidence_that_H%sub1%_is_true There_is_very_strong_evidence_that_H%sub1%_is_true It_is_almost_certain_that_H%sub1%_is_true)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>chickenStress</shortName>
+		<longName>Battery chickens suffering from stress</longName>
+		<question>From previous research, a biologist believes that the proportion of chickens in battery farms suffering from stress is#?:string[tail]( at least * equal to * no higher than * equal to * * )##pSuccess[index](0.1,0.15,0.2,0.25)#.\\nTo assess this claim, #nTrials[](600,700,800,900,1000)# chickens in a farm are randomly selected and #nSuccess(:)# show signs of stress. Perform a test for whether the percentage of chickens on that farm that are stressed is #?:string[tail](less than*less than*more than*more than*different from)# #?:string[index](10*15*20*25)#%.</question>
+		<qnParam>index(0:3)#tail[](0,1,2,3,4,4)#trialsName(chickens)#successesName(chickens showing signs of stress)#successName(being stressed)#conclusions(There_is_no_evidence_that_H%sub1%_is_true There_is_only_weak_evidence_that_H%sub1%_is_true There_is_moderately_strong_evidence_that_H%sub1%_is_true There_is_very_strong_evidence_that_H%sub1%_is_true It_is_almost_certain_that_H%sub1%_is_true)</qnParam>
+	</variation>
+</exercise>
+
+</topic>

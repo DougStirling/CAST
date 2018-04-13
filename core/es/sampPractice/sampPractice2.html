@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Cluster sampling</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="cluster sampling, sampling frame, sampling scheme/cluster sampling">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Sampling frame</p>
+
+<p>Both simple random samples and stratified random samples require a complete 
+list of all individuals in the target population. This list might be obtained 
+from an electoral roll or some other publicly available list and is called a <strong>sampling 
+frame</strong>.</p>
+<p>In other situations, a complete list is unavailable, so a different sampling 
+scheme is necessary. For example, a town council might be interested in collecting 
+information from households with teenage children. Without a complete list of 
+such children, how might you sample them?</p>
+<p class="heading">Cluster sampling</p>
+<p>One solution to this problem is to group the target individuals into reasonably 
+small groups, called <strong>clusters</strong>, for which a complete list is available. 
+Clusters are similar to the strata that are used for stratified sampling, but 
+are usually much smaller. For example, to sample teenage children in a town, the 
+clusters might be defined by the different streets. (Long streets might be split 
+into shorter sections.) It is not necessary to know beforehand how many children 
+live in each street.</p>
+<p>For cluster sampling, a <strong>simple random sample of clusters</strong> is 
+selected, with all individuals in these clusters selected. For example, in any 
+selected street, an interviewer might approach each household in order to identify 
+the households with teenage children and obtain information from them.</p>
+<p>The mean of any variable that is calculated from the individuals in a cluster 
+sample can be used to estimate the corresponding characteristic of the underlying 
+population.</p>
+<p class="heading">Cost advantages</p>
+<p>Even when a complete sampling frame is available, cluster sampling might be 
+used to reduce the cost of sampling (or to increase the sample size for the same 
+cost) since it is often cheaper to record information from individuals in the 
+same cluster than from different parts of the sampling frame.</p>
+<p>For example, it is cheaper to interview people in every house in several streets 
+than to interview the same number of individuals who are scattered randomly over 
+the town.</p>
+
+<div class="diagram">
+
+<p>The diagram below illustrates cluster sampling. The population of 324 individuals 
+has been split into 36 clusters, each of which contains 9 individuals. (In many 
+practical situations, the cluster sizes would be different.)</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="sampDesignProg.TwoStageSampleApplet">
+<param name="varName" value="Value">
+<param name="randomNormal" value="9 0.0 8.0 347761213 2.5">
+<param name="mean" value="30.0">
+<param name="clustersPerSample" value="36">
+<param name="clusterCorr" value="0.00">
+<param name="primaryUnits" value="*3">
+<param name="sampleSize" value="27">
+<param name="sampleSeed" value="473493248">
+<param name="decimals" value="3">
+<param name="units" value="dollars">
+</applet>
+</div>
+
+<p>Click <strong>Take sample</strong> to take a cluster sample of 27 individuals 
+-- i.e. to take a simple random sample of 3 clusters.</p>
+
+</div>
+
+<p class="heading">Accuracy of cluster sampling</p>
+<p>When individuals in the same cluster tend to be more similar than individuals 
+in different clusters, the estimates that are obtained from cluster sampling are 
+more variable (and hence less accurate) than the corresponding estimates from 
+a simple random sample of the same size.</p>
+<table width="80%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+<tr> 
+<td><strong>The ordinary formula for the standard deviation of a sample mean will 
+overestimate its accuracy if the mean is obtained by cluster sampling.</strong></td>
+</tr>
+</table>
+
+<br>
+<div class="diagram">
+
+<p>The diagram below illustrates sampling from a population of 25 clusters, each 
+of which contains 4 individuals. (The different vertical bands represent the different 
+clusters in the population.)</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="sampDesignProg.ClusterAndSimpleApplet">
+<param name="varName" value="Income ($000)">
+<param name="randomNormal" value="4 0.0 8.0 57761213 3.0">
+<param name="mean" value="30.0">
+<param name="clustersPerSample" value="25">
+<param name="clusterCorr" value="0.00">
+<param name="primaryUnits" value="*5">
+<param name="sampleSize" value="20">
+<param name="sampleSeed" value="463483248">
+<param name="decimals" value="3">
+<param name="stageCost" value="20 3 999">
+<param name="units" value="dollars">
+<param name="vertAxis" value="0 55 0 10">
+<param name="horizAxis" value="0 24 0 5 24">
+<param name="customText" value="Variation within clusters=Variation within clusters#Clusters=Clusters#High=High#Low=Low#Cluster sample=Cluster sample#Simple random sample=Simple random sample">
+</applet>
+</div>
+
+<p>Click <strong>Take sample</strong> several times to build up the distribution 
+of the mean using cluster sampling of 5 clusters. Choose <strong>Simple random 
+sample</strong> from the pop-up menu then take several more samples. Since all 
+clusters have similar spreads of values, simple random sampling and cluster sampling 
+result in sample means with similar distributions (i.e. similar accuracy). </p>
+<p>Move the slider to about half-way to accentuate the differences between the 
+clusters (the four values in each cluster become more similar) and observe that 
+this has little effect on the accuracy of the sample mean when simple random sampling 
+is used. However the sample mean becomes much more variable with cluster sampling.</p>
+<table width="80%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+<tr> 
+<td><strong>Cluster sampling is as good as simple random sampling if the clusters 
+are similar to each other, but is worse if the clusters are different.</strong></td>
+</tr>
+</table>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

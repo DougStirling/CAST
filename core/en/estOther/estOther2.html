@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Error distribution by simulation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="error distribution, simulation, proportion, standard error, bias">
+	<meta name="dataset" content="Rice survey">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Error distributions from equations</p>
+
+<p>For many common parameter estimates, statistical theory can provide the error 
+	distribution (or an approximation).</p>
+
+<div class="centred"><div class="boxed">
+<p>There is a formula for the standard error of 
+				most common parameter estimates.</p>
+</div></div>
+
+<p class="heading">Error distributions from simulations</p>
+<p>However there are also situations where statistical theory (or easily accessible 
+	statistical software to implement the theory) does <strong>not</strong> provide 
+	the error distribution for the estimator of interest. In these situations, 
+	a <strong>simulation</strong> can often be used to find properties of the 
+	error distribution numerically.</p>
+<p class="gray">(We used simulations in earlier in this chapter to 
+	illustrate some of the concepts in estimation, but not as a practical tool.)</p>
+<p>This methodology will first be illustrated with a simulation to find the 
+	standard error of a sample proportion. For this application, we gave formulae 
+	earlier in this section to provide the standard error directly,</p>
+
+<div class="centred"><table border="0" cellpadding="0" cellspacing="0" class="centred"><tr>
+<td valign="middle"><em>standard error</em>&nbsp;&nbsp;=&nbsp;&nbsp;</td>
+<td valign="middle"><img src="../../images/symbol.seP.png" width="80" height="44" align="baseline"></td>
+</tr></table></div>
+
+<p> A simulation is therefore unnecessary and would never be used in practice. 
+	However the application does provide a simple and easily understood illustration 
+	of how simulation can be used. </p>
+
+<div class="diagram" title="Example: Rice survey">
+	<p class="heading">Rice survey</p>
+
+	
+	<p>In the rice survey, a proportion <em>p</em> =<sup>&nbsp;17</sup>/<sub>36</sub>&nbsp;=&nbsp;0.472 
+		of the <em>n</em>&nbsp;=&nbsp;36 farmers used 'Old' varieties. If this is 
+		a random sample of farmers in the region, the number using 'Old' varieties 
+		should have a binomial distribution,</p>
+	<p class=eqn><span class="black"><em>X</em>&nbsp; ~ &nbsp;<font face="Arial, Helvetica, sans-serif">binomial</font> (<em>n</em> = 36, &nbsp;&pi;)</span> 
+	</p>
+	<p>If we know the value of π, 
+		we could take repeated samples from this binomial distribution, find the estimation 
+		error, (<em>p</em>&nbsp;-&nbsp;π) 
+		for each sample, and build up the error distribution.</p>
+	<p>Of course, we do not know the value of π, 
+		but we could perform a similar simulation by replacing π 
+		with our best estimate, <em>p</em> =&nbsp;0.472. The diagram below does 
+		such a simulation.</p>
+	
+	<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="stdErrorProg.ErrorCatSampleApplet">
+<param name="varName" value="Variety of rice">
+<param name="random" value="36 0.47222">
+<param name="catLabels" value="Old Other">
+<param name="errorName" value="Error in estimate">
+<param name="errorAxis" value="-0.25 0.25 -0.2 0.1">
+<param name="statisticName" value="Estimate of P(Old varieties)">
+<param name="sampleName" value="Rice variety in sample of 36 farmers">
+<param name="decimals" value="3">
+<param name="maxBiasSe" value="-9.999">
+<param name="nCols" value="6">
+<param name="maxPropn" value="-9.999">
+<param name="customText" value="Estimate s.e. & bias=Estimate s.e. & bias#Bias=Bias">
+</applet>
+</div>
+
+		
+	
+	<p>Click <strong>Accumulate</strong> and take about 100 samples (each of 36 
+		farmers) to build up the error distribution.</p>
+	
+<div class="centred"><div class="boxed">
+<p>Observe that the estimates 
+						could be in error by as much as 0.2.</p>
+</div></div>
+
+	<p>The proportion of farmers in the whole region using 'Old' varieties could 
+		therefore be quite different from our estimate of 0.472.</p>
+	<p>Click <strong>Estimate s.e. and bias</strong> to find the standard deviation 
+		and mean of the errors. These should be fairly close to the values that 
+		could be obtained from formulae for this example.</p>
+<p class="eqn"><em>bias</em>&nbsp; =&nbsp; 0</p>
+
+<div class="centred"><table border="0" cellpadding="0" cellspacing="0" class="centred"><tr>
+<td valign="middle"><em>standard error</em>&nbsp; =&nbsp; </td>
+<td valign="middle"><img src="../../images/symbol.seP.png" width="80" height="44" align="baseline"></td>
+<td valign="middle">&nbsp; =&nbsp; 0.0832</td>
+</tr></table></div>
+
+</div>
+
+<br>
+
+	
+<div class="centred"><div class="boxed">
+<p>We again stress that a simulation would <span class="black">not</span> 
+				be used to find the standard error in this type of example &mdash; we should 
+				use the formula for the standard error of a proportion.</p>
+</div></div>
+
+
+
+	
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

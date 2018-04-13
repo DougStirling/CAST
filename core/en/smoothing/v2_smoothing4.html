@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Exponential smoothing</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/videoControls/combinedStyles.css' type='text/css'>
+	<script src='../../structure/environment.js'></script>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/videoControls/jquery-ui.js'></script>
+	<script src='../../structure/videoControls/videoControls.js'></script>
+
+	<meta name="index" content="smoothing, exponential smoothing">
+</head>
+
+
+<body class="video">
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Smoothing up to the end of the series</p>
+<p>A major problem with the use of moving averages and similar smoothing methods
+is that they cannot be used up to the end of a time series. <strong>Exponential
+smoothing</strong> smooths only with previous values so it can even be used for
+the final value in the series.</p>
+<script type='text/javascript'>writeVideo('bk/general', 'smoothing', 'exponSmoothFormula', '490', '338');</script>
+	
+<script type='text/javascript'>writeVideo('bk/general', 'smoothing', 'exponSmooth', '406', '266');</script>
+
+<p class="heading">Forecasting future values</p>
+  <p>The final exponentially smoothed value in the series can be used to forecast 
+    future values. If data are available up to and including time <i>i</i>, 
+    then the forecast for the next time period (<i>i</i>&nbsp;+&nbsp;1) is the 
+  exponentially smoothed value at time <i>i</i>.</p>
+<p class=eqn><img class="gif" src="../smoothing/images/expPredict2.gif" width="81" height="22"> </p>
+<p>The same value is also used to forcast values further  into the future.</p>
+<p>Since the exponentially smoothed values depend on the smoothing constant, 
+  	so do the forecasts.</p>
+  <ul>
+		<li>If <i>a</i>&nbsp;=&nbsp;1, the forecast is just the last observed value 
+			in the time series.</li>
+  	<li>As <i>a</i> is reduced, the forecast becomes more affected by earlier 
+  		values in the series.</li>
+ 	</ul>
+	<br>
+	
+<div class="diagram">
+<p class="heading">British Petroleum share trading</p>
+	
+<script type='text/javascript'>writeVideo('bk/general', 'smoothing', 'exponSmoothBa', '456', '294');</script>
+
+  </div>
+
+	<p class="heading">Time series with trend</p>
+	<p>The above example  had no long-term trend. However for a time 
+		series with an increasing trend, exponential smoothing of the raw data will 
+		tend to underestimate the trend. Similarly, the smoothed series will be too high if 
+		there is a decreasing trend.</p>
+
+
+  <div class="centred"><div class="boxed">
+    <p>Do not use exponential smoothing on a time series with trend.</p>
+  </div></div>
+  
+  <div class="diagram">
+<p class=heading>World rice production (million tonnes)</p>
+	
+<script type='text/javascript'>writeVideo('bk/general', 'smoothing', 'exponSmoothTrend', '456', '324');</script>
+
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

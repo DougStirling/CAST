@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Ratio of variances and F distribution</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="f distribution, variance, f ratio, analysis of variance, anova">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Ratio of variances</p>
+	<p>We have now seen that sample variances have distributions that are scaled 
+		chi-squared distributions</p>
+	<p class="eqn"><img src="images/varianceDistn.gif" width="274" height="44"></p>
+	<p><strong>Analysis of variance</strong> is a powerful and widely used statistical 
+		technique in which pairs of such variances are compared. The ratio of two 
+		such variances is called an <strong>F ratio</strong>.</p>
+	<p class="eqn"><img src="images/fRatioDefn.gif" width="68" height="47"></p>
+<p class="heading">F distribution</p>
+  <p>Consider two sample variances that are calculated from random samples from 
+		different normal populations. The F ratio then has a standard distribution 
+		called an <strong>F distribution</strong>. The shape of this distribution 
+		depends on the sample sizes of the two groups &mdash; more generally on the degrees 
+		of freedom of the two variance estimates.</p>
+	<p> Allowing for the possibility that the two normal populations have different 
+		standard deviations, the F distribution is scaled by their ratio,</p>
+	<p class="eqn"><img src="images/fRatioGeneralDistn.gif" width="261" height="48"></p>
+  <p>However if the two groups really have the same population standard deviations, 
+		then this simplifies and the distribution does not involve any unknown parameters:</p>
+<p class="eqn"><img src="images/fRatioDistn.gif" width="214" height="47"></p>
+<br>
+
+<div class="diagram">
+<p class="heading">Shape of the F distribution</p>
+
+<p>The diagram below shows the shape of the F distribution.</p>
+			
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="380">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="varianceProg.FShapeApplet">
+<param name="horizAxis" value="0 10 0 2">
+<param name="df" value="1 40 5">
+<param name="areaUsed" value="0.07">
+<param name="fName" value="F distn (#, # df)">
+<param name="customText" value="Numerator d.f.=Numerator d.f.#Denominator d.f.=Denominator d.f.">
+</applet> 
+</div>
+
+<p>Use the sliders to adjust the degrees of freedom for the distribution (one 
+fewer than the sample sizes in the two groups for the F variance-ratio statistic). 
+Observe that:</p>
+
+<ul>
+<li>The distribution is skew. (Values cannot be less than zero but can be arbitrarily 
+high.)</li>
+<li>The distribution is particularly skew when the numerator degrees of freedom 
+are 1 or 2.</li>
+<li> As the degrees of freedom increase (i.e. the sample sizes increase), the 
+distribution becomes less variable.</li>
+<li>The value 1.0 is near the centre of the distribution but, because of its skewness, 
+the distribution's mean is higher than 1.0.</li>
+</ul>
+<p>In practice, we usually only want to compare variances when both sample sizes 
+are reasonably high.</p>
+<p class="heading">Simulation</p>
+<p>The following diagram shows samples of size <em>n</em><sub>1</sub>&nbsp;=&nbsp;7 
+and <em>n</em><sub>2</sub>&nbsp;=&nbsp;20 from normal populations that both have 
+the same standard deviation (σ<sub>1</sub>&nbsp;=&nbsp;σ<sub>2</sub>&nbsp;=&nbsp;1.3).</p>
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="varianceProg.TwoGroupFApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Group, x">
+<param name="xLabels" value="#Group 1# #Group 2#">
+<param name="anovaModel" value="4.5 1.3 5.5 1.3">
+<param name="randomSeed" value="223945782">
+<param name="yAxis" value="1.0 9.5 1 1">
+<param name="decimals" value="3">
+<param name="maxSummaries" value="999.999 99.999 99.999 9.999">
+<param name="xValues" value="20@0 7@1">
+<param name="df" value="19 6">
+<param name="summaryAxis" value="0 6 0 1">
+<param name="customText" value="F ratio=F ratio">
+</applet> 
+</div>
+
+<p>Click <strong>Accumulate</strong> then take several samples from the two groups. 
+Observe that the variability of the F ratio matches the theoretical F distribution 
+with 19 and 6 degrees of freedom.</p>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

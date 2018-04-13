@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Estimating the seasonal effect</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="seasonal pattern">
+	<meta name="dataset" content="Tourists in Hawaii">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Limitations of moving averages</p>
+
+  <p>We used moving averages to smooth out the seasonal variation in a time series, 
+		but this method has serious limitations.</p>
+	<ul>
+		<li>Moving averages cannot be used for the ends of a time series. For monthly 
+			data, this means that we cannot remove the seasonal variation from the last 
+			6 months &mdash; usually the most important part of the series!</li>
+		<li>The method does not provide forecasts of future values in the series.</li>
+	</ul>
+	<p class="heading">Estimating a common seasonal effect</p>
+	<p>If we assume that the underlying seasonal pattern is the same in each year, 
+    this common seasonal pattern can be estimated. Our estimates are based on 
+    the <strong>residuals</strong> from the moving averages that were used to 
+    smooth out the seasonal variation. (The residuals are the differences between 
+    the actual values and the smoothed values.)</p>
+	<p>For monthly data, we can estimate a 'January effect' by averaging the difference 
+		between actual January values and their smoothed values. For example, if January 
+		values were on average 5 higher than their smoothed values, the seasonal effect 
+		for January would be 5. Negative values for the seasonal effect correspond 
+		to months where the values are, on average, lower than their smoothed values.</p>
+
+
+<div class="diagram" title="Example: Tourist arrivals in Hawaii">
+<p class="heading">International tourists in Hawaii</p>
+<p>The time series plot below shows international tourist numbers in Hawaii
+and a 12-point moving average that smooths out the seasonal variation.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="550">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.SeasonalEffectApplet">
+<param name="varName" value="International tourists">
+<param name="values" value="44928 43338 40700 38685 34151 42268 46784 49602 36812 34401 37252 48317 43251 31401 31414 35283 36380 45122 49311 50746 45464 38306 42460 49572 48266 50406 43463 38857 42945 49839 48435 49771 47242 37320 41146 50352 53007 48377 47067 40084 43017 46050 49470 53368 46594 41057 44307 52182 48281 53656 52149 40012 42170 45673 49968 56207 50388 43446 46989 55866 48913 46126 50254 40403 47205 50306 59905 60791 55959 46120 50274 60341 52321 55398 53017 43916 45430 52245 58106 56445 53109 47054 48195 57372 48165 55118 53627 43181 44055 46804 52354 52371 53761 43458 45722 51743 52807 53451 46794 38760 37168 39614 47299 49882 42797 37829 44463 53265 55260 57112 51583 39087 35835 41322 50608 48960 44136 42522 43858 47485">
+<param name="vertAxis" value="30000 62000 30000 10000">
+<param name="seasonName" value="12 Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec">
+<param name="seasonInfo" value="0 0 1990">
+<param name="timeAxisName" value="Month">
+<param name="smoothName" value="Smoothed">
+<param name="labelAxes" value="true">
+<param name="effectAxisInfo" value="-8000 7000 -8000 2000">
+<param name="effectName" value="Seasonal effect (average residual)">
+<param name="customText" value="Moving averages to remove seasonal effect=Moving averages to remove seasonal effect">
+</applet>
+
+</div>
+
+		<p>Click on any value on the time series plot to highlight the residuals for 
+      that month in each year. The average of these residuals is the seasonal 
+      effect for that month.</p>
+		<p>The plot of the seasonal effect at the bottom of the diagram clearly shows 
+			the seasonal variation in tourist numbers.</p>
+		</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Displaying outliers</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="box plot, outliers/display of outliers in box plot, interquartile range">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Improved box plot</p>
+	<p>One problem with the basic box plot that was described in the previous pages 
+		is that it cannot show whether there are outliers in the data set. A common 
+		modification draws some of the most extreme values as separate crosses on 
+		the box plot and extends the 'whisker' only as far as the most extreme observations 
+		that are <strong>not</strong> drawn separately.</p>
+	
+<div class="centred"><div class="boxed">
+<p>The modified box plot makes outliers stand out.</p>
+</div></div>
+
+	<p>(The rule that is used to decide on which values to display as crosses is 
+		explained below.)</p>
+
+<div class="diagram" title="Illustration of need for improved box plot">
+		<p>In many practical applications, skew distributions with a long tail towards 
+			the higher values are common. For example, experiments involving survival 
+			times of plants or insects, or times until failure of manufactured items 
+			usually result in data with occasional high values.</p>
+		<p>In the data set below is a skew distribution with no outliers and no values 
+			stand out as unusual. </p>
+			
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="210">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="boxPlotProg.WeightedBoxApplet">
+<param name="varName" value="Skew distn">
+<param name="varName2" value="Outlier">
+<param name="values" value="1 3 4 5 7 8 10 12 17 18 20 22 26 28 33 36 40 51 83 94 119">
+<param name="values2" value="1 3 4 5 7 8 10 12 17 18 20 22 26 28 33 36 40 40 42 45 119">
+<param name="initialWt" value="1.0">
+<param name="horizAxis" value="0 120 0 20">
+<param name="showOutliers" value="choice">
+<param name="customText" value="Basic box plot=Basic box plot#Box plot showing outliers=Box plot showing outliers">
+</applet> 
+		</div>
+		
+		<p><strong>Drag the slider</strong> to change the data set into one with a 
+			fairly symmetric distribution and a single outlier. The basic box plot does 
+			not show the existence of the outlier.</p>
+		
+<div class="centred"><div class="boxed">
+<p>The basic box plot cannot distinguish between a very 
+						long-tailed distribution and an outlier.</p>
+</div></div>
+
+		<p>Now select <strong>Box plot showing outliers</strong> from the pop-up menu 
+			and again use the slider to see how the improved box plot distinguishes 
+			between a skew distribution and one with an outlier.</p>
+	</div>
+
+  <p class="heading">Which extreme values are displayed as crosses?</p>
+
+  <p>We firstly define the <strong>interquartile range</strong> to be the distance 
+		between the upper and lower quartiles (i.e. the length of the central box 
+		in the box plot). Any values more than 1.5 times this distance from the box 
+		are displayed with a separate cross. The 'whiskers' that are drawn to the 
+		sides of the central box extend only as far as the most extreme values within 
+		these limits. </p>
+
+<p class=eqn><img class="gif" src="images/outlierDefn.gif" width="504" height="124">
+</p>
+
+<div class="diagram" title="Illustration of when outliers are displayed as crosses">
+
+		<p>The diagram below allows you to investigate these improved box plots.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="180">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="boxPlotProg.DragBoxValueApplet">
+<param name="varName" value="test">
+<param name="values" value="2.2 2.4 2.4 2.6 2.7 2.9 3.2 3.3 3.5 3.8 3.9 4.1 4.6 5.1 6.1 6.5">
+<param name="horizAxis" value="-0.5 10 0 1">
+</applet>
+</div>
+
+		<p>Drag the cross on the jittered dot plot corresponding to the highest 
+			value (6.5) to the right, increasing its value to turn it into an outlier.</p>
+		<p>The other crosses on the jittered dot plot can be similarly dragged to 
+			change the distributions of values. When are the extreme values separately 
+			displayed as crosses in the box plot?</p>
+
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

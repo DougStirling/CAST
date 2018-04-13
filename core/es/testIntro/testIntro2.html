@@ -1,0 +1,162 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Soccer league simulation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="simulation">
+	<meta name="dataset" content="Soccer league">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class=heading>Randomness in sports results</p>
+
+<p>Although we like to think that the 'best' team wins in sports competitions, 
+there is actually considerable variability in the results. Much of this variability 
+can be considered to be random &mdash; if the same teams play again, the results are 
+often different. The most obvious examples of this randomness occur when a series 
+of matches is played between the same two teams.</p>
+<ul>
+<li>In the Finals Series for the National Basketball League in the USA, the two 
+finalists play a series of 7 matches. The eventual winner usually loses at least 
+one match during the series.</li>
+<li>In cricket, there is often a series of one-day internationals between a touring 
+team and the home team. Again, all games are rarely won by the same team.</li>
+</ul>
+<p>Since the teams are virtually unchanged in any series, the variability in results 
+can only be explained through randomness.</p>
+<p class=heading>Randomness or skill?</p>
+<p>When we look at sports results, can we tell whether all teams are equally matched 
+with the same probability of winning? Or do some teams have a higher probability 
+of winning than others?</p>
+<p>There are different ways to examine this question, depending on the type of 
+data that is available. The following example assesses an end-of-year league table.</p>
+
+<div class="diagram">
+
+<p class=heading>English Premier Soccer League, 2008/09</p>
+
+<p>In the English Premier Soccer league, each of the 20 teams plays every other 
+team twice (home and away) during the season. Three points are awarded for a win 
+and one point for a draw. The table below shows the wins, draws, losses and total 
+points for all teams at the end of the 2008/09 season.</p>
+<table border="0" class="centred" cellpadding="2" cellspacing="0">
+<tr> 
+<th>&nbsp;</th>
+<th><div>Team</div></th>
+<th width="60" align="center">Wins</th>
+<th width="60" align="center">Draws</th>
+<th width="60" align="center">Losses</th>
+<th width="60" align="center">Points</th>
+</tr>
+<tr> 
+<td>1.<br>
+2.<br>
+3.<br>
+4.<br>
+5.<br>
+6.<br>
+7.<br>
+8.<br>
+9.<br>
+10.<br>
+11.<br>
+12.<br>
+13.<br>
+14.<br>
+15.<br>
+16.<br>
+17.<br>
+18.<br>
+19.<br>
+20.</td>
+<td bgcolor="#FFFFFF"><strong>Manchester_U<br>
+Liverpool<br>
+Chelsea<br>
+Arsenal<br>
+Everton<br>
+Aston_Villa<br>
+Fulham<br>
+Tottenham<br>
+West_Ham<br> 
+Manchester_C<br>
+Wigan<br>
+Stoke_City<br>
+Bolton<br> 
+Portsmouth<br>
+Blackburn<br>
+Sunderland<br> 
+Hull_City<br>
+Newcastle<br>
+Middlesbrough<br> 
+West_Brom_Albion
+</strong></td>
+<td width="60" align="center" bgcolor="#FFFFFF">28<br>25<br>25<br>20<br>17<br>17<br>14<br>14<br>14<br>15<br>12<br>12<br>11<br>10<br>10<br>9<br>8<br>7<br>7<br>8</td>
+<td width="60" align="center" bgcolor="#FFFFFF">6<br>11<br>8<br>12<br>12<br>11<br>11<br>9<br>9<br>5<br>9<br>9<br>8<br>11<br>11<br>9<br>11<br>13<br>11<br>8</td>
+<td width="60" align="center" bgcolor="#FFFFFF">4<br>2<br>5<br>6<br>9<br>10<br>13<br>15<br>15<br>18<br>17<br>17<br>19<br>17<br>17<br>20<br>19<br>18<br>20<br>22</td>
+<td width="60" align="center" bgcolor="#FFFFFF">90<br>86<br>83<br>72<br>63<br>62<br>53<br>51<br>51<br>50<br>45<br>45<br>41<br>41<br>41<br>36<br>35<br>34<br>32<br>32</td>
+</tr>
+</table>
+<p>We observed in an earlier simulation that <a href="javascript:showNamedPage('probSim3')">there 
+is considerable variability in the points</a>, even when all teams are evenly 
+matched. However,&nbsp;...</p>
+<center>
+<table border="1" cellspacing="0" cellpadding="10" bgcolor="white" width="75%">
+<tr> 
+<td><strong>If some teams are more likely to win their matches than others, the 
+spread of final points is likely to be greater &mdash; the top and bottom teams are 
+likely to be more extreme.</strong></td>
+</tr>
+</table>
+</center>
+<p class=heading>A simulation</p>
+<p>To assess whether there is any difference in skill levels, we can therefore 
+run a simulation of the league, assuming evenly matched teams and generating random 
+results with probabilities 0.372, 0.372 and 0.255 for wins, losses and draws. 
+(A proportion 0.255 of games in the actual league resulted in draws.)</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="520">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="randomisationProg.LeagueSDApplet">
+<param name="labelName" value="Team">
+<param name="labels" value="ManchesterU Liverpool Chelsea Arsenal Everton AstonVilla Fulham Tottenham WestHam ManchesterC Wigan StokeCity Bolton Portsmouth Blackburn Sunderland HullCity Newcastle Middlesbro WestBromA">
+<param name="varName" value="Results">
+<param name="wins" value="28 25 25 20 17 17 14 14 14 15 12 12 11 10 10 9 8 7 7 8">
+<param name="draws" value="6 11 8 12 12 11 11 9 9 5 9 9 8 11 11 9 11 13 11 8">
+<param name="summaryAxis" value="0 20 0 5">
+<param name="drawProb" value="0.255">
+<param name="sdName" value="St devn">
+<param name="maxSD" value="99.999">
+<param name="customText" value="Propn more extreme=Propn more extreme#Actual Data=Actual Data#Simulated Data=Simulated Data">
+</applet>
+</div>
+
+<p>Click <strong>Simulate</strong> to simulate the 380 games in a season. The 
+standard deviation of the final points is shown below the table. Click <strong>Accumulate</strong> 
+then run the simulation about 100 times. <font color="#666666">(Hold down the 
+<strong>Simulate</strong> button to speed up the process.)</font></p>
+<p>The standard deviation of the points in the actual league table was 18.2. Since 
+most simulated standard deviations are between 5 and 12, we conclude that such 
+a high spread would be extremely unlikely if the teams were evenly matched.</p>
+<center>
+<table border="1" cellspacing="0" cellpadding="10" bgcolor="white" width="75%">
+<tr> 
+<td><strong>There is strong evidence that the top teams are 'better' than the 
+bottom teams.</strong></td>
+</tr>
+</table>
+</center>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

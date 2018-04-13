@@ -1,0 +1,235 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Simulation mit Normalverteilung</title>
+
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="simulation, error distribution, standard error, bias, quartiles">
+	<meta name="dataset" content="Silkworm poisoning">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Sch&auml;tzung anderer Parameter
+einer normalen
+Grundgesamtheit</p>
+
+<p>In normalen Populationen ist der Mittelwert &micro; der
+Parameter,
+welcher meistens gesch&auml;tzt wird. Dennoch haben nummerische
+Verteilungen andere Parameter, welche interessant sein
+k&ouml;nnten.
+Zum Beispiel,&nbsp;</p>
+
+<ul>
+
+  <li>Standardabweichung</li>
+
+  <li>Interquartilsabstand (oberes Quartil - unteres Quartil)</li>
+
+  <li>Median</li>
+
+  <li>andere Percentile (z.B. das obere Quartil)</li>
+
+</ul>
+
+<p>Diese Parameter k&ouml;nnen gesch&auml;tzt werden,
+indem man die
+dazugeh&ouml;rende Auswertungsstatistik einer Zufallsstichprobe
+benutzt. Dennoch k&ouml;nnte die
+Fehlerverteilung&nbsp;schwierig
+theoretisch zu erhalten sein.</p>
+
+<p class="heading">Simulation</p>
+
+<p>Da die Parameter &micro; und &sigma; unbekannt sind,
+k&ouml;nnen wir
+keine Simulation mit wiederholten Stichproben von der aktuellen
+Population ausf&uuml;hren. Dennoch k&ouml;nnen wir eine
+Simulation von
+unserer bestgesch&auml;tzten Populationsverteilung
+durchf&uuml;hren-
+z.B. ersetzen wir &micro; und &sigma; durch den Mittelwert der
+Stichprobe und die Standardabweichung.</p>
+
+<p>Wir nehmen zum wiederholten Male Stichproben der
+Gr&ouml;&szlig;e <em>n</em>
+aus dieser gesch&auml;tzten
+Population und werten den Sch&auml;tzfehler durch Verwendung jeder
+Stichprobe aus. (Da wir die Population, aus welcher wir die Stichproben
+ziehen, kennen, kennen wir die Parameter der Population und
+k&ouml;nnen
+den Sch&auml;tzfehler finden).</p>
+
+<p>Die Standartabweichung dieser Fehler ist der sich
+ann&auml;hernde
+Standardfehler des Sch&auml;tzers.</p>
+
+<div class="diagram">
+<p class="heading">Seidenraupen-Vergiftung</p>
+
+<p>In einem Experimt zur Untersuchung der toxischen Wirkung von
+Arsen,
+wurde 80 Seidenraupen im vierten Larvenstadium, die zwischen 0,41 und
+0,45 Gramm gewogen haben,&nbsp;0,10 mg Natrium-Arsenat pro Gramm
+K&ouml;rpergewicht gegeben.</p>
+
+<center>
+<table bgcolor="white" border="1" cellpadding="10" cellspacing="0" width="75%">
+
+  <tbody>
+
+    <tr>
+
+      <td><strong>Wie lange wird eine aus vier Larven
+&uuml;berleben?<strong> </strong></strong></td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+</center>
+
+<p>In anderen Worten, wollen wir das <strong>obere
+Quartil</strong> der &Uuml;berlebenszeit sch&auml;tzen.</p>
+
+<p class="eqn"><object data="images/silkwormUQ.svg" height="136" width="396"></object></p>
+
+<p>Der Dotplot oben zeigt die &Uuml;berlebenszeit und ihr
+oberes
+Quartil. Vorausgesetzt diese Seidenraupen sind eine zuf&auml;llige
+Stichprobe,...</p>
+
+<center>
+<table bgcolor="white" border="1" cellpadding="10" cellspacing="0" width="75%">
+
+  <tbody>
+
+    <tr>
+
+      <td><strong>... <span style="color: rgb(255, 0, 0);">sch&auml;tzen</span>
+wir, dass das obere Quartil der Population bei 292 Sekunden liegt- z.B.
+sagen wir voraus, dass eine von vier Seidenraupen dieser Art 292
+Sekunden &uuml;berleben wird.<strong> </strong></strong></td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+</center>
+
+<p class="heading">Ann&auml;hernde Population</p>
+
+<p>Die &Uuml;berlebenszeiten haben eine ann&auml;hernd
+symmetrische
+Verteilung, so dass es vertretbar ist die Simulation einer
+zuf&auml;lligen Stichprobe einer normalen Population zu versuchen.
+Das
+untere Diagramm zeigt eine Normalverteilung deren Mittelwert und
+Standardabweichung gleich deren unserer Daten ist.</p>
+
+<p class="eqn"><object data="images/silkwormModel.svg" height="136" width="396"></object></p>
+
+<p>Wir nutzen diese Normalverteilung als eine Population aus der
+80
+Werte gezogen werden- die sumulierten &Uuml;berlebenszeiten von 80
+Seidenraupen, die die gleiche Dosis Arsen bekommen haben. F&uuml;r
+die
+Normalverteilung (272,6, 30,7) ist das obere Quartil&nbsp;293,3,
+was
+den "Zielparameter" darstellt, der durch unsere simulierten Stichproben
+gesch&auml;tzt wird. </p>
+
+<div class="centred"><applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" height="350" width="550">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="stdErrorProg.ErrorSampleApplet"><param name="varName" value="Simulierte &Uuml;berlebensdauer (Sek)"><param name="random" value="80 272.6 30.7 875636431 2.5"><param name="dataAxis" value="180 380 200 50"><param name="errorName" value="Sch&auml;tzfehler (Sek)"><param name="errorAxis" value="-15 15 -15 5"><param name="percentile" value="0.75"><param name="paramName" value="Zielparameter (UQ)"><param name="statisticName" value="Sch&auml;tzung (Proben UQ)"><param name="decimals" value="2"><param name="units" value="sec"><param name="maxBiasSe" value="99.99"><param name="showBiasSe" value="true"><param name="customText" value="Estimate s.e. &amp; bias=Sch&auml;tzung Standardfehler &amp; Bias#Bias=Bias"></applet></div>
+
+<p>Das Diagramm zeigt zuerst eine Stichprobe von 80
+&Uuml;berlebenszeiten. Der Fehler ist der Unterschied ziwschen dem
+oberen Quartil und dem zugrundeliegenden Populationsparameter, 293,3
+Sekunden.</p>
+
+<p>Klicke einige Male <strong>Stichprobe ziehen u</strong>nd
+beobachte, dass der Fehler sich von Probe zu Probe unterscheidet.</p>
+
+<p>Klicke <strong>Akkumulieren </strong>und nehme
+dann 100 weitere
+Proben&nbsp;(&Uuml;berlebenszeit von 80 Seidenraupen). Die
+Fehlerverteilung wird als gestapelter Dotplot am Boden des Diagramms
+gebildet.</p>
+
+<center>
+<table bgcolor="white" border="1" cellpadding="10" cellspacing="0" width="75%">
+
+  <tbody>
+
+    <tr>
+
+      <td><strong>Die Fehlerverteilung zeigt einem, wie
+weit das obere
+Quartil von unseren &Uuml;berlebenszeiten (292 Sekunden) vom oberen
+Quartil der unbekannten wahren Population wahrscheinlich entfernt
+ist.&nbsp;</strong></td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+</center>
+
+<p>Klicke <strong>Sch&auml;tzung SE und Bias</strong>,
+um die
+Standardabweichung und den Mittelwert der Fehlerverteilung zu
+sehen.&nbsp;</p>
+
+<p class="heading">Verstehen der Genauigkeit einer
+Sch&auml;tzung</p>
+
+<p>In der Simulation solltest du beobachtet haben, dass der Bias
+des
+Sch&auml;tzers klein ist, wodurch wir ihn als Null behandeln.</p>
+
+<p>Der Standardfehler in deiner Simulation lag wahrscheinlich bei
+&uuml;ber 4 Sekunden. Wir k&ouml;nnen die 70-95-100 Faustregel
+benutzen, um diesen Wert zu interpretieren- der Fehler hat eine
+ann&auml;hernd 95%ige Chance innerhalb von 2 SE von Null zu liegen
+und
+liegt fast sicher innerhalb von 3 SE von Null.</p>
+
+<center>
+<table bgcolor="white" border="1" cellpadding="10" cellspacing="0" width="75%">
+
+  <tbody>
+
+    <tr>
+
+      <td><strong>Der Fehler in unserer Sch&auml;tzung
+des oberen
+Quartils der Population, 292 Sekunden, ist wahrscheinlich niedriger als
+8 Sekunden und ist fast sicher niedriger als 12 Sekunden.</strong></td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+</center>
+
+<br>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

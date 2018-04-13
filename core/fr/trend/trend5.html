@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Élimination de la tendance d'une série chronologique</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="time series, residual">
+	<meta name="dataset" content="Traffic fatal crashes in NZ">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Résidus</p>
+<p>Les résidus d'un modèle de séries temporelles sont les différences entre les valeurs réelles et équipés à partir du modèle. Ils décrivent la façon dont le modèle aurait sur-ou sous-estimé les données.</p>
+<p class="eqn" style="color:#000000"><em>e<sub>i</sub></em> &nbsp; = &nbsp; <em>y<sub>i</sub></em> &nbsp;− &nbsp;<em>tendance<sub>i</sub></em></p>
+<p>Les résidus forment la série <strong>détendancées</strong>, et le processus d'élimination, la tendance est appelée <strong>élimination de la tendance</strong>. Detrending révèle souvent des caractéristiques intéressantes qui ont été obscurcis par la tendance, et qui peuvent être importants pour expliquer le passé ou de prédire l'avenir.</p>
+<p>Il est donc utile de chercher des modèles dans un graphique chronologique des résidus. Si le modèle à l'étude s'intègre bien, il devrait y avoir aucune tendance dans les résidus &mdash; chacun devrait avoir la même chance d'être positif ou négatif.</p>
+<p>Si il ya des modèles systématiques dans les résidus, il peut être possible d'utiliser un modèle différent de la tendance (par exemple quadratique plutôt que d'un modèle linéaire), mais les séries chronologiques présentent souvent des modèles qui ne peut être expliqué avec des modèles simples pour la tendance.</p>
+
+
+<div class="diagram"> 
+<p class="heading">Accidents de la circulation mortels dans la Nouvelle-Zélande</p>
+<p>Le schéma ci-dessous indique le nombre de collisions de véhicules mortelle en Nouvelle-Zélande pour 100.000 habitants entre 1970 et 2005.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.TimeResidualApplet">
+<param name="varName" value="Accidents mortels pour 100,000 popn">
+<param name="values" value="20.3 20.7 21.0 24.5 19.8 18.3 17.0 19.7 18.6 15.9 16.8 18.3 18.7 17.4 18.6 20.0 19.8 20.6 18.7 19.2 18.7 16.1 15.6 14.7 13.9 13.8 12.3 12.4 11.5 11.4 10.0 10.3 9.3 10.1 9.2 8.3">
+<param name="vertAxis" value="5 30 5 5">
+<param name="timeAxis" value="0 10 1970 10">
+<param name="timeName" value="an">
+<param name="timeSequence" value="1970 1 36">
+<param name="decimals" value="3 3 3 3">
+<param name="labelAxes" value="true">
+<param name="timeAxisName" value="An">
+<param name="residAxisLabels" value="5,-10 5">
+<param name="allowQuadratic" value="true">
+<param name="customText" value="Data=Donnée">
+</applet>
+</div>
+
+<p>Les résidus sont les distances verticales entre les points et la ligne. Déplacez le curseur vers la droite pour afficher une série chronologique de ces résidus.</p>
+<p>Répétez l'opération avec un modèle quadratique et observer comment les résidus efficace redresser la courbure.</p>
+<p>Après élimination de la tendance de cette façon, la valeur résiduelle pour 1973 se démarque comme étant anormalement élevé, surtout par rapport aux chiffres dans les années adjacentes. Nous pourrions étudier plus s'il y avait des changements dans la législation particulière qui peut avoir contribué à cela.</p>
+<p>De manière similaire, il ya une série de résidus positifs entre 1985 et 1990. Y avait-il quelque chose d'inhabituel à propos de ces années?</p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

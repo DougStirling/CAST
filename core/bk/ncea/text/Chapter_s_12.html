@@ -1,0 +1,1118 @@
+<html>
+<head>
+  <title>12. Use Probability (2.12)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 12 &nbsp; Use Probability (2.12)</h1>
+<h1 class="sectionName">12.1 &nbsp; Proportions from tables</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Relationships between variables</li>
+<li>Marginal distributions</li>
+<li>Conditional distributions</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='4'>
+<li>Conditional vs marginal distns</li>
+<li>Exercise:   Proportions from contingency tables</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">12.1.1 &nbsp; Relationships between variables</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Bivariate data without an explanatory variable</p>
+<p>In some bivariate categorical data sets, one variable can be treated as a <strong>response</strong> whose
+value depends on the other <strong>explanatory</strong> variable. The explanatory
+variable can then be used to split the individuals into groups.</p>
+<p>In other bivariate data, the relationship between the variables 
+		is more symmetrical but we still want to discover whether particular values
+of one variable are <strong>associated</strong> with values of the other. A contingency
+table again summarises the data.</p>
+<div class="centred"><table border="0" class="centred" cellpadding="5" cellspacing="0">
+		<tr>
+			<th>&nbsp;</th>
+			<th>&nbsp;</th>
+			<th colspan="3">Variable X</th>
+		</tr>
+		<tr>
+			<th colspan="2" align="left"><span class="darkblue">Variable Y   </span></th>
+			<th><span class="darkred">&nbsp;&nbsp;&nbsp;X<sub>1</sub>&nbsp;&nbsp;&nbsp;</span></th>
+			<th><span class="darkred">&nbsp;&nbsp;&nbsp;X<sub>2</sub>&nbsp;&nbsp;&nbsp;</span></th>
+			<th><span class="darkred">&nbsp;&nbsp;&nbsp;X<sub>3</sub>&nbsp;&nbsp;&nbsp;</span></th>
+		</tr>
+		<tr>
+			<th rowspan="4" align="left">&nbsp;</th>
+			<th align="left"><span class="darkblue">Y<sub>1</sub></span></th>
+			<td align="center" bgcolor="#FFFFFF" class="top left">105</td>
+			<td align="center" bgcolor="#FFFFFF" class="top"><span class="white">0</span>7</td>
+			<td align="center" bgcolor="#FFFFFF" class="top right">11</td>
+		</tr>
+		<tr>
+			<th align="left"><span class="darkblue">Y<sub>2</sub></span></th>
+			<td align="center" bgcolor="#FFFFFF" class="left"><span class="white">0</span>58</td>
+			<td align="center" bgcolor="#FFFFFF"><span class="white">0</span>5</td>
+			<td align="center" bgcolor="#FFFFFF" class="right">13</td>
+		</tr>
+		<tr>
+			<th align="left"><span class="darkblue">Y<sub>3</sub></span></th>
+			<td align="center" bgcolor="#FFFFFF" class="left"><span class="white">0</span>84</td>
+			<td align="center" bgcolor="#FFFFFF">37</td>
+			<td align="center" bgcolor="#FFFFFF" class="right">42</td>
+		</tr>
+		<tr>
+			<th align="left"><span class="darkblue">Y<sub>4</sub></span></th>
+			<td align="center" bgcolor="#FFFFFF" class="bottom left"><span class="white">0</span>57</td>
+			<td align="center" bgcolor="#FFFFFF" class="bottom">16</td>
+			<td align="center" bgcolor="#FFFFFF" class="bottom right">17</td>
+		</tr>
+	</table></div>
+
+
+
+
+
+<h2 class="pageName">12.1.2 &nbsp; Marginal distributions</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Marginal counts</p>
+	<p>Although our main interest is usually on the relationship between two categorical
+ variables, it can also be of interest to examine the overall distribution of
+each  variable separately. These are called the <strong>marginal distributions</strong> of
+the two variables and are determined by the row and column totals of the  contingency
+table.</p>
+	<div class="centred"><table border="0" class="centred" cellpadding="5" cellspacing="0">
+		<tr>
+			<th>&nbsp;</th>
+			<th>&nbsp;</th>
+			<th colspan="4">Variable X</th>
+			<td></td>
+		</tr>
+		<tr>
+			<th colspan="2" align="left" valign="bottom">Variable Y&nbsp;&nbsp;&nbsp;</th>
+			<th>&nbsp;&nbsp;&nbsp;X<sub>1</sub>&nbsp;&nbsp;&nbsp;</th>
+		<th>&nbsp;&nbsp;&nbsp;X<sub>2</sub>&nbsp;&nbsp;&nbsp;</th>
+		<th>&nbsp;&nbsp;&nbsp;X<sub>3</sub>&nbsp;&nbsp;&nbsp;</th>
+		<th>&nbsp;&nbsp;&nbsp;X<sub>4</sub>&nbsp;&nbsp;&nbsp;</th>
+		<th>&nbsp;Total&nbsp;</th>
+</tr>
+		<tr>
+			<th rowspan="4" align="left">&nbsp;</th>
+			<th align="left">Y<sub>1</sub></th>
+		<td align="center" bgcolor="#FFFFFF" class="top left"><span color="white">00</span>2</td>
+		<td align="center" bgcolor="#FFFFFF" class="top"><span color="white">00</span>3</td>
+		<td align="center" bgcolor="#FFFFFF" class="top"><span class="white">0</span>57</td>
+		<td align="center" bgcolor="#FFFFFF" class="top right"><span class="white">0</span>6</td>
+		<td align="right" bgcolor="#FFFF00" class="top right">68&nbsp;</td>
+		</tr>
+		<tr>
+			<th align="left">Y<sub>2</sub></th>
+		<td align="center" bgcolor="#FFFFFF" class="left"><span class="white">0</span>52</td>
+			<td align="center" bgcolor="#FFFFFF">170</td>
+			<td align="center" bgcolor="#FFFFFF">163</td>
+			<td align="center" bgcolor="#FFFFFF" class="right">17</td>
+			<td align="right" bgcolor="#FFFF00" class="right">402&nbsp;</td>
+		</tr>
+		<tr>
+			<th align="left">Y<sub>3</sub></th>
+		<td align="center" bgcolor="#FFFFFF" class="left">156</td>
+			<td align="center" bgcolor="#FFFFFF">125</td>
+			<td align="center" bgcolor="#FFFFFF"><span class="white">0</span>61</td>
+			<td align="center" bgcolor="#FFFFFF" class="right"><span class="white">0</span>6</td>
+		<td align="right" bgcolor="#FFFF00" class="right">348&nbsp;</td>
+		</tr>
+		<tr>
+			<th align="left">Y<sub>4</sub></th>
+		<td align="center" bgcolor="#FFFFFF" class="bottom left">220</td>
+			<td align="center" bgcolor="#FFFFFF" class="bottom"><span class="white">0</span>83</td>
+		<td align="center" bgcolor="#FFFFFF" class="bottom"><span class="white">0</span>39</td>
+		<td align="center" bgcolor="#FFFFFF" class="bottom right"><span class="white">0</span>4</td>
+		<td align="right" bgcolor="#FFFF00" class="bottom right">346&nbsp;</td>
+		</tr>
+		<tr>
+			<td></td>
+			<th align="left">Total</th>
+			<td align="center" bgcolor="#99FF00" class="bottom left">430</td>
+			<td align="center" bgcolor="#99FF00" class="bottom">381</td>
+			<td align="center" bgcolor="#99FF00" class="bottom">320</td>
+			<td align="center" bgcolor="#99FF00" class="bottom right">33</td>
+			<td></td>
+		</tr>
+	</table></div>
+<p>The row and column totals correspond to the heights of the stacks in stacked
+bar charts. For example, the above row totals are the heights of the stacks in
+the following diagram.</p>
+<p class="eqn"><img src="../../../en/bivarCat/images/s_marginal.gif" width="455" height="272"></p>
+	<p class="heading">Marginal proportions</p>
+	<p>In a similar way, the marginal proportions for the variables are obtained
+by adding the cell proportions across rows and down columns.</p>
+<p class="eqn"><img class="gif" src="../../../en/bivarCat/images/xMarginEqn.gif" id="gif_image_1_2_1" width="89" height="31"><iframe class="svg" src="../../../en/bivarCat/images/xMarginEqn.svg" id="svg_image_1_2_1" width="89" height="31" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_1_2_1");</script>        and         <img class="gif" src="../../../en/bivarCat/images/yMarginEqn.gif" id="gif_image_1_2_2" width="88" height="27"><iframe class="svg" src="../../../en/bivarCat/images/yMarginEqn.svg" id="svg_image_1_2_2" width="88" height="27" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_1_2_2");</script></p>
+
+
+
+
+<h2 class="pageName">12.1.3 &nbsp; Conditional distributions</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Spliting into groups</p>
+	<p>If the values of <em>X</em> are used to split the individuals into groups,
+the <strong>conditional distributions</strong> of <em>Y</em> given <em>X</em> are
+the distributions within each of these groups. They are found by dividing the
+cell counts by the totals for each such group. The columns of the table below
+show the conditional distributions for a contingency table, expressed as percentages.</p>
+<div class="centred"><table border="0" class="centred" cellpadding="5" cellspacing="0">
+<caption>
+<strong>Conditional percentages for <em>Y</em>, given <em>X</em></strong>
+</caption>
+<tr>
+<th>&nbsp;</th>
+<th>&nbsp;</th>
+<th colspan="4">Variable X</th>
+</tr>
+<tr>
+<th colspan="2" align="left" valign="bottom">Variable Y&nbsp;&nbsp;&nbsp;</th>
+<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;X<sub>1</sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;X<sub>2</sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;X<sub>3</sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;X<sub>4</sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+</tr>
+<tr>
+<th rowspan="4" align="left">&nbsp;</th>
+<th align="left">Y<sub>1</sub></th>
+<td align="center" bgcolor="#FFFFFF" class="top left"><span style="color:#FFF">00</span>0.5</td>
+<td align="center" bgcolor="#FFFFFF" class="top"><span style="color:#FFF">00</span>0.8</td>
+<td align="center" bgcolor="#FFFFFF" class="top"><span style="color:#FFF">0</span>17.8</td>
+<td align="center" bgcolor="#FFFFFF" class="top right"><span style="color:#FFF">0</span>18.2</td>
+</tr>
+<tr>
+<th align="left">Y<sub>2</sub></th>
+<td align="center" bgcolor="#FFFFFF" class="left"><span style="color:#FFF">0</span>12.1</td>
+<td align="center" bgcolor="#FFFFFF"><span style="color:#FFF">0</span>44.6</td>
+<td align="center" bgcolor="#FFFFFF"><span style="color:#FFF">0</span>50.9</td>
+<td align="center" bgcolor="#FFFFFF" class="right"><span style="color:#FFF">0</span>51.5</td>
+</tr>
+<tr>
+<th align="left">Y<sub>3</sub></th>
+<td align="center" bgcolor="#FFFFFF" class="left"><span style="color:#FFF">0</span>36.3</td>
+<td align="center" bgcolor="#FFFFFF"><span style="color:#FFF">0</span>32.8</td>
+<td align="center" bgcolor="#FFFFFF"><span style="color:#FFF">0</span>19.1</td>
+<td align="center" bgcolor="#FFFFFF" class="right"><span style="color:#FFF">0</span>18.2</td>
+</tr>
+<tr>
+<th align="left">Y<sub>4</sub></th>
+<td align="center" bgcolor="#FFFFFF" class="bottom left"><span style="color:#FFF">0</span>51.2</td>
+<td align="center" bgcolor="#FFFFFF" class="bottom"><span style="color:#FFF">0</span>21.8</td>
+<td align="center" bgcolor="#FFFFFF" class="bottom"><span style="color:#FFF">0</span>12.2</td>
+<td align="center" bgcolor="#FFFFFF" class="bottom right"><span style="color:#FFF">0</span>12.1</td>
+</tr>
+<tr>
+<td></td>
+<th align="left">Total</th>
+<td align="center" bgcolor="#99FF00" class="bottom left">100.0</td>
+<td align="center" bgcolor="#99FF00" class="bottom">100.0</td>
+<td align="center" bgcolor="#99FF00" class="bottom">100.0</td>
+<td align="center" bgcolor="#99FF00" class="bottom right">100.0</td>
+</tr>
+</table></div>
+<p>The <strong>conditional distributions</strong> of <em>X</em> given <em>Y</em> are
+similarly found by using <em>Y</em> to create the groups of individuals. They
+are found by dividing the cell counts by the totals in the other margin of the
+original contingency table.</p>
+<div class="centred"><table border="0" class="centred" cellpadding="5" cellspacing="0">
+<caption>
+<strong>Conditional percentages for <em>X</em>, given <em>Y</em></strong>
+</caption>
+<tr>
+<th>&nbsp;</th>
+<th>&nbsp;</th>
+<th colspan="4">Variable X</th>
+<td></td>
+</tr>
+<tr>
+<th colspan="2" align="left" valign="bottom">Variable Y&nbsp;&nbsp;&nbsp;</th>
+<th>&nbsp;&nbsp;&nbsp;X<sub>1</sub>&nbsp;&nbsp;&nbsp;</th>
+<th>&nbsp;&nbsp;&nbsp;X<sub>2</sub>&nbsp;&nbsp;&nbsp;</th>
+<th>&nbsp;&nbsp;&nbsp;X<sub>3</sub>&nbsp;&nbsp;&nbsp;</th>
+<th>&nbsp;&nbsp;&nbsp;X<sub>4</sub>&nbsp;&nbsp;&nbsp;</th>
+<th>&nbsp;Total&nbsp;</th>
+</tr>
+<tr>
+<th rowspan="4" align="left">&nbsp;</th>
+<th align="left">Y<sub>1</sub></th>
+<td align="center" bgcolor="#FFFFFF" class="top left"><span style="color:#FFF">0</span>2.9</td>
+<td align="center" bgcolor="#FFFFFF" class="top"><span style="color:#FFF">0</span>4.4</td>
+<td align="center" bgcolor="#FFFFFF" class="top">83.8</td>
+<td align="center" bgcolor="#FFFFFF" class="top right">8.8</td>
+<td align="right" bgcolor="#FFFF00" class="top right">100.0&nbsp;</td>
+</tr>
+<tr>
+<th align="left">Y<sub>2</sub></th>
+<td align="center" bgcolor="#FFFFFF" class="left">12.9</td>
+<td align="center" bgcolor="#FFFFFF" class="middle">42.3</td>
+<td align="center" bgcolor="#FFFFFF" class="middle">40.5</td>
+<td align="center" bgcolor="#FFFFFF" class="right">4.2</td>
+<td align="right" bgcolor="#FFFF00" class="right">100.0&nbsp;</td>
+</tr>
+<tr>
+<th align="left">Y<sub>3</sub></th>
+<td align="center" bgcolor="#FFFFFF" class="left">44.8</td>
+<td align="center" bgcolor="#FFFFFF" class="middle">35.9</td>
+<td align="center" bgcolor="#FFFFFF" class="middle">17.5</td>
+<td align="center" bgcolor="#FFFFFF" class="right">1.7</td>
+<td align="right" bgcolor="#FFFF00" class="right">100.0&nbsp;</td>
+</tr>
+<tr>
+<th align="left">Y<sub>4</sub></th>
+<td align="center" bgcolor="#FFFFFF" class="bottom left">63.6</td>
+<td align="center" bgcolor="#FFFFFF" class="bottom">24.0</td>
+<td align="center" bgcolor="#FFFFFF" class="bottom">11.3</td>
+<td align="center" bgcolor="#FFFFFF" class="bottom right">1.2</td>
+<td align="right" bgcolor="#FFFF00" class="bottom right">100.0&nbsp;</td>
+</tr>
+</table></div>
+<p>Both tables of conditional proportions (or percentages) are often informative.</p>
+
+
+
+
+<h2 class="pageName">12.1.4 &nbsp; Conditional vs marginal distns</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Conditional and marginal distributions</p>
+	<p>The distinction is between the marginal distribution for a variable 
+		and its conditional distributions is illustrated for the following contingency
+table that describes bruising of 96 apples in a packing plant.</p>
+	<div class="centred"><table border="0" class="centred" cellpadding="5" cellspacing="0">
+		<tr>
+			<td>&nbsp;</td>
+			<th>&nbsp;&nbsp;&nbsp;OK&nbsp;&nbsp;&nbsp;</th>
+			<th>Bruised</th>
+		</tr>
+		<tr>
+			<th align="left">Granny Smith</th>
+			<td align="center" bgcolor="#FFFFFF" class="left top">40</td>
+			<td align="center" bgcolor="#FFFFFF" class="right top">8</td>
+		</tr>
+		<tr>
+			<th align="left">Fuji</th>
+			<td align="center" bgcolor="#FFFFFF" class="bottom left">24</td>
+			<td align="center" bgcolor="#FFFFFF" class="bottom right">24</td>
+		</tr>
+	</table></div>
+	<p>The diagram below shows the apples, arranged in rows by variety.</p>
+	<p class="eqn"><img src="../../../en/bivarCat/images/s_propnVenn1.gif" width="500" height="347"></p>
+	<p>Observe that:</p>
+	<ul>
+		<li><sup>1</sup>/<sub>2</sub> of the apples are Granny Smiths (marginal proportion)</li>
+		<li><sup>1</sup>/<sub>6</sub> of the Granny Smiths are bruised (conditional proportion)</li>
+	</ul>
+<p>The apples can be rearranged as follows:</p>
+	<p class="eqn"><img src="../../../en/bivarCat/images/s_propnVenn2.gif" width="556" height="347"></p>
+	<p>Now observe that:</p>
+	<ul>
+		<li><sup>1</sup>/<sub>4</sub> of the bruised apples are Granny Smiths (conditional proportion)</li>
+		<li><sup>1</sup>/<sub>3</sub> of the apples are bruised (marginal proportion)</li></ul>
+
+
+
+
+<h2 class="pageName">12.1.5 &nbsp; Exercise:   Proportions from contingency tables</h2><div class='summary_text'><p>Exercises are only available online.</p></div>
+<h1 class="sectionName breakBefore">12.2 &nbsp; Probabilities from tables</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Joint probabilities</li>
+<li>Marginal probabilities</li>
+<li>Conditional probabilities</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='4'>
+<li>Graphical display of probabilities</li>
+<li>Exercise: Probabilities for cards and dice</li>
+<li>Exercise: Sampling with and without replacement</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">12.2.1 &nbsp; Joint probabilities</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Data sets with two categorical variables</p>
+<p>Bivariate categorical data sets are usually summarised with a contingency
+table.</p>
+<p>For example, a study examined 62 patients who had been given a prescription
+medicine for some condition. Each patient was classified by whether they had
+complied with the treatment prescribed and by racial group:</p>
+<div class="centred"><table border="0" class="centred" cellpadding="3" cellspacing="0">
+<tr>
+<th align="left">Race</th>
+<th align="center">&nbsp;&nbsp;&nbsp;&nbsp;Compliers&nbsp;&nbsp;&nbsp;&nbsp;</th>
+<th align="center">Non-compliers</th>
+<th align="center">&nbsp;&nbsp;&nbsp;Total&nbsp;&nbsp;&nbsp;</th>
+</tr>
+<tr>
+<th align="left">&nbsp;&nbsp;White</th>
+<td align="center" bgcolor="#FFFFFF" class="top left">13</td>
+<td align="center" bgcolor="#FFFFFF" class="top right">10</td>
+<td align="center">23</td>
+</tr>
+<tr>
+<th align="left">&nbsp;&nbsp;Non-white&nbsp;&nbsp;&nbsp;</th>
+<td align="center" bgcolor="#FFFFFF" class="bottom left">13</td>
+<td align="center" bgcolor="#FFFFFF" class="bottom right">26</td>
+<td align="center">39</td>
+</tr>
+<tr>
+<th align="left">Total</th>
+<td align="center">26</td>
+<td align="center">36</td>
+<td align="center">62</td>
+</tr>
+</table></div>
+<p class="heading">Joint probabilities</p>
+<p>Bivariate categorical data can be modelled as a random sample from an underlying
+population of pairs of categorical values. The population proportion for each
+pair (<em>x</em>, <em>y</em>) is denoted by <em>p<sub>xy</sub></em> and is called
+the <strong>joint probability</strong> for (<em>x</em>, <em>y</em>).</p>
+<p>In games of chance, we can often work out the joint probabilities. For example,
+if a gambler draws a card from a shuffled deck and also tosses a coin, there
+are eight possible combinations,</p>
+<p class=eqn><img src="../../../en/prob/images/s_cardAndCoin.gif" width="296" height="122" alt="pxy = 1/8"> </p>
+<p>Since these are equally likely,</p>
+<p class=eqn><span class="black"><em>p</em><span class="textSub">head, heart</span> &nbsp;= &nbsp;<em>p</em><span class="textSub">head, club</span> &nbsp;= &nbsp;... &nbsp;= &nbsp;<em>p</em><span class="textSub">tail, spade</span> &nbsp;= &nbsp;<sup>1</sup>/<sub>8</sub> &nbsp;= &nbsp;0.125</span> </p>
+<p class="heading">Interest in the model</p>
+<p>In practice, we usually only have a random sample (summarised by a contingency
+table) and do not know the underlying joint probabilities. The sample proportions
+however provide <strong>estimates</strong>.</p>
+<p class=eqn><img class="gif" src="../../../en/prob/images/glaucoma.gif" id="gif_image_2_1_1" width="510" height="308"><iframe class="svg" src="../../../en/prob/images/glaucoma.svg" id="svg_image_2_1_1" width="510" height="308" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_1_1");</script> </p>
+
+
+
+
+<h2 class="pageName">12.2.2 &nbsp; Marginal probabilities</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Probabilities for a single variable</p>
+<p>A model for two categorical variables is characterised by the joint probabilities <span class="black em">p<sub>xy</sub></span>.</p>
+<p>The <strong>marginal probability</strong>, <span class="black em">p<sub>x</sub></span>,
+for a variable <span class="em black">X</span>  is the proportion of <span class="black">(<em>x</em>,&nbsp;<em>y</em>)</span> pairs
+in the population with <span class="em black">X</span>  = <span class="em black">x</span> .
+This can be found by adding all joint probabilities for pairs with this <em>x</em>-value.</p>
+<p class="eqn"><img class="gif" src="../../../en/prob/images/margProbEqn.gif" id="gif_image_2_2_1" width="89" height="31"><iframe class="svg" src="../../../en/prob/images/margProbEqn.svg" id="svg_image_2_2_1" width="89" height="31" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_2_1");</script></p>
+<p>There is a similar formula for the marginal
+probabilities of the other variable, </p>
+<p class=eqn><img class="gif" src="../../../en/prob/images/margProb2Eqn.gif" id="gif_image_2_2_2" width="88" height="27"><iframe class="svg" src="../../../en/prob/images/margProb2Eqn.svg" id="svg_image_2_2_2" width="88" height="27" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_2_2");</script> </p>
+<p class="heading">Example</p>
+<p>In the following example, the marginal probabilities for <em>X</em> are the
+row of  totals under the table, and the marginal probabilities for <em>Y</em> are
+the column of totals on the right.</p>
+
+<div class="centred"><table class="centred" border="0" cellpadding="5" cellspacing="0">
+<caption align="TOP">
+<strong>Joint probabilities</strong>
+</caption>
+<tr>
+<th align="CENTER">&nbsp;</th>
+<th colspan="3" align="CENTER">Variable <em>X</em></th>
+<th>&nbsp;</th>
+</tr>
+<tr>
+<th align="CENTER">Variable <em>Y</em></th>
+<th align="CENTER"><span class="blue"><em>X</em> = A</span></th>
+<th align="CENTER"><span class="blue"><em>X</em> = B</span></th>
+<th align="CENTER"><span class="blue"><em>X</em> = C</span></th>
+<th align="CENTER"><span class="red">Total</span></th>
+</tr>
+<tr>
+<th align="CENTER"><span class="blue"><em>Y</em> = 1</span></th>
+<td align="CENTER" bgcolor="#FFFFFF" class="top left">0.2576</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="top">0.1364</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="top right">0.1212</td>
+<td align="CENTER"><span class="red">0.5152</span></td>
+</tr>
+<tr>
+<th align="CENTER"><span class="blue"><em>Y</em> = 2</span></th>
+<td align="CENTER" bgcolor="#FFFFFF" class="left">0.0909</td>
+<td align="CENTER" bgcolor="#FFFFFF">0.0758</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="right">0.0152</td>
+<td align="CENTER"><span class="red">0.1818</span></td>
+</tr>
+<tr>
+<th align="CENTER"><span class="blue"><em>Y</em> = 3</span></th>
+<td align="CENTER" bgcolor="#FFFFFF" class="left">0.0455</td>
+<td align="CENTER" bgcolor="#FFFFFF">0.0758</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="right">0.0606</td>
+<td align="CENTER"><span class="red">0.1818</span></td>
+</tr>
+<tr>
+<th align="CENTER"><span class="blue"><em>Y</em> = 4</span></th>
+<td align="CENTER" bgcolor="#FFFFFF" class="bottom left">0.0152</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="bottom">0.0303</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="bottom right">0.0758</td>
+<td align="CENTER"><span class="red">0.1212</span></td>
+</tr>
+<tr>
+<th align="CENTER"><span class="brown">Total</span></th>
+<td align="CENTER"><span class="brown">0.4091</span></td>
+<td align="CENTER"><span class="brown">0.3182</span></td>
+<td align="CENTER"><span class="brown">0.2727</span></td>
+<td align="CENTER"><span class="gray">1.0000</span></td>
+</tr>
+</table></div>
+
+
+
+
+<h2 class="pageName">12.2.3 &nbsp; Conditional probabilities</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Probabilities in a sub-population</p>
+<dl>
+<dt>Complete population</dt>
+<dd>The joint probabilities <span class="black em">p<sub>xy</sub></span> and the marginal
+probabilities <span class="black em">p<sub>x</sub></span> and <span class="black em">p<sub>y</sub></span> all
+describe proportions in the complete population of <span class="black">(<em>x</em>,&nbsp;<em>y</em>)</span> pairs.</dd>
+<dt>Sub-population</dt>
+<dd>In contrast, it is sometimes meaningful to restrict attention to a <strong>subset</strong> of
+the <span class="black">(<em>x</em>,&nbsp;<em>y</em>)</span> pairs. For example,
+we may be interested only in pairs for which the first variable, <span class="em black">X</span> ,
+has some particular value. Probabilities that relate to a sub-population are called <strong>conditional</strong> probabilities.</dd>
+</dl>
+<p class="heading">Conditional probabilities for <em>Y</em>, given <em>X</em>&nbsp;=&nbsp;<em>x</em></p>
+<p>The general definition of the conditional probabilities for <i><span class="black">Y</span></i> given
+that the value of <i><span class="black">X</span></i> is <span class="em black">x</span>  is </p>
+<div class="centred"><table width="40%" border="1" class="centred" cellpadding="10" cellspacing="0" style="background-color:#FFFFFF">
+<tr>
+<td align="center"><img class="gif" src="../../../en/prob/images/conditProbDefn.gif" id="gif_image_2_3_2" width="91" height="39"><iframe class="svg" src="../../../en/prob/images/conditProbDefn.svg" id="svg_image_2_3_2" width="91" height="39" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_3_2");</script></td>
+</tr>
+</table></div>
+<p>They can be found by rescaling of that row of the table of joint probabilities
+(dividing by <span class="black em">p<sub>x</sub></span>) so that the row sums to 1.0. </p>
+<p class=eqn><img class="gif" src="../../../en/prob/images/conditCalc.gif" id="gif_image_2_3_1" width="395" height="294"><iframe class="svg" src="../../../en/prob/images/conditCalc.svg" id="svg_image_2_3_1" width="395" height="294" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_3_1");</script></p>
+<p class="heading">Two sets of conditional probabilities</p>
+<p>Conditional probabilities for <span class="em black">X</span>  given
+that <span class="em black">Y</span> &nbsp;has the value <span class="em black">y</span>  are
+defined in a similar way:</p>
+<p class=eqn><img class="gif" src="../../../en/prob/images/conditProb2Defn.gif" id="gif_image_2_3_3" width="90" height="42"><iframe class="svg" src="../../../en/prob/images/conditProb2Defn.svg" id="svg_image_2_3_3" width="90" height="42" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_3_3");</script> </p>
+<p>You should be careful to distinguish between <span class="black"><em>p</em><sub><em>x</em> | <em>y</em></sub></span> and <span class="black"><em>p</em><sub><em>y</em> | <em>x</em></sub></span>.</p>
+<div class="centred"><table width="75%" border="1" class="centred" cellpadding="10" cellspacing="0" style="background-color:#FFFFFF">
+<tr>
+<td align="center"><strong>The probability of being pregnant, given that a randomly
+selected person is female would be fairly small. The probability of being female,
+given that a person is pregnant is 1.0&nbsp;!!</strong></td>
+</tr>
+</table></div>
+
+
+
+<h2 class="pageName">12.2.4 &nbsp; Graphical display of probabilities</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Proportional Venn diagrams</p>
+<p>A proportional Venn diagram is drawn from the marginal probabilities of one
+variable and the conditional probabilities for the other variable,</p>
+<p class=eqn><img class="gif" src="../../../en/prob/images/propnVenn.gif" id="gif_image_2_4_1" width="550" height="281"><iframe class="svg" src="../../../en/prob/images/propnVenn.svg" id="svg_image_2_4_1" width="550" height="281" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_4_1");</script> </p>
+<p>Rewriting the definition of conditional probabilities,</p>
+<p class=eqn><img class="gif" src="../../../en/prob/images/jointProbEqn.gif" id="gif_image_2_4_2" width="118" height="20"><iframe class="svg" src="../../../en/prob/images/jointProbEqn.svg" id="svg_image_2_4_2" width="118" height="20" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_4_2");</script> </p>
+<p>The area of any rectangle in the diagram therefore equals the joint probability
+of the categories it represents.</p>
+<p>An alternative proportional Venn diagram can be drawn from the marginal probabilities
+of <i><span class="black">Y</span></i> and
+the conditional probabilites of <i><span class="black">X</span></i> given <i><span class="black">Y</span></i>.
+The area for the rectangle corresponding to any (<em>x</em>, <em>y</em>) is
+its joint probability, <span class="black em">p<sub>xy</sub></span>.</p>
+<p class="heading">Example</p>
+<p>The table below is based on the world population in 2002, categorised by region
+and by age group. It shows the joint probabilities for a randomly chosen person
+being in each age/region category.</p>
+<div class="centred"><table class="centred" border="0" cellpadding="5" cellspacing="0">
+<caption>
+<strong>Joint probabilities</strong>
+</caption>
+<tr>
+<th>&nbsp;</th>
+<th colspan="3" align="CENTER" width="100"><span class="blue">Age</span></th>
+</tr>
+<tr>
+<th>&nbsp;</th>
+<th align="CENTER" width="70"><span class="blue">0-19</span></th>
+<th align="CENTER" width="70"><span class="blue">20-64</span></th>
+<th align="CENTER" width="70"><span class="blue">65+</span></th>
+</tr>
+<tr>
+<th align="left"><span class="blue">Africa and Near East</span></th>
+<td align="CENTER" bgcolor="white" class="top left">0.085</td>
+<td align="CENTER" bgcolor="white" class="top">0.073</td>
+<td align="CENTER" bgcolor="white" class="top right">0.006</td>
+</tr>
+<tr>
+<th align="left"><span class="blue">Asia</span></th>
+<td align="CENTER" bgcolor="white" class="left">0.215</td>
+<td align="CENTER" bgcolor="white">0.315</td>
+<td align="CENTER" bgcolor="white" class="right">0.035</td>
+</tr>
+<tr>
+<th align="left"><span class="blue">America, Europe and Oceanea</span></th>
+<td align="CENTER" bgcolor="white" class="bottom left">0.084</td>
+<td align="CENTER" bgcolor="white" class="bottom">0.158</td>
+<td align="CENTER" bgcolor="white" class="bottom right">0.030</td>
+</tr>
+</table></div>
+<p>The two proportional Venn diagrams are shown below.</p>
+<p class="eqn"><img src="../../../en/prob/images/s_propnVenn.gif" width="535" height="620"></p>
+<p>Note that the areas are the same in both diagrams &mdash; they are simply rearranged.</p>
+
+
+
+
+<h2 class="pageName">12.2.5 &nbsp; Exercise: Probabilities for cards and dice</h2><div class='summary_text'><p>Exercises are only available online.</p></div>
+<h2 class="pageName" style='margin-top:2em;'>12.2.6 &nbsp; Exercise: Sampling with and without replacement</h2><div class='summary_text'><p>Exercises are only available online.</p></div>
+<h1 class="sectionName breakBefore">12.3 &nbsp; Tree diagrams</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Tree diagrams</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='2'>
+<li>More about tree diagrams</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">12.3.1 &nbsp; Tree diagrams</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Tree diagrams for two attributes</p>
+<p>Two categorical variables (or types of event) are sometimes represented in a type
+of diagram called a <strong>tree diagram</strong>. The main branches are 
+labeled with their <strong>marginal</strong> probabilities.
+The branches to the right are labeled with their <strong>conditional</strong> probabilities,
+conditional on the branches to the left leading to that fork.</p>
+<p>Joint probabilities can be easily found by multiplying the probabilities down
+the corresponding branches. This corresponds to applying the general multiplication
+rule, P(A and B) = P(A) × P(B | A).</p>
+<p class="eqn"><img src="../images/s_tree_marital3.gif" width="470" height="325"></p>
+<p class="heading">Sampling without replacement</p>
+<p>Consider selection of two students from a class of 2 women and
+4 men by &quot;pulling names out
+of a hat&quot;. The following tree diagram illustrates this process.</p>
+<p class="eqn"><img src="../images/tree_replacement.gif" width="518" height="435"></p>
+<p>Note that the <strong>conditional</strong> probability
+of the second student being male depends on whether the first student is male (top
+branch) or female (third branch). The diagram also shows the joint probabilities
+on the right and these allows us to determine the probability that one student of
+each gender is selected.</p>
+<div class="centred"><div class="boxed">
+<p>P(one man and one woman) &nbsp; = &nbsp; P(MW) + P(WM)<br>
+&nbsp; = &nbsp; <sup>8</sup>/<sub>30</sub> + <sup>8</sup>/<sub>30</sub> = <sup>8</sup>/<sub>15</sub></p>
+</div></div>
+<p class="heading">&nbsp; </p>
+
+
+<h2 class="pageName">12.3.2 &nbsp; More about tree diagrams</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Tree diagrams for other random situations</p>
+<p>Tree diagrams can be used for any situation involving a sequence of events. Each
+possible sequence of events is represented by a path through the tree diagram. Branches
+are labeled with the probability for the branching <strong>conditional on the branches
+to the left</strong>.</p>
+<p>The joint probability for any sequence of events is again found by multiplying
+the probabilities on all branches of the tree corresponding to this sequence.</p>
+<p class="heading">Boys and girls in a family</p>
+<p>A  family  want at least two children and no
+more than four, but
+will stop having children when they get a boy. Assuming that P(male) = 0.5,
+independent of the genders of previous children,  the possible sequences of births
+is:</p>
+<p class="eqn"><img src="../images/tree_girls.gif" width="550" height="225"></p>
+<p>All branches have conditional probability <sup>1</sup>/<sub>2</sub> so
+they are not displayed. The joint probabilities at the end of the branches are found
+by multiplying these <sup>1</sup>/<sub>2</sub>'s together. We can find various
+probabilities by adding these probabilities.</p>
+<dl>
+<dt>Family size, X</dt>
+</dl>
+<div class="centred"><table border="0" class="centred" cellpadding="5" cellspacing="0">
+<tr>
+<th align="left">Family size, x</th>
+<td width="40" align="center" bgcolor="#FFFFFF">2</td>
+<td width="40" align="center" bgcolor="#FFFFFF">3</td>
+<td width="40" align="center" bgcolor="#FFFFFF">4</td>
+</tr>
+<tr>
+<th align="left">P(X&nbsp;=&nbsp;x)</th>
+<td align="center" bgcolor="#FFFFFF">0.75</td>
+<td align="center" bgcolor="#FFFFFF">0.125</td>
+<td align="center" bgcolor="#FFFFFF">0.125</td>
+</tr>
+</table></div>
+<dl>
+<dt>Number of girls, Y</dt>
+</dl>
+<div class="centred"><table border="0" class="centred" cellpadding="5" cellspacing="0">
+<tr>
+<th align="left">Number of girls, y</th>
+<td width="40" align="center" bgcolor="#FFFFFF">0</td>
+<td width="40" align="center" bgcolor="#FFFFFF">1</td>
+<td width="40" align="center" bgcolor="#FFFFFF">2</td>
+<td width="40" align="center" bgcolor="#FFFFFF">3</td>
+<td width="40" align="center" bgcolor="#FFFFFF">4</td>
+</tr>
+<tr>
+<th align="left">P(Y&nbsp;=&nbsp;y)</th>
+<td align="center" bgcolor="#FFFFFF">0.25</td>
+<td align="center" bgcolor="#FFFFFF">0.5</td>
+<td align="center" bgcolor="#FFFFFF">0.125</td>
+<td align="center" bgcolor="#FFFFFF">0.0625</td>
+<td align="center" bgcolor="#FFFFFF">0.0625</td>
+</tr>
+</table></div>
+
+
+
+<h1 class="sectionName breakBefore">12.4 &nbsp; More about histograms</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Relative frequency and area</li>
+<li>Histograms with varying class widths</li>
+<li>Understanding histograms</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='4'>
+<li>Exercise: Draw histogram with mixed class widths</li>
+<li>Exercise: Histogram areas and proportions</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">12.4.1 &nbsp; Relative frequency and area</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Relative frequency</p>
+	<p>When all histogram classes are of equal width, histograms are often drawn 
+		with a vertical axis giving the frequencies (counts) for each class. The vertical axis can alternatively be labelled with the <strong>relative frequencies</strong> (proportions) for the classes.</p>
+	<p>(There is no harm in including both axes.)</p>
+	<p class="eqn"><img src="../../../en/density/images/s_relFreqHisto.gif" width="420" height="236"></p>
+	<p class="heading">Area equals relative frequency</p>
+	<p>An important property of histograms is that the proportion of values in one or more classes equals the proportion of the histogram area above these classes.</p>
+	<p class=eqn><img src="../../../en/density/images/s_area.gif" width="455" height="289"> </p>
+	<p>Therefore,</p>
+	<div class="centred"><div class="boxed">
+		<p>Relative frequency = proportion of the total 
+			area</p>
+	</div></div>
+
+
+
+
+<h2 class="pageName">12.4.2 &nbsp; Histograms with varying class widths</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Mixed class widths</p>
+<p>For some data sets, wider classes give a smoother histogram in some ranges of values (e.g. in the tail of a distribution) and narrower classes are better in other parts of the distribution (usually where there is greater density of values).</p>
+<div class="centred"><div class="boxed">
+	<p> In a correctly drawn histogram, each value contributes the same area. </p>
+</div></div>
+<p>Histograms can be drawn with mixed class widths, but it would be <strong>badly misleading</strong> to make the rectangle heights equal to either the class frequency or relative frequency.</p>
+<p class="eqn"><img src="../../../en/density/images/s_mixedClasses.gif" width="504" height="431"></p>
+
+
+
+
+<h2 class="pageName">12.4.3 &nbsp; Understanding histograms</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Area and proportion of values</p>
+<p>The details of drawing histograms by hand with varying class widths are unimportant
+&mdash; a computer should be used. To interpret
+their shape remember that</p>
+<div class="centred"><div class="boxed"><p>The proportion of the total area above any classes
+equals the proportion of values in them.</p></div></div>
+<p>For example,</p>
+<p class="eqn"><img src="../../../en/density/images/s_mixedProbs.gif" width="456" height="292"></p>
+
+
+
+
+
+<h2 class="pageName">12.4.4 &nbsp; Exercise: Draw histogram with mixed class widths</h2><div class='summary_text'><p>Exercises are only available online.</p></div>
+<h2 class="pageName" style='margin-top:2em;'>12.4.5 &nbsp; Exercise: Histogram areas and proportions</h2><div class='summary_text'><p>Exercises are only available online.</p></div>
+<h1 class="sectionName breakBefore">12.5 &nbsp; Probability density functions</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Relative frequency and area</li>
+<li>Probability density functions</li>
+<li>Normal distributions</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='4'>
+<li>Probability and area under the pdf</li>
+<li>Exercise: Estimate probability from pdf</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">12.5.1 &nbsp; Relative frequency and area</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Relative frequency</p>
+	<p>When all histogram classes are of equal width, histograms are often drawn 
+		with a vertical axis giving the frequencies (counts) for each class. The vertical axis can alternatively be labelled with the <strong>relative frequencies</strong> (proportions) for the classes.</p>
+	<p>(There is no harm in including both axes.)</p>
+	<p class="eqn"><img src="../../../en/density/images/s_relFreqHisto.gif" width="420" height="236"></p>
+	<p class="heading">Area equals relative frequency</p>
+	<p>An important property of histograms is that the proportion of values in one or more classes equals the proportion of the histogram area above these classes.</p>
+	<p class=eqn><img src="../../../en/density/images/s_area.gif" width="455" height="289"> </p>
+	<p>Therefore,</p>
+	<div class="centred"><div class="boxed">
+		<p>Relative frequency = proportion of the total 
+			area</p>
+	</div></div>
+
+
+
+
+<h2 class="pageName">12.5.2 &nbsp; Probability density functions</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Histograms and probability density functions</p>
+	<p>The situation is a little more complicated for continuous numerical populations and samples. A standard histogram could be used to describe the population in the same way that it might be used for a sample:</p>
+	<p class="eqn"><img class="gif" src="../../../en/probDensity/images/histogram.gif" id="gif_image_5_2_1" width="192" height="154"><iframe class="svg" src="../../../en/probDensity/images/histogram.svg" id="svg_image_5_2_1" width="192" height="154" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_5_2_1");</script></p>
+	<p>However with an infinite population, we can narrow the histogram classes beyond what would be reasonable for a finite sample. Indeed, class widths can be reduced indefinitely, resulting in a smooth histogram called a <strong>probability density function</strong>. This is often abbreviated to a <strong>pdf</strong>.</p>
+	<p class="eqn"><img class="gif" src="../../../en/probDensity/images/pdf.gif" id="gif_image_5_2_2" width="192" height="154"><iframe class="svg" src="../../../en/probDensity/images/pdf.svg" id="svg_image_5_2_2" width="192" height="154" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_5_2_2");</script></p>
+	<p>Probability density functions are still essentially histograms and share all properties of histograms.</p>
+
+
+
+
+<h2 class="pageName">12.5.3 &nbsp; Normal distributions</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Shape of a probability density function</p>
+	<p>A probability density function  is usually a fairly smooth curve, though a single sample histogram  provides limited information about its likely shape.</p>
+	<p class=eqn><img src="../../../en/probDensity/images/unknownPopn.gif" alt="sample &mdash;> popn?" width="362" height="236" class="summaryPict"> </p>
+	<p class="heading">Normal distributions</p>
+	<p>One  flexible group of  continuous probability density functions is the family of <strong>normal 
+		distributions</strong>. Normal distributions:</p>
+	<ul>
+		<li>Are symmetric.</li>
+		<li>Have a parameter called µ that is the mean of the population.</li>
+		<li> Have a parameter σ that is the population's standard deviation.
+</li>
+	</ul>
+	<p>Changing the parameters µ and σ changes where the distribution is centred and its spread, but its shape remains otherwise the same.</p>
+	<p>The parameters are often <strong>estimated</strong> from a sample. Details will be given later, but the resulting normal pdf will be close in shape to a histogram of the sample data.</p>
+	<p class="eqn"><img src="../../../en/probDensity/images/s_bestFit.gif" width="404" height="202"></p>
+
+
+
+
+<h2 class="pageName">12.5.4 &nbsp; Probability and area under the pdf</h2><!DOCTYPE HTML>
+
+
+<p class=heading>Probabilities from a histogram</p>
+	<p>In the histogram of any finite sample or population, the area above any class <a href="javascript:showNamedPage('density5')">is 
+		the proportion of values in the class</a>.</p>
+	<p class="eqn"><img src="../../../en/probDensity/images/s_histoArea.gif" width="455" height="254"></p>
+	<p class="heading">Probabilities from a probability density function</p>
+	<p>Since a probability density function (pdf)  is a type of histogram, it satisfies the same property.</p>
+	<div class="centred"><div class="boxed">
+		<p>The probability that a sampled value is within two values, P(<em>a</em>&nbsp;&lt;&nbsp;<em>X</em>&nbsp;&lt;&nbsp;<em>b</em>), equals the area under the pdf.</p>
+	</div></div>
+	<p>This is the key to interpreting pdfs.</p>
+	<p class="eqn"><img src="../../../en/probDensity/images/s_pdfArea.gif" width="402" height="212"></p>
+
+
+
+
+<h2 class="pageName">12.5.5 &nbsp; Exercise: Estimate probability from pdf</h2><div class='summary_text'><p>Exercises are only available online.</p></div>
+<h1 class="sectionName breakBefore">12.6 &nbsp; Normal distributions</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Importance of normal distributions</li>
+<li>Shape of normal distributions</li>
+<li>Sketching a normal distribution</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='4'>
+<li>Some normal probabilities</li>
+<li>Exercise: Normal distribution parameters</li>
+<li>Exercise: Probabilities without calculations</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">12.6.1 &nbsp; Importance of normal distributions</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Normal distribution parameters</p>
+	<p>The <a href="javascript:showNamedPage('probDensity5')">family of 
+		normal distributions</a> consists of symmetric bell-shaped distributions that 
+		are defined by two parameters, µ 
+		and σ, the distribution's mean and standard deviation.</p>
+	<p class="heading">Normal distributions as models for data</p>
+	<p class="eqn"><img src="../../../en/probDensity/images/s_bestFit.gif" width="404" height="202"></p>
+	<p>The sample data rarely gives enough information for us to be <strong>sure</strong> that the underlying population is  normal, but a normal model is often used unless there is <strong>obvious</strong> non-normality in the data.</p>
+<p>Even if the sample data are obviously skew, a normal distribution may be a reasonable
+model for a nonlinear transformation of the values (e.g. a log transformation).</p>
+<p class="heading">Distribution of summary statistics</p>
+	<p>A more important reason for the importance of the normal distribution in statistics 
+		is that...</p>
+	
+<div class="centred"><div class="boxed">
+<p>Many summary statistics have normal distributions (at least approximately).</p>
+</div></div>
+
+	<p>The Central Limit Theorem shows that the mean of a random sample has a distribution that is close to normal when the sample size is moderate or large, <strong>irrespective 
+	of the shape of the distribution of the individual values</strong>. The following are also 
+	approximately normal when the sample size is moderate or large...</p>
+	<ul>
+		<li>A sample proportion</li>
+		<li>The slope and intercept of a least squares line</li>
+		<li>The difference between the means of two samples</li>
+	<li>The difference between two proportions</li></ul>
+
+
+
+
+<h2 class="pageName">12.6.2 &nbsp; Shape of normal distributions</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Effect of normal parameters on distribution</p>
+	<p>Distributions from the normal family have different locations and spreads, 
+		but other aspects of their shape are the same. Indeed, if the scales on the horizontal 
+		and vertical axes are suitably chosen, ...</p>
+	<p class="eqn"><img src="../../../en/normalDistn/images/s_normalAxes.gif" width="514" height="295"></p>
+
+
+
+
+
+<h2 class="pageName">12.6.3 &nbsp; Sketching a normal distribution</h2><!DOCTYPE HTML>
+
+
+<p class="heading">A common diagram for <span class="red">all</span> normal 
+		distributions</p>
+	<p>All normal distributions have basically the same shape.</p>
+	<ul>
+		<li>The distribution almost disappears at 3σ 
+			from µ</li>
+		<li>The probability (area) further than 2σ 
+			from µ 
+			is small &mdash; only about <sup>1</sup>/<sub>20</sub> of the total area.</li>
+	</ul>
+	<p>This should allow you to sketch a normal distribution, given any values of µ and σ.</p>
+	<p class="eqn"><img src="../../../en/normalDistn/images/s_sketch.gif" width="505" height="237"></p>
+
+
+
+
+<h2 class="pageName">12.6.4 &nbsp; Some normal probabilities</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Some probabilities for normal distributions</p>
+	<p class="eqn"><img src="../../../en/normalDistn/images/s_empiricalRule.gif" width="499" height="553"></p>
+	<p>A more precise version of the middle probability is</p>
+	<ul>
+		<li>P&nbsp;(within 1.96σ 
+			of µ) 
+			&nbsp;=&nbsp; 0.95</li>
+	</ul>
+	<p class="heading">70-95-100 rule of thumb and the normal distribution</p>
+	<p>These probabilities are the basis of the <a href="javascript:showNamedPage('centerSpread7')">70-95-100 
+		rule of thumb</a> for 
+		'bell-shaped' data sets.</p>
+	<ul>
+		<li>About 70% of values are within <em>s</em> of <img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline"></li>
+		<li>About 95% of values are within 2<em>s</em> of <img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline"></li>
+		<li>Almost all values are within 3<em>s</em> of <img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline"></li>
+	</ul>
+
+
+
+
+<h2 class="pageName">12.6.5 &nbsp; Exercise: Normal distribution parameters</h2><div class='summary_text'><p>Exercises are only available online.</p></div>
+<h2 class="pageName" style='margin-top:2em;'>12.6.6 &nbsp; Exercise: Probabilities without calculations</h2><div class='summary_text'><p>Exercises are only available online.</p></div>
+<h1 class="sectionName breakBefore">12.7 &nbsp; Normal probabilities</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Units-free variables (z-scores)</li>
+<li>Z-scores</li>
+<li>Finding normal probabilities</li>
+<li>Other probabilities</li>
+<li>Normal tables</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='6'>
+<li>Finding normal quantiles</li>
+<li>Exercise: Probability and area under pdf</li>
+<li>Exercise: Probabilities from z-scores</li>
+<li>Exercise: Expected count in sample</li>
+<li>Exercise: Find X from probability</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">12.7.1 &nbsp; Units-free variables (z-scores)</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Z-scores</p>
+	<p>The <strong>standardised</strong> form of a variable X is found by subtracting its mean then dividing by its standard deviation,</p>
+	<p class=eqn><span class="black bold">standardised value,</span> &nbsp; <img class="gif" src="../../../en/correlation/images/standardiseX.gif" id="gif_image_7_1_1" width="105" height="39"><iframe class="svg" src="../../../en/correlation/images/standardiseX.svg" id="svg_image_7_1_1" width="105" height="39" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_7_1_1");</script></p>
+	<p>The resulting values are  called <strong>z-scores</strong> and are the same,
+whatever the units in which X was originally recorded.</p>
+<p class="heading">Properties of z-scores</p>
+	<p>A standardised variable always has zero mean and standard deviation one. </p>
+	<p class=eqn> <img class="gif" src="../../../en/correlation/images/standardMeanSD.gif" id="gif_image_7_1_2" width="110" height="18"><iframe class="svg" src="../../../en/correlation/images/standardMeanSD.svg" id="svg_image_7_1_2" width="110" height="18" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_7_1_2");</script> </p>
+	<p>From the  <a href="javascript:showNamedPage('centerSpread6')">70-95-100 
+	rule-of-thumb</a>, </p>
+	<div class="centred"><div class="boxed">
+		<ul>
+			<li>About 70% of z-scores will be between -1 and +1</li>
+			<li>About 95% of z-scores will be between -2 and +2</li>
+			<li>Almost all z-scores will be between -3 and +3</li>
+		</ul>
+	</div></div>
+	<p>An individual's z-score tells you how many standard deviations it is above the mean. From its value, you can tell whether the value is very high (say over +2) or low (say under -2) in relation to the other values  of the variable.</p>
+
+
+
+
+<h2 class="pageName">12.7.2 &nbsp; Z-scores</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Standard deviations from the mean</p>
+	<p>Any x-value can be expressed as a number of standard deviations from the mean &mdash; its <strong>z-score</strong>.</p>
+	<p class=eqn><img src="../../../en/normalDistn/images/s_zScore.gif" width="498" height="145" alt="z = (x - mu) / sigma"> </p>
+	<p>Mathematically, </p>
+	<p class="eqn"><img class="gif" src="../../../en/normalDistn/images/standardiseEqn2.gif" id="gif_image_7_2_1" width="103" height="31"><iframe class="svg" src="../../../en/normalDistn/images/standardiseEqn2.svg" id="svg_image_7_2_1" width="103" height="31" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_7_2_1");</script></p>
+	<p>or equivalently, </p>
+	<p class=eqn><span class="black"><em>x</em> &nbsp;=&nbsp; &mu; &nbsp;+&nbsp; <em>z</em> &times; &sigma;</span> </p>
+	<p class="heading">Probabilities and z-scores</p>
+	<p>Any  probability (area) relating to a normally distributed random variable, <em>X</em>, can be expressed in terms of z-scores:</p>
+	<p class="eqn"><img src="../../../en/normalDistn/images/s_zProb.gif" width="502" height="298"></p>
+	<p>Note in particular that:</p>
+	<ul>
+		<li>P(-1 &lt; z &lt; +1) &nbsp;is approx&nbsp;0.68</li>
+		<li>P(-2 &lt; <em> z </em> &lt; +2) &nbsp;is approx&nbsp;0.95</li>
+		<li>P(-3 &lt; <em>z</em> &lt; +3) &nbsp;is approx&nbsp;0.997</li>
+	</ul>
+
+
+
+
+<h2 class="pageName">12.7.3 &nbsp; Finding normal probabilities</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Distribution of z-scores</p>
+	<p>Calculating a z-score from a value, <em>x</em>, is  called <strong>standardising</strong> it.</p>
+<p class=eqn style="color:#000000; font-weight:bold">standardised value, &nbsp;&nbsp;&nbsp;&nbsp;<span style="position:relative; top:10px"><img class="gif" src="../../../en/normalDistn/images/standardiseEqn2.gif" id="gif_image_7_3_1" width="103" height="31"><iframe class="svg" src="../../../en/normalDistn/images/standardiseEqn2.svg" id="svg_image_7_3_1" width="103" height="31" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_7_3_1");</script></span></p>
+<p>If <em>X</em> has a normal distribution, then <i>Z</i> has a <strong>standard 
+		normal distribution</strong> with mean µ&nbsp;=&nbsp;0 
+	and standard deviation σ&nbsp;=&nbsp;1. </p>
+	<p class="heading">Probabilities for the standard normal distribution</p>
+	<p>After translating a probability about <em>X</em> into one about a z-score, it is easier to evaluate it.</p>
+	<p class="eqn"><img src="../../../en/normalDistn/images/s_xProb.gif" width="509" height="436"></p>
+	<p>Areas under the standard normal curve can be evaluated in Excel and most statistical programs. Statistical tables can also be used (see later).</p>
+
+
+
+
+<h2 class="pageName">12.7.4 &nbsp; Other probabilities</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Evaluating other probabilities</p>
+	<p>Other probabilities about normal distributions can be found using the following properties:</p>
+	<ul>
+		<li>The total area under a normal p.d.f. is 1</li>
+		<li>The probability of a value in any interval is the area under the normal p.d.f. above this interval.</li>
+	</ul>
+	<p class="heading">Probability of higher value</p>
+	<p class=eqn><img src="../../../en/normalDistn/images/normalAreas.gif" width="550" height="115"></p>
+	<p class="heading">Probability of value between two others</p>
+	<p class=eqn><img src="../../../en/normalDistn/images/normalAreas2.gif" width="506" height="241"></p>
+	<p>In both cases, the conversion can be done either before or after translating the 
+		required probability from x-values to z-scores.</p>
+
+
+
+
+<h2 class="pageName">12.7.5 &nbsp; Normal tables</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Standard normal probabilities without a computer</p>
+	<p>Probabilities about z-scores can be found <strong>without a computer</strong>. Most 
+		introductory statistics textbooks contain printed tables with left-tail probabilities 
+	for the standard normal distribution. </p>
+	<p class=eqn><img src="../../../en/normalDistn/images/table.gif" width="482" height="176" alt="pdf = table"> </p>
+	<p>These tables can be used after the required probability has been translated 
+		into a problem relating to the standard normal distribution.</p>
+
+
+
+
+<h2 class="pageName">12.7.6 &nbsp; Finding normal quantiles</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Finding an x-value from a probability</p>
+	<dl>
+		<dt>Quartiles</dt>
+		<dd>The <strong>quartiles</strong> of a  distribution are the three values such that there is probability <sup>1</sup>/<sub>4</sub>, <sup>2</sup>/<sub>4</sub> and <sup>3</sup>/<sub>4</sub> of being lower.</dd>
+		<dt>Percentiles</dt>
+		<dd>The <em>r</em>'th percentile of the distribution is the value with probability <sup><em>r</em></sup>/<sub>100</sub> of being lower.</dd>
+		<dt>Quantiles</dt>
+		<dd>These are generalised by the term <strong>quantile</strong>. The value with probability <em>p</em> of being lower is called the quantile of the distribution corresponding to probability <em>p</em>.</dd>
+	</dl>
+	<p class="heading">Finding quantiles</p>
+	<p>To find the x-value for which there is probability <em>p</em> of a normal distribution being lower,</p>
+	<ul>
+		<li>Find the z-score for which there is probability <em>p</em> of being less.</li>
+		<li>Translate the z-score to an x-value</li>
+	</ul>
+	<p>The first step of this process can be done with Excel (or other statistical software) or statistical tables can be used. For example, the 
+		diagram below shows how to find the z-score such that there is probability 
+		0.9 of being less.</p>
+	<p class=eqn><img src="../../../en/normalDistn/images/invTable.gif" width="482" height="176" class="summaryPict"> </p>
+	<p>Translating from a z-score to the corresponding x-value is done with the 
+		formula,</p>
+	<p class=eqn><span class="black"><em>x</em> &nbsp;=&nbsp; &mu; &nbsp;+&nbsp; <em>z</em> &sigma;</span> </p>
+
+
+
+
+<h2 class="pageName">12.7.7 &nbsp; Exercise: Probability and area under pdf</h2><div class='summary_text'><p>Exercises are only available online.</p></div>
+<h2 class="pageName" style='margin-top:2em;'>12.7.8 &nbsp; Exercise: Probabilities from z-scores</h2><div class='summary_text'><p>Exercises are only available online.</p></div>
+<h2 class="pageName" style='margin-top:2em;'>12.7.9 &nbsp; Exercise: Expected count in sample</h2><div class='summary_text'><p>Exercises are only available online.</p></div>
+<h2 class="pageName" style='margin-top:2em;'>12.7.10 &nbsp; Exercise: Find X from probability</h2><div class='summary_text'><p>Exercises are only available online.</p></div>
+</html>

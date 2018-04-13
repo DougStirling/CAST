@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Recovery from bad design</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="covariate">
+	<meta name="dataset" content="Calf weight gain">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Non-random allocation of treatments</p>
+  <p>Experiments should always try to randomise allocation of treatments to the available experimental units either overall (a completely randomised design) or within blocks (a randomised block design).</p>
+  <p>If this allocation is <strong>not</strong> randomly done, a standard analysis may result in a <strong>biased</strong> estimate of the differences between the treatments &mdash; the experiment's design may be <strong>expected</strong> to estimate a factor's effect too high or low. (<a href="javascript:showNamedPage('expPrinciples3')">An example</a> was given in the introduction to this e-book.)</p>
+  <p>Subsequent measurements about the variability of the experimental units (covariates) not only reduce unexplained variation, but also:</p>
+  <div class="centred"><div class="boxed">
+  	<p>Use of  covariates in analysing the data can reduce or eliminate  bias due to non-random allocation.</p>
+  </div></div>
+<br>
+
+  <div class="diagram"> 
+    <p class="heading">Recovering from a badly designed experiment</p>
+		
+<p>Eighteen calves were used in an experiment to assess whether a feed supplement 
+improves their weight gain over a 2-month period. The calves were driven into 
+a barn and the first nine to enter were separated and given the supplement. We 
+will conduct a simulation of this experiment in which <strong>the supplement increases 
+weight gain by exactly 5</strong>.</p>
+		<p>The circles on the left of the diagram below represent the 18 calves with 
+			their initial weights represented by the colours of the circles.</p>
+		<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="580" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="experProg.CovariateUnbiasedApplet">
+<param name="yVarName" value="Weight gain (kg)">
+<param name="yRegn" value="-38 0.5 1">
+<param name="yAxis" value="0 40 0 5">
+<param name="lurkingVarName" value="Initial weight:">
+<param name="lurkingValues" value="118 113 119 107 100 123 105 130 115 108 110 120 115 101 111 120 112 125">
+<param name="lurkingMinMax" value="100 kg#130 kg">
+<param name="unitName" value="Calves">
+<param name="circleCols" value="3">
+<param name="treatVarName" value="Feed">
+<param name="treatLabels" value="Control Supplement">
+<param name="treatEffect" value="5.0">
+<param name="lurkingRegn" value="0.0 1.0 12.0">
+<param name="effectName" value="Effect of supplement">
+<param name="noInLowGroup" value="9">
+<param name="maxDiff" value="99.99">
+<param name="randomSeed" value="54329311 23498564">
+<param name="effectAxis" value="2 14 2 2">
+<param name="customText" value="Theoretical=Theoretical#Estimated=Estimated#Allocate*Treatments=Allocate*Treatments#Run*Experiment=Run*Experiment#Std Covar=Std Covar#Estimation method=Estimation method">
+</applet> 
+</div>
+
+		<p>Click <strong>Allocate treatments</strong> to simulate the selection of 
+			nine of the calves (the first nine to enter the barn) to be given the 
+			feed supplement. Larger calves tend to push ahead and enter the barn first so the calves getting the supplement tend to be larger (the circles tend to be bluer).</p>
+		<p>Now click <strong>Run experiment</strong> to simulate the 
+			weight gains of the calves over two months. Repeat the experiment a few times and observe that most runs of the experiment 
+			estimate the effect of the supplement to be an increased weight gain of 
+			between 6 and 11.</p>
+		<div class="centred"><div class="boxed">
+			<p>The standard analysis gives a <strong>biased</strong> estimate of the effect of the supplement &mdash; it is overestimated by about 3. </p>
+		</div></div>
+		<p class="heading">Using calf weight to analyse the data</p>
+		<p>Randomised allocation of the supplement to half of the calves would remove the bias, but it is also possible to recover from the bad design by recording the weights of the calves <strong>after</strong> the treatments have been allocated and using this covariate in the analysis.</p>
+		<p>Unselect the checkbox<strong> Animate</strong>. The plot on the right changes to show the standard estimate of the treatment effect (ignoring the covariate) on the left and the corresponding estimate that does use the covariate on the right.</p>
+		<p>Click <strong>Run experiment</strong> several times to build up the sampling distributions of the two estimates. Observe that the estimate using the covariate is not only less variable (more accurate) but the bias in the estimate is removed &mdash; the distribution is centred round the correct improvement due to the feed supplement, 5.0.</p>
+  </div>
+  
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

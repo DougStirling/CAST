@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Linear relationships</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="correlation, linear relationship">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Strength of a relationship</p>
+
+<p>The correlation coefficient is a summary value that describes an important aspect of the <strong>strength</strong> of the relationship between two variables. Its value always lies between zero and one.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Properties of correlation</p>
+<p>For any random variables, \(X\) and \(Y\),</p>
+\[
+-1 \;\le\; \Corr(X,Y) \;\le\; +1
+\]
+</div>
+
+<div class="proof">
+<p>The proof starts by considering a variance (which we know must be greater than zero).</p>
+\[ \begin{align}
+\Var\left(\frac{X}{\sigma_X} + \frac{Y}{\sigma_Y}\right) \;&amp;=\; \Var\left(\frac{X}{\sigma_X}\right) + \Var\left(\frac{Y}{\sigma_Y}\right) + 2\Covar\left(\frac{X}{\sigma_X}, \frac{Y}{\sigma_Y}\right) \\
+&amp;=\; \frac{\sigma_X^2}{\sigma_X^2} + \frac{\sigma_Y^2}{\sigma_Y^2} + 2\frac{\Covar(X,Y)}{\sigma_X \sigma_Y} \\[0.3em]
+&amp;=\; 2 + 2 \rho_{XY} \\[0.3em]
+&amp;\ge 0
+\end{align} \]
+<p>From this, we obtain the result that \(\rho_{XY} \ge -1\)</p>
+<p>By similarly expanding \(\displaystyle\Var\left(\frac{X}{\sigma_X} - \frac{Y}{\sigma_Y}\right)\), it can be shown that \(\rho_{XY} \le 1\).</p>
+</div>
+
+</div>
+<p>A slight modification to the above proof shows that the correlation coefficient between two variables can only be ±1 if the variables are linearly related.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Linear relationships and correlation</p>
+\[
+\left|\Corr(X,Y)\right| = 1 \quad\text{if and only if} \quad Y = a + bX \quad\text{for some constants } a \text{ and } b.
+\]
+	</div>
+	<div class="proof">
+		<p>We first show that a correlation of ±1 can only arise when the variables are linearly related. There can only be equality in the  proof at the top of this page if either</p>
+		\[
+		\Var\left(\frac{X}{\sigma_X} + \frac{Y}{\sigma_Y}\right) = 0 \spaced{or} \Var\left(\frac{X}{\sigma_X} - \frac{Y}{\sigma_Y}\right) = 0
+		\]
+		<p>These variances can only be zero if either \(\displaystyle\left(\frac{X}{\sigma_X} + \frac{Y}{\sigma_Y}\right)\) or \(\displaystyle\left(\frac{X}{\sigma_X} - \frac{Y}{\sigma_Y}\right)\) is constant, making \(X\) and \(Y\) linearly related.</p>
+		<p>To complete the proof, we must also show that linearly related variables always have correlation ±1.</p>
+\[
+\Covar(X, a+bX) \;=\; b\Covar(X,X) \;=\; b \sigma_X^2
+\]
+<p>and</p>
+\[
+\Var(a+bX) \;=\; b^2\sigma_X^2
+\]
+<p>so</p>
+\[
+\Corr(X, a+bX) \;=\; \frac{\Covar(X, a+bX)}{\sqrt{\Var(X)\Var(a + bX)}} \;=\; \pm1
+\]
+	</div>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

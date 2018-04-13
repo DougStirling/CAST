@@ -1,0 +1,298 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Problems</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="interaction, confounding, aliased effects">
+	<meta name="dataset" content="Hardness of car paint">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p>When fewer runs of the experiment are used than the number required for a 
+    complete factorial design, it should come as no surprise that something is 
+    lost.</p>
+  
+  <p class="heading">Interactions</p>  
+  <p>When only a subset of the runs in a complete factorial design are used, some 
+		interactions get 'mixed up' with main effects. </p>
+	<ul>
+		<li>The interaction between two (or more) factors could potentially make a 
+			different factor incorrectly appear to have a large main effect.</li>
+		<li>Conversely, such an interaction could counter the other factor's main 
+			effect making it incorrectly appear to have no effect at all.</li>
+	</ul>
+	<p>When main effects and interactions are mixed up in this way, they are said 
+		to be <strong>confounded</strong> or <strong>aliased</strong> with each other.</p>
+	<p>It is necessary to assume that high-order interactions between the factors 
+    are either not present or negligible in relation to the main effects of the 
+    factors. If the number of runs is much smaller than the number required for 
+    a complete experiment, it may be necessary to assume that there are no interactions 
+    between the variables at all.</p>
+  <p class="heading">Testing</p>
+  <p>We often cannot test the significance of the main effects or interactions 
+		since the experiment may not have used enough runs to leave any residual degrees 
+		of freedom. Without an estimate of the variance of the experimental error, 
+		tests cannot be conducted.</p>
+	<p>As in complete factorial experiments with no replicates, it may be possible 
+    to get some residual degrees of freedom by either assuming interactions to 
+    be zero or by adding a few runs at the centre point of the experiment.</p>
+  <p>However in a screening experiment, it is often enough to rank the factors 
+    without testing the significance of their effects.</p>
+  <div class="diagram"> 
+		<p class="heading">Hardness of car paint</p>
+    <p>This experiment is an extreme example of a small subset of the 2<sup>15</sup> 
+			= 32,768 runs needed for a complete factorial design. With 16 runs, it is 
+			only possible to estimate the overall mean and 15 other quantities, so only 
+			the 15 main effects of the 15 factors can be estimated &mdash; there is no independent 
+			information to estimate interactions.</p>
+    <p>Moreover, the main effects of all factors are confounded with various interactions 
+			between other factors. For example, factor L had the largest main effect 
+			&mdash; we estimate that adding this additive will increase the hardness of the 
+			paint by 6.0. </p>
+    <div class="centred"><table border="0" class="centred" cellpadding="3" cellspacing="0">
+			<tr> 
+				<th>&nbsp;</th>
+				<th colspan="8">Additive</th>
+				<th><span class="darkblue">Hardness</span></th>
+			</tr>
+			<tr> 
+				<th>Run</th>
+				<th style="border-bottom:1px solid #999999;">&nbsp;&nbsp;...&nbsp;&nbsp;</th>
+				<th style="border-bottom:1px solid #999999;">D</th>
+				<th style="border-bottom:1px solid #999999;">E</th>
+				<th style="border-bottom:1px solid #999999;">&nbsp;&nbsp;...&nbsp;&nbsp;</th>
+				<th style="border-bottom:1px solid #999999;">L</th>
+				<th style="border-bottom:1px solid #999999;">&nbsp;&nbsp;...&nbsp;&nbsp;</th>
+				<th style="border-bottom:1px solid #999999;">DE</th>
+				<th style="border-bottom:1px solid #999999;">&nbsp;&nbsp;...&nbsp;&nbsp;</th>
+				<th style="border-bottom:1px solid #999999;"><span class="darkblue">Y</span></th>
+			</tr>
+			<tr align="center"> 
+				<th>1</th>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF"><span class="darkblue">53.3</span></td>
+			</tr>
+			<tr align="center"> 
+				<th>2</th>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF"><span class="darkblue">46.6</span></td>
+			</tr>
+			<tr align="center"> 
+				<th>3</th>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF"><span class="darkblue">53.8</span></td>
+			</tr>
+			<tr align="center"> 
+				<th>4</th>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF"><span class="darkblue">44.6</span></td>
+			</tr>
+			<tr align="center"> 
+				<th>5</th>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF"><span class="darkblue">44.8</span></td>
+			</tr>
+			<tr align="center"> 
+				<th>6</th>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF"><span class="darkblue">58.9</span></td>
+			</tr>
+			<tr align="center"> 
+				<th>7</th>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF"><span class="darkblue">56.5</span></td>
+			</tr>
+			<tr align="center"> 
+				<th>8</th>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF"><span class="darkblue">60.5</span></td>
+			</tr>
+			<tr align="center"> 
+				<th>9</th>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF"><span class="darkblue">48.2</span></td>
+			</tr>
+			<tr align="center"> 
+				<th>10</th>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF"><span class="darkblue">47.4</span></td>
+			</tr>
+			<tr align="center"> 
+				<th>11</th>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF"><span class="darkblue">54.8</span></td>
+			</tr>
+			<tr align="center"> 
+				<th>12</th>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF"><span class="darkblue">45.9</span></td>
+			</tr>
+			<tr align="center"> 
+				<th>13</th>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF"><span class="darkblue">56.3</span></td>
+			</tr>
+			<tr align="center"> 
+				<th>14</th>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF"><span class="darkblue">50.2</span></td>
+			</tr>
+			<tr align="center"> 
+				<th>15</th>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF"><span class="darkblue">62.3</span></td>
+			</tr>
+			<tr align="center"> 
+				<th>16</th>
+				<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">...</td>
+				<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">-1</td>
+				<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">+1</td>
+				<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">...</td>
+				<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">-1</td>
+				<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">...</td>
+				<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">-1</td>
+				<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">...</td>
+				<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;"><span class="darkblue">44.7</span></td>
+			</tr>
+		</table></div>
+    <p>However the term for an interaction between factors D and E, found by multiplying 
+      the +1 and -1 values for D and E, is identical to the levels of L, so the 
+      main effect of 6 percent for L could alternatively have been caused by a 
+      strong interaction between the effects of D and E.</p>
+		
+		<div class="boxed"><p>The main effect for factor L is <strong>confounded</strong> with the interaction between D and E &mdash; it is impossible to say whether the increase of 6 percent is caused by L, a DE interaction or some combination.</p></div>
+		
+    <p>Use of the estimated main effects in the previous page to rank the importance 
+			of the factors therefore requires the assumption that the interactions are 
+			much smaller than the main effects of the factors.</p>
+    <hr width="75%">
+    <p>A second problem in this example is that all 15 degrees of freedom are 
+			used to estimate main effects of the 15 factors and there are no residual 
+			degrees of freedom and it is impossible to estimate the error variance.</p>
+		<p>It is therefore impossible to test the significance of any main effects 
+			&mdash; it is possible that the estimated main effects are all simply a result 
+			of random variation in the experiment.</p>
+    </div>
+	
+  <p>We will show in the following sections that some subsets of complete factorial 
+		experiments are much less severe in their confounding than the paint hardness 
+		experiment.</p>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

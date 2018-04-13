@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Effect of Finals Series?</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Testing whether a finals series changes the probability of
+topping the league</p>
+
+<p>After running 100 simulations of a league in which Team A has a probability 0.55 of
+winning each match, we might obtain the following contingency table
+describing the results.
+</p>
+
+<div class="centred"><table border="0" cellspacing="0" cellpadding="6" class="centred">
+<caption align="TOP"><strong><font color="blue">Position of Team A</font></strong>
+</caption>
+<tr>
+<th></th>
+<th align="CENTER">Top<br>after finals</th>
+<th align="CENTER">Not top<br>after finals</th>
+<th align="CENTER">Total</th></tr>
+<tr>
+<th>Top of league</th>
+<td align="CENTER" bgcolor="white" style="border-top:1px solid #999999; border-left:1px solid #999999;">42</td>
+<td align="CENTER" bgcolor="white" style="border-top:1px solid #999999; border-right:1px solid #999999;">15</td>
+<td align="CENTER">57</td></tr>
+<tr>
+<th>Not top of league</th>
+<td align="CENTER" bgcolor="white" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">7</td>
+<td align="CENTER" bgcolor="white" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">36</td>
+<td align="CENTER">43</td></tr>
+<tr>
+<th>Total</th>
+<td align="CENTER">49</td>
+<td align="CENTER">51</td>
+<td align="CENTER">100</td></tr>
+</table></div>
+
+<p>A 2-sample test of whether the marginal
+proportions (57/100 and 49/100) are from binomial distributions with the same
+π
+<strong>should not be used</strong> to test whether the probability of Team A winning
+has changed, since we do not have two independent samples
+ &mdash; we really have 100 <strong>paired</strong> categorical measurements.
+</p>
+
+<p>Note that the two diagonal cell counts (42 and 36) correspond to runs of
+the simulation where the position of Team A did not change after the finals series.
+They therefore do not hold any information about whether Team A's probability of winning
+has changed after the finals series. We therefore base our test only on the two off-diagonal
+cell counts (15 and 7).
+</p>
+
+<p>If the probability of winning is the same before and after the finals series, the
+table of expected cell counts will be symmetric &mdash; both
+off-diagonal cell counts will have the same expected values. Each run of the simulation in which
+the position of Team A changes is therefore equally likely to be in the top right
+or bottom left cells of the table. As a result, the count in the top right cell, 15, should be a
+random value from a binomial distribution with <i>n</i>&nbsp;=&nbsp;(15+7) and
+π&nbsp;=&nbsp;0.5.
+</p>
+
+<p>To test for whether the probability of Team A winning has changed after the finals series,
+we can therefore refer to this binomial distribution to find the probability of 15 or more
+in the top right cell. Since we are performing a 2-tailed test, the p-value is double this.</p>
+
+
+<div class="diagram">
+
+<p>The diagram below illustrates. </p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="simulationProg.BinomHalfTestApplet">
+<param name="tableName" value="League table">
+<param name="drawProb" value="0.2">
+<param name="teamAProb" value="0.00 0.80 0.55">
+<param name="randomSeed" value="922773746">
+<param name="teams" value="10">
+<param name="rankName" value="A's rank (league)">
+<param name="finalRankName" value="A's rank (finals)">
+<param name="customText" value="Run League=Run League#wins match=wins match#A's position after finals=A's position after finals#A's position*in league=A's position*in league#Top=Top#Not top=Not top">
+</applet>
+</div>
+
+<p>Click <strong>Run League</strong>. The ranks of Team A in the ordinary league and after
+the finals series are shown on the top left. This simulation contributes a '1' to a single cell
+of the contingency table on the right.
+</p>
+
+<p>Click <strong>Accumulate</strong> then perform another 10 or 20 simulations of the
+league. The grey cells of the contingency table do not contribute to our test. The barchart
+under the table shows a binomial distribution with
+π&nbsp;=&nbsp;0.5.
+The red bars are for counts as extreme as that in the top right cell of the contingency table.
+Double this tail probability gives the p-value for the test.
+</p>
+
+<p>Hold the button <strong>Run League</strong> down until about 200 simulations have been
+performed. You should observe that the p-value is close to zero &mdash; there is strong
+evidence that the probability of Team A winning has changed. (The two off-diagonal
+cells would be unlikely to be so different if the probability stayed the same.)
+</p>
+
+<p>If enough simulations were performed,
+the p-value would become very close to zero, allowing us to state definitely that these
+probabilities are different.
+</p>
+
+</div>
+
+<p class="heading">Types of hypothesis test based on simulations</p>
+
+<p>Simulations are used to perform two distinct types of hypothesis test.</p>
+
+<dl>
+<dt><strong>Tests about the model itself</strong></dt>
+<dd>If our probability theory was good enough, we could give a <strong>definite answer</strong>
+to the question of whether the finals series affected the probability of Team A
+winning (not just a p-value).
+By performing enough simulations, we would be <strong>certain</strong>
+to detect any difference between the probabilities of being top. However from
+a finite number of simulations, we get a p-value that gives the evidence from
+the simulations so far.</dd>
+
+<dt><strong>Tests involving sample data</strong></dt>
+<dd>In contrast, the test of whether the English Premier Soccer League in 1999/2000
+was consistent with all teams being evenly matched was based on the standard deviation
+of points in a <strong>single</strong> league table, 16.1. From our model,
+it would be possible in theory to evaluate the p-value for this test &mdash; the probability
+of getting a standard deviation of 16.1 or higher if all teams were the same.
+Since our probability theory is not good enough, we <strong>estimated this p-value</strong>
+with a simulation. Performing simulations repeatedly estimates this p-value
+increasingly accurately, but cannot provide a definitive answer about whether
+all teams are equally matched.</dd>
+</dl>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

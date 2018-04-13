@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Warning about CI for variance</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="confidence interval, variance">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Assumption of normal population</p>
+<p>The 95% confidence intervals that we developed for σ<sup>2</sup> and σ used theory that assumed that the sample data arose from a normally distributed 
+population. </p>
+
+<div class="centred"><div class="boxed">
+<p>The actual confidence level of the CIs is <strong>strongly</strong> 
+dependent on whether the data are normally distributed.</p>
+</div></div>
+
+<p>If the data are normally distributed, the confidence level is 95%, but it can 
+be considerably greater or smaller than 95% if the distribution has longer or 
+shorter tails than a normal distribution.</p>
+
+<div class="centred"><table class="centred">
+<tr> 
+<th colspan="2">Population distribution</th>
+<th>Confidence level</th>
+</tr>
+<tr> 
+<td><strong>Normal</strong></td>
+<td><img src="images/tailsNormal.gif" width="287" height="130"></td>
+<td><div class="centred"><strong>exactly 0.95</strong></div></td>
+</tr>
+<tr> 
+<td><strong>Shorter tails</strong></td>
+<td><img src="images/tailsShort.gif" width="287" height="130"></td>
+<td><div class="centred"><strong>can be much greater than 0.95</strong></div></td>
+</tr>
+<tr> 
+<td><strong>Longer tails</strong></td>
+<td><img src="images/tailsLong.gif" width="287" height="130"></td>
+<td><div class="centred"><strong>can be much less than 0.95</strong></div></td>
+</tr>
+</table></div>
+
+<br>
+
+<div class="diagram">
+<p class="heading">Simulation: short tails</p>
+<p>The diagram below repeats the simulation on the previous page, but takes random 
+samples from a population whose tails are shorter than a normal distribution &mdash; 
+a rectangular distribution. The population standard deviation, σ,&nbsp;is 
+still 2.0.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="580" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="varianceProg.CIforStDevnApplet">
+<param name="varName" value="Sample data">
+<param name="randomRect" value="20 8 14.9282 4534052">
+<param name="dataDecimals" value="2">
+<param name="sdName" value="Interval estimate =">
+<param name="summaryDecimals" value="3">
+<param name="horizAxis" value="5.0 19.0 6 2">
+<param name="summaryAxis" value="0.0 5.0 0 1">
+<param name="target" value="2.0">
+<param name="customText" value="Propn including=Propn including">
+</applet>
+</div>
+
+<p>The normal-distribution based 95% CI for σ is shown on the right. Click <strong>Accumulate</strong> then take 100 or more 
+samples. Observe that almost all of the CIs include σ&nbsp;=&nbsp;2.0.</p>
+
+<div class="centred"><div class="boxed">
+<p>The true confidence level 
+is much higher than 95%</p>
+</div></div>
+
+<p class="heading">Simulation: long tails</p>
+<p>The diagram below repeats the simulation with a population distribution that 
+is skew with a fairly long tail towards the high values. The population standard 
+deviation, σ,&nbsp;is 
+still 2.0.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="580" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="varianceProg.CIforStDevnApplet">
+<param name="varName" value="Sample data">
+<param name="randomGamma" value="20 2.5 1.26491 4534052">
+<param name="dataDecimals" value="2">
+<param name="sdName" value="Interval estimate =">
+<param name="summaryDecimals" value="3">
+<param name="horizAxis" value="0.0 14.0 0 2">
+<param name="summaryAxis" value="0.0 5.0 0 1">
+<param name="target" value="2.0">
+<param name="customText" value="Propn including=Propn including">
+</applet>
+</div>
+
+<p>Again click <strong>Accumulate</strong> and take 100 or more samples. Observe 
+now that far fewer than 95% of the CIs include σ&nbsp;=&nbsp;2.0.</p>
+
+<div class="centred"><div class="boxed">
+<p>The true confidence level is much lower than 95%</p>
+</div></div>
+
+<br>
+</div>
+
+<p class="heading">Advice</p>
+
+<div class="centred"><div class="boxed">
+<p>Unless you are sure that 
+the data really come from a normal population, do not rely on this confidence 
+interval.</p>
+</div></div>
+
+
+<br>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

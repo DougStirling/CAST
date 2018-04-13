@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Splitting the explained sum of squares</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="sums of squares, sequential sums of squares">
+	<meta name="dataset" content="Body fat">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Components and sums of squares for Y vs X and Z</p>
+  <p><a href="javascript:showNamedPage('sec_regnAnovaTwo')">In 
+		an earlier section</a>, we showed that the differences between the response 
+		values and their mean can be split into two components,</p>
+  <p class="eqn"><img src="../multiRegnAnova/images/componentsSimple.gif" width="290" height="47" align="absmiddle"></p>
+	<p>The sums of squares of these components satisfy a similar relationship,</p>
+  <p class="eqn"><img src="../multiRegnAnova/images/componentSSqEqn.gif" width="322" height="51" align="absmiddle"></p>
+	<p class="heading">Sequential components and sums of squares</p>
+	<p>We now consider how the fit of the model improves when we add the two explanatory 
+		variables in the order <em>X</em> and then <em>Z</em>. Using the notation</p>
+	
+	<div class="centred"><table border="0" class="centred" cellpadding="5" cellspacing="0">
+		<tr> 
+			<td style="border-top:1px solid #999999; border-bottom:1px solid #999999;"><img src="images/fitMean.gif" width="33" height="24"></td>
+			<td class="black" align="left" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">mean response (fitted value for model with no 
+				explanatory variables)</td>
+		</tr>
+		<tr> 
+			<td style="border-bottom:1px solid #999999;"><img src="images/fitX.gif" width="33" height="24"></td>
+			<td class="black" align="left" style="border-bottom:1px solid #999999;">fitted value for model with only <em>X</em></td>
+		</tr>
+		<tr> 
+			<td style="border-bottom:1px solid #999999;"><img src="images/fitXZ.gif" width="33" height="24"></td>
+			<td class="black" align="left" style="border-bottom:1px solid #999999;">fitted value for model with both <em>X</em> and 
+				<em>Z</em></td>
+		</tr>
+	</table></div>
+	
+	<p>we can split the total component into three parts,</p>
+	<p class="eqn"><img src="images/componentsXZ.gif" width="401" height="55" align="absmiddle"></p>
+	<p>Provided the models are all fitted by least squares, the sums of squares 
+		of the components satisfy a similar relationship,</p>
+	<p class="eqn"><img src="images/ssqXZ.gif" width="455" height="55" align="absmiddle"></p>
+	<p class="heading">Interpreting the sums of squares</p>
+
+    <div class="centred"><table width="90%" border="0" cellspacing="0" cellpadding="6" class="centred">
+      <tr> 
+        <td style="border-top:1px solid #999999; border-bottom:1px solid #999999;"><img src="images/ssTotalDefn.gif" width="164" height="26" alt="SStotal"></td>
+        <td class="purple" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">The total variability of the response.</td>
+      </tr>
+      <tr> 
+        <td style="border-bottom:1px solid #999999;"><img src="images/ssXDefn.gif" width="172" height="26" alt="SSexplained"></td>
+        <td class="red" style="border-bottom:1px solid #999999;">The response variability that is <strong>explained 
+					by <em>X</em></strong>.</td>
+      </tr>
+      <tr> 
+        <td style="border-bottom:1px solid #999999;"><img src="images/ssZAfterXDefn.gif" width="187" height="26" alt="SSresidual"></td>
+        <td class="green" style="border-bottom:1px solid #999999;">The extra response variability that is <strong>explained 
+					by adding <em>Z</em> to the model that already contains <em>X</em></strong>.</td>
+      </tr>
+      <tr> 
+        <td style="border-bottom:1px solid #999999;"><img src="images/ssResidDefn.gif" width="195" height="26" alt="SSresidual"></td>
+        <td class="blue" style="border-bottom:1px solid #999999;">The variability in the response that is <strong>unexplained 
+					by the model with both <em>X</em> and <em>Z</em></strong>.</td>
+      </tr>
+    </table></div>
+
+
+	<p class="heading">Different order of adding variables</p>
+	<p>There are two different orders of adding the explanatory variables to the 
+		model, so there are two different ways to define the components and their 
+		sums of squares. The total sum of squares can therefore be written in two 
+		alternative ways:</p>
+	<p class="eqn"><img src="images/alternativeSsqSplits.gif" width="275" height="47" align="absmiddle"></p>
+	<p>Note that the green sums of squares summarise the effect of adding the variables 
+		<strong>to the model that already has the other variable</strong>, so they 
+		may differ from the red sums of squares.</p>
+	<div class="diagram">
+    <p class="heading">Body fat</p>
+
+    <p>The diagram below shows the percentage body fat, abdomen circumference 
+			and height of 25 men.</p>
+    <div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="480">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="multiRegnProg.SeqComponentsApplet">
+<param name="yVarName" value="Body fat">
+<param name="xVarName" value="Abdomen (X)">
+<param name="zVarName" value="Height (Z)">
+<param name="yValues" value="12 16.5 9.4 31.3 5 24 13.2 18.6 14.3 21.7 21 17.9 15 20.1 24.5 22 16.5 16.8 23.8 22.6 11.3 15.1 16.9 28.8 28.3">
+<param name="xValues" value="88.6 100.5 83.5 108.1 70.4 98.3 84.6 98.6 86.5 94 92.3 87.5 87 106.6 106.8 92.4 90.8 104.5 101.2 89.7 84.4 88.7 93 100.5 111.5">
+<param name="zValues" value="73.5 73.5 69 67 66.75 65.75 71.5 69.25 73 72 69.25 72.25 69.75 75 70.25 71.5 69.5 74.5 68.25 67.5 70.75 69.25 68.5 65.75 66">
+<param name="yAxis" value="0 50 0 10">
+<param name="xAxis" value="65 120 70 10">
+<param name="zAxis" value="63 76 65 5">
+<param name="componentAxis" value="-16 16 -15 5">
+<param name="dotPlotWidth" value="100">
+<param name="ssqNames" value="Total#Explained by X#Explained by Z after X#Residual">
+<param name="maxSsq" value="999.99">
+<param name="componentDecimals" value="2">
+<param name="customText" value="Fitting order=Fitting order#then=then#Component=Component#Explained by * after=Explained by * after">
+</applet> 
+</div>
+
+    <p>Use the <strong>Component</strong> pop-up menu on the top right to display 
+			the four components corresponding to adding the variables in the order <em>abdomen&nbsp;(X)</em> 
+			then <em>height&nbsp;(Z)</em>. The components themselves are shown in a 
+			jittered dot plot on the right and their sizes are summarised by the sums 
+			of squares at the bottom.</p>
+<div class="boxed"><p>Note that the sums of squares explained by <em>X</em> and 
+					by <em>Z</em> after <em>X</em> both summarise the 'distance between' 
+					two least squares planes.</p></div>
+
+		<p>Use the <strong>Order</strong> pop-up menu on the top left to change the 
+			order of adding the variables. Observe that the components (and their sums 
+			of squares) explained by <em>Z</em> and by <em>X</em> after <em>Z</em> are 
+			different from those from the other ordering &mdash; they refer to the distances 
+			between different least squares planes.</p>
+    </div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

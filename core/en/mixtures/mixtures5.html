@@ -1,0 +1,204 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Modelling the response surface</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="mixtures, mixture design, response surface, linear model, quadratic model">
+	<meta name="dataset" content="Yarn elongation">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Linear model</p>  
+  <p>The earlier pages of this section described experimental designs for mixtures 
+		&mdash; the factor values that will be used for the runs of the experiment. When 
+		the experiment is conducted, a response value is recorded from each run. Consider 
+		a 3-ingredient experiment in which the proportions of the three components 
+		are denoted by <em>x</em>, <em>z</em> and <em>u</em>. The simplest model for 
+		the response is a linear model,</p>
+  <p class=eqn><img src="images/linearModel1.gif" width="309" height="47"> </p>
+  <p>This model has redundancy since <em>x</em>, <em>z</em> and <em>u</em> are 
+		linearly related &mdash; they sum to 1 &mdash; so we cannot get unique least squares 
+		estimates of the parameters. We could remove <em>u</em> from the model, replacing 
+		it by:</p>
+	<p class=eqn><em>u</em> &nbsp; = &nbsp; 1 - <em>x</em> - <em>z</em></p>
+	<p>Doing this, the model is equivalent to a linear model involving only <em>x</em> 
+		and <em>z</em>,</p>
+  <p class=eqn><img src="images/linearModel2.gif" width="226" height="14"> </p>
+  <p>where the new coefficients are related to those in the original formulation:</p>
+	<p class=eqn><img src="images/linParamReln.gif" width="329" height="18"> </p>
+	<p>However when the model is written in this way, the symmetry in our treatment 
+		of the three factors disappears. A better formulation of the same model is:</p>
+  <p class=eqn><img src="images/linearModel3.gif" width="243" height="18"> </p>
+	<br>
+  
+<div class="centred"><div class="boxed">
+<p>Note that all three formulations of the model 
+          are identical in their modelling ability &mdash; they all result in identical 
+          fitted values.</p>
+</div></div>
+
+  <p>In the final formulation of the linear model, the relative sizes of the three 
+		coefficients give information about the relative importance of the three ingredients.</p>
+  
+<div class="centred"><div class="boxed">
+<p>If two ingredients have coefficients that are 
+					equal, the response does not depend on their relative sizes &mdash; the two 
+					ingredients are equivalent in their effect on the response.</p>
+</div></div>
+
+	<p class="heading">Quadratic model</p>
+  <p>A linear model is often a poor fit to data from mixture models over the whole 
+    design space. A quadratic response surface model is often used. Noting again 
+    that one proportion is redundant in the model, the quadratic model can be 
+    expressed in terms of <em>x</em> and <em>z</em> as:</p>
+  <p class=eqn><img src="images/quadModel1.gif" width="447" height="23"> </p>
+  <p>This again lacks symmetry in the treatment of the three proportions, so the 
+    quadratic model is usually written in the following equivalent form.</p>
+  <p class=eqn><img src="images/quadModel2.gif" width="489" height="18"> </p>
+	<br>
+  
+<div class="centred"><div class="boxed">
+<p>Again note that both formulations of the quadratic 
+          model are equivalent &mdash; they result in identical fitted values.</p>
+</div></div>
+
+  <p class="heading">Estimation of parameters</p>
+  <p>These linear and quadratic models for mixture data are fitted in the same 
+		way as the corresponding models for non-mixture data:</p>
+	
+<div class="centred"><div class="boxed">
+<p>The parameters are estimated by <strong>least 
+					squares</strong>.</p>
+</div></div>
+
+	<br>
+	<div class="diagram"> 
+    <p class="heading">Elongation of yarn</p>
+    <p>Polyethylene (<em>Pe</em>), Polystyrene (<em>Ps</em>), and Polypropylene 
+			(<em>Pp</em>), can be blended together to form fiber that is spun into yarn. 
+			A researcher is studying how the properties of this yarn depend on the mixture 
+			of the component raw materials.</p>
+    <p>In one experiment, the response variable of interest was yarn elongation 
+			in kilograms of force applied. A simplex-lattice design with <em>m</em>&nbsp;=&nbsp;2 
+			was used, giving 6 design points. There were two replicate observations 
+			for each of the pure blends and three replicates for the binary blends. 
+			(Note that this design does not involve any blends that contain mixtures 
+			of all three components.) The data are shown below.</p>
+	  
+	  <div class="centred"><table border="0" class="centred" cellpadding="4" cellspacing="0">
+			<tr> 
+        <th style="border-bottom:1px solid #999999;">&nbsp;Polyethylene&nbsp;</th>
+        <th style="border-bottom:1px solid #999999;">&nbsp;Polystyrene&nbsp;</th>
+        <th style="border-bottom:1px solid #999999;">&nbsp;Polypropylene&nbsp;</th>
+        <th colspan="3" style="border-bottom:1px solid #999999;">Elongation</th>
+      </tr>
+      <tr bgcolor="#FFFFFF"> 
+        <td align="center">0.0</td>
+        <td align="center">0.0</td>
+        <td align="center">1.0</td>
+        <td align="right" bgcolor="#EEEEEE">&nbsp;&nbsp;&nbsp;16.8&nbsp;&nbsp;&nbsp;</td>
+        <td align="right" bgcolor="#EEEEEE">16.0&nbsp;&nbsp;&nbsp;</td>
+        <td align="right" bgcolor="#EEEEEE">&nbsp;&nbsp;&nbsp;</td>
+      </tr>
+      <tr bgcolor="#FFFFFF"> 
+        <td align="center">0.0</td>
+        <td align="center">0.5</td>
+        <td align="center">0.5</td>
+        <td align="right" bgcolor="#EEEEEE">10.0&nbsp;&nbsp;&nbsp;</td>
+        <td align="right" bgcolor="#EEEEEE">9.7&nbsp;&nbsp;&nbsp;</td>
+        <td align="right" bgcolor="#EEEEEE">11.8&nbsp;&nbsp;&nbsp;</td>
+      </tr>
+      <tr bgcolor="#FFFFFF"> 
+        <td align="center">0.0</td>
+        <td align="center">1.0</td>
+        <td align="center">0.0</td>
+        <td align="right" bgcolor="#EEEEEE">8.8&nbsp;&nbsp;&nbsp;</td>
+        <td align="right" bgcolor="#EEEEEE">10.0&nbsp;&nbsp;&nbsp;</td>
+        <td align="right" bgcolor="#EEEEEE">&nbsp;</td>
+      </tr>
+      <tr bgcolor="#FFFFFF"> 
+        <td align="center">0.5</td>
+        <td align="center">0.0</td>
+        <td align="center">0.5</td>
+        <td align="right" bgcolor="#EEEEEE">17.7&nbsp;&nbsp;&nbsp;</td>
+        <td align="right" bgcolor="#EEEEEE">16.4&nbsp;&nbsp;&nbsp;</td>
+        <td align="right" bgcolor="#EEEEEE">16.6&nbsp;&nbsp;&nbsp;</td>
+      </tr>
+      <tr bgcolor="#FFFFFF"> 
+        <td align="center">0.5</td>
+        <td align="center">0.5</td>
+        <td align="center">0.0</td>
+        <td align="right" bgcolor="#EEEEEE">15.0&nbsp;&nbsp;&nbsp;</td>
+        <td align="right" bgcolor="#EEEEEE">14.8&nbsp;&nbsp;&nbsp;</td>
+        <td align="right" bgcolor="#EEEEEE">16.1&nbsp;&nbsp;&nbsp;</td>
+      </tr>
+      <tr bgcolor="#FFFFFF"> 
+        <td align="center" style="border-bottom:1px solid #999999;">1.0</td>
+        <td align="center" style="border-bottom:1px solid #999999;">0.0</td>
+        <td align="center" style="border-bottom:1px solid #999999;">0.0</td>
+        <td align="right" bgcolor="#EEEEEE" style="border-bottom:1px solid #999999;">11.0&nbsp;&nbsp;&nbsp;</td>
+        <td align="right" bgcolor="#EEEEEE" style="border-bottom:1px solid #999999;">12.4&nbsp;&nbsp;&nbsp;</td>
+        <td align="right" bgcolor="#EEEEEE" style="border-bottom:1px solid #999999;">&nbsp;</td>
+      </tr>
+    </table></div>
+	  
+    <p>The diagram below shows the data and a linear model fitted to them.</p>
+	<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="550">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="mixtureProg.MixtureSurfaceApplet">
+<param name="yVarName" value="Elongation">
+<param name="rVarName" value="Polyethylene">
+<param name="sVarName" value="Polystyrene">
+<param name="tVarName" value="Polypropylene">
+<param name="shortNames" value="E Pe Ps Pp">
+<param name="yValues" value="16.8 16.0 10.0 9.7 11.8 8.8 10.0 17.7 16.4 16.6 15.0 14.8 16.1 11.0 12.4">
+<param name="rValues" value="7@0.0 6@0.5 2@1.0">
+<param name="sValues" value="2@0.0 3@0.5 2@1.0 3@0.0 3@0.5 2@0.0">
+<param name="tValues" value="2@1.0 3@0.5 2@0.0 3@0.5 5@0.0">
+<param name="yAxis" value="8 19 8 2">
+<param name="paramDecimals" value="1 1 1 1 1 1">
+<param name="shadeCutoff" value="10 14 18">
+<param name="contour" value="13.5">
+<param name="contourAxis" value="8 18 8 2">
+<param name="fixedContours" value="8 9 10 11 12 13 14 15 16 17 18">
+<param name="maxCoeffs" value="-99.9 -99.9 -99.9 -99.9 -99.9 -99.9">
+<param name="customText" value="Quadratic terms=Quadratic terms#Display type=Display type#Shaded surface=Shaded surface#Selected contours=Selected contours">
+</applet>
+</div>
+
+    <p>Rotate the response surface (dragging with the mouse or using the buttons 
+      on the right) to get a better feel for this surface.</p>
+    <p>The linear model is clearly a poor fit &mdash; the actual response values are 
+			far from the least squares response surface for several mixtures.</p>
+    <p>Click the checkbox <strong>Quadratic terms</strong> to fit a quadratic 
+			model to the data. Again rotate the response surface to get a better feel 
+			for its shape.</p>
+    
+<div class="centred"><div class="boxed">
+<p>The blends that give highest elongation are 
+            those with low polystyrene (far from the 100% polystyrene vertex) 
+            and between 50% and 100% polypropylene.</p>
+</div></div>
+
+    <p>Finally, select <strong>Selected contours</strong> from the pop-up menu 
+			and click the <strong>x-z</strong> rotation button. (Note that the labels 
+			'x' and 'z' on these buttons do not refer to variables in these mixture 
+			models.) The resulting contour map is the usual way that this typw of response 
+			surfaces is displayed on paper.</p>
+  </div>
+		
+		
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

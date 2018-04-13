@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Dangers of extrapolation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="regression model, nonlinear model, curvature, transformations, quadratic model, extrapolation">
+	<meta name="dataset" content="GDP in the USA">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">The shape of a relationship is only known around the data</p>
+  <p>The models that we have used to describe the relationship between a response, 
+    <i>Y</i>, and explanatory variable, <i>X</i>, are usually only approximations 
+    to the 'real' relationship. For example, a scatterplot may <strong>look</strong> 
+    linear, but we really have no information about the shape of the relationship 
+    beyond our data. </p>
+  <p class=eqn><img class="gif" src="../curvature/images/extrapolate.gif" width="256" height="166"> 
+<p>As a result, the models that we have described may be used to predict <i>Y</i> 
+    from values of <i>X</i> that are within the range of x-values in our data, 
+    but we should be very cautious about using a fitted model for predictions 
+    outside this range. This is called <strong>extrapolation</strong> and it can 
+    be badly in error. </p>
+  
+<div class="centred"><div class="boxed">
+<p>Avoid using a model to predict <em>Y</em> far beyond the available 
+        data.</p>
+</div></div>
+
+  <p class="heading">What model for curvature is best?</p>
+  <p>We described two different types of nonlinear model for data with curvature 
+    &mdash; quadratic models and linear models based on transformed variables. There 
+    are many data sets for which both types of model fit equally well.</p>
+  <p>However the different types of model can give very different predictions 
+    when used to extrapolate from the observed data. The data cannot help us to 
+    decide which is better.</p>
+  <div class="diagram">
+
+		<p class="heading">GDP in the USA</p>
+
+		<p>For example, consider the time series of GDP (measured in billion dollars, 
+			corrected for inflation by being expressed in 1996 dollar terms) in the 
+			USA between 1960 and 2001.</p>
+		<p>We saw earlier that a quadratic model fitted well. In terms of an explanatory 
+			variable <i>t</i> that we define to be the year minus 1960 (so that 1960 
+			is year <i>t</i>&nbsp;=&nbsp;0, 1061 is year <i>t</i>&nbsp;=&nbsp;1, ...) the least 
+			squares curve is </p>
+	
+	  <p class=eqn><strong>estimate of GDP</strong>&nbsp;&nbsp;=&nbsp;&nbsp;2562.6 &minus; 74.913 <em>t</em> + 2.0851 <em>t</em><sup>2</sup> </p>
+	
+<p>The logarithm of the pressure is also approximately linearly related
+to boiling point with the equation
+</p>
+	
+	  <p class=eqn><strong>estimate of </strong>ln<strong> (GDP)</strong>&nbsp;&nbsp;=&nbsp;&nbsp;7.851 + 0.03166 <em>t</em> </p>
+
+	<p>This equation can be rewritten in the form
+	</p>
+
+	  <p class=eqn><strong>estimate of GDP</strong>&nbsp;&nbsp;=&nbsp;&nbsp;exp( 7.851 + 0.03166 <em>t</em> ) </p>
+
+		<p>The two models (quadratic in the original measurements and linear in the 
+			transformed measurements) both fit the data reasonably well with residual 
+			plots that are similar. The data give no indication of which of the alternative 
+			models fits better. </p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="380">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.ChangeScalesApplet">
+<param name="yVarName" value="GDP">
+<param name="yUnits" value="billion dollars">
+<param name="xVarName" value="Year">
+<param name="yValues" value="2376.7 2432 2578.9 2690.4 2846.5 3028.5 3227.5 3308.3 3466.1 3571.4 3578 3697.7 3898.4 4123.4 4099 4084.4 4311.7 4511.8 4760.6 4912.1 4900.9 5021 4919.3 5132.3 5505.2 5717.1 5912.4 6113.3 6368.4 6591.8 6707.9 6676.4 6880 7062.6 7347.7 7543.8 7813.2 8159.5 8508.9 8856.5 9224 9332.3">
+<param name="xValues" value="1960 1961 1962 1963 1964 1965 1966 1967 1968 1969 1970 1971 1972 1973 1974 1975 1976 1977 1978 1979 1980 1981 1982 1983 1984 1985 1986 1987 1988 1989 1990 1991 1992 1993 1994 1995 1996 1997 1998 1999 2000 2001">
+<param name="vertAxis" value="0 30000 0 5000">
+<param name="horizAxis" value="1900 2050 1900 20">
+<param name="vert2Scale" value="0 10000">
+<param name="horiz2Scale" value="1960 2002">
+<param name="customText" value="Data=Data#Extrapolate=Extrapolate#No model=No model#Log linear model=Log linear model#Both models=Both models">
+</applet>
+</div>
+
+<p>Use the pull-down menu to display the two fitted lines (<strong>Quadratic model</strong>
+and <strong>Log linear model</strong>). Observe that they almost coincide.
+</p>
+
+		<p>Select the option <strong>Both models</strong>, then use the slider to 
+			extend the two axes. Before about 1940 and after about 2020, the two models 
+			give very different predictions of GDP. </p>
+
+		<p>Indeed, the quadratic model (which is green) predicts that GDP would have 
+			been <strong>higher</strong> in 1920 than in 1940, which is clearly unreasonalbe! 
+			For these data, the log linear model conforms better to how we might expect 
+			GDP to have changed in the past. </p>
+
+		<p>However we really have little idea about which curve is better in the future&mdash; 
+      indeed, <strong>neither</strong> may adequately predict GDP. The point here 
+      is that...</p>
+			
+    <div class="centred"><table width="85%" border="1" class="centred" cellpadding="10" cellspacing="0" style="background-color:#FFFFFF">
+      <tr> 
+        <td><strong>Predictions from any model will be very unreliable if the 
+          predictions are made away from values of the explanatory variables where 
+          we have data</strong>.</td>
+      </tr>
+    </table></div>
+    
+		<br>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Confidence interval for the variance</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="confidence interval, variance, chi-squared distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Bad confidence interval for variance</p>
+<p>All 95% confidence intervals that we have encountered so far have been of the 
+form</p>
+<p class="eqn"><img src="images/ciGeneral.gif" width="203" height="21"></p>
+<p>where <em>k</em> is a constant close to 2 (from normal or t tables). This suggests 
+that we might try a confidence interval for σ<sup>2</sup> 
+of the form</p>
+<p class="eqn"><img src="images/badCI.gif" width="127" height="22"></p>
+<br>
+
+<div class="centred"><div class="boxed">
+<p>A confidence interval of this form <strong>does 
+not work well</strong> because the distribution of <em>S</em><sup>2</sup> is so 
+skew.</p>
+</div></div>
+
+<p class="heading">Confidence interval based on chi-squared distribution</p>
+<p>A 95% confidence interval for σ<sup>2</sup> should be based on the chi-squared distribution of the sum of squares about the 
+sample mean, </p>
+<p class="eqn"><img src="images/ssqRoundMeanDistn.gif" width="211" height="26"></p>
+<p>From this chi-squared distribution, we can write</p>
+<p class="eqn"><img src="images/ciInequality1.gif" width="466" height="34"></p>
+
+<p>where the two red values are quantiles of the chi-squared distribution and 
+can be found from printed tables or computer software.</p>
+
+<p class="eqn"><img src="images/chi2Quantiles.gif" width="382" height="162"></p>
+<br clear="all">
+<p>Rearranging the left and right inequalities then putting them back together,</p>
+<p class="eqn"><img src="images/ciInequality2.gif" width="412" height="56"></p>
+<p>A 95% confidence interval for σ<sup>2</sup> is therefore</p>
+<p class="eqn"><img src="images/ciForVar.gif" width="213" height="56"></p>
+<p>Or, in terms of the sample variance,</p>
+<p class="eqn"><img src="images/ciForVar2.gif" width="213" height="54"></p>
+<p class="heading">Confidence interval for standard deviation</p>
+<p>To obtain a 95% confidence interval for the standard deviation, σ, 
+we simply take the square root of both ends of the interval,</p>
+<p class="eqn"><img src="images/ciForSD.gif" width="266" height="53"></p>
+<br>
+
+<div class="diagram">
+<p class="heading">Illustration of calculations</p>
+<p>The diagram below shows a random sample from a normal population and the calculations 
+for obtaining a 95% CI for σ.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="varianceProg.Chi2CICalcApplet">
+<param name="horizAxis" value="4 16 4 2">
+<param name="normal" value="10 10.0 2.0 34589653 2.9">
+<param name="maxSummary" value="99.999">
+</applet>
+</div>
+
+<p>Click <strong>Take sample</strong> and change the sample size to see the calculations 
+illustrated for different data sets.</p>
+<p>Note that:</p>
+
+<div class="centred"><div class="boxed">
+<p>The confidence intervals are surprisingly wide 
+&mdash; you need an extremely large sample size to estimate the standard deviation 
+accurately.</p>
+</div></div>
+
+<br>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

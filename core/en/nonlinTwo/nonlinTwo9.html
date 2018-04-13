@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Tests for curvature in X and Z</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="curvature, t test">
+	<meta name="dataset" content="Bee energy expenditure">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Hypotheses</p>
+  <p>We have described a model that can explain some forms of curvature in the 
+		relationship between <em>Y</em> and the two explanatory variables, <em>X</em> 
+		and <em>Z</em>,</p>
+	<p class=eqn><img src="images/xzQuadQuadModel.gif" width="335" height="22"></p>
+	<p>This suggests hypothesis tests for curvature, based on whether the coefficients 
+		of the two quadratic terms are zero. For example, testing whether there is 
+		curvature in <em>X</em> corresponds to the hypotheses,</p>
+	<p class=eqn><img src="images/quadXHypoth.gif" width="87" height="41"></p>
+	<p class="heading">Test for curvature</p>
+	<p>As in other general linear models, this can be tested with a t-test based 
+		on the ratio of the least squares estimate of the parameter and its standard 
+		error,</p>
+	<p class=eqn><img src="images/quadXt.gif" width="75" height="41"></p>
+	<p>(A general formula for the standard error of least squares estimates for 
+		the general linear model was given earlier.)</p>
+	<p>If there is no curvature, this t-statistic has a t distribution with (<em>n</em>&nbsp;-&nbsp;5) 
+		degrees of freedom, so the p-value for the test is the tail area of this distribution.</p>
+	
+<div class="centred"><div class="boxed">
+<p>Most statistical software for fitting linear models gives a 
+				table of all parameter estimates, their standard errors, t-ratios and 
+				p-values. This table avoids the need to do any calculations by hand.</p>
+</div></div>
+
+	<br>
+	  <div class="diagram">
+		<p class="heading">Energy expenditure of bees</p>
+
+<p>In an experiment, an entomologist recorded energy expenditure (joules/sec) 
+for bees drinking water with different sucrose concentrations (%) and at different 
+temperatures. Energy expenditure is the response measurement.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="520">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="curveInteractProg.QuadParamTestApplet">
+<param name="dataName" value="Energy expenditure of bees">
+<param name="yAxis" value="0 20 0 5">
+<param name="xAxis" value="17 43 20 10">
+<param name="zAxis" value="15 65 20 20">
+<param name="longYVarName" value="energy (y)">
+<param name="longXVarName" value="temperature (x)">
+<param name="longZVarName" value="sucrose (z)">
+<param name="yVarName" value="y">
+<param name="xVarName" value="x">
+<param name="zVarName" value="z">
+<param name="yValues" value="3.1 3.7 4.7 5.5 6.7 7.3 7.9 9.2 9.3 6.0 6.9 7.5 11.5 12.9 13.4 17.5 15.8 14.7 7.7 8.3 9.5 15.7 14.3 15.9 19.1 18.0 19.9">
+<param name="xValues" value="9@20 9@30 9@40">
+<param name="zValues" value="3@20 3@40 3@60 3@20 3@40 3@60 3@20 3@40 3@60">
+<param name="initialParams" value="6.00 0.000 0.000 0.0000 0.0000 0.0000 0">
+<param name="paramMinMax" value="-99.99 99.99 0.999 9.999 -9.999 9.999 -9.9999 9.9999 -9.9999 9.9999 0.0000 9.9999">
+<param name="shadeCutoff" value="0 10 20">
+<param name="paramNames" value="Intercept Temperature Sucrose Temp-squared Sucrose-squared ?">
+<param name="maxTableEntries" value="-99.999 9.999 99.99">
+<param name="initialRotation" value="45 40">
+<param name="customText" value="param=param#se=se">
+</applet> 
+</div>
+
+		<p>The table under the data shows all parameter estimates and the associated 
+			standard errors, t-ratios, and p-values for the model with quadratic terms 
+			in both variables. The only two p-values of interest in this table are those 
+			associated with the two quadratic terms. From them, we can conclude that:</p>
+		<ul>
+			<li>There is moderately strong evidence that temperature is <strong>nonlinearly</strong> 
+				related to energy expenditure since the p-value is 0.0172. There seems 
+				to be a bigger increase in energy expenditure when temperature increases 
+				from 20 to 30 degrees than when it increases from 30 to 40 degrees.</li>
+			<li>Since the p-value for the quadratic term in sucrose is 0.1023, there 
+				is no evidence that the relationship between energy expenditure and sucrose 
+				is nonlinear.</li>
+		</ul>
+		<p> Do <strong>not</strong> try to interpret the p-values associated with 
+			the linear terms and the intercept in this table. For example, it makes 
+			no sense to test whether the linear coefficient of temperature is zero when 
+			there is already a quadratic term in the model. (Remember that the p-values 
+			each test whether one coefficient is zero <strong>in the full model with 
+			all other terms present</strong>.)</p>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

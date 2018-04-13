@@ -1,0 +1,78 @@
+<html>
+<head>
+	<title>Properties of p-values</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="slope, hypothesis test, p-value">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Properties of p-value</p>
+
+<p>P-values for testing whether a linear model's slope is zero have the same properties
+as p-values for other hypothesis tests. In particular,
+</p>
+
+<ul>
+  <li>When <b>H<sub>0</sub></b> is true (i.e. <i>Y</i> is not related to <i>X</i>),
+  	all p-values between 0 and 1 are equally likely.</li>
+  <li>On the other hand, if <b>H<sub>A</sub></b> is true (i.e. <i>Y</i> and <i>X</i>
+  	are related), then the p-values have a distribution for which p-values near zero
+  	are more likely than p-values near 1.</li>
+</ul>
+
+<br>
+  
+<div class="diagram"> 
+<p class="heading">Simulation of distribution of p-values</p>
+<p>The diagram below builds up the distribution of p-values for testing whether 
+the slope is zero.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="370">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="linModProg.SlopePValueApplet">
+<param name="yVarName" value="Response">
+<param name="xVarName" value="Explanatory">
+<param name="regnModel" value="7.0 0.0 1.0">
+<param name="xValues" value="0.6 0.8 1 1.2 1.4 1.6 1.8 2 2.2 2.4 2.6 2.8 3 3.2 3.4 3.6 3.8 4 4.2 4.4">
+<param name="xAxis" value="0.5 4.5 1 1">
+<param name="yAxis" value="0 13.5 0 2">
+<param name="random" value="20 0.0 1.0 345945782 3.0">
+<param name="randomSeed" value="29347565347">
+<param name="slopeLimits" value="-1.00 1.00 100 0.00">
+<param name="dataDecimals" value="2">
+<param name="summaryDecimals" value="4">
+<param name="customText" value="Proportion less than p=Proportion less than p">
+</applet>
+</div>
+
+<p>With β<sub>1</sub> = 0, click <strong>Take sample</strong> several times and verify that the p-values are
+rectangularly distributed between 0 and 1.</p>
+
+<p><font color="#666666">(Click on any p-value to see the data set that gave rise to it.)</font>
+</p>
+
+<p>Change the linear model slope to
+β<sub>1</sub> = 0.5, then take several more samples. The p-values tend to be closer to zero.</p>
+
+<p>Repeat with
+β<sub>1</sub> = 1.0.</p>
+
+</div>
+
+<p>As shown by the above simulation, when <em>Y</em> and <em>X</em> are not related (β<sub>1</sub> = 0), it is  still possible to get small p-values, suggesting that β<sub>1</sub> is <strong>not</strong> zero. However there is only probability 0.01 of getting 
+a p-value as low as 0.01 &mdash; it is unlikely but possible. Such a p-value is more 
+likely if the variables <strong>are</strong> related so we interpret it as giving 
+strong evidence of a relationship.</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

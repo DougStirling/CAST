@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Règles d'or pour l'écart-type</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<script type="text/javascript">
+		var svgNames = new Array();
+		svgNames[0] = "images/growingSeason.svg";
+		svgNames[1] = "images/riceYield.svg";
+		svgNames[2] = "images/coyoteLength.svg";
+		svgNames[3] = "images/rainDays.svg";
+		
+		function changeSvgImage(select) {
+			var newIndex = select.selectedIndex;
+			var image = document.getElementById('dataImage');
+			image.src = svgNames[newIndex];
+		}
+	</script>
+
+	<meta name="index" content="standard deviation, 70-95-100 rule">
+	<meta name="dataset" content="Sunshine hours">
+	<meta name="dataset" content="Growing season">
+	<meta name="dataset" content="Rice survey">
+	<meta name="dataset" content="Coyote lengths">
+	<meta name="dataset" content="Rain days">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">&quot;Quartier de gamme&quot; règle d'or</p>
+	<p>Malheureusement, la définition de l'écart-type est assez complexe, ce qui rend sa valeur difficile à interpréter.&nbsp;Le mieux qu'on puisse faire est de donner quelques lignes directrices.&nbsp;Pour de nombreux ensembles de données, l'écart type est un peu moins d'un quart de la gamme.</p>
+	<center>
+		<table border="0" cellpadding="12" cellspacing="0">
+			<tr> 
+				<td bgcolor="#DDDDDD"><object data="images/deviations2.svg" width="454" height="158"></object></td>
+			</tr>
+		</table>
+	</center>
+	<p>C'est une règle simple, mais n'est que très approximative.&nbsp;L'écart type peut être plus d'un quart de la gamme de distributions avec des queues courtes ou beaucoup moins si il ya de longues queues ou aberrantes.</p>
+<p>La règle empirique suivante fonctionne pour les ensembles de données plus.</p>
+<p class="heading">La règle du pouce 70-95-100</p>
+	<p>Une règle-de-pouce plus précise qui vous aide à interpréter l'écart-type est appelée la&nbsp;<strong>règle de 70-95-100.</strong>&nbsp;Dans de nombreuses distributions,</p>
+	<ul>
+		<li>Environ 70% des valeurs se situent dans une déviation standard de la moyenne.</li>
+		<li>Environ 95% des valeurs sont dans les 2 écarts-types de la moyenne.</li>
+		<li>Presque toutes les valeurs sont dans les 3 déviations standard de la moyenne.</li>
+	</ul>
+	<p>La règle 70-95-100 détient environ pour la plupart des ensembles de données assez symétrique.</p>
+	<table width="75%" border="1" class="centred" cellpadding="10" cellspacing="0">
+		<tr> 
+			<td bgcolor="#FFFFFF"><strong>Pour les données incliner ou des ensembles de données avec de longues queues, les valeurs aberrantes ou des grappes de la règle 70-95-100 est souvent moins précis.</strong></td>
+		</tr>
+	</table>
+	<br>
+
+<div class="diagram">
+
+<p class=heading>Exemples</p>
+	<p>Les bandes bleu pâle sur le schéma ci-dessous montrent les valeurs qui sont au sein de 1 et 2 écarts-types de la moyenne.&nbsp;(Toutes les valeurs sont dans les 3s de la moyenne.)</p>
+<form>
+<select name="dataset" onChange="changeSvgImage(this)">
+<option value="0" selected="selected"> Longueur de la saison de croissance </option>
+<option value="1"> Rendement du riz </option>
+<option value="2"> Longueurs Coyote </option>
+<option value="3"> Journées avec pluie dans l'année </option>
+</select>
+</form>
+
+<p align="center"><iframe src="images/growingSeason.svg" id="dataImage" width="498" height="301" frameborder="0"></iframe></p>
+
+		<p>Après vérification de la règle 70-95-100 de pouce pour cet ensemble de données, utilisez le menu pop-up pour vérifier comment il fonctionne pour quelques séries de données d'autres avec des distributions assez symétrique.</p>
+	<p>La règle du pouce 70-95-100 aide à comprendre et expliquer ce qu'est la valeur de l'écart-type vous parle de la propagation des distributions qui sont raisonnablement symétrique et en forme de cloche.&nbsp;Toutefois, si la distribution est très oblique, l'écart moyen et standard ne donnent qu'une description partielle de la forme de la distribution.</p>
+<p class=heading>Heures de soleil à Gaborone</p>
+		<p>Dans le cadre d'une étude sur l'utilisation des cuiseurs solaires, le nombre d'heures d'ensoleillement (une valeur entre 0 et 6) a été enregistrée à Gaborone chaque matin entre 1978 et Février 1997.&nbsp;Le tracé de points empilés ci-dessous montre les valeurs de 554 et est très oblique.&nbsp;L'écart moyen et standard sur leurs propres ne donnent aucune indication de l'asymétrie dans les données et sont donc une description très incomplète de la distribution.</p>
+		
+<p class=eqn><object data="images/sunshineHours.svg" width="399" height="322"></object></p>
+		
+		<p>L'écart type ne résume encore la propagation de valeurs.&nbsp;Cependant beaucoup plus que 70% des valeurs se situent dans une&nbsp;<em>s</em>&nbsp;de la moyenne et aucune n'est plus de 1<em>s</em>&nbsp;au-dessus.&nbsp;(Cependant environ 95% sont encore dans les 2<em>s</em>&nbsp;de la moyenne.)</p>
+		<table width="80%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+			<tr> 
+				<td align="left"><strong>La déviation moyenne et standard sont seulement «complet» des résumés de la forme d'une distribution où il est assez symétrique.</strong></td>
+			</tr>
+		</table>
+    <br>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Analyisis of variance tests</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="factorial design, anova, analysis of variance, f ratio, f test">
+	<meta name="dataset" content="Soybean yield and trace elements">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Analysis of variance table</p>  
+  <p>Each explained sum of squares in the sum of squares table describes the reduction 
+    in residual sum of squares when a term is added to the model. Since small 
+    explained sums of squares result from adding terms that have little effect 
+    the fit of the model, they are used as the basis for testing whether the 
+    term is needed.</p>
+  <p>The sum of squares table is augmented with extra columns:</p>
+  
+  <dl>
+    <dt>Mean sums of squares</dt>
+    <dd>Each sum of squares is divided by its degrees of freedom</dd>
+    <dt>F ratios</dt>
+    <dd>Each mean explained sum of squares is then divided by the mean residual 
+      sum of squares to form an F-ratio.</dd>
+    <dt>p-values</dt>
+    <dd>Finally the significance of each F-ratio is assessed by comparing its 
+      value to an F distribution to give a p-value.</dd>
+  </dl>
+  
+  <p>The resulting table is called an <strong>analysis of variance </strong> (<strong>anova</strong>) table.</p>
+<div class="centred">
+<table border="0" class="centred" cellpadding="4" cellspacing="0">
+<tr>
+<th align="left" scope="col"><span class="black">Source of <br>
+variation</span></th>
+<th scope="col"><span class="black">Sum of <br>
+sqrs</span></th>
+<th scope="col"><span class="black">d.f.</span></th>
+<th scope="col"><span class="black">Mean ssq</span></th>
+<th scope="col"><span class="black">F-ratio</span></th>
+<th scope="col"><span class="black">&nbsp;&nbsp;p-value&nbsp;&nbsp;</span></th>
+</tr>
+<tr>
+<td bgcolor="#FFFFFF" style="border-top:1px solid #999999;">X</td>
+<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">SS<sub>X</sub></td>
+<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">(<em>g</em><sub>X</sub>&nbsp;-&nbsp;1)</td>
+<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">MS<sub>X</sub></td>
+<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">MS<sub>X</sub> / <span class="blue">MS<sub>Resid</sub></span></td>
+<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">(F distn)<sub></sub></td>
+</tr>
+<tr>
+<td bgcolor="#FFFFFF"> Z</td>
+<td align="center" bgcolor="#FFFFFF">SS<sub>Z</sub></td>
+<td align="center" bgcolor="#FFFFFF">(<em>g</em><sub>Z</sub>&nbsp;-&nbsp;1)</td>
+<td align="center" bgcolor="#FFFFFF">MS<sub>Z</sub></td>
+<td align="center" bgcolor="#FFFFFF">&nbsp;MS<sub>Z</sub> / <span class="blue">MS<sub>Resid&nbsp;</sub></span></td>
+<td align="center" bgcolor="#FFFFFF">(F distn)</td>
+</tr>
+<tr>
+<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;"><span class="blue">Residual</span></td>
+<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;"><span class="blue">&nbsp;SS<sub>Resid&nbsp;</sub></span></td>
+<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;"><span class="blue">&nbsp;(<em>n</em>&nbsp;-&nbsp;<em>g</em><sub>X</sub>&nbsp;-&nbsp;<em>g</em><sub>Z</sub>&nbsp;-&nbsp;1)&nbsp;</span></td>
+<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;"><span class="blue">&nbsp;MS<sub>Resid&nbsp;</sub></span></td>
+<td align="center">&nbsp;</td>
+<td align="center">&nbsp;</td>
+</tr>
+<tr>
+<th align="left" class="black">Total</th>
+<th class="black">SS<sub>Total</sub></th>
+<th class="black"><em>n</em>&nbsp;-&nbsp;1</th>
+<th>&nbsp;</th>
+<th>&nbsp;</th>
+<th>&nbsp;</th>
+</tr>
+</table>
+</div>
+<p><em>(Note that we are restricting attention in this section to  experiments with the same number of replicates for each combination of factor levels and hence orthogonal factors. We therefore do not need to distinguish between the two orders of adding the factors X and Z. The rows for the two factors could be swapped and their p-values would be the same.)</em></p>
+  <p class="heading">Interpretation of p-values</p>
+  <p>Each p-value is used to test the null hypothesis that the corresponding model 
+    term is unnecessary. It is interpreted in a similar way to other hypothesis 
+    tests.</p>
+	
+
+<div class="centred"><table border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC" class="centred">
+<tr> 
+<th align="CENTER">p-value</th>
+<th align="CENTER">Interpretation</th>
+</tr>
+<tr bgcolor="white"> 
+<td style="border-top:1px solid #999999;">over 0.1</td>
+        <td style="border-top:1px solid #999999;">no evidence that the term is needed</td>
+</tr>
+<tr bgcolor="white"> 
+<td>between 0.05 and 0.1</td>
+        <td>very weak evidence that the term is needed</td>
+</tr>
+<tr bgcolor="white"> 
+<td>between 0.01 and 0.05</td>
+        <td>moderately strong evidence that the term is needed</td>
+</tr>
+<tr bgcolor="white"> 
+<td style="border-bottom:1px solid #999999;">under 0.01</td>
+        <td style="border-bottom:1px solid #999999;">strong evidence that the term is needed</td>
+</tr>
+</table></div>
+
+  <br>
+  
+  <div class="diagram"> 
+    <p class="heading">Soybean yield and trace elements</p>
+    <p>Soybeans are grown in plots with different levels of Mn and Cu applied.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoFactorProg.FactorAnovaSeqApplet">
+<param name="yVarName" value="Yield">
+<param name="yValues" value="1.558 1.578 2.003 2.033 2.490 2.470 2.830 2.810 1.590 1.610 2.020 2.051 2.620 2.632 2.841 2.841 1.558 1.550 2.003 2.010 2.490 2.690 2.830 2.910 1.328 1.427 2.010 2.031 2.887 2.832 2.960 2.941">
+<param name="yAxis" value="1.2 3.0 1.5 0.5">
+<param name="xVariables" value="Mn Cu">
+<param name="xTypes" value="zFac xFac">
+<param name="factorVariables" value="Mn Cu">
+<param name="MnVarName" value="Rate of Mn">
+<param name="MnValues" value="2@0 2@1 2@2 2@3 2@0 2@1 2@2 2@3 2@0 2@1 2@2 2@3 2@0 2@1 2@2 2@3">
+<param name="MnLabels" value="20 50 80 110">
+<param name="CuVarName" value="Rate of Cu">
+<param name="CuValues" value="8@0 8@1 8@2 8@3">
+<param name="CuLabels" value="1 3 5 7">
+<param name="maxSsq" value="9.9999 99 9.9999 999.99">
+<param name="componentNames" value="Manganese#Copper">
+<param name="initVariables" value="0">
+</applet> 
+</div>
+
+    <p>Drag the red arrows in the analysis of variance table to add factor terms 
+      for Cu and Mn.</p>
+    <p>The sum of squares explained by differences between Mn levels is highly significant, but the p-value for differences between the Cu levels is 0.4219. We therefore 
+      conclude that:</p>
+	<ul>
+      <li>It is almost certain that the Mn level affects soybean yield.</li>
+      <li>There is no  evidence that changing the Cu level affects yield.</li>
+    </ul>
+
+    <br>
+
+    </div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

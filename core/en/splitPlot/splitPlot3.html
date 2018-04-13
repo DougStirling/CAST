@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Interaction between factors</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="split plot design, anova, analysis of variance, interaction">
+	<meta name="dataset" content="Maize seed planting">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Interaction sum of squares</p>  
+<p>The diagram below shows the full hierarchy of models that underly a complete analysis of variance table for one factor (A) that is varied at block level and another (B) that is varied within blocks. Each black arrow corresponds to a sum of squares in the analysis of variance table.</p>
+
+<div class="centred"><table class="centred">
+	<tr>
+		<td align="center" colspan="3"><strong><em><span class="black">Neither A nor B affect Y and all blocks same</span> </em></strong><br></td>
+	</tr>
+	<tr>
+		<td><img src="../factorInteract/images/downArrow.gif" width="24" height="42"></td>
+		<td align="center"><span class="red">(sum of squares for testing factor A)</span></td>
+		<td><img src="../factorInteract/images/downArrow.gif" width="24" height="42"></td>
+	</tr>
+	<tr>
+		<td align="center" colspan="3"><em><strong><span class="black">A affects Y (all blocks same)</span></strong></em></td>
+	</tr>
+	<tr>
+		<td align="center" colspan="3"><img src="../factorInteract/images/downArrow.gif" width="24" height="42" align="absmiddle"></td>
+	</tr>
+	<tr>
+		<td align="center" colspan="3"><strong><em><span class="black">The blocks differ (and A may affect Y)</span></em></strong></td>
+	</tr>
+	<tr>
+		<td><img src="../factorInteract/images/downArrow.gif" width="24" height="42"></td>
+		<td align="center"><span class="red">(sum of squares for testing factor B)</span></td>
+		<td><img src="../factorInteract/images/downArrow.gif" width="24" height="42"></td>
+	</tr>
+	<tr>
+		<td align="center" colspan="3"><strong><em><span class="black">The blocks differ (and A may affect Y) and B affects Y</span></em></strong></td>
+	</tr>
+	
+	<tr>
+		<td><img src="../factorInteract/images/downArrow.gif" width="24" height="42"></td>
+		<td align="center"><span class="red">(sum of squares for testing interaction)</span></td>
+		<td><img src="../factorInteract/images/downArrow.gif" width="24" height="42"></td>
+	</tr>
+	<tr>
+		<td align="center" colspan="3"><strong><em><span class="black">The blocks differ and A and B interact in their effect on Y</span></em></strong></td>
+	</tr>
+</table></div>
+
+<p>The last arrow corresponds to the sum of squares that is the numerator of the F-ratio for testing whether there is any interaction between A and B.</p>
+<p class="heading">Significance of the interaction sum of squares</p>
+<p>The two pairs of red arrows at the top of the diagram below give information about the effect of changing factor B from level 1 to 2 when factor A is at level 1 and when it is at level 2. Interaction occurs when these two effects are different.</p>
+<p class="eqn"><img src="images/interaction.gif" width="525" height="338"></p>
+<p>Since this involves two differences <strong>within blocks</strong>, the block effect is cancelled. Only the variation <strong>within</strong> blocks therefore affects the significance of the interaction.</p>
+
+<div class="centred"><div class="boxed">
+	<p>The interaction sum of squares should therefore be compared to the residual (sub-plot) sum of squares to test whether there is any interaction.</p>
+</div></div>
+<br>
+
+<div class="diagram">
+<p class="heading">Maize seed planting</p>
+<p>The analysis of variance table below is initially the same as that on the previous page.</p>
+
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="220">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="glmAnovaProg.CombineNestedApplet">
+<param name="yVarName" value="Corn yield">
+<param name="yValues" value="82.8 46.2 78.6 77.7 72.2 51.6 70.9 73.6 72.9 53.6 69.8 70.3 74.6 57.0 69.6 72.3 68.4 54.5 72.0 70.6 68.2 47.6 76.7 75.4 67.1 46.4 70.7 66.2 65.6 53.3 65.6 69.2 74.1 49.1 72.0 66.1 76.2 53.8 71.8 65.5 71.1 43.7 67.6 66.2 67.8 58.8 60.6 60.6 71.5 50.9 76.4 75.1 70.4 65.0 75.8 75.8 72.5 54.9 67.6 75.2 67.8 50.2 65.6 63.3">
+<param name="xVariables" value="Prep Plot Plant PP">
+<param name="PrepVarName" value="Seedbed preparation">
+<param name="PrepValues" value="16@0 16@1 16@2 16@3">
+<param name="PrepLabels" value="A1 A2 A3 A4">
+<param name="PlotVarName" value="Plots">
+<param name="PlotValues" value="4@0 4@1 4@2 4@3 4@0 4@4 4@5 4@6 4@0 4@7 4@8 4@9 4@0 4@10 4@11 4@12">
+<param name="PlotLabels" value="P0 P2 P3 P4 P6 P7 P8 P10 P11 P12 P14 P15 P16">
+<param name="PlantVarName" value="Planting method">
+<param name="PlantValues" value="0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3  0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3">
+<param name="PlantLabels" value="B1 B2 B3 B4">
+<param name="PPVarName" value="Interaction">
+<param name="PPValues" value="16@0  0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3  0 4 5 6 0 4 5 6 0 4 5 6 0 4 5 6  0 7 8 9 0 7 8 9 0 7 8 9 0 7 8 9">
+<param name="PPLabels" value="I1 I22 I23 I24 I32 I33 I34 I42 I43 I44">
+<param name="maxSsq" value="9999.9 9 999.99 99.99">
+<param name="componentNames" value="Seedbed preparation#Plots (within seedbed)#Planting method #Interaction">
+<param name="split" value="1:2:Split plots:Between full plots#3:3:Split sub-plots:Between sub-plots">
+<param name="denomIndex" value="0 2 5 5 5">
+</applet>
+</div>
+
+
+<p>Click the two checkboxes to use the two factors (and their interaction) to explain variation at full-plot and sub-plot levels.</p>
+<p>Observe that the sum of squares for interaction between the seedbed preparation method and the planting method is explained at sub-plot level. From its p-value (0.1988), we would conclude that there is no evidence of interaction between the effects of the two factors.</p>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

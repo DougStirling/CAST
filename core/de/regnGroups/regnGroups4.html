@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>Parallele Regressionsgeraden</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<script type="text/javascript">
+		var svgNames = new Array();
+		svgNames[0] = "images/twoLines.svg";
+		svgNames[1] = "images/parallelLines.svg";
+		
+		function changeSvgImage(select) {
+			var newIndex = select.selectedIndex;
+			var image = document.getElementById('dataImage');
+			image.src = svgNames[newIndex];
+		}
+	</script>
+
+	<script type="text/javascript">
+		setupChoiceImages("twoLines", "parallelLines");
+	</script>
+
+<meta name="index" content="comparing groups, parallel regn lines, least squares">
+	<meta name="dataset" content="Gas consumption and insulation"></head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Interpretation von Regressionsgeraden</p>
+<p>Das Problem bei der Anpassung von separaten Regressionsgeraden
+durch
+kleinste Quadrate in den verschiedenen Gruppen liegt darin, den
+Unterschied zwischen beiden Gruppen schl&uuml;ssig zu
+erkl&auml;ren
+&ndash; der Unterschied zwischen den vorhergesagten Werten in den
+Gruppen h&auml;ngt ja vom Wert der erkl&auml;renden Variable ab.</p>
+<p>In dem zwei-Gruppen-Beispiel unten ist der Unterschied
+zwischen <em>Y</em>
+in Gruppe 1 und 2 umso
+gr&ouml;&szlig;er, je gr&ouml;&szlig;er <em>X</em> ist.&nbsp;</p>
+<form>
+  <div class="centred">
+    <select name="dataset" onChange="changeSvgImage(this)">
+      <option value="0" selected>Two general lines</option>
+      <option value="1">Parallel lines</option>
+    </select>
+  </div>
+</form>
+
+<p class="eqn">
+	<iframe src="images/twoLines.svg" width="313" height="274" id="dataImage" frameborder="0"></iframe>
+</p>
+
+<p class="heading">Parallele Regressionsgeraden</p>
+<p>Die Interpretation wird denkbar vereinfacht, wenn wir
+annehmen, dass
+die Regressionsgeraden verschiedener Gruppen die gleiche Steigung
+haben. Klicke <strong>Parallele
+Geraden</strong>
+im Pop-Up-Men&uuml; oben. Beide Regressionsgeraden haben nun die
+selbe
+Steigung c, sodass wir <span style="font-weight: bold;">unabh&auml;ngig
+vom Wert von <em>X</em></span>
+f&uuml;r Gruppe 1 um (a &ndash; b) h&ouml;here Werte
+erwarten als in
+Gruppe 2.</p>
+<div class="boxed"><p>Es ist nicht bei <span style="color: rgb(255, 0, 0);">jedem</span>
+Datensatz sinnvoll,&nbsp;Regressionsgeraden an die verschiedenen
+Gruppen anzupassen &ndash; man sollte zuerst ein Streudiagramm
+ansehen
+&ndash; aber wenn, sind die resultierenden Regressionsgeraden
+wesentlich leichter zu interpretieren.</p>
+</div><p class="heading">Kleinste Quadrate</p>
+<p>Das Prinzip hinter der Anpassung von Regrssionsgeraden an zwei
+oder
+mehr Gruppen ist das gleiche wie bei der gew&ouml;hnlichen,
+einfachen
+Regression &ndash; wir w&auml;hlen die Parameter so, dass die
+Summe der
+quadratischen Residuen m&ouml;glichst klein ist. Trotzdem sind die
+Formeln f&uuml;r die daraus hervorgehenden Geraden wesentlich
+schwieriger auszudr&uuml;cken und sollen deshalb hier nicht weiter
+beschrieben werden. Die meisten Statistik-Programme jedoch erledigen
+die Rechnerei f&uuml;r dich, sodass die genauen
+Hintergr&uuml;nde von
+geringer Bedeutung sind.</p>
+<div class="diagram"><p class="heading">Gasverbrauch
+und Isolierung</p>
+<p>Die Daten wurden in den 1960er Jahren an einem Haus in
+S&uuml;dost
+England gesammelt. Gemessen wurde der w&ouml;chentliche
+Gasverbrauch
+(in 1000 kubik Fu&szlig;) und die durchschnittliche
+Au&szlig;entemperatur (in &deg;C) &uuml;ber 26 Wochen vor
+und 18 Wochen
+nach Installation einer Hohlraumisolierung. W&auml;hrend der
+gesamten
+Zeit war das Thermostat im Haus auf 20&deg; eingestellt.</p>
+<div class="centred"><applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" height="500" width="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="indicatorProg.TwoGroupEquationsApplet"><param name="yVarName" value="Gasverbrauch"><param name="yValues" value="7.2 6.9 6.4 6.0 5.8 5.8 5.6 4.7 5.8 5.2 4.9 4.9 4.3 4.4 4.5 4.6 3.7 3.9 4.2 4.0 3.9 3.5 4.0 3.6 3.1 2.6 4.8 4.6 4.7 4.0 4.2 4.2 4.1 4.0 3.5 3.2 3.9 3.5 3.7 3.5 3.5 3.7 3.5 3.4"><param name="xVarName" value="Temperatur"><param name="xValues" value="-0.8 -0.7 0.4 2.5 2.9 3.2 3.6 3.9 4.2 4.3 5.4 6.0 6.0 6.0 6.2 6.3 6.9 7.0 7.4 7.5 7.5 7.6 8.0 8.5 9.1 10.2 -0.7 0.8 1.0 1.4 1.5 1.6 2.3 2.5 2.5 3.1 3.9 4.0 4.0 4.2 4.3 4.6 4.7 4.9"><param name="zVarName" value="Isolation"><param name="zValues" value="26@0 18@1"><param name="zLabels" value="Vorher Nachher"><param name="yAxis" value="0 8 0 1"><param name="xAxis" value="-1 11 0 2"><param name="maxParam" value="9.999 -9.999 -9.999 -9.999"><param name="groupEffectName" value="Insul (Aft - Bef)"><param name="hasInteraction" value="true"><param name="shortNames" value="Gas Temp"><param name="customText" value="Common line=Gemeinsame Gerade#Separate lines=Separate Geraden#Equal slopes=Gleiche Steigungen#interaction=Interaktion"></applet></div><p>Zu
+Beginn zeigt das Diagramm eine einzige Regressionsgerade,
+die
+nach der Kleinstquadratmethode an den gesamten Datensatz angepasst
+wurde.</p>
+<p>Es gibt einen deutlichen Unterschied im Gasverbrauch, bevor
+und
+nachdem die Isolierung angebracht wurde. Klicke <strong>Getrennte Geraden</strong> im
+Pop-Up
+Men&uuml;. Diese Geraden passen schon viel besser zu den Daten,
+aber es
+ist auch schwieriger geworden, die Wirkung der Isolierung
+zusammenzufassen, weil sie abh&auml;ngig von der Temperatur
+variiert.</p>
+<p>Die getrennten Geraden sind beinahe parallel, klicke daher auf
+<strong>Gleiche Steigung</strong>
+im Pop-Up
+Men&uuml;, um&nbsp;zwei parallelen Geraden an die Daten
+anzupassen
+(nach Kleinstquadratmethode). Aus diesen parallelen Geraden
+k&ouml;nnen
+wir den Effekt der Isolierung wie folgt zusammenzufassen:</p>
+<div class="boxed"><p>Der Gasverbrauch ist mit
+Isolierung um (6,717 &ndash;
+4,922) = 1,795
+geringer, unabh&auml;ngig von der Au&szlig;entemperatur.</p>
+</div><p class="heading">Sind parallele Geraden
+vertretbar?</p>
+<p>Obwohl es so aussieht, als passen die parallelen Geraden zu
+diesen
+Daten hinreichend genau und erlaubten es, die Wirkung der Isolierung
+schl&uuml;ssig zusammenzufassen, so ist es dennoch wichtig sich zu
+&uuml;berlegen, ob sie unserem Verst&auml;ndnis der dahinter
+liegenden
+physikalischen Gesetzm&auml;&szlig;igkeiten Rechnung tragen.
+Man sollte
+sicher annehmen, dass die Isolierung einen gr&ouml;&szlig;eren
+Effekt
+auf den Gasverbrauch hat, wenn die Au&szlig;entemperatur sehr
+niedrig
+ist, als wenn sie sehr hoch ist? Vielleicht sind parallele Geraden also
+eine &Uuml;ber-Vereinfachung und man sollte separate
+Kleinstquadrat-Geraden nehmen, um den Effekt der Isolierung zu
+beschreiben, auch wenn das zus&auml;tzlichen Aufwand bei der
+Interpretation bedeutet.</p>
+</div><script type="text/javascript">writePageEnd();</script>
+</body></html>

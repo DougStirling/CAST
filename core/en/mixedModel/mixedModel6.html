@@ -1,0 +1,191 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Model for 2 categorical variables</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="categorical data, baseline category, indicator variable, general linear model">
+	<meta name="dataset" content="Strength of asphaltic concrete">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Models with one categorical explanatory variable</p>
+	<p>As shown on the previous page, a categorical explanatory variable can be 
+		used to split the individuals in a regression model into groups. For example, 
+		if modelling the income of individuals against their number of years of education 
+		(numerical) and gender (categorical), the marital status can be considered 
+		to split the individuals into two groups (males and females). The models that 
+		were described at the start of this section can therefore be equivalently 
+		used when there is a categorical explanatory variable.</p>
+	<p>For example, a possible model for <em>income, y,</em> with explanatory variables 
+		<em>years of education, x</em>, and gender, is</p>
+	<p class=eqn><img src="images/maleFemaleIncomeModel.gif" width="425" height="76"></p>
+	<p class="heading">Models with two categorical explanatory variables</p>
+	<p>When there are two categorical explanatory variables, <em>A</em> with <em>a</em> 
+		levels and <em>B</em> with <em>b</em> levels, we can add terms involving the 
+		indicator variables for both variables,</p>
+	<p class=eqn><img src="images/twoFactorModel.gif" width="502" height="142"></p>
+	<p>This model is also a general linear model (GLM). Note that:</p>
+	<ul>
+		<li><img src="images/mu11.gif" width="18" height="12" align="absmiddle"> is 
+			the mean response when variables <em>A</em> and <em>B</em> are both at their 
+			baseline level (1)</li>
+		<li>The coefficient of any indicator variable is the difference between the 
+			mean response at that level of the factor and its baseline level.</li>
+	</ul>
+	<br>
+	
+	<div class="diagram">
+		<p class="heading">Strength of asphaltic concrete</p>
+
+		<p>A civil engineer conducted an experiment to evaluate how different compaction 
+			methods and types of aggregate affect the strength of asphaltic concrete. 
+			Two types of aggegate and four levels of compaction were used in the experiment 
+			and three specimens were tested at each combination of levels for the two 
+			factors. The tensile strength of each specimen (psi) was recorded and will 
+			be modelled in terms of the two categorical explanatory variables <em>Aggregate</em> 
+			and <em>Compaction</em>.</p>
+		<div class="centred"><table border="0" class="centred" cellpadding="6" cellspacing="0">
+			<tr> 
+				<th>&nbsp;</th>
+				<th colspan="4"><em>Compaction method</em></th>
+			</tr>
+			<tr> 
+				<th align="left" valign="bottom"><em>Aggregate type</em></th>
+				<th>&nbsp;&nbsp;Static&nbsp;&nbsp;</th>
+				<th>Regular<br>
+					&nbsp;kneading&nbsp;</th>
+				<th>Low<br>
+					&nbsp;kneading&nbsp;</th>
+				<th>Very low<br>
+					&nbsp;kneading&nbsp;</th>
+			</tr>
+			<tr> 
+				<th align="left">Basalt</th>
+				<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;"><em>y</em><sub>1</sub>&nbsp;=&nbsp;68<br>
+					<em>y</em><sub>2</sub>&nbsp;=&nbsp;63<br>
+					<em>y</em><sub>3</sub>&nbsp;=&nbsp;65</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;"><em>&nbsp;y</em><sub>4</sub>&nbsp;=&nbsp;126<br>
+					<em>&nbsp;y</em><sub>5</sub>&nbsp;=&nbsp;128<br>
+					<em>&nbsp;y</em><sub>6</sub>&nbsp;=&nbsp;133</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;"><em>&nbsp;y</em><sub>7</sub>&nbsp;=&nbsp;93<br>
+					<em>&nbsp;y</em><sub>8</sub>&nbsp;=&nbsp;101<br>
+					<em>&nbsp;y</em><sub>9</sub>&nbsp;=&nbsp;98</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;"><em>&nbsp;y</em><sub>10</sub>&nbsp;=&nbsp;56<br>
+					<em>&nbsp;y</em><sub>11</sub>&nbsp;=&nbsp;59<br>
+					<em>&nbsp;y</em><sub>12</sub>&nbsp;=&nbsp;57</td>
+			</tr>
+			<tr> 
+				<th align="left">Silicious</th>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;"><em>y</em><sub>13</sub>&nbsp;=&nbsp;71<br>
+					<em>y</em><sub>14</sub>&nbsp;=&nbsp;66<br>
+					<em>y</em><sub>15</sub>&nbsp;=&nbsp;66</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;"><em>&nbsp;y</em><sub>16</sub>&nbsp;=&nbsp;107<br>
+					<em>&nbsp;y</em><sub>17</sub>&nbsp;=&nbsp;110<br>
+					<em>&nbsp;y</em><sub>18</sub>&nbsp;=&nbsp;116</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;"><em>&nbsp;y</em><sub>19</sub>&nbsp;=&nbsp;63<br>
+					<em>&nbsp;y</em><sub>20</sub>&nbsp;=&nbsp;60<br>
+					<em>&nbsp;y</em><sub>21</sub>&nbsp;=&nbsp;59</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;"><em>&nbsp;y</em><sub>22</sub>&nbsp;=&nbsp;40<br>
+					<em>&nbsp;y</em><sub>23</sub>&nbsp;=&nbsp;41<br>
+					<em>&nbsp;y</em><sub>24</sub>&nbsp;=&nbsp;44</td>
+			</tr>
+		</table></div>
+		<p>We will treat <em>Static</em> compression and <em>Basalt</em> as the baseline 
+			levels for the two factors. (Any other factor levels could have been used 
+			with equivalent results.) The matrix equation below shows the model that 
+			is assumed for the response.</p>
+
+		<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="550">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="matrixProg.TwoFactorModelEqnApplet">
+<param name="nXColumns" value="2">
+<param name="fullNameX1" value="Aggregate">
+<param name="shortNameX1" value="a">
+<param name="valuesX1" value="12@0 12@1">
+<param name="labelsX1" value="Basalt Silicious">
+<param name="fullNameX2" value="Compaction">
+<param name="shortNameX2" value="c">
+<param name="valuesX2" value="3@0 3@1 3@2 3@3 3@0 3@1 3@2 3@3">
+<param name="labelsX2" value="Static Regular Low #Very low#">
+<param name="yName" value="Strength, Y">
+<param name="errorName" value="error">
+<param name="matrixFont" value="standard">
+<param name="customText" value="effect=effect">
+</applet>
+</div>
+
+		<p>Click on any y-value to see how the indicator variables pick out the corresponding 
+			parameters for the levels of the two factors (no parameter for the baseline 
+			levels and one parameter of each colour for other levels).</p>
+		<p>The blue grid at the bottom highlights the aggregate-compaction combinations 
+			for the selected row. You can also click cells in this grid to select the 
+			corresponding observations. Observe that:</p>
+		<ul>
+			<li>Observations in the cells in the top row (<em>Basalt</em>) have no extra 
+				parameter for aggregate in the model.</li>
+			<li>Observations in the cells in the left column (<em>Static</em>) have 
+				no extra parameter for compaction in the model.</li>
+			<li>Only the three cells in the bottom right have both an aggregate effect 
+				and a compaction effect.</li>
+		</ul>
+		<p class="heading">Graphical display of model</p>
+		<p>The diagram below shows the actual data against two categorical axes (for 
+			the two factors). The fitted values for the model are also represented by 
+			a coloured grid.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="550">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="indicatorProg.Rotate2FactorDragApplet">
+<param name="yVarName" value="Concrete strength">
+<param name="yValues" value="68 63 65 126 128 133 93 101 98 56 59 57 71 66 66 107 110 116 63 60 59 40 41 44">
+<param name="yAxis" value="20 150 20 20">
+<param name="zVarName" value="Aggregate">
+<param name="zValues" value="12@0 12@1">
+<param name="zLabels" value="Basalt Silicious">
+<param name="xVarName" value="Compaction">
+<param name="xValues" value="3@0 3@1 3@2 3@3 3@0 3@1 3@2 3@3">
+<param name="xLabels" value="Static Regular Low #Very low#">
+<param name="initialMean" value="90">
+<param name="maxParam" value="999.99 -99.99 -99.99">
+<param name="separateX" value="Separate aggregates#0#34">
+<param name="customText" value="Baseline=Baseline">
+</applet>
+</div>
+
+		<p>There are 3 indicator variables for the 4 compaction levels and 1 indicator 
+			variable for the 2 aggregate levels, so the GLM has 4 'explanatory variables' 
+			and 5 parameters. The diagram above therefore has 5 red arrows that can 
+			be used to adjust the fit of the model.</p>
+		<p>Drag the red arrows to get the fitted values for all 8 factor combinations 
+			close to the data. You may find it helpful to click <strong>Separate aggregates</strong> 
+			to rotate the diagram in a way that separates out the data for the different 
+			aggregates before dragging the arrows.</p>
+		<p>Click <strong>Least squares</strong> to show the least squares estimates 
+			of the parameters. Observe that the model estimates that:</p>
+		<ul>
+			<li>The mean strength for <em>Static</em> compaction with <em>Basalt</em> 
+				aggregate is 75.00</li>
+			<li>The mean strength for <em>Regular</em> compaction is 53.50 higher than 
+				for <em>Static</em> compaction.</li>
+			<li>The mean strength for <em>Silicious</em> aggregate is 17.00 lower than 
+				for <em>Basalt</em> aggregate.</li>
+		</ul>
+	<br>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

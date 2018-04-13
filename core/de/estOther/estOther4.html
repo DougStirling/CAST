@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Bootstrap der Fehlerverteilung</title>
+
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="bootstrap simulation, error distribution, quartiles, simulation">
+	<meta name="dataset" content="Samaru rainfall">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Bootstrap Simulation</p>
+
+<p>Auf der vorherigen Seite benutzten wir Zufallsstichproben
+einer
+normalen Population, um die Fehlerverteilung zu simulieren.</p>
+
+<p>Wenn eine Normalverteilung nicht als ein sinnvolles Modell
+erscheint, kann man alternativ die vorhandenen Daten als die
+&bdquo;Population&ldquo; f&uuml;r die Simulation behandeln
+und eine
+Zufallsstichprobe <strong>mit
+Zur&uuml;cklegen</strong>
+dieser Population nehmen. Solche Stichproben nennt man <strong>Bootstrap Stichproben</strong>.</p>
+
+<p>Eine Simulation mit diesen Bootstrap Stichproben kann nochmals
+die
+Fehlerverteilung verdeutlichen und ann&auml;hernde Werte
+f&uuml;r den
+Bias und den Standardfehler liefern.</p>
+
+<div class="diagram">
+<p class="heading">Niederschlag im Oktober in Samaru,
+Nord-Nigeria</p>
+
+<p>Der monatliche Niederschlag in Samaru, Nigeria hat in einigen
+Monaten eine schiefe Verteilung. Das Diagramm unten zeigt den
+Niederschlag im Oktober in Samaru zwischen 1928 und 1983.</p>
+
+<p class="eqn"><object data="images/samaruOctUQ.svg" height="130" width="397"></object></p>
+
+<p>Das obere Quartil der Niederschlagsverteilung ist 57,4 mm,
+also ist
+das unsere Sch&auml;tzung des oberen Quartils der zugrundeliegenden
+Population.</p>
+
+<center>
+<table bgcolor="white" border="1" cellpadding="10" cellspacing="0" width="75%">
+
+  <tbody>
+
+    <tr>
+
+      <td><strong>Wenn die Niederschlagsverteilung die
+gleiche, wie in
+der Vergangenheit, bleibt, w&uuml;rden wir einen Niederschlag von
+57,4&nbsp;mm oder mehr in einem von vier Oktobermonaten
+sch&auml;tzen.</strong></td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+</center>
+
+<p>Wir werden eine Bootstrap Simulation benutzen, um die
+Fehlerverteilung f&uuml;r diese Sch&auml;tzung zu finden.</p>
+
+<div class="centred"><applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" height="400" width="550">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="stdErrorProg.ErrorBootstrapApplet"><param name="varName" value="Niederschlag im Oktober in Samaru, Nigeria"><param name="values" value="39.37 49.27 2.03 4.57 58.17 0.00 54.61 2.54 28.71 1.02 11.94 91.95 39.61 0.00 55.12 1.78 10.41 63.50 73.64 29.46 0.00 2.28 16.77 95.51 46.24 7.62 47.00 68.07 90.18 91.18 22.09 0.76 6.35 0.00 63.76 137.92 0.00 14.99 74.42 3.30 6.35 104.40 6.60 7.62 24.12 1.52 67.56 8.38 129.30 4.30 33.90 30.80 16.30 0.00 45.80 0.00"><param name="dataAxis" value="0 150 0 20"><param name="errorName" value="Sch&auml;tzfehler (mm)"><param name="errorAxis" value="-40 40 -40 20"><param name="percentile" value="0.75"><param name="paramName" value="Zielparameter (Daten UQ)"><param name="statisticName" value="Sch&auml;tzung (bootstrap UQ)"><param name="decimals" value="1"><param name="units" value="mm"><param name="maxBiasSe" value="99.99"><param name="customText" value="Estimate s.e. &amp; bias=Sch&auml;tzung Standardfehler &amp; Bias#Bias=Bias"></applet></div>
+
+<p>Die Daten werden im gestapelten Dotplot durch graue Kreuze
+dargestellt und eine Bootstrap Stichprobe ist in blau dargestellt. Da
+die Bootstrap Stichprobe <strong>mit</strong>
+Zur&uuml;cklegen gezogen wurde, kommen einige Daten in der
+Bootstrap
+Stichprobe mehr als einmal vor- durch blaue Ziffern anstatt durch blaue
+Kreuze dargestellt.</p>
+
+<p>Wie in Simulationen eines normalen Modells, klickt man auf <strong>Akkumulieren</strong>
+und nimmt einige Bootstrap Stichproben, um die Fehlerverteilung in der
+Simulation zu erstellen.</p>
+
+<p>Klicke <strong>Sch&auml;tzung SE und Bias</strong>,
+um den
+Mittelwert und die Standardabweichung der Fehlerverteilung darzustellen.</p>
+
+<center>
+<table bgcolor="white" border="1" cellpadding="10" cellspacing="0" width="75%">
+
+  <tbody>
+
+    <tr>
+
+      <td><strong>Durch die komplette Fehlerverteilung oder
+auch durch
+Anwendung der 70-95-100 Faustregel auf den Standardfehler, ist es
+unwahrscheinlich, dass unsere Sch&auml;tzung des oberen Quartils
+des
+Niederschlags im Oktober, 57,4&nbsp;mm, einen Fehler h&ouml;her
+als 20
+mm hat.</strong></td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+</center>
+
+<br>
+
+</div>
+
+<p>Wenn eine Normalverteilung ein vern&uuml;nftiges Modell
+f&uuml;r die
+Daten ist, ist es normalerweise besser, es f&uuml;r Simulationen zu
+benutzen.<br>
+
+Wenn die Normalverteilung jedoch keine vern&uuml;nftige Annahme
+ist,
+dann ist eine Bootstrap Simulation eine Alternative, welche dazu
+gebraucht werden kann die wahrscheinliche Gr&ouml;&szlig;e der
+Fehler
+in den Griff zu bekommen.</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

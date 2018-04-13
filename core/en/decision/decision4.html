@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Sample size and power</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="hypothesis test, sample size, power">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Power of a test</p>
+<p>A decision rule about whether to accept or reject <strong>H<sub>0</sub></strong> 
+can result in one of two types of error. The probabilities of making these 
+errors describe the risks involved in the decision.</p>
+<dl>
+<dt>Prob(Type I error)</dt>
+<dd>This is the significance level of the test. The decision rule is usually 
+defined to make the significance level 5% or 1%.</dd>
+<dt>Prob(Type II error)</dt>
+<dd>When the alternative hypothesis includes a range of possible parameter 
+	values (e.g. µ&nbsp;≠&nbsp;0), 
+this probability is not a single value but depends on the parameter.</dd>
+</dl>
+<p>Instead of the probability of a Type II error, it is common to use the <strong>power</strong> 
+of the test, defined as one minus the probability of a Type II error,</p>
+
+<div class="centred"><div class="boxed">
+<p>The power of a test is the probability of correctly rejecting 
+<strong>H<sub>0</sub></strong> when it is false.</p>
+</div></div>
+
+<p>When the alternative hypothesis includes a range of possible parameter values 
+(e.g. µ&nbsp;≠&nbsp;0), 
+the power depends on the actual parameter value.</p>
+<div class="centred"><table border="0" class="centred" cellpadding="6" cellspacing="0">
+<tr> 
+<td></td>
+	<td></td>
+	<th colspan="2">Decision</th>
+</tr>
+<tr> 
+<td></td>
+	<td></td>
+	<th>&nbsp;&nbsp;accept <strong>H<sub>0</sub></strong>&nbsp;&nbsp;</th>
+	<th>&nbsp;&nbsp;reject<strong> H<sub>0</sub></strong>&nbsp;&nbsp;</th>
+</tr>
+<tr> 
+<th rowspan="2">Truth</th>
+	<th><strong>H<sub>0</sub></strong>&nbsp;is true&nbsp;&nbsp;&nbsp;</th>
+	<td align="center" bgcolor="#00FF00" style="border-top:1px solid #999999; border-left:1px solid #999999;">&nbsp;</td>
+	<td align="center" bgcolor="#FF0000" style="border-top:1px solid #999999; border-right:1px solid #999999; font-size:large;">Significance level =<br>
+P&nbsp;(Type I error)</td>
+</tr>
+<tr> 
+<th><strong>H<sub>A</sub></strong> (<strong>H<sub>0</sub></strong> is false)&nbsp;&nbsp;&nbsp;&nbsp;</th>
+	<td align="center" bgcolor="#FF0000" style="border-bottom:1px solid #999999; border-left:1px solid #999999; font-size:large;">P&nbsp;(Type II error)</td>
+	<td align="center" bgcolor="#00FF00" style="border-bottom:1px solid #999999; border-right:1px solid #999999; font-size:large;">Power = <br>
+1 - P&nbsp;(Type II error)</td>
+</tr>
+</table></div>
+<p class="heading">Increasing the power of a test</p>
+<p>It is clearly desirable to use a test whose power is as close to 1.0 as possible. 
+There are three different ways to increase the power.</p>
+<dl>
+<dt>Increase the significance level</dt>
+<dd>If the critical value for the test is adjusted, increasing the probability 
+	of a Type I error decreases the probability of a Type II error and therefore 
+increases the power.</dd>
+<dt>Use a different decision rule</dt>
+<dd>For example, in a test about the mean of a normal population, a decision 
+	rule based on the sample median has lower power than a decision rule based 
+on the sample mean.</dd>
+</dl>
+
+<div class="centred"><div class="boxed">
+<p>In CAST, we only describe the most powerful type of decision 
+			rule to test any hypotheses, so you will not be able to increase the 
+			power by changing the decision rule.</p>
+</div></div>
+
+<dl>
+<dt>Increase the sample size</dt>
+<dd>By increasing the amount of data on which we base our decision about whether 
+	to accept or reject <strong>H<sub>0</sub></strong>, the probabilities of 
+making errors can be reduced.</dd>
+</dl>
+<p>When the significance level is fixed, increasing the sample size is therefore 
+usually the only way to improve the power.</p>
+
+
+<div class="diagram" title="Illustration"> 
+<p class="heading">Illustration</p>
+<p>The following diagram again investigates decision rules for testing the 
+hypotheses </p>
+<p class=eqn><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> = 10</strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> &gt; 10</strong> 
+</p>
+<p>based on a samples from a normal population with known standard deviation 
+	σ&nbsp;=&nbsp;4. 
+We will fix the significance level of the test at 5%.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="testProg.NPowerApplet">
+<param name="nullModel" value="10 4">
+<param name="sampleSize" value="1 50 16">
+<param name="altMeanSlider" value="10.1 15.0 13.0">
+<param name="significanceLevel" value="0.05">
+<param name="axisInfo" value="7 17 8 2">
+<param name="criticalMeanDecimals" value="2">
+<param name="customText" value="Critical value for mean=Critical value for mean#If H0=If H0#If HA=If HA#distn of sample mean=distn of sample mean#accept H0=accept H0#reject H0=reject H0">
+</applet>
+</div>
+
+<p>The top half of the diagram shows the normal distribution of the mean for 
+	a sample of size <em>n</em>&nbsp;=&nbsp;16. Use the slider to increase the 
+sample size and observe that:</p>
+<ul>
+<li>The spread of the mean's distribution decreases.</li>
+	<li>The critical value for rejecting <strong>H<sub>0</sub></strong> decreases 
+to keep the significance level at 5%.</li>
+	<li>The probability of a Type II error decreases and the power of the test 
+increases. </li>
+</ul>
+<br>
+
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Standard error</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="newton-raphson algorithm, maximum likelihood, standard error, log-series distribution">
+</head>
+
+
+<body onLoad="showIterations()">
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Standard error from Newton Raphson algorithm</p>
+
+<p>In view of the extra complication of using the Newton Raphson algorithm to obtain the maximum likelihood estimate of a parameter when an explicit formula for the maximum likelihood estimate cannot be found, it might be expected that the standard error of the estimate would also be difficult to evaluate. Fortunately the standard error arises as a by-product of the algorithm.</p>
+<p>The asymptotic formula for the standard error is</p>
+\[
+\se(\hat {\theta}) \;\;\approx\;\; \sqrt {- \frac 1 {\ell''(\hat {\theta})}}
+\]
+<p>The second derivative of the log-likelihood is used in the Newton Raphson algorithm and its value at the MLE can be found from the last iteration of the algorithm when it converges.</p>
+<div class="example">
+	
+	<p class="exampleHeading">Standard error for log-series distribution</p>
+
+<p>Consider the following data set that is assumed to arise from a log-series distribution.</p>
+<div class="centred">
+	<table border="0" cellpadding="5" cellspacing="0" class="centred" style="border:1px solid #999999; background-color:#FFFFFF;">
+		<tr>
+			<td style="width:15px; text-align:right; padding:4px 8px 4px 5px">3</td>
+			<td style="width:15px; text-align:right; padding:4px 8px 4px 5px">5</td>
+			<td style="width:15px; text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="width:15px; text-align:right; padding:4px 8px 4px 5px">4</td>
+			<td style="width:15px; text-align:right; padding:4px 8px 4px 5px">8</td>
+			<td style="width:15px; text-align:right; padding:4px 8px 4px 5px">10</td>
+			<td style="width:15px; text-align:right; padding:4px 8px 4px 5px">2</td>
+			<td style="width:15px; text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="width:15px; text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="width:15px; text-align:right; padding:4px 8px 4px 5px">2</td>
+		</tr>
+		<tr>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">8</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">6</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">13</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">6</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">2</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">3</td>
+		</tr>
+		<tr>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">2</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">6</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+		</tr>
+	</table>
+</div>
+<p>The derivatives of the log-likelihood involve the values \(n = 30\) and \(\sum x = 95\). Iterations of the algorithm from an initial guess at the value of \(\theta = 0.7\) are shown below.</p>
+	
+	<div class="centred">
+		<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="400">
+			<script type="text/javascript">writeAppletParams();</script>
+			<param name="appletName" value="estimationProg.NewtonRaphsonApplet">
+			<param name="nValues" value="30">
+			<param name="sumX" value="95">
+			<param name="iterations" value="10">
+			<param name="initialGuess" value="0.7">
+			<param name="customText" value="Initial guess=Initial guess#Show iterations=Show iterations#Iteration=Iteration">
+		</applet>
+	</div>
+
+<p>From most guesses at the value of the parameter \(\theta\), the algorithm converges to the maximum likelihood estimate, \(\hat{\theta} = 0.8628\). The second derivative of the log-likelihood similarly converges to  \(\ell''(\hat{\theta}) = -526.28\). The approximate standard error of the estimate is therefore</p>
+\[
+\se(\hat {\theta}) \;\;\approx\;\; \sqrt {- \frac 1 {\ell''(\hat {\theta})}} \;\;=\;\; \sqrt {\frac 1 {526.28}} \;\;=\;\; 0.0436
+\]</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Transformaciones logarítmicas</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="transformations">
+	<meta name="dataset" content="Brain weights of mammals">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Transformaciones no lineares</p> 
+ 
+<p>Hay varios tipos de datos donde las unidades de medida alternativas no se relacionan linear. Por ejemplo, 
+</p> 
+ 
+  <ul> 
+		<li>La escala de Richter transforma la intensidad medida de terremotos a una escala logarítmica.</li> 
+		<li>La longitud de onda de la radiación (en metros) se puede registrar alternativamente como frecuencia (en ciclos por segundo) &mdash; una relación recíproca.</li> 
+		<li>En Europa, el tipo de cambio con dólar americano se expresa como US$ por euro. En los E.E.U.U., el mismo tipo de cambio se expresa como euros por US$, una transformación inversa.</li> 
+	</ul> 
+ 
+<p>Las transformaciones no lineares de los valores en un conjunto de datos tienen un efecto más fundamental sobre la forma de la distribución, y esto se puede utilizar para extraer la información adicional de los datos. 
+</p> 
+ 
+  <table width="75%" border="1" class="centred" cellpadding="10" cellspacing="0" bgcolor="#FFFFFF"> 
+    <tr> 
+		  <td align="center"><strong>La transformación no linear cambia la forma de una distribución.</strong></td> 
+	</tr> 
+</table> 
+ 
+  <p class="heading">Transformaciones logarítmicas</p> 
+	<p>La transformación no linear más de uso general substituye cada valor por su logaritmo,</p> 
+<p class=eqn style="color:#000000"><strong>nuevo valor</strong> &nbsp; = log<sub>10</sub> <font size="+1">(</font><strong>viejo valor</strong><font size="+1">)</font></p>
+
+<p>Utilizamos los logaritmos base-10 en CAST puesto que sus valores son más fáciles de interpretar, solamente los logaritmos naturales (la base e) tiene un efecto similar sobre la distribución de valores.</p> 
+	<p class="heading">Efecto sobre la forma de una distribución</p> 
+	<p>Las características importantes de logaritmos son</p> 
+	<ul> 
+		<li>Multiplicando cualquie valor por 10 aumentos su logaritmo por 1.</li> 
+		<li>De una manera similar, la duplicación de cualquier valor aumenta su logaritmo en iguales constantes</li> 
+	</ul> 
+ 
+	<p>Considere cuatro valores 1, 10, 100 y 1000. Los primeros dos valores son mucho más cercano a uno a que los dos valores pasados. No obstante sus logaritmos son 0, 1, 2 y 3, así que sus logaritmos se espacian uniformemente hacia fuera.</p> 
+	<p>Consecuentemente, una transformación logarítmica separa selectivamente hacia fuera valores bajos en una distribución y comprime elevados valores. Es por lo tanto útil para los datos oblicuos con una cola larga hacia los elevados valores. Separará hacia fuera un racimo denso de valores bajos y puede detectar el agrupamiento o los afloramientos que no serían visibles en las exhibiciones gráficas de los datos originales.</p> 
+ 
+<div class="diagram"> 
+ 
+	  <p class="heading">Pesos del cerebro del mamífero</p> 
+ 
+		<p>El diagrama del punto abajo demuestra los pesos medios del cerebro (gramos) de 62 especies de mamíferos.  </p> 
+ 
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="350"> 
+<script type="text/javascript">writeAppletParams();</script> 
+<param name="appletName" value="transformProg.DotLabelApplet"> 
+<param name="varName" value="peso cerebro (gramos)"> 
+<param name="values" value="44.50 15.50 8.100 423.0 119.5 115.0 98.20 5.500 58.00 6.400 4.000 5.700 6.600 0.140 1.000 10.80 12.30 6.300 4603 0.300 419.0 655.0 3.500 115.0 25.60 5.000 17.50 680.0 406.0 325.0 12.30 1320 5712 3.900 179.0 56.00 17.00 1.000 0.400 0.250 12.50 490.0 12.10 175.0 157.0 440.0 179.5 2.400 81.00 21.00 39.20 1.900 1.200 3.000 0.330 180.0 25.00 169.0 2.600 11.40 2.500 50.40 "> 
+<param name="labelName" value="Mamífero"> 
+<param name="labels" value="#Zorro ártico# #Lechuza mono# #Montaña castor# #Vaca# #Lobos gris# #Cabra# #Corzo# #Conejillo de Indias# #Vervet# #Chinchilla# #Ardilla# #Ardilla del Ártico# #Africanos rata marsupial gigante# #Menor musaraña de cola corta# #Topo de nariz estrellada# #Armadillo de nueve bandas# #Hydrax del árbol# #N. zarigüeya americana# #Elefante asiático# #Big brown bat# #Burro# #Caballo# #Europea erizo# #Patas mono# #Gato# #Galago# #Jineta# #Jirafa# #Gorila# #Focas grises# #Hyrax de roca (h. brucci)# #Hombre# #Elefante africano# #Oposum del agua# #Macaco de la India# #Canguro# #Marmota de vientre amarillo# #Hamster dorado# #Ratón# #Pequeño palo marrón# #Loris lentos# #Okapi# #Conejo# #Oveja# #Jaguar# #Chimpancé# #Babuino# #Erizo del desierto# #Armadillo gigante# #Hyrax de roca (p. habess.)# #Mapache# #Rata# #E. Topo americano# #Rata de topo# #Musaraña del almizcle# #Cerdo# #Echidna# #Tapir brasileño# #Tenrec# #Phalanger# #Musaraña de árbol# #Zorro rojo#"> 
+<param name="horizAxis" value="0 6000 0 1000"> 
+</applet> 
+</div> 
+ 
+		<p><strong>Arrastre</strong> sobre las cruces para exhibir los nombres de los mamíferos.</p> 
+		<p>El conjunto de datos se sesga tan altamente que poco se puede determinar sobre la distribución para los pequeños mamíferos.  </p> 
+		
+		<hr width="85%"> 
+ 
+		<p>El diagrama abajo también demuestra un diagrama inquieto del punto de los datos.</p> 
+		<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="300"> 
+<script type="text/javascript">writeAppletParams();</script> 
+<param name="appletName" value="transformProg.Log10Applet"> 
+<param name="varName" value="peso cerebro (gramos)"> 
+<param name="values" value="44.50 15.50 8.100 423.0 119.5 115.0 98.20 5.500 58.00 6.400 4.000 5.700 6.600 0.140 1.000 10.80 12.30 6.300 4603 0.300 419.0 655.0 3.500 115.0 25.60 5.000 17.50 680.0 406.0 325.0 12.30 1320 5712 3.900 179.0 56.00 17.00 1.000 0.400 0.250 12.50 490.0 12.10 175.0 157.0 440.0 179.5 2.400 81.00 21.00 39.20 1.900 1.200 3.000 0.330 180.0 25.00 169.0 2.600 11.40 2.500 50.40 "> 
+<param name="labelName" value="Mamífero"> 
+<param name="labels" value="#Zorro ártico# #Lechuza mono# #Montaña castor# #Vaca# #Lobos gris# #Cabra# #Corzo# #Conejillo de Indias# #Vervet# #Chinchilla# #Ardilla# #Ardilla del Ártico# #Africanos rata marsupial gigante# #Menor musaraña de cola corta# #Topo de nariz estrellada# #Armadillo de nueve bandas# #Hydrax del árbol# #N. zarigüeya americana# #Elefante asiático# #Big brown bat# #Burro# #Caballo# #Europea erizo# #Patas mono# #Gato# #Galago# #Jineta# #Jirafa# #Gorila# #Focas grises# #Hyrax de roca (h. brucci)# #Hombre# #Elefante africano# #Oposum del agua# #Macaco de la India# #Canguro# #Marmota de vientre amarillo# #Hamster dorado# #Ratón# #Pequeño palo marrón# #Loris lentos# #Okapi# #Conejo# #Oveja# #Jaguar# #Chimpancé# #Babuino# #Erizo del desierto# #Armadillo gigante# #Hyrax de roca (p. habess.)# #Mapache# #Rata# #E. Topo americano# #Rata de topo# #Musaraña del almizcle# #Cerdo# #Echidna# #Tapir brasileño# #Tenrec# #Phalanger# #Musaraña de árbol# #Zorro rojo#"> 
+<param name="logName" value="Log (peso cerebro)"> 
+<param name="logDecimals" value="3"> 
+<param name="horizAxis" value="0.08 10000 1000 1000"> 
+<param name="logAxis" value="0.08 10000 -1 1"> 
+<param name="customText" value="Original scale=Escala original#Log scale=Escala log"> 
+</applet> 
+</div> 
+ 
+		<p>Un segundo eje se dibuja bajo diagrama que etiqueta los valores 0.1, 1, 10, 100, 1000 y 10.000. Estos valores no se espacian uniformemente y las etiquetas extremas izquierdas se traslapan. El eje sobre el diagrama del punto demuestra los logaritmos de estos seis valores (- 1, 0, 1, 2, 3 y 4).</p> 
+		
+<p>Arrastre el resbalador bajo diagrama hacia la derecha de cambiar la exhibición en un diagrama del punto de los <strong>logaritmos de los</strong> pesos del cerebro. La transformación da vuelta al eje del registro sobre el diagrama en un eje convencionalmente espaciado.</p> 
+<p>La transformación…</p> 
+		
+<table width="75%" border="1" class="centred" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF"> 
+<tr> 
+<td align="left"> <ul> 
+<li><strong>… separa hacia fuera el racimo denso de mamíferos con los pesos bajos del cerebro en el diagrama original</strong></li><strong> </strong> 
+<li><strong>… comprime la cola larga de mamíferos con los altos pesos del cerebro</strong></li><strong> </strong> 
+</ul></td> 
+</tr> 
+</table> 
+<p>De los datos transformados, puede ser que concluyamos eso:</p> 
+ 
+		<ul> 
+			<li>No hay racimos distintos de mamíferos.</li> 
+			<li>Los 2 elefantes, a pesar de tener cerebro que son 3 veces el peso de los mamíferos más pesados siguientes (seres humanos), pueden ser interpretados como los valores extremos en una distribución muy long-tailed algo que como “errores”. (Hay más de un tipo de afloramiento!)</li> 
+		</ul> 
+		<br> 
+ 
+		<hr width="85%"> 
+		<p>Para ayudar a explicar la transformación, el diagrama debajo de las demostraciones solamente cinco de los mamíferos</p> 
+		<table border="0" cellpadding="4" class="centred" cellspacing="0"> 
+			<tr> 
+				<th>Mamífero</th> 
+				<th>Peso del cerebro</th> 
+			</tr> 
+			<tr bgcolor="#FFFFFF"> 
+				<td>Elefante asiático</td> 
+				<td align="center">4603 g</td> 
+			</tr> 
+			<tr bgcolor="#FFFFFF"> 
+				<td>Chimpancé</td> 
+				<td align="center">440 g</td> 
+			</tr> 
+			<tr bgcolor="#FFFFFF"> 
+				<td>Zorro ártico</td> 
+				<td align="center">44.5 g</td> 
+			</tr> 
+			<tr bgcolor="#FFFFFF"> 
+				<td>Ardilla de tierra</td> 
+				<td align="center">4 g</td> 
+			</tr> 
+			<tr bgcolor="#FFFFFF"> 
+				<td>Ratón</td> 
+				<td align="center">0.4 g</td> 
+			</tr> 
+		</table> 
+		<p>Estos mamíferos diferencian por aproximadamente un factor de 10.</p> 
+ 
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="300"> 
+<script type="text/javascript">writeAppletParams();</script> 
+<param name="appletName" value="transformProg.Log10Applet"> 
+<param name="varName" value="peso cerebro (gramos)"> 
+<param name="values" value="0.400 4.000 44.50 440 4603"> 
+<param name="labelName" value="Mamífero"> 
+<param name="labels" value="#Ratón# #Ardilla de tierra# #Zorro ártico# #Chimpancé# #Elefante asiático# "> 
+<param name="logName" value="Log (peso cerebro)"> 
+<param name="logDecimals" value="3"> 
+<param name="horizAxis" value="0.08 10000 1000 1000"> 
+<param name="logAxis" value="0.08 10000 -1 1"> 
+<param name="jittering" value="0.0"> 
+<param name="customText" value="Original scale=Escala original#Log scale=Escala log"> 
+</applet> 
+</div> 
+ 
+		<p><strong>Arrastre</strong> otra vez el <strong>resbalador</strong> para aplicar una transformación logarítmica. Observe que los cinco mamíferos se espacian uniformemente en una escala del registro.</p> 
+ 
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Comparisons in block designs</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="randomised block design, constraint, anova, analysis of variance">
+	<meta name="dataset" content="Wheat variety and yield">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Internal structure of factors in more complex experiments</p>
+<p>We have introduced analysis of  the internal structure of factors with many levels through constraints in the context of a completely randomised experiment. Similar methods can be used to analyse the internal structure of a factor with several levels that is used in factorial experiments with several factors and in randomised block experiments.</p>
+<p>Analysis again partitions the sum of squares explained by the factor into sums of squares into sums of squares explained by various constraints on the model parameters.</p>
+<p class="heading">Randomised block experiment with several treatments</p>
+<p>We now illustrate how this partition of the treatment sum of squares can be performed in a randomised block experiment. Assuming no interaction between the factor and blocks, the model can be written as:</p>
+<div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+  <tr>
+    <td align="center"><br>
+        <span class="black em">y<sub>ijk</sub></span> &nbsp;= &nbsp;<span class="blue">µ</span></td>
+    <td align="center"><br>
+      &nbsp;+&nbsp;</td>
+    <td align="center"><span class="red">(<em>block effect</em>)<br>
+      β<em><sub>i</sub></em></span></td>
+    <td align="center"><br>
+      &nbsp;+&nbsp;</td>
+    <td align="center" class="green">(<em>effect of factor, X</em>)<br>  
+      γ<em><sub>j</sub></em></td>
+    <td align="center"><br>
+  &nbsp;+&nbsp;</td>
+    <td align="center">(<em>unexplained</em>)<br>
+      ε<em><sub>ijk</sub></em></td>
+  </tr>
+</table></div>
+<p>where <span class="red">β<sub>1</sub> = 0</span> and <span class="green">γ<sub>1</sub> = 0</span>. Constraints about the internal structure of the factor levels for X are  expressed as constraints on the values of the<span class="green"> γ</span>-parameters.</p>
+<p>The example below illustrates for a randomised block experiment in which the treatments can be partitioned into two groups.</p>
+<div class="diagram">
+<p class="heading">Wheat yield in randomised block experiment</p>
+<p>This experiment is similar to the one on the previous page, except that the experimental units were grouped into five blocks of five plots and the five wheat varieties were randomly allocated within each block.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="510" height="430">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="exper2Prog.ApplyConstraintsBlockApplet">
+	<param name="yVarName" value="Yield">
+	<param name="yValues" value="9.71 11.51 9.81 10.24 8.91 13.79 13.29 13.72 11.70 12.42 13.29 13.32 15.04 12.40 12.95 14.09 13.73 16.54 13.48 14.39 16.60 14.27 14.44 14.55 14.48">
+	<param name="yAxis" value="8 17 8 1">
+	<param name="xVarName" value="Variety">
+	<param name="xLabels" value="A1 A2 B1 B2 B3">
+	<param name="xValues" value="5@0 5@1 5@2 5@3 5@4">
+	<param name="blockVarName" value="Block">
+	<param name="blockLabels" value="B1 B2 B3 B4 B5">
+	<param name="blockValues" value="0 1 2 3 4 0 1 2 3 4 0 1 2 3 4 0 1 2 3 4 0 1 2 3 4">
+	<param name="maxRss" value="999.999">
+	<param name="showResiduals" value="true">
+	<param name="constraint1" value="0 3 -2 -2 -2 0 0 0 0 0">
+	<param name="constraint2" value="0 1 0 0 0 0 0 0 0 0">
+	<param name="constraint3" value="0 0 1 -1 0 0 0 0 0 0">
+	<param name="constraint4" value="0 0 1 0 -1 0 0 0 0 0">
+	<param name="constraintGroup1" value="2*0*#gamma##sub1# = #gamma##sub2#*All A varieties same">
+	<param name="constraintGroup2" value="3 4*0*#gamma##sub3# = #gamma##sub4# = #gamma##sub5#*All B varieties same">
+	<param name="constraintGroup3" value="1*0*3#gamma##sub1# + 3#gamma##sub2# = 2#gamma##sub3# + 2#gamma##sub4# + 2#gamma##sub5#*Mean of A varieties*same as mean of B varieties">
+	<param name="paramDecimals" value="3">
+	<param name="nColumns" value="2">
+</applet>
+</div>
+<p>In the diagram, the different colours correspond to the different blocks. Note that the different coloured lines are parallel since we are assuming that there is no interaction between varieties and blocks.</p>
+<p>The three checkboxes again correspond to constraints on the values of parameters for the five varieties.</p>
+<ul>
+	<li>Constrain all varieties in group A to have the same <span class="green">γ</span>-parameters</li>
+	<li>Constrain all varieties in group B to have the same <span class="green">γ</span>-parameters</li>
+	<li>Constrain the average <span class="green">γ</span>-parameter  for varieties in group A to be the same as the average value for those in group B.</li>
+</ul>
+
+<p class="heading">Analysis of variance</p>
+<p>The analysis of variance table below initially shows a single explained sum of squares corresponding to the five varieties.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="200">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="glmAnovaProg.CombineSsqApplet">
+	<param name="yVarName" value="Yield">
+	<param name="yValues" value="9.71 11.51 9.81 10.24 8.91 13.79 13.29 13.72 11.70 12.42 13.29 13.32 15.04 12.40 12.95 14.09 13.73 16.54 13.48 14.39 16.60 14.27 14.44 14.55 14.48">
+	<param name="xVariables" value="Block AB A B">
+	<param name="BlockVarName" value="Block">
+	<param name="BlockLabels" value="B1 B2 B3 B4 B5">
+	<param name="BlockValues" value="0 1 2 3 4 0 1 2 3 4 0 1 2 3 4 0 1 2 3 4 0 1 2 3 4">
+	<param name="ABVarName" value="A vs B">
+	<param name="ABValues" value="10@0 15@1">
+	<param name="ABLabels" value="A B">
+	<param name="AVarName" value="Between A levels">
+	<param name="AValues" value="5@0 5@1 15@0">
+	<param name="ALabels" value="A1 A2B">
+	<param name="BVarName" value="Between B levels">
+	<param name="BValues" value="15@0 5@1 5@2">
+	<param name="BLabels" value="others B2 B3">
+	<param name="maxSsq" value="999.99 99 99.99 99.99">
+	<param name="componentNames" value="Blocks#A vs B#Between A varieties#Between B varieties">
+	<param name="split" value="2:3:Split varieties:Between all varieties">
+</applet>
+</div>
+<p>Click <strong>Split varieties</strong> to split the explained sum of squares into  three components defined by the three sets of constraints described above. These sums of squares can again be used to test for differences between the group A and group B varieties, for differences within the group A varieties, and for differences within the group B varieties.</p>
+<p>Again there is fairly weak evidence of differences between the group B varieties but very strong evidence between group A varieties and between group A and group B.</p>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

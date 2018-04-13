@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Exponential smoothing</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Smoothing up to the end of the series</p>
+	<p>We are usually most interested in the  latest values in a time
+series, but moving averages  cannot provide smoothed values at the two ends of
+the time series. <strong>Exponential 
+smoothing</strong> works up to the end of the series:</p>
+<p class=eqn><img class="gif" src="../smoothing/images/expSmoothInitial.gif" width="59" height="18"> </p>
+	<p class=eqn><img class="gif" src="../smoothing/images/expSmoothEqn.gif" width="175" height="25"></p>
+	<p>where the smoothing constant, <i>a</i>, is a value between 0 and 1. The smoothed
+value is a 'weighted average' of the actual value at that time and the previous
+smoothed value.</p>
+<p class="heading">Alternative formula</p>
+	<p>The formula can also be expressed as </p>
+	<p class=eqn><img class="gif" src="../smoothing/images/expSmoothEqn2.gif" width="486" height="26"></p>
+	<p>For example, if <em>a</em>&nbsp;=&nbsp;<sup>1</sup>/<sub>2 </sub>, </p>
+	<p class=eqn><img class="gif" src="../smoothing/images/expSmoothHalf.gif" width="299" height="26"> </p>
+	<p>The smoothed value puts more weight on the recent past (which is an intuitively sensible thing to do).</p>
+	<ul>
+		<li>The closer <em>a</em> becomes to one, the greater the influence of the
+actual value, and the less smoothing.</li>
+		<li>The closer <em>a</em> becomes to zero, the more smoothing.</li>
+</ul>
+	<p class="heading">Forecasting future values</p>
+	<p>If the most recent value is at time <em>i</em>, we forecast
+the value at time <em>i</em> + <em>k</em> to be the last exponentially smoothed
+value,</p>
+<p class=eqn><img class="gif" src="../smoothing/images/expPredict.gif" width="252" height="23"></p>
+	<ul>
+		<li>If <i>a</i>&nbsp;=&nbsp;1, the forecast is just the last observed value 
+			in the time series.</li>
+		<li>As <i>a</i> is reduced, the forecast becomes more affected by earlier 
+			values in the series.</li>
+	</ul>
+	
+	<p class="heading">Time series with trend</p>
+	<p>If the time 
+		series has an increasing trend, exponential smoothing will 
+		tend to underestimate the trend. Similarly, the smoothed series will be too high if 
+		there is a decreasing trend.</p>
+	<p class="eqn"><img src="images/s_expSmoothTrend.gif" width="455" height="258"></p>
+	<div class="centred"><div class="boxed">
+		<p>Do not use exponential smoothing on a time series with trend.</p>
+	</div></div>
+	
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Bayes theorem</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="bayes theorem, conditional probability">
+	<meta name="dataset" content="Contraception and pregnancy">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>Consider two partitions of the sample space, \(\{A_i, i=1,\dots, k\}\) and \(\{B, \overline{B}\}\). The probabilities for all possible events can be described in three different ways:</p>
+<dl>
+	<dt>The joint probabilities</dt>
+	<dd>\(P(A_i \textbf{ and } B)\) and \(P(A_i \textbf{ and } \overline{B})\) for all <em>i</em></dd>
+	<dt>The marginal probabilities for \(A\) 
+		and the conditional probabilities for \(B\)</dt>
+	<dd>\(P(A_i)\),  \(P(B \mid A_i)\)  and \(P(\overline{B} \mid A_i)\)  for all <em>i</em></dd>
+	<dt>The marginal probabilities for \(B\) 
+		and the conditional probabilities for \(A\)</dt>
+	<dd>\(P(B)\), \(P(\overline{B})\), 
+		\(P(A_i \mid B)\) and   \(P(A_i \mid \overline{B})\) for all <em>i</em></dd>
+</dl>
+<p>We have already shown how to find marginal and conditional probabilities from the joint probabilities, and how to find joint probabilities from marginal and conditional ones. The following theorem gives a formula that helps find one set of conditional probabilities from the other.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Bayes Theorem</p>
+		<p>If \(\{A_1, ..., A_k\} \) is a partition of the sample space,</p>
+\[
+	P(A_j \mid B)   =  \frac {P(A_j) \times P(B \mid A_j) } {\sum_{i=1}^{k} {P(A_i) \times P(B \mid A_i) } }
+\]
+	<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+<p>In actual examples, it is usually easiest to work out the probability from first principles:</p>
+\[
+	P(A_j \mid B)   =  \frac {P(B \textbf{ and } A_j) } {P(B) }
+\]
+<p>The numerator can be found from the definition of conditional probability</p>
+\[
+	P(A_j \mid B)   =  \frac {P(B \textbf{ and } A_j) } {P(B) }
+\]
+<p>and the denominator can be evaluated using the law of total probability.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Example</p>
+		<p>Medical diagnostic tests for a disease are rarely 100% accurate. There are 
+			two types of error: </p>
+		<ul>
+			<li>A positive test result for someone who does not have the disease.</li>
+			<li>A negative test result for someone who has the disease.</li>
+		</ul>
+		<p>Consider
+			a diagnostic test with conditional probabilities</p>
+		\[
+		P(negative \mid disease) = 0.05 \quad\quad\quad 
+		P(positive \mid no \text{ } disease) = 0.10
+		\]
+		
+		<p>If 10% of people who are given the test have the disease,</p>
+		\[
+		P(disease) = 0.10
+		\]
+		<p>what is the probability that someone with a positive test result actually has the disease?</p>
+		<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

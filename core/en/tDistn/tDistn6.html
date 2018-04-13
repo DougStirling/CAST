@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Estimating difference between means</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="t distribution, confidence interval, pivot, normal distribution">
+	<meta name="dataset" content="Teeth and gender">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Standard error of difference between means</p>
+
+<p>We will now examine how to estimate the difference between the means of the two normal distributions. We have seen that</p>
+\[
+\overline{X}_1 - \overline{X}_2 \;\;\sim\;\; \NormalDistn\left(\mu_1 - \mu_2,\;\sigma^2\left(\frac 1{n_1} + \frac 1{n_2}\right)\right)
+\]
+<p>and the best estimate of the common variance, \(\sigma^2\), is</p>
+\[
+\hat{\sigma}^2 \;=\; S_{\text{pooled}}^2 \;=\; \frac{(n_1 - 1)S_1^2 + (n_2 - 1)S_2^2}{n_1 + n_2 - 2}
+\]
+<p>If \(\sigma^2\) is unknown, our best estimate of the standard error of \(
+\overline{X}_1 - \overline{X}_2\) is therefore</p>
+\[
+\se(\overline{X}_1 - \overline{X}_2) \;=\; \sqrt{S_{\text{pooled}}^2 \left(\frac 1{n_1} + \frac 1{n_2}\right) }
+\]
+<p class="heading">Pivot</p>
+<p>To find a pivot for \(\mu_1 - \mu_2\), we will use the normal distribution of \(\overline{X}_1 - \overline{X}_2\) and the <a href="javascript:showNamedPage('chiSquared7')">Chi-squared distribution of the pooled variance</a>,</p>
+\[
+\frac{(n_1 + n_2 - 2)S_{\text{pooled}}^2}{\sigma^2} \;\sim\; \ChiSqrDistn(n_1 + n_2 - 2 \text{ df})
+\]
+
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Pivot for μ₁ − μ₂</p>
+<p>If \(\overline{X}_1\) and \(S_1^2\) are the mean and variance of a sample of \(n_1\) values from a \(\NormalDistn(\mu_1, \sigma^2)\) distribution and  \(\overline{X}_2\) and \(S_2^2\) are the mean and variance of an independent sample of \(n_2\) values from a \(\NormalDistn(\mu_2, \sigma^2)\) distribution,</p>
+\[
+\frac{(\overline{X}_1 - \overline{X}_2) - (\mu_1 - \mu_2)}{\se(\overline{X}_1 - \overline{X}_2)}
+\;\;\sim\;\; \TDistn(n_1 + n_2 - 2 \text{ df})
+\]
+<p>is a pivot for \(\mu_1 - \mu_2\).</p>
+</div>
+
+<div class="proof">
+<p>The proof is similar to the one used to get a pivot for a <a href="javascript:showNamedPage('tDistn3')">single normal sample's mean</a>. The formula can be rewritten as a ratio of two terms whose independent distributions are as shown below.</p>
+\[
+\frac{\NormalDistn(0,\;1)}{\sqrt{\Large \frac {\ChiSqrDistn(n_1 + n_2 -2\text{ df})}{n_1 + n_2 - 2}}}
+\;=\; \TDistn(n_1 + n_2 -2\text{ df})
+\]
+<p>The details are left as an exercise.</p>
+</div>
+
+</div>
+
+<p class="heading">Confidence interval</p>
+<p>Using the above pivot, a 95% confidence interval for \(\mu_1 - \mu_2\) is</p>
+\[
+(\overline{x}_1 -\overline{x}_2)\;\; \pm \;\; t_{n_1 + n_2-2,\;0.975}\;\times \se(\overline{x}_1 -\overline{x}_2)
+\]
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Example</p>
+<table style="margin-left:0px; margin-top:10px;">
+	<tr>
+		<td valign="top"><p style="margin-top:5px">Is a badly burned or decomposed body male or female? Male and female teeth have different properties. The data on the right were collected from 8 males and 8 females, describing the extent to which X-rays can penetrate tooth enamel at different wavelengths.</p></td>
+		<td valign="top"><img class="svgImage" src="images/teethGender.png" width="174" height="310" style="margin:8px 5px 0 0;"></td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+<p>The sample mean and standard deviation of the males are \(\overline{x}_m = 5.425\) and \(s_m = 0.744\), and the corresponding values for the females are \(\overline{x}_f = 4.512\) and \(s_f = 0.761\).</p>
+<p>Assuming that the distributions for males and females are both normal and that they have equal variances, find a 99% confidence interval for the difference between the mean spectroscopic gradients for males and females.</p>
+<br clear="all">
+	</div>
+
+<div class="solution">
+<p>The difference between the sample means, \(\overline{x}_m -\overline{x}_f = 0.913\), is our best point estimate of \(\mu_m -\mu_f\), and our best estimate of the common variance is</p>
+\[
+\hat{\sigma}^2 \;=\; s_{\text{pooled}}^2 \;=\; \frac{7s_m^2 + 7s_f^2}{14} \;=\; 0.566
+\]
+<p> and this has 14 degrees of freedom. The standard error of \(\overline{x}_m -\overline{x}_f\) is</p>
+\[
+\se(\overline{X}_1 - \overline{X}_2) \;=\; \sqrt{0.566 \left(\frac 1 8 + \frac 1 8 \right) } \;=\; 0.376
+\]
+<p>A 99% confidence interval for \(\mu_m -\mu_f\) is therefore</p>
+\[
+(\overline{x}_m -\overline{x}_f)\;\; \pm \;\; t_{n_m + n_f-2,\;0.995}\;\times \se(\overline{x}_m -\overline{x}_f)
+\]
+\[
+0.913 \;\; \pm \;\; 2.977 \times 0.376
+\]
+\[
+-0.21 \;\;\lt\;\; \mu_m -\mu_f \;\;\lt\;\; 2.03
+\]
+</div>
+
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

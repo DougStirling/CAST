@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Analysis of variance table</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="anova, analysis of variance, error variance, interaction">
+	<meta name="dataset" content="Sugar reduction study">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Estimating the error variance</p>  
+  <p>In 2<em><sup>k</sup></em> factorial experiments with <em>k</em>&nbsp;=&nbsp;4 
+		or more factors, usually only a single replicate of the experiment is conducted. 
+		The model with all main effects and interactions therefore fits the data exactly, 
+		leaving no residual degrees of freedom. This means that the natural experimental 
+		variability (error variance) cannot be estimated. Without this, it is impossible 
+		to test the significance of the terms in the model.</p>
+	<p>In the analysis of data from a standard 2<em><sup>k</sup></em> factorial 
+		experiment, the only way to conduct hypothesis tests requires the <strong>assumption</strong> 
+		that there are no high-order interactions between the factors. Fitting a model 
+		without the high-order interactions is equivalent to adding their sums of 
+		squares and treating them as a residual sum of squares.</p>
+	
+<div class="centred"><div class="boxed">
+<p>At least 5 residual degrees of freedom are recommended 
+					in order to get reasonable power in hypothesis tests.</p>
+</div></div>
+
+		
+	<p>The higher-order interactions that are assumed to be zero should be picked 
+		<strong>before</strong> analysis. If effects are picked <strong>because</strong> 
+		they are small, the error standard deviation is likely to be underestimated.</p>
+		
+	<p class="heading">Analysis of variance</p>
+	<p>Provided there are some residual degrees of freedom, an analysis of variance 
+		table can be completed showing the sum of squares explained by each model 
+		term (1 degree of freedom each) and the corresponding p-value which indicates 
+		whether the sum of squares is significantly higher than the background experimental 
+		variability.</p>
+		
+	<div class="diagram"> 
+		<p class="heading">Sugar reduction study</p>
+
+		<p>In this example, there are 15 main effects and interactions, each of which 
+			has 1 parameter (and hence 1 degree of freedom). Including 1 degree of freedom 
+			for the overall mean, the full model has 16 degrees of freedom for the 16 
+			observations so it fits the data perfectly with zero residuals and no residual 
+			degrees of freedom.</p>
+		<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="factorialProg.AnovaTableOnlyApplet">
+<param name="yVarName" value="Sweetness">
+<param name="yValues" value="7.60 7.92 7.72 7.27 8.09 7.87 7.52 6.89 8.02 8.34 8.20 8.21 8.14 7.82 8.04 7.00">
+<param name="xKeys" value="S A T H">
+<param name="SVarName" value="Sa">
+<param name="SValues" value="8@1 8@0">
+<param name="SLabels" value="Sa- Sa+">
+<param name="AVarName" value="Ac">
+<param name="AValues" value="4@1 4@0 4@1 4@0">
+<param name="ALabels" value="Ac- Ac+">
+<param name="TVarName" value="Th">
+<param name="TValues" value="2@1 2@0 2@1 2@0 2@1 2@0 2@1 2@0">
+<param name="TLabels" value="Th- Th+">
+<param name="HVarName" value="Ht">
+<param name="HValues" value="1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0">
+<param name="HLabels" value="Ht- Ht+">
+<param name="startModel" value="0*1*2*3">
+<param name="maxSsq" value="9.999 99 9.999 99.99">
+</applet> 
+</div>
+
+		<p>In order to test the significance of some terms in this model, we must 
+			assume that there are no high-order interactions. Click the checkboxes to 
+			remove the 4-factor interaction and all 3-factor interactions. This combines 
+			the sums of squares for these terms to form a residual sum of squares.</p>
+		
+<div class="centred"><div class="boxed">
+<p>The mean residual sum of squares, 0.020, estimates 
+						the error variance for the experiment.<br>
+						<strong>We therefore estimate that the standard deviation 
+						of the experimental error is the square root of this, 0.14.</strong></p>
+</div></div>
+
+		<p>From the p-values, we conclude that several 2-factor interactions are significant.</p>
+
+</div>
+
+	<p class="heading">Alternative experimental designs</p>
+	<p>Replication of a 2<em><sup>k</sup></em> factorial experiment is the best 
+		way to estimate the error variance without assuming any interactions to be 
+		negligible, but even a single replicate can be prohibitively expensive.</p>
+	
+<div class="centred"><div class="boxed">
+<p>An alternative way to estimate the error variance involves 
+					a few extra runs of the experiment at <a href="javascript:showNamedPage('twoNExper7')">centre 
+					points</a> of the design. Designs with centre points will be described 
+					later in this section.</p>
+</div></div>
+
+	<br>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Modèles additif et multiplicatif</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="additive model, multiplicative model, time series/multiplicative model">
+	<meta name="dataset" content="Personal disposable income in USA">
+	<meta name="dataset" content="Visitor arrivals in NZ">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Modèles additifs</p>
+
+  <p>Les modèles que nous avons pris en compte dans les sections précédentes ont été des <strong>modèles additifs</strong>, et il ya eu une hypothèse implicite que les différentes composantes concernées de la série temporelle additive.</p>
+<p class=eqn style="color:#009"><strong>Données &nbsp; = &nbsp; Effet saisonnier &nbsp; + &nbsp; Tendance &nbsp; + &nbsp; Cyclique &nbsp; + &nbsp;Résiduelle</strong></p>
+	<p>Pour des données mensuelles, un modèle additif suppose que la différence entre les valeurs de Janvier et Juillet est à peu près le même chaque année. En d'autres termes, <strong>l'amplitude</strong> de l'effet saisonnier est le même chaque année.</p>
+	<p>Le modèle suppose également que les résidus sont à peu près la même taille tout au long de la série &mdash; ils sont une composante aléatoire qui ajoute à l'd'autres composants de la même manière à toutes les parties de la série.</p>
+<p class="heading">Modèles multiplicatifs</p>
+	<p>Dans de nombreuses séries chronologiques portant sur des <strong>quantités</strong> (par exemple l'argent, la production de blé, ...), les différences absolues dans les valeurs sont de moindre intérêt et d'importance que les variations en pourcentage.</p>
+	<p>Par exemple, dans les données saisonnières, il pourrait être plus utile pour le modèle que la valeur Juillet est la même <strong>proportion</strong> supérieure à la valeur Janvier de chaque année, plutôt que de supposer que leur différence est constante. En supposant que les effets saisonniers et les autres agir proportionnellement sur la série est équivalent à un <strong>modèle multiplicatif</strong>,</p>
+<p class=eqn style="color:#009"><strong>Données&nbsp; = &nbsp; (Effet saisonnier) &nbsp; × &nbsp;Tendance&nbsp; × &nbsp;Cyclique&nbsp; × &nbsp;Résiduelle</strong></p>
+	<p>Heureusement, les modèles multiplicatifs sont tout aussi faciles à monter aux données que les modèles additifs! L'astuce pour ajuster un modèle multiplicatif est de prendre les logarithmes des deux côtés du modèle,</p>
+	<table border="0" class="centred" cellpadding="3" cellspacing="0" style="color:#009; margin-top:0; margin-bottom:0">
+		<tr>
+			<td valign="top" rowspan="2"><strong>log(Données) &nbsp;</strong></td>
+			<td align="left" valign="top"><strong>= &nbsp; log(Effet saisonnier &nbsp; × &nbsp;Tendance&nbsp; × &nbsp;Cyclique&nbsp; × &nbsp;Résiduelle)</strong></td>
+		</tr>
+		<tr>
+			<td align="left" valign="top"><strong>= &nbsp; log(Effet saisonnier) &nbsp;+ &nbsp;log(Tendance) &nbsp;+ &nbsp;log(Cyclique) &nbsp;+ &nbsp;log(Résiduelle)</strong></td>
+		</tr>
+	</table>
+	<p>Après prise en logarithmes (soit logarithmes naturels ou à base 10), les quatre composantes de la série maintes fois agissent additivement.</p>
+	<center>
+		<table border="1" cellspacing="0" cellpadding="5" bgcolor="white" width="400">
+			<tr> 
+				<th align="CENTER">Pour ajuster un modèle multiplicatif, prenons les logarithmes des données, puis d'analyser les données du journal comme avant.</th>
+			</tr>
+		</table>
+	</center>
+	<p>Il est important de reconnaître quand les modèles multiplicatifs sont appropriés. Cependant l'ajustement des modèles n'est pas plus difficile que les modèles additifs raccord.</p>
+	<div class="diagram">
+
+  <p class="heading">Exemple illustratif</p>
+
+		<p>Dans la série le temps suivant, les valeurs augmentent de 20% chaque année, sauf pendant deux ans - 1983 et 1998 &mdash; dans chacun desquels les valeurs <strong>diminuent</strong> de 20%.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="320">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.Log10TimeApplet">
+<param name="varName" value="donnée">
+<param name="values" value="1.20 1.44 1.73 2.07 2.49 1.99 3.58 4.30 5.16 6.19 7.43 8.92 10.70 12.84 15.41 18.49 22.19 26.62 31.95 38.34 30.67 55.21 66.25 79.50 95.40">
+<param name="vertAxis" value="1 100 20 20 1">
+<param name="timeAxis" value="3 5 1980 5">
+<param name="timeAxisName" value="An">
+<param name="timeSequence" value="1978 1 25">
+<param name="logAxis" value="1 100 0 2">
+<param name="customText" value="Raw=Brutes#Log=Log#Original scale=Échelle originale#Log scale=Échelle logarithmique">
+</applet>
+</div>
+
+		<p>Dans une parcelle des données brutes, 1998 apparaît plus inhabituel que 1983. En effet, il est facile de manquer le fait que 1983 est une année particulière.</p>
+		<p>Puisque nous considérons 1983 et 1998 pour être tout aussi inhabituel, car ils ont le même changement <strong>proportionnelle</strong> à l'année précédente, donc un modèle multiplicatif est suggéré.</p>
+		<p>Faites glisser le curseur à <strong>Log scale</strong>. Il applique une transformation logarithmique des données. Observez que les deux années inhabituelles semblent être les mêmes sur une échelle logarithmique. Notez également que la transformation linéarise la tendance de la série, ce qui rend plus facile à modéliser.</p>
+
+  <p class="heading">Le revenu personnel disponible</p>
+
+		<p>Le graphique chronologique ci-dessous montre comment US revenu personnel disponible (en milliards de dollars) ont changé entre 1959 et 2001.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="320">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.Log10TimeApplet">
+<param name="varName" value="revenu personnel disponible">
+<param name="values" value="83.7 86.9 85.8 100.2 101.2 113.2 124.1 134.7 149.0 152.1 150.2 160.2 193.8 206.4 239.5 271.2 288.3 342.4 351.0 416.2 474.7 518.5 594.0 664.2 684.0 775.1 818.6 835.6 834.0 912.7 970.7 996.3 1094.6 1168.6 1192.8 1200.9 1264.9 1282.7 1306.8 1369.0 1402.7 1283.8 1307.9">
+<param name="vertAxis" value="80 1500 200 200 100">
+<param name="timeAxis" value="1 5 1960 5">
+<param name="timeAxisName" value="an">
+<param name="timeSequence" value="1959 1 43">
+<param name="logAxis" value="80 1500 4 2">
+<param name="customText" value="Raw=Brutes#Log=Log#Original scale=Échelle originale#Log scale=Échelle logarithmique">
+</applet>
+</div>
+
+		<p>Dans cette période, le revenu personnel disponible a augmenté considérablement, de sorte qu'un même pourcentage d'augmentation qui serait tout à fait remarquable en 2001 serait difficile à reconnaître sur une parcelle des données brutes en 1959.</p>
+		<p>Faites glisser le curseur à <strong>Log scale</strong>. Observez que la tendance est assez linéaire jusqu'à environ 1985, ce qui implique une augmentation de pourcentage constant chaque année. Cependant il ya eu un aplatissement de la série temporelle de ces dernières années &mdash; le pourcentage d'augmentation annuelle du revenu personnel disponible est devenu plus petit.</p>
+		<p class="heading">Le nombre de visiteurs en Nouvelle-Zélande</p>
+		<p>Notre dernier exemple est une série temporelle saisonnière. L'intrigue décrit ci-dessous les chiffres des arrivées de visiteurs de courte durée en Nouvelle-Zélande (en milliers) chaque trimestre de 1980 à 2001.</p>
+			
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="320">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.Log10TimeApplet">
+<param name="varName" value="NZ visitor arrivals">
+<param name="values" value="146.4 80.8 85.4 152.6 144.7 87.2 91.2 155.0 139.2 91.4 96.1 155.0 145.1 91.9 104.8 166.6 155.1 111.8 112.0 188.7 184.5 132.2 132.0 220.9 204.0 137.6 142.3 249.5 233.8 158.1 167.9 284.5 245.0 161.9 183.7 274.3 247.6 168.0 197.7 287.7 280.0 190.8 205.8 299.5 271.0 176.1 209.8 306.5 307.2 199.6 220.9 327.9 338.1 218.3 232.7 367.8 394.5 240.2 273.9 414.0 414.9 264.2 290.6 439.1 447.9 293.6 307.7 479.4 470.6 283.6 303.7 439.3 438.1 277.2 302.7 466.4 471.0 298.9 330.1 507.2 512.7 340.5 362.0 571.5 574.4">
+<param name="vertAxis" value="70 600 100 100">
+<param name="seasonName" value="4 Q1 Q2 Q3 Q4">
+<param name="seasonInfo" value="0 0 80">
+<param name="timeAxisName" value="Quarter">
+<param name="timeSequence" value="0 1 85">
+<param name="logAxis" value="70 600 10 5">
+<param name="smallAxisFont" value="true">
+<param name="customText" value="Raw=Raw#Log=Log#Original scale=Original scale#Log scale=Log scale">
+</applet>
+</div>
+
+		<p>Observons que la composante saisonnière affecte cette série multiplicativement &mdash; dans les années précédentes lorsque le nombre de visiteurs étaient petites, les différences entre les quartiers étaient également de petite taille.</p>
+
+		<p>Appliquer une transformation logarithmique des données, et d'observer que la variation saisonnière devient plus constante. Un modèle multiplicatif convient donc, et les données peuvent être analysées en ajustant un modèle additif au nombre des visiteurs du journal.</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Linear trend</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="least squares/time series, linear model">
+	<meta name="dataset" content="World rice production">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Forecasting</p>
+	<p>Moving averages provide a good <strong>description</strong> of the trend 
+		in a time series. However a common goal in time series analysis is to <strong>forecast</strong> 
+		values of the time series in the future. For example, accurate forecasting 
+		of the demand for a product allows production capacity to be adjusted in time 
+		to meet changes to the demand.</p>
+	<p>Moving averages cannot smooth the end values of the series and do not provide 
+    a method to extend the trend into the future. The best that can be done is 
+    to extend the trend 'by eye' &mdash; hardly an objective forecasting method!</p>
+	
+	<p class="heading">Least squares</p>
+
+  <p>An alternative is to describe the trend with a mathematical equation which 
+		models the trend as a function of time,</p>
+
+<p class=eqn><span class="black"><em>trend</em> &nbsp; = &nbsp; function (<em> time</em> )</span> </p>
+
+  <p>where the function usually involves some constants (parameters) that can 
+		be adjusted to improve the fit of the model. The simplest such model is a 
+		<strong>linear model</strong> of the form</p>
+	<p class=eqn><span class="black"><em>trend</em> &nbsp; = &nbsp; <em>b</em><sub>0</sub> &nbsp;+ &nbsp;<em>b</em><sub>1</sub><em> time</em></span> </p>
+	<p>This model has the same form as the linear models that were used
+	<a href="javascript:showNamedPage('sec_leastSqrs')">in the bivariate 
+		chapter of CAST</a> and the statistical methods from that chapter can be used 
+		to fit and analyse the model. In particular, the residuals are the differences 
+		between the actual time series values, <i>y</i>, and the model's predictions,</p>
+	<p class=eqn><span class="black"><em>e<sub>i</sub></em>&nbsp;&nbsp;=&nbsp;&nbsp;<em>y<sub>i</sub></em>&nbsp;&minus;&nbsp;<em>trend<sub>i</sub></em></span> </p>
+	<p>and the two model parameters are estimated by <strong>least squares</strong> 
+		to minimise the sum of squares of residuals,</p>
+	<p class=eqn><img class="gif" src="images/rss.gif" width="233" height="26"> </p>
+	<div class="diagram">
+		<p class="heading">World rice production</p>
+
+		<p>The time series below shows the total world rice production (million tonnes) 
+			between 1961 and 2001. There is a clearly increasing trend to these figures. 
+			By estimating this underlying trend, we might hope to predict future production.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.DragLine2Applet">
+<param name="xVarName" value="Year">
+<param name="yVarName" value="World rice production (million tonnes)">
+<param name="xSequence" value="1961 1 41">
+<param name="yValues" value="215.7 226.6 247.1 263.0 254.1 261.2 277.5 288.7 295.7 316.4 317.8 307.3 335.0 332.0 357.0 347.7 369.5 385.1 375.1 396.8 410.0 421.9 447.8 465.1 467.9 468.4 461.1 487.0 514.0 518.2 518.5 528.2 529.8 538.8 547.0 568.5 576.8 578.8 609.9 598.2 585.1">
+<param name="horizAxis" value="1960 2001 1960 10">
+<param name="vertAxis" value="100 700 100 100">
+<param name="interceptLimits" value="-35000 35000 -7700">
+<param name="slopeLimits" value="-20.0 20.0 4.0">
+<param name="labelAxes" value="true">
+</applet>
+</div>
+
+		<p>Drag the arrows at the two ends of the line to position it close to the 
+      data. (Clicking the checkbox <strong>Show residuals</strong> displays the 
+      residuals as blue lines. The aim is to reduce the size of these residuals.)</p>
+		<p>Click <strong>Least squares</strong> to position the line to minimise the 
+			residual sum of squares.</p>
+		<p>The equation of the trend line is shown under the graph. The coefficient 
+      of 'Year' represents the annual rate of growth in rice production, which 
+      the linear model assumes to be constant. The least squares line can be used 
+      to predict rice production into the future.</p>
+		</div>
+	
+	<p class="heading">Recoding the years</p>
+
+  <p>When fitting models to annual data, as in the Rice example above, using the 
+		year as an explanatory variable can result in very large coefficients. For 
+		model-fitting purposes, it is better to recode the years so that some year 
+		within the range of the data is coded as year 0. (Recoding the years in this 
+		way is particularly important for fitting the quadratic models that are described 
+		on the next page.)</p>
+	<p>In other words, it is better to fit a model such as</p>
+
+  <p class=eqn><span class="black"><em>trend</em> &nbsp; = &nbsp; <em>b</em><sub>0</sub> &nbsp;+ &nbsp;<em>b</em><sub>1</sub> <font size="+1">(</font><em>time</em> &minus; 1960<font size="+1">)</font></span> </p>
+	<p>This model is equivalent to the corresponding model that uses the raw years 
+    &mdash; when fitted by least squares, both models give the same fitted values and 
+    forecasts, even though <em>b</em><sub>0</sub> 
+    is different. </p>
+	
+<div class="diagram"> 
+<p class="heading">World rice production</p>
+<p>The diagram below shows the rice yield data against a recoded time axis.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.DragLine2Applet">
+<param name="xVarName" value="(Year-1960)">
+<param name="yVarName" value="World rice production (million tonnes)">
+<param name="xSequence" value="1 1 41">
+<param name="yValues" value="215.7 226.6 247.1 263.0 254.1 261.2 277.5 288.7 295.7 316.4 317.8 307.3 335.0 332.0 357.0 347.7 369.5 385.1 375.1 396.8 410.0 421.9 447.8 465.1 467.9 468.4 461.1 487.0 514.0 518.2 518.5 528.2 529.8 538.8 547.0 568.5 576.8 578.8 609.9 598.2 585.1">
+<param name="horizAxis" value="0 41 0 10">
+<param name="vertAxis" value="100 700 100 100">
+<param name="interceptLimits" value="0 700 200">
+<param name="slopeLimits" value="-20.0 20.0 4.0">
+<param name="labelAxes" value="true">
+</applet>
+</div>
+
+<p>Observe that...</p>
+<ul>
+	<li>This linear model has the same flexibility as the previous one in describing 
+		the trend.</li>
+	<li>The least squares slope is the same as before &mdash; it is the increase 
+		in production per year.</li>
+	<li>The value of the intercept is smaller &mdash; it is the production that the 
+		model forecasts for 1960, rather than for year 0.</li>
+</ul>
+
+<br>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

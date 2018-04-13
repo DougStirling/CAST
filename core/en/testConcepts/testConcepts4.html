@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>P-value and its interpretation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="hypothesis test, test, p-value, binomial distribution, exponential distribution">
+	<meta name="dataset" content="Aircraft airconditioner failures">
+	<meta name="dataset" content="Telepathy">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Approach</p>
+<p>The null and alternative hypotheses are treated differently in statistical hypothesis testing. We compare them by asking&nbsp;...</p>
+<div class="boxed" style="background-color:#FFFF00">
+	<p><span class="darkred">Are the data consistent with the null hypothesis?</span></p>
+</div>
+<p>It is <strong>extremely</strong> important that you understand that hypothesis 
+	tests address this question &mdash; make sure that you remember it well!!</p>
+<p class="heading">P-value</p>
+
+<p>We approach a hypothesis test by evaluating a p-value. This is the probability of getting a value of the test statistic as &quot;extreme&quot; as the one calculated from the actual data set, assuming that the null hypothesis holds. </p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>For a hypothesis test using a test statistic \(T\), if the values of \(T\) that favour the alternative hypothesis at least as much as the observed value of the test statistic, \(t\), are the set \(A\), the <strong>p-value</strong> for the test is the probability of such a value when the null hypothesis holds,</p>
+\[
+\text{p-value} \;\;=\;\; P(T \in A \mid H_0)
+\]</div>
+
+<p>For example, if large values of the test statistic, \(T\), would favour the alternative hypothesis and it is evaluated to be \(t\) from the recorded data, the p-value is</p>
+\[
+\text{p-value} \;\;=\;\; P(T \ge t \mid H_0)
+\]
+<p>Since we know the distribution of the test statistic when the null hypothesis holds, the p-value can always be evaluated.</p>
+<p class="heading">Interpretation</p>
+<p>The p-value gives the probability of getting as &quot;extreme&quot; a value of the test statistic as the one observed when the null hypothesis holds. If this is small, we can argue that our data would have been unlikely if the null hypothesis was true, so the alternative hypothesis is more likely to be correct.</p>
+<p>The following table may be regarded as an oversimplification, but can be used as a guide to interpreting p-values.</p>
+<div class="centred">
+	<table cellpadding="5" cellspacing="0" class="centred">
+		<tr>
+			<th align="left">p-value</th>
+			<th align="left">Interpretation</th>
+		</tr>
+		<tr bgcolor="white">
+			<td align="left" style="border-top:1px solid #999999;"><strong>over 0.1</strong></td>
+			<td align="left" style="border-top:1px solid #999999;">no evidence that the null hypothesis does not hold</td>
+		</tr>
+		<tr bgcolor="white">
+			<td align="left" style="border-top:1px solid #999999;"><strong>between 0.05 and 0.1</strong></td>
+			<td align="left" style="border-top:1px solid #999999;">very weak evidence that the null hypothesis does not hold</td>
+		</tr>
+		<tr bgcolor="white">
+			<td align="left" style="border-top:1px solid #999999;"><strong>between 0.01 and 0.05</strong></td>
+			<td align="left" style="border-top:1px solid #999999;">moderately strong evidence that the null hypothesis does not hold</td>
+		</tr>
+		<tr bgcolor="white">
+			<td align="left" style="border-top:1px solid #999999; border-bottom:1px solid #999999;"><strong>under 0.01</strong></td>
+			<td align="left" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">strong evidence that the null hypothesis does not hold</td>
+		</tr>
+	</table>
+</div>
+<p>Two examples show how this works.</p>
+
+<div class="example" title="Example: Telepathy experiment">
+	<p class="exampleHeading">Example: Telepathy experiment</p>
+	<p>In the telepathy experiment, the number of correctly picked card shapes, \(X\), had a \(\BinomDistn(n=90, \pi)\) distribution. Our hypotheses were</p>
+	<ul>
+		<li>Null hypothesis, <strong>H<sub>0</sub></strong>: \(\pi = \diagfrac {\small 1} {\small 3} \)   (guessing)</li>
+		<li>Alternative hypothesis, <strong>H<sub>A</sub></strong>: \(\pi \gt \diagfrac{\small 1} {\small 3}\)   (telepathy)</li>
+	</ul>
+	<p>When the experiment was conducted, 36 out of the 90 card shapes were correctly chosen. If the null hypothesis holds, \(X\) has the \(\BinomDistn(n=90, \diagfrac {\small 1} {\small 3})\) distribution shown below.</p>
+	<div class="centred">
+		<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="420" height="280">
+			<script type="text/javascript">writeAppletParams();</script>
+			<param name="appletName" value="testProg.SuccessPValueApplet">
+			<param name="backgroundColor" value="FFFBF3">
+			<param name="testParams" value="90 0.3333 30">
+			<param name="testTail" value="high">
+			<param name="successName" value="correct guesses">
+			<param name="customText" value="count of=count of">
+		</applet>
+	</div>
+	<p>Values of the test statistic that would support telepathy at least as strongly as the observed number would be \(A = \{\text{values } x \ge 36\}\). Drag the slider in the diagram to read off this value,</p>
+\[
+\text{p-value} \;\;=\;\; P(X \ge 36 \mid \pi=\diagfrac {\small 1} {\small 3}) \;\;=\;\; 0.1103
+\]
+	<p>There would be an 11% chance of getting 36 correct card shapes when guessing so the data would not be particularly unusual for subjects who were guessing. We would therefore conclude that the data are consistent with the guessing (the null hypothesis) and there is no evidence for telepathy (the alternative hypothesis).</p>
+	<p class="exampleHeading">Example: Aircraft air-conditioner failures</p>
+	<p>For the aircraft air-conditioner failure data, our hypotheses were</p>
+	<ul>
+		<li>Null hypothesis, <strong>H<sub>0</sub></strong>: \(\lambda = \diagfrac {\small 1} {\small 110}\)</li>
+		<li>Alternative hypothesis, <strong>H<sub>A</sub></strong>:  \(\lambda \gt \diagfrac {\small 1} {\small 110}\)</li>
+	</ul>
+	<p>We identified the sample total  of the times to failure as a test statistic. If the null hypothesis was true,</p>
+\[
+\sum_{i=1}^{199}{X_i} \;\;\sim\;\; \ErlangDistn(199, \lambda=\diagfrac {\small 1} {\small 110})
+\]
+	<p>For the actual data, the sample total time was \(\sum{X_i} = 18,093\) hours, so the p-value for the test is the probability of as low a total time as this (when assuming that the manufacturer's claim of \(\lambda = \diagfrac {\small 1} {\small 110}\) is correct),</p>
+\[
+\text{p-value} \;\;=\;\; P\left(\sum{X_i} \le 18,093 \mid \lambda=\diagfrac {\small 1} {\small 110}\right)
+\]
+	<p>This can be evaluated using the Excel function</p>
+	<p class="eqn">= GAMMA.DIST(18093, 199,110, TRUE)</p>
+	<p>to be 0.0049.</p>
+	<p>This p-value means that there would be under 0.5% probability that the total of the times between the 199 failures would be as low as was observed if the manufacturer's claim was correct. The observed data would have been very unlikely if the manufacturer's claim was correct (the null hypothesis), so we conclude that there is strong evidence that the claim is wrong (the alternative hypothesis).</p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

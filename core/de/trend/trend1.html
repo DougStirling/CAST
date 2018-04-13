@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>Lineare Trends</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+<meta name="index" content="least squares/time series, linear model">
+	<meta name="dataset" content="World rice production"></head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Prognosen</p>
+<p>Gleitende Mittelwerte bieten eine gute <strong>Beschreibung </strong>des
+Trend in einer
+Zeitreihe. Doch ein gemeinsames Ziel in der Zeitreihenanalyse ist es,
+Werte der Zeitreihe f&uuml;r die Zukunft zu <strong>prognostizieren</strong>. Zum
+Beispiel kann
+man mit exaktem Prognostizieren der Nachfrage eines Produkts die
+Produktionskapazit&auml;t an &Auml;nderungen der Nachfrage
+anpassen.</p>
+<p>Gleitende Mittelwerte k&ouml;nnen allerdings nicht die
+Endwerte
+einer Reihe gl&auml;tten und nicht eine Methode anbieten, die es
+zul&auml;sst den zuk&uuml;nftigen Trend auszuweiten. Das beste
+Mittel
+ist hier den Trend mit per Augenma&szlig; auszubreiten &ndash;
+dies ist
+jedoch eine sehr objektive Methode zur Prognose!</p>
+<p class="heading">Kleinste Quadrate</p>
+<p>Eine Alternative ist es den Trend mit einer mathematischen
+Formel zu
+beschreiben, welche den Trend als eine Funktion der Zeit darstellt.</p>
+<p class="eqn" style="color: rgb(0, 0, 0);"><em>Trend</em>
+&nbsp; =
+&nbsp; Funktion (<em> Zeit</em> )</p>
+<p>wobei die Funktion eigentlich einige Konstanten (Parameter)
+einschlie&szlig;t, welche hinzugef&uuml;gt werden, um das
+Modell besser
+an zu passen. Das Einfachste ist hier das <strong>lineare Modell</strong>...</p>
+<p class="eqn" style="color: rgb(0, 0, 0);"><em>Trend</em>
+&nbsp; =
+&nbsp; <em>b</em><sub>0</sub> &nbsp;+
+&nbsp;<em>b</em><sub>1</sub><em>
+Zeit</em></p>
+<p>Dieses Modell hat die gleiche Form, wie das lineare Modell,
+welches
+schon im <span style="text-decoration: underline; color: rgb(0, 0, 153);">bivariaten
+Kapitel&nbsp; von CAST </span>verwendet wurde, und somit
+k&ouml;nnen
+die statistischen Methoden dieses Kapitels angewandt werden, um das
+Modell anzupassen und zu analysieren. Besonders die&nbsp;Residuen
+sind
+die Unterschiede zwischen den aktuellen Zeitreihenwerten, <em>y</em>, und den
+Modellprognosen,</p>
+<p class="eqn" style="color: rgb(0, 0, 0);"><em>e<sub>i</sub></em>
+&nbsp; = &nbsp; <em>y<sub>i</sub></em>
+&nbsp;&minus; &nbsp;<em>Trend<sub>i</sub></em></p>
+<p>und die zwei Modellparameter sind gesch&auml;tzt anhand
+der <strong>Methode der
+kleinsten Quadrate</strong> um
+die Summe der Abweichungsquadrate zu minimieren,</p>
+<p class="eqn" style="color: rgb(0, 0, 0);"><font size="+1">&Sigma;</font>
+<em>e<sub>i</sub></em><sup>2</sup>
+&nbsp; = &nbsp;<font size="+1">&Sigma;
+(</font> <em>y<sub>i</sub></em>
+&nbsp;&minus; &nbsp;<em><span class="eqn" style="color: rgb(0, 0, 0);"><em>b</em><sub>0</sub>
+&nbsp;<span class="eqn" style="color: rgb(0, 0, 0);">&minus;</span>
+&nbsp;<em>b</em><sub>1</sub><em>
+Zeit</em></span><sub>i</sub></em> <font size="+1">)</font><sup>2</sup></p>
+<div class="diagram"><p class="heading">Weltweite
+Reisproduktion</p>
+<p>Die folgende Zeitreihe zeigt die weltweite Reisproduktion (in
+Millionen Tonnen) zwischen 1961 und 2001. Es gibt ein klar steigenden
+Trend. Anhand der Sch&auml;tzung dieses zugrundeliegenden Trends,
+hofft&nbsp; man eine Prognose f&uuml;r die Zukunft aufstellen
+zu
+k&ouml;nnen.</p>
+<div class="centred"><applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" height="400" width="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.DragLine2Applet"><param name="xVarName" value="Jahr"><param name="yVarName" value="Weltreisproduktion (Millionen Tonnen)"><param name="xSequence" value="1961 1 41"><param name="yValues" value="215.7 226.6 247.1 263.0 254.1 261.2 277.5 288.7 295.7 316.4 317.8 307.3 335.0 332.0 357.0 347.7 369.5 385.1 375.1 396.8 410.0 421.9 447.8 465.1 467.9 468.4 461.1 487.0 514.0 518.2 518.5 528.2 529.8 538.8 547.0 568.5 576.8 578.8 609.9 598.2 585.1"><param name="horizAxis" value="1960 2001 1960 10"><param name="vertAxis" value="100 700 100 100"><param name="interceptLimits" value="-35000 35000 -7700"><param name="slopeLimits" value="-20.0 20.0 4.0"><param name="labelAxes" value="true"></applet></div><p>Ziehe
+die Pfeile an beiden Enden der Linie, um sie in
+N&auml;he der
+Daten zu platzieren. (Nun klickt man auf die Checkbox <strong>Zeige Residuen</strong> und
+die Abweichungen
+erscheinen als blaue Linien. Das Ziel ist die Gr&ouml;&szlig;e
+der
+Residuen zu minimieren.)</p>
+<p>Man klickt <strong>kleinste
+Quadrate</strong>
+um die Linie so zu positionieren, dass die Summe der Quadrate der
+Residuen minimiert ist.</p>
+<p>Die Gleichung der Trendlinie wird unter dem Graph angezeigt.
+Der
+Jahreskoeffizient repr&auml;sentiert die j&auml;hrliche
+Wachstumsrate
+der Reisproduktion, welche das lineare Modell konstant werden
+l&auml;sst. Die Linie der kleinsten Quadrates kann angewandt
+werden, um
+Prognosen der Reisproduktion in der Zukunft zu erstellen.</p>
+</div><p class="heading">Rekodierung der Jahre</p>
+<p>Wenn, wie in dem oberen Reisbeispiel, Modelle an
+j&auml;hrlichen
+Aufzeichnungen angepasste werden, wird das Jahr als
+unabh&auml;ngige
+Variable verwendet. So k&ouml;nnen sehr gro&szlig;e
+Koeffizienten
+entstehen. Um dies besser auf das Modell abzustimmen, empfiehlt es sich
+die Jahre zu rekodieren, so dass einige Jahre innerhalb eines
+Abschnitts der Daten als Jahr 0 kodiert werden. ( Die ReKodierung der
+Jahre auf diese Weise ist insbesondere wichtig f&uuml;r die
+Anpassung
+des quadratischen Modells, das auf der n&auml;chsten Seite
+beschrieben
+wird.)</p>
+<p>In anderen Worten ist es besser das Modell so anzupassen:</p>
+<p class="eqn" style="color: rgb(0, 0, 0);"><em>Trend</em>
+&nbsp; =
+&nbsp; <em>b</em><sub>0</sub> &nbsp;+
+&nbsp;<em>b</em><sub>1</sub> <font size="+1">(</font><em>Zeit</em>
+&minus; 1960<font size="+1">)</font></p>
+<p>Dieses Modell entspricht dem zugeh&ouml;rigen Modell, dass
+die
+urspr&uuml;nglichen Jahreszahlen verwendet-- bei Anpassung durch
+kleinste Quadrate ergeben beide Modelle die gleichen angepassten Werte
+und Prognosen, auch wenn <em>b0
+</em>sich
+unterscheidet. </p>
+<div class="diagram"><p class="heading">Weltweite
+Reisproduktion</p>
+<p>Das folgende Diagramm zeigt die Reisertragsdaten an einer
+rekodierten Zeitachse.</p>
+<div class="centred"><applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" height="400" width="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.DragLine2Applet"><param name="xVarName" value="(Jahr-1960)"><param name="yVarName" value="Weltreisproduktion (Millionen Tonnen)"><param name="xSequence" value="1 1 41"><param name="yValues" value="215.7 226.6 247.1 263.0 254.1 261.2 277.5 288.7 295.7 316.4 317.8 307.3 335.0 332.0 357.0 347.7 369.5 385.1 375.1 396.8 410.0 421.9 447.8 465.1 467.9 468.4 461.1 487.0 514.0 518.2 518.5 528.2 529.8 538.8 547.0 568.5 576.8 578.8 609.9 598.2 585.1"><param name="horizAxis" value="0 41 0 10"><param name="vertAxis" value="100 700 100 100"><param name="interceptLimits" value="0 700 200"><param name="slopeLimits" value="-20.0 20.0 4.0"><param name="labelAxes" value="true"></applet></div><p>Beachte,
+dass...</p>
+<ul> <li>Dieses lineare Modell die selbe
+Flexibilit&auml;t wie
+das
+Vorherige in der Beschreibung des Trends hat.</li> <li>Die
+Steigung der kleinsten Quadrate&nbsp;die selbe wie
+zuvor ist
+&ndash; es ist der Anstieg der Produktion pro Jahr.</li> <li>Der
+Wert der Achsenabschnitte ist kleiner - es ist die
+Produktion, welche das Modell f&uuml;r 1960 prognostiziert, anstatt
+f&uuml;r das Jahr 0.</li>
+</ul><br>
+</div><script type="text/javascript">writePageEnd();</script>
+</body></html>

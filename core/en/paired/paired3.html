@@ -1,0 +1,150 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Analysis of differences</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="paired data">
+	<meta name="dataset" content="IQ and environment">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Differences</p>
+
+<p>In a randomised block design with paired data where the two factor levels used in the experiment are denoted by <em>A</em> and <em>B</em>, our estimate of the effect of changing the factor from level <em>A</em> to <em>B</em> is</p>
+<p class="eqn"><img src="images/diffMeans.gif" width="49" height="17"></p>
+<p>where the two means are averaged over all response values at each factor level. If there are <em>g</em> matched pairs, this can be rewritten in the form</p>
+<p class="eqn"><img src="images/meanDiffs.gif" width="423" height="153"></p>
+<p>In other words, if we evaluate the <strong>difference</strong> between the values <strong>within</strong> each matched pair, our estimate is simply the average of these differences.</p>
+<p class="heading">Reduction to a simpler univariate problem</p>
+<p>We can therefore reduce the <em>n</em>&nbsp;=&nbsp;2<em>g</em> values from the individual experimental units in the <em>g</em> matched pairs to <em>g</em> independent differences,</p>
+<p class="eqn"><span class="em black">d</span> <span class="black"><sub>1</sub>, <em>d</em><sub>2</sub>, ..., <em>d</em><sub><em>g</em></sub></span></p>
+<p>Since each value is a difference between two response measurements from the <strong>same</strong> matched pair, </p>
+<div class="centred"><div class="boxed">
+	<p>The differences eliminate much of the variability between the matched pairs (blocks).</p>
+</div></div>
+<p>In the next page, we will use standard univariate methods for confidence intervals and hypothesis tests to analyse these differences.</p>
+<div class="diagram">
+  <p class="heading">Twin study</p>
+
+  <p>The diagram below shows the IQs of the twins from the first page of this section.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="pairBlockProg.PairedValuesApplet">
+<param name="xFactorName" value="Environment">
+<param name="x1Name" value="#Poor#">
+<param name="x1Values" value="100 65 60 125 85 145 55 180 60 135">
+<param name="x2Name" value="#Good#">
+<param name="x2Values" value="125 95 100 120 120 185 80 210 105 175">
+<param name="diffName" value="#Good minus poor#">
+<param name="rawAxis" value="50 220 50 50">
+<param name="diffAxis" value="-10 50 -10 10">
+<param name="rawHeading" value="IQ">
+<param name="diffHeading" value="Differences">
+<param name="customText" value="Show pairing=Show pairing">
+</applet>
+</div>
+
+  <p>Click on individual crosses to show the difference between the IQs 
+    for each pair. For most pairs of twins, the twin raised in a 'good' environment had the higher IQ.</p>
+  <p>Click <strong>Show Pairing</strong> to draw lines between the pairs of crosses 
+    and display the differences in a jittered dot plot. </p>
+  <p>The variability caused by genetic differences between the families means that the  dot plots for twins raised in good and poor environments on the left overlap considerably. However the dot plot of differences on the right gives a much clearer indication that the twins raised in 'good' environments tend to have higher IQs.</p>
+  <p class="heading">Table of differences</p>
+  <p>We therefore analyse the data using the final column of differences in the table below.</p>
+  <div class="centred">
+  	<table border="0" class="centred" cellpadding="3" cellspacing="0">
+  		<tr>
+  			<th>&nbsp;</th>
+  			<th colspan="2">IQ</th>
+  			<th>&nbsp;</th>
+ 			</tr>
+  		<tr>
+  			<th>Family</th>
+  			<th>Poor environment</th>
+  			<th>Good environment</th>
+  			<th>Difference</th>
+ 			</tr>
+  		<tr align="center">
+  			<td><table border="0" cellpadding="0" cellspacing="0">
+  				<tr>
+  					<td align="right">1<br>
+  						2<br>
+  						3<br>
+  						4<br>
+  						5<br>
+  						6<br>
+  						7<br>
+  						8<br>
+  						9<br>
+  						10</td>
+  					</tr>
+  				</table></td>
+  			<td bgcolor="#FFFFFF" style="border:1px solid #999999; border-right:0px"><table border="0" cellpadding="0" cellspacing="0">
+  				<tr>
+  					<td align="right">100<br>
+  						65<br>
+  						60<br>
+  						125<br>
+  						85<br>
+  						145<br>
+  						55<br>
+  						180<br>
+  						60<br>
+  						135</td>
+  					</tr>
+  				</table></td>
+  			<td bgcolor="#FFFFFF" style="border:1px solid #999999; border-left:0px"><table border="0" cellpadding="0" cellspacing="0">
+  				<tr>
+  					<td align="right">125<br>
+  						95<br>
+  						100<br>
+  						120<br>
+  						120<br>
+  						185<br>
+  						80<br>
+  						210<br>
+  						105<br>
+  						175</td>
+  					</tr>
+  				</table></td>
+  			<td bgcolor="#CCFFFF" style="border:1px solid #999999; border-left:0px"><table border="0" cellpadding="0" cellspacing="0">
+  				<tr>
+  					<td align="right">25<br>
+  						30<br>
+  						40<br>
+  						-5<br>
+  						35<br>
+  						40<br>
+  						25<br>
+  						30<br>
+  						45<br>
+  						40</td>
+  					</tr>
+  				</table></td>
+ 			</tr>
+ 		</table>
+ 	</div>
+  <p>From the average of these differences, 30.5, we can estimate that the effect of a good environment over a poor one is an increase of 30.5 in IQ.</p>
+<p>In the next page, we will ask the following questions:</p>
+<div class="centred"><div class="boxed">
+  <p>Is the mean of the differences zero?</p>
+  <p>What is a 95% CI for the mean difference?</p>
+</div></div>
+
+<br>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

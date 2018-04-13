@@ -1,0 +1,88 @@
+<html>
+<head>
+	<title>Randomisation tests</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="randomisation test">
+	<meta name="dataset" content="Asset-liabilities ratios">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class=heading>Simulation and randomisation</p>
+<p>Simulation and randomisation are closely related techniques. Both are based 
+on assumptions about the model underlying the data and involve randomly generated 
+data sets.</p>
+<dl>
+<dt>Simulation</dt>
+<dd>New data sets are generated directly from the model.</dd>
+<dt>Randomisation</dt>
+<dd>Modifications to the actual data are identified that would have the same probability 
+of arising if the model held. New data sets are randomly picked from these</dd>
+</dl>
+
+<p>Randomisation is understood most easily through an example.</p>
+<p class=heading>Comparing two groups</p>
+<p>If random samples are taken from two populations, we are often interested in 
+whether the populations have the same means.</p>
+<p>If the two populations were identical, any allocation of the sample values 
+to the two groups would have been as likely as the observed sample data. By observing 
+the distribution of the difference in means from such randomised allocations of 
+values to groups, we can get an idea of whether the actual difference in sample 
+means is unusually large.</p>
+<p>An example helps to explain this method.</p>
+
+<div class="diagram"> 
+<p class=heading>Characteristics of failed companies</p>
+
+<p>A study in Greece compared characteristics of 68 healthy companies with those 
+of another 33 that had recently failed. The jittered dot plots on the left below 
+show the ratio of current assets to current liabilities for each of the 101 companies.</p>
+<p>The mean asset-to-liabilities ratio for the sample of failed companies is 0.902 
+lower than that for the healthy companies, but the distributions overlap. Might 
+this difference be simply a result of randomness, or can we conclude that there 
+is a difference in the underlying populations?</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="470">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="randomisationProg.RandomisedGroupApplet">
+<param name="varName" value="Asset ratio">
+<param name="values" value="1.5 0.1 1.76 1.14 1.84 2.21 2.08 1.43 0.68 3.15 1.24 2.03 2.23 2.5 2.02 1.44 1.39 1.64 0.89 0.23 1.2 2.16 1.8 1.87 1.91 1.67 1.87 1.21 2.05 1.06 0.93 2.17 2.61 3.05 1.52 1.93 1.95 2.61 1.11 0.95 0.96 2.25 2.73 1.56 2.73 0.9 2.12 1.42 1.62 1.76 2.22 2.8 1.85 0.96 1.71 1.02 2.5 1.55 1.69 1.64 1.03 1.8 0.67 2.44 2.3 2.21 1.96 1.81 0.82 0.89 1.31 0.05 0.83 0.9 1.68 0.99 0.62 0.91 0.52 1.45 1.16 1.32 1.17 0.42 0.48 0.93 0.88 1.1 0.23 1.11 0.19 0.13 2.03 0.51 1.12 0.92 0.26 1.15 0.13 0.88 0.09">
+<param name="vertAxis" value="0 3.5 0 0.5">
+<param name="catVarName" value="Group">
+<param name="catValues" value="68@0 33@1">
+<param name="catLabels" value="healthy failed">
+<param name="maxDiff" value="-9.999">
+<param name="diffName" value="Difference in means">
+<param name="summaryAxis" value="-1.1 1.1 -1.0 0.5">
+<param name="customText" value="Actual Data=Actual Data#Randomised Data=Randomised Data#Propn more extreme=Propn more extreme">
+</applet>
+</div>
+
+<p>Click <strong>Randomise</strong> to randomly pick 33 of the the 101 values 
+for the failed group. If the underlying distribution of asset-to-liabilities ratios 
+was the same for healthy and failed companies, each such randomised allocation 
+would be as likely as the observed data.</p>
+<p>Click <strong>Accumulate</strong> and repeat the randomisation several more 
+times. Observe that the difference in means would rarely be as far from zero as 
+-0.902 when we assume the same distribution for both groups. This strongly suggests 
+that the distributions must be different.</p>
+<p>Since the actual difference is so unusually large,&nbsp;...</p>
+<table cellpadding="10" class="centred" bgcolor="#FFFFFF" width="75%" border="1">
+<tr> 
+<td><strong>We can conclude that there is strong evidence that the mean asset-to-liability 
+ratio is lower for failed companies than healthy ones.</strong></td>
+</tr>
+</table>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

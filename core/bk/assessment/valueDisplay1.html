@@ -1,0 +1,198 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Dot plots</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<div class="main">
+
+  <p class="heading">Graphical displays highlight density</p>
+
+  <p>We have shown that sorting a group of marks into order can highlight which 
+		ranges of marks are most and least common &mdash; in other words, the ranges of 
+		values with highest and lowest <strong>density</strong> of values. Density 
+		is the key to understanding the distribution of numbers in a batch, but there 
+		are better ways to display density than a sorted list.</p>
+
+<p class="heading">Dot plots</p>
+
+<p>The simplest graphical display of a batch of numbers is a <strong>dot
+plot</strong>. This shows each value as a cross (or dot) against a
+numerical axis.</p>
+
+<div class="diagram">
+
+		<p class="heading">Maths marks example</p>
+
+		
+<p>In the previous page, we sorted a set of maths test marks into order. The sorted 
+marks are listed on the left below. The marks are also displayed in a dot plot 
+on the right.</p>
+
+<center>
+<table width="400" border="0" cellspacing="5" cellpadding="0">
+<tr>
+<td width="220" align="CENTER" valign="TOP">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="220" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="dotPlotProg.DotListApplet">
+<param name="varName" value="Maths mark">
+<param name="values" value="98 91 90 89 85 84 81 81 75 73 72 72 72 71 69 54 54 52 48 46 43 40 39 34 33">
+<param name="vertAxis" value="30 100 30 10">
+</applet>
+</td>
+
+<td width="180"> 
+	<p><strong>Drag</strong> with the mouse over values on the list to 
+		highlight the corresponding cross in the dot plot. <strong>Drag</strong> 
+		over crosses to highlight the corresponding value in the list.</p>
+</td>
+</tr>
+</table>
+</center>
+
+
+		
+<p>Observe that when successive marks in the list are similar, the corresponding 
+crosses are close together. High density is therefore shown in the dot plot with 
+closely grouped crosses.</p>
+
+		<p>Note that the 'gap' in the list between 54 and 69 is clearer in the dot 
+			plot.</p>
+
+</div>
+
+<p class="heading">In large data sets, jittering the crosses helps show density</p>
+	<p>A simple dot plot is often adequate for small data sets. However in larger 
+		data sets, the crosses often overlap. Indeed, if several crosses coincide, 
+		they become indistinguishable from a single cross, so high density may be 
+		obscured.</p>
+	<p>One solution is to randomly move the crosses perpendicularly to the axis 
+		in order to separate them somewhat. This is called <strong>jittering</strong> 
+		the points.</p>
+	<p><font color="#666666">(You should rely on a computer to do the jittering 
+		for you, but it could be done by hand by rolling a 6- or 10-sided die for 
+		each cross to determine its jittering in millimetres.)</font></p>
+	<div class="diagram"> 
+		<p class="heading">Essay marks</p>
+		
+<p>The classes in an intermediate school are grouped in 'teams' of three or four 
+classes. All students in one team are asked to write an essay on the same topic. 
+The dot plot below shows the essay marks (out of 100).</p>
+		<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="180" name="dotJitter">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="dotPlotProg.DotJitterApplet">
+<param name="varName" value="Essay mark">
+<param name="values" value="64 68 78 50 81 83 75 56 53 70 43 60 84 65 55 72 82 42 70 77 49 81 72 94 64 70 54 53 54 66 67 42 63 58 38 71 55 61 69 74 71 65 55 57 70 75 67 69 50 69 85 80 60 70 80 60 55 60 75 75 60 55 70 45 60 75 65 65 65 55 70 70 55 60 50 70 80 45 70 60 65 75 45 75 60 65 60 65 55 70 65 60 60 60 70 65 60 65 65 45">
+<param name="horizAxis" value="30 100 30 10">
+<param name="hasControls" value="true">
+<param name="customText" value="Jittering=Jittering#none=none#max=max#Redo jittering=Redo jittering">
+</applet>
+</div>
+		
+		<p><strong>Drag</strong> the slider to jitter the points. <strong>Click</strong> 
+			the button on the right to change the jittering &mdash; i.e. to change the random 
+			vertical position of the crosses.</p>
+			
+		<p>Only enough jittering should be used to separate the high density of crosses 
+			-- moving the slider about half way is best for the data above. Without 
+			jittering, too many crosses overlap to allow us to assess the distribution 
+			of marks.</p>
+		<p><font color="#666666">(Note that the vertical positions of the crosses 
+			have no importance &mdash; the vertical movement of crosses is 'random' and is 
+			only intended to separate overlapping crosses.)</font></p>
+	</div>
+	<p class="heading">Stacking the crosses shows density best</p>
+	<p>Jittering large batches of values can provide an effective display of ranges 
+		of high and low densities of values. However the randomness of the jittering 
+		can be disconcerting. </p>
+	
+<p>A <strong>stacked dot plot</strong> uses the perpendicular axis more directly 
+to show density. A stacked dot plot is obtained by:</p>
+	<ol>
+		<li> <strong>grouping</strong> values into 'bins', then</li>
+		<li> <strong>stacking</strong> the crosses in each bin on top of each other.</li>
+	</ol>
+	<p>(Statisticians normally use the term 'classes' rather than 'bins' but this 
+		can lead to confusion when talking about class marks.) The diagram below illustrates 
+		this stacking. </p>
+	<div class="diagram"> 
+		<p>Click the button <strong>Animate Stacking</strong>. Blue vertical lines 
+			are first drawn to define the bins. The crosses are then moved horizontally 
+			to the centre of their bin, and finally the crosses are stacked.</p>
+		
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="200">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="dotPlotProg.StackDotPlotApplet">
+<param name="varName" value="Test data">
+<param name="random" value="50 23 2.5 123456">
+<param name="horizAxis" value="15 31 16 2">
+<param name="hasControls" value="true">
+<param name="customText" value="Animate Stacking=Animate Stacking#Small cross=Small cross#Medium cross=Medium cross#Big cross=Big cross#jittered=jittered#stacked=stacked">
+</applet>
+</div>
+
+		<p>The slider can be used to replay the animation more slowly.</p>
+	</div>
+	<p>The shape of the stacked dot plot depends on the width of the bins that are 
+		used to group the crosses. </p>
+	<div class="diagram"> 
+		<p>Select different cross sizes from the pull-down menu and replay the animation 
+			to observe the effect of different groupings &mdash; large crosses require a 
+			coarser grouping of values, so the stacks tend to be higher. </p>
+	</div>
+	<p>In character-based displays, the grouping is based on the width of a character, 
+		and periods and colons are often used instead of crosses.</p>
+	<div class="diagram"> 
+		<p>The stacked dot plot below shows the set of essay marks that were examined 
+			in a jittered dot plot earlier. The diagram was produced by the statistical 
+			program Minitab.</p>
+		<center>
+			<table border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td> 
+						<pre width="90"><tt><font color="#000000" size="-1">
+                          :
+                          :    :    :
+                          :    :    :
+                     :    :    :    :    .
+                     :    :    :    :    :
+           :    .    :    :    :   .:    :    .
+    .   :. :   .:  :::... :. .::.:.:::: .: .. ::....        .
+  ----+---------+---------+---------+---------+---------+---------+-Mark      
+     40        50        60        70        80        90       100
+</font></tt></pre>
+					</td>
+				</tr>
+			</table>
+		</center>
+		<center>
+		</center>
+		<p>In some data sets, grouping the data into stacks results in loss of information. 
+			However this level of grouping rarely affects our interpretation of the 
+			data.</p>
+		<p>Each horizontal character position in the above dot plot contains a range 
+			of 1 mark. Since only whole numbers of marks were awarded, there has been 
+			no loss of information here. Note the peaks in the dot plot corresponding 
+			to measurements ending in '0' and '5' &mdash; there has been a tendency to 'round' 
+			marks to a multiple of 5!</p>
+	</div>
+	<p>Height is an effective way to display density in a stacked dot plot, despite 
+		some loss of detail in the individual values through the grouping of crosses.</p>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

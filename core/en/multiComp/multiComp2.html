@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Which means are different?</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="multiple comparisons">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p>Although the problems of applying multiple hypothesis tests are often ignored, there is one situation in which there is a commonly used correction.</p>
+  <p class="heading">Factors with many levels</p>
+  <p>Consider an experiment with a single factor that has several levels. For example, </p>
+  <ul>
+  	<li>An agricultural researcher conducts and experiment to compare the growth rates of 10 varieties of maize.</li>
+ 		<li>A consumer organisation tests the fat content of 12 brands of ice cream.</li>
+	</ul>
+	<br>
+  <p class=eqn><img src="images/levelMeans.gif" width="411" height="117"> </p>
+  <p>Analysis of variance may conclude that all levels  do <strong>not</strong> have the same response means. We may then ask: </p>
+  <div class="centred"><div class="boxed">
+  	<p>Which of these levels differ from each other?</p>
+  </div></div>
+  <p class="heading">Pairwise comparisons</p>
+  <p>Consider an experiment in which there are <em>r</em> replicates at each of the <em>g</em> levels (so the total number of experimental units is <em>n</em>&nbsp;=&nbsp;<em>rg</em>). To compare two specific levels, note that if the two levels are identical,  there is a 95% probability that their observed level means differ by more than</p>
+  <p class=eqn><img src="images/twoGroupPlusMinus.gif" width="111" height="41"> </p>
+  <p>where <em>t<sub>n-<em>g</em></sub></em> is such that 95% of the t distribution with <em>n</em>&nbsp;-&nbsp;<em>g</em> degrees of freedom is between ±&nbsp;<em>t<sub>n-<em>g</em></sub></em>. (This is based on a 95% confidence interval for the difference between the means.) We might therefore conclude that these two levels are different if their level means differ by more than this.</p>
+  <p>When there are several factor levels, the problem is that there are many different pairs of levels that can be compared in this way.</p>
+	<div class="centred"><table border="0" class="centred" cellpadding="5" cellspacing="0">
+		<tr>
+			<th>&nbsp;&nbsp;Number of levels, g&nbsp;&nbsp;</th>
+			<th>&nbsp;&nbsp;Number of pairwise comparisons&nbsp;&nbsp;</th>
+		</tr>
+		<tr align="center" bgcolor="#FFFFFF">
+			<td>2</td>
+			<td>1</td>
+		</tr>
+		<tr align="center" bgcolor="#FFFFFF">
+			<td>3</td>
+			<td>3</td>
+		</tr>
+		<tr align="center" bgcolor="#FFFFFF">
+			<td>4</td>
+			<td>6</td>
+		</tr>
+		<tr align="center" bgcolor="#FFFFFF">
+			<td>5</td>
+			<td>10</td>
+		</tr>
+		<tr align="center" bgcolor="#FFFFFF">
+			<td>:</td>
+			<td>:</td>
+		</tr>
+	</table></div>
+	<p>This introduces the problems described in the previous page. Even if all level means are identical,</p>
+	<div class="centred"><div class="boxed">
+		<p>If pairwise comparisons are made at the 5% significance level, there is much more than 5% probability that <strong>at least one pair</strong> of means will be significantly different. </p>
+	</div></div>
+<br>
+
+	<div class="diagram"> 
+		<p class="heading">Overall probability for several comparisons</p>
+		<p>The diagram below calculates the  probability of finding <strong>at least one</strong> significant pairwise difference between the level means when each comparison has significance level 0.05 but all levels are identical.</p>
+		<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="200">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.PairwiseCoverageApplet">
+<param name="nLevels" value="Number of levels">
+<param name="nReps" value="Replicates">
+<param name="appletType" value="pValues">
+<param name="customText" value="Prob(at least one pairwise p-value < 0.05)=Prob(at least one pairwise p-value < 0.05)">
+</applet>
+</div>
+
+<p>When there are two levels, the true probability is 0.05, whatever the number 
+	of replicates at each level.</p>
+<p>Use the slider to increase the number of levels. Observe that:</p>
+<div class="centred"><div class="boxed">
+	<p>The more levels, the higher the  probability of incorrectly concluding that at least one pair of levels differ.<br>
+</p>
+</div></div>
+
+<br>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,508 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>11. Control Charts</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/maths/mathStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/maths/theorems.js"></script>
+  <script src="../../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 11 &nbsp; Control Charts</h1>
+<h1 class="sectionName">11.1 &nbsp; Total quality management</h1>
+<h2 class="pageName">11.1.1 &nbsp; Introduction</h2>
+
+<p class="heading">Origins of TQM</p>
+<p>Total Quality Management (or TQM for short) is an approach to management of organisations
+and processes. The aim is to continuously improve the quality of products and
+services through statistical methods of monitoring and improving.</p>
+<p>The Six Sigma programme is a popular approach to TQM.</p>
+<p class="heading">Importance of quality</p>
+<p>The quality of a product or service depends on whether it satisfies the needs
+of its consumers. Quality must always be a major focus.</p>
+<p> This chapter  focuses on the statistical aspects of quality management,
+and in particular on the concept of statistical quality control through control
+charts.</p>
+
+
+<h2 class="pageName">11.1.2 &nbsp; The statistical process</h2>
+
+<p class="heading">Continuous quality improvement</p>
+	<p>Statistical analysis is an important part of long-term <strong>monitoring</strong> and <strong>improvement</strong> of
+the performance of many types of system. This process is often called <strong>continuous
+quality improvement</strong>.</p>
+<p>The statistical part of the process again involves a feedback cycle of data collection and analysis, aimed at improving aspects of the system.
+</p>
+	<p class="eqn"><img class="gif" src="../../../en/context/images/pdca.gif" width="463" height="265"></p>
+	<p>The Plan-Do-Check-Act cycle is most often used in commerce and industry, but
+can also be used to 'improve'  many biological and other systems.</p>
+
+	
+
+
+<h2 class="pageName">11.1.3 &nbsp; Finding the cause of problems</h2>
+
+<p class="heading notPrinted">Finding the <span class="red">cause</span> of problems</p>
+	<p>Control charts (and other collected data) may indicate problems with a system. 
+		However, after detection of a problem, its <strong>cause</strong> must be 
+		identified in order to rectify it. This is usually a non-trivial exercise 
+		and the following tools often help.</p>
+<p class="heading">Brainstorming</p>
+	<p>In a <strong>brainstorming</strong> session, all team 
+		members contribute short phrases that are written on either a large sheet of paper 
+		or individual scraps of paper (post-it notes are good). The points should be written 
+		down without discussion or editing, and all team members should be encouraged 
+		to contribute.</p>
+	<p>Once these ideas have been written down, they must be structured or grouped 
+		in some way.</p>
+	<p class="heading">Cause-and-effect diagrams</p>
+	<p>After possible causes for a problem have been contributed in a brainstorming 
+		session, they can be structured in a <strong>cause-and-effect</strong> diagram (also called  a <strong>fishbone</strong> diagram).</p>
+	<p class="eqn"><img src="../../../en/controlChart/images/fishbone4.gif" width="484" height="377" class="summaryPict"></p>
+<p>This structuring of possible causes helps to focus attention on the most likely 
+		causes and on ones that may be altered in the 'Do' step in the Plan-Do-Check-Act 
+		cycle.</p>
+
+
+
+
+<h1 class="sectionName breakBefore">11.2 &nbsp; Control chart basics</h1>
+<h2 class="pageName">11.2.1 &nbsp; Introduction</h2>
+
+<p class="heading">Detecting problems</p>
+<p>Problems in a process are usually detected by collecting and analysing <strong>data</strong> about
+the performance of the system.  <strong>Control charts</strong> are a particularly
+useful way to monitor processes and detect problems before they get too out of hand. </p>
+
+
+<h2 class="pageName">11.2.2 &nbsp; Run charts</h2>
+
+<p class=heading>Inherent variability</p>
+	<p>A certain level of variability in any process is unavoidable. We say that this 
+		'acceptable' level of variability is a result of <strong>common causes</strong> (or <strong>random causes</strong>) and if it is the only source of variability, 
+		the process is said to be <strong>in control</strong>. </p>
+	<p class=heading>Systematic changes</p>
+	<p>Our aim is to detect changes to the output that are <strong>not</strong> the 
+		result of common causes. Such systematic changes are said to be the result of <strong>special causes</strong> (or <strong>assignable causes</strong>) and 
+		could result in... </p>
+	<ul>
+		<li>movement in the process mean (either abruptly or steadily over time),</li>
+		<li>single outliers, or</li>
+		<li>changes to the process variability</li>
+	</ul>
+	<p>Systematic changes usually indicate problems with the quality of the output and the process is said to be <strong>out of control</strong>. </p>
+	<p class=heading>Run chart</p>
+	<p>A <strong>control chart</strong> plots   measurements describing the process in time order &mdash; a type of time series plot. We hope to use it to quickly detect problems and adjust the process to maintain quality. If a single value is recorded at each time, the control chart is called a <strong>run chart</strong>. (Other control charts plot sample means and ranges.)</p>
+<p>The challenge is to detect systematic 
+		changes in the control chart (due to special causes) over the background level of 
+		variability (due to common causes).</p>
+	<p>In the example below, the manager has determined that an output measurement should 'almost always' be between 2,000 and 2,080 with variability in this range considered to be due to common causes. Two out of the last four values were above the upper limit, suggesting a problem with the process that should be investigated and fixed.</p>
+	<p class="eqn">																										<img src="../../../en/controlChart/images/s_outliers.gif" width="553" height="302"></p>
+
+
+
+
+<h2 class="pageName">11.2.3 &nbsp; Control limits</h2>
+
+<p class="heading">Control limits</p>
+	<p>The simplest rule suggesting a special cause is any value that is outside
+		two <strong>control limits</strong>. Values outside the control limits suggest
+that the process is <strong>out of control</strong> &mdash;
+		they <strong>trigger</strong> an examination of the process for a special cause. </p>
+	<p>Control limits are usually based on the mean and standard deviation of the 
+		process when it is in control. The 70-95-100 rule of thumb states that in many 
+		distributions, </p>
+	<ul>
+		<li>Approximately two thirds of the values are within 1 standard deviation of the mean.</li>
+		<li>Approximately 95% of the values are within 2 standard deviations of the mean.</li>
+		<li>Nearly all of the values are within 3 standard deviations of the mean.</li>
+	</ul>
+	<p class=eqn><img class="gif" src="../../../en/controlChart/images/bands.gif" width="578" height="264"></p>
+	<p>By setting the upper and lower control limits to be 3 standard deviations
+		on either side of the process mean, we avoid many 'false alarms' when the process is
+		in control. This is important since values outside the control limits would trigger an examination of the 
+		production process &mdash; possibly a costly exercise.</p>
+	<p class="heading">Shape of the distribution</p>
+	<p>The 70-95-100 rule of thumb is most accurate for reasonably symmetric, bell-shaped distributions, though values more than 3 standard deviations from the mean are rare for all distributions. However these control limits should be avoided for very skew distributions &mdash; consider transforming  the data before producing 
+	a run chart.</p>
+
+
+
+
+<h2 class="pageName">11.2.4 &nbsp; Other signals of being out-of-control</h2>
+
+<p class="heading">Additional triggers for an out-of-control process </p>
+	<p>The most commonly used indication of a process being out-of-control is a  
+		value outside the upper and lower control limits (more than three standard deviations 
+		away from the centre line). This is sensitive to changes to the process mean 
+		or increases in the process variability. </p>
+	<p>Additional triggers have been proposed that are also sensitive to systematic
+		changes in a process. These are all based
+		on successive values within 1, 2 or 3 standard deviations from the centre (Zones C, B or A).	</p>
+	<p class="eqn"><img src="../../../en/controlChart/images/s_triggers.gif" width="550" height="589"></p>
+<p>Only the first three of these need be remembered in this course.</p>
+
+
+<h2 class="pageName">11.2.5 &nbsp; False alarms</h2>
+
+<p class="heading">False alarms </p>
+	<p>Although the individual patterns that we use as triggers occur rarely in a process
+		that is in control, they do occur occasionally. Indeed, the proportion of values
+		from a stable process that triggers each of the
+		criteria is typically about 1 in 200, so if all five criteria are used, a reasonable
+		number of <strong>false alarms</strong> will occur. </p>
+	<p>Clearly a single exceptional value is not conclusive proof that the process is
+out of control. However it is appropriate to examine carefully the operation of the process
+to look for an assignable cause for this value (and adjust the process if such a cause
+is discovered).
+And a <strong>series</strong> of such values does indicate that the process is out of control. </p>
+
+
+
+
+
+<h2 class="pageName">11.2.6 &nbsp; Examples of run charts</h2>
+
+<p class="heading">Obtaining control limits</p>
+	<p>It is important to evaluate control limits from the mean and standard
+		deviation of values from the process <strong>when it is in control</strong>.
+		The process should be monitored carefully (to avoid special causes) for this training period. </p>
+	<p class="eqn"><img src="../../../en/controlChart/images/s_runExample.gif" width="555" height="515"></p>
+
+
+
+
+<h1 class="sectionName breakBefore">11.3 &nbsp; Control charts in practice</h1>
+<h2 class="pageName">11.3.1 &nbsp; Control charts based on samples</h2>
+
+<p class="heading">Control chart principles</p>
+<p>Since measurements are rarely more than 3 standard deviations from the
+mean, we usually define the control limits  to be:</p>
+<p class="eqn">(mean measurement)&nbsp; ± &nbsp; 3&nbsp;×&nbsp;sd (measurement)</p>
+<p>where the mean and standard deviation are obtained when the process is in control.
+Future measurements outside the control limits are unlikely if the process remains
+in control.</p>
+<p class="heading">Control charts based on samples</p>
+<p>In practice, control charts are rarely based on individual measurements from a
+process. Instead, a small <strong>sample</strong> of measurements is usually recorded
+at each time. By creating separate control charts for the sample means and sample
+ranges, we can separately assess the process mean and its variability since quality
+depends on both maintaining a consistent mean and low variability.</p>
+<div class="centred"><div class="boxed">
+<p>Control charts for sample means and ranges are constructed in a similar way to
+run charts but the details differ.</p>
+</div></div>
+
+
+<h2 class="pageName">11.3.2 &nbsp; Control charts for means</h2>
+
+<p class="heading notPrinted">Control chart for means</p>
+<p>We first consider detection of whether the <strong>mean output level of a process</strong> is
+changing. Each sample  of <em>n</em> values has a mean whose standard deviation is
+</p>
+<div class="centred">
+	<table border="0" cellpadding="0" cellspacing="0" class="centred">
+		<tr>
+			<td valign="middle"><img src="../../../images/symbol.sigmaXbar.png" width="19" height="16" align="baseline"></td>
+			<td valign="middle">&nbsp;<span class="black">=</span>&nbsp; </td>
+			<td valign="middle"><img src="../../../images/symbol.sigmaOverRootN.png" width="26" height="31" align="baseline"></td>
+		</tr>
+	</table>
+</div>
+<p>If we knew  µ and  σ, the appropritate control limits would therefore be:</p>
+<p class=eqn><img src="../images/controlLimitTheory.gif" width="70" height="31" alt="xBar +- 3s/root(n)"></p>
+<p>Note that these control limits are much narrower than those that would be used
+for individual values, </p>
+<p class=eqn><img src="../images/controlLimitTheory2.gif" width="57" height="15" alt="xBar +- 3s"></p>
+<p class=heading>Training data</p>
+<p>Since neither µ nor σ are usually known, the control limits
+must  be estimated from training samples in which great care is taken to
+avoid special causes. It would be reasonable to replace µ and σ in the control limits
+with the mean and standard deviation of the training data, but in practice, the
+control limits are usually based on the mean and<strong> <span class="black">range</span></strong> of
+the <em>k</em> training samples as follows:</p>
+<p class=eqn><img src="../images/meanLimits.gif" width="148" height="51" alt="xBar +- 3s"></p>
+<p>where <img src="../images/xBarBar.gif" alt="x-bar-bar" width="16" height="18" align="baseline">is
+the average of the <em>k </em>training sample means, and <img src="../images/rBar.gif" alt="r-bar" width="12" height="15" align="baseline"> is
+average of their ranges,</p>
+<p class=eqn><img src="../images/r_x_bar_defn.gif" width="209" height="61" alt="xBar +- 3s"></p>
+<p>The constant, <em>A</em><sub>2</sub>,
+can be found from the following table provided the sample size, <em>n</em>, is no
+more than 10.</p>
+<div class="centred"><table class="centred" cellpadding="5" cellspacing="0">
+<tr>
+<th ALIGN=CENTER>&nbsp;&nbsp;&nbsp;&nbsp;Sample size, <em>n</em>&nbsp;&nbsp;&nbsp;&nbsp;</th>
+<th ALIGN=CENTER><em>A</em><sub>2</sub></th>
+</tr>
+<tr ALIGN=CENTER>
+<td style="border-top:1px solid #999999;" ALIGN=CENTER bgcolor="#FFFFFF">2</td>
+<td style="border-top:1px solid #999999;" bgcolor="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;1.880&nbsp;&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr ALIGN=CENTER>
+<td bgcolor="#FFFFFF">3</td>
+<td bgcolor="#FFFFFF">1.023</td>
+</tr>
+<tr ALIGN=CENTER>
+<td bgcolor="#FFFFFF">4</td>
+<td bgcolor="#FFFFFF">0.729</td>
+</tr>
+<tr ALIGN=CENTER>
+<td bgcolor="#FFFFFF">5</td>
+<td bgcolor="#FFFFFF">0.577</td>
+</tr>
+<tr ALIGN=CENTER>
+<td bgcolor="#FFFFFF">6</td>
+<td bgcolor="#FFFFFF">0.483</td>
+</tr>
+<tr ALIGN=CENTER>
+<td bgcolor="#FFFFFF">7</td>
+<td bgcolor="#FFFFFF">0.419</td>
+</tr>
+<tr ALIGN=CENTER>
+<td bgcolor="#FFFFFF">8</td>
+<td bgcolor="#FFFFFF">0.373</td>
+</tr>
+<tr ALIGN=CENTER>
+<td bgcolor="#FFFFFF">9</td>
+<td bgcolor="#FFFFFF">0.337</td>
+</tr>
+<tr ALIGN=CENTER>
+<td style="border-bottom:1px solid #999999;" bgcolor="#FFFFFF">10</td>
+<td style="border-bottom:1px solid #999999;" bgcolor="#FFFFFF">0.308</td>
+</tr>
+</table></div>
+<p>Note that <em>A</em><sub>2</sub> depends on <em>n</em>, <strong>not</strong> the
+number of training samples, <em>k</em>.</p>
+<p class="heading">Example</p>
+<p class="eqn"><img src="../../../en/controlChart/images/s_meanExample.gif" width="555" height="313"></p>
+<p>The control limits for the sample means are much narrower and are therefore more
+sensitive to changes in the process mean.</p>
+<p class="eqn"><img src="../../../en/controlChart/images/s_meanExample2.gif" width="555" height="314"></p>
+
+
+<h2 class="pageName">11.3.3 &nbsp; Control charts for ranges</h2>
+
+<p class="heading notPrinted">Detecting changes to process variability</p>
+<p>A control chart of sample means is used to detect shifts in the 'centre' of a
+process. In a similar way, a control chart of sample <strong>ranges</strong> is used to
+assess whether the process <strong>variability</strong> has
+changed.</p>
+<p class="heading">Control chart for range</p>
+<p>Control charts for ranges are constructed and interpreted in a similar way to
+control charts for means &mdash; there is very little chance of observations breaching
+the control limits if the process is in control &mdash; but the control limits are obtained
+in a different way.</p>
+<p class=eqn><img src="../images/rangeControlLimits.gif" width="103" height="50" alt="xBar +- 3s"></p>
+<p>where <img src="../images/rBar.gif" alt="r-bar" width="12" height="15" align="baseline"> is
+again the average of the training sample ranges. The constants <em>D</em><sub>3</sub> and <em>D</em><sub>4</sub>  depend
+on the common training sample size <em>n</em> and
+are tabulated below.</p>
+<div class="centred"><table class="centred" cellpadding="5" cellspacing="0">
+<tr>
+<th ALIGN=CENTER>&nbsp;&nbsp;&nbsp;&nbsp;Sample size, <em>n</em>&nbsp;&nbsp;&nbsp;&nbsp;</th>
+<th ALIGN=CENTER><em>D</em><sub>3</sub></th>
+<th ALIGN=CENTER><em>D</em><sub>4</sub></th>
+</tr>
+<tr ALIGN=CENTER>
+<td style="border-top:1px solid #999999;" ALIGN=CENTER bgcolor="#FFFFFF">2</td>
+<td style="border-top:1px solid #999999;" bgcolor="#FFFFFF">0</td>
+<td style="border-top:1px solid #999999;" bgcolor="#FFFFFF">3.267</td>
+</tr>
+<tr ALIGN=CENTER>
+<td bgcolor="#FFFFFF">3</td>
+<td bgcolor="#FFFFFF">0</td>
+<td bgcolor="#FFFFFF">2.575</td>
+</tr>
+<tr ALIGN=CENTER>
+<td bgcolor="#FFFFFF">4</td>
+<td bgcolor="#FFFFFF">0</td>
+<td bgcolor="#FFFFFF">2.282</td>
+</tr>
+<tr ALIGN=CENTER>
+<td bgcolor="#FFFFFF">5</td>
+<td bgcolor="#FFFFFF">0</td>
+<td bgcolor="#FFFFFF">2.115</td>
+</tr>
+<tr ALIGN=CENTER>
+<td bgcolor="#FFFFFF">6</td>
+<td bgcolor="#FFFFFF">0</td>
+<td bgcolor="#FFFFFF">2.004</td>
+</tr>
+<tr ALIGN=CENTER>
+<td bgcolor="#FFFFFF">7</td>
+<td bgcolor="#FFFFFF">0.076</td>
+<td bgcolor="#FFFFFF">1.924</td>
+</tr>
+<tr ALIGN=CENTER>
+<td bgcolor="#FFFFFF">8</td>
+<td bgcolor="#FFFFFF">0.136</td>
+<td bgcolor="#FFFFFF">1.864</td>
+</tr>
+<tr ALIGN=CENTER>
+<td bgcolor="#FFFFFF">9</td>
+<td bgcolor="#FFFFFF">0.184</td>
+<td bgcolor="#FFFFFF">1.816</td>
+</tr>
+<tr ALIGN=CENTER>
+<td style="border-bottom:1px solid #999999;" bgcolor="#FFFFFF">10</td>
+<td style="border-bottom:1px solid #999999;" bgcolor="#FFFFFF">&nbsp;&nbsp;&nbsp;0.223&nbsp;&nbsp;&nbsp;</td>
+<td style="border-bottom:1px solid #999999;" bgcolor="#FFFFFF">&nbsp;&nbsp;&nbsp;1.777&nbsp;&nbsp;&nbsp;</td>
+</tr>
+</table></div>
+<p>Note that the lower control limit is zero for sample sizes of 6 and lower.</p>
+<p class="heading">Example</p>
+<p class="eqn"><img src="../../../en/controlChart/images/s_range.gif" width="550" height="312"></p>
+
+
+<h2 class="pageName">11.3.4 &nbsp; Control charts for proportions</h2>
+
+<p class="heading">Attributes and defects</p>
+<p>A <strong>p-chart</strong> is used to monitor the proportion of process output
+that has a certain attribute, such as the proportion of items with defects.</p>
+<p>If  <em>x</em> items in a sample of size <em>n</em> have the attribute, then <em>x</em> has
+a binomial distribution and the
+sample proportion<em> p</em>&nbsp;=&nbsp;<em><sup>x</sup></em>/<em><sub>n</sub></em> has
+mean and standard deviation:</p>
+<p class="eqn"><img src="../images/propnMeanSd.gif" width="230" height="42"></p>
+<p>where π is the population proportion.</p>
+<p class="heading">Control limits</p>
+<p>As in other control charts, the control limits are given by the mean ± three standard
+deviations,</p>
+<p class="eqn"><img src="../images/propnPlusMinus.gif" width="134" height="44"></p>
+<p>Since π is unknown, it is estimated from a training period in which the process
+is in control. If defective proportions <em>p</em><sub>1</sub>, <em>p</em><sub>2</sub>,
+…, <em>p<sub>k</sub></em> are observed in <em>k</em> samples of size <em>n</em>,
+our best estimate is</p>
+<p class="eqn"><img src="../images/propnEstimate.gif" width="72" height="58"></p>
+<p> and the control limits  are therefore</p>
+<p class="eqn"><img src="../images/propnLimits.gif" width="165" height="92"></p>
+<p class="heading">Example</p>
+<p>In a training period, it was observed that 4% of orders were incorrectly processed.
+A control chart for the proportion of incorrectly processed orders in samples of
+<em>n</em> = 20 orders has control limits</p>
+<p class="eqn"><img src="../images/defectivePropnLimits.gif" width="255" height="94"></p>
+<p>Since a proportion must always lie between 0 and 1, this means that the lower
+control limit is <strong>effectively</strong> equal to 0.</p>
+<p>A p-chart for eight further samples of <em>n</em> = 20 orders is shown below:</p>
+<p class="eqn"><img src="../images/defectiveChart.gif" width="546" height="268" class="summaryPict"></p>
+<p>On day 7 the proportion of incorrectly processed orders (<sup>4</sup>/<sub>20</sub> =
+0.2)  exceeds the upper control limit, the process is out
+of control and should be investigated for special causes.</p>
+
+
+<h2 class="pageName">11.3.5 &nbsp; Final comments</h2>
+
+<p class="heading">Only act on special cause variation</p>
+<p>One of the principles behind the use of control charts is that:</p>
+<div class="centred"><div class="boxed">
+<p>Management should only intervene in a process if it is out of control, i.e. if
+it is subject to special cause variation.</p>
+</div></div>
+<p>It has been found that the majority of problems in process management occur as
+a result of changes introduced by management in response to <strong>perceived</strong> variation.
+In other words, managers have a tendency to “meddle” or “tinker” with a process that
+is merely exhibiting its inherent (i.e. common cause) variation.</p>
+<p class="heading">Red bead experiment</p>
+<p>Deming illustrated this tendency to fiddle with a stable process by devising a
+famous experiment known as the <strong>red bead experiment</strong>. Briefly, the
+experiment consisted of mixing together a large number of red and white beads in
+a barrel or large jar. Participants were told that white beads were 'better' than
+red ones.</p>
+<p>'Workers' randomly picked samples of beads from the barrel and were rewarded or
+reprimanded
+by 'managers' based on the proportion of white beads. The actual number of white
+beads is binomial with the same <em>n</em> and <em>p</em> for each sample &mdash; common
+cause variation &mdash; so the intervention of the managers is totally unproductive.</p>
+<p>Deming made the point that managers should not meddle with a stable process but
+rather listen more to the workers who are in a much better position to suggest improvements
+to the process.</p>
+
+
+<h1 class="sectionName">11.4 &nbsp; What will be assessed?</h1>
+
+
+<p class="heading">What you need to know</p>
+  
+  
+<p>You will not be examined about everything in this chapter. Some of the material has been included to explain <strong>why</strong> the chapter's methods are used, in the hope that it will help you to understand these methods better. What you need to learn for the exam is more limited.</p>
+<p>We now describe what we expect you to be able to <strong>do</strong> in the  exam after studying the control charts chapter.</p>
+<p class="heading">A.   Total quality management</p>
+<dl class="level1">
+	<dt>1.   Plan-Do-Check-Act cycle</dt>
+	<dd class="lessIndent">
+		<ul>
+			<li>Name the cycle.</li>
+			<li>Explain the four parts to the cycle and give an example.</li>
+		</ul>
+	</dd>
+	<dt>2.   Brainstorming</dt>
+	<dd>Explain what brainstorming	is intended for, and how it operates.</dd>
+	<dt>3.   Cause-and-effect diagrams</dt>
+	<dd>Explain how cause-and-effect diagrams are structured.</dd>
+</dl>
+<p class="heading">B.   Control charts</p>
+<p>Control charts track the preformance of processes over time.</p>
+<dl class="level1">
+	<dt>1.   Types of variation</dt>
+	<dd class="lessIndent">
+		<ul>
+			<li>Explain the difference between common cause and special cause variation.</li>
+			<li>Explain when a process is in control and out of control.</li>
+			<li>Explain what training data is for.</li>
+		</ul>
+	</dd>
+	<dt>2.   Control chart limits</dt>
+	<dd>Calculate the upper and lower control limits  for:
+<ul>
+			<li>Sample means</li>
+			<li>Sample ranges</li>
+			<li>Sample proportions</li>
+		</ul>
+		
+	</dd>
+	<dt>3.   Assess whether a process is in control</dt>
+	<dd>For all three types of control chart,
+		<ul>
+			<li>Draw the control limits on the control chart.</li>
+			<li>Identify whether values are outside the control limits.</li>
+			<li>Identify whether there are runs of 6 increasing or decreasing.</li>
+			<li>Identify whether 9 successive points are on one side of the centre.</li>
+			<li>Describe what these 'triggers' indicate about the process.</li>
+		</ul>
+	</dd>
+</dl>
+
+
+
+
+</body>
+</html>

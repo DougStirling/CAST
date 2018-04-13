@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Confidence intervals for treatment means</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="treatment means, factor means, confidence interval, parameter estimate">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Taking account of unexplained variation</p>
+
+<p>The best estimate of the mean response at each factor level is the corresponding sample mean,</p>
+<p class=eqn><img src="../oneFactor/images/groupMeanEst.gif" width="52" height="22"> </p>
+<p>However point estimates give no indication of the accuracy of the estimates, so 95% confidence intervals are often reported to give a better indication of randomness caused by unexplained variability in the experiment.</p>
+<p class="heading">Confidence intervals</p>
+<p>If it is concluded that a categorical factor  affects the response, the effect of the factor can be summarised by a table of treatment means,</p>
+<p class=eqn><img src="../oneFactor/images/groupMeanEst.gif" width="52" height="22"></p>
+<p>However these point estimates give no indication of their accuracy &mdash; the  unexplained variation in the experiment means that the estimates are themselves random. The usual solution in statistics is to replace these point estimates with 95% confidence intervals.</p>
+<p>It would be possible to independently calculate  95% confidence intervals using the means and standard deviations for each factor level,</p>
+<p class=eqn><img src="../oneFactor/images/ciSeparate.gif" width="130" height="38"> </p>
+<p>However since we assume that the standard deviation is the same for all factor levels, a better confidence interval can be obtained by replacing the <em>g</em> sample standard deviations from the separate factor levels, {<em>s<sub>i</sub></em>} with its best estimate from the <strong>whole</strong> experiment &mdash; the square root of the mean residual sum of squares.</p>
+<p class="eqn"><img src="images/sPooled.gif" width="129" height="40"></p>
+<p>Since the pooled estimate is based on all the data, it is more accurate and results in narrower confidence intervals. When the pooled estimate of the standard deviation is used, the t-value in the formula should use the residual degrees of freedom. Since this is the sum of the degrees of freedom for the individual factor levels, the t-value is  smaller (reflecting the increased accuracy of the estimate).</p>
+<p class=eqn><img src="../oneFactor/images/ciPooled.gif" width="168" height="38"></p>
+	<p>The confidence intervals are often displayed graphically, as shown in the diagram below.</p>
+	<div class="diagram"> 
+<p class="heading">Comparing the effects of four enzymes on production of corn syrup</p>
+<p>The diagram below simulates   yields of corn syrup in an experiment that varies the type of enzyme used to process the corn mash into sugars. Four enzymes are used and there are initially 3 replicates for each.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="exper2Prog.LevelCisApplet">
+<param name="yVarName" value="Yield per corn syrup">
+<param name="xVarName" value="Type of enzyme">
+<param name="xLabels" value="#Enzyme A# #Enzyme B# #Enzyme C# #Enzyme D#">
+<param name="anovaModel" value="3.5 1.2 7.5 1.2 7.0 1.2 5.5 1.2">
+<param name="randomSeed" value="223945782">
+<param name="yAxis" value="0.0 11 0 1">
+<param name="decimals" value="3">
+<param name="customText" value="Use pooled st devn=Use pooled st devn">
+
+<param name="noOfDataSets" value="4">
+<param name="dataName" value="3 replicates">
+<param name="xValues" value="3@0 3@1 3@2 3@3">
+<param name="dataName2" value="10 replicates">
+<param name="xValues2" value="10@0 10@1 10@2 10@3">
+<param name="dataName3" value="20 replicates">
+<param name="xValues3" value="20@0 20@1 20@2 20@3">
+<param name="dataName4" value="40 replicates">
+<param name="xValues4" value="40@0 40@1 40@2 40@3">
+</applet>
+</div>
+
+<p>The 95% confidence intervals are initially calculated using the separate means and standard deviations for each enzyme, and they are shown as blue rectangles in the diagram. Note that they vary in width since the sample standard deviations are (by chance) different.</p>
+<p>Select the checkbox <strong>Use pooled standard deviation</strong> to use the same standard deviation for all enzymes. Note that all all confidence intervals now have the same width and are (on average) narrower.</p>
+<p>Repeat with more replicates. Observe that there is little difference between the two formulae when the number of replicates is high.</p>
+	</div>
+
+	
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

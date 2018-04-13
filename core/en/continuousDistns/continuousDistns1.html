@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Probability density functions</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="continuous random variable, continuous distribution, probability density function">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Discrete random variables</p>
+
+<p>A discrete random variable is a numerical variable with either a finite or a countably infinite number of possible values. Usually these values are <strong>counts</strong> of something — integers. For example,</p>
+<dl>
+	<dt>Number of boys in a family of four children</dt>
+	<dd>The possible values are {0, 1, 2, 3 and 4}.</dd>
+	<dt>Number of times a switch is used before it fails</dt>
+	<dd>The possible values are {1, 2, ...} with no upper limit.</dd>
+</dl>
+<p class="heading">Continuous random variables</p>
+<p>In contrast, a continuous random variable can take any value within some range. For example,</p>
+<dl>
+	<dt>Weight of a potato</dt>
+	<dd>This might be any value between 100g and 400g. You might dispute these values for the minimum and maximum weights, but any real values are possible within some range.</dd>
+	<dt>Maximum July temperature in Oxford</dt>
+	<dd>Any value between 10ºC and 35ºC would be possible, though values between 20º and 30º would be most likely</dd>
+</dl>
+<p>It can be argued that <strong>recorded</strong> values are always rounded to some number of decimals, making the number of possible <strong>recorded</strong> values of these variables finite, but the <strong>underlying</strong> measurement is continuous with an uncountable number of possible values.</p>
+<p class="heading">Probabilities for individual values</p>
+<p>The randomness of discrete random variables can be described with the probabilities of all possible values — either with a table of probabilities or a mathematical function. This is not possible for continuous random variables since all individual values have effectively zero probability.</p>
+
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Probability for a specific value of X</p>
+		<p>If a random variable, \(X\), has a continuous distribution,</p>
+		\[
+		P(X=x) \;=\; 0 \qquad \text{for all } x
+		\]</div>
+	<div class="proof">
+		<p>We only explain this informally. Consider the following sequence of probabilities:</p>
+		<ul>
+			<li>\(P(x - 0.01 \lt X \lt x + 0.01)\)</li>
+			<li>\(P(x - 0.001 \lt X \lt x + 0.001)\)</li>
+			<li>\(P(x - 0.0001 \lt X \lt x + 0.0001)\)</li>
+			<li>\(P(x - 0.00001 \lt X \lt x + 0.00001)\)</li>
+			<li>...</li>
+		</ul>
+		<p>The probabilities that \(X\) would equal \(x\)  to \(k\) decimal places will clearly decrease as \(k\) increases. In the limit, the probability that \(X\) equals \(x\)  to an <strong>infinite</strong> number of decimals is infinitesimally small — effectively zero.</p>
+	</div>
+</div>
+
+<p>We will still use probabilities to describe the distribution of a continuous random variable, but  must find a way to describe the probabilities for <strong>events</strong>, such as \((2 \lt X \lt 3)\), not individual outcomes such as \((X = 2.5)\).</p>
+
+<p class="heading">Probability density functions</p>
+<p>A continuous random variable's distribution is characterised by a function called a <strong>probability density function</strong> that is closely related to the histogram of a data set.</p>
+
+
+<div class="example" title="Illustration: Histrograms with narrow classes">
+	<p class="exampleHeading">Reducing histogram class width</p>
+	<p>In conventional histograms of data sets with equal class widths, the height of each class's rectangle is given by the proportion of values in that class. A similar histogram can be drawn for a continuous random variable, but with the rectangle's height being given determined by the <strong>probability</strong> of a value being in the class.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="260">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="samplingProg.RandomHistoApplet">
+<param name="backgroundColor" value="FFFBF3">
+<param name="varName" value="values">
+<param name="parameters" value="4.5 0.8#6.5 1.1#0.7">
+<param name="sampling" value="-1 72309328">
+<param name="horizAxis" value="2.0 10.0 2 1">
+<param name="probAxis" value="0 0.6 7 0.1">
+</applet>
+</div>
+
+	<p>Click <strong>Narrower</strong> several times to reduce the width of the histogram classes. For a histogram of a finite data set, reducing the class width generally makes the contour of the histogram more jagged, but with a continuous distribution, the shape approaches a smooth curve.</p>
+</div>
+
+<p>With infinitely narrow histogram class widths, a continuous distribution's histogram is called its <strong>probability density function</strong>,  often abbreviated to the distribution's <strong>pdf</strong>. (This is scaled to have area one.)</p>
+
+<p class="eqn"><img class="svgImage" src="images/histogram.png" width="420" height="154"></p>
+<p>A random variable's probability density function is often described by a mathematical function,</p>
+\[f(x)\]
+<p>We will fully describe the properties of probability density functions in a later chapter. In the remainder of this section, we informally introduce some of the ideas.</p>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

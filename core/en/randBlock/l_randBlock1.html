@@ -1,0 +1,297 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Importance of using block information</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="paired data, randomised block design, repeated measures">
+	<meta name="dataset" content="Acupuncture and codiene">
+	<meta name="dataset" content="Nicotine gum and tics">
+</head>
+
+
+<body class="lecture">
+<script type="text/javascript">writePageStart();</script>
+
+<div class="divChoice">
+<form>
+<select name="dataset" onChange="changeBlock(this, 2)" id="dataChoice">
+    <option value="0" selected>Randomised block example</option>
+    <option value="1">Repeated measures example</option>
+  </select>
+</form>
+
+<div id="example1">
+<p class="heading">Codeine and acupuncture for dental pain relief</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="550">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="pairBlockProg.BlockPairedDiffApplet">
+<param name="yVarName" value="Pain relief score">
+<param name="yValues" value="0.0 0.6 0.5 1.2 0.3 0.7 0.6 1.3 0.4 0.8 0.8 1.6 0.4 0.9 0.7 1.5 0.6 1.5 1.0 1.9 0.9 1.6 1.4 2.3 1.0 1.7 1.8 2.1 1.2 1.6 1.7 2.4">
+<param name="xVarName" value="Treatment">
+<param name="xLabels" value="Placebo Codeine Acupuncture #(Cod + Acu)#">
+<param name="xValues" value="0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3">
+<param name="blockVarName" value="Block (pain tolerance)">
+<param name="blockLabels" value="#Tol 1# #Tol 2# #Tol 3# #Tol 4# #Tol 5# #Tol 6# #Tol 7# #Tol 8#">
+<param name="blockValues" value="4@0 4@1 4@2 4@3 4@4 4@5 4@6 4@7">
+<param name="yAxis" value="0 2.5 0 0.5">
+<param name="jitter" value="0.0">
+<param name="initialR2" value="0.0">
+<param name="ciLabelName" value="95% CI for increase in mean Pain relief score">
+<param name="diffAxis" value="-0.3 2.0 0 0.5">
+<param name="decimals" value="3">
+<param name="blockName" value="blocks of subjects">
+<param name="customText" value="Show=Show#Analysis ignoring differences between=Analysis ignoring differences between#Correct analysis using paired differences=Correct analysis using paired differences">
+<param name="fontSize" value="big">
+</applet>
+</div>
+
+</div>
+
+<div id="example2" style="display:none">
+
+<p class="heading">Effect of nicotine on tics</p>
+			
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="pairBlockProg.BlockPairedDiffApplet">
+<param name="yVarName" value="Tics in 30 minutes">
+<param name="yValues" value="249 108 93 59 1095 593 600 861 83 27 32 61 569 363 342 312 368 141 167 180 326 134 144 158 324 126 312 260 95 41 63 71 413 365 282 321 332 293 525 455">
+<param name="xVarName" value="Time">
+<param name="xLabels" value="Baseline #While chewing gum# #0-30 min after gum# #30-60 min after gum#">
+<param name="xValues" value="0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3">
+<param name="blockVarName" value="Block (patient)">
+<param name="blockLabels" value="1 2 3 4 5 6 7 8 9 10">
+<param name="blockValues" value="4@0 4@1 4@2 4@3 4@4 4@5 4@6 4@7 4@8 4@9">
+<param name="yAxis" value="-200 1100 0 200">
+<param name="jitter" value="0.0">
+<param name="initialR2" value="0.0">
+<param name="ciLabelName" value="95% CI for change in mean number of tics per 30 mins">
+<param name="diffAxis" value="-500 200 -400 200">
+<param name="decimals" value="1">
+<param name="blockName" value="patients">
+<param name="customText" value="Show=Show#Analysis ignoring differences between=Analysis ignoring differences between#Correct analysis using paired differences=Correct analysis using paired differences">
+</applet>
+</div>
+		
+</div>
+
+</div>
+
+
+  
+<script type="text/javascript">
+	writeLecturerNotesLink(withDataNotes);
+</script>
+
+<div class="lecturerNote" id="lecturerNote">
+	<p>Use the two examples on this page to show that using block information allows you to estimate treatment differences more accurately.</p>
+	<p>In both examples, the initial analysis ignores the blocks, so the 95% CIs for differences between the control and other treatments are wide.</p>
+	<p>Click <strong>Show blocks of subjects</strong> then select <strong>Correct 
+	analysis using paired differences</strong> from the pop-up menu. The top diagram now shows paired differences between the treatments and control <strong>within each block</strong>, and the 95% CIs for the differences (based on the differences) are much narrower, giving  much clearer evidence of differences between the treatments.</p>
+	</div>
+
+<div class="lecturerNote" id="dataNote">
+	<p class="heading">Codeine and acupuncture for dental pain relief (randomised 
+		blocks) </p>
+	<dl>
+		<dt>Experimental units</dt>
+		<dd>32 subjects, grouped into blocks of 4 by an initial assessment of their 
+			tolerance to pain.</dd>
+		<dt>Treatments</dt>
+		<dd>Four treatment combinations of (codeine or a sugar capsule) and (active 
+			or inactive acupuncture points) randomised in each block of 4. Double-blind.</dd>
+		<dt>Response</dt>
+		<dd>Pain relief scores two hours after dental treatment.</dd>
+	</dl>
+	<br>
+	<div class="centred"><table border="0" class="centred" cellpadding="3" cellspacing="0">
+		<tr>
+			<th>&nbsp;</th>
+			<th colspan="4">Pain relief score</th>
+		</tr>
+		<tr>
+			<th>Tolerance<br>
+				group</th>
+			<th>&nbsp;&nbsp;Control&nbsp;&nbsp;</th>
+			<th>Codeine<br>
+				only</th>
+			<th>Acupuncture<br>
+				only</th>
+			<th>Codeine +<br>
+				Acupuncture</th>
+		</tr>
+		<tr align="center">
+			<td><table border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td align="right">1<br>
+							2<br>
+							3<br>
+							4<br>
+							5<br>
+							6<br>
+							7<br>
+							8</td>
+					</tr>
+			</table></td>
+			<td bgcolor="#FFFFFF"><table border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td align="right">0.0<br>
+							0.3<br>
+							0.4<br>
+							0.4<br>
+							0.6<br>
+							0.9<br>
+							1.0<br>
+							1.2</td>
+					</tr>
+			</table></td>
+			<td bgcolor="#FFFFFF"><table border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td align="right">0.6<br>
+							0.7<br>
+							0.8<br>
+							0.9<br>
+							1.5<br>
+							1.6<br>
+							1.7<br>
+							1.6</td>
+					</tr>
+			</table></td>
+			<td bgcolor="#FFFFFF"><table border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td align="right">0.5<br>
+							0.6<br>
+							0.8<br>
+							0.7<br>
+							1.0<br>
+							1.4<br>
+							1.8<br>
+							1.7</td>
+					</tr>
+			</table></td>
+			<td bgcolor="#FFFFFF"><table border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td align="right">1.2<br>
+							1.3<br>
+							1.6<br>
+							1.5<br>
+							1.9<br>
+							2.3<br>
+							2.1<br>
+							2.4</td>
+					</tr>
+			</table></td>
+		</tr>
+	</table></div>
+	
+	<p class="heading">Effect of nicotine on tics (repeated measures)</p>
+	<dl>
+		<dt>Experimental units</dt>
+		<dd>10 patients with Tourette's syndrome, a neurological disorder that results 
+			in tics.</dd>
+		<dt>Measurements</dt>
+		<dd>Number of tics during an initial 30-minute period (baseline), during 30 
+			minutes of chewing nicotine gum, from 0 to 30 minutes after chewing, and finally 
+			from 30 to 60 minutes after chewing.</dd>
+	</dl>
+	<br>
+	
+	<div class="centred"><table border="0" class="centred" cellpadding="3" cellspacing="0">
+		<tr>
+			<th>&nbsp;</th>
+			<th colspan="4">Number of tics during 30-min period</th>
+		</tr>
+		<tr>
+			<th>Patient</th>
+			<th>&nbsp;&nbsp;Baseline&nbsp;&nbsp;</th>
+			<th>Chewing gum</th>
+			<th>0-30 min after</th>
+			<th>30-60 min after</th>
+		</tr>
+		<tr align="center">
+			<td><table border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td align="right">1<br>
+							2<br>
+							3<br>
+							4<br>
+							5<br>
+							6<br>
+							7<br>
+							8<br>
+							9<br>
+							10</td>
+					</tr>
+			</table></td>
+			<td bgcolor="#FFFFFF"><table border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td align="right">249<br>
+							1095<br>
+							83<br>
+							569<br>
+							368<br>
+							326<br>
+							324<br>
+							95<br>
+							413<br>
+							332</td>
+					</tr>
+			</table></td>
+			<td bgcolor="#FFFFFF"><table border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td align="right">108<br>
+							593<br>
+							27<br>
+							363<br>
+							141<br>
+							134<br>
+							126<br>
+							41<br>
+							365<br>
+							293</td>
+					</tr>
+			</table></td>
+			<td bgcolor="#FFFFFF"><table border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td align="right">93<br>
+							600<br>
+							32<br>
+							342<br>
+							167<br>
+							144<br>
+							312<br>
+							63<br>
+							282<br>
+							525</td>
+					</tr>
+			</table></td>
+			<td bgcolor="#FFFFFF"><table border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td align="right">59<br>
+							861<br>
+							61<br>
+							312<br>
+							180<br>
+							158<br>
+							260<br>
+							71<br>
+							321<br>
+							455</td>
+					</tr>
+			</table></td>
+		</tr>
+	</table></div>
+	</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

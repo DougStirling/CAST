@@ -1,0 +1,169 @@
+<html>
+<head>
+	<title>Simulation from normal approximation (advanced)</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="simulation, error distribution, standard error, bias, quartiles">
+	<meta name="dataset" content="Asset-liabilities ratios">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Estimating other parameters of a normal population</p>
+
+  <p>In normal populations, the mean, µ, 
+		is the parameter that is most often estimated. However numerical distributions 
+		have other parameters that may be of interest. For example,</p>
+	<ul>
+		<li>standard deviation</li>
+		<li>interquartile range (upper quartile - lower quartile)</li>
+		<li>median</li>
+		<li>other percentiles (e.g. the upper quartile)</li>
+	</ul>
+	<p>These parameters can be estimated using the corresponding summary statistic 
+		from a random sample, but the error distribution may be difficult to obtain 
+		theoretically.</p>
+	<p class="heading">Simulation</p>
+	<p>Since the parameters µ 
+		and σ 
+		are unknown, we cannot perform a simulation with repeated samples from the 
+		actual population. However we can conduct a simulation from our best estimate 
+		of the population distribution &mdash; i.e. replacing µ 
+		and σ 
+		with the sample mean and standard deviation.</p>
+	<p>We repeatedly take samples of size <em>n</em> from this approximate population 
+		and evaluate the estimation error from using each sample. (Since we know the 
+		population from which we are sampling, we know the population parameter and 
+		can find the estimation error.)</p>
+	<p>The standard deviation of these errors is the approximate standard error 
+		of the estimator.</p>
+	
+  <div class="diagram"> 
+    <p class=heading>Assets-to-liabilities ratios</p>
+
+	  
+    <p>Researchers in Greece found the assets-to-liabilities ratios of a sample 
+      of 68 healthy companies. Low assets-to-liabilities ratios are usually regarded 
+      as undesirable for a company.</p>
+		<center>
+      <center>
+        <table border="1" cellspacing="0" cellpadding="10" bgcolor="white" width="75%">
+          <tr> 
+            <td><strong>A quarter of healthy companies have an assets-to-liabilities 
+              ratio under <font color="#FF0000">what</font> value?<strong> </strong></strong></td>
+          </tr>
+        </table>
+      </center>
+    </center>
+		
+    <p> In other words, we want to estimate the <strong>lower quartile</strong> 
+      of the assets-to-liabilities ratio in the wider population of similar Greek 
+      companies.</p>
+		
+    <p class=eqn><object data="images/assetLiabilitiesLQ.svg" width="396" height="136"></object></p>
+		
+    <p>The above dot plot shows the assets-to-liabilities ratios and their lower 
+      quartile.</p>
+		<center>
+			<table border="1" cellspacing="0" cellpadding="10" bgcolor="white" width="75%">
+				<tr> 
+					
+          <td><strong>...&nbsp;we <strong><font color="#FF0000">estimate</font> 
+            that the population lower quartile is 1.217 &mdash; i.e. we <strong>estimate 
+            a quarter of similar companies will have assets-to-liabilities ratios 
+            below 1.217</strong></strong>.<strong> </strong></strong></td>
+				</tr>
+			</table>
+		</center>
+		
+		<p class=heading>Approximate population</p>
+		
+    <p>The <strong><strong><strong>assets-to-liabilities ratios</strong></strong></strong> 
+      have a fairly symmetric distribution so it is reasonable to try simulating 
+      random samples from a normal population. The diagram below shows a normal 
+      distribution whose mean and standard deviation equal those of our actual 
+      data.</p>
+		
+    <p class=eqn><object data="images/assetLiabilitiesModel.svg" width="396" height="136"></object></p>
+		
+    <p>We use this normal distribution as a population from which to sample 68 
+      values &mdash; simulated assets-to-liabilities ratios for 68 similar companies. 
+      For the normal (1.726,&nbsp;0.639) distribution, the lower quartile is 1.295, 
+      so this is the 'target' parameter that is estimated by our simulated samples. 
+    </p>
+			
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="stdErrorProg.ErrorSampleApplet">
+<param name="varName" value="Simulated asset-to-liabilities">
+<param name="random" value="68 1.726 0.639 875636431 2.7">
+<param name="dataAxis" value="0 3.5 0 0.5">
+<param name="errorName" value="Error in estimate">
+<param name="errorAxis" value="-0.4 0.4 -0.4 0.2">
+<param name="percentile" value="0.25">
+<param name="paramName" value="Target (LQ)">
+<param name="statisticName" value="Estimate (sample LQ)">
+<param name="decimals" value="3">
+<param name="maxBiasSe" value="-9.999">
+<param name="showBiasSe" value="false">
+<param name="customText" value="Estimate s.e. & bias=Estimate s.e. & bias#Bias=Bias">
+</applet>
+</div>
+
+			
+		
+    <p>The diagram initially shows a sample of 68 assets-to-liabilities ratios. 
+      The error is the difference between the sample lower quartile and the underlying 
+      population parameter, 1.295.</p>
+		<p>Click <strong>Take sample</strong> a few times and observe that the error 
+			varies from sample to sample.</p>
+		
+    <p>Click <strong>Accumulate</strong> then take 100 or more samples (assets-to-liabilities 
+      ratios of 68 companies). The error distribution is built up as a stacked 
+      dot plot at the bottom of the diagram.</p>
+		<center>
+			<table border="1" cellspacing="0" cellpadding="10" bgcolor="white" width="75%">
+				<tr> 
+					
+          <td><strong>The distribution of errors gives an idea 
+            of how far the lower quartile of our actual data (1.217) is likely 
+            to be from the true unknown population lower quartile.</strong></td>
+				</tr>
+			</table>
+		</center>
+
+			
+		<p>Click <strong>Estimate s.e. and bias</strong> to see the standard deviation 
+			and mean of the error distribution.</p>
+		<p class=heading>Understanding accuracy of estimate</p>
+
+	  
+    <p>In the simulation, you should have observed that the bias of the estimator 
+      is small, so we will treat it as zero.</p>
+    <p>The estimated standard error in your simulation was probably around 0.1. 
+      We can use the 70-95-100 rule-of-thumb to help interpret its value &mdash; the 
+      error has approximately 95% chance of being within 2 s.e. of zero and will 
+      be almost certainly within 3 s.e. of zero.</p>
+    <center>
+      <table border="1" cellspacing="0" cellpadding="10" bgcolor="white" width="75%">
+        <tr> 
+          <td><strong>The error in our estimate of the population lower quartile, 
+            1.217, is likely to be less than 0.2 and will almost certainly be 
+            less than 0.3.</strong></td>
+        </tr>
+      </table>
+    </center>
+		<br>
+	</div>
+		
+	
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

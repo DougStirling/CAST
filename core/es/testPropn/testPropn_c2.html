@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>P-value for testing proportion</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="hypothesis test, p-value, binomial distribution">
+	<meta name="dataset" content="Delivery of letters">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class=heading>Test statistic</p>
+<p>When testing the value of a probability, π, 
+  the obvious statistic to use from our random sample is the corresponding sample 
+  proportion, <em>p</em>.</p>
+<p>It is however more convenient to use the <strong>number</strong> of successes, <em>x</em>, rather than <em>p</em> since we know that <em>X</em> has a <strong>binomial distribution</strong> with 
+  parameters <em>n</em> (the sample size) and π.</p>
+
+<div class="centred"><div class="boxed percent50">
+<p><em>X</em>&nbsp; ~ &nbsp;<font face="Arial, Helvetica, sans-serif">binomial</font> (<em>n</em>&nbsp;, &pi;)</p>
+</div></div>
+
+<p>When we know the distribution of the test statistic (at least after the null 
+  hypothesis has fixed the value of the parameters of interest), it becomes much 
+  easier to obtain the p-value for the test.</p>
+<p class=heading>P-value</p>
+<p>As in all other tests, the p-value is the probability of getting such an 'extreme' 
+  set of data if the null hypothesis is true. Depending on the null and alternative 
+  hypotheses, the p-value is therefore the probability that <em>X </em>is as big 
+  (or sometimes as small) as the recorded value.</p>
+<p>Since we know the binomial distribution of <em>X</em> when the null hypothesis 
+  holds, the p-value can therefore be obtained by adding binomial probabilities.</p>
+
+<div class="centred"><div class="boxed">
+<p>The p-value is a sum of binomial probabilities</p>
+</div></div>
+
+<p>Note that the p-value can be obtained exactly <strong>without need for simulations 
+  or randomisation</strong>.</p>
+<div class="diagram">
+
+<p class=heading>Australia Post example</p>
+
+<p>A journalist trying to assess Australia Post's assertion that 96 percent of 
+letters arrive 'on time' posted 59 letters and observed that only 52 arrived on 
+time.</p>
+
+<p class="eqn"><strong>H<sub>0</sub>:</strong> &nbsp; π&nbsp;=&nbsp;0.96</p>
+<p class="eqn"><strong>H<sub>A</sub>:</strong> &nbsp; π&nbsp;&lt;&nbsp;0.96</p>
+
+<p>In the diagram below, click <strong>Accumulate</strong> then hold down <strong>Simulate</strong> 
+until about 100 samples of 59 letters have been generated. The proportion of these 
+simulated samples in which 52 or fewer letters arrived on time is an approximation 
+to the p-value for the test.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="randomisationProg.SuccessSimApplet">
+<param name="sampleInfo" value="59 0.960">
+<param name="summaryAxis" value="50 60 50 1">
+<param name="nSuccess" value="52">
+<param name="propnDecimals" value="4">
+<param name="catVarName" value="Delivery of letters">
+<param name="catLabels" value="#On time# Late">
+<param name="probLabel" value="Prob (on time)">
+<param name="nLabel" value="Number of letters =">
+<param name="showTheory" value="true">
+<param name="theoryType" value="binomial">
+<param name="tail" value="low">
+<param name="customText" value="No of Success=No of Success#Number of=Number of#Show results as=Show results as#Propn with=Propn with#Prob of=Prob of#or fewer=or fewer#or more=or more#Theoretical distribution=Theoretical distribution#Binomial=Binomial">
+</applet>
+</div>
+
+<p>Since we know that the number arriving on time has a binomial&nbsp;(52, 0.96) 
+distribution when the null hypothesis holds, <span class="darkred">the simulation 
+is unnecessary</span>. Select<strong> Binomial distribution</strong> from the 
+pop-up menu. This binomial distribution is displayed, and the probability of 52 
+or fewer letters being delivered on time is shown to be 0.009 &mdash; the p-value for 
+the test.</p>
+<p>Since the p-value is so small, there would have been very little chance of 
+the observed data arising if Australia Post's assertion had been correct. We can 
+therefore conclude that there is strong evidence against their assertion. Note 
+that this can be done <strong>without any simulations</strong>.</p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

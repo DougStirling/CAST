@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Cumulative distribution function</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="geometric distribution, cumulative distribution function">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Cumulative probabilities</p>
+
+<p>The cumulative probability for any \(x\) is found by summing the probability function \(p(u)\) over all integer values \(u\) that are less than or equal to \(x\).</p>
+
+ \[
+F(x) = \sum_{u \le x} p(u)
+\]
+
+	<p>When considered as a function of \(x\), this is the distribution's cumulative distribution function.</p>
+
+<div class="theoremProof">
+<div class="theorem">
+<p class="theoremTitle">Cumulative distribution function</p>
+<p>The cumulative distribution function for the geometric distribution with probability function</p>
+\[
+p(x) = \pi (1-\pi)^{x-1} \quad \quad \text{for } x = 1, 2, \dots
+\]
+<p>is</p>
+\[
+F(x) = \begin{cases} 1 - (1-\pi)^{\lfloor x \rfloor} &amp; \text{for } x \ge 0 \\
+0 &amp; \text{for } x \lt 0 \end{cases}
+\]
+<p>where \(\lfloor x \rfloor\) denotes the largest integer less than or equal to \(x\).</p>
+</div>
+
+<div class="proof">
+<p>For any <strong>integer</strong> \(x\), the probability that it will take more than \(x\) trials before the first success is observed is the probability that the first \(x\) trials are all failures,</p>
+\[
+P(X \gt x) \;=\; (1-\pi)^x
+\]
+<p>The cumulative distribution function is therefore</p>
+\[
+F(x) \;=\; P(X \le x) \;=\; 1 - P(X \gt x) \;=\; 1 -  (1-\pi)^x
+\]
+<p>The result follows from noting that \(F(x)\) is the same for other values between integers \(x\) and \((x+1)\).</p>
+<hr width="75%">
+<p>An alternative algebraic proof is shown below.</p>
+\[ \begin{align}
+F(x) &amp; = p(0) + p(1) + \dots + p({\lfloor x \rfloor}) \\
+&amp; = 1 - \big( p(\lfloor x \rfloor + 1) + p(\lfloor x \rfloor + 2) + \dots \big) \\
+&amp; = 1 - \big( \pi(1-\pi)^{\lfloor x \rfloor} + \pi(1-\pi)^{\lfloor x \rfloor + 1} + \dots \big) \\
+&amp; = 1 - \pi(1-\pi)^{\lfloor x \rfloor}\big( 1 + (1-\pi) + (1-\pi)^2 + \dots \big)
+\end{align} \]
+<p>Using the formula for the sum of this geometric series with \(a = (1 - \pi)\),</p>
+\[ \begin{align}
+F(x) &amp; = 1 - \pi(1-\pi)^{\lfloor x \rfloor} \times \frac 1 {1 - (1-\pi)} \\
+&amp; = 1 - (1-\pi)^{\lfloor x \rfloor}
+\end{align} \]
+</div>
+
+</div>
+
+<p>We now display the cumulative distribution function graphically.</p>
+
+
+<div class="example" title="Illustration: Geometric distribution's CDF">
+	
+<p class="exampleHeading">Graphical display</p>
+
+<p>The diagram below shows both the probability function of a geometric distribution, \(p(x)\), and its cumulative distribution function, \(F(x)\).</p>
+<div class="centred">
+	<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="450">
+		<script type="text/javascript">writeAppletParams();</script>
+		<param name="appletName" value="distributionProg.GeometricDistnApplet">
+		<param name="backgroundColor" value="FFFBF3">
+		<param name="cumulative" value="true">
+		<param name="pLimits" value="0.10 1.00 0.50">
+		<param name="xAxis" value="0 30 0 5">
+		<param name="xAxisName" value="Number of trials">
+		<param name="customText" value="success=success">
+	</applet>
+</div>
+
+<p>Click the bar for value 5 to highlight it and lower bars. The cumulative probability for this value is shown with a red line on the graph of the cumulative distribution function.</p>
+<p>Observe that decreasing the probability of success, \(\pi\), also decreases the height of the cumulative distribution function — we become less likely to see the first success within the first 5 values.</p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

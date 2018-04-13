@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Exemples</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<script type="text/javascript">
+		var svgNames = new Array();
+		svgNames[0] = "images/concrete3.svg";
+		svgNames[1] = "images/contamination3.svg";
+		svgNames[2] = "images/mvis3.svg";
+		svgNames[3] = "images/bones3.svg";
+		svgNames[4] = "images/primer3.svg";
+		
+		function changeSvgImage(select) {
+			var newIndex = select.selectedIndex;
+			var image = document.getElementById('dataImage');
+			image.src = svgNames[newIndex];
+		}
+	</script>
+
+	<meta name="index" content="confidence interval, mean">
+	<meta name="dataset" content="Paint primer thickness">
+	<meta name="dataset" content="Concrete hardness">
+	<meta name="dataset" content="Mammal thigh bones">
+	<meta name="dataset" content="Strength measurements">
+	<meta name="dataset" content="Steel works slag">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class=heading>Interprétation d'un intervalle de confiance</p>
+<p>Dans la pratique, nous avons seulement un <strong>seul</strong> échantillon (et un intervalle de confiance unique).</p>
+<p>Nous ne savons pas si oui ou non cet intervalle inclut en fait la moyenne inconnue. Toutefois, sachant que les intervalles de confiance obtenus de cette manière comprennent <strong>généralement</strong> μ est très utile. En pratique, ...</p>
+<center>
+<table border="1" cellspacing="0" cellpadding="5" bgcolor="white" width="75%">
+<tr> 
+<th align="CENTER">Avoir raison la plupart du temps c'est le mieux qu'on puisse espérer, car il ya toujours la possibilité d'être trompé par un échantillon de malchance.</th>
+</tr>
+</table>
+</center>
+<p>La <strong>méthode</strong> que nous utilisons pour obtenir l'intervalle de confiance a 0,95 probabilité d'inclure μ. Nous ne pouvons pas dire si le seul intervalle que nous évaluons à partir de notre ensemble de données est l'un de ces «chanceux» intervalles, mais sachant que la <strong>méthode</strong> fonctionne si souvent nous donne <strong>95% de confiance</strong> en elle.</p>
+<div class="diagram"> 
+<p class=heading>Exemples</p>
+<p>Les ensembles de données suivants donnent des exemples de calculs pour obtenir des intervalles de confiance à 95% et les conclusions que nous pouvons en tirer.<br>
+</p>
+<form>
+<select name="dataset" onChange="changeSvgImage(this)">
+<option value="0" selected>La dureté du béton (ml érodé)</option>
+<option value="1">Contamination dans les procédés industriels (%)</option>
+<option value="2">Résistance maximale volontaire isométrique (kg)</option>
+<option value="3">La forme des mammifères os de la cuisse</option>
+<option value="4">Epaisseur apprêt (mil)</option>
+</select>
+</form>
+
+<p align="center"><iframe src="images/concrete3.svg" id="dataImage" width="595" height="341" frameborder="0"></iframe></p>
+
+<br>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

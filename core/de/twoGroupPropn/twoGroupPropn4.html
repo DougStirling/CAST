@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Testing for difference in probabilities</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+  <script type="text/javascript">
+		var svgNames = new Array();
+		svgNames[0] = "images/birthSexTest.svg";
+		svgNames[1] = "images/chromosomeTest.svg";
+		svgNames[2] = "images/bingeTest.svg";
+		svgNames[3] = "images/asprinTest.svg";
+		
+		function changeSvgImage(select) {
+			var newIndex = select.selectedIndex;
+			var image = document.getElementById('dataImage');
+			image.src = svgNames[newIndex];
+		}
+	</script>
+
+	<meta name="index" content="hypothesis test, difference, probability, proportion">
+	<meta name="dataset" content="Chromosomes and crime">
+	<meta name="dataset" content="Binge drinking">
+	<meta name="dataset" content="Aspirin and strokes">
+
+	<meta name="dataset" content="Births by season">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Testen, ob die Wahrscheinlichkeiten unterschiedlich
+sind</p>
+<p>Pr&uuml;fung auf einen Unterschied zwischen den
+Populationswahrscheinlichkeiten des "Erfolges" in zwei Gruppen basiert
+auf den Stichprobenanteilen. Die Standardisierung der
+Stichprobenunterschiede stellt eine Teststatistik bereit, die mit der
+Standardnormalverteilung verglichen werden kann, um einen
+ungef&auml;hren p-Wert f&uuml;r den Test zu erhalten.&nbsp;
+</p>
+<p class="heading">Zweiseitiger Test</p>
+<p>Zun&auml;chst betrachten wir den zweiseitigen Test, </p>
+<p class=eqn><span class="blue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong><sub>1</sub> &nbsp;=&nbsp; </strong>&pi;<strong><sub>2</sub></strong><br>
+<strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong><sub>1</sub> &nbsp;&ne;&nbsp; </strong>&pi;<strong><sub>2</sub></strong></span></p>
+<p>In der folgenden Abbildung werden die Schritte f&uuml;r das Erhalten
+eines p-Wertes f&uuml;r diesen Test gezeigt </p>
+<p class="eqn"> <object data="images/pValCalc.svg"
+ alt="p-value for testing diff" height="261" width="436"> </object>
+</p>
+<p>Der p-Wert wird in der gleichen Weise wie bei den bisherigen Tests
+interpretiert. Wenn <b>H<sub>0</sub></b> wahr ist, ist ein p-Wert nahe
+Null unwahrscheinlich. Er ist wahrscheinlicher wenn <b>H<sub>A</sub></b>
+stimmt. Kleine p-Werte jedoch bieten Hinweise auf Unterschiede zwischen
+den Wahrscheinlichkeiten der Popultion.
+</p>
+<p class="heading">Einseitiger Test</p>
+<p>F&uuml;r den einseitigen Test ist die Alternativhypothese, dass&nbsp;&pi;<sub>2</sub>
+nur auf einer Seite von&nbsp;&pi;<sub>1</sub> ist.</p>
+<p class="eqn"><object data="images/oneTailAlt.svg"
+ alt="HA:diff&gt;0 or HA:diff&lt;0" height="17" width="275"></object></p>
+<p>Die Teststatistik ist identisch mit der f&uuml;r den zweiseitigen
+Test. Den p-Wert erh&auml;lt man auf &auml;hnliche Weise. Dieser stammt
+jedoch nur aus <strong>einem</strong> Ende der
+Standardnormalverteilung. </p>
+<p class="heading"><font color="#666666">Alternative Teststatistik</font></p>
+<p><font color="#666666">Einige Statistiker bevorzugen eine andere
+Formel f&uuml;r die Standardabweichung bei der Auswertung der oben
+stehenden z-Werte. Bei dem Fall, dass </font><font color="#666666"><b>H<sub>0</sub></b></font><font
+ color="#666666"> wahr und &pi;1 gleich &pi;2 ist, kann der
+Gesamtanteil der Erfolge&nbsp;<em>p</em>
+in die Formel f&uuml;r die Standardabweichung von&nbsp;</font><font
+ color="#666666"><em>p</em><sub>2</sub>&nbsp;-&nbsp;<em>p</em><sub>1</sub></font><font
+ color="#666666"> eingesetzt werden. </font></p>
+<p class="eqn"><object data="images/diffSDEstEqn.svg"
+ alt="alternative defn of sd(diff)" height="95" width="476"></object>
+</p>
+<p><font color="#666666">Diese Verfeinerung macht in der Praxis kaum
+einen Unterschied, so dass in der unten stehenden &Uuml;bung die
+einfachere Formel, die wir vorher kennengelernt haben, angewendet wird.
+</font></p>
+<div class="diagram">
+<p class="heading">Beispiele</p>
+<p>Das folgende Diagramm zeigt, wie man die p-Werte und die
+Schlussfolgerungen f&uuml;r eine Auswahl von ein- und zweiseitigen
+Tests erh&auml;lt.</p>
+<form>
+  <select name="dataset" onChange="changeSvgImage(this)">
+  <option value="0" selected="selected">Gender of babies in summer and
+winter</option>
+  <option value="1">Chromosome abnormalities and crime</option>
+  <option value="2">Binge drinking by students</option>
+  <option value="3">Aspirin and strokes</option>
+  </select>
+</form>
+<p align="center"><iframe src="images/birthSexTest.svg" id="dataImage"
+ frameborder="0" height="476" width="541"></iframe></p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

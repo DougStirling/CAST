@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Analyisis of variance</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="anova, analysis of variance, f ratio, f test">
+	<meta name="dataset" content="Cholesterol determination">
+	<meta name="dataset" content="Warping of copper plates">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Explained sums of squares</p>  
+  <p>Adding linear terms for a numerical factor X and another numerical factor Y both decrease the residual sum of squares. These reductions are <strong>explained</strong> sums of squares and can be shown in an analysis of variance table.</p>
+  <p>Similarly, generalising from a linear term for a factor to a term that models it as a categorical variable also reduces the residual sum of squares. This reduction is a sum of squares <strong>explained by curvature in the relationship</strong>.</p>
+  <p>These explained sums of squares all have degrees of freedom that are equal to the difference in the numbers of unknown parameters in the models.</p>
+  <ul>
+		<li>The explained sum of squares for adding a categorical term for a factor 
+			with <em>a</em> levels has (<em>a</em>&nbsp;-&nbsp;1) degrees of freedom.</li>
+  	<li>The explained sum of squares for a linear term  has 1 degree of freedom.</li>
+  	<li>The explained sum of squares for replacing a linear term with a categorical factor term 
+  		has (<em>a</em>&nbsp;-&nbsp;2) degrees of freedom.</li>
+ 	</ul>
+  <p class="heading">Analysis of variance table</p>
+  <p>The analysis of variance table uses these sums of squares and adds columns with:</p>
+  <dl>
+    <dt>Mean sums of squares</dt>
+    <dd>Each sum of squares is divided by its degrees of freedom</dd>
+    <dt>F ratios</dt>
+    <dd>Each mean explained sum of squares is then divided by the mean residual 
+      sum of squares to form an F-ratio.</dd>
+    <dt>p-values</dt>
+    <dd>Finally the significance of each F-ratio is assessed by comparing its 
+      value to an F distribution to give a p-value.</dd>
+  </dl>
+  
+  <p class="heading">Interpretation of p-values</p>
+  <p>Each p-value is used to test the null hypothesis that the corresponding model 
+    term is unnecessary. It is interpreted in a similar way to other hypothesis 
+    tests.</p>
+	
+
+<div class="centred"><table border="0" cellpadding="5" cellspacing="0"0 class="centred">
+<tr> 
+<th align="CENTER" style="border-bottom:1px solid #999999;">p-value</th>
+<th align="CENTER" style="border-bottom:1px solid #999999;">Interpretation</th>
+</tr>
+<tr bgcolor="white"> 
+<td>over 0.1</td>
+        <td>no evidence that the term is needed</td>
+</tr>
+<tr bgcolor="white"> 
+<td>between 0.05 and 0.1</td>
+        <td>very weak evidence that the term is needed</td>
+</tr>
+<tr bgcolor="white"> 
+<td>between 0.01 and 0.05</td>
+        <td>moderately strong evidence that the term is needed</td>
+</tr>
+<tr bgcolor="white"> 
+<td style="border-bottom:1px solid #999999;">under 0.01</td>
+        <td style="border-bottom:1px solid #999999;">strong evidence that the term is needed</td>
+</tr>
+</table></div>
+
+  <br>
+  
+  <div class="diagram">
+  	<p class="heading">Warping of copper plates</p>
+    <p>The diagram below shows the analysis of variance table for the copper plate 
+      warping experiment. Since the two explanatory variables (copper percentage 
+      and temperature) are numerical, each variable can be included in the model 
+      as either a linear term (with 1 degree of freedom) or as a factor (with 
+      a total of 3 degrees of freedom for each factor).</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="550">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoFactorProg.FactorAnovaSeqApplet">
+<param name="yVarName" value="Warping of plate">
+<param name="yValues" value="17 20 16 21 24 22 28 27 12 9 18 13 17 12 27 31 16 12 18 21 25 23 30 23 21 17 23 21 23 22 29 31">
+<param name="yAxis" value="8 32 10 5">
+<param name="zVarName" value="Temperature(C)">
+<param name="zValues" value="8@0 8@1 8@2 8@3">
+<param name="zLabels" value="50 75 100 125">
+<param name="xVarName" value="Copper percentage">
+<param name="xValues" value="2@0 2@1 2@2 2@3 2@0 2@1 2@2 2@3 2@0 2@1 2@2 2@3 2@0 2@1 2@2 2@3">
+<param name="xLabels" value="40 60 80 100">
+<param name="xVariables" value="Cu CuF T TF">
+<param name="xTypes" value="xLin xFac zLin zFac">
+<param name="TVarName" value="Linear temp">
+<param name="TValues" value="8@0 8@1 8@2 8@3">
+<param name="TFVarName" value="Nonlin temp">
+<param name="TFValues" value="16@0 8@1 8@2">
+<param name="TFLabels" value="50+75 100 125">
+<param name="CuVarName" value="Linear copper">
+<param name="CuValues" value="2@0 2@1 2@2 2@3 2@0 2@1 2@2 2@3 2@0 2@1 2@2 2@3 2@0 2@1 2@2 2@3">
+<param name="CuFVarName" value="Nonlin copper">
+<param name="CuFValues" value="4@0 2@1 2@2 4@0 2@1 2@2 4@0 2@1 2@2 4@0 2@1 2@2">
+<param name="CuFLabels" value="40-60 80 100">
+<param name="maxSsq" value="999.9 99 999.9 99.99">
+<param name="componentNames" value="Copper (linear)#Copper (nonlin)#Temp (linear)#Temp (nonlin)">
+<param name="initVariables" value="0">
+</applet> 
+</div>
+
+    <p>Drag the red arrows to add linear and then g-group terms to the model for 
+			warping. From the p-values, we conclude:</p>
+    <ul>
+      <li>The p-value for changing the linear term in copper percentage to a g-group 
+				is 0.0940, so we conclude that there is very weak evidence of nonlinearity 
+				in how warping depends on copper. However the linear term is highly significant 
+				so modelling warping as a linear function of copper can be used within 
+				the range of copper percentages that were used in the experiment.</li>
+      <li>There is strong evidence that a g-group term for temperature is better 
+				than a linear term (p-value&nbsp;=&nbsp;0.0032) so we conclude that the 
+				relationship between temperature and warping is nonlinear. Having concluded 
+				that there is a nonlinear relationship, there is no reason to test the 
+				linear term in temperature.</li>
+    </ul>
+	<br>
+
+    </div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

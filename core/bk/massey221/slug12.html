@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Testing for same slug shape</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="hypothesis test, t value">
+	<meta name="dataset" content="Slug weight and length">
+</head>
+
+
+<body style="background-color:#FFE1B6">
+<script type="text/javascript">writePageStart();</script>
+
+
+<p class="heading">Implications About Shape of the Slugs
+</p>
+
+  <p>Our 95% confidence interval for the power does not include 3, suggesting that 
+	weight is not proportional to (length)<img src="images/super3.gif" width="7" height="10" align="BASELINE">. 
+	This implies that the <strong>shape</strong> of the slugs changes as they 
+	get longer. To get a handle on this, we will assume that the weight of a slug 
+	is proportional to its volume and that the slugs are cylindrical. Their weight 
+	would then be proportional to</p>
+
+<p class=eqn>
+<img src="images/wtLenDiam.gif" width="304" height="24" alt="wt propn to len*diam2">
+</p>
+
+<p>Since we estimated weight to be proportional to length raised to the power 2.640,
+</p>
+
+<p class=eqn>
+<img src="images/diamLen.gif" width="332" height="26" alt="diam propn to len**0.820">
+</p>
+
+<p>Slug diameter therefore seems to increase less than linearly with length &mdash; longer slugs
+are relatively thinner.
+</p>
+
+<p class="heading">Testing Whether the Power is 3
+</p>
+
+<p>From the 95% confidence interval above, we have seen that there is evidence that slug
+weight is not proportional to
+(length)<img src="images/super3.gif" width="7" height="10" align="BASELINE">
+but seems more likely to be proportional to
+</p>
+
+<p class=eqn>
+<img src="images/proportional.gif" width="272" height="26" alt="len**2.540 to len**2.740">
+</p>
+
+<p>The 95% confidence interval for the power does not include 3, so we know that
+the p-value is <&nbsp;0.05. However
+Minitab does not automatically provide a p-value for this test. The p-value in the
+Minitab output is
+</p>
+
+
+<div class="centred"><table border="0" cellspacing="0" cellpadding="5" class="centred">
+<tr><td bgcolor="white" class="black">
+<tt>
+		  <pre width="60">...
+
+Predictor       Coef       Stdev    t-ratio        p
+...
+logLen       2.64043     0.05017      52.63    <span class="red">0.000</span>
+</pre>
+		  </tt>
+</td></tr>
+</table></div>
+
+
+<p>This is for a test of whether the power is <strong>zero</strong> and we conclude
+that there is extremely strong evidence that the power is not zero (and therefore that
+slug weight is related to length in some way). To get a p-value to test whether the power is
+<strong>3</strong>, we need a little more work.
+</p>
+
+<p>A t-ratio is first obtained by standardising the difference between the slope and 3.0 (i.e
+we divide this difference by the standard deviation of the slope from the Minitab output).
+</p>
+
+<p class=eqn>
+<img src="images/t3.gif" width="384" height="42" alt="t=(b1-3)/sd(b1)=-7.17">
+</p>
+
+<p>To assess whether this t-ratio is unusually far from zero, we compare its value to a
+t-distribution with <i>n</i>&nbsp;-&nbsp;2&nbsp;=&nbsp;97 degrees of freedom. In Minitab,
+the probability of a t-ratio as low as -7.17 can be easily obtained by typing the 'CDF'
+command in the Session window:
+</p>
+
+
+<div class="centred"><table border="0" cellspacing="0" cellpadding="5" class="centred">
+<tr><td bgcolor="white" class="black">
+<tt><pre width="60">MTB > CDF -7.17;
+SUBC>   T 97.
+
+Cumulative Distribution Function
+
+Student's t distribution with 97 d.f. 
+
+         x     P( X <= x)
+   -7.1700        0.0000
+</pre></tt>
+</td></tr>
+</table></div>
+
+
+<p>Minitab reports the probability of a t-ratio as low as -7.17 to be '0.0000'. 
+Since a t-ratio as high as 7.17 would be equally odd, we should double this probability 
+to get a p-value for the test (i.e. we should do a 2-tailed test). However the 
+p-value is still extremely close to zero, so we conclude that there is extremely 
+strong evidence that the power is less than 3 &mdash; slug weight is not related to 
+(length)<img src="images/super3.gif" width="7" height="10" align="BASELINE">. 
+</p>
+	
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

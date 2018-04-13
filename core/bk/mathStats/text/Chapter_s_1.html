@@ -1,0 +1,832 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>1. Probability</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/maths/mathStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/maths/theorems.js"></script>
+  <script src="../../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 1 &nbsp; Probability</h1>
+<h1 class="sectionName">1.1 &nbsp; Ways to define probability</h1>
+<h2 class="pageName">1.1.1 &nbsp; Uncertainty and Probability</h2>
+<p>There are many situations in which we do not know precisely what will happen. Even when the mechanism underlying the situation is deterministic, limited knowledge means that  there is no choice but to treat the outcome as being random.</p>
+<p>Uncertainty is described by the <strong>probabilities</strong> of the different possible events that might occur. Probability is a value that describes chance on a scale of zero to one.</p>
+
+<p class="eqn"><img class="svgImage" src="../../../en/probDefinitions/images/probScale.png" width="347" height="381"></p>
+
+
+
+
+<h2 class="pageName">1.1.2 &nbsp; Terminology</h2>
+<p>Although there are many different situations involving randomness, it is convenient to use a general terminology that can cover them all.</p>
+
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<dl>
+		<dt>Experiment</dt>
+		<dd>A phenomenon whose result is uncertain will be called an <strong>experiment</strong>.</dd>
+		<dt>Outcomes</dt>
+		<dd>An <strong>outcome</strong> is the result of an experiment that cannot be reduced to simpler results.</dd>
+		<dt>Events</dt>
+		<dd>An <strong>event</strong> is a collection of outcomes.</dd>
+		<dt>Sample space</dt>
+		<dd>The <strong>sample space</strong> is the collection of all possible outcomes.</dd>
+	</dl>
+</div>
+
+<p class="heading">Links to set theory</p>
+
+<p>These definitions are closely associated with set theory. Although the ideas behind probability can be understood without it, a formal definition of probability and its rules uses set theory. The following table links probability notation with set theory:</p>
+
+<div class="centred">
+<table border="0" cellPadding="5px" cellspacing="0" class="centred">
+	<tr>
+	<th>Probability notation</th>
+	<th>Set theory notation</th>
+	</tr>
+	<tr>
+		<td bgColor="#FFFFFF" style="border-top:1px solid #999999;" align="center">Sample space, <em>S</em></td>
+		<td bgColor="#FFFFFF" style="border-top:1px solid #999999;" align="center">Universal set</td>
+	</tr>
+	<tr>
+		<td bgColor="#FFFFFF" align="center">Outcome</td>
+		<td bgColor="#FFFFFF" align="center">Element</td>
+	</tr>
+	<tr>
+		<td bgColor="#FFFFFF" style="border-bottom:1px solid #999999;" align="center">Event, <em>E</em></td>
+		<td bgColor="#FFFFFF" style="border-bottom:1px solid #999999;" align="center">Subset</td>
+	</tr>
+</table>
+</div>
+
+<p class="heading">Set operations</p>
+
+<p>In set theory,  unions and intersections of sets are basic operations. These operations also correspond to meaningful ways to define events from others. Consider two events <em>A</em> and <em>B</em>.</p>
+
+<div class="centred">
+<table border="0" cellPadding="5px" cellspacing="0" class="centred">
+	<tr>
+		<th>Probability notation</th>
+		<th>Set theory notation</th>
+		<th>Interpretation</th>
+	</tr>
+	<tr>
+		<td bgColor="#FFFFFF" style="border-top:1px solid #999999;" align="center">A <strong>or</strong> B</td>
+		<td bgColor="#FFFFFF" style="border-top:1px solid #999999;" align="center">A &cup; B</td>
+		<td bgColor="#FFFFFF" style="border-top:1px solid #999999;" align="center">Either A or B (or both) occurs</td>
+	</tr>
+	<tr>
+		<td bgColor="#FFFFFF" align="center">A <strong>and</strong> B</td>
+		<td bgColor="#FFFFFF" align="center">A &cap; B</td>
+		<td bgColor="#FFFFFF" align="center">Both A and B occur</td>
+	</tr>
+	<tr>
+		<td bgColor="#FFFFFF" style="border-bottom:1px solid #999999;" align="center"><strong>not</strong> A</td>
+		<td bgColor="#FFFFFF" style="border-bottom:1px solid #999999;" align="center">A<sup>c</sup></td>
+		<td bgColor="#FFFFFF" style="border-bottom:1px solid #999999;" align="center">Event A does not occur</td>
+	</tr>
+</table>
+</div>
+
+
+
+<h2 class="pageName">1.1.3 &nbsp; Classical definition of probability</h2>
+
+<p class="heading">Equally likely outcomes</p>
+
+<p>There are some kinds of experiment where we believe that all possible outcomes have the same chance of arising. This is usually justified by symmetry in the physical mechanism underlying the experiment. For example,</p>
+<ul>
+	<li>Tossing a coin — a head and a tail are equally likely.</li>
+	<li>Picking a card from a shuffled deck — all 52 cards are equally likely.</li>
+	<li>Drawing the winning ticket in a lottery — all tickets have the same chance of being picked.</li>
+</ul>
+
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+<p>If an experiment has \(N\) equally likely outcomes and an event, \(E\), consists of \(x\) of them, then  its probability  is defined to be</p>
+\[P(E) = \frac x N\]
+</div>
+
+<p>In other words,</p>
+\[P(event) = \frac {\text{Number of outcomes in } event} {\text{Number of outcomes in  sample space}}\]
+
+<p>This is called the <strong>classical</strong> definition of probability and is the easiest to understand.</p>
+<p class="heading">Sampling a value from a finite population</p>
+<p>Many applications with equally likely outcomes involve games of chance such as cards, dice and roulette wheels.</p>
+<p>However equally likely outcomes  also arise when sampling a value from a finite population. If  all population members have the same chance of selection, then this definition of probability can again be used.</p>
+<div class="example">
+	<p class="exampleHeading">Household size in Mauritius</p>
+	<p>The following bar chart describes the size of all households in Mauritius in its 2011 census.</p>
+	<p class="eqn"><img src="../../../en/probDefinitions/images/s_mauritiusHouseholds.png" width="483" height="321" alt=""/></p>
+	<p>The probability that a randomly chosen household is of any size is the proportion of such households in the census.</p>
+</div>
+
+
+<h2 class="pageName">1.1.4 &nbsp; Applications of classical definition</h2>
+<p>If all outcomes are equally likely, calculating the probabilities of  events involves counting outcomes — both counting the outcomes in the event itself and those in the sample space. The following result is often useful.</p>
+
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Mathematical result (should be known from maths)</p>
+		<p>The number of ways to choose <em>x</em> items from a population of <em>n</em> items when the order of choosing them is unimportant is</p>
+		\[
+		{n \choose x} \;=\; \frac {n!} {x!\;(n-x)! }
+		\]
+		<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p>The following question can be answered by outcomes.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Question</p>
+		<p>If five cards are dealt at random from a pack of 52, what is the probability that all five cards are of the same suit?</p>
+		<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+
+<h2 class="pageName">1.1.5 &nbsp; Probability from relative frequency</h2>
+
+<p class="heading">Repeatable experiments</p>
+
+<p>In practice, experiments rarely have outcomes that we can argue must be equally likely. In any such experiment, a different definition must be used for the probability of an event.</p>
+<p>We can often imagine repeating the experiment many times. If the experiment is repeated indefinitely in essentially the same way, the probability of an event can be defined as the long-term proportion of times that it occurs.</p>
+
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>If an experiment could be repeated in essentially the same way again and again, then  the probability of any event, \(E\), is defined to be the limiting proportion of times that the event occurs as the number of repetitions increases.</p>
+\[P(E) = \lim_{\text {repetitions} \to \infty} (\text {proportion of times } E \text { occurs})\]
+</div>
+<p>The next diagram illustrates.</p>
+<p class="eqn"><img src="../../../en/probDensity/images/s_largeNos.gif" width="493" height="308"></p>
+<p class="heading">Consistency with earlier definition</p>
+<p>A theorem called the <strong>Law of Large Numbers</strong>  proves that this definition is consistent with the definition that we gave earlier for experiments with equally likely outcomes. If the probability of an event is \(p\) (using the classical definition) and the experiment is repeated indefinitely, the limiting proportion of times that the event occurs is <strong>always</strong> \(p\).</p>
+
+
+<h2 class="pageName">1.1.6 &nbsp; Estimating probabilities</h2>
+<p>The probability of an event can be defined as the long-term proportion of times that it occurs when the experiment is repeated. Unfortunately, although this explains the <strong>concept</strong> of the event's probability, it <strong>does not provide a numerical value</strong> in practice — the experiment cannot be repeated an infinite number of times.</p>
+<p>However although we cannot repeat the experiment an <strong>infinite</strong> number of times, the proportion of times that the event occurs in a <strong>large</strong> number of repetitions will give an <strong>approximate</strong> value for the probability — an <strong>estimate</strong> of its value.</p>
+<div class="example">
+	<p class="exampleHeading">Survival of silkworm larvae</p>
+	<p>From the following data set, estimate the probability that a silkworm will survive at least 300 seconds.</p>
+	<div class="centred">
+		<table style="background-color:#FFFFFF" border="0" cellspacing="0" cellpadding="8" width="400" class="centred">
+			<caption align="TOP">
+				<strong>Survival of poisoned silkworm larvae (seconds)</strong>
+			</caption>
+			<tr align="CENTER">
+				<td style="border:1px solid #999999; border-right:0px;">270<br>
+					254<br>
+					293<br>
+					244<br>
+					293<br>
+					261<br>
+					285<br>
+					330<br>
+					284<br>
+					274</td>
+				<td style="border-top:1px solid #999999; border-bottom:1px solid #999999;">307<br>
+					235<br>
+					215<br>
+					292<br>
+					309<br>
+					267<br>
+					275<br>
+					298<br>
+					241<br>
+					254</td>
+				<td style="border-top:1px solid #999999; border-bottom:1px solid #999999;">256<br>
+					275<br>
+					226<br>
+					287<br>
+					280<br>
+					339<br>
+					294<br>
+					298<br>
+					283<br>
+					366</td>
+				<td style="border-top:1px solid #999999; border-bottom:1px solid #999999;">300<br>
+					310<br>
+					280<br>
+					240<br>
+					291<br>
+					286<br>
+					230<br>
+					285<br>
+					218<br>
+					279</td>
+				<td style="border-top:1px solid #999999; border-bottom:1px solid #999999;">280<br>
+					286<br>
+					345<br>
+					289<br>
+					210<br>
+					282<br>
+					260<br>
+					228<br>
+					243<br>
+					259</td>
+				<td style="border-top:1px solid #999999; border-bottom:1px solid #999999;">285<br>
+					275<br>
+					280<br>
+					296<br>
+					283<br>
+					248<br>
+					314<br>
+					258<br>
+					215<br>
+					299</td>
+				<td style="border-top:1px solid #999999; border-bottom:1px solid #999999;">240<br>
+					241<br>
+					236<br>
+					255<br>
+					267<br>
+					271<br>
+					253<br>
+					271<br>
+					233<br>
+					260</td>
+				<td style="border:1px solid #999999; border-left:0px;">273<br>
+					233<br>
+					271<br>
+					267<br>
+					258<br>
+					319<br>
+					310<br>
+					302<br>
+					260<br>
+					251</td>
+			</tr>
+		</table>
+	</div>
+		<p class="exampleNote">(Solved in full version)</p>
+</div>
+
+
+<h2 class="pageName">1.1.7 &nbsp; Subjective probability</h2>
+
+<p class="heading">Unrepeatable experiments</p>
+<p>In most scientific contexts, it is possible to imagine repeating an experiment in essentially the same way. However there are other scenarios in which such repetitions are clearly impossible, but there is still uncertainty about the outcome. For example,</p>
+<ul>
+	<li>Is a person on trial for a crime actually guilty of it?</li>
+</ul>
+<p>There are no equally likely outcomes and the &quot;experiment&quot; cannot be repeated. Instead, a <strong>subjective</strong> or <strong>personal</strong> assessment of probability must be made.</p>
+<p class="heading">Subjective probability</p>
+<p>Subjective probability can be given a formal definition, based on what you would regard as a 'fair bet' for the event. If either of the earlier definitions of its probability  can be used, this results in the same numerical value, <strong>provided it is applied by a 'reasonable' person with full knowledge of the experiment's structure</strong>.</p>
+<p class="heading">Bayesian statistics</p>
+<p>A whole field of statistics called <em><strong>Bayesian statistics</strong></em> is based on subjective probabilities and is gaining in importance</p>
+<p>However we will neither deal with subjective probability nor Bayesian statistics further in this e-book.</p>
+
+
+<h1 class="sectionName breakBefore">1.2 &nbsp; Probability calculations</h1>
+<h2 class="pageName">1.2.1 &nbsp; Core rules of probability</h2>
+
+<p class="heading">Mutually exclusive events</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+<p>Two events, \(A\) and \(B\) are called <strong>mutually exclusive</strong> if they have no outcomes in common. More precisely, using set notation, this is when</p>
+\[
+A \cap B = \emptyset
+\]
+</div>
+
+<p>In other words, \(A\) and \(B\) are called mutually exclusive if they cannot occur at the same time.</p>
+<p class="heading">Properties of probability</p>
+<p>In 1933,  Kolmogorov published a paper basing the 'theory' of probability to a small number of axioms that hold for <strong>all</strong> definitions of probability. Anything derived from these axioms also holds, no matter how probability is defined, so we no longer need to distinguish between the different definitions in the last section.</p>
+
+<div class="definition">
+<p class='definitionTitle'>Axioms of probability</p>
+<ol>
+	<li>P(S) = 1       where <em>S</em> is the sample space</li>
+	<li>0 ≤ P(E) ≤ 1        for any event, E</li>
+	<li>P(A <strong>or</strong> B) = P(A) + P(B)         if events A and B are mutually exclusive</li>
+</ol>
+</div>
+
+<p>These axioms are  central to probability. The rest of probability theory can be derived from them.</p>
+
+
+
+
+<h2 class="pageName">1.2.2 &nbsp; A few properties of probability</h2>
+<p>The following can be proved using only set theory and the three axioms of probability.</p>
+
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Probability of an event not happening</p>
+		<p class="eqn">P(<strong>not</strong> A)   =   1 &minus; P(A)</p>
+	</div>
+	<div class="theorem">
+		<p class="theoremTitle">Probability that one of two events happens</p>
+		<p>For <strong>any</strong> two events, A and B</p>
+		<p class="eqn">P(A <strong>or</strong> B)   =   P(A)   +  P(B)  &minus;  P(A <strong>and</strong> B)</p>
+		<p class="theoremNote">(Both proved in full version)</p>
+	</div>
+</div>
+
+<p>Note that the second result applies to events that may <strong>not</strong> be mutually exclusive.</p>
+<p class="heading">Illustration with Venn diagrams</p>
+<p>Many results can  also be explained using Venn diagrams that represent the whole sample space by a rectangle and events by shapes drawn in it.</p>
+<p>Formulae involving addition and subtraction of probabilities correspond to the same formulae about areas in the Venn diagram. For example, the two results above correspond to:</p>
+<p class="eqn"><img class="svgImage" src="../../../en/probRules/images/complementVenn.png" width="478" height="97"></p>
+
+<p>and</p>
+<p class="eqn"><img class="svgImage" src="../../../en/probRules/images/unionVenn.png" width="593" height="87"></p>
+
+
+
+
+<h2 class="pageName">1.2.3 &nbsp; Examples</h2>
+<p>We have not included the solutions to the following examples in the summary pages.</p>
+
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Question</p>
+		<p>Consider a raffle of 100 tickets in which Anne Brown bought seven tickets. Tony Ng also bought four of these 100 tickets. What is the probability that either Anne or Tony win?</p>
+		<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+<p>The next example is based on a real data set.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Question</p>
+		<p>The following contingency table describes all 121,690 couples who were married in Australia in 2011.</p>
+		
+		<div class="centred">
+		<table class="centred" border="0" cellpadding="5" cellspacing="0">
+			<tr>
+				<th align="left" valign="bottom">Previous marital status of couple</th>
+				<th>Both partners <br>
+				born in Australia</th>
+				<th>Both partners <br>
+				born in same <br>
+				overseas country</th>
+				<th>Born partners in <br>
+				different countries</th>
+			</tr>
+			<tr>
+				<th>First marriage both partners</th>
+				<td align="right" style="background-color:#FFFFFF; padding-right:20px; border-top:1px solid #999999; border-left:1px solid #999999;">51,663</td>
+				<td align="right" style="background-color:#FFFFFF; padding-right:20px; border-top:1px solid #999999;">10,522</td>
+				<td align="right" style="background-color:#FFFFFF; padding-right:20px; border-top:1px solid #999999; border-right:1px solid #999999;">24,630</td>
+			</tr>
+			<tr>
+				<th>First marriage one partner</th>
+				<td align="right" style="background-color:#FFFFFF; padding-right:20px; border-left:1px solid #999999;">9,450</td>
+				<td align="right" style="background-color:#FFFFFF; padding-right:20px;">2,910</td>
+				<td align="right" style="background-color:#FFFFFF; padding-right:20px; border-right:1px solid #999999;">8,050</td>
+			</tr>
+			<tr>
+				<th>Remarriage both partners</th>
+				<td align="right" style="background-color:#FFFFFF; padding-right:20px; border-bottom:1px solid #999999; border-left:1px solid #999999;">6,769</td>
+				<td align="right" style="background-color:#FFFFFF; padding-right:20px; border-bottom:1px solid #999999;">1,889</td>
+				<td align="right" style="background-color:#FFFFFF; padding-right:20px; border-bottom:1px solid #999999; border-right:1px solid #999999;">5,807</td>
+			</tr>
+		</table>
+		</div>
+		
+		<p>In a randomly selected marriage from 2011, what is the probability that either it was the first marriage of both partners<strong> or</strong> that both partners were born in Australia?</p>
+		<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+
+
+<h1 class="sectionName breakBefore">1.3 &nbsp; Conditional probability</h1>
+<h2 class="pageName">1.3.1 &nbsp; Conditional probability</h2>
+<p>Sometimes we are interested in situations where we have partial knowledge about the outcome of an experiment. Information from this partial knowledge is expressed via conditional probability.</p>
+
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+<p>The <strong>conditional probability</strong> that an event \(A\) occurs, given that \(B\) is known to have occurred is</p>
+\[
+P(A \mid B) = \frac {P(A \textbf { and } B)} {P(B)}
+\]
+</div>
+<p>If the events \(A\) and \(B\) correspond to categories of two categorical variables and the  probabilities for the possible combinations of the variables' values are laid out in a table (i.e. their <strong>joint</strong> probabilities), the conditional probabilities correspond to scaling rows or columns of the table to sum to one.</p>
+<p class=eqn><img class="svgImage" src="../../../en/probCondit/images/s_conditCalc.png" width="415" height="314"></p>
+
+<p class="heading">Two sets of conditional probabilities</p>
+<p>Note that there is an equivalent formula for conditional probability of \(B\)<i> </i>given that \(A\)<i> </i>has occurred.</p>
+\[
+P(B \mid A) = \frac {P(A \textbf { and } B)} {P(A)}
+\]
+
+<p>You should be careful to distinguish between  \(P(A \mid B)\) and \(P(B \mid A)\). They have different interpretations and usually also have different values.</p>
+<div class="boxed">
+	<p>The probability of being pregnant, given that a randomly 
+				selected person is female would be fairly small. The probability of being female, 
+				given that a person is pregnant is 1.0&nbsp;!!</p>
+</div>
+
+
+
+<h2 class="pageName">1.3.2 &nbsp; Graphical display of probabilities</h2>
+<p>The definitions of the conditional probabilities \(P(A \mid B)\)<em> </em>and \(P(B \mid A)\)<em> </em>can be rewritten as </p>
+
+ \[
+P(A \textbf { and } B) \;=\; P(A \mid B) \times P(B) \;=\; P(B \mid A) \times P(A)
+\]
+
+<p>\(P(A)\) and \(P(B)\) are called <strong>marginal</strong> probabilities for <em>A</em> and <em>B</em>, whereas \(P(A \textbf { and } B)\) is called their <strong>joint</strong> probability.</p>
+<p class="heading">Proportional Venn diagram</p>
+<p>The marginal and conditional probabilities can be displayed graphically with a Venn diagram in which one margin is partitioned using the marginal probabilities for \(A\) and the slices are split using the conditional probabilities for \(B\) given \(A\).</p>
+
+<p class=eqn><img class="svgImage" src="../../../en/probCondit/images/s_propnVenn.png" width="324" height="352"></p>
+
+<p>Since each area is the product of a marginal probability and the corresponding conditional probability,</p>
+
+<div class="centred"><div class="boxed">
+<p>The area of any rectangle in the diagram equals the 
+joint probability of the row and column events.</p>
+</div></div>
+
+<p>Alternatively, the unit square can be split into horizontal strips using the marginal probabilities for \(B\), then vertically using the conditional probabilities for \(A\) given \(B\). The areas of the resulting rectangles are again equal to 
+	the joint probabilities, so the two diagrams are just rearrangements of the same 
+areas.</p>
+
+
+<h2 class="pageName">1.3.3 &nbsp; Partitions of the sample space</h2>
+<div class="definition">
+	<p class="definitionTitle">Definition</p>
+<p>A collection of events, \(A_1, A_2, \dots, A_k\), is called a <strong>partition</strong> of the sample space if the events are mutually exclusive and their union is the complete sample space,</p>
+\[
+A_1 \cup A_2 \cup ... \cup A_k = S
+\]
+</div>
+
+<p>\(A\) and \(\overline{A}\) are the simplest kind of partition of the sample space.</p>
+<p>From the axioms of probability, it can be proved that</p>
+\[
+P(A_1) + P(A_2) + ... + P(A_k) = 1
+\]
+<p class="heading">Proportional Venn diagrams</p>
+<p>If there are <strong>two</strong> partitions of the sample space, Proportional Venn diagrams can be used to show the marginal probabilities for one partition and the conditional probabilities for the other. </p>
+<p class=eqn><img src="../../../en/probCondit/images/s_worldPopn.png" width="533" height="412"></p>
+
+<p>The joint probability for any combination of row and column values is the <strong>area</strong> of the corresponding rectangle.</p>
+
+
+
+<h2 class="pageName">1.3.4 &nbsp; Tree diagrams</h2>
+<p>Two categorical variables (or partitions of the sample space) are sometimes represented in a  <strong>tree diagram</strong>. The  main branches of the tree correspond to the possible values for the first of these variables. At the end of each of these branches, further branches are drawn for each possible value of the second variable.</p>
+<p>The main branches are usually labelled with their <strong>marginal</strong> probabilities. The branches to the right are labelled with their <strong>conditional</strong> probabilities, conditional on the branches to the left leading to that fork.</p>
+<p class="heading">Evaluating joint probabilities</p>
+<p>Joint probabilities can  be found by multiplying the probabilities down branches. This corresponds to the general multiplication rule,</p>
+\[
+P(A \textbf { and } B) \;=\; P(A) \times P(B \mid A)
+\]
+<p class="eqn"><img class="svgImage" src="../../../en/probCondit/images/s_tree_marital3.png" width="452" height="320"></p>
+<p class="heading">Sampling without replacement</p>
+<div class="centred"><div class="boxed">
+	<p>Tree diagrams are more useful for problems in which there is a natural ordering of the two measurements.</p>
+</div></div>
+<p>An important example of this is when  two or more items are selected from a finite population without replacement  &mdash; in other words, when the same item cannot be selected more than once. The probabilities for the second item chosen depend on which item was chosen first.</p>
+<p>The tree diagram below relates to the sex of two students chosen from a class of 2 women and 4 men.</p>
+<p class="eqn"><img class="svgImage" src="../../../en/probCondit/images/s_tree_replacement.png" width="378" height="311"></p>
+
+
+
+<h2 class="pageName">1.3.5 &nbsp; More about tree diagrams</h2>
+<p>Tree diagrams can be used for <strong>any</strong> situation involving a sequence of events. Each possible sequence of events is represented by a path through the tree diagram. Branches are labelled with the  probability for the branching <strong>conditional on the branches to the left</strong>.</p>
+<p>For example, if a family want at least two children and no more than four, but will stop when they get a boy, the possible sequences of events are:</p>
+<p class="eqn"><img class="svgImage" src="../../../en/probCondit/images/s_tree_girls.png" width="413" height="265"></p>
+<p>The joint probability for any sequence of events is again found by multiplying the probabilities on all branches of the tree corresponding to this sequence. If the probability of each child being a boy is \(\frac 1 2\), then the probabilities for the possible sequences of boys and girls are as shown in the diagram.</p>
+
+
+<h2 class="pageName">1.3.6 &nbsp; Independence</h2>
+<p>Two events are called <strong>independent</strong> if knowledge that one event has happened does not provide any information about whether or not the other has also happened. The formal definition is:</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>Two events A and B are called <strong>independent</strong> if</p>
+\[
+P(A \textbf{ and } B) = P(A) \times P(B)
+\]
+</div>
+<p>The table below shows the joint probabilities in  an artificial examples about school children.</p>
+<div class="centred">
+	<table class="centred" border="0" cellpadding="5" cellspacing="0">
+		<caption>
+			<strong>Joint Probabilities</strong>
+		</caption>
+		<tr>
+			<th align="CENTER"></th>
+			<th align="CENTER" colspan="3"><span class="blue">Mathematical performance</span></th>
+			<th align="CENTER"></th>
+		</tr>
+		<tr>
+			<th align="CENTER"></th>
+			<th align="CENTER"><span class="blue">    Poor    </span></th>
+			<th align="CENTER"><span class="blue">Satisfactory</span></th>
+			<th align="CENTER"><span class="blue">Above average</span></th>
+			<th align="CENTER"><span class="red">Marginal</span></th>
+		</tr>
+		<tr>
+			<th align="CENTER"><span class="blue">Underweight</span></th>
+			<td align="CENTER" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">0.0225</td>
+			<td align="CENTER" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">0.1125</td>
+			<td align="CENTER" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">0.0150</td>
+			<td align="CENTER"><span class="red">0.1500</span></td>
+		</tr>
+		<tr>
+			<th align="CENTER"><span class="blue">Normal</span></th>
+			<td align="CENTER" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">0.0825</td>
+			<td align="CENTER" bgcolor="#FFFFFF">0.4125</td>
+			<td align="CENTER" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">0.0550</td>
+			<td align="CENTER"><span class="red">0.5500</span></td>
+		</tr>
+		<tr>
+			<th align="CENTER"><span class="blue">Overweight</span></th>
+			<td align="CENTER" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">0.0300</td>
+			<td align="CENTER" bgcolor="#FFFFFF">0.1500</td>
+			<td align="CENTER" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">0.0200</td>
+			<td align="CENTER"><span class="red">0.2000</span></td>
+		</tr>
+		<tr>
+			<th align="CENTER"><span class="blue">Obese</span></th>
+			<td align="CENTER" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">0.0150</td>
+			<td align="CENTER" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">0.0750</td>
+			<td align="CENTER" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">0.0100</td>
+			<td align="CENTER"><span class="red">0.1000</span></td>
+		</tr>
+		<tr>
+			<th align="CENTER"><span class="red">Marginal</span></th>
+			<td align="CENTER"><span class="red">0.1500</span></td>
+			<td align="CENTER"><span class="red">0.7500</span></td>
+			<td align="CENTER"><span class="red">0.1000</span></td>
+			<td align="CENTER"><span class="red">1.0000</span></td>
+		</tr>
+	</table>
+</div>
+<p>The <em>mathematical performance</em> categories are independent of the <em>weight</em> categories since </p>
+\[
+			P(Underweight \textbf{ and } Above \text{ } average) = P(Underweight) \times P(Above \text{ } average)
+			\]
+<p>and similarly for the other performance and weight categories. All this can be summarised by saying</p>
+<div class="boxed">
+	<p>Weight and mathematical performance are independent</p>
+</div>
+<p class="heading">Independence and conditional probabilities</p>
+<p>Since \(P(A \textbf{ and } B) = P(A \mid B) \times P(B) \) from the definition of conditional probability, if two events are independent,</p>
+\[
+P(A \mid B) = P(A)
+\]
+<p>and similarly</p>
+\[
+P(B \mid A) = P(B)
+\]
+<div class="boxed">
+	<p>Independence means that knowledge that one event has happened  provides no information about whether  the other has also happened.</p>
+</div>
+<p>This can be seen in the following conditional probabilities  for  performance, 
+given weight,</p>
+<div class="centred">
+	<table class="centred" border="0" cellpadding="5" cellspacing="0">
+		<caption>
+			<strong>Conditional Probabilities</strong>
+		</caption>
+		<tr>
+			<th align="CENTER"></th>
+			<th align="CENTER" colspan="3"><span class="blue">Mathematical performance</span></th>
+			<th align="CENTER"></th>
+		</tr>
+		<tr>
+			<th align="CENTER"></th>
+			<th align="CENTER"><span class="blue">    Poor    </span></th>
+			<th align="CENTER"><span class="blue">Satisfactory</span></th>
+			<th align="CENTER"><span class="blue">Above average</span></th>
+			<th align="CENTER"><span class="red">Total</span></th>
+		</tr>
+		<tr>
+			<th align="CENTER"><span class="blue">Underweight</span></th>
+			<td align="CENTER" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">0.15</td>
+			<td align="CENTER" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">0.75</td>
+			<td align="CENTER" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">0.10</td>
+			<td align="CENTER"><span class="red">1.0</span></td>
+		</tr>
+		<tr>
+			<th align="CENTER"><span class="blue">Normal</span></th>
+			<td align="CENTER" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">0.15</td>
+			<td align="CENTER" bgcolor="#FFFFFF">0.75</td>
+			<td align="CENTER" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">0.10</td>
+			<td align="CENTER"><span class="red">1.0</span></td>
+		</tr>
+		<tr>
+			<th align="CENTER"><span class="blue">Overweight</span></th>
+			<td align="CENTER" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">0.15</td>
+			<td align="CENTER" bgcolor="#FFFFFF">0.75</td>
+			<td align="CENTER" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">0.10</td>
+			<td align="CENTER"><span class="red">1.0</span></td>
+		</tr>
+		<tr>
+			<th align="CENTER"><span class="blue">Obese</span></th>
+			<td align="CENTER" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">0.15</td>
+			<td align="CENTER" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">0.75</td>
+			<td align="CENTER" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">0.10</td>
+			<td align="CENTER"><span class="red">1.0</span></td>
+		</tr>
+	</table>
+</div>
+<p>Independence is also evident in the conditional Venn diagram on the left below, but not for the variables on the right.</p>
+<p class=eqn><img class="svgImage" src="../../../en/probCondit/images/s_indepVenn.png" width="600" height="249"></p>
+
+
+<h2 class="pageName">1.3.7 &nbsp; Law of total probability</h2>
+<p>Sometimes we only know the conditional probabilities of an event \(A\), given that each of another collection of events \(\{B_1, ..., B_k\} \) have occurred. If we also know the probabilities of the B-events, it is possible to calculate the <strong>unconditional</strong> (i.e. marginal) probability for \(A\).</p>
+
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Law of total probability</p>
+		<p>If \(\{B_1, ..., B_k\} \) are a partition of the sample space,</p>
+		\[
+		P(A)   =   \sum_{i=1}^{k} {P(A \mid B_i) \times P(B_i)}
+		\]
+		<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+
+<p>The following example illustrates this.</p>
+
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Question</p>
+		<p>The following table was derived from reports about contraceptive use in the USA among women aged 15 to 44 who were sexually active but not intending to get pregnant. It also shows the percentages of these women who had unintended pregnancies in their first year  using each method.</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred">
+	<tr>
+		<th>Main method</th>
+		<th>% of women</th>
+		<th>% unintended pregnant</th>
+	</tr>
+	<tr>
+		<td>No method</td>
+		<td align="right" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">37.8%</td>
+		<td align="right" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">85%</td>
+	</tr>
+	<tr>
+		<td>Pill</td>
+		<td align="right" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">17.1%</td>
+		<td align="right" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">9%</td>
+	</tr>
+	<tr>
+		<td>Female sterilization</td>
+		<td align="right" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">16.5%</td>
+		<td align="right" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">0.5%</td>
+	</tr>
+	<tr>
+		<td>Male sterilization</td>
+		<td align="right" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">6.2%</td>
+		<td align="right" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">0.15%</td>
+	</tr>
+	<tr>
+		<td>Male condom</td>
+		<td align="right" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">10.2%</td>
+		<td align="right" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">18%</td>
+	</tr>
+	<tr>
+		<td>IUD</td>
+		<td align="right" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">3.5%</td>
+		<td align="right" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">0.5%</td>
+	</tr>
+	<tr>
+		<td>Withdrawal</td>
+		<td align="right" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">3.2%</td>
+		<td align="right" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">22%</td>
+	</tr>
+	<tr>
+		<td>Injectable</td>
+		<td align="right" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">2.4%</td>
+		<td align="right" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">0.3%</td>
+	</tr>
+	<tr>
+		<td>Vaginal ring</td>
+		<td align="right" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">1.3%</td>
+		<td align="right" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">9%</td>
+	</tr>
+	<tr>
+		<td>Fertility awareness methods</td>
+		<td align="right" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">0.7%</td>
+		<td align="right" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">24%</td>
+	</tr>
+	<tr>
+		<td>Patch</td>
+		<td align="right" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">0.5%</td>
+		<td align="right" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">9%</td>
+	</tr>
+	<tr>
+		<td>Implant</td>
+		<td align="right" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">0.3%</td>
+		<td align="right" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">0.05%</td>
+	</tr>
+	<tr>
+		<td>Other methods</td>
+		<td align="right" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">0.3%</td>
+		<td align="right" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">10%</td>
+	</tr>
+</table>
+</div>
+
+		<p>What is the probability that a random American woman  in this age group who is sexually active but not intending to get pregnant will actually get pregnant?</p>
+		<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+	
+
+
+<h2 class="pageName">1.3.8 &nbsp; Bayes theorem</h2>
+<p>Consider two partitions of the sample space, \(\{A_i, i=1,\dots, k\}\) and \(\{B, \overline{B}\}\). The probabilities for all possible events can be described in three different ways:</p>
+<dl>
+	<dt>The joint probabilities</dt>
+	<dd>\(P(A_i \textbf{ and } B)\) and \(P(A_i \textbf{ and } \overline{B})\) for all <em>i</em></dd>
+	<dt>The marginal probabilities for \(A\) 
+		and the conditional probabilities for \(B\)</dt>
+	<dd>\(P(A_i)\),  \(P(B \mid A_i)\)  and \(P(\overline{B} \mid A_i)\)  for all <em>i</em></dd>
+	<dt>The marginal probabilities for \(B\) 
+		and the conditional probabilities for \(A\)</dt>
+	<dd>\(P(B)\), \(P(\overline{B})\), 
+		\(P(A_i \mid B)\) and   \(P(A_i \mid \overline{B})\) for all <em>i</em></dd>
+</dl>
+<p>We have already shown how to find marginal and conditional probabilities from the joint probabilities, and how to find joint probabilities from marginal and conditional ones. The following theorem gives a formula that helps find one set of conditional probabilities from the other.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Bayes Theorem</p>
+		<p>If \(\{A_1, ..., A_k\} \) is a partition of the sample space,</p>
+\[
+	P(A_j \mid B)   =  \frac {P(A_j) \times P(B \mid A_j) } {\sum_{i=1}^{k} {P(A_i) \times P(B \mid A_i) } }
+\]
+	<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+<p>In actual examples, it is usually easiest to work out the probability from first principles:</p>
+\[
+	P(A_j \mid B)   =  \frac {P(B \textbf{ and } A_j) } {P(B) }
+\]
+<p>The numerator can be found from the definition of conditional probability</p>
+\[
+	P(A_j \mid B)   =  \frac {P(B \textbf{ and } A_j) } {P(B) }
+\]
+<p>and the denominator can be evaluated using the law of total probability.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Example</p>
+		<p>Medical diagnostic tests for a disease are rarely 100% accurate. There are 
+			two types of error: </p>
+		<ul>
+			<li>A positive test result for someone who does not have the disease.</li>
+			<li>A negative test result for someone who has the disease.</li>
+		</ul>
+		<p>Consider
+			a diagnostic test with conditional probabilities</p>
+		\[
+		P(negative \mid disease) = 0.05 \quad\quad\quad 
+		P(positive \mid no \text{ } disease) = 0.10
+		\]
+		
+		<p>If 10% of people who are given the test have the disease,</p>
+		\[
+		P(disease) = 0.10
+		\]
+		<p>what is the probability that someone with a positive test result actually has the disease?</p>
+		<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+</body>
+</html>

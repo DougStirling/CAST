@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Prévision avec des données saisonnière</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="forecasting">
+	<meta name="dataset" content="Tourist arrivals in Fiji">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">La prévision des composants individuels</p>
+<p>Nous avons vu comment diviser une série temporelle saisonnière en quatre composantes,</p>
+<p class=eqn style="color:#009; font-weight:bold"><span class="eqn" style="color:#009; font-weight:bold">Données</span>&nbsp; = &nbsp; <span class="eqn" style="color:#009; font-weight:bold">Effet saisonnier &nbsp; + &nbsp; </span>Tendance &nbsp; + &nbsp; Cyclique &nbsp; + &nbsp; Résiduelles</p>
+	<p>Le principal avantage de identifiant séparément les quatre composantes est que chacune des trois premières composantes peuvent être prévus dans le futur.</p>
+ <p class=eqn style="color:#009; font-weight:bold"><span class="eqn" style="color:#009; font-weight:bold">Prévisions</span>&nbsp; = &nbsp; <span class="eqn" style="color:#009; font-weight:bold">Effet saisonnier &nbsp; + &nbsp; </span>Prévision tendance&nbsp; + &nbsp; <span class="eqn" style="color:#009; font-weight:bold">Prévision cyclique</span></p>
+<p>The three components of the forecast are:</p>
+ <dl> 
+		<dt>Effet saisonnier</dt>
+		<dd>Nous prévoyons que les mêmes effets saisonniers tiendra dans le futur.</dd>
+		<dt>Tendance</dt>
+		<dd>Si la tendance est modélisée par un modèle linéaire ou quadratique, en tout temps à venir peuvent être insérés dans le modèle pour obtenir une prévision de la tendance.</dd>
+		<dt>Cyclique</dt>
+		<dd>Si un modèle autorégressif est utilisé pour modéliser la composante cyclique, nous pouvons prévoir la période de la composante cyclique du temps l'un dans l'avenir, en appliquant le modèle à la finale désaisonnalisée, la valeur détendancées. Le modèle est ensuite appliqué successivement à la prévision de l'étendre dans le futur. Les prévisions conjoncturelles généralement la queue disparaître rapidement à zéro.</dd>
+	</dl>
+	<p>En prévision séparément ces trois composantes, on peut obtenir plus de précision.</p>
+	
+<div class="diagram"> 
+
+<p class="heading">Les arrivées de touristes dans les îles Fidji</p>
+<p>Le diagramme ci-dessous montre à nouveau les quatre composantes des données arrivées de touristes en provenance de Fidji.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="600">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.ComponentsApplet">
+<param name="varName" value="Arrivées de touristes">
+<param name="values" value="22261 17917 22215 16967 17211 20031 25584 24769 24068 23638 23265 21424 19604 18000 21608 18990 19884 23389 28714 29119 26066 25825 24665 22670 20136 17827 22206 21128 21428 24302 29622 28495 26856 26319 24125 25018 21647 20269 26336 21863 24162 27862 31803 31933 29750 28225 27622 27402 23543 19122 23641 24581 24175 28149 32774 33955 28096 26614 25809 28036 23733 22147 24834 23930 22150 29497 33459 35819 32040 30862 29663 31426 28456 26078 29901 25307 26008 32236 35207 33954 30498 31307 30208 30281 26687 22556 28319 30570 29289 34602 36471 37821 32479 32198 29626 30724 28950 25263 31589 29082 34203 38445 41031 40680 36806 36800 35180 31926 ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ?">
+<param name="vertAxis" value="15000 45000 15000 5000">
+<param name="seasonName" value="12 Jan Fév Mar Avr Mai Juin Juil Aoû Sep Oct Nov Déc">
+<param name="seasonInfo" value="0 0 1991">
+<param name="timeAxisName" value="Mois">
+<param name="timeSequence" value="0 1 132">
+<param name="decimals" value="0">
+<param name="showResidComponent" value="false">
+<param name="customText" value="Components=Composantes#Seasonal=Saisonnier#Trend=Tendance#Cyclical=Cyclique#Residual=Résiduelle#Sum of selected components=Somme des composants sélectionnés#Data minus sum of selected components=Données moins la somme des composants sélectionnés#Sum of components=Somme des composantes#Prediction=Prévision">
+</applet> 
+</div>
+
+<p>Cochez la case <strong>Saisonnière</strong>. La composante saisonnière est retiré de la série haut et ajouté au bas, et il est prévu pour deux ans dans le futur.</p>
+<p>Dé-sélectionnez  <strong>Saisonnière</strong> et sélectionnez <strong>Tendance</strong>. La tendance quadratique est prévu dans le futur dans la moitié inférieure du diagramme.</p>
+<p>Enfin, sélectionnez <strong>Cyclique</strong> sur ses propres. La composante cyclique est maintenant prévu dans la moitié inférieure du diagramme.</p>
+<p>Enfin, sélectionnez l'ensemble <strong>Saisonnière</strong>, <strong>Tendance</strong> et <strong>Cyclique</strong>. Les prévisions résultant dans le bas du schéma sont proches optimale.</p>
+ <div class="boxed">
+   <p align="left">Il y avait un coupé politiques d'État à Fidji en 2000. En conséquence, le nombre de touristes a chuté et les prévisions ci-dessus surestiment largement les arrivées de touristes en 2000.</p>
+   <p align="left"><strong>Les prévisions peuvent jamais espérer de tenir compte de tels événements imprévisibles.</strong></p>
+ </div>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

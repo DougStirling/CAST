@@ -1,0 +1,81 @@
+<html>
+<head>
+<title>9. Multiple Regression</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../structure/tocPrintStyles.css" type="text/css">
+<script type='text/javascript'>
+	function toggleDescriptions() {
+		var showNotHide = document.getElementById('descriptionCheck').checked;
+		var descriptions = document.getElementsByTagName('p');
+		for (var i=0 ; i<descriptions.length ; i++)
+			descriptions[i].style.display = showNotHide ? 'block' : 'none';
+	}
+</script>
+</head>
+
+<body>
+<div style='position:absolute; top:3em; right:5; color:#FF0000; border:solid 1px #FF0000; background-color:#FFFFCC; padding:4px; margin:0px; line-height:0.8em'>
+<input type='checkbox' id='descriptionCheck' checked onChange='toggleDescriptions()'/>Long page<br>descriptions
+</div>
+<h1>Chapter 9 &nbsp; Multiple Regression</h1>
+<h2>9.1 &nbsp; The general linear model</h2>
+<h3>9.1.1 &nbsp; General linear model</h3>
+<p>The linear models with one and two explanatory variables can be generalised to include p explanatory variables. The parameters can be estimated by least squares. </p>
+<h3>9.1.2 &nbsp; Describing the simple linear model with matrices</h3>
+<p>A normal linear model with a single explanatory variable can be expressed in a matrix equation.</p>
+<h3>9.1.3 &nbsp; General linear model with matrices</h3>
+<p>When the linear model is generalised to allow any number of explanatory variables, a similar matrix equation describes the model.</p>
+<h3>9.1.4 &nbsp; Least squares with matrices</h3>
+<p>A simple matrix equation provides the least squares estimates of all parameters of the general linear model.</p>
+<h3>9.1.5 &nbsp; Interpreting coefficients</h3>
+<p>The slope coefficient associated with an explanatory variable describes its effect if all other variables are held constant. It may have a different sign from the correlation coefficient between the variable and the response.</p>
+<h3>9.1.6 &nbsp; Standard errors</h3>
+<p>The error standard deviation can be estimated from the residual sum of squares. A simple matrix equation uses this estimate to find the standard errors of the least squares estimates.</p>
+<h3>9.1.7 &nbsp; Inference for general linear models</h3>
+<p>95% confidence intervals can be found from the parameter estimates and their standard errors. The significance of the individual parameters can also be tested, but each such test assumes that all other variables are retained in the model.</p>
+<h2>9.2 &nbsp; Nonlinear relationships</h2>
+<h3>9.2.1 &nbsp; Linear models for curvature</h3>
+<p>A general linear model is linear in its parameters, but not necessarily in the explanatory variables. Models with transformed variables and with quadratic terms are all general linear models.</p>
+<h3>9.2.2 &nbsp; Linearity of quadratic models</h3>
+<p>A model with a linear term and a quadratic term in x is still linear in the parameters and is a general linear model.</p>
+<h3>9.2.3 &nbsp; Polynomial models</h3>
+<p>Polynomial models have terms involving various powers of x and are flexible ways to model curvature. As the order of the polynomial increases, the curve can become less smooth. Polynomials are usually poor for extrapolation.</p>
+<h3>9.2.4 &nbsp; Residual plots to detect nonlinearity</h3>
+<p>For detecting curvature when there is more than one explanatory variable, it is better to plot residuals rather than the raw data.</p>
+<h3>9.2.5 &nbsp; Partial residual plots</h3>
+<p>If a plot of residuals against X shows curvature, a partial residual plot can give an indication of which nonlinear function of X to use in the model.</p>
+<h3>9.2.6 &nbsp; Model with quadratic in X, linear in Z</h3>
+<p>If the response in related linearly to Z but nonlinearly to X, a quadratic term in X can be added to the model to explain the curvature. The resulting model corresponds to a curved surface in a 3-dimensional scatterplot.</p>
+<h3>9.2.7 &nbsp; Model with quadratic terms in X and Z</h3>
+<p>Quadratic terms in both X and Z can be added, resulting in a surface that is curved in both X and Z directions.</p>
+<h3>9.2.8 &nbsp; Visualising least squares</h3>
+<p>The residuals from a quadratic model can be represented as vertical lines from data points to the quadratic surface. If squares are drawn for each residual, least squares means minimising the total area of these squares.</p>
+<h3>9.2.9 &nbsp; Tests for curvature in X and Z</h3>
+<p>Curvature can be assessed with t-test about whether the two quadratic parameters are non-zero.</p>
+<h2>9.3 &nbsp; Interaction</h2>
+<h3>9.3.1 &nbsp; Additivity of effects of X and Z</h3>
+<p>In the models in previous sections, the effect of X on Y was the same for all values of Z and similarly the effect of Z on Y was the same, whatever the value of X.</p>
+<h3>9.3.2 &nbsp; Interaction between X and Z</h3>
+<p>Interaction between X and Z occurs when the effect on Y of increasing X is different for different values of Z. Adding a term in XZ to the model may explain the interaction.</p>
+<h3>9.3.3 &nbsp; Inference for models with interaction</h3>
+<p>A t-test for whether the coefficient of XZ is zero provides a simple test for interaction.</p>
+<h3>9.3.4 &nbsp; Tranformations and interaction</h3>
+<p>The existence and amount of interaction is affected by nonlinear transformations of the response. Sometimes analysing the log response can remove interaction, making the results easier to interpret.</p>
+<h3>9.3.5 &nbsp; Example (nonlinearity and interaction)</h3>
+<p>In this page, a data set that has both curvature and interaction is analysed.</p>
+<h2>9.4 &nbsp; Diagnostics for models with 2 explanatory variables</h2>
+<h3>9.4.1 &nbsp; Problem points</h3>
+<p>Problems with the multiple regression model may relate to all data points, but sometimes only one or two data points cause problems.</p>
+<h3>9.4.2 &nbsp; Leverage</h3>
+<p>Data points have high leverage if their values for the explanatory variables are 'unusual'.</p>
+<h3>9.4.3 &nbsp; Problems with high leverage</h3>
+<p>Because high leverage points pull the least squares plane strongly, their residuals are rarely large, even if they are outliers.</p>
+<h3>9.4.4 &nbsp; Standardised residuals</h3>
+<p>Standardising the residuals adjusts for the lower residual standard deviation of high leverage points.</p>
+<h3>9.4.5 &nbsp; Externally studentised residuals</h3>
+<p>Ordinary standardised residuals often fail to highlight outliers that are high leverage points. Standardising with a deleted estimate of the error variance is best for detecting outliers.</p>
+<h3>9.4.6 &nbsp; Influence</h3>
+<p>Leverage depends only on the explanatory variables and describes the potential of a point to influence the results. DFITS and Cook's D describe the actual influence of each point.</p>
+<h3>9.4.7 &nbsp; Examples</h3>
+<p>The externally studentised residuals, leverages and DFITS provide a good guide to problems with individual points. Several examples are given.</p>
+</html>

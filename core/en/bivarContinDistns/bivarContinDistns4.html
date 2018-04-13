@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Conditional distributions</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="joint probability density function, bivariate distribution, continuous distribution, conditional distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p>The conditional distribution of one variable, given that the  other is known to be a particular value, can be defined in a similar way to our <a href="javascript:showNamedPage('bivarDiscreteDistns3')">earlier definition for bivariate discrete distributions</a>. The  interpretation is similar to that of conditional probability functions for discrete random variables.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>The <strong>conditional distribution</strong> of \(Y\) given \(X=x\) is the distribution with probability density function</p>
+	\[
+	f_{Y \mid X=x}(y) \;\;=\;\; \frac{f(x,y)}{f_X(x)}
+	\] </div>
+<p>The shape of this conditional distribution is that of a slice through the joint pdf at \(X=x\), but it is scaled to have unit area by dividing by the area of the slice.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Example</p>
+		<p>The random variables \(X\) and \(Y\) have joint probability density function</p>
+		\[
+		f(x,y) \;=\; \begin{cases} x+y &amp; \quad\text{if }0 \lt x \lt 1 \text{ and }0 \lt y \lt 1 \\
+		0 &amp; \quad\text{otherwise} \end{cases}
+		\]
+		<p>What is the conditional pdf of \(Y\), given that \(X = x\)?</p>
+		<p>What is the probability that \(Y\) is more than 0.5, given that \(X\) is 0.7?</p>
+	</div>
+	<div class="solution">
+		<p>The following diagram again shows the joint pdf.</p>
+		<p class="eqn"><img class="svgImage" src="images/marginalPdf.png" width="300" height="277"></p>
+		<p>The  red area is the marginal pdf of \(X\),</p>
+		\[
+		f_X(x) \;=\; x + \frac 1 2 \qquad \text{for } 0 \lt x \lt 1
+		\]
+		<p>The conditional pdf of \(Y\), given that \(X=x\) is the joint pdf, divided by this,</p>
+\[
+f_{Y \mid X=x}(y) \;=\; \frac {x+y}{x + \frac 1 2} \qquad \text{for } 0 \lt y \lt 1
+		\]
+		<p>where \(x\) is treated as a known constant.</p>
+		<p>Given that \(X = 0.7\), the conditional pdf of \(Y\) is</p>
+\[
+f_{Y \mid X=0.7}(y) \;=\; \frac {0.7+y}{1.2} \qquad \text{for } 0 \lt y \lt 1
+\]
+		<p>From this, we can evaluate</p>
+\[ \begin{align}
+P(Y \gt 0.5 \mid X=0.7) \;&amp;=\; \int_{0.5}^1 \frac {0.7+y}{1.2} \;dy \\
+&amp;=\; \frac{1}{1.2} \left[0.7y + \frac{y^2}{2}\right]_{0.5}^1 \\
+&amp;=\; \frac{1}{1.2} \left(0.7 + \frac 1 2 - 0.7\times 0.5 - \frac{0.25}{2}\right) \\
+&amp;=\; 0.604
+\end{align} \]
+</div>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

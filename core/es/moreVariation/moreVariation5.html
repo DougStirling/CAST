@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Root mean squared error</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="error, bias, root mean square error">
+	<meta name="dataset" content="Weights of bags of potatoes">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Distancia de una blanco</p> 
+  <p>Los bolsos de patatas en un supermercado se etiquetan con el peso 3kg. ¿Cómo cerca están los pesos reales a esta blanco?</p> 
+  <dl> 
+    <dt><strong>Solo valor</strong></dt> 
+    
+<dd>La distancia de un solo valor, <font color="#000000"><em>x</em></font>, de una blanco, <font color="#000000"><em>k</em></font>, se llama su <strong>error</strong>,</dd> 
+  </dl>
+  <p class=eqn style="color:#000000"><strong>error &nbsp; = &nbsp; </strong><font size="+1">(<em>x</em> − <em>k</em>)</font></p>
+<center>
+		<table border="0" cellpadding="12" cellspacing="0">
+			<tr>
+				<td bgcolor="#DDDDDD"><object data="images/errorOne.svg" width="308" height="127"></object></td>
+</tr></table></center>
+	
+<p>¿Sin embargo si medimos bolsos de <font color="#000000"><em>n de</em></font> patatas, cómo combinamos los errores para dar una <strong>sola</strong> medida de exactitud?</p> 
+  
+<dl> 
+<dt><strong>Error malo (diagonal)</strong></dt> 
+<dd>El promedio de los errores individuales es igual a la diferencia entre el medio de muestra y la <font color="#000000"><em>k</em></font>,  </dd> 
+</dl>
+  <p class=eqn><img class="gif" src="../../en/moreVariation/images/meanError.gif" width="154" height="40"> </p>
+  <dl>
+    <dd>Esta cantidad se llama el <strong>diagonal</strong> y claramente nos dice algo sobre la exactitud de los pesos de los bolsos de patatas.</dd> 
+  </dl>
+	<center>
+		<table border="0" cellpadding="12" cellspacing="0">
+			<tr>
+				<td bgcolor="#DDDDDD"><object data="images/bias.svg" width="308" height="127"></object></td>
+</tr></table></center>
+  
+<dl>
+<dd>Sin embargo incluso si el diagonal es cero, los valores individuales pueden ser muy diferentes de la blanco, <font color="#000000"><em>K.</em></font></dd>
+</dl>
+	<center>
+		<table border="0" cellpadding="12" cellspacing="0">
+			<tr>
+				<td bgcolor="#DDDDDD"><object data="images/zeroBias.svg" width="308" height="127"></object></td>
+</tr></table></center>
+  
+<dl> 
+<dt><strong>Error medio cuadrático</strong></dt> 
+<dd>Una solución al problema de errores negativos es ajustarlos antes de hacer un promedio,
+<div class="centred">
+<table border="0" cellspacing="0" cellpadding="10" class="centred">
+<tr>
+<th style="margin:0px; padding:0px"><span class="black bold"><strong>error medio
+cuadrático</strong>&nbsp;&nbsp;=</span>&nbsp;&nbsp;&nbsp;</th>
+<td style="margin:0px; padding:0px"><img class="gif" src="images/meanSqrError.gif" width="77" height="44"></td>
+</tr>
+</table>
+</div>
+</dd> 
+</dl> 
+<dl> 
+    <dt><strong>Error medio cuadrático de la raíz</strong></dt> 
+    
+<dd>El mayor problema con el error medio cuadrático es que sus unidades son el cuadrado de los de las informaciones en bruto. Por ejemplo, los pesos de los bolsos de patatas (y por lo tanto de los errores) se miden en el kilogramo así que los errores ajustados son “kilogramos ajustados” y el error medio cuadrático es kilogramo también “ajustado”. ¿Cómo usted interpreta un valor con estas unidades? La solución es tomar la raíz cuadrada para volver el valor a las unidades originales.
+<div class="centred">
+<table border="0" cellspacing="0" cellpadding="10" class="centred">
+<tr>
+<th style="margin:0px; padding:0px"><span class="black bold"><strong>error medio
+cuadrático de la raíz</strong>&nbsp;&nbsp;=</span>&nbsp;&nbsp;&nbsp;</th>
+<td style="margin:0px; padding:0px"><img class="gif" src="images/rootMeanSqrError.gif" width="90" height="50"></td>
+</tr>
+</table>
+</div>
+</dd> 
+  </dl> 
+<table width="75%" border="1" class="centred" cellpadding="10" cellspacing="0"> 
+<tr> 
+      
+<td align="center" bgcolor="#FFFFFF"><strong>El error medio cuadrático de la raíz es un error “típico”.strong></td> 
+    </tr> 
+  </table> 
+	<br> 
+  <div class="diagram"> 
+    <p class="heading">Pesos de los bolsos 3kg de patatas</p> 
+    
+<p>El diagrama abajo demuestra los pesos de siete bolsos de las patatas etiquetadas “3 kilogramos”.</p> 
+ 
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="400"> 
+<script type="text/javascript">writeAppletParams();</script> 
+<param name="appletName" value="statisticProg.DragCrossRmseApplet"> 
+<param name="varName" value="peso de bolsas"> 
+<param name="values" value="2.7 2.9 2.95 3.05 3.15 3.2 3.25"> 
+<param name="target" value="3.0"> 
+<param name="targetName" value="Objectivo, k = 3 kg"> 
+<param name="horizAxis" value="2.4 3.3 2.4 0.2"> 
+<param name="maxSummary" value="99.999"> 
+<param name="customText" value="Root mean square error=Raíz del error cuadrático"> 
+</applet> 
+</div> 
+ 
+    
+<p>Un cuadrado se dibuja para cada valor de datos cuyos lados tengan longitud igual al error para ese bolso de patatas.</p> 
+<table width="75%" border="1" class="centred" cellpadding="10" cellspacing="0"> 
+<tr> 
+<td align="center" bgcolor="#FFFFFF"><strong><font color="#FF0000">El área de</font> cada cuadrado es el error ajustado para el valor.</strong></td> 
+</tr> 
+</table> 
+<p>El error medio cuadrático de la raíz es la longitud lateral del cuadrado cuya área es el <strong>promedio de las</strong> áreas de los cuadrados. Se demuestra en rojo en el diagrama.</p> 
+    
+<p><strong>Arrastre las cruces</strong> para ver cómo los valores afectan al error medio cuadrático de la raíz.</p> 
+<hr width="75%"> 
+<p>Usted puede notar que un afloramiento corresponde a un cuadrado con mismo una área extensa, así que tiene un efecto desproporcionado sobre el error medio cuadrático de la raíz.</p> 
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

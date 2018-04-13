@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Mean, variance and shape</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="t distribution, mean, variance, normal approximation">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>The t distribution's mean and variance are stated (without proof) below.</p>
+
+<div class="theoremProof">
+<div class="theorem">
+<p class="theoremTitle">Mean and variance</p>
+<p>If \(T \sim \TDistn(k \text{ df})\), then</p>
+\[
+E[T] \;=\; \begin{cases} 0 &amp; \quad\text{if } k > 1 \\[0.2em]
+\text{undefined} &amp; \quad\text{otherwise}
+\end{cases}
+\]
+<p>and</p>
+\[
+\Var(T) \;=\; \begin{cases} \dfrac {k}{k-2} &amp; \quad\text{if } k > 2 \\[0.5em]
+\infty &amp; \quad\text{otherwise}
+\end{cases}
+\]
+</div>
+</div>
+
+<p class="heading">Shape of the distribution</p>
+<p>Since \(f(x)\) is a function of \(x^2\) for a t distribution, it symmetric around zero. It was defined as</p>
+\[
+	T \;\;=\;\; \frac{Z}{\sqrt{\diagfrac{Y}{k}}} \;\;=\;\; Z \times \frac{1}{\sqrt{\diagfrac{Y}{k}}}
+\]
+<p>where \(Z \sim \NormalDistn(0,1)\) and the second term is independent of it. The t distribution is therefore more variable than the  \(\NormalDistn(0,1)\) distribution.</p>
+<p>However  \(Y\) has a \(\ChiSqrDistn(k \text{ df})\) distribution with \(E[Y] = k\) and  \(\Var(Y) = 2k\), so</p>
+\[
+E\left[\diagfrac Y k\right] = 1 \spaced{and} \Var\left(\diagfrac Y k\right) = \diagfrac 2 k
+\]
+<p>Therefore as \(k \to \infty\), \(\Var\left(\diagfrac Y k\right) \to 0\) and \(\displaystyle \frac{1}{\sqrt{\diagfrac{Y}{k}}} \to 1\).</p>
+<div class="boxed"><p>As \(k \to \infty\), the t distribution therefore approaches the shape of a standard normal distribution.</p></div>
+
+<p>When its degrees of freedom are small, the t distribution's tails are much longer than those of a normal distribution.</p>
+<p class="eqn"><img src="images/s_t1df.png" width="458" height="280"  alt=""/></p>
+<p>When its degrees of freedom get larger, the distribution's shape approaches a normal distribution, but its tail probabilities are still noticably different until the degrees of freedom reach about 30.</p>
+<p class="eqn"><img src="images/s_t10df.png" width="458" height="280"  alt=""/></p>
+<p>By the time the degrees of freedom reach 50, the t distribution can be closely approximated by a standard normal distribution.</p>
+<p class="eqn"><img src="images/s_t50df.png" width="458" height="280"  alt=""/></p>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

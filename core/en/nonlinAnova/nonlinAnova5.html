@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Testing curvature in complex models</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="curvature, f test, analysis of variance">
+	<meta name="dataset" content="Leafing out time">
+	<meta name="dataset" content="Bee energy expenditure">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Testing for curvature in the presence of other explanatory 
+    variables</p>
+  <p>A similar method can be used to test for curvature in X when there are other 
+    variables in the model.</p>
+  <p>We start by examining whether there is curvature in one variable, <em>X</em>, 
+    when two explanatory variables, <em>X</em> and <em>Z</em>, may affect the 
+    response. We consider the sequence of models</p>
+	<p class=eqn><img src="images/meanOnlyModel.gif" width="98" height="17"></p>
+	<p class=eqn><img src="images/xzModel.gif" width="214" height="17"></p>
+	<p class=eqn><img src="images/xzQuadModel.gif" width="276" height="22"></p>
+	<p>Each additional term allows the residual sum of squares to be decreased. 
+		The following equation splits the difference between the values and their 
+		overall mean into components corresponding to the changes caused by increasing 
+		the complexity of the models.</p>
+	<p class=eqn><img src="images/componentEqn.gif" width="399" height="41"></p>
+	<p>In this equation, the superscripts 'L' and 'Qx' denote fitted values from 
+		the model with only linear terms in <em>X</em> and <em>Z</em> and the model 
+		with an extra quadratic term in <em>X</em>.</p>
+	
+  <p>As in other sequences of models of increasing complexity, the sums of squares 
+    of these components satisfy a similar equation and form the basis of an analysis 
+    of variance table.</p>
+	<p class=eqn><img src="images/ssqEqnNonlin.gif" width="471" height="41"></p>
+<br>
+
+<div class="diagram">
+    <p class="heading">Leafing-out time of maples</p>
+
+    <p>The diagram below shows an index of the <em>leafing-out time</em> of batches 
+			of maple seedlings grown in Wooster, Ohio. The explanatory variables are 
+			the <em>latitude (X</em>° North - 30<em>)</em> and <em>mean July temperature 
+			(Z</em>° F - 60<em>)</em> of the place of origin of the seeds. A relationship 
+			would prove that there is a genetic difference between seeds from the different 
+			locations.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="curveInteractProg.QuadSsqApplet">
+<param name="yAxis" value="0 12 0 2">
+<param name="xAxis" value="0 18 0 5">
+<param name="zAxis" value="0 23 0 5">
+<param name="yVarName" value="leafing-out time (Y)">
+<param name="xVarName" value="latitude (X)">
+<param name="zVarName" value="temperature (Z)">
+<param name="yValues" value="10.5 11.0 8.3 8.6 8.6 9.8 10.6 9.2 9.8 5.8 4.5 8.5 6.7 3.9 4.3 5.2 6.6 8.2 8.3 3.3 10.0 8.1 7.0 5.6 5.7 5.4 5.4 5.8 5.0 5.9 4.0 0.8">
+<param name="xValues" value="16.95 15.55 15.00 15.42 14.50 16.37 15.03 13.00 12.80 12.70 12.42 10.75 11.38 10.35 10.80 10.92 10.33 11.58 11.92 10.12 12.75 12.00 12.55 11.50 9.25 7.45 8.33 6.25 5.80 1.38 2.83 0.75">
+<param name="zValues" value="6.7 4.3 1.8 5.0 3.5 5.5 7.7 7.9 10.2 11.1 14.4 16.4 15.9 16.4 11.9 14.2 13.0 11.4 9.7 12.6 9.2 8.0 10.0 12.5 16.7 19.5 9.5 14.3 8.9 20.8 21.2 21.0">
+<param name="compName" value="Total#Linear X & Z#Quadratic X#Residual">
+<param name="maxSsq" value="999.99">
+<param name="customText" value="Explained by linear X & Z=Explained by linear X & Z#Explained by quadratic X=Explained by quadratic X">
+</applet> 
+</div>
+
+		<p>Use the pop-up menu to display the different components on the diagram 
+			and highlight their sum of squares. In this diagram, the <span class="gray">grey 
+			plane represents the overall mean response</span>, the <span class="darkblue">blue 
+			plane is the least squares plane for the model with no curvature</span>, 
+			and the <span class="darkred">red surface (shown as a grid) is the least 
+			squares surface for the model with curvature in <em>X</em></span>.</p>
+		<p>Observe that each component is the difference between the fitted values 
+			of two models.</p>
+		<hr width="75%">
+		<p>In the following diagram, these sums of squares are shown in an analysis 
+			of variance table.</p>
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="550">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="curveInteractProg.QuadParamAnovaApplet">
+<param name="yAxis" value="0 12 0 2">
+<param name="xAxis" value="0 18 0 5">
+<param name="zAxis" value="0 23 0 5">
+<param name="yVarName" value="LO">
+<param name="xVarName" value="L">
+<param name="zVarName" value="T">
+<param name="longYVarName" value="leafing-out time (LO)">
+<param name="longXVarName" value="latitude (L)">
+<param name="longZVarName" value="temperature (T)">
+<param name="yValues" value="10.5 11.0 8.3 8.6 8.6 9.8 10.6 9.2 9.8 5.8 4.5 8.5 6.7 3.9 4.3 5.2 6.6 8.2 8.3 3.3 10.0 8.1 7.0 5.6 5.7 5.4 5.4 5.8 5.0 5.9 4.0 0.8">
+<param name="xValues" value="16.95 15.55 15.00 15.42 14.50 16.37 15.03 13.00 12.80 12.70 12.42 10.75 11.38 10.35 10.80 10.92 10.33 11.58 11.92 10.12 12.75 12.00 12.55 11.50 9.25 7.45 8.33 6.25 5.80 1.38 2.83 0.75">
+<param name="zValues" value="6.7 4.3 1.8 5.0 3.5 5.5 7.7 7.9 10.2 11.1 14.4 16.4 15.9 16.4 11.9 14.2 13.0 11.4 9.7 12.6 9.2 8.0 10.0 12.5 16.7 19.5 9.5 14.3 8.9 20.8 21.2 21.0">
+<param name="initialParams" value="6.00 0.000 0.000 0.000 0.0 0.0 0">
+<param name="paramMinMax" value="5.00 9.00 -9.000 9.000 -9.000 9.000 0.000 9.000 0.0 0.0 0.0 0.0">
+<param name="shadeCutoff" value="2 7 11">
+<param name="paramNames" value="Intercept Latitude Temperature Latitude-sqr ? ?">
+<param name="modelSequence" value="0 012 0123">
+<param name="compName" value="Total#Linear Lat & Temp#Quadratic Lat#Residual">
+<param name="maxSsq" value="999.99 999.99 99.99">
+</applet> 
+</div>
+		<p>Although the curvature of <em>X</em> in the least squares line is quite 
+			noticeable, the p-value associated with the quadratic term in <em>X</em> 
+			is 0.1418, so we would conclude that there is no evidence in the data that 
+			the relationship is nonlinear.</p>
+		</div>
+
+  <p class="heading">Testing curvature of <em>X</em> and <em>Z</em></p>
+  <p>To extend the analysis of variance approach to models with quadratic terms 
+    in both <em>X</em> and <em>Z</em>, it is necessary to take into account the 
+    order of adding the two quadratic terms. For example, adding the quadratic 
+    term in <em>X</em> before the quadratic term in <em>Z</em> corresponds to 
+    the following sequence of models.</p>
+	<p class=eqn><img src="images/meanOnlyModel.gif" width="98" height="17"></p>
+	<p class=eqn><img src="images/xzModel.gif" width="214" height="17"></p>
+	<p class=eqn><img src="images/xzQuadModel.gif" width="276" height="22"></p>
+	<p class=eqn><img src="images/xzQuadQuadModel.gif" width="335" height="22"></p>
+	<br>
+	
+<div class="centred"><div class="boxed">
+<p>Adding the quadratic terms in the opposite order can result 
+				in different sums of squares for the two quadratic terms.</p>
+</div></div>
+
+	<p>This is simplified if the two explanatory variables, <em>X</em> and <em>Z</em> 
+		are orthogonal in a designed experiment. Then the explained sum of squares 
+		for the quadratic term in <em>X</em> is the same whether or not the quadratic 
+		term in <em>Z</em> is already in the model. The following example shows a 
+		data set where <em>X</em> and <em>Z</em> are orthogonal in this way.</p>
+
+  <div class="diagram"> 
+		<p class="heading">Energy expenditure of bees</p>
+		<p>In the experiment with bees on the previous page, there were three observations 
+			at each combination of three levels of temperature and sucrose, so temperature 
+			and sucrose are orthogonal. (The quadratic terms in temperature and sucrose 
+			are also orthogonal due to the design.)</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="550">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="curveInteractProg.QuadParamAnovaApplet">
+<param name="dataName" value="Energy expenditure of bees">
+<param name="yAxis" value="0 20 0 5">
+<param name="xAxis" value="17 43 20 10">
+<param name="zAxis" value="15 65 20 20">
+<param name="longYVarName" value="Energy (E)">
+<param name="longXVarName" value="Temperature (T)">
+<param name="longZVarName" value="Sucrose (S)">
+<param name="yVarName" value="E">
+<param name="xVarName" value="T">
+<param name="zVarName" value="S">
+<param name="yValues" value="3.1 3.7 4.7 5.5 6.7 7.3 7.9 9.2 9.3 6.0 6.9 7.5 11.5 12.9 13.4 17.5 15.8 14.7 7.7 8.3 9.5 15.7 14.3 15.9 19.1 18.0 19.9">
+<param name="xValues" value="9@20 9@30 9@40">
+<param name="zValues" value="3@20 3@40 3@60 3@20 3@40 3@60 3@20 3@40 3@60">
+<param name="initialParams" value="6.00 0.000 0.000 0.000 0.0000 0.0 0">
+<param name="paramMinMax" value="-99.99 99.99 0.999 9.999 9.999 9.999 -9.999 9.999 -9.9999 9.9999 0.0 0.0">
+<param name="shadeCutoff" value="0 10 20">
+<param name="paramNames" value="Intercept Temperature Sucrose Temp-sqr Sucrose-sqr ?">
+<param name="modelSequence" value="0 012 0123 01234">
+<param name="compName" value="Total#Linear T & S#Quadratic Temp#Quadratic Suc#Residual">
+<param name="maxSsq" value="999.99 999.99 99.99">
+<param name="initialRotation" value="45 40">
+</applet> 
+</div>
+
+		<p>Since the order of adding the quadratic terms does not alter their sums 
+			of squares, only a single anova table is needed. Observe that the p-values 
+			for the quadratic terms are identical to those from the t-tests on the previous 
+			page.</p>
+		<p>We therefore again conclude that there is moderately strong evidence of 
+			nonlinearity in the relationship between energy expenditure and temperature, 
+			but no evidence of nonlinearity in the effect of sucrose.</p>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

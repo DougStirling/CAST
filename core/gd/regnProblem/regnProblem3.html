@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Curvature and non-constant variance &mdash; transforming Y</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="nonlinear relationship, nonlinear model, curvature, non-constant variance, transformations">
+	<meta name="dataset" content="Mazda car prices">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Effect of transformation on the error standard deviation</p>
+<p>In a scatterplot of <em>Y</em> against <em>X</em>, transforming <em>X</em> 
+moves the crosses horizontally, but does not affect the <strong>spread</strong> 
+of response values at each value of <em>X</em>.</p>
+<table width="75%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+<tr> 
+<td><strong>If the error standard deviation is the same for each <em>x</em> in 
+a plot of <em>Y</em> against <em>X</em>, it will also be constant in a plot of 
+<em>Y</em> against any transformation of <em>X</em>.</strong></td>
+</tr>
+</table>
+<p>Transformation of <em>X</em> therefore does not affect whether or not the linear 
+model's assumption of constant error standard deviation holds.</p>
+<p>However,</p>
+<table width="75%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+<tr> 
+<td><strong>Transformation of the response, <em>Y</em>, not only affects linearity 
+of the relationship, but <font color="#FF0000">also affects whether or not the 
+error standard deviation is constant</font>.</strong></td>
+</tr>
+</table>
+<p>This is more easily explained in an example than with words.</p>
+<div class="diagram"> 
+<p class="heading">Prices of second-hand Mazda cars</p>
+<p>The scatterplot below shows the retail prices of 124 Mazda cars, obtained from the
+newspaper <cite>The Melbourne Age</cite> on 8 February 1992. The grey line is the least
+squares line fitted to the data.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.TransformResidApplet">
+<param name="xVarName" value="Age of car (years)">
+<param name="yVarName" value="Price ('000 dollars)">
+<param name="xValues" value="12 9 8 3 9 1 9 10 5 9 2 11 18 10 12 11 6 4 7 2 18 7 13 6 1 4 1 2 3 3 5 9 10 3 6 1 12 11 6 20 12 17 3 7 11 8 12 18 4 14 15 3 3 13 10 2 12 10 5 9 15 10 10 9 12 10 10 14 13 16 11 4 8 6 7 7 3 12 9 7 7 7 8 5 12 0 7 5 11 2 8 5 15 5 7 12 8 4 6 1 9 4 15 5 2 3 2 1 0 5 7 2 17 9 11 1 9 12 9 14 3 5 0 2">
+<param name="yValues" value="2.95 5.9 2.999 11.95 6.1 26.5 6.85 5.49 12.999 9.9 19.9 3.99 0.8 3.9 7 2.75 11 9.85 7.5 26.5 1.99 7 3.5 6.99 39.99 29.99 29.99 25.99 21.99 19.99 6 5.999 5.99 12.5 14 20.5 4.25 4.5 7.75 0.95 4.3 2.3 9.49 8.9 3 6.5 8 1.45 14.15 1.95 1.8 18 16.35 1.69 3.49 26 4 5.49 7.9 10.5 0.799 4.2 5.5 11.5 2.6 5.1 4 4.5 2.6 2.4 4.9 14.95 8.9 13.49 5.499 12.999 21.5 4.2 4.2 10.5 10.8 8.6 8.95 7.9 3.7 25.6 11 8.7 3.8 10.95 6.45 9.45 2.95 10.5 8 4.6 4.975 18.95 10 30 4 7.65 2.695 12.49 36.9 18 27.9 22.95 23.9 11.9 9.8 20.98 5 10.98 2.8 24.5 10.995 7.879 6.99 1.498 17.9 9.99 13.99 9.99">
+<param name="horizAxis" value="-0.5 20.5 0 5">
+<param name="vertAxis" value="0.75 41 10 10 1 5">
+<param name="labelAxes" value="true">
+<param name="betaExtremes" value="999.999 999.999">
+</applet>
+</div>
+
+<p>The residual plot on the right highlights two problems. Firstly there is clearly 
+nonlinearity &mdash; the prices level off at high ages. Also, the standard deviation 
+of the price is much lower for cars over 10 years old &mdash; there is non-constant 
+error standard deviation.</p>
+<p>Drag the red line on the vertical axis upwards to apply a power transformation 
+to the price. Observe that a log transformation (between a power of 0.01 and -0.01) 
+both linearises the relationship reasonably well and <strong>also</strong> gives 
+residuals with fairly constant spread. <font color="#666666">(Use the arrow keys 
+on the keyboard to make fine adjustments to the power.)</font></p>
+</div>
+
+<br>
+
+<table width="75%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+<tr> 
+<td><strong>Fortunately, the same transformation of the response that linearises 
+the relationship often <font color="#FF0000">also</font> results in fairly constant 
+error standard deviation.</strong></td>
+</tr>
+</table>
+<br>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

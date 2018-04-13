@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>General linear model with matrices</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="regression model, linear model, general linear model, matrix notation">
+	<meta name="dataset" content="Water usage in production plant">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Response mean for GLM</p>
+  <p>The mean response for the <em>i</em>'th observation in a general linear model 
+    depends linearly on the values of the explanatory variables, <span class="em black">x<sub>i</sub></span> , 
+    <span class="em black">z<sub>i</sub></span> , ..., <span class="em black">w<sub>i</sub></span> ,</p>
+  <p class="eqn"><img src="images/generalLinearPart.gif" width="292" height="20"></p>
+  <p>We can again use matrices to express the vector of all <em>n</em> response 
+    means as the product of two matrices,</p>
+  <p class="eqn"><img src="images/generalLinearMatrices.gif" width="348" height="264"></p>
+  <p>Observe that the only differences from the matrix formulation of the simple 
+    linear model are extra columns in the <strong>X</strong> matrix and the corresponding 
+    extra entries in the vector of parameters.</p>
+  <div class="diagram"> 
+    <p>The diagram below illustrates this matrix multiplication for a linear model 
+      with two explanatory variables for <em>n</em>&nbsp;=&nbsp;12 observations.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="320">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="matrixProg.GenericLinearPartApplet">
+<param name="xRows" value="12">
+<param name="nXColumns" value="2">
+<param name="fullNameX1" value="x">
+<param name="shortNameX1" value="x">
+<param name="fullNameX2" value="z">
+<param name="shortNameX2" value="z">
+<param name="yName" value="Y">
+<param name="errorName" value="error">
+</applet> 
+</div>
+
+    <p>Again click on rows to see the values that are combined in the matrix multiplication 
+      to form each mean.</p>
+</div>
+
+  <p class="heading">The general linear model</p>
+  <p>To fully express the general linear model in matrix notation, we add a vector, 
+    &epsilon;, 
+    of independent normally distributed errors,</p>
+<p class="eqn"><img src="images/generalMatrixModel.gif" width="91" height="17"></p>
+
+  <p>We now illustrate the matrix formulation of the general linear model with 
+    a numerical example.</p>
+
+<div class="diagram">
+		<p class="heading">Water Usage in Production Plant</p>
+    <p>A production plant cost-control engineer is responsible for cost reduction. 
+      One of the costly items in his plant is the amount of water used by the 
+      production facilities each month. He decided to investigate water usage 
+      by collecting measurements of his plant's water usage and other variables 
+      in 17 months.</p>
+
+
+		
+    <div class="centred"><table class="centred" cellpadding="3" cellspacing="0">
+      <tr> 
+        <th colspan="3" align="center">Response</th>
+      </tr>
+      <tr> 
+        <td align="right" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">Water</td>
+        <td width="20" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">&nbsp;</td>
+        <td bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">Monthly water usage (gallons)</td>
+      </tr>
+<tr><td colspan="3">&nbsp;</td></tr>
+      <tr> 
+        <th colspan="3" align="center" class="darkblue">Explanatory variables</th>
+      </tr>
+      <tr> 
+        <td bgcolor="#FFFFFF" align="right" class="darkblue" style="border-top:1px solid #999999;">Temperature</td>
+        <td bgcolor="#FFFFFF" width="20" style="border-top:1px solid #999999;">&nbsp;</td>
+        <td bgcolor="#FFFFFF" class="darkblue" style="border-top:1px solid #999999;">Average monthly temperature (°F)</td>
+      </tr>
+      <tr> 
+        <td bgcolor="#FFFFFF" align="right" class="darkblue">Production</td>
+        <td bgcolor="#FFFFFF" width="20">&nbsp;</td>
+        <td bgcolor="#FFFFFF" class="darkblue">Amount of production (M pounds)</td>
+      </tr>
+      <tr> 
+        <td bgcolor="#FFFFFF" align="right" class="darkblue">Days</td>
+        <td bgcolor="#FFFFFF" width="20">&nbsp;</td>
+        <td bgcolor="#FFFFFF" class="darkblue">Number of plant operating days in the month</td>
+      </tr>
+      <tr> 
+        <td bgcolor="#FFFFFF" align="right" class="darkblue" style="border-bottom:1px solid #999999;">Workers</td>
+        <td bgcolor="#FFFFFF" width="20" style="border-bottom:1px solid #999999;">&nbsp;</td>
+        <td bgcolor="#FFFFFF" class="darkblue" style="border-bottom:1px solid #999999;">Number of persons on the monthly plant payroll</td>
+      </tr>
+    </table></div>
+    <p>A reasonable model for the water consumption in month <em>i</em> specifies 
+      that it is linearly affected by the four explanatory variables,</p>
+    <p class="eqn"><img src="images/waterUsageModel.gif" width="471" height="18"></p>
+    <p>This model is expressed below in matrix notation with the actual values 
+      of the explanatory variables inserted into the <strong>X</strong> matrix.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="470">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="matrixProg.GenericModelEqnApplet">
+<param name="nXColumns" value="4">
+<param name="fullNameX1" value="Temp, t">
+<param name="shortNameX1" value="t">
+<param name="valuesX1" value="58.8 65.2 70.9 77.4 79.3 81.0 71.9 63.9 54.5 39.5 44.5 43.6 56.0 64.7 73.0 78.9 79.4">
+<param name="fullNameX2" value="Prod, p">
+<param name="shortNameX2" value="p">
+<param name="valuesX2" value="7107 6373 6796 9208 14792 14564 11964 13526 12656 14119 16691 14571 13619 14575 14556 18573 15618">
+<param name="fullNameX3" value="Days, d">
+<param name="shortNameX3" value="d">
+<param name="valuesX3" value="21 22 22 20 25 23 20 23 20 20 22 19 22 22 21 21 22">
+<param name="fullNameX4" value="Wkrs, w">
+<param name="shortNameX4" value="w">
+<param name="valuesX4" value="129 141 153 166 193 189 175 186 190 187 195 206 198 192 191 200 200">
+<param name="yName" value="Water, Y">
+<param name="errorName" value="error">
+<param name="matrixFont" value="standard">
+</applet> 
+</div>
+
+    <p>We assume that that observed water usages in the 17 months come from this 
+      model.</p>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

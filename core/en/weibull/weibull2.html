@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Mean, variance and shape</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="weibull distribution, mean, variance">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>Formulae for the mean and variance of the Weibull distribution are given below.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Mean and variance of Weibull distribution</p>
+<p>If a random variable \(X\) has a Weibull distribution with probability density function</p>
+\[
+f(x) \;\;=\;\; \begin{cases} \alpha \lambda^{\alpha} x^{\alpha - 1} e^{-(\lambda x)^{\alpha}} &amp; x \gt 0 \\[0.4em]
+0 &amp; \text{otherwise}
+\end{cases} \]
+<p>then its mean and variance are</p>
+\[
+E[X] \;=\; \frac 1 {\lambda} \Gamma\left(1 + \frac 1 {\alpha}\right)
+\spaced{and} \Var(X) \;=\; \frac 1 {\lambda^2} \left( \Gamma\left(1 + \frac 2 {\alpha}\right) - \Gamma\left(1 + \frac 1 {\alpha}\right)^2\right)
+\]
+</div>
+
+<div class="proof">
+<p>We first find a formula for the expected value of \(X^k\) for an arbitrary constant \(k\).</p>
+\[
+E[X^k] \;=\; \int_0^{\infty} x^k f(x) \; dx \;=\; \int_0^{\infty} {\alpha \lambda^{\alpha} x^{\alpha + k - 1} e^{-(\lambda x)^{\alpha}}} \; dx
+\]
+<p>Again using  a change of variable to evaluate this integral,</p>
+\[
+u = (\lambda x)^{\alpha} \quad\quad \text{and} \quad\quad du = \alpha \lambda(\lambda x)^{\alpha - 1} \;dx\]
+<p>we get</p>
+\[
+E[X^k] \;=\; \frac 1 {\lambda^k} \int_0^{\infty} u^{\frac k {\alpha}} e^{-u} \; du \;=\; \frac 1 {\lambda^k}\Gamma\left(1 + \frac k{\alpha}\right)
+\]
+<p>Setting \(k = 1\) gives the mean. The variance can be found from</p>
+\[
+\Var(X) \;=\; E[X^2] - \left(E[X]\right)^2
+\]</div>
+
+</div>
+
+<p>We now show how the shape of the Weibull distribution is affected by its two parameters.</p>
+
+<div class="example" title="Shape of the Weibull distribution">
+	<p class="exampleHeading">Shape of the Weibull distribution</p>
+	<p>The diagram below initially shows a Weibull distribution with \(\alpha = 1\). This has a constant hazard rate and is therefore an exponential distribution. Use the  slider on the right to change the mean of the distribution, and hence the parameter \(\lambda\).</p>
+
+<div class="centred">
+	<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="400">
+		<script type="text/javascript">writeAppletParams();</script>
+		<param name="appletName" value="distributionProg.WeibullDistnApplet">
+		<param name="backgroundColor" value="FFFBF3">
+		<param name="meanLimits" value="1.00 4.00 2.00">
+		<param name="alphaLimits" value="0.20 3.00 1.00">
+		<param name="lambdaDecimals" value="2">
+		<param name="xAxis" value="-0.5 10 0 2">
+		<param name="xAxisName" value="Lifetime">
+		<param name="densityAxis" value="0 1 0 0.1">
+		<param name="maxLambda" value="120.000">
+		<param name="customText" value="Shape=Shape#Probability density=Probability density#Show density axis=Show density axis">
+	</applet>
+</div>
+
+<p>Use the slider on the left to reduce the shape parameter of the distribution, \(\alpha\), to 0.5. The hazard function is now</p>
+\[
+h(x) \;\;\propto\;\; x^{\alpha - 1} \;\;=\;\; \frac 1{\sqrt{x}}\]
+<p>When \(x\) is near zero, the hazard rate is extremely high, making the item very likely to fail near the start of its life. However the hazard rate drops as the item gets older (as \(x\) increases) so as the item survives longer, it becomes less likely to fail — some items  survive <strong>very</strong> long times, well beyond the upper end of the axis in the diagram.</p>
+<p>Now increase \(\alpha\) to 2.0. (You can use the arrow keys on your keyboard to fine-tune its value.) The hazard rate is now proportional to \(x\) and is therefore zero for a new item and increases as the item ages. The pdf of the lifetime is therefore zero at time \(x = 0\), increases to a peak, then drops to zero fairly sharply.</p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

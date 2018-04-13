@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Nonlinear scales</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="scatterplot, logarithmic scale, nonlinear scale">
+	<meta name="dataset" content="Life expectancy and GNI, 2004">
+	<meta name="dataset" content="Life expectancy and GNI, 2006">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Quantities that are mostly small</p>
+  
+<p>Some measurements describe quantities that are small for most 'individuals' 
+but where a few have much larger vaues. Such quantities are said to have <strong>skew</strong> 
+distributions.</p>
+<p>When scatterplots display such skew quantities, the larger values are well 
+separated, but the small values become clustered very closely together and are 
+often hard to distinguish. One solution is to make the axis for this quantity 
+very long.</p>
+
+<div class="diagram">
+<p class="heading">Life expectancy and Gross National Income (GNI)</p>
+
+<p>The diagram below was published to show that high life expectancy is associated 
+with high GNI in countries. Because most countries have low GNI but a few countries 
+have very high GNI, it is difficult to show any detail about what is happening 
+to the poorer countries in the same diagram that is used for the rich countries. 
+The scatterplot was therefore drawn with an extremely long GNI axis.</p>
+<div class="centred"><img src="images/gniScatter.gif" width="800" height="231"></div>
+<br>
+</div>
+
+<p class="heading">Nonlinear axis</p>
+<p>A better solution is to replace the standard axis for the measurement by a 
+<strong>nonlinear</strong> axis in which the small values are spaced out more 
+and the high values are compressed. This is particularly justified for economic 
+measurements. For example, the difference between the GDP per capita of two poor 
+countries, $300 and $600, is equally important as a difference between $30,000 
+and $60,000 for two rich countries. A nonlinear logarithmic scale spaces out the 
+two poor countries exactly the same as the two rich countries.</p>
+
+<div class="centred"><div class="boxed">
+<p>Scatterplots with nonlinear axes are harder to understand, so they 
+should only be used in publications where the readers are likely to cope.</p>
+</div></div>
+
+
+<br>
+
+<div class="diagram">
+<p class="heading">Life expectancy and Gross National Income (GNI)</p>
+<p>The next scatterplot is similar to the one above, but uses the GNI of the countries 
+in 2006.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="graphicsProg.TransformXApplet">
+<param name="xVarName" value="GNI per capita">
+<param name="yVarName" value="Life expectancy">
+<param name="groupVarName" value="Region">
+<param name="sizeVarName" value="Population">
+<param name="labelName" value="Country">
+<param name="xValues" value="5840 6900 2360 15390 5890 34060 35130 5960 18770 2340 8810 35090 6650 1160 5690 2890 12250 8800 10140 1330 710 2920 2370 34610 5980 1280 1230 11270 7740 38200 7620 2010 940 10770 1550 13680 21490 21470 720 36460 2540 8290 4400 4690 5340 10150 1090 17540 1190 6200 35150 33740 5310 1970 3690 31830 2640 24560 7810 4800 2410 830 4680 1490 3540 18290 36560 3800 3950 8490 35900 25480 30550 4030 33150 6210 7780 1300 23800 29200 1990 2050 15350 5460 4340 14930 59560 960 720 11300 1130 18630 2600 13510 11410 7830 2280 5000 1220 8110 1630 37580 27220 4010 830 1050 43820 14570 2500 7680 2410 5070 6080 5980 14830 21580 2880 9820 11630 1270 6970 7010 6400 16620 1840 850 31710 17600 23970 2170 11710 28030 5010 2160 8120 5170 35070 40930 3930 1410 9140 1490 8580 16260 8490 9060 1490 7520 23990 35580 740 44260 11150 2250 3280 7440 3300 920 1000 1950">
+<param name="yValues" value="75.7 71.0 41.0 74.3 71.4 80.4 78.9 66.8 74.8 62.0 68.4 78.2 75.6 54.4 63.5 63.9 46.6 71.0 72.4 50.6 47.4 56.8 49.9 79.8 70.2 43.3 50.5 77.9 72.0 81.5 71.7 63.0 53.0 78.1 46.8 74.9 79.0 75.4 45.0 77.3 53.4 70.8 74.2 69.8 70.7 49.4 55.2 70.9 50.7 67.8 78.4 79.6 56.8 58.0 70.5 78.7 58.5 78.3 67.8 69.0 53.7 45.5 63.6 58.1 68.6 72.4 81.0 62.9 68.6 69.5 77.8 79.7 79.9 72.0 81.9 71.3 64.9 51.0 77.0 76.9 65.3 61.9 71.3 71.0 44.6 72.0 78.2 57.3 45.0 73.0 51.8 78.6 62.3 72.0 74.9 67.6 65.0 69.6 44.0 51.5 61.3 78.7 79.2 70.8 54.5 46.6 79.3 74.2 63.6 74.7 56.6 70.8 69.9 70.3 74.6 77.2 67.9 71.3 64.8 43.4 72.5 70.6 70.0 71.6 61.6 41.0 78.8 73.8 76.8 62.3 53.4 80.0 70.8 56.4 69.1 43.9 80.1 80.7 73.0 65.9 68.6 57.6 72.3 69.0 73.0 70.8 47.8 67.6 77.8 78.5 49.6 77.4 75.3 66.5 68.4 72.8 73.0 60.3 39.2 40.0">
+<param name="groupLabels" value="#C&S Africa# Americas Asia Europe #N Africa & MidE# Pacific">
+<param name="groupValues" value="3 4 0 1 3 5 3 2 4 2 3 3 1 0 2 1 0 1 3 0 0 2 0 1 0 0 0 1 2 2 1 0 0 1 0 3 3 3 0 3 0 1 1 4 1 0 0 3 0 5 3 3 0 0 3 3 0 3 1 1 0 0 1 1 1 3 3 2 2 4 3 4 3 1 2 4 2 0 2 4 2 2 3 4 0 3 3 0 0 2 0 3 0 0 1 5 2 4 0 0 2 3 5 1 0 0 3 4 2 1 5 1 1 2 3 3 3 3 3 0 1 1 5 4 0 0 2 3 3 5 0 3 2 0 1 0 3 3 4 2 2 0 5 1 4 3 0 3 4 3 0 1 1 2 5 1 2 4 0 0">
+<param name="sizeValues" value="3153731 32854159 16095214 38747148 3017661 20310208 8291979 8352021 724788 153281120 9795287 10398049 275546 8490301 637013 9182015 1835938 186830759 7744591 13933363 7858791 13955507 17795149 32270507 506807 4191429 10145609 16295102 1312978855 7057418 44945790 797902 3609851 4327228 18584701 4551490 836321 10191762 58740547 5416945 804206 9469601 13060993 72849793 6668356 484098 4526722 1344312 78985857 828046 5246004 60990544 1290693 1617029 4473409 82652369 22535010 11099737 105237 12709564 9002656 1596929 739472 9296291 6834110 10086387 295732 1134403141 226063044 69420607 4143294 6692037 58646360 2682469 127896740 5544066 15210609 35598952 47869837 2700000 5203547 5663910 2301793 4010740 1980831 3425077 456613 18642586 13226091 25652985 11611090 402617 2963105 1241173 104266392 110058 2580704 30494991 20532675 2019677 27093656 16327690 4097112 5462539 13264190 141356083 4638836 2507042 158080591 3231502 6069710 5904342 27274266 84566163 38195558 10528226 3876661 21627557 143953092 9233793 161240 119137 183845 23612360 11770340 5586403 4327468 5386995 1999425 472419 47938663 43397491 19120763 36899747 452468 1124529 9038049 7424389 18893881 6550213 63002911 6238572 99361 1323722 10104685 72969723 28947181 46917544 4104291 60244834 38477873 299846449 3325727 26593123 215366 26725573 85028643 21095679 11478317 13119679">
+<param name="labels" value="Albania Algeria Angola Argentina Armenia Australia Austria Azerbaijan Bahrain Bangladesh Belarus Belgium Belize Benin Bhutan Bolivia Botswana Brazil Bulgaria #Burkina Faso# Burundi Cambodia Cameroon Canada #Cape Verde# #Central African Republic# Chad Chile China #Hong Kong# Colombia Comoros Congo #Costa Rica# #Cote d'Ivoire# Croatia Cyprus #Czech Republic# #Dem Republic Congo# Denmark Djibouti #Dominican Rep# Ecuador Egypt #El Salvador# #Equatorial Guinea# Eritrea Estonia Ethiopia Fiji Finland France Gabon Gambia Georgia Germany Ghana Greece Grenada Guatemala Guinea Guinea-Bissau Guyana Haiti Honduras Hungary Iceland India Indonesia Iran Ireland Israel Italy Jamaica Japan Jordan Kazakhstan Kenya #South Korea# Kuwait Kyrgyzstan Laos Latvia Lebanon Lesotho Lithuania Luxembourg Madagascar Malawi Malaysia Mali Malta Mauritania Mauritius Mexico Micronesia Mongolia Morocco Mozambique Namibia Nepal Netherlands #New Zealand# Nicaragua Niger Nigeria Norway Oman Pakistan Panama #Papua New Guinea# Paraguay Peru Philippines Poland Portugal Moldova Romania Russia Rwanda #Saint Lucia# #St Vincent & Grenadines# Samoa #Saudi Arabia# Senegal #Sierra Leone# Singapore Slovakia Slovenia #Solomon Islands# #South Africa# Spain #Sri Lanka# Sudan Suriname Swaziland Sweden Switzerland Syria Tajikistan Thailand Togo Tonga #Trinidad & Tobago# Tunisia Turkey Uganda Ukraine #United Arab Emirates# #United Kingdom# Tanzania #United States# Uruguay Uzbekistan Vanuatu Venezuela Vietnam Yemen Zambia Zimbabwe">
+<param name="vertAxis" value="35 85 35 5">
+<param name="labelAxes" value="true">
+<param name="nHorizAxes" value="3">
+<param name="horizAxis" value="600 60000 10000 10000">
+<param name="horizAxis1" value="600 60000 30000 30000 1000 6000 10000">
+<param name="horizAxis2" value="600 60000 60000 10000 600 1000 3000 6000 10000 30000">
+<param name="customText" value="Original scale=Original scale#Log scale=Log scale#Display as crosses=Display as crosses#Display as circles=Display as circles">
+</applet>
+</div>
+
+<p>Half of the countries had GNI per capita below $6,500 in 2006 and the standard 
+scatterplot groups the poorest countries so close to the left that it is hard 
+to distinguish them.</p>
+<p>Drag the slider to the right to make the scale for GNI into a nonlinear logarithmic 
+scale. Observe how the low values of GNI are spaced out and the high values are 
+compressed. Note that the values 600, 6,000 and 60,000 are equally spaced on the 
+logarithmic scale.</p>
+<p>Select <strong>Display as circles</strong> from the pop-up menu to use circles 
+whose areas are proportional to the populations of the countries.</p>
+
+<div class="centred"><div class="boxed">
+<p>If you use a logarithmic scale, make sure that you label it clearly 
+as such.</p>
+</div></div>
+
+<br>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

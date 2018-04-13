@@ -1,0 +1,66 @@
+<html>
+<head>
+	<title>Normal approximation examples</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<script type="text/javascript">
+		var svgNames = new Array();
+		svgNames[0] = "images/cn_insuranceClaims.svg";
+		svgNames[1] = "images/cn_hotelOverbooking.svg";
+		svgNames[2] = "images/cn_fastFood.svg";
+		svgNames[3] = "images/cn_familyInvestment.svg";
+		
+		function changeSvgImage(select) {
+			var newIndex = select.selectedIndex;
+			var image = document.getElementById('dataImage');
+			image.src = svgNames[newIndex];
+		}
+	</script>
+
+	<meta name="index" content="binomial distribution, normal distribution/approximation to binomial, continuity correction">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Use of the normal approximation to the binomial distribution</p>
+
+<p>When the sample size,<em><font color="#000000"> n</font></em>, is large,  the probability of the number of successes, <em>X</em>, being within an interval may involve addition of many individual small binomial probabilities.</p>
+<p class="eqn"><span class="black">P(<em> a</em> &le; <em>X</em> &le; <em>b </em>) &nbsp;&nbsp;=&nbsp;&nbsp; P(<em> X</em> = <em>a </em>) &nbsp;+&nbsp; P( <em>X</em> = <em>a</em> + 1 ) &nbsp;+&nbsp; ... &nbsp;+&nbsp; P(<em> X</em> = <em>b </em>)</span></p>
+<p>This sum can be difficult to evaluate by hand and rounding errors can lead to inaccuracies. Even on a computer, such summations are unnecessarily difficult.</p>
+<p>An alternative is to use a normal approximation. Its accuracy depends on the value of <em><font color="#000000">n</font></em> being large enough. A common rule-of-thumb for using a normal approximation is when</p>
+<div class="boxed">
+  <p><em>n</em>π &gt; 5 &nbsp; &nbsp;and &nbsp; &nbsp; <em>n</em>(1-π) &gt; 5 </p>
+</div>
+
+<p>The examples below use a normal approximation to evaluate binomial probabilities.</p>
+<div class="diagram"> 
+<p class="heading">Examples</p>
+
+
+<form>
+  <select name="dataset" onChange="changeSvgImage(this)">
+    <option value="0" selected>Life insurance claims</option>
+    <option value="1">Hotel overbooking</option>
+    <option value="2">Drive-through at fast food outlet</option>
+    <option value="3">Family investment in shares</option>
+  </select>
+</form>
+
+<p align="center"><iframe src="images/cn_insuranceClaims.svg" id="dataImage" width="586" height="496" frameborder="0"></iframe></p>
+
+<p>The binomial distribution underlying each question is approximated by a normal distribution with the same mean and standard deviation. The probability in the question is evaluated from the area under the normal distribution (using the <a href="javascript:showNamedPage('normalDistn6')">methods described earlier</a> for the normal distribution).</p>
+<div class="boxed">
+  <p>Note the translation of the range of values into one involving <sup>1</sup>/<sub>2</sub>. It is called a <strong>continuity correction</strong> in this context.</p>
+</div>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

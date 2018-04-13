@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Distribution of difference in proportions</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="comparing groups, difference, probability, proportion">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Equal population proportions (probabilities)?</p>
+
+<p>If we are interested in the proportion of individuals with a particular characteristic in two populations, π<sub>1</sub> and π<sub>2</sub>, the first question that is usually asked is:</p>
+
+<div class="centred"><div class="boxed percent50">
+	<p>Are π<sub>1</sub> and π<sub>2</sub> equal?</p>
+</div></div>
+
+<p>After collecting samples of size <em>n</em><sub>1</sub> and <em>n</em><sub>2</sub> from the two populations and observing <em>x</em><sub>1</sub> and <em>x</em><sub>2</sub> with the characteristic in the populations, we base our answer to this question on the difference between the sample proportions, <em>p</em><sub>2</sub>&nbsp;-&nbsp;<em>p</em><sub>1</sub>.</p>
+<p>However <em>p</em><sub>2</sub>&nbsp;-&nbsp;<em>p</em><sub>1</sub> could easily be non-zero even if π<sub>2</sub>&nbsp;-&nbsp;π<sub>1</sub> is zero because of the randomness inherent in the sampling.</p>
+<div class="centred"><div class="boxed">
+	<p>If the population proportions were equal (π<sub>2</sub>&nbsp;-&nbsp;π<sub>1</sub>&nbsp;= 0), how far from zero would we <strong>expect</strong> <em>p</em><sub>2</sub>&nbsp;-&nbsp;<em>p</em><sub>1</sub> to be?</p>
+	</div></div>
+<p>To answer this question, we need to understand the distribution of <em>p</em><sub>2</sub>&nbsp;-&nbsp;<em>p</em><sub>1</sub>.</p>
+<p class="heading">Distribution of <em>p</em><sub>2</sub>&nbsp;-&nbsp;<em>p</em><sub>1</sub> (when π<sub>1</sub> = π<sub>2</sub>)</p>
+<p>If the underlying population proportions are equal, <span class="heading">π<sub>1</sub> = π<sub>2</sub></span>, then the <span class="heading">distribution of <em>p</em><sub>2</sub>&nbsp;-&nbsp;<em>p</em><sub>1</sub></span> has the following properties:</p>
+<dl>
+	<dt>Mean</dt>
+	<dd>The <span class="heading">distribution of <em>p</em><sub>2</sub>&nbsp;-&nbsp;<em>p</em><sub>1</sub></span> has mean zero.</dd>
+	<dt>Standard deviation</dt>
+	<dd>The following formula gives the standard deviation of <span class="heading"> <em>p</em><sub>2</sub>&nbsp;-&nbsp;<em>p</em><sub>1</sub></span>. To simplify it, we have used π to denote the common value of <span class="heading">π<sub>1</sub> and π<sub>2</sub></span>.</dd>
+</dl>
+
+<p class=eqn><img src="images/diffPropnSd.gif" width="213" height="55" alt="mu(p) and sd(p)"></p>
+
+<dl>
+	<dd>Note that the variance of the difference is the sum of the variances of the individual proportions.</dd>
+	<dt>Shape</dt>
+	<dd>If the sample sizes, <em>n</em><sub>1</sub> and <em>n</em><sub>2</sub>, are reasonably large and the common value of <span class="heading">π<sub>1</sub> and π<sub>2</sub></span> (that we will simply call π below) is neither very close to zero or one, the <span class="heading">distribution of <em>p</em><sub>2</sub>&nbsp;-&nbsp;<em>p</em><sub>1</sub></span> is close to a normal distribution.</dd>
+</dl>
+<p class="heading">Standard deviation in practice</p>
+<p>The formula for the standard deviation of <span class="heading"><em>p</em><sub>2</sub>&nbsp;-&nbsp;<em>p</em><sub>1</sub></span> unfortunately contains the unknown common population proportion, π. In practice, we must replace π by an estimate. Since we are finding the distribution when <span class="heading">π<sub>1</sub> = π<sub>2</sub>, the best estimate is the overall proportion with the characteristic in the combined samples, <em>p</em>.</span></p>
+<p class=eqn><img src="images/diffPropnSdEst.gif" width="393" height="54" alt="mu(p) and sd(p)"></p>
+
+<div class="boxed">
+	<p>You will not need to remember this formula — it is <span class="heading"></span>provided to help you understand the test statistic that is derived in the following page.</p>
+	</div>
+	<br>
+	
+<div class="diagram"> 
+<p class="heading">Illustration</p>
+<p>The diagram below selects samples of size 100 from each of two groups. The 
+common probability of success in the groups, π, can be adjusted using the slider at the 
+top. </p>
+<p>The normal approximations to the distributions of the individual sample proportions 
+are shown on the right and the normal approximation to the distribution of the 
+difference is shown in pink at the bottom.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="500" name="propnDistn">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoGroupProg.PropnDiffApplet">
+<param name="yVarName" value="Response">
+<param name="yLabels" value="success failure">
+<param name="continProbs" value="0.3 0.7 0.3 0.7">
+<param name="xVarName" value="Group">
+<param name="xValues" value="100@0 100@1">
+<param name="xLabels" value="#Group A# #Group B#">
+<param name="summaryDecimals" value="2">
+<param name="maxSummary" value="999.99">
+<param name="summaryAxis" value="-0.2 0.2 -0.2 0.1">
+<param name="randomSeed" value="330045782">
+<param name="propnDecimals" value="3">
+<param name="commonProb" value="true">
+<param name="customText" value="minus=minus">
+</applet>
+</div>
+
+<p>Click <strong>Accumulate</strong> and take several samples. Observe that the 
+sampling variability of the proportions and their difference match the theoretical 
+distributions reasonably.</p>
+<p>Note also that the distribution of the difference has greater spread than that 
+of the individual proportions.</p>
+
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

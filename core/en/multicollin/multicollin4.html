@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Understanding multicollinearity (cont)</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="multicollinearity">
+	<meta name="dataset" content="Heart catheter length">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Variability of the least squares plane</p>
+  <p>Estimating the regression model parameters by least squares tries to make 
+		the residuals as small as possible, so the least squares plane is positioned 
+		as close as possible to the data points. Least squares does not care where 
+		the least squares plane is located away from the data.</p>
+	<p>When the explanatory variables are multicollinear, this means that the position 
+		of the least square plane can be very variable (i.e. the model's regression 
+		plane is inaccurately estimated) at the 'corners of the x-z plane' that are 
+		distant from the data.</p>
+	<div class="diagram">
+    <p class="heading">Simulation</p>
+
+    <p>In the diagram below, data are sampled from a linear regression model where 
+			the explanatory variables, <em>X</em> and <em>Z</em>, are multicollinear.</p>
+    <div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="multiRegnProg.PlaneSampleApplet">
+<param name="yVarName" value="Y">
+<param name="xVarName" value="X">
+<param name="zVarName" value="Z">
+<param name="xValues" value="35.3 40.7 34.0 60.3 34.6 42.3 46.4 40.0 52.9 49.4 45.5 28.4 63.2 23.8 41.0 46.9 32.9 34.6 35.2 39.5 37.7 26.3 36.0 27.9 43.6 42.0 38.2 36.2 41.0 56.8">
+<param name="zValues" value="38.4 55.1 36.6 86.8 28.1 57.7 68.8 51.0 78.2 60.1 65.3 13.3 98.3 3.6 56.4 58.9 42.0 29.9 35.5 53.7 41.7 21.9 40.0 26.5 65.5 51.5 39.0 24.7 49.2 94.2">
+<param name="yAxis" value="15 55 20 10">
+<param name="xAxis" value="20 65 20 10">
+<param name="zAxis" value="0 100 0 20">
+<param name="error" value="30 48763562">
+<param name="modelParams" value="20.3758 0.2107478 0.191095 2">
+<param name="paramMinMax" value="0.0 20.38 0.00 0.211 0.00 0.191">
+<param name="decimals" value="1 2 2">
+<param name="minVarRotation" value="315 28">
+<param name="initialRotation" value="30 45">
+<param name="customText" value="Show min variability=Show min variability">
+</applet> 
+</div>
+
+    <p>Click <strong>Accumulate</strong> then take 10 to 20 samples. Rotate the 
+			diagram to see the variability of the least squares plane.</p>
+		<p>Click <strong>Show Min Variability</strong> to rotate the diagram to 'looking 
+			down' the scatter of data points. From this direction, it can be seen that 
+			the least squares planes look rather <strong>like flapping wings</strong> 
+			&mdash; they are much less variable near the data than in the corners corresponding 
+			to (high <em>X</em>, low <em>Z</em>) and (low <em>X</em>, high <em>Z</em>).</p>
+		</div>
+
+
+  <p class="heading">Which explanatory variable is more important?</p>
+	<p>When the two explanatory variables are multicollinear, it is much harder 
+		to distinguish which of the two is really related to the response &mdash; each 
+		variable can act as a kind of proxy for the other. Different combination of 
+		the two variables can have very similar exlanatory power.</p>
+	
+  <div class="diagram">
+    <p class="heading">Heart catheter length</p>
+
+    <p>In heart catheterisation, a catheter is passed through a major vein or 
+			artery from the leg into the heart. X-rays are used to position the tip 
+			of the catheter. The catheter length (cm), height (in) and weight (lb) were 
+			recorded from 12 children.</p>
+		<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="430">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="multiRegnProg.DragModelCornersApplet">
+<param name="yVarName" value="Catheter">
+<param name="xVarName" value="Height">
+<param name="zVarName" value="Weight">
+<param name="yValues" value="37 50 34 36 43 28 37 20 34 30 38 47">
+<param name="xValues" value="42.8 63.5 37.5 39.5 45.5 38.5 43.0 22.5 37.0 23.5 33.0 58.0">
+<param name="zValues" value="40.0 93.5 35.5 30.0 52.0 17.0 38.5 8.5 33.0 9.5 21.0 79.0">
+<param name="yAxis" value="15 62 20 10">
+<param name="xAxis" value="20 65 20 10">
+<param name="zAxis" value="0 100 0 20">
+<param name="lsDecimals" value="3 3 3">
+<param name="maxSsq" value="9999.99">
+<param name="maxCoeff" value="99.999 99.999 99.999">
+<param name="minVarRotation" value="318.3 23.5">
+<param name="fixedDrag" value="corners">
+<param name="customText" value="Show min variability=Show min variability#Residual sum of squares=Residual sum of squares">
+</applet> 
+</div>
+
+    <p>Drag one of the vertical arrows to move the least squares plane and observe 
+			the effect on the residual sum of squares. Click <strong>Least squares</strong> 
+			then repeat with the other vertical arrow.</p>
+		<p>Observe that dragging the corner that is furthest from the data has much 
+			less effect on the residual sum of squares so the position of this corner 
+			is much less accurately determined.</p>
+		<p>When dragging this corner, observe that as the coefficient of <em>height</em> 
+			increases, the coefficient of <em>weight</em> decreases. It is clear that 
+			<strong>at least one</strong> of these variables affects catheter length, 
+			but there is less information about <strong>which</strong> is important.</p>
+		
+<div class="centred"><div class="boxed">
+<p>We could set the coefficient of either 
+							height or weight to zero and increases to the other coefficient 
+							could largely compensate.</p>
+</div></div>
+
+		<br>
+	</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

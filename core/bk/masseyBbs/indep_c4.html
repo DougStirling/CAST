@@ -1,0 +1,158 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Testing for independence</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="contingency table, independence, chi-squared test, chi-squared distribution">
+	<meta name="dataset" content="Skiing injuries">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class=heading>Comparison of observed and expected cell counts</p>
+
+<p>The hypothesis of independence is assessed by asking whether the observed and 
+expected cell counts are 'sufficiently close' &mdash; are the observed counts consistent 
+with the counts that we would expect under independence?</p>
+
+<div class="diagram">
+<p class="heading">Recruiting source and success</p>
+
+<p>If the recruitment source and work performance are indeed independent, then the observed cell 
+counts in the sample data should be similar to these expected cell counts. </p>
+<div class="centred">
+	<table class="centred" border="0" cellpadding="5" cellspacing="0">
+		<caption align="TOP">
+			<strong><span class="blue">Observed</span> and <span class="green">estimated</span> cell counts</strong>
+			</caption>
+		<tr>
+			<th align="CENTER">&nbsp;</th>
+			<th align="CENTER"><span class="blue">Unsatisfactory</span></th>
+			<th align="CENTER"><span class="blue">Satisfactory</span></th>
+			<th align="CENTER"><span class="red">Total</span></th>
+		</tr>
+		<tr>
+			<th align="left"><span class="blue">Employee referral</span></th>
+			<td align="CENTER" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;"><span class="blue">167</span><br>
+				<span class="green">(149.9)</span><br></td>
+			<td align="CENTER" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;"><span class="blue">85</span><br>
+				<span class="green">(102.1)</span></td>
+			<td align="CENTER"><span class="red">252</span></td>
+		</tr>
+		<tr>
+			<th align="left"><span class="blue">In-store notice</span></th>
+			<td align="CENTER" bgcolor="#FFFFFF" style="border-left:1px solid #999999;"><span class="blue">383</span><br>
+				<span class="green">(383.2)</span></td>
+			<td align="CENTER" bgcolor="#FFFFFF" style="border-right:1px solid #999999;"><span class="blue">261</span><br>
+				<span class="green">(260.8)</span></td>
+			<td align="CENTER"><span class="red">644</span></td>
+		</tr>
+		<tr>
+			<th align="left"><span class="blue">Employment agency</span></th>
+			<td align="CENTER" bgcolor="#FFFFFF" style="border-left:1px solid #999999;"><span class="blue">33</span><br>
+				<span class="green">(29.8)</span></td>
+			<td align="CENTER" bgcolor="#FFFFFF" style="border-right:1px solid #999999;"><span class="blue">17</span><br>
+				<span class="green">(20.2)</span></td>
+			<td align="CENTER"><span class="red">50</span></td>
+		</tr>
+		<tr>
+			<th align="left"><span class="blue">Media announcement</span></th>
+			<td align="CENTER" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;"><span class="blue">250</span><br>
+				<span class="green">(270.1)</span></td>
+			<td align="CENTER" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;"><span class="blue">204</span><br>
+				<span class="green">(183.9)</span></td>
+			<td align="CENTER"><span class="red">454</span></td>
+		</tr>
+		<tr>
+			<th align="CENTER"><span class="red">Total</span></th>
+			<td align="CENTER"><span class="red">833</span></td>
+			<td align="CENTER"><span class="red">567</span></td>
+			<td align="CENTER"><span class="blue">1400</span></td>
+		</tr>
+	</table>
+</div>
+</div>
+  
+<p class="heading">Hypotheses</p>
+
+<p>Did a sample contingency table come from a population in which the categorical 
+row and column variables, <i>X</i> and <i>Y,</i> are independent? This question 
+can be formalised as the hypothesis test, </p>
+
+<p class=eqn><span class="black"><strong><font size="+1">H</font><sub>0</sub> :</strong>&nbsp; <em>X and Y are independent</em><br><strong><font size="+1">H</font><sub>A</sub> :</strong>&nbsp; <em>X and Y are dependent</em>&nbsp;&nbsp;</span></p>
+
+<p class="heading">Possible test statistic</p>
+<p>In order to assess whether the data are consistent with the null hypothesis, 
+we ask whether the observed cell counts in the contingency table, <span class="black em">n<sub>xy</sub></span>, 
+are similar to the expected cell counts based on independence, <span class="black em">e<sub>xy</sub></span>. 
+The simplest measure of their dissimilarity is the sum of squares of the differences,</p>
+
+<p class=eqn><img class="gif" src="../../en/indep/images/ssqErrorForm.gif" width="100" height="26"></p>
+
+<p>Small values of this statistic are expected when there is independence in the 
+underlying population. However it does not behave entirely as desired. To be useful, 
+a test statistic must have a <strong>known </strong>distribution when <strong>H<sub>0</sub></strong> 
+is true and, ideally, this distribution should not depend too much on specific 
+characteristics of the problem.</p>
+
+<p class="heading">A better test statistic</p>
+<p>The raw sum of squares  is a poor way to assess whether 
+	a contingency table has been sampled from a population with independence. A better 
+	statistic is χ<sup>2</sup> (pronounced <i>chi-squared</i>), defined by </p>
+<p class=eqn><img class="gif" src="../../en/indep/images/chiSquaredEqn.gif" width="145" height="47"></p>
+<p>This more fairly assesses differences between <span class="black em">n<sub>xy</sub></span> and <span class="black em">e<sub>xy</sub></span> when the <span class="black em">e<sub>xy</sub></span> vary in magnitude. Its distribution still depends on the number of rows and columns 
+	in the contingency table, but is no longer affected by either the number of individuals 
+	(the total count for the table) or the margins of the table.</p>
+
+<div class="centred"><div class="boxed">
+<p>Only the number of rows and number of columns in the table have 
+			much influence on the distribution of χ<sup>2</sup>.</p>
+</div></div>
+
+<br>
+<div class="diagram">
+	<p class=heading>Simulation</p>
+	<p>The diagram below again samples from two independent categorical variables.</p>
+	<div class="centred">
+		<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="continProg.Chi2SampleApplet">
+		<param name="dataName" value="Margins all 1/3">
+		<param name="yVarName" value="Y variable">
+		<param name="xVarName" value="X variable">
+		<param name="yLabels" value="col1 col2 col3">
+		<param name="xLabels" value="row1 row2 row3">
+		<param name="xMargin" value="0.333 0.333 0.333">
+		<param name="yCondit" value="0.333 0.333 0.333 0.333 0.333 0.333 0.333 0.333 0.333">
+		<param name="sampleSize" value="*100 1000 10000">
+		<param name="maxExpected" value="1000.00">
+		<param name="maxDiff" value="-99.00">
+		<param name="maxChi2" value="99999.00">
+		<param name="chi2Type" value="correct">
+		<param name="dataName2" value="Margins .6 .3 .1">
+		<param name="xMargin2" value="0.6 0.3 0.1">
+		<param name="yCondit2" value="0.6 0.3 0.1 0.6 0.3 0.1 0.6 0.3 0.1">
+		<param name="horizAxis" value="0 20 0 5">
+		</applet>
+	</div>
+	<p>Click <strong>Accumulate</strong> then take several samples to build up the 
+		distribution of the χ<sup>2</sup> statistic.</p>
+	<p>Now increase the sample size and repeat. Observe that χ<sup>2</sup> is approximately the same magnitude (usually between 0.5 and 15.0) regardless 
+		of the sample size. </p>
+	<p>Finally, use the pop-up menu labelled <strong>Model</strong> to change the 
+		model to one where the marginal probabilities for the two categorical variables 
+		are unequal (but there is still independence). Observe that the distribution of 
+		χ<sup>2</sup> remains approximately the same.</p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

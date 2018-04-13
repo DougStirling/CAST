@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Comparisons in randomised block designs</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="multiple comparisons, studentised range, randomised block design">
+	<meta name="dataset" content="Acupuncture and codeine">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Multiple comparisons in randomised block designs</p>
+
+  <p>A similar adjustment can be made to help assess which treatments differ in a randomised block design.</p>
+  <p>If there are <em>g</em> treatments and <em>r</em> observations for each 
+    treatment (so the total sample size is <em>n</em>&nbsp;=&nbsp;<em>rg</em>), 
+   the <strong>overall</strong> probability is exactly 95% that 
+		<strong>all</strong> pairwise differences between the treatment means 
+		are less than</p>
+  <p class=eqn><img src="images/studRangeValue.gif" width="64" height="30"> </p>
+  <p>if the factor has no effect on the response. In this formula,  <img src="images/studRangeSymbol.gif" width="24" height="24" align="absbottom"> 
+    is a constant that can be looked up in tables of the <strong>studentised range 
+  distribution</strong> or obtained from statistical software,  <em>s</em> is the best estimate of the error standard deviation,</p>
+  <p class=eqn><img src="../oneBlockAnova/images/sEqualsMeanRSS.gif" width="92" height="26"> </p>
+  <p>and the residual sum of squares has <em>df</em> degrees of freedom.</p>
+  <div class="centred"><div class="boxed">
+  	<p>Any treatment means that 
+  		differ by more than this provide evidence that the underlying level 
+ 		means are different.<br>
+   	</div></div>
+<br>
+
+  <div class="diagram"> 
+    <p class="heading">Codeine and acupuncture for dental pain relief</p>
+
+    <p>The diagram below shows the pain relief score in an experiment with 32 subjects who were 
+      each given one of four treatments (combinations of codeine and acupuncture) to help relieve dental pain. 
+      They were grouped into blocks of four according to an initial assessment 
+      of their pain tolerance and the treatments were randomly allocated to the 
+      four subjects in each block. (I.e. a randomised block design was used.)</p>
+    <div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="pairBlockProg.MeanBlockComparisonApplet">
+<param name="yVarName" value="Pain relief score">
+<param name="yValues" value="0.0 0.6 0.5 1.2 0.3 0.7 0.6 1.3 0.4 0.8 0.8 1.6 0.4 0.9 0.7 1.5 0.6 1.5 1.0 1.9 0.9 1.6 1.4 2.3 1.0 1.7 1.8 2.1 1.2 1.6 1.7 2.4">
+<param name="xVarName" value="Treatment">
+<param name="xLabels" value="Placebo Codeine Acupuncture #Cod + Acu#">
+<param name="xValues" value="0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3">
+<param name="zVarName" value="Block (pain tolerance)">
+<param name="zLabels" value="#Tol 1# #Tol 2# #Tol 3# #Tol 4# #Tol 5# #Tol 6# #Tol 7# #Tol 8#">
+<param name="zValues" value="4@0 4@1 4@2 4@3 4@4 4@5 4@6 4@7">
+<param name="yAxis" value="0 2.5 0 0.5">
+<param name="jitter" value="0.0">
+<param name="decimals" value="3">
+<param name="maxInterval" value="9.999">
+<param name="shortXLabels" value="Placebo C A #C+A#">
+<param name="customText" value="Analysis ignoring blocks=Analysis ignoring blocks#Correct analysis taking account of blocks=Correct analysis taking account of blocks#Max difference (95% prob)=Max difference (95% prob)">
+</applet>
+</div>
+
+    <p>The diagram initially shows a band (red) whose width should cover all treatment 
+			means with probability 95%, if we ignore the blocks that were used in the 
+			experiment (groups of patients with similar prior assessment of pain tolerance). 
+			Drag the red band and observe that:</p>
+		<ul>
+			<li>The Placebo, Acupuncture and Codeine treatment means are within this 
+				distance, so we could not conclude that there were any differences between 
+				these treatments.</li>
+			<li>The combined Codeine+Acupuncture treatment mean is much further from 
+				the Placebo mean, so there would have been strong evidence that the combined 
+				treatment was better than none.</li>
+		</ul>
+		<p>However <span class="bold red">this analysis is wrong</span>  
+			since the experiment was a randomised block experiment. Select <strong>Correct 
+			analysis taking account of blocks</strong> from the pop-up menu. After taking 
+			account of differences between the blocks, the residual unexplained variation 
+			(and hence the mean residual sum of squares, <em>s</em>) is much lower, 
+			so the red band that should cover all treatment means with probability 95% 
+			is now much narrower. Drag the band and observe that:</p>
+		
+<div class="centred"><div class="boxed">
+<p>There is no evidence 
+						of a difference between Acupuncture and Codeine on their own, but 
+						strong evidence that all other pairs of treatments have different 
+						mean pain relief scores.</p>
+</div></div>
+
+		<br>
+	</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

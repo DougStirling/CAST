@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Example</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="rectangular distribution, mean, variance">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p>We now find the mean and variance of a rectangular distribution.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Example</p>
+		<p>What are the mean and variance of the \(\RectDistn(a, b)\) distribution?</p>
+	</div>
+	<div class="solution">
+		<p>This distribution has probability density function</p>
+		\[ f(x) = \begin{cases} \dfrac 1 {b-a} & \quad \text{for } a \lt x \lt b \\[0.5em] 0 & \quad \text{otherwise} \end{cases} \]
+		<p>The distribution's mean is</p>
+		\[ \begin{align}
+		E[X] \;\;=\;\; \int_{-\infty}^{\infty} {x \times f(x) \; d x} &amp;\;\;= \int_a^b {x \times \frac 1 {b-a} \; d x} \\
+		&amp;\;\;= \left[\frac {x^2} 2 \times \frac 1 {b-a} \right]_a^b \\
+		&amp;\;\;= \frac {b^2 - a^2} {2 (b-a)} \\
+		&amp;\;\;= \frac {a+b} 2
+		\end{align} \]
+		<p>To get the distribution's variance, we first find</p>
+		\[ \begin{align}
+		E[X^2] \;\;=\;\; \int_{-\infty}^{\infty} {x^2 \times f(x) \; d x} &amp;\;\;= \int_a^b {x^2 \times \frac 1 {b-a} \; d x} \\
+		&amp;\;\;= \left[\frac {x^3} 3 \times \frac 1 {b-a} \right]_a^b \\
+		&amp;\;\;= \frac {b^3 - a^3} {3 (b-a)} \\
+		&amp;\;\;= \frac {a^2 + ab + b^2} 3
+		\end{align} \]
+		<p>From this,</p>
+		\[ \begin{align}
+		\Var (X) \;=\; E[X^2] - \left( E[X] \right)^2 \;&amp;=\; \frac {a^2 + ab + b^2} 3 - \left(\frac {a+b} 2 \right)^2 \\
+		&amp;=\; \frac {4(a^2 + ab + b^2) - 3(a^2 + 2ab + b^2)} {12} \\
+		&amp;=\; \frac {(b-a)^2} {12}
+		\end{align} \] </div>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

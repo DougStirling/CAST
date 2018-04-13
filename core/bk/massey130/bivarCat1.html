@@ -1,0 +1,219 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Categorical variables and groups</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="causal relationship, association">
+	<meta name="dataset" content="Alcohol and smoking when pregnant">
+	<meta name="dataset" content="Bipolar disorder and family history">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Groups and explanatory variables</p>
+  
+<p>It was <a href="javascript:showNamedPage('structures3')">explained earlier</a> that  data from different groups can be combined in a single data matrix with a categorical variable that gives group membership. In a similar way, a categorical variable can be used to split a data set into groups.</p>
+<p>In some data sets,   one categorical variable can be thought of as a <strong>response</strong> whose values are thought to depend on a second categorical variable &mdash; an <strong>explanatory </strong>variable. We can then  think of the explanatory variable as defining different groups and ask how the response distribution differs between the groups.</p>
+<div class="centred"><div class="boxed">
+  <p>Do not  use the response variable to define the groups.</p>
+</div></div>
+<p>If one categorical variable is a response and the other is an explanatory variable, the methods in the previous section can be used to see how the explanatory variable affects the response.</p>
+<div class="diagram">
+	<p class="heading">Bipolar disorder and family history</p>
+	<p>In a study of bipolar disorder (a mental disorder involving severe mood 
+		changes), information was collected from a group of subjects with the disorder 
+		about their age at onset of the disorder and their family history of mood 
+		disorders. The contingency table below describes the data that were collected.</p>
+	<div class="centred">
+		<table border="0" class="centred" cellpadding="5" cellspacing="0">
+			<tr>
+				<th>&nbsp;</th>
+				<th>&nbsp;</th>
+				<th colspan="2">Age at onset</th>
+			</tr>
+			<tr>
+				<th colspan="2" align="left">Family history</th>
+				<th class="darkred">Early (18 or younger)</th>
+				<th class="darkred">Late (19 or older)</th>
+			</tr>
+			<tr>
+				<th rowspan="4" align="left">&nbsp;</th>
+				<th align="left"><span class="darkblue">Negative</span></th>
+				<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999">28</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999">35</td>
+			</tr>
+			<tr>
+				<th align="left"><span class="darkblue">Bipolar disorder</span></th>
+				<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">19</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">38</td>
+			</tr>
+			<tr>
+				<th align="left"><span class="darkblue">Unipolar</span></th>
+				<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">41</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">44</td>
+			</tr>
+			<tr>
+				<th align="left"><span class="darkblue">Unipolar and bipolar</span></th>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999">53</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999">60</td>
+			</tr>
+		</table>
+	</div>
+	<p>In this data set, <em>Age at onset</em> is the response and <em>Family history</em> is the explanatory variable &mdash;  it is possible for family history 
+		to affect when the subject was first diagnosed with bipolar disorder, but 
+		not the reverse (!).</p>
+	<p>We can therefore use the methods in the previous section to compare the distributions for people with different family histories. For example, the following table shows the <strong>percentages within type of family history</strong>.</p>
+	<div class="centred">
+		<table border="0" class="centred" cellpadding="5" cellspacing="0">
+			<tr>
+				<th>&nbsp;</th>
+				<th>&nbsp;</th>
+				<th colspan="3">Age at onset</th>
+			</tr>
+			<tr>
+				<th colspan="2" align="left">Family history</th>
+				<th class="darkred">Early (18 or younger)</th>
+				<th class="darkred">Late (19 or older)</th>
+				<th>&nbsp;&nbsp;Total&nbsp;&nbsp;</th>
+			</tr>
+			<tr>
+				<th rowspan="4" align="left">&nbsp;</th>
+				<th align="left"><span class="darkblue">Negative</span></th>
+				<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999">44.4</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999">55.6</td>
+				<td align="center">100.0</td>
+			</tr>
+			<tr>
+				<th align="left"><span class="darkblue">Bipolar disorder</span></th>
+				<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">33.3</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">66.7</td>
+				<td align="center">100.0</td>
+			</tr>
+			<tr>
+				<th align="left"><span class="darkblue">Unipolar</span></th>
+				<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">48.2</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">51.8</td>
+				<td align="center">100.0</td>
+			</tr>
+			<tr>
+				<th align="left"><span class="darkblue">Unipolar and bipolar</span></th>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999">46.9</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999">53.1</td>
+				<td align="center">100.0</td>
+			</tr>
+		</table>
+	</div>
+	<p>Although the sample size is small, there is an indication that when people have a family history of bipolar disorder, they are more likely to have late onset themselves.</p>
+	<p>It is however <strong>unhelpful to treat <em>Age at onset</em> as defining the groups</strong>. For example, the percentages in the following table are much harder to interpret and compare.</p>
+	<div class="centred">
+		<table border="0" class="centred" cellpadding="5" cellspacing="0">
+			<tr>
+				<th>&nbsp;</th>
+				<th>&nbsp;</th>
+				<th colspan="2">Age at onset</th>
+			</tr>
+			<tr>
+				<th colspan="2" align="left">Family history</th>
+				<th class="darkred">Early (18 or younger)</th>
+				<th class="darkred">Late (19 or older)</th>
+			</tr>
+			<tr>
+				<th rowspan="4" align="left">&nbsp;</th>
+				<th align="left"><span class="darkblue">Negative</span></th>
+				<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999">19.9</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999">19.8</td>
+			</tr>
+			<tr>
+				<th align="left"><span class="darkblue">Bipolar disorder</span></th>
+				<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">13.5</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">21.5</td>
+			</tr>
+			<tr>
+				<th align="left"><span class="darkblue">Unipolar</span></th>
+				<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">29.1</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">24.9</td>
+			</tr>
+			<tr>
+				<th align="left"><span class="darkblue">Unipolar and bipolar</span></th>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999">37.6</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999">33.9</td>
+			</tr>
+			<tr>
+				<th colspan="2" align="left">Total</th>
+				<td align="center">100.0</td>
+				<td align="center">100.0</td>
+			</tr>
+		</table>
+	</div>
+</div>
+<p class="heading">Bivariate data without an explanatory variable</p>
+  <p>Not all data sets have  variables that can be categorised as a response and an explanatory variable. Sometimes the relationship between the variables 
+    is more symmetrical but we still want to discover whether particular values of one variable are <strong>associated</strong> with values of the other.</p>
+  <p>For numerical variables, we would use a correlation coefficient to describe the strength of the relationship (as opposed to least squares for variables that can be classified as a response and explanatory variable). When the two variables are categorical, different methods are needed to describe the association between the variables.</p>
+  <div class="centred"><div class="boxed">
+    <p>The remainder of this section describes some methods of analysing data of this 
+      form.</p>
+  </div></div>
+  <div class="diagram">
+    <p class="heading">Alcohol and nicotine intake</p>
+    <p>As part of a study of how drinking and smoking by pregnant women affected 
+      their children, data were collected from 452 mothers about the relationship 
+      between their nicotine intake during pregnancy and their alcohol intake 
+      before their pregnancy was recognised. The contingency table below describes 
+      the relationship between these two ordinal categorical variables.</p>
+    <div class="centred">
+    	<table border="0" class="centred" cellpadding="5" cellspacing="0">
+    		<tr>
+    			<th>&nbsp;</th>
+    			<th>&nbsp;</th>
+    			<th colspan="3">Nicotine (milligrams/day)</th>
+   			</tr>
+    		<tr>
+    			<th colspan="2">Alcohol (oz/day)</th>
+    			<th><span class="darkred">None</span></th>
+    			<th><span class="darkred">1 to 15</span></th>
+    			<th><span class="darkred">Over 15</span></th>
+   			</tr>
+    		<tr>
+    			<th rowspan="4" align="left">&nbsp;</th>
+    			<th align="left"><span class="darkblue">None</span></th>
+    			<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999">105</td>
+    			<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">7</td>
+    			<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999">11</td>
+   			</tr>
+    		<tr>
+    			<th align="left"><span class="darkblue">0.01 to 0.10</span></th>
+    			<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">58</td>
+    			<td align="center" bgcolor="#FFFFFF">5</td>
+    			<td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">13</td>
+   			</tr>
+    		<tr>
+    			<th align="left"><span class="darkblue">0.11 to 0.99</span></th>
+    			<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">84</td>
+    			<td align="center" bgcolor="#FFFFFF">37</td>
+    			<td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">42</td>
+   			</tr>
+    		<tr>
+    			<th align="left"><span class="darkblue">1.00 or more</span></th>
+    			<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999">57</td>
+    			<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">16</td>
+    			<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999">17</td>
+   			</tr>
+   		</table>
+   	</div>
+    <p>The variables cannot be classified as a response and explanatory variable &mdash; both variables have similar status. 
+      However it is reasonable to ask whether high alcohol consumption tends to 
+      be <strong>associated</strong> with high nicotine intake.</p>
+  </div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Stratified sampling</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="stratified sampling, sampling scheme/stratified sampling">
+	<meta name="dataset" content="Weights of animals">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Grouping of individuals</p>
+
+<p>A simple random sample of individuals from some population is conceptually 
+the easiest sampling scheme. However more accurate estimates of population characteristics 
+can often be obtained with different sampling schemes.</p>
+<p>If the individuals in the population can be split into different groups (called 
+<strong>strata</strong> in sampling terminology), it is often better to take a 
+simple random sample <strong>within each separate group</strong> than to sample 
+randomly from the whole population. This is called a <strong>stratified random 
+sample</strong>.</p>
+<p>For example, a simple random sample of 40 students from a class of 200 males 
+and 200 females might (by chance) include 25 males and 15 females. A stratified 
+random sample would randomly select 20 males and 20 females, ensuring that the 
+sex-ratio in the sample matched that in the population.</p>
+<p>The benefits from stratified random sampling are greatest if the measurement 
+being sampled is different in the different strata. For example, we might want 
+to estimate the mean summer income of the students. If male students tend to have 
+higher incomes than female students, a stratified random sample based on gender 
+will be more accurate than a simple random sample.</p>
+
+
+<div class="diagram" title="Example: Weights of animals"> 
+<p class="heading">Weights of animals</p>
+
+<p>The diagram below shows the weights of 100 animals in a reserve. Of these, 50 are adults 
+and the other 50 are smaller immature animals. The 50 adults tend to be heavier. 
+(This is not real data &mdash; the difference between the two age groups is more extreme 
+than would usually be observed &mdash; but does illustrate the potential gains from stratified 
+sampling.)</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="sampDesignProg.StratifiedSampleApplet">
+<param name="varName" value="Weight of animal (kg)">
+<param name="catLabels" value="Immature Adult">
+<param name="vertAxis" value="20 140 20 20">
+<param name="decimals" value="3">
+<param name="randomNormal1" value="50 50 5 234568223 2.0">
+<param name="randomNormal2" value="50 100 5 822234692 2.5">
+<param name="sampleSeed" value="683095723">
+<param name="stratumSize" value="50 50">
+<param name="sampleSize" value="10">
+<param name="sampleSize2" value="5 5">
+<param name="title1" value="Simple">
+<param name="title2" value="Stratified">
+<param name="meanName" value="Sample mean">
+</applet>
+</div>
+
+<p>The left half of the diagram illustrates simple random sampling of 10 from 
+the 100 animals, whereas stratified random sampling of 5 animals from each age 
+group is illustrated on the right.</p>
+
+<p>Click <strong>Take sample</strong> a few times to observe the variability of 
+the mean weight for the two sampling schemes. (A jittered dot plot of the means 
+is shown to the right of each samples. A normal curve shows the distribution of 
+the sample means.)</p>
+<p>Observe that stratified random sampling gives sample means with less variability. 
+The mean from a stratified random sample is therefore a more accurate estimate 
+of the population mean.</p>
+
+</div>
+
+<p class="heading">Groups with different variability (advanced)</p>
+<p>In stratified random samples, random samples are usually taken from the different 
+strata in proportion to the number of population values in the strata. For example, 
+if a population of 1,000 values is split into three strata of <em>N</em><sub>1</sub>&nbsp;=&nbsp;500, 
+<em>N</em><sub>2</sub>&nbsp;=&nbsp;300 and <em>N</em><sub>3</sub>&nbsp;=&nbsp;200 
+values and a sample of <em>n</em> = 50 is to be taken, then samples of <em>n</em><sub>1</sub>&nbsp;=&nbsp;25, 
+<em>n</em><sub>2</sub>&nbsp;=&nbsp;15 and <em>n</em><sub>3</sub>&nbsp;=&nbsp;10 
+would be taken from the three strata &mdash; i.e. <sup>1</sup>/<sub>20</sub> of the 
+population within each stratum.</p>
+
+<p>This proportionality is not however essential, and greater accuracy can be 
+obtained by selecting larger samples from strata with greater variability. However 
+if sample size is not proportional to stratum size, the overall sample mean is 
+no longer appropriate for estimating the overall population mean.</p>
+
+<p>If there are <em>k</em> strata of size <em>N</em><sub>1</sub>, <em>N</em><sub>2</sub>,&nbsp;...,&nbsp;<em>N<sub>k</sub></em>, 
+and samples of size <em>n</em><sub>1</sub>, <em>n</em><sub>2</sub>,&nbsp;...,&nbsp;<em>n<sub>k</sub></em> 
+are taken from the strata, giving means <img src="../../images/symbol.xBar.png" width="10" height="10" align="baseline"><span class="black"><sub>1</sub></span>, <img src="../../images/symbol.xBar.png" width="10" height="10" align="baseline"><span class="black"><sub>2</sub></span>, ..., <img src="../../images/symbol.xBar.png" width="10" height="10" align="baseline"><span class="black"><sub><em>k</em></sub></span> 
+, then the population mean should be estimated by</p>
+<p class="eqn"><img class="gif" src="images/estMean.gif" width="193" height="50"></p>
+
+
+<div class="diagram" title="Example: Weights of animals"> 
+<p class="heading">Weights of animals</p>
+
+<p>The following diagram is similar to the one above, but in this example, there 
+are 80 immature animals (with relatively low weight) and 20 adults with higher 
+weight and also a higher spread in their distribution.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="sampDesignProg.StratifiedSampleApplet">
+<param name="varName" value="Weight of animal (kg)">
+<param name="catLabels" value="Immature Adult">
+<param name="vertAxis" value="20 130 20 20">
+<param name="decimals" value="3">
+<param name="randomNormal1" value="80 50 3 234568223 2.0">
+<param name="randomNormal2" value="20 85 18 822234692 2.5">
+<param name="sampleSeed" value="683095723">
+<param name="stratumSize" value="80 20">
+<param name="sampleSize" value="8 2">
+<param name="sampleSize2" value="3 7">
+<param name="title1" value="Proportional">
+<param name="title2" value="More with bigger var">
+<param name="showSlider" value="true">
+<param name="meanName" value="Estimated mean">
+</applet>
+</div>
+
+<p>The left half of the diagram does stratified random sampling with sample sizes 
+proportional to the stratum sizes (8 immature animals and 2 adults). On the right, 
+a disproportionately large sample is taken from the adults because of their higher 
+variability &mdash; 3 immature animals and 7 adults.</p>
+
+<p>Click <strong>Take sample</strong> a few times to verify that the estimated 
+mean weight is more accurate when a larger sample is taken from the adults &mdash; 
+the variability in the estimate is lower.</p>
+</div>
+
+<p>If one stratum has an <strong>extremely</strong> large spread, it may best 
+to record information from <strong>all</strong> individuals in that stratum, but 
+only sample a small fraction of the others.</p>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

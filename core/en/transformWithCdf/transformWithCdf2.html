@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Maximum of a rectangular distribution</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="rectangular distribution, maximum likelihood, method of moments, transformation">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading"><span class="exampleHeading">MLE of a rectangular distribution's maximum</span></p>
+
+<p>Consider a random sample of \(n\) values from a rectangular distribution whose maximum is unknown,</p>
+\[
+X \;\;\sim\;\; \RectDistn(0, \;\beta)
+\]
+
+<p>We <a href="javascript:showNamedPage('continuousEst7')">showed earlier</a> that the maximum likelihood estimate of \(\beta\) is the maximum of the values in the sample,</p>
+\[
+\hat{\beta} \;\;=\;\; \max(x_1, x_2, \dots, x_n)
+\]
+<p class="heading">Distribution of estimator</p>
+<p>Writing \(Y = \max(X_1, X_2, \dots, X_n)\), its cumulative distribution function is</p>
+\[ \begin{align}
+F_Y(y) \;\;&amp;=\;\; P(Y \le y) \\[0.4em]
+&amp;=\;\; P(X_1 \le y \textbf{  and  } X_2 \le y \textbf{  and  }\dots,  \textbf{  and  } X_n \le y) \\[0.4em]
+&amp;=\;\; P(X_1 \le y) \times P(X_2 \le y) \times \cdots \times P(X_n \le y) \\[0.2em]
+&amp;=\;\; \left(\frac y{\beta} \right)^n
+\end{align} \]
+<p>since the CDF of the rectangular distribution is \(F(x) = \dfrac x{\beta}\). The probability density function of \(Y\) is therefore</p>
+\[
+f(y) \;=\; F'(y) \;=\; \frac {n\;y^{n-1}}{\beta^n} \qquad\text{for } 0 \le y \le \beta
+\]
+
+<div class="example" title="Illustration: Distribution of the MLE">
+	<p class="exampleHeading">Distribution of MLE</p>
+	<p>The diagram below  shows the probability function for the maximum likelihood estimator of \(\beta\).</p>
+	<div class="centred">
+		<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="450">
+			<script type="text/javascript">writeAppletParams();</script>
+			<param name="appletName" value="distributionProg.RectMaxDistnApplet">
+			<param name="backgroundColor" value="FFFBF3">
+			<param name="nLimits" value="5 50 10">
+			<param name="xAxis" value="0 1.2 2 2">
+			<param name="densityAxis" value="0 20 0 5">
+			<param name="customText" value="Probability density=Probability density#Show density axis=Show density axis#Show moments estimator=Show moments estimator">
+		</applet>
+	</div>
+	<p>Drag the slider to see how the sample size affects the shape of the distribution — it becomes more concentrated around the true parameter value as \(n\) increases.</p>
+	<hr width="75%">
+	<p>We <a href="javascript:showNamedPage('continuousEst2')">showed earlier</a> that the method of moments estimator of \(\beta\) is twice the sample mean. Its distribution is approximately normal (from the Central Limit Theorem); click <strong>Show moments estimator</strong> to superimpose its distribution on the diagram (in red).</p>
+	<p>Observe that although the maximum likelihood estimator is biased — its mean is less than \(\beta\) — its variance is much lower than that of the moments estimator. As the sample size, \(n\), increases, the advantage of the MLE  becomes more pronounced.</p>
+</div>
+<p class="heading">Mean and variance</p>
+<p>The mean of \(Y\) is</p>
+\[ \begin{align}
+E[Y] \;&amp;=\; \int_0^{\beta} y \times \frac {n\;y^{n-1}}{\beta^n} \;dy \\
+&amp;=\; \int_0^{\beta} \frac n{\beta^n} y^n \;dy \\
+&amp;=\; \frac n{\beta^n} \left[\frac{y^{n+1}}{n+1} \right]_0^{\beta} \\
+&amp;=\; \frac {n\;\beta}{n+1} \\
+\end{align} \]
+<p>Its variance can be found from</p>
+\[ \begin{align}
+E[Y^2] \;&amp;=\; \int_0^{\beta} y^2 \times \frac {n\;y^{n-1}}{\beta^n} \;dy \\
+&amp;=\; \int_0^{\beta} \frac n{\beta^n} y^{n+1} \;dy \\
+&amp;=\; \frac n{\beta^n} \left[\frac{y^{n+2}}{n+2} \right]_0^{\beta} \\
+&amp;=\; \frac {n\;\beta^2}{n+2} \\
+\end{align} \]
+<p>Therefore</p>
+\[ \begin{align}
+\Var(Y) \;=\; E[Y^2] - \left(E[Y]\right)^2 \;&amp;=\; \frac {n\;\beta^2}{n+2} - \frac {n^2\;\beta^2}{(n+1)^2} \\
+&amp;=\; n\;\beta^2 \frac {(n+1)^2 - n(n+2)}{(n+1)^2(n+2)} \\
+&amp;=\; \frac{n\;\beta^2}{(n+1)^2(n+2)}
+\end{align} \]
+<p class="heading">Bias and standard error</p>
+<p>From these, we can find the bias of the estimator</p>
+\[
+\Bias(\hat{\beta}) \;=\; E[\hat{\beta}] - \beta \;=\; -\frac {\beta}{n+1}
+\]
+<p>Its standard error is</p>
+\[
+\se(\hat{\beta}) \;=\; \sqrt {\Var(\hat{\beta})} \;=\; \beta \sqrt{\frac{n}{(n+1)^2(n+2)}}
+\]<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

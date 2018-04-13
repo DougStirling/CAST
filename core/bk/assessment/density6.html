@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Drawing histograms</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<div class="main">
+
+  <p class="heading">Frequency tables in Excel</p>
+
+  <p>The first step towards drawing a histogram is to create a frequency table 
+		for your marks.</p>
+	<p>In Excel, firstly enter your marks into one column then type details of the 
+		bins that you intend to use in a second column.</p>
+	<p>Next, type a formula to evaluate the number of values in the first bin, as 
+		shown below. (The formula counts the number of marks in the spreadsheet cells 
+		A2 to A31 that are less than or equal to 10.)</p>
+	<p class=eqn><img src="images/cumulativeExcel.gif" width="399" height="191"> 
+	</p>
+	<p>Copy this formula down in the spreadsheed (<strong>Edit &gt; Fill down</strong>) 
+		then edit each formula to change the strings to &quot;&lt;=20&quot;, &quot;&lt;=30&quot;, 
+		etc.</p>
+	
+<p>The resulting values are the <strong>cumulative</strong> counts for the data 
+-- each entry is the count for that bin <strong>plus the counts for lower bins</strong>. 
+To obtain the counts in the individual bins:</p>
+	<ol>
+		<li>Type a zero in the cell above the top cumulative count.</li>
+		<li>Type a formula in the next column for the first bin to evaluate the difference 
+			between it and the count above.</li>
+		<li>Copy this formula down in the spreadsheet (<strong>Edit &gt; Fill down</strong>).</li>
+	</ol>
+	<p class=eqn><img src="images/freqExcel.gif" width="328" height="176"> </p>
+	<p>This is a frequency table for your marks.</p>
+	<p class="heading">Drawing the histogram in Excel</p>
+	<p>Excel does not have a specific chart type for histograms, but it is possible 
+		to draw one with a bit of effort. Firstly drag over your column of frequencies 
+		then use the command <strong>Insert &gt; Chart...</strong> to select the following 
+		chart type.</p>
+	<p class=eqn><img src="images/barChartSelectExcel.gif" width="271" height="106"> 
+	</p>
+	<p>The next page of the Chart Wizard should show a draft (poorly drawn) histogram 
+		for your marks. Select the <strong>Series</strong> tab then specify the labels 
+		that should be used under your histogram bins.</p>
+	<p class=eqn><img src="images/histoLabelsExcel.gif" width="508" height="184"> 
+	</p>
+	<p>On the next page, click on the <strong>Titles</strong> tab and type names 
+		for the two axes of your histogram (probably &quot;Frequency&quot; and &quot;Mark&quot;). 
+		You will probably also want to remove the Label. Now click <strong>Finish</strong>.</p>
+	<p>One final modification is required. The histogram rectangles must be widened 
+		to touch &mdash; it is incorrect to display them as distinct bars. Double-click 
+		one of the histogram bars. In the resulting dialog box, click the <strong>Options</strong> 
+		tab then set the gap between the bars to zero.</p>
+	<p class=eqn><img src="images/histoGapExcel.gif" width="218" height="100"> </p>
+	<p>The resulting histogram is not perfect. The horizontal axis is not well labeled 
+		-- it would be better if the axis was labeled as a conventional numerical 
+		axis, rather than having a label attached to each bin. However this is the 
+		best that Excel can do.</p>
+	<p>You may also have noticed that the first bin contains one more possible values 
+		than the other bins &mdash; it can take 0, 1, ..., 10 which is eleven values. The 
+		only fix for this would be to create an extra bin for values -9, -8, ..., 
+		-1 and 0. However since Excel's 'histogram' is drawn with all rectangles the 
+		same width (irrespective of the range of values that may be included in it), 
+		this is less of a problem than if you drew the histogram by hand!</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

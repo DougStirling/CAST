@@ -1,0 +1,145 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Another example</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="likelihood ratio test, exponential distribution">
+	<meta name="dataset" content="Survival from disease">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>We now use a maximum likelihood test to compare two random samples from exponential distributions.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Example</p>
+		<p>Clinical records give the survival time in months from diagnosis of 30 sufferers from a certain disease as</p>
+		<div class="centred">
+			<table border="0" cellpadding="5" cellspacing="0" class="centred" style="border:1px solid #999999; background-color:#FFFFFF;">
+				<tr>
+					<td style="text-align:right; padding-right:7px; width:40px;">9.73<br>
+						5.56<br>
+						4.28<br>
+						4.87</td>
+					<td style="text-align:right; padding-right:7px; width:40px;">1.55<br>
+						6.20<br>
+						1.08<br>
+						7.17</td>
+					<td style="text-align:right; padding-right:7px; width:40px;">28.65<br>
+						6.10<br>
+						16.16<br>
+						9.92</td>
+					<td style="text-align:right; padding-right:7px; width:40px;">2.40<br>
+						6.19<br>
+						7.67<br>
+						1.11</td>
+					<td style="text-align:right; padding-right:7px; width:40px;">4.66<br>
+						4.35<br>
+						7.31<br>
+						3.28</td>
+					<td style="text-align:right; padding-right:7px; width:40px;">13.38<br>
+						3.08<br>
+						0.41<br>
+						4.33</td>
+					<td valign="top" style="text-align:right; padding-right:7px; width:40px;">2.16<br>
+						4.49<br>
+						0.75</td>
+					<td valign="top" style="text-align:right; padding-right:7px; width:40px;">4.45<br>
+						10.29<br>
+						0.90</td>
+				</tr>
+			</table>
+		</div>
+		<p>In a clinical trial of a new drug treatment, 21 sufferers had survival times of</p>
+		<div class="centred">
+			<table border="0" cellpadding="5" cellspacing="0" class="centred" style="border:1px solid #999999; background-color:#FFFFFF;">
+				<tr>
+					<td style="text-align:right; padding-right:7px; width:40px;">22.07<br>
+						12.47<br>
+						6.42</td>
+					<td style="text-align:right; padding-right:7px; width:40px;">8.15<br>
+						0.64<br>
+						20.04</td>
+					<td style="text-align:right; padding-right:7px; width:40px;">17.49<br>
+						2.22<br>
+						3.00</td>
+					<td style="text-align:right; padding-right:7px; width:40px;">28.09<br>
+						3.94<br>
+						8.59</td>
+					<td style="text-align:right; padding-right:7px; width:40px;">4.26<br>
+						32.82<br>
+						8.32</td>
+					<td valign="top" style="text-align:right; padding-right:7px; width:40px;">2.12<br>
+						18.53</td>
+					<td valign="top" style="text-align:right; padding-right:7px; width:40px;">9.95<br>
+						4.25</td>
+					<td valign="top" style="text-align:right; padding-right:7px; width:40px;">3.70<br>
+						5.82</td>
+				</tr>
+			</table>
+		</div>
+		<p>Assuming that survival times are exponentially distributed, perform a likelihood ratio test for whether the death rate is different for those getting the new drug.</p>
+	</div>
+	<div class="solution">
+		<p>The assumption of  exponential distributions means that</p>
+\[
+\{X_{C,1}, \dots, X_{C,30}\} \;\;\sim\;\; \ExponDistn(\lambda_C) \\
+\{X_{D,1}, \dots, X_{D,21}\} \;\;\sim\;\; \ExponDistn(\lambda_D)
+\]
+		<p>The hypotheses of that we want to test are:</p>
+		<ul>
+			<li>Null hypothesis, <strong>H<sub>0</sub></strong>: \(\lambda_C = \lambda_D (= \lambda)\)   (corresponding to \(\mathcal{M}_S\))</li>
+			<li>Alternative hypothesis, <strong>H<sub>A</sub></strong>:  \(\lambda_C \ne \lambda_D\)  (corresponding to \(\mathcal{M}_B\))</li>
+		</ul>
+		<p>The log-likelihood for the big model is</p>
+\[ \begin{align}
+\ell(\lambda_C, \lambda_D) \;\;&amp;=\;\; \left(30 \log \lambda_C - \left(\sum_{i}{x_{C,i}}\right) \lambda_C \right) + \left(21 \log \lambda_D - \left(\sum_{i}{x_{D,i}}\right) \lambda_D \right) \\
+&amp;=\;\; 30 \log \lambda_C - 182.48 \lambda_C + 21 \log \lambda_D - 222.87 \lambda_D
+\end{align} \]
+		<p>which simplifies for the small model to be</p>
+\[
+\ell(\lambda) \;\;=\;\; 51 \log \lambda - 405.35 \lambda 
+\]
+		<p style="font-weight:bold; font-size:larger">Big model, \(\mathcal{M}_B\)</p>
+		<p>For the big model, the maximum likelihood estimates of the two unknown parameters are</p>
+\[
+\hat{\lambda}_C \;\;=\;\; \frac{n_C}{\sum{x_{C,i}}} \;\;=\;\; \frac{30}{182.48} \;\;=\;\; 0.1644 \\
+\hat{\lambda}_D \;\;=\;\; \frac{n_D}{\sum{x_{D,i}}} \;\;=\;\; \frac{21}{222.87} \;\;=\;\; 0.0942
+\]
+<p>The maximum possible value for the log-likelihood is found by replacing \(\lambda_C\) and \(\lambda_D\) in the log-likelihood with these values,</p>
+\[
+\ell(\mathcal{M}_B) \;\;=\;\; \ell(\hat{\lambda}_C,\hat{\lambda}_D) \;\;=\;\; -154.77
+\]
+<p style="font-weight:bold; font-size:larger">Small model, \(\mathcal{M}_S\)</p>
+<p>When the two exponential parameters are equal, their maximum likelihood estimate is</p>
+\[
+\hat{\lambda} \;\;=\;\; \frac{n}{\sum{x_i}} \;\;=\;\; \frac{51}{405.35} \;\;=\;\; 0.1258
+\]
+<p>giving log-likelihood</p>
+\[
+\ell(\mathcal{M}_S) \;\;=\;\; \ell(\hat{\lambda}) \;\;=\;\; -156.72
+\]
+<p style="font-weight:bold; font-size:larger">Likelihood ratio test</p>
+<p>The test statistic is</p>
+\[
+\chi^2 \;\;=\;\; 2\left(\ell(\mathcal{M}_B) - \ell(\mathcal{M}_S)\right) \;\;=\;\; 3.906
+\]
+<p>Since there is one more unknown parameter in the big model, this should be compared to the \(\ChiSqrDistn(1 \text{ df})\) distribution. Its upper tail probability above 3.906 is 0.048 and this is the p-value for the test.</p>
+<p>Since the p-value is just under 5%, we should conclude that there is only moderately strong evidence that the survival rate is different for those getting the new drug treatment.</p>
+	</div>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

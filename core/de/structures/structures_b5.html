@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>Zeitlich geordnete Daten</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script><meta name="index" content="ordered data, time series"></head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Ordnen der Merkmalstr&auml;ger</p>
+<p>Viele wichitgen statistische Methoden nehmen an, dass die
+Merkmalstr&auml;ger in einer Datenmatrix ungeordnet sind - eine
+&Auml;nderung in den Zeilen w&uuml;rde die selbe Information
+geben. Zum
+Beispiel: Die Gewichte von 20 K&uuml;hen einer Herde
+w&uuml;rden&nbsp;einen ungeordneten Datensatz bilden.</p>
+<p>Aber manchmal sind die Zeilen der Datenmatrix geordnet,
+gew&ouml;hnlich durch&nbsp;Zeiten.Zum Beispiel: Temperaturwerte
+k&ouml;nnen in Zehn-Minuten-Intervallen zwischen
+9:00&nbsp;Uhr&nbsp;und
+21:00 Uhr&nbsp;aufgenommen sein. Die resultierenden Temperaturen
+sind
+kontinuierliche, metrische (nummerische) Variablen, deren Messwerte
+zeitgeordnet sind. Das Ordnen der Messwerte gibt n&uuml;tzliche
+Hinweise, die einem helfen, die Daten zu verstehen. Diese Arten von
+Daten nennt man <strong>Zeitfolgen</strong>.</p>
+<p>F&uuml;r eine einleitende Untersuchung von geordneten
+Daten ist es
+oft n&uuml;tzlich, diese so zu begutachten, als w&auml;ren sie
+ungeordnet. Allerdings sollte eine vollst&auml;ndige Analyse vor
+dem
+Ordnen der Daten gemacht werden.</p>
+<div class="diagram"><p class="heading">Beispiele</p>
+<p>In beiden folgenden Datens&auml;tze sind die Daten
+zeitgeordnet. In
+dem Traubentest-Beispiel wurden die Trauben in der gezeigten
+Reihenfolge getestet, wobei im Wetter-Beispiel der Niederschlag
+j&auml;hrlich zwischen Juli 1993 und Juni 2005 gemessen wurde.<br>
+</p><table class="centred" border="0" cellpadding="8" cellspacing="0"> <tbody> <tr><td><table style="margin-top: 0pt; margin-bottom: 0pt;" border="0" cellpadding="5" cellspacing="0">
+<tbody> <tr> <th colspan="2" align="center">Getestete
+Trauben</th>
+</tr> <tr> <th align="center">Sorte</th>
+<th align="center">Zuckergehalt</th> </tr> <tr bgcolor="#ffffff"> <td align="center" style="border:1px solid #999999;">B<br>
+A<br>
+C<br>
+B<br>
+A<br>
+C<br>
+C<br>
+C<br>
+B<br>
+A<br>
+B<br>
+A</td> <td align="center" style="border:1px solid #999999; border-left:0px;">62<br>
+46<br>
+51<br>
+79<br>
+44<br>
+60<br>
+72<br>
+55<br>
+78<br>
+63<br>
+81<br>
+53</td> </tr> </tbody> </table> </td>
+<td> <table style="margin-top: 0pt; margin-bottom: 0pt;" border="0" cellpadding="5" cellspacing="0"> <tbody> <tr> <th colspan="2" align="center">Wetter</th> </tr>
+<tr> <th align="center">Typ des Jahres</th> <th align="center">Niderschlag (Juli bis Juni)</th> </tr>
+<tr bgcolor="#ffffff"> <td align="center" style="border:1px solid #999999;">Ordinary<br>
+El Nino<br>
+La Nina<br>
+Ordinary<br>
+El Nino<br>
+La Nina<br>
+La Nina<br>
+La Nina<br>
+Ordinary<br>
+El Nino<br>
+Ordinary<br>
+El Nino</td> <td align="center" style="border:1px solid #999999;">62<br>
+46<br>
+51<br>
+79<br>
+44<br>
+60<br>
+72<br>
+55<br>
+78<br>
+63<br>
+81<br>
+53</td> </tr> </tbody> </table> </td>
+</tr> </tbody></table><p>W&uuml;rde das
+Traubentest-Experiment in
+einer identischen Art
+f&uuml;r alle Trauben ausgef&uuml;hrt werden, w&auml;re es
+m&ouml;glich
+die Ordnung der Daten zu ignorieren und die Daten so zu Analysieren,
+als w&auml;ren sie ungeordnet.&nbsp;</p>
+<p>Dies w&uuml;rde ebenso eine sinnvolle Anfangsanalyse der
+Daten des
+Wetter-Beispiels&nbsp;sein. Wenn die Daten
+aber&nbsp;&uuml;ber einen
+l&auml;ngeren Zeitraum gesammelt worden w&auml;ren und diese
+einen
+Trend im Niederschlag zeigen w&uuml;rden (z.B. durch den
+Klimawandel),
+w&auml;re es wichtiger das Ordnen der Werte zu beachten.&nbsp;</p>
+<p>Zum Aufnehmen der Zeitordnung der Daten in die Datenmatrix,
+kann
+eine neue Variable hinzugef&uuml;gt werden. Wie folgend gezeigt
+wird:</p>
+<table class="centred" border="0" cellpadding="8" cellspacing="0"> <tbody> <tr> <td> <table style="margin-top: 0pt; margin-bottom: 0pt;" border="0" cellpadding="5" cellspacing="0"><tbody><tr>
+<th colspan="3" align="center">Getestete
+Trauben</th> </tr> <tr> <th align="center" width="39">Index</th> <th align="center" width="38">Sorte</th> <th align="center" width="103">Zuckergehalt</th> </tr> <tr bgcolor="#ffffff"> <td align="center" style="border:1px solid #999999;">1<br>
+2<br>
+3<br>
+4<br>
+5<br>
+6<br>
+7<br>
+8<br>
+9<br>
+10<br>
+11<br>
+12 </td> <td align="center" style="border:1px solid #999999; border-left:0px;">A<br>
+A<br>
+C<br>
+C<br>
+A<br>
+B<br>
+C<br>
+B<br>
+C<br>
+A<br>
+C<br>
+A</td> <td align="center" style="border:1px solid #999999; border-left:0px;">62<br>
+46<br>
+51<br>
+79<br>
+44<br>
+60<br>
+72<br>
+55<br>
+78<br>
+63<br>
+81<br>
+53</td> </tr> </tbody> </table> </td>
+<td> <table style="margin-top: 0pt; margin-bottom: 0pt;" border="0" cellpadding="5" cellspacing="0"> <tbody> <tr> <th colspan="3" align="center">Wetter</th> </tr>
+<tr> <th align="center">Jahr, beginnend im Juli</th>
+<th align="center">Typ des Jahres</th> <th align="center">Niederschlag (Juli bis Juni)</th> </tr>
+<tr bgcolor="#ffffff"> <td align="center" style="border:1px solid #999999;">1993<br>
+1994<br>
+1995<br>
+1996<br>
+1997<br>
+1998<br>
+1999<br>
+2000<br>
+2001<br>
+2002<br>
+2003<br>
+2004</td> <td align="center" style="border:1px solid #999999; border-left:0px;">Ordinary<br>
+El Nino<br>
+La Nina<br>
+Ordinary<br>
+El Nino<br>
+La Nina<br>
+La Nina<br>
+La Nina<br>
+Ordinary<br>
+El Nino<br>
+Ordinary<br>
+El Nino</td> <td align="center" style="border:1px solid #999999; border-left:0px;">62<br>
+46<br>
+51<br>
+79<br>
+44<br>
+60<br>
+72<br>
+55<br>
+78<br>
+63<br>
+81<br>
+53</td> </tr> </tbody> </table> </td>
+</tr> </tbody></table><p>Die Zeit-Variable
+beinhaltet alle Informationen
+&uuml;ber die
+Ordnung der Daten, somit kann die Datenmatrix als ungeordnet behandelt
+werden.</p>
+</div><script type="text/javascript">writePageEnd();</script></body></html>

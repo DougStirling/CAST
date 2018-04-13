@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Influences on accuracy</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="least squares, slope, experimental design">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">What affects the accuracy of the least squares slope?</p>
+
+<p>We gave a formula for the standard deviation of <em>b</em><sub>1</sub> 
+earlier in this section. It can be rewritten as</p>
+
+<p class=eqn><img class="gif" src="../../en/regnEst/images/sdSlopeEqn.gif" width="227" height="42"> 
+</p>
+
+<p>where
+</p>
+
+<ul>
+<li>σ 
+is the standard deviation of the errors &mdash; i.e. the standard deviation of <i>Y</i> 
+around the regression line,</li>
+<li><i>n</i> is the number of data points, and</li>
+<li><em>s</em><sub>x</sub> 
+is the sample standard deviation of <i>X</i>.</li>
+</ul>
+
+  
+<p>It is interesting to observe how these three quantities influence the accuracy 
+of the least squares slope as an estimate of β<sub>1</sub>.</p>
+
+<div class="boxed">
+  <p style="text-align:left">The standard error of the least squares slope, <em>b</em><sub>1</sub>, 
+    is lowest when: </p>
+  <ol>
+  <li>the response standard deviation, σ, 
+  is low</li>
+  <li>the sample size, <i>n</i>, is large</li>
+  <li>the spread of x-values is high</li>
+  </ol>
+</div>
+
+<p>The first two influences on accuracy are not surprising but the third needs 
+a little more thought.</p>
+<ol>
+<li>If the data are close to the regression line, then the position of the line 
+can be accurately determined.</li>
+<li>Increasing the amount of data increases the information about β<sub>1</sub>.</li>
+<li>It is easiest to understand the effect of <em>s</em><sub>x</sub> by considering the most extreme situation. If all x-values are the same (<em>s</em><sub>x</sub>&nbsp;=&nbsp;0), 
+the distribution of <em>Y</em> will also be the same for each and there will be 
+<strong>no</strong> information about β<sub>1</sub>. 
+If the x-values are similar, the errors will tend to mask any differences in the 
+mean response and β<sub>1</sub> will be poorly estimated. The greater the spread of x-values, the smaller the 
+errors relative to the difference in response means, so the greater the accuracy 
+of the least squares estimates.</li>
+</ol>
+
+<br>
+
+<div class="diagram"> 
+<p class=heading>Demonstration</p>
+<p>The diagram below shows the distribution of the least squares slope for samples 
+from a normal linear model. </p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="linModProg.SampleSlope2Applet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="regnModel" value="3.00 0.75 0.6">
+<param name="maxParams" value="10.00 10.00">
+<param name="xDistn" value="-2.0 -0.3 0.3 2.0">
+<param name="horizAxis" value="-2.0 2.0 -2 1">
+<param name="vertAxis" value="0.0 6.0 0 1">
+<param name="randomSeed" value="345946662">
+<param name="slopeAxis" value="-1.5 3.0 -1 1">
+<param name="interceptAxis" value="1.5 4.5 1.5 0.5">
+<param name="sampleSize" value="8 *20 50 100">
+<param name="sdLimits" value="0.2 1.2 0.6">
+<param name="customText" value="X variability=X variability#Response st devn=Response st devn#Small=Small#Large=Large">
+</applet>
+</div>
+
+<p>Use the pull-down menu to alter the sample size. Observe that the spread of the distribution
+of <em>b</em><sub>1</sub> is lowest when the sample size is large.</p>
+
+<p>Change the sample size back to 20, then adjust the response standard deviation. Observe
+that the spread of the distribution of
+  <em>b</em><sub>1</sub> is lowest when the response standard deviation is small.</p>
+
+<p>Change the response standard deviation back to a medium value, then adjust the spread
+of <i>X</i>. Observe that the spread of the distribution of
+<em>b</em><sub>1</sub> is lowest when the spread of <i>X</i> is high.</p>
+
+<p><font color="#666666">(Click <strong>Accumulate</strong> then take a few samples
+at any combination of the three characteristics to verify that the blue normal
+distributions are indeed correct!)</font></p>
+
+</div>
+<p class=heading>Implications for experimental design
+</p>
+
+<p>There are important consequences when designing experiments that will generate 
+regression data. In order to increase the accuracy of the estimate of the least 
+squares slope,</p>
+
+<dl>
+<dt>Reduce the response standard deviation, σ</dt>
+<dd>As in other experimental situations, it is best if the experimental units 
+are as similar as possible. This is the only way to keep σ low.</dd>
+<dt>Increase the sample size</dt>
+<dd>Clearly it is best to collect as much data as possible, but expense will be 
+a limiting factor.</dd>
+<dt>Increase the spread of x-values</dt>
+<dd>In an experiment, the x-values are under the control of the experimenter, 
+so it is possible to increase their spread.&nbsp; (If there is too small a variation 
+in the x-values used in the experiment, β<sub>1</sub> cannot be accurately estimated.)</dd>
+</dl>
+<br>
+
+<table width="75%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+<tr> 
+<td align="center"><strong>There is however a major problem when the spread of 
+x-values is increased too much.<br>
+<font color="#FF0000">Beware nonlinearity</font></strong></td>
+</tr>
+</table>
+<p>Although many relationships are acceptably linear over a limited range of x-values, 
+at extreme x-values the relationship often becomes nonlinear. Although a good 
+spread of x-values is desirable, the normal linear model is not appropriate if 
+there is curvature. A compromise is needed.</p>
+<p class=eqn><object data="images/nonlinearity.svg" width="271" height="210" alt="eqn"></object>
+</p>
+<p>Even when you have decided on a range of x-values that will be used in the 
+experiment, it is important to avoid using only values at the two ends of this 
+range, even though this maximises <em>s</em><sub>x</sub>. 
+Without intermediate values, it is impossible to assess whether the data are linear 
+or not.</p>
+<p class=eqn><object data="images/nonlinearity2.svg" width="271" height="210" alt="eqn"></object>
+</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

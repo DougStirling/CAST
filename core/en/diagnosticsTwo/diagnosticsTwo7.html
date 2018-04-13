@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Examples</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	<meta name="dataset" content="Leafing out time">
+	<meta name="dataset" content="Body fat">
+	<meta name="dataset" content="Heart catheter length">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Looking for outliers and influence</p>
+  <p>Detection of outliers is clearly important when fitting multiple regression 
+		models. They may correspond to incorrectly recorded values or individuals 
+		that are different enough from the rest to warrant separate analysis.</p>
+	<p>High leverage is also important, even though it does not necessarily mean 
+		that anything is wrong with the multiple regression model. A high-leverage 
+		point could potentially have undue influence on the conclusions and we should 
+		be aware if our conclusions hang on a single observation.</p>
+	<p>In simple linear models, outliers, high leverage and influential points can 
+		usually be seen in a scatterplot of the raw data, so the complication of evaluating 
+		and plotting externally studentised residuals, leverages and measures of influence 
+		is less important. However when there are two explanatory variables, it is 
+		much harder to simply 'look at the raw data' and this is impossible if there 
+		are three or more explanatory variables.</p>
+	<p>Examination of externally studentised residuals, leverages and a measure 
+		of influence is therefore important. These may be shown on a dot plot or in 
+		a scatterplot against fitted values.</p>
+
+	<div class="diagram"> 
+		<p class="heading">Examples</p>
+		<p>For each of the following data sets, externally studentised residuals, 
+			leverages and DFITS are shown in stacked dot plots. Carefully examine the 
+			plots, clicking on crosses to see corresponding values of the other measures, 
+			then read the conclusions.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="residTwoProg.DiagnosticsXZApplet">
+<param name="noOfDataSets" value="3">
+<param name="customText" value="Data=Data#Externally studentised residuals=Externally studentised residuals#Leverage=Leverage#DFITS=DFITS#Conclusion=Conclusion#Peek at data=Peek at data">
+
+<param name="dataName" value="Leafing-out times of Maple seedlings">
+<param name="description" value="Batches of maple seedlings from various locations in the US and Canada were grown in Wooster, Ohio. An index of the time to leafing-out of each batch (Y) may be related to the latitude (X degrees North) and mean July temperature (Z degrees F) of the source of the seeds.">
+<param name="question" value="No seedlings have a residual far enough from zero to be called an outlier. Of the three seedlings with high leverage, only one is associated with a fairly high residual and therefore a high DFITS. You should check that your conclusions are not strongly affected by this observation.">
+<param name="yVarName" value="Leafing-out time">
+<param name="xVarName" value="Latitude(X)">
+<param name="zVarName" value="Temperature(Z)">
+<param name="yValues" value="20.5 21.0 18.3 18.6 18.6 19.8 20.6 19.2 19.8 15.8 14.5 18.5 16.7 13.9 14.3 15.2 16.6 18.2 18.3 13.3 20.0 18.1 17.0 15.6 15.7 15.4 15.4 15.8 15.0 15.9 14.0 10.8">
+<param name="xValues" value="46.95 45.55 45.00 45.42 44.50 46.37 45.03 43.00 42.80 42.70 42.42 40.75 41.38 40.35 40.80 40.92 40.33 41.58 41.92 40.12 42.75 42.00 42.55 41.50 39.25 37.45 38.33 36.25 35.80 31.38 32.83 30.75">
+<param name="zValues" value="66.7 64.3 61.8 65.0 63.5 65.5 67.7 67.9 70.2 71.1 74.4 76.4 75.9 76.4 71.9 74.2 73.0 71.4 69.7 72.6 69.2 68.0 70.0 72.5 76.7 79.5 69.5 74.3 68.9 80.8 81.2 81.0">
+<param name="yAxis" value="10 22 10 2">
+<param name="xAxis" value="30 47 30 2">
+<param name="zAxis" value="60 82 60 5">
+<param name="leverageAxis" value="0 0.5 0 0.1">
+<param name="dfitsAxis" value="-2 2 -2 1">
+
+<param name="dataName2" value="Body fat for sample of 25 men">
+<param name="description2" value="Body fat was measured using an underwater weighing technique from 251 men. This data set shows percentage body fat (Y), abdomen circumference (X cm) and height (Z cm) from 25 of the men.">
+<param name="question2" value="There are no outliers. Three men have an (abdomen, height) combination with fairly high leverage, but only one (with very small abdomen) has DFITS outside the guidelines and only by a little.">
+<param name="yVarName2" value="Body fat">
+<param name="xVarName2" value="Abdomen(X)">
+<param name="zVarName2" value="Height(Z)">
+<param name="yAxis2" value="0 40 0 10">
+<param name="xAxis2" value="65 130 70 10">
+<param name="zAxis2" value="63 76 65 5">
+<param name="yValues2" value="12 16.5 9.4 31.3 5 24 13.2 18.6 14.3 21.7 21 17.9 15 20.1 24.5 22 16.5 16.8 23.8 22.6 11.3 15.1 16.9 28.8 28.3">
+<param name="xValues2" value="88.6 100.5 83.5 108.1 70.4 98.3 84.6 98.6 86.5 94 92.3 87.5 87 106.6 106.8 92.4 90.8 104.5 101.2 89.7 84.4 88.7 93 100.5 111.5">
+<param name="zValues2" value="73.5 73.5 69 67 66.75 65.75 71.5 69.25 73 72 69.25 72.25 69.75 75 70.25 71.5 69.5 74.5 68.25 67.5 70.75 69.25 68.5 65.75 66">
+<param name="leverageAxis2" value="0 0.5 0 0.1">
+<param name="dfitsAxis2" value="-2 2 -2 1">
+
+<param name="dataName3" value="Heart catheter length">
+<param name="description3" value="In heart catheterisation, a catheter is passed through a major vein or artery from the leg into the heart. X-rays are used to position the tip of the catheter. The catheter length (Y cm), height (X in) and weight (Z lb) were recorded from 12 children.">
+<param name="question3" value="One child has deleted residual less than -3. This was a very small, light child (moderately high leverage). The relationship could be nonlinear for small children or the child may be an outlier. Another child has high leverage (unusually light for the height) and is highly influential. Both children's observations strongly influence the fitted line.">
+<param name="yVarName3" value="Catheter">
+<param name="xVarName3" value="Height">
+<param name="zVarName3" value="Weight">
+<param name="yValues3" value="37 50 34 36 43 28 37 20 34 30 38 47">
+<param name="xValues3" value="42.8 63.5 37.5 39.5 45.5 38.5 43.0 22.5 37.0 23.5 33.0 58.0">
+<param name="zValues3" value="40.0 93.5 35.5 30.0 52.0 17.0 38.5 8.5 33.0 9.5 21.0 79.0">
+<param name="yAxis3" value="15 55 20 10">
+<param name="xAxis3" value="20 65 20 10">
+<param name="zAxis3" value="0 100 0 20">
+<param name="leverageAxis3" value="0 0.8 0 0.2">
+<param name="dfitsAxis3" value="-3 3 -3 1">
+</applet> 
+</div>
+
+    <p>Since there are only two explanatory variables, you can click <strong>Peek 
+			at data</strong> to see the raw data in a 3-dimensional scatterplot. For 
+			models with more than two explanatory variables that you will meet in later 
+			chapters, this will not be possible.</p>
+		</div>
+
+	
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

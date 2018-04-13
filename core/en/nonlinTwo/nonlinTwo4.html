@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Residual plots to detect nonlinearity</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="residual">
+	<meta name="dataset" content="Bee energy expenditure">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Examining residuals</p>
+	<p>As in regression models with a single explanatory variable, we look for problems 
+		in multiple regression models with diagnostics that are based on the residuals 
+		and leverages of the observations.</p>
+	<p>When there is only one explanatory variable, <em>X</em>, a scatterplot of 
+		<em>Y</em> against <em>X</em> usually shows up any problems with the regression 
+		model as effectively as a scatterplot of the residuals against <em>X</em>. 
+		However with more explanatory variables,</p>
+	<ul>
+		<li>It is harder to display the raw data &mdash; impossible with more than two 
+			explanatory variables.</li>
+		<li>A scatterplot of <em>Y</em> against any single explanatory variable can 
+			contain a lot of 'noise' due to the effect of other explanatory variables 
+			on <em>Y</em>.</li>
+	</ul>
+	
+	<p>The residuals remove the effects of <strong>all</strong> explanatory variable, 
+		so plots of residuals against explanatory variables can show information about 
+		problems with the model that cannot be seen in plots of the raw data.</p>
+	<div class="diagram">
+    <p class="heading">Artificial illustration</p>
+
+    <p>The diagram below shows an artificial data set that shows clearly how residual 
+			plots can highlight problems that are not easy to see in the raw data.</p>
+    <div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="580" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="residTwoProg.ResidPlotXZApplet">
+<param name="yVarName" value="Response, Y">
+<param name="xVarName" value="X">
+<param name="zVarName" value="Z">
+<param name="yValues" value="21.095 28.179 19.819 20.970 16.309 26.416 26.106 17.782 17.433 27.369 14.255 18.507 17.566 21.764 23.600 28.329 19.638 12.526 19.386 10.890 16.886 27.742 26.023 18.347 17.390 15.421 7.403 12.318 17.596 8.003 16.699 16.363 21.269 13.662 15.546 18.389 13.054 22.151 18.024 30.142 5.016 17.929 16.461 5.450 29.170 13.279 12.547 31.718 13.795 22.499">
+<param name="xValues" value="3.524 4.175 2.861 1.943 2.905 4.691 4.440 3.555 3.118 3.205 2.422 3.243 2.689 3.569 4.601 4.249 3.454 2.242 4.121 2.118 3.724 3.925 3.676 3.471 3.653 2.879 1.940 3.083 2.502 2.143 2.976 2.409 4.587 2.243 2.022 3.274 2.182 2.721 1.506 4.141 1.370 2.358 2.900 1.131 4.891 2.182 2.340 4.337 3.366 4.429">
+<param name="zValues" value="6.421 8.465 7.460 9.570 5.451 6.374 6.857 5.406 5.737 9.416 6.082 6.234 7.034 7.030 5.217 8.194 5.975 5.356 4.229 5.672 3.645 8.157 8.549 5.440 4.320 4.946 2.320 1.210 7.099 2.172 5.704 6.979 2.859 6.145 7.305 6.440 5.891 8.399 9.129 8.985 3.525 7.602 5.740 5.680 7.334 6.172 5.394 9.212 2.312 4.787">
+<param name="yAxis" value="0 35 0 5">
+<param name="xAxis" value="1 5 1 1">
+<param name="zAxis" value="1 10 2 2">
+<param name="residAxis" value="-3 3 -3 1">
+<param name="customText" value="Color crosses=Color crosses">
+</applet> 
+</div>
+
+    <p>Use the lower pop-up menu to display scatterplots of <em>Y</em> against 
+			<em>X</em> and <em>Z</em>. Neither plot gives any clear indication of problems 
+			with the fit of the model &mdash; both variables seem to be linearly related 
+			to <em>Y</em>.</p>
+		<p>Now use the top pop-up menu to display scatterplots of the <strong>residuals</strong> 
+			against <em>X</em> and <em>Z</em>.</p>
+		
+<div class="centred"><div class="boxed">
+<p>The scatterplot of residuals against <em>Z</em> clearly shows 
+					curvature &mdash; the model should use a nonlinear function of <em>Z</em>.</p>
+</div></div>
+
+	  <p>To help understand the difference between the plots of <em>Y</em> and the 
+			residuals against <em>Z</em>, display a scatterplot of <em>Y</em> against 
+			<em>Z</em> and click the checkbox <strong>Color crosses</strong>.</p>
+		<p>The colours of the crosses represent <em>X</em> &mdash; from red for low <em>X</em> 
+			to blue for high <em>X</em>.<em> Y</em> is related to <em>X</em> as well 
+			as <em>Z</em>, so there the vertical spread of crosses in the plot of <em>Y</em> 
+			against <em>Z</em> is mostly determined by <em>X</em>. When changing to 
+			a scatterplot of residuals against <em>Z</em>, the effect of <em>X</em> 
+			is removed.</p>
+		<p>The following example shows the use of residuals for a real data set.</p>
+		<p class="heading">Energy expenditure of bees</p>
+		<p>In an experiment, an entomologist recorded energy expenditure (joules/sec) 
+			for bees drinking water with different sucrose concentrations (%) and at 
+			different temperatures. Energy expenditure is the response measurement.</p>
+		
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="580" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="residTwoProg.ResidPlotXZApplet">
+<param name="yVarName" value="Energy">
+<param name="xVarName" value="Temperature (X)">
+<param name="zVarName" value="Sucrose (Z)">
+<param name="yValues" value="3.1 3.7 4.7 5.5 6.7 7.3 7.9 9.2 9.3 6.0 6.9 7.5 11.5 12.9 13.4 17.5 15.8 14.7 7.7 8.3 9.5 15.7 14.3 15.9 19.1 18.0 19.9">
+<param name="xValues" value="9@20 9@30 9@40">
+<param name="zValues" value="3@20 3@40 3@60 3@20 3@40 3@60 3@20 3@40 3@60">
+<param name="yAxis" value="0 20 0 5">
+<param name="xAxis" value="17 43 20 10">
+<param name="zAxis" value="15 65 20 20">
+<param name="residAxis" value="-3 3 -3 1">
+<param name="customText" value="Color crosses=Color crosses">
+</applet> 
+</div>
+		
+		<p>Scatterplots of Energy expenditure against Temperature and Sucrose do not 
+			show particular curvature, but the residual plots both give some evidence 
+			of nonlinearity in the relationship with both explanatory variables.</p>
+		</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

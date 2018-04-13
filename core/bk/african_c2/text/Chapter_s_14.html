@@ -1,0 +1,344 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>14. Advanced Regression</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/maths/mathStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/maths/theorems.js"></script>
+  <script src="../../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 14 &nbsp; Advanced Regression</h1>
+<h1 class="sectionName">14.1 &nbsp; Linear model assumptions</h1>
+<h2 class="pageName">14.1.1 &nbsp; Assumptions in a normal linear model</h2>
+
+<p class="heading notPrinted">Assumptions</p>
+<p>The normal linear model is:</p>
+<p class=eqn><span class="black"><em>y<sub></sub></em> &nbsp;=&nbsp; &beta;<sub>0</sub> &nbsp;+&nbsp; &beta;<sub>1</sub><em>x</em> &nbsp;+&nbsp; &epsilon;</span> </p>
+<p class=eqn><span class="black">&epsilon;&nbsp; ~ &nbsp;<font face="Arial, Helvetica, sans-serif">normal</font> (0<sub></sub>&nbsp;, &sigma;)</span> </p>
+<p>The following four requirements are implicit in the model but
+may be violated, as illustrated by the examples. </p>
+
+<div class="centred"><table border="0" cellspacing="0" cellpadding="0" class="centred">
+<tr>
+<td width="50%" align="LEFT" valign="top"><p class=heading>Linearity</p>
+<p>The response may change nonlinearly with <em>x</em>.</p>
+<p class="eqn"><img class="gif" src="../../../en/regnProblem/images/nonlinear.gif" width="246" height="166"></p></td>
+<td width="220" align="LEFT" valign="top"><p class=heading>Constant standard deviation</p>
+<p>The response may be more variable at some <em>x</em> than others.</p>
+<p class="eqn"><img class="gif" src="../../../en/regnProblem/images/hetroskedastic.gif" width="246" height="166"></p></td>
+</tr>
+<tr>
+<td align="LEFT" valign="top"><p class=heading>Normal distribution for errors</p>
+<p>The errors may have skew distributions.</p>
+<p class="eqn"><img class="gif" src="../../../en/regnProblem/images/skewError.gif" width="246" height="166"></p></td>
+<td align="LEFT" valign="top"><p class=heading>Independent errors</p>
+<p>When the observations are ordered in time, successive errors may be correlated.</p>
+<p class="eqn"><img class="gif" src="../../../en/regnProblem/images/autoCorr.gif" width="246" height="166"></p></td>
+</tr>
+</table></div>
+
+<p class="heading">Residual plots</p>
+<p>The above problems may be evident in a scatterplot of the raw data, but a <a href="javascript:showNamedPage('leastSqrs6')">residual
+plot</a> often highlights any problems.</p>
+<p class="eqn"><img src="../../../en/regnProblem/images/s_residPlot.gif" width="550" height="266"></p>
+
+
+
+
+<h2 class="pageName">14.1.2 &nbsp; Curvature &mdash; transforming X</h2>
+
+<p class="heading">Linearising the relationship between Y and X</p>
+<p>Even if  <em>X</em> and <em>Y</em> are nonlinearly related,
+some transformation of <em>X</em> may be linearly
+related to some transformation of <em>Y</em>. For example, the data may satisfy
+the model</p>
+<p class=eqn><span class="black"><em>y<sup>2</sup><sub></sub></em> &nbsp; = &nbsp; &beta;<sub>0 &nbsp;</sub>+ &nbsp; &beta;<sub>1 </sub><strong>log</strong><em> x</em> &nbsp;+ &nbsp;&epsilon;</span> </p>
+<p class=eqn><span class="black">&epsilon;&nbsp; ~ &nbsp;<font face="Arial, Helvetica, sans-serif">normal</font> (0<sub></sub>&nbsp;, &sigma;)</span> </p>
+<p>The parameters of this model could again be estimated by least squares, based
+on the transformed values of the two variables, and confidence intervals and
+hypothesis tests would be valid.</p>
+<p class="heading">Example: Transformation of X</p>
+<p class="eqn"><img src="../../../en/regnProblem/images/s_curvatureX.gif" width="279" height="244"></p>
+<p>For this data set, a linear model seems reasonable after a log transformation
+of <em>X</em>.</p>
+<p class="eqn"><img src="../../../en/regnProblem/images/s_curvatureX2.gif" width="550" height="256"></p>
+
+
+
+
+<h2 class="pageName">14.1.3 &nbsp; Curvature and non-constant variance</h2>
+
+<p class="heading">Transformation and the error standard deviation</p>
+<p>Transforming <em>X</em>  does not affect the <strong>spread</strong> of
+response values at each value of <em>X</em>. Transformation of <em>X</em> therefore
+does not affect whether or not the linear model's assumption of constant error
+standard deviation holds.</p>
+<p>However, transforming <em>Y</em> not only affects
+linearity of the relationship, but <strong>also affects whether
+or not the error standard deviation is constant</strong>.</p>
+<p class="heading">Example</p>
+<p>The raw data shown in the scatterplot on the top left shows both curvature
+and non-constant variance &mdash; the y-values are much more variable when X is near
+0 than when X is high.</p>
+<p class="eqn"><img src="../../../en/regnProblem/images/s_curvatureY.gif" width="550" height="551"></p>
+<p>A log transformation of Y both linearises the relationship <strong>and</strong> removes
+the non-constant variance.</p>
+
+<div class="centred"><div class="boxed">
+<p>Fortunately, the same transformation of the response that linearises
+the relationship often <strong>also</strong> results in fairly constant
+error standard deviation.</p>
+</div></div>
+
+
+
+
+
+<h2 class="pageName">14.1.4 &nbsp; Transformations and prediction ((advanced))</h2>
+
+<p class="heading notPrinted">Prediction using transformed variables</p>
+<p>To predict <em>Y</em> at any value <em>x,</em> we use the least squares line
+that was fitted to the transformed data.
+</p>
+<ol>
+<li>Transform <em>x</em></li>
+<li>Put this transformed <em>x</em>-value into the least squares equation to
+obtain a prediction of the <strong>transformed</strong> <em>Y</em>.</li>
+<li>Apply the <strong>inverse transformation</strong> to the one that was used
+on <em>Y</em> to obtain the prediction of <em>Y</em> itself</li>
+</ol>
+<p class="heading">Example</p>
+<p>In the example below, a linear model can be used to describe the relationship
+between log<sub>10</sub>(<em>y</em>)
+and log<sub>10</sub>(<em>x</em>). The diagram shows how it can be used to predict <em>y</em> from
+<em>x</em>.</p>
+<p class="eqn"><img src="../../../en/regnProblem/images/s_predictNonlin.gif" width="548" height="306"></p>
+<p><strong>Prediction intervals</strong> can be obtained in a similar way. A prediction interval
+is found using the transformed variables, then its end-points are back-transformed
+into values of <em>Y</em> on its original scale.</p>
+<p>For example, if the square root of <em>Y</em> is linearly related to <em>X</em>,
+we find a prediction interval for sqrt(<em>Y</em>), then square both ends of
+this interval to get a prediction interval for <em>Y</em> itself.</p>
+
+
+
+
+<h2 class="pageName">14.1.5 &nbsp; Outliers and leverage</h2>
+
+<p class="heading notPrinted">Outliers and errors</p>
+<p>In a scatterplot,  cross that is unusually far above or below
+the regression line is an <strong>outlier</strong>. It would correspond to a large error, ε.</p>
+<p class=eqn> <img class="gif" src="../../../en/regnProblem/images/outlierError.gif" width="297" height="274"> </p>
+<p class="heading">Standardised residuals</p>
+<p>The least squares residuals are estimates of the unknown errors and
+can be used in a similar way to give information about whether there is an outlier.</p>
+<p class=eqn> <img class="gif" src="../../../en/regnProblem/images/errorsDiagram.gif" width="297" height="274">    <img class="gif" src="../../../en/regnProblem/images/residualsDiagram.gif" width="297" height="274"> </p>
+<p>To help assess the residuals, we usually standardise them &mdash; dividing
+each by an estimate of its standard deviation.</p><div class="centred">
+<table border="0" cellspacing="0" cellpadding="0" class="centred" style="margin-top:0; margin-bottom:0; color:#000000">
+	<tr>
+		<td rowspan="3"><strong>standardised residual&nbsp; </strong>= &nbsp; </td>
+		<td style="text-align:center"><em><font size="+1">e</font></em></td>
+	</tr>
+	<tr>
+		<td style="border-bottom:1px solid #000000; line-height:3px; height:3px;"><img src="../../../en/../images/blankSquare.gif"></td>
+	</tr>
+	<tr>
+		<td style="text-align:center"><em><font size="+1">s<sub>e</sub></font></em></td>
+	</tr>
+</table>
+</div>
+<p>Large residuals pull very strongly on the line since they are <strong>squared</strong> in
+the least squares criterion. As a result,</p>
+
+<div class="centred"><div class="boxed">
+<p>Outliers will strongly pull the least squares line towards themselves,
+making their residuals smaller than you might otherwise expect.</p>
+</div></div>
+
+<p class="heading">Leverage</p>
+<p>If an outlier corresponds to an <em>x</em>-value near its mean, it usually
+will have a large residual,</p>
+<p class="eqn"><img src="../../../en/regnProblem/images/s_outlier.gif" width="553" height="321"></p>
+<p>However if the outlier occurs at an extreme <em>x</em>-value, it has a stronger
+influence on the position of the least squares line than the other data points.
+Such points are called <strong>high leverage</strong> points and pull the least
+squares line strongly towards them. Outliers that are high leverage points may
+therefore result in residuals that do not stand out from the other residuals.</p>
+<p class="eqn"><img src="../../../en/regnProblem/images/s_leverage.gif" width="557" height="319"></p>
+
+
+
+
+
+<h2 class="pageName">14.1.6 &nbsp; Non-normal errors ((optional))</h2>
+
+<p class="heading notPrinted">Normal probability plot of residuals</p>
+<p>The normal linear model assumes that the model errors are
+normally distributed,</p>
+<p class=eqn><span class="black">&epsilon;&nbsp; ~ &nbsp;<font face="Arial, Helvetica, sans-serif">normal</font> (0<sub></sub>&nbsp;, &sigma;)</span> </p>
+<p>A histogram of the residuals can be examined for normality but a better way
+ is with a <strong><a href="javascript:showNamedPage('normalDistn10')">normal
+probability plot</a></strong> of the residuals. If the residuals are normally
+distributed, the crosses in the normal probability plot should lie close to a
+straight line.</p>
+<p class="eqn"><img src="../../../en/regnProblem/images/s_probPlot.gif" width="550" height="274"></p>
+<p class="heading">Warning</p>
+<p>If the assumptions of linearity and constant variance are violated, or if
+there are outliers, the probability plot of residuals will often be curved, irrespective
+of the error distribution.</p>
+
+<div class="centred"><div class="boxed">
+<p>Only draw a probability plot if you are sure that the data are linear,
+have constant variance and have no outliers.</p>
+</div></div>
+
+
+
+
+
+<h2 class="pageName">14.1.7 &nbsp; Correlated errors ((optional))</h2>
+
+<p class="heading notPrinted">Independence of the errors</p>
+<p>The normal
+linear model assumes that the  errors are uncorrelated with each other, but correlated
+errors sometimes arise.</p>
+<p>Correlated errors may arise in an experiment in a greenhouse where adjacent
+plants will be grown in similar conditions (light, moisture, air flow). An
+unusually high growth rate for one plant may be associated with environmental
+conditions that also cause unusually high growth rates in adjacent plants.</p>
+<p>Correlated errors are most common when the observations are made sequentially
+in time. This is called <strong>serial correlation</strong>.</p>
+<p class="heading">Assessing serial correlation</p>
+<p>Strong serial correlation may be visible in a plot of residuals against time.
+A more formal test uses a test statistic called the <strong>Durbin-Watson
+statistic, <em>d</em></strong>. Writing the successive
+residuals as <em>e</em><sub>1</sub>, <em>e</em><sub>2</sub>, ..., <em>e<sub>n</sub></em>,</p>
+<p class=eqn><img class="gif" src="../HregnProblem/durbWatson.gif" width="127" height="51"> </p>
+<p>If successive residuals are  similar,
+<em>d</em> will be close to zero. An approximate p-value can be obtained  from
+a computer, special statistical tables or with a simulation such as that below.</p>
+<p class="eqn"><img src="../../../en/regnProblem/images/s_durbinWatson.gif" width="530" height="451"></p>
+<p class="heading">Warning</p>
+<p>If a linear model is used for a time series, but the relationship is actually
+nonlinear, successive residuals also tend to be similar and the Durbin-Watson
+statistic will also be small.</p>
+
+<div class="centred"><div class="boxed">
+<p>An unusually small Durbin-Watson statistic can be caused by <strong>either
+serial correlation or nonlinearity</strong>.</p>
+</div></div>
+
+
+
+
+
+<h1 class="sectionName breakBefore">14.2 &nbsp; Logistic regression</h1>
+<h2 class="pageName">14.2.1 &nbsp; Categorical responses</h2>
+
+<p class="heading">Comparing the response distributions at different
+x-values</p>
+	<p>If a response, <em>Y</em>, is numerical and  explanatory variable, <em>X</em>,
+is categorical, box plots can be used to compare the response distribution at
+the different <em>x</em>-values.</p>
+<p class=eqn><img class="gif" src="../../../en/logistic/images/lizardBox.gif" width="176" height="183"></p>
+<p>If the response, <em>Y</em>, is categorical and the explanatory variable,
+<em>X</em>,  is numerical, we are again interested in comparing the response
+distribution at different <em>x</em>-values.
+We might use <em>X</em> to define 'groups' by splitting its values
+into classes (as might be done to draw a histogram) and this allows us to use
+stacked bar charts to describe the relationship.</p>
+<p class=eqn><img class="gif" src="../../../en/logistic/images/lizardStacked.gif" width="173" height="162"> </p>
+<p>It is not necessary for the 'classes' to be of equal width. For example, some of the age groups below are of width 3 months, whereas others are 6 months and the extreme classes are wider still.</p>
+	<p class="eqn"><img src="../../../en/logistic/images/s_stackedBars.gif" width="550" height="289"></p>
+
+
+
+
+<h2 class="pageName">14.2.2 &nbsp; Fitted values and predictions</h2>
+
+<p class="heading">Linear model</p>
+	<p>It is tempting to try a  linear
+		model to explain how the proportion in one response category is affected by the explanatory
+	variable, </p>
+<p class=eqn style="color:#000000"><strong>predicted proportion</strong>, &nbsp; <img class="gif" src="../../../en/logistic/images/linearPredictEqn.gif" width="104" height="24"></p>
+	<p>Unfortunately this may result in predicted proportions greater than 1 or less than 0.</p>
+	<p class="eqn"><img src="../../../en/logistic/images/s_linearModel.gif" width="506" height="322"></p>
+	<p class="heading">Nonlinear models</p>
+	<p>We should use a model that gives values between 0 and 1<strong> for all possible
+values of <em>X</em></strong>. This means that the equation must be <strong>nonlinear</strong> in <em>X</em>.</p>
+	<p class="eqn"><img src="../../../en/logistic/images/s_logisticModel.gif" width="506" height="322"></p>
+
+
+
+
+<h2 class="pageName">14.2.3 &nbsp; Logistic curve</h2>
+
+<p class="heading notPrinted">A curve that lies between 0 and 1 for all values of x</p>
+	<p>Various 
+		nonlinear equations have values between 0 
+		and 1 for all values of <em>x</em>, but the simplest of these is a <strong>logistic 
+			curve</strong>, </p>
+	<div class="centred">
+		<table border="0" cellspacing="0" cellpadding="10" class="centred">
+			<tr>
+				<th style="margin:0px; padding:0px" valign="center"><span class="black bold"><strong>predicted proportion</strong>,</span>&nbsp;&nbsp;&nbsp;</th>
+				<td style="margin:0px; padding:0px" valign="center"><span style="color:#000000"><img class="gif" src="../../../en/logistic/images/logisticPredEqn.gif" width="196" height="51"></span></td>
+			</tr>
+		</table>
+	</div>
+	<p class="heading">The parameters of the logistic curve</p>
+	<p>The parameter <em>b</em><sub>1</sub> is called the <strong>slope</strong> of the curve. Increasing it makes the curve steeper, and 
+	its sign determines whether the curve slopes upwards or downwards.</p>
+<p class="eqn"><img src="../../../en/logistic/images/s_slope.gif" width="407" height="259"></p>
+	<p>The parameter <em>b</em><sub>0</sub> is the curve's <strong>intercept</strong> and it determines the horizontal position of the curve. Increasing it shifts the curve 
+	to the left.</p>
+<p class="eqn"><img src="../../../en/logistic/images/s_intercept.gif" width="407" height="259"></p>
+
+
+
+
+<h2 class="pageName">14.2.4 &nbsp; Obtaining a good fit</h2>
+
+<p class="heading notPrinted">Estimating the logistic parameters</p>
+	<p>Estimating the parameters <em>b</em><sub>0</sub> and <em>b</em><sub>1</sub> of a logistic model is more difficult than estimating the parameters for a linear model by least squares, but  many statistical programs will do the appropriate calculations for 
+	you.</p>
+	<p>We therefore take a 'black box' approach and simply show what parameter estimation 
+		gives without further justification. </p>
+	<p class="eqn"><img src="../../../en/logistic/images/s_maxLikelihood.gif" width="404" height="334"></p>
+
+
+
+
+</body>
+</html>

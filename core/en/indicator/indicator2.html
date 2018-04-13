@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Indicator variables</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="comparing groups, general linear model, indicator variable">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Combining the models for the two groups</p>
+  <p>The variable of interest can often be modelled by a normal distribution in 
+		each group with the same standard deviation, σ, 
+		but possibly with different means in the two groups.</p>
+  <p class="eqn"><img src="images/twoGroupModel.gif" width="391" height="45"></p>
+  <p>These two models can be combined into a single general linear model, using 
+		two 'explanatory variables', <span class="em blue">d<sub>i</sub></span> <span class="blue"><sup>(1)</sup></span> 
+		and <span class="em darkred">d<sub>i</sub></span> <span class="darkred"><sup>(2)</sup></span>, 
+		that can only take the values 0 or 1 and are called <strong>indicator variables</strong>.<strong> 
+		</strong></p>
+  <p class="eqn"><img src="images/indicatorModel.gif" width="416" height="122"></p>
+  <p>Note that this GLM does not have a constant term (intercept).</p>
+<div class="diagram">
+    <p class="heading">Matrix representation of the model</p>
+
+    <p>The next diagram shows this general linear model in matrix form for a data 
+      set with 6 observations from each of 2 groups.</p>
+<p class="eqn"><img src="../glm/images/generalMatrixModel.gif" width="91" height="17"></p>
+ 
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="370">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="matrixProg.FactorModelEqnApplet">
+<param name="xRows" value="12">
+<param name="nXColumns" value="1">
+<param name="fullNameX1" value="Group">
+<param name="shortNameX1" value="x">
+<param name="valuesX1" value="6@0 6@1">
+<param name="labelsX1" value="#Group A# #Group B#">
+<param name="oneFactor" value="separate means">
+<param name="customText" value="effect=effect">
+</applet> 
+</div>
+
+    <p>Click on any y-value to see how the indicator variables pick out the appropriate 
+      mean for its group.</p>
+    </div>
+  
+  <p class="heading">Alternative parameterisation with baseline group</p>
+  <p>A different way to express the same model is more useful &mdash; it simplifies 
+		the test for equal group means and can be easily extended to more complex 
+		situations.</p>
+  <p class="eqn"><img src="images/indicatorModel2.gif" width="416" height="76"></p>
+  <p>In this parameterisation, group 1 is considered to be the <strong>baseline 
+		group</strong> with mean &micro;<sub>1</sub> 
+		and the mean for group 2 is δ<sub>2</sub> 
+		higher. There is a single indicator variable that 'turns on' the parameter 
+		δ<sub>2</sub> 
+		for group 2, but not for group 1.</p>
+	
+<div class="centred"><div class="boxed">
+<p>The parameter δ<sub>2</sub> 
+						is the difference between the mean response in group 2 and that in 
+						group 1 (the baseline group).</p>
+</div></div>
+
+	<br>
+  <div class="diagram">
+    <p class="heading">Matrix representation of the model</p>
+
+    <p>The next diagram shows this general linear model in matrix form.</p>
+<p class="eqn"><img src="../glm/images/generalMatrixModel.gif" width="91" height="17"></p>
+ 
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="370">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="matrixProg.FactorModelEqnApplet">
+<param name="xRows" value="12">
+<param name="nXColumns" value="1">
+<param name="fullNameX1" value="Group">
+<param name="shortNameX1" value="x">
+<param name="valuesX1" value="6@0 6@1">
+<param name="labelsX1" value="#Group A# #Group B#">
+<param name="oneFactor" value="baseline 0">
+<param name="customText" value="effect=effect">
+</applet> 
+</div>
+
+    <p>Click on any y-value to see how the indicator variable adds the term δ<sub>2</sub> 
+			only to observations in group 2.</p>
+    </div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

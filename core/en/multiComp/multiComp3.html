@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Multiple comparisons</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="multiple comparisons, studentised range">
+	<meta name="dataset" content="Antibiotics">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Controlling for multiple pairwise comparisons</p>
+  <p>In experiments with a factor that has several levels, there are many possible pairwise comparisons of levels. The Bonferroni correction could be used to increase the t-value that is used for each comparison, but the differences between the level means are highly correlated so this approach is too conservative.</p>
+  <p>Statistical theory provides a better adjustment to fix the <strong>overall</strong> probability that <strong>no</strong> pairs of means will be found to differ if the factor has no effect on the response. For an experiment in which there are <em>r</em> replicates for each of the <em>g</em> factor levels (and hence <em>n</em>&nbsp;=&nbsp;<em>rg</em> experimental units), we should replace the pairwise maximum difference for significance,</p>
+  <p class=eqn><img src="images/twoGroupPlusMinus.gif" width="111" height="41">	</p>
+	<p>with</p>
+	<p class=eqn><img src="images/multipleComarison.gif" width="86" height="34">	</p>
+	
+  <p>where <img src="../multiGroup/images/studentRangeConst.gif" width="29" height="24" align="absbottom"> 
+    is a constant that can be looked up in tables of the <strong>studentised range 
+    distribution</strong> or obtained from statistical software.</p>
+	<p class="heading">Explanation</p>
+	<p>The conventional two-sample interval is based on <strong>pairwise</strong> comparisons, but the studentised range interval fixes <strong>experiment-wise</strong> probabilities.</p>
+	<table width="100%" border="0" cellpadding="4" cellspacing="0">
+		<tr>
+			<td align="center" valign="top"><span class="eqn"><img src="images/twoGroupPlusMinus.gif" width="111" height="41" hspace="10" vspace="10"></span></td>
+			<td>This is the width of a 95% confidence interval for the difference between <strong>any two specific</strong> level means. It is therefore also the maximum difference  for them to be considered significantly different at the 5% significance level.</td>
+		</tr>
+		<tr>
+			<td align="center" valign="top"><span class="eqn"><img src="images/multipleComarison.gif" alt="" width="86" height="34" hspace="10" vspace="10"></span></td>
+			<td>This is the width of a 95% confidence interval for the difference between the <strong>minimum and maximum</strong> of the <em>g</em> level means. There is therefore 95% probability that <strong>all</strong> level means will be closer to each other than this if the factor has no effect, and a 5% probability that at least one pair of level means will be further apart.</td>
+		</tr>
+	</table>
+	<br>
+	
+	<div class="diagram"> 
+		<p class="heading">Constants for multiple comparisons</p>
+		<p>The diagram below calculates the constant <img src="../multiGroup/images/studentRangeConst.gif" width="29" height="24" align="absbottom"> 
+			for multiple comparisons of all pairs of group means to give a 5% significance level
+			for the multiple comparison.</p>
+		
+		<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="200">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.StudRangeLookupApplet">
+<param name="nReps" value="Replicates">
+<param name="appletType" value="pValues">
+<param name="customText" value="Number of groups=Number of groups#Studentised range constant=Studentised range constant">
+</applet>
+</div>
+
+		<p>The constant's value depends on both the number of groups and on the number 
+			of values per group and these can be adjusted using the sliders in the diagram.</p>
+</div>
+
+	<p class="heading">Which group means are different?</p>
+	<p>An approach that is often used to assess which group means differ is therefore 
+		to first evaluate the interval,</p>
+	<p class=eqn><img src="images/multipleComarison.gif" width="86" height="34"></p>
+	<p>Since this interval is based on the width of a 95% confidence interval for the difference between the minimum and maximum level means, we can conclude that there is no evidence of a real difference between levels whose means differ by less than this. There is moderate evidence that levels whose means differ by more are really different. </p>
+	<p>Using values of  <img src="../multiGroup/images/studentRangeConst.gif" width="29" height="24" align="absbottom"> from tables at  significance levels that are lower than 5% would increase the width of the interval; level means that were further apart would then give stronger evidence of a real difference between the underlying levels.</p>
+	<div class="diagram"> 
+		<p class="heading">Antibiotic effectiveness</p>
+		<p>An experiment was conducted to find the percentages of five common antibiotics 
+			that bind to blood serum proteins. (The higher the percentage binding, the 
+			less effective the antibiotic.) The experiment was repeated four times using 
+			each antibiotic. An analysis of variance gives extremely strong evidence 
+			that the binding percentages for the antibiotics are not all equal.</p>
+		<div class="centred"><div class="boxed">
+			<p>Are there any groupings of similar antibiotics?</p>
+		</div></div>
+<br>
+
+		<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.MeanComparisonApplet">
+<param name="dataName" value="Antibiotics">
+<param name="yVarName" value="Binding %">
+<param name="xVarName" value="Antibiotic">
+<param name="yValues" value="29.6 24.3 28.5 32.0 27.3 32.6 30.8 34.8 5.8 6.2 11.0 8.3 21.6 17.4 18.3 19.0 29.2 32.8 25.0 24.2">
+<param name="xLabels" value="Penic Tetra Strep Eryth Chlor">
+<param name="xValues" value="4@0 4@1 4@2 4@3 4@4">
+<param name="yAxis" value="0 40 0 5">
+<param name="jitter" value="0.5">
+<param name="decimals" value="2">
+<param name="maxInterval" value="99.99">
+<param name="customText" value="Pairwise comparisons=Pairwise comparisons#Multiple comparisons=Multiple comparisons#Max difference (5% level)=Max difference (5% level)">
+</applet>
+</div>
+
+		<p>The diagram initially shows pairwise comparisons of the group means based 
+			on differences</p>
+		<p class=eqn><img src="images/twoGroupPlusMinus.gif" width="111" height="41"></p>
+		<p>The red band on the right has this length. Drag it up and down to see which 
+			treatment means are within this distance of each other.</p>
+		<div class="centred"><div class="boxed">
+			<p>However this is a poor way to compare 5 levels. </p>
+		</div></div>
+		<p>An experiment was conducted to find the percentages of five common antibiotics 
+			that bind to blood serum proteins. (The higher the percentage binding, the 
+			less effective the antibiotic.) The experiment was repeated four times using 
+			each antibiotic. An analysis of variance gives extremely strong evidence 
+			that the binding percentages for the antibiotics are not all equal. Now select <strong>Multiple comparisons</strong> from the pop-up menu to 
+		display differences based on</p>
+		<p class=eqn><img src="images/multipleComarison.gif" width="86" height="34"></p>
+		<p>With this type of interval, the group means must be further apart for us 
+			to conclude that there is evidence of a difference. Dragging the red band, 
+			we can conclude that:</p>
+		
+<div class="centred"><div class="boxed">
+<p>There is no evidence of differences between 
+						the mean binding percent of <em>Penicillin</em>, <em>Tetracycline</em> 
+						and <em>Chloramphenicol</em>, but there is evidence that <em>Streptomycin</em> 
+						and <em>Erythromycin</em> are different from the other group and from 
+						each other.</p>
+</div></div>
+
+		<br>
+	</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

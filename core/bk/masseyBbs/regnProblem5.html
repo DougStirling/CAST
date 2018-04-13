@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Standardised residuals</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="outliers, leverage">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Standardised residuals</p>
+<p>A numerical method that helps us to identify outliers involves calculation of <strong>standardised residuals</strong> for the data points.</p>
+<div class="centred">
+	<table border="0" cellspacing="0" cellpadding="0" class="centred" style="margin-top:0; margin-bottom:0; color:#000000">
+		<tr>
+			<td rowspan="3"><strong>standardised residual&nbsp; </strong>= &nbsp; </td>
+			<td style="text-align:center"><em><font size="+1">e</font></em></td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #000000; line-height:3px; height:3px;"><img src="../../images/blankSquare.gif"></td>
+		</tr>
+		<tr>
+			<td style="text-align:center"><em><font size="+1">s<sub>e</sub></font></em></td>
+		</tr>
+	</table>
+</div>
+<p>where <em>e</em> is the point's residual and <em>s<sub>e</sub></em> is an estimate of its standard deviation.  Points with  standardised residuals that are far from zero lie a long way above or below the regression line, i.e. they are poorly predicted.</p>
+  <p>If our linear model is correct, each standardised residual will have approximately a standard normal distribution, so we expect that only about 5% will lie outside ±2, and hardly any will lie outside ±3. Most software will automatically identify any points with standardized residuals outside ± 3 for you.</p>
+  <div class="centred"><div class="boxed">
+  	<p>Standadised residual greater than 3 or less than -3 are often taken 
+  		to indicate possible outliers.</p>
+</div></div>
+  <p>It is worth remembering however that there is still a probability 0.003 that 
+ 	a value from the standard normal distribution will be outside ±3.&nbsp;In large data sets, do not assume that standardized residuals outside ±3 must be outliers. For instance, in a data set of 1000 values, it would be <strong>expected</strong> that 3 values would be labeled as outliers by this rule.</p>
+
+<div class="boxed">
+	<p>In large data sets, do not assume that standardised residuals outside 
+		±3 <strong>must</strong> be outliers &mdash; values a little outside 
+		can also occur by chance.</p>
+</div>
+<br>
+
+<div class="diagram"> 
+<p class="heading">Standardised residuals when there are no outliers</p>
+<p>The scatterplot below shows a data set that is sampled from a normal linear 
+model. A plot of the standardised residuals is shown on the right.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="residProg.StdResidApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="xValues0" value="0.6 0.8 1.0 1.2 1.4 1.6 1.8 2.0 2.2 2.4 2.6 2.8 3.0 3.2 3.4 3.6 3.8 4.0 4.2 4.4">
+<param name="xValues1" value="0.8 3@0.9 3@1.0 3@1.1 3@1.2 3@1.3 3@1.4 3@1.5 3@1.6 3@1.7 3@1.8 3@1.9 3@2.0 3@2.1 3@2.2 3@2.3 3@2.4 3@2.5 3@2.6 3@2.7 3@2.8 3@2.9 3@3.0 3@3.1 3@3.2 3@3.3 3@3.4 3@3.5 3@3.6 3@3.7 3@3.8 3@3.9 3@4.0 2@4.1 4.2">
+<param name="xValues2" value="4@0.65 4@0.68 4@0.71 4@0.74 4@0.77 4@0.8 4@0.83 4@0.86 4@0.89 4@0.92 4@0.95 4@0.98 4@1.01 4@1.04 4@1.07 4@1.1 4@1.13 4@1.16 4@1.19 4@1.22 4@1.25 4@1.28 4@1.31 4@1.34 4@1.37 4@1.4 4@1.43 4@1.46 4@1.49 4@1.52 4@1.55 4@1.58 4@1.61 4@1.64 4@1.67 4@1.7 4@1.73 4@1.76 4@1.79 4@1.82 4@1.85 4@1.88 4@1.91 4@1.94 4@1.97 4@2 4@2.03 4@2.06 4@2.09 4@2.12 4@2.15 4@2.18 4@2.21 4@2.24 4@2.27 4@2.3 4@2.33 4@2.36 4@2.39 4@2.42 4@2.45 4@2.48 4@2.51 4@2.54 4@2.57 4@2.6 4@2.63 4@2.66 4@2.69 4@2.72 4@2.75 4@2.78 4@2.81 4@2.84 4@2.87 4@2.9 4@2.93 4@2.96 4@2.99 4@3.02 4@3.05 4@3.08 4@3.11 4@3.14 4@3.17 4@3.2 4@3.23 4@3.26 4@3.29 4@3.32 4@3.35 4@3.38 4@3.41 4@3.44 4@3.47 4@3.5 4@3.53 4@3.56 4@3.59 4@3.62 4@3.65 4@3.68 4@3.71 4@3.74 4@3.77 4@3.8 4@3.83 4@3.86 4@3.89 4@3.92 4@3.95 4@3.98 4@4.01 4@4.04 4@4.07 4@4.1 4@4.13 4@4.16 4@4.19 4@4.22 4@4.25 4@4.28 4@4.31 4@4.34 4@4.37">
+<param name="sampleSize" value="20 100 500">
+<param name="regnModel" value="33.0 7.5 6.0">
+<param name="horizAxis" value="0.5 4.5 1 1">
+<param name="vertAxis" value="25 80 30 10">
+<param name="randomSeed" value="345945782">
+<param name="residName" value="Standardised residual">
+</applet>
+</div>
+
+<p>Click <strong>Another Data Set</strong> a few times and observe that standardised 
+residuals are occasionally outside ±2. When the sample size is increased, 
+there are often some standardised residuals outside this range.</p>
+<p>It is unusual for standardised residuals to be outside ±3 when the sample 
+size is small, but even this is not uncommon when the sample size is large.</p>
+<div class="centred"><div class="boxed">
+	<p>Standardised residuals would need to be outside ±3.5 or ±4 
+		for us to be really confident that they are outliers.</p>
+</div></div>
+
+<br>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

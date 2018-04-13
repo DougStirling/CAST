@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Likelihood ratio test</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="hypothesis test, test, big model, small model, likelihood ratio test, poisson distribution">
+	<meta name="dataset" content="Defective items">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p>We now formally test the hypotheses</p>
+<ul>
+	<li><strong>H<sub>0</sub></strong>: \(\mathcal{M}_S\) is the correct model for the data.</li>
+	<li><strong>H<sub>A</sub></strong>:  \(\mathcal{M}_S\) is not correct and \(\mathcal{M}_B\) must be used to model the data.</li>
+</ul>
+<p>The following test statistic is used,</p>
+\[
+X^2 \;\;=\;\; 2\log(R) \;\;=\;\; 2\left(\ell(\mathcal{M}_B) - \ell(\mathcal{M}_S)\right)
+\]
+<p>\(X^2\) has (approximately) a standard distribution when <strong>H<sub>0</sub></strong> holds, and  is likely to be largest if \(\mathcal{M}_S\) is not correct.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Distribution of test statistic</p>
+<p>If the data do come from \(\mathcal{M}_S\), and \(\mathcal{M}_B\) has \(k\) more parameters than \(\mathcal{M}_S\),</p>
+\[
+X^2 \;\;=\;\; 2\left( \ell(\mathcal{M}_B) - \ell(\mathcal{M}_S)\right) \;\;\underset{\text{approx}}{\sim} \;\; \ChiSqrDistn(k \text{ df})
+\]</div>
+</div>
+
+<p class="heading">Likelihood ratio test</p>
+<ol>
+	<li>Find the maximum likelihood estimates of all unknown parameters in \(\mathcal{M}_B\).</li>
+	<li>Find the maximum likelihood estimates of all unknown parameters in \(\mathcal{M}_S\).</li>
+	<li>Evaluate the test statistic, \(\chi^2 = 2\left( \ell(\mathcal{M}_B) - \ell(\mathcal{M}_S)\right)\).</li>
+	<li>The degrees of freedom for the test are the difference between the numbers of unknown parameters in the two models.</li>
+	<li>The p-value for the test is the upper tail probability of the \(\ChiSqrDistn(k \text{ df})\) distribution above the test statistic.</li>
+	<li>Interpret the p-value as for other kinds of hypothesis test — small values give evidence that the null hypothesis, model \(\mathcal{M}_S\), does not hold.</li>
+</ol>
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Question</p>
+<p>The following table describes the number of defective items from a production line in each of 20 days.</p>
+
+<div class="centred">
+	<table border="0" cellpadding="5" cellspacing="0" class="centred" style="border:1px solid #999999; background-color:#FFFFFF;">
+		<tr>
+			<td style="text-align:right; padding-right:10px; width:25px;">1<br>
+			2</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">3<br>
+			4</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">2<br>
+			3</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">2<br>
+			5</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">5<br>
+			2</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">4<br>
+			3</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">5<br>
+			1</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">2<br>
+			4</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">0<br>
+			2</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">2<br>
+				6</td>
+		</tr>
+	</table>
+</div>
+
+<p>Assuming that the data are a random sample from a \(\PoissonDistn(\lambda)\) distribution, use a likelihood ratio test for whether the rate of defects was \(\lambda = 2\) per week.</p>
+<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Bias</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="estimation, bias, mean of random sample, variance of random sample, sample mean, sample variance">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Distribution of an estimator</p>
+
+<p>We now assume that  \({X_1, X_2, \dots, X_n}\) is a random sample from a distribution involving a single unknown parameter \(\theta\). Any estimator \(
+\hat{\theta}(X_1, X_2, \dots, X_n)
+\) is a function of these \(n\) random variables and is therefore  itself a random quantity with a distribution. We often simply write such an estimator as \(
+\hat{\theta}\).</p>
+<p>The properties of an estimator depend on its distribution. This distribution may be either discrete or continuous, depending on the distribution from which the sample is taken and the specific estimator. The estimator described by the following pdf has a continuous distribution but our description of estimators also holds when its distribution is discrete.</p>
+<p class="eqn"><img class="svgImage" src="images/estimatorDistn.png" width="383" height="196"></p>
+<p>For   \(
+\hat{\theta}\) to be a good estimator of the unknown parameter \(\theta\), its distribution should concentrated near \(\theta\). We will next describe two aspects of this.</p>
+<p class="heading">Bias</p>
+<p>Firstly, a good estimator of a parameter \(\theta\) should have a distribution whose &quot;centre&quot; is close to \(\theta\). This can be summarised by the distance of the estimator's mean from  \(\theta\).</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>The <strong>bias</strong> of an estimator \(\hat{\theta}\) of a parameter \(\theta\) is defined to be</p>
+\[
+\Bias(\hat{\theta}) \;=\; E[\hat{\theta}] - \theta
+\]
+<p>If its bias is zero, \(\hat{\theta}\) is called an <strong>unbiased</strong> estimator of \(\theta\).</p>
+</div>
+
+<p>Many popular estimators are unbiased.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Sample mean</p>
+		<p>If \({X_1, X_2, \dots, X_n}\) is a random sample from a distribution with mean \(\mu\), the sample mean, \(\overline{X}\), is  an unbiased estimator of the distribution mean, \(\mu\).</p>
+	</div>
+	<div class="proof">
+		<p>We <a href="javascript:showNamedPage('randomSample4')">showed earlier</a> that a sample mean, \(\overline{X}\), has a distribution whose mean is the same as that of the distribution from which the sample was selected, \(\mu\).</p>
+	</div>
+</div>
+<p>We now give another example whose proof is  more complex.</p>
+
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Sample variance</p>
+		<p>If \({X_1, X_2, \dots, X_n}\) is a random sample from a distribution with variance \(\sigma^2\), the sample variance,</p>
+\[
+S^2 = \sum_{i=1}^n {\frac {(X_i - \overline{X})^2} {n-1}}
+\]
+<p>is an unbiased estimator of \(\sigma^2\).</p>
+	</div>
+	<div class="proof">
+		<p>The proof is based on a result that we proved earlier. For any random variable, \(Y\),</p>
+\[
+Var(Y) = E[Y^2] - \left(E[Y]\right)^2
+\]
+		<p>This can be rearranged as follows:</p>
+\[
+E[Y^2] = Var(Y) + \left(E[Y]\right)^2
+\]
+		<p>Now</p>
+\[ \begin{align}
+\sum_{i=1}^n {(X_i - \overline{X})^2} &amp; = \sum_{i=1}^n {(X_i^2 - 2X_i\overline{X} + \overline{X}^2)} \\
+&amp; = \sum_{i=1}^n {X_i^2} - 2\overline{X}\sum_{i=1}^n {X_i} + n\overline{X}^2 \\
+&amp; = \sum_{i=1}^n {X_i^2} - n\overline{X}^2
+\end{align} \]
+		<p>Therefore</p>
+\[ 
+E\left[\sum_{i=1}^n {(X_i - \overline{X})^2}\right] \;=\; n \times E[X^2] - n \times E[\overline{X}^2] \]
+		<p>Applying the earlier result, both with \(Y = X\) and \(Y = \overline{X}\), we get</p>
+\[ \begin{align}
+E\left[\sum_{i=1}^n {(X_i - \overline{X})^2}\right] &amp; \;=\; n \times \left(Var(X) + E[X]^2 \right) - n \times \left(Var(\overline{X}) + E[\overline{X}]^2 \right) \\
+&amp; \;=\; n(\sigma^2 + \mu^2) - n \left(\frac {\sigma^2} n + \mu^2 \right) \\
+&amp; \;=\; (n-1)\sigma^2
+\end{align} \]
+		<p>Therefore</p>
+\[
+E[S^2] \;=\; E\left[\frac {\sum_{i=1}^n (X_i - \overline{X})^2} {n-1}\right] \;=\; \sigma^2
+\]
+	</div>
+</div>
+<p>This explains why we use the denominator \((n-1)\) in the formula for the sample standard deviation rather than simply \(n\).</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Sample standard deviation</p>
+		<p>The sample standard deviation, \(S\), is a <strong>biased</strong> estimator of a distribution's standard deviation, \(\sigma\).</p>
+	</div>
+	<div class="proof">
+		<p>We again use the general result that</p>
+\[
+Var(Y) \;=\; E[Y^2] - \left(E[Y]\right)^2
+\]
+<p>with \(Y = S\). Rearranging the equation gives</p>
+\[
+\left(E[S]\right)^2 \;=\; E[S^2] - Var(S)  \;=\; \sigma^2 - Var(S)
+\]
+<p>Provided \(S\) is not a constant, its variance will be greater than zero, so</p>
+\[
+\left(E[S]\right)^2 \lt \sigma^2
+\]
+<p>So \(E[S]\) must be less than \(\sigma\).</p>
+	</div>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

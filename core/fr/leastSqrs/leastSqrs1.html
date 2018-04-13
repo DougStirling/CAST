@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Prédire Y de X</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="regression model, prediction, explanatory variable, response variable">
+	<meta name="dataset" content="Impurity and temperature">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">La notion de prédiction</p>
+
+  <dl>
+    <dt>Les relations causales</dt>
+    <dd>Dans les relations de causalité, une variable est pensé pour incidence directe sur l'autre.&nbsp;Lorsque la valeur de la variable explicative est déterminée à partir d'un autre individu (et sa valeur peut être sous notre contrôle), on peut espérer pour prédire la valeur résultant de la réaction.<br>
+      &nbsp;<br>
+      Par exemple, la concentration d'une substance chimique peut être enregistrée après une réaction est conduite à une variété de températures.&nbsp;Nous tenons à prédire la concentration de cycles de l'avenir de l'expérience à différentes températures.<br>
+      &nbsp;<br>
+    </dd>
+    <dt>Non-causale des relations</dt>
+    <dd>Dans d'autres situations, la relation n'est pas causale, mais nous sommes toujours intéressés à prédire la valeur d'une variable d'une valeur connue de l'autre variable.<br>
+      &nbsp;<br>
+      Par exemple, des mesures précises de graisse du corps sont difficiles à faire, alors que les mesures de l'épaisseur du pli cutané sont relativement faciles à trouver.&nbsp;Il serait utile d'être capable de prédire la graisse corporelle d'épaisseur du pli cutané, basé sur un ensemble de données avec les deux mesures à partir d'un groupe de personnes.</dd>
+  </dl>
+<p class="heading">Notation et convention</p>
+	<p>Dans les deux cas ci-dessus, les variables peuvent être classées comme une&nbsp;<strong>variable explicative</strong>&nbsp;et une&nbsp;<strong>réponse.</strong>&nbsp;Lorsque l'on parle en général sur ce type de données, nous allons utiliser la lettre&nbsp;<em>X</em>&nbsp;pour désigner la variable explicative et&nbsp;<em>Y</em>&nbsp;pour désigner la réponse.</p>
+	<table width="75%" border="1" class="centred" cellpadding="10" cellspacing="0" bgcolor="#FFFFFF">
+    <tr>
+      <td><strong>Toujours dessiner la variable de réponse,&nbsp;<em>Y,</em>&nbsp;sur l'axe vertical d'un nuage de points et&nbsp;<em>X</em>&nbsp;sur l'axe horizontal.</strong></td>
+    </tr>
+  </table>
+  <p class="heading">Décrire la forme de la relation</p>
+	<p>Le coefficient de corrélation décrit la&nbsp;<strong>force</strong>&nbsp;de la relation et si la dispersion des croix sur un nuage de points a une pente positive ou négative, mais il ne détient pas d'informations sur la position de la croix sur le nuage de points &mdash; la&nbsp;<strong>forme</strong>&nbsp;de la relation.</p>
+	<p>La forme de la relation peut être décrite par une&nbsp;<strong>ligne droite ou courbe qui se trouve près de la croix</strong>&nbsp;dans un nuage de points de&nbsp;<em>Y</em>&nbsp;contre&nbsp;<em>X.</em>&nbsp;Une telle ligne est appelée&nbsp;<strong>ligne de régression.</strong></p>
+<p class="heading">Prédire la réponse de la droite de régression</p>
+  <p>La droite de régression (ie la courbe ou ligne droite sur le diagramme de dispersion qui décrit la forme de la relation) ne peut être tirée à proximité de la croix «à l'œil».&nbsp;(Nous allons décrire des méthodes objectives pour mieux positionner la ligne plus tard.)</p>
+	<p>Il est possible d'utiliser n'importe quelle ligne de régression de tels «lire» la valeur y correspondant à&nbsp;<em>x</em>&nbsp;quelconque.&nbsp;Cela donne une prédiction du risque y-valeur qui serait enregistré si une nouvelle observation a été faite à ce&nbsp;<em>x</em>&nbsp;et peut être exprimé comme</p>
+<p class=eqn><span class="black"><em>y</em> &nbsp;=&nbsp; <em>&fnof;</em> (<em> x</em> )</span></p>
+	<p>où f () correspond à la droite de régression.</p>
+
+<div class="diagram">
+
+	<p class="heading">Prédire l'impureté dans le processus chimique</p>
+
+<p>Le diagramme de dispersion ci-dessous montre l'impureté pourcentage de la production d'un processus chimique à des températures de réaction différents.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="330">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.DragOnCurveApplet">
+<param name="xVarName" value="Temp (C)">
+<param name="yVarName" value="Impureté (%)">
+<param name="xValues" value="18.4 0.3 14.6 32.4 16.7 37 30.4 7.5 5.1 32.7 35.6 23.4 8.7 35.9 20.7 36.4 20.8 18 20.6 30.3 29.2 18.7 14 2.5 20.4 0.4 35.7 15.7 2.6 9.9">
+<param name="yValues" value="13.3 1.2 12.3 19.3 14.5 18.2 17.8 8.2 5.4 15.3 18.5 15.8 10.9 18.1 17.3 16.3 16.5 13.8 14.3 15.5 18.4 14.8 15.5 3.9 16.7 4.7 17.5 15.5 3.1 8.9">
+<param name="model" value="0 10 6 8 10 12 14">
+<param name="horizAxis" value="0 40 0 5">
+<param name="vertAxis" value="0 20 0 2">
+<param name="decimals" value="2">
+<param name="labelAxes" value="true">
+<param name="customText" value="Finished sketching curve=Terminé la courbe de croquis">
+</applet>
+</div>
+
+		<p>Première position de la courbe grise pour s'adapter à proximité des données en faisant glisser les cinq cercles rouges de haut en bas.&nbsp;(Ceci est une façon informatisée à la position de la courbe «à l'œil».)</p>
+		<p>Lorsque votre courbe est proche des points, cliquez sur&nbsp;<strong>Terminé la courbe de croquis.</strong>&nbsp;Vous pouvez utiliser la courbe pour faire des prédictions d'impureté processus à n'importe quelle température.&nbsp;<strong>Glisser</strong>&nbsp;la ligne rouge verticale vers la gauche ou la droite pour voir ces prédictions.</p>
+	</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

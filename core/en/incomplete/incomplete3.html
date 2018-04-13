@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Adjusted treatment means</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="incomplete block design, adjusted treatment means">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Advantages of orthogonal designs</p>  
+  <p>If two factors in a completely randomised experiment are orthogonal or if the treatments and blocks are orthogonal in a randomised block design, the explained sums of squares do not depend on the order of adding the two terms to the model, simplifying the analysis.</p>
+  <p>An equally important advantage of experiments with orthogonal designs is that a table of the overall mean response for each factor level is a good summary of that factor's effect.</p>
+  <div class="centred"><div class="boxed">
+  	<p>Tables of raw factor means are good summaries of factor effects in orthogonal designs.</p>
+  </div></div>
+  <p class="heading">Parameter estimates as summaries</p>
+  <p>In incomplete block designs, the blocks and treatments are non-orthogonal, so a table of raw treatment means does not summarise the effect of the treatment well.</p>
+  <p>Blocks are useful because they differ from each other. If one block naturally has high response values and also has a bigger proportion of treatment A than the other blocks, the raw treatment mean for treatment A will appear higher than it should.</p>
+  <p>The solution is  based on the parameters of the model:</p>
+  <div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+		<tr>
+			<td align="center"><br>
+					<br>
+					<span class="em black">y<sub>ijk</sub></span>  &nbsp;= &nbsp;<span class="blue">µ</span></td>
+			<td align="center"><br>
+					<br>
+				&nbsp;+&nbsp;</td>
+			<td align="center" class="red">(<em>explained <br>
+				by blocks</em>)<br>
+				β<em><sub>i</sub></em></td>
+			<td align="center"><br>
+					<br>
+				&nbsp;+&nbsp;</td>
+			<td align="center" class="green">(<em>explained by <br>
+				treatments</em>)<br>
+				γ<em><sub>j</sub></em></td>
+	<td align="center"><br>
+					<br>
+				&nbsp;+&nbsp;</td>
+			<td align="center"><br>
+				(<em>unexplained</em>)<br>
+				ε<em><sub>ijk</sub></em></td>
+		</tr>
+	</table></div>
+  <p>The least squares estimates of the parameters {<span class="green">γ<sub>1</sub></span>, <span class="green">γ<sub>2</sub></span>, ..., <span class="green">γ<sub><em>g</em></sub></span>} honestly describe the differences between the treatments but they are harder to interpret since <span class="eqn"><span class="green">γ<sub>1</sub> = 0</span></span> and the other values describe <strong>differences</strong> between the treatments and this baseline treatment (1).</p>
+  <p class="heading">Adjusted treatment means</p>
+  <p>An alternative is to tabulate the predicted responses for the factor levels <strong>in a particular block</strong> &mdash; for example, in block 1. For block <em>j</em>, this  would be the least squares estimate of</p>
+  <p class="eqn"><span class="blue">µ</span>&nbsp;+&nbsp;<span class="red">β<sub>1</sub></span>&nbsp;+&nbsp;<span class="green">γ<em><sub>j</sub></em></span></p>
+  <p>This is the treatment mean <strong>adjusted for block 1</strong>. Rather than picking a single block, the estimates could be made for an 'average' block,</p>
+  <p class="eqn"><img src="images/adjustedMean.gif" width="62" height="22"></p>
+
+	<p>A table of such adjusted treatment means is a good summary of the differences between the treatments.</p>
+	<p class="heading">Standard errors</p>
+	<p>If the design is <strong>balanced</strong>, the effects of all treatments are estimated with equal accuracy. The differences between all pairs of adjusted treatment means therefore have the <strong>same standard error</strong>. A single standard error can therefore accompany a table of adjusted treament means to help assess the difference between any two treatments.</p>
+	<p>In unbalanced designs, different standard errors should be used to compare different pairs of treatments.</p>
+	<div class="diagram">
+<p class="heading">Raw treatment means</p>
+<p>The diagram below initially shows data that were simulated from an orthogonal design in which each of the four factor levels was used once within each block. The four treatment means are shown to the right of the data.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="570" height="600">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="exper2Prog.RawMeansApplet">
+<param name="yVarName" value="Response">
+<param name="yModel" value="20  2 6 4 1 5 0 1  5 7 9  1">
+<param name="yDecimals" value="2">
+<param name="blockVarName" value="Block">
+<param name="blockValues" value="4@0 4@1 4@2 4@3 4@4 4@5 4@6 4@7">
+<param name="blockValues2" value="3@0 3@1 3@2 3@3 3@4 3@5 3@6 3@7">
+<param name="blockLabels" value="#Block 1# #Block 2# #Block 3# #Block 4# #Block 5# #Block 6# #Block 7# #Block 8#">
+<param name="blockShortLabels" value="B1 B2 B3 B4 B5 B6 B7 B8">
+<param name="treatVarName" value="Factor">
+<param name="treatValues" value="2 3 0 1   2 1 3 0   1 3 2 0   0 2 1 3   2 3 1 0   1 0 3 2   0 2 3 1   0 1 3 2">
+<param name="treatValues2" value="2 3 0   2 1 3   1 3 0   0 2 1   2 0 1   2 0 3   3 1 2   0 1 3">
+<param name="treatLabels" value="A B C D">
+<param name="maxMean" value="99.9">
+<param name="blockNMaxExtra" value="20">
+<param name="yAxis" value="18 52 20 5">
+<param name="dataNames" value="Orthogonal treatments & blocks#Non-orthogonal design">
+<param name="customText" value="Addition to last block=Addition to last block#Raw means=Raw means#Block means=Block means#Treatment means=Treatment means">
+</applet>
+</div>
+
+<p>A randomised block design is used when it is known that the blocks differ. Drag the slider to the right to show the data that would have arisen if the final block had higher mean responses. Observe that one value getting each treatment increases and all raw treatment means increase by the same amount &mdash; their relative values are unchanged.</p>
+<p>Now select <strong>Non-orthogonal design</strong> from the pop-up menu. The diagram now shows simulated data that might have arisen from an experiment with blocks that are smaller than the number of treatments &mdash; only three of the four treatments can be used in any block.</p>
+<p>Again adjust the block effect for the final block. Observe that only <strong>three</strong> of the treatments are now affected, so the relative positions of the treatment means change.</p>
+<div class="centred"><div class="boxed">
+	<p>The raw treatment means do not summarise the effect of the factor for non-orthogonal designs.</p>
+</div></div>
+<p class="heading">Adjusted treatment means</p>
+<p>The diagram below is similar but displays adjusted treatment means rather than raw means.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="570" height="600">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="exper2Prog.AdjustedMeansApplet">
+<param name="yVarName" value="Response">
+<param name="yModel" value="20  2 6 4 1 5 0 1  5 7 9  1">
+<param name="yDecimals" value="2">
+<param name="blockVarName" value="Block">
+<param name="blockValues" value="4@0 4@1 4@2 4@3 4@4 4@5 4@6 4@7">
+<param name="blockValues2" value="3@0 3@1 3@2 3@3 3@4 3@5 3@6 3@7">
+<param name="blockLabels" value="#Block 1# #Block 2# #Block 3# #Block 4# #Block 5# #Block 6# #Block 7# #Block 8#">
+<param name="blockShortLabels" value="B1 B2 B3 B4 B5 B6 B7 B8">
+<param name="treatVarName" value="Factor">
+<param name="treatValues" value="2 3 0 1   2 1 3 0   1 3 2 0   0 2 1 3   2 3 1 0   1 0 3 2   0 2 3 1   0 1 3 2">
+<param name="treatValues2" value="2 3 0   2 1 3   1 3 0   0 2 1   2 0 1   2 0 3   3 1 2   0 1 3">
+<param name="treatLabels" value="A B C D">
+<param name="maxMean" value="99.9">
+<param name="blockNMaxExtra" value="20">
+<param name="yAxis" value="18 52 20 5">
+<param name="dataNames" value="Orthogonal treatments & blocks#Non-orthogonal design">
+<param name="customText" value="Addition to last block=Addition to last block#Block means=Block means#Adjusted means=Adjusted means#Adjusted for block=Adjusted for block#Adjusted treatment means=Adjusted treatment means">
+</applet>
+</div>
+
+<p>Initially the treatment means are 'adjusted for block 1' &mdash; they are the predicted mean responses for the four treatments in block 1. Drag the slider and observe that adding a constant to all values in block 8 has no effect on these predictions. The same holds for adjustments for all other blocks except for block 8 and the average of all blocks.</p>
+<p>Now select <strong>Non-orthogonal design</strong> from the pop-up menu. The adjusted treatment means have the same properties for orthogonal and non-orthogonal designs.</p>
+<div class="centred"><div class="boxed">
+	<p>The relative sizes of the adjusted treatment means are not affected by a 'high' block even if the design is non-orthogonal.</p>
+</div></div>
+
+<br>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

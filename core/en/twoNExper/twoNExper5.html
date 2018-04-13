@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Picking important effects</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="factorial design, half normal plot">
+	<meta name="dataset" content="Sugar reduction study">
+	<meta name="dataset" content="Filtration rate of product">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Distribution of estimated effects</p>  
+  <p>It is often difficult to be certain which high-order interactions can be 
+		assumed to be zero in order to test the remaining main effects and interactions. 
+		The distribution of the estimated effects provides a guideline for which effects 
+		are important.</p>
+	<p>If <strong>none</strong> of the main effects or interactions are important, 
+		their estimated effects will all have normal distributions with mean zero 
+		and the same standard deviation. Since the signs of the effects are not important 
+		for this exercise, we conventionally examine the <strong>absolute values</strong> 
+		of the effects which should have a half-normal distribution.</p>
+	<p>A probability plot of these absolute effects is a scatterplot of the ordered 
+		effects against the quantiles of the half-normal distribution. If no effects 
+		are important, the points should be close to a straight line.</p>
+	
+<div class="centred"><div class="boxed">
+<p>Ideally, most points will be close to a straight line, 
+					with a few larger effects, suggesting that only these larger effects 
+					are important.</p>
+</div></div>
+
+	<p class="heading">Root explained sums of squares</p>
+	<p>The absolute values of the treatment effects are proportional to the square 
+		roots of the explained sums of squares in the analysis of variance table. 
+		The half-normal probability plot can therefore be produced equivalently from 
+		them,</p>
+	<p class=eqn><img src="images/halfNormal.gif" width="249" height="24"> </p>
+	<br>
+	<div class="diagram">
+<p class="heading">Pilot plant filtration</p>
+
+		<p>A chemical product is produced in a pressure vessel. A factorial experiment 
+			was carried out in the pilot plant to study the factors thought to influence 
+			the filtration rate of this product. The four factors used in the experiment 
+			were <em>Stirring rate</em>, <em>Formaldehyde concentration</em>, <em>Pressure</em> 
+			and <em>Temperature</em>. A single replicate was conducted in random order 
+			with the filtration rate (gallons per hour) as the response measurement.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="650">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="factorialProg.HalfNormalPlotApplet">
+<param name="yVarName" value="Filtration rate">
+<param name="yValues" value="45 71 48 65 68 60 80 65 43 100 45 104 75 86 70 96">
+<param name="xKeys" value="S F P T">
+<param name="SVarName" value="St">
+<param name="SValues" value="8@0 8@1">
+<param name="SLabels" value="St- St+">
+<param name="FVarName" value="Fm">
+<param name="FValues" value="4@0 4@1 4@0 4@1">
+<param name="FLabels" value="Fm- Fm+">
+<param name="PVarName" value="Pr">
+<param name="PValues" value="2@0 2@1 2@0 2@1 2@0 2@1 2@0 2@1">
+<param name="PLabels" value="Pr- Pr+">
+<param name="TVarName" value="T">
+<param name="TValues" value="0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1">
+<param name="TLabels" value="T- T+">
+<param name="startModel" value="0*1*2*3">
+<param name="maxSsq" value="999.9 99 999.9 99.99">
+<param name="effectAxis" value="0 45 0 5">
+<param name="zAxis" value="0 2.4 0.0 0.5">
+<param name="customText" value="Half normal quantile=Half normal quantile#Effect=Effect">
+</applet> 
+</div>
+
+		<p>A half-normal probability plot of the square roots of the explained sums 
+			of squares is shown above. A straight line could be drawn through all effects 
+			except for three main effects (<em>Stirring rate</em>, <em>Formaldehyde</em> 
+			and <em>Temperature</em>) and two 2-factor interactions. This provides evidence 
+			that only these five effects are important.</p>
+		
+<div class="centred"><div class="boxed">
+<p>Combining all but these five effects to form a residual 
+						sum of squares would underestimate the error variance, but the plot 
+						supports using the 4-factor and 3-factor interactions as a residual 
+						sum of squares for tests.</p>
+</div></div>
+
+		<p>Click the checkboxes to remove the 4-factor and 3-factor interactions from 
+			the model. The yellow bands on the half-normal probability plot show the 
+			significance of the main effects and 2-factor interactions &mdash; light yellow 
+			for p-values less than 5% and darker yellow for p-values less than 1%.</p>
+		<p class="heading">Sugar reduction study</p>
+
+		<p>The diagram below shows the corresponding half-normal probability plot 
+			for the salt reduction data.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="650">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="factorialProg.HalfNormalPlotApplet">
+<param name="yVarName" value="Sweetness">
+<param name="yValues" value="7.60 7.92 7.72 7.27 8.09 7.87 7.52 6.89 8.02 8.34 8.20 8.21 8.14 7.82 8.04 7.00">
+<param name="xKeys" value="S A T H">
+<param name="SVarName" value="Sa">
+<param name="SValues" value="8@1 8@0">
+<param name="SLabels" value="Sa- Sa+">
+<param name="AVarName" value="Ac">
+<param name="AValues" value="4@1 4@0 4@1 4@0">
+<param name="ALabels" value="Ac- Ac+">
+<param name="TVarName" value="Th">
+<param name="TValues" value="2@1 2@0 2@1 2@0 2@1 2@0 2@1 2@0">
+<param name="TLabels" value="Th- Th+">
+<param name="HVarName" value="Ht">
+<param name="HValues" value="1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0">
+<param name="HLabels" value="Ht- Ht+">
+<param name="startModel" value="0*1*2*3">
+<param name="maxSsq" value="9.999 99 9.999 99.99">
+<param name="effectAxis" value="0 0.85 0 0.1">
+<param name="zAxis" value="0 2.4 0.0 0.5">
+<param name="customText" value="Half normal quantile=Half normal quantile#Effect=Effect">
+</applet> 
+</div>
+
+		<p>The information about which effects are important is much less clear. However 
+			it can be seen that the 3- and 4-factor interactions are all relatively 
+			small so it again seems reasonable to combine them to form a residual sum 
+			of squares for testing the other terms.</p>
+		
+<div class="centred"><div class="boxed">
+<p>It is fairly common practice to assume that 3-factor 
+						and higher order interactions are negligible unless their estimated 
+						effects seem particularly high.</p>
+</div></div>
+
+		<br>
+	</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

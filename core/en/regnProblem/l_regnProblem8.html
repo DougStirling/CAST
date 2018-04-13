@@ -1,0 +1,170 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Non-normal errors</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="probability plot, outliers, curvature">
+	<meta name="dataset" content="Deer weight and jaws">
+	<meta name="dataset" content="Antibiotic effectiveness">
+	<meta name="dataset" content="British Airways share price">
+</head>
+
+
+<body class="lecture">
+<script type="text/javascript">writePageStart();</script>
+
+<div class="divChoice">
+<form>
+<select name="dataset" onChange="changeBlock(this, 3)" id="dataChoice">
+    <option value="0" selected>Outliers?</option>
+    <option value="1">Unexplained curvature in relationship?</option>
+    <option value="2">Non-constant variance?</option>
+  </select>
+</form> 
+
+<div id="example1">
+  <p class="heading">Deer jaw length and weight</p>
+  <div class="centred">
+  <applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="loessProg.ProbPlotRandomApplet">
+  <param name="yVarName" value="Jaw length (mm)">
+  <param name="xVarName" value="Weight (kg)">
+  <param name="yValues" value="226 254 252 224 254 247 273 231 219 226 245 252 249 219 214 247 232 226 211 216 218 232 235 202 253 211 211 236 230 243 240 217 257 236 257 234 227 252 249 279 247 237 273 256 247 267 239 243 262 157 268 267 245 273 256 244 270 257 269 233 276 267 258 253 229 253 272 262 270 267 277 293 254 259 283 245 225 225 262 282 277 229 275 287 296 281 265 293 278 262 257 283 253 289 287 284 301 282 260 292 275 290 294 308 291 301 293 300 280 285 264 291 272 284 292 298 303 290 280 279 265 311 288 290 287 292 258 360">
+  <param name="xValues" value="36 45 43 37 47 43 56 43 34 41 47 45 44 34 32 46 36 35 35 29 29 43 40 21 53 32 36 42 40 49 46 33 57 47 48 48 44 52 57 66 45 43 58 62 53 70 44 48 53 55 62 62 38 57 55 43 60 52 63 55 63 54 48 48 55 53 64 50 54 50 67 82 42 57 57 40 41 41 56 71 75 77 67 74 95 85 53 82 76 51 55 68 46 76 79 81 76 86 72 85 41 93 83 85 84 89 70 88 73 72 77 71 38 82 89 89 92 80 75 67 81 101 73 87 91 73 65 97">
+  <param name="horizAxis" value="20 105 20 20">
+  <param name="vertAxis" value="150 380 150 50">
+  <param name="residAxis" value="-105 100 -100 50">
+  <param name="nscoreAxis" value="-2.5 2.5 -2 1">
+  <param name="random" value="3.0 384958677">
+  <param name="labelAxes" value="true">
+	<param name="customText" value="Actual Data=Actual Data#Random Normal Data=Random Normal Data#Ordered residual=Ordered residual">
+	<param name="fontSize" value="big">
+  </applet>
+  </div>
+  <br>
+  
+  <div class="centred"><div class="boxed">
+    <p>The long tails to the residual distribution may be caused by a few <strong>outliers</strong>.</p>
+  </div></div>
+
+<br>
+</div>
+
+
+<div id="example2" style="display:none">
+  <p class="heading">Antibiotic effectiveness</p>
+  <div class="centred"> 
+  <applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="loessProg.ProbPlotRandomApplet">
+  <param name="yVarName" value="Inhibition diameter(mm)">
+  <param name="xVarName" value="Conc of antibiotic">
+  <param name="yValues" value="13.6 13.5 14.9 14.5 14.5 14.8 14.4 14.5 13.9 14.7 14.5 14.4 15.8 15.4 15.4 15.7 15.3 15.4 14.8 15.6 15.6 15.4 16.2 15.9 16.2 16.0 15.9 15.5 16.1 16.5 15.8 15.6 16.8 16.6 16.6 17.0 16.0 15.8 16.2 16.6 16.2 16.0 17.4 17.2 17.2 16.8 17.2 17.4 16.2 17.1 16.5 16.4 17.8 17.7 18.1 17.5 17.3 17.2 16.5 16.7">
+  <param name="xValues" value="10@40 10@60 10@80 10@100 10@120 10@140">
+  <param name="horizAxis" value="35 145 40 20">
+  <param name="vertAxis" value="13.0 18.5 13 1">
+  <param name="residAxis" value="-1.7 1.7 -1.5 0.5">
+  <param name="nscoreAxis" value="-2.5 2.5 -2 1">
+  <param name="random" value="3.0 384958677">
+  <param name="labelAxes" value="true">
+	<param name="customText" value="Actual Data=Actual Data#Random Normal Data=Random Normal Data#Ordered residual=Ordered residual">
+	<param name="fontSize" value="big">
+	</applet>
+  </div>
+  <br>
+  
+  <div class="centred"><div class="boxed">
+    <p>The short tails to the residual distribution are probably caused by <strong>curvature</strong> in the relationship between concentration and inhibition diameter</strong>.</p>
+  </div></div>
+
+<br>
+</div>
+
+
+<div id="example3" style="display:none">
+  <p class="heading">British Airways share price and volume traded</p>
+  <div class="centred">
+  <applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="loessProg.ProbPlotRandomApplet">
+  <param name="yVarName" value="Volume traded (mil)">
+  <param name="xVarName" value="Closing price (pounds)">
+  <param name="yValues" value="13.7 8.0 39.6 22.7 19.0 11.8 10.9 7.4 9.3 10.8 9.8 9.7 4.3 3.2 12.6 5.0 9.5 23.7 27.3 14.9 9.7 21.7 11.1 10.4 16.3 18.8 8.6 5.6 5.1 7.2 12.3 8.9 9.9 5.2 7.9 9.6 7.7 5.1 5.7 20.3 15.2 20.8 30.3 34.7 52.2 23.3 28.8 15.3 9.6 33.9 12.5 15.8 10.3 16.1 25.1 24.6 8.0">
+  <param name="xValues" value="202.92 213.5 238.75 242.97 234.97 234.63 230.54 228.5 220.27 218.74 221.5 218 219.65 216.89 221.5 220.75 229.62 214.8 207.23 217.69 212.12 204 212.5 211.43 204.33 200.48 196.58 196.25 197 200.25 200 205.73 199.75 200 193.17 191.32 190.35 188.55 190.75 198 193.5 203.5 214.42 233.9 233 236 242.92 236.5 248.5 245.47 238 240 237.94 253.25 250.45 246.56 242.02">
+  <param name="horizAxis" value="180 260 180 20">
+  <param name="vertAxis" value="-15 60 0 20">
+  <param name="residAxis" value="-30 40 -20 20">
+  <param name="nscoreAxis" value="-2.5 2.5 -2 1">
+  <param name="random" value="3.0 384958677">
+  <param name="labelAxes" value="true">
+	<param name="customText" value="Actual Data=Actual Data#Random Normal Data=Random Normal Data#Ordered residual=Ordered residual">
+	<param name="fontSize" value="big">
+  </applet>
+  </div>
+  <br>
+  
+  <div class="centred"><div class="boxed">
+    <p>The  skew distribution of the residuals may be caused by <strong>non-constant variance</strong>. It is removed if  log(volume traded) is modelled.</p>
+  </div></div>
+
+<br>
+</div>
+
+</div>
+
+
+<script type="text/javascript">
+	writeLecturerNotesLink(withDataNotes);
+</script>
+
+<div class="lecturerNote" id="lecturerNote">
+  <p>This page gives examples of residual probability plots. Explain that the crosses should be close to a straight line if all is well.</p>
+  <p>A simulation using data from the best-fitting normal linear model can be used to help assess whether the curvature in a probability plot is more than would be expected 'by chance' if the model is really OK.</p>
+  <p class="heading">Deer jaw length and weight</p>
+  <p>Select <strong>Random Normal Data</strong> then take several samples from the best-fitting
+    normal linear model.</p>
+  <p>The probability plot from the data seems more curved than the random ones, 
+    suggesting that there is a problem. In the first example, the error distribution may be longer-tailed than a normal distribution or there may be a few outliers.</p>
+  
+<div class="centred"><div class="boxed">
+<p style="text-align:left; text-decoration:underline">Warning:</p>
+        <p style="text-align:left">If the <strong>other</strong> assumptions are violated, the probability 
+        plot of residuals will often be curved.</p>
+</div></div>
+
+  <p class="heading">Antibiotic effectiveness</p>
+  <p>Again select <strong>Random Normal Data</strong> and take several samples from the best-fitting
+  normal linear model.</p>
+  <p>Curvature in the probability plot here is probably caused by nonlinearity in 
+    the relationship between inhibition diameter and concentration &mdash; it makes the residual distribution seem to have tails that 
+    are too <strong>short</strong>.</p>
+  <p class="heading">British Airways share price</p>
+  <p>Again examine probability plots from the best-fitting
+  normal linear model and observe that the curvature observe is greater than would be seen by chance.</p>
+  <p>The curvature in the probability plot suggests a skew residual distribution but is linked to non-constant variance in the scatterplot. If log(share price) is used as the response variable, the probability plot would be linear.</p>
+</div>
+
+<div class="lecturerNote" id="dataNote">
+<dl>
+  <dt>Deer jaw length and weight</dt>
+  <dd>Jaw lengths and body weights were recorded from 150 male deer that were shot in the Ruahine Ranges in New Zealand between November 1981 and November 1982.</dd>
+  <dt>Antibiotic effectiveness</dt>
+  <dd>An experiment was conducted to assess how well an antibiotic, polymyxin B, killed the bacterium, Brucella bronchiseptica. Petri dishes containing the bacterium (grown in agar) were used and different doses of the antibiotic were added. The diameter of the area cleared around the addition point were recorded. Each of 6 different doses of antibiotic was used 10 times.</dd>
+  <dt>British Airways share price</dt>
+  <dd> This data set gives the volume of British Airways shares traded in 
+each of the first 57 trading days of 2002 &mdash; between 2nd January and 21st March 
+&mdash; and the closing share price.</dd>
+</dl>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

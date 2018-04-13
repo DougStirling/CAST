@@ -1,0 +1,218 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Les valeurs aberrantes</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="outliers">
+	<meta name="dataset" content="Aircraft emissions">
+	<meta name="dataset" content="Storm duration">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class=heading>Les valeurs aberrantes</p>
+
+<p>Les valeurs qui sont considérablement plus grande ou plus petite que la majeure partie des données sont appelés les <strong>valeurs aberrantes</strong>.</p>
+
+<p>Détection des valeurs aberrantes est particulièrement important. Une valeur aberrante pourrait avoir été mal enregistré, ou il peut y avoir d'autres circonstances anormales qui lui sont associés. Les valeurs aberrantes doit être soigneusement vérifié si possible. Si quelque chose atypique peut être trouvée, les valeurs aberrantes devrait être supprimé de l'ensemble des données et leur suppression noté dans les rapports sur les données.</p>
+
+<div class="diagram">
+<p class="heading">La pollution des avions</p>
+<p>Le tableau ci-dessous montre les émissions de CO<sub>2 </sub>par le décollage / atterrissage de cycle pour plusieurs avions à réaction dans le milieu des années 1990.</p>
+
+<center>
+<table width="80%" border="0" cellspacing="0" cellpadding="10">
+  <tr> 
+	<th align="center">Avions</th>
+	<th align="center">Émissions de CO<sub>2</sub><br>
+		(kg per cycle)
+	</th>
+	<th align="center">Poids<br>
+	  (1000 kg)</th>
+	<th align="center">Émissions de CO<sub>2</sub><br>
+		par 1000 kg
+	</th>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+	<td align="center"> 
+	  <table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+	<td><nobr>B747-400<br>
+	  B747-200<br>
+	  MD-11<br>
+	  DC10-30<br>
+	  L1011-200<br>
+	  A300<br>
+	  DC8-63<br>
+	  A310<br>
+	  B707-320B<br>
+	  B767-300<br>
+	  B757-200<br>
+	  B727-200<br>
+	  A320<br>
+	  B737-300<br>
+	  B737-100<br>
+	  DC9-50<br>
+	  BAe-146<br>
+	  BAC 111-400<br>
+	  Fokker 28<br>
+	  Dassault Falcon 20<br>
+	  Gates Learjet 36<br>
+	  Gates Learjet 35<br>
+	  Gates Learjet 24D<br>
+	  Cessna Citation</nobr></td></tr></table>
+	</td>
+	<td align="center"> 
+	  <table border="0" cellspacing="0" cellpadding="0"><tr><td align="right">
+	  10822.72<br>
+	  11673.04<br>
+	  8115.23<br>
+	  7313.15<br>
+	  8283.17<br>
+	  5633.66<br>
+	  6246.50<br>
+	  4880.16<br>
+	  6246.50<br>
+	  5351.02<br>
+	  4614.96<br>
+	  4866.75<br>
+	  2898.05<br>
+	  2758.79<br>
+	  3244.50<br>
+	  3272.23<br>
+	  1855.08<br>
+	  2516.73<br>
+	  2034.24<br>
+	  1117.43<br>
+	  536.79<br>
+	  536.79<br>
+	  1221.07<br>
+	  462.08</td>
+	  </tr></table>
+	</td>
+	<td align="center"> 
+	  <table border="0" cellspacing="0" cellpadding="0"><tr><td align="right">
+	  394.0<br>
+	  351.5<br>
+	  274.0<br>
+	  251.7<br>
+	  195.0<br>
+	  165.0<br>
+	  161.0<br>
+	  150.0<br>
+	  148.3<br>
+	  137.0<br>
+	  108.8<br>
+	  88.3<br>
+	  73.5<br>
+	  63.0<br>
+	  52.3<br>
+	  48.9<br>
+	  40.5<br>
+	  39.4<br>
+	  29.4<br>
+	  12.8<br>
+	  8.1<br>
+	  7.7<br>
+	  6.1<br>
+	  5.2</td>
+	  </tr></table>
+	</td>
+	<td align="center"> 
+	  <table border="0" cellspacing="0" cellpadding="0"><tr><td align="right">
+	  27.469<br>
+	  33.209<br>
+	  29.618<br>
+	  29.055<br>
+	  42.478<br>
+	  34.143<br>
+	  38.798<br>
+	  32.534<br>
+	  42.121<br>
+	  39.059<br>
+	  42.417<br>
+	  55.116<br>
+	  39.429<br>
+	  43.790<br>
+	  62.036<br>
+	  66.917<br>
+	  45.804<br>
+	  63.876<br>
+	  69.192<br>
+	  87.299<br>
+	  66.270<br>
+	  69.713<br>
+	  200.175<br>
+	  88.862</td>
+	  </tr></table>
+	</td>
+  </tr>
+</table>
+</center>
+
+    <p>Les CO<sub>2</sub> emmissions ne peut être comparé de manière significative - il n'est guère surprenant que les plus gros avions tendance à émettre plus que les plus petits! Une comparaison plus utile de CO<sub>2</sub> emmissions peut être obtenue en divisant d'abord par la masse de l'avion. La dernière colonne du tableau donne les émissions dans chaque cycle de décollage / atterrissage <strong>pour 1000 kg poids de l'avion</strong>.</p>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td valign="top">
+<p>Ces valeurs sont affichées dans le diagramme à tiges et feuilles sur la droite.</p>
+	<p>L'écran affiche une valeur aberrante. Le Gates Learjet 24D émet plus de 200 kg de CO<sub>2</sub> pour 1000 kg poids de l'appareil à chaque cycle de décollage / atterrissage &mdash; plus du double de l'autre aéronef.</p>
+	<p>Un ingénieur serait question que les caractéristiques de l'avion pourrait expliquer ses émissions. Est-il plus petit que les autres avions? Âgés? En utilisant une technologie de moteur différente?<br>
+</p></td>
+		
+<td><object data="images/aircraftCO2.svg" width="230" height="265" hspace="10"></object></td>
+</tr></table>
+<br>
+</div>
+
+<p class="heading">Les valeurs aberrantes et des distributions skew</p>
+
+<p>Une valeur de données extrêmes qui se démarque du reste des données n'indique pas nécessairement qu'il ya une erreur dans les données ou quelque chose d'inhabituel à propos de l'individu. Notre interprétation de la valeur extrême devrait également tenir compte de la forme de la distribution des valeurs pour le reste des données.</p>
+<dl>
+    <dt>Distribution symétrique</dt>
+  </dl>
+<p class=eqn><object data="images/outlierSymmetric.svg" width="443" height="156" alt="sigmaP-hat = ..."> </object>
+  </p>
+  <dl>
+    <dt>La distribution d'obliquité</dt>
+    <dd>Si la distribution des valeurs a son pic d'un côté et une longue queue de l'autre côté, la distribution est appelée <strong>skew</strong>. Il n'est pas inhabituel pour les valeurs extrêmes dans une distribution très biaiser à une bonne distance des autres valeurs.</dd>
+  </dl>
+<p class=eqn><object data="images/outlierSkew.svg" width="443" height="156" alt="sigmaP-hat = ..."> </object>
+  </p>
+  <dl>
+    <dd>Si la queue est vers la droite, nous appelons cela un droit de distribution asymétrique positive. De même, si la queue est à la gauche de la distribution est à gauche (ou négative) asymétrique.</dd>
+  </dl>
+<br>
+  
+  <div class="diagram">
+
+		<p class="heading">Durée tempête</p>
+
+		<p>La tige et les feuilles parcelle ci-dessous montre les durées (en minutes) des 50 premiers orages de la saison 1983/4 des pluies dans le bassin versant Bvumbwe au Malawi.<br>
+</p>
+		<p class=eqn><object data="images/stormDurationStemLeaf.svg" width="255" height="260" alt="sigmaP-hat = ..."> </object>
+		</p>
+		<p>Une tempête a duré beaucoup plus longtemps que les autres (880 minutes). Il est certainement utile de vérifier les enregistrements de cette tempête (la durée était peut-être vraiment 88 minutes?). Cependant, la valeur n'est pas nécessairement une erreur.</p>
+		<p>La plupart des tempêtes sont courts, avec des durées de moins de 100 minutes, donc la plus longue des rangées de feuilles sont au bas de la tige et l'intrigue de la feuille. Il ya moins de tempêtes durables 100-200 minutes, encore moins de 200-300 minutes et cette tendance se poursuit, avec la fréquence des tempêtes diminue régulièrement jusqu'à la tige et l'intrigue de la feuille. Cette forme de distribution est appelé une distribution de <strong>biais</strong>, par opposition à une distribution <strong>symétrique</strong> dont les queues diminuent à vitesse similaire sur les deux côtés de la densité de pointe.</p>
+		<table width="75%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+			<tr> 
+				
+        <td><strong>Peut-être cette «aberrantes» est une continuation de la tendance dans la queue de la distribution et est juste un long orage qui pourraient être <font color="#FF0000">attendus</font> fois tous les cent ou deux tempêtes.        </strong></td>
+			</tr>
+		</table>
+		<br>
+
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

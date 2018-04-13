@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Test for equal group means</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="comparing groups, general linear model, indicator variable">
+	<meta name="dataset" content="Anticipation of hypnosis">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Conventional t-test</p>
+  <p>When the standard deviations are assumed to be equal in two groups, </p>
+  <p class="eqn"><img src="images/twoGroupModel.gif" width="391" height="45"></p>
+  <p>the standard t-test for comparing the group means uses a 'pooled estimate' 
+		of σ,</p>
+	<p class="eqn"><img src="images/pooledSD.gif" width="247" height="49"></p>
+	<p>where <em>n</em><sub>1</sub> and <em>n</em><sub>2</sub> are the sample sizes 
+		in the two groups and <em>s</em><sub>1</sub> and <em>s</em><sub>2</sub> are 
+		the two sample standard deviations. The usual test for a difference between 
+		the group means is based on the standardised difference between the sample 
+		means,</p>
+	<p class="eqn"><img src="images/tConventional.gif" width="144" height="62"></p>
+	<p>This t-statistic is compared to a t distribution with (<em>n</em><sub>1&nbsp;</sub>+<em>&nbsp;n</em><sub>2</sub>&nbsp;-&nbsp;2) 
+		degrees of freedom.</p>
+	<p class="heading">T-test using GLM methodology</p>
+	<p>The same model can be expressed as a GLM,</p>
+  <p class="eqn"><img src="images/indicatorModel2.gif" width="416" height="76"></p>
+  <p>When this model is fitted by least squares, the fitted values are the sample 
+		means in the two groups. The residual sum of squares has (<em>n</em>&nbsp;-&nbsp;2)&nbsp;=&nbsp;(<em>n</em><sub>1&nbsp;</sub>+<em>&nbsp;n</em><sub>2</sub>&nbsp;-&nbsp;2) 
+		degrees of freedom and is equal to</p>
+	<p class="eqn"><img src="images/ssResid.gif" width="283" height="30"></p>
+	<p>In any GLM, the best estimate of the error standard deviation, σ, 
+		is the square root of the mean residual sum of squares. For this model, it 
+		is equal to the 'pooled estimate' that was shown above.</p>
+	<p class="eqn"><img src="images/pooledSD2.gif" width="203" height="43"></p>
+	<p>In this GLM, testing for equality of the group means is equivalent to testing 
+		whether δ<sub>2</sub> 
+		is zero. The least squares estimate of δ<sub>2</sub> 
+		is</p>
+	<p class="eqn"><img src="images/diffEstimate.gif" width="81" height="24"></p>
+	<p>The GLM test for whether δ<sub>2</sub> 
+		is zero is based on a t-statistic that divides this estimate by its standard 
+		error, so it is also</p>
+	<p class="eqn"><img src="images/tConventional.gif" width="144" height="62"></p>
+<br>
+	
+<div class="centred"><div class="boxed">
+<p>The GLM test for whether δ<sub>2</sub> 
+						is zero is identical to the conventional t-test for equal group means.</p>
+</div></div>
+
+	<br>
+  <div class="diagram"> 
+		<p class="heading">Anticipation of hypnosis</p>
+
+    <p>The following diagram shows the hypnosis data.</p>
+<p class="eqn"><img src="images/hypnosisEstimates.gif" width="330" height="258"></p>
+ 
+		<p>The table below shows the least squares estimates for the GLM and their standard 
+			errors.</p>
+		<div class="centred"><table border="0" class="centred" cellpadding="5" cellspacing="0">
+			<tr> 
+				<td><strong>Parameter</strong></td>
+				<td><strong>Estimate</strong></td>
+				<td><strong>Std error</strong></td>
+				<td><strong>t statistic</strong></td>
+				<td><strong>p-value</strong></td>
+			</tr>
+			<tr bgcolor="#FFFFFF"> 
+				<td style="border-top:1px solid #999999;">Intercept, µ<sub>1</sub></td>
+				<td style="border-top:1px solid #999999;" align="center">4.573</td>
+				<td style="border-top:1px solid #999999;" align="center">0.1625</td>
+				<td style="border-top:1px solid #999999;" align="center">28.15</td>
+				<td style="border-top:1px solid #999999;" align="center">&lt;&nbsp;0.001</td>
+			</tr>
+			<tr bgcolor="#FFFFFF"> 
+				<td style="border-bottom:1px solid #999999;">Slope, δ<sub>2</sub></td>
+				<td style="border-bottom:1px solid #999999;" align="center">0.491</td>
+				<td style="border-bottom:1px solid #999999;" align="center">0.2297</td>
+				<td style="border-bottom:1px solid #999999;" align="center">2.14</td>
+				<td style="border-bottom:1px solid #999999;" align="center">0.051</td>
+			</tr>
+		</table></div>
+		<p>The p-value for the slope parameter is close to 5%, so there is only weak 
+			evidence that the anticipation of hypnosis changes the ventilation rate 
+			of the subjects.</p>
+		
+<div class="centred"><div class="boxed">
+<p>The same t-statistic and p-value would 
+							be obtained from a conventional 2-sample t-test comparing the group 
+							means.</p>
+</div></div>
+
+		<br>
+	</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

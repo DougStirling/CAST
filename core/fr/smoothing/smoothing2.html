@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>En savoir plus sur les moyennes mobiles</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="smoothing, centred moving average">
+	<meta name="dataset" content="Southern oscillation">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Moyenne mobile avec des longueurs impaires et même de courir</p>
+<p>Une moyenne mobile fournit une valeur lissée au milieu de la période de la valeur étant la moyenne. Par exemple, si la longueur de tirage est de 5, la valeur lissée est identifié avec le temps intermédiaire.</p>
+<p class=eqn><object data="images/movingAverage5.svg" width="249" height="218"></object></p>
+	<p>Cela fonctionne bien pour des moyennes mobiles de nombre impair de valeurs, qui ont été utilisés dans la page précédente. Toutefois, si les moyennes mobiles sont ronds en utilisant un nombre pair de valeurs, la valeur lissée en résultent sont des mi-chemin entre l'époque de l'observation du milieu.</p>
+<p class=eqn><object data="images/movingAverage4.svg" width="237" height="218"></object></p>
+	<p>Une valeur lissée peut donc être pour &quot;année 2005.5» qui est loin d'être idéale.</p>
+<p class="heading">Une deuxième étape de moyenne</p>
+<p>Pour éviter ce problème, il est conventionaly à post-traiter les moyennes mobiles avec une longueur même de courir en prenant un autre 2 points la moyenne mobile pour obtenir les valeurs centrées sur l'horaire initial.</p>
+<p class=eqn><object data="images/movingAverageDouble.svg" width="428" height="218"></object></p>
+	<p>Ceci est équivalent à la <strong>moitié du poids</strong> donnant aux deux valeurs ultrapériphériques. Lorsque basé sur une moyenne de 4 points en mouvement, cette méthode utilise donc une moyenne des trois valeurs centrées sur chaque valeur et deux autres valeurs avec des demi-poids.</p>
+<p class=eqn><img class="gif" src="../../en/smoothing/images/quarterlySmoothEqn.gif" width="314" height="46"> </p>
+
+<p>Nous appellerons ces valeurs à 4 points des moyennes mobiles centrées.</p>
+  
+<div class="boxed">
+    <p>Ces moyennes centrées sont particulièrement utiles lorsque l'on analyse les données saisonnières. Par exemple, 12 points, les moyennes mobiles sont souvent utilisés pour les données mensuelles.</p>
+</div>
+
+<div class="diagram">
+<p class="heading">Oscillation Australe</p>
+
+	<p>L'indice d'oscillation australe est définie comme la différence de pression entre les barametric Tahiti et des îles de Darwin au niveau de la mer.. L'oscillation australe est un prédicteur d'El Nino, qui à son tour, est pensé pour être un pilote de niveau mondial météorologiques. Plus précisément, répété oscillation australe valeurs inférieures à -1 définit généralement un épisode El Niño. Le graphique chronologique montre l'indice entre Janvier 1984 et Décembre 1987.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.RunningMeanApplet">
+<param name="varName" value="Différence de pression">
+<param name="values" value="0 0.4 -0.8 0.4 0 -1.2 0 0.1 0.1 -0.6 0.3 -0.3 -0.5 0.8 0.2 1.4 -0.2 -1.4 -0.3 0.7 0 -0.8 -0.4 0.1 0.8 -1.2 -0.1 0.1 -0.6 1 0.1 -0.9 -0.5 0.6 -1.6 -1.6 -0.7 -1.4 -2 -2.7 -2 -2.7 -1.8 -1.7 -1.1 -0.7 -0.1 -0.6 -0.3 -0.6 0.1 0 1.1 -0.3 1.1 1.4 1.9 1.5 1.9 1.1 1.5 1.1 0.6 1.6 1.2 0.5 0.8 -0.8 0.6 0.6 -0.4 -0.7 -0.2 -2.4 -1.2 0 1.1 0 0.5 -0.5 -0.8 0.1 -0.7 -0.4 0.6 -0.1 -1.4 -1 -1.5 -0.5 -0.2 -0.9 -1.8 -1.5 -0.8 -2.3 -3.4 -1.4 -3 -1.4 0 -1.2 -0.8 0 0 -1.9 -0.9 -1.1">
+<param name="vertAxis" value="-3.5 2.5 -3 1">
+<param name="timeAxisName" value="Mois">
+<param name="seasonName" value="12 Jan Fév Mar Avr Mai Juin Juil Aoû Sep Oct Nov Déc">
+<param name="seasonInfo" value="0 0 1984">
+<param name="smoothName" value="Lissées">
+<param name="showEnds" value="false">
+<param name="labelAxes" value="true">
+<param name="maOrderLabel" value="Moyenne mobile de">
+<param name="rawName" value="Données brutes">
+<param name="runs" value="15 even">
+</applet>
+</div>
+
+		<p>Ce schéma est similaire à celle de la page précédente, mais permet à la fois étrange et même exécuter des longueurs pour les moyennes mobiles. Lorsque la course est encore long, les moyennes mobiles sont affichées.</p>
+<div class="boxed">
+      <p>8-point de moyennes mobiles donnent un affichage régulier de l'évolution de l'indice au cours du temps.</p>
+  </div>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

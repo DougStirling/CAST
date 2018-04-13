@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>The t test for a mean</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="hypothesis test, mean, t test">
+	<meta name="dataset" content="Mutual fund returns">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Finding a p-value from the t distribution</p>
+<p>The p-value for any test is the probability of getting such an 'extreme' test 
+statistic when <b>H<sub>0</sub></b> is true. When testing the value of a population 
+mean, µ, 
+when σ 
+is unknown, the appropriate test statistic is</p>
+<p class=eqn><img class="gif" src="../../en/testMean/images/tStatDefn.gif" width="90" height="46"></p>
+<p>Since this has a t distribution (with <em>n&nbsp;</em>-&nbsp;1 degrees of freedom) 
+when <b>H<sub>0</sub></b> is true, the p-value is found from a tail area of this 
+distribution. The relevant tail depends on the alternative hypothesis. For example, 
+if the alternative hypothesis is for low values of µ, 
+the p-value is the low tail area of the t distribution since low values of <img src="../../images/symbol.xBar.png" width="10" height="10" align="baseline"> 
+(and hence <em>t</em>) would support <b>H<sub>A</sub></b> over <b>H<sub>0</sub></b>.</p>
+<p class=eqn><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> &nbsp;=&nbsp; </strong>&mu;<strong><sub>0</sub></strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> &nbsp;&lt;&nbsp; </strong>&mu;<strong><sub>0</sub></strong></span></p>
+<p>The steps in performing the test are shown in the diagram below. </p>
+<p class=eqn>
+	<object data="images/oneTailedT.svg" width="424" height="266" alt="1-tailed t test">
+	</object>
+</p>
+
+<div class="diagram"> 
+<p class="heading">Returns from Mutual Funds</p>
+
+<p>The example on the previous page asked whether the average annualised return 
+on high-risk mutual funds was higher than that from Federal Bonds (5.64%) over 
+the period April 1997 to March 2000. The population standard deviation was unknown 
+and the hypotheses of interest were, </p>
+<p class=eqn><img src="../../en/testMean/images/hypothE.gif" width="101" height="45" alt="H0:mu=20, HA:mu!=20"></p>
+
+<p>The diagram below shows the calculations for obtaining the p-value for this 
+test from the t distribution with (<em>n</em>&nbsp;-&nbsp;1) = 24 degrees of freedom.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="330">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="testProg.ZPValueApplet">
+<param name="varName" value="return">
+<param name="horizAxis" value="-50 70 -40 20">
+<param name="values" value="8.76 58.71 -22.82 49.02 43.97 13.91 -2.89 39.64 17.91 -10.55 68.58 -0.33 4 0.14 23.87 38.23 26.6 36.02 29.51 1.62 28.91 29.32 54.43 30.76 49.67">
+<param name="testInfo" value="5.64">
+<param name="alternative" value="high">
+<param name="dataDecimals" value="2">
+<param name="means" value="0.0 25.0 0.02">
+<param name="summaryDecimals" value="3 3 4">
+<param name="formulaGif" value="test/t5.64">
+<param name="customText" value="Actual Data=Actual Data#Modified Data=Modified Data#Sample mean=Sample mean#Distn of mean=Distn of mean">
+</applet>
+</div>
+
+<p>Since the probability of obtaining such a high mean return from 25 funds is 
+0.000 (to 3 decimal places) if the underlying population mean is 5.64, we conclude 
+that there is extremely strong evidence that the mean return on high-risk funds 
+was over 5.64 percent.</p>
+<hr width="75%">
+<p>Select <strong>Modified Data</strong> from the pop-up menu and use the slider 
+to investigate the relationship between the sample mean and the p-value for the 
+test. </p>
+
+</div>
+
+<p class="heading">Two-tailed test</p>
+<p>In some hypothesis tests, the alternative hypothesis allows both low and high 
+values of µ.</p>
+<p class=eqn><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> &nbsp;=&nbsp; </strong>&mu;<strong><sub>0</sub></strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> &nbsp;&ne;&nbsp; </strong>&mu;<strong><sub>0</sub></strong></span></p>
+<p>In this type of two-tailed test, the p-value is the sum of the two tail areas, 
+as illustrated below.</p>
+<p class=eqn>
+	<object data="images/twoTailedT.svg" width="423" height="266" alt="test stat & p-value for t test">
+	</object>
+</p>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

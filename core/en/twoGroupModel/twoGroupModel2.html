@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Model for two groups</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="normal distribution, comparing groups">
+	<meta name="dataset" content="Calcium in salt">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Histograms of data in each group</p>
+
+<p>When data are collected from two groups, a histogram can be used to graphically 
+display the distribution of values in each group.</p>
+
+
+<div class="diagram" title="Example: Calcium content of salt">
+<p class="heading">Calcium content of salt</p>
+<p>In the manufacture of chlorine, large quantities of raw salt containing impurities 
+and various trace elements such as calcium and magnesium are dissolved in water 
+to create a brine solution. The diagram below shows calcium content (ppm) in salt 
+samples from two different supply sources. The crosses have been jittered a little 
+(randomly moved) to separate them in the scatterplot.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="430" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="linModProg.RotateHistoApplet">
+<param name="yVarName" value="Calcium content (ppm)">
+<param name="xVarName" value="Origin of salt">
+<param name="yValues" value="34 108 114 123 112 88 132 96 104 97 70 112 84 97 75 74 97 83 127 97 99 87 99 76 97 91 112 32 99 111 134 130 119 117 102 124 132 113 126 111 133 135 151 139 156 146 131 137 154 114 114 131 116 133 142">
+<param name="xValues" value="30@0 25@1">
+<param name="xCatNames" value="#Source 1# #Source 2#">
+<param name="xAxis" value="-0.5 1.5 99 99">
+<param name="yAxis" value="0 180 0 50">
+<param name="classInfo" value="0 15 12">
+<param name="sortedX" value="0 1">
+<param name="jittering" value="0.2">
+<param name="initialRotation" value="90 90">
+</applet>
+</div>
+
+<p>This diagram is 3-dimensional. Position the mouse in the middle of the diagram 
+and <strong>drag towards the top left</strong> of the screen to rotate the plot 
+(or click the 3D rotation button). The histogram within each group describes the 
+distribution of calcium contents of salt from the two sources.</p>
+
+</div>
+
+<p class="heading">Model for each group</p>
+
+<p>A single batch of numerical values is usually modelled as a random sample from
+some population &mdash; often a normal distribution. In a similar way, data sets that
+consist of measurements from two groups are often modelled as <strong>two</strong> independent random samples from <strong>two</strong> underlying 
+hypothetical infinite populations. Normal distributions are again commonly used 
+as models. </p>
+
+<p class=eqn><img class="gif" src="images/model.gif" width="322" height="160">
+</p>
+
+<p class="gray">(The assumption of normality should be checked from graphical
+displays of the sample data. If the data are noticeably skew, a transformation may provide
+values that can be adequately modelled by normal distributions.)</p>
+
+
+<div class="diagram" title="Model for Calcium content of salt">
+<p class="heading">Calcium content of salt</p>
+<p>The histograms of calcium content for salt from the two sources seemed fairly 
+symmetrical, so normal distributions are reasonable models within the two groups. 
+The diagram below shows a possible model for the salt data.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="430" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoGroupProg.RotateAnovaPDFApplet">
+<param name="yVarName" value="Calcium content (ppm)">
+<param name="yAxis" value="0 180 0 50">
+<param name="xVarName" value="Origin of salt">
+<param name="xValues" value="30@0 25@1">
+<param name="xLabels" value="#Source 1# #Source 2#">
+<param name="anovaModel" value="94.2 22.6 129.6 14.1">
+<param name="randomSeed" value="786555423">
+<param name="jitterPropn" value="0.2">
+</applet>
+</div>
+
+<p>Click <strong>Take sample</strong> to select a random sample from each of the 
+two normal distributions. The model claims that the <strong>real</strong> data 
+set consists of random samples from distributions like these.</p>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

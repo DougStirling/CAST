@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Inference about two groups</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<script type="text/javascript">
+		var svgNames = new Array();
+		svgNames[0] = "images/hypnosisPooled.svg";
+		svgNames[1] = "images/failedCoPooled.svg";
+		svgNames[2] = "images/shellDensityPooled.svg";
+		svgNames[3] = "images/birthWtPooled.svg";
+		svgNames[4] = "images/teethPooled.svg";
+		
+		function changeSvgImage(select) {
+			var newIndex = select.selectedIndex;
+			var image = document.getElementById('dataImage');
+			image.src = svgNames[newIndex];
+		}
+	</script>
+
+	<meta name="index" content="comparing groups, confidence interval, hypothesis test">
+	<meta name="dataset" content="Anticipation of hypnosis">
+	<meta name="dataset" content="Asset-liabilities ratios">
+	<meta name="dataset" content="Egg shell density">
+	<meta name="dataset" content="Births by season">
+	<meta name="dataset" content="Teeth and gender">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Difference between <font color="#FF0000">two</font> group means</p>
+
+<p>In this page, we re-examine inference about the difference between two group 
+means, µ<sub>2&nbsp;</sub>-&nbsp;µ<sub>1</sub>, 
+but we now assume that both groups have the same standard deviation,</p>
+<p class=eqn><font color="#000000">σ<sub>1</sub>&nbsp; =&nbsp; σ<sub>2</sub>&nbsp; =&nbsp;&nbsp;σ</font></p>
+<p>A 95% confidence interval is again based on <span style="position:relative; top:5px"><img src="../../images/symbol.xBarDiff.png" width="36" height="15" align="baseline"></span>, 
+but the equation for its standard deviation can be simplified</p>
+<p class=eqn><img class="gif" width="261" height="45"> </p>
+<p class="heading">Confidence interval</p>
+<p>A 95% confidence interval for µ<sub>2&nbsp;</sub>-&nbsp;µ<sub>1</sub> 
+has the same general form as before,</p>
+<p class=eqn><img class="gif" src="../../en/multiGroup/images/generalCI.gif" width="160" height="22"> </p>
+<p>However the value used for the standard deviation and the degrees of freedom 
+for the t-value are different.</p>
+<table border="0" class="centred" cellpadding="10" cellspacing="0">
+<tr> 
+<td>&nbsp;</td>
+<td align="center"><img class="gif" src="../../en/multiGroup/images/sdEst.gif" width="42" height="22"></td>
+<td align="center"><font color="#000000">degrees of freedom</font></td>
+</tr>
+<tr> 
+<td>Allowing <span style="color:#000000">σ<sub>1</sub> ≠ σ<sub>1</sub></span></td>
+<td align="center" bgcolor="#FFFFFF"><object data="images/sdEst1.svg" width="85" height="45" align="absmiddle"></object></td>
+<td align="center" bgcolor="#FFFFFF"><font color="#000000">min( <em>n</em><sub>1</sub> 
+- 1, <em>n</em><sub>2</sub> - 1)</font></td>
+</tr>
+<tr> 
+<td>Assuming <span style="color:#000000">σ<sub>1</sub> = σ<sub>1</sub></span></td>
+<td align="center" bgcolor="#FFFFFF"><object data="images/diffMeanSDEst.svg" width="109" height="39" align="absmiddle"></object></td>
+<td align="center" bgcolor="#FFFFFF"><font color="#000000"><em>n</em><sub>1</sub> 
++ <em>n</em><sub>2</sub> - 2</font></td>
+</tr>
+</table>
+<p>When the standard deviations are assumed to be equal, the degrees of freedom 
+are larger, so the t-value used for the confidence interval is smaller and the 
+confidence interval itself is usually narrower.</p>
+<p class="heading">Recommendation</p>
+<p>Since the 95% CI for the difference in means is usually narrower when the standard 
+deviations are assumed to be the same, it might appear that this would be the 
+best CI to use. However</p>
+
+<dl>
+<dt>Big sample sizes:</dt>
+<dd>There is very little difference between the two t-values — both are close 
+to 2.0. The two CIs are therefore similar.</dd>
+<dt>Small sample sizes:</dt>
+<dd>There is usually not enough data to assess whether the assumption σ<sub>1</sub>&nbsp;=&nbsp;σ<sub>2</sub>&nbsp;=&nbsp;σ 
+is justified.</dd>
+</dl>
+
+<p>Therefore:</p>
+
+<center>
+<table border="1" cellspacing="0" cellpadding="5" bgcolor="white" width="75%">
+<tr> 
+<th align="CENTER"><strong>It is usually best to avoid assuming equal standard 
+deviations and use the earlier confidence interval.</strong></th>
+</tr>
+</table>
+</center>
+
+<br>
+<div class="diagram"> 
+<p class="heading">Examples</p>
+<p>The diagram below shows 95% confidence intervals obtained by the two methods 
+for a few data sets.</p>
+
+
+<form>
+<select name="dataset" onChange="changeSvgImage(this)">
+<option value="0" selected>Anticipation of hypnosis and ventilation</option>
+<option value="1">Characteristics of failed and healthy companies</option>
+<option value="2">Effect of vitamin D on egg shell density</option>
+<option value="3">Birth weights in summer and winter</option>
+<option value="4">Teeth and gender</option>
+</select>
+</form>
+
+<p align="center"><iframe src="images/hypnosisPooled.svg" id="dataImage" width="647" height="400" frameborder="0"></iframe></p>
+
+<p>Observe that the 95% confidence intervals are similar when the sample sizes 
+are large. When the sample sizes are small however, the t-value is smaller when 
+the variances are assumed equal and the confidence interval is narrower.</p>
+</div>
+
+  
+<p class="heading">Hypothesis tests</p>
+
+<p>If it can be assumed that σ<sub>1</sub>&nbsp;=&nbsp;σ<sub>2</sub>&nbsp;=&nbsp;σ, 
+the test for equal means can also be modified.</p>
+<p class=eqn><span class="blue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong><sub>2</sub> &minus; </strong>&mu;<strong><sub>1</sub> &nbsp;=&nbsp; 0</strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong><sub>2</sub> &minus; </strong>&mu;<strong><sub>1</sub> &nbsp;&ne;&nbsp; 0</strong></span> 
+</p>
+<p>The test would be based on the test statistic</p>
+<p class=eqn><object data="images/testStat.svg" width="216" height="59"></object></p>
+<p>The p-value for the test is found from the tail area of the t distribution 
+with (<font color="#000000"><em>n</em><sub>1</sub> + <em>n</em><sub>2</sub> - 
+2</font>) degrees of freedom. However it is usually better to stick with the earlier 
+test to avoid making assumptions about the variances.</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

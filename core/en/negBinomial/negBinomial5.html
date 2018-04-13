@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Mean and variance</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="negative binomial distribution, mean, variance">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Properties of negative binomial distributions</p>
+
+<p>We now give formulae for the mean and variance of the negative binomial distribution.</p>
+
+<div class="theoremProof">
+<div class="theorem">
+<p class="theoremTitle">Mean and variance</p>
+<p>If the random variable \(X\) has a negative binomial distribution with probability function</p>
+\[
+p(x) = \begin{cases}
+\displaystyle{{x-1} \choose {k-1}} \pi^k(1-\pi)^{x-k} &amp; \quad \text{for } x = k, k+1, \dots \\[0.5em]
+0 &amp; \quad \text{otherwise}
+\end{cases}
+\]
+<p>then its mean and variance are</p>
+\[
+E[X] = \frac k {\pi} \spaced{and} \Var(X) = \frac {k(1-\pi)} {\pi^2}
+\]
+</div>
+
+<div class="proof">
+<p>If we define the number of trials until the first success to be \(Y_1\), the number of trials after the first success until the second one to be \(Y_2\) and so on up to \(Y_k\) which is the number of trials after the \((k-1)\)'th success until the \(k\)'th one, </p>
+\[
+X = Y_1 + Y_2 + \dots + Y_k = \sum_{i=1}^k Y_i
+\]
+<p>Now each of the \(\{Y_i\}\) is an independent geometric random variable,</p>
+\[
+Y_i \;\; \sim \; \; \GeomDistn(\pi)
+\]
+<p>so we can use the <a href="javascript:showNamedPage('discreteDistns8')">general results about the sum</a> of \(k\) independent identically distributed variables (i.i.d.r.vs) to get</p>
+\[
+E[X] = k \times E[Y_i] = \frac k {\pi} \spaced{and} \Var(X) = k \times \Var(Y_i ) = \frac {k(1-\pi)} {\pi^2}\]</div>
+
+</div>
+
+<p>Since the alternative type of negative binomial distribution (for the number of <strong>failures</strong> before the \(k\)'th success) is for</p>
+\[
+X^* \;\; = \; \; X - k
+\]
+<p>its mean is simply \(k\) less than that of \(X\) and its variance is the same,</p>
+\[
+E[X^*] = \frac k {\pi} - k = \frac {k(1-\pi)} \pi \spaced{and} \Var(X^*) =  \frac {k(1-\pi)} {\pi^2}
+\]
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

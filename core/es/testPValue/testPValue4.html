@@ -1,0 +1,145 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Interpretation of a p-value</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="hypothesis test, p-value">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">P-values and probability</p>
+
+<p>We saw in the last page that p-values have a rectangular distribution between 0 and 1
+when <b>H<sub>0</sub></b> holds. A
+consequence of this is that the probability of obtaining a p-value of 0.1 or lower is
+exactly 0.1 (when <b>H<sub>0</sub></b> holds).
+This is illustrated on the left of the diagram below.
+</p>
+
+<p class=eqn><object data="images/pValueProbs.svg" width="525" height="187" alt="p-value distns"></object>
+</p>
+
+<p>Similarly, the probability of obtaining a p-value of 0.01 or lower is exactly 
+0.01, etc. (when <b>H<sub>0</sub></b> holds). </p>
+<table width="50%" border="1" class="centred" cellpadding="10" cellspacing="0" bgcolor="#FFFFFF">
+<tr> 
+<td align="center"><strong>P-values are most likely to be near 0 if the alternative 
+hypothesis holds</strong></td>
+</tr>
+</table>
+<br>
+
+<div class="diagram">
+
+<p>Again, we use the specific hypothesis test for</p>
+
+<table cellspacing="0" cellpadding="4" class="centred" style="color:#000000; background-color:#FFFFFF; border:1px solid #000000">
+	<tr>
+		<td align="right" valign="middle"><strong>null hypothesis</strong> &nbsp; <span style="font-family:Arial, Helvetica, sans-serif; font-size:16; font-weight:bold">H<sub>0</sub></span> : &nbsp;</td>
+		<td valign="middle">µ &nbsp;= &nbsp;0</td>
+	</tr>
+	<tr>
+		<td align="right" valign="middle"><strong>alternative hypothesis</strong> &nbsp; <span style="font-family:Arial, Helvetica, sans-serif; font-size:16; font-weight:bold">H<sub>A</sub></span> : &nbsp;</td>
+		<td valign="middle">µ &nbsp;≠ &nbsp;0</td>
+	</tr>
+</table>
+<p>in order to demonstrate these general results. </p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="testProg.MeanPValueApplet">
+<param name="varName" value="Simulated data">
+<param name="horizAxis" value="-20 20 -20 10">
+<param name="random" value="40 0 5 3298473 2.5">
+<param name="testInfo" value="0.0">
+<param name="alternative" value="not equal">
+<param name="dataDecimals" value="2">
+<param name="summaryDecimals" value="4">
+<param name="means" value="-4.0 4.0 0.1">
+<param name="cumulative" value="true">
+<param name="customText" value="Real value of=Real value of#sample mean=sample mean#Proportion less than p=Proportion less than p">
+</applet>
+</div>
+
+<p>Click the button <strong>Take sample</strong> 50 or more times to take  samples from this
+population and add their p-values to the display on the right. From the diagram on the top
+right, we can read off the proportion of p-values that are less than any value. Approximately
+50% of p-values are less than 0.5, 20% are less than 0.2, etc. when the null hypothesis is true.
+</p>
+
+<p>Use the slider to change the true population mean to 1.5 and repeat. From the diagram
+on the top right, you should observe that more than 50% of p-values are less than 0.5, more than
+20% are less than 0.2, etc. when the alternative hypothesis holds.
+</p>
+
+</div>
+
+<p class=heading>Interpretation of p-value</p>
+
+<p>Remembering that low p-values favour
+<b>H<sub>A</sub></b>
+more than <b>H<sub>0</sub></b>,
+we can give the following interpretation to a p-value.
+</p>
+
+<p>If a data set gives rise to a p-value of say 0.0023, we can state that the
+probability of getting a data set with such a low p-value is only 0.0023 if
+<b>H<sub>0</sub></b> is true.
+Since such a low p-value is so unlikely, the data give strong evidence that
+<b>H<sub>0</sub></b> does not hold.
+</p>
+
+<p>Of course, we may be wrong. A p-value of 0.0023 <strong>could</strong> arise when either
+<b>H<sub>0</sub></b> or
+<b>H<sub>A</sub></b> holds. However it is
+unlikely when <b>H<sub>0</sub></b> is true
+and more likely when <b>H<sub>A</sub></b>
+is true.
+</p>
+
+<p>Similarly, p-value that is as low as 0.4 occurs with probability 0.4 when the null
+hypothesis holds. Since this is fairly high, we conclude from a data set that gave rise to
+a p-value of 0.4 that there is no evidence that the null hypothesis does not hold.
+</p>
+
+<p>Although it may be regarded as an over-simplification, the table below may be used
+as a guide to interpreting p-values.
+</p>
+
+<center>
+    <table border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+      <tr>
+<th align="CENTER">p-value</th>
+<th align="CENTER">Interpretation</th></tr>
+
+<tr bgcolor="white">
+<td>over 0.1</td>
+<td>no evidence that the null hypothesis does not hold</td></tr>
+
+<tr bgcolor="white">
+<td>between 0.05 and 0.1</td>
+<td>very weak evidence that the null hypothesis does not hold</td></tr>
+
+<tr bgcolor="white">
+<td>between 0.01 and 0.05</td>
+<td>moderately strong evidence that the null hypothesis does not hold</td></tr>
+
+<tr bgcolor="white">
+<td>under 0.01</td>
+<td>strong evidence that the null hypothesis does not hold</td></tr>
+</table>
+</center>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Conditional distributions</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="conditional distribution">
+	<meta name="dataset" content="Rank and age in a university">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Spliting into groups</p>
+  <p>If the two variables can be treated as a response and  an explanatory variable, it is useful to split the data into 'groups' using the explanatory variable, and <a href="javascript:showNamedPage('groupedCat3')">compare the distributions of the response within the different groups</a>. These are also called the <strong>conditional distributions</strong> of the response at each value of the explanatory variable.</p>
+  <p>Even if the two variables <strong>cannot</strong> be classified into a response and explanatory variable,  similar methods can be used. If the variables are called <em>X</em> and <em>Y</em>, 
+  we can  either</p>
+  <ul>
+    <li>compare the distributions of <em>Y</em> for each possible value of <em>X</em> 
+    </li>
+    <li>compare the distributions of <em>X</em> for each possible value of <em>Y</em></li>
+  </ul>
+	
+  <p>These are called the <strong>conditional distributions</strong> of <em>Y</em> 
+    given <em>X</em>, and the <strong>conditional distributions</strong> of <em>X</em> given <em>Y</em>, and proportions within 
+    the groups would be used to make comparisons easier.</p>
+  <p> In the context of a contingency table, the conditional proportions are found 
+    by dividing each frequency in the table by its row (or column) total. This 
+    scales each row (or column) of the table to sum to 1.0.</p>
+
+
+<div class="diagram" title="Example: Rank and age in a university">
+    <p class="heading">Rank and age in a university</p>
+    <p>The following contingency table again shows the rank and age of all academic 
+      staff in a university in the USA.</p>
+    <div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="240">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="bivarCatProg.ContinTable2Applet">
+<param name="xVarName" value="Age">
+<param name="xLabels" value="#Under 30# #30 to 39# #40 to 49# #50 and over#">
+<param name="xValues" value="68@0 402@1 348@2 346@3">
+<param name="yVarName" value="Rank">
+<param name="yLabels" value="#Full prof# #Assoc prof# #Assist prof# Instructor">
+<param name="yValues" value="2@0 3@1 57@2 6@3 52@0 170@1 163@2 17@3 156@0 125@1 61@2 6@3 220@0 83@1 39@2 4@3">
+<param name="vertScale" value="0 1 2">
+<param name="customText" value="Display=Display#Separately for each=Separately for each">
+</applet>
+</div>
+
+    
+    <p>Select <strong>Proportion</strong> from the pop-up menu  to see the conditional distributions for each <em>Age group</em>. In effect, this scales the frequencies in each row of the contingency table to add to 1.0. Click on the row for <em>Under 30</em> to see how the conditional proportions are obtained by dividing the joint frequencies by the marginal frequency for <em>Under 30</em>.</p>
+    <p>Now choose <strong>Rank</strong> from the pop-up menu on the right to see the conditional distributions for each <em>Rank</em>. Click on columns to see how these conditional proportions are obtained from the joint frequencies.</p>
+  </div>
+
+  <p class="heading">Graphical displays of conditional distributions</p>
+
+  <p>The conditional distributions can be shown graphically on a 3-dimensional 
+    bar chart, but a clustered 2-dimensional display is usually easier to interpret. 
+    Note however that several different types of clustered displays can be drawn 
+    &mdash; they make it easier to compare different aspects of the distributions.</p>
+  <ul>
+    <li>Conditional probabilities for <em>X</em> given <em>Y</em> or <em>Y</em> 
+      given <em>X</em>.</li>
+    <li>Clustered by <em>Y</em> or <em>X</em>.</li>
+  </ul>
+	
+	<br>
+
+<div class="diagram" title="Example: Rank and age in a university">
+    <p class="heading">Rank and age</p>
+
+    <p>The clustered bar chart below initially shows the joint frequencies for all combinations of 
+    age and rank.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="bivarCatProg.Bar2WayApplet">
+<param name="xVarName" value="Age (X)">
+<param name="xLabels" value="#Under 30# #30 to 39# #40 to 49# #50 and over#">
+<param name="xValues" value="68@0 402@1 348@2 346@3">
+<param name="yVarName" value="Rank (Y)">
+<param name="yLabels" value="#Full prof# #Assoc prof# #Assist prof# Instructor">
+<param name="yValues" value="2@0 3@1 57@2 6@3 52@0 170@1 163@2 17@3 156@0 125@1 61@2 6@3 220@0 83@1 39@2 4@3">
+<param name="countAxis" value="250 50">
+<param name="propnAxis" value="0.85 0.1">
+<param name="bottomPanel" value="true">
+<param name="mainGroup" value="0 1">
+<param name="stackable" value="false">
+<param name="vertScale" value="0 1 2">
+<param name="showPercentages" value="false">
+<param name="customText" value="Propn within=Propn within#Percent within=Percent within">
+</applet>
+</div>
+<p>First select <strong>Rank</strong> from the pop-up menu under the bar chart to 
+cluster the bars by rank. The total number of <em>instructors</em> is small, so it is difficult to campare the ages of <em>instructors</em> to those of the other ranks. Select <strong>Propn within Rank</strong> from the pop-up menu at the top to display the conditional distributions of age within rank. It effectively scales each rank's bars to give the same total (1.0).</p>
+<div class="centred"><div class="boxed">
+  <p>It is now easy to see that the age distributions of <em>assistant professors</em> and <em>instructors</em> are very similar, but both are different from those of <em>associate</em> and <em>full professors</em>.</p>
+</div></div>
+
+<p>Select <strong>Frequency</strong> and <strong>Age</strong> from the two menus to show the raw counts, clustered by age. Select <strong>Propn within Age</strong>  to 
+  display the conditional distributions of the ranks of staff who are in each age group.</p>
+<div class="centred"><div class="boxed">
+  <p>This diagram emphasises the spike in <em>assistant professors</em> for the youngest staff, and the increasing proportion of<em> associate </em> and <em>full professors</em> as staff get older.</p>
+</div></div>
+
+<br>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

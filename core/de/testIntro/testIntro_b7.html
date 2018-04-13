@@ -1,0 +1,238 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Common patterns in hypothesis testing</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="hypothesis test, null hypothesis, alternative hypothesis, p-value">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Ein allgemeiner Rahmen&nbsp;</p>
+<p>Die Beispiele auf den vorherigen Seiten dieses Abschnitts beinhalten
+verschiedene Arten von Daten und verschiedene Analysen.
+Tats&auml;chlich k&ouml;nntest du es schwierig finden, ihre gemeinsamen
+Themen auszumachen!&nbsp;</p>
+<p>Alle Analysen waren Beispiele von <strong>Hypothesentests</strong>.
+Wir beschreiben nun den allgemeinen Rahmen von Hypothesentests, in den
+alle diese Beispiele passen. Dieser allgemeine Rahmen ist die Grundlage
+f&uuml;r wichtige Anwendungen in sp&auml;teren Abschnitten von CAST.</p>
+<center>
+<table bgcolor="white" border="1" cellpadding="10" cellspacing="0"
+ width="75%">
+  <tbody>
+    <tr>
+      <td><strong>Die Konzepte dieser Seite sind extrem wichtig -
+stelle sicher, dass du sie gut verstanden hast, bevor du
+fortf&auml;hrst.</strong></td>
+    </tr>
+  </tbody>
+</table>
+</center>
+<p class="heading">Das Modell und Daten</p>
+<p>Jedes Beispiel beinhaltet ein Modell, von dessen Eigenschaften
+einige nicht bekannt waren. Ein Datensatz aus dem Modell ist
+verf&uuml;gbar und wir hoffen, durch Benutzen dieses Datensatzes,
+Fragen &uuml;ber das Modell beantworten zu k&ouml;nnen.&nbsp;</p>
+<dl>
+  <dt>Fussballliga in einer Saison&nbsp;</dt>
+  <dd>Manchem Randomisationsmechanismus liegen die tats&auml;chlichen
+Ergebnisse in den Spielen w&auml;hrend der Saison zugrunde. Die
+Wahrscheinlichkeiten des Gewinnens k&ouml;nnen von Team zu Team
+variieren und es gibt vielleicht einen Heimspielvorteil, so gibt es
+eine Menge von Unbekannten &uuml;ber dieses Modell! Unsere Daten sind
+einem einzigen Satz von Ergebnissen entnommen - die Rangliste am Ende
+der Saison.&nbsp;</dd>
+  <dt>Wale von Booten abhalten</dt>
+  <dd>Jeder Wal hat eine gewisse Wahrscheinlichkeit zu verschwinden -
+unser Modell. Wir gehen auch von Unabh&auml;ngigkeit verschiedener Wale
+aus, eine vern&uuml;nftige Annahme, wenn die Wale zu verschiedenen
+Zeiten auftreten, nicht aber, wenn sie in einer Gruppe auftreten. Eine
+Stichprobe von 30 Walen wurde in dem Experiment verwendet und unsere
+Daten sind die Zahl derer, welche sofort verschwanden.&nbsp;</dd>
+  <dt>Kojotenl&auml;ngen&nbsp;</dt>
+  <dd>Wir gehen davon aus, dass unsere Daten (L&auml;ngen von Kojoten),
+zuf&auml;llige Stichproben von 40 und 43 aus den zugrunde liegenden
+Populationen von weiblichen und m&auml;nnlichen Kojoten (jeweils) in
+Nova Scotia sind. Unser Modell besteht aus einer zuf&auml;lligen
+Stichprobe dieser unbekannten Population.&nbsp;</dd>
+  <dt>Fu&szlig;ballligen in zwei Spielzeiten&nbsp;</dt>
+  <dd>Einige zuf&auml;llige Mechanismen erzeugen Ergebnisse
+w&auml;hrend jeder Saison - unser Modell. In diesem Fall haben wir die
+Anzahl der Punkte f&uuml;r jede Mannschaft am Ende von zwei
+aufeinanderfolgenden Spielzeiten erfasst &ndash; unsere Daten.&nbsp;</dd>
+</dl>
+<p class="heading">Eine Frage stellen - die Nullhypothese&nbsp;</p>
+<p>Alle Modelle hatten unbekannte Eigenschaften, und wir wollen wissen,
+ob das Modell besondere Eigenschaften hat - die <strong>Null-Hypothese</strong>.&nbsp;</p>
+<dl>
+  <dt>Fu&szlig;ballliga in einer Saison&nbsp;</dt>
+  <dd>Die Null-Hypothese besagt, dass alle Teams gleich aufeinander
+abgestimmt sind - das hei&szlig;t, dass sie alle die gleiche
+Wahrscheinlichkeit des Gewinnens eines jeden Spiels haben.&nbsp;</dd>
+  <dt>Wale von Booten abhalten</dt>
+  <dd>Die Null-Hypothese besagt, dass jeder Wal eine Wahrscheinlichkeit
+von 0,4 hat, sofort zu verschwinden - d.h., dass der Ger&auml;usch-
+Sendeeinrichtung keine Wirkung hat.&nbsp;</dd>
+  <dt>Kojotenl&auml;ngen&nbsp;</dt>
+  <dd>Die Null-Hypothese besagt, dass die Verteilung in der Population
+im Bezug auf die Kojotenl&auml;ngen, die gleiche f&uuml;r
+m&auml;nnliche und weibliche Tiere ist.&nbsp;</dd>
+  <dt>Fu&szlig;ballligen in zwei Spielzeiten&nbsp;</dt>
+  <dd>Die Null-Hypothese besagt, dass alle Mannschaften (au&szlig;er
+Manchester United, Arsenal, Liverpool und Leeds) die gleiche
+Wahrscheinlichkeit des Gewinnens gegen den gleichen Gegner in beiden
+Saisons haben.</dd>
+</dl>
+<p>Der Schwerpunkt des Hypothesentest ist zu testen, ob die
+Nullhypothese gilt.&nbsp;</p>
+<p class="heading">Die Alternativhypothese&nbsp;</p>
+<p>Wenn die Nullhypothese nicht wahr ist, dann gilt die <strong>Alternativhypothese</strong>. (Du kannst
+jedoch die meisten Hypothesentests ohne gro&szlig;e R&uuml;cksicht auf
+die Alternativhypothese&nbsp;verstehen!)&nbsp;</p>
+<center>
+<table bgcolor="white" border="1" cellpadding="10" cellspacing="0"
+ width="75%">
+  <tbody>
+    <tr>
+      <td><strong>Entweder ist die Nullhypothese, oder die
+Alternativhypothese wahr.&nbsp;</strong></td>
+    </tr>
+  </tbody>
+</table>
+</center>
+<p class="heading">Benutzung der Daten</p>
+<p>Beurteilt man die Nullhypothese mit der Frage ...&nbsp;</p>
+<center>
+<table bgcolor="#ffff33" border="1" bordercolor="#990000"
+ cellpadding="10" cellspacing="0" width="75%">
+  <tbody>
+    <tr>
+      <td><strong><font color="#cc0000">&nbsp;Sind die Daten im
+Einklang mit der Null-Hypothese?</font></strong></td>
+    </tr>
+  </tbody>
+</table>
+</center>
+<p>Es ist <strong>&auml;u&szlig;erst</strong>
+wichtig, dass du verstehst, dass Hypothesentests diese Frage
+voraussetzen - stelle sicher, dass du dir das gut merkst!&nbsp;</p>
+<p class="heading">Teststatistik</p>
+<p>Einige Funktionen der Daten werden genommen, um zu erkl&auml;ren, ob
+die Null- oder Alternativhypothese richtig ist.</p>
+<dl>
+  <dt>Fu&szlig;ballliga in einer Saison&nbsp;</dt>
+  <dd>Die Standardabweichung der Endpunkte wurde verwendet. Sie wird
+h&ouml;her sein, wenn die Teams unterschiedliche F&auml;higkeiten haben
+(die Alternativhypothese).&nbsp;</dd>
+  <dt>Wale von Booten abhalten</dt>
+  <dd>Der Anteil der Wale, die sofort verschwinden, ist die
+Teststatistik. Sie wird gr&ouml;&szlig;er als 0,4, wenn das Ger&auml;t
+effektiv ist (die Alternativhypothese).&nbsp;</dd>
+  <dt>Kojotenl&auml;ngen&nbsp;</dt>
+  <dd>Die Differenz zwischen der mittleren L&auml;ngen der
+m&auml;nnlichen und weiblichen Kojoten war die Teststatistik. Sie
+sollte nahe bei Null sein, wenn die Nullhypothese gilt, und weit von
+Null entfernt sein, wenn die Alternativhypothese gilt.&nbsp;</dd>
+  <dt>Fu&szlig;ballligen in zwei Spielzeiten&nbsp;</dt>
+  <dd>Der Korrelationskoeffizient zwischen den Endpunkten der Teams in
+den zwei Spielzeiten ist die Teststatistik. Er ist nahe Null, wenn die
+Mannschaften die gleichen Gewinnchancen (die Nullhypothese) haben und
+wird positiv sein, wenn einige Mannschaften h&ouml;here Gewinnchancen
+als andere (die Alternativhypothese) haben.&nbsp;</dd>
+</dl>
+<p class="heading">P-Wert</p>
+<p>Die Frage</p>
+<center>
+<table bgcolor="white" border="1" cellpadding="10" cellspacing="0"
+ width="75%">
+  <tbody>
+    <tr>
+      <td><strong>Sind die Daten im Einklang mit der
+Null-Hypothese?&nbsp;</strong></td>
+    </tr>
+  </tbody>
+</table>
+</center>
+<p>ist neu formuliert als ...&nbsp;</p>
+<center>
+<table bgcolor="white" border="1" cellpadding="10" cellspacing="0"
+ width="75%">
+  <tbody>
+    <tr>
+      <td><strong>Was ist die Wahrscheinlichkeit f&uuml;r einen solchen
+"extremen" Wert der Teststatistik, wenn die Nullhypothese gilt?&nbsp;</strong></td>
+    </tr>
+  </tbody>
+</table>
+</center>
+<p>Diese Wahrscheinlichkeit bei Hypothesentests wird als der<strong> p-Wert</strong> bezeichnet. Es gibt
+verschiedene M&ouml;glichkeiten, den p-Wert zu finden. Beachte, dass
+alle von ihnen annehmen, <strong>dass die
+Nullhypothese wahr ist</strong>.&nbsp;</p>
+<dl>
+  <dt>Fu&szlig;ballliga in einer Saison&nbsp;</dt>
+  <dd>Wir simulierten die Fu&szlig;ballliga, vorausgesetzt, dass alle
+Teams die gleiche Wahrscheinlichkeit des Gewinnens hatten. Der p-Wert
+war die Wahrscheinlichkeit des Erhaltens einer Standardabweichung von
+Endpunkten, so hoch wie 16,7 (die eigentlichen Daten).&nbsp;</dd>
+  <dt>Wale von Booten abhalten</dt>
+  <dd>Wir simulierten mit dem Gebrauch des Ger&auml;ts an 30 Walen,
+vorausgesetzt, dass jeder Wal eine Wahrscheinlichkeit von 0,4 hatte
+sofort zu verschwinden. Der p-Wert war die Wahrscheinlichkeit von 15
+oder weniger der&nbsp;30 Wale zu bleiben (der eigentlichen Daten).&nbsp;</dd>
+  <dt>Kojotenl&auml;ngen&nbsp;</dt>
+  <dd>Wir randomisierten die 83 L&auml;ngen zwischen den beiden Gruppen
+von Kojoten (m&auml;nnlich und weiblich) - jede dieser Randomisationen
+ist ebenso wahrscheinlich, wenn die Populationen die gleichen sind. Der
+p-Wert war die Wahrscheinlichkeit, dass der Unterschied der Mittelwert
+weiter von Null als 2,8 cm (die eigentlichen Daten) entfernt ist.&nbsp;</dd>
+  <dt>Fu&szlig;ballligen in zwei Spielzeiten&nbsp;</dt>
+  <dd>Wir randomisierten die Punkte in der zweiten Saison - jeder ist
+gleich wahrscheinlich, wenn die Mannschaften die gleiche
+Wahrscheinlichkeit des Gewinnens haben. Der p-Wert war die
+Wahrscheinlichkeit, dass der Korrelationskoeffizient weiter von null
+als 0,149 (die eigentlichen Daten) entfernt ist.&nbsp;</dd>
+</dl>
+<p class="heading">Interpretation der p-Werte</p>
+<p>Zwar mag es als eine zu starke Vereinfachung angesehen werden, aber
+die nachfolgende Tabelle kann als Leitfaden f&uuml;r die Interpretation
+des p-Wertes verwendet werden.&nbsp; </p>
+<center>
+<table border="1" bordercolor="#cccccc" cellpadding="5" cellspacing="0">
+  <tbody>
+    <tr>
+      <th align="center">p-Wert</th>
+      <th align="center">Interpretation</th>
+    </tr>
+    <tr bgcolor="white">
+      <td>&uuml;ber 0,1</td>
+      <td>keine Beweise, dass die Null-Hypothese nicht stimmt</td>
+    </tr>
+    <tr bgcolor="white">
+      <td>zwischen 0,05 und 0,1</td>
+      <td>sehr schwacher Beweis, dass die Nullhypothese nicht stimmt</td>
+    </tr>
+    <tr bgcolor="white">
+      <td>zwischen 0,01 und 0,05</td>
+      <td>m&auml;&szlig;ig starker Beweis, das die Nullhypothese nicht
+stimmt<br>
+      </td>
+    </tr>
+    <tr bgcolor="white">
+      <td>unter 0,01</td>
+      <td>starker Beweis, dass die Nullhypothese nicht stimmt</td>
+    </tr>
+  </tbody>
+</table>
+</center>
+<p>&nbsp;</p>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

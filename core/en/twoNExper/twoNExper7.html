@@ -1,0 +1,255 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Designs with centre points</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="factorial design, centre points, error variance">
+	<meta name="dataset" content="Sugar reduction study">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Replicating the whole design</p>
+	<p>The best way to estimate the error variance is with a complete replicate 
+		of the whole factorial design. A complete replicate also results in more accurate 
+		estimates of the effects of the factors. However a second replicate doubles 
+		the number of experimental runs and can be prohibitively expensive.</p>
+	<p class="heading">Replicating a single treatment</p>
+	<p>An alternative way to estimate the error variance is with <em>r</em> runs 
+		of the experiment at a single combination of factor levels (e.g. the low level 
+		for all factors). The variance of these repeat observations provides an estimate 
+		of the error variance and can be used in the 'Residual' row of the analysis 
+		of variance with (<em>r</em>&nbsp;-&nbsp;1) degrees of freedom.</p>
+	<p>However these extra values destroy the orthogonality of the design &mdash; in 
+		the analysis of variance table, the sums of squares for the main effects and 
+		interactions will depend on the order in which they are added to the model. 
+		This is therefore a poor solution to the problem of estimating the error variance.</p>
+	<p class="heading">Replicating the 'centre point' of the design</p>
+	<p>If all factors are numerical in a 2<em><sup>k</sup></em> factorial experiment, 
+		a better solution is with several runs of the experiment at a treatment combination 
+		with the middle value for all factors. These are called <strong>centre points</strong> 
+		in the design. If the factor levels are coded as -1 and +1 in the factorial 
+		runs of the experiment, this corresponds to making <em>r</em> runs of the 
+		experiment with all factors at value 0.</p>
+	<p>Again the response variance at the <em>r</em> centre points estimates the 
+		error variance and can be used in the residual row of the analysis of variance 
+		table with <em>r</em>&nbsp;-&nbsp;1 degrees of freedom. By replicating the 
+		centre point, the other factors remain orthogonal, making interpretation of 
+		the results easier.</p>
+	<p>At least 6 replicates of the centre point are recommended to get a reasonably 
+		accurate estimate of the error variance from the residual sum of squares.</p>
+	<p class="heading">Properties</p>
+	<p>Factorial designs with added centre points have several important properties:</p>
+	<ul>
+		<li>Since there is an independent estimate of the error variance, all interactions 
+			can be tested.</li>
+		<li>The data allow a test with one degree of freedom for whether the factor 
+			effects are all linear. This test effectively asks whether the mean response 
+			for the centre points is equal to the average of the mean responses for 
+			all other factorial observations. The test is not particularly sensitive 
+			to nonlinearity but may detect gross problems.</li>
+		<li>Adding centre points does not improve the accuracy of the estimates of 
+			main effects or interactions &mdash; it only allows them all to be tested.</li>
+	</ul>
+	<p>The final bullet point means that the design could be considered wasteful, 
+		so the number of centre points is usually limited to 5 or 6 &mdash; possibly even 
+		as low as 3 if runs are very expensive.</p>
+	<div class="diagram"> 
+		<p class="heading">Sugar reduction study</p>
+
+		<p>We now examine how the addition of centre points would alter the analysis 
+			of the sugar reduction data.</p>
+		<div class="centred"><table border="0" class="centred" cellpadding="3" cellspacing="0">
+			<tr> 
+				<th>Factor</th>
+				<th style="border-bottom:1px solid #999999;">&nbsp;Low level&nbsp;</th>
+				<th style="border-bottom:1px solid #999999;">&nbsp;High level&nbsp;</th>
+				<th style="border-bottom:1px solid #999999;"><span class="red">&nbsp;Centre value&nbsp;</span></th>
+			</tr>
+			<tr>
+				<th align="left">Saltiness&nbsp;&nbsp;&nbsp;&nbsp;</th>
+				<td align="center" bgcolor="#FFFFFF">0.10 g%</td>
+				<td align="center" bgcolor="#FFFFFF">0.20 g%</td>
+				<td align="center" bgcolor="#FFFFFF"><span class="red">0.15 g%</span></td>
+			</tr>
+			<tr>
+				<th align="left">Acidity</th>
+				<td align="center" bgcolor="#FFFFFF">0.00 g%</td>
+				<td align="center" bgcolor="#FFFFFF">0.05 g%</td>
+				<td align="center" bgcolor="#FFFFFF"><span class="red">0.025 g%</span></td>
+			</tr>
+			<tr>
+				<th align="left">Thickness</th>
+				<td align="center" bgcolor="#FFFFFF">3.00 g%</td>
+				<td align="center" bgcolor="#FFFFFF">4.00 g%</td>
+				<td align="center" bgcolor="#FFFFFF"><span class="red">3.50 g%</span></td>
+			</tr>
+			<tr>
+				<th align="left">Hotness&nbsp;&nbsp;&nbsp;&nbsp;</th>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">0.05 g%</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">0.15 g%</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;"><span class="red">0.10 g%</span></td>
+			</tr>
+		</table></div>
+		<p>To illustrate the method, we have added four response values at the centre 
+			point of the design.</p>
+		<div class="centred"><table border="0" class="centred" cellpadding="3" cellspacing="0">
+			<tr> 
+				<th style="border-bottom:1px solid #999999;">&nbsp;Saltiness&nbsp;</th>
+				<th style="border-bottom:1px solid #999999;">&nbsp;Acidity&nbsp;</th>
+				<th style="border-bottom:1px solid #999999;">&nbsp;Thickness&nbsp;</th>
+				<th style="border-bottom:1px solid #999999;">&nbsp;Hotness&nbsp;</th>
+				<th style="border-bottom:1px solid #999999;">&nbsp;Sweetness&nbsp;</th>
+			</tr>
+			<tr align="center" bgcolor="#FFFFFF"> 
+				<td style="border-bottom:1px solid #999999;">+1<br>
+					+1<br>
+					+1<br>
+					+1<br>
+					+1<br>
+					+1<br>
+					+1<br>
+					+1<br>
+					-1<br>
+					-1<br>
+					-1<br>
+					-1<br>
+					-1<br>
+					-1<br>
+					-1<br>
+					-1<br> <span class="red">0<br>
+					0<br>
+					0<br>
+					0</span></td>
+				<td style="border-bottom:1px solid #999999;">+1<br>
+					+1<br>
+					+1<br>
+					+1<br>
+					-1<br>
+					-1<br>
+					-1<br>
+					-1<br>
+					+1<br>
+					+1<br>
+					+1<br>
+					+1<br>
+					-1<br>
+					-1<br>
+					-1<br>
+					-1<br> <span class="red">0<br>
+					0<br>
+					0<br>
+					0</span></td>
+				<td style="border-bottom:1px solid #999999;">+1<br>
+					+1<br>
+					-1<br>
+					-1<br>
+					+1<br>
+					+1<br>
+					-1<br>
+					-1<br>
+					+1<br>
+					+1<br>
+					-1<br>
+					-1<br>
+					+1<br>
+					+1<br>
+					-1<br>
+					-1<br> <span class="red">0<br>
+					0<br>
+					0<br>
+					0</span></td>
+				<td style="border-bottom:1px solid #999999;">+1<br>
+					-1<br>
+					+1<br>
+					-1<br>
+					+1<br>
+					-1<br>
+					+1<br>
+					-1<br>
+					+1<br>
+					-1<br>
+					+1<br>
+					-1<br>
+					+1<br>
+					-1<br>
+					+1<br>
+					-1<br> <span class="red">0<br>
+					0<br>
+					0<br>
+					0</span></td>
+				<td style="border-bottom:1px solid #999999;">7.60<br>
+					7.92<br>
+					7.72<br>
+					7.27<br>
+					8.09<br>
+					7.87<br>
+					7.52<br>
+					6.89<br>
+					8.02<br>
+					8.34<br>
+					8.20<br>
+					8.21<br>
+					8.14<br>
+					7.82<br>
+					8.04<br>
+					7.00<br>
+					<span class="red">7.60<br>
+					7.70<br>
+					7.80<br>
+					7.90</span></td>
+			</tr>
+		</table></div>
+		<p>The diagram below initially shows the full model with all interactions 
+			but without the centre points. Notice that the 4-factor interaction cannot 
+			be tested.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="650">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="factorialProg.HalfNormalPlotApplet">
+<param name="yVarName" value="Sweetness">
+<param name="yValues" value="7.60 7.92 7.72 7.27 8.09 7.87 7.52 6.89 8.02 8.34 8.20 8.21 8.14 7.82 8.04 7.00">
+<param name="xKeys" value="S A T H">
+<param name="SVarName" value="Sa">
+<param name="SValues" value="8@1 8@0">
+<param name="SLabels" value="Sa- Sa+">
+<param name="AVarName" value="Ac">
+<param name="AValues" value="4@1 4@0 4@1 4@0">
+<param name="ALabels" value="Ac- Ac+">
+<param name="TVarName" value="Th">
+<param name="TValues" value="2@1 2@0 2@1 2@0 2@1 2@0 2@1 2@0">
+<param name="TLabels" value="Th- Th+">
+<param name="HVarName" value="Ht">
+<param name="HValues" value="1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0">
+<param name="HLabels" value="Ht- Ht+">
+<param name="startModel" value="0*1*2*3">
+<param name="maxSsq" value="9.999 99 9.999 99.99">
+<param name="effectAxis" value="0 0.85 0 0.1">
+<param name="zAxis" value="0 2.4 0.0 0.5">
+<param name="centrePoints" value="7.6 7.7 7.8 7.9">
+<param name="customText" value="Half normal quantile=Half normal quantile#Effect=Effect#Use centre points=Use centre points#Nonlinear=Nonlinear">
+</applet> 
+</div>
+
+		<p>Click <strong>Use centre points</strong> to add the four centre points 
+			to the analysis. These centre points give a residual sum of squares with 
+			3 degrees of freedom, allowing all interactions to be tested.</p>
+		<p>There is also a single sum of squares and degree of freedom for nonlinearity. 
+			Since the corresponding p-value is large, we can conclude that there is 
+			no evidence of nonlinearity.</p>
+
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

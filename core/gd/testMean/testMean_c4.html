@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>The t distribution</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="t distribution, probability density/t distribution, hypothesis test, mean">
+	<meta name="dataset" content="Mutual fund returns">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Unknown standard deviation</p>
+<p>In the examples on the previous page, the population standard deviation, σ, 
+was a known value. Unfortunately this is rarely the case in practice, so the previous 
+test cannot be used.</p>
+
+<div class="diagram">
+
+<p class="heading">Returns from Mutual Funds</p>
+
+<p>Investing in the share market can be risky for small investors since the value 
+of individual companies can fluctuate greatly, especially over short periods of 
+time. These risks can be reduced by buying shares in a mutual fund that spreads 
+the investment amoung a wide portfolio of companies.</p>
+<p>Different mutual funds invest in companies of different types and with different 
+inherent risks of losing and (hopefully) gaining value. Some funds have been categorised 
+as 'high-risk' funds and a sample of 25 of these is shown in the table below. 
+The percentage return paid by these funds over a 3-year period (April 1997 to 
+March 2000) is also shown. (The stock market did particularly well over this period!)</p>
+<p>The corresponding annualised return from Federal Constant Maturity Rate Bonds 
+over this period was 5.64%. Did the high-risk funds do any better on average than 
+this 'safe' investment? </p>
+<table border="0" class="centred" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF">
+<tr>
+<th>High-risk mutual fund</th>
+<th>Annualised 3-year return<br>
+(1997-2000)</th>
+</tr>
+<tr> 
+<td><table><tr>
+<td>Alliance Quasar<br>
+Alliance Tech<br>
+Amer Cent Gl Gold<br>
+Berger Sm Co Gr<br>
+Blackrock Sm Cp Gr<br>
+CGM Cap Devel<br>
+Dreyfus Aggressive Growth<br>
+Evergreen Aggressive growth A<br>
+Federated Small cap Strat A<br>
+Fidelity emerging markets<br>
+Fidelity Selects Comp<br>
+Franklin Value A<br>
+Goldman Sachs small cap val A<br>
+Hotchkiss and Wiley Small Cap<br>
+JP Morgan Sm Co<br>
+J Hancock Small cap Growth B<br>
+Kemper Samall cap equity A<br>
+MFS Emerg Gr<br>
+Montgomery Small cap R<br>
+Oakmark Sm Cap<br>
+O'Shaughnessy Crn Gr<br>
+PBHG Emerging Growth<br>
+Putnam OTC Emerg Gr<br>
+State St. Res Emer Gr A<br>
+USAA Aggressive Gr</td>
+</tr></table></td>
+<td align="center">
+<table><tr>
+<td align="right">8.76%<br>58.71%<br>-22.82%<br>49.02%<br>43.97%<br>13.91%<br>-2.89%<br>39.64%<br>17.91%<br>-10.55%<br>68.58%<br>-0.33%<br>4%<br>0.14%<br>23.87%<br>38.23%<br>26.6%<br>36.02%<br>29.51%<br>1.62%<br>28.91%<br>29.32%<br>54.43%<br>30.76%<br>49.67%</td>
+</tr></table></td>
+</tr>
+</table>
+<p>The hypotheses of interest are similar to those in the initial pages of this 
+section, </p>
+<p class=eqn><img src="../../en/testMean/images/hypothE.gif" width="101" height="45"></p>
+
+<p>which has a standard normal distribution when <b>H<sub>0</sub></b> was true.</p>
+<p>When σ 
+is unknown, we use a closely related test statistic,</p>
+<p class=eqn><img class="gif" src="../../en/testMean/images/tStatDefn.gif" width="90" height="46"></p>
+
+<p>where <i>s</i> is the <strong>sample</strong> standard deviation. This test 
+statistic has greater spread than the standard normal distribution, due to the 
+extra variability that results from estimating <i>s</i>, especially when the sample 
+size <i>n</i> is small.</p>
+
+
+<div class="diagram">
+
+<p>The diagram below generates random samples from a normal distribution. Click 
+<strong>Take sample</strong> a few times to see the variability in the samples.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="testProg.TAgainstNormalApplet">
+<param name="varName" value="sample data, x">
+<param name="horizAxis" value="14 26 14 2">
+<param name="random" value="20 20 2 3298473 3">
+<param name="summaryDecimals" value="3">
+<param name="formulaGif" value="test/tn">
+<param name="sampleSize" value="20 10 5 3">
+</applet>
+</div>
+
+<p>Click <strong>Accumulate</strong> then take about 50 random samples. Observe 
+that the stacked dot plot of the t statistic conforms reasonably with a standard 
+normal distribution.</p>
+<p>Now use the pop-up menu to reduce the sample size to 5 and take a further 50-100 
+samples. You will probably notice that there are more 'extreme' t-values (less 
+than -3 or more than +3) than would be expected from a standard normal distribution.</p>
+<p>Reduce the sample size to 3 and repeat. It should now be clearer that the distribution 
+of the t-statistic has greater spread than a standard normal distribution. Click 
+on the crosses for the most extreme t-values and observe that they correspond 
+to samples in which the 3 data values happen to be close together, resulting in 
+a small sample standard deviation, <em>s</em>.</p>
+
+</div>
+
+<p class="heading">The t distribution</p>
+<p>We have seen that the <em>t</em> statistic does not have a standard normal 
+distribution, but it does have another standard distribution called a <strong>t 
+distribution with (<i>n</i> - 1) degrees of freedom</strong>. In the next page, 
+we will use this distribution to obtain the p-value for hypothesis tests.</p>
+<div class="diagram">
+
+<p>The diagram below shows the shape of the t distribution for various different values
+of the degrees of freedom.
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="300" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="testProg.TApplet">
+</applet>
+</div>
+
+<p><strong>Drag</strong> the slider to see how the shape of the t distribution depends
+on the degrees of freedom. Note that
+</p>
+<ul>
+	<li>The t distribution's shape becomes close to the standard normal distribution
+		(the red curve) as the degrees of freedom increase. <br>
+		&nbsp;</li>
+	<li>When the degrees of freedom are small, the t distribution has much longer tails than the
+		standard normal distribution.<br>
+		<br>
+	</li>
+	<li>When the degrees of freedom are around 10, the <strong>centre</strong> of the t distribution looks close to a standard normal distribution. However an important use of the t distribution is in hypothesis tests where the tails of the distribution are particularly important. The <strong>tails</strong> of the distributions are quite different.</li>
+</ul>
+<br>
+<div class="boxed">
+	<p>A standard normal distribution can be used as an approximation to a t distribution if the degrees of freedom are large (say 30 or more) but the t distribution must be used for smaller degrees of freedom.</p>
+</div>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

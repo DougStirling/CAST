@@ -1,0 +1,339 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Choosing best model</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="response surface, anova, analysis of variance, lack of fit, pure error">
+	<meta name="dataset" content="Chemical process yield">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Analysis of variance</p>  
+  <p>The quadratic response surface model for two factors uses six parameters 
+		to model the mean response,</p>
+	<p class=eqn><img src="images/bivarQuadModel2.gif" width="402" height="24"> 
+	</p>
+	<p>When added sequentially to the model, each term gives the model more flexibility 
+		and allows the residual sum of squares to be reduced. These reductions are 
+		explained sums of squares that are each associated with one degree of freedom 
+		and can be laid out in an analysis of variance table.</p>
+	<div class="centred"><table border="0" class="centred" cellpadding="0" cellspacing="0">
+		<tr> 
+			<th align="left">&nbsp;&nbsp;Source of variation&nbsp;&nbsp;&nbsp;</th>
+			<th>&nbsp;&nbsp;SSq&nbsp;&nbsp;</th>
+			<th>df</th>
+			<th>&nbsp;&nbsp;MSq&nbsp;&nbsp;</th>
+			<th>&nbsp;&nbsp;&nbsp;F&nbsp;&nbsp;&nbsp;</th>
+			<th>&nbsp;&nbsp;p-value&nbsp;&nbsp;</th>
+		</tr>
+		<tr> 
+			<td colspan="6" bgcolor="#000000"><img border="0" src="../structure/images/spacer.gif" width="20" height="1"></td>
+		</tr>
+		<tr bgcolor="#FFFFFF"> 
+			<td>&nbsp;&nbsp;Linear X&nbsp;&nbsp;&nbsp;</td>
+			<td align="center">?</td>
+			<td align="center">1</td>
+			<td align="center">?</td>
+			<td align="center">?</td>
+			<td align="center">?</td>
+		</tr>
+		<tr bgcolor="#FFFFFF"> 
+			<td>&nbsp;&nbsp;Linear Z</td>
+			<td align="center">?</td>
+			<td align="center">1</td>
+			<td align="center">?</td>
+			<td align="center">?</td>
+			<td align="center">?</td>
+		</tr>
+		<tr bgcolor="#FFFFFF"> 
+			<td>&nbsp;&nbsp;Quadratic X</td>
+			<td align="center">?</td>
+			<td align="center">1</td>
+			<td align="center">?</td>
+			<td align="center">?</td>
+			<td align="center">?</td>
+		</tr>
+		<tr bgcolor="#FFFFFF"> 
+			<td>&nbsp;&nbsp;Quadratic Z</td>
+			<td align="center">?</td>
+			<td align="center">1</td>
+			<td align="center">?</td>
+			<td align="center">?</td>
+			<td align="center">?</td>
+		</tr>
+		<tr bgcolor="#FFFFFF"> 
+			<td>&nbsp;&nbsp;X-Z interaction</td>
+			<td align="center">?</td>
+			<td align="center">1</td>
+			<td align="center">?</td>
+			<td align="center">?</td>
+			<td align="center">?</td>
+		</tr>
+		<tr> 
+			<td bgcolor="#FFFFFF"><span class="red">&nbsp;&nbsp;Residual</span></td>
+			<td align="center" bgcolor="#FFFFFF"><span class="red">?&nbsp;</span></td>
+			<td align="center" bgcolor="#FFFFFF"><span class="red">&nbsp;&nbsp;<em>n</em>&nbsp;-&nbsp;6&nbsp;&nbsp;</span></td>
+			<td align="center" bgcolor="#FFFFFF"><span class="red">?&nbsp;</span></td>
+			<td align="center">&nbsp;</td>
+			<td align="center">&nbsp;</td>
+		</tr>
+		<tr> 
+			<td colspan="4" bgcolor="#000000"><img border="0" src="../structure/images/spacer.gif" width="20" height="1"></td>
+		</tr>
+		<tr> 
+			<td>&nbsp;&nbsp;Total</td>
+			<td align="center">?</td>
+			<td align="center"><em>n</em>&nbsp;-&nbsp;1</td>
+			<td align="center">&nbsp;</td>
+			<td align="center">&nbsp;</td>
+			<td align="center">&nbsp;</td>
+		</tr>
+	</table></div>
+	<p>The p-values for the two quadratic terms and the interaction allow for hypothesis 
+		tests of the significance of these terms and can be used to assess whether 
+		a simpler model would fit the data equally well.</p>
+		
+	<div class="diagram"> 
+		<p class="heading">Chemical process yield</p>
+    <p>The anova table below is for the 12 observations in the chemical yield 
+			example on the previous page.</p>
+		<div class="centred"><table border="0" class="centred" cellpadding="0" cellspacing="0">
+			<tr> 
+				<th align="left">&nbsp;&nbsp;Source of variation&nbsp;&nbsp;&nbsp;</th>
+				<th>SSq</th>
+				<th>df</th>
+				<th>MSq</th>
+				<th>F</th>
+				<th>&nbsp;&nbsp;p-value&nbsp;&nbsp;</th>
+			</tr>
+			<tr> 
+				<td colspan="6" bgcolor="#000000"><img border="0" src="../structure/images/spacer.gif" width="20" height="1"></td>
+			</tr>
+			<tr bgcolor="#FFFFFF"> 
+				<td>&nbsp;&nbsp;Linear time&nbsp;&nbsp;&nbsp;</td>
+				<td align="right">&nbsp;&nbsp;15.318&nbsp;&nbsp;</td>
+				<td align="center">1</td>
+				<td align="right">&nbsp;&nbsp;&nbsp;15.318&nbsp;&nbsp;</td>
+				<td align="right">&nbsp;&nbsp;3.82&nbsp;&nbsp;</td>
+				<td align="center">&nbsp;&nbsp;0.099&nbsp;&nbsp;</td>
+			</tr>
+			<tr bgcolor="#FFFFFF"> 
+				<td>&nbsp;&nbsp;Linear temperature</td>
+				<td align="right">1.048&nbsp;&nbsp;</td>
+				<td align="center">1</td>
+				<td align="right">1.048&nbsp;&nbsp;</td>
+				<td align="right">0.26&nbsp;&nbsp;</td>
+				<td align="center">0.628</td>
+			</tr>
+			<tr bgcolor="#FFFFFF"> 
+				<td>&nbsp;&nbsp;Quadratic time</td>
+				<td align="right">15.504&nbsp;&nbsp;</td>
+				<td align="center">1</td>
+				<td align="right">15.504&nbsp;&nbsp;</td>
+				<td align="right">3.86&nbsp;&nbsp;</td>
+				<td align="center">0.097</td>
+			</tr>
+			<tr bgcolor="#FFFFFF"> 
+				<td>&nbsp;&nbsp;Quadratic temperature</td>
+				<td align="right">61.256&nbsp;&nbsp;</td>
+				<td align="center">1</td>
+				<td align="right">61.256&nbsp;&nbsp;</td>
+				<td align="right">&nbsp;&nbsp;&nbsp;15.26&nbsp;&nbsp;</td>
+				<td align="center">0.008</td>
+			</tr>
+			<tr bgcolor="#FFFFFF"> 
+				<td>&nbsp;&nbsp;Time-temp interaction&nbsp;&nbsp;</td>
+				<td align="right">95.063&nbsp;&nbsp;</td>
+				<td align="center">1</td>
+				<td align="right">95.063&nbsp;&nbsp;</td>
+				<td align="right">23.68&nbsp;&nbsp;</td>
+				<td align="center">0.003</td>
+			</tr>
+			<tr> 
+				<td bgcolor="#FFFFFF" class="red">&nbsp;&nbsp;Residual</td>
+				<td align="right" bgcolor="#FFFFFF" class="red">24.088&nbsp;&nbsp;</td>
+				<td align="center" bgcolor="#FFFFFF" class="red">&nbsp;6&nbsp;&nbsp;</td>
+				<td align="right" bgcolor="#FFFFFF" class="red">4.015&nbsp;&nbsp;</td>
+				<td align="center">&nbsp;</td>
+				<td align="center">&nbsp;</td>
+			</tr>
+			<tr> 
+				<td colspan="4" bgcolor="#000000"><img border="0" src="../structure/images/spacer.gif" width="20" height="1"></td>
+			</tr>
+			<tr> 
+				<td>&nbsp;&nbsp;Total</td>
+				<td align="right">&nbsp;&nbsp;212.276&nbsp;&nbsp;</td>
+				<td align="center">11</td>
+				<td align="center">&nbsp;</td>
+				<td align="center">&nbsp;</td>
+				<td align="center">&nbsp;</td>
+			</tr>
+		</table></div>  
+		<p>From the p-values in this table, we would conclude that there is strong 
+			evidence of interaction between the effects of temperature and water content 
+			and strong evidence of curvature in temperature, but only extremely weak 
+			evidence that a quadratic term in time is needed.</p>
+		<p>The diagram below shows how the response surface changes when the quadratic 
+			terms and interaction are added to the model</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="responseSurfaceProg.QuadSurfaceTermsApplet">
+<param name="yVarName" value="Yield">
+<param name="xVarName" value="Time">
+<param name="zVarName" value="Temperature (C)">
+<param name="shortNames" value="Y T C">
+<param name="yValues" value="78.8 91.2 84.5 77.4 89.7 86.8 87 86 83.3 81.2 81.2 79.5">
+<param name="xValues" value="2@80 2@100 4@90 75.86 104.14 90 90">
+<param name="zValues" value="140 150 140 150 4@145 145 145 137.93 152.07">
+<param name="yAxis" value="75 95 75 5">
+<param name="xAxis" value="74 106 75 5">
+<param name="zAxis" value="137 153 138 2">
+<param name="paramDecimals" value="0 2 2 3 3 3">
+<param name="shadeCutoff" value="70 80 90">
+<param name="contour" value="86">
+<param name="contourAxis" value="70 90 70 2">
+<param name="fixedContours" value="72 74 76 78 80 82 84 86 88 90">
+<param name="maxCoeffs" value="-9999 99.99 -99.99 -9.999 -9.999 -9.999">
+<param name="customText" value="Quadratic term in=Quadratic term in#Interaction term=Interaction term#Display type=Display type#Shaded surface=Shaded surface#Selected contours=Selected contours">
+</applet>
+</div>
+
+    <p>Firstly click the checkbox <strong>Interaction term</strong> to add an 
+			interaction to the model. </p>
+		<p>Next add the quadratic term in temperature by clicking the checkbox <strong>Quadratic 
+			term in Temperature</strong>.</p>
+		<p>Now click the <strong>x-z</strong> rotation button and investigate the 
+			different models, both when displayed as colours and as contours.</p>
+		<p>Finally add the quadratic term in time to the model and observe that the 
+			response surface again changes. From the response surfaces with and without 
+			the quadratic term in time, we would conclude that:</p>
+			
+			<div class="boxed"><p>The highest yield results from a high temperature (150 or 
+					higher) and low reaction time (80 minutes or less). Combinations of 
+					(high temperature &amp; high reaction time) and (low temperature &amp; 
+					low reaction time) result in very poor yield.</p></div>
+		<br>
+  </div>
+		
+	<p class="heading">Testing lack of fit</p>
+	<p>In many designs, there are replicates at some design points. The centre point 
+		of the design is often replicated several times, but there are also occasionally 
+		replicates elsewhere in the design. When this occurs, the residual sum of 
+		squares can be split into two sums of squares &mdash; a pure error sum of squares 
+		that describes variability within replicates and a lack-of-fit sum of squares 
+		that can be used to test whether the full quadratic model is adequate.</p>
+	<p>In the resulting anova table, all sums of squares are compared to the pure 
+		error sum of squares.</p>
+	
+	
+	<div class="diagram"> 
+		<p class="heading">Chemical process yield</p>
+		<p>In the design that was used for this experiment, the centre point was replicated 
+			4 times, so the pure error sum of squares, which measures variability within 
+			replicates therefore has (4&nbsp;-&nbsp;1)&nbsp;=&nbsp;3 degrees of freedom.</p>
+		<p>Since there are 9 distinct design points and 6 parameters in the full quadratic 
+			model, the lack-of-fit sum of squares has (9&nbsp;-&nbsp;6)&nbsp;=&nbsp;3 
+			degrees of freedom.</p>
+		<p>The anova table is shown below.</p>
+		<div class="centred"><table border="0" class="centred" cellpadding="0" cellspacing="0">
+			<tr> 
+				<th align="left">&nbsp;&nbsp;Source of variation&nbsp;&nbsp;&nbsp;</th>
+				<th>SSq</th>
+				<th>df</th>
+				<th>MSq</th>
+				<th>F</th>
+				<th>p-value</th>
+			</tr>
+			<tr> 
+				<td colspan="6" bgcolor="#000000"><img border="0" src="../structure/images/spacer.gif" width="20" height="1"></td>
+			</tr>
+			<tr bgcolor="#FFFFFF"> 
+				<td>&nbsp;&nbsp;Linear time&nbsp;&nbsp;&nbsp;</td>
+				<td align="right">&nbsp;&nbsp;15.318&nbsp;&nbsp;</td>
+				<td align="center">1</td>
+				<td align="right">&nbsp;&nbsp;15.318&nbsp;&nbsp;</td>
+				<td align="right">&nbsp;&nbsp;592&nbsp;&nbsp;</td>
+				<td align="center">&nbsp;&nbsp;0.093&nbsp;&nbsp;</td>
+			</tr>
+			<tr bgcolor="#FFFFFF"> 
+				<td>&nbsp;&nbsp;Linear temperature</td>
+				<td align="right">1.048&nbsp;&nbsp;</td>
+				<td align="center">1</td>
+				<td align="right">1.048&nbsp;&nbsp;</td>
+				<td align="right">0.40&nbsp;&nbsp;</td>
+				<td align="center">0.570</td>
+			</tr>
+			<tr bgcolor="#FFFFFF"> 
+				<td>&nbsp;&nbsp;Quadratic time</td>
+				<td align="right">15.504&nbsp;&nbsp;</td>
+				<td align="center">1</td>
+				<td align="right">15.504&nbsp;&nbsp;</td>
+				<td align="right">5.99&nbsp;&nbsp;</td>
+				<td align="center">0.092</td>
+			</tr>
+			<tr bgcolor="#FFFFFF"> 
+				<td>&nbsp;&nbsp;Quadratic temperature</td>
+				<td align="right">61.256&nbsp;&nbsp;</td>
+				<td align="center">1</td>
+				<td align="right">61.256&nbsp;&nbsp;</td>
+				<td align="right">&nbsp;&nbsp;23.66&nbsp;&nbsp;</td>
+				<td align="center">0.017</td>
+			</tr>
+			<tr bgcolor="#FFFFFF"> 
+				<td>&nbsp;&nbsp;Time-temp interaction&nbsp;&nbsp;</td>
+				<td align="right">95.063&nbsp;&nbsp;</td>
+				<td align="center">1</td>
+				<td align="right">95.063&nbsp;&nbsp;</td>
+				<td align="right">36.71&nbsp;&nbsp;</td>
+				<td align="center">0.009</td>
+			</tr>
+			<tr bgcolor="#FFFFFF"> 
+				<td class="blue">&nbsp;&nbsp;Lack of fit</td>
+				<td align="right" class="blue">16.320&nbsp;&nbsp;</td>
+				<td align="center" class="blue">3</td>
+				<td align="right" class="blue">5.440&nbsp;&nbsp;</td>
+				<td align="right" class="blue">2.10&nbsp;&nbsp;</td>
+				<td align="center" class="blue">0.279</td>
+			</tr>
+			<tr> 
+				<td bgcolor="#FFFFFF" class="red">&nbsp;&nbsp;Residual (pure error)</td>
+				<td align="right" bgcolor="#FFFFFF" class="red">7.768&nbsp;&nbsp;</td>
+				<td align="center" bgcolor="#FFFFFF" class="red">&nbsp;&nbsp;3&nbsp;&nbsp;</td>
+				<td align="right" bgcolor="#FFFFFF" class="red">2.589&nbsp;&nbsp;</td>
+				<td align="center">&nbsp;</td>
+				<td align="center">&nbsp;</td>
+			</tr>
+			<tr> 
+				<td colspan="4" bgcolor="#000000"><img border="0" src="../structure/images/spacer.gif" width="20" height="1"></td>
+			</tr>
+			<tr>
+				<td>&nbsp;&nbsp;Total</td>
+				<td align="right">&nbsp;&nbsp;212.276&nbsp;&nbsp;</td>
+				<td align="center">11</td>
+				<td align="center">&nbsp;</td>
+				<td align="center">&nbsp;</td>
+				<td align="center">&nbsp;</td>
+			</tr>
+		</table></div>
+	  <p>The lack-of-fit sum of squares is not significant, so there is no evidence 
+			that a more general class of response surface models is needed. The other 
+			p-values are close to their earlier values, so the main conclusions are 
+			unchanged.</p>
+    </div>
+		
+		
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

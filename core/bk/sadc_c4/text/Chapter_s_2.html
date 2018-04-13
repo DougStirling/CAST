@@ -1,0 +1,194 @@
+<html>
+<head>
+  <title>2. Time Series</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 2 &nbsp; Time Series</h1>
+<h1 class="sectionName">2.1 &nbsp; Multiplicative models</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Additive and multiplicative models</li>
+<li>Properties of multiplicative models</li>
+<li>Forecasting with multiplicative models</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='4'>
+<li>Analysing the right data</li>
+<li>Types of time series data</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">2.1.1 &nbsp; Additive and multiplicative models</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Additive models</p>
+	<p>We  assumed earlier that the four time series
+		components affect it additively.</p>
+	<p class=eqn><span class="darkblue" style="font-weight:bold">Deseasonalised&nbsp; = &nbsp; Trend &nbsp; + &nbsp; Cyclical &nbsp; + &nbsp; Residual</span> </p>
+	<p>This implies that:</p>
+	<ul>
+		<li>The difference between the 
+		January and July values is approximately the same each year.</li>
+		<li>The residuals are roughly the same sizes 
+		throughout the series.</li>
+	</ul>
+	<p>The seasonal pattern has greater magnitude at
+the end of the following time series than at its start, so an additive model
+is not appropriate.</p>
+<p class="eqn"><img src="../../../en/multiplicative/images/s_seasonalData.gif" width="468" height="253"></p>
+	<p class="heading">Multiplicative models</p>
+	<p>In many time series, the absolute differences in the values are of less interest
+and importance than the percentage changes. A <strong>multiplicative
+model</strong> assumes that seasonal and other effects act proportionally on
+the series:</p>
+<p class=eqn><span class="darkblue"><strong>Data &nbsp; = &nbsp; (Seasonal effect) &nbsp; &times; &nbsp; Trend &nbsp; &times; &nbsp; Cyclical &nbsp; &times; &nbsp; Residual</strong></span> </p>
+	<p>After taking logarithms (either natural logarithms or to base 10), the four 
+	components of the time series again act additively.</p>
+	<table border="0" class="centred" cellpadding="3" cellspacing="0" style="color:#009; margin-top:0; margin-bottom:0">
+<tr>
+<td valign="top" rowspan="2"><strong>log(Data) &nbsp;</strong></td>
+<td align="left" valign="top"><strong>= &nbsp; log(Seasonal effect &nbsp; × &nbsp; Trend &nbsp; × &nbsp; Cyclical &nbsp; × &nbsp; Residual)</strong></td>
+</tr>
+<tr>
+<td align="left" valign="top"><strong>= &nbsp; log(Seasonal effect) &nbsp;+ &nbsp;log(Trend) &nbsp;+ &nbsp;log(Cyclical) &nbsp;+ &nbsp;log(Residual)</strong></td>
+</tr>
+</table>
+<div class="centred"><div class="boxed">
+		<p>To fit a multiplicative model, analyse the logarithms of the 
+	data with an additive model.</p>
+	</div></div>
+
+
+
+
+<h2 class="pageName">2.1.2 &nbsp; Properties of multiplicative models</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Difference between additive and multiplicative models</p>
+	<p>Additive and multiplicative models can only be easily distinguished when 
+		there is noticeable trend in the time series.</p>
+	<dl>
+		<dt>Additive model</dt>
+		<dd>For this model, the seasonal, cyclical and residual variation around the
+trend line are of approximately the same size whether the trend value is low or
+high.</dd>
+	</dl>
+	
+	<p class="eqn"><img src="../../../en/multiplicative/images/s_additive.gif" width="469" height="292"></p>
+	
+	<dl>
+		<dt>Multiplicative model</dt>
+		<dd>In a multiplicative model, the seasonal, cyclical and residual variation
+around the trend line are greater when the trend is at high values than when
+the trend is low.</dd>
+	</dl>
+	<p class="eqn"><img src="../../../en/multiplicative/images/s_multiplicative.gif" width="469" height="268"></p>
+
+
+
+
+<h2 class="pageName">2.1.3 &nbsp; Forecasting with multiplicative models</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Obtaining forecasts</p>
+	<p>A multiplicative model is equivalent to an additive model for the 
+		log data.</p>
+	<p class=eqn><span class="darkblue"><strong>log(Data) &nbsp; = &nbsp; Seasonal* &nbsp; + &nbsp; Trend* &nbsp; + &nbsp; Cyclical* &nbsp; + &nbsp; Residual</strong>*</span></p>
+	<p>This model 
+		will give forecasts of the <strong>log data</strong>.</p>
+	<p class=eqn><span class="darkblue"><strong>forecast of log(Data) &nbsp; = &nbsp; (forecast Seasonal*) &nbsp;+ &nbsp;(forecast Trend*) &nbsp;+ &nbsp;(forecast Cyclical*)</strong></span></p>
+	<p>To obtain forecasts in the original scale, an inverse transformation must 
+		be applied. With base-10 logarithms,</p>
+	<table border="0" cellspacing="0" cellpadding="0" class="centred" style="color:#009;margin-top:0; margin-bottom:0">
+<tr>
+<td rowspan="2"><strong>forecast of Data &nbsp; = &nbsp; 10</strong></td>
+<td><strong><span style="font-size:90%">forecast of log(Data)</span></strong></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+</tr>
+</table>
+<p>(If natural logarithms were used, an exponential function gives a forecast in the original units. Both  types of logarithms result in identical forecasts.)</p>
+<p class="eqn"><img src="../../../en/multiplicative/images/s_forecast.gif" width="525" height="294"></p>
+
+
+
+
+<h2 class="pageName">2.1.4 &nbsp; Analysing the right data</h2><!DOCTYPE HTML>
+
+
+<p>Analysis of 
+			the raw data can sometimes lead you to wrong conclusions. Adjustment of the 
+			data prior to analysis may give you better insight.</p>
+	<p class="heading">Seasonally adjusting data</p>
+	<p>Data should be <strong>seasonally adjusted</strong> to remove any seasonal pattern before you try to interpret whether any particular value is unusually high or low.</p>
+	<p class="heading">Adjusting to constant dollars</p>
+	<p>A 1990 dollar 
+		was worth considerably more than a 2010 dollar, making it hard to compare prices in these two years.</p>
+	<p>Values described in dollars should be adjusted to 'constant' dollars using the consumer price index (CPI) or the price of some other 'standard' commodity. Using  average income to adjust 
+		house prices to '1990 dollars',</p> 
+	<p class=eqn><img class="gif" src="../../../en/multiplicative/images/constDollars.gif" id="gif_image_1_4_1" width="468" height="31"><iframe class="svg" src="../../../en/multiplicative/images/constDollars.svg" id="svg_image_1_4_1" width="468" height="31" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_1_4_1");</script></p>
+	<p class="heading">Using per capita data</p>
+	<p>Looking at trends in 'quantity' values (e.g. a country's total alcohol consumption) is misleading over a period in which the population  increases. It is more meaningful to examine quantities <strong>per person</strong>.</p>
+	
+	<div class="centred"><div class="boxed">
+<p>Always consider carefully whether a different variable would describe the
+data more meaningfully.</p>
+</div></div>
+
+
+
+
+<h2 class="pageName">2.1.5 &nbsp; Types of time series data</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">A classification of time series</p>
+	<p>Time series data arise in various different contexts.</p>
+	<dl>
+		<dt><strong>Measurements relating to events that occur at discrete times</strong></dt>
+		<dt><strong>Regular snapshots of a continuous process</strong></dt>
+		<dt><strong>Quantities that are aggregated over a period</strong></dt>
+	</dl>
+	<p>The measurements themselves may be:</p>
+	<dl>
+		<dt><strong>Continuous</strong></dt>
+		<dt><strong>Discrete</strong></dt>
+	</dl>
+	<p>In this e-book, all of the above types of time series are analysed in the
+same way.</p>
+
+
+
+
+</html>

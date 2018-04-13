@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Power function</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="hypothesis test, test, power function, type II error">
+	<meta name="dataset" content="Failure of printed circuit boards">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>The <strong>power</strong> of a decision rule is the probability of correctly deciding that the alternative hypothesis is true when it really <strong>is</strong> true,</p>
+\[ \begin{align}
+\text{Power} \;&amp;=\; 1 - P(\text{Type II error}) \\[0.3em]
+&amp;=\; P\left(\text {decide }H_A \text{ is true} \mid H_A\right)
+\end{align} \]
+</div>
+<p>A test with high power is therefore desirable.</p>
+<p>However the alternative hypothesis usually allows for a range of different parameter values, such as \(\mu \gt 12\). The power is really a power<strong> function</strong> that can be graphed against the possible parameter values.</p>
+<div class="example">
+	<p class="exampleHeading">Failure of printed circuit boards</p>
+	<p>The example on the previous page about a new method of producing printed circuit boards examined the hypotheses</p>
+	<ul>
+		<li>Null hypothesis, <strong>H<sub>0</sub></strong>: \(\pi = 0.06\)</li>
+		<li>Alternative hypothesis, <strong>H<sub>0</sub></strong>: \(\pi \lt 0.06\)</li>
+	</ul>
+	<p>We now consider the decision rule that rejects the null hypothesis if \(y=7\) or fewer fail out of a sample of \(n=200\) boards. The power function is</p>
+	\[ \begin{align}
+	\operatorname{Power}(\pi) \;&amp;=\; P\left(\text {decide }H_A \text{ is true} \mid \pi \lt 0.06\right) \\[0.4em]
+	&amp;=\; P(X \le 7 \mid \pi \lt 0.06) \\
+	&amp;=\; \sum_{x=0}^7 {200 \choose x} \; \pi^x \; (1 - \pi)^{200-x}
+	\end{align} \]
+	<p class="eqn"><img src="images/s_powerFunction.png" width="566" height="398"  alt=""/></p>
+	<p>At the null hypothesis value, \(\pi = 0.06\), the power function is simply the significance level of the test. The probability of rejecting <strong>H<sub>0</sub></strong> is higher when \(\pi\) is lower than this.</p>
+	<hr width="75%">
+<p>The power of the test is 0.746 when \(\pi = 0.03\). The engineer would be disappointed with this. It means that  if the new manufacturing method has actually decreased the probability of failure to 0.03 from 0.06 (a big improvement), there is still a good chance (25%) that the null hypothesis,  \(\pi = 0.06\), is accepted and the improvement is rejected.</p>
+</div>
+<p class="heading">Changing the decision criterion</p>
+<p>The trade-off between low significance level and high power is illustrated in the diagram below. Changing the decision rule to increase the power (and decrease the probability of a Type II error) also increases its significance level (and probability of a Type I error).</p>
+<p class="eqn"><img src="images/s_differentPowers.png" width="564" height="386"  alt=""/></p>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

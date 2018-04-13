@@ -1,0 +1,209 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Randomisation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="randomisation, completely randomised design, experimental design">
+	<meta name="dataset" content="Drug randomisation experiment">
+	<meta name="dataset" content="Calf weight gain">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Avoiding lurking variables</p>
+<p>The varying characteristics of the experimental units can only be lurking variables 
+if they are associated with the allocation of treatments to the experimental units. 
+To avoid this,&nbsp;...</p>
+
+<div class="centred"><div class="boxed">
+<p>An important goal of experimental design is to minimise association 
+between allocation of the treatments and characteristics of the experimental units.</p>
+</div></div>
+
+<p>The method depends on whether these varying characteristics of the experimental 
+units are understood and measured before the experiment is conducted.</p>
+<p class="heading">Randomisation</p>
+<p>When the differing characteristics of the experimental units are unmeasured, 
+the best way to avoid association between them and the treatments is to randomly 
+allocate treatments to the experimental units. This is called <strong>randomisation</strong> 
+of the treatments and the experimental design is called a <strong>completely randomised 
+design</strong>. </p>
+<p>Randomisation does not <strong>guarantee</strong> that there will be no association 
+between the treatments and characteristics of the experimental units &mdash; by chance, 
+there may be some association. However...</p>
+
+<div class="centred"><div class="boxed">
+<p>Randomisation means that is unlikely that such lurking 
+variables will affect the conclusions.</p>
+</div></div>
+
+<p>There is no better way to allocate treatments if the varying characteristics 
+of the experimental units are unmeasured before the experiment is conducted.</p>
+
+
+<div class="diagram" title="Illustration: Weight gain of calves">
+<p class=heading>Effect of a feed supplement on weight gain of calves</p>
+
+		
+<p>Earlier in this section we described an experiment in which a feed supplement 
+was given to the first nine calves from a group of 18 that entered a barn. This 
+resulted in older and heavier calves getting the supplement, so the effect of 
+the supplement was over-estimated.</p>
+		
+<p>Randomising the allocation of the supplement to 9 of the 18 calves reduces 
+the chance of any association between the treatment and the age and weight of 
+the calves. The simulation below increases the weight gain of calves getting the 
+supplement by exactly 5.0.</p>
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="580" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="experProg.SelectTreatmentsApplet">
+<param name="yVarName" value="Weight gain (kg)">
+<param name="yRegn" value="-38 0.5 2">
+<param name="yAxis" value="0 40 0 5">
+<param name="lurkingVarName" value="Initial weight:">
+<param name="lurkingValues" value="118 113 119 107 100 123 105 130 115 108 110 120 115 101 111 120 112 125">
+<param name="lurkingMinMax" value="100 kg#130 kg">
+<param name="unitName" value="Calves">
+<param name="circleCols" value="3">
+<param name="treatVarName" value="Feed">
+<param name="treatLabels" value="Control Supplement">
+<param name="treatEffect" value="5.0">
+<param name="lurkingRegn" value="0.0 0.0 12.0">
+<param name="effectName" value="Effect of supplement">
+<param name="noInLowGroup" value="9">
+<param name="maxDiff" value="99.99">
+<param name="randomSeed" value="54329311 23498564">
+<param name="customText" value="Theoretical=Theoretical#Estimated=Estimated#Allocate*Treatments=Allocate*Treatments#Run*Experiment=Run*Experiment">
+</applet> 
+</div>
+
+	  
+		<p>Click <strong>Allocate treatments</strong> to randomly pick calves to get 
+			the supplement then click <strong>Run experiment</strong> to find their 
+			weight gains and estimate the effect of the supplement.</p>
+		<p>Repeat a few times and observe that the effect of the supplement is usually 
+			estimated to be between 2 and 8. The results are therefore consistent with 
+			the <strong>true</strong> effect that was built into the simulation, 5.0.</p>
+		
+<div class="centred"><div class="boxed">
+<p><span class="red">With randomisation, there is no tendency 
+					to over- or under-estimate the effect of the feed supplement.</span></p>
+</div></div>
+
+		<br>
+</div>
+
+<p class="heading">Mechanics of randomisation</p>
+<p>There are several different ways to randomise allocation of treatments to the experimental units. These all use random numbers either from printed tables or, preferably, generated by a computer. The simplest method is to use a spreadsheet such as Microsoft Excel.</p>
+<p>If there are <em>n</em> available experimental units,</p>
+<ul>
+  <li>Number the experimental units from 1 to <em>n</em>.</li>
+  <li>Write the numbers 1 to <em>n</em> in a spreadsheet column</li>
+  <li>Generate random numbers in an adjacent column &mdash; in Excel, type &quot;=RAND()&quot; in each cell.</li>
+  <li>Select the two columns and use a menu command to sort the rows into ascending order of the random numbers.</li>
+</ul>
+<p>This creates a random permutation of the numbers 1 to <em>n</em>. If there are two treatments, allocate the first to the experimental units in the top half of the list.</p>
+
+<div class="diagram" title="Illustration of randomisation method">
+	<p>The table below illustrates this method.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="310">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="dotPlotProg.RandomiseUnitsApplet">
+<param name="nUnits" value="12">
+<param name="randomName" value="Random">
+<param name="randomDecimals" value="6">
+<param name="unitName" value="Unit no">
+<param name="customText" value="New random numbers=New random numbers#Sort random numbers=Sort random numbers">
+</applet>
+</div>
+	<p>The first column shows twelve random numbers, each between 0 and 1, and the list of unit numbers. Click <strong>Sort random numbers</strong> to sort the rows of the table into ascending order of the random numbers. This randomly permutes the unit numbers.<br>
+	</p>
+</div>
+
+<p class="heading">Other ways to randomise treatments (optional)</p>
+<p>Although the above method of randomly allocating treatments to the experimental units using a spreadsheet is recommended,  two alternative methods are now described. The first illustrates the randomisation better, whereas the second provides an interesting application of probability.</p>
+
+<div class="diagram" title="Illustration of randomisation method">
+	<p class=heading>Randomisation of drug treatment to 48 patients</p>
+	<p>An experiment is to be conducted to assess the effectiveness of three drugs 
+		to increase the rate of recovery of patients after pneumonia. The next 48 patients 
+		that will be admitted with pneumonia are numbered in order of admission 0 to 47. 
+		They will be split into three groups of 16 that will be given the three drug treatments 
+		(A, B and C).</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="370">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="samplingProg.SimRandomisationApplet">
+<param name="random" value="738402167 52885678">
+<param name="catVarName" value="Gender">
+<param name="catLabels" value="Male Female">
+<param name="popnInfo" value="6 8 2 7 5 0.5 432563625">
+<param name="treatName" value="Treatment">
+<param name="treatLabels" value="#???# A B C">
+<param name="treatCounts" value="16 16 16">
+<param name="customText" value="Next=Next#Random index=Random index#Clear selection=Clear selection#Ignored: no item has index=Ignored: no item has index#Item * gets treatment=Item * gets treatment#Ignored: item * already has treatment=Ignored: item * already has treatment">
+</applet>
+</div>
+	<p>Click <strong>Random index</strong> to select a random number between 0 and 
+		49. If either 48 or 49 are chosen, click the button again since these numbers 
+		do not correspond to any of the 48 patients. <span class="gray">(We could have 
+			allowed the first digit to be 0-9 instead of 0-4, but over half of the resulting 
+			numbers would have been rejected for being 48 or higher. By restricting the first 
+			digit in the diagram, the simulation runs faster.)</span></p>
+	<p>The selected patient is allocated drug A. Repeatedly click <strong>Random index</strong> to allocate more patients to treatment A. Once 16 patients have been allocated 
+		to the group getting this treatment, patients are randomly allocated to drug B. 
+		When 16 patients have received treatment B, the remaining patients get treatment 
+		C.</p>
+</div>
+<p>This method can be rather slow since many random indices are rejected towards the end of the method because treatments have already been allocated to these experimental units.</p>
+<p>The final randomisation method works through all experimental units in 
+	order, picking a random treatment for each unit in turn. The only complication 
+	is that the probabilities used to generate the treatments must be adjusted after 
+	each unit gets a treatment. For example, if the first unit gets treatment 
+	A, then the probability of the second unit getting treatment A must be reduced 
+	a little. (If the same probabilities were used for each successive unit, then 
+	too many treatment A's might be allocated.)</p>
+<div class="diagram">
+	<p class=heading>Randomisation of drug treatment to 30 patients</p>
+	<p>The diagram below illustrates this randomisation method for allocating equal 
+		numbers of a group of 30 patients to 3 drug treatments. The first patient has 
+		equal probabilities for all three drugs.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="370">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="samplingProg.SimRandomisation2Applet">
+<param name="random" value="438402167 32885678 587823652 786346503">
+<param name="catVarName" value="Gender">
+<param name="catLabels" value="Male Female">
+<param name="popnInfo" value="5 6 2 7 5 0.5 632563625">
+<param name="treatName" value="Treatment">
+<param name="treatLabels" value="#???# A B C">
+<param name="treatCounts" value="10 10 10">
+<param name="customText" value="Generate next=Generate next#Update probs=Update probs#Clear selection=Clear selection#Ignored: no item has index=Ignored: no item has index#Item * gets treatment=Item * gets treatment#Ignored: item * already has treatment=Ignored: item * already has treatment">
+</applet>
+</div>
+	<p>Click <strong>Generate Next</strong> to select a random value between 0 and 
+		1, and hence a random treatment (i.e. drug) for the first patient. (<a href="javascript:showNamedPage('probSim7')">Generation 
+			of a random category</a> in this way was described earlier.) If the first patient 
+		gets treatment B, there will only be 10 A's, 9 B's and 10 C's left to allocate 
+		for the second patient, so the probability of the second patient getting treatment 
+		B should be reduced to <sup>9</sup>/<sub>29</sub>. Click <strong>Update Probs</strong> to adjust the probabilities, then click <strong>Generate Next</strong> again to 
+		allocate a treatment to the second patient.</p>
+	<p>Repeatedly click <strong>Update Probs</strong> and <strong>Generate Next</strong> until all patients have been allocated a treatment.</p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

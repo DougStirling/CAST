@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Influence on regression coefficients</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="leverage, influence, slope, intercept, cooks D">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Change in least squares coefficients</p>
+<p>A second measure of influence looks at how deletion of each point affects 
+		the regression coefficients,</p>
+	<p class=eqn> <img src="images/bChange.gif" width="83" height="48" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<p>High influence points correspond to large differences.</p>
+	<div class="diagram">
+		<p class="heading">Illustration</p>
+
+		<p>A data set with a single high-leverage point is shown in the scatterplot 
+			on the left below.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="330">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="residProg.ParamInfluenceApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="shortYVarName" value="y">
+<param name="shortXVarName" value="x">
+<param name="xValues" value="0.6 0.8 1.0 1.2 1.4 1.6 1.8 2.0 2.2 4.2">
+<param name="yValues" value="370 360 400 430 440 420 450 480 490 450">
+<param name="xAxis" value="0.5 4.5 1 1">
+<param name="yAxis" value="320 650 350 50">
+<param name="intChangeAxis" value="-30 80 -20 20">
+<param name="slopeChangeAxis" value="-60 30 -60 20">
+<param name="maxParam" value="-999.99 -99.99">
+<param name="customText" value="Change in intercept=Change in intercept#Change in slope=Change in slope#Full model=Full model#Deleted model=Deleted model">
+</applet>
+</div>
+
+		<p>Click on any point to see how the least squares coefficients change when 
+			it is deleted from the data set. The scatterplot on the left shows how the 
+			intercept changes.</p>
+		<p>Select <strong>Change in slope</strong> from the pop-up menu and repeat. 
+			Clicking on a point now shows the resulting change in the least squares 
+			slope. </p>
+
+</div>
+  
+  <p class="heading">Combining the differences</p>
+  <p>Although we could examine separately the influence of each point on the slope 
+		and intercept, it is usual to combine the two differences to give a single 
+		measure of influence called <strong>Cook's D</strong>. Although its formula 
+		in terms of the differences is hard to write and explain, it can also be written 
+		as,</p>
+	<p class=eqn> <img src="images/cooksD.gif" width="134" height="43" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<p>so it depends on the leverage and a kind of residual (the standardised residual).</p>
+	<p>Significance would be equivalent to comparing <em>r<sub>i</sub></em> with 
+		±2 and ±3, but that is not the purpose of influence statistics. 
+		They are evaluated to assess whether one or two data points are exceptionally 
+		important.</p>
+	<p class="heading">Relationship between Cook's D and DFITS</p>
+	<p class=eqn> <img src="images/dfits2.gif" width="154" height="41" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<p class=eqn> <img src="images/cooksD.gif" width="134" height="43" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<p>Since the two types of residuals, <em>t<sub>i</sub></em> and <em>r<sub>i</sub></em>, 
+		are expected to be similar if the linear regression model holds,</p>
+	<p class=eqn> <img src="images/influenceReln.gif" width="311" height="36" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<p>The two influence measures are related and both depend on both leverage and 
+		a residual, so</p>
+	
+<div class="centred"><div class="boxed">
+<p>Both high leverage and a large residual are needed to make a point influential.</p>
+</div></div>
+
+	<p class="heading">Guidelines for Cook's D</p>
+	<p>The guideline for high influence based on DFITS,</p>
+	<p class=eqn> <img src="images/dfitsGuideline.gif" width="147" height="36" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<p> translates roughly into a guideline for D,</p>
+	<p class=eqn> <img src="images/cooksDGuideline.gif" width="89" height="32" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<p>Again, we are not doing a hypothesis test and this inequality does not correspond 
+		to any significance level. It may however indicate that some data points should 
+		be given further investigation.</p>
+	<script type='text/javascript'>writePageEnd();</script>
+</p>
+</div>
+
+</body>
+</html>

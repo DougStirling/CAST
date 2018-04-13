@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Distribution of estimation error</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+  <script type="text/javascript">
+		var svgNames = new Array();
+		svgNames[0] = "images/hypnosisError.svg";
+		svgNames[1] = "images/satelliteError.svg";
+		svgNames[2] = "images/shellDensityError.svg";
+		svgNames[3] = "images/birthWtError.svg";
+		svgNames[4] = "images/teethError.svg";
+		
+		function changeSvgImage(select) {
+			var newIndex = select.selectedIndex;
+			var image = document.getElementById('dataImage');
+			image.src = svgNames[newIndex];
+		}
+	</script>
+
+	<meta name="index" content="estimation">
+	<meta name="dataset" content="Anticipation of hypnosis">
+	<meta name="dataset" content="Satellite classification of land use">
+	<meta name="dataset" content="Births by season">
+	<meta name="dataset" content="Teeth and gender">
+	<meta name="dataset" content="Egg shell density">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Gesch&auml;tzte Differenz zwischen den Mittelwerten
+der Population</p>
+<p>In den meisten F&auml;llen in denen Daten von zwei Gruppen erhoben
+werden, bezieht sich die wichtigste Frage auf die Differenzen zwischen
+den Mittelwerten der Population in den Gruppen. Da die Mittelwerte der
+Population in der Regel unbekannt sind, benutzt man Stichproben, um sie
+abzusch&auml;tzen, </p>
+<p class="eqn"><span style="position:relative; top:5px"><img src="../../images/symbol.xBarDiff.png" width="36" height="15" align="baseline"></span> &nbsp; ist eine Punktsch&auml;tzung von <font
+ color="#000000">&micro;<sub>2</sub>&nbsp;-&nbsp;&micro;<sub>1</sub></font></p>
+<p class="heading">Fehler in der Sch&auml;tzung</p>
+<p>Wie in anderen Sch&auml;tzsituationen ist&nbsp;<span style="position:relative; top:5px"><img src="../../images/symbol.xBarDiff.png" width="36" height="15" align="baseline"></span> eine Punktsch&auml;tzung von&nbsp;<span class="eqn"><font
+ color="#000000">&micro;<sub>2</sub>&nbsp;-&nbsp;&micro;<sub>1</sub></font></span>
+und ist in der Regel wahrscheinlich nicht identisch mit der Differenz
+der Population. Um diesen Wert sinnvoll zu interpretieren, m&uuml;ssen
+wir die Verteilung des Sch&auml;tzfehlers verstehen. Aus den
+Ergebnissen der vorangegangenen Seite folgt,</p>
+<p class="eqn"> <object data="images/errorDistn.svg" height="42"
+ width="372"> </object>
+</p>
+<p>Leider sind auch die Standardabweichungen der Population in beiden
+Gruppen unbekannt, daher kann dieses Ergebnis nicht direkt genutzt
+werden. Die Standardabweichungen der Population k&ouml;nnen jedoch
+durch die Standardabweichung der Stichprobe ersetzt werden, um eine
+Absch&auml;tzung der Fehlerverteilung zu erhalten,</p>
+<p class="eqn"> <object data="images/estErrorDistn2.svg" height="42"
+ width="172"> </object>
+</p>
+<p>Diese Verteilung ist ein guter Indikator f&uuml;r die H&ouml;he des
+wahrscheinlichen Fehlers.</p>
+<div class="diagram">
+<p class="heading">Beispiele</p>
+<p>Das folgende Diagramm zeigt die Punktsch&auml;tzung der Differenz
+zwischen den Mittelwerten von zwei Gruppen f&uuml;r einige
+Datens&auml;tze. Die erwartete Verteilung der gesch&auml;tzten Fehler
+ist ebenfalls (pink) dargestellt.</p>
+<form>
+  <select name="dataset" onChange="changeSvgImage(this)">
+  <option value="0" selected="selected">Anticipation of hypnosis and
+ventilation</option>
+  <option value="1">Satellite classification of land use</option>
+  <option value="2">Effect of vitamin D on egg shell density</option>
+  <option value="3">Birth weights in summer and winter</option>
+  <option value="4">Teeth and gender</option>
+  </select>
+</form>
+<p align="center"><iframe src="images/hypnosisError.svg" id="dataImage"
+ frameborder="0" height="417" width="514"></iframe></p>
+<p>In jedem Fall gibt die Fehlerverteilung eine gute Absch&auml;tzung
+der Genauigkeit der Punktsch&auml;tzung.</p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

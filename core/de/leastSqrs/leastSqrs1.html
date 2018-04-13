@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Die Vorhersage von Y durch X</title>
+
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="regression model, prediction, explanatory variable, response variable">
+	<meta name="dataset" content="Impurity and temperature">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Die Grundidee der Vorhersage</p>
+
+<dl>
+
+  <dt>Kausale Zusammenh&auml;nge</dt>
+
+  <dd>Bei kausalen Zusammenh&auml;ngen nimmt man einen
+direkten Einfluss von einer Variable auf eine Andere an. Kennen wir den
+Wert der erkl&auml;renden Variable f&uuml;r einen weiteren
+Fall,&nbsp; k&ouml;nnen wir hoffen den Wert der
+abh&auml;ngigen Variable gut vorherzusagen.&nbsp;<br>
+
+&nbsp;<br>
+
+Zum Beispiel k&ouml;nnte die Konzentration einer Chemikalie
+bestimmt werden, nachdem eine Reaktion stattgefunden hat. Dieses
+Experiment wird bei unterschiedlichen Temperaturen ausgef&uuml;hrt.
+Wir m&ouml;chten nun vorhersagen, wie die Konzentration nach
+zuk&uuml;nftigen Durchf&uuml;hrungen des Experiments bei
+unterschiedlichen Temperaturen sein wird.&nbsp;<br>
+
+&nbsp;<br>
+
+  </dd>
+
+  <dt>Nicht-kausale Zusammenh&auml;nge</dt>
+
+  <dd>In anderen Situationen ist der Zusammenhang nicht kausal,
+trotzdem m&ouml;chten wir aber der Wert einer Variablen durch eine
+andere Variable vorhersagen.<br>
+
+&nbsp;<br>
+
+Beispielsweise ist es relativ schwierig akkurate Messungen des
+K&ouml;rperfettanteils zu machen. Die Bestimmung der Dicke der
+subskapul&auml;ren Hautfalte ist dagegen relativ einfach. (Dazu
+wird die Hautfalte unterhalb des Schulterblatts zwischen Daumen und
+Zeigefinger genommen und die Dicke dieser Falte gemessen).&nbsp;</dd>
+
+  <dd>Es w&auml;re also sehr n&uuml;tzlich, wenn man den
+K&ouml;rperfettanteil mit der Dicke der subskapul&auml;ren
+Hautfalte bestimmen k&ouml;nnte. Um diesen Zusammenhang
+herzustellen ben&ouml;tigt man einen Datensatz mit Werten beider
+Variablen, K&ouml;rperfettanteil und Dicke der
+subskapul&auml;ren Hautfalte.</dd>
+
+</dl>
+
+<p class="heading">Schreibweise</p>
+
+<p>In beiden aufgef&uuml;hrten Beispielen, k&ouml;nnen
+die Variablen in eine erkl&auml;rende Variable und eine
+abh&auml;ngige Variable eingeteilt werden. Grunds&auml;tzlich
+benutzen wir bei dieser Art von Daten den Buchstaben X f&uuml;r die
+erkl&auml;rende Variable und den Buchstaben Y f&uuml;r die
+abh&auml;ngige Variable.</p>
+
+<table class="centred" bgcolor="#ffffff" border="1" cellpadding="10" cellspacing="0" width="75%">
+
+  <tbody>
+
+    <tr>
+
+      <td><strong>Zeichne immer die abh&auml;ngige
+Variable Y auf der vertikalen Achse und die unabh&auml;ngige
+Variable X auf der horizontalen Achse eines Streudiagramms ein.</strong></td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<p class="heading">Beschreibung der Art eines Zusammenhangs</p>
+
+<p>Der Korrelationskoeffizient beschreibt die St&auml;rke des
+Zusammenhangs, unabh&auml;ngig davon ob die Streuung in einem
+Streudiagramm eine positive oder negative Steigung aufweist. Der
+Korrelationskoeffizient enth&auml;lt jedoch keine Informationen
+&uuml;ber die Position der Datenpunkte, also die Form des
+Zusammenhangs.&nbsp;</p>
+
+<p>Die Form des Zusammenhangs kann durch eine gerade Linie oder
+eine Kurve beschrieben werden, die nahe der Datenpunkte im
+Streudiagramm verl&auml;uft. Eine solche gerade Linie wird als
+Regressionsgerade bezeichnet, die Kurve hei&szlig;t entsprechend
+Regressionskurve.</p>
+
+<p class="heading">Vorhersage der abh&auml;ngigen
+Variable durch die Regressionsgerade</p>
+
+<p>Die Regressionsgerade bzw. Regressionskurve (das
+hei&szlig;t die Gerade oder Kurve im Streudiagramm, welche die Form
+des Zusammenhangs beschreibt) kann nach Augenmass eingezeichnet werden.
+(Wir werden etwas sp&auml;ter einen besseren und objektiveren Weg
+zeigen, diese Gerade zu positionieren).</p>
+
+<p>Grunds&auml;tzlich kann man mit jeder Regressionsgerade
+einen korrespondierenden y-Wert zu jedem beliebigen
+x-Wert&nbsp;ablesen. Wir haben damit eine&nbsp;Vorhersage der
+wahrscheinlichen y-Werte, die bei zuk&uuml;nftigen Beobachtungen
+f&uuml;r beliebige x-Werte gemacht werden. Dies kann man
+folgenderma&szlig;en ausdr&uuml;cken</p>
+
+<p class="eqn"><span class="black"><em>y</em> &nbsp;=&nbsp; <em>&fnof;</em> (<em> x</em> )</span></p>
+
+<p>f() entspricht der Regressionsgerade.</p>
+
+<div class="diagram">
+<p class="heading">Die Vorhersage von Unreinheit in
+chemischen Prozessen</p>
+
+<p>Das folgende Streudiagramm zeigt den Unreinheitsgrad (in
+Prozent) eines chemischen Produktes bei unterscheidlichen
+Reaktionstemperaturen.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" height="330" width="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.DragOnCurveApplet"><param name="xVarName" value="Temperatur (C)"><param name="yVarName" value="Unreinheitsgrad (%)"><param name="xValues" value="18.4 0.3 14.6 32.4 16.7 37 30.4 7.5 5.1 32.7 35.6 23.4 8.7 35.9 20.7 36.4 20.8 18 20.6 30.3 29.2 18.7 14 2.5 20.4 0.4 35.7 15.7 2.6 9.9">
+<param name="yValues" value="13.3 1.2 12.3 19.3 14.5 18.2 17.8 8.2 5.4 15.3 18.5 15.8 10.9 18.1 17.3 16.3 16.5 13.8 14.3 15.5 18.4 14.8 15.5 3.9 16.7 4.7 17.5 15.5 3.1 8.9"><param name="model" value="0 10 6 8 10 12 14"><param name="horizAxis" value="0 40 0 5"><param name="vertAxis" value="0 20 0 2">
+<param name="decimals" value="2"><param name="labelAxes" value="true"><param name="customText" value="Finished sketching curve=Fertige Kurvendiskussion"></applet>
+</div>
+
+<p>Positioniere zun&auml;chst die graue Kurve so, dass sie
+m&ouml;glich gut an die Daten angepasst ist. Bewege dazu die
+f&uuml;nf roten Kreise nach oben oder unten. (Das ist die
+computergest&uuml;tzte Methode die Kurve per Augenmass zu zeichnen.)</p>
+
+<p>Sobald Deine Kurve gut an die&nbsp;Datenpunkte angepasst
+ist, klicke auf <strong>Fertige Kurvediskussion</strong>.
+Du kannst die Kurve benutzen um Vorhersagen zum Unreinheitsgrad des
+chemischen Produktes bei jeder beliebigen Temperatur zu erstellen. <strong>Ziehe</strong>
+die rote vertikale Linie nach links oder rechts um diese Vorhersagen zu
+sehen.</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

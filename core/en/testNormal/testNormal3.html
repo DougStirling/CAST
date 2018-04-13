@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Test about variance</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="hypothesis test, test, normal distribution, chi-squared distribution, variance">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>In most situations where data are modelled as a random sample from a normal distribution,  the value of the distribution's mean, \(\mu\), is of most interest. Confidence intervals and hypothesis tests about \(\mu\) are therefore most commonly required.</p>
+<p>Very occasionally, a test about the distribution's variance, \(\sigma^2\), is needed. This could be a one-tailed test such as</p>
+<p class=eqn><strong><font size="+1">H</font><sub>0</sub></strong>&nbsp;:&nbsp;&nbsp;&nbsp;\(\sigma^2 = \sigma_0^2\)<br>
+	<strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>\(\sigma^2 \gt \sigma_0^2\)</p>
+<p>where \(\sigma_0^2\) is some constant that depends on the specific test that the researchers are conducting, or a two-tailed test of the form</p>
+<p class=eqn><strong><font size="+1">H</font><sub>0</sub></strong>&nbsp;:&nbsp;&nbsp;&nbsp;\(\sigma^2 = \sigma_0^2\)<br>
+	<strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>\(\sigma^2 \ne \sigma_0^2\)</p>
+<p class="heading">Chi-squared test</p>
+<p>The hypothesis test is based on the <strong>sample</strong> variance, \(S^2\), of a random sample of \(n\) values, and a test statistic can be defined from it. If the null hypothesis holds (and the normal distribution's variance is \(\sigma_0^2\)),</p>
+\[
+X^2 \;=\; \frac {n-1}{\sigma_0^2} S^2
+\]
+<p>has a \(\ChiSqrDistn(n - 1\;\text{df})\) distribution.</p>
+<p>The p-value for testing the value of \(\sigma^2\) can be found from a tail probability of this distribution.</p>
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Example</p>
+<p>The following 20 values are a random sample from a \(\NormalDistn(\mu, \sigma^2)\) distribution.</p>
+<div class="centred">
+	<table border="0" cellpadding="5" cellspacing="0" class="centred" style="background-color:#FFFFFF; border:1px solid #999999;">
+		<tr>
+			<td>18.68</td>
+			<td>16.28</td>
+			<td>26.02</td>
+			<td>21.57</td>
+			<td>20.54</td>
+			<td>19.45</td>
+			<td>24.55</td>
+			<td>23.03</td>
+			<td>19.34</td>
+			<td>24.69</td>
+		</tr>
+		<tr>
+			<td>21.31</td>
+			<td>15.22</td>
+			<td>22.81</td>
+			<td>20.53</td>
+			<td>21.01</td>
+			<td>14.98</td>
+			<td>20.52</td>
+			<td>22.39</td>
+			<td>23.37</td>
+			<td>23.23</td>
+		</tr>
+	</table>
+</div>
+<p>Test whether the distribution's variance is \(\sigma^2 = 4\).</p>
+	</div>
+
+<div class="solution">
+<p>The sample variance of this data set is \(S^2 = 9.204\). The test statistic is therefore calculated to be</p>
+\[
+x^2 \;=\; \frac {19}{2^2} \times 9.204 \;=\; 43.73
+\]
+<p>The probability of a value from a \(\ChiSqrDistn(19 \text{ df})\) distribution as high as this is</p>
+\[
+P(X^2 \ge 43.73) \;=\; 0.0010
+\]
+<p class="eqn"><img class="svgImage" src="images/chi2Tail.png" width="499" height="185"></p>
+<p>Since a two-tailed test is required, the p-value is double this tail probability,</p>
+<p class="eqn">p-value   =   0.002</p>
+<p>Since the p-value is well below 0.01, we conclude that there is extremely strong evidence that the distribution's variance is <strong>not</strong> equal to 4.</p>
+</div>
+
+</div>
+
+<p class="heading">Robustness</p>
+<p>This tests in this section are all based on the assumption that the data are a random sample from a normal distribution. The t-test for the distribution's mean is not affected badly if the underlying distribution is non-normal, so we say that this test is <strong>robust</strong>.</p>
+<p>However the chi-squared test test for the variance does <strong>not</strong> provide an accurate p-value if the distribution from which the data are sampled has a non-normal shape. This chi-squared test is <strong>not robust</strong>.</p>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

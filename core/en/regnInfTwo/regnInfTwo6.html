@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Hypothesis tests for coefficients</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="hypothesis test, p-value, standard error, t test">
+	<meta name="dataset" content="Body fat">
+	<meta name="dataset" content="Bee energy expenditure">
+	<meta name="dataset" content="Blood pressure of children and parents">
+	<meta name="dataset" content="Heart catheter length">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Importance of zero slopes</p>
+<p>It is of particular importance to ask whether both explanatory variables are 
+needed in the model. If a variable is unimportant, its slope parameter will be 
+zero, so we are interested in testing the two pairs of hypotheses</p>
+<p class="eqn"><img src="images/slope1Hypoth.gif" width="87" height="43" align="absmiddle"> 
+&nbsp; &nbsp; and &nbsp; &nbsp; <img src="images/slope2Hypoth.gif" width="87" height="43" align="absmiddle"> 
+</p>
+<p class="heading">Test statistics</p>
+<p>The test statistics for these two tests are based on the two parameter estimates 
+and the same estimates of their standard deviations that were used to obtain confidence 
+intervals (the <strong>standard errors</strong> of the estimates). For example, 
+the test statistic for β<sub>1</sub> 
+is </p>
+<p class="eqn"><img src="images/tStatistic.gif" width="224" height="41"></p>
+<p class="heading">P-values</p>
+<p>If the null hypotheses are true, the two test statistics have t distributions 
+with (<em>n</em>&nbsp;-&nbsp;3) degrees of freedom. The p-values for the tests 
+are therefore the tail-areas of this t-distribution, as illustrated in the diagram 
+below.</p>
+<div class="diagram">
+<p class="heading">Simulation to illustrate calculations</p>
+
+<p>In order to show how the p-values are calculated, we will generate data from 
+a model that explains percentage body fat in terms of abdomen circumference. We 
+also record telephone numbers (last two digits) for the individuals as a second 
+explanatory variable that is unrelated to body fat.</p>
+<p class="eqn"><img src="images/bodyFatModel1.gif" width="347" height="44"></p>
+<p>A single sample from this model is shown in the diagram below with the least 
+squares plane.</p>
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="600">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="multiRegnProg.CoeffTestApplet">
+<param name="yAxis" value="0 50 0 10">
+<param name="xAxis" value="65 120 70 10">
+<param name="zAxis" value="0 100 0 20">
+<param name="yVarName" value="Body fat">
+<param name="xVarName" value="Abdomen">
+<param name="zVarName" value="Phone no">
+<param name="randomSeed" value="6456893">
+<param name="multiRegnModel" value="-30.0 0.5 0.0 5">
+<param name="xValues" value="88.6 100.5 83.5 108.1 70.4 98.3 84.6 98.6 86.5 94 92.3 87.5 87 106.6 106.8 92.4 90.8 104.5 101.2 89.7 84.4 88.7 93 100.5 111.5">
+<param name="zValues" value="18 25 30 1 6 78 17 63 99 74 35 11 68 23 64 50 6 64 73 34 35 67 66 14 61">
+<param name="maxCoeff" value="-99.99 99.999 99.9999">
+<param name="maxT" value="-99.999">
+<param name="customText" value="Slope for=Slope for#St error=St error">
+</applet> 
+</div>
+
+<p>The diagram shows the test statistics for testing whether the coefficients 
+of the two potential explanatory variables are zero.</p>
+<ul>
+<li>The t-statistic for <em>Abdomen</em> is usually well into the right tail of 
+the t distribution, so the p-value (i.e. tail area) is usually very small.</li>
+<li>The t-statistic for <em>Phone no</em> is much less likely to be as extreme 
+and the resulting p-value is less likely to be small.</li>
+</ul>
+<p>Take a few samples and observe that for most data sets we would conclude that 
+there is strong evidence that the variable <em>Abdomen</em> is needed in the model, 
+but that there is little evidence of the need for the variable <em>Phone no</em>.</p>
+<p class="heading">Examples</p>
+<p>The diagram below shows the calculations for four real data sets. Read the 
+conclusions carefully.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="600">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="multiRegnProg.CoeffTestDataApplet">
+<param name="maxCoeff" value="-99.99 99.999 99.999">
+<param name="maxT" value="-99.999">
+<param name="noOfDataSets" value="4">
+<param name="customText" value="Slope for=Slope for#St error=St error">
+
+<param name="dataName" value="Bee energy expenditure">
+<param name="description" value="In an experiment, an entomologist recorded energy expenditure (joules/sec) for bees drinking water with different sucrose concentrations (%) and at different temperatures.">
+<param name="question" value="There is extremely strong evidence that both Temperature and Sucrose concentration affect energy expenditure of the bees. Neither variable should be omitted from the model.">
+<param name="yVarName" value="Energy">
+<param name="xVarName" value="Temperature">
+<param name="zVarName" value="Sucrose">
+<param name="yValues" value="3.1 3.7 4.7 5.5 6.7 7.3 7.9 9.2 9.3 6.0 6.9 7.5 11.5 12.9 13.4 17.5 15.8 14.7 7.7 8.3 9.5 15.7 14.3 15.9 19.1 18.0 19.9">
+<param name="xValues" value="9@20 9@30 9@40">
+<param name="zValues" value="3@20 3@40 3@60 3@20 3@40 3@60 3@20 3@40 3@60">
+<param name="yAxis" value="0 20 0 5">
+<param name="xAxis" value="17 43 20 10">
+<param name="zAxis" value="15 65 20 20">
+
+<param name="dataName2" value="Blood pressures">
+<param name="description2" value="This data set contains the systolic blood pressures of the mother, father and first-born child from each of 20 families.">
+<param name="question2" value="There is strong evidence that both mother's and father's blood pressure affects the child's blood pressure. Both variables should be used in a model to predict child's blood pressure.">
+<param name="yVarName2" value="Child BP">
+<param name="xVarName2" value="Mother BP">
+<param name="zVarName2" value="Father BP">
+<param name="yValues2" value="90 85 120 100 105 100 110 140 115 105 100 80 70 115 90 90 115 110 90 100">
+<param name="xValues2" value="130 125 140 110 145 160 120 180 120 130 125 110 90 120 150 145 130 155 110 125">
+<param name="zValues2" value="140 120 180 150 175 120 145 160 190 135 150 125 140 170 150 155 160 125 140 150">
+<param name="yAxis2" value="60 145 60 20">
+<param name="xAxis2" value="80 190 80 20">
+<param name="zAxis2" value="110 200 120 20">
+
+<param name="dataName3" value="Body fat for 25 men">
+<param name="description3" value="Body fat was measured using an underwater weighing technique from 251 men. This data set shows percentage body fat, abdomen circumference (cm) and height (cm) from 25 of the men.">
+<param name="question3" value="There is strong evidence that both abdomen circumference and height help in predicting body fat. Note that these data are observational so we cannot conclude that the relationship is causal.">
+<param name="yVarName3" value="Body fat">
+<param name="xVarName3" value="Abdomen">
+<param name="zVarName3" value="Height">
+<param name="yAxis3" value="0 50 0 10">
+<param name="xAxis3" value="65 120 70 10">
+<param name="zAxis3" value="63 76 65 5">
+<param name="yValues3" value="12 16.5 9.4 31.3 5 24 13.2 18.6 14.3 21.7 21 17.9 15 20.1 24.5 22 16.5 16.8 23.8 22.6 11.3 15.1 16.9 28.8 28.3">
+<param name="xValues3" value="88.6 100.5 83.5 108.1 70.4 98.3 84.6 98.6 86.5 94 92.3 87.5 87 106.6 106.8 92.4 90.8 104.5 101.2 89.7 84.4 88.7 93 100.5 111.5">
+<param name="zValues3" value="73.5 73.5 69 67 66.75 65.75 71.5 69.25 73 72 69.25 72.25 69.75 75 70.25 71.5 69.5 74.5 68.25 67.5 70.75 69.25 68.5 65.75 66">
+
+<param name="dataName4" value="Heart catheter length">
+<param name="description4" value="In heart catheterisation, a catheter is passed through a major vein or artery from the leg and positioned by X-rays in the heart. How might the surgeon predict the length of catheter to use? Catheter length (cm), height (in) and weight (lb) were recorded from 12 children.">
+<param name="question4" value="There is no evidence that the slope coefficient for Height is non-zero. Similarly, there is no evidence that the Weight variable is needed in the model. However although either of the two variables could be dropped from the model on its own, you should NOT conclude that BOTH variables can be omitted from the model together.">
+<param name="yVarName4" value="Catheter">
+<param name="xVarName4" value="Height">
+<param name="zVarName4" value="Weight">
+<param name="yValues4" value="37 50 34 36 43 28 37 20 34 30 38 47">
+<param name="xValues4" value="42.8 63.5 37.5 39.5 45.5 38.5 43.0 22.5 37.0 23.5 33.0 58.0">
+<param name="zValues4" value="40.0 93.5 35.5 30.0 52.0 17.0 38.5 8.5 33.0 9.5 21.0 79.0">
+<param name="yAxis4" value="15 55 20 10">
+<param name="xAxis4" value="20 65 20 10">
+<param name="zAxis4" value="0 100 0 20">
+</applet> 
+</div>
+
+</div>
+
+<p>Pay particular attention to the conclusion for the <em>Catheter length</em> 
+data set above. Even though both p-values are large, you should not conclude that 
+<strong>neither</strong> variable is needed to predict catheter length. It is 
+reasonable to drop either one of the variables (since their p-values are both 
+greater than 0.2) but not necessarily both variables <strong>together</strong>.</p>
+<p>The next section of CAST explains this problem with the interpretation of the 
+two t-tests in more detail &mdash; it is related to the high correlation of the two 
+explanatory variables.</p>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

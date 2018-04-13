@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Distribution of estimation error</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<script type="text/javascript">
+		var svgNames = new Array();
+		svgNames[0] = "images/hypnosisError.svg";
+		svgNames[1] = "images/satelliteError.svg";
+		svgNames[2] = "images/shellDensityError.svg";
+		svgNames[3] = "images/birthWtError.svg";
+		svgNames[4] = "images/teethError.svg";
+		
+		function changeSvgImage(select) {
+			var newIndex = select.selectedIndex;
+			var image = document.getElementById('dataImage');
+			image.src = svgNames[newIndex];
+		}
+	</script>
+
+	<meta name="index" content="estimation">
+	<meta name="dataset" content="Anticipation of hypnosis">
+	<meta name="dataset" content="Satellite classification of land use">
+	<meta name="dataset" content="Egg shell density">
+	<meta name="dataset" content="Births by season">
+	<meta name="dataset" content="Teeth and gender">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Estimating difference between population means</p>
+
+<p>In most situations where data are collected from two groups, the most important 
+questions relate to the difference between the population means in the groups. 
+Since the population means are usually unknown, the sample means are used to estimate 
+them, </p>
+<p class=eqn><span style="position:relative; top:5px"><img src="../../images/symbol.xBarDiff.png" width="36" height="15" align="baseline"></span> 
+&nbsp; is a point estimate of&nbsp;<font color="#000000">µ<sub>2</sub>&nbsp;-&nbsp;µ<sub>1</sub></font></p>
+<p class="heading">Error in estimate</p>
+<p>As in other estimation situations, <span style="position:relative; top:5px"><img src="../../images/symbol.xBarDiff.png" width="36" height="15" align="baseline"></span> 
+is a point estimate of <span class="eqn"><font color="#000000">µ<sub>2</sub>&nbsp;-&nbsp;µ<sub>1</sub></font></span> and is unlikely to be exactly equal to the population difference. In order to 
+properly interpret its value, we must understand the distribution of the estimation 
+error. From the results on the previous page,</p>
+<p class=eqn>
+	<object data="images/errorDistn.svg" width="372" height="42">
+	</object>
+</p>
+<p>Unfortunately the population standard deviations in the two groups are also 
+	unknown, so this result cannot be directly used. However they can be replaced 
+	by the sample standard deviations to obtain an estimate of the error distribution,</p>
+<p class=eqn>
+	<object data="images/estErrorDistn2.svg" width="172" height="42">
+	</object>
+</p>
+<p>This distribution gives a reasonable indication of size of the likely errors.</p>
+
+
+<div class="diagram"> 
+<p class="heading">Examples</p>
+<p>The diagram below shows the point estimate of the difference between the means 
+of two groups for a few data sets. The estimated distribution of the estimation 
+error is also displayed in pink.</p>
+
+<form>
+<select name="dataset" onChange="changeSvgImage(this)">
+<option value="0" selected>Anticipation of hypnosis and ventilation</option>
+<option value="1">Satellite classification of land use</option>
+<option value="2">Effect of vitamin D on egg shell density</option>
+<option value="3">Birth weights in summer and winter</option>
+<option value="4">Teeth and gender</option>
+</select>
+</form>
+
+<p align="center"><iframe src="images/hypnosisError.svg" id="dataImage" width="514" height="417" frameborder="0"></iframe></p>
+
+<p>In each case, the error distribution gives a reasonable idea of the accuracy 
+of the point estimate.</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

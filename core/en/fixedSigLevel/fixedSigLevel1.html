@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Significance level</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="hypothesis test, test, p-value, significance level, decision rule">
+	<meta name="dataset" content="Saturated fat in cooking oil">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Revisiting p-values</p>
+
+<p>A hypothesis test is based on two competing hypotheses about the value of a parameter, \(\theta\). The null hypothesis is the more restrictive of these. Since it is the simpler of the two hypotheses, it is the one that we would like to accept, provided there is no evidence to the contrary,</p>
+<ul>
+	<li>Null hypothesis, <strong>H<sub>0</sub></strong>: \(\theta = \theta_0 \)</li>
+</ul>
+<p>The alternative hypothesis may be one- or two-tailed, depending on the context of the problem, but we will start by considering a one-tailed alternative of the form,</p>
+<ul>
+	<li>Alternative hypothesis, <strong>H<sub>A</sub></strong>: \(\theta \gt \theta_0\)</li>
+</ul>
+<p>The hypothesis test is based on a test statistic that is some function of the data values,</p>
+\[
+Q \;\;=\;\; g(X_1, X_2, \dots, X_n \mid \theta_0)
+\]
+<p>whose distribution is fully known (without any unknown parameters) when <strong>H<sub>0</sub></strong> is true (i.e. when \(\theta_0\) is the true parameter value). This distribution might, for example, be a normal(0,&nbsp;1), t, Chi-squared or F distribution.</p>
+<p>To perform the test, we evaluate the test statistic and refer it to the standard distribution to assess whether it is 'unusual' enough to throw doubt on the null hypothesis. This can be done by evaluating a p-value for the test — the probability of a value as extreme as that observed.</p>
+<p class="eqn"><img class="svgImage" src="images/pValueTail.png" width="399" height="242"></p>
+<p>P-values close to zero throw doubt on the null hypothesis.</p>
+<p class="heading">Fixed significance level</p>
+<p>An alternative way to perform the test involves a rule that results in a <strong>decision</strong> about which of the two hypotheses holds. Based on the data, we either decide that the null or alternative hypothesis is true, but any such data-based rule can lead us to the <strong>wrong </strong>conclusion and we must take into account the probability of making a mistake in our decision.</p>
+<p> The test starts with a fixed <strong>significance level</strong>, \(\alpha\).</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>The <strong>significance level</strong> is the probability of <strong>wrongly</strong> concluding that <strong>H<sub>0</sub></strong> does not hold when it actually does.</p>
+</div>
+<p>For example, it might be acceptable to have a 5% chance of concluding that \(\theta \gt \theta_0\) when \(\theta\) is really equal to \(\theta_0\). This means a significance level of \(\alpha = 0.05\) for the test.</p>
+<p>The significance level is the tail area of the test statistic's distribution that will lead to us conclude that the null hypothesis does not hold and this &quot;rejection region&quot; can be determined<strong> before we even collect any data</strong>. </p>
+<p class="eqn"><img class="svgImage" src="images/fixedSig.png" width="399" height="242"></p>
+<p>When the  test statistic, \(Q\), is evaluated from the data, its value determines whether we will conclude that <strong>H<sub>0</sub></strong> is true or false (accepted or rejected).</p>
+<p class="heading">Two-tailed tests</p>
+<p>For a two-tailed test with hypotheses</p>
+<ul>
+	<li>Null hypothesis, <strong>H<sub>0</sub></strong>: \(\theta = \theta_0 \)</li>
+	<li>Alternative hypothesis, <strong>H<sub>A</sub></strong>: \(\theta \ne \theta_0\)</li>
+</ul>
+<p>both high and low values of the test statistic usually provide evidence that the alternative hypothesis holds. Values at both tails of the distribution of the test statistic, \(Q\), therefore result in rejection of <strong>H<sub>0</sub></strong>, so the corresponding tail areas should each have area \(\diagfrac {\alpha} 2\) for a test with significance level \(\alpha\).</p>
+<p class="eqn"><img class="svgImage" src="images/fixedSig2.png" width="431" height="234"></p>
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Saturated fat content of cooking oil</p>
+<p>Cooking oil made from 
+soybeans has little cholesterol and has been claimed to have only 15% saturated 
+fat. A clinician believes that the saturated fat content is greater than 15% and 
+	randomly samples 13 bottles of soybean cooking oil for testing.</p>
+<div class="centred">
+	<table border="0" class="centred soy" cellpadding="5" cellspacing="0" style="border:1px solid #999999; background-color:#FFFFFF;">
+		<caption>
+			<strong>Percentage saturated fat in soybean cooking oil</strong>
+			</caption>
+		<tr align="center" valign="top">
+			<td style="padding:5px 15px;">15.2<br>
+				12.4</td>
+			<td style="padding:5px 15px;">15.4<br>
+				13.5</td>
+			<td style="padding:5px 15px;">15.9<br>
+				17.1</td>
+			<td style="padding:5px 15px;">16.9<br>
+				14.3</td>
+			<td style="padding:5px 15px;">19.1<br>
+				18.2</td>
+			<td style="padding:5px 15px;">15.5<br>
+				16.3</td>
+			<td style="padding:5px 15px;">20.0</td>
+		</tr>
+	</table>
+</div>
+<p>Assuming that the data are  a random sample from a normal distribution, the clinician wants to test the following hypotheses.</p>
+<p class=eqn><strong><font size="+1">H</font><sub>0</sub></strong>&nbsp;:&nbsp;&nbsp;&nbsp;\(\mu = 15%\)<br>
+	<strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>\(\mu \gt 15%\)</p>
+<p>What is his conclusion from testing these hypotheses with a significance level of \(\alpha = 5\%\)?</p>
+	</div>
+
+<div class="solution">
+<p>A significance level of \(\alpha = 0.05\) means that the  clinician is willing to wrongly conclude that the saturated fat content is over 15% when it really is 15%, with probability 0.05.</p>
+<p>The test should be based on a test statistic</p>
+\[
+T \;\;=\;\; \frac{\overline{X} - 15}{S/\sqrt{13}}
+\]
+<p>which has a \(\TDistn(12 \text{ df})\) distribution when the null hypothesis is true. For a 5% significance level, the rejection region should be high values of the test statistic above the 95th percentile of the distribution, 1.782.</p>
+\[
+P(T \gt 1.782) \;\;=\;\; 0.05
+\]
+<p>From the data set, the t-statistic is</p>
+\[
+t \;\;=\;\; \frac{\overline{x} - 15}{s/\sqrt {13}} \;\;=\;\; 1.906
+\]
+<p>Since this is in the rejection region of the test (\(t \gt 1.782\)), our conclusion should be that the mean percentage of saturated fat being 15% is <strong>rejected at the 5% significance level</strong>.</p>
+<hr width="75%">
+<p>If testing at a 1% significance level, the rejection region would be t-values greater than 2.681 since</p>
+\[
+P(T \gt 2.681) \;\;=\;\; 0.01
+\]
+<p>At this significance level, we would  <strong>accept</strong> the null hypothesis that \(\mu = 15\).</p>
+</div>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

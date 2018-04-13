@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Poisson test with constraints</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="poisson distribution, chi-squared test, goodness-of-fit test">
+	<meta name="dataset" content="Heart attacks in city">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Constraints on the expected counts</p>
+
+<p>For the  test on the previous page, the null hypothesis must specify all of the Poisson distribution means,   \(\{E_i\}\)  <em> </em>(e.g. \(\lambda&nbsp;=&nbsp;10\) in the example). In most situations, the null hypothesis cannot provide values for the  \(\{E_i\}\) so our null hypothesis Poisson model involves some parameters that must be estimated from the data. For example,</p>
+<ul>
+  <li>Null hypothesis, <strong>H<sub>0</sub></strong>: \(O_i \sim \PoissonDistn(\lambda)\)</li>
+  <li>Alternative hypothesis, <strong>H<sub>A</sub></strong>: \(O_i \sim \mathcal{Some\;other\; distribution}\)</li>
+</ul>
+<p>Estimating \(\lambda\) from the data makes the \(\{E_i\}\)  closer to the  \(\{O_i\}\) than  arises when \(\lambda\) is a known value and this makes the chi-squared test statistic smaller. The  general result is that:</p>
+\[
+X^2 \;\;=\;\; \sum_{i=1}^k {\frac{\left(O_i - E_i\right)^2}{E_i}} \;\; \underset{\text{approx}}{\sim} \;\; \ChiSqrDistn(k - c \text{ df})
+\]
+<p>when there are \(c\) 'constraints' on the \(\{E_i\}\). These constraints are often unknown parameters that are estimated from the data. An example shows how this affects the goodness-of-fit test.</p>
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Example</p>
+<p>This table shows the number of heart attacks in a city in each of ten weeks.</p>
+<div class="centred">
+	<table border="0" cellpadding="5" cellspacing="0" class="centred">
+		<tr>
+			<th align="left">Week</th>
+			<th width="30">1</th>
+			<th width="30">2</th>
+			<th width="30">3</th>
+			<th width="30">4</th>
+			<th width="30">5</th>
+			<th width="30">6</th>
+			<th width="30">7</th>
+			<th width="30">8</th>
+			<th width="30">9</th>
+			<th width="30">10</th>
+		</tr>
+		<tr>
+			<th>Count&nbsp;&nbsp;
+				</td>
+			<td width="20" align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-right:0px;">6</td>
+			<td width="20" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">11</td>
+			<td width="20" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">13</td>
+			<td width="20" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">10</td>
+			<td width="20" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">21</td>
+			<td width="20" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">8</td>
+			<td width="20" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">16</td>
+			<td width="20" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">6</td>
+			<td width="20" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">9</td>
+			<td width="20" align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-left:0px;">19</td>
+		</tr>
+	</table>
+</div>
+<p>Test whether the heart attacks have occurred at random with a constant rate over this period.</p>
+	</div>
+
+<div class="solution">
+<p>If the heart attacks occurred at random, the counts would all have  Poisson distributions,</p>
+\[
+O_i \;\;\sim\;\; \PoissonDistn(\lambda)
+\]
+<p>so the expected counts, \(\{E_i\}\) are all equal to this unknown parameter, \(\lambda\). To apply the chi-squared test, we must therefore <strong>estimate</strong> \(\lambda\) from the data. The best estimate (both the method of moments and maximum likelihood estimators) is the sample mean count,</p>
+\[
+\hat{\lambda} \;\;=\;\; \overline{O} \;\;=\;\; 11.9 \]
+<p>When we now evaluate our test statistic, the \(\{E_i\}\) will be closer to the  \(\{O_i\}\) because we have estimated \(\lambda\) to be a value that matches what we have in the data. This acts as a <strong>constraint</strong> on the  \(\{E_i\}\). In fact, it can be shown that the  \(\{E_i\}\) must now satisfy:</p>
+\[
+\sum{E_i} \;\;=\;\; \sum{O_i} \]
+<p>Our test statistic is now</p>
+\[
+X^2 \;=\; \sum_{i=1}^{10} {\frac{\left(O_i - E_i\right)^2}{E_i}} \;=\; \frac{(6-11.9)^2}{11.9} + 
+\frac{(11-11.9)^2}{11.9} + \cdots \;=\; 20.9\]
+<p>and we should compare this to the \(\ChiSqrDistn(9 \text{ df})\) distribution (10 counts and 1 constraint). From this distribution, the p-value is</p>
+\[
+P(X^2 \ge 20.9) \;\;=\;\; 0.0130\]
+<p>From such a small p-value, we would conclude that there is moderately strong evidence that the Poisson model does not fit — the heart attacks do not seem to be occurring randomly as a Poisson process with the same rate in each week.</p>
+</div>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

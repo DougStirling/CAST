@@ -1,0 +1,148 @@
+<html>
+<head>
+	<title>P-value for testing mean (known sigma)</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="hypothesis test, mean">
+	<meta name="dataset" content="Blood pressure of executives">
+	<meta name="dataset" content="Active ingredient in medicine">
+	<meta name="dataset" content="Weights of courier packages">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class=heading>Model and hypotheses</p>
+<p>In both examples in the first page of this section, there was knowledge of the population 
+standard deviation σ
+(at least when <b>H<sub>0</sub></b> was true). This greatly 
+simplifies the problem of finding a p-value for the test.</p>
+
+<div class="diagram"> 
+<dl>
+<dt>Blood pressure of executives</dt>
+<dd>From published information, the national distribution of blood pressure in 
+males aged 35-44 is known to have a standard deviation σ 
+= 15.</dd>
+<dt>Active ingredient in medicine</dt>
+<dd>The testing procedure is widely used and the errors are known to have a distribution 
+with σ 
+= 0.0068 grams per litre.</dd>
+</dl>
+
+</div>
+
+<p>In both examples, the hypotheses were of the form,</p>
+<p class=eqn><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> &nbsp;=&nbsp; </strong>&mu;<strong><sub>0</sub></strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> &nbsp;&ne;&nbsp; </strong>&mu;<strong><sub>0</sub></strong></span></p>
+
+<p class=heading>Summary Statistic</p>
+
+<p>The first step in finding a p-value for the test is to identify a summary statistic 
+that throws light on whether <b>H<sub>0</sub></b> or <b>H<sub>A</sub></b> is true. 
+When testing the population mean, µ, 
+the obvious summary statistic is the sample mean, <img src="../../images/symbol.xBar.png" width="10" height="10" align="baseline">, 
+and the hypothesis tests that will be described here are based on this.</p>
+<p>We saw earlier that sample mean has a distribution with mean and standard deviation</p>
+<p class=eqn><span style="position:relative; top:6px"><img src="../../images/symbol.muXbar.png" width="19" height="16" align="baseline"></span> &nbsp;<span class="black">=&nbsp; &mu;</span> 
+</p>
+<p class=eqn><span style="position:relative; top:5px"><img src="../../images/symbol.sigmaXbar.png" width="19" height="16" align="baseline"></span> &nbsp;<span class="black">=</span>&nbsp; <span style="position:relative; top:12px"><img src="../../images/symbol.sigmaOverRootN.png" width="26" height="31" align="baseline"></span> 
+</p>
+<p>Furthermore, the <a href="javascript:showNamedPage('randomMean5')">Central 
+Limit Theorem</a> states that the distribution of the sample mean is approximately 
+normal, provided the sample size is not small. (The result holds even for small 
+samples if the population distribution is also normal.)</p>
+<p class=heading>P-value</p>
+
+<p>The p-value for the test is the probability of getting a sample mean as 'extreme' 
+as the one that was recorded when <b>H<sub>0</sub></b> is true.</p>
+<center>
+<table border="1" cellspacing="0" cellpadding="10" bgcolor="white" width="75%">
+<tr> 
+<td><strong>Note that we can assume knowledge of both µ 
+and σ 
+in this calculation &mdash; the values of both are fixed by <b>H<sub>0</sub></b></strong></td>
+</tr>
+</table>
+</center>
+<p>Since we know the distribution of the sample mean (when <b>H<sub>0</sub></b> 
+is true), the p-value can be evaluated as the tail area of this distribution.</p>
+
+<dl>
+<dt>One-tailed test</dt>
+<dd>If the alternative hypothesis <b>H<sub>A</sub></b> specifies <strong>large</strong> 
+values of µ, 
+the p-value is the upper tail area (shown in green below). If <b>H<sub>A</sub></b> 
+is for <strong>small</strong> values of µ, 
+the opposite tail of the distribution is used.</dd>
+</dl>
+
+<p class=eqn><object data="images/normalOneTailArea.svg" width="267" height="155" alt="sd(xBar) = sigma/root(n)"></object>
+</p>
+<dl>
+<dt>Two-tailed test</dt>
+<dd>If the alternative hypothesis <b>H<sub>A</sub></b> allows for <strong>large 
+or small</strong> values of µ, 
+the p-value is the sum of the two tail areas below.</dd>
+</dl>
+<p class=eqn><object data="images/normalTwoTailArea.svg" width="267" height="155" alt="sd(xBar) = sigma/root(n)"></object>
+</p>
+<div class="diagram">
+<p class=heading>Weights of courier packages</p>
+	
+<p>A courier company suspected that the weight of recently shipped packages had 
+dropped. From past records, the mean weight of packages was 18.3 kg and their 
+standard deviation was 7.1 kg. These figures were based on a very large number 
+of packages and can be considered as accurate.</p>
+<p>Thirty packages were sampled from the previous week and their mean weight was 
+found to be 16.8 kg. The data are displayed in the jittered dot plot below.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="330">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="testProg.ZPValueApplet">
+<param name="varName" value="package weight (kg)">
+<param name="horizAxis" value="0 40 0 10">
+<param name="values" value="21.6 31.5 13.5 15.4 10.8 18.7 7.1 18.3 9.6 12.2 5.8 18.8 13.9 36.2 13.5 5.8 26.2 8.1 15 22.7 9.9 13.5 18.4 23.1 20.1 16.4 16.8 19.8 14.6 26.8">
+<param name="testInfo" value="18.3 7.1">
+<param name="alternative" value="low">
+<param name="dataDecimals" value="2">
+<param name="means" value="14.0 23.0 0.02">
+<param name="summaryDecimals" value="3 3 4">
+<param name="formulaGif" value="test/z18.3">
+<param name="customText" value="Actual Data=Actual Data#Modified Data=Modified Data#Sample mean=Sample mean#Distn of mean=Distn of mean">
+</applet>
+</div>
+
+<p>If the null hypothesis was true, the sample mean would have the normal distribution 
+shown in pale blue. Although the sample mean weight is lower than 18.3 kg, it 
+is not particularly unusual for this distribution, so we conclude that there is 
+no evidence that the mean weight has reduced.</p>
+<p>The right of the diagram shows how the p-value is calculated. A z-score is 
+obtained by standardising the sample mean, then this is used to find the probability 
+from a standard normal distribution.</p>
+<hr width="75%">
+<p>Choose <strong>Modified Data</strong> from the pop-up menu. The slider allows 
+you to investigate how low the sample mean must become in order to give strong 
+evidence that µ 
+is less than 18.3.</p>
+</div>
+
+<p class=heading>Test Statistic</p>
+
+<p>In the example above, we found the p-value by standardising <img src="../../images/symbol.xBar.png" width="10" height="10" align="baseline">. 
+The intermediate z-value is called a <strong>test statistic</strong> and has a 
+'standard' distribution from which the p-value can be found.</p>
+<p>The diagram below shows the stages in obtaining the p-value for a two-tailed 
+test. </p>
+
+<p class=eqn><object data="images/twoTailedZ.svg" width="428" height="266" alt="obtaining p-value, known sigma"></object>
+</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

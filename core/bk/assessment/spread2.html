@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Distance from k</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="error, bias, mean absolute error, mean square error">
+	<meta name="dataset" content="Weights of bags of potatoes">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<div class="main">
+
+<p class="heading">A different approach</p>
+
+  <p>Although the interquartile range is a useful and easily interpreted summary 
+		of the spread of values in a data set, a different summary of spread called 
+		the <strong>standard deviation</strong> is more commonly used.</p>
+	<p>The standard deviation is harder to understand than the interquartile range, 
+		so we introduce it by first asking how far the data values are from some 'target'.</p>
+	<p class="heading">Distance from a target</p>
+	
+<p>As part of their lessons about weight, primary school students are taught to 
+estimate the weight of various common items. How close are the students' guesses 
+to the correct weight of a 3kg item?</p>
+	
+<dl>
+<dt><strong>Single value</strong></dt>
+<dd>The distance of a single student's guess, <em><font color="#000000">x</font></em>, 
+from the target, <em><font color="#000000">k</font></em>, is called the <strong>error</strong>,</dd>
+</dl>
+
+  <p class=eqn><img src="images/oneError.gif" width="115" height="22"></td>
+</tr>
+</table>
+</center>
+However if we have guessed weights from <em><font color="#000000">x</font></em> 
+students, how do we combine the errors to give a single measure of how close the 
+guesses are to this target?</dd>
+<dt><strong>Mean error (bias)</strong></dt>
+<dd>The average of the individual errors can be shown to equal the difference 
+between the sample mean and <em><font color="#000000">k</font></em>, </dd>
+</dl>
+
+  <p class=eqn><img class="gif" src="../../en/moreVariation/images/meanError.gif" width="154" height="40"> 
+	</p>
+
+  
+<dl>
+<dd>This quantity is called the <strong>bias</strong> and clearly tells us something 
+about whether the students tend to over-estimate or under-estimate the weights.</dd>
+</dl>
+<center>
+<table border="2" cellpadding="5" cellspacing="0" bordercolor="#FF9966">
+<tr> 
+<td bgcolor="#FFCC99"><img class="gif" src="../../en/moreVariation/images/bias.gif" width="308" height="127"></td>
+</tr>
+</table>
+</center>
+<dl>
+<dd>However even if the bias is zero, individual students may have guesses that 
+are very different from the target, <em><font color="#000000">k</font></em>.</dd>
+</dl>
+<center>
+<table border="2" cellpadding="5" cellspacing="0" bordercolor="#FF9966">
+<tr> 
+<td bgcolor="#FFCC99"><img class="gif" src="../../en/moreVariation/images/zeroBias.gif" width="308" height="127"></td>
+</tr>
+</table>
+</center>
+<dl>
+<dt><strong>Mean squared error</strong></dt>
+<dd>One solution to the problem of negative errors is to square them before averaging,</dd>
+</dl>
+<p class=eqn><img src="images/meanSqrError2.gif" width="242" height="44"> </p>
+<dl>
+<dt><strong>Root mean squared error</strong></dt>
+<dd>The main problem with the mean squared error is that its units are the square 
+of those of the raw data. For example, the guessed weights are kg, so the squared 
+errors are 'squared kg' and the mean squared error is also 'squared kg'. How do 
+you interpret a value with these units?<br>
+The solution is to take the square root to return the value to the original units.</dd>
+</dl>
+<p class=eqn><img src="images/rootMeanSqrError2.gif" width="287" height="51"> </p>
+<table width="75%" border="1" align="center" cellpadding="10" cellspacing="0">
+<tr> 
+<td align="center" bgcolor="#FFFFFF"><strong>The root mean squared error is a 
+'typical' error.</strong></td>
+</tr>
+</table>
+  
+<br>
+
+  <div class="diagram">
+
+		<p class="heading">Guessed weights</p>
+		
+		
+<p>The diagram below shows the guessed weights of a 3kg object from seven students.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="statisticProg.DragCrossRmseApplet">
+<param name="varName" value="weight of bags">
+<param name="values" value="2.7 2.9 2.95 3.05 3.15 3.2 3.25">
+<param name="target" value="3.0">
+<param name="targetName" value="Target, k = 3 kg">
+<param name="horizAxis" value="2.4 3.3 2.4 0.2">
+<param name="maxSummary" value="99.999">
+<param name="customText" value="Root mean square error=Root mean square error">
+</applet> 
+</div>
+
+    
+<p>A square is drawn for each data value whose sides have length equal to the 
+error for that student's guess.</p>
+<table width="75%" border="1" align="center" cellpadding="10" cellspacing="0">
+<tr> 
+<td align="center" bgcolor="#FFFFFF"><strong>The <font color="#FF0000">area</font> 
+of each square is the squared error for the value.</strong></td>
+</tr>
+</table>
+<p>The root mean squared error is the side length of the square whose area is 
+the <strong>average</strong> of the areas of the squares. It is shown in red on 
+the diagram.</p>
+    
+<p><strong>Drag the crosses</strong> to see how the values affect the root mean 
+squared error.</p>
+<hr width="75%">
+<p>You may notice that an outlier corresponds to a square with a very large area, 
+so it has a disproportionate effect on the root mean squared error.</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

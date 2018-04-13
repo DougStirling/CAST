@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Comparing sample variances</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="f distribution, sample variance, pivot">
+	<meta name="dataset" content="Satellite classification of land use">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p class="heading">Sample variances</p>
+<p>One application of the F distribution arises when comparing two random samples from normal distributions. If the sample variance of a random sample of \(n_1\) values from a \(\NormalDistn(\mu_1,\;\sigma_1^2)\) distribution is \(S_1^2\) and the corresponding sample variance of an independent random sample of \(n_2\) values from a \(\NormalDistn(\mu_2,\;\sigma_2^2)\) distribution is \(S_2^2\), then we know that</p>
+\[ \begin{align}
+\frac {n_1-1}{\sigma_1^2} S_1^2 \;&amp;\sim\; \ChiSqrDistn(n_1 - 1\;\text{df}) \\[0.3em]
+\frac {n_2-1}{\sigma_2^2} S_2^2 \;&amp;\sim\; \ChiSqrDistn(n_2 - 1\;\text{df})
+\end{align} \]
+<p>This can also be expressed as</p>
+\[ \begin{align}
+\frac {S_1^2}{\sigma_1^2} \;&amp;\sim\; \frac{\ChiSqrDistn(n_1 - 1\;\text{df})}{n_1 - 1}\\[0.5em]
+\frac{S_2^2}{\sigma_2^2} \;&amp;\sim\; \frac{\ChiSqrDistn(n_2 - 1\;\text{df})}{n_2 - 1}
+\end{align} \]
+
+<p class="heading">Ratio of variances</p>
+<p>The ratio of these is therefore</p>
+\[
+\frac {S_1^2\;/\;S_2^2} {\sigma_1^2\;/\;\sigma_2^2} \;\;\sim\;\;  \frac{\ChiSqrDistn(n_1 - 1\;\text{df})\;/\;(n_1 - 1)}{\ChiSqrDistn(n_2 - 1\;\text{df})\;/\;(n_2 - 1)}
+\]
+
+<p>From the definition of the F distribution,</p>
+\[
+\frac {S_1^2\;/\;S_2^2} {\sigma_1^2\;/\;\sigma_2^2} \;\;\sim\;\; \FDistn(n_1 - 1,\;n_2 - 1\;\text{df})
+\]
+<p>This gives us a pivot for the ratio of the variances in the two groups.</p>
+
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Ratio of two sample variances</p>
+\[
+\frac {S_1^2\;/\;S_2^2} {\sigma_1^2\;/\;\sigma_2^2} \;\;\sim\;\; \FDistn(n_1 - 1,\;n_2 - 1\;\text{df})
+\]
+<p>is a pivot for the ratio \(\diagfrac{\sigma_1^2}{\sigma_2^2}\).</p>
+</div>
+</div>
+
+<p class="heading">Confidence interval</p>
+<p>This can be used to find a 95% confidence interval for \(\diagfrac{\sigma_1^2}{\sigma_2^2}\).</p>
+\[
+P\left(F_{0.025} \;\lt\; \frac {S_1^2\;/\;S_2^2} {\sigma_1^2\;/\;\sigma_2^2} \;\lt\; F_{0.975}\right) \;\;=\;\; 0.95
+\]
+<p>where \(F_{0.025}\) and \(F_{0.975}\) are the 2½th and 97½th percentiles of the \(\FDistn(n_1 - 1,\;n_2 - 1\;\text{df})\) distribution. A 95% confidence interval can be found by rearranging the inequality,</p>
+\[
+\frac {s_1^2\;/\;s_2^2}{F_{0.975}} \;\;\lt\;\; \frac{\sigma_1^2}{\sigma_2^2} \;\;\lt\;\; \frac {s_1^2\;/\;s_2^2}{F_{0.025}}
+\]
+<p>Interval estimates with different confidence levels can be found by replacing \(F_{0.025}\) and \(F_{0.975}\) with other quantiles of the \(\FDistn(n_1 - 1,\;n_2 - 1\;\text{df})\) distribution.</p>
+
+<div class="questionSoln">
+<div class="question">
+<p class="questionTitle">Example</p>
+
+<!-- The SVG version cannot be used since its dot plot does not display in Safari -->
+<table style="margin-left:0px; margin-top:10px;">
+	<tr>
+		<td valign="top"><p>Remote sensing from satellites is often used to determine land use.</p>
+			<p>Near-infrared intensities were recorded by the Satellite Landsat Multispectral Scanner from 118 areas that were known to contain forest, and from another 40 areas that were known to be urban. These measurements are shown in the jittered dot plot on the right.</p></td>
+		<td valign="top"><img src="images/remoteSense.png" width="178" height="313" style="margin:8px 5px 0 0;">
+			<!-- The SVG version cannot be used since its dot plot does not display in Safari --></td>
+	</tr>
+</table>
+<p>The sample mean and variance of the values from forested areas are \(\overline{x}_1= 92.93\) and \(s_1^2 = 48.06\), and the corresponding values for the urban areas are \(\overline{x}_2= 82.08\) and \(s_2^2 = 24.79\).</p>
+<p>We will model the data as random samples from \(\NormalDistn(\mu_1, \sigma_1^2)\) and \(\NormalDistn(\mu_2, \sigma_2^2)\) distributions. The mean near-infrared intensities are clearly different in forested and urban areas. Assess whether it is reasonable to assume that the variances are the same for the two types of land use.</p>
+</div>
+
+<div class="solution">
+<p>A 95% confidence interval for the ratio of the population variances is</p>
+\[
+\frac {s_1^2\;/\;s_2^2}{F_{0.975}} \;\;\lt\;\; \frac{\sigma_1^2}{\sigma_2^2} \;\;\lt\;\; \frac {s_1^2\;/\;s_2^2}{F_{0.025}}
+\]
+\[
+\frac {48.06 / 24.79}{1.737} \;\;\lt\;\; \frac{\sigma_1^2}{\sigma_2^2} \;\;\lt\;\; \frac {48.06 / 24.79}{0.616}
+\]
+\[
+1.116 \;\;\lt\;\; \frac{\sigma_1^2}{\sigma_2^2} \;\;\lt\;\; 3.15
+\]
+<p>Since the 95% confidence interval ratio of variances does not include the value 1.0, there is some evidence that the variance of the near infrared intensities is really higher in the forested areas.</p>
+<p>(We will present a more direct test for equal variances in a later chapter.)</p>
+</div>
+
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Analyisis of variance tests</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="factorial design, anova, analysis of variance, f ratio, f test">
+	<meta name="dataset" content="Cholesterol determination">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Analysis of variance table</p>  
+  <p>Each explained sum of squares in the sum of squares table describes the reduction 
+    in residual sum of squares when a term is added to the model. Since small 
+    explained sums of squares result from adding terms that have little effect 
+    the fit of the model, they are used as the basis for testing whether the 
+    term is needed.</p>
+  <p>The sum of squares table is augmented with extra columns:</p>
+  
+  <dl>
+    <dt>Mean sums of squares</dt>
+    <dd>Each sum of squares is divided by its degrees of freedom</dd>
+    <dt>F ratios</dt>
+    <dd>Each mean explained sum of squares is then divided by the mean residual 
+      sum of squares to form an F-ratio.</dd>
+    <dt>p-values</dt>
+    <dd>Finally the significance of each F-ratio is assessed by comparing its 
+      value to an F distribution to give a p-value.</dd>
+  </dl>
+  
+  <p>The resulting table is called an <strong>analysis of variance </strong> (<strong>anova</strong>) table.</p>
+  <div class="centred"><table border="0" class="centred" cellpadding="4" cellspacing="0">
+    <tr>
+      <th align="left" scope="col"><span class="black">Source of <br>
+        variation</span></th>
+      <th scope="col"><span class="black">Sum of <br>
+        sqrs</span></th>
+      <th scope="col"><span class="black">d.f.</span></th>
+      <th scope="col"><span class="black">Mean ssq</span></th>
+      <th scope="col"><span class="black">F-ratio</span></th>
+      <th scope="col"><span class="black">&nbsp;&nbsp;p-value&nbsp;&nbsp;</span></th>
+    </tr>
+    <tr>
+      <td bgcolor="#FFFFFF" style="border-top:1px solid #999999;">X</td>
+      <td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">SS<sub>X</sub></td>
+      <td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">(<em>g</em><sub>X</sub>&nbsp;-&nbsp;1)</td>
+      <td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">MS<sub>X</sub></td>
+      <td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">MS<sub>X</sub> / <span class="blue">MS<sub>Resid</sub></span></td>
+      <td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">(F distn)<sub></sub></td>
+    </tr>
+    <tr>
+      <td bgcolor="#FFFFFF"> Z</td>
+      <td align="center" bgcolor="#FFFFFF">SS<sub>Z</sub></td>
+      <td align="center" bgcolor="#FFFFFF">(<em>g</em><sub>Z</sub>&nbsp;-&nbsp;1)</td>
+      <td align="center" bgcolor="#FFFFFF">MS<sub>Z</sub></td>
+      <td align="center" bgcolor="#FFFFFF">&nbsp;MS<sub>Z</sub> / <span class="blue">MS<sub>Resid&nbsp;</sub></span></td>
+      <td align="center" bgcolor="#FFFFFF">(F distn)</td>
+    </tr>
+
+    <tr>
+      <td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;"><span class="blue">Residual</span></td>
+      <td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;"><span class="blue">&nbsp;SS<sub>Resid&nbsp;</sub></span></td>
+      <td align="center" bgcolor="#FFFFFF" class="bottom blue">&nbsp;(<em>n</em>&nbsp;-&nbsp;<em>g</em><sub>X</sub>&nbsp;-&nbsp;<em>g</em><sub>Z</sub>&nbsp;-&nbsp;1)&nbsp;</td>
+      <td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;"><span class="blue">&nbsp;MS<sub>Resid&nbsp;</sub></span></td>
+      <td align="center">&nbsp;</td>
+      <td align="center">&nbsp;</td>
+    </tr>
+    <tr>
+      <th align="left" class="black">Total</th>
+      <th class="black">SS<sub>Total</sub></th>
+      <th class="black"><em>n</em>&nbsp;-&nbsp;1</th>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
+    </tr>
+  </table></div>
+  <p><em>(Note that we are restricting attention in this section to  experiments with the same number of replicates for each combination of factor levels and hence orthogonal factors. We therefore do not need to distinguish between the two orders of adding the factors X and Z. The rows for the two factors could be swapped and their p-values would be the same.)</em></p>
+  <p class="heading">Interpretation of p-values</p>
+  <p>Each p-value is used to test the null hypothesis that the corresponding model 
+    term is unnecessary. It is interpreted in a similar way to other hypothesis 
+    tests.</p>
+	
+
+<div class="centred"><table border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC" class="centred">
+<tr> 
+<th align="CENTER">p-value</th>
+<th align="CENTER">Interpretation</th>
+</tr>
+<tr bgcolor="white"> 
+<td>over 0.1</td>
+        <td>no evidence that the term is needed</td>
+</tr>
+<tr bgcolor="white"> 
+<td>between 0.05 and 0.1</td>
+        <td>very weak evidence that the term is needed</td>
+</tr>
+<tr bgcolor="white"> 
+<td>between 0.01 and 0.05</td>
+        <td>moderately strong evidence that the term is needed</td>
+</tr>
+<tr bgcolor="white"> 
+<td>under 0.01</td>
+        <td>strong evidence that the term is needed</td>
+</tr>
+</table></div>
+
+  <br>
+  
+  <div class="diagram"> 
+    <p class="heading">Cholesterol determination</p>
+    <p>Three technicians in a laboratory make serum cholesterol determinations 
+			of two blood samples from each of five normal subjects.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoFactorProg.FactorAnovaSeqApplet">
+<param name="yVarName" value="Cholesterol">
+<param name="yValues" value="190 193 187 186 192 190 172 170 164 166 168 169 180 178 176 177 178 181 206 204 200 201 203 205 175 173 172 173 176 177">
+<param name="yAxis" value="160 210 160 20">
+<param name="xVariables" value="Sub Tec">
+<param name="xTypes" value="zFac xFac">
+<param name="factorVariables" value="Tec Sub">
+<param name="SubVarName" value="Subject">
+<param name="SubValues" value="6@0 6@1 6@2 6@3 6@4">
+<param name="SubLabels" value="#Subject 1# #Subject 2# #Subject 3# #Subject 4# #Subject 5#">
+<param name="TecVarName" value="Technician">
+<param name="TecValues" value="2@0 2@1 2@2 2@0 2@1 2@2 2@0 2@1 2@2 2@0 2@1 2@2 2@0 2@1 2@2">
+<param name="TecLabels" value="#Tech 1# #Tech 2# #Tech 3#">
+<param name="maxSsq" value="99.999 99 99.999 999.99">
+<param name="componentNames" value="Technician#Subject">
+<param name="initVariables" value="0">
+</applet> 
+</div>
+
+    <p>Drag the red arrows in the analysis of variance table to add factor terms 
+      for observer and subject.</p>
+    <p>The sum of squares explained by differences between technicians and by 
+      differences between subjects are both very highly significant. We therefore 
+      conclude that:</p>
+	<ul>
+      <li>There are differences between the mean cholesterol levels of the different 
+        subjects (not surprising and of relatively little interest in this study)</li>
+      <li>There is also extremely strong evidence of differences between the mean 
+        cholesterol determinations of the three technicians.</li>
+    </ul>
+
+    <br>
+
+    </div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

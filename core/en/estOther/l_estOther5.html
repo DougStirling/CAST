@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Confidence interval from error distribution</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="confidence interval, simulation">
+	<meta name="dataset" content="Silkworm poisoning">
+</head>
+
+
+<body class="lecture">
+<script type="text/javascript">writePageStart();</script>
+
+
+<p class="heading">Silkworm survival after dose of arsenic</p>
+<div class="centred"><div class="boxed">
+  <p>Upper quartile of survival times from 80 silkworm larvae = 292 sec </p>
+</div></div>
+<p class=heading>Normal approximation</p>
+<p class=eqn><img class="gif" src="images/silkwormModel.gif" width="388" height="128"></p>
+<p class=heading>Simulation</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="stdErrorProg.ErrorBoundsApplet">
+<param name="varName" value="Silkworm survival times (sec)">
+<param name="random" value="80 272.6 30.7 875636431 2.5">
+<param name="dataAxis" value="180 380 200 50">
+<param name="errorName" value="Error in estimate (sec)">
+<param name="errorAxis" value="-15 15 -15 5">
+<param name="percentile" value="0.75">
+<param name="paramName" value="Target (normal UQ)">
+<param name="statisticName" value="Estimate (sample UQ)">
+<param name="decimals" value="2">
+<param name="maxErrorBound" value="-9.9">
+<param name="customText" value="Show 95% bounds for error=Show 95% bounds for error#P( -* < error < * )=P( -* < error < * )">
+</applet>
+</div>
+
+		
+    
+<script type="text/javascript">
+	writeLecturerNotesLink(withDataNotes);
+</script>
+
+<div class="lecturerNote" id="lecturerNote">
+  <p>Click <strong>Accumulate</strong> and take 100 or more samples.</p>
+  <p>When the error distribution contains 100 or more crosses, click <strong>Show 
+    95% bounds for error</strong>. These bounds can be added to the estimate to give a 95% confidence interval.</p>
+  <p>For example, if 95% of estimation errors in the simulation were within about ±8&nbsp;sec 
+	&mdash; the exact value varies with the simulation &mdash; then a 95% CI would be</p>
+  <div class="centred"><div class="boxed">
+    <p><span class="black">292 - 8<em>&nbsp; </em>&nbsp;to<em> &nbsp;&nbsp;</em>292 + 8</span>
+    <p>i.e. between 284 and 300 seconds</p>
+  </div></div>
+
+<br>
+</div>
+<div class="lecturerNote" id="dataNote">
+<p>Silkworms must be killed after spinning their cocoons since the silk is damaged when the moths break free. Heat is often used to kill the caterpillars, but researchers performed experiments to investigate the toxic action of arsenic. As part of their research, the survival time of fourth-instar silkworm larvae weighing between 0.41 and 0.45 grams was examined after they were given 0.10 mg of sodium arsenate per gram of body weight.</p>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

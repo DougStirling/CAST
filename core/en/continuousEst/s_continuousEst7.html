@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Example: Rectangular maximum</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="maximum likelihood, rectangular distribution, bias, standard error">
+	<meta name="dataset" content="German tank problem">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p>Maximum likelihood estimates can <strong>usually</strong> be found as turning points of the likelihood function (or equivalently the log-likelihood function) — i.e. by solving \(\ell'(\theta) = 0\). However  this method does not work in a few examples.</p>
+
+<div class="example">
+	
+	<p class="exampleHeading">Rectangular distribution</p>
+
+<p>The following six values,</p>
+<p class="eqn">0.12   0.32   0.36   0.51   0.63   0.69</p>
+<p>are a random sample from a rectangular distribution,</p>
+\[
+X \;\; \sim \; \; \RectDistn(0, \;\beta)
+\]
+<p>This  distribution has  likelihood is</p>
+\[
+L(\beta) \;\;=\;\; \prod_{i=1}^6 {f(x_i \;|\; \beta)} \;\;=\;\;
+\begin{cases}
+\left(\dfrac 1 {\beta}\right)^6 &amp;\text{for } \beta \ge \max(x_1, \dots, x_6) \\[0.4em]
+0 &amp;\text{otherwise}
+\end{cases}
+\]
+<p>This is illustrated below for a few values of \(\beta\). The red lines give the values of \(f(x \;|\; \beta)\) at the data points; their product gives the likelihood.</p>
+<p class="eqn"><img src="images/s_rectangular.png" width="522" height="640" alt=""/></p>
+<p>When \(\beta\) is less than the maximum data value, 0.690, the pdf at this value is zero, so the likelihood is zero. As \(\beta\) increases above 0.690, the pdfs for all data values decrease, and so does the likelihood. The likelihood function is shown below.</p>
+<p class="eqn"><img src="images/s_rectLikelihood.png" width="511" height="217" alt=""/></p>
+<p>The maximum likelihood estimate is at a discontinuity in the likelihood function <strong>not</strong> at a turning point, so the MLE <strong>cannot</strong>  be found solving \(\ell'(\beta) = 0\).</p>
+<p class="heading">Bias and standard error</p>
+<p>The 2nd derivative of the log-likelihood function is undefined at the MLE and cannot be used to obtain an approximate  standard error. However formulae for its mean and standard deviation can be found from first principles — we will derive them later.</p>
+
+\[
+E\left[\hat{\beta}\right] \;=\; \frac n {n+1} \beta \spaced{and} \se\left(\hat{\beta}\right) \;=\; \sqrt {\frac n {(n+1)^2(n+2)}}\times \beta \]
+<p>The estimator is therefore biased but is consistent since its bias and standard error both tend to zero as \(n \to \infty\).</p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

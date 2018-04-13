@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Variances of the residuals</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="residual">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Variance of the errors</p>
+  <p>A key assumption of the normal linear model is that all errors have the same 
+		variance,</p>
+	<p class=eqn> <img src="images/errorVar.gif" width="93" height="20" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<p>All responses, <em>y<sub>i</sub></em>, therefore also have variance σ<sup>2</sup>.</p>
+	<p class="heading">Variances of the residuals</p>
+	<p>The response can be written as,</p>
+	<p class=eqn> <img src="images/yComponents.gif" width="327" height="55" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<p>Now since the variances of the responses and the fitted values are,</p>
+	<p class=eqn> <img src="images/yAndFitVar.gif" width="114" height="48" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<p>where <em>h<sub>ii</sub></em> is the leverage of the <em>i</em>'th observation, it can 
+		be proved that</p>
+	<p class=eqn> <img src="images/residVar.gif" width="159" height="20" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<p class="gray">(A full proof involves showing that the fitted values 
+		and residuals are uncorrelated.)</p>
+	<p>Therefore although the residuals from the least squares line, <span class="em red">e<sub>i</sub></span> , 
+		can be considered to be estimates of the errors, their variances are all lower 
+		than σ<sup>2</sup>. 
+		Moreover,</p>
+
+<div class="centred"><div class="boxed">
+<p>The higher the leverage, the lower the residual variance.</p>
+</div></div>
+
+<br>
+
+<div class="diagram">
+		<p class="heading">Simulation</p>
+
+		<p>The diagram below demonstrates that all residuals do not have the same 
+			standard deviations. Response values are simulated from the model,</p>
+		<p class=eqn> <img src="images/exampleModel2.gif" width="375" height="21" alt="log(wt) = log(a) + p log(len)"> 
+		</p>
+		<p>at <em>x</em>&nbsp;=&nbsp;1.0, 3.5, 4.0, 4.5 and 5.0. The residuals from 
+			the least squares line are plotted against <em>x</em> on the right of the 
+			diagram.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="linModProg.AllResidualsApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="regnModel" value="3.30 0.75 0.6">
+<param name="xValues" value="1 3.5 4 4.5 5">
+<param name="xAxis" value="0.5 5.5 1 1">
+<param name="yAxis" value="2.0 9.0 3 1">
+<param name="randomSeed" value="345945782">
+<param name="errorAxis" value="-2 2 -2 1">
+<param name="customText" value="Display of residuals=Display of residuals">
+</applet>
+</div>
+
+		<p>Click <strong>Accumulate</strong> and take about 50 samples. Observe that 
+			the residuals have lower spread at <em>x</em>&nbsp;=&nbsp;1.0 than at the 
+			other x-values, because of its higher leverage.</p>
+		<p>Choose <strong>Box plots</strong> and <strong>±&nbsp;2&nbsp;sd</strong> 
+			from the pop-up menu to show the differences between the standard deviations 
+			of the residuals more clearly.</p>
+		<p class="heading">Theoretical distributions of the residuals</p>
+
+		<p>The diagram below shows the above regression model and the theoretical 
+			distributions of the residuals in rotating displays.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="linModProg.ResidDistnApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="regnModel" value="3.30 0.75 1.0">
+<param name="xValues" value="1 3.5 4 4.5 5">
+<param name="xAxis" value="0.5 5.5 1 1">
+<param name="yAxis" value="0.0 11.0 0 2">
+<param name="randomSeed" value="345945782">
+<param name="errorAxis" value="-3 3 -3 1">
+<param name="initialRotation" value="35 50">
+<param name="initialResidRotation" value="5 35">
+<param name="customText" value="Distn of residuals=Distn of residuals">
+</applet>
+</div>
+<br>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+</p>
+</div>
+
+</body>
+</html>

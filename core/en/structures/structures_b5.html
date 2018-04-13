@@ -1,0 +1,235 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Time-ordered data</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="ordered data, time series">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class=heading>Ordering of the 'individuals'</p>
+	<p>Many basic statistical methods assume that the 'individuals' in a data matrix 
+		are unordered &mdash; any rearrangement of the rows would give the same information. 
+		For example, the weights of 20 cows sampled from a herd would form an unordered 
+		data set.</p>
+	<p>However sometimes the rows of the data matrix are ordered, usually by time. 
+		For example, temperature measurements may be recorded at 10-minute intervals 
+		between 9am and 9pm. The resulting temperatures are a continuous numerical 
+		variable whose values are time-ordered &mdash; the ordering of the values holds 
+		useful information that will help us understand the data. These kinds of data 
+		are called <strong>time series</strong>.</p>
+		
+	<p>For a preliminary exploration of ordered data, it is often useful to examine 
+		them as though they were unordered, but a full analysis should take account 
+		of the ordering.</p>
+	<div class="diagram">
+
+	<p class="heading">Examples</p>
+
+	<p>In both of the data sets below, the data were time-ordered. In the grape 
+	testing example, the bunches of grapes were tested in the order shown, whereas 
+	in the weather example, the annual rainfalls were recorded annually between 
+	 July 2001 to June 2013.</p>
+	<div class="centred">
+		<table border="0" cellpadding="8" cellspacing="0" class="centred">
+			<tr>
+				<td><table border="0" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+					<tr>
+						<th colspan="2" align="CENTER">Testing of grapes</th>
+					</tr>
+					<tr>
+						<th align="CENTER">  Variety  </th>
+						<th align="CENTER">Sugar content</th>
+					</tr>
+					<tr bgcolor="#FFFFFF">
+						<td align="CENTER" style="border:1px black solid;">A<br>
+							A<br>
+							C<br>
+							C<br>
+							A<br>
+							B<br>
+							C<br>
+							B<br>
+							C<br>
+							A<br>
+							C<br>
+							A</td>
+						<td align="CENTER" style="border:1px black solid; border-left:0px;">62<br>
+							46<br>
+							51<br>
+							79<br>
+							44<br>
+							60<br>
+							72<br>
+							55<br>
+							78<br>
+							63<br>
+							81<br>
+							53</td>
+					</tr>
+				</table></td>
+				<td><table border="0" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+					<tr>
+						<th colspan="2" align="CENTER">Weather</th>
+					</tr>
+					<tr>
+						<th align="CENTER">  Year type  </th>
+						<th align="CENTER">Rainfall (July to June)</th>
+					</tr>
+					<tr bgcolor="#FFFFFF">
+						<td align="CENTER" style="border:1px black solid;">Ordinary<br>
+							El Nino<br>
+							Ordinary<br>
+							El Nino<br>
+							La Nina<br>
+							El Nino<br>
+							La Nina<br>
+							Ordinary<br>
+							El Nino<br>
+							La Nina<br>
+							La Nina<br>
+							Ordinary</td>
+						<td align="CENTER" style="border:1px black solid; border-left:0px;">62<br>
+							46<br>
+							51<br>
+							79<br>
+							44<br>
+							60<br>
+							72<br>
+							55<br>
+							78<br>
+							63<br>
+							81<br>
+							53</td>
+					</tr>
+				</table></td>
+			</tr>
+		</table>
+	</div>
+	<p>If the grape-testing experiment was conducted in an identical way for each 
+		bunch of grapes, it would be possible to ignore the ordering of the data 
+		and analyse the data as though they were unordered.</p>
+<p>This would also be a reasonable initial analysis of these weather data, 
+but if the data had been collected over a longer period when there may have 
+been a trend in rainfall (e.g. from global warming), it would be more important 
+to take account of the ordering of the values.</p>
+<p>To include the time-ordering of the data in the data matrix, a new variable 
+can be added, as shown below.</p>
+<div class="centred">
+	<table border="0" cellpadding="8" cellspacing="0" class="centred">
+		<tr>
+			<td><table border="0" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+				<tr>
+					<th colspan="3" align="CENTER">Testing of grapes</th>
+				</tr>
+				<tr>
+					<th align="CENTER">Index</th>
+					<th align="CENTER">Variety</th>
+					<th align="CENTER">Sugar content</th>
+				</tr>
+				<tr bgcolor="#FFFFFF">
+					<td align="CENTER" style="border:1px black solid;">1<br>
+						2<br>
+						3<br>
+						4<br>
+						5<br>
+						6<br>
+						7<br>
+						8<br>
+						9<br>
+						10<br>
+						11<br>
+						12 </td>
+					<td align="CENTER" style="border:1px black solid; border-left:0px;">A<br>
+						A<br>
+						C<br>
+						C<br>
+						A<br>
+						B<br>
+						C<br>
+						B<br>
+						C<br>
+						A<br>
+						C<br>
+						A</td>
+					<td align="CENTER" style="border:1px black solid; border-left:0px;">62<br>
+						46<br>
+						51<br>
+						79<br>
+						44<br>
+						60<br>
+						72<br>
+						55<br>
+						78<br>
+						63<br>
+						81<br>
+						53</td>
+				</tr>
+			</table></td>
+			<td><table border="0" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+				<tr>
+					<th colspan="3" align="CENTER">Weather</th>
+				</tr>
+				<tr>
+					<th align="CENTER">Year starting July</th>
+					<th align="CENTER">Year type</th>
+					<th align="CENTER">Rainfall (July to June)</th>
+				</tr>
+				<tr bgcolor="#FFFFFF">
+					<td align="CENTER" style="border:1px black solid;">2001<br>
+						2002<br>
+						2003<br>
+						2004<br>
+						2005<br>
+						2006<br>
+						2007<br>
+						2008<br>
+						2009<br>
+						2010<br>
+						2011<br>
+						2012</td>
+					<td align="CENTER" style="border:1px black solid; border-left:0px;">Ordinary<br>
+						El Nino<br>
+						Ordinary<br>
+						El Nino<br>
+						La Nina<br>
+						El Nino<br>
+						La Nina<br>
+						Ordinary<br>
+						El Nino<br>
+						La Nina<br>
+						La Nina<br>
+						Ordinary</td>
+					<td align="CENTER" style="border:1px black solid; border-left:0px;">62<br>
+						46<br>
+						51<br>
+						79<br>
+						44<br>
+						60<br>
+						72<br>
+						55<br>
+						78<br>
+						63<br>
+						81<br>
+						53</td>
+				</tr>
+			</table></td>
+		</tr>
+	</table>
+</div>
+<p>The 'time' variable contains all information about the ordering of the 
+	data so the data matrix can otherwise be treated as 'unordered'.</p>
+</div>
+		
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

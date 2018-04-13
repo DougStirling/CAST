@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Two-stage sampling</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="two-stage sampling, sampling scheme/two-stage sampling">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Sampling from large populations</p>
+
+<p>Two-stage sampling is a sampling scheme that is related to cluster sampling, 
+but is of most use for large populations when the individuals are very widely 
+separated in some sense. For example, many polls are conducted to obtain <strong>national</strong> 
+information about voting intentions or consumer purchases, and there is a high 
+cost associated with travelling between different regions.</p>
+<p>In two-stage sampling, the population is separated into groups of adjacent 
+individuals called <strong>primary sampling units</strong>. These primary sampling 
+units are typically large &mdash; for example a country might be split into 20 or more 
+regions. A small number of these are selected according to some sampling scheme, 
+then individuals are sub-sampled within each selected primary unit.</p>
+<p>Costs are reduced by limiting sampling to a small number of primary units. 
+For example, if individuals are only sampled from within say 5 regions, travelling 
+and accommodation costs will be considerably reduced.</p>
+<div class="diagram"> 
+<p>The diagram below is a small-scale illustration of two-stage sampling of 16 
+values from a population of 128 individuals.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="sampDesignProg.TwoStageSampleApplet">
+<param name="varName" value="Value">
+<param name="randomNormal" value="8 0.0 8.0 347761213 2.5">
+<param name="mean" value="30.0">
+<param name="clustersPerSample" value="16">
+<param name="clusterCorr" value="0.00">
+<param name="primaryUnits" value="2 4 8 *16">
+<param name="sampleSize" value="16">
+<param name="sampleSeed" value="563493248">
+<param name="decimals" value="3">
+<param name="stageCost" value="20 3 999">
+<param name="units" value="dollars">
+<param name="customText" value="Primary units sampled=Primary units sampled#Cost=Cost#Primary unit=Primary unit#Secondary unit=Secondary unit#Total cost=Total cost">
+</applet>
+</div>
+
+<p>Click <strong>Take sample</strong> to select all 16 primary sampling units 
+and a sample of size 1 from each. This is identical to a stratified random sample.</p>
+<p>Change the control <strong>Primary units sampled</strong> to 2 primary units. 
+Click <strong>Take sample</strong> to randomly select two of the primary units, 
+with all individuals in each unit being sampled. Since complete primary units 
+are sampled, this extreme is identical to cluster sampling.</p>
+<p>Finally, change the control to select either 4 or 8 primary units. Taking a 
+sample now involves a random selection of primary units, followed by a random 
+selection of individuals within each. Typically there are large numbers of individuals 
+and primary units so random sampling is needed for both primary units and individuals 
+within them.</p>
+</div>
+
+<p class="heading">Cost and accuracy (advanced)</p>
+<p>In the example above, there was a considerable cost involved with travel between 
+the primary units, so the total cost is reduced when fewer primary units are sampled. 
+Unfortunately, the accuracy of the resulting estimate is usually lower in this 
+situation.</p>
+<p>The number of primary units to sample is therefore a trade-off between accuracy 
+and cost. The details are beyond the scope of CAST.</p>
+<div class="diagram"> 
+<p>In the diagram below, the vertical bands separate 16 primary units, each of 
+which contains 8 individuals whose values are shown in a jittered dot plot.</p>
+
+<div class="centred"> 
+
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="sampDesignProg.TwoStageMeanApplet">
+<param name="varName" value="Income ($000)">
+<param name="randomNormal" value="8 0.0 8.0 67761213 2.5">
+<param name="mean" value="30.0">
+<param name="clustersPerSample" value="16">
+<param name="clusterCorr" value="0.00">
+<param name="primaryUnits" value="2 4 8 *16">
+<param name="sampleSize" value="16">
+<param name="sampleSeed" value="463483248">
+<param name="decimals" value="3">
+<param name="stageCost" value="20 3 999">
+<param name="units" value="dollars">
+<param name="vertAxis" value="0 55 0 10">
+<param name="horizAxis" value="0 15 0 5">
+<param name="customText" value="Primary units sampled=Primary units sampled#Cost=Cost#Primary unit=Primary unit#Secondary unit=Secondary unit#Total cost=Total cost#Variation within primary units=Variation within primary units#High=High#Low=Low">
+</applet>
+</div>
+
+<p>Initially, all primary units are similar &mdash; their means are nearly the same. 
+Click <strong>Take sample</strong> several times to observe the sampling distribution 
+of the mean (in the pink band to the right of the population dot plots). When 
+the number of primary units sampled is changed, the distribution of the mean remains 
+the same. The most cost-effective sampling scheme is therefore to sample the smallest 
+number of primary units possible.</p>
+<p>Change the slider at the bottom to half-way between <strong>Similar</strong> 
+and <strong>Different</strong>. Now some primary units are fairly consistently 
+higher than others. Observe that reducing the number of primary units sampled 
+now has a much greater effect on the standard deviation (and hence accuracy) of 
+the mean.</p>
+</div>
+
+<p>As with cluster and stratified sampling, formulae for the standard deviation 
+of the resulting estimates are beyond the scope of an introductory course.</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Variance of transformed variable</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="transformation, variance, delta method, estimation">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Distribution of \(Y = g(X)\)</p>
+
+<p>We showed earlier that if a random variable \(X\) has pdf \(f_X(x)\) and \(g(\cdot)\) is a monotonic function, then the transformed variable \(Y = g(X)\) has pdf</p>
+\[
+f_Y(y) \;\;=\;\; f_X(h(y)) \times \left| h'(y) \right| 
+
+\]
+<p>where \(x = h(y)\) is the inverse function to \(g(x)\).</p>
+<p>Unfortunately, it is often difficult to find the mean and variance of \(Y\) from the pdf that is obtained in this way. We now present  approximate formulae for these quantities.</p>
+<p class="heading">Delta method</p>
+<p>We will only present the method informally. (A formal statement of the result and its proof  are too complex for an introductory course.)</p>
+<p>If \(X\) is a random variable with mean \(\mu\) and variance \(\sigma^2\), and its variance is small enough that the continuous function \(g(x)\) is fairly linear within the range of 'likely' values for \(X\), we can write a Taylor series approximation of \(g(X)\) around \(\mu\),</p>
+\[
+Y \;\;=\;\; g(X) \;\;\approx\;\; g(\mu) + (X - \mu) g'(\mu)
+\]
+<p>The approximation on the right is a linear function of \(X\), so we can use the results from the previous section to find its mean and variance,</p>
+\[
+E[Y] \;\approx\; g(\mu) \spaced{and} \Var(Y) \;\approx\; \left(g'(\mu)\right)^2 \sigma^2
+\]
+<p>This is called the <strong>delta method</strong>.</p>
+
+<div class="boxed">
+<p><strong>Note:</strong> The approximation only works if the transformation is close to linear for the values of \(X\) that are likely to be observed.</p>
+</div>
+
+<p>This means that the variance of \(X\) should be small enough to make the transformation \(g(X)\) approximately linear.</p>
+<p class="heading">Application to estimators of parameters</p>
+<p>If \((X = \hat{\theta})\) is a consistent estimator of a parameter, \(\theta\), then \(\Var(\hat{\theta}) \to 0\) as the sample size, \(n\), increases. The delta method can therefore be used to find the approximate variance of any continuous function of the estimator, \(g(\hat{\theta})\), in large samples.</p>
+<p>It  shows that \(g(\hat{\theta})\) is approximately unbiased for \(g(\theta)\) in large samples.</p>
+
+
+<div class="example" title="Example: Quadratic transformation">
+	<p class="exampleHeading">Quadratic transformation</p>
+	<p>The diagram below  initially shows the probability density function of a random variable \(X\) whose mean, \(\mu\), will be estimated using the mean of a random sample of \(n\) values, \(\overline{x}\). We have set \(\mu = 2\) for the purpose of this illustration but it would be an unknown parameter in practice.</p>
+	<div class="centred">
+		<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="400">
+			<script type="text/javascript">writeAppletParams();</script>
+			<param name="appletName" value="estimationProg.DeltaApproxApplet">
+			<param name="backgroundColor" value="FFFBF3">
+			<param name="mean" value="2">
+			<param name="xAxisName" value="Sample mean">
+			<param name="sampleSize" value="1 10 100 1000">
+			<param name="xAxis0" value="0 8 0 1">
+			<param name="transformAxis0" value="0 70 0 10">
+			<param name="xAxis1" value="0.7 3.7 1.0 0.5">
+			<param name="transformAxis1" value="0 16 0 2">
+			<param name="xAxis2" value="1.5 2.5 1.6 0.2">
+			<param name="transformAxis2" value="2 6 2 1">
+			<param name="xAxis3" value="1.8 2.2 1.8 0.1">
+			<param name="transformAxis3" value="3 5 3 0.5">
+			<param name="customText" value="pdf of sample mean=pdf of sample mean">
+		</applet>
+	</div>
+	<p>We now consider the use of \(\overline{X}^2\) as an estimator of \(\mu^2\). If the distribution of \(X\) has variance \(\sigma^2\), then the delta method states that in large samples, </p>
+\[
+E\Big[\overline{X}^2\Big] \approx \mu^2 \spaced{and} \Var\Big(\overline{X}^2\Big) \approx \left(g'(\mu)\right)^2 \frac{\sigma^2}{n} = (2\mu)^2 \frac{\sigma^2}{n}
+\]
+	<p>This approximation relies on the transformation being close to linear around the values of \(\overline{X}^2\) that are most likely to be observed. In the diagram above, the blue curve shows the quadratic transformation \(y = x^2\) and the straight red line has gradient \(g'(x)\).</p>
+	<dl>
+		<dt><em>n</em> = 1</dt>
+		<dd>The quadratic curve is <strong>not</strong> close to the red straight line when a sample of size \(n = 1\) is used, so the delta method would give a very inaccurate estimate of the mean and variance of the estimator.</dd>
+		<dt><em>n</em> = 100</dt>
+		<dd>When the pop-up menu increases the sample size to 10, then 100, the sample mean will be fairly close to \(\mu\) and, within this narrower range, the quadratic curve is closer to linear. The delta method therefore gives a much closer approximation to the mean and variance of the estimator.</dd>
+		<dt><em>n</em> = 1,000</dt>
+		<dd>Finally increase the sample size to \(n = 1,000\). The quadratic transformation is now very close to a linear transformation with slope \(g'(\mu) = 2\mu\), at least within the range of values for \(\overline{x}\) that are likely, so the delta method will provide quite accurate values for the mean and variance of the estimator.</dd>
+	</dl>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

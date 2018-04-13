@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Distribution of sample count</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+
+
+<body bgcolor="#FFCC99">
+
+<h1>Does Australia Post deliver on time?</h1>
+
+<p>Having some knowledge about the behaviour of the sampling distribution enables 
+	us to make decisions concerning the population proportion π 
+	based on sample data.</p>
+<p>Consider the following example. The Herald-Sun newspaper published the following 
+	article on November 25 1992, which reported on doubts raised by the results 
+	of a study carried out by a journalist concerning the proportion of letters 
+	delivered on time.</p>
+	
+
+<div class="centred"><div class="boxed">
+<p>
+			<p><strong>Doubt has been cast over Australia Post&#146;s claim of delivering 
+				96 per cent of standard letters on time.</strong></p>
+			<p><strong>A survey conducted by the Herald-Sun in Melbourne revealed that 
+				less than 90 per cent of letters were delivered according to the schedule.</strong></p>
+			<p><strong>Herald-Sun staff posted 59 letters before the advertised&#133;</strong></p></p>
+</div></div>
+
+	
+<p align="right"><em>Campbell Fuller, Herald-Sun, 25 November 1992.</em></p>
+<p>Is the author justified in disputing Australia Post&#146;s claim that 96% of 
+	letters are delivered on time?</p>
+<h3>A simulation</h3>
+<p>If Australia Post's claim is correct, and every letter posted independently 
+	has probability 0.96 of being delivered on time, we know that the number delivered 
+	on time out of 59 letters will be a random quantity. From the information in 
+	the article, we can deduce that 52 out of the Herald-Sun's 59 letters arrived 
+	on time (a proportion 52/59&nbsp;=&nbsp;0.881).</p>
+<p><strong>How unlikely is it to get only 52 out of 59 letters arriving on time 
+	if Australia Post's claim that the probability of letters arriving on time is 
+	0.96 is correct?</strong></p>
+<p>We will use a simulation to help answer this question.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="inferenceProg.SuccessDistnApplet.class" width="600" height="450">
+<param name="catVarName" value="Delivery of letters">
+<param name="catLabels" value="#On time# Late">
+<param name="probLabel" value="Prob of being on time">
+<param name="nLabel" value="Number of letters =">
+<param name="probLimits" value="0.960">
+<param name="nSampleSize" value="1">
+<param name="sampleInfo0" value="*59/50 60 50 1/52/50.0 59.0 180 53.0/0.50 8.00 150 3.0">
+<param name="decimals" value="4">
+</applet>
+</div>
+
+<p>Click <strong>Take sample</strong> a few times to observe the sample-to-sample 
+	variability of the number of letters arriving on time.</p>
+<p>Now click <strong>Accumulate</strong> and take between 100 and 200 samples. 
+	Observe the distribution of the number of letters arriving on time. The proportion 
+	of runs of the simulation that gave 52 or fewer letters arriving on time is 
+	shown under the dot plot. Observe that this rarely happens.</p>
+<p>We therefore conclude that the article is justified &mdash; only 52 letters being 
+	delivered on time is most unlikely if all letters independently have probability 
+	0.96 of being delivered on time.</p>
+<h3>Fitting a normal distribution to the results</h3>
+<p>Display the simulation results as a histogram (choose <strong>Histrogram</strong> 
+	from the pop-up menu on the bottom left of the diagram).</p>
+<p>We will now fit a normal curve to this distribution. Select <strong>Simulation 
+	and Normal</strong> from the pop-up menu on the right of the diagram. Use the 
+	two sliders to adjust the normal parameters to match the normal distribution 
+	to the histogram.</p>
+<p>The button <strong>Best (Simulation)</strong> sets the normal parameters to 
+	the mean and standard deviation of the distribution of simulated counts.</p>
+<p>We can do better with a little probability theory! The button <strong>Best 
+	(Model)</strong> sets the normal mean and standard deviation to values that 
+	can be determined theoretically from the probability 0.96 of letters being delivered 
+	on time.</p>
+<p>(The probability of getting 52 or fewer letters delivered on time can also 
+	be determined from this normal distribution &mdash; it is given below the sliders 
+	for the parameters. However since the distribution is actually binomial and 
+	the normal distribution is only an approximation, the probability is not particularly 
+	accurate in the tails of the distribution.)</p>
+<h1>Extending the simulation</h1>
+<p>The diagram below gives a little more flexibility to the simulation.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="inferenceProg.SuccessDistnApplet.class" width="600" height="450">
+<param name="catVarName" value="Delivery of letters">
+<param name="catLabels" value="#On time# Late">
+<param name="probLabel" value="Prob of being on time">
+<param name="nLabel" value="Number of letters =">
+<param name="probLimits" value="0.850 0.980 0.960">
+<param name="nSampleSize" value="2">
+<param name="sampleInfo0" value="*59/35 60 35 5/52/40.0 59.0 380 50.0/0.50 15.00 290 5.0">
+<param name="sampleInfo1" value="200/140 200 140 10/188/150.0 200.0 500 180.0/2.0 42.0 400 8.0">
+<param name="decimals" value="4">
+</applet>
+</div>
+<p>Use the slider at the top left to reduce the probability of each letter arriving 
+	on time to 0.92, then repeat the simulation. Is the paper's findings (52 out 
+	of 59 arriving on time) consistent with this probability?</p>
+<p>We will now change to a different hypothetical scenario &mdash; 188 out of 200 letters 
+	being found to arrive on time in a different city. Is this consistent with a 
+	probability 0.96 of letters arriving on time?</p>
+<p>Use the pop-up menu to change the number of letters to 200 and reset the probability 
+	to 0.96. Now repeat the simulation. Are these results consistent with a probability 
+	0.96 of letters arriving on time?</p>
+</body>
+</html>

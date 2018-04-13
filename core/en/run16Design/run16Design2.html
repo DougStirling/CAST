@@ -1,0 +1,322 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Five factors</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="fractional factorial design, confounding, resolution">
+	<meta name="dataset" content="Solder paste experiment">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Adding a fifth factor</p>  
+  <p>Other orthogonal factors can be added to the complete 2<sup>4</sup> factorial 
+    design by setting their levels according to the ±1 values corresponding 
+    to interactions between the four original variables.</p>
+  <p>The best way to allocate levels of a fifth factor, E, is to confound it with 
+    the 4-factor interaction between A, B, C and D,</p>
+  <p class="eqn">E &nbsp; = &nbsp; ABCD</p>
+  <p class="heading">Confounding</p>
+  <p>The other confounded terms can be found by multiplying the ±1 columns 
+    corresponding to the main effects and interactions and noting that any column 
+    squared is +1,</p>
+  <p class="eqn">A<sup>2</sup>&nbsp;=&nbsp;B<sup>2</sup>&nbsp;=&nbsp;C<sup>2</sup>&nbsp;=&nbsp;D<sup>2</sup>&nbsp;=&nbsp;E<sup>2</sup>&nbsp;=&nbsp;1</p>
+  <p>From this, it can be shown that</p>
+  <p class="eqn">A&nbsp; = &nbsp; BCDE</p>
+  <p class="eqn">B&nbsp; = &nbsp; ACDE</p>
+  <p class="eqn">C&nbsp; = &nbsp; ABDE</p>
+  <p class="eqn">D&nbsp; = &nbsp; ABCE</p>
+  <p class="eqn">E&nbsp; = &nbsp; ABCD</p>
+  <p>The main effects are therefore only confounded with 4-factor interactions. 
+    Also,</p>
+  <p class="eqn">AB&nbsp; = &nbsp; CDE</p>
+  <p class="eqn">AC&nbsp; = &nbsp; BDE</p>
+  <p class="eqn">etc</p>
+  <p>Therefore the ten 2-factor interactions are not confounded with each other 
+    and can all be independently estimated.</p>
+  
+<div class="centred"><div class="boxed">
+<p>Since all main effects and 2-factor interactions can be independently 
+        estimated, this design is said to have <strong>resolution 
+        V.</strong></p>
+</div></div>
+
+  <p>This is called a <strong>2<sup>5-1</sup> fractional factorial design</strong>.</p>
+  <p class="heading">Testing</p>
+  <p>Since there are five main effects and ten 2-factor interactions, there are 
+    no degrees of freedom left from the total of 15 degrees of freedom for a residual 
+    sum of squares. It is therefore impossible to test the significance of the 
+    effects unless either:</p>
+  <ul>
+    <li>Some 2-factor interactions are assumed to be negligible, or</li>
+    <li>Some centre points are added to the design.</li>
+  </ul>
+  <p>Note that a decision to assume some 2-factor interactions to be zero (or 
+		at least neglibile) must be made <strong>before</strong> the data are analysed. 
+		Combining the smallest interactions to form a residual sum of squares will 
+		underestimate the experimental variability and result in effects that seem 
+		more significant than they really are. </p>
+  <div class="diagram"> 
+    <p class="heading">Confounding in 2<sup>5-1</sup> design</p>
+    <p>The diagram below allows the fifth factor, E, to be confounded with different 
+      effects in a complete 2<sup>4</sup> factorial design and shows the resulting 
+      confounding of effects.</p>
+    <div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="750" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="factorialProg.AddFractionalApplet">
+<param name="allTerms" value="A B C D E">
+<param name="nComplete" value="4">
+</applet> 
+</div>
+    <p><strong>Click</strong> the red heading at the top of the table to set the 
+      term that is used to define the levels of E. Observe that when E is confounded 
+      with a 3-factor interaction such as ABC, some 2-factor interactions are 
+      confounded with each other, so the design is only resolution IV. However 
+      when E is confounded with the ABCD interaction, all main effects and 2-factor 
+      interactions are orthogonal.</p>
+	  
+    <p class="heading">Solder paste experiment</p>
+    <p>A stencil printing process is used to deposit solder on printed circuit 
+			boards (PCBs) for electronic components. Variability in this printing process 
+			can result in defective PCBs, so a study was conducted to investigate how 
+			various process variables affect the soldering quality.</p>
+		<p>Five factors were identified that seemed to have the major impact on the 
+			solder quality, and an experiment was conducted to investigate how they 
+			affected a response variable <em>Area</em> that summarised the difference 
+			between the length and height of stencil features and the corresponding 
+			features in a single PCB. The factors and their levels were:</p>
+		<div class="centred"><table border="0" class="centred" cellpadding="4" cellspacing="0">
+      <tr>
+			<th style="border-bottom:1px solid #999999;">Factor</th>
+			<th style="border-bottom:1px solid #999999;">Abbreviation</th>
+			<th style="border-bottom:1px solid #999999;">Level -1</th>
+			<th style="border-bottom:1px solid #999999;">Level +1</th></tr>
+	  <tr bgcolor="#FFFFFF"> 
+        <th>Thaw</th>
+        <th>T</th>
+        <th>24 hr</th>
+        <th>48 hr</th>
+      </tr>
+	  <tr bgcolor="#FFFFFF"> 
+        <th>Print speed</th>
+        <th>S</th>
+        <th>0.5 in / sec</th>
+        <th>1.0 in / sec</th>
+      </tr>
+	  <tr bgcolor="#FFFFFF"> 
+        <th>Print direction</th>
+        <th>D</th>
+        <th>front</th>
+        <th>back</th>
+      </tr>
+	  <tr bgcolor="#FFFFFF"> 
+        <th>Print pressure</th>
+        <th>P</th>
+        <th>contact + 30</th>
+        <th>contact + 120</th>
+      </tr>
+	  <tr bgcolor="#FFFFFF"> 
+        <th style="border-bottom:1px solid #999999;">Snap-off</th>
+        <th style="border-bottom:1px solid #999999;">O</th>
+        <th style="border-bottom:1px solid #999999;">0.010&quot;</th>
+        <th style="border-bottom:1px solid #999999;">on contact</th>
+      </tr>
+	 </table></div>
+	 
+    <p>A 2<sup>5-1</sup> fractional factorial design was conducted, defined by 
+      the confounding relationship,</p>
+    <p class="eqn">O&nbsp; = &nbsp; TSDP</p>
+    <p>The response from the 16 runs of the experiment, <em>Area</em>, is shown 
+			in the table below.</p>
+    <div class="centred"><table border="0" class="centred" cellpadding="3" cellspacing="0">
+			<tr> 
+				<th>&nbsp;</th>
+				<th colspan="5">&nbsp;&nbsp;Factor&nbsp;&nbsp;</th>
+				<th>&nbsp;<span class="darkblue">Response</span>&nbsp;</th>
+			</tr>
+			<tr> 
+				<th>Run</th>
+				<th style="border-bottom:1px solid #999999;">&nbsp;&nbsp;T&nbsp;&nbsp;</th>
+				<th style="border-bottom:1px solid #999999;">&nbsp;&nbsp;S&nbsp;&nbsp;</th>
+				<th style="border-bottom:1px solid #999999;">&nbsp;&nbsp;D&nbsp;</th>
+				<th style="border-bottom:1px solid #999999;">&nbsp;&nbsp;P&nbsp;&nbsp;</th>
+				<th style="border-bottom:1px solid #999999;">&nbsp;&nbsp;O&nbsp;&nbsp;</th>
+				<th style="border-bottom:1px solid #999999;"><span class="darkblue">&nbsp;&nbsp;Area&nbsp;&nbsp;</span></th>
+			</tr>
+			<tr align="center"> 
+				<th>1</th>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">3.897</td>
+			</tr>
+			<tr align="center"> 
+				<th>2</th>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">1.260</td>
+			</tr>
+			<tr align="center"> 
+				<th>3</th>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">2.462</td>
+			</tr>
+			<tr align="center"> 
+				<th>4</th>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">0.720</td>
+			</tr>
+			<tr align="center"> 
+				<th>5</th>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">2.542</td>
+			</tr>
+			<tr align="center"> 
+				<th>6</th>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">1.562</td>
+			</tr>
+			<tr align="center"> 
+				<th>7</th>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">2.711</td>
+			</tr>
+			<tr align="center"> 
+				<th>8</th>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">2.343</td>
+			</tr>
+			<tr align="center"> 
+				<th>9</th>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">4.272</td>
+			</tr>
+			<tr align="center"> 
+				<th>10</th>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">0.085</td>
+			</tr>
+			<tr align="center"> 
+				<th>11</th>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">2.093</td>
+			</tr>
+			<tr align="center"> 
+				<th>12</th>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">1.236</td>
+			</tr>
+			<tr align="center"> 
+				<th>13</th>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">4.286</td>
+			</tr>
+			<tr align="center"> 
+				<th>14</th>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">1.922</td>
+			</tr>
+			<tr align="center"> 
+				<th>15</th>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">2.697</td>
+			</tr>
+			<tr align="center"> 
+				<th>16</th>
+				<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">+1</td>
+				<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">+1</td>
+				<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">+1</td>
+				<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">+1</td>
+				<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">+1</td>
+				<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">0.320</td>
+			</tr>
+		</table></div>
+    <p>In this design, all main effects and 2-factor interactions can be independently 
+			estimated. The absolute values of all effects are shown in the diagram below, 
+			with the terms ordered by size (a Pareto chart).</p>
+    <p class="eqn"><img src="images/solderPareto.gif" width="534" height="352"></p>
+    <p>The main effect for <em>Print pressure, P</em>, clearly dominates this 
+			diagram &mdash; the effect of changing the print pressure is far greater than 
+			the effects of changing the other factors.</p>
+		<p>The Pareto chart provides a good comparison of the main effects. However 
+			if some interactions are thought to be important, diagrams showing the response 
+			means help to describe the effects. For example, the interaction between 
+			<em>Print pressure, P</em>, and <em>Snap-off, O</em>, is the highest interaction 
+			effect, so the diagram below describes the effects of both <em>Print pressure</em> 
+			and <em>Snap-off</em>.</p>
+		<p class="eqn"><img src="images/solderInteraction.gif" width="333" height="277"></p>
+		<p>Even if 3-factor and higher-order interactions are assumed to be negligible, 
+      there are no residual degrees of freedom for this experiment so the significance 
+      of main effects and 2-factor interactions cannot be tested.</p>
+    </div>
+	
+	
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

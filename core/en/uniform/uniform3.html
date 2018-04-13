@@ -1,0 +1,250 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Sample mean</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+	
+	<meta name="index" content="uniform distribution, mean of random sample, central limit theorem">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Mean of random sample from a uniform distribution</p>
+<p>The general results about the distribution of means of random samples can be applied to the uniform distribution. If \(\overline{X}\) is the mean of a random sample of \(n\) values from a \(\UniformDistn(a, b)\) distribution,</p>
+
+\[\begin{aligned}
+E[\overline{X}] &amp; \;=\; E[X] \;=\; \frac{a+b} 2 \\[0.3em]
+\Var(\overline{X}) &amp; \;=\; \frac {\Var(X)} n \;=\; \frac{ (b - a + 1)^2 - 1} {12n}
+\end{aligned} \]
+
+<div class="example" title="Example: Rolling a six-sided die twice">
+	<p class="exampleHeading">Example: Rolling a six-sided die twice</p>
+	<p>When a standard six-sided die is rolled, the number has a \(\UniformDistn(1, 6)\) distribution with mean and variance</p>
+
+\[\begin{aligned}
+E[X] &amp; = \frac{1+6} 2 = 3.5 \\
+\Var(X) &amp; = \frac{ (6 - 1 + 1)^2 - 1} {12} = \frac {35} {12} = 2.917
+\end{aligned} \]
+
+	<p>When the die is rolled twice independently, we have a random sample of size <em>n</em> = 2 from this distribution. The table below shows all 36 possible combinations of values for the two dice, and the resulting total of the two values.</p>
+	
+	<div class="centred">
+	<table border="0" cellpadding="5" cellspacing="0" class="centred">
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<th colspan="6" align="center">Value for first roll</th>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td align="center">1</td>
+			<td align="center">2</td>
+			<td align="center">3</td>
+			<td align="center">4</td>
+			<td align="center">5</td>
+			<td align="center">6</td>
+		</tr>
+		<tr>
+			<th rowspan="6">Value<br>for<br>				second<br>
+			roll</th>
+			<td>1</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000; border-left:1px solid #999999; border-top:1px solid #999999;">2</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000; border-top:1px solid #999999;">3</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000; border-top:1px solid #999999;">4</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000; border-top:1px solid #999999;">5</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000; border-top:1px solid #999999;">6</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000; border-right:1px solid #999999; border-top:1px solid #999999;">7</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000; border-left:1px solid #999999;">3</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000;">4</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000;">5</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000;">6</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000;">7</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000; border-right:1px solid #999999;">8</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000; border-left:1px solid #999999;">4</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000;">5</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000;">6</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000;">7</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000;">8</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000; border-right:1px solid #999999;">9</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000; border-left:1px solid #999999;">5</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000;">6</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000;">7</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000;">8</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000;">9</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000; border-right:1px solid #999999;">10</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000; border-left:1px solid #999999;">6</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000;">7</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000;">8</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000;">9</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000;">10</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000; border-right:1px solid #999999;">11</td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000; border-bottom:1px solid #999999; border-left:1px solid #999999;">7</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000; border-bottom:1px solid #999999;">8</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000; border-bottom:1px solid #999999;">9</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000; border-bottom:1px solid #999999;">10</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000; border-bottom:1px solid #999999;">11</td>
+			<td style="background-color:#FFFFFF; width:30px; text-align:center; padding:7px 3px; font-size:large; color:#FF0000; border-bottom:1px solid #999999; border-right:1px solid #999999;">12</td>
+		</tr>
+	</table>
+	</div>
+	
+	<p>Since these 36 outcomes are equally likely, they all have probability \(\frac 1 {36}\).</p>
+	<p>Since the outcomes are mutually exclusive, we can add up their probabilities to get the following distribution for the total of the two rolls:</p>
+	
+	<div class="centred">
+	<table border="0" cellpadding="5" cellspacing="0" class="centred">
+		<tr>
+			<td>&nbsp;</td>
+			<th colspan="12" align="center">Total of two rolls</th>
+		</tr>
+		<tr>
+			<th align="center"><em>x</em></th>
+			<th align="center">1</th>
+			<th align="center">2</th>
+			<th align="center">3</th>
+			<th align="center">4</th>
+			<th align="center">5</th>
+			<th align="center">6</th>
+			<th align="center">7</th>
+			<th align="center">8</th>
+			<th align="center">9</th>
+			<th align="center">10</th>
+			<th align="center">11</th>
+			<th align="center">12</th>
+		</tr>
+		<tr>
+			<th align="center">\(p(x)\)</th>
+			<td style="background-color:#FFFFFF; width:25px; text-align:center; padding:7px 3px 2px 3px; border:1px solid #999999; border-right:0px;">0</td>
+			<td style="background-color:#FFFFFF; width:25px; text-align:center; padding:7px 3px 2px 3px; border-top:1px solid #999999; border-bottom:1px solid #999999;">\(\frac 1 {36} \)</td>
+			<td style="background-color:#FFFFFF; width:25px; text-align:center; padding:7px 3px 2px 3px; border-top:1px solid #999999; border-bottom:1px solid #999999;">\(\frac 2 {36} \)</td>
+			<td style="background-color:#FFFFFF; width:25px; text-align:center; padding:7px 3px 2px 3px; border-top:1px solid #999999; border-bottom:1px solid #999999;">\(\frac 3 {36} \)</td>
+			<td style="background-color:#FFFFFF; width:25px; text-align:center; padding:7px 3px 2px 3px; border-top:1px solid #999999; border-bottom:1px solid #999999;">\(\frac 4 {36} \)</td>
+			<td style="background-color:#FFFFFF; width:25px; text-align:center; padding:7px 3px 2px 3px; border-top:1px solid #999999; border-bottom:1px solid #999999;">\(\frac 5 {36} \)</td>
+			<td style="background-color:#FFFFFF; width:25px; text-align:center; padding:7px 3px 2px 3px; border-top:1px solid #999999; border-bottom:1px solid #999999;">\(\frac 6 {36} \)</td>
+			<td style="background-color:#FFFFFF; width:25px; text-align:center; padding:7px 3px 2px 3px; border-top:1px solid #999999; border-bottom:1px solid #999999;">\(\frac 5 {36} \)</td>
+			<td style="background-color:#FFFFFF; width:25px; text-align:center; padding:7px 3px 2px 3px; border-top:1px solid #999999; border-bottom:1px solid #999999;">\(\frac 4 {36} \)</td>
+			<td style="background-color:#FFFFFF; width:25px; text-align:center; padding:7px 3px 2px 3px; border-top:1px solid #999999; border-bottom:1px solid #999999;">\(\frac 3 {36} \)</td>
+			<td style="background-color:#FFFFFF; width:25px; text-align:center; padding:7px 3px 2px 3px; border-top:1px solid #999999; border-bottom:1px solid #999999;">\(\frac 2 {36} \)</td>
+			<td style="background-color:#FFFFFF; width:25px; text-align:center; padding:7px 3px 2px 3px; border:1px solid #999999; border-left:0px;">\(\frac 1 {36} \)</td>
+		</tr>
+	</table>
+	</div>
+	
+	<p>The distribution of the <strong>mean</strong> of this sample of  <em>n</em> = 2 values has the same probabilities,</p>
+	
+	<div class="centred">
+	<table border="0" cellpadding="5" cellspacing="0" class="centred">
+		<tr>
+			<td>&nbsp;</td>
+			<th colspan="12" align="center">Mean of two rolls</th>
+		</tr>
+		<tr>
+			<th align="center"><em>x</em></th>
+			<th align="center">0.5</th>
+			<th align="center">1</th>
+			<th align="center">1.5</th>
+			<th align="center">2</th>
+			<th align="center">2.5</th>
+			<th align="center">3</th>
+			<th align="center">3.5</th>
+			<th align="center">4</th>
+			<th align="center">4.5</th>
+			<th align="center">5</th>
+			<th align="center">5.5</th>
+			<th align="center">6</th>
+		</tr>
+		<tr>
+			<th align="center">\(p(x)\)</th>
+			<td style="background-color:#FFFFFF; width:25px; text-align:center; padding:7px 3px 2px 3px; border:1px solid #999999; border-right:0px;">0</td>
+			<td style="background-color:#FFFFFF; width:25px; text-align:center; padding:7px 3px 2px 3px; border-top:1px solid #999999; border-bottom:1px solid #999999;">\(\frac 1 {36} \)</td>
+			<td style="background-color:#FFFFFF; width:25px; text-align:center; padding:7px 3px 2px 3px; border-top:1px solid #999999; border-bottom:1px solid #999999;">\(\frac 2 {36} \)</td>
+			<td style="background-color:#FFFFFF; width:25px; text-align:center; padding:7px 3px 2px 3px; border-top:1px solid #999999; border-bottom:1px solid #999999;">\(\frac 3 {36} \)</td>
+			<td style="background-color:#FFFFFF; width:25px; text-align:center; padding:7px 3px 2px 3px; border-top:1px solid #999999; border-bottom:1px solid #999999;">\(\frac 4 {36} \)</td>
+			<td style="background-color:#FFFFFF; width:25px; text-align:center; padding:7px 3px 2px 3px; border-top:1px solid #999999; border-bottom:1px solid #999999;">\(\frac 5 {36} \)</td>
+			<td style="background-color:#FFFFFF; width:25px; text-align:center; padding:7px 3px 2px 3px; border-top:1px solid #999999; border-bottom:1px solid #999999;">\(\frac 6 {36} \)</td>
+			<td style="background-color:#FFFFFF; width:25px; text-align:center; padding:7px 3px 2px 3px; border-top:1px solid #999999; border-bottom:1px solid #999999;">\(\frac 5 {36} \)</td>
+			<td style="background-color:#FFFFFF; width:25px; text-align:center; padding:7px 3px 2px 3px; border-top:1px solid #999999; border-bottom:1px solid #999999;">\(\frac 4 {36} \)</td>
+			<td style="background-color:#FFFFFF; width:25px; text-align:center; padding:7px 3px 2px 3px; border-top:1px solid #999999; border-bottom:1px solid #999999;">\(\frac 3 {36} \)</td>
+			<td style="background-color:#FFFFFF; width:25px; text-align:center; padding:7px 3px 2px 3px; border-top:1px solid #999999; border-bottom:1px solid #999999;">\(\frac 2 {36} \)</td>
+			<td style="background-color:#FFFFFF; width:25px; text-align:center; padding:7px 3px 2px 3px; border:1px solid #999999; border-left:0px;">\(\frac 1 {36} \)</td>
+		</tr>
+	</table>
+	</div>
+	
+	<p>Its bar chart is shown below.</p>
+	<p class="eqn"><img class="svgImage" src="images/mean2Barchart.png" width="319" height="243"></p>
+	<p>From the table of probabilities, we can evaluate the mean and variance of this distribution,</p>
+
+\[
+E[\overline{X}] = \sum_{\text{all } x} {x \times p(x)} = 3.5 \\
+E[\overline{X}^2] = \sum_{\text{all } x} {x^2 \times p(x)} = 13.708333 \\
+\Var(\overline{X}) = E[\overline{X}^2] - \left(E[\overline{X}]\right)^2 = 1.45833
+\]
+
+	<p>This agrees with the general formulae for the mean and variance of sample means:</p>
+
+\[
+E[\overline{X}] = E[X] = 3.5 \\
+\Var(\overline{X}) = \frac {\Var(X)} 2 = 1.45833
+\]
+<p class="exampleHeading">Rolling a six-sided die three or more times</p>
+<p>When a standard six-sided die is independently rolled \(n\) times, the mean of the values has a distribution whose mean and variance are</p>
+\[
+E[\overline{X}] = E[X] = 3.5 \\[0.4em]
+\Var(\overline{X}) = \frac {\Var(X)} n = \frac {2.917} n
+\]
+<p>Although the probabilities are harder to calculate when \(n \gt 2\), the following diagram shows the distribution.</p>
+
+	<div class="centred">
+		<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="400">
+			<script type="text/javascript">writeAppletParams();</script>
+			<param name="appletName" value="randomStatProg.UniformMeanApplet">
+			<param name="backgroundColor" value="FFFBF3">
+			<param name="baseOutcomes" value="6">
+			<param name="maxSampleSize" value="20">
+			<param name="meanAxis" value="0.5 6.5 1 1">
+			<param name="customText" value="Number of dice=Number of dice">
+		</applet>
+	</div>
+
+<p>Drag the slider to increase the sample size or, equivalently, to increase the number of dice that are rolled.</p>
+<p>Observe that:</p>
+<ul>
+	<li> the distribution remains centred on 3.5 whatever the sample size, </li>
+	<li>the standard deviation of the sample mean \(\overline{X}\) decreases as the sample size increases, and</li>
+	<li>the <strong>shape</strong> of the distribution approaches a smooth symmetric curve — a normal distribution.</li>
+</ul>
+<p>The limiting normal distribution should be expected from the <a href="javascript:showNamedPage('continuousDistns7')">Central Limit Theorem</a>. It states that the distributions of the sum and mean of a random sample from <strong>any</strong> distribution are approximately normal if the sample size is large enough.</p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Order of variables in ssq table</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="general linear model, sequential sums of squares">
+	<meta name="dataset" content="Plasma etching">
+	<meta name="dataset" content="Oxygen uptake when running">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Effect of order on sequential sums of squares</p>  
+  <p>We mentioned earlier a problem with marginal sums of squares &mdash; they give 
+		no information about whether two or more explanatory variables can be removed 
+		from the full model. </p>
+	<p class="eqn"><img src="images/type3Ssq.gif" width="360" height="141"></p>
+	<p>Sequential sums of squares have a similar limitation &mdash; they only give information 
+		about models with variables added in a single order,</p>
+	<p class="eqn"><img src="images/type1Ssq.gif" width="518" height="34"></p>
+	<p>If the variables are added in a different order, the sequential sums of squares 
+		can change considerably. This means that there are several different possible 
+		sums of squares tables.</p>
+	
+<div class="centred"><div class="boxed">
+<p>Sequential sums of squares are therefore of most 
+				use when there is a good reason for adding variables in a particular order.</p>
+</div></div>
+
+	<p>We will see some examples of this later.</p>
+	<p class="heading">Uncorrelated explanatory variables</p>
+	<p>The exception is when the explanatory variables are uncorrelated. This usually 
+		arises from a designed experiment.</p>
+	<p>With uncorrelated explanatory variables, the sequential sum of squares for 
+		a variable <em>Z</em> is the same whatever other explanatory variables and 
+		is also equal to its marginal sum of squares. As a result, there is only a 
+		single sum of squares table.</p>
+
+  <div class="diagram"> 
+		<p class="heading">Oxygen uptake when running</p>  
+		<p>The sum of squares table below shows sequential sums of squares when explanatory 
+			variables are added to the model in the order <em>Weight</em>, <em>Running 
+			time</em>, <em>Resting heart rate</em>, and <em>Running heart rate</em>.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="200">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="glmAnovaProg.AnovaTableReorderApplet">
+<param name="yVarName" value="O2 uptake">
+<param name="yValues" value="44.609 45.313 54.297 59.571 44.811 45.681 49.091 39.442 50.541 37.388 44.754 47.273 49.156 46.774 50.388 48.673 47.920">
+<param name="xVariables" value="X Z U V">
+<param name="XVarName" value="Weight, X">
+<param name="XValues" value="89.47 75.07 85.84 68.15 77.45 75.98 81.19 81.42 73.03 87.66 66.45 79.15 81.42 91.63 73.37 76.32 61.24">
+<param name="ZVarName" value="Resting HR, Z">
+<param name="ZValues" value="62 62 45 40 58 70 64 63 45 56 51 47 44 48 67 56 52">
+<param name="UVarName" value="Run time, U">
+<param name="UValues" value="11.37 10.07 8.65 8.17 11.63 11.95 10.85 13.08 10.13 14.03 11.12 10.60 8.95 10.25 10.08 9.40 11.50">
+<param name="VVarName" value="Running HR, V">
+<param name="VValues" value="178 185 156 166 176 176 162 174 168 186 176 162 180 162 168 186 170">
+<param name="maxSsq" value="999.99 99">
+<param name="maxBarSsq" value="340.0">
+</applet> 
+</div>
+
+		<p>The dark bars on the right illustrate the sizes of the sequential sums of squares. 
+			Each thin lighter  bar with lighter colour also shows the variable's the marginal sum 
+			of squares.</p>
+		<p>Drag the red arrows to reorder the variables. Observe that:</p>
+	
+	  <ul>
+			<li>The marginal and sequential sums of squares are always equal for the 
+				last variable added to the model.</li>
+			<li>The sequential sum of squares for <em>Resting HR</em> is high when it 
+				is the first variable added to the model, but is close to zero if it is 
+				the last variable added.</li>
+			<li>If <em>Running HR</em> is added to the model first, the sequential sums 
+				of squares for the other variables are much smaller than if <em>Running 
+				HR</em> is added last. </li>
+		</ul>
+
+		<p>The correlations between the explanatory variables make it relatively difficult 
+			to analyse the data.</p>
+		<p class="heading">Plasma etching</p>  
+		<p>This data set arose from an experiment in which each of the four explanatory 
+			variables was given one of two possible values and one run of the experiment 
+			was conducted for each possible combination. Because of this experimental 
+			design, the explanatory variables are uncorrelated.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="200">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="glmAnovaProg.AnovaTableReorderApplet">
+<param name="yVarName" value="Etch rate">
+<param name="yValues" value="550 669 604 650 633 642 601 635 1037 749 1052 868 1075 860 1063 729">
+<param name="xVariables" value="X Z U V">
+<param name="XVarName" value="A-c gap, X">
+<param name="XValues" value="0.8 1.2 0.8 1.2 0.8 1.2 0.8 1.2 0.8 1.2 0.8 1.2 0.8 1.2 0.8 1.2">
+<param name="ZVarName" value="Pressure, Z">
+<param name="ZValues" value="2@4.5 2@550 2@4.5 2@550 2@4.5 2@550 2@4.5 2@550">
+<param name="UVarName" value="Gas flow, U">
+<param name="UValues" value="4@125 4@200 4@125 4@200">
+<param name="VVarName" value="Power, V">
+<param name="VValues" value="8@275 8@325">
+<param name="maxSsq" value="999999 99">
+<param name="maxBarSsq" value="400000">
+</applet> 
+</div>
+
+		<p>Drag to reorder the explanatory variables and observe that the sums of squares 
+			are not affected by the order.</p>
+		
+<div class="centred"><div class="boxed">
+<p>A single sum of squares table fully shows the 
+					effects of adding variables in any order.</p>
+</div></div>
+
+	  <p>With uncorrelated explanatory variables, there is no need to use the notation 
+			&quot;after&nbsp;xxx&quot; when labelling the sums of squares.</p>
+
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

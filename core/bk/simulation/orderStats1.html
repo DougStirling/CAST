@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Minimum of a Random Sample</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Order statistics</p>
+
+<p>We are often interested in the minimum or maximum of a random sample. For example, the
+winner is often the person who throws a javelin furthest, runs a race in the smallest time
+or takes the smallest number of shots to complete a round of golf.
+</p>
+
+<p>The minimum and maximum are <strong>order statistics</strong>. If
+a random sample of
+	<em>n</em> values is sorted into ascending order, the
+	<em>i</em>'th
+value is called the
+<em>i</em>'th
+<strong>order statistic</strong> and is denoted by <em>x</em><sub>(i)</sub>.
+(The brackets round the subscript show that this is the
+<em>i</em>'th
+order statistic, whereas
+<em>x</em><sub>i</sub>
+denotes the
+<em>i</em>'th
+value in the order that the data were originally recorded.) The sample minimum is therefore
+<em>x</em><sub>(1)</sub>
+and the maximum is
+<em>x</em><sub>(n)</sub>.</p>
+
+<div class="diagram">
+
+<p class="heading">Properties of order statistics</p>
+
+<p>The diagram below shows a random sample of 5 values from a normal distribution with
+mean 10.0 and standard deviation 5.0. Click <strong>Take sample</strong> a few times
+and observe that the minimum tends to be in the lower half of the normal distribution.
+(The bigger the sample size, the greater the tendency for the minimum to be in the
+lower tail of the distribution.)
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="simulationProg.StripedDistnApplet">
+<param name="sampleName" value="Sample from normal distribution">
+<param name="horizAxis" value="6.9 13.1 7 1">
+<param name="decimals" value="2">
+<param name="normalInfo" value="5 10.0 1.0 8735781 3.0">
+<param name="coverageAxis" value="0.0 0.7 0.0 0.1">
+<param name="coverageNames" value="#below 1# #1 to 2# #2 to 3# #3 to 4# #4 to 5# #above 5#">
+<param name="coverageAxisName" value="Areas between order statistics">
+</applet>
+</div>
+
+<p>The areas under the normal curve between the adjacent order statistics are shaded
+in the diagram and these areas are also shown as crosses in the lower half of the diagram.
+Note that a random sample of
+	<em>n</em>&nbsp;=&nbsp;5 values splits the histogram into
+(<em>n</em>+1)&nbsp;=&nbsp;6 areas.</p>
+
+<p>Click <strong>Accumulate</strong> then take about 100 samples. The diagram accumulates
+the distribution of the areas between the adjacent order statistics. <strong>Observe that the
+(<em>n</em>+1)&nbsp;areas
+all have the same distribution.</strong></p>
+
+<p>This result holds for random samples from any distribution &mdash; the areas under the
+probability density function between the order statistics all have the
+same distribution.
+</p>
+
+</div>
+
+<p class="heading">Center of the order statistics' distribution</p>
+
+<p>Since all
+(<em>n</em>+1)
+areas between adjacent order statistics have the same distribution, and the
+total area under the probability density function is one, each area therefore has mean
+1/(<em>n</em>+1).</p>
+
+<p>Since the expected area to the left of the
+	<em>i</em>'th
+order statistic,
+<em>x</em><sub>(i)</sub>,
+is therefore
+<em>i</em>/(<em>n</em>+1),
+the distribution of
+<em>x</em><sub>(i)</sub>
+will therefore be centred near the value
+<em>q</em><sub>i</sub>
+for which</p>
+
+<p class="eqn"><img src="images/quantileDefn.gif" align="center" width="140" height="43" border="0" alt="P(X.lt.qi)=i/(n+1)">
+</p>
+
+<p>The values
+	<em>q</em><sub>i</sub>
+are called <strong>quantiles</strong> of the distribution.</p>
+
+<div class="diagram">
+
+<p>The diagram below
+	shows the quantiles for a normal distribution; they are close to
+	the expected values of the order statistics from that distribution.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="simulationProg.QuantilesApplet">
+<param name="horizAxis" value="6.9 13.1 7 1">
+<param name="decimals" value="2">
+<param name="normalInfo" value="10.0 1.0">
+<param name="sampleSize" value="2 4 *8 16 32 64">
+<param name="customText" value="Quantiles=Quantiles">
+</applet>
+</div>
+
+<p>Observe that the quantiles are closer together in the centre of the distribution --
+as you would expect since the density there is higher.
+</p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

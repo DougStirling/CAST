@@ -1,0 +1,174 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Test based on frequency table</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="frequency table, chi-squared test, goodness-of-fit test">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>The earlier test had two requirements:</p>
+<ul>
+	<li><strong>H<sub>0</sub></strong> is that the data have a Poisson distribution</li>
+	<li>All  expected counts should be 1 or more, and most to be over 5. </li>
+</ul>
+<p>The chi-squared test cannot therefore be used directly to test whether the following data set is a random sample from a \(\PoissonDistn(\lambda=2)\) distribution, since the \(\{E_i\}\) are all 2.</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred" style="border:1px solid #999999;">
+	<tr>
+		<td width="25" align="center" bgcolor="#FFFFFF">1</td>
+		<td width="25" align="center" bgcolor="#FFFFFF">3</td>
+		<td width="25" align="center" bgcolor="#FFFFFF">2</td>
+		<td width="25" align="center" bgcolor="#FFFFFF">2</td>
+		<td width="25" align="center" bgcolor="#FFFFFF">5</td>
+		<td width="25" align="center" bgcolor="#FFFFFF">4</td>
+		<td width="25" align="center" bgcolor="#FFFFFF">5</td>
+		<td width="25" align="center" bgcolor="#FFFFFF">2</td>
+		<td width="25" align="center" bgcolor="#FFFFFF">0</td>
+		<td width="25" align="center" bgcolor="#FFFFFF">2</td>
+	</tr>
+	<tr>
+		<td align="center" bgcolor="#FFFFFF">2</td>
+		<td align="center" bgcolor="#FFFFFF">4</td>
+		<td align="center" bgcolor="#FFFFFF">3</td>
+		<td align="center" bgcolor="#FFFFFF">5</td>
+		<td align="center" bgcolor="#FFFFFF">2</td>
+		<td align="center" bgcolor="#FFFFFF">3</td>
+		<td align="center" bgcolor="#FFFFFF">1</td>
+		<td align="center" bgcolor="#FFFFFF">4</td>
+		<td align="center" bgcolor="#FFFFFF">2</td>
+		<td align="center" bgcolor="#FFFFFF">6</td>
+	</tr>
+</table>
+</div>
+
+<p class="heading">Frequency table</p>
+<p>We  first summarise the data in a frequency table.</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred">
+	<tr>
+		<th align="center">x</th>
+		<th width="30" align="center">0</th>
+		<th width="30" align="center">1</th>
+		<th width="30" align="center">2</th>
+		<th width="30" align="center">3</th>
+		<th width="30" align="center">4</th>
+		<th width="30" align="center">5</th>
+		<th width="30" align="center">6+</th>
+	</tr>
+	<tr>
+		<th align="center">Freq(x)&nbsp;</th>
+		<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-right:0px;">1</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">2</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">7</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">3</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">3</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">3</td>
+		<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-left:0px;">1</td>
+	</tr>
+</table>
+</div>
+
+<p>Treating these frequencies as our observed counts, \(\{O_i\}\), we can find expected counts from the Poisson distribution's probability function,</p>
+\[
+p(x) \;\;=\;\; \frac{\lambda^x e^{-\lambda}}{x!}\]
+<p>Since  \(n=20\) and \(\lambda=2\) when <strong>H<sub>0</sub></strong> holds,</p>
+\[
+E_x \;\;=\;\; 20 \times  p(x) \;\;=\;\; 20 \times \frac{2^x e^{-2}}{x!}\]
+<p>giving</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred">
+	<tr>
+		<th align="center">x</th>
+		<th width="20" align="center">0</th>
+		<th width="20" align="center">1</th>
+		<th width="20" align="center">2</th>
+		<th width="20" align="center">3</th>
+		<th width="20" align="center">4</th>
+		<th width="20" align="center">5</th>
+		<th width="20" align="center">6+</th>
+	</tr>
+	<tr>
+		<th align="center">\(O_x\)</th>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">1</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">2</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">7</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">3</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">3</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">3</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">1</td>
+	</tr>
+	<tr>
+		<th align="center">\(E_x\)</th>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">2.707</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">5.413</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">5.413</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">3.609</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">1.804</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">0.722</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">0.331</td>
+	</tr>
+</table>
+</div>
+
+<p class="heading">Combining cells</p>
+<p>Since we still do not have all \(\{E_x\}\)   ≥1 and 80% of them ≥5, cells in the table should be combined.</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred">
+	<tr>
+		<th align="center">x</th>
+		<th width="20" align="center">0,1</th>
+		<th width="20" align="center">2</th>
+		<th width="20" align="center">3+</th>
+	</tr>
+	<tr>
+		<th align="center">\(O_x\)</th>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">3</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">7</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">10</td>
+	</tr>
+	<tr>
+		<th align="center">\(E_x\)</th>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">8.120</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">5.413</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">6.466</td>
+	</tr>
+</table>
+</div>
+
+<p>Based on these three counts,</p>
+\[ \begin{align}
+X^2 \;&amp;=\; \sum_{i=1}^{10} {\frac{\left(O_i - E_i\right)^2}{E_i}} \\
+&amp;=\; \frac{(3-8.120)^2}{8.120} + \frac{(7-5.413)^2}{5.413} + \frac{(10-6.466)^2}{6.466} \\
+&amp;=\; 5.624
+\end{align} \]
+<p class="heading">P-value and conclusion</p>
+<p>There are 3 categories (after grouping) and one constraint .</p>
+\[
+\sum{E_i} \;=\; \sum{O_i} \;=\; 20
+\]
+<p>The  test should therefore be based on a chi-squared distribution with \((3-1) = 2\) degrees of freedom. The p-value here is</p>
+<p class="eqn">p-value = \(P(X^2 \ge 5.621) = 0.060\)</p>
+<p>We  conclude that there is only very weak evidence against <strong>H<sub>0</sub></strong> (that the original data set was a random sample from a \(\PoissonDistn(2)\) distribution).</p>
+<p>(It is hardly surprising that a data set with only 20 values does not show up problems with a model — a larger data set would be more sensitive to any possible lack of fit of the model.)</p>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

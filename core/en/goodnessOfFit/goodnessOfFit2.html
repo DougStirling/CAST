@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Test for Poisson distribution</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="poisson distribution, chi-squared test, goodness-of-fit test">
+	<meta name="dataset" content="Heart attacks in city">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Does a Poisson model hold?</p>
+
+<p>The chi-squared distribution on the previous page was based on the assumption that the counts followed Poisson distributions and that their means had been correctly specified. It can therefore be used as the basis for a hypothesis test about whether these assumptions are correct.</p>
+
+<ul>
+		<li>Null hypothesis, <strong>H<sub>0</sub></strong>: \(O_i \sim \PoissonDistn(E_i) \qquad \text{for } i=1,\dots, k\)   (correctly specified model)</li>
+		<li>Alternative hypothesis, <strong>H<sub>A</sub></strong>: At least one \(O_i\) has a different distribution  (error in model)</li>
+	</ul>
+	
+<p class="heading">Test statistic</p>
+<p>The chi-squared statistic from the previous page</p>
+\[
+X^2 \;\;=\;\; \sum_{i=1}^k {\frac{\left(O_i - E_i\right)^2}{E_i}}
+\]
+<p> can be used as a test statistic.</p>
+<ul>
+	<li>If the null hypothesis holds, \(X^2 \underset{\text{approx}}{\sim} \ChiSqrDistn(k \text{ df}) \), and this distribution has no unknown parameters.</li>
+	<li>If the Poisson means \(\{E_i\}\) have been incorrectly specified or if the distribution really has greater variance than would arise in the Poisson distribution (overdispersion), then \(X^2\) would be expected to be higher.</li>
+</ul>
+<p class="heading">P-value and conclusion</p>
+<p>Large values of the test statistic suggest that the alternative hypothesis holds, so the p-value is the probability that the test statistic, \(X^2\), is as large as was recorded from the actual data, \(x^2\),</p>
+\[
+\text{p-value} \;\;=\;\; P(X^2 \ge x^2)
+\]
+<p>when the null hypothesis is true. This can be found from the upper tail of the \(\ChiSqrDistn(k \text{ df})\) distribution.</p>
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Example</p>
+<p>The following table describes the number of heart attacks in a city in ten weeks.</p>
+<div class="centred">
+	<table border="0" cellpadding="5" cellspacing="0" class="centred">
+		<tr>
+			<th align="left">Week</th>
+			<th width="30">1</th>
+			<th width="30">2</th>
+			<th width="30">3</th>
+			<th width="30">4</th>
+			<th width="30">5</th>
+			<th width="30">6</th>
+			<th width="30">7</th>
+			<th width="30">8</th>
+			<th width="30">9</th>
+			<th width="30">10</th>
+		</tr>
+		<tr>
+			<th>Count&nbsp;&nbsp;
+				</td>
+			<td width="20" align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-right:0px;">6</td>
+			<td width="20" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">11</td>
+			<td width="20" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">13</td>
+			<td width="20" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">10</td>
+			<td width="20" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">21</td>
+			<td width="20" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">8</td>
+			<td width="20" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">16</td>
+			<td width="20" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">6</td>
+			<td width="20" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">9</td>
+			<td width="20" align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-left:0px;">19</td>
+		</tr>
+	</table>
+</div>
+<p>Test whether the heart attacks occurred at random with a rate of \(\lambda = 10\) per week.</p>
+	</div>
+
+<div class="solution">
+<p>If the heart attacks occurred at random with a constant rate of \(\lambda = 10\) per week, the counts would all have  Poisson distributions,</p>
+\[
+O_i \;\;\sim\;\; \PoissonDistn(10)
+\]
+<p>with expected counts \(E_i = 10\). The test statistic is</p>
+\[
+X^2 \;=\; \sum_{i=1}^{10} {\frac{\left(O_i - E_i\right)^2}{E_i}} \;=\; \frac{(6-10)^2}{10} + 
+\frac{(11-10)^2}{10} + \cdots \;=\; 28.5\]
+<p>The p-value for the test is found from the upper tail probability of the \(\ChiSqrDistn(10 \text{ df})\) distribution,</p>
+\[
+P(X^2 \ge 28.5) \;\;=\;\; 0.0015\]
+<p>Such a large test statistic would be extremely unlikely if the model was correct, so we conclude that there is extremely strong evidence that the model is incorrect.</p>
+<p>The problem with the model could be either</p>
+<ul>
+	<li>The rate of heart attacks was not \(\lambda = 10\) per week, or</li>
+	<li>There was overdispersion, with the rate varying from week to week.</li>
+</ul>
+<p>The first of these problems would result in counts that were systematically high or low. Overdispersion would be indicated by high week-to-week variation in the counts. Further analysis is needed to decide the reason for the lack of fit of the model.</p>
+</div>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

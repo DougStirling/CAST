@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Using SEs to compare estimators</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="mean, median, standard error, bias">
+</head>
+
+
+<body class="lecture">
+<script type="text/javascript">writePageStart();</script>
+
+
+<p class="heading">Annual rainfall (normal, µ=1000 σ=200)</p>
+
+
+<div class="divChoice">
+<form>
+<select name="dataset" onChange="changeBlock(this, 2)" id="dataChoice">
+    <option value="0" selected>Simulation</option>
+    <option value="1">Theory</option>
+  </select>
+</form>
+
+
+<div id="example1">
+  <div class="centred">
+  <applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="stdErrorProg.MeanMedErrorDistnApplet">
+  <param name="varName" value="Annual rainfall (mm)">
+  <param name="random" value="20 1000 200 875636431 2.5">
+  <param name="dataAxis" value="500 1500 600 200">
+  <param name="errorName" value="Error in mean">
+  <param name="medianErrorName" value="Error in median">
+  <param name="errorAxis" value="-150 150 -150 50">
+  <param name="maxEstimate" value="9999.9">
+	<param name="customText" value="Target parameter=Target parameter#Estimates from sample=Estimates from sample">
+  <param name="fontSize" value="big">
+  </applet>
+  </div>
+</div>
+
+
+<div id="example2" style="display:none">
+  <div class="centred">
+  <applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="390">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="stdErrorProg.MeanMedTheoryApplet">
+  <param name="varName" value="Annual rainfall (mm)">
+  <param name="popnDistn" value="normal">
+  <param name="popnParams" value="1000 200">
+  <param name="dataAxis" value="500 1500 600 200">
+  <param name="meanErrorName" value="Error in mean">
+  <param name="medianErrorName" value="Error in median">
+  <param name="errorAxis" value="-240 240 -200 100">
+  <param name="errorSdDecimals" value="1">
+  <param name="sampleSize" value="10 100 16">
+	<param name="customText" value="Population*distribution=Population*distribution#Error*distribution*(approx)=Error*distribution*(approx)">
+  <param name="fontSize" value="big">
+  </applet>
+  </div>
+</div>
+
+</div>
+
+
+<script type="text/javascript">
+	writeLecturerNotesLink(withoutDataNotes);
+</script>
+
+<div class="lecturerNote" id="lecturerNote">
+<p>The sample median and mean are both estimates of µ in a normal population &mdash; it is both the population mean and median. The diagrams on this page make the point that   the SE of the mean is lower so it is a better estimator.</p>
+<p>(N.B. Although this is true for a normal popn, it is <strong>not</strong> always true. The general point is that the SE is a good way to compare estimators.)</p>
+<p class="heading">Simulation</p>
+<p>Take about 150 samples (hold down <strong>Take sample</strong>.)</p>
+<ul>
+  <li>Both error distributions are symmetric round zero.</li>
+  <li>The spread of errors is smaller for the mean than the median.</li>
+</ul>
+<p class="heading">Theory (approx)</p>
+<p>This diagram shows the theoretical distns for samples of different sizes. The SE of the sample median is always about 25% higher than that of the sample 
+	mean.</p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

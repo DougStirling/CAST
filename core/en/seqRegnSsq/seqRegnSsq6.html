@@ -1,0 +1,282 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Orthogonal variables and experimental design</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="orthogonal variables, experimental design">
+	<meta name="dataset" content="Bee energy expenditure">
+	<meta name="dataset" content="Soybean yield and trace elements">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Observational studies and experiments</p>
+  <p>We have shown that orthogonal explanatory variables result in the most accurate 
+		estimates of the slope parameters and also that the resulting parameter estimates 
+		and anova table are easier to interpret.</p>
+	<p>In an observational study, the values of <em>X</em> and <em>Z</em> are usually 
+		correlated &mdash; we have no control over their values so it is unlikely that 
+		their correlation will be exactly zero, even if it is sometimes low.</p>
+	<p>In an experiment however, the researcher can often choose the values of the 
+		explanatory variables. Good experimental design <strong>selects</strong> the 
+		values of <em>X</em> and <em>Z</em> to make them orthogonal.</p>
+	<p class="heading">Simple orthogonal design</p>
+	<p>The simplest way to ensure that the explanatory variables are uncorrelated 
+		is to use only a small number of different values for each of <em>X</em> and 
+		<em>Z</em>, then to make an equal number of response measurements at each 
+		possible combination of levels of these variables.</p>
+	<div class="diagram">
+    <p class="heading">Examples</p>
+
+    <p>In an experiment, an entomologist recorded energy expenditure (joules/sec) 
+			for bees drinking water with different sucrose concentrations (percentage) 
+			and at different temperatures. The researcher decided to conduct the experiment 
+			using three different temperatures (20, 30 and 40 degrees C) and three different 
+			sucrose concentrations (20, 40 and 60%).</p>
+		<p>By measuring energy expenditure from the same number of bees at each combination 
+			of temperature and sucrose (three replicates), the two explanatory variables 
+			were guaranteed to be orthogonal.</p>
+		<div class="centred"><table border="0" class="centred" cellpadding="6" cellspacing="0">
+			<tr> 
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<th colspan="3">Temperature (degrees C)</th>
+			</tr>
+			<tr> 
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<th>20</th>
+				<th>30</th>
+				<th>40</th>
+			</tr>
+			<tr> 
+				<th rowspan="3">Sucrose<br>
+					concentration<br>
+					(%)</th>
+				<th>20</th>
+				<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">3.1, 3.7, 4.7</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">6.0, 6.9, 7.5</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">7.7, 8.3, 9.5</td>
+			</tr>
+			<tr> 
+				<th>40</th>
+				<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">5.5, 6.7, 7.3</td>
+				<td align="center" bgcolor="#FFFFFF">11.5, 12.9, 13.4</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">15.7, 14.3, 15.9</td>
+			</tr>
+			<tr> 
+				<th>60</th>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">7.9, 9.2, 9.3</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">17.5, 15.8, 14.7</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">19.1, 18.0, 19.9</td>
+			</tr>
+		</table></div>
+
+	  <p>The diagram below shows an analysis of these data.</p>
+
+    <div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="620">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="multiRegnProg.DataOrthogAnovaApplet">
+<param name="noOfDataSets" value="2">
+<param name="dataName" value="Energy expenditure of bees">
+<param name="description" value="A researcher recorded energy expenditure (joules/sec) for bees drinking water with different sucrose concentrations (%) and at different temperatures (degrees Celsius).">
+<param name="question" value="Both p-values are close to zero, so there is extremely strong evidence that both Temperature and Sucrose concentration affect energy expenditure of the bees. Each extra degree is estimated to increase energy expenditure by 0.394 joules/sec and each % increase in sucrose is estimated to increase energy by 0.206.">
+<param name="yVarName" value="Energy">
+<param name="xVarName" value="Temperature">
+<param name="zVarName" value="Sucrose">
+<param name="yValues" value="3.1 3.7 4.7 5.5 6.7 7.3 7.9 9.2 9.3 6.0 6.9 7.5 11.5 12.9 13.4 17.5 15.8 14.7 7.7 8.3 9.5 15.7 14.3 15.9 19.1 18.0 19.9">
+<param name="xValues" value="9@20 9@30 9@40">
+<param name="zValues" value="3@20 3@40 3@60 3@20 3@40 3@60 3@20 3@40 3@60">
+<param name="yAxis" value="0 20 0 5">
+<param name="xAxis" value="17 43 20 10">
+<param name="zAxis" value="15 65 20 20">
+
+<param name="dataName2" value="Soybean yields">
+<param name="description2" value="In an experiment to assess how applications of manganese (Mn) and copper (Cu) affect the yield of soybeans, a large field was subdivided into 32 plots with two randomly allocated to each combination of 4 Mn rates and 4 Cu rates. Soybeans were planted in rows 1 metre apart and the yield of soybeans (in tonnes per hectare) was recorded from each plot.">
+<param name="question2" value="There is extremely strong evidence that manganese affects yield, but no evidence that copper affects yield. Each increase of 1 unit Mg is estimated to increase yield by 0.016 tonnes/hectare. (Although increasing Cu by 1 unit is also estimated to increase yield by 0.012, its standard error must be much higher than that of Mg, so we cannot be sure that it is non-zero.)">
+<param name="yVarName2" value="Yield">
+<param name="xVarName2" value="Copper">
+<param name="zVarName2" value="Manganese">
+<param name="yValues2" value="1.558 1.578 2.003 2.033 2.49 2.47 2.83 2.81 1.59 1.61 2.02 2.051 2.62 2.632 2.86 2.841 1.558 1.55 2.003 2.01 2.49 2.69 2.93 2.91 1.328 1.427 2.01 2.031 2.887 2.832 2.96 2.941">
+<param name="xValues2" value="8@1 8@3 8@5 8@7">
+<param name="zValues2" value="2@20 2@50 2@80 2@110 2@20 2@50 2@80 2@110 2@20 2@50 2@80 2@110 2@20 2@50 2@80 2@110">
+<param name="yAxis2" value="1.2 3.1 1.5 0.5">
+<param name="xAxis2" value="0 8 1 2">
+<param name="zAxis2" value="10 120 20 30">
+
+<param name="maxSsq" value="999.99 99.999 99.99">
+<param name="componentDecimals" value="2">
+<param name="maxCoeff" value="99.999 9.999 -9.999">
+<param name="maxT" value="99.999">
+<param name="lsDecimals" value="3 3 3">
+<param name="customText" value="after=after#Data set=Data set#Conclusion=Conclusion">
+</applet> 
+</div>
+
+    <p>Note that there is only a single anova table, and the two p-values can 
+			be used to test whether the corresponding variables can be dropped from 
+			the full model.</p>
+		<p>Use the pop-up menu to see another experimental data set and its analysis.</p>
+    </div>
+		
+	<p class="heading">Other orthogonal designs</p>
+	<p>It is not <strong>essential</strong> to record the same number of response 
+		observations at every combination of <em>X</em> and <em>Z</em> for the explanatory 
+		variables to be orthogonal although there is rarely any reason to choose other 
+		orthogonal designs.</p>
+	<p><em>X</em> and <em>Z</em> are orthogonal if the spread of observations over 
+		<em>Z</em> is the same for each level of <em>X</em>.</p>
+	<div class="diagram">
+    <p class="heading">Other orthogonal designs for bee energy expenditure</p>
+		<p>The following designs are all orthogonal.</p>
+
+    <dl>
+			<dt>Equal replicates</dt>
+			<dd>This is the design that was used in the actual experiment whose results 
+				were shown above. The number of replicates for each combination of temperature 
+				and sucrose are shown in the table below.</dd>
+		</dl>
+		<div class="centred"><table border="0" class="centred" cellpadding="6" cellspacing="0">
+			<tr> 
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<th colspan="3">Temperature</th>
+			</tr>
+			<tr> 
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<th>20</th>
+				<th>30</th>
+				<th>40</th>
+			</tr>
+			<tr> 
+				<th rowspan="3">Sucrose</th>
+				<th>20</th>
+				<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">3</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">3</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">3</td>
+			</tr>
+			<tr> 
+				<th>40</th>
+				<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">3</td>
+				<td align="center" bgcolor="#FFFFFF">3</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">3</td>
+			</tr>
+			<tr> 
+				<th>60</th>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">3</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">3</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">3</td>
+			</tr>
+		</table></div>
+	  <dl>
+			<dt>Different replicates for one variable</dt>
+			<dd>If the researcher particularly wanted to estimate energy expenditure 
+				at 20 percent sucrose, more replicates might be undertaken at this level 
+				of sucrose:</dd>
+		</dl>
+		<div class="centred"><table border="0" class="centred" cellpadding="6" cellspacing="0">
+			<tr> 
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<th colspan="3">Temperature</th>
+			</tr>
+			<tr> 
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<th>20</th>
+				<th>30</th>
+				<th>40</th>
+			</tr>
+			<tr> 
+				<th rowspan="3">Sucrose</th>
+				<th>20</th>
+				<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">5</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">5</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">5</td>
+			</tr>
+			<tr> 
+				<th>40</th>
+				<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">2</td>
+				<td align="center" bgcolor="#FFFFFF">2</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">2</td>
+			</tr>
+			<tr> 
+				<th>60</th>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">2</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">2</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">2</td>
+			</tr>
+		</table></div>
+		<dl>
+			<dt>Different replicates for both variables</dt>
+			<dd>It is possible to take extra observations at levels of both <em>X</em> 
+				and <em>Z</em> and keep the design orthogonal. For example, the following 
+				design takes extra observations at both 20 degrees and at sucrose concentration 
+				40 percent.</dd>
+		</dl>
+		<div class="centred"><table border="0" class="centred" cellpadding="6" cellspacing="0">
+			<tr> 
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<th colspan="3">Temperature</th>
+			</tr>
+			<tr> 
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<th>20</th>
+				<th>30</th>
+				<th>40</th>
+			</tr>
+			<tr> 
+				<th rowspan="3">Sucrose</th>
+				<th>20</th>
+				<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">4</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">2</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">2</td>
+			</tr>
+			<tr> 
+				<th>40</th>
+				<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">6</td>
+				<td align="center" bgcolor="#FFFFFF">3</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">3</td>
+			</tr>
+			<tr> 
+				<th>60</th>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">4</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">2</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">2</td>
+			</tr>
+		</table></div>
+		<br>
+		
+	</div>
+		
+	<p class="heading">Advantage of equal replicates</p>
+
+	<p>The standard error of each regression slope estimate depends on the standard 
+		deviation of the corresponding explanatory variable (among other things),</p>
+	<p class=eqn><img src="../multicollin/images/bxSdEqn.gif" width="196" height="39" alt="eqn"></p>
+
+	<p class=eqn><img src="../multicollin/images/bzSdEqn.gif" width="196" height="39" alt="eqn"> </p>
+
+	<p>where <em>r</em> is the correlation coefficient between <em>X</em> and <em>Z</em>. 
+		When comparing orthogonal designs (with <em>r</em>&nbsp;= 0), the standard 
+		errors of the slopes are lowest when the standard deviations of <em>X</em> 
+		and <em>Z</em> are highest. Concentrating the design on one or two levels 
+		of <em>X</em> or <em>Z</em> decreases their standard deviations, so:</p>
+
+<div class="boxed"><p>A design with equal replicates is usually best.</p></div>
+		
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

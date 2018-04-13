@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Intervalle de confiance à partir de l'erreur-type</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="confidence interval, estimation, interval estimate, proportion, probability">
+	<meta name="dataset" content="Silkworm poisoning">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Point et estimations par intervalle</p>
+
+<p>Dans cette section, nous montrons comment utiliser une estimation par intervalle pour indiquer la précision de la moyenne de l'échantillon, <img src="../../images/symbol.xBar.png" width="10" height="10" align="baseline">, 
+		comme une estimation d'une moyenne de la population, µ.</p>
+		
+<div class="diagram">
+    <p class="heading">La survie du ver à soie</p>
+  <p>Le tracé de points ci-dessous montre les temps de survie de 80 au quatrième stade larvaire du ver à soie pesant entre 0.41 et 0.45 g et donné 0.1 mg d'arséniate de sodium par gramme de poids corporel.</p>
+	<p class=eqn><object data="images/silkworm.svg" width="401" height="99"></object></p>
+		<p>Les scientifiques ont voulu mener l'expérience pour estimer le temps moyen de survie, μ, des larves dans le cadre d'une étude pour comparer la toxicité des doses différentes d'arséniate de sodium.</p>
+	<p>On pourrait signaler que</p>
+<ul>
+			<li> Notre meilleure estimation de la durée de survie est 272.6 secondes (moyenne de l'échantillon). </li>
+		</ul>
+	<p>Cependant, la population sous-jacente temps moyen de survie, μ, est peu susceptible d'être exactement cela. Il est plus instructif de faire une déclaration comme:</p>
+<ul>
+			<li> Nous sommes confiants '95% 'que le temps moyen de survie sous-jacente, μ, est entre 266 et 279 secondes. </li>
+		</ul>
+	<p><font color="#666666">(Les détails seront expliqués plus tard.)</font></p>
+</div>
+			
+<p class="heading">Erreur de distribution</p>
+<p>La distribution des erreurs est la clé de l'estimation d'intervalle. Pour la plupart des estimations des paramètres communs, nous pouvons trouver la distribution des erreurs (ou une approximation de celle-ci).</p>
+<div class="diagram">
+    <p class="heading">Erreur de distribution pour la moyenne </p>
+  <p>Pour estimer la moyenne, μ, d'une population dont l'écart type est σ, nous utiliserons la moyenne d'un échantillon aléatoire de <em>n</em> valeurs, <img src="../../images/symbol.xBar.png" width="10" height="10" align="baseline">. 
+      L'erreur d'estimation qui en résulte a approximativement une distribution normale,</p>
+  <p class=eqn><object data="images/errorDistn.svg" width="171" height="31"></object></p>
+
+    <p>(Cette distribution est exact si la population est normale et fermer si la taille de l'échantillon, <em>n</em>, est grande.)</p>
+  <p>Si l'écart type de population, σ, est inconnue, on peut rapprocher cette distribution,</p>
+  <p class=eqn><object data="images/errorDistn2.svg" width="171" height="31" alt="mean(xBar) = mu"></object></p>
+  </div>
+<p class="heading">Limites de 95% sur l'erreur</p>
+<p>De la distribution des erreurs, nous pouvons trouver une plage de valeurs au sein de laquelle l'erreur se trouvera avec une probabilité de 0.95, </p>
+	
+<p class=eqn> <object data="images/errorBounds.svg" width="276" height="114"></object></p>
+	
+  <p>Exprimé dans une équation, </p>
+<p class=eqn> <font color="#000000">Prob (&nbsp;-<em>e*&nbsp; </em>&lt;&nbsp; 
+		<em>erreur</em> &nbsp;&lt;<em> &nbsp;e*</em> ) &nbsp;= &nbsp;0.95</font></p>
+<p class="heading">95% intervalle de confiance</p>
+<p>Si l'erreur d'estimation est entre <em>-e*</em> et <em>e*</em>, alors l'estimateur est dans <em>e*</em> du paramètre que nous sommes d'estimation, de sorte</p>
+<p class=eqn> <font color="#000000">Prob (&nbsp;<em>estimation</em> - <em>e*&nbsp; 
+		</em>&lt;&nbsp; <em>paramètre</em> &nbsp;&lt;<em> &nbsp;estimation</em> + <em>e*</em> 
+		) &nbsp;= &nbsp;0.95</font></p>
+<p>We therefore call the interval</p>
+	<p class=eqn> <font color="#000000"><em>estimation</em>&nbsp;- <em>e*&nbsp; </em><strong>&nbsp;à</strong><em> 
+		&nbsp;&nbsp;estimation</em> + <em>e*</em></font></p>
+<p>un <strong>intervalle de confiance à 95%</strong> et nous avons <strong>confiance de 95%</strong> qu'il inclura la valeur du paramètre inconnu.</p>
+<p class="heading">Intervalle de confiance à partir de l'erreur-type </p>
+<p>La règle des Etats 70-95-100 pouce qu'environ 95% des valeurs dans la plupart des distributions sont à moins de 2 écarts-types de la moyenne. Pour les estimateurs sans biais (avec une moyenne nulle), on a donc l'approximation: </p>
+	
+<p class=eqn> <object data="images/errorBounds2.svg" width="276" height="145"></object></p>
+	
+	<p>En termes de l'erreur-type, un intervalle de confiance à 95% peut donc être trouvée que</p>
+<center>
+    <table border="1" cellspacing="0" cellpadding="10" bgcolor="white" width="75%">
+      <tr> 
+        <td align="center"><strong><font color="#000000"><em>estimation </em>- 2 
+          <em>s.e.</em><em>&nbsp; </em><strong>&nbsp;à</strong><em> &nbsp;&nbsp;estimation</em> 
+          + 2 <em>s.e.</em></font><strong></strong></strong></td>
+      </tr>
+    </table>
+  </center>
+  <p>L'erreur-type des estimateurs les plus couramment utilisés peuvent être facilement trouvés soit par une formule ou d'un logiciel statistique, de sorte à ce résultat est extrêmement utile dans la pratique.</p>
+<center>
+    <table border="1" cellspacing="0" cellpadding="10" bgcolor="white" width="75%">
+      <tr> 
+        <td align="center"><strong><font color="#FF0000">Si vous connaissez l'erreur-type d'un estimateur, vous pouvez trouver un intervalle de confiance approximatif de 95%.</font></strong></td>
+      </tr>
+    </table>
+  </center>
+  <p class="heading">Affinez</p>
+<p>Le niveau de confiance d'un intervalle de confiance que l'on retrouve de cette manière est exactement de 95% seulement si on connaît la distribution d'erreur exact. Puisque nous devons souvent approximatives la distribution des erreurs (par exemple en remplaçant σ par <em>s</em> lors de l'estimation moyenne de la population), le niveau de confiance peut être seulement environ 95%. </p>
+<p>Pour certains estimateurs, nous allons donner un raffinement de ce type d'intervalle de confiance pour rendre le niveau de confiance de près de 95%. Cependant rapprochement du «± 2 SE» est un guide utile dans la plupart des circonstances.</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

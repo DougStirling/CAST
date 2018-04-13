@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Missing values with a single factor</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="missing values, unequal replicates">
+	<meta name="dataset" content="Nitrogen in red clover plants">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Missing values</p>  
+<p>In most experiments in which a single factor is varied, we aim to have the same number of replicates for each factor level. However sometimes accidents prevent the response from being measured from a few experimental units, leading accidentally to unequal replicates.</p>
+<p>Provided the reason that the values are missing is unrelated to the treatment or response, a standard analysis of variance can still be used to compare the treatments.</p>
+<div class="centred"><div class="boxed">
+	<p>If the  probability of a value being missing depends on the treatment or (unrecorded) response, the standard analysis should <strong>not</strong> be used.</p>
+</div></div>
+<br>
+
+<div class="diagram">
+<p class="heading">Effect of missing values on the analysis</p>
+<p>The diagram below shows the yield of wheat from a completely randomised experiment with three varieties of wheat and 8 replicates.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="exper2Prog.MissingValuesApplet">
+<param name="yVarName" value="Yield per hectare">
+<param name="yValues" value="5.496 0.885 6.956 4.601 3.550 6.438 4.137 5.760 10.781 7.120 8.197 7.179 7.852 7.159 8.203 7.849 10.520 5.795 6.077 5.593 8.257 10.142 4.250 4.838">
+<param name="xVarName" value="Type of wheat">
+<param name="xLabels" value="#Variety A# #Variety B# #Variety C#">
+<param name="xValues" value="8@0 8@1 8@2">
+<param name="yAxis" value="0.0 11 0 1">
+<param name="decimals" value="3">
+<param name="maxSummaries" value="9999.99 999.99 999.99 9.999">
+<param name="componentName" value="Total#Between varieties#Residual">
+</applet> 
+</div>
+
+<p>Click a few values in the three columns on the left to change them into missing values.</p>
+<p>Observe that the sums of squares and the residual degrees of freedom change in the analysis of variance table. However the p-value still describes the strength of evidence for whether there are differences between the mean yields of the three varieties.</p>
+<p>Make all but two observations for Variety A missing. Observe that the 95% confidence interval for this variety's mean yield (represented by the blue bands on the scatterplot) is now much wider than these for the other varieties. The fewer the response measurements for any factor level, the less accurately the mean response is estimated.</p>
+<p class="heading">Nitrogen in red clover plants</p>
+<p>An experiment is conducted to assess how the nitrogen content of red clover plants is affected by inoculation by combination cultures of <em>Rhizobium trifoli</em> strains and <em>Rhizobium melitoti</em>. The experiment initially used 30 plants, randomly assigning 5 of the plants to each of the 6 treatments. At the end of the growing season  the nitrogen content of the plants was measured but, for reasons unrelated to the inoculants or nitrogen content of the plants, two response measurements could not be obtained. (Perhaps the plants died for an unrelated reason or the laboratory equipment broke down when the nitrogen content was being measured.)</p>
+<div class="centred"><table border="0" class="centred" cellpadding="4" cellspacing="0">
+	<tr>
+		<th colspan="6">Inoculant</th>
+		</tr>
+	<tr>
+		<th>&nbsp;3DOk1&nbsp;</th>
+		<th>&nbsp;3DOk5&nbsp;</th>
+		<th>&nbsp;3DOk4&nbsp;</th>
+		<th>&nbsp;3DOk7&nbsp;</th>
+		<th>&nbsp;3DOk13&nbsp;</th>
+		<th>&nbsp;Composite&nbsp;</th>
+	</tr>
+	<tr>
+		<td align="center" valign="top" bgcolor="#FFFFFF" style="border:1px solid #999999; border-right:0px;">19.4<br>
+			32.6<br>
+			27.0<br>
+			32.1<br>
+			33.0</td>
+		<td align="center" valign="top" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">17.7<br>
+			24.8<br>
+			27.9<br>
+			25.2</td>
+		<td align="center" valign="top" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">17.0<br>
+			19.4<br>
+			&nbsp;9.1<br>
+			11.9</td>
+		<td align="center" valign="top" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">20.7<br>
+			21.0<br>
+			20.5<br>
+			18.8<br>
+			18.6</td>
+		<td align="center" valign="top" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">14.3<br>
+			14.4<br>
+			11.8<br>
+			11.6<br>
+			14.2</td>
+		<td align="center" valign="top" bgcolor="#FFFFFF" style="border:1px solid #999999; border-left:0px;">17.3<br>
+			19.4<br>
+			19.1<br>
+			16.9<br>
+			20.8</td>
+	</tr>
+</table></div>
+<p>The analysis of variance table below has the same form and interpretation as would have been obtained for the complete experiment.</p>
+<div class="centred"><table border="0" class="centred" cellpadding="4" cellspacing="0">
+	<tr>
+		<th align="left" scope="col">&nbsp;&nbsp;Source of&nbsp;&nbsp;<br>&nbsp;&nbsp;variation</th>
+		<th scope="col">&nbsp;&nbsp;Sum of&nbsp;&nbsp;<br>
+			sqrs</th>
+		<th scope="col">&nbsp;&nbsp;d.f.&nbsp;&nbsp;</th>
+		<th scope="col">&nbsp;&nbsp;Mean ssq&nbsp;&nbsp;</th>
+		<th scope="col">&nbsp;&nbsp;F-ratio&nbsp;&nbsp;</th>
+		<th scope="col">&nbsp;&nbsp;p-value&nbsp;&nbsp;</th>
+	</tr>
+	<tr>
+		<td bgcolor="#FFFFFF">Inoculant</td>
+		<td align="center" bgcolor="#FFFFFF">812.68</td>
+		<td align="center" bgcolor="#FFFFFF">5</td>
+		<td align="center" bgcolor="#FFFFFF">812.68</td>
+		<td align="center" bgcolor="#FFFFFF">12.72</td>
+		<td align="center" bgcolor="#FFFFFF">0.0001</td>
+	</tr>
+
+	<tr>
+		<td bgcolor="#FFFFFF">Residual</td>
+		<td align="center" bgcolor="#FFFFFF">281.12</td>
+		<td align="center" bgcolor="#FFFFFF">&nbsp;22&nbsp;</td>
+		<td align="center" bgcolor="#FFFFFF">&nbsp;12.78</td>
+		<td align="center">&nbsp;</td>
+		<td align="center">&nbsp;</td>
+	</tr>
+	<tr>
+		<th align="left">Total</th>
+		<th class="style2">1093.80</th>
+		<th class="style2">27</th>
+		<th>&nbsp;</th>
+		<th>&nbsp;</th>
+		<th>&nbsp;</th>
+	</tr>
+</table></div>
+<p>From the p-value, we conclude that it is almost certain that the six inoculants do not result in the same nitrogen content in red clover plants.</p>
+</div>
+	
+	
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

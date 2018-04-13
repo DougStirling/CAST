@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Functions of two variables</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="independence, linear combination">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Random variables defined from others</p>
+
+<p>We now consider two independent random variables, \(X\) and \(Y\). Any function of these two variables can be used to define another random variable.</p>
+\[Z =g(X, Y)\]
+
+<p>This has a distribution whose shape depends on those of \(X\) and \(Y\), but we will only consider its mean and variance here.</p>
+<p>We will use the following result later.</p>
+
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Product of independent random variables</p>
+		<p>If two  discrete random variables, \(X\) and \(Y\), are independent,</p>
+\[
+E[XY] = E[X] \times E[Y]
+\]
+	</div>
+
+	<div class="proof">
+		<p>The expected value of this function is again the sum of its possible values, multiplied by their probabilities,</p>
+\[ \begin {align}
+E[X Y] &amp; = \sum_{\text{all } x, y} {(x y) \times p_{XY}(x,y)} \\
+&amp; = \sum_{\text{all } x} \sum_{\text{all } y} {x \times y\times p_X(x)\times p_Y(y)} \quad\quad \text{since }X \text{ and } Y \text{ are independent} \\
+&amp; = \left( \sum_{\text{all } x} {x \times p_X(x)} \right) \times \left( \sum_{\text{all } y} {y \times p_Y(y)} \right) \\
+&amp; = E[X] \times E[Y]
+\end {align} \]	</div>
+
+</div>
+<p>More important in practice is a <strong>linear</strong> combination of \(X\) and \(Y\),</p>
+<p class="eqn">\(Z =aX + bY\)   where \(a\) and \(b\) are constants</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Linear combination of independent variables</p>
+		<p>If the means of two independent discrete random variables, \(X\) and \(Y\), are \(\mu_X\) and \(\mu_Y\) and their variances are \(\sigma_X^2\) and \(\sigma_Y^2\), then the linear combination \((aX + bY)\) has mean and variance</p>
+\[ \begin {align}
+E[aX + bY] &amp; = a\mu_X + b\mu_Y \\[0.4em]
+\Var(aX + bY) &amp; = a^2\sigma_X^2 + b^2\sigma_Y^2
+\end {align} \]
+	</div>
+
+	<div class="proof">
+<p>The mean is</p>
+\[ \begin {align}
+E[aX + bY] &amp; = \sum_{\text{all } x, y} {(ax + by)\times p_{XY}(x,y)} \\
+&amp; = \sum_{\text{all } x} \sum_{\text{all } y} {(ax + by)\times p_X(x)\times p_Y(y)} \quad\quad \text{since }X \text{ and } Y \text{ are independent} \\
+&amp; = a \times \sum_{\text{all } x} \sum_{\text{all } y} {x \times p_X(x)\times p_Y(y)} + b \times \sum_{\text{all } x} \sum_{\text{all } y} {y \times p_X(x)\times p_Y(y)} \\
+&amp; = a \times \left(\sum_{\text{all } x} {x \times p_X(x)} \right)\left(\sum_{\text{all } y} {p_Y(y)} \right) + b \times \left(\sum_{\text{all } x} {p_X(x)} \right)\left(\sum_{\text{all } y} {y \times p_Y(y)} \right) \\
+&amp; = a \times \mu_X \times 1 + b \times 1 \times \mu_Y \\
+&amp; = a \mu_X + b \mu_Y
+\end {align} \]
+
+<p>The variance is the expected value of the squared difference between the linear combination and its mean,</p>
+
+\[ \begin {align}
+\Var(aX + bY) &amp; = E\left[ \big( (aX + bY) - (a\mu_X + b\mu_Y) \big)^2 \right] \\
+&amp; = E\left[ \big( a(X - \mu_X) + b(Y - \mu_Y) \big)^2 \right] \\
+&amp; = E\left[ \big(a(X - \mu_X)\big)^2 + \big(b(Y - \mu_Y)\big)^2  + 2ab(X - \mu_X)(Y - \mu_Y) \right] \\
+&amp; = a^2 \Var(X) + b^2 \Var(Y) + 2ab E\left[ (X - \mu_X)(Y - \mu_Y) \right]
+\end {align} \]
+
+<p>Now</p>
+
+\[ \begin {align}
+E\big[ (X - \mu_X)(Y - \mu_Y) \big] &amp; = E[ XY - \mu_X Y - X\mu_Y + \mu_X\mu_Y] \\
+&amp; = E[XY] - \mu_X E[Y] - E[X] \mu_Y + \mu_X\mu_Y \\
+&amp; = E[X]E[Y] - E[X]E[Y] - E[X]E[Y] + E[X]E[Y]\\
+&amp; = 0
+\end {align} \]
+
+<p>Since we proved earlier that \(E[XY] = E[X]E[Y]\) for independent variables. Therefore</p>
+
+\[
+\Var(aX + bY) = a^2 \Var(X) + b^2 \Var(Y)
+\]
+
+</div>
+</div>
+
+<p>Although the formula for the mean still holds if \(X\) and \(Y\) are not independent, the formula for the variance requires modification to cope with dependent random variables.
+</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

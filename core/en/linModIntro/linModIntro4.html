@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Least squares</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="residual, residual sum of squares, least squares">
+	<meta name="dataset" content="Cement packing machines">
+	<meta name="dataset" content="Hardness of ball bearings">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Fitting the models</p>  
+  <p>The categorical model and numerical linear and quadratic  models  all involve 
+		unknown parameters that must be estimated. In other words, we must use the 
+		flexibility of the chosen model to get the model's mean responses 'as close 
+		as possible' to the observed data.</p>
+	<p>The difference between any observed response,<em> <span class="black">y<sub>ij</sub></span></em>, and the value predicted by the model being used, <span class="blue"><em>fit<sub>ij</sub></em></span> ,  is called the observation's <strong>residual</strong>,</p>
+	<p class=eqn><span class="red"><em>e<sub>ij</sub></em></span> &nbsp; = &nbsp; <em>y<sub>ij</sub></em>  &nbsp;−&nbsp; <span class="blue"><em>fit<sub>ij</sub></em></span> </p>
+	<p>For all normal models, the parameters are chosen to minimise the sum of the 
+		squared residuals,</p>
+	<p class="eqn">minimise &nbsp;  <span class="red"><em>e<sub>ij</sub></em></span> <sup>2</sup></p>
+	<p>This method of fitting models is called the method of <strong>least squares</strong>.</p>
+	<div class="centred"><div class="boxed">
+		<p>There are fairly simple formulae 
+			for the least squares estimates of the parameters in most normal models 
+			for experimental data.</p>
+</div></div>
+	<p>However statistical software will fit most such models, so the underlying 
+		formulae are of little importance.</p>
+	<div class="diagram"> 
+  <p class="heading">Cement packing machines</p>
+	<p>The next diagram shows a model for the cement-packing data. Since the factor (packing machine) is categorical,  the mean response can be independently 
+		adjusted for each machine. </p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="exper2Prog.DragFactorMeansApplet">
+<param name="yVarName" value="Actual bag weight">
+<param name="xVarName" value="Packing machine">
+<param name="yValues" value="49.89 48.80 49.22 49.34 48.77 48.71 50.06 49.51 49.11 49.98 49.64 48.91 50.30 49.67 50.39 50.18 49.09 48.72 49.46 49.30 50.69 51.50 52.09 50.87 50.69 51.05 51.60 50.69 50.48 51.13 51.16 51.49 50.84 51.11 50.94 51.15 52.12 50.84 50.39 51.48 49.36 49.92 49.52 50.22 50.23 49.78 48.67 49.98 50.86 50.51 48.95 49.85 49.49 49.29 49.16 50.07 49.64 49.93 49.68 49.62">
+<param name="xLabels" value="#M/C 1# #M/C 2# #M/C 3#">
+<param name="xValues" value="20@0 20@1 20@2">
+<param name="yAxis" value="48.5 52.2 48.5 0.5">
+<param name="modelType" value="factor">
+<param name="initialise" value="50">
+<param name="showRss" value="true">
+<param name="maxRss" value="999.99">
+<param name="customText" value="Mean only=Mean only#Linear=Linear#Quadratic=Quadratic#means=means">
+</applet>
+</div>
+
+	<p>Drag the red arrows to minimise the residual sum of squares.</p>
+	
+<div class="centred"><div class="boxed">
+<p>SS<sub>Resid</sub> is smallest when 
+					the fitted mean in each group equals the group mean of the data:<br>
+					<img src="images/lsFactorFit.gif" width="53" height="23"> 
+   	</div></div>
+    <p>Click the button <strong>Least squares</strong> to set the model slope 
+		and intercept to these values.</p>
+	</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

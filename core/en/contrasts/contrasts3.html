@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Comparing a control to other treatments</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="control level, constraint">
+	<meta name="dataset" content="Fertiliser and tomato yield">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Questions about the levels of a single factor</p>
+<p>We now consider a randomised experiment with a single factor that has several levels. </p>
+<div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+  <tr>
+    <td align="center"><br>
+        <span class="black em">y<sub>ij</sub></span> &nbsp;= &nbsp;<span class="blue">µ</span></td>
+    <td align="center"><br>
+      &nbsp;+&nbsp;</td>
+    <td align="center"><span class="red">(<em>explained by </em>X)<br>
+      β<em><sub>i</sub></em></span></td>
+    <td align="center"><br>
+      &nbsp;+&nbsp;</td>
+    <td align="center">(<em>unexplained</em>)<br>
+      ε<em><sub>ij</sub></em></td>
+  </tr>
+</table></div>
+<p>where <span class="red">β<sub>1</sub> = 0</span>. In this and the following few pages, we will look for structure within the different factor levels by examining whether we can make constraints on the values of the <span class="red">β</span>-parameters.</p>
+<p class="heading">Experiments with a control level</p>
+<p>In many experiments about the effect of different interventions (e.g. applying fertiliser to a crop or antibiotic to animals), some of the experimental units are left without any intervention. This treatment is called a <strong>control</strong> level and is a baseline against which the interventions can be compared.</p>
+<p>If there is a control level, two questions are often asked.</p>
+<p class="heading">Is the control any different from the other treatments?</p>
+<p>If we interpret this question as asking whether the mean response for the control treatment is equal to the average of the mean responses for the non-control treatments, it can be expressed as a question about whether the following constraint holds:</p>
+<div class="centred"><div class="boxed">
+	<p><span class="red">β<sub>1</sub> &nbsp;= &nbsp;average (β<sub>2</sub>, β<sub>3</sub>, ..., β<sub><em>g</em></sub>)</span></p>
+</div></div>
+<p>Since we define <span class="red">β<sub>1</sub> = 0</span>, this is equivalent to the sum of the other  <span class="red">β</span>-parameters being zero.</p>
+<p class="heading">Are the non-control treatments different from each other?</p>
+<p>This question can also be expressed in terms of constraints on the parameters of the model. If all non-control treatments are equivalent, the following (<em>g</em>&nbsp;-&nbsp;1) constraints will hold:</p>
+<div class="centred"><div class="boxed">
+	<p><span class="red">β<sub>2</sub> &nbsp;= &nbsp;β<sub>3</sub> &nbsp;=  &nbsp;... &nbsp;= &nbsp;β<sub><em>g</em></sub></span></p>
+</div></div>
+<br>
+
+<div class="diagram">
+<p class="heading">Effect of fertiliser on the yield of tomato plants</p>
+<p>The diagram below shows results from an experiment to assess the effect of four types of fertiliser on the yield of tomato plants. Five plants were given each fertiliser and a further five were in a control group that received no fertiliser.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="510" height="430">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="exper2Prog.ApplyConstraintsApplet">
+<param name="yVarName" value="Yield">
+<param name="yValues" value="9.71 11.51 9.81 10.24 8.91 13.79 13.29 13.72 11.70 12.42 14.09 13.73 16.54 13.48 14.39 13.29 13.32 15.04 12.40 12.95 16.60 14.27 14.44 14.55 14.48">
+<param name="yAxis" value="8 17 8 1">
+<param name="xVarName" value="Fertiliser used">
+<param name="xLabels" value="No_fert Fert_A Fert_B Fert_C Fert_D">
+<param name="xValues" value="5@0 5@1 5@2 5@3 5@4">
+<param name="maxRss" value="999.999">
+<param name="showResiduals" value="true">
+<param name="constraint1" value="0 1 1 1 1 0">
+<param name="constraint2" value="0 1 0 0 -1 0">
+<param name="constraint3" value="0 0 1 0 -1 0">
+<param name="constraint4" value="0 0 0 1 -1 0">
+<param name="constraintGroup1" value="1*0*#beta##sub2# + #beta##sub3# + #beta##sub4# + #beta##sub5# = 0*Mean of fertilisers*same as no fertiliser">
+<param name="constraintGroup2" value="2 3 4*0*#beta##sub2# = #beta##sub3# = #beta##sub4# = #beta##sub5#*All fertilisers equal">
+<param name="paramDecimals" value="3">
+<param name="nColumns" value="2">
+</applet>
+</div>
+<p>Two sets of constraints  can be applied with the checkboxes. Clicking <strong>All fertilisers equal</strong> applies <strong>three</strong> linear constraints (count the number of equals signs) and constrains the mean yield for all four fertiliser types to be equal.</p>
+<p>The other checkbox constrains the mean response for the control treatment (no fertiliser) to be equal to the average of those from the four fertiliser types. When both checkboxes are selected, all five response means are equal.</p>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

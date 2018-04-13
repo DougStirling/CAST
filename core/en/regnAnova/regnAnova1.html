@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Components for regression model</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="linear model, regression model, residual">
+	<meta name="dataset" content="Airline complaints">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Models that explain variability in a response</p>
+<p>The normal model for data in several groups is just one of many models that 
+explain variability in a response measurement in terms of other variables. (Group 
+membership can be treated as a categorical explanatory variable.)</p>
+
+<div class="centred"><table width="90%" border="0" cellpadding="10" cellspacing="0"class="centred">
+<tr> 
+<th width="30%">Response variable</th>
+<th width="70%">Variables that explain some of its variability</th>
+</tr>
+<tr> 
+<td style="border:1px solid #999999;">Exam marks in a second year statistical methods course</td>
+<td style="border:1px solid #999999; border-left:0px;">Marks in a prerequisite first year statistics course explain some of the variability. 
+Hours of study could explain further variability if this information is available.</td>
+</tr>
+<tr> 
+<td style="border:1px solid #999999; border-top:0px;">Quality of apples received by a juicing factory</td>
+<td style="border-right:1px solid #999999; border-bottom:1px solid #999999;">Part of the variability is explained by the source of the apples &mdash; apples 
+from some regions (and possibly some farmers) are of better quality.</td>
+</tr>
+<tr> 
+<td style="border:1px solid #999999; border-top:0px;">Numbers of customers in a cafe over several days</td>
+<td style="border-right:1px solid #999999; border-bottom:1px solid #999999;">The daily number of customers is affected by the day of the week, and also 
+by the season and the weather.</td>
+</tr>
+</table></div>
+
+<p>In any model, some of the response variation is explained (in terms of explanatory 
+variables) but some variation remains <strong>unexplained</strong>. Sums of squares 
+are used to describe explained and unexplained (residual) variation and to test 
+whether a simpler model that does not involve explanatory variables fits the data 
+equally well.</p>
+<p class=heading>Normal regression model</p>
+<p>In the remainder of this section, we apply analysis of variance methodology 
+to normal linear models that explain response variation in terms of a numerical 
+explanatory variable, <em>x</em>.</p>
+
+<div class="centred">
+<table border="0" cellpadding="0" cellspacing="0"><tr>
+<td valign="middle"><img src="../leastSqrsTwo/images/regnModel.gif" width="199" height="21" align="absmiddle"></td>
+<tdvalign="middle"><p> &nbsp; for the <em>i</em>'th value in the data set</p></td>
+</tr></table>
+</div>
+
+<p>or equivalently,</p>
+<p class="eqn"><img src="images/normModel.gif" width="359" height="21" align="absmiddle"></p>
+<p class=heading>Explained and unexplained components</p>
+<p>For the normal linear model, the least squares line provides the best parameter 
+estimates and predictions. The least squares line provides fitted values, <span style="position:relative; top:4px"><img src="../../images/symbol.yiHat.png" width="11" height="18" align="baseline"></span>, 
+for each observation. If the linear model is useful, these fitted values will 
+be different from the overall response mean.</p>
+<p>The vertical distances of data points to the least squares line &mdash; the residuals 
+&mdash; are left-over <strong>unexplained</strong> variation. </p>
+<p class=eqn><img src="images/components.gif" width="540" height="243" alt="total = explained + residual"> 
+</p>
+
+<div class="centred"><table width="90%" border="0" cellspacing="0" cellpadding="6" class="centred">
+<tr> 
+<td class="green" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">Total component</td>
+<td style="border-top:1px solid #999999; border-bottom:1px solid #999999;"><img src="images/totalComponentAnova.gif" width="53" height="23" alt="total"></td>
+<td class="green" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">These differences reflect the total variability of the 
+response &mdash; without taking account of the explanatory variable.</td>
+</tr>
+<tr> 
+<td class="red" style="border-bottom:1px solid #999999;">Explained component</td>
+<td style="border-bottom:1px solid #999999;"><img src="images/regnComponentAnova.gif" width="53" height="23" alt="explained"></td>
+<td style="border-bottom:1px solid #999999;" class="red">These components describe how much the predicted response 
+changes from using the least squares line (as opposed to simply using the overall 
+mean as a prediction).</td>
+</tr>
+<tr> 
+<td style="border-bottom:1px solid #999999;" class="blue">Residual component</td>
+<td style="border-bottom:1px solid #999999;"><img src="images/residComponentAnova.gif" width="57" height="23" alt="residual"></td>
+<td class="blue" style="border-bottom:1px solid #999999;">The residuals describe the extent to which the explanatory 
+variable fails to predict the response. Their variation is not explained by the 
+model.</td>
+</tr>
+</table></div>
+
+<br>
+<div class="diagram"> 
+<p class="heading">Airline complaints</p>
+<p>The scatterplot below shows the number of complaints (per 100,000 passengers) 
+and the proportion of flights arriving on time for the ten largest airlines in 
+the USA in 1998.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="410">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.Components2Applet">
+<param name="xVarName" value="Percentage on time">
+<param name="yVarName" value="Complaints per 100,000 passengers">
+<param name="labelName" value="Airline">
+<param name="xValues" value="81.8 76.6 76.6 75.7 73.8 72.2 71.2 70.8 68.5">
+<param name="yValues" value="0.21 0.58 0.68 0.74 0.93 0.72 1.22 1.25">
+<param name="labels" value="Southwest Continental Northwest #US Airways# United American Delta #America West# TWA">
+<param name="xAxis" value="65 85 65 5">
+<param name="yAxis" value="0 1.3 0.0 0.2">
+<param name="componentAxis" value="-0.7 0.7 -0.6 0.2">
+<param name="decimals" value="4">
+<param name="labelAxes" value="true">
+<param name="dotPlotWidth" value="110">
+<param name="ssqNames" value="Total variation#Explained variation#Residual variation">
+<param name="customText" value="Component=Component">
+</applet>
+</div>
+
+<p>The total component for each airline is initially represented as a green line 
+in the scatterplot and a jittered dot plot is shown on the right. <strong>Click</strong> 
+on any cross to discover the airline that it represents.</p>
+<p>Use the pop-up menu to show the residual and explained components. In this 
+data set, most of the variation in the complaint rates is explained by the proportion 
+of late flights &mdash; the residuals are relatively small compared to the total components.</p>
+
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

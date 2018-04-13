@@ -1,0 +1,831 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>4. Time Series</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/maths/mathStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/maths/theorems.js"></script>
+  <script src="../../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 4 &nbsp; Time Series</h1>
+<h1 class="sectionName">4.1 &nbsp; Time series plots</h1>
+<h2 class="pageName">4.1.1 &nbsp; Time series plots</h2>
+
+<p class="heading notPrinted">Time series data</p>
+	<p>Data sets whose measurements  are made sequentially at regular 
+		intervals are called <strong>time series</strong>. We often want to forecast
+future values of a time series.</p>
+<p class="heading">The importance of plotting</p>
+	<p>As with other data structures, the information 
+		in a time series is most easily understood from a <strong>graphical</strong> display.
+A <strong>time series plot</strong> is a type of scatterplot whose horizontal
+axis shows the time-ordering of the values. Successive crosses are often  joined
+by lines.</p>
+ <p class=eqn><img class="gif" src="../../../en/timePlot/images/timePlotDisplay.gif" width="310" height="183"></p>
+
+
+
+
+<h2 class="pageName">4.1.2 &nbsp; Patterns in time series</h2>
+
+<p class="heading notPrinted">Types of pattern</p>
+	<div class="centred"><table class="centred" width="90%">
+	<tr><th width="50%">Trend</th>
+	<th width="50%">Seasonal variation</th>
+	</tr>
+	<tr>
+<td>Trend refers to long-term increases and decreases in the values.
+		<div class="centred"><img src="../../../en/timePlot/images/pattern_trend.gif" width="204" height="135" style="background-color:#FFFFFF; border:solid 1px #666666; padding:5px"></div></td>
+	<td>This is often evident in monthly or quarterly data and refers to a pattern
+that is repeated each year.
+		<div class="centred"><img src="../../../en/timePlot/images/pattern_seasonal.gif" width="204" height="135" style="background-color:#FFFFFF; border:solid 1px #666666; padding:5px"></div></td>
+	</tr>
+	</table></div>
+	
+	<div class="centred"><table width="90%" border="0" cellpadding="0" cellspacing="0" class="centred">
+	<tr><th width="50%">Cyclic variation (autocorrelation)</th>
+	<th width="50%">Random fluctuations</th>
+	</tr>
+	<tr>
+		<td>This arises when  values are  similar to  adjacent values,
+making irregular waves or cycles .
+	<div class="centred"><img src="../../../en/timePlot/images/pattern_cyclical.gif" width="204" height="135" style="background-color:#FFFFFF; border:solid 1px #666666; padding:5px"></div></td>
+	<td>These are 'ups and downs' in a time series that do not correspond to trend, seasonal variation or autocorrelation.
+		<div class="centred"><img src="../../../en/timePlot/images/pattern_random.gif" width="204" height="135" style="background-color:#FFFFFF; border:solid 1px #666666; padding:5px"></div></td>
+	</tr>
+	</table></div>
+	
+	<p>Most time series  show more than one of these patterns to some degree.</p>
+
+
+
+
+<h2 class="pageName">4.1.3 &nbsp; Multiple time series</h2>
+
+<p class="heading notPrinted">Displaying several time series on the same plot</p>
+	<p>Several related time series can be superimposed with different colours on the same display, making comparisons easier. The crosses may be omitted.</p>
+	<p class="eqn"><img src="../../../en/timePlot/images/s_multiPlots.gif" width="454" height="285"></p>
+
+
+
+
+<h1 class="sectionName breakBefore">4.2 &nbsp; Smoothing</h1>
+<h2 class="pageName">4.2.1 &nbsp; Moving averages</h2>
+
+<p class="heading notPrinted">Smoothing</p>
+	<p>Random fluctuations in a time series are usually <strong>noise</strong> that  can obscure trend and other <strong>signal</strong> in the series. The values can be <strong>smoothed</strong> to reduce these random fluctuations and show 
+	the systematic movement in the series more clearly.</p>
+	<p class=eqn><span class="black"><strong>smoothed value</strong> &nbsp; = &nbsp;<em><strong>centre</strong></em> ( <strong>original value</strong> <em>and</em> <strong>adjacent values</strong> )</span> </p>
+	<p class="heading">Moving averages</p>
+	<p>A <strong>3-point moving average</strong> replaces the value at time <i>i</i> by </p>
+	<p class=eqn><img class="gif" src="../../../en/smoothing/images/runningMeanEqn.gif" width="210" height="25"> </p>
+	<p>Moving 
+		averages are also called <strong>running means</strong>. In the example below,
+a 7-point moving average replaces each value with the mean of it and the 3 adjacent
+ values on each side.</p>
+	<p class="eqn"><img src="../../../en/smoothing/images/s_movingAverage.gif" width="501" height="249"></p>
+	<p>The more adjacent values used, the greater the smoothing.</p>
+	<p class="heading">Ends of the series</p>
+	<p>Note that moving averages cannot be used to smooth the values at the two ends of the time series.</p>
+	
+
+
+
+<h2 class="pageName">4.2.2 &nbsp; More about moving averages</h2>
+
+<p class="heading notPrinted">Moving average with odd and even run lengths</p>
+	<p>A moving average provides a smoothed value at the middle of the times of the values being averaged.</p>
+	<p class=eqn><img class="gif" src="../../../en/smoothing/images/movingAverage5.gif" width="249" height="218">          <img class="gif" src="../../../en/smoothing/images/movingAverage4.gif" width="237" height="218"></p>
+	<p>If averaging over an even number of values, the smoothed value is for a time between those of the data values, such as &quot;year 2005.5&quot;.</p>
+	<p class="heading">A second stage of averaging for even run lengths</p>
+	<p>To provide smoothed values at the same times as the raw data, we often take a further 2-point moving average.</p>
+	<p class=eqn><img class="gif" src="../../../en/smoothing/images/movingAverageDouble.gif" width="428" height="218"> </p>
+	<p>This is equivalent to giving <strong>half weight</strong> to the two outermost values. If  based on moving averages of 4, this is called a 4-point centred moving average.</p>
+	<div class="centred"><div class="boxed">
+		<p>These centred averages are particularly useful when analysing seasonal data. For example, 12-point centred moving averages are often used for monthly data.</p>
+	</div></div>
+	
+
+
+
+<h2 class="pageName">4.2.3 &nbsp; Robust smoothing ((optional))</h2>
+
+<p class="heading">Outliers and running medians</p>
+	<p>Since medians are less sensitive to outliers than means, a more robust alternative to running means replaces each value by the <strong>median</strong> of it and adjacent values. A <strong>3-point running median</strong> is: </p>
+	<p class=eqn><img class="gif" src="../../../en/smoothing/images/runningMedianEqn.gif" width="225" height="25"> </p>
+	<p>and higher-order running medians will use more adjacent values. </p>
+	<p class="heading">Comparison of means and medians</p>
+	<ul>
+		<li>Moving averages are more affected by outliers in the series</li>
+		<li>Running medians often have a 'stepped' appearance &mdash; the smoothed series 
+			is level for periods, followed by relatively sharp jumps.</li>
+	</ul>
+	<p class=eqn><img src="../../../en/smoothing/images/s_meanMedian.gif" width="539" height="283"></p>
+<p class=heading>Running medians, followed by moving averages</p>
+<p>To take advantage of the best features of both moving averages and running 
+		medians, these two techniques are often applied sequentially.</p>
+	<ul>
+		<li>Firstly, low-order running medians are used to remove the influence of outliers.</li>
+		<li>The resulting series is then further smoothed with low-order moving averages.</li>
+	</ul>
+
+
+
+
+<h2 class="pageName">4.2.4 &nbsp; Exponential smoothing</h2>
+
+<p class="heading">Smoothing up to the end of the series</p>
+	<p>We are usually most interested in the  latest values in a time
+series, but moving averages  cannot provide smoothed values at the two ends of
+the time series. <strong>Exponential 
+smoothing</strong> works up to the end of the series:</p>
+<p class=eqn><img class="gif" src="../../../en/smoothing/images/expSmoothInitial.gif" width="59" height="18"> </p>
+	<p class=eqn><img class="gif" src="../../../en/smoothing/images/expSmoothEqn.gif" width="175" height="25"></p>
+	<p>where the smoothing constant, <i>a</i>, is a value between 0 and 1. The smoothed
+value is a 'weighted average' of the actual value at that time and the previous
+smoothed value.</p>
+<p class="heading">Alternative formula</p>
+	<p>The formula can also be expressed as </p>
+	<p class=eqn><img class="gif" src="../../../en/smoothing/images/expSmoothEqn2.gif" width="486" height="26"></p>
+	<p>For example, if <em>a</em>&nbsp;=&nbsp;<sup>1</sup>/<sub>2 </sub>, </p>
+	<p class=eqn><img class="gif" src="../../../en/smoothing/images/expSmoothHalf.gif" width="299" height="26"> </p>
+	<p>The smoothed value puts more weight on the recent past (which is an intuitively sensible thing to do).</p>
+	<ul>
+		<li>The closer <em>a</em> becomes to one, the greater the influence of the
+actual value, and the less smoothing.</li>
+		<li>The closer <em>a</em> becomes to zero, the more smoothing.</li>
+</ul>
+	<p class="heading">Forecasting future values</p>
+	<p>If the most recent value is at time <em>i</em>, we forecast
+the value at time <em>i</em> + <em>k</em> to be the last exponentially smoothed
+value,</p>
+<p class=eqn><img class="gif" src="../../../en/smoothing/images/expPredict.gif" width="252" height="23"></p>
+	<ul>
+		<li>If <i>a</i>&nbsp;=&nbsp;1, the forecast is just the last observed value 
+			in the time series.</li>
+		<li>As <i>a</i> is reduced, the forecast becomes more affected by earlier 
+			values in the series.</li>
+	</ul>
+	
+	<p class="heading">Time series with trend</p>
+	<p>If the time 
+		series has an increasing trend, exponential smoothing will 
+		tend to underestimate the trend. Similarly, the smoothed series will be too high if 
+		there is a decreasing trend.</p>
+	<p class="eqn"><img src="../../../en/smoothing/images/s_expSmoothTrend.gif" width="455" height="258"></p>
+	<div class="centred"><div class="boxed">
+		<p>Do not use exponential smoothing on a time series with trend.</p>
+	</div></div>
+	
+
+
+<h2 class="pageName">4.2.5 &nbsp; Lowess smoothing of time series ((advanced))</h2>
+
+<p class="heading notPrinted">Least squares smoothing of adjacent values</p>
+	<p>Another method that  provides smoothed values up to both ends of a time series is called <strong>lowess</strong> (<strong>lo</strong>cally <strong>we</strong>ighted <strong>s</strong>catterplot <strong>s</strong>moothing). When used with time series, it is similar to running means except that instead of using the average of values at adjacent times, it fits a least squares line through them and uses this least squares line to estimate the smoothed value.</p>
+	<p class=eqn><img class="gif" src="../../../en/smoothing/images/lowessEqn.gif" width="309" height="21"></p>
+	<p class="eqn"><img src="../../../en/smoothing/images/s_lowess.gif" width="513" height="272"></p>
+	<p>The number of adjacent points used for each smoothed value can be adjusted. As this 'window' becomes wider, the values are smoothed more, but if it is too wide, detail is lost.</p>
+	<p>Since a separate least squares line must be fitted to obtain each smoothed value, a computer must be used to apply this method.</p>
+
+
+
+
+<h2 class="pageName">4.2.6 &nbsp; Lowess smoothing of scatterplots ((advanced))</h2>
+
+<p class="heading notPrinted">Local smoothing of scatterplots</p>
+	<p>Lowess can be used to smooth time series but was originally developed as a general way to draw a smooth curve on any type of scatterplot. Again, the smoothed value for any observation is obtained by fitting a least squares line to the observations with adjacent values for the explanatory variable. The fitted values that are obtained in this way are joined with lines.</p>
+	<p class="eqn"><img src="../../../en/smoothing/images/s_lowessScatter.gif" width="513" height="266"></p>
+	<p>(Most computer software implements a version of lowess that is  a actually bit more complex than has been described here but our simpler version gives a good flavour of the method.)</p>
+
+
+
+
+<h1 class="sectionName breakBefore">4.3 &nbsp; Long-term trend</h1>
+<h2 class="pageName">4.3.1 &nbsp; Linear trend</h2>
+
+<p class="heading">Least squares</p>
+	<p>Moving averages provide a good <strong>description</strong> of the trend
+ in a time series but are less useful for <strong>forecasting</strong> future
+values. For forecasting, it is better to describe trend  with a mathematical
+equation,</p>
+<p class=eqn><span class="black"><em>trend</em> &nbsp; = &nbsp; function (<em> time</em> )</span> </p>
+	<p>The simplest such model is a <strong>linear model</strong>,</p>
+	<p class=eqn><span class="black"><em>trend</em> &nbsp; = &nbsp; <em>b</em><sub>0</sub> &nbsp;+ &nbsp;<em>b</em><sub>1</sub><em> time</em></span> </p>
+	<p><em>b</em><sub>0</sub> and <em>b</em><sub>1</sub> can be estimated by <strong>least squares</strong> to
+minimise</p>
+<p class=eqn><img class="gif" src="../../../en/trend/images/rss.gif" width="233" height="26"> </p>
+	<p class=eqn><img src="../../../en/trend/images/s_linear.gif" width="456" height="311"></p>
+	<p class="heading">Recoding the years</p>
+	<p>The large intercept in the example above is avoided if the years are recoded
+ so that
+some year within the range of the data becomes &quot;year 0&quot;.</p>
+<p class=eqn><span class="black"><em>trend</em> &nbsp; = &nbsp; <em>b</em><sub>0</sub> &nbsp;+ &nbsp;<em>b</em><sub>1</sub> <font size="+1">(</font><em>time</em> &minus; 1960<font size="+1">)</font></span> </p>
+	<p>This model is equivalent and gives the same fitted values and 
+		forecasts. </p>
+	<p class="eqn"><img src="../../../en/trend/images/s_linearRecoded.gif" width="456" height="311"></p>
+
+
+
+
+<h2 class="pageName">4.3.2 &nbsp; Quadratic trend</h2>
+
+<p class="heading notPrinted">Quadratic models</p>
+	<p>If the trend in a time series is nonlinear, a linear model should not be
+used. A simple model that can explain some simple types of curvature is a <strong>quadratic
+model</strong>:</p>
+<p class=eqn><span class="black"><em>trend</em> &nbsp; = &nbsp; <em>b</em><sub>0</sub> &nbsp;+ &nbsp;<em>b</em><sub>1</sub><em> time</em> &nbsp;+ &nbsp;<em>b</em><sub>2</sub><em> time</em><sup>2</sup></span> </p>
+	<p>This has <strong>three</strong> parameters that 
+		can be adjusted to improve the fit of the model. Residuals
+ are again defined as</p>
+	<p class=eqn><span class="black"><em>e<sub>i</sub></em>&nbsp;&nbsp;=&nbsp;&nbsp;<em>y<sub>i</sub></em>&nbsp;&minus;&nbsp;<em>trend<sub>i</sub></em></span> </p>
+	<p>and the <strong>least squares</strong> estimates of <em>b</em><sub>0</sub>, <em>b</em><sub>1</sub>
+and <em>b</em><sub>2</sub>  are
+the values that minimise the residual sum of squares,</p>
+<p class=eqn><span class="black"><font size="+1">&Sigma;</font> <em>e<sub>i</sub></em><sup>2</sup></span> </p>
+	<p class="eqn"><img src="../../../en/trend/images/s_quadratic.gif" width="507" height="315"></p>
+
+
+
+
+<h2 class="pageName">4.3.3 &nbsp; Forecasting</h2>
+
+<p class="heading notPrinted">Using linear and quadratic models for forecasting</p>
+	<p>After fitting a linear or quadratic model by least squares, forecasting 
+		is simply a matter of inserting future time values into its equation.</p>
+	<p class="heading">Dangers in forecasting</p>
+	<p>It is important to realise that the forecasts from linear or quadratic models
+are highly dependent on the type of line or curve that is chosen for modelling.
+The dangers are the same as those for extrapolation in bivariate relationships.</p>
+
+<div class="centred"><div class="boxed">
+<p>Beware forecasting many time periods into the future &mdash; the 
+				shape of the actual trend line might be different from your model.</p>
+</div></div>
+
+
+
+
+<h2 class="pageName">4.3.4 &nbsp; Polynomial trend</h2>
+
+<p class="heading">Cubic and higher-degree polynomial models</p>
+	<p>If a quadratic model does not adequately describe the shape of the trend in a time series, it is tempting to try to further increase the order of the polynomial,</p>
+	<p class=eqn><span class="black"><em>trend</em> &nbsp; = &nbsp; <em>b</em><sub>0</sub> &nbsp;+ &nbsp;<em>b</em><sub>1</sub><em> time</em> &nbsp;+ &nbsp;<em>b</em><sub>2</sub><em> time</em><sup>2</sup> &nbsp;+ &nbsp;<em>b</em><sub>3</sub><em> time</em><sup>3</sup> &nbsp;+ &nbsp;...</span> </p>
+	<p>This kind of polynomial model  can also be fitted by least squares.</p>
+	<p class="eqn"><img src="../../../en/trend/images/s_polynomial.gif" width="550" height="327"></p>
+	<p>A polynomial of degree 3 or 4 often provides a fairly smooth description
+of trend but polynomial models usually behave badly (with sudden increases or
+decreases) beyond the data points, so...</p>
+	<div class="centred"><div class="boxed">
+		<p>Polynomial models of degree greater than 2 should not be used for forecasting.</p>
+	</div></div>
+
+	
+
+
+
+<h2 class="pageName">4.3.5 &nbsp; Detrending a time series</h2>
+
+<p class="heading">Residuals</p>
+	<p>The residuals for a time series model subtract the trend from the values
+and are called the <strong>detrended</strong> values,</p>
+<p class=eqn><span class="black"><em>e<sub>i</sub></em>&nbsp;&nbsp;=&nbsp;&nbsp;<em>y<sub>i</sub></em>&nbsp;&minus;&nbsp;<em>trend<sub>i</sub></em></span> </p>
+	<p>If the model under consideration fits well, there should be no 
+		pattern in the residuals &mdash; each should have the same chance of being positive 
+		or negative.</p>
+
+
+
+
+<h1 class="sectionName breakBefore">4.4 &nbsp; Short-term fluctuations</h1>
+<h2 class="pageName">4.4.1 &nbsp; Autocorrelation</h2>
+
+<p class="heading">Autocorrelation of detrended values</p>
+	<p>In many time series, there is a tendency for unusually large values 
+to be followed by other similar values, even after detrending the series,</p>
+<p class=eqn><span class="black"><em>e<sub>i</sub></em>&nbsp;&nbsp;=&nbsp;&nbsp;<em>y<sub>i</sub></em>&nbsp;&minus;&nbsp;<em>trend<sub>i</sub></em></span> </p>
+	<p>Any tendency for  these residuals to be followed by others of similar size
+is called
+<strong>autocorrelation</strong> and can be described by the correlation coefficient
+between pairs of adjacent residuals.</p>
+<p class="eqn"><img src="../../../en/cyclic/images/s_autoCorr.gif" width="509" height="516"></p>
+	<p>In this example, the <strong>autocorrelation</strong> is 0.71, so there is some tendency for values above the trend line to be followed by others on the same side of it.</p>
+	<p>Positive autocorrelation has an important impact on forecasting 
+		&mdash; if the most recent value is above the trend line, we should forecast 
+the next value  will also be above it.</p>
+
+
+
+
+<h2 class="pageName">4.4.2 &nbsp; AR(1) model for autocorrelation</h2>
+
+<p class="heading">Predicting a value from the previous value</p>
+	<p>In a time series without trend, positive autocorrelation means that  values
+tend to be followed by others of similar size.</p>
+<p class=eqn><img class="gif" src="../../../en/cyclic/images/yAgainstPrevious.gif" width="276" height="207"> </p>
+	<p>We can try to predict <em>y<sub>t</sub></em> from its previous value by fitting
+a straight line by least squares to this scatterplot,</p>
+	<p class=eqn><span class="black"><em>y<sub>t</sub></em>&nbsp;&nbsp;=&nbsp;&nbsp;<em>b</em><sub>0</sub>&nbsp;&nbsp;+&nbsp;&nbsp;<em>b</em><sub>1 </sub><em>y<sub>t</sub></em><sub>&minus;1</sub></span> </p>
+	<p>This  is a type of <strong>auto-regressive model</strong>, and is usually 
+		called an <strong>AR(1) model</strong>.</p>
+	<p class=eqn><img class="gif" src="../../../en/cyclic/images/arForecastPlot.gif" width="376" height="206"> </p>
+	<p class="heading">Forecasting further into the future</p>
+	<p>The model only directly predicts one time period into the future,</p>
+<p class=eqn><span class="black"><span style="position:relative; top:4px"><img src="../../../en/../images/symbol.yHat.png" width="10" height="17"></span><em><sub>t</sub></em>&nbsp;&nbsp;=&nbsp;&nbsp;<em>b</em><sub>0</sub>&nbsp;&nbsp;+&nbsp;&nbsp;<em>b</em><sub>1 </sub><em>y<sub>t</sub></em><sub> &minus; 1</sub></span> </p>
+	<p>but we can predict further into the future using:</p>
+	<p class=eqn><span class="black"><span style="position:relative; top:4px"><img src="../../../en/../images/symbol.yHat.png" width="10" height="17"></span><em><sub>t</sub></em><sub> + </sub><em><sub>k</sub></em>&nbsp;&nbsp;=&nbsp;&nbsp;<em>b</em><sub>0</sub>&nbsp;&nbsp;+&nbsp;&nbsp;<em>b</em><sub>1 </sub><em><span style="position:relative; top:4px"><img src="../../../en/../images/symbol.yHat.png" width="10" height="17"></span><sub>t</sub></em><sub> + <em>k </em>&minus;1</sub></span></p>
+
+
+
+
+<h2 class="pageName">4.4.3 &nbsp; AR(1) model and trend</h2>
+
+<p class="heading notPrinted">Forecasting when there is trend</p>
+	<p>The method described in the previous page works well if there is no trend
+in the time series. If there <strong>is</strong> trend, we should remove it before
+using an AR(1) model. The steps for forecasting a future value are therefore...</p>
+ <ol>
+		<li>Estimate the trend in the series.</li>
+		<li>Fit an AR(1) model to the detrended values (residuals).</li>
+		<li>Forecast future detrended values by applying the AR(1) model to the most
+recent detrended value.</li>
+		<li>Forecast the trend (using the model fitted in step 1) and add the detrended
+ forecast from step 3.</li>
+	</ol>
+	<p class="gray">(There are more efficient ways to do steps 
+		1 and 2 together, but these are beyond the scope of an introductory course.)</p>
+
+
+
+
+<h2 class="pageName">4.4.4 &nbsp; Trend or autocorrelation?</h2>
+
+<p class="heading notPrinted">Dangers of over-interpretation</p>
+	<p>Very strong autocorrelation in a time series can result in apparent trends,
+even when there is no real trend underlying the series. Autocorrelation and trend
+are especially difficult to distinguish in short time series. You should therefore
+be wary of extrapolating a trend into the future if there is high autocorrelation.</p>
+
+
+
+
+<h2 class="pageName">4.4.5 &nbsp; Cyclical patterns</h2>
+
+<p>Many time series change in cycles, with increases and decreases that cannot 
+			be explained by a smooth trend line.</p>
+	<p class="heading">Seasonal patterns</p>
+	<p>Some cycles are <strong>seasonal</strong>. Seasonal patterns are distinguished by a period that repeats exactly &mdash; for 
+		example, monthly data has a period of <strong>exactly</strong> 12 months.</p>
+	<div class="centred"><div class="boxed">
+		<p>Seasonal patterns are not usually referred to as 'cyclical'.</p>
+	</div></div>
+	<p class="heading">Cyclical patterns</p>
+	<p>Other cycles  repeat much less regularly. Sun-spot activity
+has  cycles of approximately 11 years, and the 'business cycle' can be anywhere
+between 3 and 10 years. In both cases, different cycles are not  <strong>exactly</strong> the
+same length.</p>
+<div class="centred"><div class="boxed">
+		<p>The AR(1) method can be used to obtain forecasts for cyclical data with irregular cycle lengths.</p>
+	</div></div>
+	<p>We will not distinguish cyclical patterns from other forms of autocorrelation
+here.</p>
+
+
+
+
+<h1 class="sectionName breakBefore">4.5 &nbsp; Seasonal data</h1>
+<h2 class="pageName">4.5.1 &nbsp; Seasonal patterns</h2>
+
+<p class="heading notPrinted">Seasonal data</p>
+	<p>In monthly or quarterly data, there is often a pattern of peaks and troughs
+ that repeats in a similar way each year. Daily data often show a  pattern
+ that repeats each week, and hourly data often have a daily pattern. These 
+		are all called <strong>seasonal patterns</strong>.</p>
+<p class="eqn"><img src="../../../en/seasonal/images/s_seasonalPlot.gif" width="541" height="305"></p>
+	<p>Seasonal patterns make it difficult to assess whether a particular month's value is unusually high or low.</p>
+	<p>Regular seasonal patterns can be projected into the future and are  important
+ in forecasting.</p>
+
+
+
+
+<h2 class="pageName">4.5.2 &nbsp; Smoothing out seasonal variation</h2>
+
+<p class="heading">Moving averages</p>
+	<p>Daily data have a cycle length of 7 days, so each 7-point running 
+		mean averages exactly <strong>one value from each day of the week</strong>.
+If the seasonal pattern was to repeat <strong>exactly</strong> every week, 7-point
+moving averages will be the same every day, as illustrated below.</p>
+	<p class=eqn><img src="../../../en/seasonal/images/s_weeklyMean.gif" width="428" height="162"></p>
+	<p>The diagram below removes a monthly seasonal effect with 12-point moving averages.</p>
+	<p class="eqn"><img src="../../../en/seasonal/images/s_movingAve.gif" width="537" height="287"></p>
+
+
+
+
+<h2 class="pageName">4.5.3 &nbsp; Estimating the seasonal effect</h2>
+
+<p class="heading">Limitations of moving averages for removing seasonal variation</p>
+	<ul>
+		<li>They cannot be used at the ends of the time series.</li>
+		<li>They are only 'local' and do not use information about
+the seasonal pattern from other cycles.</li>
+	<li>They cannot be used to forecast future values.</li>
+	</ul>
+<p class="heading">Estimating a common seasonal effect</p>
+	<p>If the underlying seasonal pattern in monthly data repeats in the same form
+each year, the <strong>residuals</strong> from
+ 12-point moving averages can be used to estimate the seasonal pattern. The seasonal
+effect for any month is estimated as the  average of the residuals for that month.</p>
+	<p class="eqn"><img src="../../../en/seasonal/images/s_averageEffects.gif" width="506" height="491"></p>
+
+
+
+
+<h2 class="pageName">4.5.4 &nbsp; Deseasonalised data</h2>
+
+<p class="heading">Removing the seasonal effect</p>
+	<p>Having estimated a common seasonal effect that describes how far each month's 
+		value is (on average) from the overall trend, we can subtract this seasonal 
+		effect to obtain <strong>deseasonalised data</strong>. This is often called <strong>seasonally adjusting</strong> the data.</p>
+	<p class="eqn"><img src="../../../en/seasonal/images/s_removeEffect.gif" width="495" height="497"></p>
+	<p>The time series can be deseasonalised in this way for <strong>all</strong> years (including the most recent data).</p>
+	<p>The deseasonalised data not only shows the trend in the series more clearly, 
+		but also shows <strong>individual</strong> months that are substantially different 
+		from the usual seasonal pattern.</p>
+
+
+
+
+<h2 class="pageName">4.5.5 &nbsp; Putting it all together</h2>
+
+<p class="heading">Four components of a time series</p>
+	<p>The variation in a time series can be split into <strong>four</strong> separate components:</p>
+	<p class=eqn><span class="darkblue" style="font-weight:bold">Deseasonalised&nbsp; = &nbsp; Trend &nbsp; + &nbsp; Cyclical &nbsp; + &nbsp; Residual</span> </p>
+	<p>(Of course, the seasonal effect is only present for seasonal data.)</p>
+	<p class="eqn"><img src="../../../en/seasonal/images/s_comp_raw.gif" width="515" height="210"></p>
+	<p class="eqn"><img src="../../../en/seasonal/images/s_comp_seasonal.gif" width="515" height="210"></p>
+	<p class="eqn"><img src="../../../en/seasonal/images/s_comp_trend.gif" width="515" height="210"></p>
+	<p class="eqn"><img src="../../../en/seasonal/images/s_comp_cyclic.gif" width="515" height="210"></p>
+	<p class="eqn"><img src="../../../en/seasonal/images/s_comp_residual.gif" width="515" height="210"></p>
+	
+
+
+
+<h2 class="pageName">4.5.6 &nbsp; Forecasting with seasonal data</h2>
+
+<p class="heading">Forecasting the individual components</p>
+	<p>The seasonal, trend and cyclical components can  be separately forecast into
+the future. Putting them together provides a forecast for the time series values,</p>
+<p class=eqn><span class="darkblue" style="font-weight:bold">Forecast&nbsp; = &nbsp; Seasonal effect &nbsp; + &nbsp; Trend forecast&nbsp; + &nbsp; Cyclical forecast</span> </p>
+	<dl>
+		<dt>Seasonal effect</dt>
+		<dd>We forecast that the same seasonal effects will hold into the future.</dd>
+		<dt>Trend forecast</dt>
+		<dd>A linear or quadratic model for the trend gives forecasts of the future trend.</dd>
+		<dt>Cyclical forecast</dt>
+		<dd>The cyclical component can be forecast into the future with an AR(1) model.</dd>
+	</dl>
+
+
+
+
+
+<h1 class="sectionName breakBefore">4.6 &nbsp; Multiplicative models</h1>
+<h2 class="pageName">4.6.1 &nbsp; Additive and multiplicative models</h2>
+
+<p class="heading">Additive models</p>
+	<p>We  assumed earlier that the four time series
+		components affect it additively.</p>
+	<p class=eqn><span class="darkblue" style="font-weight:bold">Deseasonalised&nbsp; = &nbsp; Trend &nbsp; + &nbsp; Cyclical &nbsp; + &nbsp; Residual</span> </p>
+	<p>This implies that:</p>
+	<ul>
+		<li>The difference between the 
+		January and July values is approximately the same each year.</li>
+		<li>The residuals are roughly the same sizes 
+		throughout the series.</li>
+	</ul>
+	<p>The seasonal pattern has greater magnitude at
+the end of the following time series than at its start, so an additive model
+is not appropriate.</p>
+<p class="eqn"><img src="../../../en/multiplicative/images/s_seasonalData.gif" width="468" height="253"></p>
+	<p class="heading">Multiplicative models</p>
+	<p>In many time series, the absolute differences in the values are of less interest
+and importance than the percentage changes. A <strong>multiplicative
+model</strong> assumes that seasonal and other effects act proportionally on
+the series:</p>
+<p class=eqn><span class="darkblue"><strong>Data &nbsp; = &nbsp; (Seasonal effect) &nbsp; &times; &nbsp; Trend &nbsp; &times; &nbsp; Cyclical &nbsp; &times; &nbsp; Residual</strong></span> </p>
+	<p>After taking logarithms (either natural logarithms or to base 10), the four 
+	components of the time series again act additively.</p>
+	<table border="0" class="centred" cellpadding="3" cellspacing="0" style="color:#009; margin-top:0; margin-bottom:0">
+<tr>
+<td valign="top" rowspan="2"><strong>log(Data) &nbsp;</strong></td>
+<td align="left" valign="top"><strong>= &nbsp; log(Seasonal effect &nbsp; × &nbsp; Trend &nbsp; × &nbsp; Cyclical &nbsp; × &nbsp; Residual)</strong></td>
+</tr>
+<tr>
+<td align="left" valign="top"><strong>= &nbsp; log(Seasonal effect) &nbsp;+ &nbsp;log(Trend) &nbsp;+ &nbsp;log(Cyclical) &nbsp;+ &nbsp;log(Residual)</strong></td>
+</tr>
+</table>
+<div class="centred"><div class="boxed">
+		<p>To fit a multiplicative model, analyse the logarithms of the 
+	data with an additive model.</p>
+	</div></div>
+
+
+
+
+<h2 class="pageName">4.6.2 &nbsp; Properties of multiplicative models</h2>
+
+<p class="heading notPrinted">Difference between additive and multiplicative models</p>
+	<p>Additive and multiplicative models can only be easily distinguished when 
+		there is noticeable trend in the time series.</p>
+	<dl>
+		<dt>Additive model</dt>
+		<dd>For this model, the seasonal, cyclical and residual variation around the
+trend line are of approximately the same size whether the trend value is low or
+high.</dd>
+	</dl>
+	
+	<p class="eqn"><img src="../../../en/multiplicative/images/s_additive.gif" width="469" height="292"></p>
+	
+	<dl>
+		<dt>Multiplicative model</dt>
+		<dd>In a multiplicative model, the seasonal, cyclical and residual variation
+around the trend line are greater when the trend is at high values than when
+the trend is low.</dd>
+	</dl>
+	<p class="eqn"><img src="../../../en/multiplicative/images/s_multiplicative.gif" width="469" height="268"></p>
+
+
+
+
+<h2 class="pageName">4.6.3 &nbsp; Forecasting with multiplicative models</h2>
+
+<p class="heading notPrinted">Obtaining forecasts</p>
+	<p>A multiplicative model is equivalent to an additive model for the 
+		log data.</p>
+	<p class=eqn><span class="darkblue"><strong>log(Data) &nbsp; = &nbsp; Seasonal* &nbsp; + &nbsp; Trend* &nbsp; + &nbsp; Cyclical* &nbsp; + &nbsp; Residual</strong>*</span></p>
+	<p>This model 
+		will give forecasts of the <strong>log data</strong>.</p>
+	<p class=eqn><span class="darkblue"><strong>forecast of log(Data) &nbsp; = &nbsp; (forecast Seasonal*) &nbsp;+ &nbsp;(forecast Trend*) &nbsp;+ &nbsp;(forecast Cyclical*)</strong></span></p>
+	<p>To obtain forecasts in the original scale, an inverse transformation must 
+		be applied. With base-10 logarithms,</p>
+	<table border="0" cellspacing="0" cellpadding="0" class="centred" style="color:#009;margin-top:0; margin-bottom:0">
+<tr>
+<td rowspan="2"><strong>forecast of Data &nbsp; = &nbsp; 10</strong></td>
+<td><strong><span style="font-size:90%">forecast of log(Data)</span></strong></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+</tr>
+</table>
+<p>(If natural logarithms were used, an exponential function gives a forecast in the original units. Both  types of logarithms result in identical forecasts.)</p>
+<p class="eqn"><img src="../../../en/multiplicative/images/s_forecast.gif" width="525" height="294"></p>
+
+
+
+
+<h2 class="pageName">4.6.4 &nbsp; Analysing the right data</h2>
+
+<p>Analysis of 
+			the raw data can sometimes lead you to wrong conclusions. Adjustment of the 
+			data prior to analysis may give you better insight.</p>
+	<p class="heading">Seasonally adjusting data</p>
+	<p>Data should be <strong>seasonally adjusted</strong> to remove any seasonal pattern before you try to interpret whether any particular value is unusually high or low.</p>
+	<p class="heading">Adjusting to constant dollars</p>
+	<p>A 1990 dollar 
+		was worth considerably more than a 2010 dollar, making it hard to compare prices in these two years.</p>
+	<p>Values described in dollars should be adjusted to 'constant' dollars using the consumer price index (CPI) or the price of some other 'standard' commodity. Using  average income to adjust 
+		house prices to '1990 dollars',</p> 
+	<p class=eqn><img class="gif" src="../../../en/multiplicative/images/constDollars.gif" width="468" height="31"></p>
+	<p class="heading">Using per capita data</p>
+	<p>Looking at trends in 'quantity' values (e.g. a country's total alcohol consumption) is misleading over a period in which the population  increases. It is more meaningful to examine quantities <strong>per person</strong>.</p>
+	
+	<div class="centred"><div class="boxed">
+<p>Always consider carefully whether a different variable would describe the
+data more meaningfully.</p>
+</div></div>
+
+
+
+
+<h2 class="pageName">4.6.5 &nbsp; Types of time series data</h2>
+
+<p class="heading notPrinted">A classification of time series</p>
+	<p>Time series data arise in various different contexts.</p>
+	<dl>
+		<dt><strong>Measurements relating to events that occur at discrete times</strong></dt>
+		<dt><strong>Regular snapshots of a continuous process</strong></dt>
+		<dt><strong>Quantities that are aggregated over a period</strong></dt>
+	</dl>
+	<p>The measurements themselves may be:</p>
+	<dl>
+		<dt><strong>Continuous</strong></dt>
+		<dt><strong>Discrete</strong></dt>
+	</dl>
+	<p>In this e-book, all of the above types of time series are analysed in the
+same way.</p>
+
+
+
+
+<h1 class="sectionName breakBefore">4.7 &nbsp; Index numbers</h1>
+<h2 class="pageName">4.7.1 &nbsp; Introduction</h2>
+
+<p class="heading">Index numbers</p>
+	<p>An <strong>index number</strong> measures the value of an item (or group of items) at a point in time as a percentage of the value of the item (or group of items) at another fixed time point.</p>
+	<p class="heading">Price and quantity indices</p>
+	<p>Price indices summarise how the prices of items vary over time.</p>
+	<p>Quantity indices describe how the quantities of items (e.g. imports) vary over time. We only consider price indices in this section, but many of the principles and formulae carry over to quantity indices.</p>
+	<p class="heading">Common business indices</p>
+	<p>The  Consumers Price Index (CPI) in a country summarises the overall price level of  goods and services purchased by households. Other price indices describe prices of energy, accommodation and various classes of food.</p>
+	<p>Stock market indices such as the Dow Jones (USA), FTSE 100 (UK) and NZX50 (New Zealand)  summarise changes in the value of company shares. Other stock market indices such as the NASDAQ (technology) describe particular market segments.</p>
+
+
+
+
+<h2 class="pageName">4.7.2 &nbsp; Simple price index</h2>
+
+<p class="heading notPrinted">Simple price index</p>
+	<p>This expresses the price of a single item as a percentage of its price at
+a <strong>base</strong> time
+(usually in the past). If <em>P</em><sub>0</sub> is the price in the base year
+and <em>P</em><sub>i</sub> is the price in year <em>i</em>, then the price index
+for year <em>i</em> is</p>
+<p class="eqn"><img class="gif" src="../../../en/indexNos/images/simpleIndex.gif" width="98" height="44"></p>
+	<p class="eqn"><img src="../../../en/indexNos/images/s_brent.gif" width="550" height="327"></p>
+
+
+
+
+<h2 class="pageName">4.7.3 &nbsp; Aggregate price index</h2>
+
+<p>An <strong>aggregate price index</strong> summarises the prices in a 'basket' of several related items.</p>
+<p class="heading">Unweighted aggregate price index</p>
+	<p>The simplest is a simple price index applied to the sum (or average) of <em>n</em> item
+prices,</p>
+<p class="eqn"><img class="gif" src="../../../en/indexNos/images/unweightedIndex.gif" width="126" height="100"></p>
+	<p>where <em>P<sub>i</sub><sup>(j)</sup></em> and <em>P</em><sub>0</sub><em><sup>(j)</sup></em> denote the prices of the <em>j</em>-th item  at time <em>i</em> and at the base time respectively.</p>
+
+
+
+
+<h2 class="pageName">4.7.4 &nbsp; Laspeyres and Paasche indices</h2>
+
+<p class="heading">Taking account of quantities</p>
+	<p>Some items in the 'basket' are usually more 'important' than others.</p>
+	
+	<div class="centred"><table border="0" class="centred" cellpadding="5" cellspacing="0">
+		<tr>
+			<td>&nbsp;</td>
+			<th>&nbsp;</th>
+			<th colspan="5">Average retail price of fish ($/kg)</th>
+	</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<th>2005 consumption per capita</th>
+			<th>&nbsp;&nbsp;2005&nbsp;&nbsp;</th>
+			<th>&nbsp;&nbsp;2006&nbsp;&nbsp;</th>
+			<th>&nbsp;&nbsp;2007&nbsp;&nbsp;</th>
+			<th>&nbsp;&nbsp;2008&nbsp;&nbsp;</th>
+			<th>&nbsp;&nbsp;2009&nbsp;&nbsp;</th>
+		</tr>
+		<tr>
+<th align="left">Tarakihi</th>
+			<td align="center" bgcolor="#CCFFFF" style="border-top:1px solid #999999;">15.4 kg</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">19.20</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">20.78</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">22.77</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">25.43</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">26.67</td>
+		</tr>
+		<tr>
+<th align="left">Gurnard</th>
+			<td align="center" bgcolor="#CCFFFF">13.7 kg</td>
+			<td align="center" bgcolor="#FFFFFF">18.41</td>
+			<td align="center" bgcolor="#FFFFFF">20.15</td>
+			<td align="center" bgcolor="#FFFFFF">21.93</td>
+			<td align="center" bgcolor="#FFFFFF">24.32</td>
+			<td align="center" bgcolor="#FFFFFF">26.42</td>
+		</tr>
+		<tr>
+<th align="left">Snapper</th>
+			<td align="center" bgcolor="#CCFFFF" style="border-bottom:1px solid #999999;">&nbsp;4.6 kg</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">28.73</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">30.43</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">33.67</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">35.16</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">37.40</td>
+		</tr>
+	</table></div>
+	
+<p>The price of  Snapper should have much less influence on the aggregate
+index than the other types of fish, since much less of it is consumed.</p>
+<p class="heading">Weighted price index</p>
+	<p>A <strong>weighted</strong> price index is more influenced by items  with higher consumption and is based on the <strong>total amount spent</strong> by an average consumer. In 2005, this was:</p>
+	<p class="eqn">15.4 × 19.20 &nbsp; + &nbsp; 13.7 × 18.41 &nbsp; + &nbsp; 4.6 × 28.73 &nbsp; = &nbsp; 680.06</p>
+	<p>Assuming the same consumption for all years,</p>
+	<div class="centred">
+		<table border="0" class="centred" cellpadding="5" cellspacing="0">
+			<tr>
+				<th colspan="5">&nbsp;&nbsp;&nbsp;&nbsp;$ per capita spent on fish&nbsp;&nbsp;&nbsp;</th>
+			</tr>
+			<tr>
+				<th>&nbsp;&nbsp;2005&nbsp;&nbsp;</th>
+				<th>&nbsp;&nbsp;2006&nbsp;&nbsp;</th>
+				<th>&nbsp;&nbsp;2007&nbsp;&nbsp;</th>
+				<th>&nbsp;&nbsp;2008&nbsp;&nbsp;</th>
+				<th>&nbsp;&nbsp;2009&nbsp;&nbsp;</th>
+			</tr>
+			<tr>
+				<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-left:0px; border-right:0px">&nbsp;&nbsp;680.06&nbsp;&nbsp;</td>
+				<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-left:0px; border-right:0px">&nbsp;&nbsp;736.05&nbsp;&nbsp;</td>
+				<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-left:0px; border-right:0px">&nbsp;&nbsp;805.98&nbsp;&nbsp;</td>
+				<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-left:0px; border-right:0px">&nbsp;&nbsp;886.54&nbsp;&nbsp;</td>
+				<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-left:0px; border-right:0px">&nbsp;&nbsp;944.71&nbsp;&nbsp;</td>
+			</tr>
+		</table>
+	</div>
+	<p>The <strong>Laspeyres index</strong> is a simple price index applied to these totals.</p>
+	<div class="centred">
+		<table border="0" class="centred" cellpadding="5" cellspacing="0">
+			<tr>
+				<th colspan="5">&nbsp;&nbsp;&nbsp;&nbsp;Laspeyres fish price index&nbsp;&nbsp;&nbsp;</th>
+			</tr>
+			<tr>
+				<th>&nbsp;&nbsp;&nbsp;2005&nbsp;&nbsp;&nbsp;</th>
+				<th>&nbsp;&nbsp;&nbsp;2006&nbsp;&nbsp;&nbsp;</th>
+				<th>&nbsp;&nbsp;&nbsp;2007&nbsp;&nbsp;&nbsp;</th>
+				<th>&nbsp;&nbsp;&nbsp;2008&nbsp;&nbsp;&nbsp;</th>
+				<th>&nbsp;&nbsp;&nbsp;2009&nbsp;&nbsp;&nbsp;</th>
+			</tr>
+			<tr>
+				<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-left:0px; border-right:0px">100</td>
+				<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-left:0px; border-right:0px">108.23</td>
+				<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-left:0px; border-right:0px">118.52</td>
+				<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-left:0px; border-right:0px">130.36</td>
+				<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-left:0px; border-right:0px">138.92</td>
+			</tr>
+		</table>
+	</div>
+	<p class="heading">Paasche index</p>
+<p>The Laspeyres index uses quantities in the base year as weights. The Paasche index is similar but is based on quantities in the current period.</p>
+<div class="centred"><div class="boxed">
+		<p>We  only consider the Laspeyres index here.</p>
+	</div></div>
+	<p class="heading">Formula for Laspeyres index</p>
+	<p>An equivalent mathematical formula for the index is:</p>
+	<p class="eqn"><img class="gif" src="../../../en/indexNos/images/laspeyresIndex.gif" width="152" height="100"></p>
+	<p>where <em>Q</em><sub>0</sub><em><sup>(j)</sup></em> denotes the quantity
+of the <em>j</em>-th item in the basket at the base time.</p>
+
+
+
+
+<h2 class="pageName">4.7.5 &nbsp; Deflating a time series</h2>
+
+<p class="heading">Other adjustments of time series</p>
+	<p>Many time series are affected by <strong>more than one</strong> variable changing over time. The influence of an ancillary variable can be removed with an index that summarises its effect. If <em>X<sub>i</sub></em> denotes the time series value and <em>N<sub>i</sub></em> is the index for the ancillary variable, the ancillary variable's effect can be removed by:</p>
+<p class="eqn"><img class="gif" src="../../../en/indexNos/images/deflateEqn.gif" width="91" height="44"></p>
+	<p>This is called <strong>deflating</strong> the series.</p>
+	<p class="heading">Correcting for inflation</p>
+	<p>The Consumer Price Index (CPI) is often used to adjust for inflation. If the CPI was 953 in 2005 and 1044 in 2008, the price of an item in 2008 ($25.43) can be expressed in &quot;2005 dollars&quot; as:</p>
+	<p class="eqn"><img class="gif" src="../../../en/indexNos/images/fish_deflate.gif" width="170" height="40"></p>
+	<p>Prices usually change much less over time in 'constant dollars' than in raw dollars.</p>
+	<p class="eqn"><img src="../../../en/indexNos/images/s_gdp.gif" width="536" height="292"></p>
+
+
+
+
+</body>
+</html>

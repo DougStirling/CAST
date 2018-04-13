@@ -1,0 +1,192 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Log transformations</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="transformations">
+	<meta name="dataset" content="OECD GDP">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Nonlinear transformations</p>
+
+<p>There are several types of data where alternative units of measurement are not linearly
+related. For example,
+</p>
+
+  <ul>
+		<li>In Europe, the exchange rate with the US dollar is expressed as US$ per 
+			Euro. In the US, the same exchange rate is expressed as Euros per US$, an 
+			inverse transformation.</li>
+		<li>The Richter scale transforms the measured intensity of earthquakes to 
+			a logarithmic scale.</li>
+		<li>Crude oil prices may be measured in dollars per litre, or litres per dollar, 
+			another inverse relationship.</li>
+	</ul>
+
+<p>Nonlinear transformations of the values in a data set have a more fundamental effect on
+the shape of the distribution, and this may be used to extract further information from the
+data.
+</p>
+
+  <table width="75%" border="1" class="centred" cellpadding="10" cellspacing="0" bgcolor="#FFFFFF">
+    <tr>
+		  <td align="center"><strong>Nonlinear transformation changes the shape of 
+				a distribution.</strong></td>
+	</tr>
+</table>
+
+  <p class="heading">Logarithmic transformations</p>
+	<p>The most commonly used nonlinear transformation replaces each value by its 
+		logarithm,</p>
+	<p class=eqn style="color:#000000"><strong>new value</strong> &nbsp; = log<sub>10</sub> <font size="+1">(</font><strong>old value</strong><font size="+1">)</font></p>
+<p>We use base-10 logarithms in CAST since their values are easier to interpret, 
+		but natural logarithms (base&nbsp;e) have a similar effect on the distribution 
+		of values.</p>
+	<p class="heading">Effect on the shape of a distribution</p>
+	<p>Important properties of logarithms are</p>
+	<ul>
+		<li>Multiplying any value by 10 increases its logarithm by 1.</li>
+		<li>In a similar way, doubling any value increases its logarithm by the same 
+			constant</li>
+	</ul>
+
+	<p>Consider four values 1, 10, 100 and 1000. The first two values are much closer 
+		to each other than the last two values. However their logarithms are 0, 1, 
+		2 and 3, so their logarithms are evenly spaced out.</p>
+	<p>As a result, a logarithmic transformation selectively spreads out low values 
+		in a distribution and compresses high values. It is therefore useful for skew 
+		data with a long tail towards the high values. It will spread out a dense 
+		cluster of low values and may detect clustering or outliers that would not 
+		be visible in graphical displays of the original data.</p>
+
+<div class="diagram">
+
+<p class="heading">World GDP</p>
+
+<p>The dot plot below shows the Gross Domestic Product (GDP) of the 30 countries 
+	in the OECD (Organisation for Economic Cooperation and Development) in 2001.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="200">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="transformProg.DotLabelApplet">
+<param name="varName" value="GDP (billion dollars)">
+<param name="values" value="699.5 613.6 10124.8 366.6 4147.2 416.6 50.2 189.2 230.3 55.3 162.9 120.4 1304.2 1847.2 117.4 51.7 7.6 101.7 1093.8 19.3 383.2 168.0 178.6 110.3 19.9 582.6 209.9 247.5 159.1 1422.1">
+<param name="labelName" value="Country (OECD)">
+<param name="labels" value="Canada Mexico #United States# Australia Japan Korea #New Zealand# Austria Belgium #Czech Republic# Denmark Finland France Germany Greece Hungary Iceland Ireland Italy Luxembourg Netherlands Norway Poland Portugal #Slovak Republic# Spain Sweden Switzerland Turkey #United Kingdom#">
+<param name="horizAxis" value="0 11000 0 2000">
+</applet>
+</div>
+
+<p><strong>Drag</strong> over the crosses to display the names of the countries.</p>
+<p>The data set is so highly skewed that little can be determined about the 
+	distribution of GDP in the smaller OECD countries</p>
+
+    <hr width="85%">
+<p>The problem becomes worse when the GDP of all countries in the world is 
+	examined &mdash; a larger proportion of the countries have very low GDP that 
+	cannot be distinguished in an ordinary dot plot.</p>
+<p>The diagram below also shows a jittered dot plot of the 1995 GDP of most 
+	countries in the world.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="transformProg.Log10Applet">
+<param name="varName" value="GDP ($billion)">
+<param name="values" value="5452.500 3007.183 1500.645 1041.766 884.506 786.052 532.915 477.338 378.600 357.489 332.616 265.482 261.363 252.132 246.882 190.341 188.082 174.106 171.065 166.940 155.313 144.703 129.367 129.107 117.631 116.506 106.017 101.565 96.701 92.833 90.156 69.633 69.098 65.974 64.511 62.397 58.840 57.371 53.230 51.756 51.401 50.581 50.362 49.589 43.732 43.129 41.240 39.775 39.349 36.009 32.794 32.671 28.304 27.890 27.881 24.297 23.552 23.001 22.400 22.307 22.235 17.592 16.408 14.903 14.475 14.207 13.793 13.742 13.382 12.848 12.453 10.360 10.195 10.028 9.715 8.742 8.451 8.280 7.969 7.535 7.191 6.913 6.845 6.720 6.623 6.419 6.334 6.113 5.969 5.857 5.231 5.114 5.091 5.057 4.992 4.732 4.597 4.527 4.369 3.766 3.609 3.530 3.064 2.787 2.644 2.510 2.461 2.438 2.379 2.343 2.327 2.296 2.293 2.280 2.270 2.247 2.175 2.146 1.770 1.717 1.652 1.594 1.568 1.520 1.390 1.370 1.313 1.091 1.077 1.075">
+<param name="labelName" value="Country (World)">
+<param name="labels" value="#United States# Japan Germany France Italy #United Kingdom# China Canada India Spain Brazil Netherlands Australia #Korea, South# Russia Iran Switzerland Taiwan Sweden Belgium Mexico Austria Indonesia Argentina Denmark Turkey Thailand Norway #Saudi Arabia# Finland #South Africa# Algeria #Hong Kong# Poland Vietnam Malaysia Israel Venezuela Greece Ukraine Portugal Colombia Ireland Pakistan Egypt Philippines #New Zealand# Singapore Nigeria Chile #United Arab Emirates# #Czech Republic# #Puerto Rico# Peru Rumania Bangladesh Libya Morocco Kuwait Bulgaria Hungary Syria Belarus Slovakia Iraq Ecuador Uzbekistan Kazakstan Burma Tunisia Oman Sudan Kenya #Ivory Coast# Guatemala Yemen Cameroon Uruguay Uganda Jordan Ghana Slovenia Zaire #Dominican Republic# Zimbabwe #Costa Rica# Panama #El Salvador# Ethiopia Bolivia Honduras Latvia Senegal Paraguay #Trinidad and Tobago# Gabon Lithuania Tanzania Nepal Estonia Nicaragua Jamaica Moldova Madagascar Azerbaijan Armenia Congo Niger Guinea Burkina Botswana Namibia Kyrgyzstan Rwanda Mauritius Georgia Zambia Mali Laos Benin Mozambique Haiti Tajikistan Albania Malawi Togo Burundi #Central African Rep# Chad Liberia">
+<param name="horizAxis" value="0.8 6000 1000 1000">
+<param name="logName" value="Log (GDP)">
+<param name="logDecimals" value="3">
+<param name="logAxis" value="0.8 60000 0 1">
+<param name="customText" value="Original scale=Original scale#Log scale=Log scale">
+</applet>
+</div>
+
+		<p>A second axis is drawn under the plot labelling the values 1, 10, 100, 
+			1000 and 10,000. These values are <strong>not</strong> evenly spaced and 
+			the leftmost labels overlap. The axis above the dot plot shows the logarithms 
+			of these five values (0, 1, 2, 3, and 4).</p>
+		<p>Drag the slider under the diagram towards the right to change the display 
+			into a dot plot of the <strong>logarithms</strong> of the brain weights. 
+			The transformation turns the log axis above the plot into a conventionally 
+			spaced axis.</p>
+		<p>The transformation <strong>spreads out the dense cluster of countries with 
+			low GDP in the original plot and compresses the long tail of countries with 
+			high GDP</strong>. </p>
+
+		<p>From the transformed data, we might conclude that:</p>
+
+		<ul>
+			<li>There are no distinct clusters of countries.</li>
+			<li>The 2 countries with highest GDP (USA and Japan), despite having almost 
+				twice the GDP of any other country, may be interpreted as the extreme 
+				values in a very long-tailed distribution rather than as 'errors'. (There 
+				is more than one type of outlier!)</li>
+		</ul>
+		<br>
+
+		<hr width="85%">
+		<p>To help explain the transformation, the diagram below shows only four of 
+			the countries</p>
+		<table border="0" cellpadding="4" class="centred" cellspacing="0">
+			<tr> 
+				<th>Country</th>
+				<th>GDP</th>
+			</tr>
+			<tr bgcolor="#FFFFFF"> 
+				<td>France</td>
+				<td align="center">1041</td>
+			</tr>
+			<tr bgcolor="#FFFFFF"> 
+				<td>Norway</td>
+				<td align="center">101.6</td>
+			</tr>
+			<tr bgcolor="#FFFFFF"> 
+				<td>Ivory Coast</td>
+				<td align="center">10.03</td>
+			</tr>
+			<tr bgcolor="#FFFFFF"> 
+				<td>Liberia</td>
+				<td align="center">1.075</td>
+			</tr>
+		</table>
+		<p>These countries differ by approximately a factor of 10.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="transformProg.Log10Applet">
+<param name="varName" value="GDP ($billion)">
+<param name="values" value="1041.766 101.565 10.028 1.075">
+<param name="labelName" value="Country (World)">
+<param name="labels" value="France Norway #Ivory Coast# Liberia">
+<param name="horizAxis" value="0.8 6000 1000 1000">
+<param name="logName" value="Log (GDP)">
+<param name="logDecimals" value="3">
+<param name="logAxis" value="0.8 60000 0 1">
+<param name="jittering" value="0.0">
+<param name="customText" value="Original scale=Original scale#Log scale=Log scale">
+</applet>
+</div>
+
+		<p>Again <strong>drag the slider</strong> to apply a logarithmic transformation. 
+			Observe that the four countries become evenly spaced on a log scale.</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

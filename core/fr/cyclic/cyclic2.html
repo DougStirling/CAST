@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>AR (1) le modèle de l'autocorrélation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="autoregression model, forecasting">
+	<meta name="dataset" content="New company registrations in NZ">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Prédire une valeur de la valeur précédente</p>
+<p>S'il ya autocorrélation positive, de grandes valeurs ont tendance à suivre par d'autres valeurs importantes et les petites valeurs ont tendance à être suivie par d'autres petites valeurs.</p>
+<p class=eqn><object data="images/yAgainstPrevious.svg" width="276" height="207"></object>
+	</p>
+	<p>N'importe quelle valeur peut donc être prédite avec une équation linéaire de la forme</p>
+<p class=eqn><span class="black"><em>y<sub>t</sub></em>&nbsp;&nbsp;=&nbsp;&nbsp;<em>b</em><sub>0</sub>&nbsp;&nbsp;+&nbsp;&nbsp;<em>b</em><sub>1 </sub><em>y<sub>t</sub></em><sub>&minus;1</sub></span> </p>
+	<p>Ce modèle est un type de modèle autorégressif, et est habituellement appelé une <strong>AR (1)  modèle</strong>. Il peut être utilisé pour la prévision d'une période de temps avant, comme illustré ci-dessous.</p>
+	
+<p class=eqn><object data="images/arForecastPlot.svg" width="376" height="206"></object></p>
+	
+	<p>Les paramètres peuvent être estimés par moindres carrés.</p>
+<p class="heading">Prévision loin dans l'avenir</p>
+<p>L'application directe du modèle ne permet période de prévision au-delà de la fin une des données observées.</p>
+<p class=eqn><span class="black"><span style="position:relative; top:4px"><img src="../../images/symbol.yHat.png" width="10" height="17"></span><em><sub>t</sub></em>&nbsp;&nbsp;=&nbsp;&nbsp;<em>b</em><sub>0</sub>&nbsp;&nbsp;+&nbsp;&nbsp;<em>b</em><sub>1 </sub><em>y<sub>t</sub></em><sub> &minus; 1</sub></span> </p>
+	<p>Cependant, une équation similaire peut être appliquée <strong>à la prévision</strong> d'étendre une autre période de temps dans le futur, et ainsi de suite.</p>
+<p class=eqn><span class="black"><span style="position:relative; top:4px"><img src="../../images/symbol.yHat.png" width="10" height="17"></span><em><sub>t</sub></em><sub> + </sub><em><sub>k</sub></em>&nbsp;&nbsp;=&nbsp;&nbsp;<em>b</em><sub>0</sub>&nbsp;&nbsp;+&nbsp;&nbsp;<em>b</em><sub>1 </sub><em><span style="position:relative; top:4px"><img src="../../images/symbol.yHat.png" width="10" height="17"></span><sub>t</sub></em><sub> + <em>k </em>&minus;1</sub></span> </p>
+	
+<div class="diagram">
+
+<p class="heading">British Airways négoce part</p>
+
+	<p>Le graphique chronologique ci-dessous montre le volume de la part de British Airways (en millions) échangés dans les 57 premiers jours de bourse de 2002 &mdash; entre le 2 Janvier et le 21 Mars.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="600">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.AR1NoTrendApplet">
+<param name="varName" value="Actions négociées">
+<param name="values" value="13.7 8.0 39.6 22.7 19.0 11.8 10.9 7.4 9.3 10.8 9.8 9.7 4.3 3.2 12.6 5.0 9.5 23.7 27.3 14.9 9.7 21.7 11.1 10.4 16.3 18.8 8.6 5.6 5.1 7.2 12.3 8.9 9.9 5.2 7.9 9.6 7.7 5.1 5.7 20.3 15.2 20.8 30.3 34.7 52.2 23.3 28.8 15.3 9.6 33.9 12.5 15.8 10.3 16.1 25.1 24.6 8.0 ? ? ? ? ? ? ? ? ? ?">
+<param name="yAxis" value="0 60 0 10">
+<param name="timeAxis" value="0 10 0 10">
+<param name="labelAxes" value="true">
+<param name="timeAxisName" value="Jour">
+<param name="timeSequence" value="0 1 67">
+<param name="timeName" value="Jour">
+<param name="residAxis" value="0 60 0 10">
+<param name="decimals" value="3 3 3 3">
+<param name="maxAR1Params" value="10.000 -1.000">
+<param name="customText" value="Predict with=Prédire avec#Zero=Zéro#Previous=Précédente#Forecast=Prévision#Least sqrs=Moindres carrés#previous value=valeur précédente">
+</applet>
+</div>
+
+		
+<p>Le nuage de points dans la série chronologique montre l'autocorrélation entre les valeurs successives de cette série. La ligne sur le nuage prédit le volume d'actions négociées dans n'importe quel jour de la valeur de la journée précédente. Ses paramètres sont initialement configurés pour utiliser la valeur de la veille que la prédiction.</p>
+<p>Cliquez <strong>Moindres carrés</strong> à minimiser la somme des carrés des résidus &mdash; c'est à dire de minimiser la somme des erreurs de prévision au carré.</p>
+<p>Cliquez sur les séries chronologiques au jour 44 &mdash; la plus grande valeur dans la série. Les lignes vertes sur le nuage de points montre comment le volume des transactions au jour 43 (34.7 millions d'actions) fournit une prévision de la valeur au jour 44 (24.25 millions d'actions).</p>
+<p>Les lignes rouges sur le graphique chronologique et aussi sur le nuage de montrer l'erreur de prévision. Moindres carrés minimise la somme des carrés de ces erreurs sur tous les jours pour lesquels des données sont disponibles.</p>
+<p>Glisser-delà de la fin des données disponibles (jour soit 57 et plus tard) pour voir comment la même équation est utilisée pour prévoir plus loin dans l'avenir, mais les uns avec les prévisions basées sur les prévisions de la veille au lieu de la valeur réelle de la journée précédente.</p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

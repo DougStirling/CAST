@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Testing for independence</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+  <style type="text/css">
+<!--
+.style4 {	color: #000000;
+	font-style: italic;
+}
+-->
+  </style>
+	<meta name="dataset" content="Skiing injuries">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class=heading>Comparison of observed and estimated cell counts</p>
+
+<p>The hypothesis of independence is assessed by asking whether the observed and 
+estimated cell counts are 'sufficiently close' &mdash; are the observed counts consistent 
+with the counts estimated under independence?</p>
+
+<div class="diagram">
+<p class="heading">Skiing injuries</p>
+
+<p>If skiing ability and injury are indeed independent, then the observed cell 
+counts in the sample data should be similar to these estimated cell counts. </p>
+
+<center>
+    <table border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC" bgcolor="white">
+      <caption align="TOP">
+<strong><font color="#0000FF">Observed</font> and <font color="#006600">estimated</font> 
+cell counts</strong> 
+</caption>
+<tr>
+        <th align="CENTER">&nbsp;</th>
+<th align="CENTER"><font color="blue">Injured</font></th>
+<th align="CENTER"><font color="blue">Uninjured</font></th>
+<th align="CENTER"><font color="red">Total</font></th></tr>
+<tr>
+<th align="CENTER"><font color="blue">Beginner</font></th>
+<td align="CENTER"><font color="blue">20</font><br>
+<font color="#006600">(11.59)</font></td>
+<td align="CENTER"><font color="blue">60</font><br>
+<font color="#006600">(68.41)</font></td>
+<td align="CENTER"><font color="red">80</font></td></tr>
+<tr>
+<th align="CENTER"><font color="blue">Intermediate</font></th>
+<td align="CENTER"><font color="blue">9</font><br>
+<font color="#006600">(13.47)</font></td>
+<td align="CENTER"><font color="blue">84</font><br>
+<font color="#006600">(79.53)</font></td>
+<td align="CENTER"><font color="red">93</font></td></tr>
+<tr>
+<th align="CENTER"><font color="blue">Advanced</font></th>
+<td align="CENTER"><font color="blue">2</font><br>
+<font color="#006600">(5.94)</font></td>
+<td align="CENTER"><font color="blue">39</font><br>
+<font color="#006600">(35.06)</font></td>
+<td align="CENTER"><font color="red">41</font></td></tr>
+<tr>
+<th align="CENTER"><font color="red">Total</font></th>
+<td align="CENTER"><font color="red">31</font></td>
+<td align="CENTER"><font color="red">183</font></td>
+<td align="CENTER"><font color="blue">214</font></td></tr>
+</table>
+</center>
+
+</div>
+  
+<p class="heading">Hypotheses</p>
+
+<p>Did a sample contingency table come from a population in which the categorical 
+row and column variables, <i>X</i> and <i>Y</i> are independent? This question 
+can be formalised as the hypothesis test, </p>
+
+<p style="margin-left:200"><strong><font color="#000099" size="+1" face="Arial, Helvetica, sans-serif">H</font><font color="#000099" face="Arial, Helvetica, sans-serif"><sub>0</sub></font><font color="#000099" size="+1"></font><font color="#000099">: &nbsp; <em>X</em> and <em>Y</em> are independent<br>
+</font></strong><strong><font color="#000099" size="+1" face="Arial, Helvetica, sans-serif">H</font><font color="#000099" face="Arial, Helvetica, sans-serif"><sub>A</sub></font><font color="#000099">: &nbsp; <em>X</em> and <em>Y</em> are dependent</font></strong></p>
+
+<p class="heading">Possible test statistic</p>
+<p>In order to assess whether the data are consistent with the null hypothesis, 
+we ask whether the observed cell counts in the contingency table, <span class="style4">n<sub>xy</sub></span>, 
+are similar to the estimated cell counts based on independence, <span class="style4">e<sub>xy</sub></span>. 
+The simplest measure of their match is the sum of squares of the differences,</p>
+
+<p class="eqn"><img class="gif" src="../../en/indep/images/ssqErrorForm.gif" width="100" height="26">
+</p>
+
+<p>Small values of this statistic are expected when there is independence in the 
+underlying population. However it does not behave entirely as desired. To be useful, 
+a test statistic must have a <strong>known </strong>distribution when <strong>H<sub>0</sub></strong> 
+is true and, ideally, this distribution should not depend too much on specific 
+characteristics of the problem.</p>
+
+<table width="80%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+<tr> 
+<td align="center"><strong>The raw sum of squares has a distribution that depends 
+on the sample size and on the marginal probabilities.</strong></td>
+</tr>
+</table>
+
+<p>It would be very unusual for a cell in a contingency table with estimated cell 
+count <span class="style4">e<sub>xy</sub></span>&nbsp;=&nbsp;1 
+to have observed cell count <span class="style4">e<sub>xy</sub></span>&nbsp;=&nbsp;11. 
+However if the estimated cell count is <span class="style4">e<sub>xy</sub></span>&nbsp;=&nbsp;1001 
+then sampling variability would mean that an observed cell count of <span class="style4">e<sub>xy</sub></span>&nbsp;=&nbsp;1011 
+would <strong>not</strong> be unusual. Yet the difference is the same in both 
+cases.</p>
+<table width="80%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+<tr> 
+<td align="center"><strong>The raw sum of squares must be interpreted differently, 
+depending on the size of the estimated cell counts, so <font color="#FF0000">it 
+is a bad test statistic</font>.</strong></td>
+</tr>
+</table>
+
+<br>
+
+<div class="diagram">
+
+<p class=heading>Distribution of sum of squares</p>
+
+<p>The blue values in the contingency table on the left below have been sampled 
+from a population in which each of the row categories is equally likely (with 
+marginal probability <sup>1</sup>/<sub>3</sub>), each column category is equally 
+likely (marginal probability <sup>1</sup>/<sub>3</sub>) and the row and column 
+categories are independent. All joint probabilities are therefore know to be <sup>1</sup>/<sub>9</sub>. 
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="continProg.ObsExpApplet">
+<param name="dataName" value="Margins all 1/3">
+<param name="yVarName" value="Y variable">
+<param name="xVarName" value="X variable">
+<param name="yLabels" value="col1 col2 col3">
+<param name="xLabels" value="row1 row2 row3">
+<param name="xMargin" value="0.333 0.333 0.333">
+<param name="yCondit" value="0.333 0.333 0.333 0.333 0.333 0.333 0.333 0.333 0.333">
+<param name="sampleSize" value="*100 1000 10000">
+<param name="maxExpected" value="1000.00">
+<param name="maxDiff" value="-99.00">
+<param name="maxChi2" value="99999.00">
+<param name="chi2Type" value="wrong">
+</applet>
+</div>
+
+<p>Click <strong>Sample</strong> a few times to observe the variability of the
+blue observed counts,
+  <span class="style4">n<sub>xy</sub></span>.</p>
+
+<p>The estimated counts,
+  <span class="style4">e<sub>xy</sub></span>,
+obtained from the margins of the table, are also shown in red. Observe the variability in
+the differences and their sum of squares.</p>
+
+<p>Increase the sample size from 100 to 1000 and repeat. Observe that the differences 
+are usually higher. Increase the sample size to 10000 and observe that the statistic 
+is usually higher still. </p>
+
+<table width="80%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+<tr> 
+<td align="center"><strong>The distribution of the sum of squares depends on the 
+sample size, so it is not an easily interpreted measure of independence.</strong></td>
+</tr>
+</table>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

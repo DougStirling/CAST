@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Two-tailed tests</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="hypothesis test, test, one-tailed test, two-tailed test, binomial distribution">
+	<meta name="dataset" content="Ethics codes in companies">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">One- and two-tailed tests</p>
+<p>In the earlier telepathy example, the null hypothesis parameter value was that the probability of correctly picking the shape on a card was a third. The alternative hypothesis was that telepathy had occurred and this probability was higher,</p>
+<ul>
+	<li>Null hypothesis, <strong>H<sub>0</sub></strong>: \(\pi = \diagfrac {\small 1} {\small 3} \)</li>
+	<li>Alternative hypothesis, <strong>H<sub>A</sub></strong>: \(\pi \gt \diagfrac{\small 1} {\small 3}\)</li>
+</ul>
+<p>Since the alternative hypothesis only involves parameter values on <strong>one side</strong> of the null hypothesis value, this is called a <strong>one-tailed</strong> test. In other situations, the alternative hypothesis allows for parameter values on <strong>either side</strong> of the null hypothesis value, such as</p>
+<ul>
+  <li>Null hypothesis, <strong>H<sub>0</sub></strong>: \(\pi = \pi_0 \)</li>
+	<li>Alternative hypothesis, <strong>H<sub>A</sub></strong>: \(\pi \ne \pi_0\)</li>
+</ul>
+<p>where \(\pi_0\) is some constant (such as \(\diagfrac {\small 1} {\small 3}\)). This is called a <strong>two-tailed</strong> test.</p>
+<p class="heading">P-value for two-tailed test</p>
+
+<p>A two-tailed test is usually based on the same test statistic that would be used for the corresponding one-tailed test — its value is affected by the parameter being tested and its distribution is fully known when the null hypothesis is true. However values in <strong>both tails</strong> of its distribution usually give support to the alternative hypothesis and this must be taken into account when evaluating the p-value for the test.</p>
+<p>The p-value is <strong>double</strong> the smaller tail area of the test statistic, to take account of the fact that values in the opposite tail of the distribution would give equally strong evidence against <strong>H<sub>0</sub></strong>.</p>
+<p>This is most clearly explained in an example.</p>
+
+
+<div class="example" title="Example: Ethics codes in companies">
+	<p class="exampleHeading">Example: Ethics codes in companies</p>
+	<p>In 1999, <em>The Conference Board</em> surveyed 124 companies and found that 
+97 had their own ethics codes (&quot;Business Bulletin&quot;, <em>Wall Street 
+Journal</em>, Aug 19, 1999). In 1997, it was believed that 72% of companies 
+had ethics codes, so is there any evidence that the proportion has changed?</p>
+	<p>This question is equivalent to asking whether a sample proportion of 97 out 
+		of 124 is consistent with sampling from a population with π&nbsp;=&nbsp;0.72. 
+		This can be expressed as the hypotheses </p>
+	<ul>
+		<li>Null hypothesis, <strong>H<sub>0</sub></strong>: \(\pi = 0.72 \)</li>
+		<li>Alternative hypothesis, <strong>H<sub>A</sub></strong>: \(\pi \ne 0.72 \)</li>
+	</ul>
+	<p>If <strong>H<sub>0</sub></strong> is true, we would expect about (0.72 &times; 124) = 89 of the companies to have ethics codes. 
+		A sample count that is either much greater than 89 or much less than 89 would 
+		suggest that the probability had changed. If the null hypothesis is correct, the number with an ethics code will be</p>
+\[
+X \;\;\sim\;\; \BinomDistn(n=124, \pi = 0.72) 
+\]
+	<p>This distribution is shown in the bar chart below.</p>
+	<div class="centred">
+		<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="280">
+			<script type="text/javascript">writeAppletParams();</script>
+			<param name="appletName" value="testProg.SuccessPValueApplet">
+			<param name="backgroundColor" value="FFFBF3">
+			<param name="testParams" value="124 0.72 70">
+			<param name="testTail" value="two-tailed">
+			<param name="successName" value="companies with ethics code">
+			<param name="customText" value="count of=count of">
+		</applet>
+	</div>
+  <p>Drag the slider to <strong>x = 97</strong>. The probability of getting as many as 97 companies with ethics codes is 0.0718. Since this is a 2-tailed 
+	  test, we must also take account of the probability of getting a count that is 
+  as unusually low, so the p-value is twice this, 0.1436.</p>
+  <p>Getting 97 companies with 
+	  ethics codes is therefore <strong>not</strong> unlikely, so we conclude that there is no evidence <strong>from these data</strong> of a change in the proportion of companies with 
+  ethics codes since 1997. </p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Dessin à la main des histogrammes</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="histogram, frequency table">
+	<meta name="dataset" content="Steel works slag">
+	<meta name="dataset" content="Cardiac admissions">
+	<meta name="dataset" content="Wood chip size">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class=heading>Les tables de fréquences</p>
+
+<p>Un ordinateur est normalement utilisé pour dessiner des histogrammes, mais il est instructif d'examiner comment on pourrait être dessiné à la main. Les données sont d'abord résumées dans un <strong>tableau de fréquences</strong>.</p>
+<p>Les classes sont définies dans l'histogramme des deux premières colonnes. Le premier de ces décrit la gamme des valeurs des données qui sont incluses dans chaque classe. La deuxième colonne étend ces gammes de donner gammes de toucher des valeurs &mdash; les classes qui seront utilisés pour attirer l'histogramme. La dernière colonne indique les fréquences pour les classes &mdash; le nombre de valeurs dans chaque classe.</p>
+<p>Pourvu toutes les classes ont la même largeur, la hauteur des rectangles sont donnés par l'histogramme des fréquences.</p>
+		
+<div class="diagram"> 
+<p class="heading">L'âge des patients admis à l'unité de cardiologie</p>
+<p>Pour l'admission à l'hôpital de données décrites au début de ce chapitre, l'âge des patients varie de 46 à 90, afin que les données couvre 45 ans (y compris les deux extrêmes). Nous allons utiliser une largeur de classe de 10 ans pour notre histogramme initial, donnant six classes. Démarrage de la classe initiale à 40 conduit à la table de fréquences suivantes.</p>
+	<div class="centred"><object data="images/freqTable.svg" width="265" height="150"> </object>
+		</div>
+		
+  </div>
+		
+<p>Des précautions doivent être prises lors de la traduction de la colonne de valeurs données dans les classes. Pour admissions à l'hôpital les données, les valeurs sont les âges, de sorte correspond '40 'à n'importe quel âge entre 40 et 41.</p>
+<p>Dans la plupart des autres types d'ensembles de données, les valeurs enregistrées sont <strong>arrondis</strong>, plutôt que tronquée, et les frontières de classe devraient refléter cette réalité. Valeurs arrondies ne doivent jamais coïncider avec les frontières de classe.</p>
+		
+<div class="diagram"> 
+<p class="heading">Aciéries de données des scories</p>
+<p>Par exemple, le Steel Works de données scories contiennent des valeurs qui sont arrondis à une décimale (6.1, 1.4, ...) et donc la valeur 6.1 pourrait être n'importe où dans la plage de 6.05 à 6.15. Un histogramme peut être tirée de la table de fréquence ci-dessous.</p>
+	<div class="centred"><object data="images/freqTable2.svg" width="280" height="165"></object></div>
+		<p>Le diagramme ci-dessous illustre le problème avec les valeurs de données permettant de tomber sur les limites de classes.<br>
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="200">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="histoProg.HistoSwapApplet">
+<param name="varName" value="contamination">
+<param name="values" value="6.1 1.4 5.1 5.5 5.2 5.3 6.9 2.0 7.9 7.1 6.1 1.3 2.3 3.2 3.4 4.9 3.4 2.8 5.2 6.4">
+<param name="horizAxis" value="0.5 8.5 1 1">
+<param name="classInfo" value="0.5 0.05 0.5">
+<param name="groupingInfo" value="10 20 20 20 20 20 20 20 10">
+<param name="grouping2Info" value="9 20 20 20 20 20 20 20 11">
+<param name="checkbox" value="Décalage à gauche">
+</applet>
+</div>
+
+		<p>Utilisez la souris pour identifier le rectangle de l'histogramme correspondant à la valeur de 2.0. Vous devriez constater qu'il a été inclus dans la classe (1.0 à 2.0), plutôt que de la classe (2.0 à 3.0). Bien que les définitions peuvent être données pour assurer que les valeurs sont constamment placés, les frontières des classes devrait être décalée 0.05 vers la gauche pour éviter l'ambiguïté visuelle.</p>
+
+<p>Cliquez sur l'icône <strong>à gauche maj</strong> sous l'histogramme de redessiner l'histogramme correctement.</p>
+
+</div>
+
+<p class=heading>Histogrammes de dessin avec des largeurs de classe mixte</p>
+
+<p>Lorsque toutes les classes n'ont pas la même largeur, la hauteur rectangle ne sont pas la fréquence des classes. (Sinon, l'impact visuel des classes plus large sera surestimée.) Au lieu de cela, la hauteur du rectangle d'une classe est sa densité,<br>
+</p>
+	
+<p class=eqn>
+	<object data="images/densityDefn.svg" width="284" height="39"></object>
+	</p>
+
+  <p>Depuis la surface d'un rectangle est donnée par sa hauteur (la densité) fois la largeur de classe, <strong>cette définition assure cette zone est égale à la fréquence relative</strong>.</p>
+
+<p>Si toutes les classes ont la même largeur, à partir des résultats de fréquence ou de la densité dans un histogramme de la même forme, donc cette complication supplémentaire n'est nécessaire que quand il ya des largeurs de classe mixte.</p>
+		
+<div class="diagram"> 
+<p class="heading">Longueurs des copeaux de bois</p>
+<p>L'histogramme ci-dessous montre les longueurs de puces de 50 copeaux de bois prélevés sur un lot livré à une usine de papier. Utilisez le menu pop-up à la base de l'histogramme de la densité. Observez que la forme de l'histogramme est inchangée depuis toutes les classes ont la même largeur.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="399">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="histoProg.HistoDensity2Applet">
+<param name="varName" value="Longueur de copeaux (cm)">
+<param name="values" value="2.62 1.85 2.11 2.24 1.87 1.78 1.60 1.94 2.30 1.64 1.98 1.59 1.82 2.02 1.72 2.10 1.75 1.77 2.08 1.87 2.04 1.90 1.72 2.15 1.75 1.53 2.08 1.85 2.23 2.52 2.08 1.92 1.79 1.98 2.09 1.13 2.16 2.22 2.43 2.02 1.82 1.63 1.60 2.16 1.42 1.72 1.98 2.05 1.63 2.10">
+<param name="horizAxis" value="0.9 2.9 1.0 0.2">
+<param name="classInfo" value="0.995 0.2">
+<param name="groupingInfo" value="1 1 1 1 1 1 1 1">
+<param name="densityAxis" value="0 1.45 0 0.2">
+<param name="countAxis" value="0 14.5 0 2">
+<param name="propnAxis" value="0 0.29 0 0.05">
+<param name="axisType" value="frequency">
+<param name="lines" value="vert">
+</applet>
+</div>
+
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

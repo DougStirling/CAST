@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Polynomial trend</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="forecasting">
+	<meta name="dataset" content="Traffic fatal crashes in NZ">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Cubic and higher-degree polynomial models</p>
+	<p>If a quadratic model does not adequately describe the shape of the trend in a time series, it is tempting to try to further increase the order of the polynomial,</p>
+	<p class=eqn><span class="black"><em>trend</em> &nbsp; = &nbsp; <em>b</em><sub>0</sub> &nbsp;+ &nbsp;<em>b</em><sub>1</sub><em> time</em> &nbsp;+ &nbsp;<em>b</em><sub>2</sub><em> time</em><sup>2</sup> &nbsp;+ &nbsp;<em>b</em><sub>3</sub><em> time</em><sup>3</sup> &nbsp;+ &nbsp;...</span> </p>
+	<p>This kind of polynomial model  can also be fitted by least squares.</p>
+	<p>A polynomial of degree 3 or 4 often provides a fairly smooth description of trend but polynomial models usually behave badly (with sudden increases or decreases) beyond the data points, so</p>
+	<div class="centred"><div class="boxed">
+	  <p>Polynomial models of degree greater than 2 should not be used for forecasting.</p>
+  </div></div>
+	<div class="diagram"> 
+	  <p class="heading">Fatal traffic crashes in New Zealand</p>
+		<p>The next data set gives the number of fatal vehicle crashes in New Zealand 
+		  per 100,000 population between 1970 and 2005.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="glmAnovaProg.PolynomialApplet">
+<param name="yVarName" value="Fatal crashes per 100,000 popn">
+<param name="yValues" value="20.3 20.7 21.0 24.5 19.8 18.3 17.0 19.7 18.6 15.9 16.8 18.3 18.7 17.4 18.6 20.0 19.8 20.6 18.7 19.2 18.7 16.1 15.6 14.7 13.9 13.8 12.3 12.4 11.5 11.4 10.0 10.3 9.3 10.1 9.2 8.3">
+<param name="xVarName" value="Year">
+<param name="xValues" value="1970 1971 1972 1973 1974 1975 1976 1977 1978 1979 1980 1981 1982 1983 1984 1985 1986 1987 1988 1989 1990 1991 1992 1993 1994 1995 1996 1997 1998 1999 2000 2001 2002 2003 2004 2005">
+<param name="xCenter" value="1990">
+<param name="maxSsq" value="999.99 99 999.99 99.99">
+<param name="polyDegree" value="7">
+<param name="xCenteredAxis" value="-21 20 -20 5">
+<param name="xAxis" value="1969 2010 1970 5">
+<param name="yAxis" value="5 30 5 5">
+<param name="customText" value="Polynomial degree=Polynomial degree#Constant=Constant#Linear=Linear#Quadratic=Quadratic#Cubic=Cubic#Power=Power">
+</applet>
+</div>
+
+	<p>Use the pop-up menu to increase the degree of the polynomial model. As the order increases, the curve describes more subtleties in the form of the trend.</p>
+	<p>However observe how the shape of the curve varies after 2005 when the number of polynomial terms changes. For example, polynomials of degree 5 and 6 both fit the data similarly but the behaviours of these polynomials after 2005 are totally different.</p>
+	
+	<div class="centred"><div class="boxed"><p>Several of the polynomials seem reasonable 
+				descriptions of the changes in fatal vehicle crashes between 1970 and 
+				2005. However none of the polynomials would provide reasonable predictions 
+		after 2005.</p></div></div>
+
+<br>
+</div>
+
+
+	
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

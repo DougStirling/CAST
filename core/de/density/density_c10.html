@@ -1,0 +1,90 @@
+<html>
+<head>
+	<title>Kernel density estimates</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="kernel density estimate, estimation">
+	<meta name="dataset" content="Holiday home rental">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Histograms are 'boxy'</p>
+
+  <p>Histograms tend to have a rather 'boxy' outline unless the data set is very 
+    large. A <strong>kernel density estimate</strong> is an alternative display 
+    of density that is smoother than a histogram.</p>
+  <p class="heading">Kernel density estimate</p>
+  <p>In a kernel density estimate, each sample value is represented by an area 
+    of 'ink' called a <strong>kernel</strong> that is centred on the value. Where 
+    the kernels for adjacent sample values overlap, the areas of ink are stacked 
+    on top of each other. The diagram below shows triangular kernels for 3 data 
+    points. The areas where the triangles overlap are stacked on top of the triangles 
+    to their left. </p>
+<p class=eqn><object data="images/kernels.svg" width="346" height="143" alt="kernels"></object> </p>
+  <p>Although triangular kernels can be used, a rounded kernel is more common. The width
+    of the kernels can be adjusted to give the smoothest display. Very narrow
+    kernels result in a peak at each data value, whereas very wide kernels spread the density
+    estimate wider than the actual data. Some intermediate width will provide the best compromise
+    between smoothness and closeness to the data. </p>
+  <div class="diagram">
+
+<p>The diagram below shows a dot plot of six values. Above it is a kernel density estimate
+based on these values.
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="350" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="inferenceProg.KernelDisplayApplet">
+<param name="varName" value="Test measurements">
+<param name="values" value="10 20 30 35 40 50">
+<param name="horizAxis" value="0 60 0 10">
+<param name="kernelWidth" value="1 10 60">
+<param name="jittering" value="0.0">
+<param name="customText" value="Kernel width=Kernel width#Narrow=Narrow#Wide=Wide">
+</applet>
+</div>
+
+<p>Use the slider to adjust the width of the kernels and observe how the stacking of the
+kernels smoothes the density when the kernels are widened.
+</p>
+
+<p><strong>Click</strong> on individual
+crosses in the dot plot to highlight the corresponding kernel on the density estimate,
+then adjust the kernel width again to show how individual crosses' kernels are stacked.
+</p>
+
+<p class="heading">Holiday home rental</p>
+<p>The next diagram shows a kernel density estimate for the holiday home monthly 
+			rental data. </p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="350" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="inferenceProg.KernelDisplayApplet">
+<param name="varName" value="Rental (dollars)">
+<param name="values" value="3300 1600 3005 3300 4700 4000 1800 5400 1800 4400 2100 2900 1200 1200 2600 1000 1200 2000 3100 1200 1900 3600 2300 2200 2000 1500 1500 1600 2000 1300 2500 2600 4100 1400 2000 2200 1900 1800 2300 2600 1900">
+<param name="horizAxis" value="0 6000 0 1000">
+<param name="kernelWidth" value="5 30 100">
+<param name="jittering" value="1.0">
+<param name="customText" value="Kernel width=Kernel width#Narrow=Narrow#Wide=Wide">
+</applet>
+</div>
+
+<p>Use the slider to adjust the width of the kernels and give a smooth density estimate.
+If the kernels are too wide, the density estimate spreads out too far on each side of the data,
+but narrow kernels give a spiky estimate. An intermediate kernel width is the best compromise.
+</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Values between zero and one</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="continuous distribution, beta distribution, probability density function, rectangular distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Beta distribution</p>
+
+<p>Occasionally variables can only take values within a restricted range. For example, the concentration of a mineral in rocks must be between zero and one.</p>
+<p>The family of beta distributions is flexible enough to model many such variables.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>A random variable \(X\) is said to have a <strong>Beta distribution</strong> with parameters \(\alpha \gt 0\) and  \(\beta \gt 0\),</p>
+	\[
+	X \;\;\sim\;\; \BetaDistn(\alpha,\; \beta)
+	\]
+	<p>if its probability density function is</p>
+	\[
+	f(x) \;\;=\;\; \begin{cases} \dfrac {\Gamma(\alpha +\beta) }{\Gamma(\alpha)\Gamma(\beta)} x^{\alpha - 1} (1 - x)^{\beta - 1}&amp; \text{if }0 \lt x \le 1 \\[0.4em]
+	0 &amp; \text{otherwise}
+	\end{cases} \] </div>
+<p>A special case of the beta distribution arises when \(\alpha = \beta = 1\):</p>
+
+\[
+\BetaDistn(\alpha = 1,\; \beta = 1) \;\;\equiv\;\; \RectDistn(0, 1)
+\]
+
+<p>Larger values of the parameters decrease the spread of the distribution, whereas smaller values &quot;push the distribution towards zero and one&quot;.</p>
+
+
+<div class="example" title="Shape of Beta distribution">
+	<p class="exampleHeading">Shape of the Beta distribution</p>
+
+<p>Rather than directly adjusting the values of the two Beta distribution parameters, \(\alpha\) and \(\beta\), we will illustrate the possible shapes of the distribution with sliders for its mean and standard deviation.</p>
+	<div class="centred">
+		<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="450">
+			<script type="text/javascript">writeAppletParams();</script>
+			<param name="appletName" value="distributionProg.BetaDistnApplet">
+			<param name="backgroundColor" value="FFFBF3">
+			<param name="meanLimits" value="0.05 0.95 0.50">
+			<param name="sdPropnLimits" value="0.100 0.900 0.500">
+			<param name="xAxis" value="-0.01 1.01 0 0.1">
+			<param name="xAxisName" value="Value, x">
+			<param name="densityAxis" value="0 6 0 1">
+			<param name="maxAlpha" value="999.999">
+			<param name="maxBeta" value="999.999">
+			<param name="customText" value="Probability density=Probability density#Show density axis=Show density axis">
+		</applet>
+	</div>
+
+<p>With the distribution's mean left at 0.5, use the lower slider to alter the standard deviation and observe that:</p>
+<ul>
+	<li>When the standard deviation is low (and \(\alpha\) and \(\beta\) are high), the distribution's shape becomes concentrated around 0.5.</li>
+	<li>When the standard deviation is high, the values are likely to be close to either zero or one.</li>
+</ul>
+<p>Reduce the mean to 0.2 then again adjust the standard deviation, observing that high standard deviation again corresponds to values that are likely to be near zero or one. (When the standard deviation is very high, the probability densities at zero and one are actually both infinite, with considerably greater area near zero than one.)</p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

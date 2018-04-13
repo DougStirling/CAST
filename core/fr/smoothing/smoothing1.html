@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Moyennes mobiles</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="smoothing, moving average, running mean">
+	<meta name="dataset" content="Southern oscillation">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Les moyennes mobiles</p>
+<p>Dans une série de temps, les fluctuations aléatoires peuvent habituellement être traités comme des <strong>bruits</strong> qui peuvent occulter la tendance et un autre <strong>signal</strong> de la série. Diverses <strong>méthodes de lissage</strong> ont été proposées pour réduire ces fluctuations aléatoires et montrer le mouvement systématique dans la série plus clairement. Ces méthodes remplacer chaque valeur dans la série avec une fonction de celui-ci et les valeurs adjacentes.</p>
+<p class="eqn" style="color:#000"><strong>valeur lissée</strong> &nbsp; = &nbsp;<em><strong>centre</strong></em> ( <strong>valeur d'origine</strong> <em>et les</em> <strong>valeurs adjacentes</strong> )</p>
+<p>Par exemple, chaque valeur peut être remplacée par la moyenne de celui-ci et les deux valeurs adjacentes, en remplacement de la valeur au moment <em>i</em> par</p>
+<p class=eqn><object data="images/runningMeanEqn.svg" width="255" height="25"></object>
+</p>
+
+  <p>Cet ajustement lissé est appelé une <strong>moyenne de 3 points en mouvement</strong>. Les moyennes mobiles sont également appelés <strong>courir moyens</strong>. Grand lissage est obtenu avec des moyens de valeurs plus voisines. Par exemple, une moyenne de 7 points déplacement remplace chaque valeur par la moyenne de celui-ci et les valeurs adjacentes 3 de chaque côté.</p>
+    
+<p class="heading">Fin de la série</p>
+<p>Les moyennes mobiles sont efficaces à mettre en évidence la tendance dans le centre d'une série chronologique, mais ne peuvent pas être utilisés à la fin puisque la moyenne mobile nécessite des valeurs à la fois <strong>avant et après</strong> chaque valeur lissée être. Comme le montant des augmentations de lissage, le nombre de valeurs non lissées à l'extrémité de la série augmente également. Par exemple, si sept points des moyennes mobiles sont utilisés, 3 valeurs à chaque extrémité de la série ne peut être lissée.</p>
+
+<div class="diagram">
+<p class="heading">Oscillation Australe</p>
+
+	<p>L'indice d'oscillation australe est définie comme la différence de pression barométrique entre Tahiti et les îles de Darwin au niveau de la mer.. L'oscillation australe est un prédicteur d'El Nino, qui à son tour, est pensé pour être un pilote de niveau mondial météorologiques. Plus précisément, répété oscillation australe valeurs inférieures à -1 définit généralement un épisode El Niño. Le graphique chronologique montre l'indice entre Janvier 1984 et Décembre 1987.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.RunningMeanApplet">
+  <param name="varName" value="Différence de pression">
+  <param name="values" value="0 0.4 -0.8 0.4 0 -1.2 0 0.1 0.1 -0.6 0.3 -0.3 -0.5 0.8 0.2 1.4 -0.2 -1.4 -0.3 0.7 0 -0.8 -0.4 0.1 0.8 -1.2 -0.1 0.1 -0.6 1 0.1 -0.9 -0.5 0.6 -1.6 -1.6 -0.7 -1.4 -2 -2.7 -2 -2.7 -1.8 -1.7 -1.1 -0.7 -0.1 -0.6 -0.3 -0.6 0.1 0 1.1 -0.3 1.1 1.4 1.9 1.5 1.9 1.1 1.5 1.1 0.6 1.6 1.2 0.5 0.8 -0.8 0.6 0.6 -0.4 -0.7 -0.2 -2.4 -1.2 0 1.1 0 0.5 -0.5 -0.8 0.1 -0.7 -0.4 0.6 -0.1 -1.4 -1 -1.5 -0.5 -0.2 -0.9 -1.8 -1.5 -0.8 -2.3 -3.4 -1.4 -3 -1.4 0 -1.2 -0.8 0 0 -1.9 -0.9 -1.1">
+  <param name="vertAxis" value="-3.5 2.5 -3 1">
+  <param name="timeAxisName" value="Mois">
+  <param name="seasonName" value="12 Jan Fév Mar Avr Mai Juin Juil Aoû Sep Oct Nov Déc">
+  <param name="seasonInfo" value="0 0 1984">
+  <param name="smoothName" value="Lissées">
+  <param name="showEnds" value="false">
+  <param name="labelAxes" value="true">
+  <param name="maOrderLabel" value="Moyenne mobile de">
+  <param name="rawName" value="Données brutes">
+	<param name="runs" value="15 odd">
+</applet>
+</div>
+
+		<p>Cliquez sur les flèches pour ajuster le nombre de valeurs adjacentes utilisée pour lisser la série. Cliquez sur un point de données sur le graphique pour afficher les valeurs brutes et polies. Observez que ...</p>
+<ul>
+			<li>1-point des moyennes mobiles sont simplement les valeurs d'origine.</li>
+			
+<li>Comme le montant des augmentations de lissage, plus d'années à la fin de la série ne peut être lissée. (Ils sont ombragées en rouge.)</li>
+		</ul>
+	<p>Cliquez sur n'importe quel point sur le graphique pour mettre en évidence les valeurs adjacentes qui sont utilisés dans la recherche de la moyenne mobile à cette époque.</p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

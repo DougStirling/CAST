@@ -1,0 +1,99 @@
+<html>
+<head>
+	<title>Nichtlinearität und Ausreißer</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="regression model, linear model, curvature, outliers">
+	<meta name="dataset" content="Temperatures and locations of US cities">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Ein einfaches lineares Modell ist nicht immer angebracht</p>
+	<p>Ein einfaches lineares Modell für eine abhängige Variable
+		Y und eine erklärende Variable X stellt oft eine gute
+		Zusammenfassung eines Zusammenhangs dar. Nicht für alle
+		Datensätze ist jedoch ein lineares Modell sinnvoll.</p>
+	<div class="boxed">
+		<p>Ein einfaches lineares Modell ist nur dann angemessen, wenn die
+			Punktwolke der Kreuzchen im Streudiagramm&nbsp;gleichmäßig
+			um eine Gerade angeordnet ist.</p>
+	</div>
+	<p>Falls die Kreuzchen um eine andere Art von Kurve streuen, so wird der Zusammenhang als&nbsp;<strong>nichtlinear</strong> bezeichnet und wir müssen ein anderes Modell benutzen. Im
+		nächsten Kapitel beschäftigen wir uns mit solchen
+		nichtlinearen Modellen.</p>
+	<p>An dieser Stelle wenden wir uns zunächst einem anderen Problem zu.</p>
+	<p class="heading">Ausreißer sollten untersucht werden</p>
+	<p>Ein Ausreißer ist eine Beobachtung, die nicht dem Muster und
+		der Variabilität der restlichen Daten entspricht. In einem
+		linearen Modell ist die wichtigste Art von Ausreißern jene, bei
+		denen der Datenpunkt einen großen Abstand zur Regressionsgeraden
+		aufweist, während die Gerade geringe Abstände zu den
+		restlichen Datenpunkten hat.</p>
+	<p>Jeder Ausreißer sollte sorgfältig untersucht werden.
+		Unter Umständen gab es einen Fehler bei der Dateneingabe oder ein
+		Messfehler liegt vor. Eine andere Erklärung kann sein, dass die
+		Messung sich durch eine bestimmte Eigenschaft von den anderen
+		unterscheidet und dies den ungewöhnlichen Wert erklärt. </p>
+	<p>Falls der Ausreißer extrem genug ist, oder ein bestimmter
+		Grund aus zusätzlichen Informationen abgeleitet werden kann, ist
+		es zuläßig den Fall aus dem Datensatz zu entfernen.</p>
+	<div class="boxed">
+		<p>Es ist wichtig <strong>Datensätze grafisch zu analysieren</strong> bevor ein lineares Modell angewendet wird.</p>
+	</div>
+	<div class="diagram">
+		
+	<p class="heading">Temperatur and Breitengrad</p>
+	<p>Das folgende Streudiagramm zeigt die Maximaltemperatur im Januar
+		(Grad Fahrenheit) und den Breitengrad (Grad nördlich des
+	Äquators) verschiedener Städte der USA. Die Daten stammen aus
+		dem Buch <cite>Data Analysis and Regression</cite>, von F.Mosteller und J.W.Tukey aus dem Jahr 1977. Die Regressionsgerade ist eingeblendet.</p>
+
+<div class="centred">
+	<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="550">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.LSMapApplet">
+<param name="xVarName" value="Breitengrad">
+<param name="yVarName" value="Jan Temp">
+<param name="zVarName" value="Langengrad">
+<param name="labelName" value="Stadt">
+<param name="xValues" value="30 32 58 33 34 34 37 39 41 39 38 38 24 25 33 21 43 41 39 41 42 37 38 29 43 39 42 42 46 44 38 46 41 43 39 35 42 40 35 35 46 39 41 35 45 40 39 32 44 36 35 29 29 40 44 36 47 47 43 43 41 18">
+<param name="yValues" value="61 59 30 64 51 65 55 42 37 41 44 67 74 76 52 79 36 33 37 29 27 42 44 64 32 44 37 33 23 22 40 29 32 32 43 46 31 40 51 52 20 41 35 46 44 39 40 61 34 49 50 61 64 37 25 50 44 31 26 28 37 81">
+<param name="zValues" value="88 86 134 112 92 118 122 104 72 75 77 81 81 80 84 157 116 87 86 93 90 97 85 90 70 76 71 83 84 93 90 112 95 71 74 106 73 73 80 78 100 84 81 97 122 76 75 79 103 86 101 94 95 111 73 76 122 117 89 87 104 66">
+<param name="labels" value="#Mobile, Ala# #Montgomery, Ala# #Juneau, Alaska# #Phoenix, Ariz# #Litle Rock, Ark# #Los Angeles, Calif# #San Francisco, Calif# #Denver, Col# #New Haven, Conn# #Wilmington, Del# #Washington, DC# #Jacksonville, Fla# #Key West, Fla# #Miami, Fla# #Atlanta, Ga# #Honolulu, Hawaii# #Boise, Idaho# #Chicago, Ill# #Indianapolis, Ind# #Des Moines, Iowa# #Dubuque, Iowa# #Wichita, Kansas# #Louisville, Ky# #New Orleans, La# #Portland, Maine# #Baltimore, Md# #Boston, Mass# #Detroit, Mich# #Sault Ste Marie, Mich# #Minn St Paul, Minn# #St Louis, Missouri# #Helena, Montana# #Omaha, Nebraska# #Concord, NH# #Atlantic City, NJ# #Albuquerque, NM# #Albany, NY# #New York, NY# #Charlotte, NC# #Raleigh, NC# #Bismarck, ND# #Cincinnati, Ohio# #Cleveland, Ohio# #Oklahoma City, Okla# #Portland, Ore# #Harrisburg, Pa# #Philadelphia, Pa# #Charlestown, SC# #Rapid City, SD# #Nashville, Tenn# #Amarillo, Tx# #Galveston, Tx# #Houston, Tx# #Salt Lake City, Utah# #Burlington, Vt# #Norfolk, Va# #Seattle Tacoma, Wash# #Spokane, Wash# #Madison, Wisc# #Milwaukee, Wisc# #Cheyenne, Wyoming# #San Juan, Puerto Rico#">
+<param name="model" value="111.67 -1.67 1.0">
+<param name="horizAxis" value="15 60 20 10">
+<param name="vertAxis" value="0 85 0 10">
+<param name="decimals" value="2 2 2 2">
+<param name="change1" value="#11 38 30#">
+<param name="change1Name" value="Korrigiere Jacksonville">
+<param name="change2" value="#2 58 *# #44 45 *# #56 47 *#">
+<param name="change2Name" value="Lösche den Nordwesten">
+</applet>
+</div>
+
+<p>Wir sehen vier große Residuen, bei denen es sich um
+Ausreißer handeln könnte. Sie sind deutlich wärmer, als
+es das Modell für ihren Breitengrad prognostizieren würde.<strong> Geht man</strong> mit der Maus auf die entsprechenden Datenpunkte wird angezeigt, um welche Städte es sich handelt.. </p>
+<p>Jene, die sich sehr gut in amerikanischer Geographie auskennen,
+	werden bemerkt haben das der Breitengrad von Jacksonville zu weit
+	nördlich ist. <strong>Der Breitengrad von Jacksonville wurde falsch eingegeben.</strong> In den Daten wurden 38 Grad statt 30 Grad eingegeben. Klicke auf die Checkbox <strong>Korrigiere
+Jacksonville</strong>, um den Breitengrad zu korrigieren. Dies hat allerdings keine sonderliche Auswirkung auf die Position der Regressionsgerade. </p>
+<p>Die restlichen drei Ausreißer sind Portland, Seattle und
+	Juneau. Alle befinden sich im Nordwesten der USA und werden im Winter
+	durch den Ozean erwärmt. Behalten wir diese Städte im Modell,
+	überschätzen wir die Temperatur von Städten mit hohem
+	Breitengrad. Unter Umständen sollte der Nordwesten der USA
+	getrennt von den anderen Daten untersucht werden. Klicke auf die
+	Checkbox <strong>Lösche den Nordwesten</strong> um die drei Städte zu entfernen. Die Regressionsgerade passt jetzt deutlich besser auf die Punktwolke.</p>
+	</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

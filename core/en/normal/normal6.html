@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Linear combinations, sums and means</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="normal distribution, mean of random sample, sum of random sample">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p class="heading">Two independent normal variables </p>
+<p>We <a href="javascript:showNamedPage('continuousSamples2')">showed earlier</a> that a linear function of two independent  random variables, \(X\) and \(Y\), with means \(\mu_X\) and \(\mu_Y\) and  variances  \(\sigma_X^2\) and \(\sigma_Y^2\) has a distribution with mean and variance</p>
+\[ \begin {align}
+		E[aX + bY] &amp; = a\mu_X + b\mu_Y \\[0.5em]
+		\Var(aX + bY) &amp; = a^2\sigma_X^2 + b^2\sigma_Y^2
+		\end {align} \]
+		<p>When these two variables have normal distributions, we can be more precise about the shape of the resulting distribution. (The proof requires methodology that we have not covered yet.)</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Linear function of independent normal variables</p>
+		<p>If \(X\) and \(Y\) are independent random variables,</p>
+\[ \begin {align}
+X \;&amp;\sim\; \NormalDistn(\mu_X,\; \sigma_X^2) \\
+Y \;&amp;\sim\; \NormalDistn(\mu_Y,\; \sigma_Y^2)
+\end {align} \]
+		<p>then</p>
+\[
+aX + bY \;\sim\; \NormalDistn(a\mu_X + b\mu_Y,\; a^2\sigma_X^2 + b^2\sigma_Y^2)
+\]		</div>
+</div>
+<p class="heading">Random sample </p>
+<p>Applying this to the sum of a random sample of \(n = 2\) values from a \(\NormalDistn(\mu,\; \sigma^2)\) distribution,</p>
+\[
+X_1 + X_2 \;\sim\; \NormalDistn(2\mu,\; 2\sigma^2)
+\]
+<p>We now generalise this result.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Sum of a random sample</p>
+		<p>If \(\{X_1, X_2, ..., X_n\}\) is a random sample of <em>n</em> values from a  \(\NormalDistn(\mu,\; \sigma^2)\) distribution then,</p>
+\[
+\sum_{i=1}^n {X_i} \;\sim\; \NormalDistn(n\mu,\; n\sigma^2)
+\]	</div>
+	<div class="proof">
+		<p>We showed above that</p>
+\[
+X_1 + X_2 \;\sim\; \NormalDistn(2\mu,\; 2\sigma^2)
+\]
+		<p>Now</p>
+\[ \begin{align}
+X_1 + X_2 + X_3 \;=\;(X_1+ X_2) + X_3 \;&amp;\sim\; \NormalDistn(\mu_{X_1 + X_2} + \mu_{X_3},\; \sigma_{X_1 + X_2}^2 + \sigma_{X_3}^2) \\[0.4em]
+&amp;\sim\; \NormalDistn(3\mu,\; 3\sigma^2)
+\end{align} \]
+		<p>In general, the result for a sample of size \(n\) can be proved from that for a sample of \((n-1)\) values, completing a proof by induction.</p>
+	</div>
+</div>
+<p>In a similar way, the mean of a random sample from a normal distribution is also normally distributed.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Mean of a random sample</p>
+		<p>If \(\{X_1, X_2, ..., X_n\}\) is a random sample of <em>n</em> values from a  \(\NormalDistn(\mu,\; \sigma^2)\) distribution then,</p>
+		\[
+		\overline{X} \;\sim\; \NormalDistn\left(\mu,\; \frac {\sigma^2}{n}\right)
+		\] </div>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

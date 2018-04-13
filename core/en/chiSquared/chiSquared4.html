@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>General chi-squared properties</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="chi-squared distribution, mean, variance, normal approximation">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>The mean of a \(\ChiSqrDistn(k\;\text{df})\) random variable can be derived from its definition as the sum of \(k\) squared standard normal variables,</p>
+\[
+E[Y] \;=\; E\left[\sum_{i=1}^k {Z_i^2}\right] \;=\; \sum_{i=1}^k E\left[Z_i^2\right] \;=\; \sum_{i=1}^k \Var(Z) \;=\; k
+\]
+<p>However it is easier to find its mean and variance from its equivalence to a Gamma distribution.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Mean and variance</p>
+<p>If  \(Y \sim \ChiSqrDistn(k\;\text{df})\), its mean and variance are</p>
+\[
+E[Y] = k \spaced{and}  
+\Var(Y) = 2k\]</div>
+
+<div class="proof">
+<p>The mean and variance of a \(\GammaDistn(\alpha,\; \beta)\) distribution are</p>
+\[
+		E[Y] \;=\; \frac{\alpha}{\beta}
+		\spaced{and} \Var(Y) \;=\; \frac{\alpha}{\beta^2}
+		\]
+<p>A \(\ChiSqrDistn(k)\) distribution is equivalent to a \(\GammaDistn(\frac k 2, \frac 1 2)\) distribution, so its mean and variance can be found by replacing \(\alpha = \frac k 2\) and \(\beta = \frac 1 2\).</p>
+</div>
+
+</div>
+
+<p class="heading">Shape of the distribution</p>
+<p>The \(\ChiSqrDistn(k\;\text{df})\) distribution is skew with a longer tail to the right. However since we defined the distribution to be that of</p>
+\[
+Y = \sum_{i=1}^k {Z_i^2}
+\]
+<p>where the \(\{Z_i^2\}\) are independent and identically distributed with \(\ChiSqrDistn(1)\) distributions, the <a href="javascript:showNamedPage('continuousSamples2')">Central Limit Theorem</a> shows that the distribution approaches the shape of a Normal distribution as \(k \to \infty\).</p>
+
+
+<div class="example" title="ILlustration: Shape of the chi-squared distribution">
+	<p class="exampleHeading">Shape of the  distribution</p>
+	<p>The diagram below shows the chi-squared distribution for different values of \(k\), its degrees of freedom.</p>
+	<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="350">
+			<script type="text/javascript">writeAppletParams();</script>
+			<param name="appletName" value="varianceProg.Chi2ShapeApplet">
+			<param name="backgroundColor" value="FFFBF3">
+<param name="horizAxis" value="0 40 0 10">
+<param name="df" value="1 20 1">
+<param name="areaUsed" value="0.05">
+<param name="chi2Name" value="chi-squared distn (# df)">
+		</applet>
+	</div>
+
+<p>Note the following properties of the distribution.</p>
+<ul>
+	<li>The mean of the distribution equals <em>k</em>, 
+		its degrees of freedom.</li>
+	<li>As <em>k</em> increases, the distribution becomes more symmetric and closer in shape to normal distribution.</li>
+</ul>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

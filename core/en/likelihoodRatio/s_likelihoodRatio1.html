@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Big model vs small model</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="big model, small model">
+	<meta name="dataset" content="Defective items">
+	<meta name="dataset" content="Survival from disease">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Nested models</p>
+
+<p>In some situations, a particular statistical model can be regarded as a special case of a more complex model (with more parameters). We will call the simpler model the <strong>small</strong> model, \(\mathcal{M}_S\), and say that it is nested in the more general<strong> big</strong>  model, \(\mathcal{M}_B\). To compare these, we use the hypotheses,</p>
+<ul>
+	<li>Null hypothesis, <strong>H<sub>0</sub></strong>: \(\mathcal{M}_S\) is the correct model for the data.</li>
+	<li>Alternative hypothesis, <strong>H<sub>A</sub></strong>:  \(\mathcal{M}_S\) is not correct and \(\mathcal{M}_B\) must be used to model the data.</li>
+</ul>
+<div class="example">
+	<p class="exampleHeading">Poisson parameter</p>
+	<p>The following table describes the number of defective items produced on a production line in 20 successive days.</p>
+	
+	<div class="centred">
+	<table border="0" cellpadding="5" cellspacing="0" class="centred" style="border:1px solid #999999; background-color:#FFFFFF;">
+		<tr>
+			<td style="text-align:right; padding-right:10px; width:25px;">1<br>
+			2</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">3<br>
+			4</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">2<br>
+			3</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">2<br>
+			5</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">5<br>
+			2</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">4<br>
+			3</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">5<br>
+			1</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">2<br>
+			4</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">0<br>
+			2</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">2<br>
+				6</td>
+		</tr>
+	</table>
+	</div>
+	
+	<p>It might be assumed that the data are a random sample from a \(\PoissonDistn(\lambda)\) distribution, and we might want to test whether the rate of defective items was \(\lambda = 2\) per day. Since the \(\PoissonDistn(2)\) distribution is a special case of the \(\PoissonDistn(\lambda)\) distribution,</p>
+	<ul>
+		<li>\(\mathcal{M}_S\): \(\{X_1,\dots,X_{20}\}\) are a random sample from a \(\PoissonDistn(2)\) distribution.</li>
+		<li>\(\mathcal{M}_B\): \(\{X_1,\dots,X_{20}\}\) are a random sample from a \(\PoissonDistn(\lambda)\) distribution.</li>
+	</ul>
+	
+	<p class="exampleHeading">Exponential means</p>
+	<p>Clinical records give the survival time, in months from diagnosis, of 30 sufferers from a certain disease as</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred" style="border:1px solid #999999; background-color:#FFFFFF;">
+		<tr>
+			<td style="text-align:right; padding-right:7px; width:40px;">9.73<br>5.56<br>4.28<br>4.87</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">1.55<br>6.20<br>1.08<br>7.17</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">28.65<br>6.10<br>16.16<br>9.92</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">2.40<br>6.19<br>7.67<br>1.11</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">4.66<br>4.35<br>7.31<br>3.28</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">13.38<br>3.08<br>0.41<br>4.33</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">2.16<br>4.49<br>0.75<br>&nbsp;</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">4.45<br>10.29<br>0.90<br>&nbsp;</td>
+		</tr>
+	</table>
+	</div>
+	
+	<p>In a clinical trial of a new drug treatment, 21 sufferers had survival times of:</p>
+	
+<div class="centred">
+	<table border="0" cellpadding="5" cellspacing="0" class="centred" style="border:1px solid #999999; background-color:#FFFFFF;">
+		<tr>
+			<td style="text-align:right; padding-right:7px; width:40px;">22.07<br>12.47<br>6.42</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">8.15<br>0.64<br>20.04</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">17.49<br>2.22<br>3.00</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">28.09<br>3.94<br>8.59</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">4.26<br>32.82<br>8.32</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">2.12<br>18.53<br>&nbsp;</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">9.95<br>4.25<br>&nbsp;</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">3.70<br>5.82<br>&nbsp;</td>
+		</tr>
+	</table>
+	</div>
+	
+	<p>Is there any difference in survival times for those using the new drug?</p>
+	<p>An exponential model might be considered a reasonable model for the data in each group. This would have a common death rate in both groups, \(\lambda\), if the drug had no effect on survival times, and different rates for the control group, \(\lambda_C\), and the group getting the new drug, \(\lambda_D\).</p>
+	<ul>
+		<li>\(\mathcal{M}_S\): \(\{X_{C,1},\dots,X_{C,30}\}\) and \(\{X_{D,1},\dots,X_{D,21}\}\) are  random samples from an \(\ExponDistn(\lambda)\) distribution.</li>
+		<li>\(\mathcal{M}_B\): \(\{X_{C,1},\dots,X_{C,30}\}\) is a random sample from an \(\ExponDistn(\lambda_C)\) distribution and \(\{X_{D,1},\dots,X_{D,21}\}\) is a random sample from an \(\ExponDistn(\lambda_D)\) distribution.</li>
+	</ul>
+	<p class="exampleHeading">Exponential vs Weibull distribution</p>
+	<p>The \(\ExponDistn(\lambda)\) distribution is a special case of the \(\WeibullDistn(\alpha, \lambda)\) distribution corresponding to \(\alpha = 1\). Testing whether the failure rate is constant can therefore be done using the following small and big models.</p>
+	<ul>
+		<li>\(\mathcal{M}_S\): \(\{X_1,\dots,X_n\}\)  are a random sample from an \(\ExponDistn(\lambda)\) distribution.</li>
+		<li>\(\mathcal{M}_B\): \(\{X_1,\dots,X_n\}\)  are a random sample from a \(\WeibullDistn(\alpha, \lambda)\) distribution.</li>
+	</ul>
+	<p class="exampleHeading">Exponential vs Gamma</p>
+	<p>In a similar way, the \(\ExponDistn(\lambda)\) distribution is a special case of the \(\GammaDistn(\alpha, \lambda)\) distribution corresponding to \(\alpha = 1\).</p>
+	<ul>
+		<li>\(\mathcal{M}_S\): \(\{X_1,\dots,X_n\}\)  are a random sample from an \(\ExponDistn(\lambda)\) distribution.</li>
+		<li>\(\mathcal{M}_B\): \(\{X_1,\dots,X_n\}\)  are a random sample from a \(\GammaDistn(\alpha, \lambda)\) distribution.</li>
+	</ul>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

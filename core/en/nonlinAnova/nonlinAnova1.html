@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Linear and quadratic models</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="curvature, nonlinear model, nonlinear relationship, quadratic model, sums of squares, sequential sums of squares">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Are data linear?</p>
+<p>Our previous analysis of the relationship between a response variable, <em>Y</em>, 
+and a numerical explanatory variable, <em>X</em>, involved a normal linear model 
+with </p>
+<p class=eqn><img src="images/linModel.gif" width="159" height="20"> </p>
+  <p>We will now use analysis of variance to examine whether the assumption of 
+		linearity is appropriate.</p>
+
+<div class="diagram"> 
+<p class="heading">Teeth wear in monkeys</p>
+<p>The scatterplot below shows the crown length of the maxillary deciduous central 
+right incisor, one of the upper cutting teath, of 15 <em>Macaca mulatta</em> monkeys. 
+The crown length decreases with age due to wear.</p>
+
+<p class=eqn><img src="images/crownScatter.gif" width="265" height="284"> </p>
+
+<p>The least squares line is drawn on the scatterplot. There is a slight suggestion 
+that crown lengths may be underestimated around age 1 and overestimated around 
+age 2.5.</p>
+
+<div class="centred"><div class="boxed">
+<p>Is this suggestion of nonlinearity just caused 
+by random variation?</p>
+</div></div>
+
+<br>
+</div>
+
+<p class="heading">Quadratic model</p>
+  <p>To assess linearity, we can consider a more general model that allows for 
+		some curvature. The simplest such model adds a quadratic term to the linear 
+		model,</p>
+<p class=eqn><img src="images/quadModel.gif" width="217" height="22"> </p>
+  <p>We therefore consider a sequence of <strong>three</strong> potential models, 
+		each of which can be fitted to the data by least squares and provides fitted 
+		values.</p>
+
+<div class="centred"><table border="1" cellpadding="7" cellspacing="0" bordercolor="#CCCCCC" class="centred">
+<tr> 
+<th align="center">&nbsp;</th>
+<th align="center">Model</th>
+<th>Fitted values (predicted response)</th>
+</tr>
+<tr> 
+<th style="border-top:1px solid #999999; border-bottom:1px solid #999999;" align="left">Constant</th>
+<td style="border-top:1px solid #999999; border-bottom:1px solid #999999;" align="center" bgcolor="#FFFFFF"><img src="images/univarModel.gif" width="97" height="20"></td>
+<td style="border-top:1px solid #999999; border-bottom:1px solid #999999;" align="center" bgcolor="#FFFFFF"><img src="images/fitPoly0.gif" width="64" height="24"></td>
+</tr>
+<tr> 
+<th style="border-bottom:1px solid #999999;" align="left">Linear model</th>
+<td style="border-bottom:1px solid #999999;" align="center" bgcolor="#FFFFFF"><img src="images/linModel.gif" width="159" height="20"></td>
+<td style="border-bottom:1px solid #999999;" align="center" bgcolor="#FFFFFF"><img src="images/fitPoly1.gif" width="128" height="24"></td>
+</tr>
+<tr> 
+<th style="border-bottom:1px solid #999999;" align="left">Quadratic model</th>
+<td style="border-bottom:1px solid #999999;" align="center" bgcolor="#FFFFFF"><img src="images/quadModel.gif" width="217" height="22"></td>
+<td style="border-bottom:1px solid #999999;" align="center" bgcolor="#FFFFFF"><img src="images/fitPoly2.gif" width="188" height="24"></td>
+</tr>
+</table></div>
+
+<p>A few comments are made here about the notation and models:</p>
+
+<ul>
+<li>Although we have used the same symbols, {<em>b<sub>i</sub></em>}, to denote 
+the least squares estimates for the linear and quadratic models, the least squares 
+estimates for the two models have different values &mdash; i.e. the <span class="red">{<em>b<sub>i</sub></em>}</span> 
+and <span class="green">{<em>b<sub>i</sub></em>}</span> are different.</li>
+<li>Rather than using superscripts <span class="blue">A</span>, <span class="red">B</span> 
+and <span class="green">C</span> for the three models, we have used <span class="blue">(0)</span>, 
+<span class="red">(1)</span> and <span class="green">(2)</span> since they 
+are polynomial models of degree 0, 1 and 2.</li>
+</ul>
+
+<p class="heading">Components</p>
+<p>Using this sequence of models of increasing complexity, we can identify how 
+the different terms in the model improve its fit.</p>
+<p class=eqn><img src="images/quadComponents.gif" width="392" height="41"> </p>
+<p class="heading">Sums of squares</p>
+<p>The sums of squares of these three components obey a similar relationship when 
+the models are fitted by least squares:</p>
+<p class=eqn><img src="images/quadSsqs.gif" width="464" height="41"> </p>
+<br>
+
+<div class="centred"><div class="boxed">
+<p>The diagram below helps to interpret the three 
+components (and their sums of squares).</p>
+</div></div>
+
+<br>
+
+<div class="diagram"> 
+<p class="heading">Teeth wear in monkeys</p>
+<p>The scatterplot below shows the relationship between the crown length and age 
+of the monkeys. The overall mean (grey), the least squares line (light blue) and 
+best-fitting quadratic (pink) are also shown on the diagram.</p>
+
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="510" height="480">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="varianceProg.QuadComponentsApplet">
+<param name="xVarName" value="Age (years)">
+<param name="yVarName" value="Crown length (mm)">
+<param name="xValues" value=".06 .08 .18 .28 .36 .56 .83 1.02 1.223 1.77 1.94 2.14 2.44">
+<param name="yValues" value="5.05 4.95 4.85 4.40 5.25 4.40 5.15 4.30 4.15 3.35 3.40 3.05 2.65">
+<param name="xAxis" value="0 2.5 0.0 0.5">
+<param name="yAxis" value="2.5 5.3 2.5 0.5">
+<param name="componentAxis" value="-2.0 2.0 -2.0 0.5">
+<param name="decimals" value="4">
+<param name="labelAxes" value="true">
+<param name="dotPlotWidth" value="110">
+<param name="maxSsq" value="99.999">
+<param name="ssqNames" value="Total variation#Linear component#Quadratic component#Residuals">
+<param name="customText" value="Component=Component">
+</applet>
+</div>
+
+<p>Click the cross near the middle at the top of the scatterplot. Observe how 
+the three components add to the total component. <span class="gray">(The same 
+relationship holds for the other crosses, but most involve a mixture of positive 
+and negative components so the visual effect is weaker.)</span></p>
+<p>Use the pop-up menu to display the linear, quadratic and residual components 
+for all data values together on the scatterplot.</p>
+
+<dl>
+<dt>Linear components</dt>
+<dd>These are identical to the linear components that were defined for linear 
+regression. They describe how far the least squares line is from horizontal.</dd>
+<dt>Quadratic components</dt>
+<dd>These describe how far the best-fitting quadratic curve is from the best-fitting 
+straight line. They therefore hold information about how close the data are to 
+linearity.</dd>
+<dt>Residual components</dt>
+<dd>These describe the 'unexplained' variation in the data and depend only on 
+the normal error standard deviation, σ.</dd>
+</dl>
+<br>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

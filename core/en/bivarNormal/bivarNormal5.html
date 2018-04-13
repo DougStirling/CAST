@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Covariance and correlation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="bivariate normal distribution, covariance, correlation">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>To find the correlation coefficient of the bivariate normal distribution, we first find the covariance between the two variables.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Covariance</p>
+<p>If \(X\) and \(Y\) are bivariate normal,</p>
+\[
+(X,Y) \;\;\sim\;\; \NormalDistn(\mu_X, \sigma_X^2, \mu_Y, \sigma_Y^2, \rho)
+\]
+<p>then their covariance is</p>
+\[
+\Covar(X, Y) \;\;=\;\; \rho \sigma_X \sigma_Y
+\]	</div>
+
+<div class="proof">
+<p>To prove this, we will use the <a href="javascript:showNamedPage('bivarExpected3')">earlier result</a> that</p>
+\[
+E[g(X,Y)] \;\;=\;\; E \big[E[g(X,Y) \mid X] \big]
+\]
+<p>where the inner expected value is from the conditional distribution of \(Y\) given \(X\). For variables with a bivariate normal distribution, we showed that this marginal distribution is</p>
+\[
+	\NormalDistn\left(\mu_Y + \frac{\sigma_Y}{\sigma_X}\rho(x-\mu_X),\; (1-\rho^2)\sigma_Y^2\right)
+\]
+<p>The covariance is therefore</p>
+\[ \begin{align}
+\Covar(X, Y) \;\;&amp;=\;\; E\left[(X - \mu_X)(Y - \mu_Y)\right] \\[0.4em]
+&amp;=\;\; E \big[E[(X - \mu_X)(Y - \mu_Y) \mid X] \big] \\[0.4em]
+&amp;=\;\; E \big[(X - \mu_X) \times E[(Y - \mu_Y) \mid X] \big] \\
+&amp;=\;\; E \Big[(X - \mu_X) \times \frac{\sigma_Y}{\sigma_X}\rho(X-\mu_X) \Big] \\
+&amp;=\;\; \frac{\sigma_Y}{\sigma_X}\rho \times E \big[(X - \mu_X)(X-\mu_X) \big] \\[0.4em]
+&amp;=\;\; \frac{\sigma_Y}{\sigma_X}\rho \times \sigma_X^2 \\[0.4em]
+&amp;=\;\; \rho \sigma_X \sigma_Y
+\end{align} \]
+</div>
+
+</div>
+<p>We can now find the correlation between \(X\) and \(Y\).</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Correlation coefficient</p>
+		<p>If \(X\) and \(Y\) are bivariate normal,</p>
+		\[
+		(X,Y) \;\;\sim\;\; \NormalDistn(\mu_X, \sigma_X^2, \mu_Y, \sigma_Y^2, \rho)
+		\]
+		<p>then their correlation is \(\rho\).</p>
+	</div>
+	<div class="proof">
+		
+		\[
+		\Corr(X,Y) \;\;=\;\; \frac{\Covar(X,Y)}{\sqrt{\Var(X) \Var(Y)}} \;\;=\;\; \frac{\rho \sigma_X \sigma_Y}{\sqrt{\sigma_X^2 \sigma_Y^2}} \;\;=\;\; \rho
+		\]</div>
+</div>
+
+<p>This explains the use of the symbol \(\rho\) for the bivariate normal distribution's fifth parameter.</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

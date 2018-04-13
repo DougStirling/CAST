@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Erlang distribution</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="continuous distribution, erlang distribution, probability density function">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>We showed earlier that the time until the first event in a Poisson process with rate \(\lambda\) events per unit time has an exponential distribution with parameter \(\lambda\). We will now  find the distribution of the time until the <strong>second</strong> event in the process.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Time until second event</p>
+<p>If \(X\) is the time until the second event in a Poisson process with rate \(\lambda\), it has probability density function</p>
+\[
+f(x) \;\;=\;\; \begin{cases} \lambda^2 x e^{-\lambda x} &amp; x \gt 0 \\[0.3em]
+0 &amp; \text{otherwise}
+\end{cases} \]</div>
+
+<div class="proof">
+<p>If the second event in the Poisson process occurs after time \(x\), there must have been either 0 or 1 event <strong>before</strong> time \(x\). If we define \(Y_x\) to be the number of events before time \(x\),</p>
+\[
+Y_x \;\;\sim\;\; \PoissonDistn(\lambda x) \]
+<p>Therefore</p>
+\[ \begin{align}
+F(x) \;\;=\;\; 1 - P(Y_x = 0) - P(Y_x = 1) \;\;&amp;=\;\; 1 - \frac {(\lambda x)^0 e^{-\lambda x}}{0!} - \frac {(\lambda x)^1 e^{-\lambda x}}{1!} \\[0.2em]
+&amp;=\;\; 1 - e^{-\lambda x} - \lambda x e^{-\lambda x}
+\end{align} \]
+
+<p>We can find the probability density function by differentiating this,</p>
+
+\[ \begin{align}
+f(x) \;\;=\;\; F'(x) \;\;&amp;=\;\; \lambda e^{-\lambda x} - \left(\lambda e^{-\lambda x} - \lambda^2 x e^{-\lambda x} \right) \\
+&amp;=\;\; \lambda^2 x e^{-\lambda x}
+\end{align} \]
+</div>
+
+</div>
+<p>The pdf of the time until the third event in the Poisson process can be found in a similar way.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Time until third event</p>
+		<p>If \(X\) is the time until the third event in a Poisson process with rate \(\lambda\), it has probability density function</p>
+		\[
+		f(x) \;\;=\;\; \begin{cases} \dfrac{\lambda^3}{2!} x^2 e^{-\lambda x} &amp; x \gt 0 \\[0.5em]
+		0 &amp; \text{otherwise}
+		\end{cases} \]</div>
+	<div class="proof">
+		<p>If the 3rd event in the Poisson process occurs after time \(x\), there must have been either 0, 1 or 2 events before time \(x\).		Therefore</p>
+\[ \begin{align}
+F(x) \;\;&amp;=\;\; 1 - P(Y_x = 0) - P(Y_x = 1) - P(Y_x = 2) \\[0.4em]
+&amp;=\;\; 1 - \frac {(\lambda x)^0 e^{-\lambda x}}{0!} - \frac {(\lambda x)^1 e^{-\lambda x}}{1!} - \frac {(\lambda x)^2 e^{-\lambda x}}{2!} \\[0.2em]
+&amp;=\;\; 1 - e^{-\lambda x} - \lambda x e^{-\lambda x} - \frac{\lambda^2}2 x^2 e^{-\lambda x}
+\end{align} \]
+<p>Again,</p>
+\[ \begin{align}
+f(x) \;\;&amp;=\;\; F'(x) \\
+&amp;=\;\; \lambda e^{-\lambda x} - \left(\lambda e^{-\lambda x} - \lambda^2 x e^{-\lambda x} \right) - \left(\lambda^2 x e^{-\lambda x} - \frac{\lambda^3}{2} x^2 e^{-\lambda x} \right) \\
+&amp;=\;\; \frac{\lambda^3}{2} x^2 e^{-\lambda x}
+\end{align} \]
+	
+	</div>
+</div>
+<p>Generalising this, the time until the \(k\)'th event in a Poisson process has a distribution called an<strong> Erlang distribution</strong> with parameters \(\lambda\) and \(k\). Its probability density function is shown below.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Time until k'th event</p>
+		<p>The time until the \(k\)'th event in a Poisson process with rate \(\lambda\), has a distribution called an <strong>Erlang</strong> distribution</p>
+\[
+X \;\; \sim \; \; \ErlangDistn(k, \lambda)
+\]
+		<p> with probability density function</p>
+		\[
+		f(x) \;\;=\;\; \begin{cases} \dfrac{\lambda^k}{(k-1)!} x^{k-1} e^{-\lambda x} &amp; x \gt 0 \\[0.5em]
+		0 &amp; \text{otherwise}
+		\end{cases} \]</div>
+	<div class="proof">
+	<p>The full proof is not given here, but note how the terms cancelled in the proof for \(k = 3\). Similar cancelling occurs when \(k\) is higher, giving the result.</p></div>
+</div>
+
+<p>The Erlang distribution rarely arises in practical applications, but a generalisation of it called a<a href="javascript:showNamedPage('sec_gamma')"> gamma distribution</a> is often encountered. We will therefore not show the distribution's pdf graphically until we look at gamma distributions later.</p>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

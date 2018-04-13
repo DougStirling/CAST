@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Estimators of parameters</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="estimation, parameter estimate, random sample">
+	<meta name="dataset" content="Tiger sex ratio">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p class="heading">Estimating unknown parameters from data</p>
+<p>The only way to get information about unknown parameters is by collecting data whose distribution depends on these parameters, then using a function of the data to <strong>estimate</strong> each of them.</p>
+<p>We initially concentrate on models involving a <strong>single</strong> unknown parameter that we will call \(\theta\). The data will be assumed to be a <strong>random sample</strong> from a distribution whose shape depends on \(\theta\).</p>
+
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+<p>If \({X_1, X_2, \dots, X_n}\) is a random sample from a distribution whose shape depends on an unknown parameter \(\theta\), then any function of the random sample,</p>
+\[
+\hat{\theta}(X_1, X_2, \dots, X_n)
+\]
+<p>is a random variable and could potentially be used as an <strong>estimator</strong> of \(\theta\).</p>
+</div>
+
+<p>A few examples of possible estimators are:</p>
+<dl>
+	<dt>Sample mean</dt>
+\[\hat{\theta} = \frac {\sum_{i=1}^n {X_i}} n\]
+</dl>
+<dl>
+	<dt>Sample median</dt>
+\[\hat{\theta} = median(X_1, X_2, \dots, X_n) \]
+</dl>
+<dl>
+	<dt>Sample maximum</dt>
+\[\hat{\theta} = max(X_1, X_2, \dots, X_n) \]
+</dl>
+<p>Since there are various possible functions of the data that might be used as estimators, it is important to consider  what makes a <strong>good </strong>estimator of any parameter. The rest of this section will consider the characteristics of good estimators.</p>
+<div class="example">
+	
+	<p class="exampleHeading">Sex ratio of Siberian tigers</p>
+
+<p>Data were collected about the sexes of Siberian tigers in litters of different sizes at birth. The table below describes the number of males in each litter of size three.</p>
+
+<div class="centred">
+<table border="0" cellspacing="0" class="centred">
+	<tr>
+		<th>Number of males</th>
+		<th>0</th>
+		<th>1</th>
+		<th>2</th>
+		<th>3</th>
+		</tr>
+	<tr>
+		<th>Frequency</th>
+		<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-right:0px; padding: 2pt 10pt">33</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;padding: 2pt 10pt">66</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;padding: 2pt 10pt">80</td>
+		<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-left:0px; padding: 2pt 10pt">28</td>
+		</tr>
+</table>
+</div>
+
+<p>If we assume that the probability of each birth being male is \(\pi\) and that the sex of each birth is independent of the sex of other births, the number of males in a litter, \(X\), will have a binomial distribution,</p>
+\[
+X \;\; \sim \; \; \BinomDistn(n=3,\;\; \pi)
+\]
+<p>Although the probability of any birth being a male, \(\pi\), will be close to a half, it is well recognised that the probability of a male birth in humans is slightly greater than 0.5 so we will also treat \(\pi\)  as an unknown parameter for tiger births.</p>
+<p>The above frequency table summarises a random sample of 207 values from this distribution. One possible estimator of \(\pi\) is the average number of males in these litters, divided by the litter size, 3.</p>
+\[
+\hat{\pi}(X_1, X_2, \dots, X_n) = \frac {\overline {X}} 3
+\]
+<p>From this data set, we get the estimate \(\hat{\pi} = 0.499\). But is this the best possible estimate of \(\pi\)?</p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

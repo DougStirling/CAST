@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Evenly Matched Teams?</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p>From the simulation of league tables, it seems clear that a spread of points
+in the table as great as that in the English Soccer League in 1999/2000 would
+be extremely unlikely if all teams were evenly matched.
+</p>
+
+<p>To formally weigh the evidence, and to give guidance in situations where the
+results are less clear-cut, a hypothesis test is needed.
+The hypotheses of interest are:
+</p>
+
+<div class="centred"><table border="1" cellspacing="0" cellpadding="10" bgcolor="#CCCCCC" class="centred">
+<tr>
+<td>Null Hypothesis, <strong>H<sub>0</sub></strong></td>
+<td>All teams have the same probability of winning each match.</td></tr>
+<tr>
+<td>Alternative Hypothesis, <strong>H<sub>A</sub></strong></td>
+<td>At least two teams have different winning probabilities.</td></tr>
+</table></div>
+
+<p>We base our test on the spread of points in the league table
+since differences in ability will tend to increase the difference in points between the top
+and bottom teams. In the 1999/2000
+league, the standard deviation was 16.1, so the p-value for the test is
+</p>
+
+<p class=eqn>p-value&nbsp;&nbsp;=&nbsp;&nbsp;P(sd of league points
+<img src="images/ge.gif" width="8" height="10" align="BASELINE" alt=">=">
+16.1 when <strong>H<sub>0</sub></strong> is true)
+</p>
+
+<p>Since this p-value cannot be easily evaluated theoretically, we must
+<strong>estimate</strong> it from a simulation. As in other situations where
+probabilities are estimated from simulations, a
+<a href="aboutWinProbCI.html" onMouseOver="window.status='About binomial CIs'; return true;"><strong>confidence
+interval</strong> based on the binomial distribution</a> should be used.
+</p>
+
+<p class="heading">Numerical Example</p>
+
+<p>If 100 runs of the simulation produced 2 league tables whose
+standard deviation of points was greater than 16.1, the best point estimate of the p-value
+for the test would be 0.02.</p>
+
+<p>However a confidence interval for the p-value would better
+express the results of the simulation. An exact 95% confidence interval for the
+p-value is between 0.0024 and 0.0704. Since the p-value could be as high as 0.0704,
+we should not conclude that <strong>H<sub>0</sub></strong> is not true. More runs
+of the simulation would be needed to properly form a conclusion.
+</p>
+
+<p>In your own simulations, you are unlikely to have seen as many
+as 2 league tables out of 100 with such a high standard deviation, so your own conclusion
+was probably clearer. For example, if none of the 100 simulated league tables had a standard deviation
+as high as 16.1, the 95% confidence interval for the p-value would have been 0 to 0.036 --
+at least moderately strong evidence of a difference
+in abilities of the teams.
+</p>
+
+<p class="heading"><a name="exactCI">More About Exact Confidence Intervals</a></p>
+
+<p>Since p-values are often close to zero (at least if the alternative hypothesis
+is true), confidence intervals based on a normal approximation to the binomial
+are rarely appropriate. Exact binomial confidence intervals should be used instead.
+</p>
+
+
+<div class="diagram">
+
+<p>We now explain how exact binomial confidence
+intervals are obtained. Consider again a set of simulated league tables
+in which 2 out of 100 had standard deviation greater than 16.1.
+</p>
+
+<p>The number of league tables with standard deviation of 16.1 or higher
+must have a binomial distribution with
+π
+equal to the p-value that we are trying to estimate. The diagram below shows two
+copies of this binomial barchart, plus a slider that can be used to adjust
+the unknown value of
+π.
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="simulationProg.ExactBinomialCIApplet">
+<param name="nx" value="100 2">
+<param name="pi" value="0.000 0.200 0.05 200">
+<param name="horizAxis" value="0 50 0 10">
+</applet>
+</div>
+
+<p>The top barchart highlights the probability of two or more 'successes'
+(e.g. runs of the simulation with standard deviation
+<img src="images/ge.gif" width="8" height="10" align="BASELINE" alt=">=">&nbsp;16.1)
+and the bottom barchart shows the probability of two or fewer 'successes'.
+</p>
+
+<p>Drag the slider to verify that both probabilities are greater than 0.025 when
+π
+is between 0.003 and 0.070 (to the accuracey that the diagram allows). This is
+the 95% confidence interval for
+π.
+For these values of
+π,
+the observed count of 2 'successes' is not particularly unusual.
+</p>
+
+<p>For any value of
+π
+greater than 0.070, the probability of getting as few as 2 'successes' is below 0.025, so
+π&nbsp;&gt;&nbsp;0.070
+is not included in the confidence interval. Similarly, for any value of
+π
+below 0.003, the probability of 2 or more 'successes' is below 0.025 so
+π&nbsp;&lt;&nbsp;0.070
+is not included in the confidence interval. In other words, a 2-tailed test
+at the 5% significance level would reject values of 
+π
+over 0.070 or under 0.003.
+</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

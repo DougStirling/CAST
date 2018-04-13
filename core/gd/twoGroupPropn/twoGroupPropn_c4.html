@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Testing for difference in probabilities</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<script type="text/javascript">
+		var svgNames = new Array();
+		svgNames[0] = "images/bangladeshTest.svg";
+		svgNames[1] = "images/ethicsTest.svg";
+		svgNames[2] = "images/pizzaTest.svg";
+		svgNames[3] = "images/drinkTest.svg";
+		
+		function changeSvgImage(select) {
+			var newIndex = select.selectedIndex;
+			var image = document.getElementById('dataImage');
+			image.src = svgNames[newIndex];
+		}
+	</script>
+
+	<meta name="index" content="hypothesis test, difference, probability, proportion">
+	<meta name="dataset" content="Job satisfaction in Bangladesh">
+	<meta name="dataset" content="Business ethics and gender">
+	<meta name="dataset" content="Pizza and price">
+	<meta name="dataset" content="Children classifying drinks">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Testing whether the probabilities are different</p>
+
+<p>Testing for a difference between the population probabilities of 'success' in two
+groups is based on the sample proportions. Standardising the sample difference provides
+a test statistic that can be compared to the standard normal distribution to obtain
+an approximate p-value for the test.
+</p>
+
+<p class="heading">Two-tailed test</p>
+<p>Firstly, consider the two-tailed test, </p>
+
+<p class=eqn><span class="blue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong><sub>1</sub> &nbsp;=&nbsp; </strong>&pi;<strong><sub>2</sub></strong><br>
+<strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong><sub>1</sub> &nbsp;&ne;&nbsp; </strong>&pi;<strong><sub>2</sub></strong></span></p>
+<p>The steps involved in obtaining a p-value for this test are shown in the 
+diagram below </p>
+
+<p class=eqn><object data="images/pValCalc.svg" width="436" height="261" alt="p-value for testing diff"></object>
+</p>
+
+<p>The p-value is interpreted in the same way as for all previous tests. A p-value close to
+zero is unlikely when <b>H<sub>0</sub></b> is true, but is more likely when <b>H<sub>A</sub></b>
+holds. Small p-values therefore provide evidence of a difference between the population
+probabilities.
+</p>
+
+<p class="heading">One-tailed test</p>
+<p>For a 1-tailed test, the alternative hypothesis is that π<sub>2</sub> 
+is only on one side of π<sub>1</sub>.</p>
+<p class=eqn>
+	<object data="images/oneTailAlt.svg" width="275" height="17" alt="HA:diff&gt;0 or HA:diff&lt;0">
+	</object>
+</p>
+<p>The test statistic is identical to that for a 2-tailed test and the p-value 
+is obtained in a similar way, but it is found from only a <strong>single</strong> 
+tail of the standard normal distribution. </p>
+
+  <p class="heading"><font color="#666666">Alternative test statistic</font></p>
+  
+<p><font color="#666666">Some statisticians prefer to use a different formula 
+for the standard deviation in the evaluation of the z-value above. Since π<sub>1</sub> 
+and π<sub>2</sub> 
+are equal if <b>H<sub>0</sub></b> is true, the overall proportion of successes, 
+<em>p</em>, 
+can be used in the formula for the standard deviation of <em>p</em><sub>2</sub>&nbsp;-&nbsp;<em>p</em><sub>1</sub>. 
+</font></p>
+
+<p class=eqn>
+	<object data="images/diffSDEstEqn.svg" width="476" height="95" alt="alternative defn of sd(diff)">
+	</object>
+</p>
+
+<p><font color="#666666">This refinement makes little difference in practice, so the exercises
+below use the 'simpler' formula that we gave earlier.
+</font></p>
+
+<div class="diagram"> 
+<p class="heading">Examples</p>
+<p>The diagram below shows how the p-values and conclusions are obtained for a 
+selection of 1- and 2-tailed tests.</p>
+
+<form>
+<select name="dataset" onChange="changeSvgImage(this)">
+<option value="0" selected>Job satisfaction in Bangladesh</option>
+<option value="1">Business ethics and gender</option>
+<option value="2">Pizza buying and price</option>
+<option value="3">Children classifying drinks</option>
+</select>
+</form>
+
+<p align="center"><iframe src="images/bangladeshTest.svg" id="dataImage" width="541" height="476" frameborder="0"></iframe></p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

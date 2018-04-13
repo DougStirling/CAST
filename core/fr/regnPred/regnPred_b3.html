@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Estimating the mean vs prediction</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="prediction, confidence interval">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Estimating mean reduction in blood pressure</p>
+  
+<p>A medical researcher is interested in the effect of a particular drug on blood 
+pressure. Twenty patients with high blood pressure are given different doses of 
+the drug, <i>X</i>, and their change in blood pressure is recorded over a 2-hour 
+period, <i>Y</i>.</p>
+<p>The researcher would be interested in estimating the mean reduction in blood 
+pressure after different doses of the drug, </p>
+
+<p class=eqn><span class="black">&mu;<sub><em>y</em></sub> &nbsp;=&nbsp; &beta;<sub>0</sub> &nbsp;+&nbsp; &beta;<sub>1</sub><em>x</em></span> 
+</p>
+
+<p>using the least squares estimate,
+</p>
+
+<p class=eqn><span class="black"><span style="position:relative; top:4px"><img src="../../images/symbol.yHat.png" width="10" height="17" align="baseline"></span>&nbsp; =&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x</em></span>
+</p>
+
+<p>Since both <em>b</em><sub>0</sub><strong> and</strong> <em>b</em><sub>1</sub> become less variable (and hence more accurate estimates of β<sub>0</sub> and β<sub>1</sub>) 
+as the sample size increases,</p>
+<table width="75%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+<tr> 
+<td><strong>The estimate of the mean reduction in blood pressure also becomes 
+increasingly accurate as the sample size increases.</strong></td>
+</tr>
+</table>
+<p class=heading>Predicting a single individual's reduction in blood pressure</p>
+
+<p>In contrast, the researcher might want to predict the change in blood pressure 
+for <strong>a single patient</strong> who has been given a dose of <i>X</i>. The 
+same prediction would be used as above,</p>
+<p class=eqn><span class="black"><span style="position:relative; top:4px"><img src="../../images/symbol.yHat.png" width="10" height="17" align="baseline"></span>&nbsp; =&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x</em></span> 
+</p>
+<p>However, no matter how accurately we estimate the <strong>mean</strong> reduction 
+in blood pressure, a single individual will also have a distribution with standard 
+deviation σ 
+around this mean. As a result, the errors in predicting the blood pressure reduction 
+for a single person will be greater.</p>
+
+<table width="75%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+<tr> 
+<td><strong>The distribution of the prediction error <font color="#FF0000">cannot</font> 
+have a standard deviation that is less than σ.</strong></td>
+</tr>
+</table>
+
+<br>
+
+<div class="diagram">
+
+<p class=heading>Difference between estimating a mean and predicting a new value</p>
+
+<p>We will perform a simulation from a normal linear model with β<sub>0</sub>&nbsp;=&nbsp;3.3 
+and β<sub>1</sub>&nbsp;=&nbsp;0.75. 
+Data from the model will be used to estimate the mean response when <em>X</em>&nbsp;=&nbsp;5.5 
+and also to estimate a new individual's response value at this x-value. The same 
+value is used both for estimation and prediction,</p>
+<p class=eqn><span class="black"><span style="position:relative; top:4px"><img src="../../images/symbol.yHat.png" width="10" height="17" align="baseline"></span>&nbsp; =&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x</em></span> 
+</p>
+<p>but the error is different in the two situations.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="550">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="linModProg.PredictionError2Applet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="xValues0" value="2@1 2@2 2@3 2@4 5.5">
+<param name="xValues1" value="2@0.8 2@1.0 2@1.2 2@1.4 2@1.6 2@1.8 2@2.0 2@2.2 2@2.4 2@2.6 2@2.8 2@3.0 2@3.2 2@3.4 2@3.6 2@3.8 2@4.0 2@4.2 5.5">
+<param name="xValues2" value="6@0.8 6@0.9 6@1.0 6@1.1 6@1.2 6@1.3 6@1.4 6@1.5 6@1.6 6@1.7 6@1.8 6@1.9 6@2.0 6@2.1 6@2.2 6@2.3 6@2.4 6@2.5 6@2.6 6@2.7 6@2.8 6@2.9 6@3.0 6@3.1 6@3.2 6@3.3 6@3.4 6@3.5 6@3.6 6@3.7 6@3.8 6@3.9 6@4.0 6@4.1 6@4.2 5.5">
+<param name="sampleSize" value="8 36 210">
+<param name="regnModel" value="3.30 0.75 0.6">
+<param name="horizAxis" value="0.5 6.0 1 1">
+<param name="vertAxis" value="2.5 9.5 3 1">
+<param name="randomSeed" value="345945782">
+<param name="errorAxis" value="-2.5 2.5 -2.0 1.0">
+<param name="xDisplayError" value="2.0">
+<param name="customText" value="Estimating mean=Estimating mean#Estimation error=Estimation error#Predicting new Y=Predicting new Y#Prediction error=Prediction error#Estimate of mean=Estimate of mean#Actual mean=Actual mean#Predicted new value=Predicted new value#Actual new value=Actual new value">
+</applet>
+</div>
+
+<p>The true mean response is 7.43. (We can evaluate this since we know the values 
+of β<sub>0</sub> and β<sub>1</sub> in the simulation &mdash; in practice we would not be able to determine the mean response.) 
+The top half of the diagram shows the error in estimating this from the least 
+squares line.</p>
+<p>The bottom half of the diagram shows the error from predicting a new response 
+value at <em>X</em>&nbsp;=&nbsp;5.5.</p>
+<p>Click <strong>Accumulate</strong> then take several samples from this linear 
+model. Observe that the prediction error has greater spread than the estimation 
+error at the top.</p>
+<p>Use the pop-up menu to increase the sample size to 210. Observe that the error 
+in estimating the mean becomes very small, but the prediction error is still quite 
+large. Although we can estimate the mean response accurately, we have no information 
+about how far the new value will be from this.</p>
+<p><font color="#666666">(In practice, it would be unwise to estimate or predict 
+at <em>X</em>&nbsp;=&nbsp;5.5 since the highest x-values in the data are about 
+4 &mdash; we are not sure that the relationship will remain linear at high <em>X</em>. 
+However it makes the diagram above clearer.)</font></p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

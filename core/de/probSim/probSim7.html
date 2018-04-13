@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>Numerische Werte erzeugen</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+<meta name="index" content="simulation, random numbers, rectangular distribution"></head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Erstellen eines kontinuierlichen
+Zahlenwerts</p>
+<p>Man hat bereits gezeigt bekommen, wie man einen rechteckig
+verteilten Zufallswert erstellt, aber wie kann ein Zahlenwert von einer
+anderen kontinuierlichen Verteilung erstellt werden? Es gibt einige
+Algorithmen, die von einem Zufallswert eine kontinuierliche numerische
+Verteilung erstellen und viele sind effizienter als die, die bereits
+beschrieben wurden. Jedoch ist die folgende Methode relativ leicht zu
+beschreiben und zu verstehen.<br>
+</p><p>Nun betrachtet man das folgende Diagramm, welches
+die
+Verteilungswahrscheinlichkeitsdichtefunktion mit einem Rechteck
+umschlie&szlig;t.</p>
+<p class="eqn"><object data="images/envelopeGenerator.svg" height="173" width="246"></object></p><p>Ein
+Zufallswert von der Verteilung kann von mehrmals
+erstellten
+Zufallspunkten innerhalb des Rechtecks erstellt werden, bis der Punkt
+innerhalb der schattierten Fl&auml;che der
+Wahrscheinlichkeitsdichtefunktion liegt. Die X-Koordinate von diesem
+Punkt wird ein Zufallswert von der erforderlichen Verteilung.</p>
+<ol> <li>Erstellt man eine Zufallsproportion zwischen 0
+und 1 von
+einer
+rechteckigen Verteilung. Eine zufallig&nbsp;horizontale Position
+innerhalb des einschlie&szlig;enden Rechtecks,<em> x</em>, ist diese
+Proportion auf dem
+Weg zwischen der linken und der rechten Ecke des Rechtecks.</li> <li>Ein
+&auml;hnlicher Weg w&auml;re, eine
+zuf&auml;llige vertikale
+Position, <em>d</em>,
+innerhalb des
+einschlie&szlig;enden Rechtecks zu erstellen.</li> <li>Falls
+dieser Punkt innerhalb der vorgegebenen
+Wahrscheinlichkeitsdichte liegt, sollte man den Wert <em>x</em> in einen Wert von
+dieser
+Verteilung umwandeln. Andernfalls, wiederholt man ab Schritt 1.</li>
+</ol><br>
+<div class="diagram"><p>Das n&auml;chste
+Diagramm zeigt eine Verteilung von Werten
+zwischen
+0 und 1 (tats&auml;chlich eine Normalverteilung), um
+Schwierigkeiten
+der Skalierung der x-Werte zu vermeiden.</p>
+<div class="centred"><applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" height="350" width="550">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="simulationProg.EnvelopeGenApplet"><param name="maxRandom" value="0.0000"><param name="xVarName" value="Horizontale Position = "><param name="zVarName" value="Vertikale Position = "><param name="noOfSDs" value="4.0"><param name="customText" value="Generate value=Erzeuge Wert"></applet></div><p>Klicke
+<strong>Wert
+erstellen</strong>, um
+zuf&auml;llige horizontale und vertikale Positionen innerhalb des
+begrenzten Rechtecks zu erstellen (0 zu 1 horizontal und vertikal).</p>
+<p>Wenn dieser Punkt unter der Wahrscheinlichkeitsdichtefunktion
+liegt,
+ist die horizontale Position als ein Wert von der Verteilung
+angenommen. Andererseits ist der Wert abgewiesen und ein anderer
+zuf&auml;lliger Punkt muss erstellt werden.</p>
+<p>Klicke <strong>Wert
+erstellen</strong>
+mehrere Male, bis 30 oder mehr Werte erstellt wurden. Die Verteilung
+von den erstellten Werten (die horizontalen Positionen der Kreuze unter
+der Wahrscheinlichkeitsdichtefunktion) sollte halbwegs mit der
+angestrebten Verteilung &uuml;bereinstimmen! </p>
+</div><script type="text/javascript">writePageEnd();</script>
+</body></html>

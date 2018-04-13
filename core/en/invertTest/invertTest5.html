@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>CI from likelihood ratio test</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="confidence interval, hypothesis test, test, exponential distribution, likelihood ratio test">
+	<meta name="dataset" content="Survival from disease">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p>We end this section by showing how a likelihood ratio test can be inverted to find a confidence interval.</p>
+<p class="heading">Likelihood ratio test for a single parameter, \(\theta\)</p>
+
+<p>Consider a likelihood ratio test for the hypotheses</p>
+<ul>
+	<li>Null hypothesis, <strong>H<sub>0</sub></strong>: \(\theta = \theta_0\)</li>
+	<li>Alternative hypothesis, <strong>H<sub>A</sub></strong>: \(\theta \ne \theta_0\)</li>
+</ul>
+<p>A likelihood ratio test is based on the log-likelihood when the null hypothesis holds, \(\ell(\theta_0)\), and its maximum possible value under the alternative hypothesis, \(\ell(\hat{\theta})\), where \(\hat{\theta}\) is the maximum likelihood estimate of \(\theta\).</p>
+<p>For a hypothesis test with 5% significance level, we reject the null hypothesis if</p>
+\[
+2\left(\ell(\hat{\theta}) - \ell(\theta_0)\right) \;\;\gt\;\; K
+\]
+<p>where the constant \(K\) is the 95th percentile of the \(\ChiSqrDistn(1 \text{ df})\) distribution. From Excel, we can find that \(K = 3.841\).</p>
+<p class="heading">Inverting the likelihood ratio test</p>
+<p>A 95% confidence interval for \(\theta\) can therefore be found as the values for which</p>
+\[ \begin{align}
+2\left(\ell(\hat{\theta}) - \ell(\theta_0)\right) \;\;&amp;\le\;\; 3.841 \\[0.4em]
+\ell(\theta_0)\;\;&amp;\gt\;\; \ell(\hat{\theta}) - \frac{3.841}{2} \\[0.5em]
+\ell(\theta_0)\;\;&amp;\gt\;\; \ell(\hat{\theta}) - 1.921
+\end{align} \]
+<p>The confidence interval is therefore the values of \(\theta\) for which the log-likelihood is within 1.921 of its maximum.</p>
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Example</p>
+<p>Clinical records give the survival time in months from diagnosis of 30 sufferers from a certain disease as</p>
+<div class="centred">
+	<table border="0" cellpadding="5" cellspacing="0" class="centred" style="border:1px solid #999999; background-color:#FFFFFF;">
+		<tr>
+			<td style="text-align:right; padding-right:7px; width:40px;">9.73<br>
+				5.56<br>
+				4.28<br>
+				4.87</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">1.55<br>
+				6.20<br>
+				1.08<br>
+				7.17</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">28.65<br>
+				6.10<br>
+				16.16<br>
+				9.92</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">2.40<br>
+				6.19<br>
+				7.67<br>
+				1.11</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">4.66<br>
+				4.35<br>
+				7.31<br>
+				3.28</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">13.38<br>
+				3.08<br>
+				0.41<br>
+				4.33</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">2.16<br>
+				4.49<br>
+				0.75<br>
+				&nbsp;</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">4.45<br>
+				10.29<br>
+				0.90<br>
+				&nbsp;</td>
+		</tr>
+	</table>
+</div>
+<p>If the survival times are exponentially distributed with a death rate of \(\lambda\), find a 95% confidence interval for \(\lambda\).</p>
+	</div>
+
+<div class="solution">
+<p>The <a href="javascript:showNamedPage('exponential5')">log-likelihood for exponentially distributed data</a> is</p>
+\[
+\ell(\lambda) \;\;=\;\; \sum_{i=1}^n \log f(x_i\;|\;\lambda) \;\;=\;\; n\log(\lambda) - \lambda \sum {x_i}
+\]
+<p>and the maximum likelihood estimate of \(\lambda\) is</p>
+\[
+\hat{\lambda} \;\;=\;\; \frac n{\sum {x_i}} \;\;=\;\; \frac {30} {182.48} \;\;=\;\; 0.1644\]
+<p>The maximum possible value for the log-likelihood is therefore</p>
+\[
+\ell(\hat{\lambda}) \;\;=\;\; 30\log(0.1644) - 0.1644 \times 182.48 \;\;=\;\; -84.16
+\]
+<p>A 95% confidence interval for \(\lambda\) therefore consists of values \(\lambda_0\) such that</p>
+\[
+\ell(\lambda_0)\;\;\gt\;\; \ell(\hat{\lambda}) - 1.921 \;\;=\;\; -86.084 \\[0.4em]
+30\times \log \lambda_0 - 182.48 \times \lambda_0 \;\;\gt\;\; -86.084
+\]
+<p>By trial-and-error, this can be evaluated to be</p>
+\[
+0.1124 \;\;\lt\;\; \lambda \;\;\lt\;\; 0.2304
+\]
+<hr width="75%">
+
+<p class="heading">Illustration of the procedure</p>
+<p>The diagram below illustrates the procedure.</p>
+<div class="centred">
+	<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="550">
+		<script type="text/javascript">writeAppletParams();</script>
+		<param name="appletName" value="estimationProg.CiFromExponLrtApplet">
+		<param name="backgroundColor" value="FFFFFF">
+		<param name="lambda" value="0.090 0.270 0.200">
+		<param name="loglikelihoodAxis" value="-88.7 -84 -88 1">
+		<param name="varName" value="Survival time">
+		<param name="dataAxis" value="0 30 0 5">
+		<param name="densityAxis" value="0 0.32 0 0.1">
+		<param name="lambdaAxis" value="0.09 0.27 0.10 0.02">
+		<param name="decimals" value="3 4">
+		<param name="sigLevel" value="0.05">
+		<param name="values" value="9.73 5.56 4.28 4.87 6.2 1.08 7.17 6.1 16.16 9.92 6.19 7.67 1.11 4.35 7.31 3.28 3.08 0.41 4.33 4.49 0.75 10.29 0.9 1.55 28.65 2.4 4.66 13.38 2.16 4.45">
+		<param name="customText" value="Log-likelihood=Log-likelihood#Exponential probability density=Exponential probability density#Data values=Data values#Null hypothesis parameter=Null hypothesis parameter#Rate of events=Rate of events">
+	</applet>
+</div>
+<p>Firstly consider testing the null hypothesis that \(\lambda = 0.200\). The lower half of the diagram shows the corresponding \(\ExponDistn(\lambda=0.2)\) distribution's pdf. The corresponding log-likelihood is 0.616 below the maximum possible  for an exponential model, resulting in a p-value of 0.2671, so we would accept that \(\lambda = 0.200\) at the 5% significance level. The parameter value \(\lambda = 0.200\) is therefore also in a 95% confidence interval for \(\lambda\).</p>
+<p>Use the slider to perform the likelihood ratio test for other values of \(\lambda\). Observe that the p-value is greater than 0.05 when</p>
+\[
+0.1124 \;\;\lt\;\; \lambda \;\;\lt\;\; 0.2304
+\]
+<p>so this is a 95% confidence interval for \(\lambda\).</p>
+<p>Observe that this also corresponds to parameter values for which the log-likelihood is within 1.921 of its maximum possible value.</p>
+</div>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

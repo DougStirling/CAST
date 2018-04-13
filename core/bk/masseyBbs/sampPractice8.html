@@ -1,0 +1,184 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Cost and accuracy of sampling schemes</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="stratified sampling, sampling scheme/stratified sampling">
+	<meta name="dataset" content="Grocery store turnover">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Cost and accuracy</p>
+<p>Stratified, cluster and two-stage sampling schemes have various advantages and disadvantages, compared to a sample random sample that records information from the same number of individuals.</p>
+<p>This page uses simulations to illustrate some of these differences. However these simulations involve ideas that will not be described until much later in this course.</p>
+<div class="centred"><div class="boxed">
+	<p>We suggest that you revisit this page after studying Chapter 6 of the e-book.</p>
+</div></div>
+<p class="heading">Stratified sampling</p>
+
+<p>A stratified random sample  provides more accurate estimates of population characteristics than a simple random sample of the same size from the  population. The advantage of stratified sampling is greatest when the  strata differ in their mean value of the characteristic.</p>
+<p>We will explain in a later chapter that the accuracy of an estimate is described by its standard deviation. A formula will be given for the standard deviation of the mean from a simple random sample.</p>
+
+<div class="boxed">
+	<p>The ordinary formula for the standard deviation of a sample mean  will 
+		<strong>under-estimate its accuracy</strong> if the mean is obtained from a stratified random sampling.</p>
+</div>
+<br>
+
+<div class="diagram">
+
+<p class="heading">Weekly turnover by grocery stores</p>
+
+<p>The diagram below shows the weekly turnover of 100 grocery stores in a city. 
+Of these stores, 50 belong to large grocery chains and the other 50 are smaller 
+independent stores. The 50 stores belonging to chains tend to have higher turnovers. 
+(This is not real data &mdash; the difference between the two types of store is more 
+extreme than would usually be observed, but does illustrate the potential gains 
+from stratified sampling.)</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="sampDesignProg.StratifiedSampleApplet">
+<param name="varName" value="Weekly turnover ($000)">
+<param name="catLabels" value="#Local# #Chain#">
+<param name="vertAxis" value="0 100 0 10">
+<param name="decimals" value="3">
+<param name="randomNormal1" value="50 20 5 234568223 2.0">
+<param name="randomNormal2" value="50 70 5 822234692 2.5">
+<param name="sampleSeed" value="683095723">
+<param name="stratumSize" value="50 50">
+<param name="sampleSize" value="10">
+<param name="sampleSize2" value="5 5">
+<param name="title1" value="Simple">
+<param name="title2" value="Stratified">
+<param name="meanName" value="Sample mean">
+</applet>
+</div>
+
+<p>The left half of the diagram illustrates simple random sampling of 10 from 
+the 100 stores, whereas stratified random sampling of 5 store from each group 
+is illustrated on the right.</p>
+
+<p>Click <strong>Take sample</strong> a few times to observe the variability of 
+the mean turnover for the two sampling schemes. (A jittered dot plot of the means 
+is shown to the right of each samples. A normal curve shows the distribution of 
+the sample means.)</p>
+<p>Observe that stratified random sampling gives sample means with less variability. 
+The mean from a stratified random sample is therefore a more accurate estimate 
+of the population mean.</p>
+
+<div class="boxed">
+  <p>In practice, the aim is more likely to be estimation of the <strong>total</strong> grocery turnover in the city, but this is simply 100 times the mean turnover, so stratified sampling gives the same improvement over a simple random sample.</p>
+</div>
+
+<br>
+</div>
+
+<p class="heading">Cluster sampling</p>
+<p>As mentioned earlier, it is usually much cheaper to obtain information from individuals in clusters than from the same number of individuals in a simple random sample.</p>
+<p>However the penalty is that the mean population characteristic is less accurately estimated.</p>
+
+<div class="boxed">
+	<p>The ordinary formula for the standard deviation of a sample mean will <strong>over-estimate its accuracy</strong> if the mean is obtained by cluster sampling.</p>
+</div>
+<br>
+
+<div class="diagram">
+	<p>The diagram below illustrates sampling from a population of 25 clusters, each 
+		of which contains 4 individuals. (The different vertical bands represent the different 
+		clusters in the population.)</p>
+		
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="sampDesignProg.ClusterAndSimpleApplet">
+<param name="varName" value="Income ($000)">
+<param name="randomNormal" value="4 0.0 8.0 57761213 3.0">
+<param name="mean" value="30.0">
+<param name="clustersPerSample" value="25">
+<param name="clusterCorr" value="0.00">
+<param name="primaryUnits" value="*5">
+<param name="sampleSize" value="20">
+<param name="sampleSeed" value="463483248">
+<param name="decimals" value="3">
+<param name="stageCost" value="20 3 999">
+<param name="units" value="dollars">
+<param name="vertAxis" value="0 55 0 10">
+<param name="horizAxis" value="0 24 0 5 24">
+<param name="customText" value="Variation within clusters=Variation within clusters#Clusters=Clusters#High=High#Low=Low#Cluster sample=Cluster sample#Simple random sample=Simple random sample">
+</applet>
+</div>
+
+	<p>Click <strong>Take sample</strong> several times to build up the distribution 
+		of the mean using cluster sampling of 5 clusters. Choose <strong>Simple random 
+			sample</strong> from the pop-up menu then take several more samples. Since all 
+		clusters have similar spreads of values, simple random sampling and cluster sampling 
+		result in sample means with similar distributions (i.e. similar accuracy). </p>
+	<p>Move the slider to about half-way to accentuate the differences between the 
+		clusters (the four values in each cluster become more similar) and observe that 
+		this has little effect on the accuracy of the sample mean when simple random sampling 
+		is used. However the sample mean becomes much more variable with cluster sampling.</p>
+<div class="boxed">
+		<p>Cluster sampling is as good as simple random sampling if the clusters 
+			are similar, but is worse if the clusters are different.</p>
+</div>
+
+<br>
+</div>
+
+<p class="heading">Two-stage sampling</p>
+<p>As with cluster sampling, two-stage sampling has lower cost than simple random sampling but estimates population characteristics less accurately.</p>
+<p>The number of primary units to sample is therefore a trade-off between accuracy 
+	and cost. The details are beyond the scope of CAST.</p>
+<div class="diagram">
+	<p>In the diagram below, the vertical bands separate 16 primary units, each of 
+		which contains 8 individuals whose values are shown in a jittered dot plot.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="sampDesignProg.TwoStageMeanApplet">
+<param name="varName" value="Income ($000)">
+<param name="randomNormal" value="8 0.0 8.0 67761213 2.5">
+<param name="mean" value="30.0">
+<param name="clustersPerSample" value="16">
+<param name="clusterCorr" value="0.00">
+<param name="primaryUnits" value="2 4 8 *16">
+<param name="sampleSize" value="16">
+<param name="sampleSeed" value="463483248">
+<param name="decimals" value="3">
+<param name="stageCost" value="20 3 999">
+<param name="units" value="dollars">
+<param name="vertAxis" value="0 55 0 10">
+<param name="horizAxis" value="0 15 0 5">
+<param name="customText" value="Primary units sampled=Primary units sampled#Cost=Cost#Primary unit=Primary unit#Secondary unit=Secondary unit#Total cost=Total cost#Variation within primary units=Variation within primary units#High=High#Low=Low">
+</applet>
+</div>
+	<p>Initially, all primary units are similar &mdash; their means are nearly the same. 
+		Click <strong>Take sample</strong> several times to observe the sampling distribution 
+		of the mean (in the pink band to the right of the population dot plots). When 
+		the number of primary units sampled is changed, the distribution of the mean remains 
+		the same. The most cost-effective sampling scheme is therefore to sample the smallest 
+		number of primary units possible.</p>
+	<p>Change the slider at the bottom to half-way between <strong>Similar</strong> and <strong>Different</strong>. Now some primary units are fairly consistently 
+		higher than others. Observe that reducing the number of primary units sampled 
+		now has a much greater effect on the standard deviation (and hence accuracy) of 
+		the mean.</p>
+</div>
+<p>As with cluster and stratified sampling, formulae for the standard deviation 
+	of the resulting estimates are beyond the scope of an introductory course.
+</p>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

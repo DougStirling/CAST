@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Hypothesis tests in anova tables</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="general linear model, analysis of variance, hypothesis test, f test">
+	<meta name="dataset" content="Ancestors and height">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Extending the sum of squares table</p>  
+  <p>In order to perform hypothesis tests, the sums of squares table is extended 
+		with extra columns. In this form, it is known as an <strong>analyis of variance</strong> 
+		(or <strong>anova</strong>) table.</p>
+	<dl>
+		<dt>Mean sums of squares</dt>
+		<dd>Each sequential sum of squares in the table is divided by its degrees 
+			of freedom to give a <strong>mean sum of squares</strong>. The mean residual 
+			sum of squares is our best estimate of the error variance, σ<sup>2</sup>.</dd>
+		<dt>F ratios</dt>
+		<dd>Finally, each mean sum of squares is divided by the mean residual sum 
+			of squares to give an F-ratio.</dd>
+	</dl>
+	<p class="eqn"><img src="images/anovaTable.gif" width="526" height="256"></p>
+	<p class="heading">Distributions</p>
+	<p>Provided the full model with all explanatory variables fits the data, the 
+		residual sum of squares has a chi-squared distribution,</p>
+	<p class="eqn"><img src="images/ssResidDistn.gif" width="193" height="28"></p>
+	<p>Each sequential sums of squares may also have a chi-squared distribution, 
+		but <strong>only if the parameter for this variable and all subsequent variables 
+		are really zero</strong>. For example, the sequential sum of squares for <em>Z</em> 
+		after <em>X</em> has been added to the model is:</p>
+	<p class="eqn"><img src="images/ssSeqDistn.gif" width="162" height="28"></p>
+	<p>If the parameter for <em>Z</em> is non-zero but the parameters for subsequent 
+		variables are zero, the sequential sum of squares will be larger. Large sums 
+		of squares therefore suggest that a variable is important (provided subsequently 
+		added variables have zero parameters).</p>
+	<p class="heading">Testing</p>
+	<p>Since the ratio of two chi-squared variables, each divided by its degrees 
+		of freedom, has an F distribution, if a variable is unimportant (parameter 
+		zero), its F ratio will have an F distribution,</p>
+	<p class="eqn"><img src="images/fDistn.gif" width="238" height="38"></p>
+	<p>The observed F ratio in the anova table can be compared to the upper tail 
+		of this distribution to get a p-value.</p>
+	<p class="heading">Order of testing</p>
+	<p>Since the F ratio for a sequential sum of squares only has an F distribution 
+		if that variable <strong>and all subsequently added variables</strong> in 
+		the anova table are unimportant (zero parameters), you should not try to interpret 
+		any F ratio if terms below it on the table are important.</p>
+	
+<div class="centred"><div class="boxed">
+<p>Always work up from the last variable added and 
+				stop trying to interpret the F-ratios and p-values when you reach a term 
+				that is significant.</p>
+</div></div>
+
+  <p>This will be clearer in examples.</p>
+
+<div class="diagram">
+		<p class="heading">Effect of ancestors on height</p>
+    <p>The anova table below shows the effects of birth length, parents' height 
+			at age 18 and grandparents' height at age 18 on the heights of a group of 
+			men when they reached age 18.</p>
+		
+		<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="200">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="glmAnovaProg.AnovaTableReorderApplet">
+<param name="yVarName" value="Height">
+<param name="yValues" value="67.2 69.1 67.0 72.4 63.6 72.7 68.5 69.7 68.4 70.4 67.5 73.3 70.0 69.8 63.6 64.3 68.5 70.5 68.1 66.1">
+<param name="xVariables" value="B M F Mm Mf Fm Ff">
+<param name="BVarName" value="Birth length, B">
+<param name="BValues" value="19.7 19.6 19.4 19.4 19.7 19.6 19.8 19.7 19.7 19.9 18.9 20.8 20.3 19.7 19.9 19.6 21.3 20.1 20.2 19.2">
+<param name="MVarName" value="Mother, M">
+<param name="MValues" value="60.5 64.9 65.4 63.4 65.1 65.2 64.3 65.3 64.5 63.4 63.3 66.2 64.9 63.5 62.0 63.5 66.1 64.8 62.6 62.2">
+<param name="FVarName" value="Father, F">
+<param name="FValues" value="70.3 70.4 65.8 71.9 65.1 71.1 67.9 68.8 68.7 70.3 70.4 70.2 68.8 70.3 65.5 65.2 65.4 70.2 68.6 67.3">
+<param name="MmVarName" value="Mat grandm, Mm">
+<param name="MmValues" value="65.7 62.6 66.2 60.7 65.5 63.5 62.4 61.5 63.9 65.9 63.7 65.4 65.2 63.1 64.1 63.9 64.8 65.3 63.7 63.6">
+<param name="MfVarName" value="Mat grandf, Mf">
+<param name="MfValues" value="69.3 69.6 68.8 68.0 65.5 66.2 71.4 66.0 68.8 69.0 68.2 66.6 70.2 64.4 67.7 70.0 68.4 65.5 69.8 70.9">
+<param name="FmVarName" value="Pat grandm, Fm">
+<param name="FmValues" value="65.7 64.6 64.0 64.9 61.8 67.3 63.4 62.4 62.3 63.7 66.2 61.7 62.4 65.1 62.1 64.2 66.4 63.7 66.7 63.6">
+<param name="FfVarName" value="Pat grandf, Ff">
+<param name="FfValues" value="67.3 66.4 69.4 67.1 70.9 68.6 69.4 67.7 68.8 65.1 68.5 64.0 67.0 67.0 66.5 64.5 70.8 66.9 68.0 66.7">
+<param name="maxSsq" value="999.99 99 99.99 99.99">
+<param name="maxBarSsq" value="130">
+<param name="xGroups" value="1:B:Birth length, B#2:P:Parents, P#4:G:Grandparents, G">
+</applet> 
+</div>
+
+		<p>Since grandparents' height is the bottom sequential sum of squares, we 
+			can directly interpret its p-value. An F-ratio as high as 0.44 would occur 
+			by chance with probability 0.7791 (its p-value). We would conclude that 
+			grandparents' height has no additional explanatory power if parents' height 
+			and birth length are already in the model.</p>
+		<p>With the initial ordering in the anova table, the p-value for parents' 
+			height is very low, so we conclude that it is almost certain that parents' 
+			height is important in the model for the mens' heights. (We can continue 
+			up the table since the bottom term is not important.)</p>
+		<p>Drag the red arrow for <em>Parents</em> to make it the top item in the 
+			table. With this order of terms, we can interpret the p-value for birth 
+			length. Since the p-value for <em>Birth</em> after <em>Parents</em> is 0.0162, 
+			we conclude that there is fairly strong evidence that <em>Birth</em> is 
+			important, even when <em>Parents</em> is in the model.</p>
+		<p class="heading">Etch rate</p>
+    <p>In this example, all four explanatory variables are uncorrelated with each 
+			other. This greatly simplifies interpretation of the anova table since all 
+			sums of squares (and hence F ratios and p-values) stay the same when the 
+			order of adding the variables changes.</p>
+		
+		<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="200">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="glmAnovaProg.AnovaTableReorderApplet">
+<param name="yVarName" value="Etch rate">
+<param name="yValues" value="550 669 604 650 633 642 601 635 1037 749 1052 868 1075 860 1063 729">
+<param name="xVariables" value="X Z U V">
+<param name="XVarName" value="A-c gap, X">
+<param name="XValues" value="0.8 1.2 0.8 1.2 0.8 1.2 0.8 1.2 0.8 1.2 0.8 1.2 0.8 1.2 0.8 1.2">
+<param name="ZVarName" value="Pressure, Z">
+<param name="ZValues" value="2@4.5 2@550 2@4.5 2@550 2@4.5 2@550 2@4.5 2@550">
+<param name="UVarName" value="Gas flow, U">
+<param name="UValues" value="4@125 4@200 4@125 4@200">
+<param name="VVarName" value="Power, V">
+<param name="VValues" value="8@275 8@325">
+<param name="maxSsq" value="999999 99 99999 99.99">
+<param name="maxBarSsq" value="400000">
+</applet> 
+</div>
+
+		<p>From the p-values, we conclude that:</p>
+		<ul>
+			<li><em>Power</em> almost certainly affects <em>Etch rate</em></li>
+			<li>There is mild evidence that <em>A-c gap</em> also affects <em>Etch rate</em></li>
+			<li>There is no evidence that either <em>Pressure</em> or <em>Gas flow</em> 
+				are important.</li>
+		</ul>
+		<br>
+
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

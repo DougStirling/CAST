@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Les valeurs aberrantes</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="scatterplot, outliers">
+	<meta name="dataset" content="Brain and body weight">
+	<meta name="dataset" content="House prices in Palmerston North">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class=heading>Les valeurs aberrantes</p>
+
+<p>La force de la relation entre deux variables est généralement l'information la plus importante que nous gagnons à partir d'un nuage de points. Deux autres caractéristiques peuvent cependant être évident &mdash; si présent, ils fournissent souvent les informations les plus utiles à partir des données. Dans cette page, nous examinons les valeurs aberrantes et dans le suivant, des grappes sont discutées.</p>
+<p>Parfois, une croix sur un nuage se trouve bien loin du reste du nuage de points. Une telle observation est appelé une <strong>aberration</strong>.<br>
+</p>
+	
+<p class="eqn"><object data="images/outliers.svg" width="312" height="157"></object></p>
+	
+	<p>Une valeur aberrante peut être une valeur extrême de l'un ou les deux variables et la valeur aberrante peut donc être apparente dans les distributions marginales des variables.</p>
+
+<table border="0" cellspacing="0" cellpadding="10">
+	<tr>
+		  <td valign="top"><p>Cependant un individu peut se démarquer de la masse des données dans un nuage de points, <strong>sans être une observation extrême pour deux variables sur ses propres</strong>. Affiche univariée des variables séparées peut ne pas détecter une telle aberration.</p>
+  	</td>  
+			<td><object data="images/outliers2.svg" width="142" height="158"></object></td>
+	</tr>
+</table>
+
+<div class="diagram">
+
+		<p class=heading>Cerveau et le poids corporel</p>
+
+	<p>Le diagramme de dispersion ci-dessous montre le poids du cerveau et le corps d'une collection d'animaux. Depuis gammes de poids corporel de 0.023 kg (souris) pour 9,400 kg (tricératops) et a une distribution extrêmement biaiser, les parcelles diagramme log poids du cerveau en fonction du poids du corps du journal.<br>
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="340">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="scatterProg.ScatterLogApplet">
+<param name="xVarName" value="Poids corporel">
+<param name="yVarName" value="Poids du cerveau">
+<param name="labelName" value="Animal">
+<param name="xValues" value="1.35 465.0 36.33 27.66 1.04 2547 187.1 521.0 10.0 3.3 529.0 207.0 62.0 6654.0 9400.0 6.8 35.0 .12 .023 2.5 55.5 100.0 52.16 .28 .122 192.0">
+<param name="yValues" value="8.1 423.0 119.5 115.0 5.5 4603.0 419.0 655.0 115.0 25.6 680.0 406.0 1320.0 5712.0 70.0 179.0 56.0 1.0 .4 12.1 175.0 157.0 440.0 1.9 3.0 180.0">
+<param name="labels" value="#Montagne de castor# Vache #Loup gris# Chèvre #Guinée porc# #Éléphant d'Asie# Ane Cheval #Potar singe# Chat Girafe Gorille Homme #Éléphant d'Afrique# Triceratops #Singe rhésus# Kangourou Hamster Souris Lapin Mouton Jaguar Chimpanzé Rat Taupe Porc">
+<param name="horizAxis" value="-2 4.5 -2 1">
+<param name="vertAxis" value="-1 4 -1 1">
+<param name="labelAxes" value="true">
+<param name="units" value="kg gm">
+</applet>
+</div>
+
+		<p>Il est tout à fait une forte relation entre les variables &mdash; les animaux plus lourds ont tendance à avoir un cerveau plus volumineux. Cependant vérifiez les points suivants en cliquant sur les croix</p>
+<ul>
+			<li>Le tricératops est un cas particulier - il se situe en dessous de la grappe ascendante de croix. Son poids du cerveau n'est pas extrême et son poids n'est pas suffisamment extrême pour être considéré comme une valeur aberrante dans son propre droit. Cependant, <strong>il est beaucoup plus lourd que d'autres animaux avec des poids du cerveau similaires</strong>. (Ce dinosaure ne suit pas le modèle représenté par les mammifères.)<br>
+				</li>
+			<li>Bien que la souris a le corps le plus faible et le poids du cerveau, ni de mesure est suffisamment extrême pour être appelé une aberration. Et il suit la même relation entre le corps et le poids du cerveau comme les autres mammifères.</li>
+			<li>Les quatre primates dans l'ensemble des données se situent légèrement au-dessus du pôle principal de croix &mdash; ils ne sont pas assez inhabituel pour être appelé aberrantes, mais leur poids du cerveau sont relativement importantes par rapport à leur poids corporel.</li>
+		</ul>
+
+</div>
+
+<p class=heading>Importance des valeurs aberrantes</p>
+
+<p>Les valeurs aberrantes sont caractéristiques d'un ensemble de données qui <strong>doit</strong> être soigneusement vérifié. Une valeur aberrante est souvent causée par une erreur d'enregistrement ou la transcription, donc ...</p>
+		
+<table width="75%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+		<tr>
+		  <td align="center"><strong>Premièrement, vérifiez que les valeurs des variables sont correctement enregistrées.</strong></td>
+	</tr>
+</table>
+
+  <p>Parfois, une valeur aberrante survient parce qu'un individu est fondamentalement différent des autres. Cela peut être des informations importantes et peut pointer vers une nouvelle espèce végétale, un employé qui se comporte mal, un seul élève dans une classe de maturité des adolescents, ...</p>
+
+<table width="75%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+		<tr>
+		  <td align="center"><strong>Les individus devraient être examinées plus (peut-être recueillir des renseignements complémentaires entre elles) pour tenter d'évaluer si l'individu possède des caractéristiques distinctes aberrantes.</strong></td>
+	</tr>
+</table>
+
+  
+	<p>Une valeur aberrante qui est soit extrême ou qui a d'autres caractéristiques distinctives serait souvent supprimé du jeu de données, mais doivent être mentionnés dans un rapport sur les données.</p>
+
+<div class="diagram">
+	
+<p class="heading">Les prix des maisons à Palmerston North</p>
+
+	<p>Le diagramme de dispersion ci-dessous montre les informations obtenues à partir d'un échantillon de 141 dossiers de ventes immobilières à partir de deux banlieues de Palmerston North pour les maisons construites au cours des trente dernières années.<br>
+</p>
+	<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="350" height="370">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="scatterProg.ScatterBoxApplet">
+<param name="xVarName" value="Surface au sol (sqr m)">
+<param name="yVarName" value="Prix de vente ($000)">
+<param name="xValues" value="160 100 170 160 160 130 220 220 110 130 100 90 290 140 90 140 100 220 150 190 110 90 300 90 300 90 210 220 210 190 190 150 140 100 230 290 110 120 330 300 150 90 260 100 210 200 170 100 220 170 100 250 120 110 250 210 150 190 210 200 260 220 330 150 130 190 130 180 140 200 230 100 240 140 150 260 90 140 140 130 320 140 210 160 170 160 220 150 140 140 220 160 160 160 160 160 90 300 130 130 90 90 180 210 210 150 90 130 230 140 150 180 150 80 250 160 180 230 290 170 260 210 280 220 120 290 300 200 180 140 250 110 270 290 300 140 190 220 270 220 490">
+<param name="yValues" value="158.0 123.0 175.0 140.0 157.5 132.0 210.0 238.0 122.5 168.0 132.0 105.0 245.0 167.0 105.5 135.0 120.0 196.0 150.0 178.0 105.0 105.0 319.0 113.0 335.0 122.0 170.0 230.0 205.0 175.0 183.0 166.0 139.0 105.5 236.5 280.0 125.0 146.0 345.0 292.0 169.0 111.0 290.0 105.0 204.0 195.0 135.0 134.5 177.0 195.0 175.0 158.0 155.0 111.0 289.0 236.0 155.0 134.0 195.0 153.0 216.0 265.0 342.0 139.0 160.0 218.0 168.0 200.0 172.0 212.0 250.0 125.8 240.0 160.0 135.0 272.0 122.0 151.0 152.0 152.0 280.3 130.0 245.0 195.0 186.0 127.0 220.0 175.0 158.0 126.0 190.0 153.0 163.0 155.0 163.0 190.0 113.0 295.0 150.0 136.5 99.5 106.5 240.0 180.0 180.0 185.0 113.0 136.5 205.0 180.0 146.0 215.0 146.0 107.5 194.0 136.0 245.0 145.0 310.0 119.5 220.0 270.0 350.0 263.5 140.0 240.0 345.0 132.5 220.0 219.0 170.0 111.3 203.5 210.0 360.0 195.0 210.0 167.5 240.0 285.0 302.0">
+<param name="horizAxis" value="50 500 100 100">
+<param name="vertAxis" value="50 400 50 50">
+<param name="labelAxes" value="true">
+</applet>
+</div>
+
+		<p>Une maison avait une surface au sol très élevée &mdash; il se distingue comme une valeur aberrante dans la distribution marginale de surface de plancher. De la relation entre la surface et le prix des autres maisons, nous aurions <strong>aussi</strong> attendue prix de vente de cette maison pour avoir été plus élevé, il est donc une aberration parce que la maison ne suit pas le modèle qui est évident dans le reste des données.</p>
+	<p>Idéalement, nous aimerions essayer de trouver ce qui était spécial au sujet de la maison. Était-il mal classé comme une maison quand il a été vraiment une propriété commerciale ou bloc d'appartements?</p>
+	<p>Cependant puisque aucune information n'est disponible sur cette valeur aberrante, on pourrait l'omettre de l'analyse. Cependant, dans tous les rapports que nous devrions affirmer que nos conclusions ne sont valables que pour des maisons en dessous de 400 mètres carrés.</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

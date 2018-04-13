@@ -1,0 +1,194 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>One-tailed tests for differences</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<script type="text/javascript">
+		var svgNames = new Array();
+		svgNames[0] = "images/bacteriaCarpetsTest.svg";
+		svgNames[1] = "images/tapeWormsTest.svg";
+		svgNames[2] = "images/flawsTest.svg";
+		
+		function changeSvgImage(select) {
+			var newIndex = select.selectedIndex;
+			var image = document.getElementById('dataImage');
+			image.src = svgNames[newIndex];
+		}
+	</script>
+
+	<meta name="index" content="hypothesis test, mean, difference, one-tailed test, two-tailed test">
+	<meta name="dataset" content="Bacteria in hospital carpets">
+	<meta name="dataset" content="Tapeworms in sheep">
+	<meta name="dataset" content="Nondestructive testing">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Two-tailed tests for differences</p>
+
+<p>The hypothesis tests on the previous page were appropriate for situations
+with some kind of symmetry between our attitudes towards the two groups &mdash; the
+alternative hypothesis did not specify any sign for the difference between the population
+means. This type of test is a <strong>two-tailed</strong> test since test statistics
+in <strong>both</strong> tails of the t distribution suggest that the alternative hypothesis
+holds.
+</p>
+
+<center>
+    <table width="500" border="1" cellpadding="6" cellspacing="0" bordercolor="#CCCCCC" bgcolor="white">
+      <caption><strong>Examples of two-tailed tests</strong>
+</caption>
+<tr><th width="400">Question</th>
+        <th width="200">Alternative hypothesis</th>
+      </tr>
+
+<tr><td>A supermarket chain has two branches in a town. Based on the individual sales in
+one day, do shoppers at both branches tend to have equally large bills?</td>
+<td>Mean bills are different in the two branches</td></tr>
+
+<tr><td>Material is produced by two looms in a textile mill. The number of flaws in the
+material from each loom is counted each day for a month. Does either loom produce
+material with fewer flaws?</td>
+<td>Mean number of flaws per day are different for the two looms</td></tr>
+
+<tr><td>A teacher has two social studies classes and teaches each class about volcanoes in
+a different way. From each student's mark in a test, is there any evidence about which
+teaching method is better?</td>
+<td>Mean marks are different for the two teaching methods</td></tr>
+</table>
+</center>
+
+<p class="heading">One-tailed tests for differences</p>
+
+<p>In other situations, we want to test whether one specific group has a <strong>higher</strong>
+mean than the other group. Alternatively, we may want to test whether one specific group
+has a <strong>lower</strong> mean than the other group. These are called
+<strong>one-tailed</strong> tests.
+</p>
+
+<p class=eqn><object data="images/hypotheses.svg" width="441" height="84"></object>
+</p>
+
+<center>
+    <table width="500" border="1" cellpadding="6" cellspacing="0" bordercolor="#CCCCCC" bgcolor="white">
+      <caption><strong>Examples of one-tailed tests</strong>
+</caption>
+<tr><th width="400">Question</th>
+        <th width="200">Alternative hypothesis</th>
+      </tr>
+
+<tr><td>A scientist wants to assess whether low concentrations of a naturally occurring
+compound act as a pesticide. Twenty roses bushes are sprayed with the compound and another twenty
+act as controls. Numbers of aphids on each bush are counted after 10 days. Does the
+compound reduce the mean number of aphids?</td>
+<td>Mean aphid count after spraying is <strong>lower</strong></td>
+</tr>
+
+<tr><td>A third of the employees in a software company are randomly selected for
+a training course. Two weeks after the course, all employees are asked to rate
+their satisfaction with their job on a scale of 0 to 10. Did attendance at the
+training course improve job satisfaction?
+</td>
+<td>Mean rating after course is <strong>higher</strong></td>
+</tr>
+</table>
+</center>
+
+<p class="heading">Test statistic and p-value</p>
+
+<p>The test statistic for a 1-tailed test is identical to that for a 2-tailed 
+test, but the p-value is obtained from only one tail of the t distribution. We 
+illustrate below for testing the hypotheses,</p>
+<p class=eqn><span class="blue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong><sub>1</sub> &nbsp;=&nbsp; </strong>&mu;<strong><sub>2</sub></strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong><sub>1</sub> &nbsp;&gt;&nbsp; </strong>&mu;<strong><sub>2</sub></strong></span> </p>
+<p>The alternative hypothesis is only supported by very small values of <span style="position:relative; top:5px"><img src="../../images/symbol.xBarDiff.png" width="36" height="15" align="baseline"></span>. 
+This also corresponds to small values of the test statistic <em><font color="#000000">t</font></em>, 
+so the p-value is the lower tail probability of the t distribution. </p>
+
+<p class=eqn><object data="images/oneTailedP.svg" width="453" height="265"></object>
+</p>
+<br>
+
+<div class="diagram"> 
+<p class="heading">Examples</p>
+<p>The diagram below shows how the p-value is evaluated and interpreted for a 
+1-tailed test.</p>
+
+<form>
+<select name="dataset" onChange="changeSvgImage(this)">
+<option value="0" selected>Bacteria and hospital carpets</option>
+<option value="1">Tapeworms in sheep</option>
+<option value="2">Non-destructive testing and cracks</option>
+</select>
+</form>
+
+<p align="center"><iframe src="images/bacteriaCarpetsTest.svg" id="dataImage" width="514" height="468" frameborder="0"></iframe></p>
+
+<p>Use the pop-up menu to examine other data sets.</p>
+
+</div>
+
+<p class="heading">Properties of p-values</p>
+
+<p>We again stress that a statistical hypothesis test cannot provide a definitive 
+answer. The randomness of sample data means that:</p>
+<ul>
+<li>p-values are also random quantities, and</li>
+<li>there is some chance of us being misled by an 'unlucky' sample. </li>
+</ul>
+
+<br>
+
+<div class="diagram"> 
+<p class="heading">Simulation when the underlying means are the same (H<sub>0</sub> is true)</p>
+<p>The following simulation is like one on the previous page, but a 1-tailed test 
+is used to compare the population means. Samples of size 20 are again selected 
+from two populations, both of which are normal with mean 75 and standard deviation 
+8.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoGroupProg.DiffPValueApplet">
+<param name="yVarName" value="response">
+<param name="yAxis" value="50 100 50 10">
+<param name="anovaModel" value="75 8 75 8">
+<param name="xVarName" value="Group">
+<param name="xValues" value="20@0 20@1">
+<param name="xLabels" value="#Group A# #Group B#">
+<param name="randomSeed" value="620045782">
+<param name="maxSummary" value="-99.99 0.9999">
+<param name="tAxis" value="-4 4 -4 1">
+<param name="alternative" value="low">
+</applet>
+</div>
+
+<p>Take several samples and observe the variation in the resulting p-value. Again 
+observe that the p-values are <strong>usually</strong> greater than 0.1, so we 
+would <strong>usually</strong> conclude that there is no evidence that &micro;<sub>1</sub> 
+is higher than &micro;<sub>2</sub>.</p>
+<p>However about <sup>1</sup>/<sub>10</sub> of the p-values are less than 0.1, 
+<sup>1</sup>/<sub>20</sub> are less than 0.05 and <sup>1</sup>/<sub>100</sub> 
+are less than 0.01.</p>
+<center>
+<table border="1" cellspacing="0" cellpadding="10" bgcolor="white" width="75%">
+<tr> 
+<td><div align="left"><strong>There is a (small) probability of getting random 
+data that misleadingly suggest that the second group mean is higher.</strong></div></td>
+</tr>
+</table>
+</center>
+
+<br>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

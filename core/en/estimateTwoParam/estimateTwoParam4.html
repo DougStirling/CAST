@@ -1,0 +1,443 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Grid search for MLEs</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+	
+	<style>
+	table.gridSearch td {background-color:#FFF; padding-left:8px; padding-right:8px; text-align:right}
+	</style>
+
+	<meta name="index" content="maximum likelihood, grid search, beta distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p class="heading">Problems evaluating maximum likelihood estimates</p>
+<p>For some families of two-parameter distributions, it is difficult to find maximum likelihood estimates algebraically.</p>
+<ul>
+	<li>It may be difficult to differentiate the log-likelihood function</li>
+	<li>The equations found by differentiating the log-likelihood may be impossible to solve algebraically.</li>
+</ul>
+<p>A numerical method must then be used to evaluate the maximum likelihood estimates.</p>
+<p class="heading">Grid search</p>
+<p>There are sometimes better  algorithms, but a simple method would be to evaluate the log-likelihood over a grid of values of the two parameters, letting us identify the approximate values of the parameters that maximise the log-likelihood.</p>
+<p>The grid of parameter values can then be refined to focus on a narrower range of possible parameter values. The method is more easily explained in an example.</p>
+<div class="example">
+	
+	<p class="exampleHeading">Beta distribution</p>
+
+<p>The following data set contains proportions between zero and one:</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred">
+	<tr>
+		<td>0.078</td>
+		<td>0.713</td>
+		<td>0.668</td>
+		<td>0.621</td>
+		<td>0.069</td>
+		<td>0.378</td>
+		<td>0.735</td>
+		<td>0.255</td>
+		<td>0.220</td>
+		<td>0.220</td>
+	</tr>
+	<tr>
+		<td>0.136</td>
+		<td>0.413</td>
+		<td>0.516</td>
+		<td>0.183</td>
+		<td>0.724</td>
+		<td>0.377</td>
+		<td>0.409</td>
+		<td>0.403</td>
+		<td>0.042</td>
+		<td>0.692</td>
+	</tr>
+	<tr>
+		<td>0.486</td>
+		<td>0.421</td>
+		<td>0.358</td>
+		<td>0.236</td>
+		<td>0.654</td>
+		<td>0.717</td>
+		<td>0.520</td>
+		<td>0.266</td>
+		<td>0.520</td>
+		<td>0.641</td>
+	</tr>
+</table>
+</div>
+
+<p>A reasonable distribution that could be used to model the data would  be a beta distribution with probability density function</p>
+\[
+	f(x) \;\;=\;\; \begin{cases} \dfrac {\Gamma(\alpha +\beta) }{\Gamma(\alpha)\Gamma(\beta)} x^{\alpha - 1} (1 - x)^{\beta - 1}&amp; \text{if }0 \lt x \le 1 \\
+	0 &amp; \text{otherwise}
+	\end{cases} \]
+<p>We will estimate \(\alpha\) and \(\beta\) by maximum likelihood. The beta distribution's log-likelihood is</p>
+\[ \begin{align}
+\ell(\alpha, \beta) \;=\; n \log \Gamma(\alpha + \beta) &amp;- n \log \Gamma(\alpha) - n \log \Gamma(\beta) \\
+&amp;+ (\alpha - 1) \sum \log(x_i) + (\beta - 1)\sum \log(1 - x_i)
+\end{align} \]
+<p>Using the values in this data set, we therefore want to maximise</p>
+\[ \ell(\alpha, \beta) \;=\; 30 \log \Gamma(\alpha + \beta) - 30 \log \Gamma(\alpha) - 30 \log \Gamma(\beta) -31.89 (\alpha - 1) - 18.75 (\beta - 1)
+\]
+<p>with respect to \(\alpha\) and \(\beta\). Differentiating with respect to  \(\alpha\) and \(\beta\) requires the derivative of the log-gamma function and the resulting equations cannot be solved algebraically.</p>
+<p>The following Excel spreadsheet shows how the log-likelihood can be evaluated for a grid of values of the two parameters. The formula in cell C7 evaluates the log-likelihood for \(\alpha = 1\) and \(\beta = 2\). When written in this way, the cell can be copied into the other cells in the table to evaluate the log-likelihood for all other combinations of parameter values in the grid.</p>
+<p class="eqn"><img src="images/excelGrid.png" width="706" height="251"></p>
+				<!--  this has a bitmap so the SVG version cannot be used because it does not display in Safari -->
+<p>From these log-likelihoods, the maximum is at \(\alpha \approx 1.8\) and \(\beta \approx 2.6\).</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred gridSearch">
+	<tr>
+		<th></th>
+		<th></th>
+		<th colspan="8" align="center">&alpha;</th>
+	</tr>
+	<tr>
+		<th></th>
+		<th></th>
+		<th>1</th>
+		<th>1.2</th>
+		<th>1.4</th>
+		<th>1.6</th>
+		<th>1.8</th>
+		<th>2</th>
+		<th>2.2</th>
+		<th>2.4</th>
+	</tr>
+	<tr>
+		<th rowspan="8">&beta;</th>
+		<th align="right">2</th>
+		<td style="border-top:1px solid #999999; border-left:1px solid #999999;">2.05</td>
+		<td style="border-top:1px solid #999999;">4.00</td>
+		<td style="border-top:1px solid #999999;">4.86</td>
+		<td style="border-top:1px solid #999999;">4.88</td>
+		<td style="border-top:1px solid #999999;">4.26</td>
+		<td style="border-top:1px solid #999999;">3.12</td>
+		<td style="border-top:1px solid #999999;">1.53</td>
+		<td style="border-top:1px solid #999999; border-right:1px solid #999999;">-0.41</td>
+	</tr>
+	<tr>
+		<th align="right">2.2</th>
+		<td style="border-left:1px solid #999999;">1.16</td>
+		<td>3.55</td>
+		<td>4.82</td>
+		<td>5.23</td>
+		<td>4.97</td>
+		<td>4.16</td>
+		<td>2.90</td>
+		<td style="border-right:1px solid #999999;">1.26</td>
+	</tr>
+	<tr>
+		<th align="right">2.4</th>
+		<td style="border-left:1px solid #999999;">0.02</td>
+		<td>2.82</td>
+		<td>4.47</td>
+		<td>5.25</td>
+		<td>5.33</td>
+		<td>4.84</td>
+		<td>3.89</td>
+		<td style="border-right:1px solid #999999;">2.54</td>
+	</tr>
+	<tr>
+		<th align="right">2.6</th>
+		<td style="border-left:1px solid #999999;">-1.33</td>
+		<td>1.86</td>
+		<td>3.87</td>
+		<td>4.98</td>
+		<td style="background-color:#FFFF00">5.39</td>
+		<td>5.21</td>
+		<td>4.55</td>
+		<td style="border-right:1px solid #999999;">3.47</td>
+	</tr>
+	<tr>
+		<th align="right">2.8</th>
+		<td style="border-left:1px solid #999999;">-2.86</td>
+		<td>0.69</td>
+		<td>3.04</td>
+		<td>4.48</td>
+		<td>5.19</td>
+		<td>5.30</td>
+		<td>4.92</td>
+		<td style="border-right:1px solid #999999;">4.11</td>
+	</tr>
+	<tr>
+		<th align="right">3</th>
+		<td style="border-left:1px solid #999999;">-4.54</td>
+		<td>-0.65</td>
+		<td>2.03</td>
+		<td>3.77</td>
+		<td>4.77</td>
+		<td>5.16</td>
+		<td>5.04</td>
+		<td style="border-right:1px solid #999999;">4.49</td>
+	</tr>
+	<tr>
+		<th align="right">3.2</th>
+		<td style="border-left:1px solid #999999;">-6.35</td>
+		<td>-2.14</td>
+		<td>0.84</td>
+		<td>2.88</td>
+		<td>4.16</td>
+		<td>4.81</td>
+		<td>4.95</td>
+		<td style="border-right:1px solid #999999;">4.64</td>
+	</tr>
+	<tr>
+		<th align="right">3.4</th>
+		<td style="border-bottom:1px solid #999999; border-left:1px solid #999999;">-8.28</td>
+		<td style="border-bottom:1px solid #999999;">-3.76</td>
+		<td style="border-bottom:1px solid #999999;">-0.49</td>
+		<td style="border-bottom:1px solid #999999;">1.82</td>
+		<td style="border-bottom:1px solid #999999;">3.37</td>
+		<td style="border-bottom:1px solid #999999;">4.28</td>
+		<td style="border-bottom:1px solid #999999;">4.66</td>
+		<td style="border-bottom:1px solid #999999; border-right:1px solid #999999;">4.58</td>
+	</tr>
+</table></div>
+
+<p>The grid can then be refined to a narrower range of values of the parameters,</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred gridSearch">
+	<tr>
+		<th></th>
+		<th></th>
+		<th colspan="8" align="center">&alpha;</th>
+	</tr>
+	<tr>
+		<th></th>
+		<th></th>
+		<th>1.6</th>
+		<th>1.65</th>
+		<th>1.7</th>
+		<th>1.75</th>
+		<th>1.8</th>
+		<th>1.85</th>
+		<th>1.9</th>
+		<th>1.95</th>
+	</tr>
+	<tr>
+		<th rowspan="8">&beta;</th>
+		<th align="right">2.4</th>
+		<td style="border-top:1px solid #999999; border-left:1px solid #999999;">5.245</td>
+		<td style="border-top:1px solid #999999;">5.325</td>
+		<td style="border-top:1px solid #999999;">5.363</td>
+		<td style="border-top:1px solid #999999;">5.363</td>
+		<td style="border-top:1px solid #999999;">5.326</td>
+		<td style="border-top:1px solid #999999;">5.254</td>
+		<td style="border-top:1px solid #999999;">5.148</td>
+		<td style="border-top:1px solid #999999; border-right:1px solid #999999;">5.010</td>
+	</tr>
+	<tr>
+		<th align="right">2.45</th>
+		<td style="border-left:1px solid #999999;">5.204</td>
+		<td>5.305</td>
+		<td>5.364</td>
+		<td>5.384</td>
+		<td>5.367</td>
+		<td>5.315</td>
+		<td>5.229</td>
+		<td style="border-right:1px solid #999999;">5.110</td>
+	</tr>
+	<tr>
+		<th align="right">2.5</th>
+		<td style="border-left:1px solid #999999;">5.146</td>
+		<td>5.267</td>
+		<td>5.347</td>
+		<td>5.388</td>
+		<td>5.391</td>
+		<td>5.358</td>
+		<td>5.291</td>
+		<td style="border-right:1px solid #999999;">5.192</td>
+	</tr>
+	<tr>
+		<th align="right">2.55</th>
+		<td style="border-left:1px solid #999999;">5.072</td>
+		<td>5.214</td>
+		<td>5.314</td>
+		<td>5.374</td>
+		<td style="background-color:#FFFF00">5.397</td>
+		<td>5.383</td>
+		<td>5.336</td>
+		<td style="border-right:1px solid #999999;">5.256</td>
+	</tr>
+	<tr>
+		<th align="right">2.6</th>
+		<td style="border-left:1px solid #999999;">4.983</td>
+		<td>5.145</td>
+		<td>5.265</td>
+		<td>5.345</td>
+		<td>5.386</td>
+		<td>5.392</td>
+		<td>5.364</td>
+		<td style="border-right:1px solid #999999;">5.302</td>
+	</tr>
+	<tr>
+		<th align="right">2.65</th>
+		<td style="border-left:1px solid #999999;">4.879</td>
+		<td>5.060</td>
+		<td>5.200</td>
+		<td>5.299</td>
+		<td>5.360</td>
+		<td>5.385</td>
+		<td>5.375</td>
+		<td style="border-right:1px solid #999999;">5.332</td>
+	</tr>
+	<tr>
+		<th align="right">2.7</th>
+		<td style="border-left:1px solid #999999;">4.760</td>
+		<td>4.961</td>
+		<td>5.120</td>
+		<td>5.239</td>
+		<td>5.318</td>
+		<td>5.362</td>
+		<td>5.370</td>
+		<td style="border-right:1px solid #999999;">5.345</td>
+	</tr>
+	<tr>
+		<th align="right">2.75</th>
+		<td style="border-bottom:1px solid #999999; border-left:1px solid #999999;">4.627</td>
+		<td style="border-bottom:1px solid #999999;">4.848</td>
+		<td style="border-bottom:1px solid #999999;">5.026</td>
+		<td style="border-bottom:1px solid #999999;">5.163</td>
+		<td style="border-bottom:1px solid #999999;">5.262</td>
+		<td style="border-bottom:1px solid #999999;">5.324</td>
+		<td style="border-bottom:1px solid #999999;">5.350</td>
+		<td style="border-bottom:1px solid #999999; border-right:1px solid #999999;">5.343</td>
+	</tr>
+</table>
+</div>
+
+<p>A still finer grid is shown below.</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred gridSearch">
+	<tr>
+		<th></th>
+		<th></th>
+		<th colspan="8" align="center">&alpha;</th>
+	</tr>
+	<tr>
+		<th></th>
+		<th></th>
+		<th>1.77</th>
+		<th>1.78</th>
+		<th>1.79</th>
+		<th>1.8</th>
+		<th>1.81</th>
+		<th>1.82</th>
+		<th>1.83</th>
+		<th>1.84</th>
+	</tr>
+	<tr>
+		<th rowspan="8">&beta;</th>
+		<th align="right">2.52</th>
+		<td style="border-top:1px solid #999999; border-left:1px solid #999999;">5.39297</td>
+		<td style="border-top:1px solid #999999;">5.39512</td>
+		<td style="border-top:1px solid #999999;">5.39582</td>
+		<td style="border-top:1px solid #999999;">5.39507</td>
+		<td style="border-top:1px solid #999999;">5.39289</td>
+		<td style="border-top:1px solid #999999;">5.38929</td>
+		<td style="border-top:1px solid #999999;">5.38429</td>
+		<td style="border-top:1px solid #999999; border-right:1px solid #999999;">5.37790</td>
+	</tr>
+	<tr>
+		<th align="right">2.53</th>
+		<td style="border-left:1px solid #999999;">5.39186</td>
+		<td>5.39480</td>
+		<td>5.39627</td>
+		<td>5.39631</td>
+		<td>5.39490</td>
+		<td>5.39208</td>
+		<td>5.38786</td>
+		<td style="border-right:1px solid #999999;">5.38224</td>
+	</tr>
+	<tr>
+		<th align="right">2.54</th>
+		<td style="border-left:1px solid #999999;">5.39009</td>
+		<td>5.39381</td>
+		<td>5.39606</td>
+		<td>5.39687</td>
+		<td>5.39625</td>
+		<td>5.39420</td>
+		<td>5.39075</td>
+		<td style="border-right:1px solid #999999;">5.38590</td>
+	</tr>
+	<tr>
+		<th align="right">2.55</th>
+		<td style="border-left:1px solid #999999;">5.38765</td>
+		<td>5.39215</td>
+		<td>5.39519</td>
+		<td>5.39677</td>
+		<td>5.39692</td>
+		<td>5.39565</td>
+		<td>5.39297</td>
+		<td style="border-right:1px solid #999999;">5.38889</td>
+	</tr>
+	<tr>
+		<th align="right">2.56</th>
+		<td style="border-left:1px solid #999999;">5.38456</td>
+		<td>5.38984</td>
+		<td>5.39365</td>
+		<td>5.39601</td>
+		<td style="background-color:#FFFF00">5.39693</td>
+		<td>5.39643</td>
+		<td>5.39452</td>
+		<td style="border-right:1px solid #999999;">5.39121</td>
+	</tr>
+	<tr>
+		<th align="right">2.57</th>
+		<td style="border-left:1px solid #999999;">5.38082</td>
+		<td>5.38687</td>
+		<td>5.39146</td>
+		<td>5.39459</td>
+		<td>5.39629</td>
+		<td>5.39656</td>
+		<td>5.39541</td>
+		<td style="border-right:1px solid #999999;">5.39287</td>
+	</tr>
+	<tr>
+		<th align="right">2.58</th>
+		<td style="border-left:1px solid #999999;">5.37643</td>
+		<td>5.38326</td>
+		<td>5.38862</td>
+		<td>5.39252</td>
+		<td>5.39499</td>
+		<td>5.39602</td>
+		<td>5.39564</td>
+		<td style="border-right:1px solid #999999;">5.39386</td>
+	</tr>
+	<tr>
+		<th align="right">2.59</th>
+		<td style="border-bottom:1px solid #999999; border-left:1px solid #999999;">5.37140</td>
+		<td style="border-bottom:1px solid #999999;">5.37900</td>
+		<td style="border-bottom:1px solid #999999;">5.38513</td>
+		<td style="border-bottom:1px solid #999999;">5.38981</td>
+		<td style="border-bottom:1px solid #999999;">5.39304</td>
+		<td style="border-bottom:1px solid #999999;">5.39484</td>
+		<td style="border-bottom:1px solid #999999;">5.39522</td>
+		<td style="border-bottom:1px solid #999999; border-right:1px solid #999999;">5.39420</td>
+	</tr>
+</table>
+</div>
+
+<p>From this, we can say that the maximum likelihood estimates are approximately</p>
+\[ \hat{\alpha} = 1.81 \spaced{and} \hat{\beta} = 2.56
+\] </div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

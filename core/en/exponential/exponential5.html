@@ -1,0 +1,277 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Maximum likelihood</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="exponential distribution, maximum likelihood">
+	<meta name="dataset" content="Aircraft airconditioner failures">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Estimating \(\lambda\)</p>
+
+<p>In Poisson processes, the rate of events, \(\lambda\), is usually an unknown parameter. If a random sample, \(\{x_1, x_2, \dots, x_n\}\) of times between events in the process is available — a random sample from an \(\ExponDistn(\lambda)\) distribution — the parameter can be estimated by either the method of moments or maximum likelihood. We will now derive the maximum likelihood estimator.</p>
+<p>The logarithm of the exponential distribution's probability density function is</p>
+\[
+\log f(x\;|\;\lambda) \;\;=\;\; \log(\lambda) - \lambda x
+\]
+<p>and the log-likelihood is the sum of this over the data values,</p>
+\[
+\ell(\lambda) \;\;=\;\; \sum_{i=1}^n \log f(x_i\;|\;\lambda) \;\;=\;\; n\log(\lambda) - \lambda \sum {x_i}
+\]
+<p>The maximum likelihood estimate maximises this and is where \(\ell'(\lambda) = 0\).</p>
+\[
+\ell'(\lambda) \;\;=\;\; \frac n{\lambda} - \sum {x_i} \;\;=\;\; 0
+\]
+<p>so</p>
+\[
+\hat{\lambda} \;\;=\;\; \frac n{\sum {x_i}} \;\;=\;\; \frac 1 {\overline{x}}\]
+
+
+
+
+<div class="example">
+	
+	<p class="exampleHeading">Aircraft air-conditioner failures</p>
+
+<p>The table below shows the number of operating hours between successive failures of air-conditioning equipment in ten aircraft.</p>
+<div class="centred">
+	<table border="0" cellpadding="4" cellspacing="0" class="centred">
+		<tr>
+			<th colspan="10">Aircraft number</th>
+		</tr>
+		<tr>
+			<th>2</th>
+			<th>3</th>
+			<th>4</th>
+			<th>5</th>
+			<th>6</th>
+			<th>7</th>
+			<th>8</th>
+			<th>9</th>
+			<th>12</th>
+			<th>13</th>
+		</tr>
+		<tr>
+			<td valign="top" style="padding:0px 12px; text-align:right; background-color:#FFFFFF; border:1px solid #999999; border-right:0px;">413<br>
+				14<br>
+				58<br>
+				37<br>
+				100<br>
+				65<br>
+				9<br>
+				169<br>
+				447<br>
+				184<br>
+				36<br>
+				201<br>
+				118<br>
+				34<br>
+				31<br>
+				18<br>
+				18<br>
+				67<br>
+				57<br>
+				62<br>
+				7<br>
+				22<br>
+				34</td>
+			<td valign="top"  style="padding:0px 12px; text-align:right; background-color:#FFFFFF; border-top:1px solid #999999; border-bottom:1px solid #999999;">90<br>
+				10<br>
+				60<br>
+				186<br>
+				61<br>
+				49<br>
+				14<br>
+				24<br>
+				56<br>
+				20<br>
+				79<br>
+				84<br>
+				44<br>
+				59<br>
+				29<br>
+				118<br>
+				25<br>
+				156<br>
+				310<br>
+				76<br>
+				26<br>
+				44<br>
+				23<br>
+				62<br>
+				130<br>
+				208<br>
+				70<br>
+				101<br>
+				208</td>
+			<td valign="top"  style="padding:0px 12px; text-align:right; background-color:#FFFFFF; border-top:1px solid #999999; border-bottom:1px solid #999999;">74<br>
+				57<br>
+				48<br>
+				29<br>
+				502<br>
+				12<br>
+				70<br>
+				21<br>
+				29<br>
+				386<br>
+				59<br>
+				27<br>
+				153<br>
+				26<br>
+				326</td>
+			<td valign="top"  style="padding:0px 12px; text-align:right; background-color:#FFFFFF; border-top:1px solid #999999; border-bottom:1px solid #999999;">55<br>
+				320<br>
+				65<br>
+				104<br>
+				220<br>
+				239<br>
+				47<br>
+				246<br>
+				176<br>
+				182<br>
+				33<br>
+				15<br>
+				104<br>
+				35</td>
+			<td valign="top"  style="padding:0px 12px; text-align:right; background-color:#FFFFFF; border-top:1px solid #999999; border-bottom:1px solid #999999;">23<br>
+				261<br>
+				87<br>
+				7<br>
+				120<br>
+				14<br>
+				62<br>
+				47<br>
+				225<br>
+				71<br>
+				246<br>
+				21<br>
+				42<br>
+				20<br>
+				5<br>
+				12<br>
+				120<br>
+				11<br>
+				3<br>
+				14<br>
+				71<br>
+				11<br>
+				14<br>
+				11<br>
+				16<br>
+				90<br>
+				1<br>
+				16<br>
+				52<br>
+				95</td>
+			<td valign="top" style="padding:0px 12px; text-align:right; background-color:#FFFFFF; border-top:1px solid #999999; border-bottom:1px solid #999999;">97<br>
+				51<br>
+				11<br>
+				4<br>
+				141<br>
+				18<br>
+				142<br>
+				68<br>
+				77<br>
+				80<br>
+				1<br>
+				16<br>
+				106<br>
+				206<br>
+				82<br>
+				54<br>
+				31<br>
+				216<br>
+				46<br>
+				111<br>
+				39<br>
+				63<br>
+				18<br>
+				191<br>
+				18<br>
+				163<br>
+				24</td>
+			<td valign="top"  style="padding:0px 12px; text-align:right; background-color:#FFFFFF; border-top:1px solid #999999; border-bottom:1px solid #999999;">50<br>
+				44<br>
+				102<br>
+				72<br>
+				22<br>
+				39<br>
+				3<br>
+				15<br>
+				197<br>
+				188<br>
+				79<br>
+				88<br>
+				46<br>
+				5<br>
+				5<br>
+				36<br>
+				22<br>
+				139<br>
+				210<br>
+				97<br>
+				30<br>
+				23<br>
+				13<br>
+				14</td>
+			<td valign="top"  style="padding:0px 12px; text-align:right; background-color:#FFFFFF; border-top:1px solid #999999; border-bottom:1px solid #999999;">359<br>
+				9<br>
+				12<br>
+				270<br>
+				603<br>
+				3<br>
+				104<br>
+				2<br>
+				438</td>
+			<td valign="top"  style="padding:0px 12px; text-align:right; background-color:#FFFFFF; border-top:1px solid #999999; border-bottom:1px solid #999999;">487<br>
+				18<br>
+				100<br>
+				7<br>
+				98<br>
+				5<br>
+				85<br>
+				91<br>
+				43<br>
+				230<br>
+				3<br>
+				130</td>
+			<td valign="top"  style="padding:0px 12px; text-align:right; background-color:#FFFFFF; border:1px solid #999999; border-left:0px;">102<br>
+				209<br>
+				14<br>
+				57<br>
+				54<br>
+				32<br>
+				67<br>
+				59<br>
+				134<br>
+				152<br>
+				27<br>
+				14<br>
+				230<br>
+				66<br>
+				61<br>
+				34</td>
+		</tr>
+	</table>
+</div>
+<p>Assuming that each aircraft has the same failure rate for its air-conditioning equipment, and the occurrence of a failure in any hour is independent of whether or not the equipment has just been repaired, then failures will be a Poisson process with rate \(\lambda\) per hour for each aircraft and the times above will be  a random sample of size \(n = 199\) from an \(\ExponDistn(\lambda)\) distribution.</p>
+<p>The maximum likelihood estimate of \(\lambda\) is</p>
+\[
+\hat{\lambda} \;\;=\;\; \frac 1 {\overline{x}} \;\;=\;\; \frac 1 {90.92} = 0.0110 \text{ failures per hour}\] </div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<html>
+<head>
+  <title>8. Advanced Regression</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 8 &nbsp; Advanced Regression</h1>
+<h1 class="sectionName">8.1 &nbsp; Linear model assumptions</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Assumptions in a normal linear model</li>
+<li>Curvature &mdash; transforming X</li>
+<li>Curvature and non-constant variance</li>
+<li>Transformations and prediction</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='5'>
+<li>Outliers and leverage</li>
+<li>Non-normal errors</li>
+<li>Correlated errors</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">8.1.1 &nbsp; Assumptions in a normal linear model</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Assumptions</p>
+<p>The normal linear model is:</p>
+<p class=eqn><span class="black"><em>y<sub></sub></em> &nbsp;=&nbsp; &beta;<sub>0</sub> &nbsp;+&nbsp; &beta;<sub>1</sub><em>x</em> &nbsp;+&nbsp; &epsilon;</span> </p>
+<p class=eqn><span class="black">&epsilon;&nbsp; ~ &nbsp;<font face="Arial, Helvetica, sans-serif">normal</font> (0<sub></sub>&nbsp;, &sigma;)</span> </p>
+<p>The following four requirements are implicit in the model but
+may be violated, as illustrated by the examples. </p>
+
+<div class="centred"><table border="0" cellspacing="0" cellpadding="0" class="centred">
+<tr>
+<td width="50%" align="LEFT" valign="top"><p class=heading>Linearity</p>
+<p>The response may change nonlinearly with <em>x</em>.</p>
+<p class="eqn"><img class="gif" src="../../../en/regnProblem/images/nonlinear.gif" width="246" height="166"></p></td>
+<td width="220" align="LEFT" valign="top"><p class=heading>Constant standard deviation</p>
+<p>The response may be more variable at some <em>x</em> than others.</p>
+<p class="eqn"><img class="gif" src="../../../en/regnProblem/images/hetroskedastic.gif" width="246" height="166"></p></td>
+</tr>
+<tr>
+<td align="LEFT" valign="top"><p class=heading>Normal distribution for errors</p>
+<p>The errors may have skew distributions.</p>
+<p class="eqn"><img class="gif" src="../../../en/regnProblem/images/skewError.gif" width="246" height="166"></p></td>
+<td align="LEFT" valign="top"><p class=heading>Independent errors</p>
+<p>When the observations are ordered in time, successive errors may be correlated.</p>
+<p class="eqn"><img class="gif" src="../../../en/regnProblem/images/autoCorr.gif" width="246" height="166"></p></td>
+</tr>
+</table></div>
+
+<p class="heading">Residual plots</p>
+<p>The above problems may be evident in a scatterplot of the raw data, but a <a href="javascript:showNamedPage('leastSqrs6')">residual
+plot</a> often highlights any problems.</p>
+<p class="eqn"><img src="../../../en/regnProblem/images/s_residPlot.gif" width="550" height="266"> </p>
+<p class="heading">Standardised residuals</p>
+<p>The least squares residuals are estimates of the unknown errors and
+can be used in a similar way to give information about whether there is an outlier.</p>
+<p class=eqn> <img class="gif" src="../../../en/regnProblem/images/errorsDiagram.gif" width="297" height="274">    <img class="gif" src="../../../en/regnProblem/images/residualsDiagram.gif" width="297" height="274"> </p>
+<p>To help assess the residuals, we usually standardise them &mdash; dividing
+each by an estimate of its standard deviation.</p>
+<table border="0" cellspacing="0" cellpadding="0" class="centred" style="margin-top:0; margin-bottom:0; color:#000000">
+<tr>
+<td rowspan="3"><strong>standardised residual </strong>&nbsp;= &nbsp;</td>
+<td style="text-align:center"><em><font size="+1">e</font></em></td>
+</tr>
+<tr>
+<td style="border-bottom:1px solid #000000" height="3px"><img src="../../../en/../images/blankSquare.gif" width="37" height="20"></p>
+<p>Large residuals pull very strongly on the line since they are <strong>squared</strong> in
+the least squares criterion. As a result,</p>
+
+<div class="centred"><div class="boxed">
+<p>Outliers will strongly pull the least squares line towards themselves,
+making their residuals smaller than you might otherwise expect.</p>
+</div></div>
+
+<p class="heading">Leverage</p>
+<p>If an outlier corresponds to an <em>x</em>-value near its mean, it usually
+will have a large residual,</p>
+<p class="eqn"><img src="../../../en/regnProblem/images/s_outlier.gif" width="553" height="321"> </p>
+<p>If successive residuals are  similar,
+<em>d</em> will be close to zero. An approximate p-value can be obtained  from
+a computer, special statistical tables or with a simulation such as that below.</p>
+<p class="eqn"><img src="../../../en/regnProblem/images/s_durbinWatson.gif" width="530" height="451"></p>
+<p>If the response, <em>Y</em>, is categorical and the explanatory variable,
+<em>X</em>,  is numerical, we are again interested in comparing the response
+distribution at different <em>x</em>-values.
+We might use <em>X</em> to define 'groups' by splitting its values
+into classes (as might be done to draw a histogram) and this allows us to use
+stacked bar charts to describe the relationship.</p>
+<p class=eqn><img class="gif" src="../../../en/logistic/images/lizardStacked.gif" width="173" height="162"> </p>
+<p>It is not necessary for the 'classes' to be of equal width. For example, some of the age groups below are of width 3 months, whereas others are 6 months and the extreme classes are wider still.</p>
+	<p class="eqn"><img src="../../../en/logistic/images/s_stackedBars.gif" width="550" height="289"></p>
+	<p>Unfortunately this may result in predicted proportions greater than 1 or less than 0.</p>
+	<p class="eqn"><img src="../../../en/logistic/images/s_linearModel.gif" width="506" height="322"></p>
+	<p class="heading">The parameters of the logistic curve</p>
+	<p>The parameter <em>b</em><sub>1</sub> is called the <strong>slope</strong> of the curve. Increasing it makes the curve steeper, and 
+	its sign determines whether the curve slopes upwards or downwards.</p>
+<p class="eqn"><img src="../../../en/logistic/images/s_slope.gif" width="407" height="259"></p>
+	<p>The parameter <em>b</em><sub>0</sub> is the curve's <strong>intercept</strong> and it determines the horizontal position of the curve. Increasing it shifts the curve 
+	to the left.</p>
+<p class="eqn"><img src="../../../en/logistic/images/s_intercept.gif" width="407" height="259"></p>
+
+
+
+
+<h2 class="pageName">8.2.4 &nbsp; Obtaining a good fit</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Estimating the logistic parameters</p>
+	<p>Estimating the parameters <em>b</em><sub>0</sub> and <em>b</em><sub>1</sub> of a logistic model is more difficult than estimating the parameters for a linear model by least squares, but  many statistical programs will do the appropriate calculations for 
+	you.</p>
+	<p>We therefore take a 'black box' approach and simply show what parameter estimation 
+		gives without further justification. </p>
+	<p class="eqn"><img src="../../../en/logistic/images/s_maxLikelihood.gif" width="404" height="334"></p>
+
+
+
+
+</html>

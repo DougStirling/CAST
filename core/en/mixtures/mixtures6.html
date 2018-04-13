@@ -1,0 +1,256 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Hypothesis tests</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="mixtures, mixture design, response surface, linear model, quadratic model, anova, lack of fit, pure error">
+	<meta name="dataset" content="Yarn elongation">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Sequence of models</p>  
+  <p>Three models are particularly important in the analysis of experiments involving 
+		mixtures:</p>
+	<dl>
+		<dt>Mean only</dt>
+	</dl>
+  <p class=eqn><img src="images/meanModel.gif" width="112" height="17"> </p>
+	<dl>
+		<dd>If this model holds, the mean response does not depend on the mixture. 
+			The model has 1 degree of freedom.</dd>
+		<dt>Linear model</dt>
+	</dl>
+	<p class=eqn><img src="images/linearModel3.gif" width="246" height="18"> </p>
+	<dl>
+		<dd>In this model, the response surface is linear. It has 3 degrees of freedom.</dd>
+		<dt>Quadratic model</dt>
+	</dl>
+	<p class=eqn><img src="images/quadModel2.gif" width="494" height="18"> </p>
+	<dl>
+		<dd>This model describes a quadratic response surface and has 6 degrees of 
+			freedom.</dd>
+	</dl>
+	
+	<p>Each model is more flexible than the previous one (more degrees of freedom) 
+		so it has a lower residual sum of squares when fitted by least squares.</p>
+	<p class="heading">Sums of squares and anova table</p>
+	<p>The decreases in the residual sums of squares (explained by adding terms 
+		to the mean-only model) are the basis of an analysis of variance table.</p>
+	<div class="centred"><table border="0" class="centred" cellpadding="0" cellspacing="0">
+		<tr> 
+			<th align="left">&nbsp;&nbsp;Source of variation&nbsp;&nbsp;&nbsp;</th>
+			<th>&nbsp;&nbsp;SSq&nbsp;&nbsp;</th>
+			<th>df</th>
+			<th>&nbsp;&nbsp;MSq&nbsp;&nbsp;</th>
+			<th>&nbsp;&nbsp;&nbsp;F&nbsp;&nbsp;&nbsp;</th>
+			<th>&nbsp;&nbsp;p-value&nbsp;&nbsp;</th>
+		</tr>
+		<tr> 
+			<td colspan="6" bgcolor="#000000"><img border="0" src="../structure/images/spacer.gif" width="20" height="1"></td>
+		</tr>
+		<tr bgcolor="#FFFFFF"> 
+			<td>&nbsp;&nbsp;Adding linear terms&nbsp;&nbsp;&nbsp;</td>
+			<td align="center">?</td>
+			<td align="center">2</td>
+			<td align="center">?</td>
+			<td align="center">&nbsp;&nbsp;?&nbsp;&nbsp;</td>
+			<td align="center">?</td>
+		</tr>
+		<tr bgcolor="#FFFFFF"> 
+			<td>&nbsp;&nbsp;Adding quadratic terms&nbsp;&nbsp;&nbsp;</td>
+			<td align="center">?</td>
+			<td align="center">3</td>
+			<td align="center">?</td>
+			<td align="center">&nbsp;&nbsp;?&nbsp;&nbsp;</td>
+			<td align="center">?</td>
+		</tr>
+		<tr> 
+			<td bgcolor="#FFFFFF"><span class="red">&nbsp;&nbsp;Residual</span></td>
+			<td align="center" bgcolor="#FFFFFF"><span class="red">?</span></td>
+			<td align="center" bgcolor="#FFFFFF"><span class="red">&nbsp;<em>n</em>&nbsp;-&nbsp;6&nbsp;&nbsp;</span></td>
+			<td align="center" bgcolor="#FFFFFF"><span class="red">?</span></td>
+			<td align="center">&nbsp;</td>
+			<td align="center">&nbsp;</td>
+		</tr>
+		<tr> 
+			<td colspan="4" bgcolor="#000000"><img border="0" src="../structure/images/spacer.gif" width="20" height="1"></td>
+		</tr>
+		<tr> 
+			<td>&nbsp;&nbsp;Total</td>
+			<td align="center">?</td>
+			<td align="center"><em>&nbsp;&nbsp;n</em>&nbsp;-&nbsp;1<em>&nbsp;&nbsp;</em></td>
+			<td align="center">&nbsp;</td>
+			<td align="center">&nbsp;</td>
+			<td align="center">&nbsp;</td>
+		</tr>
+	</table></div>
+
+	  
+	<p>The p-values on the right test whether there is any evidence that the corresponding 
+		added terms are needed.</p>
+  <div class="diagram"> 
+    <p class="heading">Elongation of yarn</p>
+    <p>The analysis of variance table below tests the significance of the quadratic 
+			terms for the yarn elongation data.</p>
+	
+    <div class="centred"><table border="0" class="centred" cellpadding="0" cellspacing="0">
+      <tr> 
+        <th align="left">&nbsp;&nbsp;Source of variation&nbsp;&nbsp;&nbsp;</th>
+        <th>&nbsp;&nbsp;SSq&nbsp;&nbsp;</th>
+        <th>df</th>
+        <th>&nbsp;&nbsp;MSq&nbsp;&nbsp;</th>
+        <th>&nbsp;&nbsp;&nbsp;F&nbsp;&nbsp;&nbsp;</th>
+        <th>&nbsp;&nbsp;p-value&nbsp;&nbsp;</th>
+      </tr>
+      <tr> 
+        <td colspan="6" bgcolor="#000000"><img border="0" src="../structure/images/spacer.gif" width="20" height="1"></td>
+      </tr>
+      <tr bgcolor="#FFFFFF"> 
+        <td>&nbsp;&nbsp;Linear Terms&nbsp;&nbsp;&nbsp;</td>
+        <td align="right">57.629&nbsp;&nbsp;</td>
+        <td align="right">2&nbsp;&nbsp;</td>
+        <td align="right">&nbsp;&nbsp;28.815&nbsp;&nbsp;</td>
+        <td align="center">&nbsp;&nbsp;39.53&nbsp;&nbsp;</td>
+        <td align="center">&lt;0.001</td>
+      </tr>
+      <tr bgcolor="#FFFFFF"> 
+        <td>&nbsp;&nbsp;Quadratic terms</td>
+        <td align="right">70.667&nbsp;&nbsp;</td>
+        <td align="right">3&nbsp;&nbsp;</td>
+        <td align="right">23.556&nbsp;&nbsp;</td>
+        <td align="center">&nbsp;&nbsp;32.32&nbsp;&nbsp;</td>
+        <td align="center">&lt;0.001</td>
+      </tr>
+      <tr> 
+        <td bgcolor="#FFFFFF"><span class="red">&nbsp;&nbsp;Residual</span></td>
+        <td align="right" bgcolor="#FFFFFF"><span class="red">6.560</span><span class="red">&nbsp;&nbsp;</span></td>
+        <td align="right" bgcolor="#FFFFFF"><span class="red">&nbsp;9&nbsp;&nbsp;</span></td>
+        <td align="right" bgcolor="#FFFFFF"><span class="red">&nbsp;&nbsp;0.729&nbsp;&nbsp;</span></td>
+        <td align="center">&nbsp;</td>
+        <td align="center">&nbsp;</td>
+      </tr>
+      <tr> 
+        <td colspan="4" bgcolor="#000000"><img border="0" src="../structure/images/spacer.gif" width="20" height="1"></td>
+      </tr>
+      <tr> 
+        <td>&nbsp;&nbsp;Total</td>
+        <td align="right">&nbsp;&nbsp;134.856&nbsp;&nbsp;</td>
+        <td align="right"><em>&nbsp;&nbsp;</em>14<em>&nbsp;&nbsp;</em></td>
+        <td align="center">&nbsp;</td>
+        <td align="center">&nbsp;</td>
+        <td align="center">&nbsp;</td>
+      </tr>
+    </table></div>
+
+	  <p>Since the p-value for the quadratic terms is so highly significant, we 
+			conclude that there is curvature in the response surface. (Since we have 
+			concluded that there is curvature, there is no point in trying to interpret 
+			the p-value for the linear terms.)</p>
+  </div>
+	
+    <p class="heading">Testing for lack of fit of the quadratic model</p>
+    
+	<p>If there are more design points (distinct combinations of factor levels) 
+		than parameters in the model, and there are replicate runs at some of the 
+		design points, then it is possible to further refine the analysis of variance 
+		table to test for lack of fit of the quadratic model.</p>
+	<p>If there are <em>d</em> design points, the <strong>pure error</strong> sum 
+		of squares measures variability within each of the <em>d</em> sets of replicate 
+		observations (the sum of squares about the means for all design points). The 
+		<strong>lack of fit</strong> sum of squares describes distance between the 
+		observed mean response at all design points and the corresponding fitted values 
+		from a quadratic model.</p>
+	<div class="centred"><table border="0" class="centred" cellpadding="0" cellspacing="0">
+		<tr> 
+			<th align="left">&nbsp;&nbsp;Source of variation&nbsp;&nbsp;&nbsp;</th>
+			<th>&nbsp;&nbsp;SSq&nbsp;&nbsp;</th>
+			<th>df</th>
+			<th>&nbsp;&nbsp;MSq&nbsp;&nbsp;</th>
+			<th>&nbsp;&nbsp;&nbsp;F&nbsp;&nbsp;&nbsp;</th>
+			<th>&nbsp;&nbsp;p-value&nbsp;&nbsp;</th>
+		</tr>
+		<tr> 
+			<td colspan="6" bgcolor="#000000"><img border="0" src="../structure/images/spacer.gif" width="20" height="1"></td>
+		</tr>
+		<tr bgcolor="#FFFFFF"> 
+			<td>&nbsp;&nbsp;Adding linear terms&nbsp;&nbsp;&nbsp;</td>
+			<td align="center">?</td>
+			<td align="center">2</td>
+			<td align="center">?</td>
+			<td align="center">&nbsp;&nbsp;?&nbsp;&nbsp;</td>
+			<td align="center">?</td>
+		</tr>
+		<tr bgcolor="#FFFFFF"> 
+			<td>&nbsp;&nbsp;Adding quadratic terms&nbsp;&nbsp;&nbsp;</td>
+			<td align="center">?</td>
+			<td align="center">3</td>
+			<td align="center">?</td>
+			<td align="center">&nbsp;&nbsp;?&nbsp;&nbsp;</td>
+			<td align="center">?</td>
+		</tr>
+		<tr bgcolor="#FFFFFF"> 
+			<td>&nbsp;&nbsp;Lack of fit</td>
+			<td align="center">?</td>
+			<td align="center"><em>d</em>&nbsp;-&nbsp;6</td>
+			<td align="center">?</td>
+			<td align="center">?</td>
+			<td align="center">?</td>
+		</tr>
+		<tr> 
+			<td bgcolor="#FFFFFF"><span class="red">&nbsp;&nbsp;Residual (pure error)</span></td>
+			<td align="center" bgcolor="#FFFFFF"><span class="red">?</span></td>
+			<td align="center" bgcolor="#FFFFFF"><span class="red">&nbsp;&nbsp;<em>n</em>&nbsp;-&nbsp;<em>d</em>&nbsp;-&nbsp;6&nbsp;&nbsp;</span></td>
+			<td align="center" bgcolor="#FFFFFF"><span class="red">?</span></td>
+			<td align="center">&nbsp;</td>
+			<td align="center">&nbsp;</td>
+		</tr>
+		<tr> 
+			<td colspan="4" bgcolor="#000000"><img border="0" src="../structure/images/spacer.gif" width="20" height="1"></td>
+		</tr>
+		<tr> 
+			<td>&nbsp;&nbsp;Total</td>
+			<td align="center">?</td>
+			<td align="center"><em>&nbsp;&nbsp;n</em>&nbsp;-&nbsp;1<em>&nbsp;&nbsp;</em></td>
+			<td align="center">&nbsp;</td>
+			<td align="center">&nbsp;</td>
+			<td align="center">&nbsp;</td>
+		</tr>
+	</table></div>
+
+	  
+	<p>As usual, the p-values are interpreted from the bottom of the anova table 
+		upwards. If the lack-of-fit term is highly significant (low p-value), then 
+		we would conclude that the curvature of the response surface is more complex 
+		than quadratic. (And there would be no point in testing the quadratic or linear 
+		terms.)</p>
+	<p>Conversely, if we conclude that there is no evidence of lack of fit of the 
+		quadratic, we would try to interpret the p-value for the quadratic term, etc.</p>
+	
+  <div class="diagram"> 
+    <p class="heading">Elongation of yarn</p>
+		<p>In this data set, there were exactly 6 design points (distinct combinations 
+			of factor levels). Since there are also 6 parameters in the quadratic model, 
+			the least squares response surface fits exactly through the mean response 
+			at each of the design points. A consequence is that there are no degrees 
+			of freedom to test for lack of fit of the model for this data set.</p>
+		<p>A better experimental design would have been a simplex-centroid design 
+			which has the same design points as the <em>m</em>=2 simplex-lattice design 
+			but adds one extra design point with an equal mixture of all 3 components. 
+			This would have left one degree of freedom to test for lack of fit of the 
+			quadratic model.</p>
+  </div>
+		
+		
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Deciding on the sample size</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="significance level, power function, sample size">
+	<meta name="dataset" content="Failure of printed circuit boards">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>The only way to increase the power of a test without also increasing the significance level is to collect more data.</p>
+<div class="example">
+	<p class="exampleHeading">Failure of printed circuit boards</p>
+	<p>Consider the above printed circuit board example. Let us assume that the engineers have decided that it is acceptable for the probability of a Type I error (deciding that \(\pi\) &lt; 0.06 when \(\pi\) is really 0.06) to be 5%:</p>
+	<p class="eqn">significance level  =  P(Type I error)  =  0.05</p>
+	<p>and that it is acceptable for the probability of a Type II error (deciding that \(\pi\) is 0.06) to be 10% if \(\pi\) is really 0.03.</p>
+	<p>With a sample size of \(n\) and decision rule to reject the null hypothesis if \(x \le k\), we therefore require</p>
+
+\[ \begin{align}
+\alpha \;&amp;=\; P\left(\text {reject }H_0 \mid \pi = 0.06\right) \\[0.4em]
+&amp;=\; P(X \le 7 \mid \pi = 0.06) \\
+&amp;=\; \sum_{x=0}^k {n \choose x} \; 0.06^x \; 0.94^{n-x} \\
+&amp;=\; 0.05
+\end{align} \]
+
+<p>and</p>
+
+\[ \begin{align}
+\beta \;&amp;=\; P\left(\text {accept }H_0 \mid \pi = 0.03\right) \\[0.4em]
+&amp;=\; 1 - P(X \le 7 \mid \pi = 0.03) \\
+&amp;=\; 1 - \sum_{x=0}^k {n \choose x} \; 0.03^x \; 0.97^{n-x} \\
+&amp;=\; 0.10
+\end{align} \]
+
+<p>The values of \(n\) (the sample size) and \(k\) (the cut-off for the decision rule) are the values that satisfy these two equations (or are as close as possible to this). By trial and error with  different \(n\) and \(k\), we can find that if \(n = 400\) and \(k = 16\), </p>
+<p class="eqn"><img src="images/s_optimumRule.png" width="568" height="398"  alt=""/></p>
+</div>
+<p>For tests involving continuous distributions, it is often possible to find explicit solutions to the equations for the probabilities of Type I and II errors.</p>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

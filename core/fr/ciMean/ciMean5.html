@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Intervalle de confiance pour μ, σ inconnu</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="confidence interval, t value, estimation, mean">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Largeur d'un intervalle de confiance à 95% pour la moyenne</p>
+
+<p>Dans la page précédente, il a été démontré que l'estimation par intervalle calculé en utilisant</p>
+<p class=eqn><img class="gif" src="../../en/ciMean/images/bad95CI.gif" width="86" height="31"> 
+</p>
+<p>a un niveau de confiance inférieur à 95%. Afin d'atteindre un niveau de confiance de 95%, l'intervalle doit être élargie. Cela peut être fait en remplaçant 1,96 par un nombre légèrement plus grand. Nous allons essayer</p>
+
+<p class=eqn><img class="gif" src="../../en/ciMean/images/ciK.gif" width="83" height="31"> 
+</p>
+
+<p>où <i>k</i> &gt; 1.96.</p>
+<div class="diagram"> 
+<p class="heading">Simulation</p>
+<p>Le diagramme ci-dessous montre d'abord un échantillon aléatoire de <em>n</em> = 30 valeurs d'une population normale avec μ = 10 et σ = 2.<br>
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="inferenceProg.AdjustKIntervalApplet">
+<param name="varName" value="Sample data">
+<param name="random" value="20 10 2 6497052 2.5">
+<param name="meanSDDecimals" value="2">
+<param name="ciDecimals" value="3">
+<param name="horizAxis" value="0 20 0 5">
+<param name="kLimits" value="0.00 5.00 1.96">
+<param name="sampleSize" value="3 5 12 *30">
+<param name="maxMeanSD" value="99.99 9.99">
+<param name="customText" value="Constant=Constant#Confidence level=Confidence level">
+</applet>
+</div>
+
+<p>Lorsque <em>k</em>&nbsp;=&nbsp;1.96, the confidence level is 94.0%. le niveau de confiance est 94,0%. Utilisez le curseur pour ajuster la valeur k pour donner un niveau de confiance de 95%. <font color="#666666">(Les touches fléchées du clavier peut être utilisé pour le réglage fin de k par incréments de 0.01.)</font></p>
+<p>L'intervalle de confiance de 95% résultant est affiché en rouge derrière les données. Cliquez sur <strong>Un autre échantillon</strong> pour obtenir des intervalles de confiance à 95% pour les autres ensembles de données.</p>
+<p>Utilisez le menu pop-up pour changer la taille de l'échantillon à 5 et répéter. Observez que <em>k</em> doit être augmenté pour atteindre un niveau de confiance de 95%.</p>
+<center>
+<table border="1" cellspacing="0" cellpadding="5" bgcolor="white" width="75%">
+<tr> 
+<th align="CENTER">La valeur de <em>k</em> qui donne un niveau de confiance de 95% dépend de la taille de l'échantillon.</th>
+</tr>
+</table>
+</center>
+
+<br>
+
+</div>
+
+  
+<p class="heading">La valeur t</p>
+  
+<p>La valeur <em>k</em> qui est nécessaire pour atteindre un niveau de confiance de 95% dépend de la taille de l'échantillon, <em>n</em>, et est notée <em>t<sub>n-1</sub></em>. 
+Ce <strong>t-valeur</strong> peut être obtenue à partir d'un tableau ou un graphique ou un logiciel informatique. De petites valeurs de n exigent de plus grandes valeurs de t. Un intervalle de confiance 95% pour μ est donc</p>
+<p class=eqn><img class="gif" src="../../en/ciMean/images/plusMinusTSE.gif" width="93" height="32">
+</p>
+
+<p>Pour des raisons qui ne peuvent pas être expliquées ici, vous devez rechercher la valeur t utilisant la taille de l'échantillon <strong>moins un</strong> plutôt que la taille de l'échantillon lui-même. La valeur <em>n</em>&nbsp;-&nbsp;1 est appelé le <strong>degré de liberté</strong> de la constante.</p>
+
+<div class="diagram">
+  
+<p class="heading">Trouver la valeur t</p>
+
+<p>Vous aurez souvent recours à un tableau imprimé ou de logiciels informatiques pour obtenir la valeur t pour tout problème. Le schéma ci-dessous montre comment la valeur de t dépend du degré de liberté (et donc la taille de l'échantillon).<br>
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="inferenceProg.TTable2Applet">
+<param name="horizAxis" value="0 100 0 10">
+<param name="vertAxis" value="1.5 5 1.5 0.5">
+<param name="customText" value="t-value=t-value">
+</applet>
+</div>
+
+<p>Faites glisser le curseur pour modifier les degrés de liberté et de lire la valeur t correspondante. Notez que</p>
+<ul>
+  <li>Le t-valeur correspondant à 1 degré de liberté (et donc un échantillon de 2) est trop grande pour afficher sur le graphique.</li>
+  
+<li>Lorsque les degrés de liberté sont plus de 100, la valeur t est juste sous 2.0. En effet, si vous changez les degrés de liberté à 100000, les t-valeur est 1.960.</li>
+  <li>La valeur de 2.0 est une approximation raisonnable de la valeur t lorsque les degrés de liberté sont plus de 30.</li>
+</ul>
+
+<br>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

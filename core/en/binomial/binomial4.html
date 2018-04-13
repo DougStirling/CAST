@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Shape of the binomial distribution</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="binomial distribution, normal approximation, central limit theorem">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Family of binomial distributions</p>
+
+<p>We have talked about &quot;the&quot; binomial distribution, but there is really a <strong>family</strong> of binomial distributions corresponding to different values of the two parameters \(n\) and \(\pi\). We now use bar charts to show the shapes of some binomial distributions.</p>
+
+<div class="example" title="Illustration: Bar charts for binomial distributions">
+	
+<p class="exampleHeading">Binomial bar charts</p>
+
+<p>The diagram below shows some possible shapes of the binomial distribution.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="distributionProg.BinomialDistnApplet">
+<param name="backgroundColor" value="FFFBF3">
+<param name="nLimits" value="100 10 Number_of_trials">
+<param name="xAxis" value="0 100 0 10">
+<param name="xAxisName" value="Number of successes">
+<param name="customText" value="success=success">
+</applet>
+</div>
+
+<p>Use the slider on the left to increase the number of trials, \(n\), and observe that both the mean and the variance increase.</p>
+<p>Adjust the probability of success, \(\pi\), and observe that the distribution is symmetric when \(\pi = 0.5\) but is skew with a long tail to the right when \(\pi\) is clos to zero and skew with its long tail to the left when \(\pi\) is close to one.</p>
+<p>When the number of trials is large, the probabilities for all individual x-values are small, so click to turn off <strong>Show zero-one axis</strong> and rescale the bars of the bar chart to fill up more of the diagram, making the shape of the distributions clearer.</p>
+<p class="exampleHeading">Bar chart for the proportion of successes</p>
+<p>In the following bar chart, the main horizontal axis is for the <strong>proportion</strong> of successes, \(p\), rather than the count, \(x\). (The diagram actually has dual axes so it also displays the x-values.)</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="350" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="randomStatProg.BinomialDistnApplet">
+<param name="backgroundColor" value="FFFBF3">
+<param name="n" value="100 1">
+<param name="customText" value="propn=propn#success=success">
+</applet>
+</div>
+
+<p>Again increase the sample size, \(n\). Now note that the distribution of the sample proportion, \(P\), remains centred on \(\pi\) for all sample sizes. Note that the distribution's spread now <strong>decreases</strong> as the sample size increases.</p>
+<p>Now adjust the probability of success, \(\pi\), and again observe how the shape of the distribution changes. The distribution has greatest spread when \(\pi = 0.5\) but smaller spread when \(\pi\) is close to zero or one.</p>
+<p class="gray">(This diagram can also be used to read off binomial probabilities by clicking on bars.)</p>
+</div>
+
+<p>From the above bar charts, you should have observed the following properties of the binomial distribution.</p>
+<p class="heading">Mode</p>
+<ul>
+	<li>The distribution is 'unimodal' — there is either a single bar or two adjacent ones with maximum height, and bar heights decrease steadily on each side of this.</li>
+</ul>
+<p class="heading">Effect of \(\pi\) on the shape of the distribution</p>
+<ul>
+	<li>It is symmetric if \(\pi = 0.5\)</li>
+	<li>It is skew with a longer tail to the right if \(\pi \lt 0.5\)</li>
+	<li>It is skew with a longer tail to the left if \(\pi \gt 0.5\)</li>
+	<li>The spread of the distribution of \(P\) is highest when \(\pi = 0.5\) and decreases when \(\pi\) is close to either zero or one.</li>
+</ul>
+<p class="heading">Effect of \(n\) on the shape of the distribution</p>
+<ul>
+	<li>The spread  of \(P\) decreases as \(n\) increases</li>
+	<li>For any fixed \(\pi\), the shape becomes smoother and more symmetric as \(n\) increases.</li>
+</ul>
+
+<p class="heading">Normal approximation</p>
+<p>A binomial random variable, \(X\), is the sum of \(n\) independent Bernoulli values, and the proportion of successes, \(P\), is the mean of these \(n\) Bernoulli values. The Central Limit Theorem can therefore be applied to the distributions of both \(X\) and \(P\):</p>
+
+\[ \begin{align}
+		X  &amp;\;\; \xrightarrow[n \rightarrow \infty]{} \; \; \NormalDistn\left(\mu_X = n\pi, \;\;\sigma_X^2 = n\pi(1-\pi) \right) \\
+		P  &amp;\;\; \xrightarrow[n \rightarrow \infty]{} \; \; \NormalDistn\left(\mu_P = \pi, \;\;\sigma_P^2 = \frac{\pi(1-\pi)} n \right)
+\end{align} \]
+
+		<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

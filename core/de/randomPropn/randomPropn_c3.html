@@ -1,0 +1,145 @@
+<html>
+<head>
+	<title>Binomial distribution</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="proportion, sampling distribution, binomial distribution">
+	<meta name="dataset" content="Brand loyalty">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Notation</p>
+
+<p>We now generalise the brand loyalty example on the previous page. Consider an infinite 
+categorical population that contains a proportion <font color="#000000">π</font> 
+of some category that we will call <strong>'success'</strong>. We call the other 
+values in the population <strong>'failures'</strong>. </p>
+
+<p>In the brand loyalty example, picking the Pizza Hut slice might be called a 
+'success' and a other slice would be a 'failure'. The probability of success is 
+	<font color="#000000">π</font> 
+= 0.5. </p>
+
+<p>The labels 'success' and 'failure' provide terminology that
+can describe a wide range of data sets. For example,
+</p>
+<div class="centred">
+<table border="0" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC" class="centred">
+<tr>
+<th align="CENTER">Data set</th>
+<th align="CENTER">&nbsp;'Success'&nbsp;</th>
+<th align="CENTER">&nbsp;'Failure'&nbsp;</th>
+</tr>
+<tr>
+<td align="CENTER" bgcolor="white" style="border-top:1px solid #999999;">Change in share price</td>
+<td align="CENTER" bgcolor="white" style="border-top:1px solid #999999;">increase</td>
+<td align="CENTER" bgcolor="white" style="border-top:1px solid #999999;">same or decrease</td>
+</tr>
+<tr>
+<td align="CENTER" bgcolor="white">&nbsp;&nbsp;Quality of items from production line&nbsp;&nbsp;</td>
+<td align="CENTER" bgcolor="white">acceptable</td>
+<td align="CENTER" bgcolor="white">defective</td>
+</tr>
+<tr>
+<td align="CENTER" bgcolor="white" style="border-bottom:1px solid #999999;">&nbsp;&nbsp;Bank balances&nbsp;&nbsp;</td>
+<td align="CENTER" bgcolor="white" style="border-bottom:1px solid #999999;">in credit</td>
+<td align="CENTER" bgcolor="white" style="border-bottom:1px solid #999999;">overdrawn</td>
+</tr>
+</table>
+</div>
+<p>When a random sample of <i><font color="#000000">n</font></i> values is selected from such a population, 
+we denote the number of successes by <em><font color="#000000">x</font></em> and the proportion of successes by <em><font color="#000000">x</font></em><font color="#000000">&nbsp;=&nbsp;<em>np</em></font>. </p>
+
+  
+	<p class="heading">Distribution of a proportion from a simple random sample</p>
+	<p>The number of successes, <em><font color="#000000">x</font></em>, 
+		has a 'standard' discrete distribution called a <strong>binomial distribution</strong> which has two parameters, <em><font color="#000000">n</font></em> and <font color="#000000">π</font>. 
+		In practical applications, <em><font color="#000000">n</font></em> is a known constant, but <font color="#000000">π</font> may be unknown. The sample proportion, <em><font color="#000000">p</font></em>, 
+		has a distribution with the same shape, but is scaled by <em><font color="#000000">n</font></em>.</p>
+	<p>With appropriate choice of the parameters <em><font color="#000000">n</font></em> and <font color="#000000">π</font>, 
+		the binomial distribution can describe the distribution of any proportion from 
+		a random sample.</p>
+	<div class="diagram">
+<p class="heading">Shape of the binomial distribution</p>
+<p>The diagram below shows some possible shapes of the binomial distribution. 
+		The barchart has dual axes and therefore shows the distributions of both <em>x</em> and <em>p</em>.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="350" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="randomStatProg.BinomialDistnApplet">
+<param name="n" value="100 10">
+<param name="customText" value="propn=propn#success=success">
+</applet>
+</div>
+
+<p><strong>Drag</strong> the sliders to adjust the two parameters of the binomial
+		distribution. Observe that </p>
+
+<ul>
+	<li>The distribution of <em>p</em> is centred on π.</li>
+	<li>The spread of the distribution of <em>p</em> decreases as <em>n</em> increases.</li>
+	<li>The distribution is symmetric when π 
+		= 0.5, but becomes more skew as π 
+		approaches 0 or 1.</li>
+</ul>
+<p>The diagram can be used to obtain binomial probabilities by setting π 
+	and <em>n</em> to the appropriate values, then clicking on one of the bars in the barchart.</p>
+<p class="heading">Brand loyalty</p>
+<p>For example, to find the probability of 4 out of 5 subjects picking the Pizza 
+Hut slice in the previous page if there was no brand awareness, set π&nbsp;=&nbsp;0.5 
+and <em>n</em>&nbsp;=&nbsp;5, 
+then click on the bar for <em>x</em>&nbsp;=&nbsp;4.</p>
+		<p>The probability is shown under the barchart. In the actual experiment performed 
+			by the grade 9 children, there were 16 subjects. Use the diagram to find 
+			the probability that all 16 picked the Pizza Hut slice if there was no tendency 
+			to pick the 'famous' brand. </p>
+		<hr width="75%">
+		<p>The diagram below demonstrates that a binomial distribution does indeed describe 
+sample-to-sample variability. The pink barchart at the bottom of the diagram shows 
+the binomial distribution with parameters <em>n</em>&nbsp;=&nbsp;16 
+and π&nbsp;=&nbsp;0.5 
+that describes the distribution of the sample proportion of Pizza Hut slices picked 
+as 'best' from <em>n</em>&nbsp;=&nbsp;16 
+guesses. </p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="430" name="propnDistn">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="randomStatProg.SamplePropApplet">
+<param name="catVarName" value="best slice">
+<param name="catLabels" value="#Pizza Hut# Other">
+<param name="catProb" value="0.5 0.5">
+<param name="probAxis" value="0 1.01 0.0 0.5">
+<param name="propnName" value="Sample propn, p">
+<param name="horizAxis" value="0 1 0 0.1">
+<param name="countHorizAxis0" value="0 4 0 1">
+<param name="countHorizAxis1" value="0 16 0 2">
+<param name="countHorizAxis2" value="0 50 0 10">
+<param name="countVertAxis0" value="0 4 0 1">
+<param name="countVertAxis1" value="0 16 0 5">
+<param name="countVertAxis2" value="0 50 0 20">
+<param name="sampleSize" value="4 *16 50">
+<param name="proportionText" value="Proportion of Pizza Hut, p">
+<param name="countText" value="Number of Pizza Hut, x">
+<param name="showBinomial" value="true">
+</applet>
+</div>
+
+<p>Click <strong>Accumulate</strong> and take several samples. Observe that the distribution
+of <em>p</em> matches the
+theoretical binomial distribution. Repeat the exercise with different sample sizes.
+</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

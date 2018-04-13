@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Differentiating the CDF</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="transformation, cumulative distribution function, probability density function">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Relationship between <em>f</em>(<em>x</em>) and <em>F</em>(<em>x</em>)</p>
+
+<p>We <a href="javascript:showNamedPage('continuousProbs4')">showed earlier</a> that integration and differentiation relate the probability density function, \(f(x)\), of a continuous random variable, \(X\),  to its cumulative distribution function, \(F(x)\).</p>
+\[
+F(x) = \int_{-\infty}^x f(u) \;du \spaced{and} f(x)= F'(x)
+\]
+<p>This sometimes allows us to derive the distribution of a random variable that is defined as a function of one or more others.</p>
+<ol>
+	<li>Find the cumulative distribution function of \(X\), \(F(x) = P(X \le x)\).</li>
+	<li>Differentiate it to get the probability density function, \(f(x)= F'(x)\)</li>
+</ol>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Example: Square root of an exponential variable</p>
+		<p>Consider a random variable, \(X\), with an exponential distribution</p>
+\[
+X \;\;\sim\;\; \ExponDistn(\lambda)
+\]
+<p>What is the distribution of \(Y = \sqrt{X}\)?</p>
+</div>
+	<div class="solution">
+		<p>The cumulative distribution function of \(Y\) is</p>
+\[
+F_Y(y) \;=\; P(Y \le y) \;=\; P(\sqrt{X} \le y) \;=\; P(X \le y^2) \;=\; F_X(y^2)
+\]
+		<p>Since we know that the exponential distribution's cumulative distribution function is \(F_X(x) = 1 - e^{\large -\lambda x}\),</p>
+\[
+F_Y(y) \;\;=\;\; 
+1 - e^{ -\lambda y^2} \]
+		<p>It's pdf is therefore</p>
+\[
+f_Y(y) \;=\; F'(y) \;=\; 2\lambda y \; e^{ -\lambda y^2}
+\]
+		
+		<p>This can be recognised as the probability density function of a \(\WeibullDistn(\alpha=2,\;\sqrt{\lambda})\) distribution.</p>
+	</div>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

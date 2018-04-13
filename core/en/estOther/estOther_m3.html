@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Simulations with normal distns</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="simulation, error distribution, standard error, bias, quartiles">
+	<meta name="dataset" content="Samaru rainfall">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Estimating other parameters of a normal population</p>
+
+  <p>In normal populations, the mean, µ, 
+		is the parameter that is most often estimated. However numerical distributions 
+		have other parameters that may be of interest. For example,</p>
+	<ul>
+		<li>standard deviation</li>
+		<li>interquartile range (upper quartile - lower quartile)</li>
+		<li>median</li>
+		<li>other percentiles (e.g. the upper quartile)</li>
+	</ul>
+	<p>These parameters can be estimated using the corresponding summary statistic 
+		from a random sample, but the error distribution may be difficult to obtain 
+		theoretically.</p>
+	<p class="heading">Simulation</p>
+	<p>Since the parameters µ 
+		and σ 
+		are unknown, we cannot perform a simulation with repeated samples from the 
+		actual population. However we can conduct a simulation from our best estimate 
+		of the population distribution &mdash; i.e. replacing µ 
+		and σ 
+		with the sample mean and standard deviation.</p>
+	<p>We repeatedly take samples of size <em>n</em> from this approximate population 
+		and evaluate the estimation error from using each sample. (Since we know the 
+		population from which we are sampling, we know the population parameter and 
+		can find the estimation error.)</p>
+	<p>The standard deviation of these errors is the approximate standard error 
+		of the estimator.</p>
+	
+
+<div class="diagram" title="Example: Annual rainfall in Samaru, Nigeria">
+    <p class=heading>Annual rainfall in Samaru, Nigeria</p>
+
+	  
+    <p>In most of Africa, the most important climatic variable is rainfall. Rainfall 
+      is usually highly seasonal and failure of crops is normally associated with 
+      late arrival of rain or low rainfall. A better understanding of the distribution 
+      of rainfall can affect the crops that are grown and when they are planted.</p>
+    
+<div class="centred"><div class="boxed">
+<p>What is the annual rainfall in Samaru, Northern Nigeria, 
+						that is not reached in 1 year out of 4?</p>
+</div></div>
+
+    <p>In other words, we want to estimate the <strong>lower quartile</strong> 
+      of the annual rainfall.</p>
+		
+    <p class=eqn><img class="gif" src="images/samaruLQ.gif" width="398" height="127"></p>
+		
+    <p>The above dot plot shows the annual rainfall in Samaru, Northern Nigeria 
+      between 1928 and 1983 and their upper quartile. Assuming that there is no 
+      climate change (or that climate change is negligible compared to the year-to-year 
+      variation in rainfall),&nbsp;...</p>
+		
+<div class="centred"><div class="boxed">
+<p>...&nbsp;we <strong><strong>estimate</strong> 
+            </strong><strong>that the population lower quartile is 939&nbsp;mm 
+            &mdash; i.e. we predict that annual rainfall will be less than 939&nbsp;mm 
+            in 1 out of 4 years in the future</strong>.</p>
+</div></div>
+
+		
+		<p class=heading>Approximate population</p>
+		
+    <p>The Samaru rainfalls have a fairly symmetric distribution so it is reasonable 
+      to try simulating random samples from a normal population. The diagram below 
+      shows a normal distribution whose mean and standard deviation equal those 
+      of our actual data.</p>
+    <p class=eqn><img class="gif" src="images/samaruModel.gif" width="399" height="141"></p>
+    <p>We will use this normal distribution as a population from which to sample 
+      56 values &mdash; simulated rainfalls from 56 years. For the normal&nbsp;(1068.1,&nbsp;178.5) 
+      distribution, the lower quartile is 947.8 mm, so this is the 'target' parameter 
+      that is estimated by our simulated samples.</p>
+			
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="stdErrorProg.ErrorSampleApplet">
+<param name="varName" value="Simulated Samaru rainfall (mm)">
+<param name="random" value="56 1068.1 178.5 875636431 2.5">
+<param name="dataAxis" value="500 1700 600 200">
+<param name="errorName" value="Error in estimate (mm)">
+<param name="errorAxis" value="-130 130 -100 50">
+<param name="percentile" value="0.25">
+<param name="paramName" value="Target (LQ)">
+<param name="statisticName" value="Estimate (sample LQ)">
+<param name="decimals" value="1">
+<param name="units" value="mm">
+<param name="maxBiasSe" value="99.9">
+<param name="showBiasSe" value="false">
+<param name="customText" value="Estimate s.e. & bias=Estimate s.e. & bias#Bias=Bias">
+</applet>
+</div>
+
+			
+		
+    <p>The diagram initially shows a sample of 56 rainfalls. The error is the 
+      difference between the sample lower quartile and the underlying population 
+      parameter, 947.8 mm.</p>
+    <p>Click <strong>Take sample</strong> a few times and observe that the error 
+      varies from sample to sample.</p>
+    <p>Click <strong>Accumulate</strong> then take several samples (of 56 annual 
+      rainfalls). The error distribution is built up as a stacked dot plot at 
+      the bottom of the diagram.</p>
+    
+<div class="centred"><div class="boxed">
+<p>The distribution of errors gives an idea 
+            of how far the lower quartile of our actual rainfall data (939&nbsp;mm) 
+            is likely to be from the true unknown population lower quartile.</p>
+</div></div>
+
+		<p>Click <strong>Estimate s.e. and bias</strong> to see the standard deviation 
+			and mean of the error distribution.</p>
+		<p class=heading>Understanding accuracy of estimate</p>
+
+	  <p>In the simulation, you should have observed that the bias of the estimator 
+			is small, so we will treat it as zero.</p>
+		<p>The estimated standard error in your simulation was probably just over 
+			4&nbsp;sec. We can use the 70-95-100 rule-of-thumb to help interpret its 
+			value &mdash; the error has approximately 95% chance of being within 2 s.e. of 
+			zero and will be almost certainly within 3 s.e. of zero.</p>
+		
+<div class="centred"><div class="boxed">
+<p>The error in our estimate of the population upper quartile, 
+						292&nbsp;sec, is likely to be less than 8&nbsp;sec and will almost 
+						certainly be less than 12&nbsp;sec.</p>
+</div></div>
+
+		<br>
+	</div>
+		
+	
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

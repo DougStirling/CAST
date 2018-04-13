@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Randomisation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="randomisation, completely randomised design, experimental design">
+	<meta name="dataset" content="Calf weight gain">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Design principle</p>
+<p>The varying characteristics of the experimental units  only result in misleading estimates for the factors of interest if they are  associated with the allocation of treatments to the experimental units (e.g. if variety A is used on wet plots). 
+	To avoid this,&nbsp;...</p>
+
+<div class="centred"><div class="boxed">
+<p>An important goal of experimental design is to minimise association 
+between allocation of the treatments and characteristics of the experimental units.</p>
+</div></div>
+
+<p>The method depends on whether these varying characteristics of the experimental 
+units are understood and measured before the experiment is conducted.</p>
+<p class="heading">Randomisation</p>
+<p>When the differing characteristics of the experimental units are unmeasured, 
+the best way to avoid association between them and the treatments is to randomly 
+allocate treatments to the experimental units. This is called <strong>randomisation</strong> 
+of the treatments and the experimental design is called a <strong>completely randomised 
+design</strong>. </p>
+<p>Randomisation does not <strong>guarantee</strong> that there will be no association 
+between the treatments and characteristics of the experimental units &mdash; by chance, 
+there may be some association. However...</p>
+
+<div class="centred"><div class="boxed">
+<p>Randomisation means that is unlikely that such lurking 
+variables will affect the conclusions.</p>
+</div></div>
+
+<p>There is no better way to allocate treatments if the varying characteristics 
+of the experimental units are unmeasured before the experiment is conducted.</p>
+<div class="diagram">
+
+<p class=heading>Effect of a feed supplement on weight gain of calves</p>
+
+		
+<p>Earlier in this section we described an experiment in which a feed supplement 
+was given to the first nine calves from a group of 18 that entered a barn. This 
+resulted in older and heavier calves getting the supplement, so the effect of 
+the supplement was over-estimated.</p>
+		
+<p>Randomising the allocation of the supplement to 9 of the 18 calves reduces 
+the chance of any association between the treatment and the age and weight of 
+the calves. The simulation below increases the weight gain of calves getting the 
+supplement by exactly 5.0.</p>
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="580" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="experProg.SelectTreatmentsApplet">
+<param name="yVarName" value="Weight gain (kg)">
+<param name="yRegn" value="-38 0.5 1">
+<param name="yAxis" value="0 40 0 5">
+<param name="lurkingVarName" value="Initial weight:">
+<param name="lurkingValues" value="118 113 119 107 100 123 105 130 115 108 110 120 115 101 111 120 112 125">
+<param name="lurkingMinMax" value="100 kg#130 kg">
+<param name="unitName" value="Calves">
+<param name="circleCols" value="3">
+<param name="treatVarName" value="Feed">
+<param name="treatLabels" value="Control Supplement">
+<param name="treatEffect" value="5.0">
+<param name="lurkingRegn" value="0.0 0.0 12.0">
+<param name="effectName" value="Effect of supplement">
+<param name="noInLowGroup" value="9">
+<param name="maxDiff" value="99.99">
+<param name="randomSeed" value="54329311 23498564">
+<param name="customText" value="Theoretical=Theoretical#Estimated=Estimated#Allocate*Treatments=Allocate*Treatments#Run*Experiment=Run*Experiment">
+</applet> 
+</div>
+
+	  
+		<p>Click <strong>Allocate treatments</strong> to randomly pick calves to get 
+			the supplement then click <strong>Run experiment</strong> to find their 
+			weight gains and estimate the effect of the supplement.</p>
+		<p>Repeat a few times and observe that the effect of the supplement is usually 
+			estimated to be between 2 and 8. The results are therefore consistent with 
+			the <strong>true</strong> effect that was built into the simulation, 5.0.</p>
+		
+<div class="centred"><div class="boxed">
+<p><span class="red bold">With randomisation, there is no tendency 
+					to over- or under-estimate the effect of the feed supplement.</span></p>
+</div></div>
+
+		<br>
+</div>
+
+<p class="heading">Mechanics of randomisation</p>
+<p>There are several different ways to randomise allocation of treatments to the experimental units. These all use random numbers either from printed tables or, preferably, generated by a computer. The simplest method is to use a spreadsheet such as Microsoft Excel.</p>
+<p>If there are <em>n</em> available experimental units,</p>
+<ul>
+  <li>Number the experimental units from 1 to <em>n</em>.</li>
+  <li>Write the numbers 1 to <em>n</em> in a spreadsheet column</li>
+  <li>Generate random numbers in an adjacent column &mdash; in Excel, type &quot;=RAND()&quot; in each cell.</li>
+  <li>Select the two columns and use a menu command to sort the rows into ascending order of the random numbers.</li>
+</ul>
+<p>This creates a random permutation of the numbers 1 to <em>n</em>. If there are two treatments, allocate the first to the experimental units in the top half of the list.</p>
+
+<div class="diagram">
+	<p>The table below illustrates this method.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="310">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="dotPlotProg.RandomiseUnitsApplet">
+<param name="nUnits" value="12">
+<param name="randomName" value="Random">
+<param name="randomDecimals" value="6">
+<param name="unitName" value="Unit no">
+<param name="customText" value="New random numbers=New random numbers#Sort random numbers=Sort random numbers">
+</applet>
+</div>
+
+<p>The first column shows twelve random numbers, each between 0 and 1, and the list of unit numbers. Click <strong>Sort random numbers</strong> to sort the rows of the table into ascending order of the random numbers. This randomly permutes the unit numbers.<br>
+</p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

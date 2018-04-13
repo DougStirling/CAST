@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Sums of squares</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="comparing groups, sums of squares">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Sums of squares for GLMs</p>
+  <p>In any GLM, it is possible to write the difference between the response values 
+		and the overall mean as the sum of two components,</p>
+	<p class="eqn"><img src="../multiRegnAnova/images/componentsSimple.gif" width="290" height="47"></p>
+	<p>The sums of squares of these components satisfy a similar relationship.</p>
+	<p class="eqn"><img src="../multiRegnAnova/images/componentSSqEqn.gif" width="322" height="51" align="absmiddle"></p>
+	
+  <p>Analysis of variance is based on these sums of squares and their relative 
+		sizes provide a useful summary of the proportion of the response variation 
+		that is explained by the model,</p>
+  <p class=eqn><img src="../regnAnova/images/r2Defn3.gif" width="110" height="38" alt="R-squared = SSexplained / SStotal"></p>
+	<p class="heading">Notation</p>
+	<p>To further examine the explained and residual sums of squares for the 2-group 
+		model, a different notation is required. We use two subscripts for the response 
+		values, the first of these denotes the group (1 or 2) and the second denotes 
+		the observation within its group (1 to <em>n<sub>i</sub></em>).</p>
+	<p class=eqn><em>y<sub>ij</sub></em>&nbsp; =&nbsp; the <em>j</em>'th of the 
+		<em>n<sub>i</sub></em> response values in the <em>i</em>'th group
+	<p class="heading">Sums of squares for the 2-group model</p>
+	<p>Since the fitted values of all observations in each group are all equal to 
+		the group mean, the formula for the explained sum of squares can be simplified. 
+		Since it depends on the squared differences between the group means and the 
+		overall mean, it is also called the <strong>between group sum of squares</strong>.</p>
+	<p class="eqn"><img src="images/ssBetween.gif" width="373" height="32"></p>
+	<p>The residual sum of squares depends on the squared differences between each 
+		response value and its group mean, so it is also called the <strong>within 
+		group sum of squares</strong>.</p>
+  <p class="eqn"><img src="images/ssWithin.gif" width="236" height="32"></p>
+	<p class="heading">Sum of squares table</p>
+  <p>Using this notation, the sum of squares table is:</p>
+  <p class="eqn"><img src="images/betweenWithinTable.gif" width="344" height="148"></p>
+<br>
+
+  <div class="diagram">
+<p class="heading">Displaying the components</p>
+<p>The diagram below shows a data set with two groups.</p>
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="350" height="430">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.ComponentsGroupApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Group">
+<param name="xLabels" value="1 2">
+<param name="xValues" value="8@0 8@1">
+<param name="anovaModel" value="6 2 14 2">
+<param name="randomSeed" value="623945782">
+<param name="yAxis" value="0 20 0 5">
+<param name="componentAxis" value="-10 10 -10 5">
+<param name="decimals" value="3">
+<param name="dotPlotWidth" value="110">
+<param name="ssqNames" value="Total variation#Between groups#Within groups">
+<param name="maxSsq" value="999.999">
+<param name="customText" value="Component=Component">
+</applet>
+</div>
+
+<p>Use the pop-up menu to draw the three components on the jittered dot plot of 
+the data.</p>
+<ul>
+<li>Click on crosses to see the components for individual values.</li>
+<li>Observe that the sums of squares of the two components add up to the total 
+sum of squares.</li>
+</ul>
+<br>
+
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

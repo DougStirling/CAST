@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Estimating contrasts</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="contrast, confidence interval">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Testing or estimation?</p>
+<p>We have approached questions about the internal structure of the factor levels in an experiment by examining how constraints to the parameters affect the fit of the model in an analysis of variance table.</p>
+<p>An alternative approach is to <strong>estimate</strong> the value of linear functions of the model parameters. For example, we examined whether levels A and B had the same mean response by imposing a constraint that the level parameters are equal and testing the change in the residual sum of squares (explained by the constraint). This approach would be necessary if we were comparing three or more factor levels, but if we are only comparing two, we can consider <strong>estimating</strong> the difference between the mean response of the two factor levels (or equivalently, estimating the difference between the two level parameters).</p>
+<p class="heading">Contrasts, confidence intervals and tests</p>
+<p>Computer software will provide a point estimate and standard error for any linear combination of parameters. (These linear combinations of parameters are called <strong>contrasts</strong>.) From these values, we can obtain 95% confidence intervals using t-values whose degrees of freedom are those of the residual sum of squares.</p>
+<p>The estimates of such contrasts and their standard errors can also be used in  t-tests for whether the contrasts are zero.</p>
+<div class="centred"><div class="boxed">
+	<p>The p-value associated with the t-test about whether a contrast is zero is identical to the p-value that would be found in an analysis of variance table that used the contrast as a constraint. </p>
+</div></div>
+<br>
+
+<div class="diagram">
+<p class="heading">Example</p>
+<p>The diagram below shows data from a completely randomised experiment for a factor with six levels.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="570" height="570">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="exper2Prog.ContrastCiApplet">
+<param name="yVarName" value="Y">
+<param name="yValues" value="5 7 9 11 13 15 17 19 21 23 25 27">
+<param name="yAxis" value="4 28 5 5">
+<param name="xVarName" value="Factor">
+<param name="xValues" value="2@0 2@1 2@2 2@3 2@4 2@5">
+<param name="xLabels" value="A B C D E F">
+<param name="maxParam" value="999.99">
+<param name="maxSe" value="99.999">
+<param name="contrast1" value="A vs B#-1 1 0 0 0 0">
+<param name="contrast2" value="A vs (B,C,D,E,F)#-1 0.2 0.2 0.2 0.2 0.2">
+<param name="contrast3" value="(A,B) vs (C,D,E,F)#-0.5 -0.5 0.25 0.25 0.25 0.25">
+<param name="customText" value="Is contrast zero=Is contrast zero#95% CI=95% CI#Inference about contrast=Inference about contrast#Estimate=Estimate#est=est#se=se">
+</applet>
+</div>
+
+<p>The pop-up menu can be used to display confidence intervals and perform t-tests for a few standard contrasts.</p>
+<p>You can type other values into the text-edit boxes for the parameter coefficients (except for the first coefficient that is always set to make the sum of the coefficients zero). For example, set the coefficients to (0, -0.5, -0.5, 0.5, 0.5, 0) then click <strong>Inference about contrast</strong>. The confidence interval estimates the difference between the mean response for levels (D&nbsp;&amp;&nbsp;E) and for levels (B&nbsp;&amp;&nbsp;C), and the t-test tests whether these two means are equal.</p>
+</div>
+
+
+<p class="heading">Contrasts in block designs</p>
+<p>Contrasts can be found in an identical way for more complex experiments such as randomised block designs. Computer software will provide estimates and standard errors from which confidence intervals may be obtained.</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

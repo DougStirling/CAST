@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Transformations linéaires</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="transformations, linear transformations, centre, spread">
+	<meta name="dataset" content="Taxi distances/kilometers and miles">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Idée générale de transformations</p>
+	
+<p>Parfois, il est commode d'exprimer les nombres sur une échelle différente. Par exemple, un Américain aurait facilement reconnaître que la température de l'air de 90 degrés Fahrenheit est chaud, alors que dans d'autres pays les températures sont plus facilement «compris» sur l'échelle Celsius. C'est ce qu'on appelle la <strong>transformation</strong>.</p>
+<p>Certaines transformations sont effectuées pour la commodité du lecteur (comme le Fahrenheit en Celsius conversion ci-dessus), mais la transformation peut aussi être un outil utile qui peut nous aider à comprendre un ensemble de données.</p>
+<p class="heading">Transformations linéaires</p>
+<p>Parfois, les valeurs dans un ensemble de données peuvent être remplacés par d'autres contenant exactement les mêmes informations. Par exemple, un exploitant de taxi pourraient enregistrer les distances en kilomètres parcourus par chacun des 30 de la compagnie des taxis sur un jour particulier. Si les distances avaient été enregistrés en miles, l'ensemble de données aurait contenu des informations équivalentes.</p>
+<p>Lorsque les nouvelles valeurs sont trouvées à partir des données d'origine par une équation de la forme</p>
+
+<p class=eqn style="color:#000000"><strong>nouvelle valeur</strong>&nbsp; = &nbsp; <em>a</em> &nbsp;+ &nbsp;<em>b</em> &nbsp;× &nbsp;<strong>ancienne valeur</strong></p>
+
+<p>il est appelé une <strong>transformation linéaire</strong> des valeurs d'origine. Une transformation linéaire peut changer le centre et la propagation des données, mais sa forme reste inchangé. Pour les affichages graphiques, seuls les numéros d'étiquetage des changements axe.</p>
+		
+<table width="75%" border="1" class="centred" cellpadding="10" cellspacing="0" bgcolor="#FFFFFF">
+    <tr>
+		  <td align="center"><strong>Transformation linéaire des changements au centre et la propagation, mais pas la forme d'une distribution.</strong></td>
+	</tr>
+</table>
+
+  <p>Depuis la forme de la distribution n'est pas affectée, des transformations linéaires ne vous aident pas à comprendre la distribution des valeurs dans les données.</p>
+
+<div class="diagram"> 
+<p class="heading">Les distances parcourues par des taxis</p>
+<p>Un exploitant de taxi enregistre les distances en kilomètres parcourus par chacun des 30 de la compagnie des taxis sur un jour particulier. Distances en kilomètres et miles sont liés par l'équation</p>
+	<p class=eqn style="color:#000000"><strong>miles</strong> &nbsp; = &nbsp;0.6214&nbsp;× &nbsp;<strong>kilometres</strong></p>
+		<p>Le tracé de points ci-dessous montre les distances parcourues par chaque taxi dans une compagnie de taxi pendant une seule journée. Les deux axes permettent des distances pour être lu en kilomètres et miles &mdash; parcelles séparées points ne sont pas nécessaires.<br>
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="200">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="transformProg.TwinAxisDot2Applet">
+<param name="varName" value="distance (km)">
+<param name="values" value="195 246 0 1 117 228 236 257 212 251 253 201 205 225 214 161 163 196 241 245 186 208 191 192  174 180 185 192 219 276">
+<param name="horizAxis1" value="0 300 0 50">
+<param name="var2Name" value="distance (miles)">
+<param name="horizAxis2" value="0 186.42 0 50">
+<param name="transform" value="0.0 0.6214 0">
+<param name="indexName" value="Taxi">
+<param name="rawLabel" value="voyagé: ">
+<param name="rawUnits" value="km">
+<param name="transformLabel" value="=">
+<param name="transformUnits" value="miles">
+</applet>
+</div>
+
+<p>Faites glisser sur la traverse individuels pour voir les distances en miles et en kilomètres parcourus par chaque taxi.</p>
+
+</div>
+
+<p class="heading">Centre et la propagation</p>
+<p>Le centre et la propagation des données de façon linéaire transformée peuvent être facilement trouvés de ceux des mesures originales. Après une transformation de la forme</p>
+<p class=eqn style="color:#000000"><strong>nouvelle valeur</strong>&nbsp; = &nbsp; <em>a</em> &nbsp;+ &nbsp;<em>b</em> &nbsp;× &nbsp;<strong>ancienne valeur</strong></p>
+<p>la moyenne (et d'autres mesures du centre comme la médiane) sont également liés</p>
+<p class=eqn style="color:#000000"><strong>nouvelle moyenne</strong>&nbsp; = &nbsp; <em>a</em> &nbsp;+ &nbsp;<em>b</em> &nbsp;× &nbsp;<strong>vieille moyenne</strong></p>
+<p>L'écart-type (et d'autres mesures de propagation qui sont exprimés dans les mêmes unités que les données brutes, telles que l'intervalle inter-quartile) sont liées à l'équation.</p>
+<p class=eqn style="color:#000000"><strong>nouvelle SD</strong> &nbsp; = &nbsp;<em><font size="+1">|</font>b<font size="+1">|</font></em> &nbsp;× &nbsp;<strong>vieille SD</strong></p>
+<p>Notez que si le facteur d'échelle, <em>b</em>, est négatif, nous devons changer son signe, depuis la déviation standard doit être positif.</p>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Relationship with rectangular distribution</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="transformation, cumulative distribution function, rectangular distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Cumulative distribution function and quantiles</p>
+
+<p>The cumulative distribution function of a continuous random variable \(X\) has been defined as</p>
+\[
+F(x) \;\;=\;\; P(X \le x)
+\]
+<p>and is a monotonic increasing function rising from 0 to 1. Its inverse is</p>
+\[
+F^{-1}(y) \;\;=\;\; q_y \qquad \text{where }P(X \le q_y) = y
+\]
+<p>Therefore \(F^{-1}(y)\) returns the \(y\)'th <a href="javascript:showNamedPage('continuousProbs5')">quantile</a> of the distribution. Note also that</p>
+\[
+F\left(F^{-1}(y)\right) \;\;=\;\;  y
+\]
+<p class="heading">Applying the CDF as a transformation</p>
+<p>We now show what happens when a variable's cumulative distribution function is used to transform it.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Transforming a variable into a rectangular distribution</p>
+<p>If a continuous random variable \(X\) has cumulative distribution functions \(F(x)\), then the random variable \(Y = F(X)\) has a \(\RectDistn(0, 1)\) distribution.</p>
+</div>
+
+<div class="proof">
+<p>For values \(y\) between 0 and 1, the cumulative distribution function of Y is</p>
+\[ \begin{align}
+F_Y(y) \;\;=\;\; P(Y \le y) \;\;&amp;=\;\; P(F(X) \le y) \\
+&amp;=\;\; P(X \le F^{-1}(y)) \\
+&amp;=\;\; F\left(F^{-1}(y)\right) \\
+&amp;=\;\; y
+\end{align} \]
+<p>More completely,</p>
+\[
+F_Y(y) \;\;=\;\; \begin{cases} 0 \quad\quad &amp; y \lt 0 \\[0.3em]
+y &amp; 0 \le y \le 1 \\[0.3em]
+1 &amp; y \gt 1
+\end{cases} \]
+<p>The probability density function of \(Y\) is therefore</p>
+\[
+f_Y(y) \;\;=\;\; F_Y'(y) = 1
+\]
+<p>between 0 and 1 and zero elsewhere — a \(\RectDistn(0, 1)\) distribution.</p>
+</div>
+
+</div>
+
+<p>The converse of this theorem is also useful.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Transforming a rectangular variable into an arbitrary distribution</p>
+		<p>If \(F(x)\) is a monotonic continuous function of \(x\) rising from 0 to 1, with inverse function \(F^{-1}(\cdot)\), and \(Y \sim \RectDistn(0, 1)\), then the random variable \(X = F^{-1}(Y)\) has a distribution with cumulative distribution function \(F(x)\).</p>
+	</div>
+	<div class="proof">
+		<p>The cumulative distribution function of \(X\) is</p>
+		\[ F_X(x) \;\;=\;\; P(X \le x) \;\;=\;\; P(F^{-1}(Y) \le x) \;\;=\;\; P(Y \le F(x)) \;\;=\;\; F(x)\]	</div>
+</div>
+<p>We now illustrate these results with an example.</p>
+
+<div class="example" title="Example: Exponential distribution">
+	
+	<p class="exampleHeading">Example: Exponential distribution</p>
+
+<p>If \(X \sim \ExponDistn(\lambda)\), then it has cumulative distribution function</p>
+\[ F(x) \;\;=\;\; 1 - e^{\large -\lambda x}\]
+
+<p>The first result above means that</p>
+\[ Y \;\;=\;\; 1 - e^{\large -\lambda X} \;\;\sim\;\; \RectDistn(0,\;1) \]
+<hr width="75%">
+<p>The inverse function to \(F(x)\)  is</p>
+\[ F^{-1}(y) \;\;=\;\; -\frac {\log(1 - y)}{\lambda}\]
+<p>Therefore if \(Y \sim \RectDistn(0,\; 1)\), then \(X = -\dfrac {\log(1 - Y)}{\lambda}\) has a distribution with cumulative distribution function \(F(x)\) that is therefore an \(\ExponDistn(\lambda)\) distribution.</p>
+<hr width="75%">
+<p>The following diagram illustrates this relationship for   \(X \sim \ExponDistn(\lambda=0.2)\). The cumulative distribution function for this distribution, \(F(x)\), is shown in the main part of the diagram, with the pdfs  of \(X\) and \(Y = F(X)\) on the bottom and left margins of the diagram.</p>
+<div class="centred">
+	<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="400">
+		<script type="text/javascript">writeAppletParams();</script>
+		<param name="appletName" value="distributionProg.ExponUniformApplet">
+		<param name="backgroundColor" value="FFFBF3">
+		<param name="xAxis" value="-1 30 0 5">
+		<param name="cdfAxis" value="-0.05 1.05 0 0.1">
+		<param name="lambda" value="0.2">
+		<param name="startX" value="5.0">
+	</applet>
+</div>
+<p>Click anywhere on the cumulative distribution function to see how values of \(X\) are related to those of \(Y\). Observe that:</p>
+<ul>
+	<li>When the pdf of \(X\) is low at the right tail of its distribution, a wide range of x-values translates into similar y-values, so the pdf of \(Y\) remains constant.</li>
+	<li>When the pdf of \(X\) is high near zero, a small range of x-values translates into a relatively wide range of y-values (e.g. \(0 \lt x \lt 2\) corresponds to \(0 \lt y \lt 0.33\)) so the pdf of \(Y\) again remains constant.</li>
+</ul>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

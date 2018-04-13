@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Numerical factors</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="linear model">
+	<meta name="dataset" content="Soybean yield and trace elements">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Model for numerical factors</p>  
+  <p>The model without interaction that treats both factors as categorical is</p>
+  <div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+		<tr>
+			<td align="center"><br>
+					<em><span class="black">y</span><sub><span class="blue">i</span><span class="green">j</span><span class="red">k</span></sub></em>&nbsp;= &nbsp;µ&nbsp;+&nbsp;</td>
+			<td align="center" class="blue">(<em>explained by X</em>)<br>
+				β<em><sub>i</sub></em></td>
+			<td align="center"><br>
+				&nbsp;+&nbsp;</td>
+			<td align="center" class="green">(<em>explained by Z</em>)<br>
+				γ<em><sub>j</sub></em></td>
+			<td align="center"><br>
+				&nbsp;+&nbsp;</td>
+			<td align="center" class="red">(<em>unexplained</em>)<br>
+				ε<em><sub>ijk</sub></em></td>
+		</tr>
+	</table></div>
+  <p>The simplest way to impose a smooth relationship between each numerical factor and the response is with a linear term. A linear model for both factors takes the form</p>
+  <div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+		<tr>
+			<td align="center"><br>
+					<em><span class="black">y</span><sub><span class="blue">i</span><span class="green">j</span><span class="red">k</span></sub></em>&nbsp;= &nbsp;µ&nbsp;+&nbsp;</td>
+			<td align="center" class="blue">(<em>explained by X</em>)<br>
+				β<em> x<sub>i</sub></em></td>
+			<td align="center"><br>
+				&nbsp;+&nbsp;</td>
+			<td align="center" class="green">(<em>explained by Z</em>)<br>
+				γ<em> z<sub>i</sub></em></td>
+			<td align="center"><br>
+				&nbsp;+&nbsp;</td>
+			<td align="center" class="red">(<em>unexplained</em>)<br>
+				ε<em><sub>ijk</sub></em></td>
+		</tr>
+	</table></div>
+  <p>This model corresponds to a plane in 3-dimensions.</p>
+  <div class="diagram">
+    <p class="heading">Soybean yield</p>
+
+    <p>Consider a possible model for the soybean yield experiment in which the 
+      mean yield is given by the equation</p>
+    <p class="eqn"><em>mean soybean yield</em> &nbsp; = &nbsp; 1.6 &nbsp; + &nbsp; 0.01 × <em>Mn</em> &nbsp; - &nbsp; 0.03 × <em>Cu</em></p>
+    <p>This corresponds to a plane in 3-dimensions, as shown below.</p>
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="460">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="multiRegnProg.Predict3DApplet">
+<param name="yAxis" value="1.2 3.2 1.5 0.5">
+<param name="xAxis" value="5 125 20 30">
+<param name="zAxis" value="0 8 1 2">
+<param name="yVarName" value="Soybean yield">
+<param name="xVarName" value="Mn">
+<param name="zVarName" value="Cu">
+<param name="modelParams" value="1.6 0.01 -0.03 0.0">
+<param name="predictMinMax" value="1.20 3.20 5.0 125.0 0.0 8.0">
+</applet> 
+</div>
+
+    <p>Click anywhere between the Mn and Cu axes (in the yellow area of the diagram) 
+      to see how the plane translates any pair of values (<em>Mn</em>, <em>Cu</em>) into a predicted 
+      value of yield, via the equation.</p>
+</div>
+
+  <p class="heading">Least squares</p>
+	<p>The linear model above contains three unknown parameters  that must be estimated. We again define <strong>residuals</strong> to be differences between  the actual response 
+		values and the values predicted by the model:</p>
+	<p class=eqn><img src="../linModIntro/images/residDef.gif" width="91" height="21"> </p>
+	<p>The residuals are vertical distances between the model plane and the data points. The parameters are estimated to minimise the sum 
+		of squares of these residuals &mdash; the method of <strong>least squares</strong>.</p>
+	<p class=eqn><img src="../linModIntro/images/minResid2.gif" width="97" height="21"> </p>
+	<div class="diagram"> 
+		<p class="heading">Soybean yield and trace elements</p>
+		<p>The diagram below shows the soybean yield data with the fitted values from 
+			a linear model, joined by a grid of coloured lines. The model residuals 
+			are shown as red vertical lines from the data points to their fitted values.</p>
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoFactorProg.RotateDragFactorsApplet">
+<param name="yVarName" value="Soybean yield (tonne/hectare)">
+<param name="yValues" value="1.558 1.578 2.003 2.033 2.490 2.470 2.830 2.810 1.590 1.610 2.020 2.051 2.620 2.632 2.860 2.841 1.558 1.550 2.003 2.010 2.490 2.690 2.830 2.910 1.328 1.427 2.010 2.031 2.887 2.832 2.960 2.941">
+<param name="yAxis" value="1.2 3.2 1.5 0.5">
+<param name="zVarName" value="Cu">
+<param name="zValues" value="8@0 8@1 8@2 8@3">
+<param name="zLabels" value="1 3 5 7">
+<param name="xVarName" value="Mn">
+<param name="xValues" value="2@0 2@1 2@2 2@3 2@0 2@1 2@2 2@3 2@0 2@1 2@2 2@3 2@0 2@1 2@2 2@3">
+<param name="xLabels" value="20 50 80 110">
+<param name="zModelTerms" value="none linear">
+<param name="xModelTerms" value="none linear">
+<param name="interaction" value="false">
+<param name="initialModel" value="2.0">
+<param name="maxRss" value="99.999">
+<param name="customText" value="None=None#Linear=Linear#Factor=Factor">
+</applet> 
+</div>
+
+		<p>Initially the model used only has a constant term for the mean. Since neither of the factors affect the response in this model, all fitted values are equal and their least squares estimate is the overall response mean.</p>
+		<p>Select <strong>Linear</strong> from the pop-up menu for Manganese (<em>Mn</em>). 
+			This displays the least squares fit of a linear model containing a linear term for this variable (but no term for <em> Cu</em>). The amount of <em>Mn</em> seems to have an important influence on the yield.</p>
+		<p>Finally select <strong>Linear </strong>from the pop-up menu for Copper (<em>Cu</em>). 
+			This displays the least squares fit for the full linear model for the two controlled variables.</p>
+		<p>Finally click the buttons <strong>y-x</strong> and <strong>y-z</strong> 
+			to rotate the fitted model.</p>
+		<div class="centred"><table width="75%" border="1" cellspacing="0" cellpadding="10" style="background-color:#FFFFFF" class="centred">
+			<tr> 
+				<td align="center"><strong>Do you see any problem with the fit of this 
+					model? </strong></td>
+			</tr>
+		</table></div>
+		<br>
+		
+	</div>
+
+  <br>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

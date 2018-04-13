@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE topic SYSTEM "exerciseXmlDefn.dtd">
+
+<topic name='pValues'>
+<longName>P-values (general)</longName>
+
+
+<exercise name='interpretPvalue'>
+	<description>Interpret a p-value</description>
+	<comment>This is a multiple-choice question giving a p-value about a non-standard test and five possible interpretations. There are several options that change the interpretations presented.\\nThe statements can be phrased in generic terms about the null and alternative hypotheses, relate to the actual application (harder) or be a random mixture (default)\\nThe choices can be sorted, a random permutation or allow repeats (default)\\nThe choices can only mention the alternative hypothesis (easier) or a mixture of null and alternative hypothesis statements (default).</comment>
+	<applet>exerciseTestProg.PValueInterpApplet</applet>
+	<width>500</width>
+	<height>550</height>
+	
+	<option name="sorted">Sort choices by strength of evidence against H0</option>
+	<option name="randomised">Choices are a random permutation of different 'strengths'</option>
+	
+	<option name="generic">Use wording about the 'null' and 'alternative' hypotheses</option>
+	<option name="application">Wording uses the context of the question</option>
+	
+	<option name="altOnly">Wording only refers to evidence for the alternative hypothesis being true</option>
+	
+	<variable name="p-value" type="random"></variable>
+	<variable name="nullHypoth" type="string(40)"></variable>
+	<variable name="altHypoth" type="string(40)"></variable>
+	
+	<variation>
+		<shortName>heightWeight</shortName>
+		<longName>Weights and heights of children (relationship)</longName>
+		<question>Physiologists measured the weights and heights of #?:int(10:50)# children aged 10.\\nA scatterplot of the weights and heights was drawn and the linearity of the relationship was tested. (The null hypothesis is a linear relationship.) The p-value from the test was #p-value(:)#.</question>
+		<qnParam>nullHypoth(there is a linear relationship between the weight and height of the children)#altHypoth(the weight and height of the children are nonlinearly related)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>slabStrength</shortName>
+		<longName>Strengths of paving slabs (normality)</longName>
+		<question>Engineers measured the strength of #?:int(10:50)# paving slabs.\\nThe resulting values were tested to see whether they might have come from a normal distribution (null hypothesis.) The p-value from the test was #p-value(:)#.</question>
+		<qnParam>nullHypoth(the strengths are a sample from a normal distribution)#altHypoth(the strengths come from a non-normal distribution)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>penguinWeight</shortName>
+		<longName>Weights of penguin pairs (relationship)</longName>
+		<question>Ecologists captured #?:int(10:50)# nesting pairs of penguins and recorded the weights of each.\\nA hypothesis test was conducted to test whether the birds tended to mate with others of similar size. (The null hypothesis is that the two weights were uncorrelated.) The p-value from the test was #p-value(:)#.</question>
+		<qnParam>nullHypoth(the weights of the nesting pairs of penguins are unassociated with each other)#altHypoth(the weights of the nesting pairs of penguins are related to each other)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>feedSupplement</shortName>
+		<longName>Feed supplement and weight gain (effect)</longName>
+		<question>Agricultural researchers conducted an experiment to assess whether a feed supplement increases the weight gain in pigs.\\nThe null hypothesis is that the supplement does not affect weight gain and the resulting p-value is #p-value(:)#.</question>
+		<qnParam>nullHypoth(the feed supplement has no effect on the weight gain of the pigs)#altHypoth(the feed supplement changes the weight gain of the pigs)</qnParam>
+	</variation>
+</exercise>
+
+</topic>

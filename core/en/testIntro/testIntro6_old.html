@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Randomisation test for correlation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="randomisation test">
+	<meta name="dataset" content="Soccer league">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p>In this page, another example of randomisation is described to assess whether 
+teams in a soccer league are evenly matched.</p>
+
+<div class="diagram"> 
+<p class=heading>English Premier Soccer League, 2007/08 and 2008/09</p>
+
+<p>We saw earlier that the distribution of points in the 2008/09 English Premier 
+Soccer League Table was <a href="javascript:showNamedPage('testIntro2')">not 
+consistent with all teams being evenly matched</a> &mdash; the spread of points was 
+too high. We will now investigate this further.</p>
+<p>If some teams are better than others, the positions of teams in the league 
+in successive years will tend to be similar. The table below shows the points 
+for the teams in two seasons. (Note that the bottom three teams are relegated 
+each year and three teams are promoted from the lower league, so we cannot compare 
+the positions of six of the teams.)</p>
+<div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+<tr> 
+<th>&nbsp;</th>
+<th colspan="2" align="center">Points</th>
+</tr>
+<tr> 
+<th align="left">
+<div>Team</div></th>
+<th width="100" align="center">2007/08</th>
+<th width="100" align="center">2008/09</th>
+</tr>
+<tr> 
+<td><strong>ManchesterU<br>Chelsea<br>Arsenal<br>Liverpool<br>Everton<br>AstonVilla<br>Blackburn<br>Portsmouth<br>ManchesterC<br>WestHam<br>Tottenham<br>Newcastle<br>Middlesbro<br>Wigan<br>Sunderland<br>Bolton<br>Fulham<br>Reading<br>Birmingham<br>DerbyCounty<br>StokeCity<br>HullCity<br>WestBromA</strong></td>
+<td width="100" align="center" bgcolor="#FFFFFF">87<br>85<br>83<br>76<br>65<br>60<br>58<br>57<br>55<br>49<br>46<br>43<br>42<br>40<br>39<br>37<br>36<br>36<br>35<br>11<br>
+-<br>
+-<br>
+-</td>
+<td width="100" align="center" bgcolor="#FFFFFF">90<br>83<br>72<br>86<br>63<br>62<br>41<br>41<br>50<br>51<br>51<br>34<br>32<br>45<br>36<br>41<br>53<br>-<br>-<br>-<br>45<br>35<br>32</td>
+</tr>
+</table></div>
+<p>Manchester United, Chelsea, Arsenal and Liverpool were the top four teams in both years. However,&nbsp;...</p>
+	
+<div class="centred"><table cellpadding="10" class="centred" style="background-color:#FFFFFF" width="75%" border="1">
+	<tr>
+<td><strong>Excluding Manchester United, Chelsea, Arsenal and Liverpool, do there 
+seem to be any differences in ability between the other teams?</strong></td>
+</tr>
+</table></div>
+	
+<p class=heading>Randomisation</p>
+<p>If all other teams have equal probabilities of winning against any opponent, 
+the 2008/09 points of 45 (which was actually obtained by Wigan) would have been 
+equally likely to have been obtained by any of the teams in that year. Indeed, 
+any allocation of the points (63, 62, 41, ..., 53) to the teams (Everton, Aston Villa, 
+Blackburn, ..., Fulham) would be equally likely.</p>
+<p>The diagram below performs this <strong>randomisation</strong> of the results 
+in 2008/09.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="530">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="randomisationProg.TwoYearCorrApplet">
+<param name="labelName" value="Team">
+<param name="labels" value="Everton AstonVilla Blackburn Portsmouth ManchesterC WestHam Tottenham Newcastle Middlesbro Wigan Sunderland Bolton Fulham">
+<param name="xVarName" value="2007/08">
+<param name="xValues" value="65 60 58 57 55 49 46 43 42 40 39 37 36">
+<param name="yVarName" value="2008/09">
+<param name="yValues" value="63 62 41 41 50 51 51 34 32 45 36 41 53">
+<param name="labels2" value="ManchesterU Chelsea Arsenal Liverpool Reading Birmingham DerbyCounty StokeCity HullCity WestBromA">
+<param name="xValues2" value="87 85 83 76 36 35 11 ? ? ?">
+<param name="yValues2" value="90 83 72 86 ? ? ? 45 35 32">
+<param name="initFixed" value="4">
+<param name="summaryAxis" value="-1.0 1.0 -1.0 0.5">
+<param name="corrName" value="Corr">
+<param name="maxCorr" value="-1.000">
+<param name="customText" value="Actual Data=Actual Data#Randomised Data=Randomised Data#Propn more extreme=Propn more extreme">
+</applet>
+</div>
+
+<p>Click <strong>Randomise</strong> to shuffle the 2008/09 points between the 
+teams (excluding the top four teams and those that were only in the league for 
+one of the seasons). If the teams were of equal ability, these points would have 
+been as likely as the actual ones.<span class="gray"></span></p>
+<p>The correlation coefficient between the points in the two seasons gives an 
+indication of how closely they are related. Click <strong>Accumulate</strong> 
+and repeat the randomisation several more times. Observe that the correlation 
+for the randomised values is only as far from zero as the actual correlation 
+(<em>r</em>&nbsp;=&nbsp;0.537) in about 5% of randomisations. Since a correlation as high as 0.537 is fairly unusual for 
+equally-matched teams,&nbsp;...</p>
+<div class="centred"><div class="boxed">
+  <p>There is moderately strong evidence of a difference in skill between teams, even when the top four have been excluded. </p>
+</div></div>
+
+<br>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Parameterisations for model with one factor</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="model, normal model, parameterisation, baseline level">
+	<meta name="dataset" content="Antibiotics">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Standard parameterisation of one-factor model</p>
+  <p>Before explaining fully how the two-factor model is described with  parameters, it is necessary to further discuss the parameters of the <strong>one-factor</strong> model.</p>
+  <p>The one-factor model for an experiment with <em>g</em> levels was initially written in the following form. If there are <em>n<sub>i</sub></em> replicates at factor level <em>i</em>, we use the notation <span class="black em">y<sub>ij</sub></span> to denote the <em>j</em>'th of the <em>n<sub>i</sub></em> response values at level <em>i</em> of the factor.</p>
+  <p class="eqn"><span class="black em">y<sub>ij</sub></span> &nbsp;= &nbsp;<span class="green">µ<em><sub>i</sub></em></span> &nbsp; + &nbsp; <span class="red">ε<em><sub>ij</sub></em></span> &nbsp; &nbsp; &nbsp; for <em>i</em> = 1 to <em>g</em> and <em>j</em> = 1 to <em>n<sub>i</sub></em></p>
+  <p>where <span class="eqn red">ε<em><sub>ij</sub></em></span> is the normally distributed error. With this parameterisation, <span class="green">µ<em><sub>i</sub></em></span> denotes the mean response at factor level <em>i</em>.</p>
+  <p class="heading">Alternative parameterisations</p>
+  <p>An alternative but equivalent way to express this model is</p>
+  <p class="eqn"><span class="black em">y<sub>ij</sub></span> &nbsp;= &nbsp;<span class="green">µ</span> &nbsp; + &nbsp; <span class="blue">β<em><sub>i</sub></em></span> &nbsp; + &nbsp; <span class="red">ε<em><sub>ij</sub></em></span> &nbsp; &nbsp; &nbsp; for <em>i</em> = 1 to <em>g</em> and <em>j</em> = 1 to <em>n<sub>i</sub></em></p>
+  <p>where <span class="blue">β<sub>1</sub> = 0</span>. With this parameterisation,</p>
+  <ul>
+    <li><span class="green">µ</span> is the mean response for factor level 1.</li>
+    <li><span class="blue">β<em><sub>i</sub></em></span> is the difference between the mean response for level <em>i</em> and that for level 1, for <em>i</em>&nbsp;=&nbsp;2 to <em>g</em>.</li>
+  </ul>
+  <p>Level 1 of the factor is called the <strong>baseline</strong> level and there are  (<em>g</em>&nbsp;-&nbsp;1) of the β-parameters describing <strong>differences</strong> between the mean response at the other factor levels and the baseline level.</p>
+  <p class="heading">Alternative baseline levels</p>
+  <p>Restricting <span class="blue">β<sub>2</sub> = 0</span>, <span class="blue">β<sub>3</sub> = 0</span>, etc, in the model instead of <span class="blue">β<sub>1</sub> = 0</span> sets a different baseline level but is equivalent in the sense that the model remains flexible enough to allow arbitrary means for all <em>g</em> factor levels.</p>
+  <div class="diagram"> 
+
+    <p class="heading">Antibiotic effectiveness</p>  
+    <p>A percentage of any antibiotic binds to blood serum proteins, reducing 
+      the effectiveness of the medication. This is of considerable pharmacological 
+      importance since increased binding reduces the systemic uptake of the drug. 
+      An experiment was conducted using bovine serum to determine the binding 
+      percentage for five common antibiotics.</p>
+	<blockquote>
+	<ul>
+      <li>Penicillin</li>
+      <li>Tetracycline</li>
+      <li>Streptomycin</li>
+      <li>Erythromycin</li>
+      <li>Chloramphenicol</li>
+	</ul>
+	</blockquote>
+	<p>The experiment was repeated four 
+      times for each antibiotic.</p>
+    <p>The following jittered dot plot shows the data. Initially we have not chosen a baseline antibiotic, so the five β      parameters are the mean responses for the different factor levels (antibiotics).</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="exper2Prog.FactorParamsApplet">
+<param name="yName" value="Binding percentage">
+<param name="yValues" value="29.6 24.3 28.5 32.0 27.3 32.6 30.8 34.8 5.8 6.2 11.0 8.3 21.6 17.4 18.3 19.0 29.2 32.8 25.0 24.2">
+<param name="xName" value="Antibiotic">
+<param name="xValues" value="4@0 4@1 4@2 4@3 4@4">
+<param name="xLabels" value="Penic Tetra Strep Eryth Chlor">
+<param name="yAxis" value="0 40 0 10">
+<param name="maxParam" value="-99.99">
+<param name="customText" value="Baseline=Baseline#Baseline and offets=Baseline and offets">
+</applet> 
+</div>
+
+    <p>Drag the red arrows to adjust the five parameters of the model and note that the model has the flexibility to allow any mean responses for the five antibiotics.</p>
+    <p>Click the checkbox<strong> Baseline and offsets</strong> to choose <em>Penicillin</em> as the baseline antibiotic. The parameter µ denotes its mean binding percentage. The  β      parameters now denote the difference between the mean binding percentages of 
+      the other antibiotics and <em>Penicillin</em>. Again note that the model has the same flexibility &mdash; the red arrows can be used to give any mean responses for the five antibiotics.</p>
+    <p>Click <strong>Least squares</strong> to set the parameters to their least 
+      squares estimates. The fitted values are now all equal to their group mean.</p>
+    <p>Finally, use the pop-up menu to change the baseline category. Observe that 
+      although the values of the parameters change, the fitted values from the 
+      model remain the same.</p>
+		
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

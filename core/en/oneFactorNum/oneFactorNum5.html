@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Anova table and tests</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="numerical factor, linear model, quadratic model, anova, analysis of variance, f test, lack of fit">
+	<meta name="dataset" content="Antibiotic effectiveness">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Comparing models</p>  
+  <p>As in other situations with a hierarchy of possible models, an analysis of variance table is used to find the simplest model that is consistent with the data. This is based on the analysis of variance table for the model in which the factor is treated as categorical, but the sum of squares explained by the factor is split into sums of squares explained by linear and quadratic models, and by 'lack of fit' of the quadratic model.</p>
+  <p>As in other analysis of variance tables, mean sums of squares are calculated for each explained sum of squares and these are divided by the mean residual sum of squares to give F ratios. A p-value tests whether each F ratio is larger than would be expected by chance.</p>
+  <p>The method will be clearer with an example.</p>
+	
+  <div class="diagram"> 
+		<p class="heading">Antibiotic effectiveness</p>
+    <p>The anova table below initially treats the concentration of antibiotic as categorical (with 6 levels) so there is a single row for the explained variation (with 5 degrees of freedom).</p>
+		<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="250">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="glmAnovaProg.CombineSsqApplet">
+<param name="yVarName" value="Inhibition diameter(mm)">
+<param name="yValues" value="13.6 13.5 14.9 14.5 14.5 14.8 14.4 14.5 13.9 14.7 14.5 14.4 15.8 15.4 15.4 15.7 15.3 15.4 14.8 15.6 15.6 15.4 16.2 15.9 16.2 16.0 15.9 15.5 16.1 16.5 15.8 15.6 16.8 16.6 16.6 17.0 16.0 15.8 16.2 16.6 16.2 16.0 17.4 17.2 17.2 16.8 17.2 17.4 16.2 17.1 16.5 16.4 17.8 17.7 18.1 17.5 17.3 17.2 16.5 16.7">
+<param name="xVariables" value="X Z W">
+<param name="XVarName" value="Linear">
+<param name="XValues" value="10@0 10@1 10@2 10@3 10@4 10@5">
+<param name="ZVarName" value="Quadratic">
+<param name="ZValues" value="10@4 10@1 10@0 10@1 10@4 10@9">
+<param name="WVarName" value="Nonlinear">
+<param name="WValues" value="30@0 10@1 10@2 10@3">
+<param name="WLabels" value="L123 L4 L5 L6">
+<param name="maxSsq" value="99.999 99 99.999 999.99">
+<param name="componentNames" value="Linear conc#Adding quadratic#Lack-of-fit for quadratic">
+<param name="split" value="1:3:Split ssq for factor:Concentration (categorical)">
+</applet> 
+</div>
+
+    <p>Click <strong>Split ssq for factor</strong> to split the explained sum of squares into sums of squares for linear, quadratic and 'lack of fit' rows.</p>
+    <p>The p-values are interpreted as follows:</p>
+    <p class="heading">Interpretation</p>
+		<dl>
+			<dt>Lack-of-fit for quadratic model</dt>
+			<dd>Restricting the parameters of the full categorical model to lie on a quadratic curve increases the residual sum of squares by 0.236. This explained sum of squares (with 3 degrees of freedom) is associated with a p-value of 0.815, 
+				so we conclude that the quadratic model fits the data as well as the full categorical model &mdash; there is no evidence of lack-of-fit of the quadratic model.</dd>
+			<dt>Quadratic term</dt>
+			<dd>The residual sum of squares increases by a further 1.475 if the quadratic 
+				term is dropped leaving a linear model. The corresponding p-value is 0.019, so we 
+				should conclude that there is moderately strong evidence of curvature 
+				in the relationship. (Curvature is significant at the 5% level but not 
+				at the 1% level.)</dd>
+			<dt>Linear term</dt>
+			<dd>Since there is evidence of curvature in the relationship, there is little point in testing whether the linear term is necessary. However the explained sum of squares for the linear model, 54.266, is high and its p-value is 0.000, so the linear term is very important and explains most of the variability in the response.</dd>
+		</dl>
+		<p>We therefore conclude that a quadratic model fits data adequately.</p>
+	</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

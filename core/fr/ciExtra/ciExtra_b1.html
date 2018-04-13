@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Margin of error</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="proportion, margin of error">
+	<meta name="dataset" content="Kestrel cause of death">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Worst-case standard error</p>
+
+<p>When estimating a population proportion (or probability) π, 
+the corresponding sample proportion <em>p</em> is used as a point estimate. It has standard error</p>
+<p class=eqn><img class="gif" src="../../en/ciExtra/images/seP.gif" width="134" height="43"> </p>
+<p>This standard error takes its maximum value when π 
+= 0.5 and this provides a worst-case value for the standard error. Whatever the 
+value of π, 
+the standard error of the estimate will be less than</p>
+<p class=eqn><img class="gif" src="../../en/ciExtra/images/maxSE.gif" width="247" height="46"> 
+</p>
+
+<div class="diagram"> 
+<p>The diagram below shows the estimated standard error from a sample of size 
+<em>n</em>&nbsp;=&nbsp;100.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="inferenceProg.SePGraphApplet">
+<param name="catLabels" value="success failure">
+<param name="n" value="100">
+<param name="seAxis" value="0 0.055 0 0.01">
+<param name="pAxis" value="-0.05 1.05 0 0.5">
+<param name="decimals" value="4">
+<param name="customText" value="No. of=No. of#Sample proportion=Sample proportion#95% Conf Interval=95% Conf Interval">
+</applet>
+</div>
+
+<p>Drag the slider to investigate how the standard error depends on <em>p</em> and observe that it is maximum when <em>p</em>&nbsp;=&nbsp;0.5. 
+Note also that the resulting confidence interval for π 
+is also widest for this value.</p>
+
+</div>
+
+<p class="heading">Reporting the accuracy from a survey</p>
+
+<p>In many surveys, a range of probabilities (population proportions) are estimated. 
+In scientific research, it is common to give a 95% confidence interval for each 
+estimate.</p>
+<p>However when the results of a survey are presented to the wider public, it 
+is common to simply present point estimates of the probabilities and a <strong>single</strong> 
+value called the <strong>margin of error</strong> of the survey. This is the worst-case 
+'±' value for a 95% confidence interval that arises when <em>p</em>&nbsp;=&nbsp;0.5.</p>
+<p class=eqn><img class="gif" src="../../en/ciExtra/images/marginOfError.gif" width="160" height="36"> </p>
+<p>The '±' values of the 95% confidence intervals for all proportions reported 
+in the survey will be less than this value &mdash; sometimes considerably less.</p>
+
+<div class="diagram"> 
+<p>The diagram below shows the 95% confidence intervals that would arise from 
+samples of size <em>n</em>&nbsp;= 100 for all possible values of <em>p</em>. 
+Drag the slider to see the widths of the confidence intervals.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="inferenceProg.MarginOfErrorApplet">
+<param name="catLabels" value="success failure">
+<param name="n" value="50 *100 200">
+<param name="ciAxis" value="-0.1 1.1 0 0.5">
+<param name="pAxis" value="-0.1 1.1 0 0.5">
+<param name="decimals" value="4">
+<param name="customText" value="No. of=No. of#Sample proportion=Sample proportion#95% CI=95% CI#Margin of error=Margin of error">
+</applet>
+</div>
+
+<p>Observe that the confidence interval is widest when <em>p</em> = 0.5 and narrowest when <em>p</em> is close to 0 or 1. (Note however that our guidelines on sample size imply that 
+we should not be using this type of confidence interval for <em>n</em>&nbsp;= 
+100 when <em>p</em> is under 0.05 or over 0.95.)</p>
+<p>Select <strong>Margin of error</strong> from the pop-up menu. Observe that</p>
+
+<ul>
+<li>When <em>p</em> = 0.5, the margin of error is the same as a 95% confidence interval.</li>
+<li>The margin of error can badly understate the accuracy of the estimate when 
+  <em>p</em> is small or large.</li>
+</ul>
+<br>
+
+</div>
+
+<p class="heading">Example</p>
+<p>A numerical example illustrates the use of margin of error in a survey.</p>
+
+<div class="diagram"> 
+<p class="heading">Cause of death of kestrels</p>
+<p>The table below shows the causes of death of kestrels (a bird of prey) in Britain 
+between 1963 and 1997. (Carcasses were sent to the researchers in response to 
+advertisements in bird-watching magazines and journals and the cause of death 
+was found from information sent by the finder and examination of the carcass.)</p>
+
+<center>
+<center>
+<table border="0" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC">
+<tr> 
+<th align="CENTER">Cause of death</th>
+<th align="CENTER">&nbsp;&nbsp;&nbsp;Number of birds&nbsp;&nbsp;&nbsp;</th>
+<th align="CENTER">Percentage</th>
+</tr>
+<tr> 
+<td align="LEFT" bgcolor="white">Starvation<br>
+Trauma<br>
+Road accident<br>
+Poison<br>
+Disease<br>
+Shot<br>
+Unknown</td>
+<td align="CENTER" bgcolor="white"><table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td align="RIGHT">585<br>
+291<br>
+262<br>
+118<br>
+77<br>
+26<br>
+114</td>
+</tr>
+</table></td>
+<td align="CENTER" bgcolor="white"><table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td align="RIGHT">39.7<br>
+19.8<br>
+17.8<br>
+8.0<br>
+5.2<br>
+1.8<br>
+7.7</td>
+</tr>
+</table></td>
+</tr>
+</table>
+</center>
+</center>
+
+<p>Although the carcasses examined in the study may not be representative of all 
+kestrel deaths since birds that died in isolated areas would be less likely to 
+be found, we will assume that this data set will be, at least approximately, a 
+random sample from the population of kestrel deaths in more populated areas.</p>
+<p>Since the sample size is <em>n</em> = 1473, the margin of error for the survey 
+is 0.026 &mdash; i.e. 2.6%.</p>
+<p>Since the proportion dying from starvation is close to <sup>1</sup>/<sub>2</sub>, 
+a 95% confidence interval for the probability that a death is by starvation is 
+approximately (39.7&nbsp;±&nbsp;2.6) &mdash; a properly calculated confidence 
+interval is (39.7 ± 2.5). However confidence intervals for the less frequent 
+causes of death would be narrower than suggested by the margin of error.</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

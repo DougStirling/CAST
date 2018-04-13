@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Properties of sums and means</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="sum of random sample, mean of random sample">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Sum of independent random variables</p>
+
+<p>The result on the previous page gives us the mean and variance for the sum of two independent random variables, \(X_1\) and \(X_2\) (setting \(a = b = 1\)).</p>
+
+\[\begin{aligned}
+E[X_1 + X_2] \;\;&amp; =\;\; E[X_1] + E[X_2] \\[0.5em]
+\Var(X_1 + X_2) \;\;&amp; =\;\; \Var(X_1) + \Var(X_2)
+\end{aligned} \]
+
+<p>If \(X_1\) and \(X_2\) also have the <strong>same</strong> distributions (and are hence independent identically distributed random variables — i.i.d.r.v.s) with mean \(\mu\) and variance \(\sigma^2\), then this simplifies even further:</p>
+\[\begin{aligned}
+E[X_1 + X_2] \;\;&amp; =\;\; 2\mu \\
+\Var(X_1 + X_2) \;\;&amp; =\;\; 2\sigma^2
+\end{aligned} \]
+
+<p class="heading">Random sample</p>
+<p>The result can be extended to give  formulae for the mean and variance of the sum  of \(n\) i.i.d.r.vs — the sum of the values in a random sample.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Sum of values in a random sample</p>
+		<p>If \(\{X_1, X_2, ..., X_n\}\) is a random sample of \(n\) values from a discrete distribution with mean \(\mu\) and variance \(\sigma^2\), then the sum of the values, \(\sum_{i=1}^n {X_i}\) has mean and variance</p>
+\[\begin{aligned}
+E\left[\sum_{i=1}^n {X_i}\right] &amp; = n\mu \\
+\Var\left(\sum_{i=1}^n {X_i}\right) &amp; = n\sigma^2
+\end{aligned} \]
+
+	</div>
+	<div class="proof">
+		<p>If we write \(\sum_{i=1}^n {X_i} = \sum_{i=1}^{n-1} {X_i} + X_n\), then these two terms are independent. The result at the top of this page shows that</p>
+
+\[\begin{aligned}
+E\left[\sum_{i=1}^n {X_i}\right] &amp; = E\left[\sum_{i=1}^{n-1} {X_i}\right] + E[X_n] = E\left[\sum_{i=1}^{n-1} {X_i}\right] + \mu \\
+\Var\left(\sum_{i=1}^n {X_i}\right) &amp; = \Var\left(\sum_{i=1}^{n-1} {X_i}\right) + \Var(X_n) = \Var\left(\sum_{i=1}^{n-1} {X_i}\right) + \sigma^2
+\end{aligned} \]
+
+		<p>We have already shown that the result holds when \(n=2\), and these formulae show that if it holds for a sample of \((n-1)\) values, then it also holds for a random sample of size \(n\)<em></em>, completing a proof by induction.</p>
+	</div>
+</div>
+<p>Since the sample mean is simply the sum of the values divided by the constant \(n\), this result also provides us with formulae for the mean and variance of the sample mean.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Mean of a random sample</p>
+		<p>If \(\{X_1, X_2, ..., X_n\}\) is a random sample of \(n\) values from a discrete distribution with mean \(\mu\) and variance \(\sigma^2\), then the sample mean has a distribution with mean and variance</p>
+\[\begin{aligned}
+E[\overline{X}] \;\;&amp; =\;\; \mu \\
+\Var(\overline{X}) \;\;&amp; =\;\; \frac {\sigma^2} n
+\end{aligned} \]	</div>
+
+	<div class="proof">
+		<p>We showed earlier that for any random variable \(X\),</p>
+\[
+	E[a + b X] = a + b \times E[X] \spaced{and} \Var(a + b \times X) = b^2 \times \Var(X)
+\]
+		<p>Applying this to the mean and variance of the <strong>sum</strong> of values in the random sample with \(a = 0\) and \(b = \diagfrac 1 n\) proves the result.</p>
+	</div>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

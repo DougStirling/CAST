@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Counts and chi-squared distribution</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="poisson distribution, chi-squared distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Counts with Poisson distributions</p>
+
+<p>Suppose that we have \(n\) independent discrete random variables \(\{X_1, X_2,\dots, X_k\}\) that are counts of events. We will now consider whether they might be counts from Poisson processes in which the rate of events for \(X_i\) is \(\lambda_i\),</p>
+\[
+X_i \;\;\sim\;\; \PoissonDistn(\lambda_i)
+\]
+<p>If this model holds then, from the <a href="javascript:showNamedPage('poisson4')">properties of Poisson distributions</a>,</p>
+\[
+E[X_i] \;\;=\;\; \Var(X_i) \;\;=\;\; \lambda_i
+\]
+<p class="heading">Standardised counts</p>
+<p>If the counts  have these Poisson distributions, we can define standardised versions</p>
+\[
+Z_i \;\;=\;\; \frac{X_i - \lambda_i}{\sqrt{\lambda_i}}
+\]
+<p>that will have mean zero and standard deviation one. If the \(\{\lambda_i\}\) are large, the counts and their standardised versions will also be <a href="javascript:showNamedPage('poisson3')">approximately normally distributed</a>.</p>
+\[
+Z_i \;\;=\;\; \frac{X_i - \lambda_i}{\sqrt{\lambda_i}} \;\; \underset{\text{approx}}{\sim} \;\; \NormalDistn(0,1)
+\]
+<p class="heading">Chi-squared statistic</p>
+<p>Since the sum of squared standard normal variables has a chi-squared distribution, if the Poisson model holds,</p>
+\[
+\sum_{i=1}^k {Z_i^2} \;\;=\;\; \sum_{i=1}^k {\frac{\left(X_i - \lambda_i\right)^2}{\lambda_i}} \;\; \underset{\text{approx}}{\sim} \;\; \ChiSqrDistn(k \text{ df})
+\]
+<p>In the context of goodness-of-fit tests, we often denote the observed counts by \(\{O_i\}\) instead of \(\{X_i\}\) and their expected values by \(\{E_i\}\) instead of \(\{\lambda_i\}\), so the above approximation is denoted by</p>
+\[
+X^2 \;\;=\;\; \sum_{i=1}^k {\frac{\left(O_i - E_i\right)^2}{E_i}} \;\; \underset{\text{approx}}{\sim} \;\; \ChiSqrDistn(k \text{ df})
+\]
+<p>In practice, this approximation is reasonable provided most of the \(\{E_i\}\) — the Poisson means — are reasonably large. The usual guideline is that</p>
+<ul>
+	<li>At least 80% of the \(\{E_i\}\) should be ≥ 5.</li>
+	<li>All \(E_i\) should be ≥ 1.</li>
+</ul>
+<p>If these guidelines are not met, the chi-squared distribution should not be used to find probabilities related to \(X^2\).</p>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

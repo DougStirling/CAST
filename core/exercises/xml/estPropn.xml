@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE topic SYSTEM "exerciseXmlDefn.dtd">
+
+<topic name='estPropn'>
+<longName>Std error and CI for proportion</longName>
+
+
+<exercise name='findSe'>
+	<description>Calculate the standard error of a proportion</description>
+	<comment>A categorical data set is described by a pie chart and frequency table. The standard error of the proportion in one category is requested and a template is provided to help calculate it.</comment>
+	<applet>exerciseEstimProg.FindPropnSeApplet</applet>
+	<width>500</width>
+	<height>640</height>
+	
+	<variable name="varName" type="string">Name of variable</variable>
+	<variable name="catLabels" type="string_array">Category names</variable>
+	<variable name="probs" type="double_array">Probabilities for categories used to generate sample of counts</variable>
+	<variable name="noOfValues" type="int">Number of values in sample</variable>
+	<variable name="targetCat" type="int">Category whose probability is being estimated</variable>
+	<variable name="maxPropn" type="double">Template giving number of decimals for proportions and standard error</variable>
+	
+	<template>
+		<question>The pie chart and frequency table below summarise a random sample of n=#noOfValues(100)# values.\\nFind the standard error of the proportion in category #catLabels[targetCat]#.</question>
+		<qnParam>varName(Variable, X)#catLabels(X1 X2 X3)#probs(0.45 0.35 0.2)#targetCat(0:2)#maxPropn(0.0001)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>chocolate</shortName>
+		<longName>Chocoloate brand preference</longName>
+		<question>A random sample of n=#noOfValues[](100,200,300,400)# shoppers in a supermarket are asked which of three brands of chocolate was preferred. The pie chart and frequency table below summarise the results.\\nFind the standard error of the proportion who prefer #catLabels[targetCat]# chocolate.</question>
+		<qnParam>varName(Chocolate preference)#catLabels(Cadbury Nestle Hershey)#probs(0.45 0.35 0.2)#targetCat(0:2)#maxPropn(0.0001)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>leftHanded</shortName>
+		<longName>Left and right handed students</longName>
+		<question>In a class of n=#noOfValues(100:200)# students, the lecturer determined the number who were left- and right-handed. The pie chart and frequency table below summarise the results.\\nFind the standard error of the proportion of #catLabels[targetCat]# students.</question>
+		<qnParam>varName(Preferred hand)#catLabels(Left-handed Right-handed)#probs(0.08 0.92)#targetCat(0:1)#maxPropn(0.0001)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>obesity</shortName>
+		<longName>Obese adults</longName>
+		<question>In a study of obesity in the USA, the body mass index of a random sample of n=#noOfValues[](200,300,400,500)# adults in one county was calculated and each was classified as normal/underweight, overweight or obese. The pie chart and frequency table below summarise the results.\\nFind the standard error of the proportion of adults who are #catLabels[targetCat]#.</question>
+		<qnParam>varName(Weight)#catLabels(Normal/underweight Overweight Obese)#probs(0.5 0.35 0.15)#targetCat(0:2)#maxPropn(0.0001)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>beeColor</shortName>
+		<longName>Bee colour preference</longName>
+		<question>In an experiment, a biologist placed containers of five colours in a large box and released honeybees into the box. The colours of the containers that attracted the bees were recorded and are shown in the chart and table below.\\nFind the standard error of the proportion of honeybees who choose containers of colour #catLabels[targetCat]#.</question>
+		<qnParam>noOfValues[](200,300,400,500)#varName(Colour chosen)#catLabels(UV UV-blue Blue Blue-green Green)#probs(0.1 0.4 0.25 0.05 0.2)#targetCat(0:4)#maxPropn(0.0001)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='find95%Ci'>
+	<description>Calculate an approximate 95% CI for a proportion</description>
+	<comment>A categorical data set is described by a pie chart and frequency table. A template is provided to find the standard error of the proportion in one category and the CI must be found from the estimate +/- 2 se.</comment>
+	<applet>exerciseEstimProg.FindPropn95CiApplet</applet>
+	<width>500</width>
+	<height>640</height>
+	
+	<variable name="varName" type="string">Name of variable</variable>
+	<variable name="catLabels" type="string_array">Category names</variable>
+	<variable name="probs" type="double_array">Probabilities for categories used to generate sample of counts</variable>
+	<variable name="noOfValues" type="int">Number of values in sample</variable>
+	<variable name="targetCat" type="int">Category whose probability is being estimated</variable>
+	<variable name="maxPropn" type="double">Template giving number of decimals for proportions and standard error</variable>
+	
+	<template>
+		<question>The pie chart and frequency table below summarise a random sample of n=#noOfValues(100)# values.\\nFind a 95% confidence interval for the probability of a value in category #catLabels[targetCat]#.</question>
+		<qnParam>varName(Variable, X)#catLabels(X1 X2 X3)#probs(0.45 0.35 0.2)#targetCat(0:2)#maxPropn(0.0001)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>chocolate</shortName>
+		<longName>Chocoloate brand preference</longName>
+		<question>A random sample of n=#noOfValues[](100,200,300,400)# shoppers in a supermarket are asked which of three brands of chocolate was preferred. The pie chart and frequency table below summarise the results.\\nFind a 95% confidence interval for the probability that a shopper in this supermarket prefers #catLabels[targetCat]# chocolate.</question>
+		<qnParam>varName(Chocolate preference)#catLabels(Cadbury Nestle Hershey)#probs(0.45 0.35 0.2)#targetCat(0:2)#maxPropn(0.0001)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>leftHanded</shortName>
+		<longName>Left and right handed students</longName>
+		<question>In a class of n=#noOfValues(100:200)# students, the lecturer determined the number who were left- and right-handed. The pie chart and frequency table below summarise the results.\\nFind a 95% confidence interval for the probability that a student in a similar class is #catLabels[targetCat]#.</question>
+		<qnParam>varName(Preferred hand)#catLabels(Left-handed Right-handed)#probs(0.08 0.92)#targetCat(0:1)#maxPropn(0.0001)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>obesity</shortName>
+		<longName>Obese adults</longName>
+		<question>In a study of obesity in the USA, the body mass index of a random sample of n=#noOfValues[](200,300,400,500)# adults in one county was calculated and each was classified as normal/underweight, overweight or obese. The pie chart and frequency table below summarise the results.\\nFind a 95% confidence interval for the proportion of adults in the whole population who are #catLabels[targetCat]#.</question>
+		<qnParam>varName(Weight)#catLabels(Normal/underweight Overweight Obese)#probs(0.5 0.35 0.15)#targetCat(0:2)#maxPropn(0.0001)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>beeColor</shortName>
+		<longName>Bee colour preference</longName>
+		<question>In an experiment, a biologist placed containers of five colours in a large box and released honeybees into the box. The colours of the containers that attracted the bees were recorded and are shown in the chart and table below.\\nFind a 95% confidence interval for the probability that a honeybee will choose a container of colour #catLabels[targetCat]#.</question>
+		<qnParam>noOfValues[](200,300,400,500)#varName(Colour chosen)#catLabels(UV UV-blue Blue Blue-green Green)#probs(0.1 0.4 0.25 0.05 0.2)#targetCat(0:4)#maxPropn(0.0001)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='findCiDifferentLevels'>
+	<description>Calculate a CI for a proportion, using various confidence levels</description>
+	<comment>A categorical data set is described by a pie chart and frequency table. One template is provided for the standard error and another diagram can be used to find the z-value to evaluate the CI.</comment>
+	<applet>exerciseEstimProg.FindPropnCiApplet</applet>
+	<width>500</width>
+	<height>700</height>
+	
+	<variable name="varName" type="string">Name of variable</variable>
+	<variable name="catLabels" type="string_array">Category names</variable>
+	<variable name="probs" type="double_array">Probabilities for categories used to generate sample of counts</variable>
+	<variable name="noOfValues" type="int">Number of values in sample</variable>
+	<variable name="targetCat" type="int">Category whose probability is being estimated</variable>
+	<variable name="maxPropn" type="double">Template giving number of decimals for proportions and standard error</variable>
+	<variable name="ciLevel" type="int(50)">Confidence level for CI</variable>
+	
+	<template>
+		<question>The pie chart and frequency table below summarise a random sample of n=#noOfValues(100)# values.\\nFind a #ciLevel[](90,95,99)#% confidence interval for the probability of getting value #catLabels[targetCat]#.</question>
+		<qnParam>varName(Variable, X)#catLabels(X1 X2 X3)#probs(0.45 0.35 0.2)#targetCat(0:2)#maxPropn(0.0001)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>chocolate</shortName>
+		<longName>Chocoloate brand preference</longName>
+		<question>A random sample of n=#noOfValues[](100,200,300,400)# shoppers in a supermarket are asked which of three brands of chocolate was preferred. The pie chart and frequency table below summarise the results.\\nFind a #ciLevel[](90,95,99)#% confidence interval for the probability that a shopper in this supermarket prefers #catLabels[targetCat]# chocolate.</question>
+		<qnParam>varName(Chocolate preference)#catLabels(Cadbury Nestle Hershey)#probs(0.45 0.35 0.2)#targetCat(0:2)#maxPropn(0.0001)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>leftHanded</shortName>
+		<longName>Left and right handed students</longName>
+		<question>In a class of n=#noOfValues(100:200)# students, the lecturer determined the number who were left- and right-handed. The pie chart and frequency table below summarise the results.\\nFind a #ciLevel[](90,95,99)#% confidence interval for the probability that a student in a similar class is #catLabels[targetCat]#.</question>
+		<qnParam>varName(Preferred hand)#catLabels(Left-handed Right-handed)#probs(0.08 0.92)#targetCat(0:1)#maxPropn(0.0001)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>obesity</shortName>
+		<longName>Obese adults</longName>
+		<question>In a study of obesity in the USA, the body mass index of a random sample of n=#noOfValues[](200,300,400,500)# adults in one county was calculated and each was classified as normal/underweight, overweight or obese. The pie chart and frequency table below summarise the results.\\nFind a #ciLevel[](90,95,99)#% confidence interval for the proportion of adults in the whole population who are #catLabels[targetCat]#.</question>
+		<qnParam>varName(Weight)#catLabels(Normal/underweight Overweight Obese)#probs(0.5 0.35 0.15)#targetCat(0:2)#maxPropn(0.0001)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>beeColor</shortName>
+		<longName>Bee colour preference</longName>
+		<question>In an experiment, a biologist placed containers of five colours in a large box and released honeybees into the box. The colours of the containers that attracted the bees were recorded and are shown in the chart and table below.\\nFind a #ciLevel[](90,95,99)#% confidence interval for the probability that a honeybee will choose a container of colour #catLabels[targetCat]#.</question>
+		<qnParam>noOfValues[](200,300,400,500)#varName(Colour chosen)#catLabels(UV UV-blue Blue Blue-green Green)#probs(0.1 0.4 0.25 0.05 0.2)#targetCat(0:4)#maxPropn(0.0001)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='factorsAffectingCiWidth'>
+	<description>Complete statements about how n, p and the confidence level affect the CI width</description>
+	<comment>Three statements are presented about the effect of the sample size, sample proportion and confidence level on the width of a CI for the proportion. Pop-up menus can be used to correct any wrong statements.</comment>
+	<applet>exerciseEstimProg.CiWidthInfluencesPApplet</applet>
+	<width>600</width>
+	<height>650</height>
+	
+	<coreParam name="noOfStatements">3</coreParam>
+	<coreParam name="statementStart0">A #?:string[ciLevel](90*95*95*99)#% confidence interval for the proportion of #successName# has been calculated from a random sample of n=#?:int[](200,300,400,500)# #trialsName#. If the confidence level is changed from #?:string[ciLevel](90% to 95%*95% to 99%*95% to 90%*99% to 95%)#, the width of the confidence interval will ...</coreParam>
+	<coreParam name="messages0">If we make our confidence interval #?:string[ciLevel](wider*wider*narrower*narrower)#, it contains #?:string[ciLevel](more*more*fewer*fewer)# values so there is #?:string[ciLevel](more*more*less*less)# chance that it will include the population parameter. We must therefore #?:string[ciLevel](increase*increase*decrease*decrease)# the width of the confidence interval to get a #?:string[ciLevel](higher*higher*lower*lower)# confidence level.</coreParam>
+	<coreParam name="statementStart1">A #?:string[](90%*95%*99%)# confidence interval for the proportion of #successName# has been found from a random sample of n=#?:string[sampleSize](100*200*200*300)# #trialsName#. If the sample size had been n=#?:string[sampleSize](200*300*100*200)# instead, we would have expected the confidence interval to have been ...</coreParam>
+	<coreParam name="messages1">#?:string[sampleSize](More*More*Less*Less)# data implies #?:string[sampleSize](more*more*less*less)# information about the population parameter so we should be able to estimate it #?:string[sampleSize](more*more*less*less)# accurately. We would therefore expect #?:string[sampleSize](a decrease*a decrease*an increase*an increase)# in the width of the confidence interval.</coreParam>
+	<coreParam name="statementStart2">Random samples of n=#?:int[](200,300,400,500)# #trialsName# are selected from each of two #popnName#s. If the proportion of #successName# in #popnName# A is #?:string[spread](closer to 0.5*closer to 0.5*further from 0.5*further from 0.5)# than that in #popnName# B, we would expect the #?:string[](90%*95%*99%)# confidence interval for the proportion of #successName# in #popnName# A to be ...</coreParam>
+	<coreParam name="statementEnd2">that from population B.</coreParam>
+	<coreParam name="messages2">If the proportion of successes in population #?:string[spread](A*A*B*B)# is closer to 0.5 than that in population #?:string[spread](B*B*A*A)#, population #?:string[spread](A*A*B*B)#'s sample proportion of successes will be more variable. The confidence interval from population #?:string[spread](A*A*B*B)# will therefore be wider.</coreParam>
+
+	<variable name="trialsName" type="string">Name for Bernouli trials</variable>
+	<variable name="successName" type="string">Name of success category</variable>
+	<variable name="popnName" type="string">Name of population about which we are interested</variable>
+	<variable name="ciLevel" type="int_choice(increased width -- 90 to 95#increased width -- 95 to 99#decreased width -- 95 to 90#decreased width -- 99 to 95)">CI width change for the four possible changes in CI level</variable>
+	<variable name="sampleSize" type="int_choice(narrower -- n=10 to 20#narrower -- n=20 to 30#wider -- n=20 to 10#wider -- n=30 to 20)">CI width change for the four possible changes to sample size</variable>
+	<variable name="spread" type="int_choice(wider -- bigger sd#wider -- larger sd#narrower -- less sd#narrower -- smaller sd)"></variable>
+	<variable name="menuLevel" type="string_array">Wording of the three menu options for the change in confidence level</variable>
+	<variable name="menuSampleSize" type="string_array">Wording of the three menu options for the change in sample size</variable>
+	<variable name="menuSpread" type="string_array">Wording of the three menu options for the change in spead of the values</variable>
+	
+	<variation>
+		<shortName>lizardGender</shortName>
+		<longName>Gender of lizards</longName>
+		<question>The three statements below relate to the proportion of #successName# in a random sample of lizards that hatch from eggs at one temperature.\\nUse the pop-up menus to complete the following three statements.</question>
+		<qnParam>successName[](male lizards*female lizards)#trialsName(lizards)#popnName(location)#ciLevel(0:3)#sampleSize(0:3)#spread(0:3)#menuLevel(remain_the_same increase decrease)#menuSampleSize(approximately_the_same_width narrower wider)#menuSpread(approximately_the_same_width_as wider_than narrower_than)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>votingPoll</shortName>
+		<longName>Voting intention in poll</longName>
+		<question>In a public opinion poll, a random sample of voters is selected and each is asked whether he or she intends to vote for Party X or Party Y in an election.\\nUse the pop-up menus to complete the following three statements about a confidence interval for the proportion of #successName#.</question>
+		<qnParam>successName[](votes for Party X*votes for Party Y)#trialsName(voters)#popnName(town)#ciLevel(0:3)#sampleSize(0:3)#spread(0:3)#menuLevel(remain_the_same increase decrease)#menuSampleSize(approximately_the_same_width narrower wider)#menuSpread(approximately_the_same_width_as wider_than narrower_than)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>defects</shortName>
+		<longName>Defective items in production line</longName>
+		<question>Quality control engineers select a random sample of items from the output of a production line and test whether each has defects.\\nUse the pop-up menus to complete the following three statements about a confidence interval for the proportion of defective items.</question>
+		<qnParam>successName(defective items)#trialsName(items)#popnName(production line)#ciLevel(0:3)#sampleSize(0:3)#spread(0:3)#menuLevel(remain_the_same increase decrease)#menuSampleSize(approximately_the_same_width narrower wider)#menuSpread(approximately_the_same_width_as wider_than narrower_than)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='interpretCi'>
+	<description>Pick which of 4 statements correctly interprets a 95% CI for propn</description>
+	<comment>This is a multiple choice question in which the correct statement describing a 95% confidence interval must be picked.</comment>
+	<applet>exerciseEstimProg.CiInterpPApplet</applet>
+	<width>500</width>
+	<height>540</height>
+	
+	<variable name="lowLimit" type="double">Lower limit of CI</variable>
+	<variable name="highLimit" type="double">Upper limit of CI</variable>
+	<variable name="success" type="string(10)">Name for success category</variable>
+	<variable name="sampleValues" type="string(40)">Text desribing sample value</variable>
+	<variable name="popnValues" type="string(40)">Text desribing population values</variable>
+	<variable name="newSample" type="string(40)">Text describing a further similar sample of values</variable>
+	<variable name="samples" type="string(40)">Text describing further samples in general</variable>
+	
+	<template>
+		<question>A 95% confidence interval of #lowLimit(0.137)# to #highLimit(0.260)# was calculated for the proportion of successes in some units.</question>
+		<qnParam>popnValues(this type of unit in general)#sampleValues(the sample of units)#success(success)#newSample(a new sample of similar units)#samples(new samples of units of the same size)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>infectedPlants</shortName>
+		<longName>Plants infected by virus</longName>
+		<question>A botanist randomly samples n=#?:int[](30,40,50,60)# plants in an area and counts the number that are affected by a particular virus. A 95% confidence interval for the proportion that are infected is from #lowLimit[index](0.137,0.063)# to #highLimit[index](0.260,0.119)#.\\nWhich of the following statements correctly interprets the confidence interval?</question>
+		<qnParam>index(0:1)#popnValues(the plants in the whole area)#sampleValues(the plants in the sample)#success(infected by the virus)#newSample(plants in a new sample of the same size)#samples(new samples of plants of the same size)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>cancerSurvival</shortName>
+		<longName>Survival after 5 years with cancer</longName>
+		<question>A health researcher conducted a study of n=#?:int(80:120)# male patients who had been diagnosed with #?:string[index](melanoma*prostate cancer*colon cancer*brain cancer)# and used a sample of patients to estimate survival rates. A 95% confidence interval for the proportion who were still alive five years after diagnosis was between #lowLimit[index](0.742,0.537,0.433,0.114)# and #highLimit[index](0.811,0.670,0.495,0.151)#.\\nWhich of the following statements correctly interprets the confidence interval?</question>
+		<qnParam>index(0:3)#popnValues(males diagnosed with this type of cancer in general)#sampleValues(patients examined in this study)#success(still alive after 5 years)#newSample(another sample of the same  number of males who are diagnosed with this cancer)#samples(further samples of males with this cancer of the same size)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>cerealBoxWeight</shortName>
+		<longName>Sampled cereal boxes that are overweight</longName>
+		<question>One day, quality control inspectors examined a sample of n=#?:int[index](50,100,200)# boxes of #?:string[](cornflakes*rice cereal*wheat flakes)# coming off a production line and a 95% confidence interval for the proportion of overweight boxes was #lowLimit[index](0.788,0.879,0.932)# to #highLimit[index](0.972,0.981,0.988)#.\\nWhich of the following statements correctly interprets the confidence interval?</question>
+		<qnParam>index(0:2)#popnValues(all boxes coming off the production line that day)#sampleValues(the boxes sampled in the study)#success(overweight)#newSample(a different sample of the same  number of boxes from the production line)#samples(new samples of boxes from the production line)</qnParam>
+	</variation>
+</exercise>
+
+</topic>

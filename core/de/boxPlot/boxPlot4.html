@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Ausreisser darstellen</title>
+
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="box plot, outliers/display of outliers in box plot, interquartile range">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Verbesserter Boxplot</p>
+
+<p>Ein Problem mit dem grundlegendem Boxplot, welcher auf den
+vorherigen Seiten beschrieben wurde, ist, dass es nicht
+m&ouml;glich
+ist zu zeigen, ob Ausrei&szlig;er im Datensatz sind. Eine
+&uuml;bliche
+Modifikation zeichnet einige der gr&ouml;&szlig;ten Extremwerte
+als
+separate Kreuze in den Boxplot ein und dehnt die
+&bdquo;Schnurrhaare&ldquo; nur so weit wie die meisten extremen
+Beobachtungen, welche <strong>nicht</strong>
+separat gezeichnet sind.</p>
+
+<center>
+<table bgcolor="white" border="1" cellpadding="5" cellspacing="0" width="75%">
+
+  <tbody>
+
+    <tr>
+
+      <th align="center">Der modifizierte Boxplot
+l&auml;sst
+Ausrei&szlig;er hervorstechen.</th>
+
+    </tr>
+
+  </tbody>
+</table>
+
+</center>
+
+<p>(Die Regel, welche benutzt wird, um zu entscheiden, welche
+Werte als
+Kreuz dargestellt werden, ist unten beschrieben.)</p>
+
+<div class="diagram">
+<p>Bei vielen praktischen Anwendungen sind schiefe Verteilungen
+mit
+einem langen Ende in Richtung der h&ouml;heren Werte
+&uuml;blich. Zum
+Beispiel Experimente, welche die &Uuml;berlebenszeit von Pflanzen
+oder
+Insekten mit einbeziehen, oder die Zeit bis hergestellte Teile
+versagen, resultieren in der Regel in Daten mit gelegentlich hohen
+Werten.</p>
+
+<p>Der folgende Datensatz hat eine schiefe Verteilung ohne
+Ausrei&szlig;er und ohne herausragende Werte, was un&uuml;blich
+ist. </p>
+
+<div class="centred"> <applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" height="210" width="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="boxPlotProg.WeightedBoxApplet"><param name="varName" value="Schiefe Verteilung"><param name="varName2" value="Ausrei&szlig;er"><param name="values" value="1 3 4 5 7 8 10 12 17 18 20 22 26 28 33 36 40 51 83 94 119"><param name="values2" value="1 3 4 5 7 8 10 12 17 18 20 22 26 28 33 36 40 40 42 45 119"><param name="initialWt" value="1.0"><param name="horizAxis" value="0 120 0 20"><param name="showOutliers" value="choice"><param name="customText" value="Basic box plot=Grundlegender Box Plot#Box plot showing outliers=Box Plot mit Ausrei&szlig;ern"></applet></div>
+
+<p><strong>Ziehe den
+Schieberegler</strong>, um die Datensatz in eine ordentliche
+symmetrische
+Verteilung mit einem Ausrei&szlig;er zu ver&auml;ndern. Der
+grundlegende Boxplot zeigt&nbsp;den Ausrei&szlig;er nicht.</p>
+
+<center>
+<table bgcolor="white" border="1" cellpadding="5" cellspacing="0" width="75%">
+
+  <tbody>
+
+    <tr>
+
+      <th align="center">Der grundlegende Boxplot kann
+nicht zwischen
+einer Verteilung mit einem langen Ende und einem Ausrei&szlig;er
+unterscheiden.</th>
+
+    </tr>
+
+  </tbody>
+</table>
+
+</center>
+
+<p>W&auml;hle jetzt <strong>Boxplot
+zeigt
+Ausrei&szlig;er</strong> aus dem Pop-Up-Men&uuml; und nutze
+wieder den
+Schieberegler, um zu sehen, wie&nbsp;der verbesserte Boxplot
+zwischen
+einer schiefen Verteilung und einer mit einem Ausrei&szlig;er
+unterscheidet.</p>
+
+</div>
+
+<p class="heading">Welche Extremwerte werden als Kreuze
+dargestellt?</p>
+
+<p>Zuerst definieren wir den <strong>Interquartilsabstand</strong>
+als Abstand zwischen dem oberen und dem unteren Quartil (z.B. die
+L&auml;nge der zentralen Box im Boxplot). Jegliche Werte, die mehr
+als
+1,5 mal dieser Distanz von der Box entfernt liegen, werden als seperate
+Kreuze dargestellt. Die &bdquo;Whiskers&ldquo;, die an den
+Seiten der
+zentralen Box gezeichnet sind, erweitern nur bis zu den Extremwerten
+innerhalb dieser Grenzen. </p>
+
+<p class="eqn"><object data="images/outlierDefn.svg" height="124" width="504"></object>
+</p>
+
+<div class="diagram">
+<p>Das folgende Diagramm erlaubt&nbsp;diese verbesserten
+Boxplot zu
+&uuml;berpr&uuml;fen.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" height="180" width="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="boxPlotProg.DragBoxValueApplet"><param name="varName" value="test"><param name="values" value="2.2 2.4 2.4 2.6 2.7 2.9 3.2 3.3 3.5 3.8 3.9 4.1 4.6 5.1 6.1 6.5"><param name="horizAxis" value="-0.5 10 0 1"></applet></div>
+
+<p>Ziehe das Kreuz zu der Stelle auf den verwackelten Dotplot,
+welche
+dem h&ouml;chsten Wert (6,5) auf der rechten Seite entspricht,
+wobei
+dieser Wert immer gr&ouml;&szlig;er und zu einem
+Ausrei&szlig;er wird.</p>
+
+<p>Die anderen Kreuze auf dem verwackelten Dotplot
+k&ouml;nnen
+&auml;hnlich verschoben werden, um die Verteilung der Werte zu
+ver&auml;ndern. Wann liegen die Extremwerte einzeln als Kreuze in
+dem
+Boxplot vor?</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

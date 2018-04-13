@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Anova tests for individual variables</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="analysis of variance">
+	<meta name="dataset" content="Heart catheter length">
+	<meta name="dataset" content="Body fat">
+	<meta name="dataset" content="Leafing out time">
+	<meta name="dataset" content="Blood pressure of children and parents">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Anova table</p>
+  <p>The previous page showed that the total sum of squares can be split in two 
+		ways (corresponding to the two orders of adding the explanatory variables, 
+		<em>X</em> and <em>Z</em>). Each set of sums of squares can be presented in 
+		a sums of squares table that can be extended in the usual way with 
+		mean sums of squares and F-ratios to give an <strong>analysis of variance 
+		table</strong>.</p>
+	<p class="eqn"><img src="images/anovaXZTable.gif" width="527" height="186" align="absmiddle"></p>
+	<p>There is another similar anova table corresponding to the other order of 
+		adding the explanatory variables.</p>
+	<p class="heading">Relationship to anova table for combined test of both <em>X</em> 
+		and <em>Z</em></p>
+	<p>In an earlier section, an analysis of variance table was used for a combined 
+		<a href="javascript:showNamedPage('regnAnovaTwo4')">test 
+		about whether <em>X</em> and <em>Z</em> were related to the response</a>.</p>
+	
+  <p class="eqn"><img src="../multiRegnAnova/images/anovaTable.gif" width="520" height="138" align="absmiddle"></p>
+	<p>This anova table and the two sequential anova tables that separate out the 
+		effects of the two explanatory variables (in different orders) contain the 
+		same total and regression sums of squares. The main difference is that in 
+		the sequential anova,</p>
+	
+<div class="centred"><div class="boxed">
+<p>The regression sum of squares (with 2 degrees of freedom) is 
+				split into two sums of squares that each have 1 degree of freedom.</p>
+</div></div>
+
+	<p class="heading">F tests</p>
+	<p>In each of the two sequential anova tables, the final F ratio (F<sub>X|Z</sub> 
+		or F<sub>Z|X</sub>) can be used in an F test for whether the final variable 
+		added (<em>X</em> or <em>Z</em>) is important. For example, F<sub>X|Z</sub> 
+		is compared to the F distribution (1, <em>n</em>&nbsp;-&nbsp;3) degrees of 
+		freedom to test the hypotheses</p>
+	<p class="eqn"><img src="../multicollin/images/tHypotheses2.gif" width="250" height="43"></p>
+	<p>The p-value is the upper tail area of this F distribution.</p>
+	<p class="heading">F and t tests</p>
+	<p>We described earlier <a href="javascript:showNamedPage('regnInfTwo6')">t-tests 
+		for hypotheses such as these</a>. For example, the t-test for β<sub>1</sub> 
+		corresponding to the hypotheses shown above is based on the test statistic,</p>
+	<p class="eqn"><img src="images/tXstat.gif" width="75" height="41"></p>
+	<p>Since the F and t tests are assessing the same hypotheses, it should come 
+		as no surprise that they result in the same p-value and conclusion. Indeed, 
+		theory can prove that <span class="black em">F<sub>X|Z</sub></span>  
+		is equal to the square of <span class="black em">t<sub>X</sub></span> .</p>
+	<p class="heading">Other F tests</p>
+	<p>The first line in each anova table also provides an F ratio (<span class="black em">F<sub>X</sub></span>  
+		or <span class="black em">F<sub>Z</sub></span> ) that can be used for 
+		a test. However these tests are rarely useful unless it has already been concluded 
+		(from <span class="black em">F<sub>Z|X</sub></span>  or <span class="black em">F<sub>X|Z</sub></span> ) 
+		that the other variable is not needed.</p>
+	<p class="eqn"></p>
+	<div class="diagram">
+    <p class="heading">Examples</p>
+
+    <p>The diagram below shows a few data sets involving correlated explanatory 
+			variables.</p>
+    <div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="620">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="multiRegnProg.DataSeqAnovaApplet">
+<param name="noOfDataSets" value="4">
+<param name="dataName" value="Leafing-out times of Maple seedlings">
+<param name="description" value="Batches of maple seedlings from various locations in the US and Canada were grown in Wooster, Ohio. An index of the time to leafing-out of each batch (Y) may be related to the latitude (X degrees North) and mean July temperature (Z degrees F) of the source of the seeds.">
+<param name="question" value="There is moderately strong evidence that latitude should not be dropped from the full model, but no evidence against dropping temperature. A model explaining leafing-out time in terms of only latitude seems best.">
+<param name="yVarName" value="Leafing-out time">
+<param name="xVarName" value="Latitude(X)">
+<param name="zVarName" value="Temperature(Z)">
+<param name="yValues" value="20.5 21.0 18.3 18.6 18.6 19.8 20.6 19.2 19.8 15.8 14.5 18.5 16.7 13.9 14.3 15.2 16.6 18.2 18.3 13.3 20.0 18.1 17.0 15.6 15.7 15.4 15.4 15.8 15.0 15.9 14.0 10.8">
+<param name="xValues" value="46.95 45.55 45.00 45.42 44.50 46.37 45.03 43.00 42.80 42.70 42.42 40.75 41.38 40.35 40.80 40.92 40.33 41.58 41.92 40.12 42.75 42.00 42.55 41.50 39.25 37.45 38.33 36.25 35.80 31.38 32.83 30.75">
+<param name="zValues" value="66.7 64.3 61.8 65.0 63.5 65.5 67.7 67.9 70.2 71.1 74.4 76.4 75.9 76.4 71.9 74.2 73.0 71.4 69.7 72.6 69.2 68.0 70.0 72.5 76.7 79.5 69.5 74.3 68.9 80.8 81.2 81.0">
+<param name="yAxis" value="10 22 10 2">
+<param name="xAxis" value="30 47 30 2">
+<param name="zAxis" value="60 82 60 5">
+
+<param name="dataName2" value="Body fat for sample of 25 men">
+<param name="description2" value="Body fat was measured using an underwater weighing technique from 251 men. This data set shows percentage body fat (Y), abdomen circumference (X cm) and height (Z cm) from 25 of the men.">
+<param name="question2" value="There is extremely strong evidence that body fat is related to both abdomen circumference and height. Neither explanatory variable should be dropped from the full model.">
+<param name="yVarName2" value="Body fat">
+<param name="xVarName2" value="Abdomen(X)">
+<param name="zVarName2" value="Height(Z)">
+<param name="yAxis2" value="0 40 0 10">
+<param name="xAxis2" value="65 130 70 10">
+<param name="zAxis2" value="63 76 65 5">
+<param name="yValues2" value="12 16.5 9.4 31.3 5 24 13.2 18.6 14.3 21.7 21 17.9 15 20.1 24.5 22 16.5 16.8 23.8 22.6 11.3 15.1 16.9 28.8 28.3">
+<param name="xValues2" value="88.6 100.5 83.5 108.1 70.4 98.3 84.6 98.6 86.5 94 92.3 87.5 87 106.6 106.8 92.4 90.8 104.5 101.2 89.7 84.4 88.7 93 100.5 111.5">
+<param name="zValues2" value="73.5 73.5 69 67 66.75 65.75 71.5 69.25 73 72 69.25 72.25 69.75 75 70.25 71.5 69.5 74.5 68.25 67.5 70.75 69.25 68.5 65.75 66">
+
+<param name="dataName3" value="Heart catheter length">
+<param name="description3" value="In heart catheterisation, a catheter is passed through a major vein or artery from the leg into the heart. X-rays are used to position the tip of the catheter. The catheter length (Y cm), height (X in) and weight (Z lb) were recorded from 12 children.">
+<param name="question3" value="There is no evidence against dropping either height or weight from the full model. Since the explained ssq for Weight on its own (601.88) is higher than that for Height (586.38) and both associated p-values are small, a model with only Weight seems best.">
+<param name="yVarName3" value="Catheter">
+<param name="xVarName3" value="Height">
+<param name="zVarName3" value="Weight">
+<param name="yValues3" value="37 50 34 36 43 28 37 20 34 30 38 47">
+<param name="xValues3" value="42.8 63.5 37.5 39.5 45.5 38.5 43.0 22.5 37.0 23.5 33.0 58.0">
+<param name="zValues3" value="40.0 93.5 35.5 30.0 52.0 17.0 38.5 8.5 33.0 9.5 21.0 79.0">
+<param name="yAxis3" value="15 55 20 10">
+<param name="xAxis3" value="20 65 20 10">
+<param name="zAxis3" value="0 100 0 20">
+
+<param name="dataName4" value="Blood pressure of children and parents">
+<param name="description4" value="This data set contains the systolic blood pressures of the mother (X), father (Z) and first-born child (Y) from each of 20 families.">
+<param name="question4" value="There is very strong evidence that both mothers and fathers blood pressures are related to that of their first-born child.">
+<param name="yVarName4" value="Child BP">
+<param name="xVarName4" value="Mother BP">
+<param name="zVarName4" value="Father BP">
+<param name="yValues4" value="90 85 120 100 105 100 110 140 115 105 100 80 70 115 90 90 115 110 90 100">
+<param name="xValues4" value="130 125 140 110 145 160 120 180 120 130 125 110 90 120 150 145 130 155 110 125">
+<param name="zValues4" value="140 120 180 150 175 120 145 160 190 135 150 125 140 170 150 155 160 125 140 150">
+<param name="yAxis4" value="60 145 60 20">
+<param name="xAxis4" value="80 190 80 20">
+<param name="zAxis4" value="110 200 120 20">
+
+<param name="maxSsq" value="999.99 99.999 99.99">
+<param name="componentDecimals" value="2">
+<param name="maxCoeff" value="99.999 9.999 -9.999">
+<param name="maxT" value="99.999">
+<param name="customText" value="after=after#Data set=Data set#Fitting order=Fitting order#Conclusion=Conclusion#then=then">
+</applet> 
+</div>
+
+    <p>For each data set, examine the two anova tables &mdash; the pop-up menu <strong>Fitting 
+			order</strong> switches between them. From the highlighted p-values associated 
+			with (<em>X</em> after <em>Z</em>) and (<em>Z</em> after <em>X</em>), you 
+			can assess whether there is evidence against dropping the individual variables 
+			from the full model. Note that the F-ratios are the square of the t statistics 
+			that are used to test the same hypotheses.</p>
+		<p>(The top F ratios and their p-values are not examined unless the highlighted 
+			F ratio in the same table shows that the other variable can be dropped from 
+			the full model.)</p>
+		
+	</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

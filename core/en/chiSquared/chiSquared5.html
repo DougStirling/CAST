@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Sample variance</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="chi-squared distribution, variance of random sample, sample variance, normal distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>The following theorem is important but its proof is long and difficult. <span style="color:#FF0000">Only those who are keen for completeness need read through it.</span></p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Sample variance from a normal distribution</p>
+<p>If \(\{X_1, X_2, \dots, X_n\}\) is a random sample from a \(\NormalDistn(\mu, \sigma^2)\) distribution, the sample variance, \(S^2\) has a scaled Chi-squared distribution</p>
+
+\[
+\frac {n-1}{\sigma^2} S^2 \;\sim\; \ChiSqrDistn(n - 1\;\text{df})
+\]
+
+</div>
+
+<div class="proof">
+<p>We will prove this by induction.</p>
+<p style="font-weight:bold; font-style:italic; margin-left:10px">For \(n = 2\)</p>
+
+\[ \begin{align}
+\frac{n-1}{\sigma^2}S^2 \;=\; \frac {\sum_{i=1}^2 {(X_i - \overline{X})^2}} {\sigma^2} \;&amp;=\; \frac{1}{\sigma^2} \left\{\left(X_1 - \frac{X_1 + X_2}{2}\right)^2 + \left(X_2 - \frac{X_1 + X_2}{2}\right)^2 \right\} \\
+&amp;=\; \frac{1}{\sigma^2} \left\{ \left(\frac{X_1 - X_2}{2}\right)^2 + \left(\frac{X_2 - X_1}{2}\right)^2 \right\} \\
+&amp;=\; \frac{(X_1 - X_2)^2}{2\sigma^2}  \\
+\end{align} \]
+
+<p>Now \((X_1 - X_2) \sim \NormalDistn(0, 2\sigma^2)\) and \(\frac {X_1 - X_2}{\sqrt{2}\sigma} \sim \NormalDistn(0, 1)\) so this is the square of a standard normal variable and has a \(\ChiSqrDistn(1\;\text{df})\) distribution, proving the result for \(n = 2\).</p>
+
+<p style="font-weight:bold; font-style:italic; margin-left:10px">Assuming the result for \((n-1)\)</p>
+<p>We will express the mean and variance of the \(n\) values in terms of the mean and variance of the first \((n-1)\).</p>
+
+\[
+\overline{X}_n \;=\; \frac{(n-1)\overline{X}_{n-1} + X_n}{n} \\
+\]
+
+\[
+\begin{align}
+(n-1)S_n^2 &amp;= \sum_{i=1}^n (X_i - \overline{X}_n)^2 \\
+&amp;= (X_n - \overline{X}_n)^2 + \sum_{i=1}^{n-1} (X_i - \overline{X}_n)^2 \\
+&amp;= (X_n - \overline{X}_n)^2 + \sum_{i=1}^{n-1} \left( (X_i - \overline{X}_{n-1}) + ( \overline{X}_{n-1} - \overline{X}_n) \right)^2 \\
+&amp;= (X_n - \overline{X}_n)^2 + \sum_{i=1}^{n-1} (X_i - \overline{X}_{n-1})^2 + \sum_{i=1}^{n-1}(\overline{X}_{n-1} - \overline{X}_n)^2 \\
+&amp;\quad\quad\quad\quad\quad\quad\quad\quad + 2(\overline{X}_{n-1} - \overline{X}_n)\sum_{i=1}^{n-1} (X_i - \overline{X}_{n-1}) \\
+&amp;= (X_n - \overline{X}_n)^2 +  (n-2)S_{n-1}^2 +(n-1)(\overline{X}_{n-1} - \overline{X}_n)^2
+\end{align}
+\]
+
+<p>since \(\sum_{i=1}^{n-1} (X_i - \overline{X}_{n-1}) = 0\). We now rewrite the first and third terms.</p>
+
+\[
+(X_n - \overline{X}_n)^2 = \left(X_n - \frac{(n-1)\overline{X}_{n-1} + X_n}{n} \right)^2
+= \left(\frac{n-1}{n}\right)^2 (X_n - \overline{X}_{n-1})^2 \\
+
+\begin{align}
+(n-1)(\overline{X}_{n-1} - \overline{X}_n)^2 &amp;= (n-1)\left(\overline{X}_{n-1} - \frac{(n-1)\overline{X}_{n-1} +X_n}{n}\right)^2 \\
+&amp;= (n-1)\left(\frac{X_n - \overline{X}_{n-1}}{n} \right)^2
+\end{align}
+\]
+
+<p>Therefore</p>
+
+\[
+\begin{align}
+(n-1)S_n^2 &amp;= (n-2)S_{n-1}^2 + \left(\frac{(n-1)^2}{n^2} + \frac{n-1}{n^2}\right) (X_n - \overline{X}_{n-1})^2 \\
+&amp;= (n-2)S_{n-1}^2 + \frac{n-1}{n} (X_n - \overline{X}_{n-1})^2
+\end{align}
+\]
+
+<p>Now \(X_n \sim \NormalDistn(\mu, \sigma)\) and \(\overline{X}_{n-1} \sim \NormalDistn\left(\mu, \frac{\sigma^2}{n-1}\right)\) are independent since they involve different parts of the random sample, so</p>
+
+\[
+(X_n - \overline{X}_{n-1}) \sim \NormalDistn\left(0, \frac{n}{n-1} \sigma^2\right)
+\]
+
+<p>Finally, since \(S_{n-1}^2\) is independent of both \(X_n\) and \(\overline{X}_{n-1}\),</p>
+
+\[
+\frac{n-1}{\sigma^2} S_n^2 \;\;\sim\;\; \ChiSqrDistn(n-2) + \left(\NormalDistn(0, 1)\right)^2 \;=\; \ChiSqrDistn(n-1)
+\]
+
+<p>We have now shown that the theorem holds for a random sample of \(n\) values, provided it holds for a random sample of size \((n-1)\) and this completes the proof by induction.</p>
+
+</div>
+
+</div>
+
+<p>We will also write the distribution of \(S^2\) in the form</p>
+
+\[
+S^2 \;\;\sim\;\; \frac{\sigma^2}{n-1} \;\times\; \ChiSqrDistn(n - 1\;\text{df})
+\]
+
+<div class="questionSoln">
+<div class="question">
+<p class="questionTitle">Example</p>
+<p>In a random sample of \(n = 20\) values from a \(\NormalDistn(\mu,\;\sigma^2)\) distribution, what is the probability that the sample standard deviation will be more than 20% higher than the normal distribution's standard deviation, \(\sigma\)?</p>
+</div>
+
+<div class="solution">
+<p>We will use the Chi-squared distribution to answer this question.</p>
+
+\[
+P(S > 1.2\sigma) \;=\; P(S^2 > 1.2^2 \sigma^2) \;=\; P\left(\frac{20 - 1}{\sigma^2} S^2 > 19 \times 1.2^2\right)
+\]
+
+<p>This is the probability that a \(\ChiSqrDistn(19\;\text{df})\) random variable is higher than \(19 \times 1.2^2 = 27.36\).</p>
+<p>This probability can be found from Excel using the function</p>
+<p class="eqn">=1 - CHISQ.DIST(27.36, 19, TRUE)</p>
+<p>and gives a probability of 0.0965. There is therefore nearly a 10% probability that the sample standard deviation will be more than 20% greater than the underlying distribution's standard deviation.</p>
+</div>
+
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

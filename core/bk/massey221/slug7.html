@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Problem with non-constant variance</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="curvature, non-constant variance, prediction">
+	<meta name="dataset" content="Slug weight and length">
+</head>
+
+
+<body style="background-color:#FFE1B6">
+<script type="text/javascript">writePageStart();</script>
+
+
+<p class="heading">Assumption of Non-constant Variance</p>
+
+<p>The inference about the parameters in the last page's Minitab output, and 
+indeed the whole least squares analysis, are however flawed since they are 
+based on more than the assumption of a linear relationship. The analysis also 
+assumes that slug weights have the same standard deviation, whatever their 
+length,</p>
+
+<p class=eqn>
+<img src="images/constSD.gif" width="115" height="23" alt="sd(wt) = sigma2">
+</p>
+
+<p>For the slug data, this is not true &mdash; the variability in weights of slugs with
+small length (or equivalently, small
+(length)<img src="images/super3.gif" width="7" height="10" align="BASELINE">)
+is much lower than the variability in weights of long slugs.
+</p>
+
+<p class=eqn>
+<img src="images/differentSDPlot.gif" width="380" height="304" alt="wt vs len plot">
+</p>
+
+  <p class="heading">Bad Prediction Intervals</p>
+
+<p>Since the Minitab analysis is based on an incorrect assumption, we cannot
+rely on the output. The dangers are most evident when Minitab is asked to
+predict the weights of slugs of different lengths. The resulting 95% prediction
+intervals are displayed in pink in the diagram below.
+</p>
+
+<div align="center">
+<script type="text/javascript">startApplet("loessProg.TransPIApplet", 450, 400, "", "FFE1B6");</script>
+<param name="backgroundColor" value="custom1">
+<param name="xVarName" value="Len">
+<param name="yVarName" value="Wt">
+<param name="xValues" value="7.3 7.8 7.5 6.9 6.0 7.4 8.5 8.6 8.2 8.5 7.0 4.3 3.2 4.7 4.2 9.0 4.6 3.8 4.0 3.9 3.2 1.0 4.1 6.1 4.2 4.4 5.6 5.7 1.7 4.5 4.5 3.5 2.0 2.9 2.1 2.6 2.6 3.6 1.6 3.5 3.6 2.2 2.4 4.2 3.3 3.9 5.6 4.6 2.2 1.2 2.7 3.4 3.2 2.3 2.8 1.4 2.2 1.7 1.0 2.3 3.5 2.9 2.6 2.1 1.6 1.6 2.0 7.5 7.8 2.2 6.1 5.9 7.8 9.0 9.3 7.1 9.4 8.5 8.5 2.4 2.5 5.7 4.5 1.0 1.0 1.0 1.1 1.9 1.6 3.1 2.3 1.9 1.8 2.3 2.5 3.3 4.2 2.1 9.0 9.4">
+<param name="yValues" value="3.68 5.48 4.94 3.47 3.26 4.36 6.44 8.37 6.40 8.23 4.99 1.69 0.39 2.14 1.07 8.75 1.02 1.07 0.88 0.76 0.48 0.04 0.98 3.34 1.02 1.10 2.35 3.93 0.10 0.65 1.64 0.50 0.12 0.40 0.14 0.35 0.29 0.88 0.12 0.66 0.62 0.17 0.25 2.28 1.26 2.20 4.78 3.27 0.20 0.09 0.30 0.52 0.47 0.19 0.28 0.08 0.18 0.13 0.06 0.20 0.60 0.39 0.31 0.16 0.06 0.04 0.16 4.94 5.48 0.36 3.16 1.91 8.44 13.62 8.70 4.39 8.23 6.30 6.06 0.24 0.27 2.04 1.30 0.03 0.03 0.02 0.03 0.14 0.08 0.03 0.18 0.10 0.09 0.23 0.26 0.71 0.85 0.18 12.00 11.22">
+<param name="horizAxis" value="0 10 0 2 0.5 1">
+<param name="vertAxis" value="-4 15 0 5">
+<param name="transXAxis" value="(200,-2) (215,-1) (250,0) (270,1) (305,2) (345,3) (385,4) (410,5) (450,6) (485,7)">
+<param name="maxXTransformed" value="-1.000 1000">
+<param name="labelAxes" value="true">
+<param name="extraAxisSpace" value="10 10">
+<param name="xLimits" value="0.0 10.0 0.1 3.0">
+<param name="maxPrediction" value="15.00">
+<param name="predictName" value="Wt of Slug">
+</applet>
+</div>
+
+<p><span class="instruction">Drag the slider to display 95% prediction intervals for
+the weight of a new slug of different lengths.</span> The prediction interval is
+unreasonably wide for small slugs. For example, a 2&nbsp;cm slug is predicted
+to weigh between -1.45 grams and 1.98 grams. Not only is the lower bound of the
+prediction interval negative, but all recorded slugs that were close to
+1.5 and 2.5&nbsp;cm long weighed between 0.04 and 0.36 grams.
+</p>
+
+<p>In a similar way, the prediction intervals are too narrow for long slugs
+&mdash; the prediction interval is unlikely to include 95% of slugs of length 9&nbsp;cm.
+</p>
+
+<p class="red">If we are to rely on the output that Minitab gives,
+we require not only linearity but also constant response variance. We must
+search further for such a model.
+</p>
+	
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

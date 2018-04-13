@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Sample mean or median?</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="bias, standard error">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Sample mean or median?</p>
+
+<p>We now illustrate the use of bias and standard error to find which of two competing estimators is better.</p>
+
+
+<div class="example" title="Simulation comparing mean and median">
+	<p class="exampleHeading">Samples from a normal distribution</p>
+	<p>We now consider a random sample of \(n\) values from a normal distribution whose standard deviation is known to be 0.2,</p>
+\[
+X \;\; \sim \; \; \NormalDistn(\mu, \;\;\sigma^2 = 0.2^2)
+\]
+	<p>Since the normal distribution is symmetric, both its mean and median are equal to \(\mu\), so is the sample mean or sample median  a better estimator?</p>
+	<p>We already know the distribution of the sample mean, \(\overline{X}\),</p>
+\[
+\overline{X} \;\; \sim \; \; \NormalDistn\left(\mu, \;\;\sigma_{\overline{X}}^2 = \frac {0.2^2} n \right)
+\]
+	<p>The distribution of the sample median, \(\tilde{X}\), is rather more complex. Its expected value is also \(\mu\), but its distribution is not normal and its standard deviation is hard to find. However in large samples, it is <strong>approximately</strong></p>
+\[
+\tilde{X} \;\; \underset{\text{approx}}{\sim} \; \; \NormalDistn\left(\mu, \;\;\sigma_{\tilde{X}}^2 = \frac {0.2^2} n \times 1.571 \right)
+\]
+	<p>Both estimators are therefore unbiased, but the standard error of the mean, \(\overline{X}\), is lower than that of the median, \(\tilde{X}\), so the sample mean is the better estimator.</p>
+	<p>The following diagram illustrates this for different sample sizes — the sample mean results in estimation errors that are likely to be smaller than the sample median.</p>
+	<div class="centred">
+		<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+			<script type="text/javascript">writeAppletParams();</script>
+			<param name="appletName" value="stdErrorProg.MeanMedTheoryApplet">
+			<param name="backgroundColor" value="FFFBF3">
+			<param name="varName" value="Annual rainfall (metres)">
+			<param name="popnDistn" value="normal">
+			<param name="popnParams" value="1 0.2">
+			<param name="dataAxis" value="0.5 1.5 0.6 0.2">
+			<param name="meanMedAxis" value="0.70 1.24 0.8 0.1">
+			<param name="errorSdDecimals" value="3">
+			<param name="sampleSize" value="10 100 16">
+			<param name="customText" value="Population*distribution=Population*distribution#Distribution*of estimate*(approx)=Distribution*of estimate*(approx)">
+		</applet>
+	</div>
+	<p class="exampleHeading">Samples from a skew distribution</p>
+	<p>The diagram below shows the probability density function of a skew distribution with standard deviation  4. If the median of this distribution, \(\gamma\), was unknown, the obvious estimator would be the median of a random sample, \(\tilde{X}\).</p>
+	<p>However we will investigate whether the sample mean would be a better estimator. \(\overline{X}\) has  standard error \(\frac{4} {\sqrt n}\). The distributions of the sample mean and sample median are shown below.</p>
+	<div class="centred">
+		<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+			<script type="text/javascript">writeAppletParams();</script>
+			<param name="appletName" value="stdErrorProg.MeanMedTheoryApplet">
+			<param name="backgroundColor" value="FFFBF3">
+			<param name="varName" value="Lifetime">
+			<param name="popnDistn" value="gamma">
+			<param name="popnParams" value="1 4">
+			<param name="dataAxis" value="0 20 0 5">
+			<param name="meanMedAxis" value="-1 9 0 2">
+			<param name="errorSdDecimals" value="2">
+			<param name="sampleSize" value="10 100 16">
+			<param name="targetParam" value="median">
+			<param name="customText" value="Population*distribution=Population*distribution#Distribution*of estimate*(approx)=Distribution*of estimate*(approx)#skew=skew">
+		</applet>
+	</div>
+	<p>Both estimators have similar standard errors. However the sample mean is a <strong>biased</strong> estimator of the population median of this skew distribution since the mean of its  distribution is considerably larger than the population median, 2.77. When the sample size is large, the sample mean is almost certain to overestimate the distribution's median.</p>
+	<p>Not also that the sample mean is <strong>not a consistent estimator</strong> of the distribution's median since its bias, 1.23, does not tend to zero as the sample size increases.</p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

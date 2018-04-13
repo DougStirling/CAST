@@ -1,0 +1,177 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Control charts for means</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="control chart, mean">
+	<meta name="dataset" content="Paint primer thickness">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class=heading>Samples instead of individual values</p>
+
+<p>Although control charts for individual values are sometimes used, it is more
+common to examine <strong>samples</strong> from a process at regular intervals
+rather than individual values. There are a few reasons:
+</p>
+
+<ul>
+	
+  <li>It is easier and cheaper to make several measurements at once &mdash; for example, 
+    sampling 12 items from a production line every 2 hours instead of a single 
+    item every 10 minutes. <br>
+    &nbsp;</li>
+	
+  <li>The control limits at 3 standard deviations on each side of the mean work 
+    best when the distribution of values is close to a normal distribution. Sample 
+    means <strong>always</strong> have a distribution that is closer to normal 
+    than the individual values. <br>
+    &nbsp;</li>
+	
+  <li>There are two ways in which a process can go out of control. Special causes 
+    may either change the process mean or increase its variability. From each 
+    sample, we can estimate both location and spread, making it easier to look 
+    for changes in both location and variability.</li>
+</ul>
+
+<p class=heading>Control chart for means</p>
+
+<p>We first consider detection of whether the <strong>mean output level of a process</strong> 
+  is changing, based on a run chart of the means of successive samples. Sample 
+  means of <em>n</em> values vary less from sample to sample than individual values, 
+  and have standard deviation</p>
+	
+<div class="centred"><table border="0" cellpadding="0" cellspacing="0" class="centred"><tr>
+<td valign="middle"><img src="../../images/symbol.sigmaXbar.png" width="19" height="16" align="baseline"></td>
+<td valign="middle"> &nbsp;<span class="black">=</span>&nbsp; </td>
+<td valign="middle"><img src="../../images/symbol.sigmaOverRootN.png" width="26" height="31" align="baseline"></td>
+</tr></table></div>
+<p>If we knew the mean, µ, and the standard deviation, σ, of the process when it is under control, the appropritate control limits would therefore be:</p>
+<p class=eqn><img src="images/controlLimitTheory.gif" width="70" height="31" alt="xBar +- 3s/root(n)"> </p>
+<p>These control limits should be distinguished carefully 
+from the corresponding control limits that would be used for individual values, </p>
+<p class=eqn><img src="images/controlLimitTheory2.gif" width="57" height="15" alt="xBar +- 3s"> </p>
+<p>Since the control limits used in a control chart for means are closer to µ 
+  than those in a control chart for individual values, the chart is more sensitive 
+to changes in the process mean over time.</p>
+<p class=heading>Training data</p>
+
+<p>Although the above control limits describe well the idea of a control chart for sample means, in practice we  know the values of neither µ nor σ. The control limits must therefore be estimated from training samples in which great care is taken to avoid special causes &mdash; i.e. samples that are collected when the process is in control.</p>
+<p>It would be reasonable to simply use the mean and standard deviation of the training data as estimates of µ or σ in the above control limits. However in practice, the control limits are usually based on the mean and<strong> <span class="black">range</span></strong> of the <em>k</em> training samples as follows:</p>
+<p class=eqn><img src="images/meanLimits.gif" width="148" height="51" alt="xBar +- 3s"> </p>
+<p>In these formulae, <img src="images/xBarBar.gif" alt="x-bar-bar" width="16" height="18" align="baseline">is the average of the <em>k </em>training sample means, and <img src="images/rBar.gif" alt="r-bar" width="12" height="15" align="baseline"> is average of their ranges,</p>
+<p class=eqn><img src="images/r_x_bar_defn.gif" width="209" height="61" alt="xBar +- 3s"> </p>
+<p>The final value in the formulae for the control limits is a constant, <em>A</em><sub>2</sub>, that depends on the number of observations in each sample, <em>n</em>.</p>
+<div class="centred"><div class="boxed">
+	<p>Note that <em>A</em><sub>2</sub> depends on <em>n</em>, <strong>not</strong> the number of training samples, <em>k</em>.
+	<p></p>
+</div></div>
+<p>The table below gives the value <em>A</em><sub>2</sub> for small sample sizes up to <em>n</em>&nbsp;=&nbsp;10.</p>
+<div class="centred"><table class="centred" cellpadding="5" cellspacing="0">
+	<tr>
+		<th ALIGN=CENTER>&nbsp;&nbsp;&nbsp;&nbsp;Sample size, <em>n</em>&nbsp;&nbsp;&nbsp;&nbsp;</th>
+		<th ALIGN=CENTER><em>A</em><sub>2</sub></th>
+	</tr>
+	<tr ALIGN=CENTER>
+		<td style="border-top:1px solid #999999;" ALIGN=CENTER bgcolor="#FFFFFF">2</td>
+		<td style="border-top:1px solid #999999;" bgcolor="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;1.880&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	</tr>
+	<tr ALIGN=CENTER>
+		<td bgcolor="#FFFFFF">3</td>
+		<td bgcolor="#FFFFFF">1.023</td>
+	</tr>
+	<tr ALIGN=CENTER>
+		<td bgcolor="#FFFFFF">4</td>
+		<td bgcolor="#FFFFFF">0.729</td>
+	</tr>
+	<tr ALIGN=CENTER>
+		<td bgcolor="#FFFFFF">5</td>
+		<td bgcolor="#FFFFFF">0.577</td>
+	</tr>
+	<tr ALIGN=CENTER>
+		<td bgcolor="#FFFFFF">6</td>
+		<td bgcolor="#FFFFFF">0.483</td>
+	</tr>
+	<tr ALIGN=CENTER>
+		<td bgcolor="#FFFFFF">7</td>
+		<td bgcolor="#FFFFFF">0.419</td>
+	</tr>
+	<tr ALIGN=CENTER>
+		<td bgcolor="#FFFFFF">8</td>
+		<td bgcolor="#FFFFFF">0.373</td>
+	</tr>
+	<tr ALIGN=CENTER>
+		<td bgcolor="#FFFFFF">9</td>
+		<td bgcolor="#FFFFFF">0.337</td>
+	</tr>
+	<tr ALIGN=CENTER>
+		<td style="border-bottom:1px solid #999999;" bgcolor="#FFFFFF">10</td>
+		<td style="border-bottom:1px solid #999999;" bgcolor="#FFFFFF">0.308</td>
+	</tr>
+</table></div>
+<br>
+<div class="diagram"> 
+  <p class=heading>Paint primer thickness</p>
+  <p>The diagram below shows thickness of paint primer in mils (an imperial measurement 
+    equal to one thousandth of an inch), measured from a sample of 10 items each 
+    morning and afternoon for 5 successive mornings and afternoons. We will regard 
+    these data as a training set from which we obtain control limits for later 
+    samples of primer thickness. </p>
+
+<p class="gray">(In practice, there are usually more training samples, but we use a small real data set for illustration.)</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="controlProg.MeanControlApplet">
+<param name="varName" value="primer thickness">
+<param name="values" value="1.30 1.10 1.20 1.25 1.05 .95 1.10 1.16 1.37 .98 1.01 1.10 1.15 .97 1.25 1.12 1.10 .90 1.04 1.08 1.22 1.05 .93 1.08 1.15 1.27 .95 1.11 1.12 1.10 1.08 1.12 1.11 1.28 1.00 .95 1.15 1.14 1.28 1.31 .98 1.30 1.31 1.12 1.08 1.10 1.15 1.35 1.12 1.26 1.12 1.30 1.01 1.20 1.11 .93 1.02 1.25 1.05 1.10 .92 1.10 1.13 1.02 .93 1.17 1.24 .98 1.34 1.12 1.04 1.14 1.18 1.12 1.00 1.02 1.05 1.34 1.12 1.05 1.08 .92 1.14 1.20 1.02 1.04 .94 1.05 1.12 1.06 1.20 1.13 1.19 1.16 1.03 1.25 1.20 1.24 1.10 1.03 1.25 .91 .96 1.04 .93 1.08 1.29 1.42 1.10 1.00 1.24 1.34 1.40 1.26 1.13 1.15 1.08 1.02 1.05 1.18 1.13 1.16 1.12 1.22 1.12 1.07 1.04 1.28 1.12 1.10 1.08 1.31 1.12 1.18 1.15 1.17 .98 1.05 1.00 1.26 1.08 1.26 1.13 .94 1.30 1.15 1.07 1.02 1.22 1.18 1.14 1.02 1.14 .94 1.30 1.08 .94 1.12 1.15 1.36 1.06 1.12 .98 1.12 1.20 1.02 1.19 1.03 1.02 1.09 1.14 1.22 1.18 1.27 1.17 1.26 1.15 1.07 1.02 1.36 1.07 1.05 .97 1.05 1.16 1.02 1.02 1.14 1.07 1.00 1.13 .90 1.12 1.04 1.40 1.12 1.15 1.01 1.30 1.14">
+<param name="vertAxis" value="0.7 1.5 0.8 0.2">
+<param name="limitNames" value="LCL Centre UCL">
+<param name="groupInfo" value="10 5">
+<param name="timeAxis" value="0 1 1 1">
+<param name="limitType" value="rBar">
+<param name="customText" value="Show means=Show means#Training=Training#Production=Production#training=training#production=production#Value outside control limits=Value outside control limits#2 out of 3 values in Zone A=2 out of 3 values in Zone A#4 out of 5 values in Zones A or B on one side=4 out of 5 values in Zones A or B on one side#6 values in a row increasing or decreasing=6 values in a row increasing or decreasing#9 values on one side of centre=9 values on one side of centre">
+</applet>
+</div>
+
+<p>The control limits that are initially shown are those for a run chart of individual
+values &mdash; mean&nbsp;±&nbsp;3&nbsp;standard deviations for the 50 values in the
+training data.
+</p>
+
+<p>Use the scroll bar to display the samples that were measured over the next 15 half-days.
+No values are outside the 3-standard deviations limits, so we would conclude that the
+process is in control.
+</p>
+
+<p>Now click the checkbox <strong>Show Means</strong>. The raw values
+in the samples are dimmed and the sample means are displayed, joined by blue lines. The sample
+means are considerably less variable than the raw values, so the control limits are redrawn
+closer to the centre line. The calculations for the upper and lower control limits are shown below.</p>
+<p class="eqn"><img src="images/primerLimits.gif" width="322" height="150"></p>
+
+<p>Based on the means, we again conclude that there is no evidence of a shift in the
+process mean.
+</p>
+
+</div>
+
+<p>As in control charts for individual values, additional triggers can be used that depend
+on several successive means. These are defined in the same way as those in control charts
+for individual values. For example, six successive sample means either increasing
+or decreasing suggest that there might be a special cause.
+</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

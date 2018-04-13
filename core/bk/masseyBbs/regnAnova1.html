@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Sums of squares</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="linear model, regression model, sums of squares, explained sum of squares, residual sum of squares">
+	<meta name="dataset" content="Airline complaints">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class=heading>Explained and unexplained variation</p>
+<p>For the normal linear model, the least squares line provides the best parameter 
+estimates and predictions. The least squares line provides fitted values, <span style="position:relative; top:4px"><img src="../../images/symbol.yiHat.png" width="11" height="18" align="baseline"></span>, 
+for each observation. If the linear model is useful, these fitted values will 
+be different from the overall response mean.</p>
+<p>The vertical distances of data points to the least squares line &mdash; the residuals 
+&mdash; are left-over <strong>unexplained</strong> variation. </p>
+<p class=eqn><img src="../../en/regnAnova/images/components.gif" width="540" height="243" alt="total = explained + residual"></p>
+
+<div class="centred"><table width="90%" border="0" cellspacing="0" cellpadding="6" class="centred">
+<tr> 
+<td class="green">Total component</td>
+<td><img src="../../en/regnAnova/images/totalComponentAnova.gif" id="gif_image_4" width="53" height="23"></td>
+<td class="green">These differences reflect the total variability of the 
+response &mdash; without taking account of the explanatory variable.</td>
+</tr>
+<tr> 
+<td class="red">Explained component</td>
+<td><img src="../../en/regnAnova/images/regnComponentAnova.gif" id="gif_image_2" width="53" height="23"></td>
+<td class="red">These components describe how much the predicted response 
+changes from using the least squares line (as opposed to simply using the overall 
+mean as a prediction).</td>
+</tr>
+<tr> 
+<td class="blue">Residual component</td>
+<td><img src="../../en/regnAnova/images/residComponentAnova.gif" id="gif_image_3" width="57" height="23"></td>
+<td class="blue">The residuals describe the extent to which the explanatory 
+variable fails to predict the response. Their variation is not explained by the 
+model.</td>
+</tr>
+</table></div>
+
+
+
+<p class="heading">Explained and residual sums of squares</p>
+<p>The relative sizes of the explained and residual components reflect the proportion 
+of response variation that is explained by a linear model. Their sizes can be 
+summarised by their <strong>sums of squares</strong>. </p>
+
+<div class="centred"><table width="90%" border="0" cellspacing="0" cellpadding="6" class="centred">
+<tr> 
+<td><img src="../../en/regnAnova/images/ssqTotalAnova.gif" width="74" height="26" alt="SStotal"></td>
+<td class="green">The total sum of squares reflects the total variability 
+of the response &mdash; the response standard deviation is the square root of this 
+divided by (n-1).</td>
+</tr>
+<tr> 
+<td><img src="../../en/regnAnova/images/ssqRegnAnova.gif" width="75" height="26" alt="SSexplained"></td>
+<td class="red">The explained sum of squares measures the variability of 
+the fitted values from the least squares fit. This is the variability that is 
+explained by the model.</td>
+</tr>
+<tr> 
+<td><img src="../../en/regnAnova/images/ssqResidAnova.gif" width="79" height="26" alt="SSresidual"></td>
+<td class="blue">The residual sum of squares quantifies the spread of values 
+around the least squares line. This is a measure of the unexplained variability 
+in the response.</td>
+</tr>
+</table></div>
+
+<p>The explained and residual sums of squares add to give the total sum of squares, 
+</p>
+<p class=eqn><img src="../../en/regnAnova/images/ssqEqnAnova.gif" id="gif_image_1" width="300" height="47"></p>
+<p class="gray">(This relationship requires a fair bit of algebra to 
+prove!)</p>
+
+<div class="boxed"><p>The relative sizes of the explained and residual sums of squares describe 
+how much of the variability is explained by the model.</p></div>
+
+<br>
+
+<div class="diagram">
+
+<p class="heading">Simulation: Impurities in plastic</p>
+<p>The next diagram shows simulated data that might describe the impurities recorded 
+from batches of plastic produced at different temperatures (degrees Fahrenheit).</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="360">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.ComponentsSsqApplet">
+<param name="yVarName" value="Impurities, y">
+<param name="xVarName" value="Temperature, x">
+<param name="xRandom" value="30 70 8 445945782 2.0">
+<param name="regnModel" value="-25.0 0.5 2.0">
+<param name="randomSeed" value="623945782">
+<param name="xAxis" value="50 90 50 10">
+<param name="yAxis" value="0 20 0 5">
+<param name="decimals" value="3">
+<param name="residAxis" value="-20 20 -20 10">
+<param name="initialR2" value="0.75">
+<param name="maxSsq" value="999.99">
+<param name="componentName" value="Total#Explained#Residual">
+<param name="customText" value="Variability=Variability#All unexplained=All unexplained#All explained=All explained">
+</applet>
+</div>
+
+<p>Click on the jittered dot plots on the right to display the different components 
+as coloured vertical lines on the scatterplot.</p>
+<p><strong>Drag the slider</strong> to change the strength of the relationship 
+between the impurities and temperature. Observe that:</p>
+
+<div class="boxed" style="text-align:left;">
+<dl>
+<dt>When the relationship is strong,</dt>
+<dd>...the residuals are much smaller than the explained components and their 
+sum of squares is also a small part of the total sum of squares.</dd>
+
+<dt>When the relationship is weak,</dt>
+<dd>...the residuals are larger than the explained components and their sum of 
+squares is a large part of the total sum of squares.</dd>
+</dl>
+</div>
+
+
+<p>The relative sizes of the sums of squares therefore hold information about the
+strength and significance of the relationship.</p>
+
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

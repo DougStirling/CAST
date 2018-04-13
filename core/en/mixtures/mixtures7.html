@@ -1,0 +1,211 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Constrained mixtures</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="mixtures, mixture design, constrained mixture">
+	<meta name="dataset" content="Fat content of biscuits">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Fixed values for some proportions</p>  
+  <p>In some experiments, we are not interested in the effects of some ingredients 
+    in the mixture, so they are held at fixed values. The sum of the proportions 
+    of the ingredients of interest are therefore constrained to some value less 
+    than 1.0.</p>
+	
+  <p>The 'trick' is to remove these fixed proportions from consideration in the 
+    mixture and deal only with the proportions <strong>within the remainder of 
+    the product</strong>. The proportions within this varying part of the product 
+    sum to one, so standard designs can be used</p>
+	
+  <p>As an example, it may have been decided that exactly 80% of a bread mix will 
+		be white flour. An experiment is to be conducted to assess how bread texture 
+		depends on the proportions of wholemeal flour, rye flour and gluten in the 
+		rest of the mix. The proportions of wholemeal, rye and gluten <strong>within 
+		the 20% of the mix that is not white flour</strong> will sum to 100% and can 
+		each be anywhere between 0% and 100%.</p>
+		
+	<div class="diagram"> 
+    <p class="heading">Fat content of biscuits</p>
+    <p>A large commercial bakery produces a wide range of biscuits, including 
+			an almond biscuit whose recipe contains 8% fats by weight. The biscuits 
+			are traditionally made with butter, but the baker is interested in replacing 
+			some of the butter with cheaper margarine and canola oil. The baker therefore 
+			wants to conduct an experiment to compare the quality of the biscuits made 
+			with different proportions of the three fats in the recipe, but the remaining 
+			ingredients (92% by weight) staying the same.</p>
+			
+		<div class="centred"><table border="0" class="centred" cellpadding="3" cellspacing="0" style="background-color:#FFFFFF">
+			<tr>
+				<td style="border-top:1px solid #999999;">Other ingredients</td>
+				<td align="right" style="border-top:1px solid #999999;">92%</td>
+			</tr>
+		<tr>
+				<td style="border-bottom:1px solid #999999;">Butter/Margarine/Canola mixture&nbsp;&nbsp;&nbsp;</td>
+				<td align="right" style="border-bottom:1px solid #999999;">8%</td>
+			</tr>
+		</table></div>
+		
+		<p>The triangle on the left shows the design space for the 8% of the product 
+			that can be varied.</p>
+	<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="mixtureProg.DragMixtureApplet">
+<param name="xVarName" value="Margarine">
+<param name="yVarName" value="Butter">
+<param name="zVarName" value="Canola">
+<param name="sumXYZ" value="0.08">
+<param name="leftXScale" value="-1 -1 0 0.08">
+<param name="leftYScale" value="-1 -1 0 0.08">
+<param name="leftZScale" value="-1 -1 0 0.08">
+<param name="leftXLabels" value="9 (0% 0.0) (1% 0.01) (2% 0.02) (3% 0.03) (4% 0.04) (5% 0.05) (6% 0.06) (7% 0.07) (8% 0.08)">
+<param name="leftYLabels" value="9 (0% 0.0) (1% 0.01) (2% 0.02) (3% 0.03) (4% 0.04) (5% 0.05) (6% 0.06) (7% 0.07) (8% 0.08)">
+<param name="leftZLabels" value="9 (0% 0.0) (1% 0.01) (2% 0.02) (3% 0.03) (4% 0.04) (5% 0.05) (6% 0.06) (7% 0.07) (8% 0.08)">
+<param name="rightXScale" value="-1 -1 0 0.08">
+<param name="rightYScale" value="-1 -1 0 0.08">
+<param name="rightZScale" value="-1 -1 0 0.08">
+<param name="rightXLabels" value="6 (0% 0.0) (20% 0.016) (40% 0.032) (60% 0.048) (80% 0.064) (100% 0.08)">
+<param name="rightYLabels" value="6 (0% 0.0) (20% 0.016) (40% 0.032) (60% 0.048) (80% 0.064) (100% 0.08)">
+<param name="rightZLabels" value="6 (0% 0.0) (20% 0.016) (40% 0.032) (60% 0.048) (80% 0.064) (100% 0.08)">
+<param name="leftHeading" value="Whole product">
+<param name="rightHeading" value="Fat content of recipe">
+<param name="maxPercent" value="9.99">
+<param name="hundredPercent" value="100.0">
+</applet>
+</div>
+
+    <p> The triangle on the right translates this design space into proportions 
+			<strong>of the fats</strong> in the biscuits. These proportions add to one.</p>
+		<p>Click anywhere in either triangle to see how the proportions of the whole 
+			product and of the fats are related. (For example, verify that 8% <em>Butter</em> 
+			in the whole mixture corresponds to 100% <em>Butter</em> within the fat 
+			content of the recipe.)</p>
+		<p class="heading">A design</p>
+		<p>The diagram below shows one possible design for this experiment.</p>
+	<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="mixtureProg.MixConstraintsApplet">
+<param name="xVarName" value="Margarine">
+<param name="yVarName" value="Butter">
+<param name="zVarName" value="Canola">
+<param name="xValues" value="0.08 0.00 0.00 0.04 0.04 0.00 0.02666667">
+<param name="yValues" value="0.00 0.08 0.00 0.04 0.00 0.04 0.02666667">
+<param name="zValues" value="0.00 0.00 0.08 0.00 0.04 0.04 0.02666667">
+<param name="sumXYZ" value="0.08">
+<param name="leftXScale" value="-1 -1 0 0.08">
+<param name="leftYScale" value="-1 -1 0 0.08">
+<param name="leftZScale" value="-1 -1 0 0.08">
+<param name="leftXLabels" value="9 (0% 0.0) (1% 0.01) (2% 0.02) (3% 0.03) (4% 0.04) (5% 0.05) (6% 0.06) (7% 0.07) (8% 0.08)">
+<param name="leftYLabels" value="9 (0% 0.0) (1% 0.01) (2% 0.02) (3% 0.03) (4% 0.04) (5% 0.05) (6% 0.06) (7% 0.07) (8% 0.08)">
+<param name="leftZLabels" value="9 (0% 0.0) (1% 0.01) (2% 0.02) (3% 0.03) (4% 0.04) (5% 0.05) (6% 0.06) (7% 0.07) (8% 0.08)">
+<param name="rightXScale" value="-1 -1 0 0.08">
+<param name="rightYScale" value="-1 -1 0 0.08">
+<param name="rightZScale" value="-1 -1 0 0.08">
+<param name="rightXLabels" value="6 (0% 0.0) (20% 0.016) (40% 0.032) (60% 0.048) (80% 0.064) (100% 0.08)">
+<param name="rightYLabels" value="6 (0% 0.0) (20% 0.016) (40% 0.032) (60% 0.048) (80% 0.064) (100% 0.08)">
+<param name="rightZLabels" value="6 (0% 0.0) (20% 0.016) (40% 0.032) (60% 0.048) (80% 0.064) (100% 0.08)">
+<param name="leftHeading" value="Whole product">
+<param name="rightHeading" value="Fat content of recipe">
+<param name="maxPercent" value="9.99">
+<param name="hundredPercent" value="100.0">
+</applet>
+</div>
+
+		<p>The triangle on the right shows a standard simplex-centroid design. The 
+			triangle on the left translates each point into percentages of the mixture 
+			for the whole product.</p>
+  </div>
+	
+	<p class="heading">Minimum values for some proportions</p>
+	<p>In many experiments, there is a restriction that one or more of the ingredients 
+		in the mixture must be at least some minimum value. For example, in a blended 
+		fruit juice, it may be decided that at least 60% of the product must be apple 
+		juice.</p>
+	<p>A similar 'trick' can be used to design the mixture experiment. The minimum 
+		proportions can be considered 'fixed' and we can create a design for the <strong>remainder</strong> 
+		of the product.</p>
+	<p>For example, if at least 60% of a blended fruit juice must be apple juice, 
+		the proportions of juices <strong>within the remaining 40%</strong> do not 
+		have any such constraints &mdash; within this 40% of the product, the proportion 
+		of apple juice could be anywhere between 0% and 100%.</p>
+		
+		
+	<div class="diagram"> 
+		<p class="heading">Fat content of biscuits</p>
+    <p>For marketing reasons, it was decided that the percentage of <em>Butter</em> 
+			in the product should be at least 3.4%.</p>
+		<div class="centred"><table border="0" class="centred" cellpadding="3" cellspacing="0" style="background-color:#FFFFFF">
+			<tr> 
+				<td style="border-top:1px solid #999999;">Other ingredients</td>
+				<td align="right" style="border-top:1px solid #999999;">92.0%</td>
+			</tr>
+			<tr> 
+				<td>Basic Butter</td>
+				<td align="right">3.4%</td>
+			</tr>
+			<tr> 
+				<td style="border-bottom:1px solid #999999;">Rest of Butter/Margarine/Canola mixture&nbsp;&nbsp;&nbsp;</td>
+				<td align="right" style="border-bottom:1px solid #999999;">4.6%</td>
+			</tr>
+		</table></div>
+		<p>With this constraint, we only need to consider an experimental design for 
+			the 4.6% of the recipe that can vary.</p>
+	  <p>The diagram below shows simplex-centroid design for this experiment. The 
+			triangle on the right shows the proportions of the 3 ingredients <strong>in 
+			the 4.6% of the product that can be varied</strong>. </p>
+	<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="mixtureProg.MixConstraintsApplet">
+<param name="xVarName" value="Margarine">
+<param name="yVarName" value="Butter">
+<param name="zVarName" value="Canola">
+<param name="xValues" value="0.046 0.000 0.000 0.023 0.023 0.000 0.01533333">
+<param name="yValues" value="0.034 0.080 0.034 0.057 0.034 0.057 0.04933333">
+<param name="zValues" value="0.000 0.000 0.046 0.000 0.023 0.023 0.01533333">
+<param name="sumXYZ" value="0.08">
+<param name="leftXScale" value="-1 -1 0 0.08">
+<param name="leftYScale" value="0.034 -1 0 0.08">
+<param name="leftZScale" value="-1 -1 0 0.08">
+<param name="leftXLabels" value="9 (0% 0.0) (1% 0.01) (2% 0.02) (3% 0.03) (4% 0.04) (5% 0.05) (6% 0.06) (7% 0.07) (8% 0.08)">
+<param name="leftYLabels" value="9 (0% 0.0) (1% 0.01) (2% 0.02) (3% 0.03) (4% 0.04) (5% 0.05) (6% 0.06) (7% 0.07) (8% 0.08)">
+<param name="leftZLabels" value="9 (0% 0.0) (1% 0.01) (2% 0.02) (3% 0.03) (4% 0.04) (5% 0.05) (6% 0.06) (7% 0.07) (8% 0.08)">
+<param name="rightXScale" value="-1 -1 0 0.046">
+<param name="rightYScale" value="-1 -1 0.034 0.08">
+<param name="rightZScale" value="-1 -1 0 0.046">
+<param name="rightXLabels" value="6 (0% 0.0) (20% 0.0092) (40% 0.0184) (60% 0.0276) (80% 0.0368) (100% 0.046)">
+<param name="rightYLabels" value="6 (0% 0.034) (20% 0.0432) (40% 0.0524) (60% 0.0616) (80% 0.0708) (100% 0.08)">
+<param name="rightZLabels" value="6 (0% 0.0) (20% 0.0092) (40% 0.0184) (60% 0.0276) (80% 0.0368) (100% 0.046)">
+<param name="rightScaleNames" value="Percent of varying fats#Percent of whole recipe">
+<param name="rightXLabels2" value="5 (0% 0.0) (1% 0.01) (2% 0.02) (3% 0.03) (4% 0.04)">
+<param name="rightYLabels2" value="5 (4% 0.04) (5% 0.05) (6% 0.06) (7% 0.07) (8% 0.08)">
+<param name="rightZLabels2" value="5 (0% 0.0) (1% 0.01) (2% 0.02) (3% 0.03) (4% 0.04)">
+<param name="leftHeading" value="Whole product">
+<param name="rightHeading" value="Within 4.6% that can vary">
+<param name="maxPercent" value="9.99">
+<param name="hundredPercent" value="100.0">
+</applet>
+</div>
+
+		<p>Click on the design points to see how the design on the right (for the 
+			4.6% of the mixture that varies) translates into a design for proportions 
+			in the whole mixture.</p>
+  </div>
+	
+	<p class="heading"></p>
+	
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

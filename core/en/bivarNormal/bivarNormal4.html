@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Conditional distributions</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="bivariate normal distribution, normal distribution, conditional distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>Not only are the marginal distributions of separate variables in the bivariate normal distribution also normally distributed, but the <strong>conditional</strong> distributions are normal too.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Conditional normal distributions</p>
+	<p>If \((X,Y) \sim \NormalDistn(\mu_X, \sigma_X^2, \mu_Y, \sigma_Y^2, \rho)\) then the conditional distribution of \(Y\), given \(X=x\) is univariate normal,</p>
+\[
+	\NormalDistn\left(\mu_Y + \frac{\sigma_Y}{\sigma_X}\rho(x-\mu_X),\; (1-\rho^2)\sigma_Y^2\right)
+\]
+</div>
+
+<div class="proof">
+<p>We again first prove this result for the standard bivariate normal distribution (where \(\mu_X = \mu_Y = 0\) and \(\sigma_X^2 = \sigma_Y^2 = 1\)).</p>
+<p>In the proof on the previous page, we showed that</p>
+
+\[
+f(x,y) \;\;=\;\; \frac{1}{\sqrt{2\pi}} \exp\left(-\frac{x^2}2\right) \times \frac{1}{\sqrt{2\pi}\sqrt{1 - \rho^2}} \exp\left(-\frac{(y-\rho x)^2}{2(1-\rho^2)}\right) \]
+
+<p>and that the marginal pdf of \(X\) is normal,</p>
+
+\[
+f_X(x) \;\;=\;\; \frac{1}{\sqrt{2\pi}} \exp\left(-\frac{x^2}2\right)
+\]
+
+<p>The conditional pdf of \(Y\) given \(X=x\) is therefore</p>
+
+\[ \begin{align}
+f_{Y \mid X=x}(y) \;\;&amp;=\;\; \frac{f(x,y)}{f_X(x)} \\
+&amp;\;\; \frac{1}{\sqrt{2\pi}\sqrt{1 - \rho^2}} \exp\left(-\frac{(y-\rho x)^2}{2(1-\rho^2)}\right)
+\end{align} \]
+
+<p>and this is the pdf of a \(\NormalDistn(\rho x, (1-\rho^2))\) distribution.</p>
+<hr width="75%">
+<p>The general result can  be obtained in a similar way using the joint and marginal pdfs of the general bivariate normal distribution.</p>
+<p>Alternatively we could treat the general distribution as that of \(Y^* = \mu_Y + \sigma_Y Y\) and \(X^* = \mu_X + \sigma_X X\). The distribution of \(Y^* = \mu_Y + \sigma_Y Y\) would be </p>
+\[
+\NormalDistn(\mu_Y + \sigma_Y\rho x, (1-\rho^2)\sigma_Y^2)
+\]
+<p>Similarly, replacing the standardised value \(x\) with \(\frac{x^* - \mu_X}{\sigma_X}\) would give the general conditional distribution.</p>
+</div>
+
+</div>
+
+<p>A similar result holds for the conditional distribution of \(X\), given that \(Y=y\).</p>
+
+<div class="example" title="Illustration: Bivariate normal's conditional distributions">
+	
+	<p class="exampleHeading">Illustration</p>
+
+<p>The following probability density function again describes two variables,</p>
+\[
+(X,Y) \;\;\sim\;\; \NormalDistn(\mu_X=2, \sigma_X^2=1, \mu_Y=0, \sigma_Y^2=1, \rho)
+\]
+<p>The slider under the diagram can adjust the value of the parameter \(\rho\).</p>
+<div class="centred">
+	<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="610">
+		<script type="text/javascript">writeAppletParams();</script>
+		<param name="appletName" value="bivarDistnProg.ConditNormalApplet">
+		<param name="backgroundColor" value="FFFBF3">
+		<param name="yVarName" value="Var Y">
+		<param name="xVarName" value="Var X">
+		<param name="densityName" value="Density">
+		<param name="normalParams" value="2 1 0 1 0">
+		<param name="yAxis" value="-3 3 -3 1">
+		<param name="xAxis" value="-1 5 -1 1">
+		<param name="densityAxis" value="0 0.201 0 0.05">
+		<param name="axisSteps" value="80">
+		<param name="shadeCutoff" value="0 0.075 0.15">
+		<param name="ySliderLimits" value="-2.00 2.00 -1.00">
+		<param name="xSliderLimits" value="0.00 4.00 3.00">
+		<param name="distnDecimals" value="2 3">
+		<param name="customText" value="Condition=Condition#None=None">
+	</applet>
+</div>
+
+<p>Select <strong>Y</strong> from the pop-up menu to show a slice through the surface at \(y=-1.00\). The shape of this curve is the conditional distribution of \(X\), given that \(Y=-1.00\). The actual conditional pdf is this curve scaled to have unit area under it.</p>
+<p>Drag the slider to observe the conditional distributions for other values of the variable \(Y\). When \(\rho = 0\), the conditional distribution of \(X\) does not depend on the value \(y\).</p>
+<p>Now use the slider to increase \(\rho\) to 0.8 and again drag the righthand slider to see how the value of \(Y\) affects the conditional distribution of \(X\). Observe that</p>
+<ul>
+	<li>As \(y\) increases, the mean of the conditional distribution of \(X\) increases.</li>
+	<li>The variance of the conditional distribution of \(X\) does not depend on \(y\), but is always lower than its marginal variance.</li>
+</ul>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+
+addBook('bk/assessment', 'book_splash', "About this CAST e-book");
+
+addChapter('bk/assessment', 'ch_intro', "Introduction");
+addSection('bk/assessment', 'sec_preface', "About this e-book and CAST");
+addPage_2('bk/assessment', 'preface1', "Aim of the module", 'static');
+addPage_2('bk/assessment', 'preface2', "Full version of CAST", 'static');
+addPage_2('bk/assessment', 'preface3', "About the author", 'static');
+addPage_2('bk/assessment', 'preface4', "Copyright", 'static');
+addSection('bk/assessment', 'sec_variability', "Variability");
+addPage_2('bk/assessment', 'variability1', "Sources of variability", 'static');
+addPage_2('bk/assessment', 'variability2', "Sorting the marks", 'interact');
+
+addChapter('bk/assessment', 'ch_crosses', "Looking at marks");
+addSection('bk/assessment', 'sec_valueDisplay', "Displaying individual marks");
+addPage_2('bk/assessment', 'valueDisplay1', "Dot plots", 'interact');
+addPage_2('bk/assessment', 'valueDisplay2', "Stem and leaf plots", 'interact');
+addPage_2('bk/assessment', 'valueDisplay3', "Splitting the stems", 'interact');
+addPage_2('bk/assessment', 'valueDisplay4', "Creating the plots", 'interact');
+addSection('bk/assessment', 'sec_displayInterp', "What does a distribution show?");
+addPage_2('bk/assessment', 'displayInterp1', "Outliers", 'static');
+addPage_2('bk/assessment', 'displayInterp2', "Clusters", 'static');
+addPage_2('bk/assessment', 'displayInterp3', "Centre, spread and shape", 'static');
+addPage_2('bk/assessment', 'displayInterp4', "Displaying extra information", 'interact');
+addPage_2('bk/assessment', 'displayInterp5', "Danger of overinterpretation", 'interact');
+
+addChapter('bk/assessment', 'ch_graphical', "Basic graphical displays");
+addSection('bk/assessment', 'sec_density', "Density and histograms");
+addPage_2('bk/assessment', 'density1', "Histogram as a display of density", 'interact');
+addPage_2('bk/assessment', 'density2', "Choice of classes", 'interact');
+addPage_2('bk/assessment', 'density3', "Relative frequency and area", 'interact');
+addPage_2('bk/assessment', 'density4', "More about histogram bin width", 'interact');
+addPage_2('bk/assessment', 'density5', "Frequency polygolons", 'interact');
+addPage_2('bk/assessment', 'density6', "Drawing histograms", 'static');
+addSection('bk/assessment', 'sec_normal', "Normal distributions");
+addPage_2('bk/assessment', 'normal1', "Smoothing a histogram", 'interact');
+addPage_2('bk/assessment', 'normal2', "Normal distributions", 'interact');
+addPage_2('bk/assessment', 'normal3', "Normal probabilities", 'interact');
+addSection('bk/assessment', 'sec_discrete', "Discrete and categorical data");
+addPage_2('bk/assessment', 'discrete1', "Discrete and continuous data", 'interact');
+addPage_2('bk/assessment', 'discrete2', "Bar charts", 'interact');
+addPage_2('bk/assessment', 'discrete3', "Categorical data", 'interact');
+addPage_2('bk/assessment', 'discrete4', "Stacked bar charts and pie charts", 'interact');
+addPage_2('bk/assessment', 'discrete5', "Drawing bar and pie charts", 'static');
+
+addChapter('bk/assessment', 'ch_numerical', "Basic numerical displays");
+addSection('bk/assessment', 'sec_center', "Describing centre");
+addPage_2('bk/assessment', 'center1', "Centre and spread", 'static');
+addPage_2('bk/assessment', 'center2', "Summaries of Centre", 'interact');
+addPage_2('bk/assessment', 'center3', "Comparison of median and mean", 'interact');
+addPage_2('bk/assessment', 'center4', "Mean of discrete data", 'static');
+addPage_2('bk/assessment', 'center5', "Quartiles, deciles and percentiles", 'interact');
+addSection('bk/assessment', 'sec_spread', "Describing spread");
+addPage_2('bk/assessment', 'spread1', "Range and interquartile range", 'interact');
+addPage_2('bk/assessment', 'spread2', "Distance from k", 'interact');
+addPage_2('bk/assessment', 'spread3', "Measures of spread", 'interact');
+
+addChapter('bk/assessment', 'ch_scaling', "Comparison of groups");
+addSection('bk/assessment', 'sec_moreNormal', "Z-scores and stanines");
+addPage_2('bk/assessment', 'moreNormal1', "Normal parameters", 'interact');
+addPage_2('bk/assessment', 'moreNormal2', "Standard normal distribution", 'interact');
+addPage_2('bk/assessment', 'moreNormal3', "70-95-100 rule", 'interact');
+addPage_2('bk/assessment', 'moreNormal4', "Standardising data", 'interact');
+addPage_2('bk/assessment', 'moreNormal5', "Stanines", 'interact');
+addSection('bk/assessment', 'sec_referencePop', "Reference populations");
+addPage_2('bk/assessment', 'referencePop1', "National distributions", 'interact');
+addPage_2('bk/assessment', 'referencePop2', "Percentiles from national distns", 'interact');
+addPage_2('bk/assessment', 'referencePop3', "Stanines from national distns", 'interact');
+addSection('bk/assessment', 'sec_transform', "Scaling marks");
+addPage_2('bk/assessment', 'transform1', "Linear scaling", 'interact');
+addPage_2('bk/assessment', 'transform2', "Piecewise linear scaling", 'interact');
+addPage_2('bk/assessment', 'transform3', "Doing it in Excel", 'static');
+
+var language = "en";
+var logoGif = null;
+var homeDir = "bk/assessment";
+var versionGif = "images/castAssessment";
+var isLecturingVersion = false;
+var isModule = false;
+var hasSummaries = false;
+var hasVideos = false;
+var summaryPdfUrl = null;
+var castWebServerUrl = "http://castBeta.massey.ac.nz";
+var noOfChapters = "5";
+
+var localVideos = true;
+
+var fullTextString = 'Text';
+var summaryTextString = 'In brief';
+var videoTextString = 'Video';
+var appletTextString = 'Text';
+fullTabTooltip = 'Text version of page';
+summaryTabTooltip = 'Summarised version of page';
+videoTabTooltip = 'Version of page with videos';
+appletTabTooltip = 'Text version of page with interaction';
+var chapterString = 'Chapter';
+
+var versionName = {'++': 'Custom', '_g': 'General', '_b': 'Biometric', '_c': 'Business', '_m': 'Climatic'};
+var versions = {};
+versions['valueDisplay1'] = new Array('+g', '_g', '_b', '_c', '_m');
+versions['valueDisplay2'] = new Array('+g', '_g', '_b', '_c', '_m');
+versions['valueDisplay3'] = new Array('+g', '_g', '_b', '_c', '_m');
+versions['valueDisplay4'] = new Array('+g', '_g', '_b', '_c', '_m');
+versions['displayInterp1'] = new Array('+g', '_g', '_b', '_c');
+versions['displayInterp2'] = new Array('+g', '_g', '_b', '_c', '_m');
+versions['displayInterp3'] = new Array('+g', '_g', '_c', '_m');
+versions['displayInterp4'] = new Array('+g', '_g', '_b');
+versions['displayInterp5'] = new Array('+g', '_g');
+versions['density1'] = new Array('+g', '_g');
+versions['density2'] = new Array('+g', '_g');
+versions['density3'] = new Array('+g', '_g', '_c', '_m');
+versions['density4'] = new Array('+g', '_g', '_b', '_c', '_m');
+versions['density5'] = new Array('+g', '_g');
+versions['density6'] = new Array('+g', '_g', '_b', '_c');
+versions['normal1'] = new Array('+g', '_g');
+versions['normal2'] = new Array('+g', '_g');
+versions['normal3'] = new Array('+g', '_g');
+versions['transform1'] = new Array('+g', '_g', '_b');
+versions['transform2'] = new Array('+g', '_g', '_b', '_c');
+versions['transform3'] = new Array('+g', '_g', '_c');
+
+bookLoaded = true;

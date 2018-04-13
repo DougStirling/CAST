@@ -1,0 +1,472 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>8. Transformed Variables</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/maths/mathStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/maths/theorems.js"></script>
+  <script src="../../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 8 &nbsp; Transformed Variables</h1>
+<h1 class="sectionName">8.1 &nbsp; General methods</h1>
+<h2 class="pageName">8.1.1 &nbsp; Differentiating the CDF</h2>
+
+<p class="heading">Relationship between <em>f</em>(<em>x</em>) and <em>F</em>(<em>x</em>)</p>
+
+<p>A continuous random variable's probability density function, \(f(x)\), and its cumulative distribution function, \(F(x)\) are related by:</p>
+
+\[
+F(x) = \int_{-\infty}^x f(u) \;du \spaced{and} f(x)= F'(x)
+\]
+
+<p>This can sometimes be used to find the distribution of a random variable that is defined as a function of one or more others.</p>
+<ol>
+	<li>Find the cumulative distribution function of \(X\), \(F(x) = P(X \le x)\).</li>
+	<li>Differentiate it to get the probability density function, \(f(x)= F'(x)\)</li>
+</ol>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Question: Square root of an exponential variable</p>
+		<p>Consider a random variable, \(X\), with an exponential distribution</p>
+\[
+X \;\;\sim\;\; \ExponDistn(\lambda)
+\]
+<p>What is the distribution of \(Y = \sqrt{X}\)?</p>
+<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">8.1.2 &nbsp; Maximum of a rectangular distribution</h2>
+<p>From a random sample of \(n\) values from a rectangular distribution,</p>
+\[
+X \;\;\sim\;\; \RectDistn(0, \;\beta)
+\]
+
+<p>the maximum likelihood estimate of \(\beta\) is the maximum of the values in the sample,</p>
+\[
+\hat{\beta} \;\;=\;\; \max(x_1, x_2, \dots, x_n)
+\]
+<p class="heading">Distribution of estimator</p>
+<p>Writing \(Y = \max(X_1, X_2, \dots, X_n)\), its CDF is</p>
+\[ \begin{align}
+F_Y(y) \;\;&amp;=\;\; P(Y \le y) \\[0.4em]
+&amp;=\;\; P(X_1 \le y \textbf{  and  } X_2 \le y \textbf{  and  }\dots,  \textbf{  and  } X_n \le y) \\[0.4em]
+&amp;=\;\; P(X_1 \le y) \times P(X_2 \le y) \times \cdots \times P(X_n \le y) \\[0.2em]
+&amp;=\;\; \left(\frac y{\beta} \right)^n
+\end{align} \]
+<p>Its pdf is therefore</p>
+\[
+f(y) \;=\; F'(y) \;=\; \frac {n\;y^{n-1}}{\beta^n} \qquad\text{for } 0 \le y \le \beta
+\]
+<p>The  pdf of this estimator is shown below, together with the pdf for the method of moments estimator — twice the sample mean.</p>
+<p class="eqn"><img src="../../../en/transformWithCdf/images/s_maxDistn.png" width="574" height="400"  alt=""/></p>
+<p>Note that the method of moments estimator is unbiased, whereas the maximum likelihood estimator is biased — it is always less than \(\beta\). However the method of moments estimator is far more variable — its standard error is much higher.</p>
+<p class="heading">Mean,  variance, bias and standard error</p>
+<p>It can be shown that the mean of \(Y\) is</p>
+\[
+E[Y] \;=\; \frac {n\;\beta}{n+1}
+\]
+<p>The maximum likelihood estimator is therefore biased,</p>
+\[
+\Bias(\hat{\beta}) \;=\; E[\hat{\beta}] - \beta \;=\; -\frac {\beta}{n+1}
+\]
+<p> though the bias decreases as \(n \to \infty\).</p>
+<p>Since</p>
+\[
+E[Y^2] \;=\; \frac {n\;\beta^2}{n+2}
+\]
+
+<p>its variance is</p>
+\[
+\Var(Y) \;=\; E[Y^2] - \left(E[Y]\right)^2 \;=\; \frac{n\;\beta^2}{(n+1)^2(n+2)}
+\]
+<p>The standard error of the maximum likelihood estimator is therefore</p>
+\[
+\se(\hat{\beta}) \;=\; \sqrt {\Var(\hat{\beta})} \;=\; \beta \sqrt{\frac{n}{(n+1)^2(n+2)}}
+\]
+
+
+
+<h2 class="pageName">8.1.3 &nbsp; Monotonic transformations</h2>
+<p>If one random variable is a monotonic function of another — steadily increasing or decreasing — the pdfs of the variables are closely related. (The proof of this result is based on finding the cumulative distribution function of the transformed variable.)</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Monotonic function of X</p>
+		<p>If a continuous random variable \(X\) has probability density function \(f_X(x)\) and another variable is defined as \(Y = g(X)\) where the function \(g(\cdot)\) is a monotonic  function with inverse \(X = h(Y)\), then the pdf of \(Y\) is</p>
+\[
+f_Y(y) \;\;=\;\; f_X(h(y)) \times \left| h'(y) \right|
+\]
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p>The method will be clearer in an example.</p>
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Question: Log-normal distribution</p>
+<p>If \(X \sim \NormalDistn(\mu,\; \sigma^2)\), show that the probability density function of \(Y = \exp(X)\) is</p>
+\[
+f_Y(y) \;\;=\;\; \begin{cases} \displaystyle \frac 1{y\sqrt{2\pi}\;\sigma} e^{- \frac{\large (\log(y)-\mu)^2}{\large 2 \sigma^2}} &amp; \text{if } y \ge 0 \\[0.4em]
+0 &amp; \text{otherwise}
+\end{cases} \]	
+<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+<p>\(Y\) is said to have a <strong>log-normal</strong> distribution. If a random variable \(Y\) has a log-normal distribution, we can show in a similar way that \(X = \log(Y)\) will have a normal distribution.</p>
+<p>The next example shows the relationship between the exponential and Weibull distributions.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Question</p>
+		<p>If \(X \sim \ExponDistn(\lambda)\), show that the distribution of \(Y = X^a\) has a \(\WeibullDistn(\diagfrac 1 a, \lambda^a)\) distribution.</p>
+		<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">8.1.4 &nbsp; Relationship with rectangular distribution (Proofs not examined)</h2>
+
+<p class="heading">Cumulative distribution function and quantiles</p>
+
+<p>The cumulative distribution function of a continuous random variable \(X\) has been defined as</p>
+\[
+F(x) \;\;=\;\; P(X \le x)
+\]
+<p>and is a monotonic increasing function rising from 0 to 1. Its inverse is</p>
+\[
+F^{-1}(y) \;\;=\;\; q_y \qquad \text{where }P(X \le q_y) = y
+\]
+<p>Therefore \(F^{-1}(y)\) returns the \(y\)'th quantile of the distribution. Note also that</p>
+\[
+F\left(F^{-1}(y)\right) \;\;=\;\;  y
+\]
+<p class="heading">Applying the CDF as a transformation</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Transforming a variable into a rectangular distribution</p>
+<p>If a continuous random variable \(X\) has cumulative distribution functions \(F(x)\), then the random variable \(Y = F(X)\) has a \(\RectDistn(0, 1)\) distribution.</p>
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+<p>The converse of this theorem is also useful.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Transforming a rectangular variable into an arbitrary distribution</p>
+		<p>If \(F(x)\) is a monotonic continuous function of \(x\) rising from 0 to 1, with inverse function \(F^{-1}(\cdot)\), and \(Y \sim \RectDistn(0, 1)\), then the random variable \(X = F^{-1}(Y)\) has a distribution with cumulative distribution function \(F(x)\).</p>
+		<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p>We now illustrate these results with an example.</p>
+
+<div class="example">
+	
+	<p class="exampleHeading">Example: Exponential distribution</p>
+
+<p>If \(X \sim \ExponDistn(\lambda)\), then it has cumulative distribution function</p>
+\[ F(x) \;\;=\;\; 1 - e^{\large -\lambda x}\]
+
+<p>The first result above means that</p>
+\[ Y \;\;=\;\; 1 - e^{\large -\lambda X} \;\;\sim\;\; \RectDistn(0,\;1) \]
+<hr width="75%">
+<p>The inverse function to \(F(x)\)  is</p>
+\[ F^{-1}(y) \;\;=\;\; -\frac {\log(1 - y)}{\lambda}\]
+<p>Therefore if \(Y \sim \RectDistn(0,\; 1)\), then \(X = -\dfrac {\log(1 - Y)}{\lambda}\) has a distribution with cumulative distribution function \(F(x)\) that is therefore an \(\ExponDistn(\lambda)\) distribution.</p>
+</div>
+
+
+<h2 class="pageName">8.1.5 &nbsp; Generating random numbers</h2>
+<p>Computer simulations consist of realisations of models for real-life scenarios. These models involve distributions, so simulations require values that are randomly generated from  the distributions. These random values are usually generated on a computer with some algorithm. Strictly speaking, these should be called <strong>pseudo-random</strong> values but will simply be called random values here.</p>
+<p>The basis of generating random values from a distribution is usually an algorithm that generates a random value from a \(\RectDistn(0, 1)\) distribution. For example, Excel has a function to generate one such value:</p>
+<p class="eqn">=RAND()</p>
+<p>The relationship between a \(\RectDistn(0, 1)\) distribution and one with cumulative distribution function \(F(x)\) can be used to generate a random value from an arbitrary distribution.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Random values from an arbitrary distribution</p>
+		<p>If \(y\) is a random value from a \(\RectDistn(0, 1)\) distribution, then \(F^{-1}(y)\) is a random value from the distribution with cumulative distribution function \(F(x)\).</p>
+	</div>
+</div>
+<p>Excel has built-in functions to evaluate \(F^{-1}(y)\) for several common distributions, including the following ones.</p>
+<table border="0" cellpadding="5" cellspacing="0" class="centred">
+	<tr>
+		<th>Distribution</th>
+		<th>\(F(x)\)</th>
+		<th>\(F^{-1}(y)\)</th>
+	</tr>
+	<tr>
+		<td>\(\NormalDistn(0, 1)\)</td>
+		<td>=NORM.S.DIST(\(x\), true)</td>
+		<td>=NORM.S.INV(\(y\))</td>
+	</tr>
+	<tr>
+		<td>\(\NormalDistn(\mu, \sigma^2)\)</td>
+		<td>=NORM.DIST(\(x\), \(\mu\), \(\sigma\), true)</td>
+		<td>=NORM.INV(\(y\), \(\mu\), \(\sigma\))</td>
+	</tr>
+	<tr>
+		<td>\(\GammaDistn(\alpha, \lambda)\)</td>
+		<td>=GAMMA.DIST(\(x\), \(\alpha\), \(\frac 1{\lambda}\), true)</td>
+		<td>=GAMMA.INV(\(y\), \(\alpha\), \(\frac 1{\lambda}\))</td>
+	</tr>
+</table>
+<p>For example, a random value from a \(\NormalDistn(\mu = 10, \sigma^2 = 4)\) distribution can be generated in Excel by typing the following into a spreadsheet cell:</p>
+<p class="eqn">=NORM.INV(RAND(), 10, 2)</p>
+<p class="heading">Generating values from a discrete distribution</p>
+<p>Although the methodology above is easiest to explain for continuous random variables, it can also be used to generate random numbers from discrete distributions.</p>
+<p> Excel only has a function for the inverse of the binomial distribution's CDF. Typing the following into a spreadsheet cell generates a random value from a binomial distribution:</p>
+<p class="eqn">=BINOM.INV(\(n\), \(\pi\), RAND())</p>
+<p>The method can however be applied to other discrete distributions too.</p>
+<div class="example">
+	<p class="exampleHeading">Example: Generating values from a Poisson distribution</p>
+	<p>The diagram below shows the cumulative distribution function for a \(\PoissonDistn(\lambda = 3)\) distribution — a step function. From a randomly generated \(Y\) with a \(\RectDistn(0, 1)\) distribution, you would read across and down to find a random value from the discrete  \(\PoissonDistn(\lambda = 3)\) distribution.</p>
+	<p class="eqn"><img src="../../../en/transformWithCdf/images/s_randomPoisson.png" width="568" height="410"  alt=""/></p>
+</div>
+
+
+<h1 class="sectionName breakBefore">8.2 &nbsp; Linear transformations</h1>
+<h2 class="pageName">8.2.1 &nbsp; Mean and variance</h2>
+
+<p class="heading">Linear transformations</p>
+
+<p>In this section, we concentrate on a random variable that is defined as a linear transformation of another.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Mean and variance</p>
+		<p>If  \(X\) is a  random variable and \(a\) and \(b\) are constants, then the random variable \(Y = a + bX\) has the following mean and variance.</p>
+		
+\[ \begin{align}
+	E[Y] &amp;= a + b \times E[X] \\[0.4em]
+	Var(Y) &amp;= b^2 \times Var(X)
+\end{align} \]
+
+	<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">8.2.2 &nbsp; Distribution of transformed variable</h2>
+<p class="heading">Probability density function</p>
+<p>Since \(Y = a + bX\) is a monotonic transformation, we can apply the earlier general results to find the pdf of \(Y\). Writing</p>
+\[
+y = g(x) = a + bx \qquad x = h(y) = \frac{y-a}{b} \spaced{and} h'(y) = \frac 1 b
+\]
+<p>The random variable \(Y\) has pdf</p>
+\[
+f_Y(y) \;\;=\;\; f_X\left(h(y)\right) \times \left|h'(y)\right| \;\;=\;\; \frac 1 {\left|b\right|} f_X\left(\frac{y-a}{b}\right)
+\]
+
+<p>We now apply this to linear transformations of a <strong>normal</strong> random variable.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Linear transformation of a normal variable</p>
+		<p>If \(a\) and \(b\) are  constants and \(X  \sim  \NormalDistn(\mu, \sigma^2)\), the random variable \(Y = (a + bX)\) also has a normal distribution</p>
+\[
+Y \;\;\sim\;\; \NormalDistn(a + b\mu,\; b^2 \sigma^2)
+\]
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p>In particular, this result provides the distribution of a z-score.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Distribution of z-scores</p>
+		<p>If  \(X  \sim  \NormalDistn(\mu, \sigma^2)\), the random variable \(Z = \dfrac {X-\mu} {\sigma} \) has a normal distribution with zero mean and standard deviation one,</p>
+		\[
+		Z  \sim  \NormalDistn(0, 1)
+		\] 
+		<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p>Probabilities about z-scores  can be found using computer software or tables.</p>
+
+
+<h2 class="pageName">8.2.3 &nbsp; Scale and location parameters (Optional)</h2>
+<p>In some families of distributions, a linear transformation results in another distribution within the same family.</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>In a family of distributions, \(X \sim \mathcal{Distn}(\theta)\), the parameter \(\theta\) is called a <strong>location parameter</strong> if \(Y = (X + a) \sim \mathcal{Distn}(\theta + a)\).</p>
+<p>If the family of distributions has additional parameters, they should remain unchanged after the transformation.</p>
+</div>
+
+<p>A location parameter is affected by <strong>adding</strong> a constant to \(X\); a <strong>scale</strong> parameter  is affected by <strong>multiplying</strong> \(X\) by a constant.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>In a family of distributions, \(X \sim \mathcal{Distn(\phi)}\),  the   parameter \(\phi\) is called a <strong>scale parameter</strong> if \(Y = bX \sim \mathcal{Distn(b\phi)}\).</p>
+	<p>In families of distributions with a location parameter \(\theta\),  \(X \sim \mathcal{Distn(\theta, \phi)}\),  the   parameter \(\phi\) is also called a <strong>scale parameter</strong> if \(Y = bX \sim \mathcal{Distn(b\theta, b\phi)}\).</p>
+	<p>If the family of distributions has additional parameters, they should again remain unchanged after the transformation.</p>
+</div>
+<p>We now apply this to normal distributions.</p>
+<div class="example">
+	<p class="exampleHeading">Normal distribution</p>
+	<p>If \(X \sim \NormalDistn(\mu, \sigma)\), we showed that \(Y = a + bX \sim \NormalDistn\left(a + b\mu, (b\sigma)^2\right)\).</p>
+	<p>Since \(Y = X + a \sim \NormalDistn\left(a + \mu, {\sigma}^2\right)\), the distribution's first parameter, \(\mu\), is a location parameter.</p>
+	<p>\(\sigma\) satisfies the second definition for scale parameters since if \(X\) has a normal distribution with parameters \(\mu\) and \(\sigma\), \(bX\) has one with the corresponding parameters \(b\mu\) and \(b\sigma\).</p>
+</div>
+
+
+<h2 class="pageName">8.2.4 &nbsp; Scale and location examples (Optional)</h2>
+<p>Reparameterisation of a family of distributions may be necessary before we can identify location and scale parameters.</p>
+<div class="example">
+	<p class="exampleHeading">Rectangular distribution</p>
+	<p>Rectangular distributions are usually defined to have</p>
+\[
+f(x) = \begin{cases}
+\frac {\large 1} {\large \beta-\alpha} &amp; \quad\text{for } \alpha \lt x \lt \beta \\[0.2em]
+0 &amp; \quad\text{otherwise}
+\end{cases}
+\]
+<p>Neither \(\alpha\) nor \(\beta\) are location or scale parameters since</p>
+\[
+Y = a + bX \sim \RectDistn(a + b\alpha, a + b\beta)
+\]
+<p> However if the distribution is reparameterised with</p>
+\[
+f(x) = \begin{cases}
+\frac {\large 1} {\large \phi} &amp; \quad\text{for } \alpha \lt x \lt \alpha + \phi\\[0.2em]
+0 &amp; \quad\text{otherwise}
+\end{cases}
+\]
+<p>then \(Y = a + bX\) has a rectangular distribution with pdf</p>
+\[
+f_Y(y) = \begin{cases}
+\frac {\large 1} {\large b\phi} &amp; \quad\text{for } (a + b\alpha) \lt y \lt (a + b\alpha) + b\phi\\[0.2em]
+0 &amp; \quad\text{otherwise}
+\end{cases}
+\]
+<p>This is a rectangular distribution with parameters \(\alpha^* = a + b\alpha\) and \(\phi^* = b\phi\) so \(\alpha\) and \(\phi\) are location and scale parameters.</p>
+</div>
+
+<p>In the following example, reparameterisation is again necessary before a scale parameter can be found.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Question</p>
+		<p>In a \(\GammaDistn(\alpha, \beta)\) distribution, show that \(\phi = \frac {\large 1}{\large \beta}\) is a scale parameter.</p>
+		<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+
+<h1 class="sectionName breakBefore">8.3 &nbsp; Delta method</h1>
+<h2 class="pageName">8.3.1 &nbsp; Variance of transformed variable (Proof not examined)</h2>
+
+<p class="heading">Distribution of \(Y = g(X)\)</p>
+
+<p>If \(X\) has pdf \(f_X(x)\) and \(g(\cdot)\) is a monotonic function, then the transformed variable \(Y = g(X)\) has pdf</p>
+\[
+f_Y(y) \;\;=\;\; f_X(h(y)) \times \left| h'(y) \right| 
+\]
+<p>where \(x = h(y)\) is the inverse function to \(g(x)\). Its mean and variance are however often difficult to find from this pdf.</p>
+<p class="heading">Delta method</p>
+<p>We now informally present a way to get <strong>approximate</strong> values for \(E[Y]\) and \(\Var(Y)\).</p>
+<p>If \(X\) has mean \(\mu\) and variance \(\sigma^2\),  a Taylor series approximation of \(g(X)\) around \(\mu\) is</p>
+\[
+Y \;\;=\;\; g(X) \;\;\approx\;\; g(\mu) + (X - \mu) g'(\mu)
+\]
+<p>We can find the mean and variance of the linear function of \(X\) on the right, giving the approximation,</p>
+\[
+E[Y] \;\approx\; g(\mu) \spaced{and} \Var(Y) \;\approx\; \left(g'(\mu)\right)^2 \sigma^2
+\]
+<p>This is called the <strong>delta method</strong>.</p>
+
+<div class="boxed">
+<p>The approximation relies on the transformation being nearly linear for the values of \(X\) that are likely to be observed. \(\Var(X)\) must therefore be small.</p>
+</div>
+<p class="heading">Application to estimators of parameters</p>
+<p>If \((X = \hat{\theta})\) is a consistent estimator of a parameter, \(\theta\), then\(\Var(\hat{\theta}) \to 0\) as the sample size, \(n\), increases. The delta method therefore gives an approximate mean and variance for any continuous <strong>function</strong> of it, \(g(\hat{\theta})\), in large samples.</p>
+<div class="example">
+	<p class="exampleHeading">Quadratic transformation</p>
+	<p>We now consider a random variable, \(X\), that is assumed to arise from a family of distributions with mean \(\mu\) and variance \(\sigma^2\). For example, its distribution might be as shown below.</p>
+	<p class="eqn"><img src="../../../en/deltaMethod/images/s_skewDistn.png" width="514" height="232" alt=""/></p>
+	<p>The  mean of a random sample, \(\overline X\), might be used to estimate \(\mu\), so we now consider \(\overline X ^2\) as an estimator of \(\mu^2\). The delta method states that in large samples, </p>
+\[
+E\Big[\overline{X}^2\Big] \approx \mu^2 \spaced{and} \Var\Big(\overline{X}^2\Big) \approx \left(g'(\mu)\right)^2 \frac{\sigma^2}{n} = (2\mu)^2 \frac{\sigma^2}{n}
+\]
+	<p>This approximation relies on the transformation being close to linear around the values of \(\overline{X}^2\) that are most likely to be observed.</p>
+	<p class="eqn"><img src="../../../en/deltaMethod/images/s_quadratics.png" width="515" height="460" alt=""/></p>
+	<p>When \(n = 10\), the sample mean is likely to be between 1.0 and 3.5, but the quadratic (blue) is far from linear (red) so the delta method will not give accurate values for \(E\Big[\overline{X}^2\Big]\) or \(\Var\Big(\overline{X}^2\Big)\).</p>
+	<p>However when \(n = 1,000\), the quadratic curve is almost linear within the range of likely x-values (1.9 to 2.1) so the delta method will work well.</p>
+</div>
+
+
+<h2 class="pageName">8.3.2 &nbsp; Examples</h2>
+<p>We now give two applications of the delta method.</p>
+<div class="example">
+	<p class="exampleHeading">Question: Estimator of a geometric distribution's parameter, π</p>
+	<p>If \(X \sim \GeomDistn(\pi)\), with probability function</p>
+\[
+p(x) = \pi (1-\pi)^{x-1} \quad \quad \text{for } x = 1, 2, \dots
+\]
+	<p>the method of moments estimator of \(\pi\) and its maximum likelihood estimator are both the inverse of the sample mean,</p>
+\[
+\hat{\pi} \;\;=\;\; \dfrac 1{\overline{X}}
+\]
+	<p>Use the Delta method to find the approximate mean and variance of this estimator.</p>
+	<p class="exampleNote">(Solved in full version)</p>
+</div>
+<p>In this example, the delta method gives the same approximate standard error as would be found using the second derivative of the log-likelihood, but  approximations from the two methods are not always equal.</p>
+<p class="heading">Odds</p>
+<p>Uncertainty is often described by probability, but the chance of an event happening can alternatively be described by its <strong>odds</strong>.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>The <strong>odds</strong> for an event are the ratio of the probability of the event happening to the probability of it not happening,</p>
+\[
+\operatorname{odds}(E) \;\;=\;\; \frac{P(E)}{1 - P(E)}
+\]</div>
+<p>Note that whereas probabilities must be between 0 and 1, the odds of an event can  be greater than 1.</p>
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Question: Odds of success</p>
+<p>In a series of \(n\) independent success/failure trials that each have odds \(\theta\) of success, \(x\) successes are observed. What is the maximum likelihood estimator of \(\theta\)? If \(n\) is large, what is its approximate standard error?</p>
+<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+<h1 class="sectionName">8.4 &nbsp; What you need to learn</h1>
+
+
+<p class="heading">What you need to know in this chapter</p>
+<p>You should concentrate on the following material when studying the chapter about transformations.</p>
+<p class="heading">8.1 General methods</p>
+<p>When a random variable is defined as a function of one or more other variables, you can sometimes find its cumulative distribution function from first principles. If so, you should be able to find its probability density function by differentiating it. When <em>Y</em> is a monotonic function of <em>X</em>, you should be able to derive the simpler formula relating their two pdfs and apply it.</p>
+<p>You should also know how to transform any random variable into a rectangular one and vice versa, though the proof will not be examined. This is the basis of computer simulations.</p>
+<p class="heading">8.2 Linear transformations</p>
+<p>You should be able to derive the formulae for the mean and variance of a linear transformation of <em>X</em>, both for discrete and continuous random variables, and apply the result to problems. You should also be able to find the pdf of such linear transformations.</p>
+<p class="heading">8.3 Delta method</p>
+<p>If <em>Y</em> is a monotonic transformation of <em>X</em>, you should be able to use the delta method to find  approximate values for the mean and variance of <em>Y</em> from those of <em>X</em>. (Proofs of the general result will not be examined however.)</p>
+
+
+</body>
+</html>

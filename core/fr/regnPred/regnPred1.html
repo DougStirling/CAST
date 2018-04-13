@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Estimated response distn at X</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="prediction">
+	<meta name="dataset" content="Concrete compressive strength">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Model allows us to estimate response distribution at any 
+	X </p>
+
+<p>Bivariate data sets contain response measurements corresponding to a <strong>few
+specific values of <i>X</i></strong>, whereas a normal linear model
+provides a response distribution <strong>for all <i>X</i></strong>.
+By fitting a normal linear model to the data, it is therefore possible to estimate
+the response distribution at x-values for which we do not have data.
+</p>
+
+<div class="diagram">
+
+  <p class="heading">Compressive strength of concrete</p>
+
+<p>The data set below arose from experiments that were performed to assess how 
+the compressive strength of concrete is affected by its curing time. Five samples 
+of concrete of the same composition were mixed. The compressive strength (mPa) 
+of one sample was measured after each of 2, 7, 14, 21 and 28 days. <font color="#666666">(Testing 
+is destructive, so different samples were needed for each curing period.)</font> 
+</p>
+
+<center>
+      <table border="1" cellpadding="2" cellspacing="0" bordercolor="#999999">
+        <tr>
+<th align="CENTER">Curing period (days)</th>
+<th align="CENTER">Compressive strength (mPa)</th></tr>
+<tr>
+<td width="50%" align="CENTER" bgcolor="#ffffff"><table border="0" cellspacing="0" cellpadding="4" bgcolor="#ffffff" style="margin-top:0; margin-bottom:0">
+	<tr><td align="RIGHT">2<br>
+		7<br>
+		14<br>
+		21<br>
+		28</td>
+	</tr></table>
+</td>
+<td width="50%" align="CENTER" bgcolor="#ffffff"><table border="0" cellspacing="0" cellpadding="4" bgcolor="#ffffff" style="margin-top:0; margin-bottom:0">
+	<tr><td align="RIGHT">2.53<br>
+		3.12<br>
+		3.49<br>
+		3.95<br>
+		4.36</td>
+	</tr></table>
+</td></tr>
+</table>
+</center>
+
+<p>The relationship of strength to curing period is expected to be linear, so 
+we will try to fit a normal linear model to the data. The least squares line is 
+shown in the diagram below with the grey band representing ± twice the 
+estimate of σ. 
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="linModProg.RotateFitModelApplet">
+<param name="xVarName" value="Curing period">
+<param name="yVarName" value="Compressive strength">
+<param name="xValues" value="2 7 14 21 28">
+<param name="yValues" value="2.53 3.12 3.49 3.95 4.36">
+<param name="xAxis" value="0 30 0 5">
+<param name="yAxis" value="2 5 2.0 0.5">
+<param name="maxParams" value="9.99 9.999 9.99 9.99">
+<param name="xLimits" value="0 30.0 0.5 10.0">
+<param name="fitName" value="Fitted compressive strength">
+<param name="decimals" value="2 3 2">
+<param name="initialRotation" value="45 50">
+</applet>
+</div>
+
+<p>Drag the slider to display the estimated normal distribution of the compressive 
+strength after any curing period<i></i>. </p>
+
+<p>The mean of this estimated distribution (i.e. the least squares line) provides 
+a <strong>prediction</strong> of the compressive strength of a <strong>different 
+sample of concrete</strong>, after any curing period. </p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

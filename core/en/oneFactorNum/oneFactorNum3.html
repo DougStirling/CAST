@@ -1,0 +1,170 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Terms and constraints</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="numerical factor, linear model, quadratic model">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Adding terms or imposing constraints</p>
+<p>As with our models involving constraints in the previous section, the linear and quadratic models are intermediate between the general model with a parameter for each factor level and the most basic model in which the factor does not affect the response at all.</p>
+<p>The linear and quadratic models can be considered  as constraints on the parameters of the most general model (ensuring that they must change linearly with <em>x<sub>i</sub></em>) and also corresponds to adding a term (and parameter)  to the most basic model.</p>
+<p class="heading">Hierarchy of models</p>
+<p>The diagram below shows how the linear and quadratic models fit between the simplest model where the factor has no influence on the response and the most general model that allows any values for the mean responses at the factor levels, however unsmooth. Click the buttons <strong>Show linear</strong> and <strong>Show quadratic</strong> to insert the linear and quadratic models in the hierarchy.</p>
+
+<div class="html5">
+<!-- width=650 height=550-->
+<script language="javascript">
+var quadraticExpanded = false;
+var linearExpanded = false;
+
+function expandLinear() {
+	var linearOff = document.getElementById("linearOff");
+	var linearOn = document.getElementById("linearOn");
+	linearOn.style.display = linearExpanded ? "none" : "block";
+	linearOff.style.display = linearExpanded ? "block" : "none";
+	linearExpanded = !linearExpanded;
+}
+
+function expandQuadratic() {
+	var quadraticOff = document.getElementById("quadraticOff");
+	var quadraticOn = document.getElementById("quadraticOn");
+	quadraticOn.style.display = quadraticExpanded ? "none" : "block";
+	quadraticOff.style.display = quadraticExpanded ? "block" : "none";
+	quadraticExpanded = !quadraticExpanded;
+}
+</script>
+
+<style type="text/css">
+<!--
+input {color: #000066; font-weight:bold; font-size:14px;}
+span.red {color:#FF0000;}
+span.blue {color:#0000CC;}
+span.green {color:#009900;}
+span.purple {color:#9300FF;}
+span.bigger {font-size:16px; font-weight:bold; font-style:italic; font-family:Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;}
+-->
+</style>
+
+<div class="centred"><table class="centred" cellpadding="4" width="100%">
+	<tr>
+		<td align="center"><table border="1" cellspacing="0" cellpadding="10">
+			<tr>
+				<td align="center" bgcolor="#CCCCFF"><span class="bigger">Factor does not affect Y</span><br>
+				<strong><em>y<sub>ij</sub></em> &nbsp;= &nbsp;<span class="blue">µ</span>&nbsp; &nbsp;+ &nbsp; ε<em><sub>ij</sub></em></strong></td>
+			</tr>
+		</table></td>
+	</tr>
+</table></div>
+
+<div id="linearOff" style="display:block">
+	
+	<div class="centred"><table class="centred" cellpadding="4" width="100%">
+		<tr>
+			<td align="right" width="40%"><strong>add term <span class="green">β<em><sub>i</sub></em></span></strong> </td>
+			<td width="24" align="right"><img src="../../en/contrasts/images/downArrow.gif" width="24" height="42" align="absmiddle"></td>
+			<td width="40" valign="middle"><form><input type="button" value="Show linear model" onClick="expandLinear()"></form></td>
+			<td width="24" align="right"><img src="../../en/contrasts/images/upArrow.gif" width="24" height="42" align="absmiddle"></td>
+			<td align="left" width="40%"><strong>Constrain all <span class="green">β<em><sub>i</sub></em></span> &nbsp;=&nbsp;0</strong></td>
+		</tr>
+	</table></div>
+	
+</div>
+<div id="linearOn" style="display:none">
+	<div class="centred"><table class="centred" cellpadding="4" width="100%">
+		<tr>
+			<td align="right" width="40%"><strong>add term <span class="red">β<em>&nbsp;x<sub>i</sub></em></span></strong></td>
+			<td width="24" align="right"><img src="../../en/contrasts/images/downArrow.gif" width="24" height="42" align="absmiddle"></td>
+			<td width="40" valign="middle"><form><input type="button" value="Hide linear model" onClick="expandLinear()"></form></td>
+			<td width="24" align="right"><img src="../../en/contrasts/images/upArrow.gif" width="24" height="42" align="absmiddle"></td>
+			<td align="left" width="40%"><strong>Constrain <span class="red">β&nbsp;=&nbsp;0</span></strong></td>
+		</tr>
+	</table></div>
+	
+	<div id="quadraticOff" style="display:block">
+		
+		<div class="centred"><table class="centred" cellpadding="4" width="100%">
+			<tr>
+				<td  colspan="5"align="center"><table border="1" cellspacing="0" cellpadding="10">
+					<tr>
+						<td align="center" bgcolor="#CCCCFF" class="black"><strong><em><span class="bigger">Factor affects Y linearly</span><br>
+						y<sub>ij</sub></em> &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp; <span class="red">β<em>&nbsp;x<sub>i</sub></em></span> &nbsp;+ &nbsp; ε<em><sub>ij</sub></em></strong></td>
+					</tr>
+				</table></td>
+			</tr>
+			<tr>
+				<td align="right" width="40%"><strong>generalise to term <span class="green">β<em><sub>i</sub></em></span> </strong></td>
+				<td width="24" align="right"><img src="../../en/contrasts/images/downArrow.gif" width="24" height="42" align="absmiddle"></td>
+				<td width="40" valign="middle"><form><input type="button" value="Show quadratic model" onClick="expandQuadratic()"></form></td>
+				<td width="24" align="right"><img src="../../en/contrasts/images/upArrow.gif" width="24" height="42" align="absmiddle"></td>
+				<td align="left" class="black" width="40%"><strong>Constrain the <span class="green">β<em><sub>i</sub></em></span> to be linear</strong></td>
+			</tr>
+		</table></div>
+		
+	</div>
+	<div id="quadraticOn" style="display:none">
+		
+		<div class="centred"><table class="centred" cellpadding="4" width="100%">
+			<tr>
+				<td colspan="5" align="center"><table border="1" cellspacing="0" cellpadding="10">
+					<tr>
+						<td align="center" bgcolor="#CCCCFF" class="black"><strong><em><span class="bigger">Factor affects Y linearly</span><br>
+						y<sub>ij</sub></em> &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp; <span class="red">β<em>&nbsp;x<sub>i</sub></em></span> &nbsp;+ &nbsp; ε<em><sub>ij</sub></em></strong></td>
+					</tr>
+				</table></td>
+			</tr>
+			<tr>
+				<td align="right" width="40%"><strong>add term <span class="purple">γ<em>&nbsp;x<sub>i</sub></em><sup>2</sup></span> </strong></td>
+				<td width="24" align="right"><img src="../../en/contrasts/images/downArrow.gif" width="24" height="42" align="absmiddle"></td>
+				<td width="40" valign="middle"><form><input type="button" value="Hide quadratic model" onClick="expandQuadratic()"></form></td>
+				<td width="24" align="right"><img src="../../en/contrasts/images/upArrow.gif" width="24" height="42" align="absmiddle"></td>
+				<td align="left" class="black" width="40%"><strong>Constrain the <span class="green">β<em><sub>i</sub></em></span> to be linear (<span class="purple">γ&nbsp;=&nbsp;0</span>)</strong></td>
+			</tr>
+			<tr>
+				<td colspan="5" align="center"><table border="1" cellspacing="0" cellpadding="10">
+					<tr>
+						<td align="center" bgcolor="#CCCCFF" class="black"><strong><em><span class="bigger">Factor affects Y quadratically</span><br>
+						y<sub>ij</sub></em> &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp; <span class="red">β<em>&nbsp;x<sub>i</sub></em></span> &nbsp; + &nbsp; <span class="purple">γ<em>&nbsp;x<sub>i</sub></em><sup>2</sup></span> &nbsp;+ &nbsp; ε<em><sub>ij</sub></em></strong></td>
+					</tr>
+				</table></td>
+			</tr>
+			<tr>
+				<td align="right" width="40%"><strong>generalise to term <span class="green">β<em><sub>i</sub></em></span> </strong></td>
+				<td width="24" align="right"><img src="../../en/contrasts/images/downArrow.gif" width="24" height="42" align="absmiddle"></td>
+				<td width="40" valign="middle">&nbsp;</td>
+				<td width="24" align="right"><img src="../../en/contrasts/images/upArrow.gif" width="24" height="42" align="absmiddle"></td>
+				<td align="left" width="40%"><strong>Constrain the <span class="green">β<em><sub>i</sub></em></span> to be quadratic</strong></td>
+			</tr>
+		</table></div>
+		
+	</div>
+</div>
+
+<div class="centred"><table class="centred" cellpadding="4" width="100%">
+	<tr>
+		<td align="center"><table border="1" cellspacing="0" cellpadding="10">
+			<tr>
+				<td align="center" bgcolor="#CCCCFF"><strong><em><span class="bigger">Factor affects Y</span><br>
+				y<sub>ij</sub></em> &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp; <span class="green">β<em><sub>i</sub></em></span> &nbsp;+ &nbsp; ε<em><sub>ij</sub></em></strong></td>
+			</tr>
+		</table></td>
+	</tr>
+</table></div>
+
+</div>
+
+<br>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

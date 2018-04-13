@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Tendance quadratique</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="least squares/time series, quadratic model">
+	<meta name="dataset" content="Credit card debt in NZ">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Modèles quadratiques</p>
+
+<p>Une tendance linéaire n'est pas approprié pour toutes les séries chronologiques. De nombreuses tendances ont courbure qui doit être décrit par un modèle plus complexe. Nous avons maintenant de décrire brièvement montage d'une tendance quadratique de la forme ...</p>
+
+<p class="eqn" style="color:#000000"><em>tendance</em> &nbsp; = &nbsp; <em>b</em><sub>0</sub> &nbsp;+ &nbsp;<em>b</em><sub>1</sub><em> temps</em><span class="eqn" style="color:#000000"> &nbsp;+ &nbsp;<em>b</em><sub>2</sub><em> temps</em></span><sup>2</sup></p>
+<p>Une courbe quadratique de cette forme a <strong>trois</strong> paramètres qui peuvent être ajustés pour améliorer l'ajustement du modèle. Nous avons de nouveau définir les résidus d'être les différences entre les valeurs réelles de séries chronologiques, <em>y</em>, et les prédictions du modèle,</p>
+<p class="eqn" style="color:#000000"><em>e<sub>i</sub></em> &nbsp; = &nbsp; <em>y<sub>i</sub></em> &nbsp;− &nbsp;<em>tendance<sub>i</sub></em></p>
+	<p>Les estimations les <strong>moins carrés</strong> des trois paramètres sont à nouveau les valeurs qui minimisent la somme des carrés des résidus,</p>
+<p class="eqn" style="color:#000000"><font size="+1">Σ</font> <em>e<sub>i</sub></em><sup>2</sup></p>
+	<div class="diagram">
+		<p class="heading">La dette de carte de crédit</p>
+
+		<p>La série chronologique ci-dessous montre la dette totale contractée aux cartes de crédit en Nouvelle-Zélande à la fin de chaque Décembre 1990 à 2001. La tendance est clairement non linéaire, donc un modèle quadratique pourrait être appropriée. (Notez que nous avons à nouveau soustrait 1990 de l'année pour rendre les coefficients plus gérable.)</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.DragQuadraticApplet">
+<param name="xVarName" value="(An-1990)">
+<param name="yVarName" value="Dette de carte de crédit ($m)">
+<param name="xSequence" value="0 1 12">
+<param name="yValues" value="951.1 1027.8 1055.7 1129.2 1289.5 1481.7 1726.4 1897.7 2066.5 2403.0 2904.3 3390.1">
+<param name="horizAxis" value="-0.5 11.5 0 1">
+<param name="vertAxis" value="0 4000 0 1000">
+<param name="interceptLimits" value="0 4000 200">
+<param name="slopeLimits" value="-1200 1200 200">
+<param name="curvatureLimits" value="-200 200 0">
+<param name="labelAxes" value="true">
+</applet>
+</div>
+
+		<p>Faites glisser les trois flèches rouges pour positionner la courbe quadratique proche des données.</p>
+		<p>Cliquez <strong>Moindres carrés</strong> à la position de la ligne de minimiser la somme résiduelle des carrés.</p>
+		<p>L'équation de la ligne de tendance est présentée sous le graphique. Elle peut être utilisée pour prédire la dette de carte de crédit dans les années à venir.</p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

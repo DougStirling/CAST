@@ -1,0 +1,198 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Variance</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="discrete distribution, variance, standard deviation">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Centre and spread </p>
+<p>The mean of a random variable — its expected value — describes a 'typical' value from the distribution, a summary of the <strong>centre</strong> of the distribution.</p>
+<p>We now define a summary of the <strong>spread</strong> of values around this centre. A small spread of values means that a value from the distribution will probably be close to the mean; a larger spread would arise when a random value from the distribution is probably  further from the mean.</p>
+<p class="heading">Variance</p>
+
+<p>The mean of a discrete random variable is defined as</p>
+
+\[
+E[X] = \mu = \sum_{\text{all } x} {x \times p(x)}
+\]
+
+<p>and this has been shown to be closely related to the mean of a discrete data set. In a similar way, the definition of the <strong>variance</strong> of a discrete random variable is closely related to the sample variance of a data set.</p>
+
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+<p>The <strong>variance</strong> of a discrete random variable, <em>X</em>, is defined to be</p>
+
+\[
+\Var (X) = \sigma^2 = E \left[(X - \mu)^2 \right]
+\]
+<p>where \(\mu\) is the variable's mean.</p>
+</div>
+
+<p>As with the variance of a data set, \(s^2 = \dfrac { \sum {(x_i - \overline{x})^2}} {n-1}\), this is a kind of average of squared differences of values from the mean. The <strong>standard deviation</strong>, \(\sigma\), is  defined to be the square root of the variance.</p>
+<p>The  formula for the variance that we have used in the above definition gives a good feel for its interpretation, but the result below  is usually easier to apply in practice when evaluating a random variable's variance.</p>
+
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Alternative formula for variance</p>
+		<p>A discrete random variable's variance can be written as</p>
+\[
+\Var (X) = E \left[(X - \mu)^2 \right]
+= E[X^2] - \left( E[X] \right)^2
+\] </div>
+
+	<div class="proof">
+\[ \begin{align}
+E \left[(X - \mu)^2 \right] &amp; = E \left[X^2 - 2\mu X + \mu^2 \right] \\
+&amp; = E[X^2] - 2\mu E[X] + E[\mu^2] \\
+&amp; = E[X^2] - 2\mu \times \mu + \mu^2 \\
+&amp; = E[X^2] - \mu^2
+\end{align} \]
+
+		<p>since the expected value of a constant such as \(\mu^2\) is the constant itself and \(E[X] = \mu \).</p>
+	</div>
+
+</div>
+
+<p>When the probability function is described by a mathematical function, the summations needed to find \(E[X]\) and \(E[X^2]\) can often be evaluated mathematically. However we will now illustrate the calculations for an example in which the probabilities are specified in tabular form.</p>
+
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Example</p>
+		<p>A couple want at least two children and no more than four, but will stop  when they get a boy. Assuming that the probability of each child being a  girl is \(\frac {1} {2} \)<span aria-readonly="true" role="textbox" id="MathJax-Element-11-Frame"> </span>, independently of the genders of previous children, the probability function for the number of girls in the resulting family is</p>
+		<div class="centred">
+			<table border="0" class="centred" cellpadding="5" cellspacing="0">
+				<tr>
+					<th align="left" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">Number of girls, <em>x</em></th>
+					<td width="40" align="center" style="border-bottom:1px solid #999999;">0</td>
+					<td width="40" align="center" style="border-bottom:1px solid #999999;">1</td>
+					<td width="40" align="center" style="border-bottom:1px solid #999999;">2</td>
+					<td width="40" align="center" style="border-bottom:1px solid #999999;">3</td>
+					<td width="40" align="center" style="border-bottom:1px solid #999999;">4</td>
+				</tr>
+				<tr>
+					<th align="left" style="border-right:1px solid #999999;"><em>p</em>(<em>x</em>)</th>
+					<td align="center">0.25</td>
+					<td align="center">0.5</td>
+					<td align="center">0.125</td>
+					<td align="center">0.0625</td>
+					<td align="center">0.0625</td>
+				</tr>
+			</table>
+		</div>
+		<p>What are the mean and standard deviation of \(X\)?</p>
+	</div>
+
+	<div class="solution">
+		<p>This table shows how \(E[X]\) and \(E[X^2]\) can be calculated.</p>
+		
+		<div class="centred">
+		<table width="200" border="0" cellpadding="5" cellspacing="0" class="centred">
+			<tr>
+				<td align="center"><em>x</em></td>
+				<td align="center">\(p(x) \)</td>
+				<td align="center">\(x \times p(x) \)</td>
+				<td align="center">\(x^2 \times p(x) \)</td>
+			</tr>
+			<tr>
+				<td align="center" style="border-top:1px solid #999999;">0</td>
+				<td align="center" style="border-top:1px solid #999999;">0.25</td>
+				<td align="center" style="border-top:1px solid #999999;">0</td>
+				<td align="center" style="border-top:1px solid #999999;">0</td>
+			</tr>
+			<tr>
+				<td align="center">1</td>
+				<td align="center">0.5</td>
+				<td align="center">0.5</td>
+				<td align="center">0.5</td>
+			</tr>
+			<tr>
+				<td align="center">2</td>
+				<td align="center">0.125</td>
+				<td align="center">0.25</td>
+				<td align="center">0.5</td>
+			</tr>
+			<tr>
+				<td align="center">3</td>
+				<td align="center">0.0625</td>
+				<td align="center">0.1875</td>
+				<td align="center">0.5625</td>
+			</tr>
+			<tr>
+				<td align="center" style="border-bottom:1px solid #999999;">4</td>
+				<td align="center" style="border-bottom:1px solid #999999; padding-left:20px; padding-right:20px">0.0625</td>
+				<td align="center" style="border-bottom:1px solid #999999;">0.25</td>
+				<td align="center" style="border-bottom:1px solid #999999;">1.0</td>
+			</tr>
+			<tr>
+				<td align="center"><strong>Total</strong></td>
+				<td align="center">1</td>
+				<td align="center" style="padding-left:20px; padding-right:20px">\(E[X] = 1.1875\)</td>
+				<td align="center" style="padding-left:20px; padding-right:20px">\(E[X^2] = 2.5625\)</td>
+			</tr>
+		</table>
+		</div>
+		
+		<p>From these,</p>
+\[ 
+\mu  = E[X] = 1.1875
+ \]
+<p>and</p>
+\[ \sigma^2  = E[X^2] - \left( E[X] \right)^2 = 2.5625 - 1.1875^2 = 1.152
+ \]
+
+<p>and the standard deviation is</p>
+
+\[
+\sigma = \sqrt {1.152} = 1.073
+\]
+	</div>
+
+</div>
+
+<p>The next result gives the variance of a linear function of <em>X</em>.</p>
+
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Variance of a linear function of X</p>
+			<p>If <em>X</em> is a discrete random variable and <em>a</em> and<em> b</em> are constants,</p>
+			\[
+			\Var(a + b \times X) = b^2 \times \Var(X)
+			\]
+	</div>
+
+	<div class="proof">
+<p>We showed earlier that the mean of this linear function is</p>
+\[
+	E[a + b \times X] = a + b \times E[X]
+\]
+<p>From the definition of a random variable's variance,</p>
+\[ \begin{align}
+\Var(a + bX) &amp; = E \left[\big((a + bX) - (a + b\mu)\big)^2 \right] \\
+&amp; = E \left[(bX - b\mu)^2 \right] \\
+&amp; = b^2 \times E \left[(X - \mu)^2 \right] \\
+&amp; = b^2 \times \Var(X)
+\end{align} \]
+	</div>
+
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Sums of squares</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	<meta name="index" content="explained variation, unexplained variation, sum of squares, explained sum of squares, residual sum of squares, total sum of squares">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Summarising explained and unexplained variation</p>
+<p>Evidence for a factor affecting the response is strongest when the variation explained by the model is high <strong>relative to the unexplained variation</strong>. In this page, 
+	we describe quantities that summarise these two types of variation.</p>
+<p>These summaries are based on three types of value.</p>
+<dl>
+	<dt>Observed response</dt>
+	<dd>These are simply the raw response values, <em>y<sub>ij</sub></em>.</dd>
+	<dt>Fitted values</dt>
+	<dd>The fitted values are the best predictions of the response based on the factor levels. The formula depends on the model being used. For a categorical factor model, the fitted values are the treatment means; for linear or quadratic models, the fitted values are found from the least squares parameters for the model.</dd>
+</dl>
+
+<p class="eqn"><img src="images/fittedValues.gif" width="341" height="73"></p>
+
+  <p class="heading">Overall variation  (total sum of squares)</p>
+	<p>We summarise response variation using differences between the response values and their mean.</p>
+	<div class="centred"><table width="90%" border="0" class="centred" cellpadding="6" cellspacing="0" style="background-color:#FFFFFF">
+		<tr>
+			<td><img src="../multiGroup/images/totalSsq.gif" width="79" height="27" alt="SSresidual"></td>
+		<td class="green">The <strong>total sum of squares</strong> reflects the overall variability of the response.</td>
+</tr>
+</table></div>
+
+<p>Note that the sample variance of all <em>n</em> response values is the total sum of squares divided by (<em>n</em>&nbsp;-&nbsp;1).</p>
+  <p class="heading">Unexplained variation  (residual sum of squares)</p>
+	<p>We summarise unexplained variation using differences between the observed and fitted values &mdash; the model residuals.</p>
+	<div class="centred"><table width="90%" border="0" class="centred" cellpadding="6" cellspacing="0" style="background-color:#FFFFFF">
+		<tr>
+			<td><img src="images/residFitSsq.gif" width="89" height="27" alt="SSresidual"></td>
+		<td><span class="blue">This sum of squares summarises how much the response values vary around our best prediction of the response for that factor level.</span></td>
+		</tr>
+	</table></div>
+	<p>This is also called the <strong>residual</strong> sum of squares.</p>
+	<p class="heading">Explained sum of squares</p>
+	<p>The explained sum of squares summarises the variability of the model predictions &mdash; the fitted values. If the fitted values are similar for all factor levels, there is little explained variation, whereas if the fitted values differ between factor levels, this implies systematic differences between the factor levels. This sum of squares therefore summarises explained variation.</p>
+	<div class="centred"><table width="90%" border="0" class="centred" cellpadding="6" cellspacing="0" style="background-color:#FFFFFF">
+<tr> 
+<td><img src="images/explainedFitSsq.gif" width="83" height="25" alt="SSexplained"></td>
+<td><span class="red">The <strong> explained sum of squares </strong> measures 
+the variability of the fitted values.</span></td>
+</tr>
+</table></div>
+  <p>Note that the summation here is <span class="black"><strong>over all observations in the data set</strong></span> &mdash; if  <em>n<sub>i</sub></em> experimental units get treatment <em>i</em>, each of them separately contributes 
+		an equal amount to the explained sum of squares.</p>
+
+<p class="heading">Relationship between sums of squares</p>
+<p>The following relationship is difficult to prove but is important.</p>
+<p class=eqn><img src="images/ssqGroupEqn.gif" width="332" height="48" alt="SStotal = SSexplained + SSresidual"></p>
+<br>
+
+<div class="diagram"> 
+<p class="heading">Illustration: categorical factor</p>
+<p>The display on the left below shows the results of a completely randomised experiment with 8 replicates at each of 
+4 factor levels. </p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="420">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.ComponentsSsqApplet">
+<param name="noOfDataSets" value="2">
+<param name="dataName" value="Eight replicates">
+<param name="dataName2" value="Two replicates">
+<param name="yVarName" value="Yield of reaction">
+<param name="xVarName" value="Type of enzyme">
+<param name="xLabels" value="A B C D">
+<param name="xValues" value="8@0 8@1 8@2 8@3">
+<param name="xValues2" value="2@0 2@1 2@2 2@3">
+<param name="anovaModel" value="9 0.9 16 0.9 14 0.9 6 0.9">
+<param name="randomSeed" value="5836280">
+<param name="yAxis" value="0 25 0 5">
+<param name="decimals" value="3">
+<param name="residAxis" value="-15 15 -15 5">
+<param name="initialR2" value="0.75">
+<param name="maxSsq" value="999.99">
+<param name="componentName" value="Total#Explained#Residual">
+<param name="explainedImages" value="true">
+<param name="customText" value="Variability=Variability#All unexplained=All unexplained#All explained=All explained">
+</applet>
+</div>
+
+    
+<p>The three jittered dot plots on the right show the values whose squares are 
+summed to give the total, explained and unexplained (residual) sums of squares. <strong>Click 
+on each of these three plots</strong> to display the quantities on the diagram on the left. 
+The sums of squares summarise the size of the three components.</p>
+<p>Use the slider to adjust the data values and observe how the relative size 
+of the variation between  and within treatments is reflected in the size of 
+these sums of squares.</p>
+<div class="centred"><div class="boxed">
+	<p>Evidence for a difference between the factor levels is 
+		strongest when the explained sum of squares is much higher than the residual 
+		sum of squares.</p>
+</div></div>
+<p>Select <strong>Two replicates</strong> from the pop-up menu and repeat.</p>
+<p class="heading">Illustration: linear model</p>
+<p>The diagram below is similar but describes variation in an experiment with a numerical factor. In order to illustrate the explained and residual sums of squares better, we have chosen an experiment with a <strong>single</strong> replicate at each of 9 equally-spaced values for the factor.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="420">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.ComponentsSsqApplet">
+<param name="yVarName" value="Impurities, y">
+<param name="xVarName" value="Temperature, x">
+<param name="xValues" value="50 55 60 65 70 75 80 85 90">
+<param name="regnModel" value="-11.0 0.3 1.5">
+<param name="randomSeed" value="623945782">
+<param name="xAxis" value="48 92 50 10">
+<param name="yAxis" value="0 22 0 5">
+<param name="decimals" value="3">
+<param name="residAxis" value="-11 11 -10 5">
+<param name="initialR2" value="0.75">
+<param name="maxSsq" value="999.99">
+<param name="componentName" value="Total#Explained#Residual">
+<param name="customText" value="Variability=Variability#All unexplained=All unexplained#All explained=All explained">
+</applet>
+</div>
+
+<p>The three jittered dot plots on the right again show the values whose squares are 
+	summed to give the total, explained and residual sums of squares. <strong>Click 
+		on each of these three plots</strong> to display the quantities whose squares are being summed on the diagram on the left.</p>
+<p>Adjust the slider  and again observe how the evidence for a relationship is described by the relative size 
+	of the explained and residual sums of squares.</p>
+<div class="centred"><div class="boxed">
+	<p>Evidence for a difference between the treatment means is 
+		strongest when the explained sum of squares is much higher than the residual 
+		sum of squares.</p>
+</div></div>
+
+<br>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

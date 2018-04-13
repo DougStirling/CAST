@@ -1,0 +1,362 @@
+/*
+ * 
+ *
+ * Copyright (C) 2010 Cristian I. Colceriu
+ * Modified considerably by Doug Stirling
+ *
+ * Dual licensed under the MIT and GPL licenses:
+ *   http://www.opensource.org/licenses/mit-license.php
+ *   http://www.gnu.org/licenses/gpl.html
+ *
+ * www.ghinda.net
+ * contact@ghinda.net
+ *
+ */
+ 
+ body {font-size:larger;}
+ 
+.acorn-player {
+	display: block;
+	background-color:transparent;
+	text-align:center;
+	margin-bottom: 50px;
+	margin-top: 30px;
+ }
+ 
+/* <video> element */
+.acorn-player video {
+	display:inline;
+	background-color: rgba(0, 0, 0, 0.1);
+	margin: 0px auto;
+	margin-bottom: 7px;
+	border: 1px solid rgba(0, 0, 0, 0.0);		/*	will become less transparent when video plays		*/
+	-webkit-background-clip: padding-box; /* for Safari */
+	background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+}
+
+/* Player Controls */
+.acorn-player .acorn-controls {
+	display: block;
+	position:relative;
+	margin: 0px auto;
+	width: 450px;
+	height:28px;
+	border: 1px solid #222;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	background-color:rgba(0, 0, 0, 0.1);
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/* <button>s */
+.acorn-player button {
+	position:absolute;
+	height: 22px;
+	width: 22px;
+	padding: 0px;
+	border: none;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: auto 100%;
+	
+	opacity: 0.7;
+	-moz-transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+	
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	
+	cursor: pointer;
+	text-indent: -9999px;
+}
+.acorn-player button:hover, .acorn-player button:focus {
+	opacity: 1;
+}
+
+/* Playback controls(Play, Pause) */
+.acorn-player .acorn-play-button {
+	left: 5px;
+	top: 3px;
+	background-image: url(doug-play.png);
+}
+.acorn-player button.acorn-play-button:hover {
+	background-image: url(doug-play-bold.png);
+}
+.acorn-player button.acorn-play-button:active {
+	top: 4px;	
+}
+.acorn-player .acorn-paused-button {
+	background-image: url(doug-pause.png);
+}
+.acorn-player button.acorn-paused-button:hover {
+	background-image: url(doug-pause-bold.png);
+}
+.acorn-player button.acorn-paused-button:active {
+	top: 4px;	
+}
+
+/* Seek Slider */
+.acorn-player .acorn-seek-slider {
+	position: absolute;
+	display: block;
+	left: 87px;
+	top: 9px;
+	width: 285px;
+	height: 10px;
+	margin: 0px;
+	background: #535353;
+
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	border-radius: 15px;	
+}
+.acorn-player .acorn-seek-slider .ui-slider-handle {
+	display: block;
+	position: absolute;	
+	width: 15px;
+	height: 15px;
+	border: 1px solid #333;
+	top: -4px;
+	background: #e6e6e6;	
+
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+.acorn-player .acorn-seek-slider .ui-slider-range {		
+	background: #4cbae8;
+	
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;
+}
+.acorn-player .acorn-buffer {
+	background: #40338e !important;
+}
+.acorn-player .acorn-seek-slider .ui-state-focus, .acorn-player .acorn-seek-slider .ui-slider-handle.ui-state-hover {
+	background: #fff !important;
+	
+	-moz-box-shadow: 0px 2px 15px #ff0000;
+	-webkit-box-shadow: 0px 2px 15px #ff0000;
+	box-shadow: 0px 2px 15px #ff0000;
+}
+
+
+/* Timer */
+.acorn-player .acorn-timer {
+	position: absolute;
+	left: 30px;
+	top: 3px;
+	width: 40px;
+	overflow: hidden;
+	margin-top: 5px;
+	color: #666;
+	font-size: 0.7em;
+	font-weight: bold;
+	cursor: default;
+}
+
+
+/* Remaining */
+.acorn-player .acorn-remaining {
+	position: absolute;
+	right: 32px;
+	top: 3px;
+	width: 40px;
+	overflow: hidden;
+	margin-top: 5px;
+	color: #666;
+	font-size: 0.7em;
+	font-weight: bold;
+	cursor: default;
+}
+
+
+/* Volume Box */
+.acorn-player .acorn-volume-box {
+	position: absolute;
+	right: 5px;
+	bottom: 2px;
+	width:22px;
+	height:23px;
+/*	overflow: visible;	*/
+	overflow:hidden;
+	color: #fff;	
+	
+	-moz-transition: all 0.1s ease-in-out;
+	-webkit-transition: all 0.1s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	transition: all 0.1s ease-in-out;
+}
+.acorn-player .acorn-volume-box:hover {
+	height: 135px;
+	padding-top: 4px;
+}
+.acorn-player .acorn-volume-box:hover .acorn-volume-slider {
+	position: relative;
+	visibility: visible;
+	opacity: 1;
+}
+/* Volume Slider */
+.acorn-player .acorn-volume-slider {
+	position: relative;
+	height: 100px;
+	width: 7px;
+	left: 4px;
+	
+	visibility: hidden;
+	opacity: 0;
+	
+	border: 1px solid #444;
+
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	border-radius: 15px;
+	
+	background: #535353;
+	background-image: -moz-linear-gradient(top, #535353, #333333);
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #535353),color-stop(1, #333333));
+	
+	box-shadow: inset 0 3px 3px #333333;
+	
+	-moz-transition: all 0.1s ease-in-out;
+	-webkit-transition: all 0.1s ease-in-out;
+	-o-transition: all 0.1s ease-in-out;
+	transition: all 0.1s ease-in-out; 
+}
+.acorn-player .acorn-volume-slider .ui-slider-handle {
+	width: 12px;
+	height: 12px;
+	left: -4px;
+	margin-bottom:-0.6em;
+	margin-left:0;
+	border: 1px solid #333;	
+
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;	
+	
+	background: #e6e6e6;
+	background-image: -moz-linear-gradient(top, #e6e6e6, #d5d5d5);
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #e6e6e6),color-stop(1, #d5d5d5));
+	
+	box-shadow: inset 0 3px 3px #d5d5d5;	
+}
+.acorn-player .acorn-volume-slider .ui-slider-handle.ui-state-hover {
+	background: #fff;
+}
+.acorn-player .acorn-volume-slider .ui-slider-range {
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	border-radius: 15px;
+	
+	background: #e6e6e6;
+	background-image: -moz-linear-gradient(top, #e6e6e6, #d5d5d5);
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #e6e6e6),color-stop(1, #d5d5d5));
+	
+	box-shadow: inset 0 3px 3px #d5d5d5;
+}
+
+/* Volume Button */
+.acorn-player .acorn-volume-button {
+	left: 0px;
+	bottom: 1px;
+	background-image: url(doug-volume-full.png);
+}
+.acorn-player .acorn-volume-mute {
+	background-image: url(doug-volume.png);
+}
+.acorn-player button.acorn-volume-button:active {
+	bottom: 0px;	
+}
+.acorn-player button.acorn-volume-mute:active {
+	bottom: 0px;	
+}
+
+/* Loading */
+.loading-media {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 20px;
+	height: 20px;
+	margin-top: -10px;
+	margin-lefT: -10px;
+	
+	background-color: #000;
+	border: 5px solid #fff;
+	border-top: 5px solid rgba(0,0,0,0);
+	border-left: 5px solid rgba(0,0,0,0);
+	border-radius: 20px;
+	
+	animation: spin 1s infinite linear;
+	-o-animation: spin 1s infinite linear;
+	-moz-animation: spin 1s infinite linear;
+	-webkit-animation: spin 1s infinite linear;
+}
+
+@-o-keyframes spin {
+	0% { -o-transform:rotate(0deg); }
+	100% { -o-transform:rotate(360deg); }
+}
+@-ms-keyframes spin {
+	0% { -ms-transform:rotate(0deg); }
+	100% { -ms-transform:rotate(360deg); }
+}
+@-moz-keyframes spin {
+	0% { -moz-transform:rotate(0deg); }
+	100% { -moz-transform:rotate(360deg); }
+}
+@-webkit-keyframes spin {
+	0% { -webkit-transform:rotate(0deg); }
+	100% { -webkit-transform:rotate(360deg); }
+}
+@keyframes spin {
+	0% { transform:rotate(0deg); }
+	100% { transform:rotate(360deg); }
+}
+
+/* Controls overlay while loading */
+.loading-media + .acorn-controls:before {
+	content: '';
+	position: absolute;
+	top: -2px; /* Slider handle goes above */
+	padding-bottom: 2px;
+	left: 0;
+	z-index: 10;
+	width: 100%;
+	height: 100%;
+	
+	background: #000;
+	opacity: 0.9;
+}
+
+/* Styles needed for the jQuery UI slider
+ * We're declaring these so we don't have to use jQuery UI's stylesheet
+ */
+a.ui-slider-handle {
+	position: absolute;
+	display: block;
+	margin-left: -0.6em;
+	z-index: 2;
+	cursor: default;
+	outline: none;
+}
+.ui-slider {
+	position: relative;
+}
+.ui-slider-range {
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	bottom: 0;
+	border: none;
+	z-index: 1;
+}

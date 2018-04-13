@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Covariance</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="bivariate distribution, covariance">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Covariance</p>
+<p>The expected value of one particular function of  two variables is especially important. The concept of covariance is closely related to that of the variance of a single random variable.</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>The <strong>covariance</strong> of two random variables, \(X\) and \(Y\), is</p>
+\[
+\Covar(X,Y) \;=\; E\left[(X - \mu_X)(Y - \mu_Y)\right]
+\]
+<p>where \(\mu_X\) and \(\mu_Y\) are the means of the two variables. The covariance is often denoted by \(\sigma_{XY}\).</p>
+</div>
+
+<p>The following results can be easily proved from the definition of covariance and the general properties of expected values. They are simply stated here.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Properties of covariance</p>
+<p>For any random variables, \(X\) and \(Y\), and constant \(a\),</p>
+<ul>
+	<li>\(\Covar(X, X) \;=\; \Var(X) \)</li>
+	<li>\(\Covar(X, a) \;=\; 0\)</li>
+	<li>\(\Covar(X, Y) \;=\; \Covar(Y, X)\)</li>
+</ul>
+	</div>
+</div>
+
+<p>The following result is often useful when finding the covariance of two variables. Note how similar it is to the <a href="javascript:showNamedPage('discreteDistns5')">corresponding result for variances</a>.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Alternative formula for covariance</p>
+		<p>For any random variables, \(X\) and \(Y\),</p>
+		\[
+		\Covar(X, Y) \;=\; E[XY] - E[X]E[Y]
+		\] </div>
+	<div class="proof">
+		
+		\[
+		\Covar(X, Y) \;=\; E[(X-\mu_X)(Y-\mu_Y)] \;=\; E[XY - \mu_X Y - \mu_Y X + \mu_X\mu_Y]
+		\]
+		  <p>From the general properties of expected values, and noting that both \(\mu_X\) and \(\mu_Y\) are constants,</p>
+		\[
+		 \Covar(X, Y) \;=\; E[XY] - \mu_X \mu_Y - \mu_Y \mu_X + \mu_X \mu_Y \;=\; E[XY] - \mu_X \mu_Y
+		\]
+	</div>
+</div>
+<p class="heading">Linear transformations</p>
+<p>The covariance between two random variables is affected in a simple way by linear transformations of the  variables.</p>
+<div class="theoremProof">
+<div class="theorem">
+<p class="theoremTitle">Covariance of linear transformations of X and Y</p>
+<p>For any random variables, \(X\) and \(Y\), and constants \(a\), \(b\), \(c\) and \(d\),</p>
+\[
+\Covar(a + bX, c+dY) \;=\; bd \Covar(X, Y)
+\]
+</div>
+<div class="proof">
+<p>The means of the two transformed variables are</p>
+\[
+E[a + bX] = a + b\mu_X \spaced{and} E[c + dY] = c + d\mu_Y
+\]
+<p>The covariance can then be written as</p>
+\[ \begin{align}
+\Covar(a + bX, c + dY) \;&amp;=\; E\left[\bigl(a + bX - E[a + bX]\bigr)\bigl(c + dY - E[c + cY]\bigr)\right] \\[0.3em]
+&amp;=\; E\left[\bigl(a + bX - (a + b\mu_X)\bigr)\bigl(c + dY - (c + d\mu_Y)\bigr)\right] \\[0.3em]
+&amp;=\; E\bigl[b(X - \mu_X) \times d(Y - \mu_Y)\bigr] \\[0.3em]
+&amp;=\; bd \times E\bigl[(X - \mu_X)(Y - \mu_Y)\bigr] \\[0.3em]
+&amp;=\; bd \times \Covar(X,Y)
+\end{align} \]
+</div>
+</div>
+<p>The covariance is therefore unaffected by adding constants (\(a\) and \(c\)) to the variables. Multiplying by constants (\(b\) and \(d\)) simply multiplies their covariance by these values.</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

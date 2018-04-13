@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Non-normal errors</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="probability plot, normal scores, outliers, curvature">
+	<meta name="dataset" content="Deer weight and jaws">
+	<meta name="dataset" content="Antibiotic effectiveness">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Normal errors</p>
+<p>Another assumption in the normal linear model is that the model errors are 
+normally distributed.</p>
+<p class=eqn><span class="black">&epsilon;&nbsp; ~ &nbsp;<font face="Arial, Helvetica, sans-serif">normal</font> (0<sub></sub>&nbsp;, &sigma;)</span> 
+</p>
+<p>If the model holds, the least squares residuals will also be normally distributed, 
+so a histogram of the residuals can be examined for normality.</p>
+
+<div class="centred"><div class="boxed">
+<p>Normal errors are the least important of the model assumptions. If 
+the other assumptions hold, it is reasonable to continue with the analysis, even 
+if the errors have a skew distribution.</p>
+</div></div>
+
+<p class="heading">Normal probability plot</p>
+<p>A better way to graphically examine a data set for normality is with a <strong><a href="javascript:showNamedPage('normalDistn10')">normal 
+probability plot</a></strong> of the residuals. As with other probability plots, if the residuals are from a normal distribution, the crosses in the normal probability 
+plot should lie close to a straight line.</p>
+
+<p class="heading">How much curvature is needed to suggest non-normality?</p>
+<p>In some data sets, linearity or nonlinearity in the probability plot is 
+clear. In practice however, the randomness of real data means that the probability 
+plot will not be exactly straight even for values that are sampled from a normal 
+population.</p>
+
+<div class="centred"><div class="boxed">
+<p>How much curvature is needed to conclude that the underlying distribution 
+is not normal?</p>
+</div></div>
+
+<p>This is a difficult question to answer. There are formal tests of normality 
+that can be used in conjunction with a probability plot. (We <a href="javascript:showNamedPage('testPValue5')">discussed 
+one in an earlier chapter</a> about hypothesis tests.) We however take a less 
+formal approach in the example below.</p>
+
+<div class="diagram" title="Example: Deer jaw length and weight">
+<p class="heading">Deer jaw length and weight</p>
+<p>Jaw lengths and body weights were recorded from 150 male deer that were shot 
+in the Ruahine Ranges in New Zealand between November 1981 and November 1982. 
+A scatterplot of the data and a probability plot of the residuals from the least 
+squares line are shown below.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="650" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="loessProg.ProbPlotRandomApplet">
+<param name="yVarName" value="Jaw length (mm)">
+<param name="xVarName" value="Weight (kg)">
+<param name="yValues" value="226 254 252 224 254 247 273 231 219 226 245 252 249 219 214 247 232 226 211 216 218 232 235 202 253 211 211 236 230 243 240 217 257 236 257 234 227 252 249 279 247 237 273 256 247 267 239 243 262 157 268 267 245 273 256 244 270 257 269 233 276 267 258 253 229 253 272 262 270 267 277 293 254 259 283 245 225 225 262 282 277 229 275 287 296 281 265 293 278 262 257 283 253 289 287 284 301 282 260 292 275 290 294 308 291 301 293 300 280 285 264 291 272 284 292 298 303 290 280 279 265 311 288 290 287 292 258 360">
+<param name="xValues" value="36 45 43 37 47 43 56 43 34 41 47 45 44 34 32 46 36 35 35 29 29 43 40 21 53 32 36 42 40 49 46 33 57 47 48 48 44 52 57 66 45 43 58 62 53 70 44 48 53 55 62 62 38 57 55 43 60 52 63 55 63 54 48 48 55 53 64 50 54 50 67 82 42 57 57 40 41 41 56 71 75 77 67 74 95 85 53 82 76 51 55 68 46 76 79 81 76 86 72 85 41 93 83 85 84 89 70 88 73 72 77 71 38 82 89 89 92 80 75 67 81 101 73 87 91 73 65 97">
+<param name="horizAxis" value="20 105 20 20">
+<param name="vertAxis" value="150 380 150 50">
+<param name="residAxis" value="-105 100 -100 50">
+<param name="nscoreAxis" value="-2.5 2.5 -2 1">
+<param name="random" value="3.0 384958677">
+<param name="labelAxes" value="true">
+<param name="customText" value="Actual Data=Actual Data#Random Normal Data=Random Normal Data#Ordered residual=Ordered residual">
+</applet>
+</div>
+
+<p>There is curvature at both ends of the probability plot, suggesting that the 
+error distribution has longer tails than the normal distribution.</p>
+<p>Could this amount of curvature have occurred by chance? Select <strong>Random 
+Normal Data</strong> from the pop-up menu to generate random data from a normal 
+linear model whose parameters β<sub>0</sub>, 
+β<sub>1 </sub>and σ are the same as the least squares estimates from our data. Click <strong>Take 
+Sample</strong> several times to see the variability in the probability plot when 
+a normal linear model <strong>does</strong> hold.</p>
+<p>The probability plot from the data seems more curved than the random ones, 
+suggesting a problem with the assumption of normal errors.</p>
+</div>
+
+<p class="heading">Warning</p>
+<p>If the assumptions of linearity and constant variance are violated, or if there 
+are outliers, the probability plot of residuals will often be curved, irrespective 
+of the error distribution.</p>
+
+<div class="centred"><div class="boxed">
+<p>Only draw a probability plot if you are sure that the data are linear, 
+have constant variance and have no outliers.</p>
+</div></div>
+
+
+<br>
+
+<div class="diagram" title="Example: Deer jaw length and weight">
+<p class="heading">Outliers &mdash; Deer data</p>
+<p>In the Deer data above, most of the probabilitiy plot is fairly linear. The 
+long tails to the residual distribution could perhaps be caused by a small number 
+of outliers in the data.</p>
+<p>If possible, it would be worth checking that there were no measurement or transcription 
+errors for the most extreme residuals. Perhaps these measurements were made by 
+one particular hunter who incorrectly measured jaw length?</p>
+<p class="heading">Nonlinearity &mdash; Antibiotic effectiveness</p>
+<p>Nonlinearity in the relationship can have the opposite effect on the shape 
+of a probability plot &mdash; the tails of the distribution of residuals may be shorter 
+than those for a normal distribution.</p>
+<p>An experiment was conducted to assess how well an antibiotic, <em>polymyxin 
+B</em>, killed the bacterium, <em>Brucella bronchiseptica</em>. Petri dishes containing 
+the bacterium (grown in agar) were used and different doses of the antibiotic 
+were added. The diameter of the area cleared around the addition point were recorded. 
+Each of 6 different doses of antibiotic was used 10 times.</p>
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="loessProg.ProbPlotRandomApplet">
+<param name="yVarName" value="Inhibition diameter(mm)">
+<param name="xVarName" value="Conc of antibiotic">
+<param name="yValues" value="13.6 13.5 14.9 14.5 14.5 14.8 14.4 14.5 13.9 14.7 14.5 14.4 15.8 15.4 15.4 15.7 15.3 15.4 14.8 15.6 15.6 15.4 16.2 15.9 16.2 16.0 15.9 15.5 16.1 16.5 15.8 15.6 16.8 16.6 16.6 17.0 16.0 15.8 16.2 16.6 16.2 16.0 17.4 17.2 17.2 16.8 17.2 17.4 16.2 17.1 16.5 16.4 17.8 17.7 18.1 17.5 17.3 17.2 16.5 16.7">
+<param name="xValues" value="10@40 10@60 10@80 10@100 10@120 10@140">
+<param name="horizAxis" value="35 145 40 20">
+<param name="vertAxis" value="13.0 18.5 13 1">
+<param name="residAxis" value="-1.7 1.7 -1.5 0.5">
+<param name="nscoreAxis" value="-2.5 2.5 -2 1">
+<param name="random" value="3.0 384958677">
+<param name="labelAxes" value="true">
+<param name="customText" value="Actual Data=Actual Data#Random Normal Data=Random Normal Data#Ordered residual=Ordered residual">
+</applet>
+</div>
+<p>The diagram above shows the data and a probability plot of the residuals from 
+the the least squares line. There is curvature in the probability plot, suggesting 
+that the error distribution may have shorter tails than a normal distribution. 
+(You can again select random samples where the normal linear model assumptions 
+hold in order to help assess whether this amount of curvature in the probability 
+plot is unusual.)</p>
+<p>In this data set, curvature in the probability plot is probably caused by nonlinearity 
+in the relationship. There is some indication that the relationship flattens out 
+at high doses &mdash; perhaps a linear model with explanatory variable log(concentration) 
+would be more linear?</p>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

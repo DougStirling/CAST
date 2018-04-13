@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Inference with covariates</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="covariate, anova, analysis of variance, f test">
+	<meta name="dataset" content="Hypnotic induction">
+	<meta name="dataset" content="Inhibitor and bacteria growth">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">One factor with two levels</p>
+  <p>We first consider models for an experiment with a factor that has two levels and a covariate.</p>
+  <div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+		<tr>
+			<td align="center"><br>
+					<br>
+					<span class="black em">y<sub>ij</sub></span> &nbsp;= &nbsp;<span class="blue">µ</span></td>
+			<td align="center"><br>
+					<br>
+				&nbsp;+&nbsp;</td>
+			<td align="center"><span class="red"><em>explained <br>
+				by factor</em><br>
+				β<em><sub>i</sub></em></span></td>
+			<td align="center"><br>
+					<br>
+				&nbsp;+&nbsp;</td>
+			<td align="center" class="green"><em>explained <br>
+			by covariate</em><br>
+γ&nbsp;<em>x<sub>i</sub></em></td>
+			<td align="center"><br>
+					<br>
+				&nbsp;+&nbsp;</td>
+			<td align="center"><br>
+					<br>
+				ε<em><sub>ij</sub></em></td>
+		</tr>
+	</table></div>
+  <p>Since there are only two parameters of interest, <span class="red">β<sub>2</sub></span> and <span class="green">γ</span>, their significance can be assessed from their least squares estimates and their standard errors.</p>
+  <div class="diagram">
+		<p class="heading">Methods of hypnotic induction</p>
+  	<p>Researchers are interested in comparing the effectiveness of two methods of
+  		hypnotic induction, A and B. Twenty volunteers are randomly allocated to two groups of 10 subjects, to be hypnotised with Methods A  Method B. Before either  method is administered, each subject
+  		is pre- measured on a standard index of &quot;primary suggestibility,&quot; which is a variable
+  		known to be correlated with receptivity to hypnotic induction. The dependent variable,
+  		measured during the administration of Method A or Method B, is the subject's score
+ 		on a standard index of hypnotic induction.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="indicatorProg.TwoGroupInferenceApplet">
+<param name="yVarName" value="Index of hypnotic induction">
+<param name="yValues" value="20 23 30 25 34 40 27 38 24 31 19 26 33 35 30 31 34 28 23 22">
+<param name="xVarName" value="Suggestibility">
+<param name="xValues" value="5 10 12 9 23 21 14 18 6 13 7 12 27 24 18 22 26 21 14 9">
+<param name="zVarName" value="Method of hypnosis">
+<param name="zValues" value="10@0 10@1">
+<param name="zLabels" value="#Method A# #Method B#">
+<param name="yAxis" value="15 45 15 5">
+<param name="xAxis" value="0 30 0 5">
+<param name="maxParam" value="9.999 -9.999 -9.999">
+<param name="maxTableEntries" value="-99.999 9.999 -99.99">
+<param name="groupEffectName" value="Method (B - A)">
+<param name="customText" value="param=param#se=se#intercept=intercept">
+</applet>
+</div>
+
+  	<p>The table shows the p-values for the two parameters.</p>
+  	<p>Since the p-value for the method of hypnosis is close to zero, we conclude that:</p>
+  	<div class="centred"><div class="boxed">
+  		<p>It is almost certain that the two methods of hypnosis differ. </p>
+  	</div></div>
+  	<p>The p-value associated with the covariate <em>Suggestibility</em> is also close to zero. Although there is rarely any interest in testing the covariate, it would be valid to also conclude that there <strong>is</strong> a significant relationship between <em>Suggestibility</em> and the response.</p>
+  	<p>Click the checkbox for the covariate to remove it from the model. Analysing the data without the covariate would have resulted in a much higher standard error for the estimate of the difference between the hypnosis methods and a non-significant effect for the factor.</p>
+  	<div class="centred"><div class="boxed">
+  		<p>If the values for a covariate are known, it should always be used in the model. </p>
+  	</div></div>
+
+<br>
+</div>
+		
+		
+<p class="heading">Models with more factors and factor levels</p>
+<p>If the factor of interest has more than two levels, analysis of variance must be used to test whether the factor has an effect. Analysis of variance is also commonly used when there are two or more factors, as in the example below.</p>
+
+<div class="diagram">
+<p class="heading">Inhibitor and bacteria growth</p>
+
+
+<p>A bacteriologist investigated the effect of various inhibitors on the growth rate of colonies of a species of bacteria. Five different inhibitors were used in the experiment (four established ones and a new contender). Temperature was also known to affect growth, so it was also controlled and the experiment was conducted as a factorial experiment with the five inhibitors and five temperatures (10, 15, 20, 25 and 30°C).</p>
+<p>25 cultures were prepared and the potential growth rate of each was determined. Each culture was treated with one of the inhibitors and left to incubate at one of the temperatures for eight hours after which its actual growth rate was determined.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="650" height="220">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="glmAnovaProg.AnovaTableSeqApplet">
+<param name="yVarName" value="Growth rate">
+<param name="yValues" value="24 58 29 88 57 42 7 33 37 18 20 39 65 18 27 43 27 50 39 45 62 52 28 54 61">
+<param name="xVariables" value="Covar TempLin TempNonlin Factor">
+<param name="CovarVarName" value="Potential">
+<param name="CovarValues" value="23 71 24 107 69 53 0 33 39 17 20 45 75 14 27 56 23 57 43 51 73 59 25 70 78">
+<param name="TempLinVarName" value="Temp (lin)">
+<param name="TempLinValues" value="10 15 20 25 30 10 15 20 25 30 10 15 20 25 30 10 15 20 25 30 10 15 20 25 30">
+<param name="TempNonlinVarName" value="Temp (nonlin)">
+<param name="TempNonlinValues" value="2@0 1 2 3 2@0 1 2 3 2@0 1 2 3 2@0 1 2 3 2@0 1 2 3">
+<param name="TempNonlinLabels" value="L12 L3 L4 L5">
+<param name="FactorVarName" value="Inhibitor">
+<param name="FactorValues" value="1 0 3 4 2 3 1 4 2 0 2 4 0 1 3 0 2 1 3 4 4 3 2 0 1">
+<param name="FactorLabels" value="A B C D E">
+<param name="maxSsq" value="99.999 99 99.999 999.99">
+<param name="componentNames" value="Potential#Linear temp#Nonlin temp#Inhibitor">
+<param name="initVariables" value="1">
+<param name="showR2" value="false">
+</applet>
+</div>
+
+<p>The potential growth rate is a covariate and should always be added first to the model in the analysis of variance table. Since the two factors are orthogonal in this factorial design (with one replicate for each combination of inhibitor and temperature), the sums of squares for temperature and inhibitor are the same whichever order they are subsequently added to the model.</p>
+
+
+<p>Drag the red arrow to add terms to the model. Observe that although the linear term for temperature is not significant, there is moderately strong evidence that nonlinear term in temperature is needed, so we should retain both terms in the model. The p-value for differences between the inhibitors is 0.1832, so we should conclude that:</p>
+<div class="centred"><div class="boxed">
+	<p>Even after taking account of differences between the potential growth rates of the cultures and differences between the temperatures, there is no evidence of differences between the inhibitors. </p>
+</div></div>
+<p>A further refinement of the analysis might split the sum of squares for the inhibitors into a sum of squares with 3 degrees of freedom for comparing the four established inhibitors, and a sum of squares with 1 degree of freedom for comparing the new inhibitor to the established ones.</p>
+</div>
+
+		
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

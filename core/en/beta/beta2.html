@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Mean and variance</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="beta distribution, mean, variance">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>In this page, we will find the mean and variance of the beta distribution. The proof requires the following result that we state  without proof.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">A useful integral</p>
+		<p>For any constants \(a \gt 0\) and \(b \gt 0\),</p>
+\[
+\int_0^1{x^{a - 1} (1 - x)^{b - 1}} dx \;\;=\;\; \frac{\Gamma(a) \Gamma(b)}{\Gamma(a + b)}
+\]
+	</div>
+</div>
+<p>(This result  can be used to prove that the beta distribution's pdf integrates to 1.)</p>
+
+<div class="theoremProof">
+<div class="theorem">
+<p class="theoremTitle">Mean and variance of beta distribution</p>
+<p>If a random variable, \(X\), has a beta distribution with pdf</p>
+\[
+	f(x) \;\;=\;\; \begin{cases} \dfrac {\Gamma(\alpha + \beta) }{\Gamma(\alpha)\Gamma(\beta)} x^{\alpha - 1} (1 - x)^{\beta - 1}&amp; \text{if }0 \lt x \le 1 \\
+	0 &amp; \text{otherwise}
+	\end{cases} \]
+<p>its mean and variance are</p>
+\[
+E[X] \;=\; \frac{\alpha}{\alpha + \beta} \spaced{and} \Var(X) \;=\; \frac{\alpha\beta}{(\alpha + \beta)^2(\alpha + \beta + 1)}
+\]</div>
+
+<div class="proof">
+ \[ \begin{align}
+E[X] \;\;&amp;=\;\; \int_0^1{x \times \frac {\Gamma(\alpha + \beta) }{\Gamma(\alpha)\Gamma(\beta)} x^{\alpha - 1} (1 - x)^{\beta - 1}} dx \\[0.2em]
+&amp;=\;\; \frac {\Gamma(\alpha + \beta) }{\Gamma(\alpha)\Gamma(\beta)} \int_0^1{x^{\alpha} (1 - x)^{\beta - 1}} dx \\[0.3em]
+&amp;=\;\; \frac {\Gamma(\alpha + \beta) }{\Gamma(\alpha)\Gamma(\beta)} \times \frac {\Gamma(\alpha + 1)\Gamma(\beta)}{\Gamma(\alpha + \beta + 1) } \\[0.3em]
+&amp;=\;\; \frac {\Gamma(\alpha + 1)}{\Gamma(\alpha)} \times \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha + \beta + 1)} \\[0.3em]
+&amp;=\;\; \frac{\alpha}{\alpha + \beta}
+\end{align} \]
+<p>In a similar way,</p>
+ \[ \begin{align}
+E\left[X^2\right] \;\;&amp;=\;\; \int_0^1{x^2 \times \frac {\Gamma(\alpha + \beta) }{\Gamma(\alpha)\Gamma(\beta)} x^{\alpha - 1} (1 - x)^{\beta - 1}} dx \\[0.2em]
+&amp;=\;\; \frac {\Gamma(\alpha + \beta) }{\Gamma(\alpha)\Gamma(\beta)} \int_0^1{x^{\alpha + 1} (1 - x)^{\beta - 1}} dx \\[0.3em]
+&amp;=\;\; \frac {\Gamma(\alpha + \beta) }{\Gamma(\alpha)\Gamma(\beta)} \times \frac {\Gamma(\alpha + 2)\Gamma(\beta)}{\Gamma(\alpha + \beta + 2) } \\[0.3em]
+&amp;=\;\; \frac {\Gamma(\alpha + 2)}{\Gamma(\alpha)} \times \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha + \beta + 2)} \\[0.3em]
+&amp;=\;\; \frac{\alpha(\alpha + 1)}{(\alpha + \beta)(\alpha + \beta + 1)}
+\end{align} \]
+<p>Simplifying \(\Var(X) = E[X^2] - \big(E[X]\big)^2\) gives the variance of \(X\).</p>
+</div>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

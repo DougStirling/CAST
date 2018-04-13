@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta HTTP-EQUIV="content-type" CONTENT="text/html; charset=UTF-8">
+	<title>弯曲和异常点</title>
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="regression model, linear model, curvature, outliers">
+	<meta name="dataset" content="Temperatures and locations of US cities">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">线性模型不总是适用</p>
+  <p>线性模型是一个用来概括变量关系的有用的模型，但它不是适用于所有的数据集。
+</p>
+	<table width="75%" border="1" cellspacing="0" cellpadding="10" align="center" bgcolor="#FFFFFF">
+		<tr>
+			<td><strong>只有当散点图中的数据点均匀地围绕一条线散布时线性模型才适用。</strong></td>
+		</tr>
+	</table>
+	<p>如果数据点围绕一条曲线散布，这样的关系被叫作<strong>非线性关系</strong> ，这种情形下我们必须用其它模型。在下一节我们将考虑非线性模型。
+</p>
+	<p>这一节，我们考虑另一个问题。</p>
+	<p class="heading">异常点应当被检查</p>
+	<p> <strong>异常点</strong>是指一个数据点，它明显地与其它数据点显示的模式和变化趋势不同。在线性模型里，最重要的异常点的情形是一个数据点它远离那条很好地拟合了其它数据点的直线。</p>
+<p>被认为是异常点的数据应当被仔细地检查。记录或转录的错误也许是造成异常点的原因。或者，真的这一异常点指示不同寻常的特徵，此特徵是响应变量显得“异常”的基础。
+</p>
+<p>如果一个异常点表现得很极端，或者其它信息揭示了这个异常点异常的原因，那么这个异常点可以被认为是畸变的从而应当被从数据集中剔除。
+</p>
+<div class="diagram">
+<p class="heading">温度和纬度</p>
+<p>如下的散点图给出了美国城市一月份的最高气温(以华氏度为单位)和各自的纬度。这些数据发表在 F.Mosteller 和 J.W.Tukey 1977年所著的书<cite>Data Analysis and Regression</cite>里。 最小二乘直线已被画在了散点图里。
+</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="350" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.LSMapApplet">
+<param name="xVarName" value="纬度">
+<param name="yVarName" value="一月份温度">
+<param name="zVarName" value="经度">
+<param name="labelName" value="城市">
+<param name="xValues" value="30 32 58 33 34 34 37 39 41 39 38 38 24 25 33 21 43 41 39 41 42 37 38 29 43 39 42 42 46 44 38 46 41 43 39 35 42 40 35 35 46 39 41 35 45 40 39 32 44 36 35 29 29 40 44 36 47 47 43 43 41 18">
+<param name="yValues" value="61 59 30 64 51 65 55 42 37 41 44 67 74 76 52 79 36 33 37 29 27 42 44 64 32 44 37 33 23 22 40 29 32 32 43 46 31 40 51 52 20 41 35 46 44 39 40 61 34 49 50 61 64 37 25 50 44 31 26 28 37 81">
+<param name="zValues" value="88 86 134 112 92 118 122 104 72 75 77 81 81 80 84 157 116 87 86 93 90 97 85 90 70 76 71 83 84 93 90 112 95 71 74 106 73 73 80 78 100 84 81 97 122 76 75 79 103 86 101 94 95 111 73 76 122 117 89 87 104 66">
+<param name="labels" value="#Mobile, Ala# #Montgomery, Ala# #Juneau, Alaska# #Phoenix, Ariz# #Litle Rock, Ark# #Los Angeles, Calif# #San Francisco, Calif# #Denver, Col# #New Haven, Conn# #Wilmington, Del# #Washington, DC# #Jacksonville, Fla# #Key West, Fla# #Miami, Fla# #Atlanta, Ga# #Honolulu, Hawaii# #Boise, Idaho# #Chicago, Ill# #Indianapolis, Ind# #Des Moines, Iowa# #Dubuque, Iowa# #Wichita, Kansas# #Louisville, Ky# #New Orleans, La# #Portland, Maine# #Baltimore, Md# #Boston, Mass# #Detroit, Mich# #Sault Ste Marie, Mich# #Minn St Paul, Minn# #St Louis, Missouri# #Helena, Montana# #Omaha, Nebraska# #Concord, NH# #Atlantic City, NJ# #Albuquerque, NM# #Albany, NY# #New York, NY# #Charlotte, NC# #Raleigh, NC# #Bismarck, ND# #Cincinnati, Ohio# #Cleveland, Ohio# #Oklahoma City, Okla# #Portland, Ore# #Harrisburg, Pa# #Philadelphia, Pa# #Charlestown, SC# #Rapid City, SD# #Nashville, Tenn# #Amarillo, Tx# #Galveston, Tx# #Houston, Tx# #Salt Lake City, Utah# #Burlington, Vt# #Norfolk, Va# #Seattle Tacoma, Wash# #Spokane, Wash# #Madison, Wisc# #Milwaukee, Wisc# #Cheyenne, Wyoming# #San Juan, Puerto Rico#">
+<param name="model" value="111.67 -1.67 1.0">
+<param name="horizAxis" value="15 60 20 10">
+<param name="vertAxis" value="0 85 0 10">
+<param name="decimals" value="2 2 2 2">
+<param name="change1" value="#11 38 30#">
+<param name="change1Name" value="改正Jacksonville">
+<param name="change2" value="#2 58 *# #44 45 *# #56 47 *#">
+<param name="change2Name" value="删去 NorthWest">
+</applet>
+</div>
+<p>从以上的图容易发现有4个数据点的残差较大。我们怀疑它们是异常点。<strong>拖动</strong>鼠标到这四个点，读出这四个点所对应的城市名及在美国地图里的位置
+</p>
+    <p>你可能已经注意到其中一个异常点，即Jacksonville，太靠北了。事实上，<strong>Jacksonville的纬度被记录错了</strong>。应该是北纬30度而不是38度。点击<strong>改正Jacksonville</strong>来改正Jacksonville的纬度。注意刚才的改正对最小二乘直线的位置影响不大。</p>
+<p>余下的三个异常点对应城市 Portland， Seattle 和 Juneau。这三个城市都位於美国的西北部。查阅地理资料发现这三个城市由於受海洋暖流的影响冬季较暖和。由於这三个城市使得我们模型对其它高纬度城市温度的估计偏高。这三个城市的共同特性建议我们单独地把这三个城市拿出来建立温度纬度模型。点击<strong>删去NorthWest</strong>去掉这三个城市。这样现在的最小二乘线更好地拟合了其余的数据点。
+</p>
+</div>
+
+<script language="JavaScript">
+	top.writeNextButton(document);
+	showCopyright ();
+</script>
+</body>
+</html>

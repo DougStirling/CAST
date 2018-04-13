@@ -1,0 +1,205 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Linear trend</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="least squares/time series, linear model">
+	<meta name="dataset" content="World rice production">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Forecasting</p>
+	<p>Moving averages provide a good <strong>description</strong> of the trend 
+		in a time series. However a common goal in time series analysis is to <strong>forecast</strong> 
+		values of the time series in the future. For example, accurate forecasting 
+		of the demand for a product allows production capacity to be adjusted in time 
+		to meet changes to the demand.</p>
+	<p>Moving averages cannot smooth the end values of the series and do not provide 
+    a method to extend the trend into the future. The best that can be done is 
+    to extend the trend 'by eye' &mdash; hardly an objective forecasting method!</p>
+	
+	<p class="heading">Least squares</p>
+
+  <p>An alternative is to describe the trend with a mathematical equation which 
+		models the trend as a function of time,</p>
+
+<p class=eqn><span class="black"><em>trend</em> &nbsp; = &nbsp; function (<em> time</em> )</span> </p>
+
+  <p>where the function usually involves some constants (parameters) that can 
+		be adjusted to improve the fit of the model. The simplest such model is a 
+		<strong>linear model</strong> of the form</p>
+	<p class=eqn><span class="black"><em>trend</em> &nbsp; = &nbsp; <em>b</em><sub>0</sub> &nbsp;+ &nbsp;<em>b</em><sub>1</sub><em> time</em></span> </p>
+	<p>This model has the same form as the linear models that were used
+	<a href="javascript:showNamedPage('ch_regn')">in the regression 
+		chapter of this e-book</a> and the statistical methods from that chapter can be used 
+		to fit and analyse the model. In particular, the residuals are the differences 
+		between the actual time series values, <i>y</i>, and the model's predictions,</p>
+	<p class=eqn><span class="black"><em>e<sub>i</sub></em>&nbsp;&nbsp;=&nbsp;&nbsp;<em>y<sub>i</sub></em>&nbsp;&minus;&nbsp;<em>trend<sub>i</sub></em></span> </p>
+	<p>and the two model parameters are estimated by <strong>least squares</strong> 
+		to minimise the sum of squares of residuals,</p>
+	<p class=eqn><img class="gif" src="../../en/trend/images/rss.gif" width="233" height="26"> </p>
+	<div class="diagram">
+		<p class="heading">World rice production</p>
+
+		<p>The time series below shows the total world rice production (million tonnes) 
+			between 1961 and 2001. There is a clearly increasing trend to these figures. 
+			By estimating this underlying trend, we might hope to predict future production.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.DragLine2Applet">
+<param name="xVarName" value="Year">
+<param name="yVarName" value="World rice production (million tonnes)">
+<param name="xSequence" value="1961 1 41">
+<param name="yValues" value="215.7 226.6 247.1 263.0 254.1 261.2 277.5 288.7 295.7 316.4 317.8 307.3 335.0 332.0 357.0 347.7 369.5 385.1 375.1 396.8 410.0 421.9 447.8 465.1 467.9 468.4 461.1 487.0 514.0 518.2 518.5 528.2 529.8 538.8 547.0 568.5 576.8 578.8 609.9 598.2 585.1">
+<param name="horizAxis" value="1960 2001 1960 10">
+<param name="vertAxis" value="100 700 100 100">
+<param name="interceptLimits" value="-35000 35000 -7700">
+<param name="slopeLimits" value="-20.0 20.0 4.0">
+<param name="labelAxes" value="true">
+</applet>
+</div>
+
+		<p>Drag the arrows at the two ends of the line to position it close to the 
+      data. (Clicking the checkbox <strong>Show residuals</strong> displays the 
+      residuals as blue lines. The aim is to reduce the size of these residuals.)</p>
+		<p>Click <strong>Least squares</strong> to position the line to minimise the 
+			residual sum of squares.</p>
+		<p>The equation of the trend line is shown under the graph. The coefficient 
+      of 'Year' represents the annual rate of growth in rice production, which 
+      the linear model assumes to be constant. The least squares line can be used 
+      to predict rice production into the future.</p>
+		</div>
+	
+	<p class="heading">Recoding the years</p>
+
+  <p>When fitting models to annual data, as in the Rice example above, using the 
+		year as an explanatory variable can result in very large coefficients. For 
+		model-fitting purposes, it is better to recode the years so that some year 
+		within the range of the data is coded as year 0. (Recoding the years in this 
+		way is particularly important for fitting the quadratic models that are described 
+		on the next page.)</p>
+	<p>In other words, it is better to fit a model such as</p>
+
+  <p class=eqn><span class="black"><em>trend</em> &nbsp; = &nbsp; <em>b</em><sub>0</sub> &nbsp;+ &nbsp;<em>b</em><sub>1</sub> <font size="+1">(</font><em>time</em> &minus; 1960<font size="+1">)</font></span> </p>
+	<p>This model is equivalent to the corresponding model that uses the raw years 
+    &mdash; when fitted by least squares, both models give the same fitted values and 
+    forecasts, even though <em>b</em><sub>0</sub> 
+    is different. </p>
+<p class="heading">Monthly or quarterly data</p>
+<p>Recoding is even more important for monthly or quarterly data. For quarterly data, it would be possible to code successive months as:</p>
+
+<div class="centred">
+<table border="0" cellpadding="6" cellspacing="0" class="centred">
+<tr>
+<th>Month</th>
+<th>&quot;Time&quot;</th>
+<th>Value</th>
+</tr>
+<tr>
+<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">  Jan 1992  </td>
+<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">1992</td>
+<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">105,500</td>
+</tr>
+<tr>
+<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">Feb 1992</td>
+<td align="center" bgcolor="#FFFFFF">  1992<sup> 1</sup>/<sub>12  </sub></td>
+<td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">  109,000  </td>
+</tr>
+<tr>
+<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">Mar 1992</td>
+<td align="center" bgcolor="#FFFFFF">1992<sup> 2</sup>/<sub>12</sub></td>
+<td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">110,500</td>
+</tr>
+<tr>
+<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">Apr 1993</td>
+<td align="center" bgcolor="#FFFFFF">1992<sup> 3</sup>/<sub>12</sub></td>
+<td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">110,000</td>
+</tr>
+<tr>
+<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">...</td>
+<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">...</td>
+<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">...</td>
+</tr>
+</table>
+</div>
+
+<p>but this is very unnatural. It is easier to simply recode the months sequentially as 0, 1, 2, etc, even though this does mean that a little thought is required to match recoded times to months.</p>
+<div class="centred">
+<table border="0" cellpadding="6" cellspacing="0" class="centred">
+<tr>
+<th>Month</th>
+<th>Recoded time</th>
+<th>Value</th>
+</tr>
+<tr>
+<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">  Jan 1992  </td>
+<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">0</td>
+<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">105,500</td>
+</tr>
+<tr>
+<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">Feb 1992</td>
+<td align="center" bgcolor="#FFFFFF">1<sub></sub></td>
+<td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">  109,000  </td>
+</tr>
+<tr>
+<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">Mar 1992</td>
+<td align="center" bgcolor="#FFFFFF">2<sub></sub></td>
+<td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">110,500</td>
+</tr>
+<tr>
+<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">Apr 1993</td>
+<td align="center" bgcolor="#FFFFFF">3<sub></sub></td>
+<td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">110,000</td>
+</tr>
+<tr>
+<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">...</td>
+<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">...</td>
+<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">...</td>
+</tr>
+</table>
+</div>
+<div class="diagram"> 
+<p class="heading">Residential property sale prices in New Zealand</p>
+<p>The diagram below shows median monthly house prices for houses sold in New Zealand from January 1992 (coded 0) to October 2010 (coded 225).</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.DragLine2Applet">
+<param name="xVarName" value="Coded month">
+<param name="yVarName" value="Median house price ($thousand)">
+<param name="xSequence" value="0 1 226">
+<param name="yValues" value="105.5 109 110.5 110 110 109.25 110 110 110 112 110 112 115 114.5 115 113 114 115 115 115 118 118 122.5 122 122 125 125 128 127.5 127 129 130 132 135 136 134.5 130 135 135 136 136 139.25 137 139 142 142.5 146 145 147 154 156 150 148 146 148 148 154 155 157 155 160 161 165 163 163 162.5 163 165 164 165 170 165 163 162 165.75 162 165 165 165 165 165 165 168 169 165 170 168.9 170 168 172 168 169 170 168 172 170 170 171 175 177 172 170 170 170 173 170.5 174 170 175 173 173 177.5 170 177 170 176 173 179 176 179 175 186 186.125 189 188 184 185 185 185 188 195.7 192 193.1 195 200 202 210 210 212 215 215 227 235 228.5 229 231 240 242 248 243 249 248 250 252.5 260 260 265 270 280.5 272 275 284.5 282 289 290 295 300 295 300 295 302 305 305 310 312.5 310 313 324 330 330 327 335 343.5 349 350 347.5 345 350 351.5 350 352 345 340 337.5 349 345 345 340 340 330 330 335 337.5 328.5 325 330 335 340 337.5 340 340 346.75 350 355 355 360 350 350 360.5 356 350 352.5 349 350 350 350">
+<param name="horizAxis" value="0 225 0 20">
+<param name="vertAxis" value="0 400 0 50">
+<param name="interceptLimits" value="0 400 200">
+<param name="slopeLimits" value="-2.00 2.00 .50">
+<param name="labelAxes" value="true">
+</applet>
+</div>
+
+		<p>The labels on the horizontal axis are not very reader-friendly and should not be used for presentation purposes, but they are useful here to illustrate the use of least squares to fit a trend line. Click the <strong>Least squares</strong> button to display the least squares line that describes the best linear trend for these data.</p>
+<p>In this data set, the least squares line does not fully describe the upward movement of house prices. There has been cyclical movement in house prices on top of the general upward trend. Note also that:</p>
+<ul>
+      <li>The intercept gives an estimated median house price for &quot;time 0&quot;  &mdash; i.e. January 1992</li>
+      <li>To use the least squares linear trend line to estimate  the median house price in March 2001, we would first need to find the <strong>coded</strong> time for that month. The coded time for January 2001 &mdash; exactly 9 years later than &quot;time 0&quot; &mdash; is 12&times;9&nbsp;=&nbsp;108, and March 2001 is 2 monthe later, so it would have coded time 110. The least squares trend estimate at this time would therefore be </li>
+</ul>
+    
+<p class="eqn">78 + 1.22 &times; 110 = 212.2 thousand dollars</p>
+		</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

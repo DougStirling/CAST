@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Log-series distribution</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="log-series distribution, newton-raphson algorithm, maximum likelihood">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>To illustrate the use of the Newton-Raphson algorithm to find maximum likelihood estimates, we will examine another standard distribution that is occasionally encountered, the <strong>log-series distribution</strong>.</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>A discrete random variable \(X\) is said to have a <strong>log-series distribution</strong> if its probability function is</p>
+\[
+p(x) \;=\; \frac {-1} {\log(1-\theta)} \times \frac {\theta^x} x \quad\quad \text{for } x=1, 2, \dots
+\]
+<p>where \(0 \lt \theta \lt 1\).</p>
+</div>
+
+<p>Its shape to the geometric distribution, but  has greater spread with a higher probability at one and a longer tail.</p>
+<p class="heading">Maximum likelihood</p>
+<p>If a random sample \({x_1, x_2, \dots, x_n}\) is collected from this distribution, what is the maximum likelihood estimate of \(\theta\)? The logarithm of the probability function is</p>
+\[
+\log \left(p(x)\right) \;=\; x \log(\theta) - \log \left(- \log(1 - \theta) \right) - \log(x)
+\]
+<p>so the likelihood function is</p>
+\[
+\ell(\theta) \;=\; \sum_{i=1}^n \log \left(p(x_i)\right) \;=\; {\sum x_i} \log(\theta) - n \times \log \left( -\log(1 - \theta) \right) + K
+\]
+<p>where \(K\) is a constant whose value does not depend on \(\theta\). The MLE is the solution of</p>
+\[
+\ell'(\theta) \;=\; \frac {\sum x_i} {\theta} + \frac n {(1 - \theta)\log(1 - \theta)} \;=\; 0
+\]
+<p>Unfortunately this equation cannot be rearranged to obtain an explicit formula for \(\theta\), so a numerical method must be used to find the maximum likelihood estimate. The Newton Raphson algorithm also requires the second derivative of the log-likelihood,</p>
+\[
+\ell''(\theta) \;=\; -\frac {\sum x_i} {\theta^2} + \frac {n \left(1 + \log(1 - \theta) \right)} {(1 - \theta)^2\log^2(1 - \theta)}
+\]
+<p>The algorithm uses these derivatives iteratively to refine an initial estimate, \(\theta_0\),</p>
+\[
+\theta_{i+1} \;\; = \;\; \theta_i - \frac {\ell'(\theta_i)} { \ell''(\theta_i)}\]
+
+<div class="example">
+	
+	<p class="exampleHeading">Numerical illustration</p>
+
+<p>Consider the following data set that is assumed to arise from a log-series distribution.</p>
+<div class="centred">
+	<table border="0" cellpadding="5" cellspacing="0" class="centred" style="border:1px solid #999999; background-color:#FFFFFF;">
+		<tr>
+			<td style="width:15px; text-align:right; padding:4px 8px 4px 5px">3</td>
+			<td style="width:15px; text-align:right; padding:4px 8px 4px 5px">5</td>
+			<td style="width:15px; text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="width:15px; text-align:right; padding:4px 8px 4px 5px">4</td>
+			<td style="width:15px; text-align:right; padding:4px 8px 4px 5px">8</td>
+			<td style="width:15px; text-align:right; padding:4px 8px 4px 5px">10</td>
+			<td style="width:15px; text-align:right; padding:4px 8px 4px 5px">2</td>
+			<td style="width:15px; text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="width:15px; text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="width:15px; text-align:right; padding:4px 8px 4px 5px">2</td>
+		</tr>
+		<tr>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">8</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">6</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">13</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">6</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">2</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">3</td>
+		</tr>
+		<tr>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">2</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">6</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+		</tr>
+	</table>
+</div>
+<p>The derivatives of the log-likelihood involve the values \(n = 30\) and \(\sum x = 95\). Iterations of the Newton-Raphson algorithm from an initial guess at the value of \(\theta = 0.7\) are:</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred iterations">
+<tr>
+<th style="border-bottom:1px solid #999999;">Iteration, <em>i</em></th><th style="border-bottom:1px solid #999999;">\(\theta_i\)</th><th style="border-bottom:1px solid #999999;">\(\ell'(\theta_i)\)</th><th style="border-bottom:1px solid #999999;">\(\ell''(\theta_i)\)</th>
+</tr>
+<tr><td style="text-align:center; background-color:#FFFFFF; padding:4px 8px 4px 5px">0</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">0.7000</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">52.656</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-240.78</td></tr>
+<tr><td style="text-align:center; background-color:#FFFFFF; padding:4px 8px 4px 5px">1</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">0.9187</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-43.613</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-1200.14</td></tr>
+<tr><td style="text-align:center; background-color:#FFFFFF; padding:4px 8px 4px 5px">2</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">0.8823</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-11.484</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-661.52</td></tr>
+<tr><td style="text-align:center; background-color:#FFFFFF; padding:4px 8px 4px 5px">3</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">0.8650</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-1.139</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-538.41</td></tr>
+<tr><td style="text-align:center; background-color:#FFFFFF; padding:4px 8px 4px 5px">4</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">0.8629</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-0.013</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-526.41</td></tr>
+<tr><td style="text-align:center; background-color:#FFFFFF; padding:4px 8px 4px 5px">5</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">0.8628</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-0.000</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-526.28</td></tr>
+<tr><td style="text-align:center; background-color:#FFFFFF; padding:4px 8px 4px 5px">6</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">0.8628</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-0.000</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-526.28</td></tr>
+<tr><td style="text-align:center; border-bottom:1px solid #999999; background-color:#FFFFFF; padding:4px 8px 4px 5px">7</td> <td style="text-align:right; border-bottom:1px solid #999999; background-color:#FFFFFF; padding:4px 8px 4px 5px">0.8628</td> <td style="text-align:right; border-bottom:1px solid #999999; background-color:#FFFFFF; padding:4px 8px 4px 5px"></td> <td style="text-align:right; border-bottom:1px solid #999999; background-color:#FFFFFF; padding:4px 8px 4px 5px"></td></tr>
+</table>
+</div>
+
+
+<p>It converges quickly to \(\hat {\theta} = 0.8628\).</p>
+<p>The  diagram below illustrates the first iteration of the algorithm; it approximates the shape of the log-likelihood using a quadratic curve with the same value, slope and curvature as the log-likelihood at  \(\theta = 0.7\). The next iteration is the value of \(\theta\) that maximises this quadratic.</p>
+<p class="eqn"><img src="images/s_nrFrom0.7.png" width="514" height="308"  alt=""/></p>
+<p>When you get closer to the MLE, the quadratic's shape becomes closer to the actual log-likelihood, so the iterations approach the MLE more quickly. The diagram below illustrates this from a starting value of 0.88.</p>
+<p class="eqn"><img src="images/s_nrFrom0.88.png" width="514" height="308"  alt=""/></p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

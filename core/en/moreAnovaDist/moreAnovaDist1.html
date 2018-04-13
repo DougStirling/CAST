@@ -1,0 +1,211 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Sums of squares and degrees of freedom</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="sums of squares, chi-squared distribution, sequential sums of squares">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Comparing the fit of two models</p>
+  <p>The explained sum of squares for any linear regression model describes the 
+		difference between the fit of <strong>two</strong> models:</p>
+
+  <ol>
+		<li>a simple model with no explanatory variables &mdash; the model for which all 
+			response values have the same mean, µ, 
+			and </li>
+		<li>the regression model itself.</li>
+	</ol>
+  <p>In the case of simple linear regression, the two models (and their fitted 
+		values) are:</p>
+
+
+<div class="centred"><table border="0" cellpadding="7" cellspacing="0" class="centred">
+<tr> 
+<th align="center">&nbsp;</th>
+<th align="center">Model</th>
+<th>Fitted values (predicted response)</th>
+</tr>
+<tr> 
+<th style="border-top:1px solid #999999; border-bottom:1px solid #999999;" align="left">Simplest model</th>
+<td style="border-top:1px solid #999999; border-bottom:1px solid #999999;" align="center" bgcolor="#FFFFFF"><img src="images/univarModel.gif" width="97" height="20"></td>
+<td style="border-top:1px solid #999999; border-bottom:1px solid #999999;" align="center" bgcolor="#FFFFFF"><img src="images/univarFit.gif" width="64" height="24"></td>
+</tr>
+<tr> 
+<th style="border-bottom:1px solid #999999;" align="left">More complex model<br>
+(more parameters)</th>
+<td style="border-bottom:1px solid #999999;" align="center" bgcolor="#FFFFFF"><img src="images/linModel.gif" width="159" height="20"></td>
+<td style="border-bottom:1px solid #999999;" align="center" bgcolor="#FFFFFF"><img src="images/linFit.gif" width="128" height="24"></td>
+</tr>
+</table></div>
+
+  <p>In general, the more complex model could involve 2 or more explanatory variables 
+		(numerical or categorical).</p>
+	<p class="heading">Components</p>
+  <p>We define components based on the fitted values from the two models, </p>
+	<div class="centred"><table border="0" class="centred" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC">
+<tr> 
+<td align="center" class="black">total<br>
+(unexplained by<br>
+simpler model)</td>
+<td align="center">&nbsp;</td>
+<td align="center" class="black">improvement in fitted<br>
+value from using<br>
+more complex model</td>
+<td align="center">&nbsp;</td>
+<td align="center" class="black">residual<br>
+(unexplained by<br>
+complex model)</td>
+</tr>
+<tr> 
+<td align="center"><img src="images/compResA.gif" width="70" height="25"></td>
+<td align="center"><img src="images/equals.gif" width="25" height="25"></td>
+<td align="center"><img src="images/compBA.gif" width="76" height="25"></td>
+<td align="center"><img src="images/plus.gif" width="25" height="25"></td>
+<td align="center"><img src="images/compResB.gif" width="70" height="25"></td>
+</tr>
+</table></div>
+  <p>If the models are fitted by least squares, the sums of squares of these components 
+		satisfy a similar relationship. The sum of squares of the 'improvements' is 
+		the explained sum of squares and it summarises the differences between the 
+		fitted values from using model B over model A. It is denoted by SS<sub><span class="red">B</span>|<span class="blue">A</span></sub>.</p>
+	<div class="centred"><table border="0" class="centred" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC">
+<tr> 
+<td align="center"><span class="black">SS<sub>Total</sub></span></td>
+<td align="center">&nbsp;</td>
+<td align="center"><span class="black">SS<sub><span class="red">B</span>|<span class="blue">A</span></sub></span></td>
+<td align="center">&nbsp;</td>
+<td align="center"><span class="black">SS<sub>Resid</sub></span></td>
+</tr>
+<tr> 
+<td align="center"><img src="images/ssqResA.gif" width="91" height="26"></td>
+<td align="center"><img src="images/equals.gif" width="25" height="25"></td>
+<td align="center"><img src="images/ssqBA.gif" width="97" height="26"></td>
+<td align="center"><img src="images/plus.gif" width="25" height="25"></td>
+<td align="center"><img src="images/ssqResB.gif" width="91" height="26"></td>
+</tr>
+</table></div>
+  <p>These are the sums of squares in a simple analysis of variance table.</p>
+<p class="heading">Sequence of three models</p>
+<p>These ideas can be extended to a sequance of three models, each of which is 
+more complex than the previous one &mdash; i.e. it involves more parameters.</p>
+<div class="centred"><table border="0" class="centred" cellpadding="4" cellspacing="0">
+<tr> 
+<th align="center">Model</th>
+<th>Fitted values (predicted response)</th>
+</tr>
+<tr> 
+<th style="border-top:1px solid #999999; border-bottom:1px solid #999999;" align="left" bgcolor="#FFFFFF" class="blue">1. &nbsp; Simplest model</th>
+<td style="border-top:1px solid #999999; border-bottom:1px solid #999999;" align="center" bgcolor="#FFFFFF"><img src="images/fitA.gif" width="19" height="24"></td>
+</tr>
+<tr> 
+<th style="border-bottom:1px solid #999999;" align="left" bgcolor="#FFFFFF" class="red">2. &nbsp; More complex 
+model</th>
+<td style="border-bottom:1px solid #999999;" align="center" bgcolor="#FFFFFF"><img src="images/fitB.gif" width="19" height="24"></td>
+</tr>
+<tr> 
+<th style="border-bottom:1px solid #999999;" align="left" bgcolor="#FFFFFF" class="green">3. &nbsp; Most complex 
+model</th>
+<td style="border-bottom:1px solid #999999;" align="center" bgcolor="#FFFFFF"><img src="images/fitC.gif" width="19" height="24"></td>
+</tr>
+</table></div>
+<p>Provided each model has <strong>at least</strong> the flexibility of the previous 
+model in the sequence, each can provide fitted values that are closer to the observed 
+response values than the previous model.</p>
+<div class="centred"><table border="0" class="centred" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC">
+<tr> 
+<td align="center">&nbsp;</td>
+<td align="center">&nbsp;</td>
+<td align="center" class="black">improvement<br>
+of model B<br>
+over model A</td>
+<td align="center">&nbsp;</td>
+<td align="center" class="black">improvement<br>
+of model C<br>
+over model B</td>
+<td align="center">&nbsp;</td>
+<td align="center" class="black">residual<br>
+(unexplained by<br>
+most complex model)</td>
+</tr>
+<tr> 
+<td align="center"><img src="images/compResA.gif" width="70" height="25"></td>
+<td align="center"><img src="images/equals.gif" width="25" height="25"></td>
+<td align="center"><img src="images/compBA.gif" width="76" height="25"></td>
+<td align="center"><img src="images/plus.gif" width="25" height="25"></td>
+<td align="center"><img src="images/compCB.gif" width="76" height="25"></td>
+<td align="center"><img src="images/plus.gif" width="25" height="25"></td>
+<td align="center"><img src="images/compResC.gif" width="70" height="25"></td>
+</tr>
+</table></div>
+  <p>If parameter estimates and fitted values for all three models are obtained 
+		by least squares, the sums of squares of the components satisfy a similar 
+		relationship:</p>
+<div class="centred"><table border="0" class="centred" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC">
+<tr> 
+<td align="center" class="black">SS<sub>Total</sub></td>
+<td align="center">&nbsp;</td>
+<td align="center"><span class="black">SS<sub><span class="red">B</span>|<span class="blue">A</span></sub></span></td>
+<td align="center">&nbsp;</td>
+<td align="center"><span class="black">SS<sub><span class="green">C</span>|<span class="red">B</span></sub></span></td>
+<td align="center">&nbsp;</td>
+<td align="center"><span class="black">SS<sub>Resid</sub></span></td>
+</tr>
+<tr> 
+<td align="center"><img src="images/ssqResA.gif" width="91" height="26"></td>
+<td align="center"><img src="images/equals.gif" width="25" height="25"></td>
+<td align="center"><img src="images/ssqBA.gif" width="97" height="26"></td>
+<td align="center"><img src="images/plus.gif" width="25" height="25"></td>
+<td align="center"><img src="images/ssqCB.gif" width="97" height="26"></td>
+<td align="center"><img src="images/plus.gif" width="25" height="25"></td>
+<td align="center"><img src="images/ssqResC.gif" width="91" height="26"></td>
+</tr>
+</table></div>
+  <p>The component sums of squares are <strong>sequential sums of squares</strong> 
+		and can be used to compare the fit of the models with an analysis of variance 
+		test.</p>
+<p class=heading>Degrees of freedom<sup></sup></p>
+<p>We mentioned above that the sequence of models should be of increasing complexity, 
+with each model allowing the previous model as a special case. For example, the 
+linear regression model is</p>
+<p class=eqn><img src="images/linModel.gif" width="159" height="20"> </p>
+<p>Restricting the slope of this model to β<sub>1</sub>&nbsp;=&nbsp;0 
+reduces the model to the simpler model,</p>
+<p class=eqn><img src="images/univarModel.gif" width="97" height="20"> </p>
+<p>The extra flexibility of each model, compared to the previous one in the sequence 
+is due to additional parameters.</p>
+
+<div class="centred"><div class="boxed">
+<p>The <strong>degrees of freedom</strong> 
+for the sum of squares comparing two models equals the difference in the number 
+of parameters.</p>
+</div></div>
+
+  <p class=heading>Distributions of the sequential sums of squares<sup></sup></p>
+<p>Consider the sum of squares describing the improved fit of model <span class="green">C</span> 
+over the simpler model <span class="red">B</span>. If model <span class="red">B</span> 
+actually fits the data (so the extra complexity of model <span class="green">C</span> 
+is unnecessary), then the sum of squares has a chi-squared distribution whose 
+degrees of freedom are the difference between the number of parameters in the 
+models,</p>
+<p class=eqn><img src="images/bcExplainedDistn.gif" width="315" height="28"> </p>
+<p>The residual sum of squares also has a chi-squared distribution provided the 
+most complex model fits the data. Its degrees of freedom are the sample size minus 
+the number of parameters in the most complex model.</p>
+  <p class=eqn><img src="images/residSsqCDistn.gif" width="308" height="28"> </p>
+  <br>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

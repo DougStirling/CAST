@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Confidence interval for normal variance</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="chi-squared distribution, variance of random sample, sample variance, confidence interval, pivot">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Pivot for a normal sample's variance</p>
+
+<p>To find a confidence interval for \(\sigma^2\) based on a random sample, \(\{X_1, X_2, \dots, X_n\}\), from a \(\NormalDistn(\mu,\;\sigma^2)\) distribution, we will find a pivot — a function of the data and \(\sigma^2\) whose distribution is completely known with no unknown parameters. A suitable pivot is</p>
+
+\[
+g(\sigma^2, X_1, \dots, X_n) \;\;=\;\; \frac{n-1}{\sigma^2} S^2 \;\;\sim\;\;\ChiSqrDistn(n-1\;\text{df})
+\]
+
+<p>where \(S^2\) is the sample variance.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Confidence interval for a normal distribution's variance</p>
+<p>If \(s^2\) is the variance of a random sample from a \(\NormalDistn(\mu,\;\sigma^2)\) distribution, a 95% confidence interval for \(\sigma^2\) is</p>
+
+\[
+\frac{(n-1)s^2}{\chi_{n-1,\;0.975}^2} \;\;\lt\;\; \sigma^2 \;\;\lt\;\; \frac{(n-1)s^2}{\chi_{n-1,\;0.025}^2}
+\]
+
+<p>where \(\chi_{n-1,\;0.025}^2\) and \(\chi_{n-1,\;0.975}^2\) are the 2½th and 97½th percentiles of the Chi-squared distribution with \((n-1)\) degrees of freedom.</p>
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+<p>This can be generalised in an obvious way to find interval estimates with other confidence levels by replacing \(\chi_{n-1,\;0.025}^2\) and \(\chi_{n-1,\;0.975}^2\) with other quantiles from the Chi-squared distribution. For example, to find a 90% confidence interval, \(\chi_{n-1,\;0.05}^2\) and \(\chi_{n-1,\;0.95}^2\) would be used.</p>
+<p>These quantiles can be found using Excel. Type into a spreadsheet cell</p>
+<p class="eqn">=CHISQ.INV(\(\langle p \rangle\), \(\langle df \rangle\))</p>
+<p>when looking for the  <span class="eqn">\(\langle p \rangle\)</span>th quantile of the Chi-squared distribution with <span class="eqn">\(\langle df \rangle\)</span> degrees of freedom.</p>
+
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Question</p>
+<p>In an experiment that investigated the grazing behaviour of dairy cows, four cows were studied while they grazed on 48 different plots of grass. The grass intake was estimated in each plot by sampling before and after the experiment, and the number of bites made by each cow was recorded. This table gives  the grass intake per bite in each of the plots.</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred" bgcolor="#FFFFFF" style="border:1px solid #999999;">
+<tr><td>1.09</td>
+	<td>1.41</td>
+	<td>1.20</td>
+	<td>1.04</td>
+	<td>1.07</td>
+	<td>1.39</td>
+	<td>1.06</td>
+	<td>1.14</td></tr>
+
+<tr><td>0.88</td><td>0.92</td><td>1.07</td><td>1.07</td><td>1.18</td><td>0.57</td><td>0.01</td><td>0.31</td></tr>
+
+<tr><td>1.14</td><td>1.18</td><td>0.58</td><td>0.74</td><td>0.14</td><td>0.48</td><td>0.91</td><td>0.37</td></tr>
+
+<tr><td>2.19</td><td>1.17</td><td>2.34</td><td>1.69</td><td>1.97</td><td>1.04</td><td>1.76</td><td>1.26</td></tr>
+
+<tr><td>1.62</td><td>0.81</td><td>1.81</td><td>2.06</td><td>2.27</td><td>1.24</td><td>0.02</td><td>1.46</td></tr>
+
+<tr><td>2.29</td><td>2.28</td>
+	<td>1.40</td>
+	<td>0.60</td>
+	<td>1.41</td>
+	<td>0.49</td>
+	<td>1.06</td>
+	<td >1.58</td>
+</tr>
+</table>
+</div>
+
+<p>There are only 48 observations, so it is impossible to be sure of the shape of the underlying population distribution. However a histogram does seem reasonably symmetrical, so a normal distribution is a reasonable model.</p>
+<p class="eqn"><img class="svgImage" src="images/grassHisto.png" width="401" height="262"></p>
+<p>Assuming that the data come from a \(\NormalDistn(\mu,\;\sigma^2)\) distribution, find a 95% confidence interval for the standard deviation, \(\sigma\).</p>
+<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

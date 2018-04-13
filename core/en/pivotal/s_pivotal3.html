@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Confidence interval for exponential rate</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="confidence interval, pivot, exponential distribution">
+	<meta name="dataset" content="Aircraft airconditioner failures">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>We will now find a confidence interval for the rate parameter, \(\lambda\), of a homogeneous Poisson process, based on a random sample of inter-event times.</p>
+<div class="example">
+	<p class="exampleHeading">Example</p>
+	<p>The  values below are times between failures of an item.</p>
+	
+	<div class="centred">
+	<table border="0" cellpadding="5" cellspacing="0" class="centred" style="border:1px solid #999999">
+		<tr>
+			<td width="30" align="center" bgcolor="#FFFFFF">487</td>
+			<td width="30" align="center" bgcolor="#FFFFFF">18</td>
+			<td width="30" align="center" bgcolor="#FFFFFF">100</td>
+			<td width="30" align="center" bgcolor="#FFFFFF">7</td>
+			<td width="30" align="center" bgcolor="#FFFFFF">98</td>
+			<td width="30" align="center" bgcolor="#FFFFFF">5</td>
+			<td width="30" align="center" bgcolor="#FFFFFF">85</td>
+			<td width="30" align="center" bgcolor="#FFFFFF">91</td>
+			<td width="30" align="center" bgcolor="#FFFFFF">43</td>
+			<td width="30" align="center" bgcolor="#FFFFFF">230</td>
+			<td width="30" align="center" bgcolor="#FFFFFF">3</td>
+			<td width="30" align="center" bgcolor="#FFFFFF">130</td>
+		</tr>
+	</table>
+	</div>
+	
+	<p>If failures arise at random over time with a constant rate, \(\lambda\), the values are a random sample from an \(\ExponDistn(\lambda)\)	distribution, and the maximum likelihood estimator of \(\lambda\)  is the inverse of the sample mean,</p>
+\[
+\hat{\lambda} \;\;=\;\; \frac n {\sum{X_i}}
+\]
+<p>The sum of \(n\) independent exponential variables has an Erlang distribution,</p>
+\[
+\sum_{i=1}^n{X_i} \;\;\sim\;\; \ErlangDistn(n, \lambda) \;=\; \GammaDistn(n, \lambda)
+\]
+<p>This distribution depends on \(\lambda\) but the following quantity <strong>is</strong> a pivot:</p>
+\[
+\lambda \sum_{i=1}^n{X_i} \;\;\sim\;\; \GammaDistn(n, 1)
+\]
+
+<p>Since \(n = 12\), we can use Excel to find the 2½% and 97½% points of the \(\GammaDistn(12, 1)\) distribution — 6.201 and 19.682. A 95% confidence interval is therefore the values of \(\lambda\) for which</p>
+\[
+6.201 \;\;\lt\;\; \lambda \sum_{i=1}^n{x_i} \;\;\lt\;\; 19.682
+\]
+\[
+6.201 \;\;\lt\;\; 1297\lambda \;\;\lt\;\; 19.682
+\]
+<p>Rearranging, a 95% CI for the failure rate, \(\lambda\), is</p>
+\[
+0.0048 \;\;\lt\;\; \lambda \;\;\lt\;\; 0.0152
+\]</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

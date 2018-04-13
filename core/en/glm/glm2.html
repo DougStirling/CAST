@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Describing the simple linear model with matrices</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="regression model, linear model, matrix notation">
+	<dataset name="Concrete strength (Hald)" />
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Simple linear model</p>  
+  <p>The key to describing the general linear model and its least squares estimates 
+		is the use of matrix notation. We first consider the response mean for a simple 
+		linear model (one explanatory variable),</p>
+<p class="eqn"><img src="images/simpleLinearPart.gif" width="117" height="17"></p>
+  <p>If these <em>n</em> means (for <em>i</em>&nbsp;=&nbsp;1 to <em>n</em>) are 
+    stacked in a column (a vector), they can be collectively expressed as the 
+    product of two matrices,</p>
+  <p class="eqn"><img src="images/simpleLinearMatrices.gif" width="381" height="113"></p>
+<br>
+
+  <div class="diagram"> 
+    <p>The diagram below highlights the terms that are multiplied together to 
+      get the response mean. Click on any row of the X-matrix to see the highlighted 
+      values that are used to form the corresponding response mean.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="320">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="matrixProg.GenericLinearPartApplet">
+<param name="xRows" value="12">
+<param name="nXColumns" value="1">
+<param name="fullNameX1" value="x">
+<param name="shortNameX1" value="x">
+</applet> 
+</div>
+
+    <p>Note how the column of 1's picks out the intercept parameter of the model.</p>
+</div>
+
+  <p class="heading">Expressing the complete model with matrices</p>
+  <p>Having represented the vector of response means as a product of two matrices, 
+    it is relatively straightforward to write the complete normal linear model 
+    in terms of matrices:</p>
+  <p class="eqn"><img src="images/simpleModelMatrices.gif" width="243" height="113"></p>
+  <p>where the ε<sub><em>i</em></sub> 
+    are independent normally distributed errors. More concisely, we write:</p>
+  <p class="eqn"><img src="images/generalMatrixModel.gif" width="91" height="17"></p>
+
+  <p>We next show how the linear model for an actual data set is expressed with 
+    matrices.</p>
+
+<div class="diagram">
+<p class="heading">Tensile strength of concrete</p>
+    <p>The tensile strength of concrete increases while it dries (the curing time). 
+      The data below arose from an experiment in which slabs of concrete were 
+      allowed to cure for different periods and their tensile strength (kg/cm<sup>2</sup>) 
+      was measured.</p>
+    <div class="centred"><table border="0" class="centred" cellpadding="5" cellspacing="0">
+      <tr> 
+        <th>Days curing</th>
+		<th>Tensile strength</th>
+		<th width="10">&nbsp;</th>
+		<th>Days curing</th>
+		<th>Tensile strength</th>
+	</tr>
+	  <tr align="center"> 
+        <td bgcolor="#FFFFFF" style="border:1px solid #999999; border-right:0px;">1<br>
+          1<br>1<br>2<br>2<br>2<br>3<br>3<br>3<br>3<br>3
+			</td>
+		<td bgcolor="#FFFFFF" style="border:1px solid #999999; border-left:0px;">13.0<br>
+          13.3<br>11.8<br>21.9<br>24.5<br>24.7<br>29.8<br>28.0<br>24.1<br>24.2<br>
+          26.2</td>
+		<td>&nbsp;</td>
+		<td valign="top" bgcolor="#FFFFFF" style="border:1px solid #999999; border-right:0px;">7<br>
+          7<br>7<br>7<br>7<br>28<br>28<br>28<br>28<br>28</td>
+		<td valign="top" bgcolor="#FFFFFF" style="border:1px solid #999999; border-left:0px;">32.4<br>
+          30.4<br>34.5<br>33.1<br>35.7<br>41.8<br>42.6<br>40.3<br>35.7<br>37.3</td>
+	</tr>
+</table></div>
+		
+    <p>To analyse the data, we may assume that the tensile strengths of the 21 
+      specimens satisfy a normal linear model. The diagram below expresses this 
+      model in matrix notation.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="470">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="matrixProg.GenericModelEqnApplet">
+<param name="nXColumns" value="1">
+<param name="fullNameX1" value="Curing time, x">
+<param name="shortNameX1" value="x">
+<param name="valuesX1" value="1 1 1 2 2 2 3 3 3 3 3 7 7 7 7 7 28 28 28 28 28">
+<param name="yName" value="Strength, Y">
+<param name="errorName" value="error">
+<param name="matrixFont" value="standard">
+</applet> 
+</div>
+
+		
+    <p>Click any row to see the model for that specimen.</p>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

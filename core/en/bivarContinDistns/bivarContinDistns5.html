@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Independence and random samples</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="joint probability density function, independence, random sample">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>Our <a href="javascript:showNamedPage('randomSample1')">earlier definition of independence</a> of two random variables, \(X\) and \(Y\), was when all events about \(X\) are independent of all events about \(Y\). For continuous random variables, this is equivalent to the joint probability density function factorising into the marginal pdf of \(x\) times the marginal pdf of \(Y\).</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Independence</p>
+		<p><span class="definition">Two continuous random variables,<em> X</em>, and<em> Y</em>, are independent if</span> and only if</p>
+		\[
+		f(x, y) = f_X(x) \times f_Y(y) \qquad \text{ for all } x \text{ and } y
+		\] </div>
+</div>
+<p>This result was <a href="javascript:showNamedPage('continuousSamples1')">described and justified  less formally</a> in an earlier page.</p>
+<p>If \(X\) and \(Y\) are independent, then the conditional pdf of \(X\), given that \(Y = y\) is equal to its marginal pdf.</p>
+\[
+f_{X\mid Y=y}(x) \;\;=\;\; \frac {f(x,y)}{f_Y(y)} \;\;=\;\;  f_X(x)
+\]
+<p>This means that all conditional distributions of \(X\) are the same — they are not affected by the known value \(y\) — so knowing the value of \(Y\) gives no information about the value of \(X\). Similarly,</p>
+\[
+f_{Y\mid X=x}(y) \;\;=\;\;  f_Y(y)
+\]
+<p>so knowing the value of \(X\) gives no information about \(Y\).</p>
+<p class="heading">Determining independence</p>
+<p>Independence is an important concept. Sometimes we can deduce mathematically that two variables are independent by factorising their joint pdf.</p>
+<p>However independence is more often justified by the context from which the two variables were defined.</p>
+<div class="example">
+	<p class="exampleHeading">Failure of light bulbs</p>
+	<p>If two light bulbs are tested at 80ºC until failure, their failure times \(X\) and \(Y\) can be assumed to be independent — failure of one bulb would not influence when the other failed. If the distribution for a single light bulb is \(\ExponDistn(\lambda)\), there joint pdf would therefore be</p>
+\[
+		f(x, y) = f_X(x) \times f_Y(y) = \left(\lambda e^{\lambda x}\right)\left(\lambda e^{\lambda y}\right) = \lambda^2 e^{\lambda(x+y)}\qquad \text{ if } x \ge 0\text{ and } y \ge 0
+\]
+</div>
+
+<p class="heading">Extensions to 3 or more variables</p>
+<p>The idea of a joint probability density function for three or more continuous random variables  \(\{X_1,X_2,\dots, X_n\}\) is a simple extension of that for two variables,</p>
+\[
+f(x_1, \dots, x_n) 
+\]
+<p>Probabilities can be obtained from the joint pdf as multiple integrals over the corresponding values of the variables, \((x_1, \dots, x_n)\), but we will not go into the details  here.</p>
+<p class="heading">Random samples</p>
+<p>The most important practical application of distributions involving several random variables, arises when we have a collection of \(n\) <strong>independent</strong> random variables from the <strong>same</strong> distribution — a random sample from the distribution. The joint pdf of the variables is then</p>
+\[
+f(x_1, \dots, x_n) \;=\; \prod_{i=1}^n f(x_i)
+\]
+<p>where \(f(\cdot)\) is the pdf of the distribution from which the random sample is taken. This joint pdf is what we maximise when estimating parameters by <a href="javascript:showNamedPage('continuousEst3')">maximum likelihood</a>.</p>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+startExercise("exerciseSDProg.CenterSpreadApplet", 600, 700);
+
+addVariation("widgets", "Plactic widgets are manufactured in two different production lines, L1 and L2. The dot plots below show the lengths of samples of widgets from each line.\\nDescribe the differences between the lengths of widgets produced in the two production lines.", "varName(Length, cm)#groupNames(L2 L1)#count(50 50)#meanDiffType(0:2)#sdDiffType(0:2)#axis(250 350 250 10)#meanOptions(Neither_production_line_tends_to_produce_longer_widgets_than_the_other. Production_line_L1_tends_to_produce_longer_widgets_than_L2. Production_line_L1_tends_to_produce_shorter_widgets_than_L2.)#sdOptions(Both_productions_lines_produce_widgets_whose_lengths_are_equally_variable. Production_line_L1_produces_widgets_whose_lengths_are_less_consistent_than_L2. Production_line_L1_produces_widgets_whose_lengths_are_more_consistent_than_L2.)", null, 0);
+addVariation("potatoes", "Two different employees, A and B, fill bags of potatoes. The dot plots below show the weights of several bags filled by each.\\nDescribe the differences between the amounts of potatoes put into bags by the two operators.", "varName(Weight, kg)#groupNames(B A)#count(100 100)#meanDiffType(0:2)#sdDiffType(0:2)#axis(2.5 3.501 2.5 0.1)#meanOptions(Neither_employee_tends_to_fill_the_bags_with_a_greater_weight_of_potatoes_than_the_other. Bags_filled_by_Employee_A_tend_to_be_heavier_than_those_filled_by_B. Bags_filled_by_Employee_A_tends_to_be_lighter_than_those_filled_by_B.)#sdOptions(Both_employees_are_equally_consistent_in_the_weights_of_the_bags. Employee_A_fills_bags_to_a_more_variable_weight_than_B. Employee_A_fills_bags_to_a_less_variable_weight_than_B.)", null, 0);
+
+//----------------------------------------------
+
+startExercise("exerciseSDProg.DragMeanMedianApplet", 500, 500);
+
+addVariation("widgets", "The stacked dot plot below describes the distribution of lengths of #count(50:100)# widgets. Guess the approximate values of the mean and median.", "index(0:2)#varName(Length, cm)#axis[index](5.4 5.6 5.4 0.02*1.0 1.1 1.0 0.01*11.5 12.5 11.5 0.1)#shape[](0.5,1,1.5,8,-0.5,-1,-1.5,-8)#decimals[index](3,3,2)", null, 0);
+addVariation("fruitBats", "#count(20:40)# #?:string[index](male*male*female*female)# Indian fruit bats were captured and weighed. The stacked dot plot below shows the distribution of their body mass. Guess the approximate values of the mean and median.", "index(0:3)#varName(Body mass, gm)#axis[index](50 100 50 5*40 80 40 5*30 50 30 2*40 60 40 2)#shape[](0.5,1,1.5,8,-0.5,-1,-1.5,-8)#decimals(2)", null, 0);
+
+//----------------------------------------------
+
+startExercise("exerciseSDProg.GuessSDApplet", 500, 540);
+
+addVariation("insectWeights", "The diagram below shows the weights of #count(20:100)# insects (in gm). Guess the standard deviation of the insect weights.", "index(0:1)#varName(Weight, gm)#axis[index](4 16 4 2*0 1 0 0.2)#histoClasses[index](4 1*0 0.2)#jointMeanSD(0.5:2)", null, 0);
+addVariation("studentMarks", "A group of #count(20:100)# students sat a mathematics test; the diagram below shows their marks (out of 100). Guess the standard deviation of the marks.", "index(0:1)#varName(Mark out of 100)#axis[index](50 100 50 5*0 90 0 20)#histoClasses[index](50 5*0 10)#jointMeanSD(0.5:1)", null, 0);
+addVariation("salaries", "The following diagram shows the annual salaries of #count(20:100)# workers. Guess the standard deviation of the salaries.", "index(0:2)#varName(Monthly salary, $000)#axis[index](10 20 10 1*20 50 20 5*40 100 40 5)#histoClasses[index](10 2*20 5*40 5)#jointMeanSD(0.5:1)", null, 0);
+addVariation("widgets", "The diagram below describes the distribution of lengths of #count(20:100)# widgets. Guess the standard deviation of the data.", "index(0:2)#varName(Length, cm)#axis[index](5.4 5.6 5.4 0.02*1.0 1.1 1.0 0.01*11.5 12.5 11.5 0.1)#histoClasses[index](5.4 0.02*1.0 0.01*11.5 0.1)#jointMeanSD(0.5:3)", null, 0);
+addVariation("fruitBats", "#count(20:50)# #?:string[index](male*male*female*female)# Indian fruit bats were captured and weighed. The diagram below shows the distribution of their body mass. Guess the standard deviation.", "index(0:3)#varName(Body mass, gm)#axis[index](50 100 50 5*40 80 40 5*30 50 30 2*40 60 40 2)#histoClasses[index](50 5*40 5*30 2*40 2)#jointMeanSD(0.5:1)", null, 0);
+
+//----------------------------------------------
+
+startExercise("exerciseSDProg.GuessSDPhotoApplet", 550, 600);
+
+addVariation("children", "The photograph below shows some of a group of young #itemsName(children)# on their first day at school.\\nThe mean #variable[index](weight*height)# of the children is #mean[index](17,105)# #units#; guess their approximate standard deviation.", "index(0:1)#photoFile(newEntrants)#answer[index](1.5 3 5*10 15 20)#units[index](kg*cm)", null, 0);
+addVariation("books", "The photograph below shows some of the #itemsName(books)# in a library.\\nThe mean #variable[index](number of pages*height*thickness)# of the books is #mean[index](250,20,22)# #units#; guess their approximate standard deviation.", "index(0:2)#photoFile(books)#answer[index](45 90 150*2 4 8*2 5 10)#units[index](pg*cm*mm)", null, 0);
+addVariation("chickens", "The photograph below shows a few of a brood of recently born #itemsName(chickens)#.\\nThe mean #variable(weight)# of the chickens is #mean(40)# #units#; guess their approximate standard deviation.", "index(0)#photoFile(chickens)#answer(2 4 6)#units(gm)", null, 0);
+addVariation("soccerFans", "The photograph below shows a crowd of soccer #itemsName(supporters)# at a match.\\nThe mean #variable[index](weight*height)# of the supporters is #mean[index](80,175)# #units#; guess their approximate standard deviation.", "index(0:1)#photoFile(soccerCrowd)#answer[index](6 12 20*5 8 14)#units[index](kg*cm)", null, 0);
+addVariation("carSpeed", "The photograph below shows #itemsName(cars)# on a motorway. The cars are moving fairly steadily in each lane.\\nThe mean #variable(speed)# of cars in the #?:string[index](slow*middle*fast)# lane is #mean[index](30,50,70)# #units# and very few travel slower than #?:string[index](25 kph*45 kph*60 kph)# or faster than #?:string[index](35 kph*55 kph*80 kph)#. Guess the approximate standard deviation of the speeds.", "index(0:2)#photoFile(traffic)#answer[index](1 2 4*1 2 4*2 5 10)#units(kph)", null, 0);
+addVariation("eggWeight", "In Europe, #itemsName(eggs)# are sold in grades Small (43-53 gm), Medium (53-63 gm), Large (63-73 gm) and Very Large (73-83 gm).\nWhat is the approximate standard deviation of the #variable(weights)# of #?:string[index](Small*Medium*Large*Very Large)# eggs?", "index(0:3)#mean[index](48,58,68,78)#photoFile(eggs)#answer(2.0 2.5 3.0)#units(gm)", null, 0);
+
+//----------------------------------------------
+
+startExercise("exerciseSDProg.SketchDistnApplet", 550, 650);
+
+addVariation("rainfall", "Annual rainfall in an African town was recorded in each of #count[](20,30,40,50)# years. Its distribution has mean #mean(:)# mm and standard deviation #sd(:)# mm.\\nSketch a distribution that might describe these rainfalls.", "correctAxis(0:3)#varName(Annual rainfall)#allAxes(0_400_0_50 500_1600_600_200 0_1200_0_200 1000_1500_1000_100)#allHistoClasses(0_50 500_100 0_100 1000_50)#allAxisNames(0_to_400 500_to_1600 0_to_1200 1000_to_1500)#jointMeanSD(0.5:-1)", null, 0);
+addVariation("temperature", "In an Asian city, the maximum daily temperature was recorded in each of #count[](100,120,140,160,180,200)# days. The mean temperature is #mean(:)##degrees#C and its standard deviation is #sd(:)##degrees#C.\\nSketch a distribution that might describe these temperatures.", "correctAxis(0:4)#varName(Maximum daily temperature)#allAxes(22_30_22_1 26_30_26_1 20_24_20_1 15_25_15_1 10_20_10_1)#allHistoClasses(22_1 26_0.5 20_0.5 15_1 10_1)#allAxisNames(22_to_30 26_to_30 20_to_24 15_to_25 10_to_20)#jointMeanSD(0.5:1)", null, 0);
+addVariation("wind", "The wind run in a New Zealand city was recorded during October for #count(20:30)# years. The mean of this distribution is #mean(:)# km and its standard deviation is #sd(:)# km.\\nSketch a distribution that could possibly describe these wind runs.", "correctAxis(0:3)#varName(Monthly wind run, km)#allAxes(200_300_200_20 150_200_150_10 250_350_260_20 100_300_100_50)#allHistoClasses(200_10 150_5 250_10 100_20)#allAxisNames(200_to_300 150_to_200 250_to_350 100_to_300)#jointMeanSD(0.5:0)", null, 0);
+
+//----------------------------------------------
+
+startExercise("exerciseSDProg.GroupsSDApplet", 500, 700);
+
+addVariation("componentLengths", "Plastic components are manufactured by three machines whose settings are often different. The stacked dot plots below describe component lengths from the three machines.\\nWhat are the mean and standard deviation of the combined data set?", "axis(25 30 25 0.5)#scales[](0.3 0.3 0.3*1.0 1.0 1.0*1.0 0.4 0.2)#decimals(2)#count[](10 10 10*30 30 30*50 50 50)#varName(Component length, mm)#groupNames(MachineA MachineB MachineC)", null, 0);
+addVariation("windRuns", "The stacked dot plots below describe the weekly wind run in a city in summer (Apr-Sep) and winter (Oct-Mar) of one year.\\nWhat are the mean and standard deviation of the weekly wind run in the whole year?", "axis[](1000 3000 1000 500*500 1000 500 50)#scales[](0.3 0.3*0.5 1.0*1.0 0.3)#decimals(0)#count(26 26)#varName(Wind run, km)#groupNames(Winter Summer)", null, 0);
+addVariation("birdWeights", "The dot plots below show the weights of samples of male and female birds of the same species.\\nWhat would be the mean and standard deviation if the male and female birds were combined?", "axis[](10 20 10 1*50 150 60 20)#scales[](0.3 0.3*0.8 0.8)#decimals(3)#count[](20 10*40 40*70 30)#varName(Weight, gm)#groupNames(Female Male)", null, 0);
+addVariation("orangeWeight", "Various measurements were made of the oranges from a tree. Later examination of the data suggested that one orange was incorrectly measured. This orange's weight is shown separately from the others below.\\nWhat are the mean and standard deviation of the combined data set?", "axis[](250 350 250 10*300 350 300 5)#scales[](1.0 0.3*1.0 0.5*5.0 1.0)#decimals(1)#count[](1 40*1 100)#varName(Weight, gm)#groupNames(Mistake? OK)", null, 0);
+addVariation("milkFat", "The top dot plot shows a set of measurements of milk fat content from a herd of cows. One measurement was lost and was 'coded' as a missing value.\\nIf the missing value was incorrectly used in the calculations, what would be the mean and standard deviation?", "axis(2.5 3.501 2.5 0.1)#scales[](?0 1.0*?-999 0.8*?999 1.0)#decimals(3)#count[](1 40*1 100)#varName(Milk fat %)#groupNames(MissingValue OK)", null, 0);
+
+//----------------------------------------------
+

@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Les cartes de contrôle des moyens</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="control chart, mean">
+	<meta name="dataset" content="Paint primer thickness">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class=heading>Échantillons au lieu de valeurs individuelles</p>
+
+<p>Bien que les cartes de contrôle pour les valeurs individuelles sont parfois utilisés, il est plus courant pour examiner des échantillons d'un processus à intervalles réguliers, plutôt que les valeurs individuelles. Il ya quelques raisons:</p>
+
+<ul>
+	
+  <li>Il est plus facile et moins cher de faire plusieurs mesures à la fois &mdash; par exemple, d'échantillonnage de 12 points d'une ligne de production de toutes les 2 heures au lieu d'un seul article toutes les 10 minutes.<br>
+    &nbsp;</li>
+	
+  <li>Les limites de contrôle à 3 écarts-types de chaque côté du travail signifie le mieux quand la distribution des valeurs est proche d'une distribution normale. Exemple signifie <strong>toujours</strong> avoir une distribution qui est plus proche de la normale que les valeurs individuelles.<br>
+    &nbsp;</li>
+	
+  <li>Il ya deux façons dans lequel un processus peut sortir de contrôle. Causes spéciales peut soit modifier le processus signifie ou augmenter sa variabilité. A partir de chaque échantillon, on peut estimer à la fois l'emplacement et la propagation, ce qui rend plus facile à regarder pour des changements à la fois dans l'emplacement et la variabilité.</li>
+</ul>
+
+<p class=heading>Carte de contrôle des moyens</p>
+
+<p>Nous considérons d'abord la détection de savoir si le <strong>niveau de sortie moyenne d'un processus</strong> est en évolution, basée sur un tableau exécuté sur les moyens d'échantillons successifs. Exemple des moyens de <em>n</em> valeurs varient moins d'un échantillon à que les valeurs individuelles, et l'écart-type ont</p>
+
+<p class=eqn><span style="position:relative; top:5px"><img src="../../images/symbol.sigmaXbar.png" width="19" height="16" align="baseline"></span> &nbsp;<span class="black">=</span>&nbsp; <span style="position:relative; top:12px"><img src="../../images/symbol.sigmaOverRootN.png" width="26" height="31" align="baseline"></span>
+
+<p>Les limites de contrôle pour un tableau de contrôle des moyens de l'échantillon sont donc ...</p>
+
+<p class=eqn><span style="position:relative; top:-12px"><img src="../../images/symbol.xBar.png" width="10" height="10" align="baseline"> <span class="black">&nbsp;&plusmn;&nbsp; 3</span></span><img src="../../images/symbol.sOverRootN.png" width="26" height="31" align="baseline">
+</p>
+
+<p>où <img src="../../images/symbol.xBar.png" width="10" height="10" align="baseline"> 
+  et <em>s</em> sont des estimations de la moyenne et l'écart-type des valeurs individuelles lorsque le processus est en contrôle. Ces limites de contrôle doivent être distingués avec soin à partir des limites de contrôle correspondantes pour les valeurs individuelles,</p>
+
+<p class=eqn><img src="../../images/symbol.xBar.png" width="10" height="10" align="baseline"> <span class="black">&nbsp;&plusmn;&nbsp; 3<em>s</em></span> 
+</p>
+
+<p>Depuis les limites de contrôle utilisé dans un tableau de contrôle pour les moyens sont plus proches de <img src="../../images/symbol.xBar.png" width="10" height="10" align="baseline"> que ceux d'une carte de contrôle pour les valeurs individuelles, le tableau est plus sensible aux changements dans le processus de moyenne sur le temps.</p>
+<p class=heading>Formation des données</p>
+
+<p>Afin d'obtenir des limites de contrôle, nous devons connaître l'écart moyen et standard des mesures lorsque le processus est «sous contrôle». Ce sont généralement estimées à partir d'un ensemble de «échantillons d'entraînement» dans lequel le plus grand soin est pris pour éviter les causes spéciales.</p>
+
+<p>Le processus signifie, <img src="../../images/symbol.xBar.png" width="10" height="10" align="baseline"> est estimée par la valeur moyenne des échantillons de la formation. Nous allons d'abord utiliser l'écart-type de l'échantillon de formation que notre estimation, <em>s</em>, mais de décrire une meilleure estimation à la fin de cette page.</p>
+
+<div class="diagram"> 
+  <p class=heading>Epaisseur apprêt</p>
+  <p>Le diagramme ci-dessous montre l'épaisseur de l'apprêt de peinture en mils (une mesure impériale égale à un millième de pouce), mesurée à partir d'un échantillon de 10 articles chaque matin et chaque après-midi pour 5 matinées successives et après-midi. Nous allons considérer ces données comme un ensemble de formation à partir de laquelle nous obtenons des limites de contrôle pour les échantillons d'épaisseur plus tard, l'apprêt.</p>
+
+<p><font color="#666666">(En pratique, il ya des échantillons de formation généralement plus, mais nous utilisons un ensemble de données réelles petite définie pour l'illustration.)</font></p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="controlProg.MeanControlApplet">
+<param name="varName" value="primer thickness">
+<param name="values" value="1.30 1.10 1.20 1.25 1.05 .95 1.10 1.16 1.37 .98 1.01 1.10 1.15 .97 1.25 1.12 1.10 .90 1.04 1.08 1.22 1.05 .93 1.08 1.15 1.27 .95 1.11 1.12 1.10 1.08 1.12 1.11 1.28 1.00 .95 1.15 1.14 1.28 1.31 .98 1.30 1.31 1.12 1.08 1.10 1.15 1.35 1.12 1.26 1.12 1.30 1.01 1.20 1.11 .93 1.02 1.25 1.05 1.10 .92 1.10 1.13 1.02 .93 1.17 1.24 .98 1.34 1.12 1.04 1.14 1.18 1.12 1.00 1.02 1.05 1.34 1.12 1.05 1.08 .92 1.14 1.20 1.02 1.04 .94 1.05 1.12 1.06 1.20 1.13 1.19 1.16 1.03 1.25 1.20 1.24 1.10 1.03 1.25 .91 .96 1.04 .93 1.08 1.29 1.42 1.10 1.00 1.24 1.34 1.40 1.26 1.13 1.15 1.08 1.02 1.05 1.18 1.13 1.16 1.12 1.22 1.12 1.07 1.04 1.28 1.12 1.10 1.08 1.31 1.12 1.18 1.15 1.17 .98 1.05 1.00 1.26 1.08 1.26 1.13 .94 1.30 1.15 1.07 1.02 1.22 1.18 1.14 1.02 1.14 .94 1.30 1.08 .94 1.12 1.15 1.36 1.06 1.12 .98 1.12 1.20 1.02 1.19 1.03 1.02 1.09 1.14 1.22 1.18 1.27 1.17 1.26 1.15 1.07 1.02 1.36 1.07 1.05 .97 1.05 1.16 1.02 1.02 1.14 1.07 1.00 1.13 .90 1.12 1.04 1.40 1.12 1.15 1.01 1.30 1.14">
+<param name="vertAxis" value="0.7 1.5 0.8 0.2">
+<param name="limitNames" value="LCL Centre UCL">
+<param name="groupInfo" value="10 5">
+<param name="timeAxis" value="0 1 1 1">
+<param name="customText" value="Show means=Show means#Training=Training#Production=Production#training=training#production=production#Value outside control limits=Value outside control limits#2 out of 3 values in Zone A=2 out of 3 values in Zone A#4 out of 5 values in Zones A or B on one side=4 out of 5 values in Zones A or B on one side#6 values in a row increasing or decreasing=6 values in a row increasing or decreasing#9 values on one side of centre=9 values on one side of centre">
+</applet>
+</div>
+
+<p>Les limites de contrôle qui sont initialement indiqués sont ceux d'un tableau exécuté des valeurs individuelles &mdash; moyenne ± 3 écarts-types pour les 50 valeurs dans les données d'entraînement.</p>
+
+<p>Utilisez la barre de défilement pour afficher les échantillons qui ont été mesurées au cours des 15 prochaines demi-journées. Aucune valeur n'est en dehors des limites déviations 3-standard, donc nous pouvons conclure que le processus est en contrôle.</p>
+
+<p>Maintenant cliquez sur le <strong>Moyen case Afficher</strong>. Les valeurs brutes dans les échantillons sont estompés et les moyens de l'échantillon sont affichés, rejoints par des lignes bleues. Les moyens de l'échantillon sont considérablement moins variables que les valeurs brutes, alors les limites de contrôle sont redessinés plus proche de la ligne centrale.</p>
+
+<p>Basé sur les moyens, nous avons encore conclure qu'il n'existe aucune preuve d'un changement dans le processus de moyenne.</p>
+
+</div>
+
+<p>Comme dans les cartes de contrôle pour les valeurs individuelles, déclencheurs supplémentaires peuvent être utilisées qui dépendent de plusieurs moyens successifs. Elles sont définies de la même manière que ceux des cartes de contrôle pour les valeurs individuelles. Par exemple, six échantillons successifs signifie soit croissante ou décroissante suggèrent qu'il pourrait y avoir une cause particulière.</p>
+<p class=heading>Meilleure estimation de <em>s</em> à partir d'échantillons de formation (niveau avancé)</p>
+
+<p>Une estimation différente de l'écart type processus, <em>s</em>, est généralement préférée à l'écart type global des valeurs dans les échantillons de la formation.</p>
+<p>Au lieu de cela, <em>s</em> est généralement estimée à partir des écarts-types au sein de chacun des échantillons de la formation. On note les écarts-types des échantillons de formation <em>k</em>, chacun de taille <em>n</em>, par <i>s</i><sub>1</sub>, <i>s</i><sub>2</sub>, 
+  ..., <i>s<sub>k</sub></i>. L'estimation la plus couramment utilisée de <em>s</em> est... </p>
+
+<p class=eqn><img class="gif" width="98" height="60">
+</p>
+
+<p>où la valeur <i>c<sub>4</sub></i>(<em>n</em>) est une constante qui dépend de la taille de l'échantillon dans chacun des échantillons <em>k</em>, <em>n</em>. Sa valeur peut être obtenue à partir des tableaux ou en utilisant les formules </p>
+
+<p class=eqn><img class="gif" src="../../en/controlChart/images/sdConstantEqn.gif" width="265" height="72">
+</p>
+
+<p>La deuxième partie de cette formule permet à la valeur de <i>c<sub>4</sub></i> pour la taille de l'échantillon <em>n</em> pour être obtenu à partir de sa valeur pour la taille de l'échantillon <em>n</em>&nbsp;-&nbsp;1, comme illustré ci-dessous.</p>
+
+<p class=eqn><img class="gif" src="../../en/controlChart/images/sdConstantEqn2.gif" width="239" height="128">
+</p>
+
+<font color="#666666">
+<p>(Une autre estimation de <em>s</em> qui est parfois utilisé est</p>
+
+<p class=eqn><img class="gif" src="../../en/controlChart/images/pooledSDEqn2.gif" width="116" height="52"></p>
+
+<p>Bien que cette estimation est meilleure lorsque les données ont une distribution assez symétrique, l'estimation antérieure est plus «robuste» à des problèmes dans les données de formation.) </p>
+</font>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

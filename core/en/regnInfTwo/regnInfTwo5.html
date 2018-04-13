@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>95% confidence intervals for coefficients</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="confidence interval, t distribution">
+	<meta name="dataset" content="Body fat">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">If the error variance was known</p>
+<p>The three parameter estimates have normal distributions,</p>
+
+<p class="eqn"><img src="images/lseDistn.gif" width="245" height="69"></p>
+<p>If the value of the error standard deviation, σ, 
+was known, a 95% confidence interval for each parameter would be 1.96 standard 
+deviations on each side of the estimate. For example, a 95% CI for β<sub>1</sub> 
+could be evaluated as:</p>
+<p class="eqn"><img src="images/ci95Known.gif" width="186" height="21"></p>
+<p class="heading">Using an estimate of the error variance</p>
+<p>In practice, σ<sup>2</sup> 
+is rarely a known value, so it must be replaced by an estimate,</p>
+<p class="eqn"><img src="images/errorVarEst2.gif" width="138" height="44"></p>
+<p>To take account of the additional uncertainty caused by this estimate, the 
+constant 1.96 must also be replaced by a larger value that is obtained from t-tables 
+with (<em>n</em>&nbsp;-&nbsp;3) degrees of freedom. For example,</p>
+<p class="eqn"><img src="images/ci95Unknown.gif" width="189" height="22"></p>
+<p class="heading">Properties</p>
+<p>As with all earlier confidence intervals, there is a 95% chance that the 95% 
+confidence interval will include the true parameter value.</p>
+
+<div class="centred"><div class="boxed">
+<p>There is a 5% chance that the confidence interval 
+will <strong>not</strong> include the true parameter value.</p>
+</div></div>
+
+<br>
+<div class="diagram">
+<p class="heading">Simulation</p>
+
+<p>The diagram below generates random responses from the model</p>
+    <p class="eqn"><img src="images/bodyFatModel.gif" width="397" height="44"></p>
+    <p>The diagram initially shows the 95% CI for the slope parameter associated 
+      with Abdomen.</p>
+    <div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="550">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="multiRegnProg.CoeffCIApplet">
+<param name="yAxis" value="0 50 0 10">
+<param name="xAxis" value="65 120 70 10">
+<param name="zAxis" value="63 76 65 5">
+<param name="yVarName" value="Body fat">
+<param name="xVarName" value="Abdomen">
+<param name="zVarName" value="Height">
+<param name="randomSeed" value="6456893">
+<param name="multiRegnModel" value="30.0 0.53 -0.81 5">
+<param name="xValues" value="88.6 100.5 83.5 108.1 70.4 98.3 84.6 98.6 86.5 94 92.3 87.5 87 106.6 106.8 92.4 90.8 104.5 101.2 89.7 84.4 88.7 93 100.5 111.5">
+<param name="zValues" value="73.5 73.5 69 67 66.75 65.75 71.5 69.25 73 72 69.25 72.25 69.75 75 70.25 71.5 69.5 74.5 68.25 67.5 70.75 69.25 68.5 65.75 66">
+<param name="ciDecimals" value="2 3 3">
+<param name="coeffAxis0" value="-100 180 -100 50">
+<param name="coeffAxis1" value="-0.05 1.05 0 0.2">
+<param name="coeffAxis2" value="-3 1.3 -3 1">
+<param name="maxCoeff" value="-99.99 99.999 99.999">
+<param name="overallMaxCoeff" value="999.99">
+<param name="customText" value="Slope for=Slope for#CI=CI#resid=resid#Propn including=Propn including#to=to">
+</applet> 
+</div>
+
+    <p> Click <strong>Accumulate</strong> then take several samples to see the variability 
+      of these confidence intervals and observe that about 95% of them do include 
+      the true parameter (0.53).</p>
+<p>Use the pop-up menu to repeat this exercise for the other two parameters of 
+the model.</p>
+</div>
+
+
+<p class="heading">Calculating the confidence intervals</p>
+<p>We have not given full formulae for the confidence intervals, only an indication 
+of how they are calculated &mdash; we have not given enough detail for you to find 
+the confidence intervals by hand.</p>
+
+
+<div class="centred"><div class="boxed">
+<p>In practice, statistical software should always 
+be used to fit linear models and to evaluate confidence intervals.</p>
+</div></div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

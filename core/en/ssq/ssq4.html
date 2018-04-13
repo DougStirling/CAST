@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Sums of squares tables</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="chi-squared distribution, sum of squares, degrees of freedom">
+	<meta name="dataset" content="Obesity and performance">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Basic sums of squares table</p>
+	<p>The relationship between the individual squared differences from µ 
+		and their sum is displayed in the following table.</p>
+	<p class="eqn"><img src="images/indivAnovaTable.gif" width="504" height="168"></p>
+	<p>Note that the degrees of freedom for the chi-squared distributions of the 
+		components also sum to that of the total, as do the means of the distributions.</p>
+	<p class="heading">Another way to split the total sum of squares</p>
+	<p>The previous page showed a second way to split the total sum of squares. 
+		It can also be shown in a sum of squares table,</p>
+	<p class="eqn"><img src="images/meanAnovaTable.gif" width="504" height="131"></p>
+	<p>As before, in each column, the values add to give the red 'total' value.</p>
+	<p class="heading">Distribution of ssq about the sample mean</p>
+	<p>The sum of squares for the mean has one degree of freedom since it is a <strong>single 
+		squared quantity</strong>. Therefore the sum of squares about the mean has 
+		(<em>n</em>&nbsp;-&nbsp;1) degrees of freedom.</p>
+
+<div class="centred"><div class="boxed">
+<p><img src="images/ssqRoundMeanDistn.gif" width="211" height="26"></p>
+</div></div>
+
+  <p class="heading">Mean sums of squares</p>
+	<p>Since the mean of a chi-squared distribution equals its degrees of freedom, 
+		we can divide any sum of squares by its degrees of freedom to get an estimate 
+		of σ<sup>2</sup>. 
+		This can be shown with an extra column of <strong>mean sums of squares</strong> 
+		on the sum of squares table,</p>
+  <p class="eqn"><img src="images/meanAnovaTable2.gif" width="534" height="143"></p>
+	<p>The mean sum of squares about the sample mean is the same as the sample variance 
+		(the square of the sample standard deviation).</p>
+	
+<div class="centred"><div class="boxed">
+<p>This explains why we use the divisor (<em>n</em>&nbsp;-&nbsp;1) 
+						rather than <em>n</em> when estimating a standard deviation or variance.</p>
+</div></div>
+
+	<p class="heading">Distribution of mean sums of squares</p>
+	<p>Since they are simply the sums of squares divided by their degrees of freedom, 
+		the mean sums of squares also have chi-squared distributions, but with a different 
+		scaling factor. In particular,</p>
+	<p class="eqn"><img src="images/varianceDistn.gif" width="274" height="44"></p>
+<br>
+
+	<div class="diagram">
+<p class="heading">Simulation</p>
+		<p>The top of the following diagram shows a sample from a normal population.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="varianceProg.SampleVarianceApplet">
+<param name="varName" value="Sample data">
+<param name="meanSD" value="12.0 1.0 3">
+<param name="horizAxis" value="6 18 6 2">
+<param name="summaryAxis" value="0 8 0 1">
+<param name="dataDecimals" value="3">
+<param name="varianceName" value="Sample variance">
+<param name="summaryDecimals" value="3">
+<param name="sampleSize" value="3 6 *10 30 60">
+<param name="varianceLimits" value="1.0 3.0 100">
+</applet>
+</div>
+
+<p>The bottom of the diagram shows the theoretical chi-squared distribution for 
+the sample variance. Click <strong>Accumulate</strong>, then take several samples 
+to build up the sampling distribution of <em>S</em><sup>2</sup> and verify that 
+it matches the theory.</p>
+<p>Use the pop-up menu to adjust the sample size and observe that the spread of 
+<em>S</em><sup>2</sup> becomes lower as the sample size increases &mdash; it becomes 
+a more accurate estimator of σ<sup>2</sup>.</p>
+<p>Finally, use the slider at the top to adjust the population variance, σ<sup>2</sup>. 
+Observe that this simply scales the distribution of <em>S</em><sup>2</sup>.</p>
+</div>
+
+<p class="heading">Sample variance and standard deviation</p>
+<p>Note that the sample variance, <em>S</em><sup>2</sup>, has a skew distribution 
+with a long tail towards the high values.</p>
+<p>The sample standard deviation, <em>S</em>, has a distribution that is closer 
+to symmetric (since square root transformations reduce the size of a distribution's 
+right tail). However, despite this, much of the theory of statistics is easier 
+for sums of squares and variances than for their square roots, so we will give 
+little mention to standard deviations in the remainder of this chapter.</p>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

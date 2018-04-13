@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Mean and variance</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="binomial distribution, mean, variance">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Properties of the binomial distribution</p>
+
+<p>We now find formulae for the mean and variance of the binomial distribution.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Binomial mean and variance</p>
+<p>If \(X\) has a binomial distribution with probability function </p>
+\[
+p(x)= {n \choose x} \pi^x(1-\pi)^{n-x} \quad \quad \text{for } x=0, 1, \dots, n
+\]
+<p>then its mean and variance are</p>
+\[
+E[X] = n\pi \quad\quad \text{and} \quad\quad  
+\Var(X) = n\pi(1-\pi)\]	</div>
+
+<div class="proof">
+<p>We first define a Bernoulli random variable for each of the different Bernoulli trials,</p>
+\[
+B_i = \begin {cases}
+	1 &amp; \quad \text{if the }i\text{'th trial is a success}\\[0.5em]
+	0 &amp; \quad \text{if the }i\text{'th trial is a failure}
+\end {cases}
+\]
+<p>These \(n\) variables are independent since they are defined from independent Bernoulli trials and, from the properties of the Bernoulli distribution,</p>
+\[
+E[B_i] = \pi \spaced{and} \Var(B_i) = \pi(1-\pi)
+\]
+
+<p>The total number of successes is the sum of these  Bernoulli variables, \(X = \sum_{i=1}^n B_i\). Since this is the sum of the values in a random sample from a Bernoulli distribution, we can use the earlier result  about the <a href="javascript:showNamedPage('discreteDistns8')">sum of values in a random sample</a>,</p>
+\[
+	E[X] \;=\; E\left[\sum_{i=1}^n B_i\right] \;=\; n \times E[B_i] \;=\; n\pi
+\]
+\[
+	\Var(X) \;=\; \Var\left(\sum_{i=1}^n B_i\right) \;=\; n \times \Var[B_i] \;=\; n\pi(1-\pi)
+\]
+
+</div>
+</div>
+<p>These formulae give the mean and variance of the <strong>number</strong> of successes in a sequence of Bernoulli trials. We are often more interested in the <strong>proportion</strong> of successes,</p>
+\[
+P = \frac X n
+\]
+<p>Since \(P\) is simply \(X\) multiplied by the constant \(\frac 1 n\), its mean and variance are closely related to those of \(X\).</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Proportion of successes</p>
+		<p>The proportion of successes in a binomial experiment, \(P\), has mean and variance</p>
+		\[
+		E[P] = \pi \spaced{and}  
+		\Var(P) = \frac {\pi(1-\pi)} n \] </div>
+	<div class="proof">
+		<p>These formulae can be easily obtained from the earlier general results about the mean and variance of a <a href="javascript:showNamedPage('discreteDistns4')">linear transformation of a random variable</a>,</p>
+\[
+	E[a + b \times X] = a + b \times E[X]
+\]
+\[
+	\Var(a + b \times X) = b^2 \times \Var(X)
+\]
+		<p> with \(a = 0\) and \(b = \frac 1 n\).</p>
+	</div>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

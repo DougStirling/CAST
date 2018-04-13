@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Lowess smoothing of scatterplots</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/videoControls/combinedStyles.css' type='text/css'>
+	<script src='../../structure/environment.js'></script>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/videoControls/jquery-ui.js'></script>
+	<script src='../../structure/videoControls/videoControls.js'></script>
+
+	<meta name="index" content="lowess">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">'Difficult' relationships</p>
+<p>Transformations are  able to some linearise relationships and polynomial models can explain the curvature in others. However the relationship between some variables cannot be easily described by either of these techniques. In this page, a method is described that makes no assumptions about the form of the relationship and can be used to describe relationships that cannot be easily summarised by other methods.</p>
+<p class="heading">Lowess for time series</p>
+<p>The method is first described for time series. It is called <strong>lowess</strong> (<strong>lo</strong>cally <strong>we</strong>ighted <strong>s</strong>catterplot <strong>s</strong>moothing) and is similar to running means except that instead of using the average of values at adjacent times, it fits a least squares line through them and uses this least squares line to estimate the smoothed value.</p>
+
+<p class=eqn><img class="gif" src="../../en/smoothing/images/lowessEqn.gif" width="309" height="21"></p>
+	
+<p>Since a separate least squares line must be fitted to obtain each smoothed value, a computer must be used to apply this method.</p>
+
+<div class="diagram">
+<p class="heading">US defence expenditure</p>
+	
+<script type='text/javascript'>writeVideo('bk/general', 'smoothing', 'lowess', '506', '334');</script>
+
+</div>
+
+<p class="heading">Local smoothing of scatterplots</p>
+<p>Lowess can be used to smooth time series but was originally developed as a general way to draw a smooth curve on any type of scatterplot. Again, the smoothed value for any observation is obtained by fitting a least squares line to the observations with adjacent values for the explanatory variable. The fitted values that are obtained in this way are joined with lines.</p>
+	<p>(Most computer software implements a version of lowess that is  a actually bit more complex than has been described here but our simpler version gives a good flavour of the method.)</p>
+	<div class="diagram">
+<p class="heading">Rose powdery mildew</p>
+	
+<script type='text/javascript'>writeVideo('bk/general', 'smoothing', 'mildewLowess', '506', '334');</script>
+
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

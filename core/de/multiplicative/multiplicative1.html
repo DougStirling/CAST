@@ -1,0 +1,161 @@
+<html>
+<head>
+	<title>Additive and multiplicative models</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="additive model, multiplicative model, time series/multiplicative model">
+	<meta name="dataset" content="Personal disposable income in USA">
+	<meta name="dataset" content="Visitor arrivals in NZ">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Additive models</p>
+
+  <p>The models that we have considered in earlier sections have been <strong>additive 
+		models</strong>, and there has been an implicit assumption that the different 
+		components affected the time series additively.</p>
+	<p class=eqn style="color:#009"><strong>Data &nbsp; = &nbsp; Seasonal effect &nbsp; + &nbsp; Trend &nbsp; + &nbsp; Cyclical &nbsp; + &nbsp; Residual</strong></p>
+	<p>For monthly data, an additive model assumes that the difference between the 
+		January and July values is approximately the same each year. In other words, 
+		the <strong>amplitude</strong> of the seasonal effect is the same each year.</p>
+	<p>The model similarly assumes that the residuals are roughly the same size 
+		throughout the series &mdash; they are a random component that adds on to the other 
+		components in the same way at all parts of the series.</p>
+	<p class="heading">Multiplicative models</p>
+	<p>In many time series involving <strong>quantities</strong> (e.g. money, wheat 
+		production, ...), the absolute differences in the values are of less interest 
+		and importance than the percentage changes.</p>
+	<p>For example, in seasonal data, it might be more useful to model that the 
+		July value is the same <strong>proportion</strong> higher than the January 
+		value in each year, rather than assuming that their difference is constant. 
+		Assuming that the seasonal and other effects act proportionally on the series 
+		is equivalent to a <strong>multiplicative model</strong>,</p>
+	<p class=eqn style="color:#009"><strong>Data &nbsp; = &nbsp; (Seasonal effect) &nbsp; × &nbsp; Trend &nbsp; × &nbsp; Cyclical &nbsp; × &nbsp; Residual</strong></p>
+	<p>Fortunately, multiplicative models are equally easy to fit to data as additive 
+		models! The trick to fitting a multiplicative model is to take logarithms 
+of both sides of the model,</p>
+	<table border="0" class="centred" cellpadding="3" cellspacing="0" style="color:#009; margin-top:0; margin-bottom:0">
+		<tr>
+			<td valign="top" rowspan="2"><strong>log(Data) &nbsp;</strong></td>
+			<td align="left" valign="top"><strong>= &nbsp; log(Seasonal effect &nbsp; × &nbsp; Trend &nbsp; × &nbsp; Cyclical &nbsp; × &nbsp; Residual)</strong></td>
+		</tr>
+		<tr>
+			<td align="left" valign="top"><strong>= &nbsp; log(Seasonal effect) &nbsp;+ &nbsp;log(Trend) &nbsp;+ &nbsp;log(Cyclical) &nbsp;+ &nbsp;log(Residual)</strong></td>
+		</tr>
+	</table>
+	<p>After taking logarithms (either natural logarithms or to base 10), the four 
+	components of the time series again act additively.</p>
+	<center>
+		<table border="1" cellspacing="0" cellpadding="5" bgcolor="white" width="400">
+			<tr> 
+				<th align="CENTER">To fit a multiplicative model, take logarithms of the 
+					data, then analyse the log data as before.</th>
+			</tr>
+		</table>
+	</center>
+	<p>It is important to recognise when multiplicative models are appropriate. 
+		However fitting the models is no harder than fitting additive models.</p>
+	<div class="diagram">
+
+  <p class="heading">Illustrative example</p>
+
+		<p>In the following time series, the values increase by 20% each year, except 
+      for two years &mdash; 1983 and 1998 &mdash; in each of which the values <strong>decrease</strong> 
+      by 20%. </p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="320">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.Log10TimeApplet">
+<param name="varName" value="data">
+<param name="values" value="1.20 1.44 1.73 2.07 2.49 1.99 3.58 4.30 5.16 6.19 7.43 8.92 10.70 12.84 15.41 18.49 22.19 26.62 31.95 38.34 30.67 55.21 66.25 79.50 95.40">
+<param name="vertAxis" value="1 100 20 20 1">
+<param name="timeAxis" value="3 5 1980 5">
+<param name="timeAxisName" value="Year">
+<param name="timeSequence" value="1978 1 25">
+<param name="logAxis" value="1 100 0 2">
+<param name="customText" value="Raw=Raw#Log=Log#Original scale=Original scale#Log scale=Log scale">
+</applet>
+</div>
+
+		<p>In a plot of the raw data, 1998 appears more unusual than 1983. Indeed, 
+			it is easy to miss the fact that 1983 is an unusual year.</p>
+		<p>Since we consider 1983 and 1998 to be equally unusual because they have 
+			the same <strong>proportional</strong> change from the previous year, so 
+			a multiplicative model is suggested.</p>
+		<p>Drag the slider to <strong>Log scale</strong>. The applies a logarithmic 
+			transformation to the data. Observe that both unusual years appear the same 
+			on a log scale. Note also that the transformation linearises the trend in 
+			the series, making it easier to model.</p>
+
+  <p class="heading">Personal disposable income</p>
+
+		<p>The time series plot below shows how US personal disposable income (in 
+			billions of dollars) changed between 1959 and 2001.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="320">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.Log10TimeApplet">
+<param name="varName" value="personal disposable income">
+<param name="values" value="83.7 86.9 85.8 100.2 101.2 113.2 124.1 134.7 149.0 152.1 150.2 160.2 193.8 206.4 239.5 271.2 288.3 342.4 351.0 416.2 474.7 518.5 594.0 664.2 684.0 775.1 818.6 835.6 834.0 912.7 970.7 996.3 1094.6 1168.6 1192.8 1200.9 1264.9 1282.7 1306.8 1369.0 1402.7 1283.8 1307.9">
+<param name="vertAxis" value="80 1500 200 200 100">
+<param name="timeAxis" value="1 5 1960 5">
+<param name="timeAxisName" value="Year">
+<param name="timeSequence" value="1959 1 43">
+<param name="logAxis" value="80 1500 4 2">
+<param name="customText" value="Raw=Raw#Log=Log#Original scale=Original scale#Log scale=Log scale">
+</applet>
+</div>
+
+		<p>In this period, personal disposable incomes have increased considerably, 
+			so a same percentage increase that would be quite noticable in 2001 would 
+			be hard to recognise on a plot of the raw data in 1959.</p>
+		<p>Drag the slider to <strong>Log scale</strong>. Observe that the trend is 
+      fairly linear until about 1985, implying a constant percentage increase 
+      each year. However there has been a flattening out of the time series in 
+      recent years &mdash; the annual percentage increase in personal disposable income 
+      has become smaller.</p>
+		<p class="heading">Visitor arrivals in New Zealand</p>
+		<p>Our final example is a seasonal time series. The plot below describes the 
+			numbers of short-term visitor arrivals in New Zealand (in thousands) each 
+			quarter from 1980 to 2001.</p>
+			
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="320">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.Log10TimeApplet">
+<param name="varName" value="NZ visitor arrivals">
+<param name="values" value="146.4 80.8 85.4 152.6 144.7 87.2 91.2 155.0 139.2 91.4 96.1 155.0 145.1 91.9 104.8 166.6 155.1 111.8 112.0 188.7 184.5 132.2 132.0 220.9 204.0 137.6 142.3 249.5 233.8 158.1 167.9 284.5 245.0 161.9 183.7 274.3 247.6 168.0 197.7 287.7 280.0 190.8 205.8 299.5 271.0 176.1 209.8 306.5 307.2 199.6 220.9 327.9 338.1 218.3 232.7 367.8 394.5 240.2 273.9 414.0 414.9 264.2 290.6 439.1 447.9 293.6 307.7 479.4 470.6 283.6 303.7 439.3 438.1 277.2 302.7 466.4 471.0 298.9 330.1 507.2 512.7 340.5 362.0 571.5 574.4">
+<param name="vertAxis" value="70 600 100 100">
+<param name="seasonName" value="4 Q1 Q2 Q3 Q4">
+<param name="seasonInfo" value="0 0 80">
+<param name="timeAxisName" value="Quarter">
+<param name="timeSequence" value="0 1 85">
+<param name="logAxis" value="70 600 10 5">
+<param name="smallAxisFont" value="true">
+<param name="customText" value="Raw=Raw#Log=Log#Original scale=Original scale#Log scale=Log scale">
+</applet>
+</div>
+
+		<p>Observe that the seasonal component affects this series multiplicatively 
+			-- in earlier years when the visitor numbers were small, the differences 
+			between the quarters were also small.</p>
+
+		<p>Apply a logarithmic transformation to the data, and observe that the seasonal 
+			variation now becomes more constant. A multiplicative model is therefore 
+			appropriate, and the data can be analysed by fitting an additive model to 
+			the log visitor numbers.</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

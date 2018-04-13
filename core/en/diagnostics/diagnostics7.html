@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Influence on fitted values</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="leverage, influence, fitted values, dfits">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Leverage and influence</p>
+  <p>High-leverage points have the <strong>potential</strong> to strongly influence 
+		the conclusions from a data set.</p>
+	<p>Leverage is only a function of the explanatory variable, and we also need 
+		to take into account the response values for any high-leverage points to see 
+		whether they are <strong>actually</strong> influential.</p>
+
+<div class="diagram">
+		<p class="heading">Examples</p>
+
+		<p>The two diagrams below show data sets with one high-leverage point.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="280">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="residProg.DeleteInfluenceApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="xValues" value="0.6 0.8 1.0 1.2 1.4 1.6 1.8 2.0 2.2 4.2">
+<param name="yValues" value="37 36 40 43 44 42 45 48 49 63">
+<param name="y2Values" value="37 36 40 43 44 42 45 48 49 40">
+<param name="horizAxis" value="0.5 4.5 1 1">
+<param name="vertAxis" value="30 65 30 10">
+<param name="customText" value="high leverage=high leverage#high influence=high influence#low influence=low influence#Delete high leverage points=Delete high leverage points">
+</applet>
+</div>
+
+		<p>Click <strong>Delete high leverage points</strong> to delete the point 
+			with high leverage from both data sets. Observe that deleting the point...</p>
+		<ul>
+			<li>... has little effect on the least squares line on the left &mdash; the point 
+				has low influence.</li>
+			<li>... greatly affects the least squares line on the right &mdash; it has high 
+				influence. </li>
+		</ul>
+</div>
+
+  <p class="heading">Measuring influence</p>
+
+  <p>We have described a point's 'influence' as its effect on the conclusions 
+		that are reached from the data set. To obtain a numerical description of influence, 
+		we can describe how each point affects:</p>
+	<ul>
+		<li>The fitted values</li>
+		<li>The least squares estimates</li>
+	</ul>
+	<p class="gray">(It would also be possible to describe the influence 
+		of each point on the residual sum of squares or other statistics, but the 
+		above two are the most common ones.)</p>
+	<p class="heading">Influence on fitted values</p>
+	<p>In this page, we consider how deletion of the <em>i</em>'th point affects 
+		the fitted value at the same point,</p>
+	<p class=eqn> <img src="images/fitChange.gif" width="61" height="21"> 
+	</p>
+<br>
+	<div class="diagram">
+		<p class="heading">Illustration</p>
+
+		<p>The scatterplot on the left below shows a dataset with one high-leverage 
+			point. The changes in the fitted values are plotted against <em>x</em> on 
+			the right.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="280">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="residProg.FitInfluenceApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="xValues" value="0.6 0.8 1.0 1.2 1.4 1.6 1.8 2.0 2.2 4.2">
+<param name="yValues" value="370 360 400 430 440 420 450 480 490 450">
+<param name="xAxis" value="0.5 4.5 1 1">
+<param name="yAxis" value="320 650 350 50">
+<param name="fitChangeAxis" value="-170 100 -150 50">
+<param name="dfitsAxis" value="-14 10 -10 5">
+<param name="customText" value="Change in fitted value=Change in fitted value#DFITS=DFITS">
+</applet>
+</div>
+
+	  <p>Click on any point to see how the least squares line changes when it is 
+			deleted. The change in that point's fitted value from its deletion is shown 
+			in red and ploted on the right against <em>x</em>.</p>
+</div>
+
+	<p class="heading">DFITS</p>
+	<p>Since the fitted values do not all have the same variance,</p>
+	<p class=eqn> <img src="images/fitVar.gif" width="114" height="20" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<p>we adjust the difference by dividing by the square root of an estimate (using 
+		the deleted standard deviation),</p>
+	<p class=eqn> <img src="images/dfits.gif" width="149" height="51" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<p>(Note that this is not equivalent to standardisation since we use the standard 
+		devation of the fitted value, not of the difference.)</p>
+	<p class="heading">Guidelines</p>
+	<p>Observations are often classified as 'influential' if,</p>
+	<p class=eqn> <img src="images/dfitsGuideline.gif" width="147" height="36" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<p>Note that this is <strong>not</strong> a hypothesis test and plotting <em>DFITS</em> 
+		against <em>x</em> or the fitted values is recommended to help assess whether 
+		one or two points have excessive influence.</p>
+	<p>It can be proved that <em>DFITS</em> is a simple function of the externally 
+		studentised residual and the leverage,</p>
+	<p class=eqn> <img src="images/dfits2.gif" width="154" height="41" alt="log(wt) = log(a) + p log(len)"> 
+	</p>
+	<p>Therefore standardising <em>DFITS</em> simply gives the externallly studentised 
+		deleted residuals.</p>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+</p>
+</div>
+
+</body>
+</html>

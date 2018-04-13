@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Chi-squared with 1 degree of freedom</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="continuous distribution, chi-squared distribution, gamma distribution, degrees of freedom, probability density function">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Square of a standard normal variable</p>
+
+<p>A simple transformation of a standard normal random variable has a distribution called a <strong>chi-squared</strong> distribution.</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>If a random variable, \(Z\), has a standard normal distribution,</p>
+\[
+Z \;\;\sim\;\; \NormalDistn(0, 1)
+\]
+<p>then we say that its square, \(Y = Z^2\), has a <strong>chi-squared distribution</strong> with 1 degree of freedom,</p>
+\[
+Y \;\;\sim\;\; \ChiSqrDistn(1\;\text{df})
+\]
+</div>
+
+<p>This also means that if \(X \sim \NormalDistn(\mu, \sigma^2)\) then, since \(Z = \frac {X-\mu}{\sigma}\) has a standard normal distribution,</p>
+\[
+\frac{(X - \mu)^2}{\sigma^2}  \;\;\sim\;\; \ChiSqrDistn(1\;\text{df})
+\]
+
+<p>We will now derive the probability density function of this distribution.</p>
+
+<div class="theoremProof">
+<div class="theorem">
+<p class="theoremTitle">Probability density function</p>
+<p>The random variable \(Y \sim \ChiSqrDistn(1\;\text{df})\) has probability density function</p>
+
+\[
+f(y) \;=\; \frac 1 {\sqrt{2\pi}} y^{\large{-\frac 1 2}}e^{\large{-\frac y 2}} \qquad\text{if } y \gt 0
+\]
+</div>
+
+<div class="proof">
+<p>The probability density function of a standard normal variable, \(Z \sim \NormalDistn(0, 1)\), is</p>
+\[
+f_Z(z) \;\;=\;\; \frac 1{\sqrt{2\pi}} e^{- \frac{\large z^2}{\large 2}} \qquad \text{for } -\infty \lt x \lt \infty
+\] 
+
+<p>The cumulative distribution functions of \(Y = Z^2\) is </p>
+
+\[ F_Y(y) \;=\; 1 - P(Y \gt y) \;\;=\;\; 1 - P(Z \lt -\sqrt{y}) - P(Z \gt \sqrt{y}) \]
+
+<p>Writing the cumulative distribution function of \(Z\) as \(F_Z(z)\) and using the fact that  its distribution is symmetric around zero,</p>
+\[ F_Y(y) \;\;=\;\; 1 - 2 \times P(Z \lt -\sqrt{y}) \;\;=\;\; 1 - 2 \times F_Z(-\sqrt{y}) \]
+
+<p>Since a continuous random variable's probability density function is the derivative of its cumulative distribution function,</p>
+
+\[ \begin{align}
+f_Y(y) \;\;=\;\; \frac{d\;F_Y(y)}{dy} \;\;&amp;=\; -2 \times \frac{d\;F_Z(-\sqrt{y})}{dy} \\
+&amp;=\; 2 \times f_Z(-\sqrt{y}) \times \frac{d\;\sqrt{y}}{dy} \\
+&amp;=\; 2 \times \frac 1{\sqrt{2\pi}} e^{- \frac{\large y}{\large 2}} \times \frac{d\;\sqrt{y}}{dy} \\
+&amp;=\; 2 \times \frac 1{\sqrt{2\pi}} e^{- \frac{\large y}{\large 2}} \times \frac 1 {2\sqrt{y}} \\
+&amp;=\; \frac 1 {\sqrt{2\pi}} y^{\large{-\frac 1 2}}e^{\large{-\frac y 2}}
+\end{align} \]
+
+</div>
+
+</div>
+
+<p>The Chi-squared distribution is actually a special case from the family of Gamma distributions.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Relationship to gamma distribution</p>
+		<p>The \(\ChiSqrDistn(1\;\text{df})\) distribution is identical to a \(\GammaDistn(\frac 1 2, \frac 1 2)\) distribution.</p>
+	</div>
+	<div class="proof">
+		<p>The Gamma distribution has pdf</p>
+	\[
+	f(x) \;\;=\;\; \dfrac {\beta^\alpha }{\Gamma(\alpha)} x^{\alpha - 1} e^{-x\beta} \qquad \text{if }x \gt 0
+	\]
+		<p>This is the same as the Chi-squared distribution's pdf if \(\alpha = \frac 1 2\) and \(\beta = \frac 1 2\).</p>
+	</div>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

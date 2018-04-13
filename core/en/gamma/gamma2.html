@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Gamma probabilities and quantiles</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="gamma distribution, cumulative distribution function, quantile">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Cumulative distribution function</p>
+<p>The cumulative distribution function of the Gamma distribution is</p>
+\[
+		F(x) \;\;=\;\; P(X \le x) \;\;=\;\; \int_0^x {\frac {\beta^\alpha }{\Gamma(\alpha)} u^{\alpha - 1} e^{-u\beta}} \;du \]
+		<p>Unfortunately, this integral cannot be simplified and can only  be evaluated numerically. To obtain probabilities for Gamma distributions, a computer must be used.</p>
+<div class="example">
+	<p class="exampleHeading">Example</p>
+			<p>If a random variable, \(X\), has a Gamma distribution</p>
+\[
+	X \;\;\sim\;\; \GammaDistn(\alpha = 7,\; \beta = 12)
+	\]
+	<p>what is the probability of getting a value between 0.5 and 1.0?</p>
+	<hr width="75%">
+	<p></p>
+\[
+	P(0.5 \lt X \lt 1.0) \;\;=\;\; F(1.0) - F(0.5)
+	\]
+	<p>Excel has a function to find cumulative probabilities for Gamma distributions (but note that it takes the <strong>inverse</strong> of \(\beta\) as its 3rd parameters). To evaluate \(P(X \le x)\), the following can be typed into a spreadsheet cell:</p>
+	<p class="eqn">= GAMMA.DIST( \(x\), \(\alpha\), 1/\(\beta\), true)</p>
+	<p>Using this,</p>
+\[
+	P(0.5 \lt X \lt 1.0) \;\;=\;\; F(1.0) - F(0.5) \;\;=\;\; 0.9542 - 0.3937 \;\;=\;\; 0.560
+	\]		</div>
+		<p class="heading">Quantiles from Gamma distributions</p>
+		<p>In a similar way, there is no algebraic formula for the quantiles of a Gamma distribution, but computer algorithms are available to find them numerically.		</p>
+<div class="example">
+	<p class="exampleHeading">Example</p>
+			<p>If a random variable, \(X \sim \GammaDistn(\alpha = 7,\; \beta = 12)\), what is the lower quartile of its distribution?</p>
+	<hr width="75%">
+	<p></p>
+	<p>We want to find the value \(q\) such that \(F(q) = 0.25\). This can be evaluated in Excel by typing the following into a spreadsheet cell:</p>
+	<p class="eqn">= GAMMA.INV( 0.25, 7, 1/12)</p>
+	<p>giving the value 0.424.</p>
+		</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

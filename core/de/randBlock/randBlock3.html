@@ -1,0 +1,94 @@
+<html>
+<head>
+	<title>Data with no baseline treatment</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="randomised block design">
+	<meta name="dataset" content="Grazing of cattle in Uganda">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Testing for equal treatment means</p>
+
+  <p>In many data sets, there is no baseline treatment against which we might 
+		want to compare the other treatments. It is then unwieldy to analyse the data 
+		with confidence intervals for differences between all pairs of treatments.</p>
+	<p>Analysis should start with a single hypothesis test for whether all treatment 
+		means are equal.</p>
+	<dl>
+		<dt>Independent samples</dt>
+		<dd>If there is an independent sample from each treatment, we can perform 
+			a combined test for differences between the treatment means using a multi-group 
+			Analysis of Variance (anova) table, as described earlier in this chapter.</dd>
+		<dt>Linked samples</dt>
+		<dd>For data like the blocked and repeated measures examples on the previous 
+			page, this anova table should not be used. We will explain the details of 
+			a new test based on a modified anova table in the remainder of this section, 
+			but only mention at this stage that such a test exists and provides a p-value 
+			for testing whether the treatment means are equal.</dd>
+	</dl>
+	<p>In the following example, the p-value is shown and interpreted. </p>
+		
+  <div class="diagram">
+
+ 		
+    <p class="heading">Grazing cattle in Uganda</p>
+
+		<p>As part of study on the habits of Zebu cattle in Uganda, observers recorded 
+			the time that each animal was grazing. In order to compare how accurately 
+			the observers made these measurements, an experiment was conducted in which 
+			five observers simultaneously watched the same group of 10 cattle for 88 
+			minutes in one afternoon. Each person reported the number of minutes that 
+			each animal was observed grazing.</p>
+		<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="480" height="440">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="pairBlockProg.HiliteBlockApplet">
+<param name="yVarName" value="Time animal was observed grazing (min)">
+<param name="yValues" value="34 33 35 34 33 76 76 78 77 77 75 72 76 71 70 31 29 30 29 27 61 60 65 60 59 82 82 86 78 81 82 84 88 83 82 67 67 66 67 67 72 72 76 72 70 38 36 37 37 33">
+<param name="xVarName" value="Observer">
+<param name="xLabels" value="#Obs A# #Obs B# #Obs C# #Obs D# #Obs E#">
+<param name="xValues" value="0 1 2 3 4 0 1 2 3 4 0 1 2 3 4 0 1 2 3 4 0 1 2 3 4 0 1 2 3 4 0 1 2 3 4 0 1 2 3 4 0 1 2 3 4 0 1 2 3 4">
+<param name="blockVarName" value="Block (animal)">
+<param name="blockLabels" value="1 2 3 4 5 6 7 8 9 10">
+<param name="blockValues" value="5@0 5@1 5@2 5@3 5@4 5@5 5@6 5@7 5@8 5@9">
+<param name="yAxis" value="25 90 30 10">
+<param name="maxSummaries" value="9999.99 999.99 99.99 9.999">
+<param name="componentName" value="Total#Between observers#Residual">
+<param name="jitter" value="0.0">
+<param name="ignoreBlockText" value="Ignoring blocks (animals), there is no evidence of difference between the observers from the anova table.">
+<param name="showBlockText" value="Most variability is caused by differences between animals. By looking at differences between observers within animals, we get a more sensitive test &mdash; there is now strong evidence that the observers are different. (E.g. for most animals, observer E records them grazing for a shorter time than observer C.)">t &mdash; there is now strong evidence that the observers are different. (E.g. for most animals, observer E records them grazing for a shorter time than observer C.)">
+<param name="customText" value="Analysis ignoring blocks=Analysis ignoring blocks#Correct analysis taking account of blocks=Correct analysis taking account of blocks">
+</applet>
+</div>
+
+		<p>In this data set, we are interested in comparing the observers, but there 
+			is no 'baseline' observer.</p>
+		<dl>
+			<dt>Incorrect analysis based on independent samples</dt>
+			<dd>The anova table initially shows a test for whether the mean number of 
+				minutes grazing. This would have been an appropriate analysis if each 
+				observer had observed a <strong>different</strong> group of 10 cattle. 
+				<font color="#FF0000"> <strong>The incorrect analysis would have concluded 
+				that there is no evidence of systematic differences between the observers.</strong></font></dd>
+			<dt>Correct analysis</dt>
+			<dd>The same cattle were counted by all observers, so a different test should 
+				have been used. Select <strong>Correct analysis taking account of blocks</strong> 
+				to show the corresponding p-value for a correct analysis of the data. 
+				(The details of the test will be described later.) <font color="#FF0000"><strong>There 
+				is actually strong evidence of differences between the observers.</strong></font></dd>
+		</dl>
+		<br>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

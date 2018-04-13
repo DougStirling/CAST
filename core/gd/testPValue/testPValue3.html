@@ -1,0 +1,145 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Distribution of p-values</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="hypothesis test, p-value">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Interpretation of p-values</p>
+
+<p>Many different types of hypothesis test are commonly used in advanced statistics, but all
+share common features.
+</p>
+
+<ul>
+  <li>They ask whether data are consistent with a null hypothesis about a population, <b>H<sub>0</sub></b>,
+  	or support an alternative hypothesis, <b>H<sub>A</sub></b>.
+  <li>A p-value provides a numerical summary of the evidence against <b>H<sub>0</sub></b>.</li>
+  <li>The p-value is the probability of such 'extreme' data when <b>H<sub>0</sub></b>
+  	is true.</li>
+  <li>The closer the p-value to zero, the stronger the evidence against <b>H<sub>0</sub></b>.</li>
+</ul>
+
+<p>A p-value is a statistic that is evaluated from a random sample, so it has a
+distribution in the same way that a sample mean has a distribution. This distribution also
+has features that are common to all hypothesis tests. Understanding the distribution of
+p-values is the key to understanding how they are interpreted.
+</p>
+
+<p class=heading>Distribution of p-values</p>
+
+<p>In any hypothesis test,
+</p>
+
+<ul>
+    <li>When the null hypothesis, <b>H<sub>0</sub></b>, is true, all p-values between 
+      0 and 1 are equally likely. In other words, the p-value has a <a href="showNamedPage('normal2')">rectangular 
+      distribution</a> between 0 and 1. <br>
+      &nbsp;</li>
+  <li>On the other hand, if <b>H<sub>A</sub></b>
+	is true, then the p-values have a distribution for which p-values near zero are more likely
+	than p-values near 1. The precise distribution under the alternative hypothesis depends on the
+	specific hypotheses being tested and the true value of the parameter, but it always favours
+	values near 0.</li>
+</ul>
+
+<p>The diagram below shows typical distributions that might be obtained.
+</p>
+
+<p class=eqn><object data="images/pValueDistn.svg" width="525" height="187" alt="p-value distns"></object>
+</p>
+
+<div class="diagram">
+
+<p>To illustrate these properties, we use a test for whether a population mean is zero.</p>
+
+<table cellspacing="0" cellpadding="4" class="centred" style="color:#000000; background-color:#FFFFFF; border:1px solid #000000">
+	<tr>
+		<td align="right" valign="middle"><strong>null hypothesis</strong> &nbsp; <span style="font-family:Arial, Helvetica, sans-serif; font-size:16; font-weight:bold">H<sub>0</sub></span> : &nbsp;</td>
+		<td valign="middle">µ &nbsp;= &nbsp;0</td>
+	</tr>
+	<tr>
+		<td align="right" valign="middle"><strong>alternative hypothesis</strong> &nbsp; <span style="font-family:Arial, Helvetica, sans-serif; font-size:16; font-weight:bold">H<sub>A</sub></span> : &nbsp;</td>
+		<td valign="middle">µ &nbsp;≠ &nbsp;0</td>
+	</tr>
+</table>
+<p>In the diagram below, you will take random samples from a normal population for which
+<b>H<sub>0</sub></b> is true and, separately, from populations for which <b>H<sub>A</sub></b>
+is true.
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="testProg.MeanPValueApplet">
+<param name="varName" value="Simulated data">
+<param name="horizAxis" value="-20 20 -20 10">
+<param name="random" value="40 0 5 3298473 2.5">
+<param name="testInfo" value="0.0">
+<param name="alternative" value="not equal">
+<param name="dataDecimals" value="2">
+<param name="summaryDecimals" value="4">
+<param name="means" value="-4.0 4.0 0.1">
+<param name="cumulative" value="false">
+<param name="customText" value="Real value of=Real value of#sample mean=sample mean">
+</applet>
+</div>
+
+<p class=heading>When <b>H<sub>0</sub></b> holds
+</p>
+
+<p>Initially the population mean is zero, so
+<b>H<sub>0</sub></b> holds. A single sample
+from this population is shown on the left and the p-value for testing whether the population
+mean is zero is shown as a cross on the jittered dot plot on the bottom right.
+</p>
+
+<p>Click the button <strong>Take sample</strong> a few times to take other samples from this
+population and add their p-values to the display on the bottom right. After taking 50 or more samples,
+you should observe that the p-values are spread evenly between 0 and 1. This supports our
+assertion that the p-values have a rectangular distribution between 0 and 1 when
+<b>H<sub>0</sub></b> holds.
+</p>
+
+<p class=heading>When <b>H<sub>A</sub></b> holds
+</p>
+
+<p>Now use the slider to change the true population mean to 2.0. We are still testing
+whether the mean is zero, so <b>H<sub>A</sub></b> now holds. Take 40 or 50
+samples and observe that the p-values are usually closer to 0 than to 1.
+</p>
+
+<p>Click on some of the larger p-values on the jittered dot plot to display the samples
+that gave rise to them. The sample means vary and, by chance, some samples have means that are
+near 0.0, even when the population mean is 2.0; these samples result in larger p-values.
+</p>
+
+<p>Repeat this exercise with different population means (try at least 1.0, 2.0, 3.0 and -2.0).
+The further the population mean from the value targetted by <b>H<sub>0</sub></b>, 0.0,
+the more tightly clustered the p-values are around 0.0.
+</p>
+
+</div>
+
+<p>Although it is possible to obtain a low p-value when
+<b>H<sub>0</sub></b> holds
+and a high p-value when <b>H<sub>A</sub></b>
+holds, low p-values are more likely under
+<b>H<sub>A</sub></b> than under
+<b>H<sub>0</sub></b>.
+</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

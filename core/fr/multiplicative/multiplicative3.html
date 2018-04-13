@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Prévision des modèles multiplicatifs</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="additive model, multiplicative model, time series/multiplicative model">
+	<meta name="dataset" content="Visitor arrivals in NZ">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Obtenir des prévisions</p>
+
+  <p>Dans cette page, nous considérons les détails des prévisions avec des modèles multiplicatifs de la forme</p>
+<p class=eqn style="color:#009"><strong>Données &nbsp; = &nbsp; (Effet saisonnier) &nbsp; × &nbsp; Tendance &nbsp; × &nbsp; Cyclique &nbsp; × &nbsp; Résiduelle</strong></p>
+<p>Vous avez appris que ce modèle est équivalent à un modèle additif pour les données du journal.</p>
+<p class=eqn style="color:#009"><strong>log(Données) &nbsp; = &nbsp;Saisonnier* &nbsp; + &nbsp; Tendance* &nbsp; + &nbsp;Cyclique* &nbsp; + &nbsp;Résiduelle</strong>*</p>
+<p>où les nouveaux composants sont les logarithmes de ceux de l'équation précédente.</p>
+	<p>Le modèle est donc équipé d'abord de prendre les journaux des valeurs des données originales et montage d'un modèle additif de la manière habituelle. Toutefois, ce modèle donne des prévisions de <strong>log(données)</strong>.</p>
+	<p class=eqn style="color:#009"><strong>prévision de  log(Données) &nbsp; = &nbsp; (Prévision de Saisonnier*) &nbsp;+ &nbsp;(Prévision de Tendance*) &nbsp;+ &nbsp;(Prévision de Cyclique*)</strong></p>
+	<p>Pour obtenir des prévisions à l'échelle d'origine, une transformation inverse doit être appliquée. Si les logarithmes de base 10 ont été utilisés (comme dans les schémas de CAST), la transformation inverse est appropriée</p>
+	<table border="0" cellspacing="0" cellpadding="0" class="centred" style="color:#009;margin-top:0; margin-bottom:0">
+		<tr>
+			<td rowspan="2"><strong>prévision des  Données &nbsp; = &nbsp; 10</strong></td>
+			<td><strong><span style="font-size:90%">prévision de  log(Données)</span></strong></td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+	</table>
+	<p>Si les logarithmes naturels sont utilisés, la fonction exponentielle doit être utilisée pour retourner la prévision basée sur les données du journal d'une prévision dans les unités d'origine. (Les deux types de résultat dans les prévisions de logarithmes identiques.)</p>
+		
+	<div class="diagram"> 
+		<p class="heading">Nouvelle-Zélande prévision visiteurs</p>
+		<p>Le graphique chronologique ci-dessous montre à nouveau les arrivées de visiteurs sur une échelle logarithmique.</p>
+			
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.TransComponentsApplet">
+<param name="varName" value="NZ arrivées de visiteurs">
+<param name="values" value="146.4 80.8 85.4 152.6 144.7 87.2 91.2 155.0 139.2 91.4 96.1 155.0 145.1 91.9 104.8 166.6 155.1 111.8 112.0 188.7 184.5 132.2 132.0 220.9 204.0 137.6 142.3 249.5 233.8 158.1 167.9 284.5 245.0 161.9 183.7 274.3 247.6 168.0 197.7 287.7 280.0 190.8 205.8 299.5 271.0 176.1 209.8 306.5 307.2 199.6 220.9 327.9 338.1 218.3 232.7 367.8 394.5 240.2 273.9 414.0 414.9 264.2 290.6 439.1 447.9 293.6 307.7 479.4 470.6 283.6 303.7 439.3 438.1 277.2 302.7 466.4 471.0 298.9 330.1 507.2 512.7 340.5 362.0 571.5 574.4 ? ? ? ? ? ? ? ? ? ? ? ?">
+<param name="vertAxis" value="70 700 100 100">
+<param name="seasonName" value="4 Q1 Q2 Q3 Q4">
+<param name="seasonInfo" value="0 0 80">
+<param name="timeAxisName" value="Trimestre">
+<param name="timeSequence" value="0 1 97">
+<param name="logAxis" value="70 700 10 5">
+<param name="smallAxisFont" value="true">
+<param name="decimals" value="2">
+<param name="modelType" value="multiplicative">
+<param name="customText" value="Seasonal=Saisonnier#Trend=Tendance#Cyclical=Cyclique#Residual=Résiduelle#Fitted value=Valeur ajustée#Prediction=Prévision#Original scale=Échelle originale#Log scale=Échelle logarithmique">
+</applet>
+</div>
+
+		<p>Cochez les cases <strong>Saisonniers</strong>, <strong>Tendance</strong> et <strong>Cyclique</strong> pour afficher la somme de ces composants. Les composants sont également prévues trois années dans le futur dans le diagramme. Cliquez sur n'importe quelle prévision pour l'afficher numériquement, transformé à nouveau à l'échelle originale.</p>
+		<p>Maintenant, utilisez le curseur pour ajuster l'échelle revenir à un tracé des données d'origine. Notez que le modèle multiplicatif prolonge la tendance à la hausse des arrivées de visiteurs et des prévisions également un écart croissant entre l'été et les numéros d'hiver.</p>
+		
+	</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Sums of squares for groups of variables</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="general linear model, sequential sums of squares">
+	<meta name="dataset" content="Ancestors and height">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Grouping explanatory variables</p>  
+  <p>We have described sequential sums of squares when explanatory variables are 
+		added one at a time to the model. In some examples, it makes sense to group 
+		some explanatory variables together and consider them as an indivisible unit. 
+		For example, the diagram below shows how two explanatory variables, <em>Z</em> 
+		and <em>U</em>, might be grouped.</p>
+	<p class="eqn"><img src="images/combineSeq.gif" width="518" height="68"></p>
+	<p>The sequential sum of squares for such a group is simply the sum of the sequential 
+		sums of squares of the individual variables, and its degrees of freedom are 
+		the number of variables.</p>
+
+<div class="diagram">
+		<p class="heading">Effect of ancestors on height</p>  
+		<p>Data were collected from a random sample of men who had lived in mountain 
+			isolation for several generations.</p>
+		<div class="centred"><table class="centred" cellpadding="3" cellspacing="0">
+			<tr> 
+				<th colspan="4" align="center" style="border-bottom:1px solid #999999;">Response</th>
+			</tr>
+			<tr valign="top" bgcolor="#FFFFFF"> 
+				<td style="border-bottom:1px solid #999999;" align="right">Height</td>
+				<td style="border-bottom:1px solid #999999;" width="30" align="center">Y</td>
+				<td style="border-bottom:1px solid #999999;" width="20"></td>
+				<td style="border-bottom:1px solid #999999;">Height at age 18 (inches)</td>
+			</tr>
+<tr><td colspan="3">&nbsp;</td></tr>
+			<tr> 
+				<th style="border-bottom:1px solid #999999;" colspan="4" align="center" class="darkblue">Explanatory variables</th>
+			</tr>
+			<tr bgcolor="#FFFFFF"> 
+				<td align="right" class="darkblue">Birth</td>
+				<td width="30" align="center" valign="top" class="darkblue">B</td>
+				<td width="20">&nbsp;</td>
+				<td class="darkblue">Length at birth</td>
+			</tr>
+			<tr bgcolor="#FFFFFF"> 
+				<td align="right" class="darkblue">Mother</td>
+				<td width="30" align="center" valign="top" class="darkblue">M</td>
+				<td width="20">&nbsp;</td>
+				<td class="darkblue">Mother's height at age 18</td>
+			</tr>
+			<tr bgcolor="#FFFFFF"> 
+				<td align="right" class="darkblue">Father</td>
+				<td width="30" align="center" valign="top" class="darkblue">F</td>
+				<td width="20">&nbsp;</td>
+				<td class="darkblue">Father's height at age 18</td>
+			</tr>
+			<tr bgcolor="#FFFFFF"> 
+				<td align="right" class="darkblue">Grand 1</td>
+				<td width="30" align="center" valign="top" class="darkblue">Mm</td>
+				<td width="20">&nbsp;</td>
+				<td class="darkblue">Maternal grandmother's height at age 18</td>
+			</tr>
+			<tr bgcolor="#FFFFFF"> 
+				<td align="right" class="darkblue">Grand 2</td>
+				<td width="30" align="center" valign="top" class="darkblue">Mf</td>
+				<td width="20">&nbsp;</td>
+				<td class="darkblue">Maternal grandfather's height at age 18</td>
+			</tr>
+			<tr bgcolor="#FFFFFF"> 
+				<td align="right" class="darkblue">Grand 3</td>
+				<td width="30" align="center" valign="top" class="darkblue">Fm<</td>
+				<td width="20">&nbsp;</td>
+				<td class="darkblue">Paternal grandmother's height at age 18</td>
+			</tr>
+			<tr bgcolor="#FFFFFF"> 
+				<td style="border-bottom:1px solid #999999;" align="right" class="darkblue">Grand 4</td>
+				<td style="border-bottom:1px solid #999999;" width="30" align="center" valign="top" class="darkblue">Ff</td>
+				<td style="border-bottom:1px solid #999999;" width="20">&nbsp;</td>
+				<td style="border-bottom:1px solid #999999;" class="darkblue">Paternal grandfather's height at age 18</td>
+			</tr>
+		</table></div>
+		
+    <p>In these data, we would be interested in the influence of the parents' 
+			and grandparents' heights on the heights of the men, so it is reasonable 
+			to form a group with the two parent heights and another with the heights 
+			of the four grandparents.</p>
+		
+		<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="glmAnovaProg.CombineSsqApplet">
+<param name="yVarName" value="Height">
+<param name="yValues" value="67.2 69.1 67.0 72.4 63.6 72.7 68.5 69.7 68.4 70.4 67.5 73.3 70.0 69.8 63.6 64.3 68.5 70.5 68.1 66.1">
+<param name="xVariables" value="B M F Mm Mf Fm Ff">
+<param name="BVarName" value="Birth length, B">
+<param name="BValues" value="19.7 19.6 19.4 19.4 19.7 19.6 19.8 19.7 19.7 19.9 18.9 20.8 20.3 19.7 19.9 19.6 21.3 20.1 20.2 19.2">
+<param name="MVarName" value="Mother, M">
+<param name="MValues" value="60.5 64.9 65.4 63.4 65.1 65.2 64.3 65.3 64.5 63.4 63.3 66.2 64.9 63.5 62.0 63.5 66.1 64.8 62.6 62.2">
+<param name="FVarName" value="Father, F">
+<param name="FValues" value="70.3 70.4 65.8 71.9 65.1 71.1 67.9 68.8 68.7 70.3 70.4 70.2 68.8 70.3 65.5 65.2 65.4 70.2 68.6 67.3">
+<param name="MmVarName" value="Mat grandm, Mm">
+<param name="MmValues" value="65.7 62.6 66.2 60.7 65.5 63.5 62.4 61.5 63.9 65.9 63.7 65.4 65.2 63.1 64.1 63.9 64.8 65.3 63.7 63.6">
+<param name="MfVarName" value="Mat grandf, Mf">
+<param name="MfValues" value="69.3 69.6 68.8 68.0 65.5 66.2 71.4 66.0 68.8 69.0 68.2 66.6 70.2 64.4 67.7 70.0 68.4 65.5 69.8 70.9">
+<param name="FmVarName" value="Pat grandm, Fm">
+<param name="FmValues" value="65.7 64.6 64.0 64.9 61.8 67.3 63.4 62.4 62.3 63.7 66.2 61.7 62.4 65.1 62.1 64.2 66.4 63.7 66.7 63.6">
+<param name="FfVarName" value="Pat grandf, Ff">
+<param name="FfValues" value="67.3 66.4 69.4 67.1 70.9 68.6 69.4 67.7 68.8 65.1 68.5 64.0 67.0 67.0 66.5 64.5 70.8 66.9 68.0 66.7">
+<param name="maxSsq" value="999.99 99">
+<param name="componentNames" value="Birth len#M  after  Birth len#F  after  Birth len & M#Mm  after  Birth & Parents#Mf  after  Birth, Parents & Mm#Fm  after  Birth, Parents, Mm & Mf#Ff  after  Birth, Parents, Mm, Mf & Fm">
+<param name="combine" value="2:2:Combine parents:Parents  after  Birth#4:4:Combine grandparents:Grandparents  after  Birth & Parents">
+</applet> 
+</div>
+
+		<p>Click the checkboxes <strong>Combine parents</strong> and <strong>Combine 
+			grandparents</strong> to add their sequential sums of squares and degrees 
+			of freedom.</p>
+		<p class="heading">Reordering variables</p>
+		<p>In the sum of squares table below, the three groups of variables can be 
+			reordered. </p>
+		
+		<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="200">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="glmAnovaProg.AnovaTableReorderApplet">
+<param name="yVarName" value="Height">
+<param name="yValues" value="67.2 69.1 67.0 72.4 63.6 72.7 68.5 69.7 68.4 70.4 67.5 73.3 70.0 69.8 63.6 64.3 68.5 70.5 68.1 66.1">
+<param name="xVariables" value="B M F Mm Mf Fm Ff">
+<param name="BVarName" value="Birth length, B">
+<param name="BValues" value="19.7 19.6 19.4 19.4 19.7 19.6 19.8 19.7 19.7 19.9 18.9 20.8 20.3 19.7 19.9 19.6 21.3 20.1 20.2 19.2">
+<param name="MVarName" value="Mother, M">
+<param name="MValues" value="60.5 64.9 65.4 63.4 65.1 65.2 64.3 65.3 64.5 63.4 63.3 66.2 64.9 63.5 62.0 63.5 66.1 64.8 62.6 62.2">
+<param name="FVarName" value="Father, F">
+<param name="FValues" value="70.3 70.4 65.8 71.9 65.1 71.1 67.9 68.8 68.7 70.3 70.4 70.2 68.8 70.3 65.5 65.2 65.4 70.2 68.6 67.3">
+<param name="MmVarName" value="Mat grandm, Mm">
+<param name="MmValues" value="65.7 62.6 66.2 60.7 65.5 63.5 62.4 61.5 63.9 65.9 63.7 65.4 65.2 63.1 64.1 63.9 64.8 65.3 63.7 63.6">
+<param name="MfVarName" value="Mat grandf, Mf">
+<param name="MfValues" value="69.3 69.6 68.8 68.0 65.5 66.2 71.4 66.0 68.8 69.0 68.2 66.6 70.2 64.4 67.7 70.0 68.4 65.5 69.8 70.9">
+<param name="FmVarName" value="Pat grandm, Fm">
+<param name="FmValues" value="65.7 64.6 64.0 64.9 61.8 67.3 63.4 62.4 62.3 63.7 66.2 61.7 62.4 65.1 62.1 64.2 66.4 63.7 66.7 63.6">
+<param name="FfVarName" value="Pat grandf, Ff">
+<param name="FfValues" value="67.3 66.4 69.4 67.1 70.9 68.6 69.4 67.7 68.8 65.1 68.5 64.0 67.0 67.0 66.5 64.5 70.8 66.9 68.0 66.7">
+<param name="maxSsq" value="999.99 99">
+<param name="maxBarSsq" value="130">
+<param name="xGroups" value="1:B:Birth length, B#2:P:Parents, P#4:G:Grandparents, G">
+</applet> 
+</div>
+
+		<p>Since the data are observational, the explanatory variables are correlated, 
+			so the sums of squares associated with the three groups depends on the order 
+			of adding them to the model.</p>
+		<p>Observe that the grandparents' heights explain a lot of the variation if 
+			they are the first group of variables in the model, but explain little additional 
+			variation after taking account of the parents' heights.</p>
+
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

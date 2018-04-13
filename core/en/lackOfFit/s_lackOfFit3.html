@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Test for linearity</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<script type="text/javascript">
+		var dataImages = new Array();
+		var i;
+		for (i=0 ; i<5 ; i++)
+			dataImages[i] = new Image();
+		dataImages[0].src = "images/cotton2.gif";
+		dataImages[1].src = "images/pcbTrout2.gif";
+		dataImages[2].src = "images/soybean2.gif";
+		dataImages[3].src = "images/lettuce2.gif";
+		
+		function changeGifImage(select) {
+			var newIndex = select.selectedIndex;
+			document.images['dataImage'].src = dataImages[newIndex].src;
+		}
+	</script>
+
+	<meta name="index" content="curvature, nonlinear model, f distribution, analysis of variance">
+	<meta name="dataset" content="Nitrogen fertilizer and lettuce yield">
+	<meta name="dataset" content="Soybeans and ozone">
+	<meta name="dataset" content="PCB in trout">
+	<meta name="dataset" content="Fibre strength and cotton content">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">F ratio and p-value</p>
+<p>As with the earlier quadratic test, linearity can be tested with an F ratio 
+that compares the mean nonlinear and residual sums of squares. It has an F distribution 
+when the underlying model is linear. If there are <em>g</em> distinct x-values 
+(groups), </p>
+<p class=eqn><img src="images/factorFDistn.gif" width="264" height="38"> </p>
+<p>High values of the F ratio give evidence of nonlinearity, so the p-value is 
+the upper tail area from the F distribution.</p>
+<span class="green"> </span> 
+<p class="heading">Analysis of variance table</p>
+<p>The calculations are usually presented in an analysis of variance table that 
+is similar to those that were used earlier.</p>
+<p class=eqn><img src="images/factorAnovaTable.gif" width="520" height="181"> 
+</p>
+<p>If it is concluded from the F ratio for the nonlinear sum of squares that there 
+is no curvature, it is then possible to use the F ratio for the linear term to 
+test whether there is <strong>any</strong> relationship.</p>
+
+<div class="diagram"> 
+<p class="heading">Examples</p>
+<p>Analysis of variance is used to test for curvature in several data sets below. Read the conclusion for each test
+carefully.</p>
+
+<form>
+<select name="dataset" onChange="changeGifImage(this)">
+<option value="0" selected>Fibre strength and cotton content</option>
+<option value="1">PCB concentration in trout</option>
+<option value="2">Soybean yield and ozone</option>
+<option value="3">Nitrogen fertiliser and lettuce plants</option>
+</select>
+</form>
+
+<p align="center"><img src="images/cotton2.gif" name="dataImage" width="580" height="534"></p>
+</div>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

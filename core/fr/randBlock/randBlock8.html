@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Anova table and examples</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<script type="text/javascript">
+		var svgNames = new Array();
+		svgNames[0] = "images/painRelief.svg";
+		svgNames[1] = "images/aminoAcidUptake.svg";
+		svgNames[2] = "images/penicillin.svg";
+		svgNames[3] = "images/grazingCattle.svg";
+		
+		function changeSvgImage(select) {
+			var newIndex = select.selectedIndex;
+			var image = document.getElementById('dataImage');
+			image.src = svgNames[newIndex];
+		}
+	</script>
+
+	<meta name="index" content="randomised block design, analysis of variance, f ratio">
+	<meta name="dataset" content="Amino acid uptake by fish">
+	<meta name="dataset" content="Grazing of cattle in Uganda">
+	<meta name="dataset" content="Acupuncture and codiene">
+	<meta name="dataset" content="Penicillin production yield">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Anova table</p>
+
+  <p>The total sum of squares can be split into three component sums of squares.</p>
+	<p class=eqn><object data="images/ssqEqn.svg" width="453" height="50" alt="SStotal = SSblock + SStreat + SSresidual"></object> 
+	</p>
+	<p>These sums of squares are usually laid out in an <strong>analysis of variance</strong> 
+		table (or simply <strong>anova</strong> table).</p>
+	<p class=eqn><object data="images/randBlockAnovaTable.svg" width="592" height="186" alt="SStotal = SSblock + SStreat + SSresidual"></object>
+	</p>
+	<p>The anova table adds a few extra columns:</p>
+	<dl>
+		<dt>Degrees of freedom</dt>
+		<dd>The degrees of freedom for block and treatment are the number of blocks 
+			or treatments minus one. The residual degrees of freedom is the total degrees 
+			of freedom minus the block and treatment degrees of freedom.</dd>
+		<dt>Mean sums of squares</dt>
+		<dd>These are the sums of squares divided by their degrees of freedom.</dd>
+		<dt>F-ratios</dt>
+		<dd>For the blocks and treatments, the F-ratio divides the mean sum of squares 
+			by the mean residual sum of squares.</dd>
+	</dl>
+	<p class="heading">Tests</p>
+	<p>The treatment sum of squares depends on the differences between the treatment 
+		means and the overall mean. There is strongest evidence of differences between 
+		the treatments if the treatment sum of squares is large, relative to the residual 
+		sum of squares. </p>
+	<p>The F-ratio for the treatments contains this information in a form that can 
+		be used for a formal hypothesis test for whether the mean response varies 
+		between treatments.</p>
+	<table width="80%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+		<tr> 
+			<td align="center"><font color="#000000"><strong>If there are no differences 
+				between the treatments, the F-ratio would be expected to be around 1. 
+				Larger values of F suggest that the treatments differ.</strong></font></td>
+		</tr>
+	</table>
+	<p>The F-ratio for the blocks holds evidence about whether the blocks differ, 
+		but it is the F-ratio for treatments that is usually of most interest.</p>
+	<p class="heading">P-values and tests</p>
+	<p>A hypothesis test for whether there are differences between the treatments 
+		is based on the F-ratio for treatments. It asks whether the F-ratio for treatments 
+		is unusually high by comparing the F-ratio to a type of standard distribution 
+		called an F distribution &mdash; the p-value for treatments is the probability 
+		of getting such a high F-ratio if all treatments were really identical.</p>
+	<p>This p-value is often added to the anova table. It is interpreted in a similar 
+		way to other p-values:</p>
+	<dl>
+		<dt>p-value &gt; 0.1</dt>
+		<dd>No evidence of a difference between treatments</dd>
+		<dt>0.1 &lt; p-value &lt; 0.05</dt>
+		<dd>Very mild evidence of a difference between treatments</dd>
+		<dt>0.05 &lt; p-value &lt; 0.01</dt>
+		<dd>Moderately strong evidence of a difference between treatments</dd>
+		<dt>p-value &lt; 0.01</dt>
+		<dd> Strong evidence of a difference between treatments</dd>
+	</dl>
+	<p>A similar p-value can be used to test whether there are any differences between 
+		the blocks.</p>
+	
+<div class="diagram"> 
+		<p class="heading">Examples</p>
+		<table width="80%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+			<tr> 
+				<td align="center"><font color="#000000"><strong>In practice, computer 
+					software will produce the anova table for you, so you only need to interpret 
+					the p-value associated with the treatments.</strong></font></td>
+			</tr>
+		</table>
+		<p>The diagram below shows the analysis of variance tables for a few data 
+			sets and interprets their p-values. Use the pop-up menu to change data sets.</p>
+
+
+<form>
+<select name="dataset" onChange="changeSvgImage(this)">
+<option value="0" selected>Dental pain relief</option>
+<option value="1">Amino acid uptake</option>
+<option value="2">Penicillin production processes</option>
+<option value="4">Cattle grazing in Uganda</option>
+</select>
+</form>
+
+<p align="center"><iframe src="images/painRelief.svg" id="dataImage" width="574" height="568" frameborder="0"></iframe></p>
+
+</div>
+<br>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Les dangers de l'extrapolation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="regression model, nonlinear model, curvature, transformations, quadratic model, extrapolation">
+	<meta name="dataset" content="Pressure and boiling point of water">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">La forme d'une relation est seulement connu dans les données</p>
+
+<p>Les modèles que nous avons utilisés pour décrire la relation entre une réponse,&nbsp;<em>Y</em>&nbsp;et des variables explicatives,&nbsp;<em>X,</em>&nbsp;sont généralement que des approximations de la «vraie» relation.&nbsp;Par exemple, un nuage de points&nbsp;peut&nbsp;<strong>paraître</strong> linéaire, mais nous n'avons vraiment aucune information sur la forme de la relation au-delà de nos données.</p>
+
+<p class=eqn><img class="gif" src="../../en/curvature/images/extrapolate.gif" width="256" height="166">
+
+<p>En conséquence, les modèles que nous avons décrit peut être utilisé pour prédire&nbsp;<em>Y</em>&nbsp;à partir des valeurs de&nbsp;<em>X</em>&nbsp;qui sont dans la fourchette de valeurs x dans nos données, mais nous devrions être très prudents quant à l'aide d'un modèle équipé pour des prédictions dehors de cette plage.&nbsp;C'est ce qu'on appelle&nbsp;<strong>l'extrapolation</strong>et il peut être mal dans l'erreur.</p>
+
+  <table width="75%" border="1" class="centred" cellpadding="10" cellspacing="0" bgcolor="#FFFFFF">
+    <tr>
+      <td><strong>Évitez d'utiliser un modèle pour prédire&nbsp;<em>Y</em>&nbsp;bien au-delà des données disponibles.</strong></td>
+    </tr>
+  </table>
+  <p class="heading">Quel modèle pour la courbure est la meilleure?</p>
+  <p>Nous avons décrit deux types de modèle non linéaire pour les données à courbure &mdash; modèles quadratiques et des modèles linéaires basés sur des variables transformées.&nbsp;Il ya beaucoup d'ensembles de données pour lesquels les deux types d'ajustement du modèle tout aussi bien.</p>
+  <p>Toutefois, les différents types de modèles peuvent donner des prévisions très différentes lorsqu'il est utilisé pour extrapoler à partir des données observées.&nbsp;Les données ne peuvent pas nous aider à décider ce qui est mieux.</p>
+
+<div class="diagram">
+
+<p class="heading">Forbes des données</p>
+
+<p>Un tel ensemble de données sont les données de Forbes, pour lequel nous espérons pour décrire la relation entre la pression barométrique,&nbsp;<em>Y,</em>&nbsp;et le point d'ébullition de l'eau,&nbsp;<em>X.</em></p>
+
+<p>Nous avons vu précédemment que le modèle quadratique monté ainsi, la courbe des carrés est moins</p>
+	
+	<p class=eqn><strong>estimation de la pression </strong>&nbsp; = &nbsp; 116.59 &nbsp;− &nbsp;1.4165 <em>x</em> &nbsp;+&nbsp; 0.004752 <em>x</em><sup>2</sup></p>
+	<p>Le logarithme de la pression est également à peu près linéairement liées à ébullition avec l'équation</p>
+	<p class=eqn><strong>estimation de&nbsp;<em>ln</em>&nbsp;(pression</strong>) &nbsp; = &nbsp;−0.9518<em></em> &nbsp;+&nbsp; 0.02052 <em>x</em></p>
+	<p>Cette équation peut être réécrite sous la forme</p>
+	<p class=eqn><strong>estimation de la pression </strong>&nbsp; = &nbsp; <em>exp</em> (−0.9518<em></em> &nbsp;+&nbsp; 0.02052 <em>x</em>)<sup></sup></p>
+	<p>Les deux modèles (quadratique dans les mesures originales et linéaire dans la mesure transformé) à la fois ajuster les données aussi bien avec des parcelles résiduelles qui sont presque identiques.&nbsp;Les données ne donnent aucune indication sur lequel des modèles alternatifs convient le mieux.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="380">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.ChangeScalesApplet">
+<param name="xVarName" value="Point d'ébullition">
+<param name="yVarName" value="Pression">
+<param name="xValues" value="194.5 194.3 197.9 198.4 199.4 199.9 200.9 201.1 201.4 201.3 203.6 209.5 208.6 210.7 211.9 212.2">
+<param name="yValues" value="20.79 20.79 22.40 22.67 23.15 23.35 23.89 23.99 24.02 24.01 25.14 28.49 27.76 29.04 29.88 30.06">
+<param name="horizAxis" value="100 280 100 10">
+<param name="vertAxis" value="0 140 0 10">
+<param name="horiz2Scale" value="192 215">
+<param name="vert2Scale" value="20 32">
+<param name="customText" value="Data=Données#Extrapolate=Extrapoler#No model=Aucun modèle#Log linear model=Modèle log-linéaire#Both models=Les deux modèles">
+</applet>
+</div>
+
+<p>Utilisez le menu déroulant pour afficher les deux lignes équipées&nbsp;<strong>(Modèle quadratique</strong> et <strong>Modèle log-linéaire).</strong>&nbsp;Observez qu'ils coïncident presque.</p>
+
+<p>Sélectionnez l'option&nbsp;<strong>Les deux modèles,</strong>&nbsp;puis utilisez le curseur pour étendre les deux axes.&nbsp;Lorsque le point d'ébullition est inférieure à environ 150 degrés, soit plus de 250 degrés, les deux modèles donnent des prévisions très différentes de la pression.</p>
+<p>En effet, le modèle quadratique (ce qui est vert) prédit que la pression va&nbsp;<strong>augmenter</strong>&nbsp;lorsque le point d'ébullition est inférieure à 150 degrés, ce qui n'est pas conforme à la physique!&nbsp;Pour ces données, le modèle log-linéaire est susceptible de donner de meilleures prévisions à bas points d'ébullition.</p>
+<p>Cependant nous avons vraiment peu d'idée sur lequel la courbe est meilleure au point d'ébullition élevé - en fait,&nbsp;<strong>ni ne</strong>&nbsp;peut prédire adéquatement la pression.&nbsp;Le point ici est que ...</p>
+    <table width="85%" border="1" class="centred" cellpadding="10" cellspacing="0" bgcolor="#FFFFFF">
+      <tr> 
+        <td><strong>Prédictions de tout modèle sera très fiable si les prédictions sont faites loin de valeurs des variables explicatives, où nous avons des données.</strong></td>
+      </tr>
+    </table>
+    
+		<br>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

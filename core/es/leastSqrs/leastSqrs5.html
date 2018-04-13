@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Curvatura y afloramientos</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="regression model, linear model, curvature, outliers">
+	<meta name="dataset" content="Temperatures and locations of US cities">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Un modelo linear simple no es siempre apropiado</p> 
+ 
+  <p>Un modelo linear simple para una respuesta Y en términos de variable explicativa X es a menudo un resumen útil de una relación, pero no es apropiado para todos los conjuntos de datos.</p> 
+  <div class="boxed"> 
+  	<p>Un modelo linear simple es solamente apropiado cuando la nube de cruces en un scatterplot de los datos se separa regularmente alrededor de una línea recta.</p> 
+  </div> 
+  <p>Si las cruces se dispersan alrededor de una curva, la relación se llama <strong>no linear</strong> y otros modelos deben ser utilizados. Consideraremos modelos no lineares en la sección siguiente.</p> 
+	<p>En esta página, examinamos otro problema.</p> 
+	<p class="heading">Los afloramientos deben ser investigados</p> 
+	<p><strong>Un afloramiento</strong> es una observación que no se ajusta al patrón y a la variabilidad exhibidos por el resto de los datos. En un modelo linear, el tipo más importante de afloramiento es un punto de referencias que miente en una distancia de la línea que cabría con el resto de los datos.  </p> 
+ 
+<p>La correspondencia individual a cualquier afloramiento debe ser examinada cuidadosamente. Los errores de la grabación o de la transcripción pueden ser la causa. Alternativamente, puede ser posible determinar una cierta característica de distinción del individuo que es la base de la medida inusual de la respuesta. 
+</p> 
+ 
+<p>Si un afloramiento es bastante extremo, o si una causa especial para su comportamiento inusual se puede encontrar de la información exterior, el individuo puede ser clasificado como aberrante y ser suprimido del conjunto de datos.</p> 
+ 
+<div class="boxed"> 
+	<p>Es importante <strong>mirar cualquier conjunto de datos gráficamente</strong> antes de caber un modelo linear para comprobar que no hay curvatura o afloramientos presentes.</p> 
+</div> 
+<div class="diagram"> 
+ 
+<p class="heading">Temperatura y latitud</p> 
+ 
+<p>El scatterplot abajo demuestra la temperatura máxima de enero (grados Fahrenheit) y la latitud (norte de los grados del ecuador) para las varias ciudades en los E.E.U.U., según lo publicado en el <cite>análisis y la regresión de datos del</cite> libro, por F.Mosteller y J.W.Tukey en 1977. La línea de los m3inimos cuadr3aticos se sobrepone en los datos. 
+</p> 
+ 
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="350" height="500"> 
+<script type="text/javascript">writeAppletParams();</script> 
+<param name="appletName" value="regnProg.LSMapApplet"> 
+<param name="xVarName" value="Latitud"> 
+<param name="yVarName" value="Enero Temp"> 
+<param name="zVarName" value="Longitud"> 
+<param name="labelName" value="Ciudad"> 
+<param name="xValues" value="30 32 58 33 34 34 37 39 41 39 38 38 24 25 33 21 43 41 39 41 42 37 38 29 43 39 42 42 46 44 38 46 41 43 39 35 42 40 35 35 46 39 41 35 45 40 39 32 44 36 35 29 29 40 44 36 47 47 43 43 41 18"> 
+<param name="yValues" value="61 59 30 64 51 65 55 42 37 41 44 67 74 76 52 79 36 33 37 29 27 42 44 64 32 44 37 33 23 22 40 29 32 32 43 46 31 40 51 52 20 41 35 46 44 39 40 61 34 49 50 61 64 37 25 50 44 31 26 28 37 81"> 
+<param name="zValues" value="88 86 134 112 92 118 122 104 72 75 77 81 81 80 84 157 116 87 86 93 90 97 85 90 70 76 71 83 84 93 90 112 95 71 74 106 73 73 80 78 100 84 81 97 122 76 75 79 103 86 101 94 95 111 73 76 122 117 89 87 104 66"> 
+<param name="labels" value="#Mobile, Ala# #Montgomery, Ala# #Juneau, Alaska# #Phoenix, Ariz# #Litle Rock, Ark# #Los Angeles, Calif# #San Francisco, Calif# #Denver, Col# #New Haven, Conn# #Wilmington, Del# #Washington, DC# #Jacksonville, Fla# #Key West, Fla# #Miami, Fla# #Atlanta, Ga# #Honolulu, Hawaii# #Boise, Idaho# #Chicago, Ill# #Indianapolis, Ind# #Des Moines, Iowa# #Dubuque, Iowa# #Wichita, Kansas# #Louisville, Ky# #New Orleans, La# #Portland, Maine# #Baltimore, Md# #Boston, Mass# #Detroit, Mich# #Sault Ste Marie, Mich# #Minn St Paul, Minn# #St Louis, Missouri# #Helena, Montana# #Omaha, Nebraska# #Concord, NH# #Atlantic City, NJ# #Albuquerque, NM# #Albany, NY# #New York, NY# #Charlotte, NC# #Raleigh, NC# #Bismarck, ND# #Cincinnati, Ohio# #Cleveland, Ohio# #Oklahoma City, Okla# #Portland, Ore# #Harrisburg, Pa# #Philadelphia, Pa# #Charlestown, SC# #Rapid City, SD# #Nashville, Tenn# #Amarillo, Tx# #Galveston, Tx# #Houston, Tx# #Salt Lake City, Utah# #Burlington, Vt# #Norfolk, Va# #Seattle Tacoma, Wash# #Spokane, Wash# #Madison, Wisc# #Milwaukee, Wisc# #Cheyenne, Wyoming# #San Juan, Puerto Rico#"> 
+<param name="model" value="111.67 -1.67 1.0"> 
+<param name="horizAxis" value="15 60 20 10"> 
+<param name="vertAxis" value="0 85 0 10"> 
+<param name="decimals" value="2 2 2 2"> 
+<param name="change1" value="#11 38 30#"> 
+<param name="change1Name" value="Correcto Jacksonville"> 
+<param name="change2" value="#2 58 *# #44 45 *# #56 47 *#"> 
+<param name="change2Name" value="Eliminar NorthWest"> 
+</applet> 
+</div> 
+ 
+<p>Hay cuatro residuales inusualmente grandes que se pudieron considerar para ser afloramientos. Son todo el considerablemente más caliente que el modelo prediría para su latitud. <strong>La fricción</strong> con el ratón sobre los cuatro puntos revela sus nombres y destaca sus posiciones respecto a un mapa de los E.E.U.U. 
+</p> 
+ 
+    <p>Usted pudo haber notado aquél de los afloramientos, Jacksonville, está norte demasiado lejano en el mapa. <strong>La latitud de Jacksonville fue registrada incorrecto</strong> en el conjunto de datos publicado como 38 grados en vez de 30 grados. Chasque el checkbox <strong>Jacksonville correcta</strong> para cambiar la latitud de Jacksonville a 30 grados. Observe que la posición de la línea de los m3inimos cuadr3aticos no está afectada mucho.  </p> 
+ 
+<p>Que siguen habiendo los tres afloramientos son Portland, Seattle y Juneau. Éstos están todos en el noroeste de los E.E.U.U., y una poca investigación geográfica demuestra que son calentadas por una corriente de mar en el invierno. La retención de estas ciudades nos hace sobrestimar las temperaturas de otras ciudades de la alto-latitud. Su característica común sugiere que quizás modelemos el noroeste de los E.E.U.U. por separado del resto del país. Chasque el <strong>noroeste de la cancelación del</strong> checkbox para quitar las tres ciudades. Los m3inimos cuadr3aticos alinean ahora caben mucho más cercano a los puntos de referencias restantes. 
+</p> 
+ 
+</div> 
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

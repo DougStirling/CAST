@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Distribution of mean from a sample</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<script type="text/javascript">
+		var svgNames = new Array();
+		svgNames[0] = "images/yamGrowth.svg";
+		svgNames[1] = "images/boneShape.svg";
+		svgNames[2] = "images/appleTree.svg";
+		svgNames[3] = "images/psa.svg";
+		svgNames[4] = "images/silkworm.svg";
+		
+		function changeSvgImage(select) {
+			var newIndex = select.selectedIndex;
+			var image = document.getElementById('dataImage');
+			image.src = svgNames[newIndex];
+		}
+	</script>
+
+	<meta name="index" content="mean, estimation">
+	<meta name="dataset" content="Apple tree growth">
+	<meta name="dataset" content="Prostate acid measurements">
+	<meta name="dataset" content="Mammal thigh bones">
+	<meta name="dataset" content="Silkworm poisoning">
+	<meta name="dataset" content="Yam growth">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Need for multiple values to assess variability</p>
+
+  <p>In most situations, we need to make two or more measurements of a variable 
+		to get any information about its variability. For example, a sample of size 
+		two or more is needed to calculate the sample standard deviation, <em>s</em>.</p>
+	<p>A single value contains no information about the quantity's variability.</p>
+	<p class="heading">Achieving the impossible?</p>
+	<p>It would appear necessary to record several sample means (from different 
+		random samples) before we could obtain an estimate of the standard deviation 
+		of the sample mean.</p>
+	<center>
+		<table border="1" cellspacing="0" cellpadding="5" bgcolor="white" width="75%">
+			<tr> 
+				<th align="CENTER">In practice, we rarely have the luxury of repeated 
+					samples, so how can we assess the variability of a sample mean on the 
+					basis of a single sample?</th>
+			</tr>
+		</table>
+	</center>
+	<p>Fortunately, we do not need multiple samples to do this. We can estimate 
+		the distribution of the sample mean from a <strong>single sample</strong>, 
+		based on the equations </p>
+	<p class=eqn><span style="position:relative; top:6px"><img src="../../images/symbol.muXbar.png" width="19" height="16" align="baseline"></span> &nbsp;<span class="black">=&nbsp; &mu;</span>
+</p>
+
+<p class=eqn><span style="position:relative; top:5px"><img src="../../images/symbol.sigmaXbar.png" width="19" height="16" align="baseline"></span> &nbsp;<span class="black">=</span>&nbsp; <span style="position:relative; top:12px"><img src="../../images/symbol.sigmaOverRootN.png" width="26" height="31" align="baseline"></span>
+</p>
+
+<p>We use the sample mean and standard deviation, <img src="../../images/symbol.xBar.png" width="10" height="10" align="baseline"> 
+and <em>s</em> 
+in these equations as estimates of µ 
+and σ.</p>
+<div class="diagram"> 
+<p class=heading>Examples</p>
+		<p>In the examples below, the data are used to find an estimate of the underlying 
+			population distribution &mdash; our best guess is a distribution with the same 
+			mean and standard deviation as the data.</p>
+		<p>(We have drawn this estimated population distribution as a normal distribution, 
+			but it could have a different shape (e.g. skew) with the same mean and standard 
+			deviation.)</p>
+		<p>The sample mean will be approximately normal and its standard deviation 
+			can be found from the estimated population standard deviation.</p>
+<form>
+<select name="dataset" onChange="changeSvgImage(this)">
+<option value="0" selected>Yam growth (cm per week)</option>
+<option value="1">Mammal thigh bone shape</option>
+<option value="2">Apple tree growth (cubic cm)</option>
+<option value="3">PSA</option>
+<option value="4">Silkworm larva survival (sec)</option>
+</select>
+</form>
+
+<p align="center"><iframe src="images/yamGrowth.svg" id="dataImage" width="540" height="469" frameborder="0"></iframe></p>
+
+		<p>Note that the last two data sets are probably not from normal populations 
+			-- they seem a bit skew. However the sample means will still be approximately 
+			normal. </p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

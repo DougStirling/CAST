@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Explained and unexplained variation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="variation, explained variation, unexplained variation">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Explained and unexplained variation</p>
+<p>On the previous page, we distinguished between variation between the treatment means and response variation within each treatment. Both are important in order to assess whether the factor really affects the response. We now generalise these concepts to help extend them to different types of experiment.</p>
+<dl>
+	<dt>Explained variation</dt>
+	<dd>Variation between the treatment means is response variation that is <strong>explained</strong> by the factor in the model.</dd>
+	<dt>Unexplained variation</dt>
+	<dd>Variation within each factor level is <strong>unexplained</strong> by the factor in the model.</dd>
+</dl>
+<p class="heading">Linear model for a numerical factor</p>
+<p>The same concepts of explained and unexplained variation apply to experiments with a numerical factor in which the response is modelled by a linear model of the form:</p>
+<div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+	<tr>
+		<td align="center"><br>
+				<br>
+				<span class="black em">y<sub>ij</sub></span> &nbsp;= &nbsp;</td>
+		<td align="center"><span class="green">(<em>explained <br>
+			by factor</em>)<br>
+			β<sub>0</sub>&nbsp;+&nbsp;β<sub>1</sub> <em> x<sub>i</sub></em></span></td>
+		<td align="center"><br>
+				<br>
+			&nbsp;+&nbsp;</td>
+		<td align="center" class="red"><br>
+			(<em>unexplained</em>)<br>
+			ε<em><sub>ij</sub></em></td>
+		<td width="30" align="center">&nbsp;</td>
+		<td align="center"><span class="eqn"><br>
+					<br>
+			for <em>i</em> = 1 to <em>g</em> and <em>j</em> = 1 to <em>n<sub>i</sub></em></span></td>
+	</tr>
+</table></div>
+<p class="eqn">where <span class="red">ε<em><sub>ij</sub></em></span> &nbsp;∼&nbsp; normal (0<em><sub></sub></em>, σ)</p>
+<p>We are again interested in whether the factor affects the response. For the above linear model, this corresponds to the hypotheses:</p>
+<div class="centred"><table border="0" class="centred" cellpadding="3" cellspacing="0">
+	<tr>
+		<td class="black arial bold">H<sub>0</sub> : &nbsp; </td>
+		<td class="green">β<sub>1 &nbsp;</sub>= &nbsp;0<em><sub></sub></em></td>
+		</tr>
+	<tr>
+		<td class="black arial bold">H<sub>A</sub> : &nbsp;</td>
+		<td class="green">β<sub>1 &nbsp;</sub>≠ &nbsp;0<em><sub></sub></em></td>
+		</tr>
+</table></div>
+<p class="heading">Assessing whether the factor affects the response</p>
+<p>In practice, when this model is fitted to experimental data by least squares, the least squares slope, <span class="green"><em>b</em><sub>1</sub></span>, is unlikely to be exactly zero, even if the factor does not affect the response.</p>
+<div class="centred"><div class="boxed">
+	<p>How far from zero should <span class="green"><em>b</em><sub>1</sub></span> be to allow us to conclude that the factor does affect the response? </p>
+</div></div>
+<p>Two quantities are again required to help us answer this question. The  least squares residuals describe variation that is <strong>unexplained</strong> by the model.</p>
+<dl>
+	<dt>Unexplained variation</dt>
+	<dd>The  least squares residuals describe variation that is <strong>unexplained</strong> by the model &mdash; the bigger the residuals, the more unexplained variation.</dd>
+	<dt>Explained variation</dt>
+	<dd>This clearly depends on the size of the least squares slope, <span class="green"><em>b</em><sub>1</sub></span>.</dd>
+</dl>
+<p>Both explained and unexplained variation must be used to assess whether the factor really does affect the response.</p>
+<div class="diagram"> 
+<p class="heading">Explained variation</p>
+<p>The scatterplot below shows  data that might have arisen from a completely randomised experiment in which 10 experimental units are given each of 4 levels of a factor. </p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.VariabilityApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Factor, x">
+<param name="xValues" value="4@1 4@2 4@3 4@4">
+<param name="regnModel" value="0.8 2.0 1.5">
+<param name="randomSeed" value="621145782">
+<param name="yAxis" value="2 10 2 1">
+<param name="xAxis" value="0.8 4.2 1 1">
+<param name="decimals" value="3">
+<param name="initialPropns" value="0.3 0.7">
+<param name="explainedName" value="Explained variation">
+<param name="customText" value="Low=Low#High=High">
+</applet>
+</div>
+
+    
+<p>Use the slider to alter the difference between the treatment means. Observe that:</p>
+<ul>
+<li>When the least squares slope (and hence the explained variation) is high, we become more certain that it could not have been so far from zero by chance, and that the factor really does affect the response.</li>
+</ul>
+
+<p class="heading">Unexplained variation</p>
+
+<p>The diagram below is similar, but the slider adjusts the spread of values around the least squares line.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.VariabilityApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Factor, x">
+<param name="xValues" value="4@1 4@2 4@3 4@4">
+<param name="regnModel" value="0.8 2.0 1.5">
+<param name="randomSeed" value="621145782">
+<param name="yAxis" value="2 10 2 1">
+<param name="xAxis" value="1 4 1.0 0.5">
+<param name="decimals" value="3">
+<param name="initialPropns" value="0.3 0.7">
+<param name="unexplainedName" value="Unexplained variation">
+<param name="customText" value="Low=Low#High=High">
+</applet>
+</div>
+
+<p>Observe that ... </p>
+
+<ul>
+	<li>The smaller the residuals, the more certain we become that
+		the model slope is really non-zero.</li>
+</ul>
+
+<p class="heading">Does the factor really affect the response?</p>
+
+		<p>The evidence for the underlying model parameter, <span class="green">β<sub>1</sub></span>, being non-zero depends on both the 
+			explained and unexplained variation. It is strongest when:</p>
+		<div class="centred"><div class="boxed"><ul>
+			<li>the explained variation is relatively high, and</li>
+			<li>the unexplained variation is relatively low.</li>
+		</ul>
+		</div></div>
+
+<br>
+</div>
+
+<p>In the following page, we will show how to obtain summary statistics describing the explained and unexplained variation. They will be used in a formal hypothesis test for whether the factor affects the response.</p>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

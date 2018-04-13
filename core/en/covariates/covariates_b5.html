@@ -1,0 +1,213 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Blocks and covariates</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="covariate, anova, analysis of variance, blocks">
+	<meta name="dataset" content="Pruning cherry trees">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Blocks of experimental units</p>
+  <p>When the experimental units are grouped in blocks, the model for the response should contain a term explaining differences between the blocks. If there are covariates, terms for them can also be used. For example, if there are blocks, a single numerical covariate and one factor, the following model may be used.</p>
+  <div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+		<tr>
+			<td align="center"><br>
+					<br>
+					<span class="em black">y<sub>ij</sub></span>  &nbsp;= &nbsp;<span class="blue">µ</span></td>
+			<td align="center"><br>
+					<br>
+				&nbsp;+&nbsp;</td>
+			<td align="center" class="purple"><em>explained <br>
+				by blocks</em><br>
+				α<em><sub>i</sub></em></td>
+			<td align="center"><br>
+					<br>
+				&nbsp;+&nbsp;</td>
+			<td align="center" class="red"><em>explained <br>
+				by factor</em><br>
+				β<em><sub>i</sub></em></td>
+			<td align="center"><br>
+					<br>
+				&nbsp;+&nbsp;</td>
+			<td align="center" class="green"><em>explained <br>
+			by covariate</em><br>
+γ&nbsp;<em>x<sub>i</sub></em></td>
+			<td align="center"><br>
+					<br>
+				&nbsp;+&nbsp;</td>
+			<td align="center"><br>
+					<br>
+				ε<em><sub>ij</sub></em></td>
+		</tr>
+	</table></div>
+  <p>Both the blocks and covariate should be included in the model before testing the effect of the factor.</p>
+  <div class="diagram">
+		<p class="heading">Pruning sweet cherry trees</p>
+  	<p>The cherry tree example at the start of the previous page was incompletely described there. <strong>Four</strong> different pruning systems were used in the experiment and it was laid out as a randomised block design with a row of four trees in each block. There were six blocks oriented perpendicular to the prevailing wind and the yields from the full experiment were:</p>
+  	<div class="centred"><table border="0" class="centred" cellpadding="4" cellspacing="0">
+  		<tr>
+  			<th>&nbsp;</th>
+  			<th colspan="11">Pruning system</th>
+ 			</tr>
+  		<tr>
+  			<th>&nbsp;</th>
+  			<th colspan="2">1</th>
+  			<th>&nbsp;</th>
+  			<th colspan="2">2</th>
+  			<th>&nbsp;</th>
+  			<th colspan="2">3</th>
+  			<th>&nbsp;</th>
+  			<th colspan="2">4</th>
+ 			</tr>
+  		<tr>
+  			<th>Block</th>
+  			<th>Area</th>
+  			<th>Yield</th>
+  			<th width="8">&nbsp;</th>
+  			<th>Area</th>
+  			<th>Yield</th>
+  			<th width="8">&nbsp;</th>
+  			<th>Area</th>
+  			<th>Yield</th>
+  			<th width="8">&nbsp;</th>
+  			<th>Area</th>
+  			<th>Yield</th>
+ 			</tr>
+  		<tr>
+  			<th>1<br>
+  				2<br>
+  				3<br>
+  				4<br>
+  				5<br>
+  				6</th>
+  			<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-right:0px;">140<br>
+ 				200<br>
+ 				144<br>
+ 				127<br>
+ 				173<br>
+ 				225</td>
+  			<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-left:0px;">2.1<br>
+  				3.5<br>
+  				1.8<br>
+  				3.6<br>
+  				3.8<br>
+  				5.0</td>
+  			<td align="center">&nbsp;</td>
+  			<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-right:0px;">139<br>
+  				222<br>
+  				209<br>
+  				179<br>
+  				108<br>
+  				210</td>
+  			<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-left:0px;">3.4<br>
+  				5.9<br>
+  				3.8<br>
+  				5.6<br>
+  				2.7<br>
+  				5.0</td>
+  			<td align="center">&nbsp;</td>
+  			<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-right:0px;">203<br>
+  				231<br>
+  				228<br>
+  				114<br>
+  				86<br>
+  				89</td>
+  			<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-left:0px;">4.3<br>
+  				5.0<br>
+  				5.0<br>
+  				3.6<br>
+  				2.3<br>
+  				1.8</td>
+  			<td align="center">&nbsp;</td>
+  			<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-right:0px;">110<br>
+  				95<br>
+  				171<br>
+  				199<br>
+  				215<br>
+  				191</td>
+  			<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-left:0px;">4.1<br>
+  				4.1<br>
+  				4.9<br>
+  				7.1<br>
+  				6.5<br>
+  				6.2</td>
+ 			</tr>
+ 		</table></div>
+<p>An analysis of variance table is shown below.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="650" height="200">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="glmAnovaProg.AnovaTableSeqApplet">
+<param name="yVarName" value="Yield">
+<param name="yValues" value="2.1 3.4 4.3 4.1 3.5 5.9 5.0 4.1 1.8 3.8 5.0 4.9 3.6 5.6 3.6 7.1 3.8 2.7 2.3 6.5 5.0 5.0 1.8 6.2">
+<param name="xVariables" value="Block Area Pruning">
+<param name="BlockVarName" value="Blocks">
+<param name="BlockValues" value="4@0 4@1 4@2 4@3 4@4 4@5">
+<param name="BlockLabels" value="B1 B2 B3 B4 B5 B6">
+<param name="AreaVarName" value="Area">
+<param name="AreaValues" value="140 139 203 110 200 222 231 95 144 209 228 171 127 179 114 199 173 108 86 215 225 210 89 191">
+<param name="PruningVarName" value="Pruning">
+<param name="PruningValues" value="0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3">
+<param name="PruningLabels" value="#System 1# #System 2# #System 3# #System 4#">
+<param name="maxSsq" value="99.999 99 99.999 999.99">
+<param name="componentNames" value="Blocks#Area#Pruning system">
+<param name="initVariables" value="2">
+<param name="showR2" value="false">
+</applet>
+</div>
+
+  	<p>Terms for the blocks and covariate (the initial cross-sectional area of the trees) should be included in all models &mdash; they describe the structure of the experimental units.</p>
+  	<p>Drag the red arrow down to add a term for the pruning system. Since its p-value is reported as &quot;0.0000&quot;, we conclude that:</p>
+  	<div class="centred"><div class="boxed">
+  		<p>It is almost certain that the four pruning systems result in different mean yields. </p>
+  	</div></div>
+  	<p class="heading">Reporting the results</p>
+  	<p>Since the treatments are orthogonal to the blocks in the experiment, the raw treatment means do not need to be adjusted for differences between the blocks &mdash; all treatments are used once within each block. However the cross-sectional areas of the trees are <strong>not</strong> orthogonal to the treatments &mdash; some pruning systems were used (by chance) more for smaller trees than others. The raw treatment means should therefore <strong>not</strong> be used to summarise differences between the treatments.</p>
+  	<p>In the full model with blocks covariate and the pruning system, the parameter estimates for the pruning systems are honest descriptions of the differences between  pruning system 1 and the others.</p>
+  	<div class="centred"><table border="0" class="centred" cellpadding="5" cellspacing="0">
+  		<tr>
+  			<th>Pruning <br>
+ 				system</th>
+  			<th>&nbsp;&nbsp;&nbsp;Parameter &nbsp;&nbsp;&nbsp;<br>
+ 				estimate</th>
+  			<th>&nbsp;&nbsp;&nbsp;Adjusted&nbsp;&nbsp;&nbsp; <br>
+ 				mean</th>
+ 			</tr>
+  		<tr>
+  			<th>1</th>
+  			<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">0</td>
+  			<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">3.273</td>
+ 			</tr>
+  		<tr>
+  			<th>2</th>
+  			<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">0.878</td>
+  			<td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">4.151</td>
+ 			</tr>
+  		<tr>
+  			<th>3</th>
+  			<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">0.588</td>
+  			<td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">3.862</td>
+ 			</tr>
+  		<tr>
+  			<th>4</th>
+  			<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">2.290</td>
+  			<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">5.564</td>
+ 			</tr>
+ 		</table></div>
+<p>The parameter estimates are  differences in mean yield between the pruning systems and the first (baseline) system. It is usually easier for readers to understand <strong>adjusted</strong> mean yields. These are the predicted yields for an average block and average value of the covariate &mdash; a tree with cross-sectional area 167&nbsp;cm<sup>2</sup>. The final column in the table above gives these adjusted means.</p>
+  </div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

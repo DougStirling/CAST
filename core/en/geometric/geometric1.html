@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Geometric random variable</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="geometric distribution, bernoulli trial, probability function, discrete random variable">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Bernoulli trials until first success</p>
+
+<p>We will now describe a second family of distributions that is related to a sequence of Bernoulli trials.</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>In a sequence of independent Bernoulli trials with \(P(success) = \pi\) in each trial, the number of trials until the first success is observed has a distribution called a <strong>geometric distribution</strong>.</p>
+
+\[
+X \;\; \sim \; \; \GeomDistn(\pi)
+\]
+
+</div>
+<p>The probability function of a geometric random variable is relatively simple.</p>
+
+<div class="theoremProof">
+<div class="theorem">
+<p class="theoremTitle">Probability function</p>
+<p>If a random variable has a geometric distribution, \(X \sim \GeomDistn(\pi) \), then its probability function is</p>
+\[
+p(x) = \pi (1-\pi)^{x-1} \quad \quad \text{for } x = 1, 2, \dots
+\]
+</div>
+
+<div class="proof">
+<p>If the first success arises on the \(x\)'th trial, the first \(x\) outcomes must be the following sequence</p>
+\[
+\overbrace {FF\dots F}^{x - 1 \text{ failures}} S \]
+<p>Since each failure arises with probability \( (1 - \pi) \), the probability of this sequence is</p>
+\[
+p(x) \;\;=\;\; \overbrace {(1-\pi)(1-\pi)\dots (1-\pi)}^{x - 1 \text{ times}} \times \pi \;\;=\;\; \pi(1-\pi)^{x-1}
+\]
+
+<p>The lowest possible value for \(x\) is 1, but there is no upper limit for \(x\). Extremely high values may be unlikely but are still possible, whatever the value of \(\pi\).</p>
+</div>
+
+</div>
+
+<p>Although strictly unnecessary because of how it was derived,  we now demonstrate that \(p(x)\) satisfies the two properties that are <a href="javascript:showNamedPage('discreteDistns1')">required of a valid probability function</a>. To do so, we will use a standard mathematical result about the sum of a geometric series.</p>
+<div class="theoremProof">
+<div class="theorem">
+<p class="theoremTitle">Sum of geometric series</p>
+<p>If \(-1 &lt; a &lt; 1\), then</p>
+\[
+\sum_{x=0}^\infty {a^x} = \frac 1 {1-a}
+\] </div>
+<div class="proof">
+		
+\[ \begin{align}
+	\sum_{x=0}^\infty {a^x} &amp; = 1 + a + a^2 + a^3 + \dots \\
+	&amp; = 1 + a(1 + a + a^2 + \dots) \\
+	&amp; = 1 + a \times \sum_{x=0}^\infty {a^x}
+\end{align} \]
+<p>Rearranging this equation,</p>
+\[
+	(1 - a)\sum_{x=0}^\infty {a^x} = 1
+\]
+<p>so</p>
+\[
+	\sum_{x=0}^\infty {a^x} = \frac 1 {1-a}
+\]
+</div>
+</div>
+
+
+<p>We now show that the geometric probability function that was obtained above does have the required properties of a probability function.</p>
+<dl>
+	<dt>Negative probabilities are impossible</dt>
+	<dd>Since \(0 \le \pi \le 1 \), it must also be true that \(0 \le (1-\pi) \le 1 \). Therefore</dd>
+\[
+p(x) = \pi (1-\pi)^{x-1} \ge 0 \quad \quad \text{for all } x
+\]
+	<dt>The probabilities sum to one</dt>
+ \[ \begin{align}
+\sum_{x=1}^\infty {p(x)} &amp;= \sum_{x=1}^\infty {\pi (1-\pi)^{x-1}} \\
+&amp; = \pi \sum_{x=1}^\infty {(1-\pi)^{x-1}} \\
+&amp; = \pi \sum_{y=0}^\infty {(1-\pi)^y} \\
+&amp; = \pi \times \frac 1 {1 - (1-\pi)} \\
+&amp; = \pi \times \frac 1 \pi = 1
+\end{align} \]
+<dd>using the  formula for the sum of a geometric series with \(a = (1 - \pi)\).</dd>
+</dl>
+
+
+<div class="example" title="Illustration: Bar charts for geometric distributions">	
+	<p class="exampleHeading">Geometric bar charts</p>
+
+
+<p>The diagram below shows some possible shapes of  geometric distributions. Use the slider to see the effect of changing the parameter \(\pi\).</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="distributionProg.GeometricDistnApplet">
+<param name="backgroundColor" value="FFFBF3">
+<param name="pLimits" value="0.10 1.00 0.50">
+<param name="xAxis" value="0 30 0 5">
+<param name="xAxisName" value="Number of trials">
+<param name="customText" value="success=success">
+</applet>
+</div>
+
+<p>The height of each bar is \( (1-\pi) \) times that of the previous bar, so when \(\pi\) is close to zero, the probabilities decrease slowly from their maximum at \( p(1) \).</p>
+<p>When \(\pi\) is small, all individual probabilities are small, so the bars are all low. Click the checkbox <strong>Show zero-one axis</strong> to turn it off, rescaling the probabilities to show the shape of the distributions better.</p>
+
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

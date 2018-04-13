@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>La nécessité de résumer</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+  
+	<script type="text/javascript">
+		var svgNames = new Array();
+		svgNames[0] = "images/riceJitter.svg";
+		svgNames[1] = "images/riceStack.svg";
+		svgNames[2] = "images/riceHisto.svg";
+		
+		function changeSvgImage(select) {
+			var newIndex = select.selectedIndex;
+			var image = document.getElementById('dataImage');
+			image.src = svgNames[newIndex];
+		}
+	</script>
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">En comparant des groupes</p>
+<p>Parcelles Dot et tiges et feuilles de conserver beaucoup d'informations détaillées sur les valeurs individuelles dans un ensemble de données.&nbsp;Bien que cette information détaillée peut être utile lorsque l'on examine la répartition des valeurs dans un ensemble unique de données, il est distrayant lorsque deux ou plusieurs groupes sont comparés.</p>
+<center>
+<table border="1" cellspacing="0" cellpadding="5" bgcolor="white" width="75%">
+<tr> 
+<th align="CENTER">Trop de détails peuvent attirer l'attention de la&nbsp;principale&nbsp;différence entre les groupes.</th>
+</tr>
+</table>
+</center>
+<p>En général, nous voulons répondre aux questions suivantes:</p>
+<ul>
+	<li>Quels sont les groupes ont tendance à avoir des valeurs maximales et minimales?</li>
+	<li>Comment variables sont les valeurs dans les groupes?</li>
+	<li>Combien existe un chevauchement entre les distributions dans les différents groupes?</li>
+</ul>
+<p>Parcelles Dot et tiges et feuilles ne contiennent les réponses à ces questions, mais l'information n'a pas «sauter à vous».&nbsp;Histogrammes et polygones de fréquences sont mieux pour faire des comparaisons, car ils cachent des informations détaillées sur les valeurs individuelles, mais de nombreux ensembles de données peuvent être efficacement résumées plus loin.</p>
+<div class="diagram"> 
+	<p class="heading">Les rendements de riz</p>
+<p>Les parcelles de points Jittered dessous montrent les rendements de riz (en tonnes par hectare) en 1996-1997 à partir des principaux pays producteurs de riz du monde. </p>
+
+
+<form>
+<select name="dataset" onChange="changeSvgImage(this)">
+<option value="0" selected>Tracés avec symboles Jittered</option>
+<option value="1">Stacked parcelles points</option>
+<option value="2">Histogrammes</option>
+</select>
+</form>
+
+<p align="center"><iframe src="images/riceJitter.svg" id="dataImage" width="590" height="355" frameborder="0"></iframe></p>
+
+<p>Utilisez le menu pop-up afin de comparer les régions avec des parcelles de points empilés et des histogrammes.&nbsp;L'information principale de l'affiche est le suivant:</p>
+<ul>
+	<li>Faible rendement du riz en Afrique avec deux valeurs aberrantes (Égypte et Maroc).</li>
+	<li>Les rendements de riz assez bas dans le Moyen-Orient et en Asie centrale.</li>
+	<li>Un écart très grand nombre de récoltes de riz en Inde et en Asie de l'Est (y compris l'Australie).</li>
+</ul>
+<p>Bien que les principales différences sont facilement visibles, l'œil est aussi distrait par d'autres irrégularités dans les affichages.</p>
+</div>
+
+<p>Le reste de cette section décrit une nouvelle façon de résumer la distribution des valeurs dans un ensemble de données.&nbsp;Ce résumé graphique capte de manière concise la plupart des «importants» caractéristiques de la distribution et est particulièrement efficace pour comparer deux ou plusieurs groupes de valeurs.</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

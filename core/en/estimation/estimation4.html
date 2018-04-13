@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Standard error</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="estimation, bias, standard error">
+	<meta name="dataset" content="Active ingredient in medicine">
+	<meta name="dataset" content="Fruit fly survival on mangoes">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Spread of an estimator's distribution</p>
+
+<p>One characteristic of a good estimator of a parameter is that the mean of its distribution should equal (or at least be close to) the parameter being estimated,</p>
+<p class="eqn"><img class="svgImage" src="images/bias.png" width="467" height="157"></p>
+<p>However this is not enough to characterise a good estimator since an unbiased estimator can also have a distribution with a wide spread of values.</p>
+<p class="eqn"><img class="svgImage" src="images/se.png" width="467" height="157"></p>
+<p>The estimator on the right is clearly better than the one whose distribution is shown on the left since its values are likely to be closer to the actual parameter value, \(\theta\).</p>
+<p class="heading">Standard error</p>
+<p>The <strong>spread</strong> of an estimator's distribution also describes how accurately it can estimate the target parameter, and this is usually summarised by the distribution's standard deviation.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+<p>The <strong>standard error</strong> of an estimator \(\hat{\theta}\) of a parameter \(\theta\) is defined to be its standard deviation.</p>
+</div>
+
+<p>The standard error is also the standard deviation of the <strong>estimation error</strong>,</p>
+\[
+error \;\; = \;\; \hat{\theta} - \theta
+\]
+<p>and this is the reason for its name — it is a 'typical' estimation error.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Example: Active ingredient in medicine</p>
+		<p>Pharmaceutical companies routinely test their products to ensure that the concentration of active ingredient, \(\mu\), is within tight limits. However the chemical analysis is not precise and repeated measurements of the same specimen differ slightly.</p>
+		<p>One type of analysis gives estimated concentrations of the active ingredient that are normally distributed with standard deviation \(\sigma = 0.0068\) grams per litre. A product is tested 16 times, giving a sample mean concentration of \(\hat{\mu} = \overline{x} = 0.0724\) grams per litre.</p>
+		<ul>
+			<li>What are the bias and standard error of this type of estimator?</li>
+			<li>How far is the estimate of 0.0724 grams per litre likely to be from \(\mu\)?</li>
+		</ul>
+	</div>
+	<div class="solution">
+		<p>When a product is tested once, the recorded concentration is</p>
+\[
+X \;\; \sim \; \; \NormalDistn\left(\mu, \;\;\sigma_X^2 = 0.0068^2\right)
+\]
+		<p>The  mean of a random sample of \(n\) values from this distribution is <a href="javascript:showNamedPage('continuousDistns7')">also normally distributed</a>,</p>
+\[
+\overline{X} \;\; \sim \; \; \NormalDistn\left(\mu, \;\;\sigma_{\overline{X}}^2 = \frac {0.0068^2} n \right)
+\]
+		<p>Since \(E[\overline{X}] = \mu\), the estimator is unbiased. Its standard error is</p>
+\[
+\se(\overline{X}) = \sqrt {\frac {0.0068^2} n} = 
+0.0017 \quad\quad \text{when } n = 16\]
+		<hr width="75%">
+		<p>Since the estimator is unbiased, the standard error is also the standard deviation of the estimation error,</p>
+\[
+\overline{X} - \mu \;\; \sim \; \; \NormalDistn\left(0, \;\;\sigma_{\overline{X} - \mu}^2 = \frac {0.0068^2} n\right)
+\]
+
+<div class="explanation" title="Error distribution when estimating active ingredient">
+<p> The error distribution  is shown in the diagram below.</p>
+<div class="centred">
+	<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="200">
+		<script type="text/javascript">writeAppletParams();</script>
+		<param name="appletName" value="stdErrorProg.ErrorDistnTheory2Applet">
+		<param name="backgroundColor" value="FFFFFF">
+		<param name="varName" value="Concentration (gramms per litre)">
+		<param name="popnDistn" value="normal">
+		<param name="popnParams" value="0.0 0.0068">
+		<param name="meanErrorName" value="Error in estimate">
+		<param name="errorAxis" value="-0.013 0.013 -0.012 0.002">
+		<param name="errorSdDecimals" value="5">
+		<param name="sampleSize" value="1 100 20">
+	</applet>
+</div>
+<p>Use the slider to see how the sample size affects the likely size of the errors. When \(n = 16\), the estimation error is unlikely to be more than 0.004. Our estimate of 0.0724 will probably be less than 0.004 from the true concentration for this product.</p>
+</div>
+</div>
+</div>
+<p>For many parameter estimates, the formula for the standard error involves unknown parameters, so its exact numerical value cannot be obtained. </p>
+<p>Somewhat confusingly, the term &quot;standard error&quot; is also used for an <strong>estimate</strong> of the standard error, obtained when the parameters in its formula are replaced by estimates.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Example: Heat treatment of mangoes</p>
+		<p>In an experiment to assess the effectiveness of heat-treatment of mangoes as a method of killing fruit fly eggs and larvae, several infested fruit were heat-treated at 44&deg;C. Out of 572 fruit fly eggs in the mangoes, 30 survived, giving an estimate of the probability of survival at this temperature of:</p>
+\[
+\hat{\pi} = P = \frac {30} {572} = 0.05245
+\]
+		<p>What are the bias and standard error of the  estimator?</p>
+	</div>
+	<div class="solution">
+		<p>If all \(n = 572\) eggs independently have the same probability, \(\pi\) of surviving, the number surviving has a binomial distribution,</p>
+\[
+X \;\; \sim \; \; \BinomDistn(n = 572, \pi)
+\]
+		<p>From the <a href="javascript:showNamedPage('binomial3')">properties of the binomial distribution</a>, </p>
+\[
+		E[P] = \pi \spaced{and}  
+		\Var(P) = \frac {\pi(1-\pi)} n \]
+<p>The sample proportion is therefore an unbiased estimator of \(\pi\) and its standard error is</p>
+\[
+		\se(P) = \sqrt{\frac {\pi(1-\pi)} {572}} \]
+<p>This formula unfortunately involves the unknown parameter, \(\pi\), so we cannot use it directly to obtain a numerical value for the standard error. However we can replace \(\pi\) in the formula with the sample proportion, giving:</p>
+\[
+	\widehat{\se}(P) = \sqrt{\frac {\frac {30} {572}\left(1-\frac {30} {572}\right)} {572}} = 0.0093\]	</div>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

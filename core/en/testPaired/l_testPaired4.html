@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Pairing and experimental design</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="hypothesis test, paired t-test">
+	<meta name="dataset" content="Blood pressure and the pill">
+	<meta name="dataset" content="Talking age and heart disease">
+</head>
+
+
+<body class="lecture">
+<script type="text/javascript">writePageStart();</script>
+
+
+<p class="heading">Is Garage B over-charging for car repairs?</p>
+
+<div class="divChoice">
+<form>
+<select name="dataset" onChange="changeBlock(this, 2)" id="dataChoice">
+    <option value="0" selected>Two independent samples and test</option>
+    <option value="1">Paired data and test</option>
+  </select>
+</form>
+
+<div id="example1">
+  <p>10 cars go to Garage A and the other 10 go to Garage B.</p>
+  <div class="centred">
+  <applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="pairBlockProg.DiffGroupApplet">
+  <param name="group1Means" value="380 760 1180 560 260 1000 1300 1720 1800 1440 630 580 1660 1160 460 1200 1780 320 900 1040">
+  <param name="group2Means" value="580 960 1380 760 460 1200 1500 1920 2000 1640 830 780 1860 1360 660 1400 1980 520 1100 1240">
+  <param name="groupNames" value="#Garage A# #Garage B#">
+  <param name="groupValues" value="10@0 10@1">
+  <param name="yName" value="Estimate ($)">
+  <param name="sd" value="120">
+  <param name="yAxis" value="0 2200 0 500">
+  <param name="decimals" value="0">
+  <param name="indexName" value="Car number">
+  <param name="maxDiff" value="-999.9">
+	<param name="customText" value="95% CI=95% CI#Show paired values=Show paired values#Estimate of difference=Estimate of difference#Equal means=Equal means">
+  <param name="fontSize" value="big">
+  </applet>
+  </div>
+</div>
+
+<div id="example2" style="display:none">
+  <p>10 cars are randomly selected and each is assessed by <strong>both</strong> 
+    Garage A and Garage B.</p>
+  <div class="centred"> 
+  <applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="pairBlockProg.DiffPairedApplet">
+  <param name="group1Means" value="380 760 1180 560 260 1000 1300 1720 1800 1440 630 580 1660 1160 460 1200 1780 320 900 1040">
+  <param name="group2Means" value="580 960 1380 760 460 1200 1500 1920 2000 1640 830 780 1860 1360 660 1400 1980 520 1100 1240">
+  <param name="groupNames" value="#Garage A# #Garage B#">
+  <param name="selectionValues" value="10@0 10@1">
+  <param name="yName" value="Estimate ($)">
+  <param name="sd" value="120">
+  <param name="yAxis" value="0 2200 0 500">
+  <param name="decimals" value="0">
+  <param name="indexName" value="Car number">
+  <param name="maxDiff" value="-999.9">
+<param name="customText" value="95% CI=95% CI#Show paired values=Show paired values#Estimate of difference=Estimate of difference#Show all values=Show all values#Equal means=Equal means">
+  <param name="fontSize" value="big">
+  </applet>
+  </div>
+</div>
+
+</div>
+
+
+<script type="text/javascript">
+	writeLecturerNotesLink(withDataNotes);
+</script>
+
+<div class="lecturerNote" id="lecturerNote">
+<p>The two sampling schemes are based on the same pool of 20 cars. See the description of the data for the distributions of the repair costs for each of these cars.</p>
+<div class="centred"><div class="boxed">
+  <p>For each car, the estimate from Garage B is $200 more than the corresponding estimate from Garage A.</p>
+</div></div>
+<p>Use the first simulation to show that when the data are <strong>not</strong> paired &mdash; 10 cars are randomly selected to go to each garage &mdash; the 2-sample t-test often does not find evidence of a difference. (Click <strong>Show paired values</strong> to see the estimates that the garages would have given for <strong>all</strong> cars in grey. Of course only 20 of these values were actually observed.)</p>
+<p>Explain that the variability between the cars overwhelms the difference between the garages.</p>
+<p>Select <strong>Paired data and test</strong> from the pop-up menu then simulate several sets of paired data &mdash; 10 cars are randomly selected and are assessed by <strong>both</strong> garages. When the data are collected in this way (and analysed with a paired t-test), there is usually strong evidence that Garage B gives higher estimates.</p>
+</div>
+<div class="lecturerNote" id="dataNote">
+  <p>The simulation is based on a pool of 20 cars with estimated repair 
+	costs that are normal (µ, σ&nbsp;=&nbsp;$120) where µ is shown below:</p>
+  
+	<div class="centred"><table border="0" class="centred" cellpadding="3" cellspacing="0">
+		<tr>
+			<th>&nbsp;</th>
+			<th colspan="2">Mean repair estimate, µ ($)</th>
+		</tr>
+		<tr>
+			<th>Car</th>
+			<th>&nbsp;&nbsp;Garage A&nbsp;&nbsp;</th>
+			<th>Garage B</th>
+		</tr>
+		<tr align="center">
+			<td><table border="0" cellpadding="0" cellspacing="0" style="margin-top:0; margin-bottom:0">
+					<tr>
+						<td align="right">1<br>
+							2<br>
+							3<br>
+							4<br>
+							5<br>
+							6<br>
+							7<br>
+							8<br>
+							9<br>
+							10<br>
+							11<br>
+							12<br>
+							13<br>
+							14<br>
+							15<br>
+							16<br>
+							17<br>
+							18<br>
+							19<br>
+							20</td>
+					</tr>
+			</table></td>
+			<td bgcolor="#FFFFFF"><table border="0" cellpadding="5" cellspacing="0" style="margin-top:0; margin-bottom:0">
+					<tr>
+						<td align="right"><span class="blue bold">380</span> <br>
+								<span class="bold blue">760</span> <br>
+								<span class="bold blue">1180</span> <br>
+								<span class="blue bold">560</span> <br>
+								<span class="blue bold">260</span> <br>
+								<span class="blue bold">1000</span> <br>
+								<span class="blue bold">1300</span> <br>
+								<span class="blue bold">1720</span> <br>
+								<span class="blue bold">1800</span> <br>
+								<span class="blue bold">1440</span> <br>
+								<span class="blue bold">630</span> <br>
+								<span class="blue bold">580</span> <br>
+								<span class="blue bold">1660</span> <br>
+								<span class="blue bold">1160</span> <br>
+								<span class="blue bold">460</span> <br>
+								<span class="blue bold">1200</span> <br>
+								<span class="blue bold">1780</span> <br>
+								<span class="blue bold">320</span> <br>
+								<span class="blue bold">900</span> <br>
+								<span class="blue bold">1040</span> </td>
+					</tr>
+			</table></td>
+			<td bgcolor="#FFFFFF"><table border="0" cellpadding="5" cellspacing="0" style="margin-top:0; margin-bottom:0">
+					<tr>
+						<td align="right"><span class="blue bold">580</span> <br>
+								<span class="blue bold">960</span> <br>
+								<span class="blue bold">1380</span> <br>
+								<span class="blue bold">760</span> <br>
+								<span class="blue bold">460</span> <br>
+								<span class="blue bold">1200</span> <br>
+								<span class="blue bold">1500</span> <br>
+								<span class="blue bold">1920</span> <br>
+								<span class="blue bold">2000</span> <br>
+								<span class="blue bold">1640</span> <br>
+								<span class="blue bold">830</span> <br>
+								<span class="blue bold">780</span> <br>
+								<span class="blue bold">1860</span> <br>
+								<span class="blue bold">1360</span> <br>
+								<span class="blue bold">660</span> <br>
+								<span class="blue bold">1400</span> <br>
+								<span class="blue bold">1980</span> <br>
+								<span class="blue bold">520</span> <br>
+								<span class="blue bold">1100</span> <br>
+								<span class="bold blue">1240</span> </td>
+					</tr>
+			</table></td>
+		</tr>
+	</table></div>
+	
+  <p>The two sampling schemes sample from the same cars.</p>
+</div>
+  
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

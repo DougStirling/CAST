@@ -1,0 +1,59 @@
+<html>
+<head>
+	<title>Dangers of over-interpretation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="overinterpretation">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Dangers of over-interpretation</p>
+	<p>Very strong autocorrelation in a time series can result in apparent trends, 
+		even when there is no real trend underlying the series. An important example 
+		of this is the 'random walk' model for share price data. Autocorrelation and 
+		trend are especially difficult to distinguish in short time series. You should 
+		therefore be wary of extrapolating a trend into the future if there is high 
+		autocorrelation.</p>
+
+<div class="diagram">
+
+		<p>The diagram below shows a time series that has been artificially generated 
+			with <strong>no trend</strong> and with successive values that are not autocorrelated.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.ARApplet">
+<param name="varName" value="basic">
+<param name="random" value="100 0 2.5 553344 2.5">
+<param name="vertAxis" value="-9 9 -9 3">
+<param name="timeAxis" value="0 10 0 10">
+<param name="arVarName" value="autoReg">
+<param name="customText" value="New sample=New sample#Autocorrelation=Autocorrelation">
+</applet>
+</div>
+
+		<p>Click <strong>New sample</strong> a few times to observe the types of pattern 
+			that might be observed with an uncorrelated time series.</p>
+		<p>Drag the slider to increase the autocorrelation coefficient to 0.95 then 
+      take a few more samples to observe the types of pattern that may be found 
+      in autocorrelated data. Observe that some series appear to exhibit trend 
+      even though the none underlies the data.</p>
+		<p><font color="#666666">(Try making the autocorrelation coefficient negative. 
+			With negative autocorrelation, positive values tend to be followed by negative 
+			ones and vice versa. This type of series is rarely encountered in practice, 
+			although it can happen when there is an exaggerated feedback mechanism causing 
+			automatic adjustment towards an equilibrium level.)</font></p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

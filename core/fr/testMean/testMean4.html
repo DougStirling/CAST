@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>The t distribution</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="t distribution, probability density/t distribution, hypothesis test, mean">
+	<meta name="dataset" content="Saturated fat in cooking oil">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Unknown standard deviation</p>
+<p>In the examples on the previous page, the population standard deviation, σ, 
+was a known value. Unfortunately this is rarely the case in practice, so the previous 
+test cannot be used.</p>
+
+<div class="diagram">
+
+<p class="heading">Saturated fat content of cooking oil</p>
+
+<p>Both cholesterol and saturated fats are often avoided by people who are trying 
+to lose weight or reduce their blood cholesterol level. Cooking oil made from 
+soybeans has little cholesterol and has been claimed to have only 15% saturated 
+fat.</p>
+<p>A clinician believes that the saturated fat content is greater than 15% and 
+randomly samples 13 bottles of soybean cooking oil for testing.</p>
+<div class="centred"><table border="0" class="centred" cellpadding="10" cellspacing="0" style="background-color:#FFFFFF">
+<caption>
+<strong>Percentage saturated fat in soybean cooking oil</strong> 
+</caption>
+<tr align="center" valign="top"> 
+<td width="15%">15.2<br>
+12.4</td>
+<td width="15%">15.4<br>
+13.5</td>
+<td width="15%">15.9<br>
+17.1</td>
+<td width="15%">16.9<br>
+14.3</td>
+<td width="15%">19.1<br>
+18.2</td>
+<td width="15%">15.5<br>
+16.3</td>
+<td width="15%">20.0</td>
+</tr>
+</table></div>
+<p>The hypotheses of interest are similar to those in the initial pages of this 
+section, </p>
+<p class=eqn><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> = 15%</strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> &gt; 15%</strong></p>
+
+<p>However we no longer know the population standard deviation, σ. 
+The only information we have about σ 
+comes from our sample.</p>
+
+</div>
+
+<p class="heading">Test statistic and its distribution</p>
+
+<p>When the population standard deviation, σ, 
+was a known value, we used a test statistic </p>
+
+<p class=eqn><img class="gif" src="../testMean/images/zStatDefn.gif" width="92" height="47"></p>
+
+<p>which has a standard normal distribution when <b>H<sub>0</sub></b> was true.</p>
+<p>When σ 
+is unknown, we use a closely related test statistic that is also a 'statistical
+distance' between the sample mean and µ<sub>0</sub>,</p>
+<p class=eqn><img class="gif" src="../testMean/images/tStatDefn.gif" width="90" height="46"></p>
+
+<p>where <i>s</i> is the <strong>sample</strong> standard deviation. This test 
+statistic has greater spread than the standard normal distribution, due to the 
+extra variability that results from estimating <i>s</i>, especially when the sample 
+size <i>n</i> is small.</p>
+
+
+<div class="diagram">
+
+<p>The diagram below generates random samples from a normal distribution. Click 
+<strong>Take sample</strong> a few times to see the variability in the samples.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="testProg.TAgainstNormalApplet">
+<param name="varName" value="sample data, x">
+<param name="horizAxis" value="14 26 14 2">
+<param name="random" value="20 20 2 3298473 3">
+<param name="summaryDecimals" value="3">
+<param name="formulaGif" value="test/tn">
+<param name="sampleSize" value="20 10 5 3">
+</applet>
+</div>
+
+<p>Click <strong>Accumulate</strong> then take about 50 random samples. Observe 
+that the stacked dot plot of the t statistic conforms reasonably with a standard 
+normal distribution.</p>
+<p>Now use the pop-up menu to reduce the sample size to 5 and take a further 50-100 
+samples. You will probably notice that there are more 'extreme' t-values (less 
+than -3 or more than +3) than would be expected from a standard normal distribution.</p>
+<p>Reduce the sample size to 3 and repeat. It should now be clearer that the distribution 
+of the t-statistic has greater spread than a standard normal distribution. Click 
+on the crosses for the most extreme t-values and observe that they correspond 
+to samples in which the 3 data values happen to be close together, resulting in 
+a small sample standard deviation, <em>s</em>.</p>
+
+</div>
+
+<p class="heading">The t distribution</p>
+<p>We have seen that the <em>t</em> statistic does not have a standard normal 
+distribution, but it does have another standard distribution called a <strong>t 
+distribution with (<i>n</i> - 1) degrees of freedom</strong>. In the next page, 
+we will use this distribution to obtain the p-value for hypothesis tests.</p>
+<div class="diagram">
+
+<p>The diagram below shows the shape of the t distribution for various different values
+of the degrees of freedom.
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="300" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="testProg.TApplet">
+</applet>
+</div>
+
+<p><strong>Drag</strong> the slider to see how the shape of the t distribution depends
+on the degrees of freedom. Note that
+</p>
+
+<ul>
+  <li>The t distribution's shape becomes close to the standard normal distribution
+  (the red curve) as the degrees of freedom increase.
+      <br>&nbsp;</li>
+  <li>When the degrees of freedom are small, the t distribution has much longer tails than the
+  standard normal distribution.<br>
+  <br>
+  </li>
+  <li>When the degrees of freedom are around 10, the <strong>centre</strong> of the t distribution looks close to a standard normal distribution. However an important use of the t distribution is in hypothesis tests where the tails of the distribution are particularly important. The <strong>tails</strong> of the distributions are quite different.</li>
+</ul>
+
+<br>
+<div class="centred"><div class="boxed">
+	<p>A standard normal distribution can be used as an approximation to a t distribution if the degrees of freedom are large (say 30 or more) but the t distribution must be used for smaller degrees of freedom.</p>
+</div></div>
+
+<br>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

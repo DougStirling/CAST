@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>Mittlerer quadratischer Fehler</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+<meta name="index" content="error, bias, root mean square error">
+	<meta name="dataset" content="Weights of bags of potatoes"></head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Abstand von einem Zielwert</p>
+<p>Die Kartoffels&auml;cke in einem Supermarkt sind mit dem
+Gewicht 3kg
+beschriftet. Wie nah liegt das tats&auml;chliche Gewicht an diesem
+Ziel?</p>
+<dl> <dt><strong>Einzelner Wert</strong></dt>
+<dd>Der Abstand eines einzelnen Wertes, <em>x</em>, von einem Ziel, <em>k</em>, wird sein <strong>Fehler</strong>
+genannt,&nbsp;</dd>
+</dl><p class="eqn" style="color: rgb(0, 0, 0);"><strong>error
+&nbsp; =
+&nbsp; </strong><font size="+1">(<em>x</em>
+&minus; <em>k</em>)</font></p>
+<center><table border="0" cellpadding="12" cellspacing="0"> <tbody> <tr> <td bgcolor="#dddddd"><object data="images/errorOne.svg" height="127" width="308"></object></td> </tr>
+</tbody>
+</table></center>
+<p>Wenn man jedoch <em>n</em>
+Kartoffels&auml;cke wiegt, wie kombiniert man die Fehler, um ein <strong>einzelnes</strong>
+Ma&szlig; f&uuml;r
+Prognosesicherheit zu erhalten</p>
+<dl> <dt><strong>Fehler des Arithmetischen Mittels
+(Bias)&nbsp;</strong></dt> <dd>Der Durchschnitt
+der einzelnen Fehler ist gleich dem
+Unterschied
+zwischen dem Arithmetischen Gesamtmittel und <em>k</em>, </dd>
+</dl><p class="eqn"><img class="gif" src="../../en/moreVariation/images/meanError.gif" width="154" height="40"> </p>
+<dl> <dd>Diese Quantit&auml;t wird <strong>Bias</strong>
+genannt und sagt uns etwas &uuml;ber die Prognosesicherheit des
+Gewichts der Kartoffels&auml;cke.</dd>
+</dl><center>
+<table border="0" cellpadding="12" cellspacing="0">
+<tbody> <tr> <td bgcolor="#dddddd"><object data="images/bias.svg" height="127" width="308"></object></td>
+</tr> </tbody></table>
+</center><dl> <dd>Jedoch, selbst wenn der Bias Null
+betr&auml;gt,
+k&ouml;nnen
+einzelne Werte sich sehr von der Zielkonstante, <em>k</em>, unterscheiden.</dd>
+</dl><center>
+<table border="0" cellpadding="12" cellspacing="0">
+<tbody> <tr> <td bgcolor="#dddddd"><object data="images/zeroBias.svg" height="127" width="308"></object></td>
+</tr> </tbody></table>
+</center><dl> <dt><strong>Mittlerer
+quadratischer Fehler (Mean squared
+error)</strong></dt> <dd>Eine L&ouml;sung des
+Problems von negativen Fehlern
+ist, diese
+zun&auml;chst zu quadrieren bevor man einen Durchschnitt bildet,</dd>
+</dl>
+<div class="centred">
+<table border="0" cellspacing="0" cellpadding="10" class="centred">
+<tr>
+<th style="margin:0px; padding:0px"><span class="black bold">mean squared error &nbsp;&nbsp;=</span>&nbsp;&nbsp;&nbsp;</th>
+<td style="margin:0px; padding:0px"><img class="gif" src="../../en/moreVariation/images/meanSqrError.gif" width="77" height="44"></td>
+</tr>
+</table>
+</div>
+<dl> 
+<dt><strong>Wurzel des mittleren quadratischen
+Fehlers
+(Root mean
+squared error)</strong></dt> <dd>Das Hauptproblem
+mit dem Mean Squared Error ist, dass seine
+Ma&szlig;einheit das Quadrat von denen der Ursprungsdaten ist. Zum
+Beispiel, werden die Gewichte der Beutel der Kartoffeln (und folglich
+deren Fehler) in Kilogramm gemessen, daher liegen die quadrierten
+Fehler in &bdquo;kg Quadrat&ldquo; und die&nbsp;Mean
+Squared Error
+ebenfalls in &bdquo;kg Quadrat&ldquo; vor. Wie deutet man einen
+Wert
+mit diesen Ma&szlig;einheiten? Die L&ouml;sung ist, die
+Quadratwurzel
+zu ziehen, um den Wert in die urspr&uuml;ngliche
+Ma&szlig;einheit zu
+transformieren.</dd>
+</dl>
+<div class="centred">
+<table border="0" cellspacing="0" cellpadding="10" class="centred">
+<tr>
+<th style="margin:0px; padding:0px"><span class="black bold">root mean squared error &nbsp;&nbsp;=</span>&nbsp;&nbsp;&nbsp;</th>
+<td style="margin:0px; padding:0px"><img class="gif" src="../../en/moreVariation/images/rootMeanSqrError.gif" width="90" height="50"></td>
+</tr>
+</table>
+</div>
+<table class="centred" border="1" cellpadding="10" cellspacing="0" width="75%"> 
+<tbody> <tr>
+<td align="center" bgcolor="#ffffff"><strong>Der
+Root Mean
+Squared Error ist ein &bdquo;typischer&ldquo; Fehler.</strong></td>
+</tr> </tbody>
+</table><br>
+<div class="diagram"><p class="heading">Gewicht
+von 3 kg wiegenden
+Kartoffels&auml;cken&nbsp;</p>
+<p>Das Diagramm unten zeigt das Gewicht von sieben
+Kartoffels&auml;cken, beschriftet mit &bdquo;3 kg&ldquo;.</p>
+<div class="centred"> <applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" height="400" width="400"><script type="text/javascript">writeAppletParams();</script><param name="appletName" value="statisticProg.DragCrossRmseApplet"><param name="varName" value="Sackgewicht"><param name="values" value="2.7 2.9 2.95 3.05 3.15 3.2 3.25"><param name="target" value="3.0"><param name="targetName" value="Target, k = 3 kg"><param name="horizAxis" value="2.4 3.3 2.4 0.2"><param name="maxSummary" value="99.999"><param name="customText" value="Root mean square error=Root mean square error"></applet>
+</div><p>Ein Quadrat ist f&uuml;r jeden Datenwert
+eingezeichnet,
+dessen
+Seitenl&auml;nge gleich dem Fehler f&uuml;r diesen
+Kartoffelsack ist.</p>
+<table class="centred" border="1" cellpadding="10" cellspacing="0" width="75%"> <tbody> <tr>
+<td align="center" bgcolor="#ffffff"><strong>Die
+<span style="color: rgb(255, 0, 0);">Fl&auml;che</span>
+eines jeden
+Quadrates ist der quadratische Fehler f&uuml;r den Wert.</strong></td>
+</tr> </tbody>
+</table><p>Der Root Mean Squared Error ist die
+Seitenl&auml;nge des
+Quadrats,
+dessen Fl&auml;che der<strong>
+Durchschnitt</strong>
+der Fl&auml;chen der Quadrate ist. In Rot auf dem Diagramm zu
+sehen.&nbsp;</p>
+<p><strong>Ziehe die Kreuze</strong>,
+um zu sehen, wie die Werte den Root Mean Squared Error beeinflussen.</p>
+<hr width="75%"><p>Du hast vielleicht bemerkt, dass
+ein Ausrei&szlig;er einem
+Quadrat
+mit einer sehr gro&szlig;en Fl&auml;che entspricht und daher
+einen
+ungew&ouml;hnlich starken Effekt auf den Root Mean Squared Error
+hat.</p>
+</div><script type="text/javascript">writePageEnd();</script>
+</body></html>

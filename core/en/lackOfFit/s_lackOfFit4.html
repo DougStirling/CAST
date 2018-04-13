@@ -1,0 +1,187 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Contrasts for testing linearity</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="indicator variable, analysis of variance, nonlinear sums of squares, nonlinear relationship">
+	<meta name="dataset" content="Lettuce and fertiliser">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Linearity within a <em>g</em>-group model</p>
+	<p>The model that allows for arbitrary group means at the <em>g</em> distinct 
+		x-values can be parameterised with a constant term and (<em>g</em>-1) 'explanatory' 
+		variables. The first of these is a linear term and the others are indicator 
+		variables that describe how far the means of the 3rd, 4th, etc. groups are 
+		from a linear function passing through the first two means.</p>
+	<p>This parameterisation of the factor model is most easily explained graphically.</p>
+
+<div class="diagram">
+		<p class="heading">Numerical explanatory variable with 4 levels</p>  
+		<p>Consider an experiment with 3 response measurements at each of 4 equally-spaced 
+			values for a numerical explanatory variable. We will define a model in which 
+			the explanatory variable is treated as defining 4 groups.</p>
+		<p>In the following parameterisation of the model, the first variable is a 
+			linear term. <strong>The model with only this term would be a conventional 
+			simple regression model.</strong></p>
+		<p>The two further indicator variables give additional flexibility to the 
+			model that allows arbitrary means for all groups.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="520" height="320">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="matrixProg.FactorLinearPartApplet">
+<param name="xRows" value="12">
+<param name="nXColumns" value="1">
+<param name="fullNameX1" value="Treatment level">
+<param name="shortNameX1" value="x">
+<param name="valuesX1" value="3@0 3@1 3@2 3@3">
+<param name="labelsX1" value="#Level 1# #Level 2# #Level 3# #Level 4#">
+<param name="oneFactor" value="linear">
+<param name="customText" value="Linear=Linear">
+</applet> 
+</div>
+
+		<p>The diagram below illustrates the meanings of the parameters for an artificial 
+			set of 12 response values.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="600">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="matrixProg.FactorFittedValApplet">
+<param name="yName" value="Response">
+<param name="yValues" value="1 2 3 4 5 6 5 6 7 11 12 13">
+<param name="xRows" value="12">
+<param name="nXColumns" value="1">
+<param name="fullNameX1" value="Group">
+<param name="shortNameX1" value="x">
+<param name="valuesX1" value="3@0 3@1 3@2 3@3">
+<param name="labelsX1" value="#Level 1# #Level 2# #Level 3# #Level 4#">
+<param name="oneFactor" value="xx">
+<param name="fitDecimals" value="2">
+<param name="lsDecimals" value="2 2 2 2">
+<param name="yAxis" value="0 14 0 2">
+<param name="oneFactor" value="linear">
+<param name="customText" value="Linear=Linear">
+</applet> 
+</div>
+
+<p>Observe that:</p>
+<blockquote>
+		<ul>
+				<li>The model has the flexibility to allow any means for the 4 groups.</li>
+				<li>If the two indicator variables have zero parameters, the means will 
+					be linearly related.</li>
+			</ul>
+</blockquote>
+		<p>This full model is therefore equivalent to the earlier models that we used 
+			for a categorical explanatory variable.</p>
+</div>
+
+  <p class="heading">Test for nonlinearity</p>  
+  <p>Using this parameterisation, we can test for linearity in an anova table 
+		with the sequential sum of squares for the indicator variables (after the 
+		linear term). A large sum of squares (and therefore a small associated p-value) 
+		gives evidence against linearity.</p>
+		
+	<div class="diagram">
+		<p class="heading">Lettuce and nitrogen fertiliser</p>  
+<p>An experiment was conducted to test the effects of nitrogen fertiliser on lettuce 
+production. Five rates of ammonium nitrate were used in a completely randomised 
+design with four replicates (plots). The data are the number of heads of lettuce 
+harvested from each plot.</p>
+
+		<p class=eqn><img src="../lackOfFit/images/lettuceScatter.gif" width="267" height="286"> 
+		</p>
+
+		<p>The anova table below shows the sequential sums of squares for the linear 
+			term and for the 3 indicator variables that are required to allow the 3rd, 
+			4th and 5th group means to be off the line joining the 1st and 2nd levels.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="200">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="glmAnovaProg.CombineSsqApplet">
+<param name="yVarName" value="Lettuce/plot">
+<param name="yValues" value="104 114 90 140 134 130 144 174 146 142 152 156 147 160 160 163 131 148 154 163">
+<param name="xVariables" value="X Z">
+<param name="XVarName" value="Linear">
+<param name="XValues" value="4@1 4@2 4@3 4@4 4@5">
+<param name="ZVarName" value="Nonlinear">
+<param name="ZValues" value="8@0 4@1 4@2 4@3">
+<param name="ZLabels" value="L12 L3 L4 L5">
+<param name="maxSsq" value="9999.9 99 9999.9 99.99">
+<param name="componentNames" value="Linear nitrogen#Nonlinear nitrogen">
+<param name="combine" value="1:2:Combined ssq for groups:Between groups">
+</applet> 
+</div>
+
+		<p>The p-value for the indicator variables, 0.0611, is for the test of nonlinearity. 
+			We therefore conclude from this test that there is only mild evidence of 
+			nonlinearity in the data.</p>
+		<p>The sequential sums of squares are sums of squared differences between 
+			the fitted values from different models, so they can be illustrated graphically</p>
+
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="varianceProg.PureComponents2Applet">
+<param name="yVarName" value="Lettuce/plot">
+<param name="yValues" value="104 114 90 140 134 130 144 174 146 142 152 156 147 160 160 163 131 148 154 163">
+<param name="yAxis" value="80 180 80 20">
+<param name="xVarName" value="Nitrogen (lb/acre)">
+<param name="xValues" value="4@0 4@1 4@2 4@3 4@4">
+<param name="xLabels" value="0 50 100 150 200">
+<param name="xAxis" value="-15 210 0 50">
+<param name="componentAxis" value="-60 40 -60 20">
+<param name="decimals" value="2">
+<param name="labelAxes" value="true">
+<param name="dotPlotWidth" value="110">
+<param name="maxSsq" value="9999.9">
+<param name="ssqNames" value="Total variation#Linear component#Nonlinear component#Residuals">
+<param name="customText" value="Component=Component">
+</applet>
+</div>
+
+
+		<p>Select <strong>Linear component</strong> from the pop-up menu. The linear 
+			sum of squares is the sum of squared differences between the overall mean 
+			(fitted value for a model with no explanatory variables) and the fitted 
+			values from the linear model.</p>
+		<p>Select <strong>Nonlinear component</strong>. The nonlinear sum of squares 
+			is the sum of squared differences between the linear model and the model 
+			that treats the explanatory variable as <em>g</em> groups.</p>
+		
+</div>
+
+		
+	<p class="heading">Finding the sums of squares in practice</p>  
+  
+<div class="centred"><div class="boxed">
+<p>Many statistical programs have options 
+						to automatically find the nonlinear (also called <em>lack of fit</em>) 
+						and residual (also called <em>pure error</em>) sums of squares and 
+						perform a goodness-of-fit test for linearity.</p>
+</div></div>
+
+	<p>If such software is not available, the sums of squares can be easily obtained 
+		by fitting two models, one of which is a standard linear model that treats 
+		x as a numerical explanatory variable, and the other of which treats x as 
+		defining <em>g</em> groups (one for each distinct x-value).</p>
+	<p>The nonlinear sum of squares is the difference between the explained sums 
+		of squares for these two models. The anova table can therefore be created 
+		from the results of fitting these two models.</p>
+	
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

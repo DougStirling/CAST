@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Standard error vs standard deviation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="standard error, standard deviation">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Difference between standard error and standard deviation</p>
+  <p>When dealing with numerical data sets, many people get confused between the 
+		standard deviation of the sample and the standard error of the sample mean. 
+		We want to stress the difference between these.</p>
+		
+		
+	<dl>
+		<dt>Standard deviation (SD)</dt>
+		<dd>This describes the spread of values in the sample. The sample standard 
+			deviation, <em>s</em>, is a random quantity &mdash; it varies from sample to 
+			sample &mdash; but it stays the same on average when the sample size increases.</dd>
+		<dt>Standard error of the mean (SE)</dt>
+		<dd>This is the standard deviation of the sample mean, <img src="../../images/symbol.xBar.png" width="10" height="10" align="baseline">, 
+			and describes its accuracy as an estimate of the population mean, µ. 
+			When the sample size increases, the estimator is based on more information 
+			and becomes more accurate, so its standard error decreases.
+		</dd>
+	</dl>
+	
+  <p>Not only is this true for sample means, but more generally...</p>
+		
+			<center>
+				<table border="1" cellspacing="0" cellpadding="10" bgcolor="white" width="75%">
+					<tr> 
+						
+				<td align="center"><strong>The standard error of all common estimators 
+					decreases as the sample size, <em>n</em>, increases.</strong></td>
+					</tr>
+				</table>
+			</center>
+	
+  <p class="heading">Common mistakes in interpretation</p>
+  <p>Students often use the standard error when they should use the standard deviation, 
+    and vice versa.</p>
+  <dl>
+    <dt>Standard error does not describe the variability of individual values</dt>
+    <dd>A new value has about 95% probability of being within 2 <strong>standard 
+      deviations</strong> of sample mean.</dd>
+    <dt>Standard deviation does not describe the accuracy of the sample mean</dt>
+    <dd>The sample mean has about 95% probability of being within 2 <strong>standard 
+      errors</strong> of the population mean.</dd>
+  </dl>
+<br>
+		
+<center>
+	<table border="1" cellspacing="0" cellpadding="10" bgcolor="white" width="75%">
+		<tr> 
+			
+	      <td align="center"><strong>Be careful that you do not confuse the two 
+					terms (or misinterpret the values).</strong></td>
+		</tr>
+	</table>
+</center>
+<br>
+		
+  <div class="diagram"> 
+    <p class=heading>Theory (again)</p>
+    <p>To illustrate the distinction between the standard deviation and standard 
+      error, the diagram below shows a normal population with mean µ&nbsp;=&nbsp;1000 
+      and standard deviation σ&nbsp;=&nbsp;200.</p>
+			
+		<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="stdErrorProg.PopnSeVsSdApplet">
+<param name="varName" value="Population distribution">
+<param name="popnDistn" value="normal">
+<param name="popnParams" value="1000 200">
+<param name="dataAxis" value="500 1500 600 200">
+<param name="meanErrorName" value="Error in estimate">
+<param name="errorAxis" value="-500 500 -400 200">
+<param name="errorSdDecimals" value="0">
+<param name="sampleSize" value="1 64 16">
+<param name="maxSD" value="999">
+</applet>
+</div>
+
+		<p>Use the slider to adjust the sample size. Note that the standard error 
+			decreases when the sample size gets bigger even though the population standard 
+			deviation stays the same.</p>
+		<p class=heading>From data (simulation)</p>
+		<p>The next diagram takes random samples of values from the above population. 
+		</p>
+			
+		<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="260">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="stdErrorProg.SampSeVsSdApplet">
+<param name="varName" value="Random sample">
+<param name="random" value="1000 200 3.0">
+<param name="dataAxis" value="500 1500 600 200">
+<param name="errorName" value="Estimated distn of error">
+<param name="errorAxis" value="-500 500 -400 200">
+<param name="maxSD" value="999">
+<param name="seDecimals" value="1">
+<param name="sampleSize" value="*10 40 100">
+<param name="customText" value="Sample estimate=Sample estimate">
+</applet>
+</div>
+			
+		
+    <p>Click <strong>Take sample</strong> a few times and observe that the sample 
+			standard deviation varies from sample to sample but usually has a value 
+			close to the population standard deviation, σ&nbsp;=&nbsp;200.</p>
+		<p>Observe also that the standard error (estimated using the sample standard 
+			deviation, <em>s</em>) is much lower than the standard deviation. </p>
+    <p>Use the pop-up menu to increase the sample size. Observe that the sample 
+			standard deviation remains around σ&nbsp;=&nbsp;200 
+			but the standard error decreases.</p>
+
+	</div>
+    
+	<p class="heading">Warning</p>
+	<p>Be particularly careful when reading journal articles. Some papers use standard 
+		deviations (SD)  to describe the distribution of variables, but others 
+		give the standard errors (SE) of the means of the variables.</p>
+	<center>
+		<table border="1" cellspacing="0" cellpadding="10" bgcolor="white" width="75%">
+			<tr> 
+				<td align="center"><strong>When tables of variables are shown in journal 
+					papers, check whether the tables show <font color="#FF0000">mean&nbsp;±&nbsp;SD</font> 
+					or <font color="#FF0000">mean&nbsp;±&nbsp;SE</font>.</strong></td>
+			</tr>
+		</table>
+	</center>
+	
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

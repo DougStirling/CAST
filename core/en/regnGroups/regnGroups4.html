@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Parallel regression lines</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<script type="text/javascript">
+		setupChoiceImages("twoLines", "parallelLines");
+	</script>
+
+	<meta name="index" content="comparing groups, parallel regn lines, least squares">
+	<meta name="dataset" content="Gas consumption and insulation">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Interpretation of   regression lines</p>
+<p>The problem with fitting separate regression lines by least squares in the different groups is that it is difficult to concisely explain the difference between the groups &mdash; the difference between the predicted response in the groups  depends on the value of the explanatory variable.</p>
+<p>In the two-group example below, the difference between <em>Y</em> in Groups 1 and  2 is much greater when <em>X</em> is large than when <em>X</em> is small.</p>
+
+<div class="centred">
+<form>
+    <select name="dataset" onChange="changeImage('image', this)">
+      <option value="0" selected>Two general lines</option>
+      <option value="1">Parallel lines</option>
+    </select>
+</form>
+</div>
+
+<p class="eqn">
+	<img class="gif" id="image" src="images/twoLines.gif" width="313" height="274">
+</p>
+
+<p class="heading">Parallel regression lines</p>
+<p>Interpretation is considerably simplified if we constrain the  regression lines for the different groups to have the same slope. Select <strong>Parallel lines</strong> from the pop-up menu above. Both regression lines now have the same slope c, so Group 1 is predicted to be (a&nbsp;-&nbsp;b) higher than Group 2 <strong>irrespective of the value of <em>X</em></strong>.</p>
+
+<div class="centred"><div class="boxed">
+<p>It is not appropriate to fit parallel lines to different groups for <strong>all</strong> data sets &mdash; always check a scatterplot first &mdash; but, if it is, the resulting least squares lines are much easier to interpret.</p>
+</div></div>
+
+<p class="heading">Least squares</p>
+<p>The principle behind fitting  parallel lines to two or more groups is the same as in ordinary simple regression &mdash; we choose the parameters to minimise the sum of squared residuals. The formulae for the resulting lines are much harder to express algebraically and will therefore not be described here. However most statistical software will do the calculations for you, so the precise details are of little importance.</p>
+
+<div class="diagram" title="Example: Gas usage and insulation">
+<p class="heading">Gas consumption and insulation</p>
+
+<p>Data were collected in the 1960s at a house in south-east England about weekly gas consumption (in 1000 cubic feet) and the average outside temperature (in degrees Celsius) for 26 weeks before and 18 weeks after cavity-wall insulation had been installed. The house thermostat was set at 20°C throughout.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="indicatorProg.TwoGroupEquationsApplet">
+<param name="yVarName" value="Gas consumption">
+<param name="yValues" value="7.2 6.9 6.4 6.0 5.8 5.8 5.6 4.7 5.8 5.2 4.9 4.9 4.3 4.4 4.5 4.6 3.7 3.9 4.2 4.0 3.9 3.5 4.0 3.6 3.1 2.6 4.8 4.6 4.7 4.0 4.2 4.2 4.1 4.0 3.5 3.2 3.9 3.5 3.7 3.5 3.5 3.7 3.5 3.4">
+<param name="xVarName" value="Temperature">
+<param name="xValues" value="-0.8 -0.7 0.4 2.5 2.9 3.2 3.6 3.9 4.2 4.3 5.4 6.0 6.0 6.0 6.2 6.3 6.9 7.0 7.4 7.5 7.5 7.6 8.0 8.5 9.1 10.2 -0.7 0.8 1.0 1.4 1.5 1.6 2.3 2.5 2.5 3.1 3.9 4.0 4.0 4.2 4.3 4.6 4.7 4.9">
+<param name="zVarName" value="Insulation">
+<param name="zValues" value="26@0 18@1">
+<param name="zLabels" value="Before After">
+<param name="yAxis" value="0 8 0 1">
+<param name="xAxis" value="-1 11 0 2">
+<param name="maxParam" value="9.999 -9.999 -9.999 -9.999">
+<param name="groupEffectName" value="Insul (Aft - Bef)">
+<param name="hasInteraction" value="true">
+<param name="shortNames" value="Gas Temp">
+<param name="customText" value="Common line=Common line#Separate lines=Separate lines#Equal slopes=Equal slopes#interaction=interaction">
+</applet> 
+
+</div>
+
+<p>The diagram initially shows a single regression line that is fitted by least squares to all the data.</p>
+<p>There is clearly a difference between gas consumption before and after insulation was installed, so select <strong>Separate lines</strong> from the pop-up menu. These lines fit much closer to the data but it is much harder to summarise the effect of the insulation since it differs depending on the temperature.</p>
+<p>The separate lines seem to be close to parallel, so finally select <strong>Equal slopes</strong> from the pop-up menu to fit two parallel lines to the data (by least squares). From these parallel lines, we can summarise the effect of the insulation as follows.</p>
+
+<div class="centred"><div class="boxed">
+  <p>Gas consumption is (6.717 - 4.922) = 1.795 lower after insulation, regardless of the outside temperature.</p>
+</div></div>
+
+<p class="heading">Are parallel lines reasonable?</p>
+<p>Although the parallel lines seem to fit these data reasonably well and  allow the effect of insulation to be summarised concisely, it is important to consider whether they match our knowledge of the physical system underlying the data. Surely we should expect that insulation would have more effect on gas consumption when the temperature is very low than when it is high? Perhaps  parallel lines are  an over-simplification and separate least squares lines should be used to describe the effect of insulation, despite the extra difficulty of interpretation.</p>
+
+</div>
+
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Central composite designs</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="response surface, central composite design, star points, centre points, rotatable design">
+	<meta name="dataset" content="Chemical process yield">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Two-level factorial experiment</p>  
+  <p>We first consider a factorial experiment with two levels for each factor 
+		(coded as ±1). In this design, there are equal replications of the 
+		four factor combinations shown in the diagram below.</p>
+	<p class=eqn><img src="images/factorialDesign.gif" width="262" height="247"> 
+	</p>
+	<p>The resulting data allow fitting of the linear model with interaction,</p>
+	<p class=eqn><img src="images/linInteractModel.gif" width="266" height="18"> 
+	</p>
+	<p>However there is not enough information to assess the linearity of the factor 
+		effects or fit models with quadratic terms in X or Y.</p>
+	<p class="heading">Factorial experiment with centre points</p>
+	<p>Adding centre points to the design allows the linearity of the model to be 
+		assessed using an analysis of variance table with <a href="javascript:showNamedPage('twoNExper7')">one 
+		degree of freedom for nonlinearity</a>.</p>
+	<p class=eqn><img src="images/centrePointDesign.gif" width="262" height="247"> 
+	</p>
+	<p>However although this design permits a test of whether a nonlinear model 
+		is necessary, the resulting data do not contain enough information to fit 
+		the full quadratic model,</p>
+	<p class=eqn><img src="images/bivarQuadModel2.gif" width="402" height="24"> 
+	</p>
+	<br>
+	
+<div class="centred"><div class="boxed">
+<p>At least six different combinations of factor levels must be 
+				used to fit a quadratic model.</p>
+</div></div>
+
+	<br>
+	
+	<div class="diagram"> 
+    <p class="heading">Chemical process yield</p>
+    <p>In an experiment to assess how the reaction time and temperature affect 
+			the yield of a chemical process, there was a single replicate of a 2<sup>2</sup> 
+			factorial experiment (with <em>Time</em> set at 80 and 100 and <em>Temperature</em> 
+			at 140 and 150°C), augmented by four replicates of the centre point 
+			of the design. The diagram below initially shows the five factor combinations 
+			(design points) for the experiment..</p>
+		<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="responseSurfaceProg.DragRestrictSurfaceApplet">
+<param name="yVarName" value="Yield">
+<param name="xVarName" value="Time">
+<param name="zVarName" value="Temperature (C)">
+<param name="shortNames" value="Y T C">
+<param name="yValues" value="78.8 91.2 84.5 77.4 89.7 86.8 87 86">
+<param name="xValues" value="2@80 2@100 4@90">
+<param name="zValues" value="140 150 140 150 4@145">
+<param name="yAxis" value="75 95 75 5">
+<param name="xAxis" value="75 105 75 5">
+<param name="zAxis" value="138 152 138 2">
+<param name="startDrag" value="90">
+<param name="paramDecimals" value="0 2 2 3 3 3">
+<param name="shadeCutoff" value="75 85 95">
+<param name="maxCoeffs" value="-9999 99.99 -99.99 -9.999 -9.999 -9.999">
+<param name="initialRotation" value="90 90">
+<param name="customText" value="Show best model=Show best model">
+</applet>
+</div>
+
+    <p>Click the <strong>y-x-z</strong> rotation button to see the yields that 
+			were obtained from the experiment.</p>
+		<p>Now click the checkbox <strong>Show best model</strong>. This shows a quadratic 
+			model that passes through the mean yield at each of the five factor combinations. 
+			(These five means are displayed as black circles.)</p>
+		<p>This quadratic model is not unique &mdash; a range of quadratic models pass 
+			through these same five points. Drag the red arrow to change the quadratic 
+			model. </p>
+		
+<div class="centred"><div class="boxed">
+<p>Data are needed from more than 5 design points to allow the 
+					shape of the response surface to be estimated.</p>
+</div></div>
+
+<br>
+</div>
+
+  <p class="heading">Central composite designs</p>  
+  <p>A 2<em><sup>k</sup></em> factorial design for <em>k</em> factors must be 
+		augmented with extra design points to allow a quadratic model to be fitted. 
+		The usual way to do this is with two additional runs for each of the <em>k</em> 
+		factors in which all other factors are set at their centre value and that 
+		factor takes two levels that are more extreme than those in the factorial 
+		part of the design. These extra runs are called <strong>star points</strong> 
+		for the design.</p>
+	<p>For a 2-factor design, setting these extreme values at ±1.414 (when 
+		the factorial levels are coded as ±1) and using the same number of 
+		replicates as in the factorial part of the design gives the design an important 
+		property. When the model is fitted and used to predict the response, the predictions 
+		are equally accurate in all directions around the design centre &mdash; the accuracy 
+		of the predicted reponse depends only on the distance from the centre point. 
+		(A design with this property is called <strong>rotatable</strong>.)</p>
+	<p class=eqn><img src="images/centralCompDesign.gif" width="262" height="247"> 
+	</p>
+	<p>This design is called a <strong>central composite</strong> design. There 
+		is often only a single replicate throughout, except for the centre point of 
+		the design for which there are often 5 or 6 replicates to allow the experimental 
+		error to be estimated.</p>
+	<p class="heading">Sequential design</p>
+	<p>Sometimes an initial 2<sup>2</sup> factorial design is conducted with a few 
+		replicates of the centre point of the design. If the test for linearity indicates 
+		that there is curvature, extra runs of the experiment can be conducted at 
+		the star points to fit a response surface. If the levels used for the factorial 
+		experiment are set at the extreme factor levels that are permissible (e.g. 
+		an additive may be restricted to values between 0 and 5), then the star points 
+		of the above central composite design will be outside these limits.</p>
+	<p>One solution is to ensure that the initial factor levels for the 2<sup>2</sup> 
+		factorial design are well within the allowed values, ensuring that any subsequent 
+		star points are 'legal'. If a factor must take values between ±1, then 
+		setting the levels for the initial factorial design at ±<sup>1</sup>/<sub>1.414</sub> 
+		will ensure that the subsequent star points will be at ±1. This does 
+		however mean that the main effects for the factors are less accurately estimated 
+		than in a 2<sup>2</sup> factorial design with factor levels at ±1.</p>
+	<p class="heading">Face-centred central composite designs</p>
+	<p>An alternative design brings the star points back to levels ±1 instead 
+		of ±1.414. This is sometimes called a <strong>face-centred</strong> 
+		central composite design. When there are only two factors, this design is 
+		identical to a full factorial design for two factors with 3 levels (plus some 
+		extra centre points).</p>
+	<p class=eqn><img src="images/factorial3Design.gif" width="262" height="247"> 
+	</p>
+	<p>The centre-faced design is not rotatable, so:</p>
+	
+<div class="centred"><div class="boxed">
+<p>A standard central composite design is usually preferred unless 
+				star points are <span class="black">sequentially</span> added to a 2<sup>2</sup> 
+				factorial design in which the factor levels are already at their permitted 
+				limits.</p>
+</div></div>
+
+	<br>
+	
+	
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

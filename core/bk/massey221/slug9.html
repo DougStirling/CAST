@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Interpreting model for log data</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="slope, confidence interval, prediction">
+	<meta name="dataset" content="Slug weight and length">
+</head>
+
+
+<body style="background-color:#FFE1B6">
+<script type="text/javascript">writePageStart();</script>
+
+
+<p class="heading">Interpreting and Using the Model
+</p>
+
+  <p>How do we use a model relating log(weight) to log(length)? In order to interpret 
+	the coefficients, the model must be transformed back to an equation that expresses 
+	weight in terms of length. </p>
+
+<p>The following output is produced by Minitab when asked to perform a regression
+of a column containing log(weight) against another column containing log(length), after
+deleting the outlier from the data set.
+</p>
+
+
+<div class="centred"><table border="0" cellspacing="0" cellpadding="5" class="centred">
+<tr><td bgcolor="white" class="black">
+<tt><pre width="60">
+The regression equation is
+logWt = - 1.59 + 2.64 logLen
+
+Predictor       Coef       Stdev    t-ratio        p
+Constant    -1.58906     0.03058     -51.97    0.000
+logLen       2.64043     0.05017      52.63    0.000
+</pre></tt>
+</td></tr>
+</table></div>
+
+<p>The least squares equation is therefore
+</p>
+
+<p class=eqn>
+<img src="images/logLogEqn.gif" width="294" height="23" alt="log(wt) = -1.6 + 2.64 log(len)">
+</p>
+
+<p>or equivalently,
+</p>
+
+<p class=eqn>
+<img src="images/powerEqn.gif" width="177" height="50" alt="wt = .026 x len**2.64">
+</p>
+
+<p>The diagram below shows a scatterplot of log(weight) against log(length) and a scatterplot
+of weight against length. The least squares line (based on the transformed variables) is drawn
+on both scatterplots.
+</p>
+
+<div align="center">
+<script type="text/javascript">startApplet("loessProg.LogLogLSApplet", 650, 380, "", "FFE1B6");</script>
+<param name="xVarName" value="Len">
+<param name="yVarName" value="Wt">
+<param name="xValues" value="7.3 7.8 7.5 6.9 6.0 7.4 8.5 8.6 8.2 8.5 7.0 4.3 3.2 4.7 4.2 9.0 4.6 3.8 4.0 3.9 3.2 1.0 4.1 6.1 4.2 4.4 5.6 5.7 1.7 4.5 4.5 3.5 2.0 2.9 2.1 2.6 2.6 3.6 1.6 3.5 3.6 2.2 2.4 4.2 3.3 3.9 5.6 4.6 2.2 1.2 2.7 3.4 3.2 2.3 2.8 1.4 2.2 1.7 1.0 2.3 3.5 2.9 2.6 2.1 1.6 1.6 2.0 7.5 7.8 2.2 6.1 5.9 7.8 9.0 9.3 7.1 9.4 8.5 8.5 2.4 2.5 5.7 4.5 1.0 1.0 1.0 1.1 1.9 1.6 3.1 2.3 1.9 1.8 2.3 2.5 3.3 4.2 2.1 9.0 9.4">
+<param name="yValues" value="3.68 5.48 4.94 3.47 3.26 4.36 6.44 8.37 6.40 8.23 4.99 1.69 0.39 2.14 1.07 8.75 1.02 1.07 0.88 0.76 0.48 0.04 0.98 3.34 1.02 1.10 2.35 3.93 0.10 0.65 1.64 0.50 0.12 0.40 0.14 0.35 0.29 0.88 0.12 0.66 0.62 0.17 0.25 2.28 1.26 2.20 4.78 3.27 0.20 0.09 0.30 0.52 0.47 0.19 0.28 0.08 0.18 0.13 0.06 0.20 0.60 0.39 0.31 0.16 0.06 0.04 0.16 4.94 5.48 0.36 3.16 1.91 8.44 13.62 8.70 4.39 8.23 6.30 6.06 0.24 0.27 2.04 1.30 0.03 0.03 0.02 0.03 0.14 0.08 ? 0.18 0.10 0.09 0.23 0.26 0.71 0.85 0.18 12.00 11.22">
+<param name="horizAxis" value="0.99 10.01 2 2 1">
+<param name="horizAxis2" value="0 10 0 2">
+<param name="vertAxis" value="0.01 15 5 5 0.01 0.1 1">
+<param name="vertAxis2" value="0 15 0 5">
+<param name="transXAxis" value="(200,-2) (500,-2)">
+<param name="maxXTransformed" value="0.0 1.0">
+<param name="transYAxis" value="(200,0) (500,0)">
+<param name="maxYTransformed" value="-1.00 1.00">
+<param name="labelAxes" value="true">
+<param name="extraAxisSpace" value="10 10">
+<param name="betaExtremes" value="3 4 99.99 3 4 99.99">
+<param name="maxValues" value="10.00 -1.000 10.000">
+<param name="factorDecimals" value="4">
+</applet>
+</div>
+
+<p><span class="instruction">Click anywhere on either scatterplot.</span> The equations on
+the bottom right show how log(weight) is predicted from log(length) using the least
+squares equation; the predicted weight is 10 raised to this power.
+</p>
+
+<p><span class="instruction">Choose <strong>Use original scale</strong> from the popup
+menu.</span>
+The equations now show how this predicted weight may be obtained directly from the length
+using the rewritten equation.
+</p>
+	
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

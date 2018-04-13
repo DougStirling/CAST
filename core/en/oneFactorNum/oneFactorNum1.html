@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>One factor with numerical levels</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="ordered factor levels, numerical factor">
+	<meta name="dataset" content="Fertiliser and tomato yield">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Ordering of the factor levels</p>
+<p>In some experiments with a single factor, we have no prior information about the ordering of the factor levels. For example, if the experiment is to compare five varieties of wheat, any ordering of the varieties may be equally valid.</p>
+<p>However the factor levels in other experiments are  values of some <strong>numerical</strong> quantity, such as</p>
+<ul>
+	<li>amounts of irrigation or fertiliser applied to plots</li>
+	<li>dose of  medicine given to sheep with worms</li>
+	<li>time of planting or harvest of a crop</li>
+	<li>spacing of plants in a field</li>
+</ul>
+<p>In models with numerical factors, we usually expect some smoothness in the relationship between the value of the factor and the mean response. For example, we would expect that the mean yield of a crop given 50 gm of fertiliser per m<sup>3</sup> will be between the mean yields when  40 gm and 60 gm per m<sup>3</sup> of fertiliser are used.</p>
+
+<p class="heading">Problems with ignoring the ordering of the factor levels</p>
+<p>Even if the factor is numerical, we can still use least squares to fit the model </p>
+<p class="eqn"><span class="black em">y<sub>ij</sub></span>&nbsp;= &nbsp;<span class="green">µ</span> &nbsp; + &nbsp; <span class="blue">β<em><sub>i</sub></em></span> &nbsp; + &nbsp; <span class="red">ε<em><sub>ij</sub></em></span> &nbsp; &nbsp; &nbsp; for <em>i</em> = 1 to <em>g</em> and <em>j</em> = 1 to <em>n<sub>i</sub></em></p>
+<p>where <span class="blue">β<sub>1</sub> = 0</span>. However this model ignores our expectation of 'smoothness' in the relationship and the fitted values &mdash; the mean responses at the different factor levels &mdash; often to not change steadily as the factor level increases.</p>
+<p>A second problem is that the model gives no way to predict the response at values of the explanatory factor that were not used in the experiment.</p>
+<div class="diagram">
+<p class="heading">Effect of fertiliser on tomato yield</p>
+
+<p>The simulation below models an experiment in which five levels of fertiliser are applied to individual tomato plants &mdash; four plants at each fertiliser level.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="360" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="exper2Prog.RandomRegnMeansApplet">
+<param name="yVarName" value="Yield">
+<param name="yAxis" value="8 17 8 1">
+<param name="xVarName" value="Fertiliser">
+<param name="xLabels" value="30 40 50 60 70">
+<param name="xValues" value="5@0 5@1 5@2 5@3 5@4">
+<param name="showResiduals" value="true">
+<param name="regnParams" value="11 0.8 1.2">
+</applet>
+</div>
+
+<p>In this simulation, click <strong>Repeat experiment</strong> a few times to show typical results from conducting the experiment. The red lines show the mean yields for the different levels of fertiliser applied. Note that there is a tendency for more fertiliser to result in a higher yield, but the mean yields often do not steadily increase with the fertiliser used.</p>
+<p>Also, from the results of a single run of the experiment, it would be difficult to predict the mean yield when the amount of fertiliser is 0.35 or 0.6.</p>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

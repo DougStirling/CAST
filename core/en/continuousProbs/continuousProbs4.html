@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Cumulative distribution function</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="continuous distribution, cumulative distribution function, rectangular distribution, exponential distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Definition of the cumulative distribution function</p>
+
+<p>The cumulative distribution function of a continuous random variable is defined in exactly the same way as when the variable is discrete.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>The <strong>cumulative distribution function</strong> (CDF) for a continuous random variable \(X\) is the function</p>
+	\[F(x) \;=\; P(X \le x)\]
+</div>
+
+<p>This probability can be expressed as an integral. However because \(x\) is the upper limit of the integral, we need to use a different symbol for the integrating variable,</p>
+
+\[F(x) \;\; = \; \; \int_{-\infty}^x f(t)\;dt\]
+<p>Note that since differentiation is the inverse operation to integration, we can also write</p>
+\[f(x) \;\; = \; \; \frac {d}{dx} F(x)\]
+<p class="heading">Shape of the CDF</p>
+<p>As for discrete distributions, the cumulative distribution function of a continuous distribution monotonically rises from zero to one. However whereas a discrete distribution's CDF is a step function, that of a continuous distribution is a smooth function.</p>
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Example</p>
+<p>Sketch the cumulative distribution function of a random variable with a rectangular distribution, \(X \sim  \RectDistn(1, 5)\).</p>
+</div>
+
+<div class="solution">
+<p>The probability density function of \(X\) is</p>
+\[ f(x) = \begin{cases} \frac 1 4 & \quad \text{for } 1 \lt x \lt 5 \\[0.2em] 0 & \quad \text{otherwise} \end{cases} \]
+
+<p>We first note that \(f(x)\) is zero for \(x \lt 1\). For values of \(x\) between 1 and 5,</p>
+\[
+F(x) \;\;=\;\; \int_{-\infty}^x f(t)\;dt
+=\;\; \int_{1}^x f(t)\;dt
+=\;\; \left[\frac t 4\right]_1^x = \frac {x-1} 4
+\]
+<p>Since values below 1 and above 5 are impossible, the full CDF is:</p>
+
+\[
+F(x) = \begin{cases} 0  &amp; \quad \text{for } x \lt 1\\[0.2em]
+\frac {x-1} 4 &amp; \quad \text{for } 1 \le x \le 5 \\[0.2em]
+1 &amp; \quad \text{for } x \gt 5 \end{cases}
+\] 
+
+<p>The diagram below sketches F(x).</p>
+<p class="eqn"><img class="svgImage" src="images/rectangularCdf.png" width="321" height="242"></p>
+</div>
+
+</div>
+
+<p>The next example finds the CDF of a random variable with an exponential distribution.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Example</p>
+		<p>If \(X\) has probability density function</p>
+\[
+		f(x) = \begin{cases}
+		4\;e^{-4x} &amp; \quad \text{for } x \ge 0\\[0.2em]
+		0 &amp; \quad \text{otherwise}
+		\end{cases}
+	\]	
+		<p>what is its cumulative distribution function?</p>
+	</div>
+	<div class="solution">
+		<p>Since \(f(x)\) is zero for \(x \lt 0\), \(F(x) = 0\) for all \(x \lt 0\). For \(x \ge 0\), </p>
+		\[ \begin{align}
+		F(x) \;\;&amp;=\;\; \int_{-\infty}^x f(t)\;dt \\[0.3em]
+		&amp;=\;\; \int_{0}^x {4\;e^{-4t}}\;dt \\[0.3em]
+		&amp;=\;\; \left[-e^{-4t}\right]_0^x \\[0.5em]
+		&amp;=\;\; 1 - e^{-4x}
+		\end{align} \]
+		<p>The full CDF is therefore</p>
+		\[
+		F(x) = \begin{cases} 0  &amp; \quad \text{for } x \lt 0\\[0.2em]
+		1 - e^{-4x} &amp; \quad \text{for } x \ge 0
+		\end{cases} \]
+		<p>The diagram below sketches F(x).</p>
+		<p class="eqn"><img class="svgImage" src="images/exponentialCdf.png" width="321" height="242"></p>
+	</div>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

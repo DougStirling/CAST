@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Inference for models with interaction</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="interaction, least squares, t test, f test, analysis of variance">
+	<meta name="dataset" content="Bee energy expenditure">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Testing for interaction</p>
+  <p>We end this section with consideration of a linear model in which variables 
+    <em>X</em> and <em>Z</em> interact in their effect on <em>Y</em>.</p>
+  <p class=eqn><img src="../interact/images/interactModel.gif" width="496" height="21"></p>
+  <p>As in all other general linear models, there are two approaches to hypothesis 
+    testing.</p>
+	<dl>
+		<dt>T tests</dt>
+		<dd>It is possible to perform t-tests on the individual parameters of the 
+			model. Each is based on a t statistic which is the ratio of the parameter 
+			estimate and its standard error.</dd>
+		<dt>F tests</dt>
+		<dd>F tests are found from a sequence of models of increasing complexity. 
+			The reductions in residual sum of squares from the successive models are 
+			arranged in an analysis of variance table.</dd>
+	</dl>
+	<p>These approaches are illustrated in the following example.</p>
+
+<div class="diagram">
+<p class="heading">Energy expenditure of bees</p>
+		
+    <p>In an experiment, an entomologist recorded energy expenditure (joules/sec) 
+      for bees drinking water with different sucrose concentrations (%) and at 
+      different temperatures. We will test whether there is interaction between 
+      sucrose and temperature.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="600">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="curveInteractProg.QuadParamAnovaApplet">
+<param name="dataName" value="Energy expenditure of bees">
+<param name="yAxis" value="0 20 0 5">
+<param name="xAxis" value="17 43 20 10">
+<param name="zAxis" value="15 65 20 20">
+<param name="longYVarName" value="Energy (E)">
+<param name="longXVarName" value="Temperature (T)">
+<param name="longZVarName" value="Sucrose (S)">
+<param name="yVarName" value="E">
+<param name="xVarName" value="T">
+<param name="zVarName" value="S">
+<param name="yValues" value="3.1 3.7 4.7 5.5 6.7 7.3 7.9 9.2 9.3 6.0 6.9 7.5 11.5 12.9 13.4 17.5 15.8 14.7 7.7 8.3 9.5 15.7 14.3 15.9 19.1 18.0 19.9">
+<param name="xValues" value="9@20 9@30 9@40">
+<param name="zValues" value="3@20 3@40 3@60 3@20 3@40 3@60 3@20 3@40 3@60">
+<param name="initialParams" value="6.00 0.000 0.000 0.0 0.0 0.0000 0">
+<param name="paramMinMax" value="-99.99 99.99 0.999 9.999 -9.999 9.999 0.0 0.0 0.0 0.0 0.9999 9.9999">
+<param name="shadeCutoff" value="0 10 20">
+<param name="paramNames" value="Intercept Temperature Sucrose ? ? Interaction">
+<param name="modelSequence" value="0 012 0125">
+<param name="compName" value="Total#Linear T & S#Interaction#Residual">
+<param name="maxSsq" value="999.99 999.99 99.99">
+<param name="showT" value="true">
+<param name="maxTableEntries" value="-99.999 9.999 99.99">
+<param name="initialRotation" value="45 40">
+<param name="customText" value="param=param#se=se">
+</applet> 
+</div>
+
+		<dl>
+			<dt>T test</dt>
+			<dd>The top table shows the parameter estimates, their standard errors, 
+				t-statistics and p-values. The p-values show the strength of evidence 
+				for whether the corresponding parameters are non-zero.</dd>
+		</dl>
+
+		<dl>
+			<dd>The p-value for the interaction term is 0.0013, giving very strong evidence 
+				that there is interaction between the effects of sucrose and temperature.</dd>
+		</dl>
+
+		<dl>
+			<dd>The other p-values should not be interpreted since it does not make 
+				sense to drop the linear terms in sucrose or temperature when there is 
+				an interaction in the model.</dd>
+			<dt>F test</dt>
+			<dd>An analysis of variance table is also shown. The p-value associated 
+				with the interaction is again 0.0013, so the conclusion about the significance 
+				of the interaction is the same.</dd>
+		</dl>
+
+		<dl>
+			<dd>Since there is interaction, it again does not make sense to test the 
+				linear terms in sucrose and temperature, so the p-value associated with 
+				the linear terms should not be used.</dd>
+		</dl>
+		
+		<br>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

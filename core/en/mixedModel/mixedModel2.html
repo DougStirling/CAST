@@ -1,0 +1,176 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Inference for X and 2 groups</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="comparing groups, experimental study, observational study, orthogonal variables, hypothesis test, t test">
+	<meta name="dataset" content="Gas consumption and insulation">
+	<meta name="dataset" content="Tool life on lathe">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Inference for slope and group effect</p>
+	<p>We again consider the model,</p>
+	<p class=eqn><img src="images/regn2GroupModel2.gif" width="425" height="76"></p>
+	<p>In this model, we are particularly interested in the parameters β<sub>1</sub> 
+		and δ<sub>2</sub>.</p>
+	<ul>
+		<li>β<sub>1</sub> 
+			describes the effect of increasing <em>x</em> by 1. If β<sub>1</sub> 
+			is zero, then the response is not related to <em>x</em>.</li>
+		<li>δ<sub>2</sub> 
+			is the difference between the mean responses in groups 2 and 1 (at the same 
+			x-value). If δ<sub>2</sub> 
+			is zero, there is no difference between the two groups.</li>
+	</ul>
+	<p>We can apply standard GLM methodology to test whether these two parameters 
+		are zero. The test divides the corresponding least squares estimate by its 
+		standard error to form a t-statistic,</p>
+		
+			<p class=eqn><img src="../glm/images/paramTest.gif" width="78" height="41"></p>
+
+	<p>This t-statistic is compared to a t distribution with (<em>n</em>&nbsp;-&nbsp;3) 
+		degrees of freedom to find the p-value for the test as usual.</p>
+	<p>Confidence intervals can also be found from</p>
+		<p class=eqn><img src="../glm/images/paramCI.gif" width="146" height="23"></p>
+  <p>where <em>p</em>&nbsp;is the number of linear parameters in the model, &nbsp;3.</p>
+	
+	<div class="diagram"> 
+		<p class="heading">Gas consumption and insulation</p>
+
+		<p>This data set contains data about weekly gas consumption in an English 
+			house and average outside temperature for 26 weeks before cavity-wall insulation 
+			was installed and 18 weeks after.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="indicatorProg.TwoGroupInferenceApplet">
+<param name="yVarName" value="Gas consumption">
+<param name="yValues" value="7.2 6.9 6.4 6.0 5.8 5.8 5.6 4.7 5.8 5.2 4.9 4.9 4.3 4.4 4.5 4.6 3.7 3.9 4.2 4.0 3.9 3.5 4.0 3.6 3.1 2.6 4.8 4.6 4.7 4.0 4.2 4.2 4.1 4.0 3.5 3.2 3.9 3.5 3.7 3.5 3.5 3.7 3.5 3.4">
+<param name="xVarName" value="Temperature">
+<param name="xValues" value="-0.8 -0.7 0.4 2.5 2.9 3.2 3.6 3.9 4.2 4.3 5.4 6.0 6.0 6.0 6.2 6.3 6.9 7.0 7.4 7.5 7.5 7.6 8.0 8.5 9.1 10.2 -0.7 0.8 1.0 1.4 1.5 1.6 2.3 2.5 2.5 3.1 3.9 4.0 4.0 4.2 4.3 4.6 4.7 4.9">
+<param name="zVarName" value="Insulation">
+<param name="zValues" value="26@0 18@1">
+<param name="zLabels" value="Before After">
+<param name="yAxis" value="0 8 0 1">
+<param name="xAxis" value="-1 11 0 2">
+<param name="maxParam" value="9.999 -9.999 -9.999">
+<param name="maxTableEntries" value="-99.999 9.999 -99.99">
+<param name="groupEffectName" value="Insul (Aft - Bef)">
+<param name="customText" value="param=param#se=se#intercept=intercept">
+</applet>
+</div>
+
+		<p>The table shows the p-values for the three parameters. The p-values for 
+			the two 'slope' parameters are both close to zero, so we should conclude 
+			that:</p>
+		
+<div class="centred"><div class="boxed">
+<p>Both outside temperature and installation 
+							of insulation have affected gas consumption.</p>
+</div></div>
+
+		<p>This is hardly surprising!!!</p>
+		<p>The check-boxes can be used to remove terms from the model. You may find 
+			it instructive to look at how removal of each term affects the model's representation 
+			on the scatterplot.</p>
+</div>
+		
+  
+  <p class="heading">Observational and experimental data</p>
+	
+  <p>Data of this type arise in two different ways.</p>
+  <dl>
+    <dt>Observational studies</dt>
+    <dd>In an observational study, a sample of individuals is selected and three 
+      variables (response, numerical explanatory variable and group) are recorded 
+      from each individual.</dd>
+    <dt>Experiments</dt>
+    <dd>In an experiment, some of the explanatory variables are <strong>controlled</strong>, 
+      so their values can be set by the experimenter for each individual.</dd>
+  </dl>
+  <p>In an experiment, it may be possible to ensure that the explanatory variables 
+    are orthogonal &mdash; uncorrelated with each other.</p>
+  
+<div class="centred"><div class="boxed">
+<p>If the same values for the numerical explanatory 
+            variable, <em>X</em>, are used in both groups, <em>X</em> is orthogonal 
+            to the indicator variable for groups.</p>
+</div></div>
+
+  <p>Orthogonality simplifies interpretation of the least squares estimates.</p>
+  
+<div class="centred"><div class="boxed">
+<p>If <em>X</em> and the indicator variable 
+            for groups are orthogonal, their LS estimates do not depend on whether 
+            the other variable is in the model.</p>
+</div></div>
+
+  <br>
+  <div class="diagram"> 
+    <p class="heading">Gas consumption and insulation</p>
+    <p>Although this was an experiment rather than an observational study (the 
+      weeks for which there was insulation were selected by the experimenter), 
+      the temperatures could not be controlled, so the temperatures and the indicator 
+      variable are <strong>not</strong> orthogonal. As a result, deleting either 
+      explanatory term in the diagram above alters the least squares estimate 
+      of the other term.</p>
+    <p class="heading">Tool life on lathe</p>
+
+		
+    <p>The following 16 observations result from an experiment in which the effective 
+      life (hrs) of a cutting tool used on a lathe was modelled in terms of the 
+      lathe speed (rpm). Two different tool types were used in the experiment. 
+      The experiment was designed to use the same lathe speeds for both tools 
+      (two runs at 500&nbsp;rpm, two at 600&nbsp;rmp, two at 700&nbsp;rmp and 
+      two at 600&nbsp;rmp). A consequence of this experimental design is that 
+      the lathe speed and tool type are orthogonal.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="indicatorProg.TwoGroupInferenceApplet">
+<param name="yVarName" value="Lifetime (hrs)">
+<param name="yValues" value="41.06 41.34 33.07 37.94 27.58 28.65 27.06 27.12 38.45 37.56 30.45 34.62 31.43 32.29 22.04 22.39">
+<param name="xVarName" value="Lathe speed (rpm)">
+<param name="xValues" value="500 500 600 600 700 700 800 800 500 500 600 600 700 700 800 800">
+<param name="zVarName" value="Tool type">
+<param name="zValues" value="8@0 8@1">
+<param name="zLabels" value="#Tool A# #Tool B#">
+<param name="yAxis" value="20 45 20 5">
+<param name="xAxis" value="450 850 500 100">
+<param name="maxParam" value="99.99 -9.999 -9.999">
+<param name="maxTableEntries" value="-99.999 9.999 -99.99">
+<param name="groupEffectName" value="Tool (B - A)">
+<param name="customText" value="param=param#se=se#intercept=intercept">
+</applet>
+</div>
+
+		
+    <p>From the p-values, we should conclude that:</p>
+	<ul>
+      <li>It is virtually certain that lathe speed affects the effective life 
+        of the tools</li>
+      <li>There is no evidence of a difference between the tool types</li>
+    </ul>
+    <p>Use the checkboxes to delete variables from the model and observe that 
+      the least squares coefficient for each variable is unaffected by whether 
+      the other variable is in the model.</p>
+
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

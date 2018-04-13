@@ -1,0 +1,162 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Analysis of variance</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="factorial design, interaction, anova, analysis of variance, f test">
+	<meta name="dataset" content="Toads and frogs">
+	<meta name="dataset" content="Wear of coated fabrics">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Aim for a simple model</p>  
+  <p>The more terms in a model, the greater its flexibility and ability to describe patterns in the experimental data. However when terms are added,  the model also becomes harder to interpret.</p>
+  <div class="centred"><div class="boxed">
+		<p>We therefore want to find the simplest model that is consistent with the data.</p>
+ 	</div></div>
+  <p>Analysis of variance is again used to find the simplest model.</p>
+  <p class="heading"></p>
+  <p class="heading">Analysis of variance (anova) table</p>
+  <p>A column of mean sums of squares (sums of squares divided by their degrees 
+		of freedom) is added to the sum of squares table. The mean explained sums 
+		of squares are compared to the mean residual sum of squares with F ratios.</p>
+	
+<div class="centred"><div class="boxed">
+<p>Large explained sums of squares correspond to significant 
+					terms.</p>
+</div></div>
+
+	<p>A p-value for each term shows whether its F ratio is larger than could be 
+		expected by chance.</p>
+	
+<div class="centred"><div class="boxed">
+<p>The p-values are used to decide which terms are unimportant 
+					and can be dropped from the full model.</p>
+</div></div>
+
+	<p>Note however that we should only consider hierarchical models, so terms must 
+		not be dropped if higher-order interactions involving them are still in the 
+		model.</p>
+	<div class="diagram"> 
+    <p class="heading">Water uptake by toads and frogs</p>
+    <p>The diagram below initially shows the best-fitting model with all interactions 
+			for the water uptake data.</p>
+		
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="600">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="factorialProg.FactorialAnovaApplet">
+<param name="yVarName" value="Water uptake">
+<param name="yValues" value="2.31 -1.59 17.68 25.23 28.37 14.16 28.39 27.94 0.85 2.90 2.47 17.72 3.82 2.86 13.71 7.38">
+<param name="yAxis" value="-5 30 -5 5">
+<param name="xLongName" value="Animal">
+<param name="wLongName" value="Injection?">
+<param name="zLongName" value="Pre-experiment moisture">
+<param name="xKeys" value="A M H">
+<param name="AVarName" value="Anim">
+<param name="AValues" value="8@0 8@1">
+<param name="ALabels" value="Toad Frog">
+<param name="HVarName" value="Inj">
+<param name="HValues" value="4@0 4@1 4@0 4@1">
+<param name="HLabels" value="Control Hormone">
+<param name="MVarName" value="Moist">
+<param name="MValues" value="2@0 2@1 2@0 2@1 2@0 2@1 2@0 2@1">
+<param name="MLabels" value="Wet Dry">
+<param name="startMean" value="ls">
+<param name="startModel" value="0*1*2">
+<param name="maxSsq" value="999.99 99 999.99 99.99">
+</applet> 
+</div>
+
+		<p>The 3-factor interaction term has a high p-value and is not significant 
+			so it can be dropped from the model. (Click the checkbox to the left of 
+			the term to delete it.)</p>
+		<p>There is similarly no evidence of interactions between <em>Moisture</em> 
+			and the other two factors, so drop them from the full model too. The interaction between <em>Animal</em> and <em>Injection</em> has p-value 0.0609, so the evidence for these factors interacting is  weak but we will leave the term in the model.</p>
+		<p>This leaves 
+			a model with all main effects (all factors affect mean <em>Water uptake</em>) 
+			and an interaction between <em>Animal</em> and <em>Injection</em>.</p>
+		<div class="centred"><div class="boxed">
+			<p>This is the simplest model that is consistent with the data. </p>
+		</div></div>
+		<p>Click the <strong>y-x</strong> rotation button. The purple lines show the 
+		mean <em>Water uptake</em> for animals getting no hormone and the green lines are similar for those getting the hormone.</p>
+		<div class="centred"><div class="boxed">
+			<p>The difference between the water uptake of toads and frogs is much greater for animals getting the injection than for those in the control group.</p>
+		</div></div>
+		<p class="heading">Wear of coated fabrics</p>
+    <p>An experiment was conducted to assess the durability of coated fabric subjected 
+			to standard abrasive tests. A factorial experiment was conducted with two 
+			different fillers (F<sub>1</sub> and F<sub>2</sub>) in three different proportions 
+			(25%, 50% and 75%), either with or without surface treatment of the fabric. 
+			Two replicate fabric specimens were tested for each of the 12 treatment 
+			combinations in a completely randomised design. The response is the weight 
+			loss (mg) of the fabric specimens in the abrasion test.</p>
+		
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="550">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="factorialProg.FactorialAnovaApplet">
+<param name="yVarName" value="Fabric abrasion loss, mg">
+<param name="yValues" value="194 208 233 241 265 269 239 187 224 243 243 226 155 173 198 177 235 229 137 160 129 98 155 132">
+<param name="yAxis" value="90 280 100 50">
+<param name="xLongName" value="Percent filler">
+<param name="zLongName" value="Surface treatment">
+<param name="wLongName" value="Filler type">
+<param name="xKeys" value="P S F">
+<param name="SVarName" value="S">
+<param name="SValues" value="12@0 12@1">
+<param name="SLabels" value="#Surface treatment# #No treatment#">
+<param name="FVarName" value="F">
+<param name="FValues" value="6@0 6@1 6@0 6@1">
+<param name="FLabels" value="#Filler 1# #Filler 2#">
+<param name="PVarName" value="P">
+<param name="PValues" value="2@0 2@1 2@2 2@0 2@1 2@2 2@0 2@1 2@2 2@0 2@1 2@2">
+<param name="PLabels" value="25% 50% 75%">
+<param name="startMean" value="ls">
+<param name="startModel" value="0*1*2">
+<param name="maxSsq" value="99999 99 99999 99.99">
+</applet> 
+</div>
+
+		<p>For this data set, neither the 3-factor interaction nor the 2-factor interaction 
+			between <em>Surface treatment</em> and <em>Percentage filler</em> are significant. 
+			Use the checkboxes to delete these two terms from the model.</p>
+		<div class="centred"><div class="boxed">
+			<p>This is the simplest model that is consistent with the data &mdash; all remaining terms are significant. </p>
+		</div></div>
+		<p>This model has two 2-factor interaction terms so it is a little harder 
+			to understand than the best model for the soft drink data. Click the <strong>y-x</strong> 
+			rotation button to help understand the nature of this model.</p>
+		<div class="centred"><div class="boxed">
+			<p>For each filler type, surface treatment and percent filler have no interaction. (The two green lines are parallel and the two purple lines are parallel.) </p>
+		</div></div>
+		<p>(Also try clicking the <strong>y-z</strong> rotation button.) To interpret the model, we must therefore separately explain it for the two filler types:</p>
+		<div class="centred"><div class="boxed">
+			<p style="text-align:left"><span class="darkblue">For filler 1,</span></p>
+			<ul>
+				<li>Each extra 25% in percent filler increases fabric loss by about 30.</li>
+				<li>Surface treatment increases fabric loss by about 40.</li>
+			</ul>
+			<p style="text-align:left"><span class="darkblue">For filler 2,</span></p>
+			<ul>
+				<li>The filler percent makes little difference to fabric loss.</li>
+				<li>Surface treatment increases wear by about 90.</li>
+			</ul>
+		</div></div>
+
+<br>
+</div>
+	
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Confounded main effects and interactions</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="interaction, confounding, aliased effects, fractional factorial design">
+	<meta name="dataset" content="Hardness of biscuits">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p>When an experiment is conduced with fewer  experiment units than the number required for a 
+    single complete replicate of a factorial design, it should come as no surprise that something is 
+    lost.</p>
+  
+  <p class="heading">Confounded effects</p>  
+  <p>When only a subset of the runs in a complete factorial design are used, some 
+		interactions get 'mixed up' with main effects. </p>
+	<ul>
+		<li>The interaction between two (or more) factors could potentially make a 
+			different factor incorrectly appear to have a large main effect.</li>
+		<li>Conversely, such an interaction could counter the other factor's main 
+			effect making it incorrectly appear to have no effect at all.</li>
+	</ul>
+	<p>When main effects and interactions are mixed up in this way, they are said 
+		to be <strong>confounded</strong> or <strong>aliased</strong> with each other.</p>
+	<p>It is necessary to assume that high-order interactions between the factors 
+    are either not present or negligible in relation to the main effects of the 
+    factors. If the number of experimental units is much smaller than the number required for 
+    a complete experiment, it may be necessary to assume that there are no interactions 
+    between the variables at all.</p>
+  <div class="diagram"> 
+		<p class="heading">Hardness of biscuits</p>
+    <p>This experiment is an extreme example of a small subset of the 2<sup>15</sup> 
+			= 32,768 runs needed for a complete factorial design. With 16 runs, it is 
+			only possible to estimate the overall mean and 15 other quantities, so only 
+			the 15 main effects of the 15 factors can be estimated &mdash; there is no independent 
+			information to estimate interactions.</p>
+    <p>Moreover, the main effects of all factors are confounded with various interactions 
+			between other factors. For example, factor L had the largest main effect 
+			&mdash; we estimate that adding this additive will increase the hardness of the 
+			biscuits by 6.0. </p>
+    <div class="centred"><table border="0" class="centred" cellpadding="3" cellspacing="0">
+			<tr> 
+				<th>&nbsp;</th>
+				<th colspan="8">Additive</th>
+				<th><span class="darkblue">Hardness</span></th>
+			</tr>
+			<tr> 
+				<th>Run</th>
+				<th>&nbsp;&nbsp;...&nbsp;&nbsp;</th>
+				<th>D</th>
+				<th>E</th>
+				<th>&nbsp;&nbsp;...&nbsp;&nbsp;</th>
+				<th>L</th>
+				<th>&nbsp;&nbsp;...&nbsp;&nbsp;</th>
+				<th>DE</th>
+				<th>&nbsp;&nbsp;...&nbsp;&nbsp;</th>
+				<th><span class="darkblue">Y</span></th>
+			</tr>
+			<tr align="center"> 
+				<th>1</th>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF"><span class="darkblue">53.3</span></td>
+			</tr>
+			<tr align="center"> 
+				<th>2</th>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF"><span class="darkblue">46.6</span></td>
+			</tr>
+			<tr align="center"> 
+				<th>3</th>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF"><span class="darkblue">53.8</span></td>
+			</tr>
+			<tr align="center"> 
+				<th>4</th>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF"><span class="darkblue">44.6</span></td>
+			</tr>
+			<tr align="center"> 
+				<th>5</th>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF"><span class="darkblue">44.8</span></td>
+			</tr>
+			<tr align="center"> 
+				<th>6</th>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF"><span class="darkblue">58.9</span></td>
+			</tr>
+			<tr align="center"> 
+				<th>7</th>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF"><span class="darkblue">56.5</span></td>
+			</tr>
+			<tr align="center"> 
+				<th>8</th>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF"><span class="darkblue">60.5</span></td>
+			</tr>
+			<tr align="center"> 
+				<th>9</th>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF"><span class="darkblue">48.2</span></td>
+			</tr>
+			<tr align="center"> 
+				<th>10</th>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF"><span class="darkblue">47.4</span></td>
+			</tr>
+			<tr align="center"> 
+				<th>11</th>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF"><span class="darkblue">54.8</span></td>
+			</tr>
+			<tr align="center"> 
+				<th>12</th>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF"><span class="darkblue">45.9</span></td>
+			</tr>
+			<tr align="center"> 
+				<th>13</th>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF"><span class="darkblue">56.3</span></td>
+			</tr>
+			<tr align="center"> 
+				<th>14</th>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF"><span class="darkblue">50.2</span></td>
+			</tr>
+			<tr align="center"> 
+				<th>15</th>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF"><span class="darkblue">62.3</span></td>
+			</tr>
+			<tr align="center"> 
+				<th>16</th>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">+1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF">-1</td>
+				<td bgcolor="#FFFFFF">...</td>
+				<td bgcolor="#FFFFFF"><span class="darkblue">44.7</span></td>
+			</tr>
+		</table></div>
+    <p>However the term for an interaction between factors D and E, found by multiplying 
+      the +1 and -1 values for D and E, is identical to the levels of L, so the 
+      main effect of 6 percent for L could alternatively have been caused by a 
+      strong interaction between the effects of D and E.</p>
+
+<div class="boxed"><p>The main effect for factor L is <span class="red">confounded</span> 
+          with the interaction between D and E &mdash; it is impossible to say whether 
+          the increase of 6 percent is caused by L, a DE interaction or some combination.</p></div>
+
+    <p>Use of the estimated main effects in the previous page to rank the importance 
+			of the factors therefore requires the assumption that the interactions are 
+			much smaller than the main effects of the factors.</p>
+    </div>
+  
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

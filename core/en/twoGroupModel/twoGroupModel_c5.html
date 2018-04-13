@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Difference between means</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="comparing groups, mean, difference, estimation">
+	<meta name="dataset" content="Piecework and salary">
+	<meta name="dataset" content="Manipulative skill of job applicants">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Comparing the populations</p>
+
+<p>For two-group data sets, we usually want to compare the underlying populations. 
+In particular, the main questions of interest are:</p>
+<ul>
+<li>Are the two population distributions the same?</li>
+<li>If the populations are different, how big is the difference?</li>
+</ul>
+<p class="heading">Comparing the population means</p>
+
+  
+<p>The two standard deviations in the groups may differ. However we are usually 
+more interested in differences between the population means. The earlier questions 
+can be asked in terms of the difference between these means,</p>
+<p class=eqn><span class="black">&delta; &nbsp;=&nbsp; &mu;<sub>2</sub> &nbsp;&minus;&nbsp; &mu;<sub>1</sub></span></p>
+<p>If the group means are equal (and µ<sub>2</sub>&nbsp;-&nbsp;µ<sub>1</sub> is therefore zero), then values from neither group are higher than from the other, 
+on average. Indeed, if the distributions are normal and σ<sub>1</sub> and σ<sub>2</sub> are also equal, then a zero value for µ<sub>2</sub>&nbsp;-&nbsp;µ<sub>1</sub> also implies that the distributions in the two groups are identical. </p>
+
+<div class="centred"><div class="boxed">
+<p>µ<sub>2</sub>&nbsp;-&nbsp;µ<sub>1</sub> 
+describes how much higher the values in group 2 are (on average) than the values 
+in group 1.</p>
+</div></div>
+
+<p>The best estimate of µ<sub>2</sub>&nbsp;-&nbsp;µ<sub>1</sub> is, naturally, the difference between the means of the two samples, <span style="position:relative; top:5px"><img src="../../images/symbol.xBarDiff.png" width="36" height="15" align="baseline"></span>.</p>
+<p class="heading">Randomness of sample difference</p>
+<p>Unfortunately, <span style="position:relative; top:5px"><img src="../../images/symbol.xBarDiff.png" width="36" height="15" align="baseline"></span> 
+cannot give a definitive answer to questions about µ<sub>2</sub>&nbsp;-&nbsp;µ<sub>1</sub> since it is a random summary statistic &mdash; it varies from sample to sample. The 
+distribution of <span style="position:relative; top:5px"><img src="../../images/symbol.xBarDiff.png" width="36" height="15" align="baseline"></span> 
+must be understood before we can make any inference about µ<sub>2</sub>&nbsp;-&nbsp;µ<sub>1</sub>.</p>
+
+<div class="diagram" title="Simulation: Manipulative skills of job applicants">
+<p class="heading">Simulation: Manipulative skills of job applicants</p>
+<p>To test the manipulative skill of job applicants, they are sometimes given 
+a 'one-hole test' in which they grasp a pin, move it to a hole, insert it, and 
+return for another pin. The test score is the number of pins inserted in a fixed 
+time interval. A large study was undertaken comparing male college students with 
+experienced female industrial workers. The table below describes the number of 
+pins inserted in one minute.</p>
+
+<div class="centred"><table border="0" class="centred" cellpadding="3" cellspacing="0">
+<tr> 
+<th>Group</th>
+<th>n</th>
+<th>mean</th>
+<th>    st devn    </th>
+</tr>
+<tr>
+<td>Male college students</td>
+<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">&nbsp;&nbsp;&nbsp;750&nbsp;&nbsp;&nbsp;</td>
+<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">&nbsp;&nbsp;&nbsp;35.12&nbsp;&nbsp;&nbsp;</td>
+<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">&nbsp;&nbsp;&nbsp;4.31&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td>Experienced female industrial workers    </td>
+<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">412</td>
+<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">37.32</td>
+<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">3.83</td>
+</tr>
+</table></div>
+
+<p>We will conduct a simulated experiment based on this scenario. In the simulation, 
+we will generate 'numbers of pins' for <strong>40</strong> male students from 
+a normal distribution with µ<sub>2</sub>&nbsp;= 35.12&nbsp; 
+pins and σ<sub>2</sub>&nbsp;=&nbsp;4.31 
+pins and similar data for another <strong>40</strong> experienced female workers 
+from a normal distribution with µ<sub>1</sub>&nbsp;=&nbsp;37.32 
+and σ<sub>1</sub>&nbsp;=&nbsp;3.83.</p>
+<p>Note that the female industrial workers, on average, insert µ<sub>2</sub>&nbsp;-&nbsp;µ<sub>1</sub>&nbsp;=&nbsp;2.20 
+more pins than the male students.</p>
+<p><span class="gray">(The normal distributions from which the data are sampled are represented by a pale blue band at µ&nbsp;±&nbsp;2σ. The narrower darker blue band    includes half of the population distribution.)</span></p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoGroupProg.SampleDiff2Applet">
+<param name="yVarName" value="No of pins inserted">
+<param name="yAxis" value="20 50 20 5">
+<param name="anovaModel" value="35.12 4.31 37.32 3.83">
+<param name="xVarName" value="">
+<param name="xValues" value="40@0 40@1">
+<param name="xLabels" value="#Male student# #Female worker#">
+<param name="jitterPropn" value="0.5">
+<param name="summaryDecimals" value="2">
+<param name="maxSummary" value="99.99">
+<param name="summaryAxis" value="0 5 0 1">
+<param name="randomSeed" value="330045782">
+<param name="customText" value="Difference between means=Difference between means">
+</applet>
+</div>
+
+<p>Click <strong>Accumulate</strong>, then take several samples. Observe that 
+the difference between the sample means is a random quantity whose distribution 
+is centred on µ<sub>2</sub>&nbsp;-&nbsp;µ<sub>1</sub>&nbsp;=&nbsp;2.20 
+pins .</p>
+<p>The difference in means from a single data set, <span style="position:relative; top:5px"><img src="../../images/symbol.xBarDiff.png" width="36" height="15" align="baseline"></span>, 
+is therefore an <strong>estimate</strong> of µ<sub>2</sub>&nbsp;-&nbsp;µ<sub>1</sub>, 
+but is unlikely to be exactly equal to it.</p>
+
+<p class="heading">Welders who are paid a salary and those on piecework</p>
+
+<p>In practice, the underlying population means (and their difference) are unknown, 
+and only a single sample from each group is available. The data set below is a 
+typical example.</p>
+
+<p class="eqn"><img class="gif" src="images/birthWt2.gif" width="523" height="296"></p>
+
+<p>Without an understanding of the distribution of <span style="position:relative; top:5px"><img src="../../images/symbol.xBarDiff.png" width="36" height="15" align="baseline"></span>, 
+it is impossible to properly interpret what the sample difference, 9.5 pieces, 
+tells you about the difference between the underlying population means.</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

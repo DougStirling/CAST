@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Experiments with a single replicate</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="factorial design, interaction, replicates, single replicate, error variance">
+	<meta name="dataset" content="Decarburisation of steel">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Estimating the error variance (variance of the experimental 
+		error)</p>  
+  <p>In any experiment, it is important to obtain an estimate of the error variance, 
+		σ<sup>2</sup>, 
+		&mdash; the response variability that would occur in repeated runs with the same 
+		factor levels. The mean residual sum of squares provides the best estimate 
+		of σ<sup>2</sup>,</p>
+	<p class=eqn><img src="../threeFactor/images/errorVarEst.gif" width="103" height="37"> </p>
+	
+<div class="centred"><div class="boxed">
+<p>The mean residual sum of squares is used by all tests 
+					in the analysis of variance table.</p>
+</div></div>
+
+	<p>If a factorial experiment involves factors with several levels, even a single 
+		replicate with all combinations of factor levels can involve many experimental units. For example, if three factors each have 3 levels, there are 
+		27 treatments. It is often too expensive to conduct two replicates 
+		of the experiment.</p>
+	<p>If there is only one replicate, the full model with all interaction terms 
+		will fit the data perfectly with zero residuals and zero residual degrees 
+		of freedom. The error variance cannot be estimated for this model so it is 
+		not possible to test the significance of the three-factor interaction.</p>
+	<p class="heading">Assumption of no high-order interactions</p>
+	<p>The only way to test the significance of any model terms is to <strong>assume</strong> 
+		that some high-order interactions are negligible. In an experiment with three 
+		factors it could be assumed that the 3-factor interaction is unimportant, 
+		making its sum of squares a measure of experimental variability. In other 
+		words, we would only consider models with 2-factor interactions so the 3-factor 
+		interaction sum of squares would be part of the residual sum of squares.</p>
+	<p>The assumption of no 3-factor interaction allows us to test all 2-factor 
+		interactions and main effects.</p>
+  
+  <div class="diagram"> 
+    <p class="heading">Decarburisation of steel</p>
+    <p>An experiment was carried out to investigate the effects of three different 
+			types of heat treatment on the decarburisation of steel. Two furnaces were 
+			used and four temperatures.</p>
+		
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="550">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="factorialProg.FactorialAnovaApplet">
+<param name="yVarName" value="Decarburisation of steel">
+<param name="yValues" value="12.8 13.8 15.1 16.9 18.9 19.5 22.9 22.1 13.0 14.1 15.2 16.4 21.2 19.6 23.7 24.2 10.4 13.4 16.7 17.5 19.6 21.6 29.8 22.7">
+<param name="yAxis" value="10 30 10 5">
+<param name="zLongName" value="Heat treatment">
+<param name="xLongName" value="Temperature">
+<param name="wLongName" value="Furnace">
+<param name="xKeys" value="T H F">
+<param name="HVarName" value="Ht">
+<param name="HValues" value="8@0 8@1 8@2">
+<param name="HLabels" value="1 2 3">
+<param name="TVarName" value="Temp">
+<param name="TValues" value="2@0 2@1 2@2 2@3 2@0 2@1 2@2 2@3 2@0 2@1 2@2 2@3">
+<param name="TLabels" value="800 850 900 950">
+<param name="FVarName" value="Furn">
+<param name="FValues" value="0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1">
+<param name="FLabels" value="1 2">
+<param name="startMean" value="ls">
+<param name="startModel" value="0*1*2">
+<param name="maxSsq" value="999.99 99 999.99 99.99">
+<param name="customText" value="Model terms=Model terms">
+</applet> 
+</div>
+
+		<p>The full 3-factor model with all interactions fits the data exactly, so 
+			there are zero degrees of freedom for the residuals and we cannot test the 
+			significance of any terms in the model.</p>
+		<p>Click the checkbox for the 3-factor interaction to remove it from the model. 
+			This effectively changes the sum of squares and its degrees of freedom for 
+			this interaction into a residual sum of squares with 6 degrees of freedom.</p>
+		<p>With no 3-factor interaction, tests can be performed on all 2-factor interactions 
+			and the main effects.</p>
+		
+<div class="centred"><div class="boxed">
+<p>Only temperature seems to have any influence on the 
+						mean decarburisation of the steel &mdash; no other main effects or interactions 
+						are significantly different from zero.</p>
+</div></div>
+
+		<br>
+	</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Example</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="bivariate normal distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p>We now present an application of the bivariate normal distribution.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Example: Heights of parents and children</p>
+		<p>In the late 19th century, Francis Galton analysed data about the relationship between the heights of children to those of their parents. This was based on measurements of the adult heights of 928 children and the average heights of their parents, with all measurements in inches. (Female heights were multiplied by 1.08 to compensate for sex differences.)</p>
+		<p>The data are summarised by the jittered scatterplot below. (Heights were rounded so the crosses have been randomly moved to separate coinciding ones.)</p>
+		<p class="eqn"><img src="images/galtonScatterplot.png" width="505" height="466"/></p>
+		<p>Both marginal distributions seem reasonably symmetric and normal, so a bivariate normal distribution was fitted to the data, with its parameters estimated by the sample means and variances of the two variables and the sample correlation coefficient.</p>
+\[
+(C, P) \sim \NormalDistn(\mu_C = 68.09, \mu_P = 68.31, \sigma_C^2 = 6.340, \sigma_P^2 = 3.195, \rho = 0.459
+\]
+		<p>This joint probability density function for this distribution is shown below.</p>
+		<p class="eqn"><img src="images/galton3d.png" width="559" height="488"/></p>
+		<p>Assuming that this bivariate normal distribution is accurate,</p>
+		<ul>
+			<li>What is the probability that a child will have height over 71 inches?</li>
+			<li>If the mid-height of the parents is 71 inches, what is the expected height of their child and what is the probability that it is over 71 inches?</li>
+		</ul>
+	</div>
+	<div class="solution">
+		<p>The probability of a child being taller than 71 inches is found from the variable's marginal distribution</p>
+\[
+C \;\; \sim \; \; \NormalDistn\left(\mu_C = 68.09, \;\;\sigma_C^2 = 6.340\right)
+\]
+<p>From Excel, this is</p>
+\[
+P(C \gt 71) \;\;=\;\; 0.124
+\]
+<p>The conditional distribution of <em>C</em>, given that <em>P</em>=71 is normal with mean</p>
+\[
+\mu_{C|P=71}  = \mu_C + \frac{\sigma_C}{\sigma_P} \rho \left(71 - \mu_p\right) = 69.83
+\]
+<p>and variance</p>
+\[
+\sigma^2_{C|P=71}  = \left(1 - \rho^2\right) \sigma_C^2 = 5.004
+\]
+<p>The first of these is the expected child's height if the parents' mid-height is 71 inches. The probability that the child's height is over 71 inches is found from the \(\NormalDistn(69.83, 5.004)\) distribution. From Excel, this is</p>
+\[
+P(C \gt 71 \mid P = 71) \;\;=\;\; 0.300
+\]
+	</div>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

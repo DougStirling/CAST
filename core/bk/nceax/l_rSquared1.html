@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Sums of squares</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<script type="text/javascript">
+		var dataImages = new Array();
+		var i;
+		for (i=0 ; i<3 ; i++)
+			dataImages[i] = new Image();
+		dataImages[0].src = "images/ssResid.gif";
+		dataImages[1].src = "images/ssTotal.gif";
+		dataImages[2].src = "images/ssExplained.gif";
+		
+		function changeSvgImage(select) {
+			var newIndex = select.selectedIndex;
+			document.images['dataImage'].src = dataImages[newIndex].src;
+		}
+	</script>
+	<meta name="dataset" content="Rice yield/dot plots">
+</head>
+
+
+<body class="lecture">
+<script type="text/javascript">writePageStart();</script>
+
+
+<form>
+<select name="dataset" onChange="changeSvgImage(this)">
+<option value="0" selected>Residual sum of squares</option>
+<option value="1">Total sum of squares</option>
+<option value="2">Explained sum of squares</option>
+</select>
+</form>
+
+<p align="center"><span class="eqn"><img src="images/ssResid.gif" name="dataImage" width="286" height="230"></span></p>
+
+<script type="text/javascript">
+	writeLecturerNotesLink(withoutDataNotes);
+</script>
+
+<div class="lecturerNote" id="lecturerNote">
+<p>Mention that the residual sum of squares describes response variation that is <strong>unexplained</strong> by the explanatory variable. The least squares line is positioned to minimise it.</p>
+<p>The total sum of squares describes overall variability in the response (ignoring the explanatory variable).</p>
+<p>The difference between these describes variation that is <strong>explained</strong> by the explanatory variable,</p>
+<p class="eqn">SS<sub>Explained</sub> &nbsp; = &nbsp; SS<sub>Total</sub> &nbsp; - &nbsp; SS<sub>Resid</sub></p>
+<p>It can also be interpreted as a sum of squared vertical distances on the scatterplot &mdash; distances between the least squares line and the overall response mean.</p>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

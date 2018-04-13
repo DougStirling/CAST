@@ -1,0 +1,208 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Categorical covariates (cofactors)</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="covariate, cofactor, anova, analysis of variance, f test">
+	<meta name="dataset" content="Soybean yield and canker">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">General model</p>
+  <p>The general aim in experimental design and analysis is  reduction of the unexplained variability in order to estimate more accurately the effect of the treatments of interest.</p>
+  <p>This is done by adding terms to the model to cover anything that is known about the structure of the experimental units. This structure may be built into the design of the experiment, such as the blocks in a randomised block experiment or may be information that is not used in the experimental design but is collected during the course of the experiment.</p>
+  <div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+		<tr>
+			<td align="center">&nbsp;</td>
+			<td align="center">&nbsp;</td>
+			<td colspan="3" align="center" class="black em bold">explained&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+			variation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td align="center">&nbsp;</td>
+			<td align="center"class="black em bold">unexplained <br>
+			variation</td>
+		</tr>
+		<tr>
+			<td align="center"><br>
+					<span class="em black">y<sub>i</sub></span>  &nbsp;= &nbsp;<span class="blue">µ</span></td>
+			<td align="center"><br>
+			&nbsp;+&nbsp;</td>
+			<td align="center" bgcolor="#F9FFEC" class="red"><em>treatments</em><br>
+				&lt;terms&gt;</td>
+			<td align="center" bgcolor="#F9FFEC"><br>
+			&nbsp;+&nbsp;</td>
+			<td align="center" bgcolor="#F9FFEC" class="green"><em>blocks &amp; covariates</em><br>
+				&lt;terms&gt;</td>
+			<td align="center"><br>
+			&nbsp;+&nbsp;</td>
+			<td align="center" bgcolor="#F9FFEC" class="purple"><br>
+			ε<em><sub>i</sub></em></td>
+		</tr>
+	</table></div>
+  <p>Variation in the response due to the experimental units may be modelled as the sum of terms, each based on measured characteristics of the units.</p>
+  <p class="heading">Terms based on numerical covariates</p>
+  <p>The earlier pages in this section showed how each numerical measurements about the experimental units (covariates) can be modelled by a linear term of the form:</p>
+  <p class="eqn">... &nbsp; + &nbsp; <span class="green">γ&nbsp;<em>x<sub>i</sub></em></span> &nbsp; + &nbsp; ...</p>
+  <p class="heading">Terms based on blocks or categorical covariates</p>
+  <p>Both blocks and categorical covariates are modelled in the <strong>same way</strong>. Experimental units in block <em>j</em> or for which the covariate has its<em> j</em>'th value are modelled by a term of the form:</p>
+  <p class="eqn">... &nbsp; + &nbsp; <span class="green">δ<em><sub>j</sub></em></span> &nbsp; + &nbsp; ...</p>
+  <p>Models may have several terms of these two forms to explain the structure in the experimental units.</p>
+  <div class="diagram"> 
+    <p class="heading">Soybean yield and canker</p>
+		
+<p>A varietal trial was conducted on soybean to assess yield. Four varieties were tested, laid out as a randomised block design. Farmers traditionally used Variety 1, while 2, 3 and 4 were varieties developed under a new breeding programme. There was canker infestation throughout the experimental area, but it varied dramatically from plant to plant. It was believed that the varieties did not differ in their susceptibility to canker.</p>
+<p>Yields were recorded in bushels/acre and canker infestation was classified as bad, moderate or mild.</p>
+<div class="centred"><table border="0" class="centred" cellpadding="4" cellspacing="0">
+	<tr>
+		<th rowspan="2" align="center">Block</th>
+		<th width="20" align="center">&nbsp;</th>
+		<th colspan="2" align="center">Traditional</th>
+		<th width="20" align="center">&nbsp;</th>
+		<th colspan="2" align="center">New 1</th>
+		<th width="20" align="center">&nbsp;</th>
+		<th colspan="2" align="center">New 2</th>
+		<th width="20" align="center">&nbsp;</th>
+		<th colspan="2" align="center">New 3</th>
+		</tr>
+	<tr>
+		<th align="center">&nbsp;</th>
+		<th align="center">Canker</th>
+		<th align="center">Yield</th>
+		<th align="center">&nbsp;</th>
+		<th align="center">Canker</th>
+		<th align="center">Yield</th>
+		<th align="center">&nbsp;</th>
+		<th align="center">Canker</th>
+		<th align="center">Yield</th>
+		<th align="center">&nbsp;</th>
+		<th align="center">Canker</th>
+		<th align="center">Yield</th>
+	</tr>
+	<tr>
+		<td align="center">1<br>
+			2<br>
+			3<br>
+			4</td>
+		<td align="center" bgcolor="#FFFFFF">&nbsp;</td>
+		<td align="center" bgcolor="#FFFFFF">severe<br>
+			severe<br>
+			mild<br>
+			mild</td>
+		<td align="center" bgcolor="#FFFFFF">20.3<br>
+			17.1<br>
+			26.7<br>
+			25.3</td>
+		<td align="center" bgcolor="#FFFFFF">&nbsp;</td>
+		<td align="center" bgcolor="#FFFFFF">moderate<br>
+			severe<br>
+			moderate<br>
+			mild</td>
+		<td align="center" bgcolor="#FFFFFF">28.3<br>
+			20.7<br>
+			26.0<br>
+			34.1</td>
+		<td align="center" bgcolor="#FFFFFF">&nbsp;</td>
+		<td align="center" bgcolor="#FFFFFF">mild<br>
+			severe<br>
+			mild<br>
+			mild</td>
+		<td align="center" bgcolor="#FFFFFF">26.7<br>
+			14.7<br>
+			25.0<br>
+			29.0</td>
+		<td align="center" bgcolor="#FFFFFF">&nbsp;</td>
+		<td align="center" bgcolor="#FFFFFF">severe<br>
+			severe<br>
+			moderate<br>
+			moderate</td>
+		<td align="center" bgcolor="#FFFFFF">25.1<br>
+			20.1<br>
+			24.9<br>
+			19.8</td>
+	</tr>
+</table></div>
+<p>In this experiment, canker infestation should be treated as a covariate &mdash; its effect on yield is not of primary interest but  is expected to explain much of its variation.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="650" height="200">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="glmAnovaProg.AnovaTableSeqApplet">
+<param name="yVarName" value="Yield">
+<param name="yValues" value="20.3 17.1 26.7 25.3 28.3 20.7 26.0 34.1 26.7 14.7 25.0 29.0 25.1 20.1 24.9 19.8">
+<param name="xVariables" value="Block Canker Variety">
+<param name="BlockVarName" value="Block">
+<param name="BlockValues" value="0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3">
+<param name="BlockLabels" value="B1 B2 B3 B4">
+<param name="CankerVarName" value="Canker">
+<param name="CankerValues" value="2 2 0 0 1 2 1 0 0 2 0 0 2 2 1 1">
+<param name="CankerLabels" value="Mild Moderate Severe">
+<param name="VarietyVarName" value="Variety">
+<param name="VarietyValues" value="4@0 4@1 4@2 4@3">
+<param name="VarietyLabels" value="Trad New1 New2 New3">
+<param name="maxSsq" value="99.999 99 99.999 999.99">
+<param name="componentNames" value="Blocks#Canker#Varieties">
+<param name="initVariables" value="2">
+<param name="showR2" value="false">
+</applet>
+</div>
+
+<p>The covariate <em>Canker</em> is <strong>not</strong> orthogonal to <em>Blocks</em> &mdash; blocks 1 and 2 have worse infestation than blocks 3 and 4 &mdash; so their explained sums of squares depend on the order of adding them to the model. This does not matter since we will only consider models that have <strong>both</strong> <em>Canker</em> and <em>Blocks</em>.</p>
+<p>Drag the red line to add <em>Varieties</em> to the anova table. From the p-value associated with <em>Varieties</em>, we conclude that:</p>
+<div class="centred"><div class="boxed">
+	<p>There is moderately strong evidence of differences between the average yields of the different varieties. </p>
+</div></div>
+<p>We can now consider splitting the explained sum of squares for <em>Varieties</em> to ask whether the new varieties differ from each other and from the traditional variety.</p>
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="650" height="230">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="glmAnovaProg.AnovaTableSeqApplet">
+<param name="yVarName" value="Yield">
+<param name="yValues" value="20.3 17.1 26.7 25.3 28.3 20.7 26.0 34.1 26.7 14.7 25.0 29.0 25.1 20.1 24.9 19.8">
+<param name="xVariables" value="Block Canker Trad New">
+<param name="BlockVarName" value="Block">
+<param name="BlockValues" value="0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3">
+<param name="BlockLabels" value="B1 B2 B3 B4">
+<param name="CankerVarName" value="Canker">
+<param name="CankerValues" value="2 2 0 0 1 2 1 0 0 2 0 0 2 2 1 1">
+<param name="CankerLabels" value="Mild Moderate Severe">
+<param name="TradVarName" value="Trad vs new">
+<param name="TradValues" value="4@0 12@1">
+<param name="TradLabels" value="Trad New">
+<param name="NewVarName" value="Between new">
+<param name="NewValues" value="8@0 4@1 4@2">
+<param name="NewLabels" value="TradNew1 New2 New3">
+<param name="maxSsq" value="99.999 99 99.999 999.99">
+<param name="componentNames" value="Blocks#Canker#Trad vs new#New varieties">
+<param name="initVariables" value="2">
+<param name="showR2" value="false">
+</applet>
+</div>
+
+<p>Again drag the red line to  add:</p>
+<ul>
+	<li>a term distinguishing the traditional and new varieties (but assuming that the new varieties are the same)</li>
+	<li>a term allowing the new varietes to have different mean yields</li>
+</ul>
+<p>From the p-values, we can conclude that:</p>
+<div class="centred"><div class="boxed">
+	<ul>
+		<li>There is no evidence that the traditional variety has a different yield from the <strong>average</strong> of the new varieties, but</li>
+		<li>There is moderately strong evidence that the new varieties differ from each other. </li>
+	</ul>
+	</div></div>
+
+<br>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Explained sums of squares</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="numerical factor, linear model, quadratic model, sequential sums of squares, sum of squares table, sum of squares, degrees of freedom">
+	<meta name="dataset" content="Antibiotic effectiveness">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Unknown parameters</p>
+<p>The table below shows the numbers of unknown parameters for the four models that we have considered for a numerical factor.</p>
+
+
+<div class="centred"><table border="0" class="centred" cellpadding="4" cellspacing="0">
+	<tr>
+		<th>&nbsp;</th>
+		<th>Unknown parameters</th>
+		<th>Number of<br>
+			unknown parameters</th>
+	</tr>
+	<tr>
+		<th bgcolor="#FFFFFF">Simplest model,<br>
+			<strong><em>y<sub>ij</sub></em> &nbsp;= &nbsp;<span class="blue">µ</span>&nbsp; &nbsp;+ &nbsp; ε<em><sub>ij</sub></em></strong></th>
+		<td align="center" bgcolor="#FFFFFF"><span class="blue bold">µ</span> </td>
+		<td align="center" bgcolor="#FFFFFF">1</td>
+	</tr>
+	<tr>
+		<th bgcolor="#FFFFFF">Linear model,<br>
+				<strong><em class="black">y<sub>ij</sub></em> &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp; <span class="red">β<em>&nbsp;x<sub>i</sub></em></span> &nbsp;+ &nbsp; ε<em><sub>ij</sub></em></strong></th>
+		<td align="center" bgcolor="#FFFFFF"><strong><span class="blue">µ</span>  and <span class="red">β</span> </strong></td>
+		<td align="center" bgcolor="#FFFFFF">2</td>
+	</tr>
+	<tr>
+		<th bgcolor="#FFFFFF">Quadratic model,<br>
+			<strong><em class="black">y<sub>ij</sub></em> &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp; <span class="red">β<em>&nbsp;x<sub>i</sub></em></span> &nbsp; + &nbsp; <span class="purple">γ<em>&nbsp;x<sub>i</sub></em><sup>2</sup></span>&nbsp;+ &nbsp; ε<em><sub>ij</sub></em></strong></th>
+		<td align="center" bgcolor="#FFFFFF"><strong><span class="blue">µ</span> , <span class="red">β </span>and <span class="purple">γ</span> </strong></td>
+		<td align="center" bgcolor="#FFFFFF">3</td>
+	</tr>
+	<tr>
+		<th bgcolor="#FFFFFF">General factor model,<br>
+			<strong><em class="black">y<sub>ij</sub></em> &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp; <span class="green">β<em><sub>i</sub></em></span> &nbsp;+ &nbsp; ε<em><sub>ij</sub></em></strong></th>
+		<td align="center" bgcolor="#FFFFFF"><strong><span class="blue">µ</span> , <span class="green">β<sub>2</sub></span> , <span class="green">β<sub>3</sub></span> , ..., <span class="green">β<em><sub>g</sub></em></span> </strong></td>
+		<td align="center" bgcolor="#FFFFFF"><em>g</em></td>
+	</tr>
+</table></div>
+
+<p class="heading">Explained sums of squares and degrees of freedom</p>
+<p>Each addition of a term to the simplest model allows the residual sum of squares to be reduced (when the parameters are estimated by least squares). Similarly, each constraint on the most general model increases the residual sum of squares. These changes are <strong>explained</strong> sums of squares and have degrees of freedom that are equal to the difference between the number of  parameters in the two models (or equivalently, the number of linear constraints imposed).</p>
+
+
+
+<div class="html5">
+<!-- width=650 height=550-->
+<script language="javascript">
+var quadraticExpanded = false;
+var linearExpanded = false;
+
+function expandLinear() {
+	var linearOff = document.getElementById("linearOff");
+	var linearOn = document.getElementById("linearOn");
+	linearOn.style.display = linearExpanded ? "none" : "block";
+	linearOff.style.display = linearExpanded ? "block" : "none";
+	linearExpanded = !linearExpanded;
+}
+
+function expandQuadratic() {
+	var quadraticOff = document.getElementById("quadraticOff");
+	var quadraticOn = document.getElementById("quadraticOn");
+	quadraticOn.style.display = quadraticExpanded ? "none" : "block";
+	quadraticOff.style.display = quadraticExpanded ? "block" : "none";
+	quadraticExpanded = !quadraticExpanded;
+}
+</script>
+
+<style type="text/css">
+<!--
+input {color: #000066; font-weight:bold; font-size:14px;}
+span.red {color:#FF0000;}
+span.blue {color:#0000CC;}
+span.green {color:#009900;}
+span.purple {color:#9300FF;}
+span.bigger {font-size:16px; font-weight:bold; font-style:italic; font-family:Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;}
+-->
+</style>
+
+<div class="centred"><table class="centred" cellpadding="4" width="100%">
+	<tr>
+		<td align="center"><table border="1" cellspacing="0" cellpadding="10">
+			<tr>
+				<td align="center" bgcolor="#CCCCFF" class="black"><strong><em><span class="bigger">Factor does not affect Y</span><br>
+				y<sub>ij</sub></em> &nbsp;= &nbsp;<span class="blue">µ</span>&nbsp; &nbsp;+ &nbsp; ε<em><sub>ij</sub></em></strong></td>
+			</tr>
+		</table></td>
+	</tr>
+</table></div>
+
+<div id="linearOff" style="display:block">
+	
+	<div class="centred"><table class="centred" cellpadding="4" width="100%">
+		<tr>
+			<td width="40%" align="right" class="black"><strong>add (<em>g</em>&nbsp;-&nbsp;1) parameters </strong></td>
+			<td width="24" align="right"><img src="../../en/contrasts/images/downArrow.gif" width="24" height="42" align="absmiddle"></td>
+			<td width="40" valign="middle"><form>
+				<input type="button" value="Show linear model" onClick="expandLinear()">
+			</form></td>
+			<td width="24" align="right"><img src="../../en/contrasts/images/upArrow.gif" width="24" height="42" align="absmiddle"></td>
+			<td width="40%" align="left" class="black"><strong>(<em>g</em>&nbsp;-&nbsp;1)  constraints</strong></td>
+		</tr>
+	</table></div>
+	
+</div>
+<div id="linearOn" style="display:none">
+	
+	<div class="centred"><table class="centred" cellpadding="4" width="100%">
+		<tr>
+			<td align="right" width="40%" class="black"><strong>add one parameter<span class="red em"><sub></sub></span> </strong></td>
+			<td width="24" align="right"><img src="../../en/contrasts/images/downArrow.gif" width="24" height="42" align="absmiddle"></td>
+			<td width="40" valign="middle"><form>
+				<input type="button" value="Hide linear model" onClick="expandLinear()">
+			</form></td>
+			<td width="24" align="right"><img src="../../en/contrasts/images/upArrow.gif" width="24" height="42" align="absmiddle"></td>
+			<td align="left" width="40%" class="black"><strong>One constraint (<span class="red">β&nbsp;=&nbsp;0)</span></strong></td>
+		</tr>
+	</table></div>
+	
+	<div id="quadraticOff" style="display:block">
+		
+		<div class="centred"><table class="centred" cellpadding="4" width="100%">
+			<tr>
+				<td  colspan="5"align="center"><table border="1" cellspacing="0" cellpadding="10">
+					<tr>
+						<td align="center" bgcolor="#CCCCFF" class="black"><strong><em><span class="bigger">Factor affects Y linearly</span><br>
+						y<sub>ij</sub></em> &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp; <span class="red">β<em>&nbsp;x<sub>i</sub></em></span> &nbsp;+ &nbsp; ε<em><sub>ij</sub></em></strong></td>
+					</tr>
+				</table></td>
+			</tr>
+			<tr>
+				<td width="40%" align="right" class="black"><strong>add (<em>g</em>&nbsp;-&nbsp;2) parameters</strong></td>
+				<td width="24" align="right"><img src="../../en/contrasts/images/downArrow.gif" width="24" height="42" align="absmiddle"></td>
+				<td width="40" valign="middle"><form>
+					<input type="button" value="Show quadratic model" onClick="expandQuadratic()">
+				</form></td>
+				<td width="24" align="right"><img src="../../en/contrasts/images/upArrow.gif" width="24" height="42" align="absmiddle"></td>
+				<td align="left" class="black" width="40%"><strong>(<em>g</em>&nbsp;-&nbsp;2) constraints</strong></td>
+			</tr>
+		</table></div>
+		
+	</div>
+	<div id="quadraticOn" style="display:none">
+		
+		<div class="centred"><table class="centred" cellpadding="4" width="100%">
+			<tr>
+				<td colspan="5" align="center"><table border="1" cellspacing="0" cellpadding="10">
+					<tr>
+						<td align="center" bgcolor="#CCCCFF" class="black"><strong><em><span class="bigger">Factor affects Y linearly</span><br>
+						y<sub>ij</sub></em> &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp; <span class="red">β<em>&nbsp;x<sub>i</sub></em></span> &nbsp;+ &nbsp; ε<em><sub>ij</sub></em></strong></td>
+					</tr>
+				</table></td>
+			</tr>
+			<tr>
+				<td width="40%" align="right" class="black"><strong>add one parameter</strong></td>
+				<td width="24" align="right"><img src="../../en/contrasts/images/downArrow.gif" width="24" height="42" align="absmiddle"></td>
+				<td width="40" valign="middle"><form>
+					<input type="button" value="Hide quadratic model" onClick="expandQuadratic()">
+				</form></td>
+				<td width="24" align="right"><img src="../../en/contrasts/images/upArrow.gif" width="24" height="42" align="absmiddle"></td>
+				<td align="left" class="black" width="40%"><strong>One constraint (<span class="purple">γ&nbsp;=&nbsp;0</span>)</strong></td>
+			</tr>
+			<tr>
+				<td colspan="5" align="center"><table border="1" cellspacing="0" cellpadding="10">
+					<tr>
+						<td align="center" bgcolor="#CCCCFF" class="black"><strong><em><span class="bigger">Factor affects Y quadratically</span><br>
+						y<sub>ij</sub></em> &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp; <span class="red">β<em>&nbsp;x<sub>i</sub></em></span> &nbsp; + &nbsp; <span class="purple">γ<em>&nbsp;x<sub>i</sub></em><sup>2</sup></span> &nbsp;+ &nbsp; ε<em><sub>ij</sub></em></strong></td>
+					</tr>
+				</table></td>
+			</tr>
+			<tr>
+				<td width="40%" align="right" class="black"><strong>add (<em>g</em>&nbsp;-&nbsp;3) parameters</strong></td>
+				<td width="24" align="right"><img src="../../en/contrasts/images/downArrow.gif" width="24" height="42" align="absmiddle"></td>
+				<td width="40" valign="middle">&nbsp;</td>
+				<td width="24" align="right"><img src="../../en/contrasts/images/upArrow.gif" width="24" height="42" align="absmiddle"></td>
+				<td align="left" class="black" width="40%"><strong>(<em>g</em>&nbsp;-&nbsp;3) constraints</strong></td>
+			</tr>
+		</table></div>
+		
+	</div>
+</div>
+<div class="centred"><table class="centred" cellpadding="4" width="100%">
+	<tr>
+		<td align="center"><table border="1" cellspacing="0" cellpadding="10">
+			<tr>
+				<td align="center" bgcolor="#CCCCFF" class="black"><strong><em><span class="bigger">Factor affects Y</span><br>
+				y<sub>ij</sub></em> &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp; <span class="green">β<em><sub>i</sub></em></span> &nbsp;+ &nbsp; ε<em><sub>ij</sub></em></strong></td>
+			</tr>
+		</table></td>
+	</tr>
+</table></div>
+</div>
+
+
+<p>Click <strong>Show linear model</strong> to add a linear model to the above hierarchy. The linear term has an explained sum of squares with 1 degree of freedom and the sum of squares explained by generalising the linear model to a general model that treats the factor as categorical has the remaining (<em>g</em>&nbsp;-&nbsp;2) degrees of freedom.</p>
+<p>When the linear model is displayed, click <strong>Show quadratic model</strong> to add the quadratic model to the hierarchy. The sum of squares explained by the quadratic model over the linear model has a further 1 degree of freedom, leaving (<em>g</em>&nbsp;-&nbsp;3) degrees of freedom for further the sum of squares explained by the general factor model.</p>
+<div class="diagram">
+		<p class="heading">Antibiotic effectiveness</p>
+    <p>The table below initially shows the residual sum of squares for the model in which 
+			the concentration of antibiotic has <strong>no</strong> effect on the response 
+			variable (inhibition diameter). In this model, none of the variation in the response is explained by the model.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="exper2Prog.SeqFitTermsApplet">
+<param name="yVarName" value="Inhibition diameter(mm)">
+<param name="yValues" value="13.6 13.5 14.9 14.5 14.5 14.8 14.4 14.5 13.9 14.7 14.5 14.4 15.8 15.4 15.4 15.7 15.3 15.4 14.8 15.6 15.6 15.4 16.2 15.9 16.2 16.0 15.9 15.5 16.1 16.5 15.8 15.6 16.8 16.6 16.6 17.0 16.0 15.8 16.2 16.6 16.2 16.0 17.4 17.2 17.2 16.8 17.2 17.4 16.2 17.1 16.5 16.4 17.8 17.7 18.1 17.5 17.3 17.2 16.5 16.7">
+<param name="yAxis" value="13 18.5 13 1">
+<param name="xVarName" value="Conc of antibiotic">
+<param name="xValues" value="10@0 10@1 10@2 10@3 10@4 10@5">
+<param name="xLabels" value="40 60 80 100 120 140">
+<param name="xVariables" value="Conc Conc2 Factor">
+<param name="ConcVarName" value="Linear">
+<param name="ConcValues" value="10@0 10@1 10@2 10@3 10@4 10@5">
+<param name="Conc2VarName" value="Quadratic">
+<param name="Conc2Values" value="10@4 10@1 10@0 10@1 10@4 10@9">
+<param name="FactorVarName" value="Categorical">
+<param name="FactorValues" value="30@0 10@1 10@2 10@3">
+<param name="FactorLabels" value="L123 L4 L5 L6">
+<param name="maxSsq" value="99.999 99">
+<param name="componentNames" value="Linear conc#Adding quadratic#Quadratic lack-of-fit">
+</applet> 
+</div>
+
+    <p>Drag the red arrow down past <strong>Linear </strong>to see the effect 
+			on the residual sum of squares of changing the model to one that models 
+			the effect of concentration linearly. The residual sum of squares reduces 
+			by 54.266 and this is displayed in the table as the sum of squares <strong>explained</strong> 
+			by the linear model.</p>
+		<p>Drag past <strong>Quadratic</strong> to add a quadratic term, further reducing the residual sum of squares (with a further 1 explained degree of freedom).</p>
+		<p>Finally drag past <strong>Factor</strong> to move to the most general factor model. The corresponding reduction in the residual sum of squares, 0.236, can be interpreted as being caused by <strong>lack of 
+			fit</strong> of the quadratic model.</p>
+
+<div class="boxed"><p>Note that the sums of squares and their degrees of freedom 
+					add up to give the total sum of squares and its degrees of freedom, 
+					(<em>n</em>&nbsp;-&nbsp;1).</p></div>
+
+		<br>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

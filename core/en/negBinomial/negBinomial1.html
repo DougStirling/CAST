@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Probability function</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="bernoulli trial, discrete random variable, negative binomial distribution, probability function">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Waiting for the <em>k</em>'th success</p>
+
+<p>The number of  independent Bernoulli trials until the <strong>first</strong> success is observed has a geometric distribution. We now generalise this to consider the number of trials until we observe the <strong>\(k\)'th</strong> success.</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>In a sequence of independent Bernoulli trials with \(P(success) = \pi\) in each trial, the number of trials until the \(k\)'th success is observed has a distribution called a <strong>negative binomial distribution</strong>.</p>
+\[
+X \;\; \sim \; \; \NegBinDistn(k, \pi)
+\]</div>
+
+<p>The probability function for the negative binomial distribution can be fairly easily obtained.</p>
+
+<div class="theoremProof">
+<div class="theorem">
+<p class="theoremTitle">Negative binomial probability function</p>
+<p>If a random variable has a negative binomial distribution, \(X \sim \NegBinDistn(k, \pi) \), then its probability function is</p>
+\[
+p(x) = \begin{cases}
+\displaystyle{{x-1} \choose {k-1}} \pi^k(1-\pi)^{x-k} &amp; \quad \text{for } x = k, k+1, \dots \\[0.5em]
+0 &amp; \quad \text{otherwise}
+\end{cases}
+\]
+</div>
+
+<div class="proof">
+<p>If the \(k\)'th success arises on the \(x\)'th trial, there must have been exactly  \((k - 1)\) successes in the first \((x - 1)\) trials, followed by a success in the \(x\)'th trial.</p>
+<p>The probability of \((k - 1)\) successes in the first \((x - 1)\) trials can be found as a probabilitiy from the binomial distribution, and the probability that the \(x\)'th trial is a success is independently \(\pi\), so</p>
+\[ \begin{align}
+p(x) &amp; \;=\; \pi \;\times\;{{x-1} \choose {k-1}} \pi^{k-1}(1-\pi)^{(x-1)-(k-1)}   \\
+&amp;\; =\; {{x-1} \choose {k-1}} \pi^k(1-\pi)^{x-k}
+\end{align} \]
+</div>
+
+</div>
+
+<p>From its definition, the negative binomial distribution is identical to the geometric distribution when \(k=1\).</p>
+
+
+<div class="example" title="Illustration: Shapes of negative binomial distributions">
+	<p class="exampleHeading">Shape of  negative binomial distributions</p>
+	<p>The diagram below shows some possible shapes of  negative binomial distributions. Use the sliders to see the effect of changing the parameters \(k\) and \(\pi\).</p>
+	<div class="centred">
+		<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="350">
+			<script type="text/javascript">writeAppletParams();</script>
+			<param name="appletName" value="distributionProg.NegBinomDistnApplet">
+			<param name="backgroundColor" value="FFFBF3">
+			<param name="kLimits" value="10 1 Number_of_successes">
+			<param name="pLimits" value="0.10 1.00 0.50">
+			<param name="xAxis" value="0 100 0 10">
+			<param name="xAxisName" value="Number of trials">
+			<param name="customText" value="success=success">
+		</applet>
+	</div>
+	<p>When \(k=1\), we are just waiting for the first success, so the distribution is a geometric one with its highest probability at \(x=1\) — the mode of the distribution. With larger \(k\) the mode is higher than the minimum possible value, provided \(\pi\) is not too close to one.</p>
+	<p>When \(\pi\) is small, there are many small probabilities so the bar chart does not show the distribution clearly. Turn off the checkbox <strong>Show zero-one axis</strong> to expand the probability scale, then adjust the parameters again.</p>
+	<p>Since it has <strong>two</strong> parameters, the negative binomial family of distributions includes distributions with more different shapes than the geometric distribution and  even becomes fairly smooth and symmetric when \(\pi\) is small and \(k\) is large.</p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

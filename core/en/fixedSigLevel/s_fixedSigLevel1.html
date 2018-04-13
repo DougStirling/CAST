@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Significance level</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="hypothesis test, test, p-value, significance level, decision rule">
+	<meta name="dataset" content="Saturated fat in cooking oil">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Revisiting p-values</p>
+
+<p>A hypothesis test is based on two competing hypotheses about the value of a parameter, \(\theta\). The null hypothesis is the simpler one, restricting \(\theta\) to a single value, whereas the alternative hypothesis allows for a range of values. Initially we consider a 1-tailed alternative,</p>
+<ul>
+	<li>Null hypothesis, <strong>H<sub>0</sub></strong>: \(\theta = \theta_0 \)</li>
+	<li>Alternative hypothesis, <strong>H<sub>A</sub></strong>: \(\theta \gt \theta_0\)</li>
+</ul>
+<p>The hypothesis test is based on a <strong>test statistic</strong>,</p>
+\[
+Q \;\;=\;\; g(X_1, X_2, \dots, X_n \mid \theta_0)
+\]
+<p>whose distribution is fully known (without any unknown parameters) when <strong>H<sub>0</sub></strong> is true (i.e. when \(\theta_0\) is the true parameter value). The p-value for the test is the probability of a test statistic value as extreme as that observed in the data. A p-value close to zero throw doubt on the null hypothesis.</p>
+<p class="eqn"><img class="svgImage" src="images/pValueTail.png" width="399" height="242"></p>
+<p class="heading">Fixed significance level</p>
+<p>An alternative way to perform the test involves a rule that results in a <strong>decision</strong> about which of the two hypotheses holds. Any such data-based rule can lead us to the <strong>wrong </strong> decision, so we must take into account the probability of this.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>The <strong>significance level</strong> is the probability of <strong>wrongly</strong> concluding that <strong>H<sub>0</sub></strong> does not hold when it actually does.</p>
+</div>
+<p>For example, it might be acceptable to have a 5% chance of concluding that \(\theta \gt \theta_0\) when \(\theta\) is really equal to \(\theta_0\). This means a significance level of \(\alpha = 0.05\) for the test.</p>
+<p>To attain this significance level, we should reject <strong>H<sub>0</sub></strong> when the test statistic, \(Q\), falls in the &quot;rejection region&quot; below.</p>
+<p class="eqn"><img class="svgImage" src="images/fixedSig.png" width="399" height="242"></p>
+
+<p class="heading">Two-tailed tests</p>
+<ul>
+	<li>Null hypothesis, <strong>H<sub>0</sub></strong>: \(\theta = \theta_0 \)</li>
+	<li>Alternative hypothesis, <strong>H<sub>A</sub></strong>: \(\theta \ne \theta_0\)</li>
+</ul>
+<p>For a two-tailed test, values of the test statistic in <strong>both</strong> tails of its distribution usually provide evidence that <strong>H<sub>0</sub></strong> does not hold, so the rejection region should correspond to area \(\diagfrac {\alpha} 2\) in each tail to attain a significance level of \(\alpha\).</p>
+<p class="eqn"><img class="svgImage" src="images/fixedSig2.png" width="431" height="234"></p>
+
+
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Saturated fat content of cooking oil</p>
+<p>Cooking oil made from 
+soybeans has little cholesterol and has been claimed to have only 15% saturated 
+fat. A clinician believes that the saturated fat content is greater than 15% and 
+	randomly samples 13 bottles of soybean cooking oil for testing.</p>
+<div class="centred">
+	<table border="0" class="centred soy" cellpadding="5" cellspacing="0" style="border:1px solid #999999; background-color:#FFFFFF;">
+		<caption>
+			<strong>Percentage saturated fat in soybean cooking oil</strong>
+			</caption>
+		<tr align="center" valign="top">
+			<td style="padding:5px 15px;">15.2<br>
+				12.4</td>
+			<td style="padding:5px 15px;">15.4<br>
+				13.5</td>
+			<td style="padding:5px 15px;">15.9<br>
+				17.1</td>
+			<td style="padding:5px 15px;">16.9<br>
+				14.3</td>
+			<td style="padding:5px 15px;">19.1<br>
+				18.2</td>
+			<td style="padding:5px 15px;">15.5<br>
+				16.3</td>
+			<td style="padding:5px 15px;">20.0</td>
+		</tr>
+	</table>
+</div>
+<p>Assuming that the data are  a random sample from a normal distribution, the clinician wants to test the following hypotheses.</p>
+<p class=eqn><strong><font size="+1">H</font><sub>0</sub></strong>&nbsp;:&nbsp;&nbsp;&nbsp;\(\mu = 15%\)<br>
+	<strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>\(\mu \gt 15%\)</p>
+<p>What is his conclusion from testing these hypotheses with a significance level of \(\alpha = 5\%\)?</p>
+<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Mean, variance and shape</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="t distribution, mean, variance, normal approximation">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Mean and variance</p>
+
+<p>The t distribution is difficult to manipulate mathematically, so we  only state the formulae for its mean and variance without proof.</p>
+
+<div class="theoremProof">
+<div class="theorem">
+<p class="theoremTitle">Mean and variance</p>
+<p>If \(T \sim \TDistn(k \text{ df})\), then</p>
+\[
+E[T] \;=\; \begin{cases} 0 &amp; \quad\text{if } k > 1 \\[0.2em]
+\text{undefined} &amp; \quad\text{otherwise}
+\end{cases}
+\]
+<p>and</p>
+\[
+\Var(T) \;=\; \begin{cases} \dfrac {k}{k-2} &amp; \quad\text{if } k > 2 \\[0.5em]
+\infty &amp; \quad\text{otherwise}
+\end{cases}
+\]
+</div>
+</div>
+
+<p class="heading">Shape of the distribution</p>
+<p>The t distribution's probability density function, \(f(x)\), is a function of \(x^2\) and is therefore symmetric around zero. This supports our assertion that the distribution's mean is usually zero. However when its degrees of freedom are very small, the tails of the distribution become so <strong>extremely</strong> long that its variance becomes infinite and its mean becomes undefined.</p>
+<p>The distribution was defined to be that of</p>
+
+\[
+	T \;\;=\;\; \frac{Z}{\sqrt{\diagfrac{Y}{k}}} \;\;=\;\; Z \times \frac{1}{\sqrt{\diagfrac{Y}{k}}}
+\]
+<p>where \(Z \sim \NormalDistn(0,1)\) and the second term is independent of it. Multiplying \(Z\) by another random quantity makes it more variable, so the spread of the T distribution is greater than that of the standard normal distribution.</p>
+
+<p>However since \(Y\) has a \(\ChiSqrDistn(k \text{ df})\) distribution, its mean is \(E[Y] = k\) and its variance is \(\Var(Y) = 2k\). Therefore</p>
+\[
+E\left[\diagfrac Y k\right] = 1 \spaced{and} \Var\left(\diagfrac Y k\right) = \diagfrac 2 k
+\]
+<p>As \(k \to \infty\), the variance of \(\diagfrac Y k\) therefore tends to zero and its value approaches its mean, 1.</p>
+
+<div class="boxed"><p>As \(k \to \infty\), the t distribution therefore approaches the shape of a standard normal distribution.</p></div>
+
+<br>
+
+<div class="example" title="ILlustration: Difference between shapes of t and normal distributions">
+
+<p class="exampleHeading">Relationship to standard normal distribution</p>
+
+<p>The diagram below shows the shape of the t distribution for various different values of the degrees of freedom. The red curve shows the shape of a standard normal distribution.</p>
+
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="testProg.TApplet">
+<param name="backgroundColor" value="FFFBF3">
+</applet>
+</div>
+
+
+<p><strong>Drag</strong> the slider to see how the shape of the t distribution depends
+on the degrees of freedom. Note that
+</p>
+
+<ul>
+  <li>The t distribution's shape becomes close to the standard normal distribution
+  (the red curve) as the degrees of freedom increase.
+      <br>&nbsp;</li>
+  <li>When the degrees of freedom are small, the t distribution has much longer tails than the
+  standard normal distribution.<br>
+  <br>
+  </li>
+  <li>When the degrees of freedom are around 10, the <strong>centre</strong> of the t distribution looks close to a standard normal distribution. However an important use of the t distribution is in hypothesis tests where the tails of the distribution are particularly important. The <strong>tails</strong> of the distributions are quite different until the degrees of freedom become much larger.</li>
+</ul>
+
+<div class="boxed">
+	<p>A standard normal distribution can be used as an approximation to a t distribution if the degrees of freedom are large (say 30 or more) but this approximation should be avoided for smaller degrees of freedom.</p>
+</div>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

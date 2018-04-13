@@ -1,0 +1,170 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>P-values for other tests</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="hypothesis test, p-value, Shapiro-Wilkes test, normal distribution/testing for normality">
+	<meta name="dataset" content="Mutual fund returns">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Applying the general properties of p-values to different 
+	tests </p>
+
+<p>The properties of p-values (and hence their interpretation) have been demonstrated
+in the context of a hypothesis test about whether a population mean was zero.
+</p>
+
+<p>P-values for <strong>all</strong> hypothesis tests have the same properties.
+As a result, we can interpret any p-value if we know the null and
+alternative hypotheses that it tests, even if we do not know the formulae that underlies it.
+<font color="#666666">(In practice, a statistical computer program is generally used to perform hypothesis tests,
+so knowledge of formulae is of little importance.)</font>
+</p>
+
+<p>In particular, for any test where the null hypothesis restricts a parameter to a single
+value,
+</p>
+
+<ul>
+  <li>p-values have a rectangular distribution between 0 and 1 if
+  <b>H<sub>0</sub></b> holds.</li>
+      
+  <li>p-values have a distribution that is more concentrated on 0 if
+  <b>H<sub>A</sub></b> holds.</li>
+      
+  <li>If a p-value of <i>p</i> is observed, we can state that there is a probability <i>p</i>
+  of obtaining a p-value so low when
+  <b>H<sub>0</sub></b> holds.</li>
+      
+  <li>The table below therefore provides a guide for interpreting a p-value:</li>
+</ul>
+
+<br>
+
+<center>
+    <table border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+      <tr>
+<th align="CENTER">p-value</th>
+<th align="CENTER">Interpretation</th></tr>
+
+<tr bgcolor="white">
+<td>over 0.1</td>
+<td>no evidence that the null hypothesis does not hold</td></tr>
+
+<tr bgcolor="white">
+<td>between 0.05 and 0.1</td>
+<td>very weak evidence that the null hypothesis does not hold</td></tr>
+
+<tr bgcolor="white">
+<td>between 0.01 and 0.05</td>
+<td>moderately strong evidence that the null hypothesis does not hold</td></tr>
+
+<tr bgcolor="white">
+<td>under 0.01</td>
+<td>strong evidence that the null hypothesis does not hold</td></tr>
+</table>
+</center>
+
+<br>
+
+  <div class="diagram"> 
+	<p class="heading">Another type of test</p>
+	<p>The normal distribution is often used as a hypothetical population from 
+	  which a set of data are assumed to be sampled. But are the data consistent 
+	  with an underlying normal population, or does the population distribution 
+	  have a different shape? </p>
+
+<p>One popular test for assessing whether a random sample come from a normal population
+is the <strong>Shapiro-Wilkes W test</strong>. The theory behind the test is advanced and
+the formula for the p-value cannot be readily evaluated by hand. However most statistical
+programs will perform the test.
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="testProg.ShapiroWilkesApplet">
+<param name="varName" value="Simulated data">
+<param name="horizAxis" value="0 10 0 1">
+<param name="maxValue" value="10.0">
+<param name="noOfValues" value="40">
+<param name="dataDecimals" value="2">
+<param name="summaryDecimals" value="4">
+<param name="customText" value="Proportion less than p=Proportion less than p#Distn is normal=Distn is normal#Distn is not normal=Distn is not normal#normal=normal#skew=skew">
+</applet>
+</div>
+
+<p>A random sample of 40 values from a normal population is displayed in a jittered dot plot
+on the left of the diagram. The p-value for the Shapiro-Wilkes W test is shown under the
+dot plot and also graphically on the right.
+</p>
+
+<p>Click <strong>Take sample</strong> a few times to take more samples and build the
+distribution of the p-values for the test. You should observe that the p-values have a
+rectangular distribution between 0 and 1 when the null hypothesis is true (i.e. if the samples
+are from a normal distribution).
+</p>
+
+<p><strong>Drag</strong> the slider on the top left of the diagram to change the shape of
+the population distribution. Repeat the exercise above and observe that when the null hypothesis
+does <strong>not</strong> hold, the p-values tend to be closer to 0.
+</p>
+
+<p><font color="#666666">Click on crosses on the display of p-values in the bottom 
+right to display the sample that produced that p-value. P-values near zero usually 
+correspond to samples that have very long tails to one or both sides, or have 
+very short tails to one or both sides. </font></p>
+
+<p class="heading">Returns from Mutual Funds</p>
+<p>As a numerical example, the table below gives the annual returns for a sample 
+of 137 mutual funds in 1999 (a period of rapid growth in the US economy).</p>
+<center>
+<table border="0" cellspacing="0" cellpadding="7" bgcolor="white">
+<tr>
+<td align="right">41.9<br>90.6<br>29.9<br>10.2<br>33.7<br>26.9<br>88.5<br>6.5<br>16.6<br>19.2<br>12.6<br>32.0<br>3.6<br>8.1</td>
+<td align="right">68.1<br>57.9<br>-3.0<br>42.2<br>14.5<br>25.7<br>28.1<br>78.4<br>126.2<br>42.0<br>66.6<br>20.6<br>54.6<br>31.7</td>
+<td align="right">2.3<br>45.5<br>55.5<br>37.2<br>51.6<br>97.1<br>80.3<br>41.1<br>7.3<br>31.0<br>30.2<br>1.7<br>27.0<br>38.0</td>
+<td align="right">144.9<br>27.8<br>121.9<br>26.0<br>-11.5<br>15.5<br>16.9<br>27.3<br>23.9<br>61.1<br>68.2<br>10.0<br>37.8<br>77.1</td>
+<td align="right">24.3<br>63.2<br>-0.6<br>1.0<br>12.1<br>134.5<br>53.8<br>60.4<br>9.0<br>-6.4<br>31.0<br>-2.8<br>114.6<br>19.8</td>
+<td align="right">11.5<br>39.6<br>59.0<br>20.7<br>37.3<br>23.1<br>32.7<br>13.0<br>70.6<br>87.3<br>-3.2<br>-20.8<br>119.1<br>-0.1</td>
+<td align="right">104.4<br>-4.6<br>72.5<br>7.7<br>31.4<br>36.9<br>47.2<br>74.7<br>29.1<br>70.5<br>77.7<br>81.0<br>191.8<br>1.6</td>
+<td align="right">-0.8<br>59.4<br>-2.2<br>-12.5<br>81.6<br>44.0<br>63.6<br>114.3<br>33.6<br>83.0<br>70.8<br>50.1<br>55.8<br>28.3</td>
+<td align="right">-7.9<br>51.3<br>37.7<br>48.3<br>88.9<br>59.4<br>126.9<br>35.0<br>51.0<br>91.1<br>-2.7<br>79.2<br>0.1<br>12.9</td>
+<td align="right">16.2<br>23.0<br>22.4<br>64.4<br>10.2<br>7.6<br>27.7<br>8.0<br>23.5<br>25.3<br>22.5<br>&nbsp;<br>&nbsp;<br>&nbsp;</td>
+</tr>
+</table>
+</center>
+
+<p>A histogram of the data is shown below. </p>
+<p class="eqn"><object data="images/mutualHistoNormal.svg" width="392" height="250"></object></p>
+
+<p>The best-fitting normal distribution (with mean and standard deviation equal 
+to those of the data) has been superimposed on the histogram. There is a suggestion 
+of skewness in the distribution of returns. Are the data really skew, or might 
+this amount of skewness be possible in random samples from a normal distribution?</p>
+
+<p>Applying the Shapiro-Wilkes W test to the data using the statistical program 
+Minitab gives a p-value of &quot;under 0.01&quot;. We conclude that there is strong 
+evidence that the distribution is not normal. Even after deleting the 'outlier' 
+-- the <em>First American Technology</em> fund had a return of 191.8% &mdash; there 
+is still strong evidence of skewness in the distribution of returns.</p>
+
+</div>
+
+<p>You should be able to interpret p-values that computer software provides for a wide
+variety of hypothesis tests using the properties that we have described in this section.
+</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

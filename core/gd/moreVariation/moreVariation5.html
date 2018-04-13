@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Root mean squared error</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="error, bias, root mean square error">
+	<meta name="dataset" content="Weights of bags of potatoes">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Distance from a target</p>
+  <p>Bags of potatoes at a supermarket are labelled with weight 3kg. How close 
+    are the actual weights to this target?</p>
+  <dl>
+    <dt><strong>Single value</strong></dt>
+    
+<dd>The distance of a single value, <font color="#000000"><em>x</em></font>, from 
+a target, <font color="#000000"><em>k</em></font>, is called its <strong>error</strong>,</dd>
+  </dl>
+  <p class=eqn style="color:#000000"><strong>error &nbsp; = &nbsp; </strong><font size="+1">(<em>x</em> − <em>k</em>)</font></p>
+<center>
+		<table border="0" cellpadding="12" cellspacing="0">
+			<tr>
+				<td bgcolor="#DDDDDD"><object data="images/errorOne.svg" width="308" height="127"></object></td>
+</tr></table></center>
+	
+  
+<p>However if we measure <font color="#000000"><em>n</em></font> bags of potatoes, 
+how do we combine the errors to give a <strong>single</strong> measure of accuracy?</p>
+  
+<dl>
+<dt><strong>Mean error (bias)</strong></dt>
+<dd>The average of the individual errors is equal to the difference between the 
+sample mean and <font color="#000000"><em>k</em></font>, </dd>
+</dl>
+  <p class=eqn><img class="gif" src="../../en/moreVariation/images/meanError.gif" width="154" height="40"> </p>
+  <dl>
+    <dd>This quantity is called the <strong>bias</strong> and clearly tells us 
+      something about the accuracy of the weights of the bags of potatoes.</dd>
+  </dl>
+	<center>
+		<table border="0" cellpadding="12" cellspacing="0">
+			<tr>
+				<td bgcolor="#DDDDDD"><object data="images/bias.svg" width="308" height="127"></object></td>
+</tr></table></center>
+  
+<dl>
+<dd>However even if the bias is zero, individual values may be very different 
+from the target, <font color="#000000"><em>k</em></font>.</dd>
+</dl>
+	<center>
+		<table border="0" cellpadding="12" cellspacing="0">
+			<tr>
+				<td bgcolor="#DDDDDD"><object data="images/zeroBias.svg" width="308" height="127"></object></td>
+</tr></table></center>
+  
+<dl>
+<dt><strong>Mean squared error</strong></dt>
+<dd>One solution to the problem of negative errors is to square them before averaging,</dd>
+</dl>
+  <p class=eqn style="color:#000000"><strong>mean squared error &nbsp; = &nbsp; </strong><img class="gif" src="../../en/moreVariation/images/meanSqrError.gif" width="77" height="44"></p>
+<dl>
+    <dt><strong>Root mean squared error</strong></dt>
+    
+<dd>The main problem with the mean squared error is that its units are the square 
+of those of the raw data. For example, the weights of the bags of potatoes (and 
+therefore the errors) are measured in kg so the squared errors are 'squared kg' 
+and the mean squared error is also 'squared kg'. How do you interpret a value 
+with these units? The solution is to take the square root to return the value 
+to the original units.</dd>
+  </dl>
+  <p class=eqn style="color:#000000"><strong>root mean squared error &nbsp; = &nbsp; </strong><img class="gif" src="../../en/moreVariation/images/rootMeanSqrError.gif" width="90" height="50"></p>
+<table width="75%" border="1" class="centred" cellpadding="10" cellspacing="0">
+<tr> 
+      
+<td align="center" bgcolor="#FFFFFF"><strong>The root mean squared error is a 
+'typical' error.</strong></td>
+    </tr>
+  </table>
+	<br>
+  <div class="diagram"> 
+    <p class="heading">Weights of 3kg bags of potatoes</p>
+    
+<p>The diagram below shows the weights of seven bags of potatoes labelled '3 kg'.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="statisticProg.DragCrossRmseApplet">
+<param name="varName" value="weight of bags">
+<param name="values" value="2.7 2.9 2.95 3.05 3.15 3.2 3.25">
+<param name="target" value="3.0">
+<param name="targetName" value="Target, k = 3 kg">
+<param name="horizAxis" value="2.4 3.3 2.4 0.2">
+<param name="maxSummary" value="99.999">
+<param name="customText" value="Root mean square error=Root mean square error">
+</applet> 
+</div>
+
+    
+<p>A square is drawn for each data value whose sides have length equal to the 
+error for that bag of potatoes.</p>
+<table width="75%" border="1" class="centred" cellpadding="10" cellspacing="0">
+<tr> 
+<td align="center" bgcolor="#FFFFFF"><strong>The <font color="#FF0000">area</font> 
+of each square is the squared error for the value.</strong></td>
+</tr>
+</table>
+<p>The root mean squared error is the side length of the square whose area is 
+the <strong>average</strong> of the areas of the squares. It is shown in red on 
+the diagram.</p>
+    
+<p><strong>Drag the crosses</strong> to see how the values affect the root mean 
+squared error.</p>
+<hr width="75%">
+<p>You may notice that an outlier corresponds to a square with a very large area, 
+so it has a disproportionate effect on the root mean squared error.</p>
+    </div>
+  <script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Bar charts using proportions</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="proportion, percentage, bar chart, clustered bar chart">
+	<meta name="dataset" content="Fuel used in buildings">
+	<meta name="dataset" content="Nurse workplaces">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Proportions within groups</p>
+
+<p>Although a contingency table fully describes categorical data from two or more 
+groups, it is a poor way to compare the distributions if there are different total 
+numbers in the groups.</p>
+<p>Rather than tabulating the frequencies for each group, it is more informative 
+to tabulate the <strong>proportions within the groups</strong>. Each frequency 
+in the table is therefore divided by the <strong>total for that group</strong>.</p>
+<p>For example, in the drug-screening example on the previous page, 94 smokers 
+tested positive for marijuana but 103 non-smokers tested positive. However since 
+there were many more non-smokers than smokers, it is more meaningful to report 
+that a proportion <sup>94</sup>/<sub>825</sub> = 0.114 of the smokers tested positive 
+whereas only <sup>103</sup>/<sub>1708</sub> = 0.060 of the non-smokers were positive.</p>
+<div class="diagram">
+<p class="heading">Heating fuel in buildings</p>
+
+<p>The Cincinnati Gas and Electric Company conducted a survey of commercial buildings 
+in 1992. The contingency table below describes the main heating fuel used in buildings 
+of different ages.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="240">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="bivarCatProg.ContinTable2Applet">
+<param name="xVarName" value="Year of construction">
+<param name="xLabels" value="#1973 or before# 1974-79 1980-86 1987-91">
+<param name="xValues" value="247@0 54@1 82@2 121@3">
+<param name="yVarName" value="Fuel type">
+<param name="yLabels" value="Electric Gas Oil Propane Other">
+<param name="yValues" value="40@0 183@1 12@2 5@3 7@4 24@0 26@1 2@2 2@3 37@0 38@1 1@2 6@4 48@0 70@1 2@2 1@4">
+<param name="vertScale" value="0 1">
+<param name="customText" value="Propn within=Propn within#Percent within=Percent within#Display=Display">
+</applet>
+</div>
+
+<p>Differences between buildings of different ages are clearer if the <strong>proportions</strong> 
+using each fuel are displayed within each age group. These proportions are found 
+by dividing each row of the table by its row total &mdash; <strong>click on any row</strong> 
+to see the process.</p>
+<p>Select the option <strong>Propn within Year of construction</strong> from the 
+pop-up menu to display the resulting proportions. This scales each row, making 
+all row totals the same, 1.0.</p>
+<p>Scan down the columns of this table to make comparisons of the different building 
+ages. Observe that</p>
+
+<ul>
+<li>the proportion of buildings using <em>Electricity</em> increased greatly after 
+1973.</li>
+<li>The proportion using natural gas dropped between 1974 and 1986, but increased 
+again more recently.</li>
+</ul>
+		<p>Multiplying the proportions by 100 rewrites them as percentages. Select 
+			<strong>Percent within </strong><strong>Year of construction</strong> to 
+			display these percentages. Although percentages and proportions contain 
+			the same information, the leading zeros and decimal points are absent in 
+			the percentages and this 'cleaner' display makes it easier to compare the 
+			years.</p>
+</div>
+
+<p class="heading">Bar charts of proportions</p>
+
+<p>Bar charts provide a graphical way to compare groups. Although the bar chart 
+of each group has the same shape whether it is based on frequencies or proportions, 
+comparisons are made more easily if proportions are used, especially when the 
+groups are of different sizes.</p>
+
+<div class="diagram"> 
+<p>The diagram below shows the fuel use data.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="bivarCatProg.Bar2WayApplet">
+<param name="xVarName" value="Year of construction">
+<param name="xLabels" value="#1973 or before# 1974-79 1980-86 1987-91">
+<param name="xValues" value="247@0 54@1 82@2 121@3">
+<param name="yVarName" value="Fuel type">
+<param name="yLabels" value="Electricity #Natural gas# Oil Propane Other">
+<param name="yValues" value="40@0 183@1 12@2 5@3 7@4 24@0 26@1 2@2 2@3 37@0 38@1 1@2 6@4 48@0 70@1 2@2 1@4">
+<param name="countAxis" value="200 50">
+<param name="propnAxis" value="1.0 0.2">
+<param name="bottomPanel" value="true">
+<param name="mainGroup" value="0">
+<param name="stackable" value="false">
+<param name="vertScale" value="0 1">
+<param name="customText" value="Propn within=Propn within#Percent within=Percent within">
+</applet>
+</div>
+
+<p>From bar charts of the counts, the large number of buildings constructed in 
+1973 or earlier that are using natural gas for heating is evident. <strong>But 
+how much is that due to the larger number of old buildings in the survey?</strong></p>
+		<p>Select <strong>Propn within Year of construction</strong> or <strong>Percent 
+			within Year of construction</strong> from the pop-up menu. The effect is 
+			to scale each bar chart to have the same total (1.0 or 100). Changes to 
+			the proportion using natural gas are relatively small &mdash; <strong>the increase 
+			in the proportion using electricity now stands out</strong>.</p>
+</div>
+
+
+<p class="heading">Clustering the bars</p>
+
+<p>If the groups correspond to different rows of a table that shows proportions 
+within groups (so the row totals are 1.0), the most important comparisons are 
+down columns. For example, we would scan down the 'Crack' column in the table 
+above to compare the proportions convicted of dealing with that drug in the different 
+groups.</p>
+<p>When separate bar charts are drawn for the different groups, the corresponding 
+bars are widely separated in the diagram, making comparisons harder. An alternative 
+display uses the same bars, but clusters them by the values of the categorical 
+variable, rather than by groups. This type of clustered bar chart makes it easier 
+to spot subtle differences between the groups.</p>
+<div class="diagram">
+<p class="heading">Where do nurses work?</p>
+
+<p>Colleges that train nurses need to know the types of work that the nurses will 
+eventually perform, in order to give them appropriate training. One aspect of 
+this is the mix of work settings that will eventually employ these nurses.</p>
+<p>The diagram below shows the work settings of all enrolled nurses in Australia 
+in 1993, 1996 and 1999.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="bivarCatProg.Bar2WayApplet">
+<param name="xVarName" value="Year">
+<param name="xLabels" value="1993 1996 1999">
+<param name="xValues" value="42667@0 38697@1 35700@2">
+<param name="yVarName" value="Workplace">
+<param name="yLabels" value="Hospitals #Aged homes# #Community# Other">
+<param name="yValues" value="19981@0 14714@1 1717@2 6255@3 20367@0 11899@1 1571@2 4860@3 19847@0 10376@1 2315@2 3159@3">
+<param name="countAxis" value="22000 5000">
+<param name="propnAxis" value="0.6 0.1">
+<param name="bottomPanel" value="true">
+<param name="mainGroup" value="0 1">
+<param name="stackable" value="false">
+<param name="vertScale" value="1">
+<param name="showPercentages" value="false">
+<param name="customText" value="Propn within=Propn within#Percent within=Percent within">
+</applet>
+</div>
+
+<p>Although the distribution of workplaces within each year is clearly shown in 
+this diagram, it is harder to assess any trends over the six-year period since 
+all bar charts have a similar shape.</p>
+<p>Select the option <strong>Workplace</strong> from the pop-up menu to cluster 
+the bars by workplace. From this diagram it is easier to see the more subtle changes 
+in distribution over the period.</p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

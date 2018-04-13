@@ -1,0 +1,9 @@
+startExercise("exerciseTestProg.PValueInterpApplet", 500, 550);
+
+addVariation("heightWeight", "Physiologists measured the weights and heights of #?:int(10:50)# children aged 10.\\nA scatterplot of the weights and heights was drawn and the linearity of the relationship was tested. (The null hypothesis is a linear relationship.) The p-value from the test was #p-value(:)#.", "nullHypoth(there is a linear relationship between the weight and height of the children)#altHypoth(the weight and height of the children are nonlinearly related)", null, 0);
+addVariation("slabStrength", "Engineers measured the strength of #?:int(10:50)# paving slabs.\\nThe resulting values were tested to see whether they might have come from a normal distribution (null hypothesis.) The p-value from the test was #p-value(:)#.", "nullHypoth(the strengths are a sample from a normal distribution)#altHypoth(the strengths come from a non-normal distribution)", null, 0);
+addVariation("penguinWeight", "Ecologists captured #?:int(10:50)# nesting pairs of penguins and recorded the weights of each.\\nA hypothesis test was conducted to test whether the birds tended to mate with others of similar size. (The null hypothesis is that the two weights were uncorrelated.) The p-value from the test was #p-value(:)#.", "nullHypoth(the weights of the nesting pairs of penguins are unassociated with each other)#altHypoth(the weights of the nesting pairs of penguins are related to each other)", null, 0);
+addVariation("feedSupplement", "Agricultural researchers conducted an experiment to assess whether a feed supplement increases the weight gain in pigs.\\nThe null hypothesis is that the supplement does not affect weight gain and the resulting p-value is #p-value(:)#.", "nullHypoth(the feed supplement has no effect on the weight gain of the pigs)#altHypoth(the feed supplement changes the weight gain of the pigs)", null, 0);
+
+//----------------------------------------------
+

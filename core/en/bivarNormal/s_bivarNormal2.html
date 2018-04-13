@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>General bivariate normal distribution</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="bivariate distribution, continuous distribution, bivariate normal distribution, standard bivariate normal distribution, normal distribution, joint probability density function, scale parameter, location parameter">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>We now generalise.</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>Two continuous random variables, \(X\) and \(Y\), are said to have a <strong> bivariate normal distribution</strong> with parameters  \(\mu_X, \sigma_X^2, \mu_Y, \sigma_Y^2\) and \(\rho\),</p>
+\[
+(X,Y) \;\;\sim\;\; \NormalDistn(\mu_X, \sigma_X^2, \mu_Y, \sigma_Y^2, \rho)
+\]
+<p>if \(-1 \lt \rho \lt 1\) and their joint pdf is</p>
+\[ \begin{align}
+f(x,y) \;\;=\;\; &amp;\frac{1}{2\pi\sigma_X\sigma_Y\sqrt{1 - \rho^2}}  \\[0.4em]
+&amp;\times\exp\left(-\frac{1}{2(1-\rho^2)} \left[\frac{(x-\mu_X)^2}{\sigma_X^2} + \frac{(y-\mu_Y)^2}{\sigma_Y^2} - 2\rho \frac{(x-\mu_X)(y - \mu_Y)}{\sigma_X \sigma_Y}\right]\right)
+\end{align} \]
+<p>for all \(-\infty \lt x \lt \infty\) and \(-\infty \lt y \lt \infty\).</p>
+</div>
+
+<p>The standard bivariate normal distribution arises when \(\mu_X = \mu_Y = 0\) and \(\sigma_X = \sigma_Y = 1\).</p>
+<p class="heading">Matrix notation</p>
+<p>The formula for the joint pdf of \(X\) and \(Y\) can be simplified if matrix notation is used. If we write</p>
+
+\[
+\mathbf{x} = \left[\begin{array}{c} x \\ y\end{array}\right] , \quad \mathbf{\mu} = \left[\begin{array}{c} \mu_X \\ \mu_Y\end{array}\right] , \spaced{and} \mathbf{\Sigma} = \left[\begin{array}{cc} \sigma_X^2 &amp; \rho \sigma_X \sigma_Y\\ \rho \sigma_X \sigma_Y &amp; \sigma_Y^2\end{array}\right]
+\]
+
+<p>then</p>
+\[
+f(x,y) \;\;=\;\; \frac{1}{\sqrt{(2\pi)^2 \left| \Sigma \right|}} \exp\left(-\frac{1}{2}(\mathbf{x} - \mathbf{\mu})^T \Sigma^{-1}(\mathbf{x} - \mathbf{\mu})\right)
+\]
+
+<p class="heading">Scale and location parameters</p>
+<p>\(\mu_X\) and \(\mu_Y\) are <strong>location</strong> parameters and \(\sigma_X\) and \(\sigma_Y\) are <strong>scale</strong> parameters.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Relationship with standard normal distribution</p>
+<p>If \((Z_X,Z_Y) \sim \NormalDistn(0, 1, 0, 1, \rho)\), then</p>
+\[
+X = \mu_X + \sigma_X Z_X \spaced{and} Y = \mu_Y + \sigma_Y Z_Y 
+\]
+<p>have the  bivariate normal distribution</p>
+\[
+(X,Y) \;\;\sim\;\; \NormalDistn(\mu_X, \sigma_X^2, \mu_Y, \sigma_Y^2, \rho)
+\]</div>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

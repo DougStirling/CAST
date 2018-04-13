@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Randomisation for Latin squares</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="latin square design, randomisation">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Applying an incomplete design</p>  
+<p>There are two steps to the application of an incomplete design in an actual experiment.</p>
+<dl>
+<dt>Treatments to use</dt>
+<dd>The first decision relates to the choice of treatments to use (and not use), either overall in  a completely randomised experiment or within each block of a randomised block experiment.</dd>
+<dt>Randomisation</dt>
+<dd>After the treatments have been picked, they must be randomly allocated to physical experimental units, either overall or within each block.</dd>
+</dl>
+<p class="heading">Picking treatments</p>
+<p>In a Latin square design, there are many different ways to write letters in a square grid so that each appears in exactly once in every row and column. A good way to select one such design is to start with a square with diagonal bands for the treatments. For example, in a 6x6 Latin square, this would be:</p>
+<p class="eqn"><img src="images/bandPattern.gif" width="205" height="193"></p>
+<p>Then:</p>
+<ul>
+<li>Randomly permute the rows</li>
+<li>Randomly permute the columns</li>
+<li>Randomly permute the letters</li>
+</ul>
+<p class="heading">Randomisation</p>
+<p>Random allocation of treatments to physical experimental units depends on whether there are blocks in the experiment.</p>
+<dl>
+<dt>Rows and columns are both blocking variables</dt>
+<dd>No further randomisation is needed &mdash; each cell of the table is effectively a separate block so it only has a single treatment.</dd>
+<dt>Rows are blocks</dt>
+<dd>The treatments (column-letter combinations) should be randomly allocated within each block.</dd>
+<dt>No blocks</dt>
+<dd>In a completely randomised experiment, all treatments (row-column-letter combinations) should be randomly allocated to the experimental units.</dd>
+</dl>
+<br>
+
+<div class="diagram"> 
+<p class="heading">Winter feeding and milk production</p>
+<p>The diagram below shows how treatments would be allocated to experimental units for the example on the previous page.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="420">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="exper2Prog.RandomiseLatinApplet">
+<param name="rowNames" value="Period 1*Period 2*Period 3*Period 4">
+<param name="colNames" value="Cow 1*Cow 2*Cow 3*Cow 4">
+<param name="treatmentNames" value="Diet A*Diet B*Diet C*Diet D">
+<param name="factorName" value="Factor Z">
+<param name="blockVars" value="rows cols">
+<param name="customText" value="Find treatments=Find treatments#Permute=Permute#rows=rows#cols=cols#letters=letters#Allocate to units=Allocate to units">
+</applet>
+</div>
+
+<p>Click the buttons <strong>Permute rows</strong>, <strong>Permute cols</strong> and <strong>Permute letters</strong> to randomly permute these three variables. Since there are two blocking variables, each individual cell in the table is effectively a block so no further randomisation is needed.</p>
+
+
+<p class="heading">Randomisation with 2 or 3 controlled factors</p>
+<p>The diagram below shows the further randomisation that is needed if two or three of the variables are controlled factors.</p>
+
+<div class="divChoice">
+<form>
+<select name="dataset" onChange="changeBlock(this, 2)" id="dataChoice">
+    <option value="0" selected>Randomised block with one blocking variable</option>
+    <option value="1">Completely randomised design</option>
+  </select>
+</form>
+
+<div id="example1">
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="420">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="exper2Prog.RandomiseLatinApplet">
+<param name="rowNames" value="Block 1*Block 2*Block 3*Block 4">
+<param name="colNames" value="X = 1*X = 2*X = 3*X = 4">
+<param name="treatmentNames" value="Z = 1*Z = 2*Z = 3*Z = 4">
+<param name="factorName" value="Factor Z">
+<param name="blockVars" value="rows ">
+<param name="customText" value="Find treatments=Find treatments#Permute=Permute#rows=rows#cols=cols#letters=letters#Allocate to units=Allocate to units">
+</applet>
+</div>
+</div>
+
+<div id="example2" style="display:none">
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="420">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="exper2Prog.RandomiseLatinApplet">
+<param name="rowNames" value="X = 1*X = 2*X = 3*X = 4">
+<param name="colNames" value="Z = 1*Z = 2*Z = 3*Z = 4">
+<param name="treatmentNames" value="W = 1*W = 2*W = 3*W = 4">
+<param name="factorName" value="Factor Z">
+<param name="blockVars" value="*">
+<param name="customText" value="Find treatments=Find treatments#Permute=Permute#rows=rows#cols=cols#letters=letters#Allocate to units=Allocate to units">
+</applet>
+</div>
+</div>
+</div>
+
+
+<p>In each example, click <strong>Permute rows</strong>, <strong>Permute cols</strong> and <strong>Permute letters</strong> to randomly pick the treatments that will be used in each block (or overall).</p>
+<p>Now click the checkbox <strong>Allocate to units</strong> then click the button <strong>Randomise</strong> to randomly allocate the chosen treatments to experimental units.</p>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

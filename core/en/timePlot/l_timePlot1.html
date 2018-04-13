@@ -1,0 +1,239 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Time series plots</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="time series, graphical methods/time series plot">
+	<meta name="dataset" content="US defence investment">
+</head>
+
+
+<body class="lecture">
+<script type="text/javascript">writePageStart();</script>
+
+
+<p class=heading>Defence Investment in USA</p>
+
+
+<div class="divChoice">
+<form>
+<select name="dataset" onChange="changeBlock(this, 2)" id="dataChoice">
+    <option value="0" selected>Data in tabular form</option>
+    <option value="1">Time series plot</option>
+  </select>
+</form>
+
+<div id="example1">
+	<div class="centred">
+		<table width="400" cellspacing="0" cellpadding="0" class="centred" bgcolor="#ffffff">
+			<caption align="TOP">
+				<strong>National Defense Gross Investment (% of GDP)</strong>
+				</caption>
+			<tr>
+				<td width="33%" align="CENTER" style="border:1px solid #999999;"><table border="0" cellspacing="6" cellpadding="4" bgcolor="#ffffff">
+					<tr>
+						<td class="blue"> 1947<br>
+							1948<br>
+							1949<br>
+							1950<br>
+							1951<br>
+							1952<br>
+							1953<br>
+							1954<br>
+							1955<br>
+							1956<br>
+							1957<br>
+							1958<br>
+							1959<br>
+							1960<br>
+							1961<br>
+							1962<br>
+							1963</td>
+						<td align="RIGHT" class="black">8.5<br>
+							7.6<br>
+							8.2<br>
+							7.6<br>
+							12.6<br>
+							15.6<br>
+							15.7<br>
+							13.9<br>
+							12.3<br>
+							12.2<br>
+							12.6<br>
+							12.9<br>
+							11.7<br>
+							11.2<br>
+							11.5<br>
+							11.5<br>
+							11.0</td>
+					</tr>
+				</table></td>
+				<td width="33%" align="CENTER" style="border:1px solid #999999; border-left:0px;"><table border="0" cellspacing="6" cellpadding="4" bgcolor="#ffffff">
+					<tr>
+						<td class="blue">1964<br>
+							1965<br>
+							1966<br>
+							1967<br>
+							1968<br>
+							1969<br>
+							1970<br>
+							1971<br>
+							1972<br>
+							1973<br>
+							1974<br>
+							1975<br>
+							1976<br>
+							1977<br>
+							1978<br>
+							1979<br>
+							1980</td>
+						<td align="RIGHT" class="black">10.2<br>
+							9.5<br>
+							10.1<br>
+							11.0<br>
+							10.8<br>
+							10.0<br>
+							9.4<br>
+							8.4<br>
+							7.8<br>
+							7.1<br>
+							7.1<br>
+							6.9<br>
+							6.6<br>
+							6.4<br>
+							6.1<br>
+							6.0<br>
+							6.3</td>
+					</tr>
+				</table></td>
+				<td width="33%" align="CENTER" valign="top" style="border:1px solid #999999; border-left:0px;"><table border="0" cellspacing="6" cellpadding="4" bgcolor="#ffffff">
+					<tr>
+						<td class="blue">1981<br>
+							1982<br>
+							1983<br>
+							1984<br>
+							1985<br>
+							1986<br>
+							1987<br>
+							1988<br>
+							1989<br>
+							1990<br>
+							1991<br>
+							1992<br>
+							1993<br>
+							1994<br>
+							1995<br>
+							1996<br>
+							1997</td>
+						<td align="RIGHT" class="black">6.6<br>
+							7.3<br>
+							7.4<br>
+							7.3<br>
+							7.5<br>
+							7.6<br>
+							7.6<br>
+							7.2<br>
+							6.9<br>
+							6.7<br>
+							6.7<br>
+							6.2<br>
+							5.7<br>
+							5.2<br>
+							4.9<br>
+							4.6<br>
+							4.3</td>
+					</tr>
+				</table></td>
+				<td width="33%" align="CENTER" valign="top" style="border:1px solid #999999; border-left:0px;"><table border="0" cellspacing="6" cellpadding="4" bgcolor="#ffffff">
+					<tr>
+						<td class="blue">1998<br>
+							1999<br>
+							2000<br>
+							2001<br>
+							2002<br>
+							2003<br>
+							2004<br>
+							2005<br>
+							2006<br>
+							2007<br>
+							2008<br>
+							2009<br>
+							2010<br>
+							2011<br>
+							2021<br>
+							2013</td>
+						<td align="RIGHT" class="black">4.0<br>
+							4.0<br>
+							3.8<br>
+							3.9<br>
+							4.2<br>
+							4.5<br>
+							4.6<br>
+							4.6<br>
+							4.6<br>
+							4.7<br>
+							5.1<br>
+							5.5<br>
+							5.6<br>
+							5.4<br>
+							5.0<br>
+							4.6</td>
+					</tr>
+				</table></td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+
+<div id="example2" style="display:none">
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="420">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="scatterProg.ScatterArrowApplet">
+<param name="yVarName" value="US defence expenditure">
+<param name="yUnits" value="billion dollars">
+<param name="xVarName" value="Year">
+<param name="yValues" value="4.9 9.4 13.8 10.8 38.5 55.7 62.4 50.8 41.1 39.3 37.3 39.7 47.3 42.7 47.3 48.9 42.3 38.4 33.5 38.7 43.7 38.3 34.0 30.9 19.7 14.7 16.6 20.2 22.5 24.5 25.0 24.8 28.4 30.4 33.5 37.7 44.2 50.5 60.7 69.6 76.0 70.3 70.7 72.9 68.7 66.1 57.8 53.8 50.9 51.3 45.1 45.6 47.6 48.8 50.8 56.7 61.7 68.0 71.7 76.6">
+<param name="xValues" value="1947 1948 1949 1950 1951 1952 1953 1954 1955 1956 1957 1958 1959 1960 1961 1962 1963 1964 1965 1966 1967 1968 1969 1970 1971 1972 1973 1974 1975 1976 1977 1978 1979 1980 1981 1982 1983 1984 1985 1986 1987 1988 1989 1990 1991 1992 1993 1994 1995 1996 1997 1998 1999 2000 2001 2002 2003 2004 2005 2006">
+<param name="vertAxis" value="0 80 0 20">
+<param name="horizAxis" value="1947 2006 1950 10">
+<param name="labelAxes" value="false">
+<param name="joinPoints" value="check">
+<param name="customText" value="Join crosses=Join crosses">
+<param name="fontSize" value="big">
+</applet>
+</div>
+</div>
+
+</div>
+
+
+<script type="text/javascript">
+	writeLecturerNotesLink(withDataNotes);
+</script>
+
+<div class="lecturerNote" id="lecturerNote">
+<p>Mention that it is hard to see trends and other patterns when the data are presented in a table. Select <strong>Time series plot</strong> from the pop-up menu.</p>
+<p><strong>Click crosses</strong> to see how the values are represented &mdash; arrows are drawn to the two axes. Mention that it is a kind of scatterplot.</p>
+<p>Click <strong>Join crosses</strong> to join the crosses with lines. Mention that the movement of the series over time is now clearer.</p>
+</div>
+
+<div class="lecturerNote" id="dataNote">
+<p>The data set gives the investment in defence in the USA between 1947 
+and 2006.</p>
+<p>Because 1947 dollars were worth less than 2006 
+  dollars, all values have been adjusted for inflation and are reported in '2000 
+  dollars', allowing more meaningful comparisons between the years.</p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

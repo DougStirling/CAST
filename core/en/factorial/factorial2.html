@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Model without interaction</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="factorial design, model, normal model, main effect, interaction, least squares">
+	<meta name="dataset" content="Soft drink bottling">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Model with only main effects</p>  
+  <p>The simplest model for how three factors affect the mean response simply 
+		adds together their separate effects. Using the notation <em>y<sub>ikjl</sub></em> 
+		to denote the <em>l</em>'th replicate for the <em>i</em>'th level of factor B, <em>j</em>'th 
+		level of C and <em>k</em>'th level of D, this model can be written in the 
+		form: </p>
+	<div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+		<tr>
+			<td align="center"><br>
+					<span class="em black">y<sub>ijkl</sub></span>  &nbsp;= &nbsp;µ</td>
+			<td align="center"><br>
+				&nbsp;+&nbsp;</td>
+			<td align="center" class="darkblue">(<em>explained by </em>B)<br>
+				β<em><sub>i</sub></em></td>
+			<td align="center"><br>
+				&nbsp;+&nbsp;</td>
+			<td align="center" class="green">(<em>explained by </em>C)<br>
+				γ<em><sub>j</sub></em></td>
+			<td align="center"><br>
+	&nbsp;+&nbsp;</td>
+			<td align="center" class="purple">(<em>explained by </em>D)<br>
+	δ<em><sub>k</sub></em></td>
+			<td align="center"><br>
+				&nbsp;+&nbsp;</td>
+			<td align="center" class="red">(<em>unexplained</em>)<br>
+				ε<em><sub>ijkl</sub></em></td>
+		</tr>
+	</table></div>
+	<p>where the red error term is assumed to be normally distributed with mean 
+		zero.</p>
+	<p>As in earlier models, we set the first (baseline) level for each of the sets of parameters<span class="darkblue"> {β<em><sub>i</sub></em>}</span>, <span class="green">{γ<em><sub>j</sub></em>}</span> and <span class="purple">{δ<em><sub>k</sub></em>}</span> to be zero:</p>
+	<p class="eqn"><span class="darkblue">β<sub>1</sub></span>&nbsp;&nbsp;=&nbsp;&nbsp;<span class="green">γ<sub>1</sub></span><span class="purple">&nbsp;&nbsp;=&nbsp;&nbsp;δ<sub>1</sub></span>&nbsp;&nbsp;=&nbsp;&nbsp;0</p>
+	<p>The other parameters therefore describe  differences from the baseline level.</p>
+	<p class="heading">No interaction</p>
+	<p>In this simple model, the effect of changing B is assumed to be the same 
+		whatever the levels of C and D (and similarly for the other factors). There 
+		is said to be <strong>no interaction</strong> between the effects of the factors.</p>
+  
+
+  <p class="heading">Least squares estimates</p>
+  <p>The parameter µ and the sets of parameters <span class="darkblue">{β<em><sub>i</sub></em>}</span>, <span class="green">{γ<em><sub>j</sub></em>}</span> and <span class="purple">{δ<em><sub>k</sub></em>}</span> are usually unknown and must be estimated from the experimental data. As in other models, this is done to minimise the sum of squared residuals &mdash; the method of least squares.</p>
+  <div class="diagram"> 
+		<p class="heading">Soft drink bottling</p>
+		<p>The diagram below shows models for the fill height deviation data described in the previous page.</p>
+		
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="factorialProg.DragFactorialApplet">
+<param name="yVarName" value="Fill height deviation">
+<param name="yValues" value="-3 -1 0 1 5 4 -1 0 2 1 7 6 -1 0 2 3 7 9 1 1 6 5 10 11">
+<param name="yAxis" value="-3 11 -2 2">
+<param name="xLongName" value="Carbonation">
+<param name="zLongName" value="Pressure">
+<param name="wLongName" value="Line speed">
+<param name="xKeys" value="C P S">
+<param name="PVarName" value="Press">
+<param name="PValues" value="12@0 12@1">
+<param name="PLabels" value="#25 psi# #30 psi#">
+<param name="SVarName" value="Spd">
+<param name="SValues" value="6@0 6@1 6@0 6@1">
+<param name="SLabels" value="200 250">
+<param name="CVarName" value="Carb">
+<param name="CValues" value="2@0 2@1 2@2 2@0 2@1 2@2 2@0 2@1 2@2 2@0 2@1 2@2">
+<param name="CLabels" value="10% 12% 14%">
+<param name="startMean" value="ls">
+<param name="startModel" value=" ">
+<param name="maxInteract" value="1">
+<param name="customText" value="Model terms=Model terms">
+</applet> 
+</div>
+
+		<p>Click the checkboxes for <strong>Carb</strong> and <strong>Press</strong> 
+			to display the least squares fit of the model  with main effects for these two variables 
+			only. This is a <a href="javascript:showNamedPage('twoFactorModel4')">two-factor model without interaction</a> of the kind that was described earlier.</p>
+		<p>Now click the checkbox <strong>Spd</strong> to add <em>Line speed</em> 
+			to the model. Observe that changing line speed is modelled to have the same 
+			effect on mean <em>Fill height deviation</em> for all combinations of <em>Pressure</em> 
+			and <em>Carbonation</em>.</p>
+		<p>Click the <strong>y-x</strong> button to rotate the diagram. Observe 
+			that the effect of changing <em>Carbonation</em> is the same for all combinations 
+			of <em>Pressure</em> and <em>Line speed</em> &mdash; all four lines are parallel. Similarly, click the <strong>y-z</strong> rotation button and observe that the lines are parallel since the factors do not interact.</p>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Newton-Raphson algorithm</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="newton-raphson algorithm, taylor series, maximum likelihood">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Need for numerical method</p>
+
+<p>The maximum likelihood estimate of a parameter \(\theta\) is usually a value that satisfies the equation</p>
+\[
+\ell'(\theta) \;\; = \;\; 0
+\]
+<p>where \(\ell(\theta)\) is the log-likelihood function. When the data being used to estimate the parameter are from many common distributions, this equation has a fairly simple form and can be solved with some algebraic manipulation. </p>
+<p>However for other kinds of model, the equation cannot be explicitly solved, so an iterative numerical method is required to obtain the maximum likelihood estimate.</p>
+<p class="heading">Newton Raphson algorithm</p>
+<p>One way to solve an equation numerically is called the <strong>Newton Raphson</strong> algorithm. Consider an equation</p>
+\[
+g(\theta) \;\; = \;\; 0
+\]
+<p>A Taylor series expansion of the function around \(\theta_0\) is</p>
+\[
+g(\theta) \;\; = \;\; g(\theta_0) + (\theta - \theta_0) g'(\theta_0) + 
+\frac {(\theta - \theta_0)^2} {2!} g''(\theta_0) + \dots\]
+<p>Ignoring the higher-order terms (since they will be relatively small if \(\theta\) is close to \(\theta_0\)),</p>
+\[
+g(\theta) \;\; \approx \;\; g(\theta_0) + (\theta - \theta_0) g'(\theta_0)\]
+<p>If we are looking for the value \(\theta\) such that \(g(\theta) = 0\), this can be simplified to give</p>
+\[
+\theta \;\; \approx \;\; \theta_0 - \frac {g(\theta_0)} { g'(\theta_0)}\]
+<p>Although the value on the right is usually not equal to the value that solves the equation, it is often closer than \(\theta_0\), leading to the following algorithm.</p>
+
+<div class="definition">
+	<p class='definitionTitle'>Newton Raphson algorithm</p>
+<p>Starting at an initial guess of the solution, \(\theta_0\), successive values</p>
+\[
+\theta_{i+1} \;\; = \;\; \theta_i - \frac {g(\theta_i)} { g'(\theta_i)} \qquad \text{for } i=0,\dots\]
+<p>are called the <strong>Newton Raphson algorithm</strong>. If it converges, it is to a solution of the equation \(g(\theta) = 0\).</p>
+</div>
+
+<p class="heading">Applying the algorithm to  maximum likelihood </p>
+<p>To apply it to maximum likelihood, we use the function \(g(\theta) = \ell'(\theta)\). The Newton Raphson algorithm can therefore be expressed as</p>
+\[
+\theta_{i+1} \;\; = \;\; \theta_i - \frac {\ell'(\theta_i)} { \ell''(\theta_i)}\]
+<p>This usually converges to the maximum likelihood estimate, provided the initial guess, \(\theta_0\) is not too far from the correct value. The algorithm may need to be used from various starting values until one is found for which the algorithm converges.</p>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

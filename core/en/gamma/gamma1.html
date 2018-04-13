@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Distribution for positive variables</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="continuous distribution, gamma distribution, probability density function">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Gamma distribution</p>
+
+<p>We now describe a family of distributions that can be used to model &quot;quantity&quot; variables — ones that can only take positive values such as the size of insurance claims and rainfalls. It is also occasionally   used as a model for the lifetime of items.</p>
+<p>The Gamma distribution is a generalisation of the \(\ErlangDistn(k,\; \lambda)\) distribution that allows non-integer values for the parameter \(k\). By convention, Erlang parameters \(k\) and \(\lambda\) are denoted by the symbols \(\alpha\) and \(\beta\) in Gamma distributions.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>A random variable \(X\) is said to have a <strong>Gamma distribution</strong> with parameters \(\alpha \gt 0\) and  \(\beta \gt 0\),</p>
+	\[
+	X \;\;\sim\;\; \GammaDistn(\alpha,\; \beta)
+	\]
+	<p>if its probability density function is</p>
+	\[
+	f(x) \;\;=\;\; \begin{cases} \dfrac {\beta^\alpha }{\Gamma(\alpha)} x^{\alpha - 1} e^{-x\beta}&amp; \quad\text{if }x \gt 0 \\
+	0 &amp; \quad\text{otherwise}
+	\end{cases} \] </div>
+<p>Having two parameters gives this family of distributions considerable flexibility in shape.</p>
+<p class="heading">Comparison of Gamma and Weibull distributions</p>
+<p>Both the Gamma and Weibull distributions are generalisations of the exponential distribution — both become exponential distributions when \(\alpha = 1\). The main differences between them arise in the <strong>tails</strong> of the distributions, especially when \(\alpha\) is positive.</p>
+<table border="0" cellpadding="5" cellspacing="0" class="centred">
+	<tr>
+		<td>\(\WeibullDistn(\alpha,\; \lambda)\):        </td>
+		<td>\(f(x) \propto x^{\alpha - 1} e^{-(\lambda x)^{\alpha}}\)</td>
+	</tr>
+	<tr>
+		<td>\(\GammaDistn(\alpha,\; \beta)\):        </td>
+		<td>\(f(x) \propto x^{\alpha - 1} e^{-\beta x}\)</td>
+	</tr>
+</table>
+<p>When \(\alpha \gt 1\), the Weibull distribution's upper tail decreases much faster than the Gamma distribution's upper tail, so the Gamma distribution has a longer upper tail (and is more skew).</p>
+<p>In many applications, the Gamma distribution's longer tail matches what is seen (or expected) in sample data.</p>
+
+<div class="example" title="Shape of the Gamma distribution">
+	<p class="exampleHeading">Shape of the Gamma distribution</p>
+	<p>The diagram below initially shows a Gamma distribution with \(\alpha = 2\) and \(\beta = 1\).	</p>
+	<div class="centred">
+		<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="400">
+			<script type="text/javascript">writeAppletParams();</script>
+			<param name="appletName" value="distributionProg.GammaDistnApplet">
+			<param name="backgroundColor" value="FFFBF3">
+			<param name="meanLimits" value="1.00 4.00 2.00">
+			<param name="alphaLimits" value="0.10 20.00 2.00">
+			<param name="xAxis" value="-0.5 10 0 2">
+			<param name="xAxisName" value="Lifetime">
+			<param name="densityAxis" value="0 1.8 0 0.2">
+			<param name="maxBeta" value="99.999">
+			<param name="customText" value="Shape=Shape#Probability density=Probability density#Show density axis=Show density axis">
+		</applet>
+	</div>
+	<p>The parameter \(\alpha\) is a <strong>shape</strong> parameter of the distribution. Drag its slider to investigate the variety of distributional shapes that Gamma distributions can have for any fixed mean.</p>
+	<p>Now adjust the mean of the distribution with the second slider. The parameter \(\beta\) is a <strong>scale</strong> parameter of the distribution, so changing the mean only affects \(\beta\); it expands the pdf horizontally keeping the  shape of the distribution unchanged.</p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

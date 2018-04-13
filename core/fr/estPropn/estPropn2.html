@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Estimating a proportion</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="estimation, proportion, error distribution">
+	<meta name="dataset" content="Rice survey">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Population proportions and probabilities</p>
+
+  <p>Categorical data are often obtained as a random sample from some finite population. For example,</p>
+  <ul>
+  	<li>A farmer might randomly sample 50 cabbages from a field and examine whether each sampled cabbage is infested by catterpillars or other pests and diseases.</li>
+ 		<li>A large company might randomly sample 100 or the invoices that were posted for services in the previous month and determine the proportion that were paid within 3 weeks.</li>
+  	<li>A national education department might randomly sample 60 high school teachers and ask them whether they had been verbally or physically abused by students in the previous year.</li>
+  </ul>
+  <p>We concentrate on a single category which we will call <strong>success</strong> and we collectively call the other categories <strong>failures</strong>. The 
+	population proportion of successes is denoted by π. It is also the <strong>probability</strong> that a single randomly selected value from the population is a success.</p>
+  <p>In other situations, categorical data are not physically sampled from a real population, but we can still consider them to be sampled from an underlying process in which the probability of success is π.</p>
+  <ul>
+  	<li>A restaurant introduces a new main course to its menu and records the number of diners choosing this dish. The probability that a diner will choose the new main course is π.</li>
+ 		<li>A biologist sprays a weak concentration of insecticide on 50 beetles and determines the proportion still alive after 1 hour. The probability of this application killing a beetle is π.</li>
+	</ul>
+  <p>We will not further distinguish between these two situations &mdash;  in both cases, we are interested in estimating an underlying probability, π. Although it is more general to treat π as a probability, it is  usually easier to interpret π as a 'population proportion'.</p>
+  <p class="heading">Parameter estimate and error</p>
+	<p>The 
+		sample proportion of successes is denoted by <em><font color="#000000">p</font></em> and is an estimate of the population proportion, <font color="#000000">π</font>.</p>
+	<p class=eqn><object data="images/pEqn.svg" width="246" height="35"></object></p>
+	<p>As in other situations in which a population parameter is estimated, there will 
+		be an estimation error,</p>
+	<p class=eqn><em><font color="#000000">error</font></em> <font color="#000000">&nbsp; 
+		= &nbsp; <em>p</em> - π 
+		</font> </p>
+	<p>Since <font color="#000000">π</font> 
+		is unknown, we cannot find a numerical value for the error, but we know that the error 
+		has a distribution. In the next page, we will show how to find the error distribution.</p>
+  
+	<div class="diagram"> 
+
+		<p class="heading">Rice survey</p>
+
+		
+    <p>As part of a survey of rice producers in Sri Lanka, 36 farmers were randomly 
+			selected from 4 villages. Each sampled farmer was asked about the variety 
+			of rice that he used and the varieties were categorised as 'Old', 'Traditional' 
+			or 'New'. The 36 categorical values are described by the following frequency 
+		table.</p>
+		<center>
+      <table border="0" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC">
+        <tr>
+          <th align="LEFT" bgcolor="white">Old varieties</th>
+          <td align="RIGHT" bgcolor="white">&nbsp;&nbsp;&nbsp;17</td>
+        </tr>
+        <tr>
+          <th align="LEFT" bgcolor="white">Traditional varieties</th>
+          <td align="RIGHT" bgcolor="white">&nbsp;&nbsp;&nbsp;15</td>
+        </tr>
+        <tr>
+          <th align="LEFT" bgcolor="white">New varieties</th>
+          <td align="RIGHT" bgcolor="white">4</td>
+        </tr>
+        <tr>
+          <th align="LEFT">Total&nbsp;farmers</th>
+          <td align="RIGHT">&nbsp;&nbsp;&nbsp;36</td>
+        </tr>
+      </table>
+	  </center>
+		<p>We will concentrate here on the 'Old' varieties of rice. We want to estimate 
+		  the proportion of farmers in this part of Sri Lanka who use these old varieties 
+		  &mdash; the population parameter, π. 
+		  However we only have a small sample of farmers and our best estimate is 
+		  the sample proportion, <sup>17</sup>/<sub>36</sub>&nbsp;=&nbsp;0.472.</p>
+		<center>
+      <table border="1" cellspacing="0" cellpadding="10" bgcolor="white" width="75%">
+        <tr>
+          <td align="center"><strong>How accurate is this estimate?<strong></strong></strong></td>
+        </tr>
+      </table>
+	  </center>
+		<p>Since π is unknown here, the estimation error cannot be determined.</p>
+		
+    <p class=heading>Simulation: Error distribution</p>
+
+	  
+    <p>The diagram below simulates preference data in which a sample of 100 people 
+      say which of two types of coffee is preferred. The values could equally 
+      be from any 'success/failure' binomial scenario.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="stdErrorProg.PropnErrorDistnApplet">
+<param name="catVarName" value="Preferred coffee">
+<param name="catLabels" value="#Prefer A# #Prefer B#">
+<param name="random" value="100 0.7 0.3">
+<param name="errorName" value="Error in estimate">
+<param name="errorAxis" value="-0.20 0.20 -0.2 0.1">
+<param name="maxEstimate" value="-9.999">
+<param name="customText" value="Target parameter=Target parameter#Estimate from sample=Estimate from sample#Peek at population=Peek at population">
+</applet>
+</div>
+
+			
+		
+    <p>Our sample of 100 values provides an estimate of the population proportion 
+      preferring <em>Coffee A</em>, but the error cannot be found unless we know 
+      the value of π.</p>
+    <p>Since this is a simulation, we can 'cheat'. Click <strong>Peek at population</strong> 
+			to see the population proportion preferring Coffee A and evaluate the estimation 
+			error.</p>
+    <p>Click <strong>Another sample</strong> several times to repeat the simulation 
+      and build up the distribution of the estimation error. </p>
+    <center>
+      <table border="1" cellspacing="0" cellpadding="10" bgcolor="white" width="75%">
+        <tr> 
+          <td><div class="centred"><strong>The error distribution describes the 
+							likely size of errors from this type of estimate.</strong></div></td>
+        </tr>
+      </table>
+    </center>
+		
+    <p>Note that this is <strong>not</strong> a practical way to obtain the error 
+			distribution since we can rarely take multiple samples from the population. 
+			However it does illustrate the concept of an error distribution.</p>
+		
+	</div>
+	
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

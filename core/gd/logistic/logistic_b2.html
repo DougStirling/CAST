@@ -1,0 +1,170 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Fitted values and predictions</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="response variable, explanatory variable, linear model, nonlinear model, prediction">
+	<meta name="dataset" content="Fruit fly survival on mangoes">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">A linear model for proportions?</p>
+
+<p>When we tried to model how a numerical explanatory variable effected a <strong>
+numerical</strong> response variable, we used a linear equation to model the
+relationship,
+</p>
+
+<p class=eqn><span class="black"><span style="position:relative; top:4px"><img src="../../images/symbol.yHat.png" width="10" height="17" align="baseline"></span>&nbsp; =&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x</em></span>
+</p>
+
+<p>When the response variable is categorical, it is tempting to try a similar linear
+equation to explain how the proportion in one response category is affected by the explanatory
+variable,
+</p>
+
+<p class=eqn style="color:#000000"><strong>predicted proportion</strong>, &nbsp; <img class="gif" width="104" height="24"></p>
+<p>Unfortunately however, <strong>...</strong></p>
+<table width="80%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+<tr> 
+<td align="center"><strong>... a linear equation is <font color="#FF0000">not 
+appropriate</font> for a proportion since it may result in predicted proportions 
+greater than 1.0 or less than 0.0.</strong></td>
+</tr>
+</table>
+<p class="heading">Nonlinear models</p>
+<p>To model how a proportion depends on a numerical explanatory variable, <i>X</i>, 
+an equation should give values between 0 and 1<strong> for all possible values 
+of <em>X</em></strong>. This means that the equation must be nonlinear in <em>X</em>.</p>
+<div class="diagram">
+
+<p class="heading">Fruit flies on mangoes</p>
+
+<p>In an experiment to assess the effectiveness of heat-treatment of mangoes as
+a method of killing fruit fly eggs and larvae, several infested fruit were heat-treated
+at temperatures ranging from 39 to 46 degrees Celsius. The numbers of fruit fly eggs
+surviving at each temperature are shown in the table below.
+</p>
+
+<table border="0" cellspacing="0" cellpadding="0" class="centred">
+<tr>
+	<th>Temp</th>
+
+	<td><table border="0" cellspacing="0" cellpadding="4" style="margin-top:0; margin-bottom:0">
+	<tr>
+		<th width=50%> Alive&nbsp;</th> 
+		<th width=50%> &nbsp;Dead </th>
+	</tr>
+	</table></td>
+
+	<th>&nbsp;Total&nbsp;</th>
+</tr>
+
+<tr>
+	<td><table border="0" cellspacing="0" cellpadding="4" style="margin-top:0; margin-bottom:0">
+	<tr><th>39 degrees</th></tr>
+	<tr><th>41 degrees</th></tr>
+	<tr><th>43 degrees</th></tr>
+	<tr><th>44 degrees</th></tr>
+	<tr><th>45 degrees</th></tr>
+	<tr><th>46 degrees</th></tr>
+	</table></td>
+
+	<td style="background-color:#FFFFFF"><table border="0" cellspacing="0" cellpadding="4" style="margin-top:0; margin-bottom:0">
+	<tr>
+		<td width=50% align="RIGHT">117&nbsp;&nbsp;&nbsp;</td>
+		<td width=50% align="RIGHT">&nbsp;&nbsp;&nbsp;&nbsp;222&nbsp;&nbsp;</td>
+	</tr>
+	<tr>
+		<td width=50% align="RIGHT">132&nbsp;&nbsp;&nbsp;</td>
+		<td width=50% align="RIGHT">366&nbsp;&nbsp;</td>
+	</tr>
+	<tr>
+		<td width=50% align="RIGHT">64&nbsp;&nbsp;&nbsp;</td>
+		<td width=50% align="RIGHT">526&nbsp;&nbsp;</td>
+	</tr>
+	<tr>
+		<td width=50% align="RIGHT">30&nbsp;&nbsp;&nbsp;</td>
+		<td width=50% align="RIGHT">542&nbsp;&nbsp;</td>
+	</tr>
+	<tr>
+		<td width=50% align="RIGHT">1&nbsp;&nbsp;&nbsp;</td>
+		<td width=50% align="RIGHT">588&nbsp;&nbsp;</td>
+	</tr>
+	<tr>
+		<td width=50% align="RIGHT">0&nbsp;&nbsp;&nbsp;</td>
+		<td width=50% align="RIGHT">607&nbsp;&nbsp;</td>
+	</tr>
+	</table></td>
+
+	<td><table border="0" cellspacing="0" cellpadding="4" style="margin-top:0; margin-bottom:0">
+	<tr><td align="RIGHT">339&nbsp;&nbsp;</td></tr>
+	<tr><td align="RIGHT">498&nbsp;&nbsp;</td></tr>
+	<tr><td align="RIGHT">590&nbsp;&nbsp;</td></tr>
+	<tr><td align="RIGHT">572&nbsp;&nbsp;</td></tr>
+	<tr><td align="RIGHT">589&nbsp;&nbsp;</td></tr>
+	<tr><td align="RIGHT">607&nbsp;&nbsp;</td></tr>
+	</table></td>
+</tr>
+</table>
+
+<p>The proportions surviving are shown in the following stacked barchart. A straight line
+has been drawn on the diagram to model how the proportion dying might depend on temperature.
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="380">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="logisticProg.LinesApplet">
+<param name="xVarName" value="Survival">
+<param name="xValues" value="222@0 117@1 366@0 132@1 526@0 64@1 542@0 30@1 588@0 1@1 607@0 0@1">
+<param name="xLabels" value="Dead Alive">
+<param name="yVarName" value="Temperature">
+<param name="yValues" value="339@39 498@41 590@43 572@44 589@45 607@46">
+<param name="horizAxis" value="34 50 34 2">
+<param name="vertAxis" value="-0.3 1.3 -0.2 0.2">
+<param name="interceptLimits" value="-17.00 20.00 -21.08">
+<param name="slopeLimits" value="-5.000 5.000 0.545">
+<param name="linearInterceptLimits" value="-1.3 -1.7 -1.5265">
+<param name="linearSlopeLimits" value="0.0 1.0 0.0556">
+</applet>
+</div>
+
+<p><strong>Drag</strong> the vertical red line on the axis to obtain the predicted
+proportion dying at different temperatures.
+</p>
+
+<p>The linear model is a reasonably close fit to the data between 39 and 45 degrees.
+From the slope of the line (approximately 0.056), we can tell that aproximately 5 percent
+of eggs are killed for each extra degree in temperature.
+</p>
+
+<p>However the linear model predicts that <strong>more than 100%</strong> of eggs will be
+killed at temperatures greater than 46 degrees. <strong>Any</strong> linear model will predict
+proportions outside the range 0-1 for extreme enough values of <i>X</i>.
+</p>
+
+<p>Now select the option <strong>Nonlinear model</strong> from the pop-up menu.
+This curve is better than the previous straight line since it remains between 0.0 and
+1.0 for all ages.
+</p>
+
+<p>Again <strong>drag</strong> the vertical red line on the axis to obtain the predicted
+proportion dying at different temperatures. A nonlinear model can provide reasonable
+predictions at all temperatures.
+</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

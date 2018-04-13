@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Control charts for proportions</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="control chart, proportion">
+	<meta name="dataset" content="Book order processing">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Attributes and defects</p>
+  <p>The final control chart to be considered is called a <strong>p-chart</strong> and is used to monitor the proportion of process output that has a certain attribute (p-charts are an example of what are known as attribute control charts). In practice the most common attribute to be monitored is <strong>defective status</strong> – for example an auditing process might use a p-chart to ensure that that the proportion of invoices with errors stays in control, and a manufacturer might use one to ensure that the proportion of products with faulty shrink wrapping stays in control.</p>
+  <p>Recall that if a dataset consists of <em>x</em> “successes” (in this case a defective represents a “success”) from a sample of size <em>n</em>, then the sample proportion <em>p</em> is <em>p</em>&nbsp;=&nbsp;<em><sup>x</sup></em>/<em><sub>n</sub></em> and that <em>p</em> has mean and standard deviation given by</p>
+  <p class="eqn"><img src="images/propnMeanSd.gif" width="230" height="42"></p>
+<p>where π is the population proportion.</p>
+  <p class="heading">Control limits</p>
+  <p>As in other control charts, the upper and lower control limits are defined to be</p>
+  <p class="eqn">(mean measurement)&nbsp; ± &nbsp; 3&nbsp;×&nbsp;sd (measurement)</p>
+  <p>When the sample measurement is a proportion (often of defectives), these limits are</p>
+  <p class="eqn"><img src="images/propnPlusMinus.gif" width="134" height="44"></p>
+  <p>Since π is unknown, we again assume a training period in which the process is in control and π can be estimated. If  defective proportions <em>p</em><sub>1</sub>, <em>p</em><sub>2</sub>, …, <em>p<sub>k</sub></em> are observed in successive samples of size <em>n </em>in this training period, our best estimate of π is the average proportion in the <em>k</em> samples,</p>
+  <p class="eqn"><img src="images/propnEstimate.gif" width="72" height="58"></p>
+  <p> The control limits for a p-chart are therefore given by</p>
+  <p class="eqn"><img src="images/propnLimits.gif" width="165" height="92"></p>
+<p>These control limits are then used in a control chart for the proportion of defectives in <strong>future</strong> samples.</p>
+<div class="diagram">
+	
+	<p class="heading">Incorrectly processed book orders</p>
+
+<p>An online bookseller employs extra staff to fill and despatch orders over the Christmas period. In order to monitor the proportion of orders that are processed incorrectly, he firstly takes ten random samples of 20 orders which were processed in the weeks before the Christmas period, and calculates the proportion of each sample that were processed incorrectly. He finds that the average proportion across the ten samples equals 0.04 or 4%. Therefore the two control limits are given by</p>
+<p class="eqn"><img src="images/defectivePropnLimits.gif" width="255" height="94"></p>
+<p>Since a proportion must always lie between 0 and 1, this means that the lower control limit is <strong>effectively</strong> equal to 0.</p>
+<hr width="50%">
+<p>Now suppose that the first eight samples of 20 orders taken after the start of the Christmas period produce the following numbers of defectives: 1,&nbsp;0,&nbsp;2,&nbsp;1,&nbsp;0,&nbsp;2,&nbsp;4,&nbsp;2.</p>
+<p>The p-chart for these samples is shown below.</p>
+<p class="eqn"><img src="images/defectiveChart.gif" width="546" height="268"></p>
+<p>On day 7 the proportion of defectives equals <sup>4</sup>/<sub>20</sub> or 0.2 which exceeds the upper control limit. This indicates that the process is out of control and should be investigated for special causes – possibly new temporary staff started work that day, or orders increased to the point where current staff made more mistakes under the increased workload.</p>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

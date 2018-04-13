@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Treatment structure in Latin squares</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="latin square design, constraint, contrast, anova, analysis of variance">
+	<meta name="dataset" content="Wheat yield and fertiliser">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Splitting a factor sum of squares</p>  
+<p>As in other types of experiment, it is often insufficient to simply conclude that the levels of a factor are different. If there is structure to the levels, it is possible to test further hypotheses about the levels using a sequence of simpler models. This is illustrated in the example below.</p>
+
+<div class="diagram"> 
+<p class="heading">Fertiliser and wheat yield</p>
+<p>An experiment was conducted to assess the effect of different fertilisers on the yield of wheat. Treatment O is a control level in which no fertiliser is applied. In treatment S, a single dressing of sulphate of ammonia was applied in March, whereas treatment M applied the same fertiliser in regular monthly dressings over a six-month period. In treatment C, an equivalent amount of nitrogen was applied as cyanamide in a single dressing in October, whereas in D, half was applied in October as cyanamide and half as dicyanadiomide. The table below shows the layout of the plots (each of area 0.025 acres) in the field, the treatments applied to each plot and the resulting yields in pounds of wheat.</p>
+<div class="centred"><table border="0" class="centred" cellpadding="5" cellspacing="0">
+	<tr>
+		<th>&nbsp;</th>
+		<th colspan="5">Column</th>
+		</tr>
+	<tr>
+		<th>Row</th>
+		<th>1</th>
+		<th>2</th>
+		<th>3</th>
+		<th>4</th>
+		<th>5</th>
+	</tr>
+	<tr>
+		<th>1</th>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">&nbsp;(D) 72.2&nbsp;</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">&nbsp;(M) 55.4&nbsp;</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">&nbsp;(O) 36.6&nbsp;</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">&nbsp;(C) 67.9&nbsp;</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">&nbsp;(S) 73.0&nbsp;</td>
+	</tr>
+	<tr>
+		<th>2</th>
+		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">(O) 36.4</td>
+		<td align="center" bgcolor="#FFFFFF">(C) 46.9</td>
+		<td align="center" bgcolor="#FFFFFF">(M) 46.8</td>
+		<td align="center" bgcolor="#FFFFFF">(S) 54.9</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">(D) 68.5</td>
+	</tr>
+	<tr>
+		<th>3</th>
+		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">(M) 71.5</td>
+		<td align="center" bgcolor="#FFFFFF">(S) 55.6</td>
+		<td align="center" bgcolor="#FFFFFF">(D) 71.6</td>
+		<td align="center" bgcolor="#FFFFFF">(O) 67.5</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">(C) 78.4</td>
+	</tr>
+	<tr>
+		<th>4</th>
+		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">(S) 68.9</td>
+		<td align="center" bgcolor="#FFFFFF">(O) 53.2</td>
+		<td align="center" bgcolor="#FFFFFF">(C) 69.8</td>
+		<td align="center" bgcolor="#FFFFFF">(D) 79.6</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">(M) 77.2</td>
+	</tr>
+	<tr>
+		<th>5</th>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">(C) 82.0</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">(D) 81.0</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">(S) 76.0</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">(M) 87.9</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">(O) 70.9</td>
+	</tr>
+</table></div>
+<p>This  is a Latin square design since each letter appears once in every row and column so Rows, Columns and Treatments are pairwise orthogonal. The analysis of variance table for the data is shown below.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="250">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="glmAnovaProg.CombineSsqApplet">
+<param name="yVarName" value="Wheat yield">
+<param name="yValues" value="72.2 36.4 71.5 68.9 82.0 55.4 46.9 55.6 53.2 81.0 36.6 46.8 71.6 69.8 76.0 67.9 54.9 67.5 79.6 87.9 73.0 68.5 78.4 77.2 70.9">
+<param name="xVariables" value="Row Col Fert Amm Cya">
+<param name="RowVarName" value="Rows">
+<param name="RowValues" value="0 1 2 3 4 0 1 2 3 4 0 1 2 3 4 0 1 2 3 4 0 1 2 3 4">
+<param name="RowLabels" value="R1 R2 R3 R4 R5">
+<param name="ColVarName" value="Cols">
+<param name="ColValues" value="5@0 5@1 5@2 5@3 5@4">
+<param name="ColLabels" value="C1 C2 C3 C4 C5">
+
+<param name="FertVarName" value="Fertilisers">
+<param name="FertValues" value="2 0 1 1 2 1 2 1 0 2 0 1 2 2 1 2 1 0 2 1 1 2 2 1 0">
+<param name="FertLabels" value="none ammonium cyanam">
+
+<param name="AmmVarName" value="Between Am times">
+<param name="AmmValues" value="0 0 1 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 1 0">
+<param name="AmmLabels" value="Am0 Am1">
+
+<param name="CyaVarName" value="Between Cya types">
+<param name="CyaValues" value="1 0 0 0 0 0 0 0 0 1 0 0 1 0 0 0 0 0 1 0 0 1 0 0 0">
+<param name="CyaLabels" value="Cy0 Cy1">
+
+<param name="maxSsq" value="9999.9 9 999.99 99.99">
+<param name="componentNames" value="Rows#Cols#Control vs 2 fertilisers#Ammonium times#Cyanamide types">
+<param name="split" value="3:3:Split treatments:Between treatments">
+</applet>
+</div>
+
+<p>From the p-value associated with the treatments, it is clear that they do affect wheat yield. Click <strong>Split treatments</strong> to consider a sequence of simpler models:</p>
+<ul>
+	<li>Control (O) vs Ammonia (S &amp; M) vs Cyanamide (C &amp; D)</li>
+	<li>Allow for differences between application times for Ammonia (S vs M)</li>
+	<li>Allow for differences between the two types of Cyanimide application (C vs D)</li>
+</ul>
+<p>From the p-values associated with these, there are clearly differences between Control, Ammonia and Cyanamide, but no evidence that the application time of Ammonia affects yield and only slight evidence of a difference between the two type of Cyanamide application.</p>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

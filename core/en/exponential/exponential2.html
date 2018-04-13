@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Other exponential probabilities</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="exponential distribution, conditional probability, memoryless property">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Other exponential probabilities</p>
+
+<p>The cumulative distribution function, \(F(x)\), can be used to find the probability that an exponentially distributed variable, \(X\), lies within any two limits</p>
+\[ \begin{align}
+P(a \lt X \lt b) \;\;=\;\; P(X \lt b) - P(X \lt a) \;\;&amp;=\;\; F(b) - F(a) \\
+&amp;=\;\; e^{-a\lambda} - e^{-b\lambda}
+\end{align} \]
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Example</p>
+		<p>An organisation's web site is accessed at a constant rate of 20 times per hour between 9am and 5pm. After an update to the site at 10am, what is the probability that the first access is between 10:05am and 10:10am?</p>
+	</div>
+	<div class="solution">
+		<p>If the first access is \(X\) minutes after 10am,</p>
+\[
+X \;\; \sim \; \; \ExponDistn(\lambda = \frac{20}{60} \text{ accesses per minute})
+\]
+		<p>The required probability is</p>
+\[
+P(5 \lt X \lt 10) \;\;=\;\; F(10) - F(5) \;\;=\;\; e^{-5\times \frac{20}{60}} -  e^{-10\times \frac{20}{60}} \;\;=\;\; 0.1532
+\]	</div>
+</div>
+<p class="heading">Conditional probabilities</p>
+<p>The exponential distribution has an important property called its <strong>memoryless</strong> property.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Memoryless property of exponential distribution</p>
+		<p>If \(X \sim  \ExponDistn(\lambda) \),</p>
+\[
+P(X \gt s+t \;|\; X \gt s) \;\; = \; \; P(X \gt t) \quad\quad \text{for all }s,t \ge 0\]
+		<p>In other words, knowing that there were no events in the interval \((0, s]\) gives no information about how long it will take for the first event to occur <strong>after</strong> time \(s\).</p>
+	</div>
+	<div class="proof">
+		<p>This is a direct consequence of the properties of a Poisson process — the occurrence of events in any time interval such as \((s, t]\) is independent of the occurrence of events in other intervals that do not overlap, such as \((0, s]\).</p>
+		<p>Alternatively the result can be proved mathematically.</p>
+\[ \begin{align}
+P(X \gt s+t \;|\; X \gt s) \;\;&amp;=\;\; \frac {P(X \gt s+t \textbf{ and }X \gt s)} {P(X \gt s)} \\
+&amp;=\;\; \frac {P(X \gt s+t)} {P(X \gt s)} \\
+&amp;=\;\; \frac {e^{-(s+t)\lambda}}{e^{-s\lambda}} \;\;=\;\; e^{-t\lambda}
+\end{align} \]
+</div>
+</div>
+
+<p class="heading">Time between events</p>
+<p>The memoryless property of a Poisson process with rate \(\lambda\) also means that if it is known that an event happened at time \(s\), the time from then until the <strong>next</strong> event in the process <strong>also</strong> has an \(\ExponDistn(\lambda) \) distribution.</p>
+<p>The exponential distribution therefore also describes the time <strong>between </strong> events in a Poisson process.</p>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

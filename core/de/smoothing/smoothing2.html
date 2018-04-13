@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>Gleitender Durchschnitt (Fortsetzung)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+<meta name="index" content="smoothing, centred moving average">
+	<meta name="dataset" content="Southern oscillation"></head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Gleitender Durchschnitt mit geraden und
+ungeraden
+Laufl&auml;ngen</p>
+<p>Ein gleitender Durchschnitt erfordert einen
+gegl&auml;tteten Wert in
+der Mitte der Zeit der Werte, von welchen der Durchschnitt ermittelt
+wurde. Zum Beispiel: Wenn die Laufl&auml;nge 5 ist, wird der
+gegl&auml;ttete Wert durch die Mitte der Zeit bestimmt.</p>
+<p class="eqn"><object data="images/movingAverage5.svg" height="218" width="249"></object></p><p>Dies
+funktioniert gut f&uuml;r gleitende Mittelwerte bei
+ungeraden
+Zahlen von Messwerten, wie sie auf der vorherigen Seite benutzt wurden.
+Aber wenn der gleitende Durchschnitt gerade Zahlen der Messwerte nutzt,
+ist der resultierende gegl&auml;ttete Wert auf halbem Weg zwischen
+den
+Zeiten der mittleren Betrachtung.</p>
+<p class="eqn"><object data="images/movingAverage4.svg" height="218" width="237"></object></p><p>Ein
+gegl&auml;tteter Wert, welcher nicht der
+Realit&auml;t
+entspricht, w&auml;re daher &bdquo;das Jahr 2005.5&ldquo; .</p>
+<p class="heading">Eine zweite Phase der
+Durchschittsberechnung</p>
+<p>Um dieses Problem zu vermeiden, ist es &uuml;blich den
+gleitenden
+Durchschnitt mit geraden Laufl&auml;ngen nach hinten zu
+verschieben,
+indem man einen weiteren gegl&auml;tteten 2-Punkt
+gegl&auml;ttetten
+Durschnitt, um die Werte der Ausgangszeiten zu zentrieren, verwendet.</p>
+<p class="eqn"><object data="images/movingAverageDouble.svg" height="218" width="428"></object></p><p>Dies
+entspricht den beiden &auml;u&szlig;ersten Werten
+nur <strong>halbes Gewicht </strong>zu
+geben. Diese
+Methode benutzt daher bei einer 4-Punkt-Durchschnittsgl&auml;ttung
+einen Durchschnitt von den 3 Werten, die auf den jeweiligen Wert
+zentriert sind und zwei weitere Werte mit halbem Gewicht.</p>
+<p class="eqn"><img class="gif" src="../../en/smoothing/images/quarterlySmoothEqn.gif" width="314" height="46"> </p><p>Wir werden diese Werte
+zentrierte
+4-Punkt-Durchschnittsgl&auml;ttung
+nennen.</p>
+<div class="boxed"><p>Diese zentrierten
+Durchschnitte sind vor allem beim
+Analysieren
+jahreszeitlich bedingter Messwerte n&uuml;tzlich. Zum Beispiel
+werden
+zentrierte 12-Punkt Durchschnittsgl&auml;ttungen oft f&uuml;r
+monatliche Messwerte benutzt.</p>
+</div><div class="diagram">
+<p class="heading">Southern Oscillation</p>
+<p>Der Southern Oscillation Index (SOI) ist definiert durch die
+Schwankungen des Luftdrucks zwischen Tahiti und den Darwin-Inseln auf
+Meeresh&ouml;he. Der SOI ist ein Vorhersager von El Nino, welcher
+als
+Einflussfaktor des globalen Wetters&nbsp; gesehen wird. Besonders
+sich
+wiederholende Southern Oscillation Messwerte unter -1 bestimmen einen
+EL Nino. Die graphische Darstellung der Zeitfolge zeigt den Index
+zwischen Januar 1984 und Dezember 1987.</p>
+<div class="centred"><applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" height="350" width="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.RunningMeanApplet"><param name="varName" value="Druckunterschied"><param name="values" value="0 0.4 -0.8 0.4 0 -1.2 0 0.1 0.1 -0.6 0.3 -0.3 -0.5 0.8 0.2 1.4 -0.2 -1.4 -0.3 0.7 0 -0.8 -0.4 0.1 0.8 -1.2 -0.1 0.1 -0.6 1 0.1 -0.9 -0.5 0.6 -1.6 -1.6 -0.7 -1.4 -2 -2.7 -2 -2.7 -1.8 -1.7 -1.1 -0.7 -0.1 -0.6 -0.3 -0.6 0.1 0 1.1 -0.3 1.1 1.4 1.9 1.5 1.9 1.1 1.5 1.1 0.6 1.6 1.2 0.5 0.8 -0.8 0.6 0.6 -0.4 -0.7 -0.2 -2.4 -1.2 0 1.1 0 0.5 -0.5 -0.8 0.1 -0.7 -0.4 0.6 -0.1 -1.4 -1 -1.5 -0.5 -0.2 -0.9 -1.8 -1.5 -0.8 -2.3 -3.4 -1.4 -3 -1.4 0 -1.2 -0.8 0 0 -1.9 -0.9 -1.1"><param name="vertAxis" value="-3.5 2.5 -3 1"><param name="timeAxisName" value="Monat"><param name="seasonName" value="12 Jan Feb M&auml;r Apr Mai Jun Jul Aug Sep Okt Nov Dez"><param name="seasonInfo" value="0 0 1984"><param name="smoothName" value="Gegl&auml;ttet"><param name="showEnds" value="false"><param name="labelAxes" value="true"><param name="maOrderLabel" value="Ver&auml;nderung des Durchschnitts auf"><param name="rawName" value="Rohdaten"><param name="runs" value="15 even"></applet></div><p>Dieses
+Diagramm ist &auml;hnlich zu dem auf der vorigen
+Seite, aber
+erlaubt beide, gerade und ungerade Laufl&auml;ngen f&uuml;r den
+gleitenden Mittelwert. Wenn die Laufl&auml;nge gerade ist, werden
+zentrierte gleitende Mittelwert angezeigt.</p>
+<div class="boxed"><p>Zentrierte 8-Punkt
+Durchschnittsgl&auml;ttungen geben eine
+glatte
+Anzeige der Ver&auml;nderungen im Index mit der Zeit.</p>
+</div></div>
+<script type="text/javascript">writePageEnd();</script></body></html>

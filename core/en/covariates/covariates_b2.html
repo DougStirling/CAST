@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Effect of unmodelled covariate</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="covariate">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Random unbalance in allocation of treatments</p>
+  <p>Randomisation tries to ensure that the different treatments are <strong>on average</strong> applied to similar experimental units. However <strong>by chance</strong> there are usually some differences.</p>
+  <ul>
+  	<li>By chance, the animals getting a feed supplement may be heavier than these that do not get it.</li>
+ 		<li>By chance, plants of one variety may get more light.</li>
+  </ul>
+  <p>Because of randomisation, these differences are likely to be small, but they will still result in over- or under-estimation of the effect of the factor. The example below is more extreme than would be likely occur in a completely randomised experiment but it does illustrate how inbalance can affect results.</p>
+  
+	<div class="diagram">
+		<p class="heading">Difference between two barley varieties</p>
+  	<p>The yield for barley variety V2 is 2.1 higher than that for variety V2. The yield also increases with the moisture content of the soil but V2 always has yield 2.1 higher than V1, whatever the moisture content.</p>
+  	<div class="centred"><div class="boxed">
+  		<p>We shall pretent that the effect of soil moisture was unknown and observe how its variability affects our estimate of the difference between the two barley varieties. </p>
+  	</div></div>
+  	<p>Consider a completely randomised experiment involving 20 runs of the experiment that is conducted to estimate the effect of the varieties. Soil moisture is not controlled but varies randomly between experimental plots. Randomisation means that there is equal chance of the varieties being used at high and low moisture levels, but <strong>by chance</strong>, the plots getting variety V1 <strong>may</strong> be either hotter or colder than those getting V2.</p>
+  	<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="indicatorProg.CovarBiasApplet">
+<param name="yVarName" value="Barley yield">
+<param name="xVarName" value="Soil moisture">
+<param name="zVarName" value="Variety">
+<param name="zLabels" value="V2 V1">
+<param name="yAxis" value="0 10 0 1">
+<param name="xAxis" value="15 25 16 2">
+<param name="theoryParams" value="-6 0.5 2.1 0.5">
+<param name="maxParam" value="9.999 -9.999 -9.99">
+<param name="nValues" value="20">
+<param name="sliderNames" value="V2 used more at:#Low moisture#High moisture">
+<param name="lsWithCovar" value="never">
+<param name="customText" value="Display=Display#Artificial data=Artificial data#Randomised experiment=Randomised experiment#Extra variation=Extra variation">
+</applet>
+</div>
+		
+  	<p>Initially the diagram shows the effect of moisture and variety on yield. Since we are not using the covariate in the analysis, the estimated variety effect is simply the difference between the mean yields of the plots getting V1 and V2. Select <strong>Artificial data</strong> from the pop-up menu to see possible results. Use the slider to see the effect of 'unbalance' in the allocation of treatments.</p>
+  	<div class="centred"><div class="boxed">
+  		<ul>
+  			<li>If V2 gets used more in low moisture plots than in high moisture plots, its improvement over V1 is <strong>underestimated</strong>.</li>
+ 				<li>If it is used more in high moisture plots, its improvement over V1 is <strong>overestimated</strong>.</li>
+  		</ul>
+ 		</div></div>
+		
+  	<p>Variation in the experimental units (caused by variation in soil moisture) can therefore have a considerable effect on the accuracy of the estimated difference between the varieties if it is not recorded and used in the model.</p>
+  	<p>Experiments in agriculture and biology usually have much more random variation. Click the checkbox <strong>Extra variation</strong> to add more unexplained random variation to the data and repeat. Observe that the same effect persists.</p>
+  	<p class="heading">Completely randomised experiment</p>
+  	<p>In a completely randomised experiment,  the most extreme forms of unbalance are unlikely. Select <strong>Randomised experiment</strong> from the pop-up menu then click <strong>Repeat experiment</strong> a few times to observe the variation in the estimated difference between the varieties.</p>
+  	<p>Although the experimental units getting V2 are usually reasonably balanced between high and low soil moistures, even smaller degrees of unbalance add to the variability of the estimates.</p>
+	</div>
+  
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

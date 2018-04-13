@@ -1,0 +1,1025 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>4. Estimating a Parameter</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/maths/mathStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/maths/theorems.js"></script>
+  <script src="../../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 4 &nbsp; Estimating a Parameter</h1>
+<h1 class="sectionName">4.1 &nbsp; Estimation</h1>
+<h2 class="pageName">4.1.1 &nbsp; Unknown parameters</h2>
+
+<p class="heading">Finding an appropriate distribution</p>
+
+<p>Thinking about how a measurement is made sometimes suggests that the variable's distribution should belong to a family of standard distributions, such as a uniform, binomial, geometric or negative binomial distribution.</p>
+<p>This reasoning may require some assumptions about the process underlying the variable.</p>
+<p>Unfortunately,  this usually  only leads to a <strong>family</strong> of standard distributions with one or more parameters whose values are unknown, such as the probability of success \(\pi\) in a series of Bernoulli trials.</p>
+	
+<div class="centred"><div class="boxed">
+<p>How can we find the value of any such unknown parameter?</p>
+</div></div>
+
+
+<h2 class="pageName">4.1.2 &nbsp; Estimators of parameters</h2>
+<p>To get information about unknown parameters, we need data whose distribution depends on these parameters. A function of the data is used to <strong>estimate</strong> each parameter. We start with models involving a <strong>single</strong> unknown parameter, \(\theta\).</p>
+
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+<p>If \({X_1, X_2, \dots, X_n}\) is a random sample from a distribution whose shape depends on an unknown parameter \(\theta\), then any function of the random sample,</p>
+\[
+\hat{\theta}(X_1, X_2, \dots, X_n)
+\]
+<p>is a random variable and could potentially be used as an <strong>estimator</strong> of \(\theta\).</p>
+</div>
+
+<p>Possible estimators are:</p>
+<dl>
+	<dt>Sample mean</dt>
+\[\hat{\theta} = \frac {\sum_{i=1}^n {X_i}} n\]
+</dl>
+<dl>
+	<dt>Sample median</dt>
+\[\hat{\theta} = median(X_1, X_2, \dots, X_n) \]
+</dl>
+<dl>
+	<dt>Sample maximum</dt>
+\[\hat{\theta} = max(X_1, X_2, \dots, X_n) \]
+</dl>
+<p>Since there are various possible functions of the data that might be used as estimators,  what makes a <strong>good </strong>estimator of a parameter?</p>
+
+
+<h2 class="pageName">4.1.3 &nbsp; Bias</h2>
+
+<p class="heading">Distribution of an estimator</p>
+
+<p>If  \({X_1, X_2, \dots, X_n}\) is a random sample from a distribution involving a single unknown parameter \(\theta\), an estimator \(
+\hat{\theta}(X_1, X_2, \dots, X_n)
+\) is a function of these \(n\) random variables and also has a distribution. It is often simply written as \(
+\hat{\theta}\).</p>
+<p>The properties of an estimator depend on its distribution. For example, an estimator with a continuous distribution might have the pdf show below.</p>
+<p class="eqn"><img class="svgImage" src="../../../en/estimation/images/estimatorDistn.png" width="383" height="196"></p>
+<p>For   \(
+\hat{\theta}\) to be a <strong>good estimator</strong> of \(\theta\), its distribution should concentrated near \(\theta\).</p>
+<p class="heading">Bias</p>
+<p>A good estimator of  \(\theta\) should have a distribution whose &quot;centre&quot; is close to \(\theta\). This can be summarised by the distance of the estimator's mean from  \(\theta\).</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>The <strong>bias</strong> of an estimator \(\hat{\theta}\) of a parameter \(\theta\) is defined to be</p>
+\[
+\Bias(\hat{\theta}) \;=\; E[\hat{\theta}] - \theta
+\]
+<p>If its bias is zero, \(\hat{\theta}\) is called an <strong>unbiased</strong> estimator of \(\theta\).</p>
+</div>
+
+<p>Many popular estimators are unbiased.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Sample mean</p>
+		<p>If \({X_1, X_2, \dots, X_n}\) is a random sample from a distribution with mean \(\mu\), the sample mean, \(\overline{X}\), is  an unbiased estimator of the distribution mean, \(\mu\).</p>
+		<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p>A sample variance is <strong>also</strong> an unbiased estimator of a distribution's variance, \(\sigma^2\), but this is harder to prove.</p>
+
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Sample variance</p>
+		<p>If \({X_1, X_2, \dots, X_n}\) is a random sample from a distribution with variance \(\sigma^2\), the sample variance,</p>
+\[
+S^2 = \sum_{i=1}^n {\frac {(X_i - \overline{X})^2} {n-1}}
+\]
+<p>is an unbiased estimator of \(\sigma^2\).</p>
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p>Although the sample <strong>variance</strong> is unbiased, the sample <strong>standard deviation</strong> is a biased estimator.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Sample standard deviation</p>
+		<p>The sample standard deviation, \(S\), is a <strong>biased</strong> estimator of a distribution's standard deviation, \(\sigma\).</p>
+		<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">4.1.4 &nbsp; Standard error</h2>
+<p>A good estimator's distribution should have a mean that is equal to (or at least be close to) the parameter being estimated,</p>
+<p class="eqn"><img class="svgImage" src="../../../en/estimation/images/bias.png" width="467" height="157"></p>
+<p>However this is not enough to characterise a good estimator.</p>
+<p class="eqn"><img class="svgImage" src="../../../en/estimation/images/se.png" width="467" height="157"></p>
+<p>A good estimator should also have a distribution with a small standard deviation.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+<p>The <strong>standard error</strong> of an estimator \(\hat{\theta}\) of a parameter \(\theta\) is defined to be its standard deviation.</p>
+</div>
+
+<p>The standard error is also the standard deviation of the <strong>estimation error</strong>,</p>
+\[
+error \;\; = \;\; \hat{\theta} - \theta
+\]
+<p>and this is the reason for its name — it is a 'typical' estimation error.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Question: Active ingredient in medicine</p>
+		<p>Pharmaceutical companies routinely test their products to ensure that the concentration of active ingredient, \(\mu\), is within tight limits. However the chemical analysis is not precise and repeated measurements of the same specimen differ slightly.</p>
+		<p>One type of analysis gives estimated concentrations of the active ingredient that are normally distributed with standard deviation \(\sigma = 0.0068\) grams per litre. A product is tested 16 times, giving a sample mean concentration of \(\hat{\mu} = \overline{x} = 0.0724\) grams per litre.</p>
+		<ul>
+			<li>What are the bias and standard error of this type of estimator?</li>
+			<li>How far is the estimate of 0.0724 grams per litre likely to be from \(\mu\)?</li>
+		</ul>
+		<p class="questionNote">(Solved in full version)</p>
+	</div>
+	</div>
+</div>
+<p>The formula for the standard error often involves unknown parameters, so its exact numerical value cannot be obtained. These parameters are often replaced by estimates in order to get a numerical value for the standard error.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Question: Heat treatment of mangoes</p>
+		<p>In an experiment to assess the effectiveness of heat-treatment of mangoes as a method of killing fruit fly eggs and larvae, several infested fruit were heat-treated at 44&deg;C. Out of 572 fruit fly eggs in the mangoes, 30 survived, giving an estimate of the probability of survival at this temperature of:</p>
+\[
+\hat{\pi} = P = \frac {30} {572} = 0.05245
+\]
+		<p>What are the bias and standard error of the  estimator?</p>
+		<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">4.1.5 &nbsp; Mean squared error</h2>
+<p>A good estimator should have a small bias <strong>and</strong> small standard error. These two criteria can be combined with into single value called the estimator's <strong>mean squared error</strong>.</p>
+
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+<p>The <strong>mean squared error</strong> of an estimator \(\hat{\theta}\) of a parameter \(\theta\) is</p>
+\[
+\MSE(\hat{\theta}) = E\left[ (\hat{\theta} - \theta)^2 \right]
+\]
+</div>
+
+<p>Its relationship to our earlier definitions of bias and standard error is given by the following result.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Mean squared error</p>
+<p>The mean squared error of an estimator \(\hat{\theta}\) of \(\theta\) is</p>
+\[
+\MSE(\hat{\theta}) = \Var(\hat{\theta}) + \Bias(\hat{\theta})^2
+\]	
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">4.1.6 &nbsp; Consistency</h2>
+<p class="heading">Consistency</p>
+<p>When an estimator is based on a random sample of \(n\) values, \(\hat{\theta}(X_1, X_2, \dots, X_n)\), we would like the estimator to becomes closer to the parameter being estimated, \(\theta\), when the sample size increases.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>An estimator \(\hat{\theta}(X_1, X_2, \dots, X_n)\) that is based on a random sample of \(n\) values is said to be a <strong>consistent</strong> estimator of \(\theta\) if</p>
+\[
+		\hat{\theta}(X_1, X_2, \dots, X_n) \;\; \xrightarrow[n \rightarrow \infty]{} \;\; \theta
+\]
+		<p>A <strong>precise</strong> definition of consistency explains what this limit means, but is relatively complex. The concept is that the distribution of \(\hat{\theta}\) becomes more and more concentrated on \(\theta\).</p>
+</div>
+<p>Consistency can usually be proved using the following result.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Consistent estimators</p>
+		<p>An estimator \(\hat{\theta}(X_1, X_2, \dots, X_n)\)  is  a consistent estimator of \(\theta\) if the following two conditions hold:</p>
+\[ \begin{align}
+		\Var(\hat{\theta}) \;\; &amp;\xrightarrow[n \rightarrow \infty]{} \;\; 0 \\[0.5em]
+		Bias(\hat{\theta}) \;\; &amp;\xrightarrow[n \rightarrow \infty]{} \;\; 0 
+\end{align} \]
+</div>
+</div>
+
+
+<h2 class="pageName">4.1.7 &nbsp; Sample mean or median?</h2>
+<p>Bias and standard error can be used to compare alternative estimators.</p>
+<div class="example">
+	<p class="exampleHeading">Samples from a normal distribution</p>
+	<p>Consider a random sample of \(n\) values from a normal distribution with known standard deviation,</p>
+\[
+X \;\; \sim \; \; \NormalDistn(\mu, \;\;\sigma^2 = 0.2^2)
+\]
+	<p>Since the normal distribution is symmetric, both its mean and median are  \(\mu\), so is the sample mean or sample median  a better estimator?</p>
+	
+\[
+\overline{X} \;\; \sim \; \; \NormalDistn\left(\mu, \;\;\sigma_{\overline{X}}^2 = \frac {0.2^2} n \right)
+\]
+	<p>The  sample median, \(\tilde{X}\), has a harder distribution but, in large samples, there is an <strong>approximate</strong> result,</p>
+\[
+\tilde{X} \;\; \underset{\text{approx}}{\sim} \; \; \NormalDistn\left(\mu, \;\;\sigma_{\tilde{X}}^2 = \frac {0.2^2} n \times 1.571 \right)
+\]
+	<p>Both estimators are therefore unbiased, but the standard error of the mean, \(\overline{X}\), is lower than that of the median, \(\tilde{X}\), so the sample mean is the better estimator.</p>
+	<p class="exampleHeading">Samples from a skew distribution</p>
+	<p>On the other hand, consider samples from the following skew distribution.</p>
+	<p class="eqn"><img src="../../../en/estimation/images/s_exponential.png" width="475" height="229" alt=""/></p>
+	<p>If the median of this distribution, \(\gamma\), was unknown, the obvious estimator would be the median of a random sample, \(\tilde{X}\).</p>
+	<p>The distributions of the sample mean and sample median both have similar standard errors. However</p>
+\[
+E[\overline{X}] \;\; = \; \; \mu \;\;=\;\; 4
+\]
+	<p>so the sample mean has a bias of 1.23 when it is used to estimate this distribution's median, whereas the sample median is approximately unbiased. Moreover, the sample mean's bias does not decrease as \(n\) increases, so it is <strong>not</strong> a consistent estimator.</p>
+
+<div class="boxed">
+	<p>The sample median would be the better estimator to use to estimate the median of such a skew distribution.</p>
+</div>
+</div>
+
+
+
+<h1 class="sectionName breakBefore">4.2 &nbsp; Method of moments</h1>
+<h2 class="pageName">4.2.1 &nbsp; The method of moments</h2>
+<p>We now introduce a simple method for estimating a parameter \(\theta\).</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+<p>If \(\{X_1, X_2, \dots, X_n\}\) is a random sample from a distribution whose mean, \(\mu(\theta)\), depends on an unknown parameter, \(\theta\), the <strong>method of moments</strong> estimator of \(\theta\) is the solution to the equation</p>
+\[
+\mu(\theta) = \overline{X}
+\]
+</div>
+
+<p>We now illustrate this with a simple example.</p>
+<div class="example">
+	<p class="exampleHeading">Estimating a normal distribution's mean (σ known)</p>
+	<p>Consider a random sample from a normal distribution whose standard deviation, \(\sigma\), is a known value.</p>
+\[
+X \;\; \sim \; \; \NormalDistn(\mu,\; \sigma=0.6)
+\]
+
+
+	<p>Since the distribution's mean is \(\mu\),  the method of moments estimate is</p>
+\[
+\hat{\mu} = \overline{x}
+\]
+
+<p class="eqn"><img src="../../../en/methodOfMoments/images/s_momentsMean.png" width="536" height="305"/></p>
+
+</div>
+
+
+<h2 class="pageName">4.2.2 &nbsp; Examples</h2>
+<p>We now give two further  estimators that can be found by the method of moments.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Question: Sex ratio of Siberian tigers</p>
+		<p>The probability of a newborn tiger being male is an unknown parameter, \(\pi\). Assuming that the sexes of tigers in a litter are independently determined, the number of males in a litter of size three will be</p>
+\[
+X \;\; \sim \; \; \BinomDistn(3, \pi)
+\]
+		<p>A researcher recorded the numbers of males from a sample of \(n = 207\) such litters, as summarised by the following frequency table.</p>
+	
+<div class="centred">
+<table border="0" cellspacing="0" class="centred">
+			<tr>
+				<th>Number of males</th>
+				<th>0</th>
+				<th>1</th>
+				<th>2</th>
+				<th>3</th>
+			</tr>
+			<tr>
+				<th>Frequency</th>
+				<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-right:0px; padding: 2pt 10pt">33</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999; padding: 2pt 10pt">66</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999; padding: 2pt 10pt">80</td>
+				<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-left:0px; padding: 2pt 10pt">28</td>
+			</tr>
+		</table>
+</div>	
+
+		<p>What is the method of moments estimate of \(\pi\)?</p>
+		<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+<p>This is an unbiased estimator, but the method of moments estimators sometimes results in an estimator whose bias is non-zero.</p>
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Question: Sample from a geometric distribution</p>
+<p>If \(\{X_1, X_2, \dots, X_n\}\) is a random sample from a geometric distribution with probability function</p>
+\[
+p(x) = \pi (1-\pi)^{x-1} \quad \quad \text{for } x = 1, 2, \dots
+\]
+<p>what is the method of moments estimator of \(\pi\)? Is it unbiased?</p>
+<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+
+<h1 class="sectionName breakBefore">4.3 &nbsp; Maximum likelihood</h1>
+<h2 class="pageName">4.3.1 &nbsp; Likelihood function</h2>
+
+<p class="heading">Alternative to the method of moments</p>
+
+<p>The method of moments often provides a good estimator when there is a <strong>single</strong> unknown parameter, but another general estimation method called <strong>maximum likelihood</strong> is far more general. It can be used for models with several unknown parameters and even situations in which the available data are not a random sample.</p>
+<p class="heading">Likelihood function</p>
+<p>The joint probability of  \(\{X_1, X_2, \dots, X_n\}\) may involve an unknown parameter, \(\theta\).</p>
+\[
+p(x_1, x_2, \dots, x_n \;| \; \theta)
+\]
+<p>For example, if the variables are a random sample from a \(\GeomDistn(\pi)\) distribution, independence means that the joint probability is</p>
+\[
+P(X_1=x_1 \textbf{ and } X_2=x_2 \textbf{ and } \dots \textbf{ and } X_n=x_n) = \prod_{i=1}^n {\pi (1-\pi)^{x_i-1}} \]
+<p>The likelihood function is defined from this.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+<p>If random variables \(\{X_1, X_2, \dots, X_n\}\) have joint probability</p>
+\[
+p(x_1, x_2, \dots, x_n \;| \; \theta)
+\]
+<p>then the function</p>
+\[
+L(\theta \; | \; x_1, x_2, \dots, x_n) \;=\; p(x_1, x_2, \dots, x_n \;| \; \theta)
+\]
+<p>is called the <strong>likelihood function</strong> of \(\theta\).</p>
+</div>
+
+<p>The likelihood function  tells you the probability of getting the data that were observed, for different values of the parameter, \(\theta\). More informally,</p>
+<div class="boxed">
+	<p class="eqn">\(L(\theta) = Prob(\text{getting the data that were observed})\) if the parameter value was really \(\theta\).</p>
+</div>
+<p>We now give a simple example.</p>
+<div class="example">
+	
+	<p class="exampleHeading">Binomial random variable</p>
+
+<p>If \(X\)  is the number of successes in \(n=20\) independent trials, each with probability \(\pi\) of success, its probability function is</p>
+\[
+p(x \; | \; \pi) = {{20} \choose x} \pi^x(1-\pi)^{20-x} \quad \quad \text{for } x=0, 1, \dots, 20
+\]
+<p>If  we observed \(x=6\) successes, this would have probability</p>
+\[
+p(6 \; | \; \pi) = {{20} \choose 6} \pi^6(1-\pi)^{14} = (38,760) \times 
+\pi^6(1-\pi)^{14} \]
+<p>The likelihood function treats this as a function of \(\pi\),</p>
+\[
+L(\pi) \;=\; p(6 \; | \; \pi) \;=\; (38,760) \times 
+\pi^6(1-\pi)^{14} \]
+<p>The likelihood function gives the probability of getting the data that we observed (6 successes) for different values of \(\pi\). For example, if \(\pi = 0.4\), the probability of observing \(x = 6\) would be 0.124.</p>
+<p class="eqn"><img src="../../../en/maxLikelihood/images/s_likelihood.png" width="520" height="225"  alt=""/></p>
+<p>From the likelihood function we could also find:</p>
+<ul>
+	<li>If \(\pi = 0.1\), the probability of getting 6 successes is only 0.0089.</li>
+</ul>
+
+<p>Since there would be such a low probability of observing our actual data if \(\pi\) was 0.1, this throws some doubt on whether this would be the <strong>correct</strong> value of the parameter \(\pi\).</p>
+</div>
+
+
+<h2 class="pageName">4.3.2 &nbsp; Maximising the likelihood</h2>
+
+<p class="heading">Maximum likelihood estimate</p>
+
+<p>The likelihood function, \(L(\theta \; | \; x_1, x_2, \dots, x_n) = p(x_1, x_2, \dots, x_n \;| \; \theta)\), gives the probability of getting the data that were recorded for different values of the unknown parameter \(\theta\). A value of \(\theta\) that gives the observed data high probability is more likely to be correct than one that would make the observed data unlikely.</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>The <strong>maximum likelihood estimate</strong> of a parameter \(\theta\) is the value that maximises the likelihood function,</p>
+\[
+L(\theta \; | \; x_1, x_2, \dots, x_n) = p(x_1, x_2, \dots, x_n \;| \; \theta)
+\]</div>
+
+<p>Finding a maximum likelihood estimate (MLE)  therefore involves maximising a function of  \(\theta\). This is usually a &quot;turning point&quot; of the likelihood function.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Finding the maximum likelihood estimate</p>
+<p>The maximum likelihood estimate of a parameter \(\theta\) can normally be obtained as a solution to the equation</p>
+\[
+\frac {d\; L(\theta \; | \; x_1, x_2, \dots, x_n)} {d\; \theta} \;\; = \;\; 0
+\]	</div>
+</div>
+
+<p>It is often easier mathematically to maximise the <strong>logarithm</strong> of the likelihood function rather than the likelihood function itself.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Maximising the log-likelihood</p>
+		<p>Writing</p>
+\[
+\ell(\theta) \;=\; \log L(\theta)
+\]
+		<p>the maximum likelihood estimate of a parameter \(\theta\) can normally be found by solving the equation</p>
+		\[
+		\frac {d\; \log L(\theta \; | \; x_1, x_2, \dots, x_n)} {d\; \theta} \;\; = \;\;  
+\ell'(\theta) \;\; = \;\; 0
+		\] 
+		<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p>We will now give a simple example.</p><div class="example">
+	<p class="exampleHeading">A simple binomial example</p>
+	<p>Consider a random variable \(X\) that is the number of successes in \(n=20\) independent trials, each of which has probability \(\pi\) of success. If  the experiment resulted in \(x=6\) successes, the likelihood function would be</p>
+	\[
+	L(\pi) = {{20} \choose 6} \pi^6(1-\pi)^{20-6} \;\; = \;\;38,760 \; \times 
+	\pi^6(1-\pi)^{14} \]
+	
+	<p>Instead of differentiating \(L(\theta)\), it is easier to differentiate the log-likelihood to find the maximum likelihood estimate,</p>
+\[
+	\ell(\pi) \;\; = \;\; \log L(\pi) \;\; = \;\; 6 \log(\pi) + 14 \log(1 - \pi) + K\]
+	<p>where \(K\) is a constant that does not depend on \(\pi\). We solve</p>
+\[
+	\frac {d \; \ell(\pi)} {d\; \pi} \;\; = \;\; \frac 6 {\pi} - \frac {14} {1 - \pi} \;\; = \;\; 0
+\]
+\[
+	6(1-\pi) = 14\pi
+\]
+\[
+	6 = 20\pi
+\]
+	<p>The maximum likelihood estimate of \(\pi\) is therefore \(
+	\hat {\pi} = \frac 6 {20} \), the sample proportion of successes.</p>
+	<p>The diagram below  shows both the likelihood function and the log-likelihood. It illustrates the fact that both functions have their maximum at the same value of \(\pi\).</p>
+	<p class="eqn"><img src="../../../en/maxLikelihood/images/s_maxLikelihood.png" width="525" height="449"  alt=""/></p>
+	<p>Generalising to a binomial experiment in which \(x\) successes are observed in \(n\) trials,</p>
+\[
+	\ell(\pi) \; = \; \log L(\pi) \; = \; x \log(\pi) + (n-x) \log(1 - \pi) + K(n, x)
+\]
+\[
+	\frac {d \; \ell(\pi)} {d\; \pi} \; = \; \frac x {\pi} - \frac {n-x} {1 - \pi} \; = \; 0
+\]
+	<p>which can be solved to give</p>
+\[
+	\hat {\pi} \;=\; \frac x n
+\]
+
+
+
+
+
+</div>
+
+<p>Note that we are using <strong>natural </strong> logarithms (base-e) here, not logarithms to the base 10.</p>
+
+
+
+<h2 class="pageName">4.3.3 &nbsp; Examples</h2>
+<p class="heading">Random sample</p>
+<p>If \(\{x_1, x_2, \dots, x_n\}\) is a random sample from a distribution with probability function \(p(x\;|\;\theta)\), then</p>
+\[
+L(\theta \;|\;x_1, x_2, \dots, x_n) = \prod_{i=1}^n p(x_i \;|\; \theta)
+\]
+<p>so the log-likelihood can be written as</p>
+\[
+\ell(\theta) = \sum_{i=1}^n \log\left(p(x_i \;|\; \theta)\right)
+\]
+<p>In the next two examples, maximum likelihood estimates must be found from random samples.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Question: Sex ratio of Siberian tigers</p>
+		<p>The probability of a newborn tiger being male is an unknown parameter, \(\pi\). A researcher recorded the number of males in a sample of \(n = 207\) litters, and these values are summarised in the following frequency table.</p>
+	
+<div class="centred">
+<table border="0" cellspacing="0" class="centred">
+			<tr>
+				<th>Number of males</th>
+				<th>0</th>
+				<th>1</th>
+				<th>2</th>
+				<th>3</th>
+			</tr>
+			<tr>
+				<th>Frequency</th>
+				<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-right:0px; padding: 2pt 10pt">33</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999; padding: 2pt 10pt">66</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999; padding: 2pt 10pt">80</td>
+				<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-left:0px; padding: 2pt 10pt">28</td>
+			</tr>
+		</table>
+</div>	
+
+		<p>If it is assumed that the sexes of all tigers in a litter are independently determined, what is the maximum likelihood estimate of \(\pi\)?</p>
+		<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+<p>In the binomial example (and many others), the maximum likelihood and method of moments estimators are equal. However for some other models, they differ.</p>
+
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Question: Sample from a geometric distribution</p>
+		<p>If \(\{X_1, X_2, \dots, X_n\}\) is a random sample from a geometric distribution with probability function</p>
+		\[
+		p(x) = \pi (1-\pi)^{x-1} \quad \quad \text{for } x = 1, 2, \dots
+		\]
+	<p>what is the maximum likelihood estimate of \(\pi\)?</p>
+	<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+<p>The method is now illustrated with a numerical example.</p>
+	
+<div class="example">
+	<p class="exampleHeading">Illustration</p>
+	<p>Consider a data set {1, 1, 1, 1, 2, 2, 4} which is assumed to be a random sample from a geometric distribution,</p>
+\[
+		X \;\; \sim \; \; \GeomDistn(\pi)
+\]
+	<p>The bar chart below shows  geometric probabilities when \(\pi = 0.4\). The likelihood is the <strong>product</strong> of these probabilities for all the data values — i.e. with one term for each cross in the diagram. The log-likelihood is the logarithm of this.</p>
+	<p class="eqn"><img src="../../../en/maxLikelihood/images/s_geometric.4.png" width="522" height="450"  alt=""/></p>
+	<p>Changing \(\pi\) to 0.8 results in the geometric probabilities below. Although the probabilities are higher for the four values that are &quot;1&quot;, the probability of getting the value &quot;4&quot; is now very small. As a result, the <strong>product</strong> of the probabilities is lower than it might be and the likelihood is not maximised.</p>
+	<p class="eqn"><img src="../../../en/maxLikelihood/images/s_geometric.8.png" width="522" height="450"  alt=""/></p>
+	<p>The value \(\pi = 0.583\) is a compromise that still has fairly high probabilities for the four 1's but has a larger probability of getting a 4 — this is the value that maximises the likelihood.</p>
+</div>
+
+
+<h1 class="sectionName breakBefore">4.4 &nbsp; Asymptotic properties of MLEs</h1>
+<h2 class="pageName">4.4.1 &nbsp; Bias, variance and normality</h2>
+<p>Maximum likelihood estimators  have very good <strong>large-sample</strong> properties.</p>
+<div class="boxed">
+	<p>These strictly require certain &quot;regularity conditions&quot; to be satisfied. We will avoid them in this e-book — they almost always hold.</p>
+</div>
+
+<p>The following results apply to the maximum likelihood estimator, \(\hat {\theta}\) of a parameter \(\theta\), based on a random sample of size \(n\) when \(n \to \infty\) — i.e. its <strong>asymptotic</strong> properties.</p>
+
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Bias</p>
+		<p>It is asymptotically unbiased, </p>
+\[
+		E[\hat {\theta}] \;\; \xrightarrow[n \rightarrow \infty]{} \;\; \theta
+\]
+</div>
+</div>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Variance and consistency</p>
+		<p>It asymptotically has variance,</p>
+\[
+\Var(\hat {\theta}) \;\; \xrightarrow[n \rightarrow \infty]{} \;\; - \frac 1 {n \times E\left[\large\frac {d^2 \log\left(p(X \;|\; \theta)\right)} {d\theta^2} \right]}
+\]
+		<p>Since this tends to zero as \(n \rightarrow \infty\) and the bias is asymptotically zero, a maximum likelihood estimator is also consistent.</p>
+
+</div>
+</div>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Asymptotic normality</p>
+<p>It asymptotically has a normal distribution, </p>
+
+\[
+\hat {\theta} \;\; \xrightarrow[n \rightarrow \infty]{} \;\; \text{a normal distribution}
+\]</div>
+</div>
+
+
+<p>We now express these three properties together in a slightly more formal way.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">All together</p>
+		<p>If \(\hat {\theta} \) is the  maximum likelihood estimator of a parameter, \(\theta\), based on a random sample of size \(n\),</p>
+		\[
+		(\hat {\theta} - \theta) \times \sqrt {-n \times E\left[\frac {d^2\; \log\left(p(X \;|\; \theta)\right)} {d\;\theta^2} \right]} \;\; \xrightarrow[n \rightarrow \infty]{} \;\; \NormalDistn(0, 1)
+		\] </div>
+</div>
+<p>A final result states that a maximum likelihood estimator cannot be beaten in large samples.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Asymptotically "best"</p>
+		<p>Other estimators of a parameter, \(\theta\),  may have lower mean squared errors in small samples, but none have  lower mean squared error than the maximum likelihood estimator if the sample size is large enough.</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">4.4.2 &nbsp; Standard error</h2>
+<p class="heading">Practical problems</p>
+<p>There are two practical problems with the  approximate variance formula for \(\hat {\theta} \),</p>
+\[
+\Var(\hat {\theta})\; \approx \;- \dfrac 1 {n \times E\left[\frac {\large d^2\; \log\left(p(X \;|\; \theta)\right)} {\large d\;\theta^2} \right]} \]
+<dl>
+	<dt>Difficulty evaluating the expected value</dt>
+	<dd>For many distributions, it is impossible to find a simple formula for the expected value.</dd>
+	<dt>Unknown value of \(\theta\)</dt>
+	<dd>Even if this expected value can be found, it is usually  a function of \(\theta\) and \(\theta\)  is an unknown value.</dd>
+</dl>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Avoiding the expected value</p>
+		<p>A numerical value for the approximate variance of \(\hat {\theta}\) can be found with a further approximation,</p>
+		\[
+		\Var(\hat {\theta})\; \approx \;-  \frac 1 {\ell''(\hat {\theta})} \]
+		<p class="theoremNote">(Justified in full version)</p>
+	</div>
+</div>
+<p>Its square root provides  us with a numerical value for the standard error of the maximum likelihood estimator, </p>
+\[
+\se(\hat {\theta}) \;\;\approx\;\; \sqrt {- \frac 1 {\ell''(\hat {\theta})}}
+\]
+<p>This formula lets us find an approximate numerical value for the standard error of almost any maximum likelihood estimator — even when based on models in which the data are not a simple random sample.</p>
+
+
+<h2 class="pageName">4.4.3 &nbsp; Examples</h2>
+<p>The following questions relate to the maximum likelihood estimators for the unknown parameters in two standard distributions.</p>
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Question: Single binomial value</p>
+<p>In a series of \(n\) independent success/failure trials with probability \(\pi\) of success, \(x\) successes were observed. What is the maximum likelihood estimator of \(\pi\) and what are its bias and standard error?</p>
+</div>
+	<div class="question">
+		<p class="questionTitle">Question: Geometric random sample</p>
+		<p>If \(\{x_1, x_2, \dots, x_n\}\) is a random sample from a geometric distribution with parameter \(\pi\), what is the maximum likelihood estimator of \(\pi\) and what are its bias and standard error?</p>
+		<p class="questionNote">(Both solved in full version)</p>
+	</div>
+</div>
+
+
+
+<h1 class="sectionName breakBefore">4.5 &nbsp; Numerical methods for MLEs</h1>
+<h2 class="pageName">4.5.1 &nbsp; Newton-Raphson algorithm</h2>
+<p>The maximum likelihood estimate of a parameter \(\theta\) is usually a value that satisfies the equation</p>
+\[
+\ell'(\theta) \;\; = \;\; 0
+\]
+<p>where \(\ell(\theta)\) is the log-likelihood function. Sometimes this equation cannot be solved algebraically, so an iterative numerical method is required to obtain the maximum likelihood estimate.</p>
+<p>One way to solve an equation numerically is called the <strong>Newton Raphson</strong> algorithm. Consider an equation</p>
+\[
+g(\theta) \;\; = \;\; 0
+\]
+
+
+<div class="definition">
+	<p class='definitionTitle'>Newton Raphson algorithm</p>
+<p>Starting at an initial guess of the solution, \(\theta_0\), successive values</p>
+\[
+\theta_{i+1} \;\; = \;\; \theta_i - \frac {g(\theta_i)} { g'(\theta_i)} \qquad \text{for } i=0,\dots\]
+<p>are called the <strong>Newton Raphson algorithm</strong>. If it converges, it is to a solution of the equation \(g(\theta) = 0\).</p>
+</div>
+
+<p>This is justified by a Taylor series expansion of \(g(\theta)\) around \(\theta_0\).</p>
+<p class="heading">Applying the algorithm to  maximum likelihood </p>
+<p>To apply it to maximum likelihood, we use the function \(g(\theta) = \ell'(\theta)\). The Newton Raphson algorithm can therefore be expressed as</p>
+\[
+\theta_{i+1} \;\; = \;\; \theta_i - \frac {\ell'(\theta_i)} { \ell''(\theta_i)}\]
+<p>This usually converges to the maximum likelihood estimate, provided the initial guess, \(\theta_0\) is not too far from the correct value. The algorithm may need to be used from various starting values until one is found for which the algorithm converges.</p>
+
+
+<h2 class="pageName">4.5.2 &nbsp; Log-series distribution</h2>
+<p>To illustrate the use of the Newton-Raphson algorithm to find maximum likelihood estimates, we will examine another standard distribution that is occasionally encountered, the <strong>log-series distribution</strong>.</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>A discrete random variable \(X\) is said to have a <strong>log-series distribution</strong> if its probability function is</p>
+\[
+p(x) \;=\; \frac {-1} {\log(1-\theta)} \times \frac {\theta^x} x \quad\quad \text{for } x=1, 2, \dots
+\]
+<p>where \(0 \lt \theta \lt 1\).</p>
+</div>
+
+<p>Its shape to the geometric distribution, but  has greater spread with a higher probability at one and a longer tail.</p>
+<p class="heading">Maximum likelihood</p>
+<p>If a random sample \({x_1, x_2, \dots, x_n}\) is collected from this distribution, what is the maximum likelihood estimate of \(\theta\)? The logarithm of the probability function is</p>
+\[
+\log \left(p(x)\right) \;=\; x \log(\theta) - \log \left(- \log(1 - \theta) \right) - \log(x)
+\]
+<p>so the likelihood function is</p>
+\[
+\ell(\theta) \;=\; \sum_{i=1}^n \log \left(p(x_i)\right) \;=\; {\sum x_i} \log(\theta) - n \times \log \left( -\log(1 - \theta) \right) + K
+\]
+<p>where \(K\) is a constant whose value does not depend on \(\theta\). The MLE is the solution of</p>
+\[
+\ell'(\theta) \;=\; \frac {\sum x_i} {\theta} + \frac n {(1 - \theta)\log(1 - \theta)} \;=\; 0
+\]
+<p>Unfortunately this equation cannot be rearranged to obtain an explicit formula for \(\theta\), so a numerical method must be used to find the maximum likelihood estimate. The Newton Raphson algorithm also requires the second derivative of the log-likelihood,</p>
+\[
+\ell''(\theta) \;=\; -\frac {\sum x_i} {\theta^2} + \frac {n \left(1 + \log(1 - \theta) \right)} {(1 - \theta)^2\log^2(1 - \theta)}
+\]
+<p>The algorithm uses these derivatives iteratively to refine an initial estimate, \(\theta_0\),</p>
+\[
+\theta_{i+1} \;\; = \;\; \theta_i - \frac {\ell'(\theta_i)} { \ell''(\theta_i)}\]
+
+<div class="example">
+	
+	<p class="exampleHeading">Numerical illustration</p>
+
+<p>Consider the following data set that is assumed to arise from a log-series distribution.</p>
+<div class="centred">
+	<table border="0" cellpadding="5" cellspacing="0" class="centred" style="border:1px solid #999999; background-color:#FFFFFF;">
+		<tr>
+			<td style="width:15px; text-align:right; padding:4px 8px 4px 5px">3</td>
+			<td style="width:15px; text-align:right; padding:4px 8px 4px 5px">5</td>
+			<td style="width:15px; text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="width:15px; text-align:right; padding:4px 8px 4px 5px">4</td>
+			<td style="width:15px; text-align:right; padding:4px 8px 4px 5px">8</td>
+			<td style="width:15px; text-align:right; padding:4px 8px 4px 5px">10</td>
+			<td style="width:15px; text-align:right; padding:4px 8px 4px 5px">2</td>
+			<td style="width:15px; text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="width:15px; text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="width:15px; text-align:right; padding:4px 8px 4px 5px">2</td>
+		</tr>
+		<tr>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">8</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">6</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">13</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">6</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">2</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">3</td>
+		</tr>
+		<tr>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">2</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">6</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+		</tr>
+	</table>
+</div>
+<p>The derivatives of the log-likelihood involve the values \(n = 30\) and \(\sum x = 95\). Iterations of the Newton-Raphson algorithm from an initial guess at the value of \(\theta = 0.7\) are:</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred iterations">
+<tr>
+<th style="border-bottom:1px solid #999999;">Iteration, <em>i</em></th><th style="border-bottom:1px solid #999999;">\(\theta_i\)</th><th style="border-bottom:1px solid #999999;">\(\ell'(\theta_i)\)</th><th style="border-bottom:1px solid #999999;">\(\ell''(\theta_i)\)</th>
+</tr>
+<tr><td style="text-align:center; background-color:#FFFFFF; padding:4px 8px 4px 5px">0</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">0.7000</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">52.656</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-240.78</td></tr>
+<tr><td style="text-align:center; background-color:#FFFFFF; padding:4px 8px 4px 5px">1</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">0.9187</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-43.613</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-1200.14</td></tr>
+<tr><td style="text-align:center; background-color:#FFFFFF; padding:4px 8px 4px 5px">2</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">0.8823</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-11.484</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-661.52</td></tr>
+<tr><td style="text-align:center; background-color:#FFFFFF; padding:4px 8px 4px 5px">3</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">0.8650</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-1.139</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-538.41</td></tr>
+<tr><td style="text-align:center; background-color:#FFFFFF; padding:4px 8px 4px 5px">4</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">0.8629</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-0.013</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-526.41</td></tr>
+<tr><td style="text-align:center; background-color:#FFFFFF; padding:4px 8px 4px 5px">5</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">0.8628</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-0.000</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-526.28</td></tr>
+<tr><td style="text-align:center; background-color:#FFFFFF; padding:4px 8px 4px 5px">6</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">0.8628</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-0.000</td> <td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-526.28</td></tr>
+<tr><td style="text-align:center; border-bottom:1px solid #999999; background-color:#FFFFFF; padding:4px 8px 4px 5px">7</td> <td style="text-align:right; border-bottom:1px solid #999999; background-color:#FFFFFF; padding:4px 8px 4px 5px">0.8628</td> <td style="text-align:right; border-bottom:1px solid #999999; background-color:#FFFFFF; padding:4px 8px 4px 5px"></td> <td style="text-align:right; border-bottom:1px solid #999999; background-color:#FFFFFF; padding:4px 8px 4px 5px"></td></tr>
+</table>
+</div>
+
+
+<p>It converges quickly to \(\hat {\theta} = 0.8628\).</p>
+<p>The  diagram below illustrates the first iteration of the algorithm; it approximates the shape of the log-likelihood using a quadratic curve with the same value, slope and curvature as the log-likelihood at  \(\theta = 0.7\). The next iteration is the value of \(\theta\) that maximises this quadratic.</p>
+<p class="eqn"><img src="../../../en/newtonRaphson/images/s_nrFrom0.7.png" width="514" height="308"  alt=""/></p>
+<p>When you get closer to the MLE, the quadratic's shape becomes closer to the actual log-likelihood, so the iterations approach the MLE more quickly. The diagram below illustrates this from a starting value of 0.88.</p>
+<p class="eqn"><img src="../../../en/newtonRaphson/images/s_nrFrom0.88.png" width="514" height="308"  alt=""/></p>
+</div>
+
+
+<h2 class="pageName">4.5.3 &nbsp; Standard error</h2>
+<p>The asymptotic formula for the standard error is</p>
+\[
+\se(\hat {\theta}) \;\;\approx\;\; \sqrt {- \frac 1 {\ell''(\hat {\theta})}}
+\]
+<p>The second derivative of the log-likelihood is found in the last iteration of the Newton Raphson algorithm.</p>
+<div class="example">
+	
+	<p class="exampleHeading">Standard error for log-series distribution</p>
+	<p>The iterations of the Newton-Raphson algorithm for finding the MLE of the log-series distribution's parameter, \(\theta\), to the data on the previous page from an initial guess, \(\theta_0 = 0.7\) were:</p>
+	<div class="centred">
+		<table border="0" cellpadding="5" cellspacing="0" class="centred iterations">
+			<tr>
+				<th style="border-bottom:1px solid #999999;">Iteration, <em>i</em></th>
+				<th style="border-bottom:1px solid #999999;">\(\theta_i\)</th>
+				<th style="border-bottom:1px solid #999999;">\(\ell'(\theta_i)\)</th>
+				<th style="border-bottom:1px solid #999999;">\(\ell''(\theta_i)\)</th>
+			</tr>
+			<tr>
+				<td style="text-align:center; background-color:#FFFFFF; padding:4px 8px 4px 5px">0</td>
+				<td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">0.7000</td>
+				<td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">52.656</td>
+				<td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-240.78</td>
+			</tr>
+			<tr>
+				<td style="text-align:center; background-color:#FFFFFF; padding:4px 8px 4px 5px">1</td>
+				<td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">0.9187</td>
+				<td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-43.613</td>
+				<td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-1200.14</td>
+			</tr>
+			<tr>
+				<td style="text-align:center; background-color:#FFFFFF; padding:4px 8px 4px 5px">:</td>
+				<td style="text-align:center; background-color:#FFFFFF; padding:4px 8px 4px 5px">:</td>
+				<td style="text-align:center; background-color:#FFFFFF; padding:4px 8px 4px 5px">:</td>
+				<td style="text-align:center; background-color:#FFFFFF; padding:4px 8px 4px 5px">:</td>
+			</tr>
+			<tr>
+				<td style="text-align:center; background-color:#FFFFFF; padding:4px 8px 4px 5px">5</td>
+				<td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">0.8628</td>
+				<td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-0.000</td>
+				<td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-526.28</td>
+			</tr>
+			<tr>
+				<td style="text-align:center; background-color:#FFFFFF; padding:4px 8px 4px 5px">6</td>
+				<td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">0.8628</td>
+				<td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-0.000</td>
+				<td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-526.28</td>
+			</tr>
+			<tr>
+				<td style="text-align:center; border-bottom:1px solid #999999; background-color:#FFFFFF; padding:4px 8px 4px 5px">7</td>
+				<td style="text-align:right; border-bottom:1px solid #999999; background-color:#FFFFFF; padding:4px 8px 4px 5px">0.8628</td>
+				<td style="text-align:right; border-bottom:1px solid #999999; background-color:#FFFFFF; padding:4px 8px 4px 5px"></td>
+				<td style="text-align:right; border-bottom:1px solid #999999; background-color:#FFFFFF; padding:4px 8px 4px 5px"></td>
+			</tr>
+		</table>
+	</div>
+	<p>The second derivative of the log-likelihood  converges to  \(\ell''(\hat{\theta}) = -526.28\). The approximate standard error of the estimate is therefore</p>
+\[
+\se(\hat {\theta}) \;\;\approx\;\; \sqrt {- \frac 1 {\ell''(\hat {\theta})}} \;\;=\;\; \sqrt {\frac 1 {526.28}} \;\;=\;\; 0.0436
+\]</div>
+
+
+<h1 class="sectionName breakBefore">4.6 &nbsp; Confidence intervals</h1>
+<h2 class="pageName">4.6.1 &nbsp; Interval estimates</h2>
+
+<p class="heading notPrinted">Describing accuracy with an interval estimate</p>
+<p>Reporting a single value as a parameter estimate (a <strong>point estimate</strong>) 
+	does not convey any information about the estimator's accuracy &mdash; i.e. the 
+	likely size of the estimation error.</p>
+<p>It is better to give an interval of values within which we are confident that the parameter will lie &mdash; an <strong>interval estimate</strong>. </p>
+<p class="heading">Will an interval estimate include θ?</p>
+<p>If an interval estimate is too narrow, there will be very little chance of it containing the true parameter value, but intervals that are too wide do not convey much information.</p>
+<p class=eqn><img class="gif" src="../../../en/estIntro/images/confidence.gif" width="363" height="166"></p>
+<p>We  need to find a way to <strong>quantify our confidence</strong> that 
+	any particular interval estimate will include the parameter being estimated.</p>
+
+
+<h2 class="pageName">4.6.2 &nbsp; Distribution of estimation error</h2>
+
+<p class="heading">Error distribution</p>
+
+<p>Most  parameter estimates are  unbiased (or at least asymptotically unbiased) and a formula for their  standard deviation  (or an approximation) can be found. In particular, from the asymptotic properties of <strong>maximum likelihood</strong> estimators,</p>
+
+\[ \begin{align}
+E[\hat{\theta}] \;\; &\approx \; \; \theta \\
+\se(\hat {\theta}) \;\;&\approx\;\; \sqrt {- \frac 1 {\ell''(\hat {\theta})}}
+\end{align} \]
+<p>Since MLEs are also asymptotically normally distributed, we can find an approximate distribution for the <strong>estimation error</strong>,</p>
+\[
+error \;\;=\;\; \hat {\theta} - \theta \;\; \sim \;\; \NormalDistn\left(\mu=0, \;\;\sigma=\se(\hat{\theta})\right)
+	\]
+<div class="example">
+	<p class="exampleHeading">Binomial example</p>
+	
+  <p>In a series of independent Bernoulli trials with probability \(\pi\) of success,  the maximum likelihood estimator of \(\pi\) is the proportion of successes. From the binomial distribution, we have <strong>exact</strong> formulae for its mean and standard deviation (standard error) and approximate normality in large samples,</p>
+	
+\[
+\hat {\pi} \;\; \sim \;\; \NormalDistn\left(\pi, \;\;\sigma=\sqrt{\frac {\pi(1-\pi)} n} \right)
+	\]
+	<p>In the example below, the standard error is used to sketch the approximate distribution of the sampling errors.</p>
+
+<p class="eqn"><img class="gif" src="../../../en/estPropn/images/skiing.gif" width="594" height="307"></p>
+
+		<p>From this error distribution, we can conclude that:</p>
+
+
+<div class="centred"><div class="boxed">
+<p>Our estimate of the proportion of beginners getting injured during a week of skiing, 0.25, is unlikely to be more than 0.1 from the similar proportion of skiers <strong>in general</strong>, \(\pi\).</p>
+</div></div>
+
+<br>
+</div>
+
+
+<h2 class="pageName">4.6.3 &nbsp; Confidence intervals</h2>
+<p class="heading">95% confidence interval</p>
+<p>Assuming that the error distribution is  normal (or approximately so), we can use the fact that 95% of any normal distribution is between 1.96 standard deviations of the mean.</p>
+<p class="eqn"><img class="svgImage" src="../../../en/confidenceIntervals/images/errorBounds2.png" width="276" height="114"></p>
+<p>We can therefore write</p>
+\[ \begin{align}
+P\left(-1.96 \times \se(\hat {\theta}) \;\;\lt\;\; error \;\;\lt\;\; 1.96 \times \se(\hat {\theta})\right) \;\;&amp;\approx\;\; 0.95 \\
+
+P\left(\hat{\theta}-1.96 \times \se(\hat {\theta}) \;\;\lt\;\; \theta \;\;\lt\;\; \hat{\theta}+1.96 \times \se(\hat {\theta})\right) \;\;&amp;\approx\;\; 0.95
+\end{align} \]
+<p>We  call the interval</p>
+\[
+\hat{\theta}-1.96 \times \se(\hat {\theta}) \quad \text{ to } \quad \hat{\theta}+1.96 \times \se(\hat {\theta})
+\]
+<p>a <strong>95% confidence interval</strong> for \(\theta\) and we have <strong>95% confidence</strong> that it will include the actual value of the parameter.</p>
+<p class="heading">Other confidence levels</p>
+<p>90% of values from a normal distribution are within 1.645 standard deviations of the distribution's mean, so</p>
+<p class="eqn"><img class="svgImage" src="../../../en/confidenceIntervals/images/errorBounds3.png" width="276" height="114"></p>
+<p>This leads to a <strong>90% </strong>confidence interval,</p>
+\[
+\hat{\theta}-1.645 \times \se(\hat {\theta}) \quad \text{ to } \quad \hat{\theta}+1.645 \times \se(\hat {\theta})
+\]
+<p>We say that we are <strong>90% confident</strong> that an interval that is calculated in this way will include the true parameter value, \(\theta\).</p>
+<div class="example">
+	
+	<p class="exampleHeading">Binomial example</p>
+	<p class="eqn"><img class="svgImage" src="../../../en/confidenceIntervals/images/skiing2.gif" width="594" height="307"></p>
+</div>
+
+
+
+<h2 class="pageName">4.6.4 &nbsp; Other examples</h2>
+<p>In the next example,  there is no exact formula for the standard error of the estimator.</p>
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Question: Geometric random sample</p>
+<p>If \(\{x_1, x_2, \dots, x_n\}\) is a random sample from a geometric distribution with parameter \(\pi\), find a large-sample 90% confidence interval for the parameter \(\pi\).</p>
+<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+<p>In the next example, the Newton-Raphson algorithm should be used to obtain the maximum likelihood estimate and its standard error.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Question: Log-series distribution</p>
+		<p>The following data set that is assumed to arise from a log-series distribution with probability function</p>
+\[
+p(x) \;=\; \frac {-1} {\log(1-\theta)} \times \frac {\theta^x} x \quad\quad \text{for } x=1, 2, \dots
+\]
+		
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred" style="background-color:#FFFFFF">
+			<tr>
+				<td style="border-top:1px solid #999999; border-left:1px solid #999999; width:15px; text-align:right; padding:4px 8px 4px 5px">3</td>
+				<td style="border-top:1px solid #999999; width:15px; text-align:right; padding:4px 8px 4px 5px">5</td>
+				<td style="border-top:1px solid #999999; width:15px; text-align:right; padding:4px 8px 4px 5px">1</td>
+				<td style="border-top:1px solid #999999; width:15px; text-align:right; padding:4px 8px 4px 5px">4</td>
+				<td style="border-top:1px solid #999999; width:15px; text-align:right; padding:4px 8px 4px 5px">8</td>
+				<td style="border-top:1px solid #999999; width:15px; text-align:right; padding:4px 8px 4px 5px">10</td>
+				<td style="border-top:1px solid #999999; width:15px; text-align:right; padding:4px 8px 4px 5px">2</td>
+				<td style="border-top:1px solid #999999; width:15px; text-align:right; padding:4px 8px 4px 5px">1</td>
+				<td style="border-top:1px solid #999999; width:15px; text-align:right; padding:4px 8px 4px 5px">1</td>
+				<td style="border-top:1px solid #999999; border-right:1px solid #999999; width:15px; text-align:right; padding:4px 8px 4px 5px">2</td>
+			</tr>
+			<tr>
+				<td style="border-left:1px solid #999999; text-align:right; padding:4px 8px 4px 5px">1</td>
+				<td style="text-align:right; padding:4px 8px 4px 5px">8</td>
+				<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+				<td style="text-align:right; padding:4px 8px 4px 5px">6</td>
+				<td style="text-align:right; padding:4px 8px 4px 5px">13</td>
+				<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+				<td style="text-align:right; padding:4px 8px 4px 5px">6</td>
+				<td style="text-align:right; padding:4px 8px 4px 5px">2</td>
+				<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+				<td style="border-right:1px solid #999999; text-align:right; padding:4px 8px 4px 5px">3</td>
+			</tr>
+			<tr>
+				<td style="border-bottom:1px solid #999999; border-left:1px solid #999999; text-align:right; padding:4px 8px 4px 5px">1</td>
+				<td style="border-bottom:1px solid #999999; text-align:right; padding:4px 8px 4px 5px">1</td>
+				<td style="border-bottom:1px solid #999999; text-align:right; padding:4px 8px 4px 5px">1</td>
+				<td style="border-bottom:1px solid #999999; text-align:right; padding:4px 8px 4px 5px">2</td>
+				<td style="border-bottom:1px solid #999999; text-align:right; padding:4px 8px 4px 5px">1</td>
+				<td style="border-bottom:1px solid #999999; text-align:right; padding:4px 8px 4px 5px">6</td>
+				<td style="border-bottom:1px solid #999999; text-align:right; padding:4px 8px 4px 5px">1</td>
+				<td style="border-bottom:1px solid #999999; text-align:right; padding:4px 8px 4px 5px">1</td>
+				<td style="border-bottom:1px solid #999999; text-align:right; padding:4px 8px 4px 5px">1</td>
+				<td style="border-bottom:1px solid #999999; border-right:1px solid #999999; text-align:right; padding:4px 8px 4px 5px">1</td>
+			</tr>
+		</table>
+</div>
+
+		<p>Find a large-sample 95% confidence interval for the parameter \(\theta\).</p>
+		<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+<p class="eqn">&nbsp;</p>
+
+
+<h2 class="pageName">4.6.5 &nbsp; Properties of confidence intervals</h2>
+<p>A confidence interval does not always &quot;work&quot; — it may not actually include the unknown parameter value. A 95% confidence interval might be</p>
+\[
+0.7773 \;\;\lt\;\; \theta \;\;\lt\;\; 0.9483
+\]
+<p>but the value of \(\theta\) is unknown and may not actually lie within this interval. The best we can say is that we are <strong>95% confident</strong> that \(\theta\) will be between these two values.</p>
+
+<div class="boxed">
+<p>If confidence intervals were found from other similar random samples,  95% of them would include \(\theta\).</p>
+</div>
+
+<p>The notion of a confidence level therefore more a characteristic of the <strong>method of finding</strong> the confidence interval,  than a characteristic of the specific confidence interval from a single data set.</p>
+<p class="heading notPrinted">Simulation</p>
+<p>The  simulation below took 100 random samples of size <em>n</em> = 200 from a population with π = 0.6. Most of the confidence intervals included π = 0.6, but some did not. If the simulation was repeated many more times, the proportion including 0.6 would be close to 0.95.</p>
+<p class="eqn"><img src="../../../en/estPropn/images/s_ciSim.gif" width="550" height="299"></p>
+<p>In practice, you only have a single sample and a single confidence interval, but we have &quot;95% confidence&quot; that it will include the true (and usually unknown) value of π.</p>
+
+
+</body>
+</html>

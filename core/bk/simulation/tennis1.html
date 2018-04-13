@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Simulating results</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Tennis</p>
+
+<p>A simple model for a tennis match between two players, A and B, is easily described.
+We assume that the probability of A winning any point is
+π<sub>1</sub>
+if A serves and
+π<sub>2</sub>
+if B serves, and that the results of successive points are independent. These assumptions,
+plus the rules of tennis, constitute our model.
+</p>
+
+<p>This model could be used to randomly generate a complete tennis match.
+For each successive point, a weighted coin with
+P(head)&nbsp;=&nbsp;π<sub>1</sub>
+could be tossed when A is serving, and A would win the point if the coin showed a
+head. A different weighted coin with
+P(head)&nbsp;=&nbsp;π<sub>2</sub>
+would be used when B is serving. Repeating until one player wins gives
+a <strong>simulation</strong> of the match.</p>
+
+<p class="heading">Simulations on a computer</p>
+
+<p>Computers cannnot perform truely random tasks, so computer-based simulations
+are based on <a href="javascript:showNamedPage('random1')">pseudo-random</a> numbers. These are found with a deterministic
+algorithm (a mathematical formula) that would generate identical events if it was repeated. However a good enough
+algorithm generates a sequence of values that would be extremely difficult to
+distinguish from a sequence of truely random values.
+</p>
+
+<p>For our tennis match simulation, the results
+are essentially equivalent to those obtained by tossing coins.
+</p>
+
+<div class="diagram">
+
+<p>The diagram below shows how randomly generating points can simulate a complete
+women's tennis match with 3 sets.
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="sportProg.TennisMatchApplet">
+<param name="noOfSets" value="3">
+<param name="displayRecords" value="8">
+<param name="serverWinProbs" value="0.75 0.75">
+<param name="randomSeed" value="577773746">
+<param name="customText" value="P(A wins serve)=P(A wins serve)#P(B wins serve)=P(B wins serve)#Simulate next point=Simulate next point#Start new match=Start new match#Sets=Sets#Games (Current Set)=Games (Current Set)#Points (Current Game)=Points (Current Game)#Server=Server#Winner=Winner#won game=won game#won set=won set#won match=won match">
+</applet>
+</div>
+
+<p>Initially, both players are equally matched and have probability 0.75 of winning
+their serves. Click <strong>Simulate Next Point</strong> to
+play a single point of the match
+-- the computer randomly generates a result, based on the probability of the
+server winning the point. Click this button repeatedly to generate points until the
+match is completed.
+</p>
+
+<p>Click <strong>Start New Match</strong> to perform another
+simulation. Note that the
+precise sequence of points is unlikely to be repeated exactly in different simulations,
+even when the probabilities are the same in successive matches. (Before performing further
+simulations, you may use the sliders to adjust the probabilities winning individual points
+for the two competitors.)
+</p>
+
+</div>
+
+<p>In practice, we would rarely be interested in displaying as much detail in a simulation
+(except perhaps when checking that we have programmed the rules of the match properly!).
+We are usually interested in only one or two characteristics of a match (e.g. the winner's
+name or the total number of sets played in the match) and only these summaries need
+be displayed.
+</p>
+
+<p>We will use a different sport to show how simulations are used to find useful information.
+</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

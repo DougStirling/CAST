@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Comparison of designs</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	<meta name="index" content="randomised block design, matched pairs">
+	<meta name="dataset" content="Feed supplement and beef">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Variability in a completely randomised design</p>
+
+  <p>Consider a completely randomised experiment for three treatments in variable experimental units that can be grouped into two blocks of 9 units. The experimental units in  block 1 tend to have higher response values than those in block 2, whatever the treatment applied. (The blocks are initially ignored in the design of the experiment.)</p>
+  <p>By chance, treatment A may be applied more often than other treatments to  experimental units in block 1. This would result in our estimate of the mean response for treatment A being too high.</p>
+  <div class="centred">
+  	<table border="0" class="centred" cellpadding="4" cellspacing="0">
+  		<tr>
+  			<th colspan="3">Block 1<br>
+  				<em>(high Y)</em></th>
+  			<th width="30">&nbsp;</th>
+  			<th colspan="3">Block 2<br>
+  				<em>(low Y)</em></th>
+ 			</tr>
+  		<tr>
+  			<td bgcolor="#FFFFFF" style="border:1px solid #999999;"> C </td>
+  			<td bgcolor="#FF0000" style="border:1px solid #999999; border-left:0px;"> A </td>
+  			<td bgcolor="#FF0000" style="border:1px solid #999999; border-left:0px;"> A </td>
+  			<td>&nbsp;</td>
+  			<td bgcolor="#FFFFFF" style="border:1px solid #999999;"> B&nbsp;</span></td>
+  			<td bgcolor="#FFFFFF" style="border:1px solid #999999; border-left:0px;"> B&nbsp;</td>
+  			<td bgcolor="#FF0000" style="border:1px solid #999999; border-left:0px;"> A&nbsp;</td>
+ 			</tr>
+  		<tr>
+  			<td bgcolor="#FF0000" style="border:1px solid #999999; border-top:0px;"> A </td>
+  			<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;"> C </td>
+  			<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;"> B </td>
+  			<td>&nbsp;</td>
+  			<td bgcolor="#FFFFFF" style="border:1px solid #999999; border-top:0px;"> C </td>
+  			<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;"> C </td>
+  			<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;"> B </td>
+ 			</tr>
+  		<tr>
+  			<td bgcolor="#FFFFFF" style="border:1px solid #999999; border-top:0px;"> B </td>
+  			<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;"> C </td>
+  			<td bgcolor="#FF0000" style="border-bottom:1px solid #999999; border-right:1px solid #999999;"> A </td>
+  			<td>&nbsp;</td>
+  			<td bgcolor="#FFFFFF" style="border:1px solid #999999; border-top:0px;"> B </td>
+  			<td bgcolor="#FF0000" style="border-bottom:1px solid #999999; border-right:1px solid #999999;"> A </td>
+  			<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;"> C </td>
+ 			</tr>
+ 		</table>
+</div>
+  <p>Equally, treatment A might be used only 1 or 2 times in block 1, resulting in too low an estimate of its effect.</p>
+  <div class="centred"><div class="boxed">
+  	<p>Unbalanced allocation of treatment A to the two blocks increases the variability of its estimated effect.</p>
+  </div></div>
+  <p class="heading">Randomised block design</p>
+  <p>A randomised block design  ensures that treatment A is used <strong>exactly 3 times</strong> in each block, so this extra source of variation is removed &mdash; treatment A is used equally often with 'high' and 'low' experimental units.</p>
+  <p>Repeating the treatments the same number of times within each block ensures that the treatments are <strong>orthogonal</strong> to the blocks, and this reduces the variability of the treatment means.<br>
+ 	</p>
+  <div class="diagram"> 
+<p class="heading">Three diets and beef from cows</p>
+
+<p>The diagram below simulates experiments using a herd of 21 calves of varying weights. An experiment is to be conducted to compare a standard diet and <strong>two</strong> new diets (3 treatments). This simulation generalises the simulation involving matched pairs that was used in the previous section.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="pairBlockProg.PairingCovarApplet">
+<param name="responseName" value="Weight of meat from cow (kg)">
+<param name="nValues" value="21">
+<param name="covarName" value="Calf body weight (kg)">
+<param name="covarMinMax" value="100 160">
+<param name="covarRegnParams" value="0 1">
+<param name="factorName" value="Diet">
+<param name="factorLabels" value="Std A B">
+<param name="errorSd" value="3">
+<param name="factorEffect" value="10 20">
+<param name="responseAxis" value="90 200 100 20">
+<param name="covarAxis" value="100 160 100 10">
+<param name="effectAxis" value="-20 50 -20 10">
+<param name="effectName" value="Estimated difference">
+<param name="pairedText" value="Grouped by calf body weight">
+</applet>
+</div>
+<p>Initially click <strong>Accumulate</strong> then click <strong>Conduct experiment</strong> several times to see the variability in the three estimates of the differences between the three diets in a completely randomised experiment. Observe that the estimates are all very inaccurate.</p>
+<p>Now select <strong>Grouped by calf weight</strong> from the pop-up menu. In this experimental design, the calves are grouped into blocks of three with similar weights before the experiment is started, illustrated by the vertical bands on the scatterplot. In each of these blocks of calves, exactly one is randomly chosen to get each of the diets.</p>
+<p>Repeat this experiment several times and observe that:</p>
+<div class="centred"><div class="boxed">
+	<p>The differences between the diets are much more accurately estimated using a randomised block experiment than with a completely randomised experiment.<br>
+</p>
+</div></div>
+
+<br>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

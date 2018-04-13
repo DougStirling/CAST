@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Pseudo-random Numbers</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Random numbers between 0 and 1</p>
+
+<p>Most simulations are based on a pseudo-random number generator that provides
+a sequence of values that are (almost) indistinguishable from independent values sampled
+from a rectangular distribution between 0 and 1.
+</p>
+
+<p class="eqn"><img src="images/rectangular.gif" width="227" height="138" border="0" alt="rect pdf"></p>
+
+<p class="heading">Congruential generators</p>
+<p>A <strong>congruential</strong> pseudo-random
+number generator is usually the basis. It generates a sequence of integers between 0 and
+<i>a</i> with a formula of the form</p>
+
+<p class=eqn>
+<img src="images/congruential.gif" width="209" height="24" alt="r(n)=(b*r(n-1) + c) mod a">
+</p>
+
+<p>where <i>a</i>, <i>b</i> and <i>c</i> are constants and the 'mod' operator means
+the remainder after the quantity on its left is divided by <i>a</i>. The algorithm is most
+easily explained with an example. If <i>a</i>&nbsp;=&nbsp;100, <i>b</i>&nbsp;=&nbsp;45
+and <i>c</i>&nbsp;=&nbsp;12 and we start with the 'seed' value <i>r</i>&nbsp;=&nbsp;63
+then the next pseudo-random number will be
+</p>
+
+<p class=eqn>
+<img src="images/randomExample.gif" width="409" height="67" alt="63->10">
+</p>
+
+<p>Repeating the algorithm from 10 gives the next pseudo-random number 17, etc.
+</p>
+
+<p>We require pseudo-random values between 0 and 1, so the above values are divided by <i>a</i>,
+giving the sequence of values 0.63, 0.10, 0.17,&nbsp;... The diagram below illustrates
+the algorithm. </p>
+
+<div class="diagram">
+<p>Click <strong>Next Value</strong> a few times to generate several
+	pseudo-random numbers. </p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="620" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="simulationProg.PseudoRandomApplet">
+<param name="maxDigits" value="4 8 4 4">
+<param name="noOfGenerators" value="3">
+<param name="generatorName1" value="Two digits">
+<param name="generator1" value="63 2 7 81">
+<param name="generatorName2" value="Three digits">
+<param name="generator2" value="528 3 527 791">
+<param name="generatorName3" value="Four digits">
+<param name="generator3" value="1234 4 6527 3791">
+<param name="customText" value="Next value=Next value#Jittered=Jittered">
+</applet>
+</div>
+
+<p>The jittered dot plot on the right shows the distribution of the pseudo-random
+numbers that have been generated. If you generate 100 pseudo-random numbers, each
+value from 0.00,&nbsp;0.01,...,&nbsp;0.99 appears exactly once, after which the
+sequence repeats.
+</p>
+
+<p>Select <strong>Time Series</strong> from the pop-up menu under the display and
+generate a few more pseudo-random numbers. Although you probably did not see a
+noticeable pattern in the sequence of pseudo-random numbers as they appeared in
+the jittered dot plot, a pattern is evident when you see a long enough sequence of
+values. Other choices of <i>b</i> and <i>c</i> (with <i>a</i>&nbsp;=&nbsp;100) result
+in more obvious patterns.
+</p>
+
+<p>Increasing <i>a</i> (and therefore generating pseudo-random numbers with
+3 or more digits) reduces the problem. Select <strong>Three digits</strong>
+or <strong>Four digits</strong> from the popup menu and generate some more pseudo-random
+numbers. Observe that there is no discernable pattern in the pseudo-random numbers when
+larger integers are used.
+</p>
+</div>
+
+<p>In practice, very large values of the constants <i>a</i> and <i>b</i> are used.
+For example, the congruential pseudo-random number generator that is built into
+the Java programming language is
+</p>
+
+<p class=eqn>
+<img src="images/javaRandom.gif" width="442" height="22">
+</p>
+
+<p>With a pseudo-random number generator like this, successive pseudo-random numbers are
+(for practical purposes) independent and uniformly distributed between 0 and 1.
+</p>
+
+<p><strong>(The choice of values for <i>a</i> and <i>b</i> is extremely important
+-- you cannot just choose any large values for these constants.)</strong>
+</p>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Examples</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<script type="text/javascript">
+		var svgNames = new Array();
+		svgNames[0] = "images/travelLitTest.svg";
+		svgNames[1] = "images/jobSatisTest.svg";
+		svgNames[2] = "images/marketAttTest.svg";
+		
+		function changeSvgImage(select) {
+			var newIndex = select.selectedIndex;
+			var image = document.getElementById('dataImage');
+			image.src = svgNames[newIndex];
+		}
+	</script>
+
+	<meta name="index" content="contingency table, independence, chi-squared test, hypothesis test">
+	<meta name="dataset" content="Tourists seeking travel info">
+	<meta name="dataset" content="Job satisfaction and income">
+	<meta name="dataset" content="Market attitude and age">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class=heading>Analysing dependence</p>
+
+<p>If it is concluded that dependence is likely in the table, you should examine 
+carefully the cells of the table where there are the biggest mismatches between 
+the observed and estimated cell counts. This should help you to discover the nature 
+of the dependence. </p>
+
+<div class="diagram"> 
+<p class=heading>Examples</p>
+<p>The chi-squared test for association is applied to a few real contingency tables 
+below. </p>
+
+<form>
+<select name="dataset" onChange="changeSvgImage(this)">
+<option value="0" selected>Tourists seeking travel information</option>
+<option value="1">Job satisfaction and income</option>
+<option value="2">Market attitude and age</option>
+</select>
+</form>
+
+<p align="center"><iframe src="images/travelLitTest.svg" id="dataImage" width="541" height="459" frameborder="0"></iframe></p>
+
+<p>In some examples, the value of
+χ<sup>2</sup> is so far into the upper tail of the reference distribution that we are almost certain
+that the row and column variable are dependent. In others, the value of
+χ<sup>2</sup> is small enough that it could have arisen by chance even if the variables are
+independent in the underlying population.</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

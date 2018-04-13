@@ -1,0 +1,180 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Fehlerverteilung durch Simulation</title>
+
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="error distribution, simulation, proportion, standard error, bias">
+	<meta name="dataset" content="Rice survey">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Fehlerverteilung von Gleichungen</p>
+
+<p>F&uuml;r viele gew&ouml;hnliche
+Parametersch&auml;tzungen
+k&ouml;nnen statistische Theorien die Fehlerverteilung (oder eine
+Ann&auml;herung) bereitstellen.</p>
+
+<center>
+<table bgcolor="white" border="1" cellpadding="10" cellspacing="0" width="75%">
+
+  <tbody>
+
+    <tr>
+
+      <td align="center"><strong>F&uuml;r die
+meisten gew&ouml;hnlichen
+Parametersch&auml;tzungen gibt es eine Formel f&uuml;r den
+Standardfehler.&nbsp;</strong></td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br>
+
+</center>
+
+<p class="heading">Fehlerverteilung von Simulationen</p>
+
+<p>Dennoch gibt es auch Situationen, wo statistische Theorie
+(oder
+leicht zug&auml;ngliche statistische Software zur Anwendung der
+Theorie) die Fehlerverteilung f&uuml;r die Sch&auml;tzer, an
+denen man
+interessiert ist, <strong>nicht </strong>zur
+Verf&uuml;gung stellt. In diesem Fall kann eine <strong>Simulation</strong> genutzt
+werden, um
+Eigenschaften der Fehlerverteilung nummerisch zu ermitteln.</p>
+
+<p><font color="#666666">(Wir nutzten Simulationen
+schon vorher in
+diesem Kapitel, um einige Konzepte der Sch&auml;tzung zu
+verdeutlichen,
+aber nicht als praktische Arbeitshilfe).</font></p>
+
+<p>Diese Methodik wird erst mit einer Simulation zur Ermittlung
+des
+Standardfehlers eines Stichprobenanteils verdeutlicht.This methodology
+will first be illustrated with a simulation to find the standard error
+of a sample proportion. Schon fr&uuml;her gaben wir in diesem
+Abschnitt
+Formeln, um den Standardfehler f&uuml;r diese Anwendung direkt zu
+ermitteln,</p>
+<p class=eqn><span class="black"><em>Standardfehler</em>&nbsp;&nbsp;=&nbsp;&nbsp;</span><span style="position:relative; top:14px"><img src="../../images/symbol.seP.png" width="80" height="44" align="baseline"></span></p>
+<p>Eine Simulation ist deshalb unn&ouml;tig und
+w&uuml;rde niemals in
+dieser Anwendung Gebrauch finden. Dennoch liefert die Anwendung eine
+einfache und leicht verst&auml;ndliche Erkl&auml;rung, wie
+Simulation
+benutzt werden kann. </p>
+
+<div class="diagram">
+<p class="heading">Reisumfrage</p>
+
+<p>In der Reisumfrage nutzte ein Anteil&nbsp; <em>p</em>
+=<sup>&nbsp;17</sup>/<sub>36</sub>&nbsp;=&nbsp;0,472
+der <em>n</em>&nbsp;=&nbsp;36 Bauern 'Alte'
+Sorten. Wenn das eine
+zuf&auml;llige Stichprobe der Bauern in der Region ist, sollte die
+Anzahl derer, die "Alte" Sorten verwenden, eine Binomialverteilung
+haben,</p>
+
+<p class="eqn"><em>X</em> &nbsp; ~
+&nbsp; binomial (<em>n</em> = 36,
+&pi; )</p>
+
+<p>Wenn wir den Wert von &pi; kennen, k&ouml;nnen wird
+wiederholt
+Stichproben aus dieser Normalverteilung ziehen, um den
+Sch&auml;tzfehler (<em>p</em>&nbsp;-&nbsp;&pi;)
+f&uuml;r jede Probe zu
+finden, und um die Fehlerverteilung zu bilden.</p>
+
+<p>Nat&uuml;rlich kennen wir den Wert von &pi; nicht,
+aber wir
+k&ouml;nnen durch das Austauschen von &pi; mit dem besten
+Sch&auml;tzer, <em>p</em> =&nbsp;0,472, eine
+&auml;hnliche Simulation
+durchf&uuml;hren. Das Diagramm unten zeigt eine solche Simulation.</p>
+
+<div class="centred"><applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" height="400" width="550">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="stdErrorProg.ErrorCatSampleApplet"><param name="varName" value="Reisvariet&auml;ten"><param name="random" value="36 0.47222"><param name="catLabels" value="Alt Andere"><param name="errorName" value="Sch&auml;tzfehler"><param name="errorAxis" value="-0.25 0.25 -0.2 0.1"><param name="statisticName" value="Sch&auml;tzung von P(Alte Variet&auml;ten)"><param name="sampleName" value="Reisvariet&auml;ten in Stichproben von 36 Bauern"><param name="decimals" value="3"><param name="maxBiasSe" value="-9.999"><param name="nCols" value="6"><param name="maxPropn" value="-9.999"><param name="customText" value="Estimate s.e. &amp; bias=Sch&auml;tze Standardfehler &amp; Bias#Bias=Bias"></applet></div>
+
+<p>Klicke <strong>Akkumulieren</strong> und nehme
+&uuml;ber 100
+Stichproben (von allen 36 Bauern), um die Fehlerverteilung zu bilden.</p>
+
+<center>
+<table bgcolor="white" border="1" cellpadding="10" cellspacing="0" width="75%">
+
+  <tbody>
+
+    <tr>
+
+      <td align="center"><strong>Merke, dass die
+Sch&auml;tzer einen
+Fehler von bis zu 0,2 haben k&ouml;nnen.</strong></td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+</center>
+
+<p>Der Anteil der Bauern in der gesamten Region, die "Alte"
+Sorten
+benutzen, kann daher ziemlich unterschiedlich zu unserem
+Sch&auml;tzer
+von 0,472 sein.</p>
+
+<p>Klicke<strong>
+Sch&auml;tzung SE</strong><strong>
+und Bias,</strong> um die Standardabweichung und den Mittelwert
+der
+Fehler zu finden. Diese soltten sehr nahe an den Werten liegen, die
+durch Formeln f&uuml;r dieses Beispiel erhalten werden
+k&ouml;nnen.&nbsp;</p>
+<p class=eqn><em>bias</em>&nbsp; =&nbsp; 0<br>
+<em>Standardfehler</em>&nbsp; =&nbsp; <span style="position:relative; top:14px"><img src="../../images/symbol.seP.png" width="80" height="44" align="baseline"></span>&nbsp; =&nbsp; 0.0832</p>
+</div>
+
+<br>
+
+<center>
+<table bgcolor="white" border="1" cellpadding="10" cellspacing="0" width="75%">
+
+  <tbody>
+
+    <tr>
+
+      <td align="center"><strong>Wir betonen
+nochmals, dass Simulation <span style="color: rgb(0, 0, 0);">nicht</span>
+daf&uuml;r genutzt werden
+kann, Standardfehler in dieser Art von Beispiel zu finden &ndash;
+wir
+sollten die Formel f&uuml;r den Standardfehler eines Anteils nutzen.</strong></td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+</center>
+
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Warnings about mean and standard devn</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<script type="text/javascript">
+		setupChoiceImages("anscombe_dot1", "anscombe_dot2", "anscombe_dot3", "anscombe_dot4",
+													"anscombe_histo1", "anscombe_histo2", "anscombe_histo3", "anscombe_histo4");
+		var distnShape = 0;
+		var displayType = 0;
+		
+		function changeImageShape(select) {
+			distnShape = select.selectedIndex;
+			changeImageIndex('image', distnShape + displayType * 4);
+		}
+		
+		function changeDisplay(select) {
+			displayType = select.selectedIndex;
+			changeImageIndex('image', distnShape + displayType * 4);
+		}
+	</script>
+
+	<meta name="index" content="standard deviation">
+</head>
+
+
+<body class="lecture">
+<script type="text/javascript">writePageStart();</script>
+
+
+<p class=heading>Distributions with same mean and standard deviation</p>
+<form>
+<p class=eqn>
+<select name="dataset" onChange="changeImageShape(this)">
+<option value="0" selected>Symmetric distribution</option>
+<option value="1">Symmetric with outlier</option>
+<option value="2">Two clusters</option>
+<option value="3">Skew distribution</option>
+</select>
+&nbsp;&nbsp;&nbsp;
+<select name="display" onChange="changeDisplay(this)">
+<option value="0" selected>Dot plot</option>
+<option value="1">Histogram</option>
+</select>
+</p>
+</form>
+
+<p class="eqn">
+	<img src="images/anscombe_dot1.gif" width="447" height="298">
+</p>
+
+<script type="text/javascript">
+	writeLecturerNotesLink(withoutDataNotes);
+</script>
+
+<div class="lecturerNote" id="lecturerNote">
+<p>The four data sets all have the same mean and standard deviation but have very different shapes and we <strong>should</strong> come do different conclusions about the data from their dot plots (or histograms).</p>
+<p>Use the diagram to show that the mean and standard deviation on their own cannot identify outliers, clusters or skewness, all of which are important features of a distribution.</p>
+<p>Advise students to <strong>always</strong> look at a dot plot or histogram to check that there are no such features before summarising a data set by its mean and standard deviation.</p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

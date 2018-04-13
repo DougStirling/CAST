@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Multi-niveaux des données</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="multi-level data">
+	<meta name="dataset" content="Household survey">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class=heading>De petits groupes ou des groupes de «particuliers»</p>
+<p>Dans certains ensembles de données, la base «individus» sont disposés en groupes relativement petits ou clusters.</p>
+	
+<dl>
+		<dt>Mesures de plantes</dt>
+		<dd>Dans une étude sur la croissance des plantes, le chercheur pourrait enregistrer la teneur en éléments nutritifs de quelques feuilles de chaque d'un échantillon de plantes. Les feuilles sont les naturels «individus» dans la matrice de données depuis que les mesures sont faites à partir de chaque feuille individuelle, mais ils sont regroupés par usine.</dd>
+		<dt>Le revenu des ménages</dt>
+		<dd>Les enquêtes ménages choisissent souvent dans une région, puis d'obtenir des informations sur chaque membre du ménage. (Grappes d'échantillonnage de la population est moins cher que les individus d'échantillonnage.) Le peuple est le naturel «individus» dans la matrice de données, mais ils sont regroupés par famille.</dd>
+	</dl>
+	
+<p>Dans les ensembles de données de ces types, une variable catégorielle pourrait distinguer entre les groupes, mais il y aurait un grand nombre de valeurs possibles et ces valeurs (les noms des plantes ou des houshold) sont d'un intérêt direct peu.</p>
+<p class=heading>Les données à différents niveaux</p>
+<p>En outre, certaines mesures sont généralement enregistrés au niveau du groupe plutôt qu'au niveau individuel. Par exemple, l'âge et la hauteur de la plante, ou le type de logement et de la distance des commerces de la maison sont tous enregistrés au niveau du groupe. Ces valeurs pourraient être stockés dans un groupe distinct au niveau matrice de données.<br>
+</p>
+<p class=eqn> <object data="images/multilevelMatrices.svg" width="490" height="287" alt="variables x individuals"></object>
+	</p>
+	<p>&nbsp;</p>
+	<center>
+		<table border="1" cellspacing="0" cellpadding="5" bgcolor="white" width="75%">
+			<tr> 
+				<th align="CENTER"><strong>Chaque matrice de données peuvent être analysés séparément.</strong></th>
+			</tr>
+		</table>
+	</center>
+	<br>
+	
+		
+<div class="diagram">
+
+		<p class="heading">Enquête auprès des ménages</p>
+
+	<p>Les données ci-dessous sont d'un type qui sont couramment recueillies dans les enquêtes sur les achats des consommateurs et des attitudes. Un échantillon de maisons est sélectionné et les informations sont recueillies auprès de toutes les personnes dans ces maisons. Aux fins d'illustration, nous avons seulement montré les données de 18 ménages et ont seulement montré une variable au niveau des ménages et trois au niveau de la personne.<br>
+</p>
+	<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="structureProg.MultiLevelDataApplet">
+<param name="nCoreVars" value="1 3">
+<param name="indexName" value="ID#Hh ID">
+<param name="higherDataName" value="Niveau des ménages">
+<param name="higherLabelName" value="Addresse">
+<param name="higherLabels" value="#14 Station Rd# #20 New Rd# #2 Newalls Rise# #9 Walton Av# #2 Kendall Av# #14 Buckden St# #269 Norcot Rd# #46 Victoria Rd# #354 Wokingam Rd# #27 Churchill Cres# #227 Brook St# #5 Ardler Rd# #175 Peppard Rd# #70 Prospect St# #57 Shefford Cres# #17 Denmark Av# #5 Audley St# #58 Pitford Rd# #6 Eagle Cl# #78 New Bright St# #25 Eastcourt Av# #150 Hexham Rd#">
+<param name="higherVarName0" value="Magasins">
+<param name="higherValues0" value="2.4 0.8 4.4 1.2 2.6 0.2 2.4 1.2 0.6 1.0 2.0 0.2 0.6 0.4 1.2 0.2 0.8 0.8 5.2 2.8 1.0 2.6">
+<param name="lowerDataName" value="Niveau de la personne">
+<param name="linkIndices" value="0 0 0 1 1 1 2 2 3 3 3 3 4 4 4 5 5 5 5 5 6 6 6 6 6 7 8 9 9 9 9 10 10 11 11 11 11 12 12 13 13 14 14 14 14 15 15 15 16 16 16 16 16 16 17 17 18 18 18 18 18 18 19 19 19 19 19 20 20 20 20 20 21 21">
+<param name="lowerLabelName" value="Nom de personne">
+<param name="lowerLabels" value="Luke Christine Rebecca David Eloise Brendon Robert Sarah Mark Rebecca Lucy Daniel Nicholas Natalie Rachel Keith Jessica Phillip Hannah Lucy James Margaret Katie Laura Philippa Kate Christopher Ruth Brendon Rebecca Daniel Richard Holly Krystle Sara Haydyn Brydee Hugh Tracey Jennifer Vanessa Douglas Rhys Tessa Phillip Vicki Sarah Nihaad Frank Paul Rachel Mariyam Louise Fiona Brook Sarah Luke Andrew John Julian Eloise Melissa Kurt Sarah Dana James Lucy Mary Aaron Natalie Rachel Robert Jack Cherie">
+<param name="lowerVarName0" value="Âge">
+<param name="lowerValues0" value="65 60 17 37 38 12 26 25 51 46 22 17 40 31 11 30 27 5 3 1 76 47 12 8 5 35 65 45 23 21 14 45 38 23 19 17 21 58 55 90 70 43 20 16 14 25 22 24 85 49 49 20 14 8 25 28 23 22 25 21 23 25 30 32 7 4 1 66 45 34 6 3 74 70">
+<param name="lowerVarName1" value="Sexe">
+<param name="lowerCatLabels1" value="M F">
+<param name="lowerValues1" value="0 1 0 0 1 0 0 1 0 1 1 0 0 1 1 0 1 0 1 1 0 1 1 1 0 1 0 1 0 1 1 0 1 1 1 0 1 0 1 1 1 0 0 1 0 1 1 0 0 0 1 1 1 1 1 1 0 0 0 0 1 1 0 1 1 0 1 0 1 0 1 0 0 1">
+<param name="lowerVarName2" value="Revenu">
+<param name="lowerValues2" value="56400 45000 0 34900 41300 0 33600 35100 78000 41400 28200 0 42300 21000 0 23800 0 0 0 0 0 65800 0 0 0 31900 66300 34100 24200 26400 0 58300 32500 24200 31600 25600 30900 69000 87300 0 0 51500 0 0 0 27900 14300 25000 0 34400 55700 0 0 0 18400 26500 24000 41200 18600 26400 36300 0 0 25700 0 0 0 16800 63600 46000 0 0 0 0">
+</applet>
+</div>
+
+		<p>La matrice de données sur la gauche montre au niveau des ménages informations &mdash; l'adresse interne et sa distance du supermarché le plus proche (en km). La matrice de données sur la droite montre les données qui ont été collectées auprès des individus dans les ménages - l'âge, le sexe et le revenu.</p>
+	<p>Notez que les ménages ont également été donné un numéro unique et chaque individu a une variable 'ID du ménage »qui la relient à son ménage. Cliquez sur un ménage ou une personne de voir les entrées correspondantes dans les deux tableaux.</p>
+</div>
+
+
+<p class="heading">Déplacement d'informations entre les matrices de données</p>
+<p>Les informations peuvent être échangées entre les deux matrices de données afin d'analyser les deux séries de données ensemble.</p>
+		
+<dl>
+		<dt>Niveau du Groupe --&gt; niveau individuel</dt>
+		<dd>Chaque rangée de la matrice de données au niveau individuel pourrait être augmentée avec des valeurs copiées à partir de la ligne correspondante (groupe) de la matrice au niveau du groupe de données</dd>
+		<dt>Niveau de l'individu --&gt; niveau du groupe</dt>
+		<dd>Il est également possible de résumer les données individuelles et l'ajouter à la matrice au niveau du groupe de données. Par exemple, on pourrait ajouter un «âge maximum» ou la variable «taille du ménage» à la matrice de données au niveau des ménages. Dans le scénario de plantes et de feuilles décrit dans le haut de cette page, variable une 'longueur de la lame moyenne »pourraient être ajoutés à la matrice des données au niveau.</dd>
+</dl>
+<br>
+	<center>
+		<table border="1" cellspacing="0" cellpadding="5" bgcolor="white" width="75%">
+			<tr> 
+				<th align="CENTER"><strong>Les informations peuvent être obtenues à partir des données multi-niveaux en examinant à la fois le groupe-niveau et au niveau individuel des matrices de données.</strong></th>
+			</tr>
+		</table>
+	</center>
+	<br>
+		
+<div class="diagram">
+
+		<p class="heading">Enquête auprès des ménages<br>
+</p>
+	<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="structureProg.MultiLevelDataApplet">
+<param name="nCoreVars" value="1 3">
+<param name="indexName" value="ID#Hh ID">
+<param name="higherDataName" value="Niveau des ménages">
+<param name="higherLabelName" value="Addresse">
+<param name="higherLabels" value="#14 Station Rd# #20 New Rd# #2 Newalls Rise# #9 Walton Av# #2 Kendall Av# #14 Buckden St# #269 Norcot Rd# #46 Victoria Rd# #354 Wokingam Rd# #27 Churchill Cres# #227 Brook St# #5 Ardler Rd# #175 Peppard Rd# #70 Prospect St# #57 Shefford Cres# #17 Denmark Av# #5 Audley St# #58 Pitford Rd# #6 Eagle Cl# #78 New Bright St# #25 Eastcourt Av# #150 Hexham Rd#">
+<param name="higherVarName0" value="Magasins">
+<param name="higherValues0" value="2.4 0.8 4.4 1.2 2.6 0.2 2.4 1.2 0.6 1.0 2.0 0.2 0.6 0.4 1.2 0.2 0.8 0.8 5.2 2.8 1.0 2.6">
+<param name="lowerDataName" value="Niveau de la personne">
+<param name="linkIndices" value="0 0 0 1 1 1 2 2 3 3 3 3 4 4 4 5 5 5 5 5 6 6 6 6 6 7 8 9 9 9 9 10 10 11 11 11 11 12 12 13 13 14 14 14 14 15 15 15 16 16 16 16 16 16 17 17 18 18 18 18 18 18 19 19 19 19 19 20 20 20 20 20 21 21">
+<param name="lowerLabelName" value="Nom de personne">
+<param name="lowerLabels" value="Luke Christine Rebecca David Eloise Brendon Robert Sarah Mark Rebecca Lucy Daniel Nicholas Natalie Rachel Keith Jessica Phillip Hannah Lucy James Margaret Katie Laura Philippa Kate Christopher Ruth Brendon Rebecca Daniel Richard Holly Krystle Sara Haydyn Brydee Hugh Tracey Jennifer Vanessa Douglas Rhys Tessa Phillip Vicki Sarah Nihaad Frank Paul Rachel Mariyam Louise Fiona Brook Sarah Luke Andrew John Julian Eloise Melissa Kurt Sarah Dana James Lucy Mary Aaron Natalie Rachel Robert Jack Cherie">
+<param name="lowerVarName0" value="Âge">
+<param name="lowerValues0" value="65 60 17 37 38 12 26 25 51 46 22 17 40 31 11 30 27 5 3 1 76 47 12 8 5 35 65 45 23 21 14 45 38 23 19 17 21 58 55 90 70 43 20 16 14 25 22 24 85 49 49 20 14 8 25 28 23 22 25 21 23 25 30 32 7 4 1 66 45 34 6 3 74 70">
+<param name="lowerVarName1" value="Sexe">
+<param name="lowerCatLabels1" value="M F">
+<param name="lowerValues1" value="0 1 0 0 1 0 0 1 0 1 1 0 0 1 1 0 1 0 1 1 0 1 1 1 0 1 0 1 0 1 1 0 1 1 1 0 1 0 1 1 1 0 0 1 0 1 1 0 0 0 1 1 1 1 1 1 0 0 0 0 1 1 0 1 1 0 1 0 1 0 1 0 0 1">
+<param name="lowerVarName2" value="Revenu">
+<param name="lowerValues2" value="56400 45000 0 34900 41300 0 33600 35100 78000 41400 28200 0 42300 21000 0 23800 0 0 0 0 0 65800 0 0 0 31900 66300 34100 24200 26400 0 58300 32500 24200 31600 25600 30900 69000 87300 0 0 51500 0 0 0 27900 14300 25000 0 34400 55700 0 0 0 18400 26500 24000 41200 18600 26400 36300 0 0 25700 0 0 0 16800 63600 46000 0 0 0 0">
+<param name="nDerivedVars" value="1 3">
+<param name="copy0" value="y0#Magasins">
+<param name="sum0" value="COUNT#Hh taille#0">
+<param name="sum1" value="MIN#Min âge#0#y0">
+<param name="sum2" value="TOTAL#Revenu total#0#y2">
+</applet>
+</div>
+		<p>Dans l'enquête ménage au-dessus, le «Distance aux magasins» à partir des données au niveau des ménages peuvent être copiés à la matrice de données au niveau individuel pour être analysés au niveau individuel.</p>
+	<p>De façon similaire, des informations des individus dans un ménage peut être utilisé pour créer de nouvelles variables au niveau des ménages. Sélectionnez <strong>Hh taille</strong> (taille du ménage), <strong>l'âge minimum</strong> (âge minimum) et <strong>le revenu total</strong> dans le menu pop-up. Leurs valeurs pour tous les foyers sont déterminés à partir des variables dans la matrice des données individuelles pour les particuliers dans le ménage. (Encore une fois, cliquez sur la ligne tout ménage pour mettre en évidence les individus en elle.)</p>
+</div>
+	
+<p class="heading">L'analyse des matrices de données à deux</p>
+<p>Les méthodes d'analyse de données qui sera décrite dans CAST peut être utilisé à la fois avec le groupe-niveau et au niveau individuel des matrices de données. Il est cependant important de reconnaître la différence entre l'analyse des données à ces deux niveaux.</p>
+		
+<div class="diagram">
+	  <p>Considérons un ménage avec une personne qui se trouve à 2 km des commerces et un autre ménage avec 9 personnes qui est à 1 km des commerces.</p>
+	<dl>
+		<dt>Au niveau des ménages</dt>
+		  <dd>La distance moyenne des ménages dans les magasins est à 1.5 km &mdash; la moyenne des deux distances ménage.</dd>
+		<dt>Au niveau individuel</dt>
+		  <dd>La distance moyenne individuelle des commerces est de 1.1 km &mdash; la moyenne des dix distances individuelles 1, 1, 1, 1, 1, 1, 1, 1, 1, 2.</dd>
+	</dl>
+	<br>
+	</div>
+<p>Correctement analyse multi-niveaux des données et l'interprétation des résultats de l'analyse nécessite beaucoup de réflexion et de soins!</p>
+	
+<center>
+		<table border="1" cellspacing="0" cellpadding="5" bgcolor="white" width="75%">
+			<tr> 
+				<th align="CENTER"><strong>Bien que vous puissiez analyser à la fois le groupe-niveau et au niveau individuel des matrices de données en utilisant les méthodes qui seront décrites dans CAST, des méthodes statistiques avancées sont nécessaires pour analyser pleinement multi-niveaux des données.</strong></th>
+			</tr>
+		</table>
+	</center>
+	
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

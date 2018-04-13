@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Likelihood function</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="estimation, likelihood function, binomial distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Alternative to the method of moments</p>
+
+<p>Although the method of moments often provides a good estimator for a single unknown parameter, it is difficult to extend to statistical models with  <strong>more</strong> unknown parameters.</p>
+<p>We now describe a better estimation method that  can  be extended to models with many unknown parameters and even situations in which the available data are not a random sample.</p>
+<p class="heading">Probability of data</p>
+<p>We start by considering a random situation in which the variables that will be recorded, \(\{X_1, X_2, \dots, X_n\}\), have a joint probability that involves an unknown parameter, \(\theta\).</p>
+\[
+p(x_1, x_2, \dots, x_n \;| \; \theta)
+\]
+<p>For example, if the variables are a random sample from a \(\GeomDistn(\pi)\) distribution, independence means that the joint probability is the following product.</p>
+\[
+P(X_1=x_1 \textbf{ and } X_2=x_2 \textbf{ and } \dots \textbf{ and } X_n=x_n) = \prod_{i=1}^n {\pi (1-\pi)^{x_i-1}} \]
+<p class="heading">Likelihood function</p>
+<p>In the joint probability, we usually treat the parameter \(\theta\) as a constant and  consider how the probability depends on the x-values. We will now do the opposite; we will treat the data values as fixed constants and examine how  the probability depends on the value of \(\theta\).</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>If random variables \(\{X_1, X_2, \dots, X_n\}\) have joint probability</p>
+\[
+p(x_1, x_2, \dots, x_n \;| \; \theta)
+\]
+<p>then the function</p>
+\[
+L(\theta \; | \; x_1, x_2, \dots, x_n) \;=\; p(x_1, x_2, \dots, x_n \;| \; \theta)
+\]
+<p>is called the <strong>likelihood function</strong> of \(\theta\).</p>
+</div>
+
+<p>The likelihood function  tells you the probability of getting the data that were observed, for different values of the parameter, \(\theta\). More informally,</p>
+
+<div class="boxed">
+	<p class="eqn">\(L(\theta) = Prob(\text{getting the data that were observed})\) if the parameter value was really \(\theta\).</p></div>
+
+<p>We now give a simple example.</p>
+
+
+<div class="example" title="Example: Binomial likelihood function">
+	
+	<p class="exampleHeading">Binomial random variable</p>
+
+<p>Consider a random variable \(X\) that is the number of successes in \(n=20\) independent trials, each of which has probability \(\pi\) of success. The probability function of \(X\) is</p>
+\[
+p(x \; | \; \pi) = {{20} \choose x} \pi^x(1-\pi)^{20-x} \quad \quad \text{for } x=0, 1, \dots, 20
+\]
+<p>If  the experiment resulted in \(x=6\) successes, this would have probability</p>
+\[
+p(6 \; | \; \pi) = {{20} \choose 6} \pi^6(1-\pi)^{14} = (38,760) \times 
+\pi^6(1-\pi)^{14} \]
+<p>The likelihood function treats this as a function of \(\pi\),</p>
+\[
+L(\pi) \;=\; p(6 \; | \; \pi) \;=\; (38,760) \times 
+\pi^6(1-\pi)^{14} \]
+<p>The likelihood function gives the probability of getting the data that we observed (6 successes) for different values of the parameter \(\pi\).</p>
+<p>Note that the likelihood function is a <strong>continuous</strong> function of \(\pi\), even though the random variable \(X\) is discrete.</p>
+<hr width="75%">
+<p>The top half of the following diagram shows the likelihood function. The bottom half is a bar chart of a binomial distribution.</p>
+<div class="centred"> 
+	<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="estimationProg.BinomialLikelihoodApplet">
+<param name="backgroundColor" value="FFFBF3">
+<param name="binom" value="20 6 0.400">
+<param name="dataAxis" value="-0.5 20.5 0 2">
+<param name="likelihoodAxis" value="0 0.2 0 0.05">
+<param name="customText" value="Prob of observed data (Likelihood)=Prob of observed data (Likelihood)#Binomial probability function=Binomial probability function#Binomial values=Binomial values#Unknown parameter=Unknown parameter#Probability of success=Probability of success">
+</applet> 
+</div>
+<p>The bar chart initially shows the binomial distribution with \(\pi = 0.4\) and the probability  \(p(6\;|\;\pi = 0.4)\) is highlighted on it.</p>
+<p>This probability is the value of the likelihood for \(\pi = 0.4\) and is also shown in the graph of the likelihood function at the top.</p>
+<p>Now drag the slider to highlight \(p(6\;|\;\pi)\) for different values of \(\pi\).</p>
+<p>For some values of \(pi\), you would have been unlikely to observe 6 successes, whereas for other values of \(\pi\), 6 successes would have been much more likely. For example,</p>
+<ul>
+	<li>If \(\pi = 0.1\), the probability of getting 6 successes is only 0.0089 — very unlikely.</li>
+	<li>If  \(\pi = 0.4\), the probability of getting 6 successes is 0.124 — much more likely.</li>
+</ul>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

@@ -1,0 +1,1215 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>12. Multivariate distributions</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/maths/mathStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/maths/theorems.js"></script>
+  <script src="../../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 12 &nbsp; Multivariate distributions</h1>
+<h1 class="sectionName">12.1 &nbsp; Discrete bivariate distributions</h1>
+<h2 class="pageName">12.1.1 &nbsp; Joint probability function</h2>
+<p>A  discrete random variable's probability function gives  probabilities for all of its possible values. Probabilities for more complex events  can be found by summing it over the relevant values. A similar quantity describes the joint distribution of two discrete random variables.</p>
+
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+<p>For two discrete random variables \(X\) and \(Y\), the <strong>joint probability function</strong> gives the probabilities for all possible combinations of values of the two variables,</p>
+\[
+p(x, y) \;=\; P(X=x \textbf{ and } Y=y)
+\]
+</div>
+
+<p>A joint probability function can often be expressed as a single mathematical formula, but a 2-dimensional table of probabilities is an alternative.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Question</p>
+		<p>Consider a weighted six-sided die for which the value &quot;6&quot; has twice the probability of the other values. If the die is rolled twice, with \(X\) and \(Y\) being the values that appear on the first and second rolls, what is the joint probability function of the two variables?</p>
+		<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+<p>Joint probability functions must satisfy two properties:</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Properties of joint probability functions</p>
+		\[
+		p(x,y) \ge 0 \text{ for all } x,y
+		\]
+		\[
+		\sum_{\text{all } x,y} p(x,y) = 1
+		\]
+		<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p class="heading">Probabilities for events about \(X\) and \(Y\)</p>
+<p>The probabilities of  other events  can be found by adding joint probabilities. For any event, \(A\),</p>
+\[
+P(A) \;\;=\;\; \sum_{(x,y) \in A} {p(x,y)}
+\]
+
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Question</p>
+<p>In the above weighted dice example, what is the probability that the sum of the two dice will be ten or more?</p>
+<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+
+<h2 class="pageName">12.1.2 &nbsp; Three-dimensional bar chart (Mainly to help understanding)</h2>
+<p>The joint probability function of two discrete random variables can be displayed graphically in a 3-dimensional bar chart that is closely related to a 2-dimensional bar chart for a single variable.</p>
+<div class="example">
+	<p class="exampleHeading">Maximum and minimum of three rolled dice</p>
+	<p>Consider rolls of three <strong>fair</strong> dice for which there is probability \(\frac 1 6\) for each value. We  define \(X\) and \(Y\) to be the maximum and minimum of the three values. We now give (without proof) their the joint probability function.	</p>
+\[
+p(x,y) \;\;=\;\; \begin{cases} {\frac 1 {6^3}} &amp; \quad\text{if }x = y \;\;\text{ and }\;\; 1 \le x,y \le 6 \\[0.4em]
+{\frac {x-y}{6^2}} &amp; \quad\text{if } 1 \le y \lt x \le 6 \\[0.4em]
+0 &amp; \quad\text{otherwise}
+\end{cases} \]
+	<p>The diagram below shows a 3-dimensional bar chart of these probabilities.</p>
+	<p class="eqn"><img src="../../../en/bivarDiscreteDistns/images/s_barchart.png" width="490" height="485"  alt=""/></p>
+</div>
+
+
+
+<h2 class="pageName">12.1.3 &nbsp; Marginal distributions</h2>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+<p>The <strong>marginal probability function</strong> of \(X\) is</p>
+\[
+p_X(x) \;=\; P(X = x) \;=\; \sum_{y} p(x,y)
+\]
+<p>In the same way, the marginal probability function of \(Y\) is</p>
+\[
+p_Y(y) \;=\; P(Y = y) \;=\; \sum_{x} p(x,y)
+\]
+</div>
+
+<p>These describe the distributions of the separate variables when nothing is known about the value of the other variable.</p>
+<div class="example">
+	<p class="exampleHeading">Maximum and minimum of three dice</p>
+	<p>On the previous page, we gave the joint probability function for the maximum, \(X\), and minimum, \(Y\), of three independent rolls of a fair 6-sided die.</p>
+\[
+p(x,y) \;\;=\;\; \begin{cases} {\frac 1 {6^3}} &amp; \quad\text{if }x = y \;\;\text{ and }\;\; 1 \le x,y \le 6 \\[0.4em]
+{\frac {x-y}{6^2}} &amp; \quad\text{if }y \lt x \text{, }\;\; y \ge 1 \;\;\text{ and }\;\; x \le 6 \\[0.4em]
+0 &amp; \quad\text{otherwise}
+\end{cases} \]
+	<p>The marginal probability function for \(X\) can be found by adding the joint probabilities over \(Y\).</p>
+
+\[ \begin{align}
+p_X(6) \;&amp;=\; p(6,6) + p(6,5) + \cdots + p(6,1) \\
+&amp;=\; \frac 1{6^3} + \frac 1{6^2} + \frac 2{6^2} + \cdots + \frac 5{6^2} \\
+&amp;=\; \frac 1{6^3} + \frac {1+2+3+4+5}{6^2} \\
+&amp;=\; \frac 1{6^3} + \frac {15}{6^2} \\[0.7em]
+
+p_X(5) \;&amp;=\; p(5,5) + p(5,4) + \cdots + p(5,1) \\
+&amp;=\; \frac 1{6^3} + \frac 1{6^2} + \frac 2{6^2} + \cdots + \frac 4{6^2} \\
+&amp;=\; \frac 1{6^3} + \frac {10}{6^2} \\[0.7em]
+
+p_X(4) \;&amp;=\; \frac 1{6^3} + \frac {6}{6^2} \\[0.7em]
+
+p_X(3) \;&amp;=\; \frac 1{6^3} + \frac {3}{6^2} \\[0.7em]
+
+p_X(2) \;&amp;=\; \frac 1{6^3} + \frac {1}{6^2} \\[0.7em]
+
+p_X(1) \;&amp;=\; \frac 1{6^3}
+\end{align} \]</div>
+
+
+
+<h2 class="pageName">12.1.4 &nbsp; Conditional distributions</h2>
+<p>If the value of one variable is known, it may provide information about the likely values of the other variable. This is captured by the  conditional probabilities about \(Y\) given \(X\).</p>
+
+\[
+P(Y = y \mid X=x) \;\;=\;\; \frac{P(Y = y \text{ and } X=x)}{P(X=x)} \;\;=\;\; \frac{p(x,y)}{p_X(x)} \]
+
+
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+<p>The <strong>conditional distribution</strong> of \(Y\) given \(X=x\) is the distribution with probability function</p>
+\[
+p_{Y \mid X=x}(y) \;\;=\;\; \frac{p(x,y)}{p_X(x)}
+\]
+</div>
+
+<p>Note that there are separate conditional distributions of \(Y\) for each possible value of \(X\).</p>
+<p>The conditional distribution of  \(X\) given \(Y=y\) can be similarly defined as</p>
+
+\[p_{X \mid Y=y}(x) = \frac{p(x,y)}{p_Y(y)}\]
+
+<div class="example">
+  <p class="exampleHeading">Minimum and maximum of three dice</p>
+	<p>When three fair six-sided dice are rolled,  the joint probability function of the minimum, \(Y\), and maximum, \(X\), the joint probabilities are shown in tabular form below.</p>
+	
+	<div class="centred">
+	<table border="0" cellpadding="5" cellspacing="0" class="centred">
+		<tr>
+			<th>&nbsp;</th>
+			<th colspan="6">Maximum, <em>x</em></th>
+		</tr>
+		<tr>
+			<th>Minimum, <em>y</em></th>
+			<th>1</th>
+			<th>2</th>
+			<th>3</th>
+			<th>4</th>
+			<th>5</th>
+			<th>6</th>
+		</tr>
+		<tr>
+			<th>1</th>
+			<td style="background-color:#FFFFFF; border-top:1px solid #999999; border-left:1px solid #999999;">\(\small\diagfrac 1{6^3}\)</td>
+			<td style="background-color:#FFFFFF; border-top:1px solid #999999;">\(\small\diagfrac 1{6^2}\)</td>
+			<td style="background-color:#FFFFFF; border-top:1px solid #999999;">\(\small\diagfrac 2{6^2}\)</td>
+			<td style="background-color:#FFFFFF; border-top:1px solid #999999;">\(\small\diagfrac 3{6^2}\)</td>
+			<td style="background-color:#FFFFFF; border-top:1px solid #999999;">\(\small\diagfrac 4{6^2}\)</td>
+			<td style="background-color:#FFFFFF; border-top:1px solid #999999; border-right:1px solid #999999;">\(\small\diagfrac 5{6^2}\)</td>
+		</tr>
+		<tr>
+			<th>2</th>
+			<td style="background-color:#FFFFFF; border-left:1px solid #999999;">0</td>
+			<td  style="background-color:#FFFFFF;">\(\small\diagfrac 1{6^3}\)</td>
+			<td  style="background-color:#FFFFFF;">\(\small\diagfrac 1{6^2}\)</td>
+			<td  style="background-color:#FFFFFF;">\(\small\diagfrac 2{6^2}\)</td>
+			<td  style="background-color:#FFFFFF;">\(\small\diagfrac 3{6^2}\)</td>
+			<td style="background-color:#FFFFFF; border-right:1px solid #999999;">\(\small\diagfrac 4{6^2}\)</td>
+		</tr>
+		<tr>
+			<th class="red">3</th>
+			<td style="border-left:1px solid #999999; background-color:#FFFF00">0</td>
+			<td style="background-color:#FFFF00">0</td>
+			<td style="background-color:#FFFF00">\(\small\diagfrac 1{6^3}\)</td>
+			<td style="background-color:#FFFF00">\(\small\diagfrac 1{6^2}\)</td>
+			<td style="background-color:#FFFF00">\(\small\diagfrac 2{6^2}\)</td>
+			<td style="border-right:1px solid #999999; background-color:#FFFF00">\(\small\diagfrac 3{6^2}\)</td>
+		</tr>
+		<tr>
+			<th>4</th>
+			<td style="background-color:#FFFFFF; border-left:1px solid #999999;">0</td>
+			<td  style="background-color:#FFFFFF;">0</td>
+			<td  style="background-color:#FFFFFF;">0</td>
+			<td  style="background-color:#FFFFFF;">\(\small\diagfrac 1{6^3}\)</td>
+			<td  style="background-color:#FFFFFF;">\(\small\diagfrac 1{6^2}\)</td>
+			<td style="background-color:#FFFFFF; border-right:1px solid #999999;">\(\small\diagfrac 2{6^2}\)</td>
+		</tr>
+		<tr>
+			<th>5</th>
+			<td style="background-color:#FFFFFF; border-left:1px solid #999999;">0</td>
+			<td  style="background-color:#FFFFFF;">0</td>
+			<td  style="background-color:#FFFFFF;">0</td>
+			<td  style="background-color:#FFFFFF;">0</td>
+			<td  style="background-color:#FFFFFF;">\(\small\diagfrac 1{6^3}\)</td>
+			<td style="background-color:#FFFFFF; border-right:1px solid #999999;">\(\small\diagfrac 1{6^2}\)</td>
+		</tr>
+		<tr>
+			<th>6</th>
+			<td style="background-color:#FFFFFF; border-bottom:1px solid #999999; border-left:1px solid #999999;">0</td>
+			<td style="background-color:#FFFFFF; border-bottom:1px solid #999999;">0</td>
+			<td style="background-color:#FFFFFF; border-bottom:1px solid #999999;">0</td>
+			<td style="background-color:#FFFFFF; border-bottom:1px solid #999999;">0</td>
+			<td style="background-color:#FFFFFF; border-bottom:1px solid #999999;">0</td>
+			<td style="background-color:#FFFFFF; border-bottom:1px solid #999999; border-right:1px solid #999999;">\(\small\diagfrac 1{6^3}\)</td>
+		</tr>
+	</table>
+	</div>
+	
+	<p>We will now find the conditional distribution of the maximum value, \(Y\), if it is known that the minimum  is \(X = 3\). The marginal probability for \(Y = 3\) is the sum of the probabilities in the  highlighted row.</p>
+\[
+p_Y(3) = \sum_{x=1}^{6} p(x,y) = \frac 1{6^3} + \frac 1 6
+\]
+  <p>The conditional probabilities for \(X\) divide the highlighted row by this value,</p>
+\[
+p_{X\mid Y=3}(x) =\frac {p(x,3)}{p_Y(3)}
+\]
+	<p>Because of how \(p_{X\mid Y=3}(x)\) was calculated,  the row of conditional probabilities adds to one, making it a valid univariate probability function for \(X\).</p>
+	
+<div class="centred">
+	<table border="0" cellpadding="5" cellspacing="0" class="centred">
+		<tr>
+			<th colspan="6">Conditional distribution of <em>X</em>, given <em>y</em> = 3</th>
+		</tr>
+		<tr>
+			<th width="70">1</th>
+			<th width="70">2</th>
+			<th width="70">3</th>
+			<th width="70">4</th>
+			<th width="70">5</th>
+			<th width="70">6</th>
+		</tr>
+		<tr>
+			<td style="background-color:#FFFFFF; border:1px solid #999999; border-right:0px;">0</td>
+			<td style="background-color:#FFFFFF; border-top:1px solid #999999; border-bottom:1px solid #999999;">0</td>
+			<td style="background-color:#FFFFFF; border-top:1px solid #999999; border-bottom:1px solid #999999;">\(\displaystyle \frac {\small\diagfrac 1{6^3}}{\frac 1{6^3} + \frac 1 6}\)</td>
+			<td style="background-color:#FFFFFF; border-top:1px solid #999999; border-bottom:1px solid #999999;">\(\displaystyle \frac {\small\diagfrac 1{6^2}} {\frac 1{6^3} + \frac 1 6}\)</td>
+			<td style="background-color:#FFFFFF; border-top:1px solid #999999; border-bottom:1px solid #999999;">\(\displaystyle \frac {\small\diagfrac 2{6^2}} {\frac 1{6^3} + \frac 1 6}\)</td>
+			<td style="background-color:#FFFFFF; border:1px solid #999999; border-left:0px;">\(\displaystyle \frac {\small\diagfrac 3{6^2}} {\frac 1{6^3} + \frac 1 6}\)</td>
+		</tr>
+	</table>
+</div>
+<br>
+</div>
+
+<p class="heading">Conditional mean and variance</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>The <strong>conditional mean</strong> of \(Y\) given \(X=x\) is</p>
+	\[
+	E[Y \mid X=x] \;\;=\;\; \sum_{\text{all }y} {y \times p_{Y \mid X=x}(y)} \;\;=\;\; \sum_{\text{all }y} {y \times \frac{p(x,y)}{p_X(x)}}
+	\] </div>
+<p>The <strong>conditional variance</strong> of \(Y\) given \(X=x\) is similarly defined as the variance of this conditional distribution.</p>
+<p>Both  can depend on the x-value that we are conditioning on.</p>
+
+
+<h2 class="pageName">12.1.5 &nbsp; Independence</h2>
+<p>Independence of two random variables, \(X\) and \(Y\), arises when all events about \(X\) are independent of all events about \(Y\). For discrete random variables, this is equivalent to the following:</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Independence</p>
+		<p><span class="definition">Two discrete random variables,<em> X</em>, and<em> Y</em>, are independent if</span> and only if</p>
+		\[
+		p(x, y) \;\;=\;\; p_X(x) \times p_Y(y) \qquad \text{ for all } x \text{ and } y
+		\] </div>
+</div>
+<p>If \(X\) and \(Y\) are independent, then</p>
+\[
+p_{X\mid Y=y}(x) \;\;=\;\; \frac {p(x,y)}{p_Y(y)} \;\;=\;\; \frac {p_X(x)p_Y(y)}{p_Y(y)} \;\;=\;\; p_X(x)
+\]
+<p>so the conditional distribution of \(X\) does not depend on the value of \(y\).</p>
+<p>In a similar way, if \(X\) and \(Y\) are independent, then</p>
+\[
+p_{Y\mid X=x}(y) \;\;=\;\;  p_Y(y)
+\]
+
+
+
+<h2 class="pageName">12.1.6 &nbsp; Random samples</h2>
+<p>The concept of a joint probability function for two discrete random variables generalises to \(n\) random variables.</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>The <strong>joint probability function</strong> for \(n\) random variables \(\{X_1,X_2,\dots, X_n\}\) is</p>
+\[
+p(x_1, \dots, x_n) \;=\; P(X_1=x_1 \textbf{ and } \cdots \textbf{ and } X_n=x_n)
+\]</div>
+
+<p>Maximum likelihood can again be used to estimate any unknown parameters. The likelihood function is  the probability of observing the recorded data, treated as a function of the unknown parameter(s). For a single unknown parameter, \(\theta\),</p>
+\[
+L(\theta \; | \; x_1, x_2, \dots, x_n) \;=\; p(x_1, x_2, \dots, x_n \;| \; \theta)
+\]
+<p>The maximum likelihood estimate of the parameter is the value of the parameter that maximise this.</p>
+<p class="heading">Independence and random samples</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Independence of n random variables</p>
+		<p><span class="definition">Discrete random variables \(\{X_1,X_2,\dots, X_n\}\) are independent if</span> and only if</p>
+		\[
+		p(x_1, \dots, x_n) \;\;=\;\; p_{X_1}(x_1) \times \;\cdots \; \times p_{X_n}(x_n) \qquad \text{ for all } x_1,\dots,x_n
+		\] </div>
+</div>
+<p>In particular, when all \(n\) variables are independent with the <strong>same</strong> distribution, they are  a <strong>random sample</strong> from this distribution. Their joint probability function was what we maximised earlier when estimating parameters from a random sample by maximum likelihood.</p>
+
+
+<h1 class="sectionName breakBefore">12.2 &nbsp; Continuous bivariate distributions</h1>
+<h2 class="pageName">12.2.1 &nbsp; Joint probability density function</h2>
+<p>For any single continuous random variable, \(X\),</p>
+\[
+		P(X=x) \;=\; 0 \qquad \text{for all } x
+		\]
+<p>Events of interest correspond to <strong>ranges</strong> of values and probabilities are found as areas under a probability density function,</p>
+<p class="eqn"><img class="svgImage" src="../../en/bivarContinDistns/images/univarProb.png" width="331" height="244"></p>
+<p class="heading">Probabilities as volumes</p>
+<p>A similar result holds for a pair of two continuous random variables, \(X\) and \(Y\),</p>
+\[
+P(X=x \textbf{ and } Y=y) \;=\; 0 \qquad \text{for all } x,y
+\]
+<p>and events of interest correspond to <strong>ranges</strong> of values of the variables, such as</p>
+\[
+P(1 \lt X \lt 2 \textbf{ and } Y \gt 4)
+\]
+
+<p>Their probabilities  are defined  as <strong>volumes under a surface</strong> in three dimensions. For the two variables below, the shaded volume is the probability that \((X+Y)\) has a value greater than 1 and can be found by simple geometry to be &frac12;.</p>
+<p class="eqn"><img class="svgImage" src="../../en/bivarContinDistns/images/bivarProb.png" width="300" height="277"></p>
+<p class="heading">Joint probability density function</p>
+<p>This surface is called the variables' <strong>joint probability density function</strong>. It is often denoted by \(f(x,y)\) and defined by a mathematical formula. It must satisfy the following two properties:</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Properties of probability functions</p>
+		\[
+		f(x,y) \ge 0 \text{ for all } x, y
+		\]
+		\[
+		\iint\limits_{\text{all } x,y} f(x,y)\;dx\;dy = 1
+		\]
+	</div>
+</div>
+<p>The second requirement corresponds to the <strong>total volume</strong> under the joint probability density function being one. This is required because</p>
+
+\[
+P(-\infty \lt X \lt \infty \textbf{ and } -\infty \lt Y \lt \infty)
+\]
+<p>must be one since \(X\) and \(Y\) are certain to have values within these ranges.</p>
+
+
+<h2 class="pageName">12.2.2 &nbsp; Marginal and conditional distributions</h2>
+<p class="heading">Marginal distributions</p>
+<p>The concept of <strong>marginal</strong> distributions for continuous random variables <em>X</em> and <em>Y</em> is the same as that for discrete ones, though the mathematics to find them are different. The marginal pdf of a variable <em>X</em> is the univariate pdf that characterises its distribution if nothing is known about the value of the other variable, <em>Y</em>. We will denote the marginal distribution of <em>X</em> by \(f_{X}(x)\).</p>
+<p>The value of \(f_{X}(x)\) can be visualised as the area of a cross section of the joint pdf at <em>x</em>. (If the variables had been discrete, it would have been the sum of joint probabilities over such a slice.)</p>
+<p class="eqn"><img class="svgImage" src="images/marginalPdf.png" width="300" height="277"></p>
+
+<p>Probabilities about <em>X</em> can be found directly from its marginal distribution. (Similarly, probabilities about <em>Y</em> can be found from its marginal distribution.)</p>
+<p class="heading">Conditional distributions</p>
+<p>The <strong>conditional</strong> distribution of <em>Y</em> given that <em>X</em> = <em>x</em> describes what is known about its distribution when the value of <em>X</em> is known. This is a similar concept to conditional distributions for discrete variables but, being continuous, is defined by a univariate probability <strong>density</strong> function that we will denote by \(f_{Y|X=x}(y)\). Note that the conditional distribution of <em>Y</em> is usually different for different values of <em>X</em>.</p>
+<p>The shape of the conditional pdf of <em>Y</em> given that <em>X</em> = <em>x</em> is given by the <strong>shape</strong> of the cross section at <em>x</em>. (If the variables had been discrete, the joint probabilities in such a slice would have defined the conditional pdf, after scaling).</p>
+<p class="eqn"><img class="svgImage" src="images/conditionalPdf.png" width="300" height="277"></p>
+
+<p>If the value of <em>X</em> is known,  probabilities about <em>Y</em> can be found directly from its conditional distribution (and similarly for probabilities about<em> X</em> when the value of <em>Y</em> is known).</p>
+<p class="heading">Independence and random samples</p>
+<p>The concept of independence is the same for continuous and discrete random variables. If two variables are independent, knowing the value of one gives no information about the distribution of the other. For example, knowing the value of <em>X</em> gives no information about the value of <em>Y</em> and all conditional distributions for <em>Y</em> are the same as its marginal distribution,</p>
+\[
+f_{Y\mid X=x}(y) \;\;=\;\;  f_Y(y)
+\]
+<p>A random sample again consists of a collection of <em>n</em> such independent variables.</p>
+<p class="heading">Mathematics behind continuous bivariate distributions</p>
+<p>We expect you to understand the concepts behind marginal and conditional distributions for continuous random variables, but the <strong>mathematics</strong> required to evaluate them is much harder than in the discrete case. We therefore <strong>do not</strong> expect you to learn how to find them mathematically.</p>
+
+<div class="boxed" style="background-color:yellow;">
+	<p style="color:red;">The remaining pages in this section are only included for completeness. You do not need to understand them and they will not be examined.</p>
+</div>
+
+
+<h2 class="pageName">12.2.3 &nbsp; Probabilities as integrals (Not examined)</h2>
+<p>Events about pairs of continuous random variables, such as &ldquo;\(X+Y \gt 1\)&rdquo; or &ldquo;\(X \gt 5 \textbf{ and } Y \lt 3\)&rdquo; correspond to regions of the x-y plane.</p>
+<p>The probability for any such event is the volume under the joint probability density function above this region, and can be evaluated as a <strong>double-integral</strong>.</p>
+
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Probabilities as integrals</p>
+<p>The probability of any event \(A\) about the variables \(X\) and \(Y\) can be evaluated as</p>
+\[
+P(A) \;\;=\;\; \iint\limits_{(x,y) \in A} f(x,y)\;dx\;dy
+\]</div>
+</div>
+
+<p>Care must be taken with the integration limits for the inner and outer integrals when evaluating this integral — for some events, the limits for the inner integral must involve the outer integral's variable.</p>
+
+<div class="questionSoln">
+<div class="question">
+<p class="questionTitle">Example</p>
+<p>The random variables \(X\) and \(Y\) have joint probability density function</p>
+\[
+f(x,y) \;=\; \begin{cases} x+y &amp; \quad\text{if }0 \lt x \lt 1 \text{ and }0 \lt y \lt 1 \\
+0 &amp; \quad\text{otherwise} \end{cases}
+\]
+<p>What is the probability that \(X+Y\) will be less than one?</p>
+<p class="questionNote">(Solved in full version)</p>
+</div>
+</div>
+
+
+<h2 class="pageName">12.2.4 &nbsp; Marginal distributions (Not examined)</h2>
+<p>If the event of interest only involves one of the two variables, the double-integral simplifies considerably. For example,</p>
+\[
+P(a \lt X \lt b) \;=\; \int_a^b \int_{-\infty}^{\infty} f(x,y) \;dy \; dx \;=\; \int_a^b f_X(x) \; dx
+\]
+<p>where</p>
+\[
+f_X(x) \;=\; \int_{-\infty}^{\infty} f(x,y) \;dy
+\]
+<p>The function \(f_X(x)\) is called the <strong>marginal probability density function of \(X\)</strong>. The marginal probability density function of \(Y\) is similarly defined as</p>
+\[
+f_Y(y) \;=\; \int_{-\infty}^{\infty} f(x,y) \;dx
+\]
+<p class="heading">Marginal distributions</p>
+<p>A marginal pdf  gives the distributions of one variable if nothing is known about the other variable. </p>
+<p>Marginal pdfs can be found by integration, but geometry can occasionally be used — \(f_X(x)\) is the area of a cross-section through the joint pdf at \(x\).</p>
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Example</p>
+<p>The random variables \(X\) and \(Y\) have joint probability density function</p>
+\[
+f(x,y) \;=\; \begin{cases} x+y &amp; \quad\text{if }0 \lt x \lt 1 \text{ and }0 \lt y \lt 1 \\
+0 &amp; \quad\text{otherwise} \end{cases}
+\]
+<p>What is the marginal pdf of \(X\)?</p>
+<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">12.2.5 &nbsp; Conditional distributions (Not examined)</h2>
+
+<p>The definition and interpretation   of conditional distributions for continuous random variables are similar to those for discrete  variables.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>The <strong>conditional distribution</strong> of \(Y\) given \(X=x\) is the distribution with probability density function</p>
+	\[
+	f_{Y \mid X=x}(y) \;\;=\;\; \frac{f(x,y)}{f_X(x)}
+	\] </div>
+<p>Its shape  is that of a slice through the joint pdf at \(X=x\), but it is scaled to have unit area by dividing by the area of the slice.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Example</p>
+		<p>The random variables \(X\) and \(Y\) have joint probability density function</p>
+		\[
+		f(x,y) \;=\; \begin{cases} x+y &amp; \quad\text{if }0 \lt x \lt 1 \text{ and }0 \lt y \lt 1 \\
+		0 &amp; \quad\text{otherwise} \end{cases}
+		\]
+		<p>What is the conditional pdf of \(Y\), given that \(X = x\)?</p>
+		<p>What is the probability that \(Y\) is more than 0.5, given that \(X\) is 0.7?</p>
+		<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">12.2.6 &nbsp; Independence and random samples (Not examined)</h2>
+<p>Two random variables, \(X\) and \(Y\), are independent when all events about \(X\) are independent of all events about \(Y\). The following result for continuous random variables is similar to that for discrete variables.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Independence</p>
+		<p><span class="definition">Two continuous random variables,<em> X</em>, and<em> Y</em>, are independent if</span> and only if</p>
+		\[
+		f(x, y) = f_X(x) \times f_Y(y) \qquad \text{ for all } x \text{ and } y
+		\] </div>
+</div>
+<p>If \(X\) and \(Y\) are independent, then the conditional pdf of \(X\), given that \(Y = y\) is equal to its marginal pdf.</p>
+\[
+f_{X\mid Y=y}(x) \;\;=\;\; \frac {f(x,y)}{f_Y(y)} \;\;=\;\;  f_X(x)
+\]
+<p>If the variables are independent,  knowing the value of \(Y\) gives no information about the distribution of \(X\). Similarly,</p>
+\[
+f_{Y\mid X=x}(y) \;\;=\;\;  f_Y(y)
+\]
+
+<p class="heading">Determining independence</p>
+<p>We can sometimes deduce mathematically that two variables are independent by factorising their joint pdf, but independence is more often justified by the context from which the two variables were defined.</p>
+<div class="example">
+	<p class="exampleHeading">Failure of light bulbs</p>
+	<p>If two light bulbs are tested at 80ºC until failure, their failure times \(X\) and \(Y\) can be assumed to be independent — failure of one bulb would not influence when the other failed. If the distribution for a single light bulb is \(\ExponDistn(\lambda)\), there joint pdf would therefore be</p>
+\[
+		f(x, y) = f_X(x) \times f_Y(y) = \left(\lambda e^{\lambda x}\right)\left(\lambda e^{\lambda y}\right) = \lambda^2 e^{\lambda(x+y)}\qquad \text{ if } x \ge 0\text{ and } y \ge 0
+\]
+</div>
+
+<p class="heading">Extensions to 3 or more variables</p>
+<p>The idea of a joint probability density function for three or more continuous random variables  \(\{X_1,X_2,\dots, X_n\}\) is a simple extension of that for two variables,</p>
+\[
+f(x_1, \dots, x_n) 
+\]
+<p>Probabilities can be obtained from the joint pdf as multiple integrals over the corresponding values of the variables, \((x_1, \dots, x_n)\), but we will not go into the details  here.</p>
+<p class="heading">Random samples</p>
+<p>A collection of \(n\) <strong>independent</strong> random variables with the <strong>same</strong> distribution is a <strong>random sample</strong> from the distribution. The joint pdf of the variables is then</p>
+\[
+f(x_1, \dots, x_n) \;=\; \prod_{i=1}^n f(x_i)
+\]
+<p>where \(f(\cdot)\) is the pdf of the distribution from which the random sample is taken. When treated as a function of unknown parameters, this is the likelihood function for the sample data.</p>
+
+
+<h1 class="sectionName breakBefore">12.3 &nbsp; Expected values</h1>
+<h2 class="pageName">12.3.1 &nbsp; Discrete expected values</h2>
+<p>For a <strong>single</strong> discrete variable \(X\) with probability function \(p(x)\), the expected value of \(g(X)\) is</p>
+\[
+E[g(X)] \;=\; \sum_{\text{all }x} {g(x) \times p(x)}
+\]
+<p>Each possible value of \(g(x)\) is <strong>weighted</strong>  by its probability  being observed.</p>
+<p>For <strong>two</strong> discrete random variables, we have a similar definition</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>If \(X\) and \(Y\) are discrete random variables with joint probability function \(p(x,y)\), then the <strong>expected value</strong> of a function of the variables, \(g(X,Y)\), is defined to be</p>
+\[
+E[g(X,Y)] \;=\; \sum_{\text{all }x,y} {g(x,y) \times p(x,y)}
+\]</div>
+
+<p>This can be expressed as a double-summation,</p>
+\[
+E[g(X,Y)] \;=\; \sum_{\text{all }x} {\sum_{\text{all }y}{g(x,y) \times p(x,y)}}
+\]
+
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Example: Maximum – minimum for three dice </p>
+		<p>Earlier, we  gave the joint probability function of the maximum and minimum values in  rolls of three fair dice.</p>
+\[
+p(x,y) \;\;=\;\; \begin{cases} {\large\frac 1 {6^3}} &amp;\text{if }x = y \;\;\text{ and }\;\; 1 \le x,y \le 6 \\[0.4em]
+{\large\frac {x-y}{6^2}} &amp;\text{if } 1 \le y \lt x \le 6 \\[0.4em]
+0 &amp;\text{otherwise}
+\end{cases} \]
+<p>What is the expected value of the difference between the maximum and minimum?</p>
+<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+<p class="heading">Continuous bivariate distributions</p>
+<p>Expected values for functions of two continuous random variables are conceptually similar but mathematically involve double integrals — too advanced for this course. We therefore <strong>do not</strong> expect you to learn how to find them mathematically.</p>
+<div class="boxed" style="background-color:yellow;">
+	<p style="color:red;">The remaining pages in this section are only included for completeness. You do not need to understand them and they will not be examined.</p>
+</div>
+
+
+
+<h2 class="pageName">12.3.2 &nbsp; Continuous expected values (Not examined)</h2>
+<p>For continuous random variables,  double summation replaced by a double integral in the definition.</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>If \(X\) and \(Y\) are continuous random variables with joint probability density function \(f(x,y)\), then the <strong>expected value</strong> of a function of the variables, \(g(X,Y)\), is defined to be</p>
+\[
+E[g(X,Y)] \;=\; \int_{-\infty}^{\infty}{\int_{-\infty}^{\infty} {g(x,y) \times f(x,y)} \;dx} \;dy
+\]</div>
+
+<p>Each possible value of \(g(x,y)\) is &quot;weighted&quot; by its probability density — the most likely values of \((x,y)\) contribute most to the expected value.</p>
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Example</p>
+<table style="margin-left:0px; margin-top:10px;">
+	<tr>
+		<td valign="top"><p style="margin-top:5px">A point is randomly selected within a unit square. What is the expected area of the rectangle with it and the origin as corners?</p>
+<p>What is its variance?</p></td>
+		<td valign="top"><img class="svgImage" src="../../../en/bivarExpected/images/randomPoint.png" width="216" height="215" style="margin:8px 5px 0 0;"></td>
+	</tr>
+</table>
+
+<p class="questionNote">(Solved in full version)</p>
+</div>
+</div>
+
+
+<h2 class="pageName">12.3.3 &nbsp; Properties of expected values (Not examined)</h2>
+<p>Expected values involving two random variables have similar properties to those of functions of a single random variable. In particular,</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Properties of expected values</p>
+		<p>For any functions of two  random variables, \(g(X,Y)\) and \(h(X,Y)\), and constants \(a\) and \(b\),</p>
+		<ul>
+			<li>\(E\big[a + b\times g(X,Y)\big] \;=\; a + b\times E\big[g(X,Y)\big]\)</li>
+			<li>\(E\big[g(X,Y) + h(X,Y)\big] \;=\; E\big[g(X,Y)\big] + E\big[h(X,Y)\big]\)</li>
+		</ul>
+		<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p><strong>Conditional expected values</strong> are simply defined as expected values for the conditional distributions of \(X\) given \(Y=y\) or of \(Y\) given \(X=x\).</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>If \(X\) and \(Y\) are discrete random variables, the <strong>conditional expected value</strong> of \(g(X,Y)\), given that \(X = x\) is</p>
+\[
+E[g(X,Y) \mid X = x] \;\;=\;\; \sum_{\text{all }y} g(x,y) p_{Y \mid X=x}(y)
+\]
+<p>where \(p_{Y \mid X=x}(y)\) is the conditional probability function of \(Y\) given \(X=x\).</p>
+<p>If \(X\) and \(Y\) are continuous random variables, the definition is similar with the conditional probability density function replacing \(p_{Y \mid X=x}(y)\) and integration replacing summation.</p>
+</div>
+<p>Note here that \(E[g(X,Y) \mid X = x]\) is a function of \(x\). In a similar way, \(E[g(X,Y) \mid Y = y]\) is a function of \(y\).</p>
+<p>The following result sometimes provides an easy way to find unconditional expected values.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Unconditional expected values from conditional ones</p>
+		<p>For any functions of two  random variables, \(g(X,Y)\),</p>
+\[
+E\big[g(X,Y)\big] \;\;=\;\; E \Big[E\big[g(X,Y) \mid X\big] \Big]
+\]
+<p>where the outer expectation is over the marginal distribution of \(X\) and the inner expectation is over the conditional distribution of \(Y\) given \(X\).</p>
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">12.3.4 &nbsp; Means and variances (Not examined)</h2>
+<p>The expected value of \(X\) — its mean — is the mean of its marginal distribution.</p>
+\[ \begin{align}
+E[X] \;=\; \mu_X  \;=\; \sum_{\text{all }x} {\sum_{\text{all }y}{x \times p(x,y)}} \;&amp;=\; \sum_{\text{all }x} {x \times \sum_{\text{all }y}{p(x,y)}} \\
+&amp;=\; \sum_{\text{all }x} {x \times p_X(x)}
+\end{align} \]
+<p>Integration replaces summation in this proof for continuous random variables. In a similar way, the variance of \(X\) is the variance of its marginal distribution,</p>
+\[
+\Var(X) \;=\; E\left[(X-\mu_X)^2\right] \;=\; \sum_{\text{all }x} {(x-\mu_x)^2 \times p_X(x)}
+\]
+<p>The same results hold for the mean and variance of \(Y\).</p>
+
+
+<h1 class="sectionName breakBefore">12.4 &nbsp; Covariance and correlation</h1>
+<h2 class="pageName">12.4.1 &nbsp; Covariance (Proofs not examined)</h2>
+<p>The concept of covariance is closely related to that of the variance of a single random variable.</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>The <strong>covariance</strong> of two random variables, \(X\) and \(Y\), is</p>
+\[
+\Covar(X,Y) \;=\; E\left[(X - \mu_X)(Y - \mu_Y)\right]
+\]
+<p>where \(\mu_X\) and \(\mu_Y\) are the means of the two variables. The covariance is often denoted by \(\sigma_{XY}\).</p>
+</div>
+
+<p>The following results can be easily proved  and are simply stated here.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Properties of covariance</p>
+<p>For any random variables, \(X\) and \(Y\), and constant \(a\),</p>
+<ul>
+	<li>\(\Covar(X, X) \;=\; \Var(X) \)</li>
+	<li>\(\Covar(X, a) \;=\; 0\)</li>
+	<li>\(\Covar(X, Y) \;=\; \Covar(Y, X)\)</li>
+</ul>
+	</div>
+</div>
+
+<p>The following  is often useful when finding the covariance of two variables.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Alternative formula for covariance</p>
+		<p>For any random variables, \(X\) and \(Y\),</p>
+		\[
+		\Covar(X, Y) \;=\; E[XY] - E[X]E[Y]
+		\] 
+		<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p class="heading">Linear transformations</p>
+<p>The covariance between two random variables is affected in a simple way by linear transformations of the  variables.</p>
+<div class="theoremProof">
+<div class="theorem">
+<p class="theoremTitle">Covariance of linear transformations of X and Y</p>
+<p>For any random variables, \(X\) and \(Y\), and constants \(a\), \(b\), \(c\) and \(d\),</p>
+\[
+\Covar(a + bX, c+dY) \;=\; bd \Covar(X, Y)
+\]
+<p class="theoremNote">(Proved in full version)</p>
+</div>
+</div>
+<p>The covariance is therefore unaffected by adding constants (\(a\) and \(c\)) to the variables. Multiplying by constants (\(b\) and \(d\)) simply multiplies their covariance by these values.</p>
+
+
+
+<h2 class="pageName">12.4.2 &nbsp; Variance of a sum</h2>
+<p>If \(X\) is a random variable with mean \(\mu_X\) and variance \(\sigma_X^2\) and \(Y\) is an <strong>independent </strong>random variable with mean \(\mu_Y\) and variance \(\sigma_Y^2\), then the mean and variance of their sum are</p>
+\[
+E[X+Y] = \mu_X + \mu_Y \spaced{and} \Var(X+Y) = \sigma_X^2 + \sigma_Y^2
+\]
+
+<p>If \(X_1\) and \(X_2\) are <strong>not</strong> independent, this formula for the mean of \(X_1 + X_2\) still holds, but the variance of the sum is different.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Variance of the sum of two variables</p>
+<p>For any random variables, \(X\) and \(Y\),</p>
+\[
+\Var(X+Y) \;=\; \Var(X) + \Var(Y) + 2\Covar(X,Y)
+\]
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+<p>This result can be extended to the sum of any number of random variables. We simply state it without proof.</p>
+
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">General formula for variance of a sum</p>
+<p>For any \(n\) random variables, \(X_1, \dots, X_n\),</p>
+\[
+\Var(\sum_{i=1}^n X_i) \;=\; \sum_i \Var(X_i) + \sum_{i \ne j} \Covar(X_i,X_j)
+\]
+</div>
+</div>
+
+<p>Note that each of the covariances in the righthand summation appears twice since \(\Covar(X_i,X_j) = \Covar(X_j, X_i)\).</p>
+
+
+
+<h2 class="pageName">12.4.3 &nbsp; Correlation coefficient</h2>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+<p>The<strong> correlation coefficient </strong>between two random variables, \(X\) and \(Y\), is</p>
+\[
+\Corr(X,Y) \;=\; \frac{\Covar(X,Y)}{\sqrt{\Var(X)\Var(Y)}}
+\]
+<p>This is often denoted by the Greek letter \(\rho\).</p>
+</div>
+
+<p>The correlation coefficient is not affected by linear scaling:</p>
+
+<div class="theoremProof">
+<div class="theorem">
+<p class="theoremTitle">Correlation of linear functions of X and Y</p>
+<p>For any random variables, \(X\) and \(Y\), and constants \(a\), \(b\), \(c\) and \(d\),</p>
+\[
+\Corr(a + bX, c+dY) \;=\; \begin{cases} \Corr(X, Y) &amp; \quad\text{if }bd > 0 \\[0.3em]
+-\Corr(X, Y) &amp; \quad\text{if }bd > 0
+\end{cases} \]
+<p class="theoremNote">(Proved in full version)</p>
+</div>
+</div>
+
+
+<h2 class="pageName">12.4.4 &nbsp; Linear relationships (Proofs not examined)</h2>
+
+<p class="heading">Strength of a relationship</p>
+
+<p>The correlation coefficient summarises the <strong>strength</strong> of the relationship between two variables.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Properties of correlation</p>
+<p>For any random variables, \(X\) and \(Y\),</p>
+\[
+-1 \;\le\; \Corr(X,Y) \;\le\; +1
+\]
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p>The next result shows that the correlation coefficient between two variables can only be ±1 if the variables are linearly related.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Linear relationships and correlation</p>
+\[
+\left|\Corr(X,Y)\right| = 1 \quad\text{if and only if} \quad Y = a + bX \quad\text{for some constants } a \text{ and } b.
+\]
+	<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">12.4.5 &nbsp; Independence (Proofs not examined)</h2>
+
+<p class="heading">Weak relationships</p>
+
+<p>Strong linear relationships always correspond to correlation coefficients of +1 or –1. Weak relationships <strong>usually</strong> (but not always) result in correlation coefficients near zero.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Correlation of independent variables</p>
+<p>If two random variables, \(X\) and \(Y\), are independent</p>
+\[
+\Corr(X,Y) \;=\; 0
+\]
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<div class="theoremProof"></div>
+<p>Note that we have <strong>not</strong> proved that two variables <strong>must</strong> be independent if their correlation is zero. It is possible to define joint distributions in which the variables are strongly related but their correlation is zero.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Nonlinear relationship</p>
+		<p>Consider a discrete random variable \(X\) whose distribution is symmetric around zero. We now define a second random variable as \(Y = X^2\). The variables \(X\) and \(Y\) are <strong>strongly related</strong> — knowing the value of \(X\) tells you the exact value of \(Y\) — but</p>
+		\[
+		\Corr(X,Y) \;=\; 0
+		\] 
+		<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p>It is important to remember that:</p>
+
+<div class="boxed">
+<p>Independent variables have zero correlation, but variables with zero correlation are not necessarily independent. </p>
+</div>
+
+
+
+<h1 class="sectionName breakBefore">12.5 &nbsp; Multinomial distribution</h1>
+<h2 class="pageName">12.5.1 &nbsp; Joint probability function (Proof not examined)</h2>
+
+<p class="heading">Generalising Bernoulli trials</p>
+
+<p>The binomial distribution arose from a collection of \(n\) independent trials, each of which had two possible values that we called <strong>success</strong> and <strong>failure</strong>. We now extend this to situations in which each trial may have three or more possibilities. </p>
+
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>If the following conditions hold:</p>
+	<ol>
+		<li>There is a sequence of \(n\)  trials, each with \(g\) possible outcomes, \(\{O_1, O_2, \dots, O_g\}\), where <em>n</em> is a fixed constant,</li>
+		<li>The results of all  trials are independent of each other,</li>
+		<li>The probabilities for the \(g\) outcomes are the same in all trials, \(P(O_1) = \pi_1, \dots, P(O_g) = \pi_g\),</li>
+	</ol>
+	<p>then the total numbers of occurrences of the different outcomes, \((X_1, X_2,\dots, X_g)\), have a <strong>multinomial</strong> distribution with parameters \(n, \pi_1, \dots, \text{ and }\pi_g\),</p>
+	\[
+	(X_1, X_2,\dots, X_g) \;\; \sim \;\; \MultinomDistn(n, \pi_1, \dots, \pi_g)
+	\]
+</div>
+
+<p>Note here that</p>
+
+\[
+\sum_{i=1}^g X_i \;=\; n \spaced{and} \sum_{i=1}^g {\pi_i} \;=\; 1
+\]
+
+<p>When \(g = 2\),  \(X_1\) and \(X_2\) are the numbers of successes and failures in a binomial experiment — essentially  <strong>univariate</strong>.</p>
+<p>When  \(g = 3\), the situation is essentially <strong>bivariate</strong> since  \(X_3 = n - X_1 - X_2\) is completely determined by the values of \(X_1\) and \(X_2\).</p>
+
+<div class="theoremProof">
+<div class="theorem">
+<p class="theoremTitle">Joint probability function</p>
+	<p>If \((X_1, X_2,\dots, X_g)\) have a \(\MultinomDistn(n, \pi_1, \dots, \pi_g)\) distribution, then their joint probability function is</p>
+	\[
+	p(x_1, x_2, \dots, x_g) = \frac{n!}{x_1!\;x_2!\; \cdots,\;x_g!} \pi_1^{x_1}\pi_2^{x_2}\cdots \pi_g^{x_g}
+	\] 
+	<p>provided</p>
+\[
+	x_i=0, 1, \dots, n, \quad\text{for all }i \spaced{and}\quad \sum_{i=1}^g {x_i} = n
+	\]
+	<p>but is zero for other values of the \(\{x_i\}\).</p>
+	<p class="theoremNote">(Proved in full version)</p>
+</div>
+</div>
+
+<p>We now give a numerical example.</p>
+
+<div class="example">
+<p class="exampleHeading">Opinion poll</p>
+
+<p>Consider a public opinion poll in which people are asked for their opinion about a new piece of legislation. Three possible responses are possible, with</p>
+<p class="eqn">P(Agree) = 0.3, <br>
+	P(Neutral) = 0.4<br>
+	P(Disagree) = 0.3
+</p>
+<p>If \(n\) individuals are randomly chosen and their responses are independent, the numbers giving the three responses will have a \(\MultinomDistn(n, 0.3, 0.4, 0.3)\) distribution.</p>
+<p>The joint probability function can be written as</p>
+\[
+	p(x_1, x_2, x_3) = \frac{n!}{x_1!\;x_2!\; (n-x_1-x_2)!} {0.3}^{x_1}{0.4}^{x_2}{0.3}^{n-x_1-x_2}
+	\]
+<p>The diagram below shows these probabilities in a 3-dimensional bar chart when \(n = 4\). Note that we can ignore \(x_3\) here since \(x_3 = 4 - X_1 - x_2\) — it is effectively a bivariate situation.</p>
+<p class="eqn"><img src="../../../en/multinomial/images/s_multinomialBarchart.png" width="419" height="395" alt=""/></p>
+<p>Note that \(X_1\) and \(X_2\) are <strong>not</strong> independent. For example, knowing that \(X_1=3\) people agree tells us that \(X_2\) must be either 0 or 1 since the sample size is only 4.</p>
+</div>
+
+
+
+
+<h2 class="pageName">12.5.2 &nbsp; Marginal distributions</h2>
+<p>A multinomial distribution arises when there are \(g\) possible outcomes from each of the \(n\) independent trials. We now concentrate on the number of times that <strong>one</strong> of these values is observed — its marginal distribution.</p>
+
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Marginal distributions</p>
+<p>If \((X_1, X_2,\dots, X_g)\), have a \(\MultinomDistn(n, \pi_1, \dots, \pi_g)\) distribution, then the marginal distribution of any \(X_i\) is \(\BinomDistn(n, \pi_i)\).</p>
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">12.5.3 &nbsp; Conditional distributions (Proof not examined)</h2>
+<p>Another important property of the multinomial distribution is that its <strong>conditional</strong> distributions are also multinomial. For example,</p>
+
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Conditional distributions</p>
+<p>If \((X_1, X_2,\dots, X_g)\) have a \(\MultinomDistn(n, \pi_1, \dots, \pi_g)\) distribution, the conditional distribution of \((X_2, \dots, X_g)\), given that \(X_1 = x_1\) is \(\MultinomDistn(n-x_1, \pi_2^*, \dots, \pi_g^*)\) where</p>
+\[
+\pi_i^* \;\;=\;\; \frac{\pi_i}{1 -\pi_1}
+\]
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+<p>&nbsp;</p>
+
+
+<div class="questionSoln">
+<div class="question">
+<p class="questionTitle">Question</p>
+<p>Consider an opinion poll in which the three possible responses  have probabilities</p>
+<p class="eqn">P(Agree) = 0.3, <br>
+	P(Neutral) = 0.4<br>
+	P(Disagree) = 0.3 </p>
+<p>If a random sample of \(n\) = 4 people is asked and the numbers agreeing, neutral and disagreeing are \(X_A\), \(X_N\) and \(X_D\), then</p>
+\[
+(X_A, X_N, X_D) \;\sim\; \MultinomDistn(n=4, 0.3, 0.4, 0.3)
+\]
+<p>If it is known that one person in the sample Agrees, i.e. \(X_A = 1\), what is the distribution of the number who are neutral?</p>
+<p class="questionNote">(Solved in full version)</p>
+</div>
+</div>
+
+
+<h2 class="pageName">12.5.4 &nbsp; Means, variances and correlations (Proofs not examined)</h2>
+<p>The means and variances of the individual variables in a multinomial distribution follow directly from their marginal binomial distributions.</p>
+
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Means and variances</p>
+<p>If \((X_1, \dots, X_g)\) have a \(\MultinomDistn(n, \pi_1, \dots, \pi_g)\) distribution,</p>
+\[
+E[X_i] \;=\; n\pi_i \spaced{and} \Var(X_i) \;=\; n\pi_i(1 - \pi_i) \qquad \text{for }i=1,\dots,g
+\]
+</div>
+
+</div>
+<p>The covariance between any two variables in a multinomial distribution is a little harder to obtain.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Covariances</p>
+		<p>If \((X_1, \dots, X_g)\) have a \(\MultinomDistn(n, \pi_1, \dots, \pi_g)\) distribution,</p>
+		\[
+		\Covar(X_i, X_j) \;=\; -n\pi_i\pi_j \qquad \text{if }i \ne j
+		\]
+		<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p>The correlation between any two of the multinomial variables is:</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Correlation coefficients</p>
+		<p>If \((X_1, \dots, X_g)\) have a \(\MultinomDistn(n, \pi_1, \dots, \pi_g)\) distribution,</p>
+\[
+\Corr(X_i, X_j) \;=\; -\sqrt{\frac{\pi_i\pi_j}{(1 - \pi_i)(1 - \pi_j)}}
+\]
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p>The correlation between two multinomial variables only depends on the probabilities \(\pi_i\) and \(\pi_j\), not on the sample size, \(n\).</p>
+
+
+
+<h2 class="pageName">12.5.5 &nbsp; Parameter estimation</h2>
+<p>In practical situations involving multinomial distributions, \(\pi_1\), ..., \(\pi_g\) are unknown and must be estimated from data. We now consider estimating their values from a single multinomial observation,</p>
+\[
+(X_1,\dots,X_g) \;\;\sim\;\; \MultinomDistn(n, \pi_1, ..., \pi_g)
+\]
+<p class="heading">Likelihood function</p>
+<p>The likelihood function is the probability of observing the data, but treated as a function of the unknown parameters.</p>
+\[
+L(\pi_1, ..., \pi_g \mid x_1,\dots,x_g) \;\;=\;\; \frac{n!}{x_1!\;x_2!\; \cdots,\;x_g!} \pi_1^{x_1}\pi_2^{x_2}\cdots \pi_g^{x_g} \]
+<p>We can eliminate one of the unknown parameters here since</p>
+\[
+\pi_g \;\;=\;\; 1 - \pi_1 - \pi_2 - \cdots - \pi_{g-1} \]
+<p>We will therefore rewrite the likelihood as</p>
+\[
+L(\pi_1, ..., \pi_{g-1}) \;\;=\;\; \frac{n!}{x_1!\;x_2!\; \cdots,\;x_g!} \pi_1^{x_1}\pi_2^{x_2}\cdots \pi_{g-1}^{x_{g-1}} (1 - \pi_1 - \pi_2 - \cdots - \pi_{g-1})^{x_g} \]
+<p>The log-likelihood is</p>
+\[ \begin{align}
+\ell(\pi_1, ..., \pi_{g-1}) \;\;=\;\; x_1 \log(\pi_1) +  \cdots &amp;+ x_{g-1} \log(\pi_{g-1})\\[0.4em]
+&amp;+ x_g \log(1 -  \pi_1 - \pi_2 - \cdots - \pi_{g-1}) + K
+\end{align} \]
+<p>where \(K\)  does not depend on the unknown parameters. We can find the maximum likelihood estimates from this.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Maximum likelihood estimates</p>
+		<p>If \((x_1, x_2, \dots, x_g)\) are a random sample from a \(\MultinomDistn(n, \pi_1, \dots, \pi_g)\) distribution, the maximum likelihood estimates of \(\pi_1, \dots, \pi_g\) are</p>
+\[
+\hat{\pi}_i \;\;=\;\; \frac{x_i}{n} \]
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p>These are simply the corresponding sample proportions.</p>
+
+
+<h1 class="sectionName breakBefore">12.6 &nbsp; Bivariate normal distribution</h1>
+<h2 class="pageName">12.6.1 &nbsp; Standard bivariate normal distribution</h2>
+<p>The most widely used  continuous bivariate distributions are the family of bivariate normal distributions. We  start with a special case, the <strong>standard</strong> bivariate normal distribution.</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>Two continuous random variables, \(X\) and \(Y\), are said to have a <strong>standard bivariate normal distribution</strong> with parameter \(\rho\),</p>
+\[
+(X,Y) \;\;\sim\;\; \NormalDistn(0, 1, 0, 1, \rho)
+\]
+<p>if \(-1 \lt \rho \lt 1\) and their joint pdf is</p>
+\[
+f(x,y) \;\;=\;\; \frac{1}{2\pi\sqrt{1 - \rho^2}} \exp\left(-\frac{1}{2(1-\rho^2)} \left(x^2 + y^2 - 2\rho x y\right)\right)
+\]
+<p>for all \(-\infty \lt x \lt \infty\) and \(-\infty \lt y \lt \infty\).</p>
+</div>
+
+<p>Two examples are shown in the joint pdfs below.</p>
+<p class="eqn"><img src="../../../en/bivarNormal/images/s_bivariateNormalSurfaces.png" width="398" height="787" alt=""/></p>
+<p>The contours are circles when \(\rho = 0\) and ellipses for non-zero values of \(\rho\).</p>
+<p class="heading">Strength of the relationship</p>
+<p>The value of the parameter \(\rho\) determines how strongly \(X\) and \(Y\) are related to each other.</p>
+<ul>
+	<li>When \(\rho = 0\), the contours are circles and the two variables are uncorrelated.</li>
+	<li>When \(\rho \gt 0\), the variables are positively correlated, with high \(X\) tending to occur with high \(Y\) and low \(X\) and \(Y\) tending to also occur together. As \(\rho\) approaches 1.0, the relationship becomes stronger.</li>
+	<li>When \(\rho \lt 0\), the variables are negatively correlated, with high \(X\) tending to occur with <strong>low</strong> \(Y\) and low \(X\) occurring with high \(Y\). As \(\rho\) approaches –1.0, the relationship also becomes stronger.</li>
+</ul>
+
+
+<h2 class="pageName">12.6.2 &nbsp; General bivariate normal distribution</h2>
+<p>We now generalise.</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>Two continuous random variables, \(X\) and \(Y\), are said to have a <strong> bivariate normal distribution</strong> with parameters  \(\mu_X, \sigma_X^2, \mu_Y, \sigma_Y^2\) and \(\rho\),</p>
+\[
+(X,Y) \;\;\sim\;\; \NormalDistn(\mu_X, \sigma_X^2, \mu_Y, \sigma_Y^2, \rho)
+\]
+<p>if \(-1 \lt \rho \lt 1\) and their joint pdf is</p>
+\[ \begin{align}
+f(x,y) \;\;=\;\; &amp;\frac{1}{2\pi\sigma_X\sigma_Y\sqrt{1 - \rho^2}}  \\[0.4em]
+&amp;\times\exp\left(-\frac{1}{2(1-\rho^2)} \left[\frac{(x-\mu_X)^2}{\sigma_X^2} + \frac{(y-\mu_Y)^2}{\sigma_Y^2} - 2\rho \frac{(x-\mu_X)(y - \mu_Y)}{\sigma_X \sigma_Y}\right]\right)
+\end{align} \]
+<p>for all \(-\infty \lt x \lt \infty\) and \(-\infty \lt y \lt \infty\).</p>
+</div>
+
+<p>The standard bivariate normal distribution arises when \(\mu_X = \mu_Y = 0\) and \(\sigma_X = \sigma_Y = 1\).</p>
+<p class="heading">Matrix notation</p>
+<p>The formula for the joint pdf of \(X\) and \(Y\) can be simplified if matrix notation is used. If we write</p>
+
+\[
+\mathbf{x} = \left[\begin{array}{c} x \\ y\end{array}\right] , \quad \mathbf{\mu} = \left[\begin{array}{c} \mu_X \\ \mu_Y\end{array}\right] , \spaced{and} \mathbf{\Sigma} = \left[\begin{array}{cc} \sigma_X^2 &amp; \rho \sigma_X \sigma_Y\\ \rho \sigma_X \sigma_Y &amp; \sigma_Y^2\end{array}\right]
+\]
+
+<p>then</p>
+\[
+f(x,y) \;\;=\;\; \frac{1}{\sqrt{(2\pi)^2 \left| \Sigma \right|}} \exp\left(-\frac{1}{2}(\mathbf{x} - \mathbf{\mu})^T \Sigma^{-1}(\mathbf{x} - \mathbf{\mu})\right)
+\]
+
+<p class="heading">Scale and location parameters</p>
+<p>\(\mu_X\) and \(\mu_Y\) are <strong>location</strong> parameters and \(\sigma_X\) and \(\sigma_Y\) are <strong>scale</strong> parameters.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Relationship with standard normal distribution</p>
+<p>If \((Z_X,Z_Y) \sim \NormalDistn(0, 1, 0, 1, \rho)\), then</p>
+\[
+X = \mu_X + \sigma_X Z_X \spaced{and} Y = \mu_Y + \sigma_Y Z_Y 
+\]
+<p>have the  bivariate normal distribution</p>
+\[
+(X,Y) \;\;\sim\;\; \NormalDistn(\mu_X, \sigma_X^2, \mu_Y, \sigma_Y^2, \rho)
+\]</div>
+</div>
+
+
+<h2 class="pageName">12.6.3 &nbsp; Marginal distributions (Proof not examined)</h2>
+<p>The bivariate normal distribution's  marginal distributions are <strong>univariate</strong> normal distributions.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Marginal normal distributions</p>
+<p>If \((X,Y) \sim \NormalDistn(\mu_X, \sigma_X^2, \mu_Y, \sigma_Y^2, \rho)\) then the marginal distributions of \(X\) and \(Y\) are univariate normal,</p>
+\[ \begin{align}
+X \;\;&amp;\sim\;\; \NormalDistn(\mu_X, \sigma_X^2) \\
+Y \;\;&amp;\sim\;\; \NormalDistn(\mu_Y, \sigma_Y^2)
+\end{align} \]
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p>From these, we can find the means and variances of the two variables.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Means and variances</p>
+		<p>If \((X,Y) \sim \NormalDistn(\mu_X, \sigma_X^2, \mu_Y, \sigma_Y^2, \rho)\) then</p>
+		\[ \begin{align}
+		E[X] \;&amp;=\; \mu_X, \qquad &amp;\Var(X) \;=\; \sigma_X^2 \\
+		E[Y] \;&amp;=\; \mu_Y, \qquad &amp;\Var(Y) \;=\; \sigma_Y^2 \end{align} \] </div>
+</div>
+
+
+<h2 class="pageName">12.6.4 &nbsp; Conditional distributions (Proof not examined)</h2>
+<p>The bivariate normal distribution's <strong>conditional</strong> distributions are normal too.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Conditional normal distributions</p>
+	<p>If \((X,Y) \sim \NormalDistn(\mu_X, \sigma_X^2, \mu_Y, \sigma_Y^2, \rho)\) then the conditional distribution of \(Y\), given \(X=x\) is univariate normal,</p>
+\[
+	\NormalDistn\left(\mu_Y + \frac{\sigma_Y}{\sigma_X}\rho(x-\mu_X),\; (1-\rho^2)\sigma_Y^2\right)
+\]
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+<p>A similar result holds for the conditional distribution of \(X\), given that \(Y=y\).</p>
+
+
+<h2 class="pageName">12.6.5 &nbsp; Covariance and correlation (Covariance proof not examined)</h2>
+<p>To find the correlation coefficient of the bivariate normal distribution, we first find the covariance between the two variables.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Covariance</p>
+<p>If \(X\) and \(Y\) are bivariate normal,</p>
+\[
+(X,Y) \;\;\sim\;\; \NormalDistn(\mu_X, \sigma_X^2, \mu_Y, \sigma_Y^2, \rho)
+\]
+<p>then their covariance is</p>
+\[
+\Covar(X, Y) \;\;=\;\; \rho \sigma_X \sigma_Y
+\]	
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p>We can now find the correlation between \(X\) and \(Y\).</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Correlation coefficient</p>
+		<p>If \(X\) and \(Y\) are bivariate normal,</p>
+		\[
+		(X,Y) \;\;\sim\;\; \NormalDistn(\mu_X, \sigma_X^2, \mu_Y, \sigma_Y^2, \rho)
+		\]
+		<p>then their correlation is \(\rho\).</p>
+		<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+<p>This explains the use of the symbol \(\rho\) for the bivariate normal distribution's fifth parameter.</p>
+
+
+
+<h2 class="pageName">12.6.6 &nbsp; Example</h2>
+
+<p>We now present an application of the bivariate normal distribution.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Example: Heights of parents and children</p>
+		<p>In the late 19th century, Francis Galton analysed data about the relationship between the heights of children to those of their parents. This was based on measurements of the adult heights of 928 children and the average heights of their parents, with all measurements in inches. (Female heights were multiplied by 1.08 to compensate for sex differences.)</p>
+		<p class="eqn"><img src="../../../en/bivarNormal/images/galtonScatterplot.png" width="505" height="466"/></p>
+		<p>From a jittered scatterplot, both marginal distributions seem reasonably symmetric and normal, so a bivariate normal distribution was fitted to the data, with its parameters estimated by the sample means and variances of the two variables and the sample correlation coefficient.</p>
+\[
+(C, P) \sim \NormalDistn(\mu_C = 68.09, \mu_P = 68.31, \sigma_C^2 = 6.340, \sigma_P^2 = 3.195, \rho = 0.459
+\]
+		
+		<p>Assuming that this bivariate normal distribution is accurate,</p>
+		<ul>
+			<li>What is the probability that a child will have height over 71 inches?</li>
+			<li>If the mid-height of the parents is 71 inches, what is the expected height of their child and what is the probability that it is over 71 inches?</li>
+		</ul>
+		<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+
+<h1 class="sectionName">12.7 &nbsp; What you need to learn</h1>
+
+
+<p class="heading">What you need to know in this chapter</p>
+<p>You should concentrate on the following material when studying the   chapter about multivariate distributions.</p>
+<div class="boxed" style="background-color:yellow;">
+	<p style="color:red;">Although this chapter covers both discrete and continuous bivariate distributions, the material about continuous random variables will not be examined (other than the bivariate normal distribution in section 6).</p>
+</div>
+<p class="heading">12.1 Discrete bivariate distributions</p>
+<p>You should know the concepts of joint, marginal and conditional probability functions for a bivariate discrete distribution and be able to find them for different problems. (Three-dimensional bar charts may help understanding but are not essential.) Independent random variables and random samples were described earlier in Section 2.3.</p>
+<p class="heading">12.2 Continuous bivariate distributions</p>
+<p>The concept of probabilities being defined as volumes under a surface is important. However you will <strong>not</strong> be expected to evaluate such volumes, either geometrically or by double integration. You should understand that a marginal pdf is found from cross-sectional areas of the joint pdf, and conditional pdfs have the shape of the cross-sections themselves, but what is important is that these are similar concepts to those for discrete bivariate distributions.</p>
+<p class="heading">12.3 Expected values</p>
+<p>The concept of expected values in bivariate contexts is similar to the expected value of a function of a single random variable. However you will only be examined about expected values for discrete bivariate distributions.</p>
+<p class="heading">12.4 Covariance and correlation</p>
+<p>The concept of covariance is important but is only described here since the correlation coefficient is defined from it. You should know the properties of the correlation coefficient and how it describes the strength of the relationship between two random variables but will not be asked for proofs.</p>
+<p class="heading">12.5 Multinomial distribution</p>
+<p>You should be able to recognise when a set of discrete variables has a multinomial distribution and find joint probabilities. You should also be able to find the marginal and conditional distributions  and find probabilities from them. The means and variances of the individual variables follow easily from their marginal binomial distributions, but you should also be able to find the correlation coefficient between any two variables.</p>
+<p class="heading">12.6 Bivariate normal distribution</p>
+<p>You should read the whole section to get an understanding of the shape of this distribution. However the exam will only ask questions such as that in page 12.6.6 that provide a bivariate normal distribution's parameters and ask you to find marginal and conditional distributions and probabilities.</p>
+
+
+</body>
+</html>

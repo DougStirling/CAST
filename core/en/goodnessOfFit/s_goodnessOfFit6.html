@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Test for continuous distribution</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="frequency table, chi-squared test, goodness-of-fit test">
+	<meta name="dataset" content="Body temperature">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>This test can also be used  for continuous data if the data are first  summarised in a frequency table. The range of possible values of the distribution is partitioned into <strong>classes</strong> such as &quot;10 ≤ X &lt; 11&quot;, then the frequencies are the numbers of values in these classes.</p>
+<div class="example">
+	
+	<p class="exampleHeading">Body temperature</p>
+
+<p>In a study to determine the &quot;normal&quot; body temperature of healthy adults, body temperatures were found from 130 adults. The following frequency table summarises the data.</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred">
+	<tr>
+		<th width="20" align="center">Temperature, <em>x</em></th>
+		<th width="20" align="center">Frequency</th>
+	</tr>
+	<tr>
+		<td align="center">\(X \lt 96.0\)</td>
+		<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-bottom:0px;">0</td>
+	</tr>
+	<tr>
+		<td align="center">\(96.0 \le X \lt 96.5\)</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999; border-right:1px solid #999999;">2</td>
+	</tr>
+	<tr>
+		<td align="center">\(96.5 \le X \lt 97.0\)</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999; border-right:1px solid #999999;">4</td>
+	</tr>
+	<tr>
+		<td align="center">\(97.0 \le X \lt 97.5\)</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999; border-right:1px solid #999999;">13</td>
+	</tr>
+	<tr>
+		<td align="center">\(97.5 \le X \lt 98.0\)</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999; border-right:1px solid #999999;">21</td>
+	</tr>
+	<tr>
+		<td align="center">\(98.0 \le X \lt 98.5\)</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999; border-right:1px solid #999999;">38</td>
+	</tr>
+	<tr>
+		<td align="center">\(98.5 \le X \lt 99.0\)</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999; border-right:1px solid #999999;">33</td>
+	</tr>
+	<tr>
+		<td align="center">\(99.0 \le X \lt 99.5\)</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999; border-right:1px solid #999999;">15</td>
+	</tr>
+	<tr>
+		<td align="center">\(99.5 \le X \lt 100.0\)</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999; border-right:1px solid #999999;">2</td>
+	</tr>
+	<tr>
+		<td align="center">\(100.0 \le X \lt 100.5\)</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999; border-right:1px solid #999999;">1</td>
+	</tr>
+	<tr>
+		<td align="center">\(100.5 \le X \lt 101.0\)</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999; border-right:1px solid #999999;">1</td>
+	</tr>
+	<tr>
+		<td width="20" align="center">\(X \ge 101.0\)</td>
+		<td width="20" align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-top:0px;">0</td>
+	</tr>
+</table>
+</div>
+
+<p>Could this be a random sample from a <strong>normal</strong> distribution?</p>
+<p>We first find the method of moments estimates of the normal distribution's parameters,</p>
+\[
+\hat{\mu} \;=\; \overline{x} \;=\; 98.25 \spaced{and} \hat{\sigma} \;=\; s \;=\; 0.7332
+\]
+<p>A histogram of the data and the best-fitting normal distribution seem similar in shape, but we will formally test the normal model with a chi-squared goodness-of-fit test.</p>
+<p class="eqn"><img src="images/s_bodyTemp.png" width="429" height="280" alt=""/></p>
+<p>The probabilities for values within these classes were found from the best-fitting \(\NormalDistn(\mu=98.25, \sigma = 0.7332)\) distribution, then multiplied by the number of values, 130, to get expected counts. However since several expected counts are low, classes must be combined before calculating the chi-squared goodness-of-fit statistic.</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred">
+	<tr>
+		<th align="center">Temperature<br>
+			<em>x</em></th>
+		<th align="center">Observed count, <br>
+			<em>O</em></th>
+		<th align="center">Expected count, <br>
+			<em>E</em></th>
+	</tr>
+	<tr>
+		<td align="center">\(X \lt 97.0\)</td>
+		<td align="right" bgcolor="#FFFFFF" style="padding-right:30px; border-left:1px solid #999999; border-top:1px solid #999999;">6</td>
+		<td align="right" bgcolor="#FFFFFF" style="padding-right:30px; border-right:1px solid #999999; border-top:1px solid #999999;">5.61</td>
+	</tr>
+	<tr>
+		<td align="center">\(97.0 \le X \lt 97.5\)</td>
+		<td align="right" bgcolor="#FFFFFF" style="padding-right:30px; border-left:1px solid #999999;">13</td>
+		<td align="right" bgcolor="#FFFFFF" style="padding-right:30px; border-right:1px solid #999999;">14.20</td>
+	</tr>
+	<tr>
+		<td align="center">\(97.5 \le X \lt 98.0\)</td>
+		<td align="right" bgcolor="#FFFFFF" style="padding-right:30px; border-left:1px solid #999999;">21</td>
+		<td align="right" bgcolor="#FFFFFF" style="padding-right:30px; border-right:1px solid #999999;">27.76</td>
+	</tr>
+	<tr>
+		<td align="center">\(98.0 \le X \lt 98.5\)</td>
+		<td align="right" bgcolor="#FFFFFF" style="padding-right:30px; border-left:1px solid #999999;">38</td>
+		<td align="right" bgcolor="#FFFFFF" style="padding-right:30px; border-right:1px solid #999999;">34.69</td>
+	</tr>
+	<tr>
+		<td align="center">\(98.5 \le X \lt 99.0\)</td>
+		<td align="right" bgcolor="#FFFFFF" style="padding-right:30px; border-left:1px solid #999999;">33</td>
+		<td align="right" bgcolor="#FFFFFF" style="padding-right:30px; border-right:1px solid #999999;">27.72</td>
+	</tr>
+	<tr>
+		<td align="center">\(99.0 \le X \lt 99.5\)</td>
+		<td align="right" bgcolor="#FFFFFF" style="padding-right:30px; border-left:1px solid #999999;">15</td>
+		<td align="right" bgcolor="#FFFFFF" style="padding-right:30px; border-right:1px solid #999999;">14.16</td>
+	</tr>
+	<tr>
+		<td align="center">\(X \ge 99.5\)</td>
+		<td align="right" bgcolor="#FFFFFF" style="padding-right:30px; border-left:1px solid #999999; border-bottom:1px solid #999999;">4</td>
+		<td align="right" bgcolor="#FFFFFF" style="padding-right:30px; border-right:1px solid #999999; border-bottom:1px solid #999999;">5.71</td>
+	</tr>
+</table>
+</div>
+
+<p>The test statistic is</p>
+\[
+X^2 \;=\; \sum_{x} {\frac{\left(O_x - E_x\right)^2}{E_x}} \;=\; 3.657 \]
+<p>Since there are 7 counts in the combined frequency table and 2 estimated parameters, the test statistic should  be compared to the chi-squared distribution with \((7-2-1) = 4\) degrees of freedom. The p-value is the probability of a value from the \(\ChiSqrDistn(4 \text{ df})\) distribution as high as 3.657 and can be found (e.g. using Excel) to be 0.4545.</p>
+<p>Since there would be almost 50% probability of getting observed counts as far from those expected from a normal distribution  if the data <strong>did</strong> come from a normal distribution, we conclude that the data are  consistent with coming from a normal distribution.</p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

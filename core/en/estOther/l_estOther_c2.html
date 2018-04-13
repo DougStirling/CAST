@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Simulation from normal approximation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="simulation, error distribution, standard error, bias, quartiles">
+	<meta name="dataset" content="Asset-liabilities ratios">
+</head>
+
+
+<body class="lecture">
+<script type="text/javascript">writePageStart();</script>
+
+
+
+<p class="heading">Assets-to-liabilities ratios of healthy companies</p>
+
+<div class="centred"><div class="boxed">
+<p>Lower quartile  from 68 companies = 1.217</p>
+</div></div>
+		
+<p class=heading>Normal approximation</p>
+
+	  
+<p class=eqn><img class="gif" src="images/assetLiabilitiesModel.gif" width="396" height="136"></p>
+<p class=heading>Simulation</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="390">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="stdErrorProg.ErrorSampleApplet">
+<param name="varName" value="Simulated asset-to-liabilities">
+<param name="random" value="68 1.726 0.639 875636431 2.7">
+<param name="dataAxis" value="0 3.5 0 0.5">
+<param name="errorName" value="Error in estimate">
+<param name="errorAxis" value="-0.4 0.4 -0.4 0.2">
+<param name="percentile" value="0.25">
+<param name="paramName" value="Target (LQ)">
+<param name="statisticName" value="Estimate (sample LQ)">
+<param name="decimals" value="3">
+<param name="maxBiasSe" value="-9.999">
+<param name="showBiasSe" value="false">
+<param name="customText" value="Estimate s.e. & bias=Estimate s.e. & bias#Bias=Bias">
+<param name="fontSize" value="big">
+</applet>
+</div>
+
+			
+		
+<script type="text/javascript">
+	writeLecturerNotesLink(withDataNotes);
+</script>
+
+<div class="lecturerNote" id="lecturerNote">
+  <p>Use this page to explain how a simulation can give the approximate standard error for an estimator when  no formula is available.</p>
+  <p>In this case, we are estimating a lower quartile and samples are simulated from a normal distribution that is probably close to the population distn. The lower quartile for this normal distribution is 1.295, so we can find the estimation error from any sample and build up the error distribution.</p>
+  <p>Click <strong>Accumulate</strong> then take 100 or more samples to build the 
+    error distribution (hold down the <strong>Take sample</strong> button). Then 
+    click <strong>Estimate s.e. and bias</strong>.</p>
+  <div class="centred"><div class="boxed">
+    <p>From the simulation, the error in our estimate of the population 
+				lower quartile, 1.217, is likely to be less than 0.2 and will almost certainly 
+				be less than 0.3.</p>
+  </div></div>
+
+<br>
+</div>
+<div class="lecturerNote" id="dataNote">
+<p>Researchers in Greece found the assets-to-liabilities ratios of a sample 
+      of 68 healthy companies. Low assets-to-liabilities ratios are usually regarded 
+  as undesirable for a company.</p>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

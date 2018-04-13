@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Properties of expected values</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="bivariate distribution, expected value, conditional expected value">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>Expected values involving two random variables have similar properties to those of functions of a single random variable. In particular,</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Properties of expected values</p>
+		<p>For any functions of two  random variables, \(g(X,Y)\) and \(h(X,Y)\), and constants \(a\) and \(b\),</p>
+		<ul>
+			<li>\(E\big[a + b\times g(X,Y)\big] \;=\; a + b\times E\big[g(X,Y)\big]\)</li>
+			<li>\(E\big[g(X,Y) + h(X,Y)\big] \;=\; E\big[g(X,Y)\big] + E\big[h(X,Y)\big]\)</li>
+		</ul>
+	</div>
+<div class="proof">
+<p>We will only prove the first of these results, and only for discrete random variables.</p>
+\[ \begin{align}
+E\big[a + b\times g(X,Y)\big] \;&amp;=\; \sum_{\text{all }x} {\sum_{\text{all }y}{\big(a+b\times g(X,Y)\big) \times p(x,y)}} \\
+&amp;=\; a \times \sum_{\text{all }x} {\sum_{\text{all }y}{p(x,y)}} \;+\; b\times \sum_{\text{all }x} {\sum_{\text{all }y}{g(x,y)p(x,y)}}\\
+&amp;=\; a + b\times E[g(X,Y)]
+\end{align} \]
+<p>since \(p(x,y)\) must sum over all \(x\) and \(y\) to one.</p>
+<p>The corresponding proof for continuous random variables is the same, but with double integrals replacing the double summations. The second result is proved in a similar way.</p>
+</div>
+</div>
+<p class="heading">Conditional expected values</p>
+<p>Conditional expected values are defined in a similar way to unconditional ones, but are based on  univariate conditional probability or probability density functions.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>If \(X\) and \(Y\) are discrete random variables, the <strong>conditional expected value</strong> of \(g(X,Y)\), given that \(X = x\) is</p>
+\[
+E[g(X,Y) \mid X = x] \;\;=\;\; \sum_{\text{all }y} g(x,y) p_{Y \mid X=x}(y)
+\]
+<p>where \(p_{Y \mid X=x}(y)\) is the conditional probability function of \(Y\) given \(X=x\).</p>
+<p>If \(X\) and \(Y\) are continuous random variables, the definition is similar with the conditional probability density function replacing \(p_{Y \mid X=x}(y)\) and integration replacing summation.</p>
+</div>
+<p>Note here that \(E[g(X,Y) \mid X = x]\) is a function of \(x\). In a similar way, \(E[g(X,Y) \mid Y = y]\) is a function of \(y\).</p>
+<p class="heading">Expected values from conditional expected values</p>
+<p>Conditional expected values are sometimes useful as an intermediate step to finding unconditional expected values, using the following result.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Unconditional expected values from conditional ones</p>
+		<p>For any functions of two  random variables, \(g(X,Y)\),</p>
+\[
+E\big[g(X,Y)\big] \;\;=\;\; E \Big[E\big[g(X,Y) \mid X\big] \Big]
+\]
+<p>where the outer expectation is over the marginal distribution of \(X\) and the inner expectation is over the conditional distribution of \(Y\) given \(X\).</p>
+</div>
+	<div class="proof">
+		<p>We only prove the  result for discrete random variables. The continuous proof is the same but with integrals instead of summations. The proof starts from the definition of bivariate expected values, noting that the joint probability function can be written as the product of the marginal probability function of \(X\) and the conditional probability function of \(Y\) given \(X\).</p>
+
+\[ \begin{align}
+E[g(X,Y)] \;&amp;=\; \sum_{\text{all }x} {\sum_{\text{all }y}{g(x,y) \times p(x,y)}} \\
+&amp;=\; \sum_{\text{all }x} {\sum_{\text{all }y}{g(x,y) \times p_X(x) \times p_{Y \mid X=x}(y)}} \\
+&amp;=\; \sum_{\text{all }x} {p_X(x) \left[ \sum_{\text{all }y}{g(x,y) \times p_{Y \mid X=x}(y)}\right]} \\
+&amp;=\; \sum_{\text{all }x} {p_X(x) \times E\big[g(X,Y) \mid X = x\big]} \\
+&amp;=\; E \Big[E\big[g(X,Y) \mid X\big] \Big]
+\end{align} \]
+
+	</div>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

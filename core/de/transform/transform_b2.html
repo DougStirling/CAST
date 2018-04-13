@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>Log-Transformationen</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+<meta name="index" content="transformations">
+	<meta name="dataset" content="Brain weights of mammals"></head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Nichtlineare Transformationen</p>
+<p>Es gibt einige Typen von Datens&auml;tzen, bei denen
+alternative
+Einheiten der Messwerte nicht linear zusammenh&auml;ngen. Zum
+Beispiel,
+</p><ul> <li>Die Wellenl&auml;nge der Strahlung
+(in Metern) kann
+alternativ
+auch als Frequenz (in Schwingungen pro Sekunde) aufgezeichnet werden -
+- eine umgekehrte (reziproke) Beziehung.</li> <li>Ein
+medizinischer Forscher kann die Durchschnittszeit
+zwischen
+Anf&auml;llen von akuten Epileptikern aufzeichnen, oder aber die
+Anzahl
+der Anf&auml;lle pro Jahr darstellen - - eine weitere reziproke
+Beziehung. </li> <li>Die Richter-Skala transformiert die
+gemessene
+Intensit&auml;t von
+Erdbeben in eine logarithmische Skala.</li>
+</ul><p>Nichtlineare Transformationen von Werten in einem
+Datensatz
+haben
+einen wesentlicheren Einfluss auf die Gestalt der Verteilung, was dann
+auch dazu benutzt werden kann, weitere Informationen aus den Daten
+herauszubekommen.
+</p><table class="centred" bgcolor="#ffffff" border="1" cellpadding="10" cellspacing="0" width="75%"> <tbody> <tr> <td align="center"><strong>Nichtlineare
+Transformationen
+&auml;ndern die Gestalt der Verteilung.</strong></td> </tr>
+</tbody>
+</table><p class="heading">Logarithmische
+Transformationen</p>
+<p>Die am h&auml;ufigsten gebrauchte nichtlineare
+Transformation
+ersetzt jeden Wert durch seinen Logarithmus,</p>
+<p class="eqn" style="color: rgb(0, 0, 0);"><strong>neuer
+Wert</strong>
+&nbsp; = log<sub>10</sub> <font size="+1">(</font><strong>alter
+Wert</strong><font size="+1">)</font></p>
+<p>Wir benutzen in CAST Logarithmen mit 10er Basis, da diese
+Werte
+einfacher zu interpretieren sind, aber nat&uuml;rliche Logarithmen
+(mit
+der Basis e) haben einen &auml;hnlichen Effekt auf die
+Werteverteilung.</p>
+<p class="heading">Einfluss auf die Gestalt der Verteilung</p>
+<p>Wichtige Eigenschaften von Logarithmen sindI</p>
+<ul> <li>die Multiplikation jeden Wertes mit 10
+erh&ouml;ht
+seinen
+Logarithmus um 1.</li> <li>Auf &auml;hnliche
+Weise&nbsp;erh&ouml;ht die
+Vordoppelung eines
+Werts seinen Logarithmus um die selbe Konstante.</li>
+</ul><p>Man stelle sich die vier Werte 1, 10, 100 und 1000
+vor. Die
+ersten
+zwei Werte sind viel n&auml;her aneinander als die letzten beiden
+Werte. Nichtsdestotrotz sind ihre Logarithmen aber 0, 1, 2 und 3, haben
+also gleiche Abst&auml;nde.</p>
+<p>Als Folge dessen dehnt eine logarithmische Transformation die
+Verteilung niedriger Werte in einer Verteilung aus und komprimiert die
+hohen Werte. Sie ist deshalb hilfreich bei asymmetrischen Daten, mit
+einem weiten Ausl&auml;ufer hin zu den gro&szlig;en
+Werten.&nbsp;Sie
+wird eine dichte Anh&auml;ufung niedriger Werte auseinanderziehen
+und
+Ballungen oder Ausrei&szlig;er aufzeigen, welche aus graphischen
+Darstellungen der Ursprungsdaten nicht erkennbar w&auml;ren.</p>
+<div class="diagram"><p class="heading">Gewichte
+der Gehirne von
+S&auml;ugetieren</p>
+<p>Der folgende Dotplot zeigt das durchschnittliche Gehirngewicht
+(in
+Gramm) von 62 verschiedenen S&auml;ugetierarten. </p>
+<div class="centred"><applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" height="350" width="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="transformProg.DotLabelApplet"><param name="varName" value="Hirngewicht(Gramm)"><param name="values" value="44.50 15.50 8.100 423.0 119.5 115.0 98.20 5.500 58.00 6.400 4.000 5.700 6.600 0.140 1.000 10.80 12.30 6.300 4603 0.300 419.0 655.0 3.500 115.0 25.60 5.000 17.50 680.0 406.0 325.0 12.30 1320 5712 3.900 179.0 56.00 17.00 1.000 0.400 0.250 12.50 490.0 12.10 175.0 157.0 440.0 179.5 2.400 81.00 21.00 39.20 1.900 1.200 3.000 0.330 180.0 25.00 169.0 2.600 11.40 2.500 50.40 "><param name="labelName" value="S&auml;ugetier"><param name="labels" value="#Arktis Fuchs# #Nachtaffe# #Biberh&ouml;rnchen# #Kuh# #Wolf# #Ziege# #Reh# #Meerschweinchen# #Gr&uuml;ne Meerkatze# #Chinchilla# #Erdh&ouml;rnchen# #Arktisches Erdh&ouml;rnchen# #Afrikanische Riesenhamsterratte# #Kurzschwanzspitzm&auml;use# #Sternmull# #Neunbinden-G&uuml;rteltier# #Baumschliefer# #N-amerikanisches Opossum# #Asiatischer Elefant# #Breitfl&uuml;gelfledermaus# #Esel# #Pferd# #Braunbrustigel# #Husarenaffe# #Katze# #Galago# #Ginsterkatzen# #Giraffe# #Gorilla# #Kegelrobbe# #Klippschliefer(h. brucci)# #Mensch# #Afrikanischer Elefant# #Schwimmbeutler# #Rhesusaffe# #K&auml;nguruh# #Gelbbauchmurmeltier# #Goldhamster# #Maus# #Mausohrfledermaus# #Plumploris# #Okapi# #Kaninchen# #Schaf# #Jaguar# #Chimpanse# #Pavian# #Afrikanischer W&uuml;stenigel# #Rieseng&uuml;rteltier# #Klippschliefer(p. habess.)# #Waschb&auml;r# #Ratte# #O-amerikanischer Maulwurf# #Maulwurfsratte# #Moschusspitzmaus# #Schwein# #Ameisenigel# #Flachlandtapir# #Gro&szlig;er Tenrek# #Kuskus# #Spitzh&ouml;rnchen# #Rotfuchs#"><param name="horizAxis" value="0 6000 0 1000"></applet></div><p><strong>Ziehe</strong>
+&uuml;ber die Kreuze, um die Namen der S&auml;ugetiere
+angezeigt zu
+bekommen..</p>
+<p>Der Datensatz ist so asymmetrisch, dass f&uuml;r kleine
+S&auml;uger
+nur wenig &uuml;ber die Verteilung gesagt werden kann. </p>
+<hr width="85%"><p>Das nachfolgende Diagramm zeigt
+einen verwackelten
+(flimmernden)
+Dotplot der Daten.</p>
+<div class="centred"><applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" height="300" width="500"><script type="text/javascript">writeAppletParams();</script><param name="appletName" value="transformProg.Log10Applet"><param name="varName" value="Hirngewicht (Gramm)"><param name="values" value="44.50 15.50 8.100 423.0 119.5 115.0 98.20 5.500 58.00 6.400 4.000 5.700 6.600 0.140 1.000 10.80 12.30 6.300 4603 0.300 419.0 655.0 3.500 115.0 25.60 5.000 17.50 680.0 406.0 325.0 12.30 1320 5712 3.900 179.0 56.00 17.00 1.000 0.400 0.250 12.50 490.0 12.10 175.0 157.0 440.0 179.5 2.400 81.00 21.00 39.20 1.900 1.200 3.000 0.330 180.0 25.00 169.0 2.600 11.40 2.500 50.40 "><param name="labelName" value="S&auml;ugetier"><param name="labels" value="#Arktis Fuchs# #Nachtaffe# #Biberh&ouml;rnchen# #Kuh# #Wolf# #Ziege# #Reh# #Meerschweinchen# #Gr&uuml;ne Meerkatze# #Chinchilla# #Erdh&ouml;rnchen# #Arktisches Erdh&ouml;rnchen# #Afrikanische Riesenhamsterratte# #Kurzschwanzspitzm&auml;use# #Sternmull# #Neunbinden-G&uuml;rteltier# #Baumschliefer# #N-amerikanisches Opossum# #Asiatischer Elefant# #Breitfl&uuml;gelfledermaus# #Esel# #Pferd# #Braunbrustigel# #Husarenaffe# #Katze# #Galago# #Ginsterkatzen# #Giraffe# #Gorilla# #Kegelrobbe# #Klippschliefer(h. brucci)# #Mensch# #Afrikanischer Elefant# #Schwimmbeutler# #Rhesusaffe# #K&auml;nguruh# #Gelbbauchmurmeltier# #Goldhamster# #Maus# #Mausohrfledermaus# #Plumploris# #Okapi# #Kaninchen# #Schaf# #Jaguar# #Chimpanse# #Pavian# #Afrikanischer W&uuml;stenigel# #Rieseng&uuml;rteltier# #Klippschliefer (p. habess.)# #Waschb&auml;r# #Ratte# #O-amerikanischer Maulwurf# #Maulwurfsratte# #Moschusspitzmaus# #Schwein# #Ameisenigel# #Flachlandtapir# #Gro&szlig;er Tenrek# #Kuskus# #Spitzh&ouml;rnchen# #Rotfuchs#"><param name="logName" value="Log (Hirngewicht)"><param name="logDecimals" value="3"><param name="horizAxis" value="0.08 10000 1000 1000"><param name="logAxis" value="0.08 10000 -1 1"><param name="customText" value="Original scale=Original Skala#Log scale=Logarhitmische Skala"></applet></div>
+<p>Eine zweite Achse befindet sich unter dem Plot und beziffert
+die
+Werte&nbsp;0,1, 1, 10, 100, 1000, und 10.000. Diese Werte haben <strong>keine</strong> gleichen
+Abst&auml;nde und die
+h&ouml;chstwertigen Kennzeichnungen &uuml;berlappen teilweise.
+Die
+Achse oberhalb des Dotplots zeigt die Logarithmen der folgenden sechs
+Werte ( -1, 0, 1, 2, 3 und 4).</p>
+<p>Ziehe den Schieberegler unter dem Diagramm nach rechts, um die
+Anzeige zu einem Dotplot der <strong>Logarithmen
+</strong>der Gehirngewichte zu ver&auml;ndern.&nbsp; Die
+Transformation
+macht aus der Logarithmusachse oberhalb des Plots eine Achse mit
+gew&ouml;hnlicher Gr&ouml;&szlig;eneinteilung.</p>
+<p>Die Transformation <strong>dehnt
+den
+dichten Cluster der S&auml;uger mit geringen Gehirngewichten im
+urspr&uuml;nglichen Plot und komprimiert den weiten
+Ausl&auml;ufer der
+S&auml;uger mit gro&szlig;en Gehirngewichten</strong>. </p>
+<p>Aus den transformierten Daten k&ouml;nnen wir Folgendes
+ableiten:</p>
+<ul> <li>Es gibt keine eindeutigen Cluster bei
+S&auml;ugetieren.</li> <li>Die 2 Elefanten
+w&uuml;rden, obwohl sie ein Gehirn des
+3fachen
+Gewichts des n&auml;chst schwereren S&auml;ugers (Mensch)
+haben, eher
+als die Extremwerte einer Verteilung mit sehr weitem Ausl&auml;ufer
+interpretiert werden, als als &bdquo;Fehler&ldquo; (Es gibt
+mehr als
+eine Art von Ausrei&szlig;er!)</li>
+</ul><br>
+<hr width="85%"><p>Um die Transformation besser
+erkl&auml;ren zu
+k&ouml;nnen, zeigt das
+folgende Diagramm nur f&uuml;nf der S&auml;ugetiere.</p>
+<table class="centred" border="0" cellpadding="4" cellspacing="0"> <tbody> <tr> <th>S&auml;ugetier</th>
+<th>Gehirngewicht</th> </tr> <tr bgcolor="#ffffff"> <td>Asiatischer Elefant</td>
+<td align="center">4603 g</td> </tr> <tr bgcolor="#ffffff"> <td>Schimpanse</td> <td align="center">440 g</td> </tr> <tr bgcolor="#ffffff"> <td>Arktischer Fuchs</td> <td align="center">44.5 g</td> </tr> <tr bgcolor="#ffffff"> <td>Ziesel</td> <td align="center">4 g</td> </tr> <tr bgcolor="#ffffff"> <td>Maus</td> <td align="center">0.4 g</td> </tr> </tbody>
+</table><p>Diese S&auml;ugetiere unterscheiden sich
+ungef&auml;hr
+um den Faktor
+10.</p>
+<div class="centred"><applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" height="300" width="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="transformProg.Log10Applet"><param name="varName" value="Hirngewicht (Gramm)"><param name="values" value="0.400 4.000 44.50 440 4603"><param name="labelName" value="S&auml;ugetier"><param name="labels" value="#Maus# #Ziesel# #Arktischer Fuchs# #Schimpanse# #Asiatischer Elefant# "><param name="logName" value="Log (Hirngewicht)"><param name="logDecimals" value="3"><param name="horizAxis" value="0.08 10000 1000 1000"><param name="logAxis" value="0.08 10000 -1 1"><param name="jittering" value="0.0"><param name="customText" value="Original scale=Original Skala#Log scale=Logarithmische Skala"></applet></div><p>Benutze
+wieder den <strong>Schieberegler</strong>,
+um eine logarithmische Transformation durchzuf&uuml;hren. Wie man
+sieht, sind die f&uuml;nf S&auml;uger nun
+gleichm&auml;&szlig;ig auf
+der logarithmischen Skala verteilt.</p>
+</div><script type="text/javascript">writePageEnd();</script>
+</body></html>

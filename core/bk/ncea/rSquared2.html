@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Coefficient of determination</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<script type="text/javascript">
+		var dataImages = new Array();
+		var i;
+		for (i=0 ; i<5 ; i++)
+			dataImages[i] = new Image();
+		dataImages[0].src = "../HregnAnova/images/cancerRadiation.gif";
+		dataImages[1].src = "../HregnAnova/images/butterfatTemp.gif";
+		dataImages[2].src = "../HregnAnova/images/deerJawWt.gif";
+		dataImages[3].src = "../HregnAnova/images/phoneSurveyRefusal.gif";
+		dataImages[4].src = "../HregnAnova/images/alcoholStrength.gif";
+		
+		function changeSvgImage(select) {
+			var newIndex = select.selectedIndex;
+			document.images['dataImage'].src = dataImages[newIndex].src;
+		}
+	</script>
+
+	<meta name="index" content="coefficient of determination, correlation coefficient">
+	<meta name="dataset" content="Cancer deaths and radiation">
+	<meta name="dataset" content="Butterfat">
+	<meta name="dataset" content="Deer weight and jaws">
+	<meta name="dataset" content="Refusal rates for phone survey">
+	<meta name="dataset" content="Alcoholism and strength">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Coefficient of determination</p>
+<p>We have seen that the total sum of squares can be split into two parts, the 
+explained and residual sums of squares.</p>
+<div class="boxed">
+<dl style="margin-left:0">
+<dt>When the relationship is strong,</dt>
+<dd style="font-weight:normal">...the explained sum of squares is close to the
+total sum of squares (and the residual sum of squares is small).</dd>
+<dt>When the relationship is weak,</dt>
+<dd style="font-weight:normal">...the explained sum of squares is small relative
+to the total sum of squares.</dd>
+</dl>
+</div>
+<p>A useful summary statistic is the <strong>proportion</strong> 
+of the total variation that is explained, <strong>the coefficient of determination</strong>, 
+<em>R</em><sup>2</sup>, </p>
+<p class=eqn><img src="../../en/regnAnova/images/r2Defn3.gif" width="110" height="38" alt="R-squared = SSexplained / SStotal"></p>
+<p>The coefficient of determination is always between 0 and 1. <em>R</em><sup>2</sup> 
+is close to 1 when most of the response variation is explained by the explanatory 
+variable; it is close to 0 when most variation is unexplained.</p>
+<p>Because the explained and residual sums of squares add to the total sum of squares, the residual sum 
+of squares is a proportion (1&nbsp;-&nbsp;<em>R</em><sup>2</sup>) of the total 
+variation, so this is the proportion of total variation that is <strong>unexplained</strong> 
+by the normal linear model.</p>
+<p class="heading">Correlation coefficient</p>
+<p>Although it is derived with quite a different aim, the value of <em>R</em><sup>2</sup> 
+is the square of the correlation coefficient between the explanatory and response 
+variables for regression data. This may help to interpret its value. </p>
+<p class=eqn><img src="../../en/regnAnova/images/rSquaredEqn.gif" width="230" height="24" alt="R-squared = corr-squared"></p>
+
+<div class="diagram"> 
+
+<p class="heading">Illustration</p>
+<p>We again consider simulated data that might describe the impurities recorded 
+from batches of plastic produced at different temperatures.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.ComponentsR2Applet">
+<param name="yVarName" value="Impurities, y">
+<param name="xVarName" value="Temperature, x">
+<param name="xRandom" value="30 70 8 445945782 2.0">
+<param name="regnModel" value="-10.0 0.3 2.0">
+<param name="randomSeed" value="655945782">
+<param name="xAxis" value="50 90 50 10">
+<param name="yAxis" value="0 20 0 5">
+<param name="decimals" value="3">
+<param name="residAxis" value="-20 20 -20 10">
+<param name="initialR2" value="0.75">
+<param name="maxSsq" value="999.9">
+<param name="componentName" value="Total#Explained#Residual">
+<param name="customText" value="Another data set=Another data set#Variability=Variability#All unexplained=All unexplained#All explained=All explained">
+</applet>
+</div>
+
+<p>Use the slider to adjust the strength of the relationship, and observe how 
+the value of <em>R</em><sup>2</sup> is affected.</p>
+<p class="heading">Real data sets</p>
+<p>Use the popup menu below to display the coefficient of determination for different 
+data sets and see how it is interpreted.</p>
+
+<form>
+<select name="dataset" onChange="changeSvgImage(this)">
+<option value="0" selected>Cancer deaths and radiation</option>
+<option value="1">Butterfat content of milk</option>
+<option value="2">Jaw length and weight of deer</option>
+<option value="3">Non-response in phone surveys</option>
+<option value="4">Alcoholism and strength</option>
+</select>
+</form>
+
+<p align="center"><img src="../../en/regnAnova/images/cancerRadiation.gif" name="dataImage" width="587" height="367"></p>
+
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

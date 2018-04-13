@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Generating random numbers</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="transformation, random number, pseudo-random number, rectangular distribution, generate random numbers, cumulative distribution function">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>Computer simulations consist of realisations of models for real-life scenarios. These models involve distributions, so simulations require values that are randomly generated from  the distributions. These random values are usually generated on a computer with some algorithm. Strictly speaking, these should be called <strong>pseudo-random</strong> values but will simply be called random values here.</p>
+<p>The basis of generating random values from a distribution is usually an algorithm that generates a random value from a \(\RectDistn(0, 1)\) distribution. For example, Excel has a function to generate one such value:</p>
+<p class="eqn">=RAND()</p>
+<p>The relationship between a \(\RectDistn(0, 1)\) distribution and one with cumulative distribution function \(F(x)\) can be used to generate a random value from an arbitrary distribution.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Random values from an arbitrary distribution</p>
+		<p>If \(y\) is a random value from a \(\RectDistn(0, 1)\) distribution, then \(F^{-1}(y)\) is a random value from the distribution with cumulative distribution function \(F(x)\).</p>
+	</div>
+</div>
+<p>Excel has built-in functions to evaluate \(F^{-1}(y)\) for several common distributions, including the following ones.</p>
+<table border="0" cellpadding="5" cellspacing="0" class="centred">
+	<tr>
+		<th>Distribution</th>
+		<th>\(F(x)\)</th>
+		<th>\(F^{-1}(y)\)</th>
+	</tr>
+	<tr>
+		<td>\(\NormalDistn(0, 1)\)</td>
+		<td>=NORM.S.DIST(\(x\), true)</td>
+		<td>=NORM.S.INV(\(y\))</td>
+	</tr>
+	<tr>
+		<td>\(\NormalDistn(\mu, \sigma^2)\)</td>
+		<td>=NORM.DIST(\(x\), \(\mu\), \(\sigma\), true)</td>
+		<td>=NORM.INV(\(y\), \(\mu\), \(\sigma\))</td>
+	</tr>
+	<tr>
+		<td>\(\GammaDistn(\alpha, \lambda)\)</td>
+		<td>=GAMMA.DIST(\(x\), \(\alpha\), \(\frac 1{\lambda}\), true)</td>
+		<td>=GAMMA.INV(\(y\), \(\alpha\), \(\frac 1{\lambda}\))</td>
+	</tr>
+</table>
+<p>For example, a random value from a \(\NormalDistn(\mu = 10, \sigma^2 = 4)\) distribution can be generated in Excel by typing the following into a spreadsheet cell:</p>
+<p class="eqn">=NORM.INV(RAND(), 10, 2)</p>
+<p class="heading">Generating values from a discrete distribution</p>
+<p>Although the methodology above is easiest to explain for continuous random variables, it can also be used to generate random numbers from discrete distributions.</p>
+<p> Excel only has a function for the inverse of the binomial distribution's CDF. Typing the following into a spreadsheet cell generates a random value from a binomial distribution:</p>
+<p class="eqn">=BINOM.INV(\(n\), \(\pi\), RAND())</p>
+<p>The method can however be applied to other discrete distributions too.</p>
+<div class="example">
+	<p class="exampleHeading">Example: Generating values from a Poisson distribution</p>
+	<p>The diagram below shows the cumulative distribution function for a \(\PoissonDistn(\lambda = 3)\) distribution — a step function. From a randomly generated \(Y\) with a \(\RectDistn(0, 1)\) distribution, you would read across and down to find a random value from the discrete  \(\PoissonDistn(\lambda = 3)\) distribution.</p>
+	<p class="eqn"><img src="images/s_randomPoisson.png" width="568" height="410"  alt=""/></p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

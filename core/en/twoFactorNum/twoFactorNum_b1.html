@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Categorical model for numerical factors</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="numerical factor, categorical factor, model, linear model">
+	<meta name="dataset" content="Soybean yield and trace elements">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Smoothness in a categorical model</p>  
+  <p>The previous section described a model without interactionfor experiments with two factors, <span class="blue">X</span> and <span class="green">Z</span>. For the <span class="em red">k</span> <span class="red">'th</span> replicate observation when factor <span class="blue">X</span> is at level <span class="em blue">i</span>  and factor <span class="green">Z</span> is at level <span class="em green">j</span> , the response was modelled by the following equation:</p>
+	<div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+		<tr>
+			<td align="center"><br>
+					<em><span class="black">y</span><sub><span class="blue">i</span><span class="green">j</span><span class="red">k</span></sub></em>&nbsp;= &nbsp;µ&nbsp;+&nbsp;</td>
+			<td align="center" class="blue">(<em>explained by X</em>)<br>
+				β<em><sub>i</sub></em></td>
+			<td align="center"><br>
+				&nbsp;+&nbsp;</td>
+			<td align="center" class="green">(<em>explained by Z</em>)<br>
+				γ<em><sub>j</sub></em></td>
+			<td align="center"><br>
+				&nbsp;+&nbsp;</td>
+			<td align="center" class="red">(<em>unexplained</em>)<br>
+				ε<em><sub>ijk</sub></em></td>
+		</tr>
+	</table></div>
+	<p>where <span class="blue">β<sub>1</sub>&nbsp;=&nbsp;0</span> and <span class="green">γ<sub>1</sub>&nbsp;=&nbsp;0</span>.</p>
+	<p>If <span class="blue">X</span> has<em> a</em> levels, this model has (<em>a</em>&nbsp;-&nbsp;1) unknown parameters, <span class="blue">β<sub>2</sub></span>, <span class="blue">β<sub>3</sub></span>, ..., <span class="blue">β<em><sub>a</sub></em></span>, corresponding to the levels of the factor. This flexibility allows the factor levels to have arbitrary effects on the response.</p>
+	<p>If the factor is numerical, there is usually an expectation of smoothness in the relationship between the factor level and the response. Refining the model to impose some form of smoothness on the relationship usually provides a better estimate of the effect the factor.</p>
+	<div class="centred"><div class="boxed">
+		<p>A categorical model for a numerical factor  often does not display a 'smooth' relationship and cannot be used to predict the response at intermediate values of the factor.</p>
+	</div></div>
+	<p>The same argument suggests that the set of parameters <span class="green">{γ<em><sub>j</sub></em>}</span> for the factor <span class="green">Z</span> may be better replaced by a term that imposes some smoothness to the relationship.</p>
+	<div class="diagram"> 
+		<p class="heading">Soybean yield and trace elements</p>
+		<p>An experiment was conducted to compare the effect of four manganese rates 
+			(from MnSO<sub>4</sub>) and four copper rates (from CuSO<sub>4</sub> 5H<sub>2</sub>O) 
+			on the yield of soybeans. A large field was subdivided into 32 separate 
+			plots. Two plots were randomly assigned to each of the 16 combinations of 
+			levels of the two factors. Soybeans were then planted over the entire field 
+			in rows 3 feet apart. The yields (in kg per hectare) are shown in the diagram 
+			below.</p>
+		<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoFactorProg.RotateDragFactorsApplet">
+<param name="yVarName" value="Soybean yield (tonne/hectare)">
+<param name="yValues" value="1.558 1.578 2.003 2.033 2.490 2.470 2.830 2.810 1.590 1.610 2.020 2.051 2.620 2.632 2.860 2.841 1.558 1.550 2.003 2.010 2.490 2.690 2.830 2.910 1.328 1.427 2.010 2.031 2.887 2.832 2.960 2.941">
+<param name="yAxis" value="1.2 3.2 1.5 0.5">
+<param name="zVarName" value="Cu">
+<param name="zValues" value="8@0 8@1 8@2 8@3">
+<param name="zLabels" value="1 3 5 7">
+<param name="xVarName" value="Mn">
+<param name="xValues" value="2@0 2@1 2@2 2@3 2@0 2@1 2@2 2@3 2@0 2@1 2@2 2@3 2@0 2@1 2@2 2@3">
+<param name="xLabels" value="20 50 80 110">
+<param name="zModelTerms" value="factor">
+<param name="xModelTerms" value="factor">
+<param name="interaction" value="false">
+<param name="initialModel" value="ls">
+<param name="maxRss" value="9999999">
+<param name="customText" value="None=None#Linear=Linear#Factor=Factor">
+</applet> 
+</div>
+
+	<p>Observe that:</p>
+	<ul>
+		<li>Increasing the quantity of Mn seems to have an <strong>almost</strong> linear effect on yield.</li>
+		<li>Increasing the quantity of Cu has little effect on yield. Could the differences be simply bu chance?</li>
+	</ul>
+	<p>The model does not allow us to predict the thrust at intermediate values of the factors. For example, we cannot use it to predict yield if Mn is 100 and Cu is 6.</p>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

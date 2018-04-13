@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Sequentially adding variables</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="sums of squares">
+	<meta name="dataset" content="Heart catheter length">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Adding the two variables sequentially</p>
+  <p>In the previous section, we used an F test to compare the full regression 
+		model involving both <em>X</em> and <em>Z</em>, and a 'regression model' with 
+		no explanatory variables.</p>
+	<p class=eqn><img src="images/fullAndNullModels.gif" width="418" height="45" alt="xBar +/- t x s/root(n)"> 
+	</p>
+	
+  <p>There is an alternative to this 'all-or-nothing' test for both explanatory 
+    variables simultaneously. There are two different ways that the explanatory 
+    variables can be added sequentially to the regression model with no explanatory 
+    variables.</p>
+	<p class=eqn><img src="../multicollin/images/allTests.gif" width="430" height="224" alt="xBar +/- t x s/root(n)"> 
+	</p>
+	
+  <p>The two possibilities are adding the variables in the order:</p>
+	<ul>
+		<li>first <em>X</em> and then <em>Z</em>, or</li>
+		<li>first <em>Z</em> and then <em>X</em></li>
+	</ul>
+	<p>Whatever the order,</p>
+	
+<div class="centred"><div class="boxed">
+<p>Each additional variable gives the model more flexibility and 
+				allows the regression plane to fit closer to the data.</p>
+</div></div>
+
+	<br>
+	
+	<div class="diagram">
+    <p class="heading">Heart catheter length</p>
+
+    <p>In heart catheterisation, a catheter is passed through a major vein or 
+			artery from the leg into the heart. X-rays are used to position the tip 
+			of the catheter. Should surgeons estimate the length (cm) of catheter that 
+			will be required from the height (in) of children, their weight (lb), or 
+			both? Catheter length (cm), height (in) and weight (lb) were recorded from 
+			12 children.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="420">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="multiRegnProg.SequentialAddApplet">
+<param name="yVarName" value="Catheter">
+<param name="xVarName" value="Height">
+<param name="zVarName" value="Weight">
+<param name="yValues" value="37 50 34 36 43 28 37 20 34 30 38 47">
+<param name="xValues" value="42.8 63.5 37.5 39.5 45.5 38.5 43.0 22.5 37.0 23.5 33.0 58.0">
+<param name="zValues" value="40.0 93.5 35.5 30.0 52.0 17.0 38.5 8.5 33.0 9.5 21.0 79.0">
+<param name="yAxis" value="15 55 20 10">
+<param name="xAxis" value="20 65 20 10">
+<param name="zAxis" value="0 100 0 20">
+<param name="maxCoeff" value="99.99 9.999 9.999">
+<param name="lsDecimals" value="2 3 3">
+<param name="customText" value="Variables in model=Variables in model">
+</applet> 
+</div>
+
+    <p>Initially the least squares fit of a model involving no explanatory variables 
+			is shown. The plane simply predicts the catheter length to be the sample 
+			mean catheter length from the 12 children and is the same whatever the values 
+			of the explanatory variables. (Click the y-x and y-z rotation buttons to 
+			verify this.)</p>
+		
+    <p>Use the checkboxes to check that any time a variable is added to the model, 
+      the plane gets closer to the data points. (More precisely, the residual 
+      sum of squares reduces.)</p>
+    
+  </div>
+
+	<p class="heading">Representation of models with only one explanatory variable</p>
+	
+  <p>The least squares fit of a regression model with only a single explanatory 
+    variable, such as</p>
+	<p class=eqn><img src="images/xModel.gif" width="360" height="21" alt="xBar +/- t x s/root(n)"> 
+	</p>
+	
+  <p>corresponds to a straight line on a 2-dimensional scatterplot of the data.</p>
+	<p class=eqn><img src="images/twoDScatterplot.gif" width="265" height="249" alt="xBar +/- t x s/root(n)"> 
+	</p>
+	
+  <p>This least squares line also corresponds to a plane in a 3-dimensional scatterplot 
+    of <em>x</em>, <em>y</em> and <em>z</em> with <em>z</em>-slope equal to zero.</p>
+	
+	<div class="diagram">
+    <p class="heading">Heart catheter length</p>
+
+    <p>Select only the check-box for <strong>Height</strong> in the diagram above 
+      to show the least squares fit for the model with only the explanatory variable 
+      <em>Height</em>. Click the <strong>y-x</strong> rotation button to verify 
+      that this appears as a straight line in the 2-dimensional scatterplot of 
+      <em>Catheter length</em> against <em>Height</em>, then click the <strong>y-x-z</strong> 
+      rotation button to show it as a plane in the 3-dimensional scatterplot.</p>
+    <p>Similarly investigate the model with only explanatory variable <em>Weight</em>.</p>
+    </div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

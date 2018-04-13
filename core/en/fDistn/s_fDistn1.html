@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Ratio of chi-squared variables</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="f distribution, continuous distribution, chi-squared distribution, probability density function, degrees of freedom">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>The F distribution is also closely associated with random samples from normal distributions.</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>If \(X_1\) and \(X_2\) have chi-squared distributions,</p>
+\[
+X_1 \;\sim\; \ChiSqrDistn(k_1 \text{ df}) \spaced{and} X_2 \;\sim\; \ChiSqrDistn(k_2 \text{ df})
+\]
+<p>then</p>
+\[
+F \;\;=\;\; \frac{\diagfrac{X_1}{k_1}} {\diagfrac{X_2}{k_2}}
+\]
+<p>is said to have an <strong>F distribution</strong> with \(k_1\) and \(k_2\) degrees of freedom.</p>
+\[
+F \;\;\sim\;\; \FDistn(k_1,\;k_2 \text{ df})
+\]</div>
+
+<p>Its pdf is complex and cannot be proved here.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Probability density function</p>
+		<p>If a random variable has an F distribution with \(k_1\) and \(k_2\) degrees of freedom then its probability density function is</p>
+		\[
+		f(x) \;\;=\;\; \frac{\Gamma\left(\frac{k_1+k_2}{2}\right)}{\Gamma\left(\frac{k_1}{2}\right) \Gamma\left(\frac{k_2}{2}\right)}
+		\left(\frac{k_1}{k_2}\right)^{\frac{k_1}{2}}
+		x^{\frac{k_1}{2} - 1}
+		 \left(1 + \frac{k_1x}{k_2} \right)^{-\frac {k_1+k_2}{2}} \qquad\text{for }x > 0
+		\]</div>
+</div>
+
+<p class="heading">Probabilities and quantiles</p>
+<p>Cumulative probabilities and quantiles of the F distribution must be evaluated numerically. In Excel, the probability of an \(\FDistn(\langle k_1 \rangle, \langle k_2 \rangle)\) distribution being less than a value \(\langle x \rangle\), \(P(X \lt \langle x \rangle)\) can be found with</p>
+<p class="eqn">=F.DIST(\(\langle x \rangle\), \(\langle k_1 \rangle\), \(\langle k_2 \rangle\), TRUE)</p>
+<p>In a similar way, its \(\langle p \rangle\)'th quantile is</p>
+<p class="eqn">=F.INV(\(\langle p \rangle\), \(\langle k_1 \rangle\), \(\langle k_2 \rangle\)) </p>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

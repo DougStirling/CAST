@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Sequential sums of squares and fitted values</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="general linear model, sequential sums of squares, fitted values">
+	<meta name="dataset" content="Oxygen uptake when running">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p>We now give two additional ways to interpret the sequential sums of squares.</p>
+	
+	<p class="heading">Sequential changes to residuals</p>
+	<p>As each explanatory variable is added to the model in turn, the residuals 
+		get closer to zero &mdash; their sum of squares becomes smaller. The sequential 
+		sum of squares for a variable <em>Z</em> can therefore be written in the following 
+		form where the superscripts ±Z refer to whether or not variable <em>Z</em> 
+		is in the model. (There may be additional explanatory variables in the model 
+		but our notation below does not mention them.)</p>
+	<p class="eqn"><img src="images/ssResidChange2.gif" width="249" height="29"></p>
+	<p>It is difficult to prove, but the sequential sum of squares can also be expressed 
+		in terms of the changes to the individual residuals from adding the variable 
+		<em>Z</em>. </p>
+	<p class="eqn"><img src="images/ssResidChange.gif" width="227" height="27"></p>
+	<p class="heading">Sequential changes to fitted values</p>
+	<p>In similar way, as each explanatory variable is added to the model in turn, 
+		the fitted values get closer to the observed response values. Since the the 
+		fitted values and residuals are closely related,</p>
+	<p class="eqn"><img src="images/residDefn.gif" width="84" height="22"></p>
+	<p>it follows that the sequential sum of squares is also the sum of squares 
+		of the changes to the fitted values from adding <em>Z</em>,</p>
+	<p class="eqn"><img src="images/ssFitChange.gif" width="227" height="27"></p>
+<br>
+
+  <div class="diagram"> 
+		<p class="heading">Oxygen uptake when running</p>  
+    <p>The diagram below shows how the fitted values change as variables are added 
+			to the model in the order Weight, Running time, Resting heart rate, and 
+			Running heart rate.</p>
+    <div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="440">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="glmAnovaProg.ResidSeqChangeApplet">
+<param name="yVarName" value="O2 uptake">
+<param name="yValues" value="44.609 45.313 54.297 59.571 44.811 45.681 49.091 39.442 50.541 37.388 44.754 47.273 49.156 46.774 50.388 48.673 47.920">
+<param name="xVariables" value="X Z U V">
+<param name="XVarName" value="Weight">
+<param name="XValues" value="89.47 75.07 85.84 68.15 77.45 75.98 81.19 81.42 73.03 87.66 66.45 79.15 81.42 91.63 73.37 76.32 61.24">
+<param name="ZVarName" value="Run time">
+<param name="ZValues" value="11.37 10.07 8.65 8.17 11.63 11.95 10.85 13.08 10.13 14.03 11.12 10.60 8.95 10.25 10.08 9.40 11.50">
+<param name="UVarName" value="Resting HR">
+<param name="UValues" value="62 62 45 40 58 70 64 63 45 56 51 47 44 48 67 56 52">
+<param name="VVarName" value="Running HR">
+<param name="VValues" value="178 185 156 166 176 176 162 174 168 186 176 162 180 162 168 186 170">
+<param name="fitDecimals" value="1">
+<param name="maxSsq" value="999.99 99 999.99 99.99">
+<param name="customText" value="Fitted values from various models=Fitted values from various models#Residuals from various models=Residuals from various models#Fitted values=Fitted values#difference=difference">
+</applet> 
+</div>
+
+		<p>Click the red arrows to calculate the difference between the fitted values 
+			of successive models. The sequential sum of squares from adding the variable 
+			is the sum of squares of these differences.</p>
+		<p>Select <strong>Residuals</strong> from the pop-up menu and again click 
+			red arrows. The sequential sum of squares can <strong>either</strong> be 
+			found from the difference in residual sum of squares <strong>or</strong> 
+			as the sum of squares of the individual differences.</p>
+</div>
+	<p class="heading">Graphical display of sequential sums of squares</p>
+	<p>The above result allows us to represent sequential sums of squares graphically 
+		for many models by connecting the fitted values from the models with and without 
+		the variable on a plot of the data. The sequential sum of squares is the sum 
+		of squares lengths of these lines.</p>
+	<p>We illustrated explained sums of squares with this type of diagram in earlier 
+		chapters for regression models with 1 and 2 explanatory variables, models 
+		with quadratic terms and models for data with several groups. We will also 
+		use similar diagrams to illustrate sequential sums of squares for more advanced 
+		models. </p>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

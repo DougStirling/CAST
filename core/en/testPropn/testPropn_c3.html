@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Another example</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="hypothesis test, proportion, binomial distribution">
+	<meta name="dataset" content="Design of mustard jar">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class=heading>Another example</p>
+<p>The following example shows again how the binomial distribution can be used 
+to obtain the p-value for a test about a population probability.</p>
+
+
+<div class="diagram" title="Example: Design of mustard jar">
+<p class=heading>Design of mustard jar</p>
+<p>In the trial of three new designs for a mustard jar that was described at the start of this section, 
+all three were offered for sale at the same price in a supermarket. Out of the first 
+90 jars that were purchased, 36 chose the design that was more expensive to manufacture 
+than the other two. Since more than a third chose this  design for the mustard jar, is there strong 
+evidence that customers prefer it? </p>
+<p>The null and alternative hypotheses are...</p>
+
+<p align="center"><strong>H<sub>0</sub>:</strong> &nbsp;π&nbsp;=&nbsp;<sup>1</sup>/<sub>3</sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(no 
+preference)</p>
+<p align="center"><strong>H<sub>A</sub>:</strong> &nbsp;π&nbsp;&gt;&nbsp;<sup>1</sup>/<sub>3</sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(preference 
+for the expensive design)</p>
+
+<p>The p-value is the probability of 36 or more expensive designs being purchased
+when π&nbsp;=&nbsp;<sup>1</sup>/<sub>3</sub>. 
+This can be obtained directly from a binomial distribution with π&nbsp;=&nbsp;<sup>1</sup>/<sub>3</sub> 
+and <i>n</i>&nbsp;=&nbsp;90. </p>
+
+<p>Use the slider below to obtain the p-value for this test.
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="420" height="280">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="testProg.SuccessPValueApplet">
+<param name="testParams" value="90 0.3333 30">
+<param name="testTail" value="high">
+<param name="successName" value="expensive design">
+<param name="customText" value="count of=count of">
+</applet>
+</div>
+
+<p>The p-value for the test is 0.1103, meaning that there is a probability of 
+0.1103 of the expensive design being purchased 36 of more times even if there is 
+no real preference for it. We therefore conclude that there is no evidence of 
+any preference from the data.</p>
+
+</div>
+
+<p class=heading>Interpretation of p-values</p>
+<p>If the p-value for a test is very small, the data are 'inconsistent' with the 
+null hypothesis. (The observed data may still be possible, but are at least extremely 
+unlikely.)</p>
+
+<div class="centred"><div class="boxed">
+<p>From a very small p-value, we can conclude that the null 
+hypothesis is probably wrong.</p>
+</div></div>
+
+<p>However a high p-value cannot allow us to conclude that the null hypothesis 
+is correct &mdash; only that the observed data are consistent with it. For example, 
+if exactly 30 expensive cases (a third) were purchased in the CD-case example 
+above, it would be wrong to conclude that there was no preference for it. The 
+data are also consistent with other values of π 
+near <sup>1</sup>/<sub>3</sub>, so we cannot conclude that π 
+is not 0.32 or 0.34.</p>
+
+<div class="centred"><div class="boxed">
+<p>A hypothesis test can never conclude that the null hypothesis 
+is correct.</p>
+</div></div>
+
+<p>The correct interpretation of p-values for the CD-case experiment would be...</p>
+<div class="centred">
+	<table class="centred" border="0" cellpadding="5" cellspacing="0">
+		<tr>
+			<th align="left">p-value</th>
+			<th align="left">Interpretation</th>
+			<th align="left">Conclusion</th>
+		</tr>
+		<tr bgcolor="white">
+			<td style="border-top:1px solid #999999; border-bottom:1px solid #999999"><strong>p&nbsp;> &nbsp;0.1</strong></td>
+			<td style="border-top:1px solid #999999; border-bottom:1px solid #999999"><em>x</em> is not unusually high. It would be as high in more than 10% of samples if π&nbsp;=&nbsp;<sup>1</sup>/<sub>3</sub>.</td>
+			<td style="border-top:1px solid #999999; border-bottom:1px solid #999999">There is no evidence against π&nbsp;=&nbsp;<sup>1</sup>/<sub>3</sub>.</td>
+		</tr>
+		<tr bgcolor="white">
+			<td style="border-bottom:1px solid #999999;"><strong>0.05&nbsp;&lt;&nbsp;p&nbsp;&lt;&nbsp;0.1</strong></td>
+			<td style="border-bottom:1px solid #999999;">We would find <em>x</em> as high in only 5% to 10% of samples if π&nbsp;=&nbsp;<sup>1</sup>/<sub>3</sub>.</td>
+			<td style="border-bottom:1px solid #999999;">There is only slight evidence against π&nbsp;=&nbsp;<sup>1</sup>/<sub>3</sub>.</td>
+		</tr>
+		<tr bgcolor="white">
+			<td style="border-bottom:1px solid #999999;"><strong>0.01&nbsp;&lt;&nbsp;p&nbsp;&lt;&nbsp;0.05</strong></td>
+			<td style="border-bottom:1px solid #999999;">We would find <em>x</em> this high in only 1% to 5% of samples if π&nbsp;=&nbsp;<sup>1</sup>/<sub>3</sub>.</td>
+			<td style="border-bottom:1px solid #999999;">There is moderately strong evidence against π&nbsp;=&nbsp;<sup>1</sup>/<sub>3</sub>.</td>
+		</tr>
+		<tr bgcolor="white">
+			<td style="border-bottom:1px solid #999999;"><strong>p&nbsp;&lt;&nbsp;0.01</strong></td>
+			<td style="border-bottom:1px solid #999999;">We would find <em>x</em> this high in under 1% of samples if π&nbsp;=&nbsp;<sup>1</sup>/<sub>3</sub>.</td>
+			<td style="border-bottom:1px solid #999999;">There is strong evidence against π&nbsp;=&nbsp;<sup>1</sup>/<sub>3</sub>.</td>
+		</tr>
+	</table>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

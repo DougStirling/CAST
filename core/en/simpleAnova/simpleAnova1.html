@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Different approach to testing mean</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="t test, f distribution, f test, f ratio, analysis of variance">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Testing the mean</p>
+<p>In an earlier chapter, we described a t-test for whether the population mean 
+underlying a random sample is equal to some known constant, <em>k</em>:</p>
+<p class="eqn"><img src="images/hypothesesSimple.gif" width="78" height="45"></p>
+<p>These hypotheses were assessed with the test statistic</p>
+<p class="eqn"><img src="images/tDefn.gif" width="84" height="49"></p>
+<p>The t-value was compared to the t distribution with (<em>n</em>&nbsp;-&nbsp;1) 
+degrees of freedom.</p>
+<p class="heading">A different approach</p>
+<p>We now consider another approach to testing these hypotheses, based on the 
+sums of squares,</p>
+<p class="eqn"><img src="images/ssqTable.gif" width="271" height="132"></p>
+<dl>
+<dt>If the null hypothesis holds (i.e. if µ&nbsp;equals<span class="black">&nbsp;<em>k</em></span>) 
+...</dt>
+<dd>All three sums of squares have chi-squared distributions with degrees of freedom 
+given in the table.</dd>
+<dt>If the alternative hypothesis holds (i.e. if µ&nbsp;does 
+not equal<span class="black">&nbsp;<em>k</em></span>) ...</dt>
+<dd>The sum of squares about the mean does not depend on µ 
+or <span class="em black">k</span>  so it still has a chi-squared distribution. 
+However the sum of squares due to the mean would be expected to be larger.</dd>
+</dl>
+<p>The hypotheses can therefore be assessed by asking whether the sum of squares 
+due to the mean is 'unusually large'.</p>
+<p class="heading">Analysis of variance table</p>
+<p>To assess the size of the sum of squares due to the mean, we need a test statistic 
+based on it whose distribution is known when <strong>H<sub>0</sub></strong> is 
+true.</p>
+<p>The sum of squares table is extended with a column of <strong>mean sums of 
+squares</strong> (the sums of squares divided by their degrees of freedom) and 
+an <strong>F-ratio</strong> that is the ratio of the mean sums of squares for 
+the mean and about the mean.</p>
+<p class="eqn"><img src="images/ssqTable2.gif" width="500" height="132"></p>
+<p>This table is called an <strong>analysis of variance table.</strong></p>
+<p class="heading">Distribution of the F ratio</p>
+<p>If the null hypothesis holds, we can use the <a href="javascript:showNamedPage('twoVariance4')">results 
+at the end of the previous section</a> to state that the F ratio has an F distribution 
+with (1,&nbsp;<em>n</em>&nbsp;-&nbsp;1) degrees of freedom.</p>
+<p class="eqn"><img src="images/distnOfF.gif" width="344" height="56"></p>
+<br>
+
+<div class="diagram">
+<p class="heading">Simulation</p>
+<p>We will build up the distribution of the F ratio for testing whether a population 
+mean is zero,</p>
+<p class="eqn"><img src="images/hypotheses0.gif" width="81" height="45"></p>
+<p>The diagram below takes samples from a normal population with mean µ&nbsp;=&nbsp;0.</p>
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="varianceProg.RawFDistnApplet">
+<param name="varName" value="Sample value">
+<param name="meanSD" value="0.0 3.0 4">
+<param name="yAxis" value="-9.0 9.0 -8 2">
+<param name="fAxis" value="0 12 0 2">
+<param name="sampleSize" value="5 *20 50">
+<param name="areaProportion" value="0.05">
+<param name="maxSsq" value="999.99">
+<param name="maxMeanSsq" value="999.99">
+<param name="maxF" value="99.999">
+<param name="customText" value="F ratio=F ratio#Total (about 0)=Total (about 0)#About mean=About mean">
+</applet>
+</div>
+
+<p>Since the null hypothesis holds, the F ratio has the F distribution shown at 
+the bottom of the diagram. Click <strong>Take sample</strong> several times and 
+note that the sampling distribution of the F ratio matches the theory reasonably 
+well.</p>
+<p>Change the sample size and repeat the simulation. Note that the F ratio always 
+has a very skew distribution but its right tail is longer when the sample size 
+is low.</p>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

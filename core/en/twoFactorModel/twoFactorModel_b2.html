@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Additive model for treatment means</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="factorial design, model, normal model, parallel profiles">
+	<meta name="dataset" content="Pigs and bait">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Modelling how the mean response depends on the factor levels</p>  
+<p>The most general model for how the mean response for the <em>i</em>'th experimental unit might depend on the levels of the two factors, X and Y, can be written in the form</p>
+<p class="eqn"><span style="color:#000099">µ<em><sub>i</sub></em>&nbsp; &nbsp;=&nbsp; &nbsp;<em>f&nbsp;</em>(<em>x<sub>i</sub></em>, <em>z<sub>i</sub></em>)</span></p>
+<p>In practice, we usually simplify this with the assumption that the effects of the two factors are <strong>additive</strong>. This implies a model of the form,</p>
+<p class="eqn"><span style="color:#000099">µ<em><sub>i</sub></em>&nbsp; &nbsp;=&nbsp; &nbsp;<em>f&nbsp;</em>(<em>x<sub>i</sub></em>)&nbsp; &nbsp;+&nbsp; &nbsp;<em>g&nbsp;</em>(<em>z<sub>i</sub></em>)</span></p>
+<p>and is called a model <strong>without interaction</strong>. This type of  model is <strong>not</strong>  appropriate for all types of experiment and we will examine situations where the assumption of additive effects does not hold in a later section about <strong>interaction</strong>. However if the  model without interaction holds,</p>
+<div class="centred"><div class="boxed">
+<p>The effect of changing the level of one factor is the same, regardless of the level of the other factor.</p>
+</div></div>
+<p>For example,</p>
+<ul>
+  <li>The level of factor X that gives the highest mean response is the same, whatever the level of Y.</li>
+  <li>Changing the level of Y from 1 to 2 increases the mean response by the same amount whatever the level of X.</li>
+</ul>
+<br>
+
+<div class="diagram"> 
+<p class="heading">Bait Acceptability by Feral Pigs</p>
+		<p>Feral pigs in Australia are commonly controlled by poisoning with sodium monofluoracetate (1080). Field observations suggest, however, that pigs become bait-shy to 1080 so researchers conducted an experiment using feral pigs that were captured using baited pig traps. Ten male and ten female pigs were selected of approximately the same age and weight.</p>
+		<p>On Day 1, pigs were offered wheat only and their intake was recorded. On Day 2, five different feeds were offered and the change in intake (Day 2 minus Day 1) was recorded for each pig. The feeds involved combinations of wheat, 1080, dye (for safety reasons) and water (necessary to add the dye and 1080. The changes in intake (kg) are shown in the table below:</p>
+		<div class="centred"><table border="0" class="centred" cellpadding="3" cellspacing="0">
+			<tr>
+				<td width="17%">&nbsp;</td>
+				<th width="17%">Wheat</th>
+				<th width="17%">Wheat<br>
+				&amp; water</th>
+				<th width="17%">Wheat,<br>
+				water &amp; dye</th>
+				<th width="17%">Wheat, water <br>
+				&amp; 1080</th>
+				<th width="17%">Wheat, water, <br>
+				dye &amp; 1080</th>
+			</tr>
+			<tr>
+				<th align="left">Male</th>
+				<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">0.188<br>
+				-0.058</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">0.050<br>
+				-0.138</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">0.058<br>
+				-0.082</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">-0.712<br>
+				-1.280</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">-0.610<br>
+					-0.830</td>
+			</tr>
+			<tr>
+				<th align="left">Female</th>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">-0.280<br>
+				-0.062</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">-0.540<br>
+				-0.336</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">-0.260<br>
+				-0.123</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">-0.894<br>
+				-0.672</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">-0.837<br>
+					-1.202</td>
+			</tr>
+		</table></div>
+		<p>The diagram below shows the data. It also displays a plausible  model without interaction using a grid of lines that join the 10 treatment means.</p>
+		<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoFactorProg.RotateDragFactorsApplet">
+<param name="yVarName" value="Change in intake">
+<param name="yValues" value="0.188 -0.058 0.05 -0.138 0.058 -0.082 -0.712 -1.28 -0.61 -0.83 -0.28 -0.062 -0.54 -0.336 -0.26 -0.123 -0.894 -0.672 -0.837 -1.202">
+<param name="yAxis" value="-1.5 0.3 -1.5 0.5">
+<param name="xVarName" value="Gender">
+<param name="xValues" value="10@0 10@1">
+<param name="xLabels" value="Male Female">
+<param name="zVarName" value="Feed">
+<param name="zValues" value="2@0 2@1 2@2 2@3 2@4 2@0 2@1 2@2 2@3 2@4">
+<param name="zLabels" value="Wh Wh&wa Wh,wa&dy Wh,wa&1080 Wh,wa,dy&1080">
+<param name="zModelTerms" value="factor">
+<param name="xModelTerms" value="factor">
+<param name="interaction" value="false">
+<param name="initialModel" value="ls">
+<param name="maxRss" value="9.9999">
+<param name="initialRotation" value="45 60">
+<param name="customText" value="None=None#Linear=Linear#Factor=Factor">
+</applet> 
+</div>
+
+		<p>Click the <strong>y-z</strong> rotation button. The two sets of coloured lines represent the males and females. Observe that these two 'profiles' are parallel since the additive nature of the model implies that differences between males and females are the same for each diet.</p>
+		<div class="centred"><div class="boxed">
+			<p>The profiles are always parallel.</p>
+		</div></div>
+		<p>Click the <strong>y-x</strong> rotation button and observe that the three 'profiles' are again parallel.</p>
+		<p>Finally, observe that</p>
+		<div class="centred"><div class="boxed">
+			<ul>
+				<li>There are similar changes to intake for the three feeds without 1080 and also for the two feeds that include 1080.</li>
+				<li>Feed intake  reduces more in Day 2 when 1080 is present than when it is not.</li>
+			</ul>
+		</div></div>
+
+<br>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

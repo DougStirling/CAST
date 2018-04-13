@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>T-tests in full and partial models</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="multicollinearity">
+	<meta name="dataset" content="Leafing out time">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p>It is also important to realise that the t-test for each explanatory variable 
+		can give different results, depending on whether or not the other explanatory 
+		variable is also in the model.</p>
+	<p class="heading">T-test for <em>X</em> in full model</p>
+	<p>This is a t-test that is reported by most statistical software in the output 
+		from fitting a linear regression model with both explanatory variables <em>X</em> 
+		and <em>Z</em>. It compares the two models:</p>
+	<p class="eqn"><img src="images/tHypotheses2.gif" width="250" height="43"></p>
+	<p class="heading">T-test for <em>X</em> in partial model (without <em>Z</em>)</p>
+	<p>There is another t-test for <em>X</em> that is used in the simple linear 
+		regression model that does not involve <em>Z</em>. It compares the models:</p>
+	<p class="eqn"><img src="images/tHypothesesSimple.gif" width="192" height="43"></p>
+	<p>It is important to realise that these two t-tests can give different results. 
+		(And similarly for the corresponding two tests about <em>Z</em>.) When <em>X</em> 
+		and <em>Z</em> are multicollinear, <em>X</em> can explain a lot of variation 
+		in the response when <em>Z</em> is not in the model, but little extra variation 
+		in the response when <em>Z</em> is already there.</p>
+	<p class="heading">All possible tests for the slope parameters</p>
+	<p>The F-test and the four possible t-tests are shown in the diagram below. 
+		The tests compare the models to which the coloured arrows point.</p>
+	<p class="eqn"><img src="images/allTests.gif" width="430" height="224"></p>
+<br>
+
+	<div class="diagram">
+    <p class="heading">Leafing-out time</p>
+
+    <p>The diagram below shows the leafing-out times that were described on the 
+      previous page. On the left, the full model involving both the <em>latitude</em> 
+      and July <em>temperature</em> of the seed sources is displayed. On the right, 
+      the simpler model involving only <em>latitude</em> is shown.</p>
+    <div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="480">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="multiRegnProg.TAndTApplet">
+<param name="yVarName" value="LO">
+<param name="xVarName" value="Lat">
+<param name="zVarName" value="Temp">
+<param name="yValues" value="20.5 21.0 18.3 18.6 18.6 19.8 20.6 19.2 19.8 15.8 14.5 18.5 16.7 13.9 14.3 15.2 16.6 18.2 18.3 13.3 20.0 18.1 17.0 15.6 15.7 15.4 15.4 15.8 15.0 15.9 14.0 10.8">
+<param name="xValues" value="46.95 45.55 45.00 45.42 44.50 46.37 45.03 43.00 42.80 42.70 42.42 40.75 41.38 40.35 40.80 40.92 40.33 41.58 41.92 40.12 42.75 42.00 42.55 41.50 39.25 37.45 38.33 36.25 35.80 31.38 32.83 30.75">
+<param name="zValues" value="66.7 64.3 61.8 65.0 63.5 65.5 67.7 67.9 70.2 71.1 74.4 76.4 75.9 76.4 71.9 74.2 73.0 71.4 69.7 72.6 69.2 68.0 70.0 72.5 76.7 79.5 69.5 74.3 68.9 80.8 81.2 81.0">
+<param name="yAxis" value="10 22 10 2">
+<param name="xAxis" value="30 47 30 2">
+<param name="zAxis" value="60 82 60 5">
+<param name="maxCoeff" value="99.999 9.999 -9.999">
+<param name="maxT" value="99.999">
+<param name="lsDecimals" value="3 3 3">
+<param name="customText" value="Variable to test=Variable to test">
+</applet> 
+</div>
+
+    <p>The t-tests under the diagram test whether <em>latitude</em> is needed 
+			in these two models. Observe that <em>latitude</em> is far more significant 
+			(lower p-value) when <em>temperature</em> is not in the model.</p>
+		<p>Select <strong>Temperature</strong> from the pop-up menu. The model displayed 
+			on the right changes to the model involving only <em>temperature</em>. Observe 
+			again that the evidence is much stronger for including <em>temperature</em> 
+			in the model if <em>latitude</em> is not present.</p>
+    </div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

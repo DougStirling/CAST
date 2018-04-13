@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Misleading marginal difference in means</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="marginal relationship, conditional relationship">
+	<meta name="dataset" content="Fur seal weight in two years">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Relationship between a numerical and a categorical variable</p>  
+	<p>The previous page showed that the marginal relationship between two numerical 
+		variables, <em>X</em> and <em>Y</em>, can be very different from their conditional 
+		relationship for specific values of <em>Z</em>. The same can happen when <em>X</em> 
+		is a categorical variable. </p>
+	<p class="heading">Marginal and conditional relationships</p>
+	<p>When <em>X</em> is categorical (splitting the data into groups), there are 
+		again two different types relationship between <em>Y</em> and <em>X</em>, 
+		depending on whether or not we make use of a third variable, <em>Z</em>.</p>
+	<dl>
+		<dt>Marginal relationship</dt>
+		<dd>This is the observed relationship, ignoring any additional information 
+			that is available. The relationship can be summarised by the means of <em>Y</em> 
+			for the different groups (values of <em>X</em>).</dd>
+		<dt>Conditional relationships, given <em>Z</em></dt>
+		<dd>These conditional relationships are described in the same way as the marginal 
+			relationship above, but are based on a subset of individuals with a particular 
+			value of <em>Z</em>.</dd>
+	</dl>
+	<p>The marginal relationship can again be very different from the conditional 
+		relationships, even changing 'direction'. This will be clearer in an example.</p>
+	<center>
+		<table border="1" cellspacing="0" cellpadding="5" bgcolor="white" width="75%">
+			<tr> 
+				<th align="CENTER">If the existence of a lurking variable <em>Z</em> is 
+					not recognised, the relationship between <em>Y</em> and <em>X</em> may 
+					be misrepresented.</th>
+			</tr>
+		</table>
+	</center>
+	<br>
+	
+	<div class="diagram"> 
+<p class="heading">Weights of fur seals</p>
+		<p>In 2002, a marine reserve was created. The diagram below shows the weights 
+			(kg) of seals that were observed along a coastline bordering the reserve 
+			in March 2003 and March 2004. In the notation above, the <em>seal weight</em> 
+			is <em>Y</em> and the <em>year</em> is a categorical variable, <em>X</em>.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="experProg.SimpsonSliceApplet">
+<param name="yVarName" value="Weight (kg)">
+<param name="yValues" value="56 59 43 71 37 73 88 52 93 63 95 67 56 130 92 95 150 127 92 110 122 94 93 141 111 91 111 113 98 78 131 180 102 164 172 165 171 142 183 62 64 41 56 45 73 43 65 79 72 73 94 100 45 92 61 98 89 104 72 86 104 66 93 76 80 126 104 119 126 124 122 139 66 127 113 156 125 181 180 191">
+<param name="xVarName" value="Year">
+<param name="xValues" value="39@0 41@1">
+<param name="xLabels" value="2003 2004">
+<param name="zVarName" value="Location">
+<param name="zValues" value="5@0 8@1 18@2 8@3 10@0 16@1 10@2 5@3">
+<param name="zLabels" value="#Colony A# #Colony B# #Colony C# #Colony D#">
+<param name="horizAxis" value="0 200 0 50">
+<param name="overallMean" value="Overall mean">
+<param name="sliceMean" value="Mean in #">
+<param name="customText" value="Slice=Slice">
+</applet>
+</div>
+
+		<p>Since the mean <em>weight</em> is lower in 2004, it is tempting to conclude 
+			that seals are smaller in 2004 than in 2003. (This is the marginal relationship 
+			between seal weight and year.)</p>
+		<p>Click the checkbox <strong>Slice</strong>. The seals were observed in four 
+			different colonies and <em>colony</em> is a categorical lurking variable. 
+			The diagram now shows seal <em>weights</em> from one colony, a conditional 
+			distribution. Drag the slider and observe that the mean <em>weight</em> 
+			of seals actually increased within each colony.</p>
+
+<dl>
+			<dt>Marginal relationship between <em>weight</em> and <em>time</em></dt>
+			<dd>In 2004, the ecologists had decided to collect more information about 
+				colonies containing immature seals. Since more seals were sampled from 
+				the colonies containing smaller seals, the overall mean was lower in 2004.</dd>
+			<dt>Conditional relationship for each <em>colony</em></dt>
+<dd>The increase in mean size in individual colonies is a better indication that 
+the seal sizes have increased &mdash; in each colony, the seals appear to be bigger.</dd>
+</dl>
+		<br>
+
+	<center>
+		<table border="1" cellspacing="0" cellpadding="5" bgcolor="white" width="75%">
+			<tr> 
+				  <th align="CENTER">Although seal weights increased in all colonies in 
+						2004, more seals were sampled from colonies containing smaller seals, 
+						so the overall (marginal) average seal weight decreased.</th>
+			</tr>
+		</table>
+	</center>
+	<br>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Curvature and non-constant variance</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="nonlinear relationship, nonlinear model, curvature, non-constant variance, transformations">
+	<meta name="dataset" content="Syphilis drug toxicity">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Transformations and the error standard deviation</p>
+<p>In a scatterplot of <em>Y</em> against <em>X</em>, transforming <em>X</em> 
+moves the crosses horizontally, but does not affect the <strong>spread</strong> 
+of response values at each value of <em>X</em>.</p>
+
+<div class="centred"><div class="boxed">
+<p>If the error standard deviation is the same for each <em>x</em> in 
+a plot of <em>Y</em> against <em>X</em>, it will also be constant in a plot of 
+<em>Y</em> against any transformation of <em>X</em>.</p>
+</div></div>
+
+<p>Transformation of <em>X</em> therefore does not affect whether or not the linear 
+model's assumption of constant error standard deviation holds.</p>
+<p>However,</p>
+
+<div class="centred"><div class="boxed">
+<p>Transformation of the response, <em>Y</em>, not only affects linearity 
+of the relationship, but <strong>also affects whether or not the 
+error standard deviation is constant</strong>.</p>
+</div></div>
+
+<p>This is more easily explained in an example than with words.</p>
+
+<div class="diagram" title="Example: Toxicity of syphilis drug">
+<p class="heading">Toxicity of syphilis drug</p>
+<p>The scatterplot below results from an experiment in which the toxicity of <em>neoarsphenamine</em>, 
+a drug that was once used for the cure of syphilis, was tested in mice. Each mouse 
+was given an intravenous injection of a solutions containing one of seven different 
+concentrations of the drug. The grey line is the least squares line fitted to 
+the data.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.TransformResidApplet">
+<param name="xVarName" value="Concentration of drug (%)">
+<param name="yVarName" value="Survival time (min)">
+<param name="xValues" value="6@5.5 6@6 6@6.5 6@7 6@7.5 6@8 6@8.5">
+<param name="yValues" value="248 381 710 859 1040 1309 107 209 294 390 499 805 164 290 290 322 521 564 98 148 224 229 493 550 89 103 238 354 404 476 78 115 128 157 207 281 98 116 119 140 147 210">
+<param name="horizAxis" value="5 9 5 1">
+<param name="vertAxis" value="70 1400 200 200 100">
+<param name="labelAxes" value="true">
+<param name="betaExtremes" value="999.999 999.999">
+</applet>
+</div>
+
+<p>The residual plot on the right highlights two problems. Most importantly, the 
+standard deviation of the survival time is lower at high drug concentrations. 
+There is also a suggestion of curvature &mdash; the survival time would be expected 
+to level off at high doses since it is impossible to get negative survival times.</p>
+<p>Drag the red line on the vertical axis upwards to apply a power transformation 
+to the survival time. Observe that a power of -0.5 both linearises the relationship 
+reasonably well and <strong>also</strong> gives residuals with fairly constant 
+spread. A log transformation (power between 0.01 and -0.01) also works reasonably 
+well. <span class="gray">(Use the arrow keys on the keyboard to make fine adjustments 
+to the power.)</span></p>
+</div>
+
+<br>
+
+
+<div class="centred"><div class="boxed">
+<p>Fortunately, the same transformation of the response that linearises 
+the relationship often <strong>also</strong> results in fairly constant 
+error standard deviation.</p>
+</div></div>
+
+<br>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,240 @@
+<html>
+<head>
+  <title>9. Time Series</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 9 &nbsp; Time Series</h1>
+<h1 class="sectionName">9.1 &nbsp; Time series plots</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Time series plots</li>
+<li>Patterns in time series</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='3'>
+<li>Multiple time series</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">9.1.1 &nbsp; Time series plots</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Time series data</p>
+	<p>Data sets whose measurements  are made sequentially at regular 
+		intervals are called <strong>time series</strong>. We often want to forecast
+future values of a time series.</p>
+<p class="heading">The importance of plotting</p>
+	<p>As with other data structures, the information 
+		in a time series is most easily understood from a <strong>graphical</strong> display.
+A <strong>time series plot</strong> is a type of scatterplot whose horizontal
+axis shows the time-ordering of the values. Successive crosses are often  joined
+by lines.</p>
+ <p class=eqn><img class="gif" src="../../../en/timePlot/images/timePlotDisplay.gif" id="gif_image_1_1_1" width="310" height="183"><iframe class="svg" src="../../../en/timePlot/images/timePlotDisplay.svg" id="svg_image_1_1_1" width="310" height="183" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_1_1_1");</script></p>
+
+
+
+
+<h2 class="pageName">9.1.2 &nbsp; Patterns in time series</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Types of pattern</p>
+	<div class="centred"><table class="centred" width="90%">
+	<tr><th width="50%">Trend</th>
+	<th width="50%">Seasonal variation</th>
+	</tr>
+	<tr>
+<td>Trend refers to long-term increases and decreases in the values.
+		<div class="centred"><img src="../../../en/timePlot/images/pattern_trend.gif" width="204" height="135" style="background-color:#FFFFFF; border:solid 1px #666666; padding:5px"></div></td>
+	<td>This is often evident in monthly or quarterly data and refers to a pattern
+that is repeated each year.
+		<div class="centred"><img src="../../../en/timePlot/images/pattern_seasonal.gif" width="204" height="135" style="background-color:#FFFFFF; border:solid 1px #666666; padding:5px"></div></td>
+	</tr>
+	</table></div>
+	
+	<div class="centred"><table width="90%" border="0" cellpadding="0" cellspacing="0" class="centred">
+	<tr><th width="50%">Cyclic variation (autocorrelation)</th>
+	<th width="50%">Random fluctuations</th>
+	</tr>
+	<tr>
+		<td>This arises when  values are  similar to  adjacent values,
+making irregular waves or cycles .
+	<div class="centred"><img src="../../../en/timePlot/images/pattern_cyclical.gif" width="204" height="135" style="background-color:#FFFFFF; border:solid 1px #666666; padding:5px"></div></td>
+	<td>These are 'ups and downs' in a time series that do not correspond to trend, seasonal variation or autocorrelation.
+		<div class="centred"><img src="../../../en/timePlot/images/pattern_random.gif" width="204" height="135" style="background-color:#FFFFFF; border:solid 1px #666666; padding:5px"></div></td>
+	</tr>
+	</table></div>
+	
+	<p>Most time series  show more than one of these patterns to some degree.</p>
+
+
+
+
+<h2 class="pageName">9.1.3 &nbsp; Multiple time series</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Displaying several time series on the same plot</p>
+	<p>Several related time series can be superimposed with different colours on the same display, making comparisons easier. The crosses may be omitted.</p>
+	<p class="eqn"><img src="../../../en/timePlot/images/s_multiPlots.gif" width="454" height="285"></p>
+
+
+
+
+<h1 class="sectionName breakBefore">9.2 &nbsp; Smoothing</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Moving averages</li>
+<li>More about moving averages</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='3'>
+<li>Robust smoothing</li>
+<li>Exponential smoothing</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">9.2.1 &nbsp; Moving averages</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Smoothing</p>
+	<p>Random fluctuations in a time series are usually <strong>noise</strong> that  can obscure trend and other <strong>signal</strong> in the series. The values can be <strong>smoothed</strong> to reduce these random fluctuations and show 
+	the systematic movement in the series more clearly.</p>
+	<p class=eqn><span class="black"><strong>smoothed value</strong> &nbsp; = &nbsp;<em><strong>centre</strong></em> ( <strong>original value</strong> <em>and</em> <strong>adjacent values</strong> )</span> </p>
+	<p class="heading">Moving averages</p>
+	<p>A <strong>3-point moving average</strong> replaces the value at time <i>i</i> by </p>
+	<p class=eqn><img class="gif" src="../../../en/smoothing/images/runningMeanEqn.gif" id="gif_image_2_1_1" width="210" height="25"><iframe class="svg" src="../../../en/smoothing/images/runningMeanEqn.svg" id="svg_image_2_1_1" width="210" height="25" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_1_1");</script> </p>
+	<p>Moving 
+		averages are also called <strong>running means</strong>. In the example below,
+a 7-point moving average replaces each value with the mean of it and the 3 adjacent
+ values on each side.</p>
+	<p class="eqn"><img src="../../../en/smoothing/images/s_movingAverage.gif" width="501" height="249"></p>
+	<p>The more adjacent values used, the greater the smoothing.</p>
+	<p class="heading">Ends of the series</p>
+	<p>Note that moving averages cannot be used to smooth the values at the two ends of the time series.</p>
+	
+
+
+
+<h2 class="pageName">9.2.2 &nbsp; More about moving averages</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Moving average with odd and even run lengths</p>
+	<p>A moving average provides a smoothed value at the middle of the times of the values being averaged.</p>
+	<p class=eqn><img class="gif" src="../../../en/smoothing/images/movingAverage5.gif" id="gif_image_2_2_2" width="249" height="218"><iframe class="svg" src="../../../en/smoothing/images/movingAverage5.svg" id="svg_image_2_2_2" width="249" height="218" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_2_2");</script>          <img class="gif" src="../../../en/smoothing/images/movingAverage4.gif" id="gif_image_2_2_1" width="237" height="218"><iframe class="svg" src="../../../en/smoothing/images/movingAverage4.svg" id="svg_image_2_2_1" width="237" height="218" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_2_1");</script></p>
+	<p>If averaging over an even number of values, the smoothed value is for a time between those of the data values, such as &quot;year 2005.5&quot;.</p>
+	<p class="heading">A second stage of averaging for even run lengths</p>
+	<p>To provide smoothed values at the same times as the raw data, we often take a further 2-point moving average.</p>
+	<p class=eqn><img class="gif" src="../../../en/smoothing/images/movingAverageDouble.gif" id="gif_image_2_2_3" width="428" height="218"><iframe class="svg" src="../../../en/smoothing/images/movingAverageDouble.svg" id="svg_image_2_2_3" width="428" height="218" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_2_3");</script> </p>
+	<p>This is equivalent to giving <strong>half weight</strong> to the two outermost values. If  based on moving averages of 4, this is called a 4-point centred moving average.</p>
+	<div class="centred"><div class="boxed">
+		<p>These centred averages are particularly useful when analysing seasonal data. For example, 12-point centred moving averages are often used for monthly data.</p>
+	</div></div>
+	
+
+
+
+<h2 class="pageName">9.2.3 &nbsp; Robust smoothing</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Outliers and running medians</p>
+	<p>Since medians are less sensitive to outliers than means, a more robust alternative to running means replaces each value by the <strong>median</strong> of it and adjacent values. A <strong>3-point running median</strong> is: </p>
+	<p class=eqn><img class="gif" src="../../../en/smoothing/images/runningMedianEqn.gif" id="gif_image_2_3_1" width="225" height="25"><iframe class="svg" src="../../../en/smoothing/images/runningMedianEqn.svg" id="svg_image_2_3_1" width="225" height="25" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_3_1");</script> </p>
+	<p>and higher-order running medians will use more adjacent values. </p>
+	<p class="heading">Comparison of means and medians</p>
+	<ul>
+		<li>Moving averages are more affected by outliers in the series</li>
+		<li>Running medians often have a 'stepped' appearance &mdash; the smoothed series 
+			is level for periods, followed by relatively sharp jumps.</li>
+	</ul>
+	<p class=eqn><img src="../../../en/smoothing/images/s_meanMedian.gif" width="539" height="283"></p>
+<p class=heading>Running medians, followed by moving averages</p>
+<p>To take advantage of the best features of both moving averages and running 
+		medians, these two techniques are often applied sequentially.</p>
+	<ul>
+		<li>Firstly, low-order running medians are used to remove the influence of outliers.</li>
+		<li>The resulting series is then further smoothed with low-order moving averages.</li>
+	</ul>
+
+
+
+
+<h2 class="pageName">9.2.4 &nbsp; Exponential smoothing</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Smoothing up to the end of the series</p>
+	<p>We are usually most interested in the  latest values in a time
+series, but moving averages  cannot provide smoothed values at the two ends of
+the time series. <strong>Exponential 
+smoothing</strong> works up to the end of the series:</p>
+<p class=eqn><img class="gif" src="../../../en/smoothing/images/expSmoothInitial.gif" id="gif_image_2_4_5" width="59" height="18"><iframe class="svg" src="../../../en/smoothing/images/expSmoothInitial.svg" id="svg_image_2_4_5" width="59" height="18" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_4_5");</script> </p>
+	<p class=eqn><img class="gif" src="../../../en/smoothing/images/expSmoothEqn.gif" id="gif_image_2_4_2" width="175" height="25"><iframe class="svg" src="../../../en/smoothing/images/expSmoothEqn.svg" id="svg_image_2_4_2" width="175" height="25" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_4_2");</script></p>
+	<p>where the smoothing constant, <i>a</i>, is a value between 0 and 1. The smoothed
+value is a 'weighted average' of the actual value at that time and the previous
+smoothed value.</p>
+<p class="heading">Alternative formula</p>
+	<p>The formula can also be expressed as </p>
+	<p class=eqn><img class="gif" src="../../../en/smoothing/images/expSmoothEqn2.gif" id="gif_image_2_4_3" width="486" height="26"><iframe class="svg" src="../../../en/smoothing/images/expSmoothEqn2.svg" id="svg_image_2_4_3" width="486" height="26" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_4_3");</script></p>
+	<p>For example, if <em>a</em>&nbsp;=&nbsp;<sup>1</sup>/<sub>2 </sub>, </p>
+	<p class=eqn><img class="gif" src="../../../en/smoothing/images/expSmoothHalf.gif" id="gif_image_2_4_4" width="299" height="26"><iframe class="svg" src="../../../en/smoothing/images/expSmoothHalf.svg" id="svg_image_2_4_4" width="299" height="26" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_4_4");</script> </p>
+	<p>The smoothed value puts more weight on the recent past (which is an intuitively sensible thing to do).</p>
+	<ul>
+		<li>The closer <em>a</em> becomes to one, the greater the influence of the
+actual value, and the less smoothing.</li>
+		<li>The closer <em>a</em> becomes to zero, the more smoothing.</li>
+</ul>
+	<p class="heading">Forecasting future values</p>
+	<p>If the most recent value is at time <em>i</em>, we forecast
+the value at time <em>i</em> + <em>k</em> to be the last exponentially smoothed
+value,</p>
+<p class=eqn><img class="gif" src="../../../en/smoothing/images/expPredict.gif" id="gif_image_2_4_1" width="252" height="23"><iframe class="svg" src="../../../en/smoothing/images/expPredict.svg" id="svg_image_2_4_1" width="252" height="23" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_4_1");</script></p>
+	<ul>
+		<li>If <i>a</i>&nbsp;=&nbsp;1, the forecast is just the last observed value 
+			in the time series.</li>
+		<li>As <i>a</i> is reduced, the forecast becomes more affected by earlier 
+			values in the series.</li>
+	</ul>
+	
+	<p class="heading">Time series with trend</p>
+	<p>If the time 
+		series has an increasing trend, exponential smoothing will 
+		tend to underestimate the trend. Similarly, the smoothed series will be too high if 
+		there is a decreasing trend.</p>
+	<p class="eqn"><img src="../../../en/smoothing/images/s_expSmoothTrend.gif" width="455" height="258"></p>
+	<div class="centred"><div class="boxed">
+		<p>Do not use exponential smoothing on a time series with trend.</p>
+	</div></div>
+	
+
+
+</html>

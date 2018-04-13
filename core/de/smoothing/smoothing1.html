@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>Gleitender Durchschnitt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+<meta name="index" content="smoothing, moving average, running mean">
+	<meta name="dataset" content="Southern oscillation"></head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Moving averages</p>
+<p>In einer Zeitreihe k&ouml;nnen zuf&auml;llige
+Schwankungen
+gew&ouml;hnlich als <strong>St&ouml;rung</strong>&nbsp;behandelt
+werden, welche den Trend und andere <strong>Signale</strong>
+der&nbsp;Reihe verdecken k&ouml;nnen. Verschiedene&nbsp;<strong>Gl&auml;ttungsmethoden</strong>
+beabsichtigen
+diese zuf&auml;lligen Schwankungen auf ein Mindestma&szlig; zu
+verkleinern und die systematische Bewegung der Reihe klarer zu zeigen.
+Diese Methoden ersetzen jeden Messwert in der Reihe mit einer Funktion
+davon und den angrenzenden Werten. </p>
+<p class="eqn" style="color: rgb(0, 0, 0);"><strong>gegl&auml;tteter
+Wert</strong> &nbsp; = &nbsp;<em><strong>Lagema&szlig;</strong></em>
+( <strong>Ausgangswert</strong>
+<em>und</em> <strong>benachberter Wert</strong>
+)</p>
+<p>Zum Beispiel: jeder Messwert k&ouml;nnte durch sein
+arithmetisches
+Mittel und den zwei angrenzenden Werte ersetzt werden, ersetzen des
+Messwertes zu der Zeit<em> i</em>
+durchFor example,&nbsp; </p>
+<p class="eqn"><object data="images/runningMeanEqn.svg" height="25" width="235"></object></p>
+<p>Diese gegl&auml;ttete Anpassung nennt sich <strong>gleitender Durchschnitt mit 3
+Punkten</strong>.
+Gleitende&nbsp; Durchschnitte werden auch <strong>gleitender Mittelwert</strong>
+genannt.
+Bedeutenderes Gl&auml;tten wird mit arithmetischen Mitteln
+von&nbsp;
+st&auml;rker angrenzenden Werten erhalten.</p>
+<p class="heading">Ende der Reihe</p>
+<p>Gleitende Durchschnitte sind effektiv, um den Trend in der
+Mitte
+einer Zeitreihe zu verdeutlichen, aber k&ouml;nnen nicht an den
+Enden
+genutzt werden, da der gleitende Durchschnitt Messwerte sowohl <strong>vor</strong> dem
+Gl&auml;tten eines jeden
+Messwertes <strong>als auch
+danach</strong>
+erfordert. Indem die Menge der Gl&auml;ttungen ansteigt, steigt
+auch
+die Anzahl der ungegl&auml;tteten Meswerte am Ende der Reihe an.
+Zum
+Beispiel: Wenn die 7-Punkt Durchschnittsgl&auml;ttung angewendet
+wird,
+k&ouml;nnen an jedem Ende der Reihe 3 Messwerte nicht
+gegl&auml;ttet
+werden.</p>
+<div class="diagram"><p class="heading">Southern
+Oscillation</p>
+<p>Der Southern Oscillation Index (SOI) ist definiert durch die
+Schwankungen des Luftdrucks zwischen Tahiti und den Darwin-Inseln auf
+Meeresh&ouml;he. Der SOI ist ein Vorhersager von El Nino, welcher
+als
+Einflussfaktor des globalen Wetters&nbsp; gesehen wird. Besonders
+sich
+wiederholende Southern Oscillation Messwerte unter -1 bestimmen einen
+EL Nino. Die graphische Darstellung der Zeitfolge zeigt den Index
+zwischen Januar 1984 und Dezember 1987.</p>
+<div class="centred"><applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" height="350" width="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.RunningMeanApplet"><param name="varName" value="Druckunterschied"> <param name="values" value="0 0.4 -0.8 0.4 0 -1.2 0 0.1 0.1 -0.6 0.3 -0.3 -0.5 0.8 0.2 1.4 -0.2 -1.4 -0.3 0.7 0 -0.8 -0.4 0.1 0.8 -1.2 -0.1 0.1 -0.6 1 0.1 -0.9 -0.5 0.6 -1.6 -1.6 -0.7 -1.4 -2 -2.7 -2 -2.7 -1.8 -1.7 -1.1 -0.7 -0.1 -0.6 -0.3 -0.6 0.1 0 1.1 -0.3 1.1 1.4 1.9 1.5 1.9 1.1 1.5 1.1 0.6 1.6 1.2 0.5 0.8 -0.8 0.6 0.6 -0.4 -0.7 -0.2 -2.4 -1.2 0 1.1 0 0.5 -0.5 -0.8 0.1 -0.7 -0.4 0.6 -0.1 -1.4 -1 -1.5 -0.5 -0.2 -0.9 -1.8 -1.5 -0.8 -2.3 -3.4 -1.4 -3 -1.4 0 -1.2 -0.8 0 0 -1.9 -0.9 -1.1"><param name="vertAxis" value="-3.5 2.5 -3 1"> <param name="timeAxisName" value="Month"> <param name="seasonName" value="12 Jan Feb M&auml;r Apr Mai Jun Jul Aug Sep Okt Nov Dez"> <param name="seasonInfo" value="0 0 1984"> <param name="smoothName" value="Gegl&auml;ttet"> <param name="showEnds" value="false"> <param name="labelAxes" value="true"> <param name="maOrderLabel" value="Ver&auml;nderung des Durchschnitts von"><param name="rawName" value="Rohdaten"> <param name="runs" value="15 odd"></applet></div>
+<p>Klicke auf die Pfeile, um die Zahl der angrenzenden Werte
+anzupassen, die benutzt wurden, um die Reihe zu gl&auml;tten.
+Klicke
+auf einen beliebigen Datenpunkt in dem Graph, um die unbearbeiteten und
+gegl&auml;tteten Werte anzuzeigen. Beachte, dass&hellip;</p>
+<ul> <li>1-Punkt Durchschnittsgl&auml;ttungen sind nur
+die
+Ausgangsmesswerte.</li> <li>Wenn die Menge der
+Gl&auml;ttung ansteigt,
+k&ouml;nnen mehr Jahre
+am Ende der Reihe nicht gegl&auml;ttet werden. (Sie werden rot
+dargestellt)</li>
+</ul><p>Klicke auf jeden beliebigen Punkt in dem Graph, um
+die
+angrenzenden
+Werte hervorzuheben, welche benutzt wurden, um den gleitenden
+Durchschnitt zu dieser Zeit zu ermitteln.</p>
+</div><script type="text/javascript">writePageEnd();</script>
+</body></html>

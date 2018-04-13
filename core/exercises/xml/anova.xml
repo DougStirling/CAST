@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE topic SYSTEM "exerciseXmlDefn.dtd">
+
+<topic name='anova'>
+<longName>Comparing means in several groups with anova</longName>
+
+
+<exercise name='anovaFormulaInterpretation'>
+	<description>Match formulae relating to an anova table to textual descriptions</description>
+	<applet>exerciseGroupsProg.MatchAnovaFormulaeApplet</applet>
+	<width>610</width>
+	<height>700</height>
+	
+	<coreParam name="r2Text">... is the proportion of variation in response explained by factor.</coreParam>
+	<coreParam name="msTotalText">... describes the overall variance of response.</coreParam>
+	<coreParam name="msWithinText">... describes the variation of response after taking account of variation caused by factor.</coreParam>
+	<coreParam name="fText">... contains most of the information about whether or not factor affects response.</coreParam>
+
+	<variable name="response" type="string(26)">Name for the response variable</variable>
+	<variable name="factor" type="string(26)">Name for the factor variable</variable>
+	
+	<template>
+		<question>The Anova table above summarises information from an experiment that examines whether an explanatory factor affects a numerical response.\\nMatch the following four formulae with the textual descriptions on the right.</question>
+		<qnParam>response(the response)#factor(the factor)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>wheatVariety</shortName>
+		<longName>Weat yield and variety</longName>
+		<question>The Anova table above summarises information from an experiment that examines whether the yield of wheat is different for different varieties.\\nMatch the following four formulae with the textual descriptions on their right.</question>
+		<qnParam>response(wheat yields)#factor(the variety)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>teachingMethod</shortName>
+		<longName>Test marks and teaching method</longName>
+		<question>A group of 40 students was randomly split into four groups of ten. The four groups were taught a maths topic by four different methods then all students were given the same test. The Anova table above would summarise the results.\\nMatch the following four formulae with the textual descriptions on their right.</question>
+		<qnParam>response(the test mark)#factor(the teaching method)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>surfaceFinish</shortName>
+		<longName>Surface finish of item and lathe speed</longName>
+		<question>Twelve items were produced on a lathe at each of three different lathe speeds. An Anova table such as the one above summarises how the lathe speed affects the surface finish of the items.\\nMatch the following four formulae with the textual descriptions on their right.</question>
+		<qnParam>response(surface finish)#factor(the lathe speed)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='anovaTableValues'>
+	<description>Find standard deviations, R-squared and sample sizes from an Anova table</description>
+	<applet>exerciseGroupsProg.AnovaSummariesApplet</applet>
+	<width>600</width>
+	<height>750</height>
+	
+	<coreParam name="residSdText">The best estimate of the standard deviation of #yVarName# for #individuals# #groupName# is #edit#.</coreParam>
+	<coreParam name="rSquaredText">A percentage #edit#% of variation in #yVarName# is explained by differences in #xVarName#.</coreParam>
+	<coreParam name="totalSdText">If differences between levels of #xVarName# are ignored, the overall standard deviation of #yVarName# is #edit#.</coreParam>
+	<coreParam name="individualsText">The total number of #individuals# from which #yVarName# was measured was #edit#.</coreParam>
+	<coreParam name="factorLevelsText">The total number of levels of #xVarName# used in the experiment was #edit#.</coreParam>
+	
+	<variable name="individuals" type="string(26)">Name for the experimental units (plural)</variable>
+	<variable name="xVarName" type="string(26)">Name for the group variable</variable>
+	<variable name="levelIndex" type="int">Only used as an index to pick xNames and xValues</variable>
+	<variable name="xNames" type="string(26)">Names for the factor levels (spaces separate names, underscores within names will be replaced by spaces)</variable>
+	<variable name="xValues" type="string(26)">Factor levels for units</variable>
+	<variable name="yVarName" type="string(26)">Name for response variable (usually start with 'the')</variable>
+	<variable name="yModel" type="string(40)">Mean then sd for each factor level, separated by spaces. (There can be more entries than actually used.)</variable>
+	<variable name="componentNames" type="string(26)">Names in anova table for total, explained and residual components (separated by *)</variable>
+	<variable name="maxSsq" type="double">Maximum value for sums of squares column in table</variable>
+	<variable name="maxMss" type="double">Maximum value for mean sums of squares column in table</variable>
+	<variable name="maxF" type="double">Maximum value for F ratio in table</variable>
+	<variable name="maxRSquared" type="double">Gives decimals for R-squared (not actually used)</variable>
+	<variable name="sdDecimals" type="int">Decimals used when giving answers to questions about standard deviations</variable>
+	
+	<template>
+		<question>An experiment was conducted using a group of individuals to assess how differences between factor levels affect a response measurement. The #individuals(individuals)# used in the experiment were randomly allocated to different values of #xVarName(the factor)# and #yVarName(the response)# was recorded from each.\\nThe Anova table below summarises the results. Use the information in it to complete the five statements underneath.</question>
+		<qnParam>levelIndex[](0,1,2)#xNames[levelIndex](in_Group_1 in_Group_2*in_Group_1 in_Group_2 in_Group_3*in_Group_1 in_Group_2 in_Group_3 in_Group_4)#xValues[levelIndex](6@0 6@1*6@0 6@1 6@2*6@0 6@1 6@2 6@3)#yModel[](5 1 6 1 7 1 8 1*6 1 6 1 6 1 6 1)#componentNames(Total*Between groups*Within groups)#maxSsq(99.99)#maxMss(9.999)#maxF(99.99)#maxRSquared(9.999)#sdDecimals(3)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>wheatVariety</shortName>
+		<longName>Weat yield and variety</longName>
+		<question>An experiment was conducted to assess how different varieties of wheat affect yield. A field was split into plots of equal area and the varieties were randomly allocated to #individuals(plots)# with the resulting yield of wheat recorded in tonnes per hectare from each plot.\\nThe Anova table below summarises the results. Use the information in it to complete the five statements underneath.</question>
+		<qnParam>yVarName(the yield of wheat)#xVarName(wheat variety)#levelIndex[](0,1,2)#xNames[levelIndex](getting_Variety_A getting_Variety_B*getting_Variety_A getting_Variety_B getting_Variety_C*getting_Variety_A getting_Variety_B getting_Variety_C getting_Variety_D)#xValues[levelIndex](10@0 10@1*6@0 6@1 6@2*6@0 6@1 6@2 6@3)#yModel[](3 0.2 3.1 0.2 3.2 0.2 3.3 0.2*2.8 0.2 3.0 0.2 3.2 0.2 3.4 0.2)#componentNames(Total*Between varieties*Within varieties)#maxSsq(9.999)#maxMss(9.999)#maxF(999.99)#maxRSquared(9.999)#sdDecimals(3)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>fibreStrength</shortName>
+		<longName>Cotton percentage and fibre strength</longName>
+		<question>A new synthetic fibre is being developed and an experiment is conducted to assess its tensile strength when combined with various percentages of cotton. The experiment concentrated on a few different cotton percentages and several #individuals(batches of fibre)# were produced and tested at each of these percentages, with #yVarName(the tensile strength)# of each batch measured.\\nThe Anova table below summarises the results. Use the information in it to complete the five statements underneath.</question>
+		<qnParam>xVarName(percentage of cotton)#levelIndex[](0,1,2)#xNames[levelIndex](with_10%_cotton with_20%_cotton*with_10%_cotton with_20%_cotton with_30%_cotton*with_10%_cotton with_20%_cotton with_30%_cotton with_40%_cotton)#xValues[levelIndex](10@0 10@1*6@0 6@1 6@2*6@0 6@1 6@2 6@3)#yModel[](10 1.5 11 1.5 12 1.5 13 1.5*10 1 11 1 12 1 13 1)#componentNames(Total*Between groups*Within groups)#maxSsq(999.99)#maxMss(99.999)#maxF(999.99)#maxRSquared(9.999)#sdDecimals(3)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>boneDensity</shortName>
+		<longName>Effect of drug on loss of bone density</longName>
+		<question>Patients suffering from rheumatic diseases or osteoporosis often suffer critical losses in bone mineral density (BMD) and alendronate is a medication often prescribed to counteract this. The change in BMD over a fixed period for a group of #individuals(patients)# with rheumatoid arthritis was recorded, as was this variable for other groups of patients with other diseases, such as those with Lupus.\\nThe Anova table below summarises the results. Use the information in it to complete the five statements underneath.</question>
+		<qnParam>yVarName(the change in BMD)#xVarName(disease group)#levelIndex[](0,1,2)#xNames[levelIndex](with_rheumatoid_arthritis with_lupus*with_rheumatoid_arthritis with_lupus with_vasculitic_diseases*with_rheumatoid_arthritis with_lupus with_vasculitic_diseases with_osteoarthritis)#xValues[levelIndex](30@0 30@1*25@0 25@1 25@2*20@0 20@1 20@2 20@3)#yModel[](10 5 11 5 12 5 13 5*10 5 12 5 14 5 16 5)#componentNames(Total*Between diseases*Within diseases)#maxSsq(999.99)#maxMss(99.999)#maxF(999.99)#maxRSquared(9.999)#sdDecimals(3)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='anovaConclusion'>
+	<description>Interpret the p-value in an analysis of variance table</description>
+	<applet>exerciseGroupsProg.AnovaConclusionApplet</applet>
+	<width>600</width>
+	<height>550</height>
+	
+	<coreParam name="noneEqual">none of #means are equal#</coreParam>
+	<coreParam name="atLeastTwoDiff">at least two of #means are different#</coreParam>
+	<coreParam name="allEqual">all of #means are equal#</coreParam>
+	<coreParam name="atLeastTwoEqual">at least two of #means are equal#</coreParam>
+	
+	<variable name="xVarName" type="string(26)">Name for the group variable</variable>
+	<variable name="levelIndex" type="int">Only used as an index to pick xNames and xValues</variable>
+	<variable name="xNames" type="string(26)">Names for the factor levels (spaces separate names, underscores within names will be replaced by spaces)</variable>
+	<variable name="xValues" type="string(26)">Factor levels for units</variable>
+	<variable name="yVarName" type="string(26)">Name for response variable (usually start with 'the')</variable>
+	<variable name="yModel" type="string(40)">Mean then sd for each factor level, separated by spaces. (There can be more entries than actually used.)</variable>
+	<variable name="componentNames" type="string(26)">Names in anova table for total, explained and residual components (separated by *)</variable>
+	<variable name="maxSsq" type="double">Maximum value for sums of squares column in table</variable>
+	<variable name="maxMss" type="double">Maximum value for mean sums of squares column in table</variable>
+	<variable name="maxF" type="double">Maximum value for F ratio in table</variable>
+	<variable name="maxRSquared" type="double">Gives decimals for R-squared (not actually used)</variable>
+	<variable name="equalMeans" type="string">Text used in menu for group means being equal</variable>
+	<variable name="differentMeans" type="string">Text used in menu for group means being different</variable>
+	
+	<template>
+		<question>An experiment was conducted using a group of individuals to assess how differences between factor levels affect a response measurement. The individuals used in the experiment were randomly allocated to different values of #xVarName(the factor)# and #yVarName(the response)# was recorded from each.\nThe Anova table below summarises the results. What are your conclusions from it?</question>
+		<qnParam>levelIndex[](0,1,2)#xNames[levelIndex](in_Group_1 in_Group_2*in_Group_1 in_Group_2 in_Group_3*in_Group_1 in_Group_2 in_Group_3 in_Group_4)#xValues[levelIndex](6@0 6@1*6@0 6@1 6@2*6@0 6@1 6@2 6@3)#yModel[](5 1 6 1 7 1 8 1*6 1 6 1 6 1 6 1)#componentNames(Total*Between groups*Within groups)#maxSsq(99.99)#maxMss(9.999)#maxF(99.99)#maxRSquared(9.999)#equalMeans(the group means are equal)#differentMeans(the group means are different)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>wheatVariety</shortName>
+		<longName>Weat yield and variety</longName>
+		<question>An experiment was conducted to assess how different varieties of wheat affect yield. A field was split into plots of equal area and the varieties were randomly allocated to plots with the resulting yield of wheat recorded in tonnes per hectare from each plot.\\nThe Anova table below summarises the results. What are your conclusions from it?</question>
+		<qnParam>yVarName(the yield of wheat)#xVarName(wheat variety)#levelIndex[](0,1,2)#xNames[levelIndex](getting_Variety_A getting_Variety_B*getting_Variety_A getting_Variety_B getting_Variety_C*getting_Variety_A getting_Variety_B getting_Variety_C getting_Variety_D)#xValues[levelIndex](10@0 10@1*6@0 6@1 6@2*6@0 6@1 6@2 6@3)#yModel[](3 0.2 3.1 0.2 3.2 0.2 3.3 0.2*2.8 0.2 3.0 0.2 3.2 0.2 3.4 0.2)#componentNames(Total*Between varieties*Within varieties)#maxSsq(9.999)#maxMss(9.999)#maxF(999.99)#maxRSquared(9.999)#equalMeans(the mean yields for varieties are the same)#differentMeans(the mean yields for varieties are different)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>fibreStrength</shortName>
+		<longName>Cotton percentage and fibre strength</longName>
+		<question>A new synthetic fibre is being developed and an experiment is conducted to assess its tensile strength when combined with various percentages of cotton. The experiment concentrated on a few different cotton percentages and several batches of fibre were produced and tested at each of these percentages, with #yVarName(the tensile strength)# of each batch measured.\nThe Anova table below summarises the results. What are your conclusions from it?</question>
+		<qnParam>xVarName(percentage of cotton)#levelIndex[](0,1,2)#xNames[levelIndex](with_10%_cotton with_20%_cotton*with_10%_cotton with_20%_cotton with_30%_cotton*with_10%_cotton with_20%_cotton with_30%_cotton with_40%_cotton)#xValues[levelIndex](10@0 10@1*6@0 6@1 6@2*6@0 6@1 6@2 6@3)#yModel[](10 1.5 11 1.5 12 1.5 13 1.5*10 1 11 1 12 1 13 1)#componentNames(Total*Between groups*Within groups)#maxSsq(999.99)#maxMss(99.999)#maxF(999.99)#maxRSquared(9.999)#equalMeans(the cotton percents have the same mean strength)#differentMeans(the cotton percents have different mean strengths)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>boneDensity</shortName>
+		<longName>Effect of drug on loss of bone density</longName>
+		<question>Patients suffering from rheumatic diseases or osteoporosis often suffer critical losses in bone mineral density (BMD) and alendronate is a medication often prescribed to counteract this. The change in BMD over a fixed period for a group of patients with rheumatoid arthritis was recorded, as was this variable for other groups of patients with other diseases, such as those with Lupus.\nThe Anova table below summarises the results. What are your conclusions from it?</question>
+		<qnParam>yVarName(the change in BMD)#xVarName(disease group)#levelIndex[](0,1,2)#xNames[levelIndex](with_rheumatoid_arthritis with_lupus*with_rheumatoid_arthritis with_lupus with_vasculitic_diseases*with_rheumatoid_arthritis with_lupus with_vasculitic_diseases with_osteoarthritis)#xValues[levelIndex](30@0 30@1*25@0 25@1 25@2*20@0 20@1 20@2 20@3)#yModel[](10 5 11 5 12 5 13 5*10 5 12 5 14 5 16 5)#componentNames(Total*Between diseases*Within diseases)#maxSsq(999.99)#maxMss(99.999)#maxF(999.99)#maxRSquared(9.999)#equalMeans(the diseases have the same mean drop in BMD)#differentMeans(the diseases have different mean drops in BMD)</qnParam>
+	</variation>
+</exercise>
+
+
+</topic>

@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Puissance transformations</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="transformations">
+	<meta name="dataset" content="African populations">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Une famille de transformations non linéaires</p>
+
+<p>Beaucoup de jeux de données qui se posent dans la pratique portent sur des quantités qui ont distributions skew. Une transformation logarithmique peut enlever asymétrie, mais parfois, une classe de transformations plus flexible est nécessaire.</p>
+<p>Un groupe de transformations appelées les <strong>transformations de puissance</strong> est souvent utilisé. Une transformation de puissance <strong>soulève chaque valeur dans l'ensemble de données pour une puissance <em>p</em></strong>, où <em>p</em> est habituellement une certaine constante entre -2 et 2. Des exemples courants sont donnés dans le tableau ci-dessous.<br>
+</p>
+<p class=eqn><object data="images/powerTable.svg" width="363" height="254"></object></p>
+	
+  <p>Bien que ces valeurs de <em>p</em> sont les plus faciles à interpréter, les valeurs intermédiaires peuvent également être utilisés.</p>
+<p>(<strong>Notez</strong> que toute valeur <em>x</em>, élevé à la puissance 0 est égal à 1.0, de sorte qu'il semble de prime abord que <em>p</em> = 0 ne donne pas une transformation utile. Cependant, quand <em>p</em> devient <strong>proche de 0</strong>, l'effet est similaire à une transformation logarithmique.)</p>
+<div class="diagram">
+
+<p class="heading">Populations africaines</p>
+
+<p>Le tracé de points ci-dessous décrit les 1987 populations de tous les pays de l'Afrique. <strong>Glisser</strong> sur la croix pour enquêter sur les valeurs aberrantes. Nous allons utiliser la puissance des transformations des populations d'étaler les pays à faible population et de réduire l'impact visuel de la valeur aberrante.<br>
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="250">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="transformProg.PowerTransformApplet">
+<param name="varName" value="Popn (millions)">
+<param name="values" value="23.060 8.756 4.315 1.146 8.330 4.978 10.927 0.343 2.727 5.273 0.424 2.020 0.362 50.954 0.390 44.788 1.047 0.797 13.599 6.470 0.924 11.069 22.097 1.629 2.327 4.057 10.894 7.629 7.768 1.858 1.042 22.968 14.591 1.218 6.798 106.736 6.454 0.114 6.969 0.066 3.845 5.712 33.285 23.214 0.713 23.884 3.254 7.481 15.655 32.655 7.196 9.001">
+<param name="labelName" value="Country">
+<param name="labels" value="#Algeria# #Angola# #Benin# #Botswana# #Burkina Faso# #Burundi# #Cameroon# #Cape Verde# #Central African Rep# #Chad# #Comoros# #Congo# #Djibouti# #Egypt# #Equatorial Guinea# #Ethiopia# #Gabon# #Gambia# #Ghana# #Guinea# #Guinea-Bissau# #Ivory Coast# #Kenya# #Lesotho# #Liberia# #Libya# #Madagascar# #Malawi# #Mali# #Mauritania# #Mauritius# #Morocco# #Mozambique# #Namibia# #Niger# #Nigeria# #Rwanda# #Sao Tome# #Senegal# #Seychelles# #Sierra Leone# #Somalia# #South Africa# #Sudan# #Swaziland# #Tanzania# #Togo# #Tunisia# #Uganda# #Zaire# #Zambia# #Zimbabwe#">
+<param name="horizAxis" value="0.060 120 10 10">
+<param name="customText" value="Transformed values=Valeurs transformées#Raw values=Valeurs brutes">
+</applet>
+</div>
+
+<p><strong>Faites glisser</strong> la ligne rouge verticale sur l'axe vers la droite. Cela réduit la puissance utilisée dans la transformation de sa valeur initiale de <i>p</i> = 1.
+<font color="#666666">Après avoir cliqué sur l'axe, les touches fléchées de votre clavier peut également être utilisé pour un réglage plus fin de  <i>p</i>.</font> Note that ...</p>
+
+<ul>
+  <li><i>p</i> = 1 correspond à aucune transformation.</li>
+  
+  <li>Diminuer <em>p</em> propage les valeurs inférieures et compresse les valeurs plus élevées.</li>
+  
+  <li>L'augmentation de <em>p </em>se répand les valeurs supérieures et comprime les valeurs inférieures.</li>
+  
+  <li>Lorsque <i>p</i> &lt; 0, le pays le moins peuplé (Seychelles) apparaît toujours au bas de la parcelle. Ceci résulte du changement de signe.</li>
+  
+  <li>Comme la valeur de <em>p</em> est proche de 0, toutes les valeurs se rapprochent de 1.0 (ou -1.0 lorsque <em>p</em> est négatif). L'ampleur de la transformation log (correspondant à <em>p</em> = 0) est très différente de celles pour <em>p</em> = 0.01 et <em>p</em> = -0.01, mais son effet sur la <strong>forme</strong> de la distribution est intermédiaire.<br>
+  	</li>
+</ul>
+
+<p>Nous avons étiqueté l'axe avec les valeurs <strong>transformées</strong> pour aider à expliquer la mécanique de transformations de puissance. En pratique, il est préférable d'étiqueter l'axe avec les mesures d'origine. Sélectionner les valeurs des options <strong>Raw</strong> dans le menu pop-up. Les étiquettes sur l'axe deviennent les populations des pays.</p>
+<p>Réglez la puissance encore et observer l'effet sur les étiquettes. Notez la transition en douceur entre la transformation logarithmique et les pouvoirs de chaque côté.</p>
+<hr width="75%">
+		<p>Pour ces données, une transformation logarithmique est de nouveau proche mieux pour éliminer l'asymétrie. Remarquez que le «aberrantes», au Nigeria, ne se tient plus du reste des pays &mdash; il est compatible avec la distribution des populations dans le reste de l'Afrique.</p>
+
+</div>
+
+<p class="heading">Une définition précise</p>
+<p>Transformations de puissance sont assez souples pour réduire ou éliminer l'asymétrie dans une large gamme d'ensembles de données.</p>
+
+<p>La famille de transformations que nous utilisons est:<br>
+</p>
+
+<p class=eqn><object data="images/boxCoxEqn.svg" width="409" height="106"></object>
+</p>
+
+  <p>Notez que si nous n'avons pas changé le signe des valeurs lorsque <em>p</em> &lt; 0, l'ordre des valeurs seraient échangés. Par exemple,<br>
+</p>
+ 
+<p class=eqn><object data="images/negativePower.svg" width="260" height="20"></object>
+</p>
+
+<p>Changer le signe maintient l'ordre initial.</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Test for differences between levels</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="mean sum of squares, f ratio, f test, anova, analysis of variance">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Hypothesis test</p>
+<p>The coefficient of determination, R<sup>2</sup>, summarises the relative amounts of  explained and unexplained variation. However even if the factor had <strong>no</strong> effect on the response, the randomness of data would result in <strong>some</strong> explained variation and a non-zero R<sup>2</sup>.</p>
+<p> Formally, we want to test whether the level means are the same:</p>
+<p style="margin-left:200;" class="black"><span class="arial"><strong><span class="bigger">H</span><sub>0</sub></strong></span> : &nbsp; µ<sub><em>i</em></sub> &nbsp;=&nbsp; µ<sub><em>j</em></sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>for
+all i and j</em><br>
+<span class="arial"><strong><span class="bigger">H</span><sub>A</sub></strong></span>: &nbsp; µ<sub><em>i</em></sub> &nbsp;≠&nbsp; µ<sub><em>j</em></sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>for
+at least some i, j</em></p>
+<p>This hypothesis test  is based on the two sums of squares from which R<sup>2</sup> was calculated but uses them in a different way.</p>
+<div class="centred"><div class="boxed">
+	<p>You should use computer software to evaluate the p-value for the test, but we 
+		will briefly describe some of the steps. </p>
+</div></div>
+<p class="heading">Mean sums of squares</p>
+
+<p>The first step in evaluating the p-value for the test is to divide each of 
+the three sums of squares by a value called its <strong>degrees of freedom</strong> 
+to obtain a <strong>mean sum of squares</strong>.</p>
+<div class="centred"><table width="90%" border="0" class="centred" cellpadding="6" cellspacing="0" style="background-color:#FFFFFF">
+<tr> 
+<td><img class="gif" src="../multiGroup/images/totalMss.gif" width="139" height="43"></td>
+<td class="green">The <strong>mean total sum of squares</strong> is the 
+sample variance of the response (ignoring the treatments).</td>
+</tr>
+<tr> 
+<td><img class="gif" src="../multiGroup/images/residMss.gif" width="143" height="43"></td>
+<td class="blue">The <strong>mean within-treatment sum of squares</strong> 
+is the pooled estimate of the common response variance within each treatment.</td>
+</tr>
+<tr> 
+<td><img class="gif" src="../multiGroup/images/regnMss.gif" width="162" height="43"></td>
+<td class="red">The <strong>mean between-treatment sum of squares</strong> 
+is harder to directly interpret.</td>
+</tr>
+</table></div>
+
+<p>Note that the within-treatment and between-treatment degrees of freedom (the denominators) 
+ add to give the total degrees of freedom.</p>
+<p class="heading">F ratio and p-value</p>
+<p>The test statistic is the ratio of the between- and within-treatment mean sums 
+of square. It is called an <strong>F-ratio</strong>.</p>
+
+<p class=eqn><img class="gif" src="../multiGroup/images/fRatio.gif" width="114" height="37"> </p>
+<p>This test statistic compares between- and within-treatment variation:</p>
+
+<ul>
+<li>The further apart the treatment means, the bigger the between-treatment mean sum of 
+squares and hence the higher the F-ratio.</li>
+<li>The lower the variation within each treatment, the smaller the within-treatment mean 
+sum of squares and hence the higher the F-ratio.</li>
+</ul>
+
+<br>
+
+
+<div class="centred"><div class="boxed">
+<p>Large values of F suggest that H<sub>0</sub> does not hold &mdash; 
+that the level means are not the same.</p>
+</div></div>
+
+<p>The p-value for the test gives the probability of such a high F ratio if <strong>H<sub>0</sub></strong> 
+is true (all treatment means are the same). It is based on a standard distribution 
+called an <strong>F distribution</strong> and is interpreted in the same way as 
+other p-values. </p>
+
+<div class="centred"><div class="boxed">
+<p>The closer the p-value to zero, the stronger the evidence 
+that H<sub>0</sub> does not hold.</p>
+</div></div>
+
+<p class="heading">Analysis of variance table</p>
+<p>The calculations are usually presented in a table called an <strong>analysis 
+of variance table</strong>. (This is often abbreviated to an <strong>anova table</strong>.)</p>
+<p class=eqn><img src="images/anovaTable.gif" width="513" height="179"> </p>
+<br>
+
+<div class="diagram"> 
+<p class="heading">Illustration of calculations</p>
+<p>The dot plots on the left below show results from a completely randomised experiment with 3 replicates at each of 4 factor levels. </p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="380">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.AnovaTableApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="xLabels" value="#Level A# #Level B# #Level C# #Level D#">
+<param name="anovaModel" value="7 1 14 1 12 1 4 1">
+<param name="randomSeed" value="614945782">
+<param name="yAxis" value="0 20 0 5">
+<param name="decimals" value="3">
+<param name="maxSummaries" value="9999.99 999.99 999.99 9.999">
+<param name="initialR2" value="0.75">
+<param name="componentName" value="Total#Between levels#Within levels">
+<param name="noOfDataSets" value="3">
+<param name="dataName" value="3 replicates">
+<param name="xValues" value="3@0 3@1 3@2 3@3">
+<param name="dataName2" value="5 replicates">
+<param name="xValues2" value="5@0 5@1 5@2 5@3">
+<param name="dataName3" value="20 replicates">
+<param name="xValues3" value="20@0 20@1 20@2 20@3">
+<param name="customText" value="Variability=Variability#All unexplained=All unexplained#All explained=All explained#Variation in Data=Variation in Data">
+</applet>
+</div>
+
+<p>The slider adjusts the relative size of the between-treatment and within-treatment 
+sums of squares. Observe how this affects the p-value for the test.</p>
+<ul><li>The greater the proportion of explained variation, the larger the F-ratio and 
+the closer the p-value becomes to zero.</li></ul>
+<p>Use the pop-up menu to increase the number of replicates and observe that a smaller 
+amount of explained variation is needed to obtain a small p-value (and hence strong 
+evidence that the underlying treatment means are different).</p>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>3-dimensional bar charts</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="bar chart, rotating 3D bar chart">
+	<meta name="dataset" content="Rank and age in a university">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Graphical display in a bar chart</p>
+
+  <p>When bivariate categorical data are collected, but we do not want to classify 
+    them as a response and explanatory variable, one way to display the data graphically 
+    is with a 3-dimensional bar chart. For each cell in a contingency table of 
+    the data (i.e. each possible combination of values of the two variables), 
+    the bar height is given by the frequency of that combination.</p>
+  
+<p>Dividing these frequencies by the total number of values in the table gives 
+the <strong>joint proportions</strong> &mdash; each resulting value is the proportion 
+of individuals with that combination of categories. The 3-dimensional bar chart 
+has the same shape if the bar height is proportional to these joint proportions.</p>
+
+
+<div class="diagram" title="Example: Rank and age in a university">
+<p class="heading">Rank and age in a university</p>
+
+    
+<p>The contingency table below shows the rank and age of all academic staff in 
+a university in the USA.</p>
+    <div class="centred"><table border="0" class="centred" cellpadding="5" cellspacing="0">
+      <tr> 
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+        <th colspan="4">Rank</th>
+      </tr>
+      <tr> 
+        <th colspan="2" align="left" valign="bottom">Age</th>
+        <th class="darkred">Full<br>
+          professor</th>
+        <th class="darkred">Associate<br>
+          professor</th>
+        <th class="darkred">Assistant<br>
+          professor</th>
+        <th><span class="darkred">Instructor</span></th>
+      </tr>
+      <tr> 
+        <th rowspan="4" align="left">&nbsp;</th>
+        <th align="left" class="darkblue">Under 30</th>
+        <td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">2</td>
+        <td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">3</td>
+        <td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">57</td>
+        <td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">6</td>
+      </tr>
+      <tr> 
+        <th align="left"><span class="darkblue">30 to 39</span></th>
+        <td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">52</td>
+        <td align="center" bgcolor="#FFFFFF">170</td>
+        <td align="center" bgcolor="#FFFFFF">163</td>
+        <td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">17</td>
+      </tr>
+      <tr> 
+        <th align="left"><span class="darkblue">40 to 49</span></th>
+        <td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">156</td>
+        <td align="center" bgcolor="#FFFFFF">125</td>
+        <td align="center" bgcolor="#FFFFFF">61</td>
+        <td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">6</td>
+      </tr>
+      <tr> 
+        <th align="left"><span class="darkblue">50 and over</span></th>
+        <td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">220</td>
+        <td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">83</td>
+        <td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">39</td>
+        <td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">4</td>
+      </tr>
+    </table></div>
+    <p>We are interested in both comparing the distributions of ages of those in different ranks, and the 
+      comparing the distributions of ranks of staff in different age groups, so there is no unique 'response' variable. The diagram below shows these data in 
+    a 3-dimensional bar chart.</p>
+    <div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="360">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="continProg.RotateBarApplet">
+<param name="xVarName" value="Age">
+<param name="xLabels" value="#Under 30# #30 to 39# #40 to 49# #50 and over#">
+<param name="xValues" value="68@0 402@1 348@2 346@3">
+<param name="yVarName" value="Rank">
+<param name="yLabels" value="#Full prof# #Assoc prof# #Assist prof# Instructor">
+<param name="yValues" value="2@0 3@1 57@2 6@3 52@0 170@1 163@2 17@3 156@0 125@1 61@2 6@3 220@0 83@1 39@2 4@3">
+<param name="probAxis" value="0.0 0.15 0.00 0.02">
+<param name="countAxis" value="0 174.6 0 20">
+<param name="transitions" value="none">
+</applet>
+</div>
+
+    <p>Move the mouse to the middle of the diagram, then drag to rotate. (Or click 
+      the button <strong>Spin</strong>.)</p>
+    <p>Select the option <strong>Proportion</strong> from the pop-up menu to change 
+      the vertical scale. Observe that the bar chart itself is the same whether 
+      the frequencies or joint proportions are used.</p>
+    <p>Looking across individual rows (or columns) of bars shows the age distribution 
+      for different ranks (or the rank distribution for different ages).</p>
+</div>
+
+  
+<p>Three-dimensional bar charts are 'interesting' but there are more informative 
+ways to display the data.</p>
+
+<p class="heading">Chartjunk and perspective displays</p>
+
+<p>Beware of adding chartjunk and perspective viewpoints to the display &mdash; they 
+just make it harder to understand the data.</p>
+
+<div class="diagram"> 
+<p>The diagram below was drawn with Microsoft Excel. The perspective viewpoint 
+	may look artistic, but it certainly does not help you to understand the 
+	data!</p>
+<p class="eqn"><img class="gif" src="../bivarCat/images/perspectiveBar.gif" width="450" height="456"> 
+</p>
+<p>What is the shape of the <em>Democrat</em> 
+distribution?</p>
+
+</div>
+
+
+
+  
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

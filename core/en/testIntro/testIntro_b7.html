@@ -1,0 +1,283 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Common patterns in tests</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	<script language="javascript">
+		var currentBlockName = "ex1";
+		function changeDataset() {
+			var menu = document.getElementById("dataset");
+			var option = menu.options[menu.selectedIndex];
+			var newBlockName = option.value;
+			
+			
+			var oldBlock = document.getElementById(currentBlockName);
+			oldBlock.style.display = "none";
+			var newBlock = document.getElementById(newBlockName);
+			newBlock.style.display = "block";
+			currentBlockName = newBlockName;
+		}
+	</script>
+
+	<meta name="index" content="hypothesis test, null hypothesis, alternative hypothesis, p-value">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">A general framework</p>
+<p>The examples in earlier pages of this section involved different types of data 
+and different analyses. Indeed, you may find it difficult to spot their common 
+theme!</p>
+<p>All analyses were examples of <strong>hypothesis testing</strong>. We now describe 
+the general framework of hypothesis testing within which all of these examples 
+fit. This general framework is the basis for important applications in later sections 
+of CAST.</p>
+
+<div class="centred"><div class="boxed">
+<p>The concepts in this page are extremely important &mdash; make sure that 
+you understand them well before moving on.</p>
+</div></div>
+
+<p class="heading">Data, model and question</p>
+<dl>
+<dt>Data (and model)</dt>
+<dd>Each example dealt with a data set that was assumed to arise from some random
+mechanism. We may be able to specify some aspects of this random mechanism (model),
+but it also has unknown characteristics</dd>
+<dt>Null hypothesis</dt>
+<dd>All models had unknown characteristics, and we want to know whether the model
+has particular properties &mdash; the <strong>null hypothesis</strong>.</dd>
+<dt>Alternative hypothesis</dt>
+<dd>If the null hypothesis is not true, we say that the <strong>alternative hypothesis</strong> holds.
+(You can understand most of hypothesis testing without paying much attention to the
+alternative hypothesis however!)</dd>
+</dl>
+
+<div class="centred"><div class="boxed">
+<p>Either the null hypothesis or the alternative hypothesis must be true.</p>
+</div></div>
+
+<p class="heading">Approach</p>
+<p>We assess whether the null hypothesis is true by asking&nbsp;...</p>
+
+<div class="boxed" style="background-color:#FFFF00">
+<p><span class="darkred">Are the data consistent with the null hypothesis?</span></p>
+</div>
+
+<p>It is <strong>extremely</strong> important that you understand that hypothesis
+testing addresses this question &mdash; make sure that you remember it well!!</p>
+<p class="heading">Answering the question</p>
+<dl>
+<dt>Test statistic</dt>
+<dd>This is some function of the data that throws light on whether the null or alternative
+hypothesis holds.</dd>
+<dt>P-value</dt>
+<dd>Testing whether the data are consistent with the null hypothesis is based on
+the probability of obtaining a test statistic value as 'extreme' as the one recorded <strong>if
+the null hypothesis holds</strong>. This is called the p-value for the test.</dd>
+<dt>Interpreting the p-value</dt>
+<dd>Although it may be regarded as an over-simplification, the table below can be
+used as a guide to interpreting p-values.</dd>
+</dl>
+
+<div class="centred"><table border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC" class="centred">
+<tr>
+<th align="CENTER">p-value</th>
+<th align="CENTER">Interpretation</th>
+</tr>
+<tr bgcolor="white">
+<td>over 0.1</td>
+<td>no evidence that the null hypothesis does not hold</td>
+</tr>
+<tr bgcolor="white">
+<td>between 0.05 and 0.1</td>
+<td>very weak evidence that the null hypothesis does not hold</td>
+</tr>
+<tr bgcolor="white">
+<td>between 0.01 and 0.05</td>
+<td>moderately strong evidence that the null hypothesis does not hold</td>
+</tr>
+<tr bgcolor="white">
+<td>under 0.01</td>
+<td>strong evidence that the null hypothesis does not hold</td>
+</tr>
+</table></div>
+
+
+
+<div class="diagram">
+
+<p>Use the pop-up menu below to check how the earlier examples in this section fit
+into the hypothesis testing framework.</p>
+
+<div class="divChoice">
+<form><select id="dataset" onchange="changeDataset()" style="font-weight:bold; font-size:13px; padding:2px">
+<option value="ex1" selected>Soccer league in one season</option>
+<option value="ex2">Scaring whales from boats</option>
+<option value="ex3">Net weight of corn flake packets</option>
+<option value="ex4">Coyote lengths</option>
+<option value="ex5">Soccer leagues in two seasons</option>
+</select></form>
+
+<div id="ex1" style="display:block">
+<p class="heading">Soccer league in one season</p>
+<dl>
+<dt>Data (and model)</dt>
+<dd>Some random mechanism underlies the actual results in the matches during a 
+season. The probabilities of winning may vary from team to team and there may 
+be a home-team advantage, so there are a lot of unknowns about this model! Our 
+data are a single set of results &mdash; the league table at the end of the season.</dd>
+<dt>Null hypothesis</dt>
+<dd>The null hypothesis is that all teams are equally matched &mdash; i.e. that they 
+all have the same probability of winning each match.</dd>
+<dt>Alternative hypothesis</dt>
+<dd>The alternative hypothesis is that all teams do <strong>not</strong> have the
+same probabilities of winning.</dd>
+<dt>Test statistic</dt>
+<dd>The standard deviation of final points is used. It will be low if the teams
+have the same abilities (null hypothesis) and higher otherwise (alternative hypothesis).</dd>
+<dt>P-value</dt>
+<dd>We simulated the soccer league, assuming that all teams had the same probability 
+of winning. The p-value was the probability of getting a standard deviation of 
+final points as high as 19.3 (the actual data).</dd>
+<dt>Interpreting the p-value</dt>
+<dd>The p-value was 0.000 (or close). Since there is virtually no chance of getting a standard
+deviation of points as high as that in the actual league from equally matched teams, we conclude
+that the teams are <strong>not</strong> equally matched &mdash; the null hypothesis is false.</dd>
+</dl>
+</div>
+
+
+<div id="ex2" style="display:none">
+<p class="heading">Scaring whales from boats</p>
+<dl>
+<dt>Data (and model)</dt>
+<dd>Each whale has some probability of leaving &mdash; our model. We also assume independence
+of different whales, a reasonable assumption if the whales are encountered at different
+times, but not if they appear in a group. A sample of 30 whales was used in the experiment
+and our data is the number that left immediately.</dd>
+<dt>Null hypothesis</dt>
+<dd>The null hypothesis is that each whale has probability 0.4 of leaving immediately
+&mdash; i.e. that the sound-transmitting device has no effect.</dd>
+<dt>Alternative hypothesis</dt>
+<dd>The alternative hypothesis is that whales have higher probability than 0.4 of
+leaving immediately when the boat arrives.</dd>
+<dt>Test statistic</dt>
+<dd>The number of whales that leave immediately is the test statistic. It will be
+near 12 (i.e. 0.4&times;30) if the device is ineffective (null hypothesis) and will
+be greater than 12 if it works (the alternative hypothesis).</dd>
+<dt>P-value</dt>
+<dd>We simulated using the device on 30 whales, assuming that each had probability
+0.4 of leaving immediately. The p-value was the probability of 15 or fewer of the
+30 staying (the actual data).</dd>
+<dt>Interpreting the p-value</dt>
+<dd>A p-value of around 0.18 means that 15 or more whales leaving out of 30 is not
+unusual if the device is ineffective &mdash; i.e. if the probability of leaving is 0.4.
+There is therefore no evidence against the null hypothesis &mdash;  no evidence
+supporting the effectiveness of the device.</dd>
+</dl>
+</div>
+
+
+<div id="ex3" style="display:none">
+<p class="heading">Net weight of corn flake packets</p>
+<dl>
+<dt>Data (and model)</dt>
+<dd>We are told that the net weight of corn flake packets is normally distributed
+with a standard deviation of σ&nbsp;=&nbsp;10&nbsp;gm and unknown mean, µ. The data
+are a random sample from this distribution.</dd>
+<dt>Null hypothesis</dt>
+<dd>The null hypothesis is that the weights of packets have a distribution with mean
+µ&nbsp;=&nbsp;520&nbsp;gm.</dd>
+<dt>Alternative hypothesis</dt>
+<dd>The alternative hypothesis is that µ&nbsp;≠&nbsp;520&nbsp;gm.</dd>
+<dt>Test statistic</dt>
+<dd>The mean weight of our sample of 10 packets is the test statistic. It will be
+close to 520&nbsp;gm if the filling machine is working correctly (the null hypothesis)
+and will be far from this if the mean filling weight has drifted from 520&nbsp;gm
+(the alternative hypothesis).</dd>
+<dt>P-value</dt>
+<dd>We simulated samples of <em>n</em> = 10 values from a normal (µ = 520, σ&nbsp;=&nbsp;10)
+distribution. The p-value was the probability of getting a sample mean as far from
+520 as the value in our actual data (529).</dd>
+<dt>Interpreting the p-value</dt>
+<dd>A p-value of around 0.01 means that a sample mean weight as far from 520 gm as
+the one we recorded would be very unlikely if the null hypothesis was true. There
+is strong evidence that the mean weight is <strong>no longer</strong> 520 gm.</dd>
+</dl>
+</div>
+
+
+<div id="ex4" style="display:none">
+<p class="heading">Coyote lengths</p>
+<dl>
+<dt>Data (and model)</dt>
+<dd>We assume that our data (lengths of coyotes) are random samples of 40 and 43
+from underlying populations of female and male coyotes (respectively) in Nova Scotia.
+Random sampling from these unknown populations is our model.</dd>
+<dt>Null hypothesis</dt>
+<dd>The null hypothesis is that the population distribution of coyote lengths is
+the same for male and female animals.</dd>
+<dt>Alternative hypothesis</dt>
+<dd>The alternative hypothesis is that the distributions are different for males
+and females.</dd>
+<dt>Test statistic</dt>
+<dd>The difference between the mean lengths of the male and female coyotes was the
+test statistic. It should be close to zero if the null hypothesis holds, and far
+from zero if the alternative hypothesis holds.</dd>
+<dt>P-value</dt>
+<dd>We randomised the 83 lengths between the two groups of coyotes (male and female)
+&mdash; each such randomisation is equally likely if the populations are the same. The
+p-value was the probability that the difference in means is further from zero than
+2.8 cm (the actual data).</dd>
+<dt>Interpreting the p-value</dt>
+<dd>A p-value of 0.05 only gives weak evidence that the null hypothesis does not
+hold &mdash; there is a moderately high probability of seeing such different sample means
+if the male and female distributions are really the same.</dd>
+</dl>
+</div>
+
+
+<div id="ex5" style="display:none">
+<p class="heading">Soccer leagues in two seasons</p>
+<dl>
+<dt>Data (and model)</dt>
+<dd>Some random mechanism again generates results during each season &mdash; our model.
+In this case, we have recorded the number of points for each team at the end of two
+successive seasons &mdash; our data.</dd>
+<dt>Null hypothesis</dt>
+<dd>The null hypothesis is that all teams (other than Manchester United, Arsenal,
+Liverpool and Leeds) have the same probabilities of winning against the same opposition
+in both seasons.</dd>
+<dt>Alternative hypothesis</dt>
+<dd>The alternative hypothesis is that the chances of teams winning in 2013/14 are related to their
+performance in 2012/13.</dd>
+<dt>Test statistic</dt>
+<dd>The correlation coefficient between the final points of teams in the two seasons
+is the test statistic. It will be close to zero if the teams have the same chances
+of winning (the null hypothesis) and will be positive if some teams have higher chances
+of winning than others (the alternative hypothesis).</dd>
+<dt>P-value</dt>
+<dd>We randomised the points in the second season &mdash; each is equally likely if the
+teams have the same probability of winning. The p-value was the probability that
+the correlation coefficient is further from zero than 0.798 (the actual data).</dd>
+<dt>Interpreting the p-value</dt>
+<dd>From a p-value that is close to zero, we conclude that a correlation coefficient as far
+from zero would be unlikely if the null hypothesis was true, so there is 
+strong evidence that the teams are <strong>not</strong> evenly matched.</dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

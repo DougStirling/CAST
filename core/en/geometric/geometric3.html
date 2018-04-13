@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Examples</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="geometric distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>We now give a couple of examples involving  geometric random variables.</p>
+
+<div class="questionSoln">
+<div class="question">
+<p class="questionTitle">Example</p>
+<p>If a fair six-sided die is rolled repeatedly, what is the probability that it will take between 6 and 8 rolls (inclusive) to get the first &quot;six&quot;?</p>
+</div>
+
+<div class="solution">
+<p>The number of rolls to get the first six has a geometric distribution with probability of &quot;success&quot; being \(\frac 1 6\).</p>
+\[
+X \;\; \sim \; \; \GeomDistn\left(\pi = \frac 1 6\right)
+\]
+<p>Since its probability function is</p>
+\[
+p(x) = \frac 1 6 \left(\frac 5 6\right)^{x-1} \qquad \text{for } x = 1, 2, \dots
+\]
+<p>Therefore</p>
+\[
+P(6 \le X \le 8) = p(6) + p(7) + p(8) = \frac 1 6 \left(\frac 5 6\right)^5 + \frac 1 6 \left(\frac 5 6\right)^6 + \frac 1 6 \left(\frac 5 6\right)^7 = 0.1693
+\]
+</div>
+</div>
+
+<p>Adding probabilities like this works provided there are not too many of them. However an alternative way to find probabilities is to use the cumulative distribution function.</p>
+
+<div class="questionSoln">
+<div class="question">
+<p class="questionTitle">Example</p>
+<p>If a fair six-sided die is rolled repeatedly, what is the probability that it will take between 10 and 20 rolls (inclusive) to get the first &quot;six&quot;?</p>
+</div>
+
+<div class="solution">
+
+\[
+P(10 \le X \le 20) = p(10) + p(11) + p(12) + \dots + p(18) + p(19) + p(20)
+\]
+
+<p>but this requires adding 11 probabilities. Instead, we can note that the event involves all values of \(X\) that are less than or equal to 20, but not less than or equal to 9, so</p>
+
+\[ \begin{align}
+P(10 \le X \le 20) &amp; = P(X \le 20) - P(X \le 9) \\
+&amp; = \left( 1 - \left(\frac 5 6 \right)^{20} \right) - \left( 1 - \left(\frac 5 6 \right)^9 \right) \\
+&amp; = \left(\frac 5 6 \right)^9 - \left(\frac 5 6 \right)^{20} \\[0.5em]
+&amp; = 0.1677
+\end{align} \]
+
+</div>
+
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

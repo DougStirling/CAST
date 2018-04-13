@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Parcelles résiduelles</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="regression model, linear model, curvature, outliers">
+	<meta name="dataset" content="Pressure and boiling point of water">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Détection des problèmes avec le modèle</p>
+
+  <p>Si les valeurs aberrantes ou courbure sont présents dans un ensemble de données, elles sont souvent visibles dans un nuage de points de la réponse contre la variable explicative.&nbsp;Toutefois, ces caractéristiques sont généralement plus clair si les&nbsp;<strong>résidus</strong>&nbsp;sont comploté contre&nbsp;<em>X</em>&nbsp;plutôt que la réponse initiale.</p>
+	<table width="75%" border="1" cellspacing="0" cellpadding="10" class="centred" bgcolor="#FFFFFF">
+		<tr> 
+			<td align="center"><strong>Résidus complot contre X pour rechercher des problèmes dans le modèle</strong></td>
+		</tr>
+	</table>
+	
+	<br>
+
+<div class="diagram">
+
+		<p class="heading">La pression atmosphérique et le point d'ébullition</p>
+
+<p>Dans le milieu du 19ème siècle, JD Forbes a pris des mesures de la température d'ébullition de l'eau (degrés Fahrenheit) et la pression barométrique (pouces de mercure) à 17 endroits dans les Alpes et en Ecosse.</p>
+
+<p>Les données ont été collectées dans le but de prédire la pression barométrique (et donc d'altitude) à partir du point d'ébullition, une quantité facilement mesurable. Nous avons donc traiter l'hypertension comme variable de réponse dans notre modèle.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.ResidualPlotApplet">
+<param name="xVarName" value="Point d'ébullition">
+<param name="yVarName" value="Pression">
+<param name="xValues" value="194.5 194.3 197.9 198.4 199.4 199.9 200.9 201.1 201.4 201.3 203.6 204.6 209.5 208.6 210.7 211.9 212.2">
+<param name="yValues" value="20.79 20.79 22.40 22.67 23.15 23.35 23.89 23.99 24.02 24.01 25.14 26.57 28.49 27.76 29.04 29.88 30.06">
+<param name="horizAxis" value="194 213 195 5">
+<param name="vertAxis" value="20 31 20 2">
+<param name="residAxis" value="-0.4 0.8 -0.4 0.2">
+<param name="change1" value="#11 204.6 *#">
+<param name="change1Name" value="Supprimer la valeur aberrante">
+</applet>
+</div>
+
+<p>Bien que le diagramme de dispersion des données brutes sur la gauche semble conforme assez bien à un modèle linéaire simple, la parcelle de résidus sur la droite met en évidence deux problèmes avec le modèle.</p>
+
+<ul>
+  <li>La plupart des croix sur le mensonge tracé des valeurs résiduelles sur une courbe en U, ce qui indique que la relation n'est pas parfaitement linéaire.</li>
+	<li>Une valeur aberrante est présent, une mesure dont la pression est anormalement élevé pour son point d'ébullition.</li>
+</ul>
+<p>L'exception est susceptible d'avoir été causé par une mesure erronée, mais cela est désormais impossible à vérifier.&nbsp;Cliquez sur&nbsp;<strong>Supprimer la valeur aberrante</strong>&nbsp;pour la supprimer.</p>
+<p>Nous allons examiner les solutions au problème de la non-linéarité plus tard.</p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

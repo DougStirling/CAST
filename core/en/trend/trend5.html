@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Detrending a time series</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="time series, residual">
+	<meta name="dataset" content="Traffic fatal crashes in NZ">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Residuals</p>
+<p>The residuals for a time series model are the differences between the actual 
+and fitted values from the model. They describe how the model would have over- 
+or under-estimated the data.</p>
+<p class=eqn><span class="black"><em>e<sub>i</sub></em>&nbsp;&nbsp;=&nbsp;&nbsp;<em>y<sub>i</sub></em>&nbsp;&minus;&nbsp;<em>trend<sub>i</sub></em></span> </p>
+<p>The residuals form the <strong>detrended</strong> series, and the process 
+of removing the trend is called <strong>detrending</strong>. Detrending will 
+often reveal interesting features that were obscured by the trend, and which 
+may be important in explaining the past or forecasting the future.</p>
+<p>It is therefore useful to look for patterns in a time series plot of the 
+residuals. If the model under consideration fits well, there should be no 
+pattern in the residuals &mdash; each should have the same chance of being positive 
+or negative.</p>
+<p>If there are systematic patterns in the residuals, it may be possible to 
+use a different model for the trend (e.g. a quadratic rather than a linear 
+model), but time series often exhibit patterns that cannot be explained with 
+simple models for the trend.</p>
+
+
+<div class="diagram" title="Example: Traffic accidents in New Zealand">
+<p class="heading">Fatal traffic crashes in New Zealand</p>
+<p>The diagram below shows the number of fatal vehicle crashes in New Zealand 
+	  per 100,000 population between 1970 and 2012.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="440">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.TimeResidualApplet">
+<param name="varName" value="Fatal crashes per 100,000 popn">
+<param name="values" value="20.3 20.7 21.0 24.5 19.8 18.3 17.0 19.7 18.6 15.9 16.8 18.3 18.7 17.4 18.6 20.0 19.8 20.6 18.7 19.2 18.7 16.1 15.6 14.7 13.9 13.8 12.3 12.4 11.5 11.4 10.0 10.3 9.3 10.1 9.2 8.3 8.4 8.9 7.8 7.8 7.7 5.9 6.0">
+<param name="vertAxis" value="5 26 5 5">
+<param name="timeAxis" value="0 10 1970 10">
+<param name="timeName" value="year">
+<param name="timeSequence" value="1970 1 43">
+<param name="decimals" value="3 3 3 3">
+<param name="labelAxes" value="true">
+<param name="timeAxisName" value="Year">
+<param name="residAxisLabels" value="5,-10 5">
+<param name="allowQuadratic" value="true">
+<param name="customText" value="Data=Data">
+</applet>
+</div>
+
+<p>The residuals are the vertical distances between the points and the line. 
+  Move the slider to the right to display a time series of these residuals.</p>
+<p>Repeat with a quadratic model and observe how the residuals effectively straighten out the curvature.</p>
+<p>After detrending in this way, the residual for 1973 stands out as being unusually high, especially in relation to the numbers in the adjacent years. We might further investigate whether there were any particular changes in legislation that may have contributed to this.</p>
+<p>In a similar way, there is a run of positive residuals between 1985 and 1990. Was there something unusual about these years?</p>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

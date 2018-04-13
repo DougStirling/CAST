@@ -1,0 +1,265 @@
+<html>
+<head>
+  <title>6. Quality and Reliability</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 6 &nbsp; Quality and Reliability</h1>
+<h1 class="sectionName">6.1 &nbsp; Control charts</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Introduction</li>
+<li>Run charts</li>
+<li>Control limits</li>
+<li>Other signals of being out-of-control</li>
+<li>False alarms</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='6'>
+<li>Examples of run charts</li>
+<li>Control charts for means</li>
+<li>Control charts for ranges</li>
+<li>Finding the cause of problems</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">6.1.1 &nbsp; Introduction</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Statistics for complex problems</p>
+	<p>In practice, problems are rarely  well-defined and there may be various 
+		different ways to collect data to throw light on them.</p>
+	<ul>
+		<li>How do we reduce hospital waiting lists?</li>
+		<li>How do you design an ultrasonic sound generator to repel mice?</li>
+	</ul>
+	<p>Collection and analysis of data to help attack the problem usually suggest 
+		further questions for which further data are required. Several cycles of data 
+		collection and analysis are usually needed, with considerable input from an expert 
+		in the problem area between each cycle of the process. </p>
+	<p class="heading">Continuous quality improvement</p>
+	<p>In business 
+		and industry, statistics is an important part of the long-term <strong>monitoring</strong> of performance. We may simply want to ensure that systems continue to perform at their current 
+		levels, or the aim may be to <strong>improve</strong> aspects of the system. 
+		The latter is often called <strong>continuous quality improvement</strong> or <strong>total quality management</strong>.</p>
+	<p>Problems in a process are usually detected by collecting and analysing <strong>data</strong> about the performance of the system. This section describes the use of <strong>control charts</strong> as a way to monitor processes.</p>
+
+
+
+
+<h2 class="pageName">6.1.2 &nbsp; Run charts</h2><!DOCTYPE HTML>
+
+
+<p class=heading>Inherent variability</p>
+	<p>A certain level of variability in any process is unavoidable. We say that this 
+		'acceptable' level of variability is a result of <strong>common causes</strong> (or <strong>random causes</strong>) and if it is the only source of variability, 
+		the process is said to be <strong>in control</strong>. </p>
+	<p class=heading>Systematic changes</p>
+	<p>Our aim is to detect changes to the output that are <strong>not</strong> the 
+		result of common causes. Such systematic changes are said to be the result of <strong>special causes</strong> (or <strong>assignable causes</strong>) and 
+		could result in... </p>
+	<ul>
+		<li>movement in the process mean (either abruptly or steadily over time),</li>
+		<li>single outliers, or</li>
+		<li>changes to the process variability</li>
+	</ul>
+	<p>Systematic changes usually indicate problems with the quality of the output and the process is said to be <strong>out of control</strong>. </p>
+	<p class=heading>Run chart</p>
+	<p>A <strong>control chart</strong> plots   measurements describing the process in time order &mdash; a type of time series plot. We hope to use it to quickly detect problems and adjust the process to maintain quality. If a single value is recorded at each time, the control chart is called a <strong>run chart</strong>. (Other control charts plot sample means and ranges.)</p>
+<p>The challenge is to detect systematic 
+		changes in the control chart (due to special causes) over the background level of 
+		variability (due to common causes).</p>
+	<p>In the example below, the manager has determined that an output measurement should 'almost always' be between 2,000 and 2,080 with variability in this range considered to be due to common causes. Two out of the last four values were above the upper limit, suggesting a problem with the process that should be investigated and fixed.</p>
+	<p class="eqn">																										<img src="../../../en/controlChart/images/s_outliers.gif" width="553" height="302"></p>
+
+
+
+
+<h2 class="pageName">6.1.3 &nbsp; Control limits</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Control limits</p>
+	<p>The simplest rule suggesting a special cause is any value that is outside
+		two <strong>control limits</strong>. Values outside the control limits suggest
+that the process is <strong>out of control</strong> &mdash;
+		they <strong>trigger</strong> an examination of the process for a special cause. </p>
+	<p>Control limits are usually based on the mean and standard deviation of the 
+		process when it is in control. The 70-95-100 rule of thumb states that in many 
+		distributions, </p>
+	<ul>
+		<li>Approximately two thirds of the values are within 1 standard deviation of the mean.</li>
+		<li>Approximately 95% of the values are within 2 standard deviations of the mean.</li>
+		<li>Nearly all of the values are within 3 standard deviations of the mean.</li>
+	</ul>
+	<p class=eqn><img class="gif" src="../../../en/controlChart/images/bands.gif" id="gif_image_1_3_1" width="578" height="264"><iframe class="svg" src="../../../en/controlChart/images/bands.svg" id="svg_image_1_3_1" width="578" height="264" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_1_3_1");</script></p>
+	<p>By setting the upper and lower control limits to be 3 standard deviations
+		on either side of the process mean, we avoid many 'false alarms' when the process is
+		in control. This is important since values outside the control limits would trigger an examination of the 
+		production process &mdash; possibly a costly exercise.</p>
+	<p class="heading">Shape of the distribution</p>
+	<p>The 70-95-100 rule of thumb is most accurate for reasonably symmetric, bell-shaped distributions, though values more than 3 standard deviations from the mean are rare for all distributions. However these control limits should be avoided for very skew distributions &mdash; consider transforming  the data before producing 
+	a run chart.</p>
+
+
+
+
+<h2 class="pageName">6.1.4 &nbsp; Other signals of being out-of-control</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Additional triggers for an out-of-control process </p>
+	<p>The most commonly used indication of a process being out-of-control is a  
+		value outside the upper and lower control limits (more than three standard deviations 
+		away from the centre line). This is sensitive to changes to the process mean 
+		or increases in the process variability. </p>
+	<p>Additional triggers have been proposed that are also sensitive to systematic
+		changes in a process. These are all based
+		on successive values within 1, 2 or 3 standard deviations from the centre (Zones C, B or A).	</p>
+	<p class="eqn"><img src="../../../en/controlChart/images/s_triggers.gif" width="550" height="589"></p>
+
+
+
+
+<h2 class="pageName">6.1.5 &nbsp; False alarms</h2><!DOCTYPE HTML>
+
+
+<p class="heading">False alarms </p>
+	<p>Although the individual patterns that we use as triggers occur rarely in a process
+		that is in control, they do occur occasionally. Indeed, the proportion of values
+		from a stable process that triggers each of the
+		criteria is typically about 1 in 200, so if all five criteria are used, a reasonable
+		number of <strong>false alarms</strong> will occur. </p>
+	<p>Clearly a single exceptional value is not conclusive proof that the process is
+out of control. However it is appropriate to examine carefully the operation of the process
+to look for an assignable cause for this value (and adjust the process if such a cause
+is discovered).
+And a <strong>series</strong> of such values does indicate that the process is out of control. </p>
+
+
+
+
+
+<h2 class="pageName">6.1.6 &nbsp; Examples of run charts</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Obtaining control limits</p>
+	<p>It is important to evaluate control limits from the mean and standard
+		deviation of values from the process <strong>when it is in control</strong>.
+		The process should be monitored carefully (to avoid special causes) for this training period. </p>
+	<p class="eqn"><img src="../../../en/controlChart/images/s_runExample.gif" width="555" height="515"></p>
+
+
+
+
+<h2 class="pageName">6.1.7 &nbsp; Control charts for means</h2><!DOCTYPE HTML>
+
+
+<p class=heading>Samples instead of individual values</p>
+	<p>Although control charts for individual values are sometimes used, it is more
+		common to examine <strong>samples</strong> from a process at regular intervals
+		rather than individual values.</p>
+	<p class=heading>Control chart for means</p>
+	<p>This avoids the problem that the 70-95-100 rule of thumb is poor for skew distributions &mdash; sample means have distributions that are closer to normal than individual values. If the sample size is <em>n</em>,</p>
+	<p class=eqn><span style="position:relative; top:5px"><img src="../../../en/../images/symbol.sigmaXbar.png" width="19" height="16" align="baseline"></span> &nbsp;<span class="black">=</span>&nbsp; <span style="position:relative; top:12px"><img src="../../../en/../images/symbol.sigmaOverRootN.png" width="26" height="31" align="baseline"></span>
+	<p>The control limits for a control chart of sample means are therefore... </p>
+	<p class=eqn><span style="position:relative; top:-12px"><img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline"> <span class="black">&nbsp;&plusmn;&nbsp; 3</span></span><img src="../../../en/../images/symbol.sOverRootN.png" width="26" height="31" align="baseline"> </p>
+	<p>where <img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline"> and <em>s</em> are estimates of the mean and standard deviation of individual values when the 
+		process is in control. These control limits should be distinguished carefully 
+		from the corresponding control limits for individual values, </p>
+	<p class=eqn><img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline"> <span class="black">&nbsp;&plusmn;&nbsp; 3<em>s</em></span> </p>
+	<p>Since the control limits used in a control chart for means are closer to <img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline"> than those in a control chart for individual values, the chart is more sensitive 
+		to changes in the process mean over time.</p>
+	<p class=heading>Training data</p>
+	<p>In the example below, the control limits use the mean, <img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline">, and standard deviation, <em>s</em>, from a training period of five  samples to set control limits for individual values.</p>
+	<p class="eqn"><img src="../../../en/controlChart/images/s_meanExample.gif" width="555" height="313"></p>
+	<p>The control limits for the sample means are much narrower and are therefore more sensitive to changes in the process mean.</p>
+	<p class="eqn"><img src="../../../en/controlChart/images/s_meanExample2.gif" width="555" height="314"></p>
+	<p>As in control charts for individual values, additional triggers can be used that depend
+	on several successive means &mdash; e.g.  six successive sample means either increasing
+	or decreasing suggest that there might be a special cause. (The above process seems in control.)</p>
+	<p class=heading>Better estimate of <em>s</em> from training samples (advanced)</p>
+	<p>A different estimate of the process standard deviation, <em>s</em>, 
+		is usually preferred to the overall standard deviation of the values in the 
+		training samples. If the standard deviations of the <i>k</i> training 
+		samples, each of size <em>n</em>, are <i>s</i><sub>1</sub>, <i>s</i><sub>2</sub>, 
+		..., <i>s<sub>k</sub></i>, a commonly used estimate of <em>s</em> is... </p>
+<p class=eqn><img class="gif" src="../../../en/controlChart/images/pooledSDEqn.gif" id="gif_image_1_7_1" width="98" height="60"><iframe class="svg" src="../../../en/controlChart/images/pooledSDEqn.svg" id="svg_image_1_7_1" width="98" height="60" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_1_7_1");</script> </p>
+	<p>where</p>
+	<p class=eqn><img class="gif" src="../../../en/controlChart/images/sdConstantEqn.gif" id="gif_image_1_7_2" width="265" height="72"><iframe class="svg" src="../../../en/controlChart/images/sdConstantEqn.svg" id="svg_image_1_7_2" width="265" height="72" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_1_7_2");</script> </p>
+
+
+
+
+<h2 class="pageName">6.1.8 &nbsp; Control charts for ranges</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Detecting changes to process variability</p>
+	<p>A control chart of sample means is used to detect shifts in the 'centre' of 
+		a process. In a similar way, a control chart to assess whether the process <strong>variability</strong> has changed can be based on the spread of successive samples. </p>
+	<p>The most commonly used control chart for process variability is based on the <strong>sample ranges</strong>.</p>
+<p class="eqn"><img src="../../../en/controlChart/images/s_range.gif" width="550" height="312"> </p>
+	<p>By separately targetting the process centre and variability with  control charts for means
+and  ranges, we can get better indications of any changes in the performance
+of the process, and we can therefore intervene more promptly to correct potential drops
+in quality. </p>
+
+
+
+
+<h2 class="pageName">6.1.9 &nbsp; Finding the cause of problems</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Finding the <span class="red">cause</span> of problems</p>
+	<p>Control charts (and other collected data) may indicate problems with a system. 
+		However, after detection of a problem, its <strong>cause</strong> must be 
+		identified in order to rectify it. This is usually a non-trivial exercise 
+		and the following tools often help.</p>
+<p class="heading">Brainstorming</p>
+	<p>In a <strong>brainstorming</strong> session, all team 
+		members contribute short phrases that are written on either a large sheet of paper 
+		or individual scraps of paper (post-it notes are good). The points should be written 
+		down without discussion or editing, and all team members should be encouraged 
+		to contribute.</p>
+	<p>Once these ideas have been written down, they must be structured or grouped 
+		in some way.</p>
+	<p class="heading">Cause-and-effect diagrams</p>
+	<p>After possible causes for a problem have been contributed in a brainstorming 
+		session, they can be structured in a <strong>cause-and-effect</strong> diagram (also called  a <strong>fishbone</strong> diagram).</p>
+	<p class="eqn"><img src="../../../en/controlChart/images/fishbone4.gif" width="484" height="377" class="summaryPict"></p>
+<p>This structuring of possible causes helps to focus attention on the most likely 
+		causes and on ones that may be altered in the 'Do' step in the Plan-Do-Check-Act 
+		cycle.</p>
+
+
+
+
+</html>

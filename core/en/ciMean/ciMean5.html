@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Confidence interval for mean, unknown σ</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="confidence interval, t value, estimation, mean">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Width of a 95% confidence interval for the mean</p>
+
+<p>In the previous page, it was demonstrated that an interval estimate calculated using</p>
+<p class=eqn><img class="gif" src="../ciMean/images/bad95CI.gif" width="86" height="31"> 
+</p>
+<p>has a lower confidence level than 95%. In order to achieve a 95% confidence 
+level, the interval must be widened. This can be done by replacing 1.96 by a slightly larger number. We will try</p>
+
+<p class=eqn><img class="gif" src="../ciMean/images/ciK.gif" width="83" height="31"> 
+</p>
+
+<p>where <i>k</i> &gt; 1.96.</p>
+
+<div class="diagram" title="Simulation to find value of k"> 
+<p class="heading">Simulation</p>
+<p>The diagram below initially shows a random sample of <em>n</em>&nbsp;=&nbsp;30 
+values from a normal population with µ&nbsp;=&nbsp;10 
+and σ&nbsp;=&nbsp;2.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="inferenceProg.AdjustKIntervalApplet">
+<param name="varName" value="Sample data">
+<param name="random" value="20 10 2 6497052 2.5">
+<param name="meanSDDecimals" value="2">
+<param name="ciDecimals" value="3">
+<param name="horizAxis" value="0 20 0 5">
+<param name="kLimits" value="0.00 5.00 1.96">
+<param name="sampleSize" value="3 5 12 *30">
+<param name="maxMeanSD" value="99.99 9.99">
+<param name="customText" value="Constant=Constant#Confidence level=Confidence level">
+</applet>
+</div>
+
+<p>When <em>k</em>&nbsp;=&nbsp;1.96, the confidence level is 94.0%. Use the slider 
+to adjust the value <em>k</em> to give a 95% confidence level. <span class="gray">(The arrow keys on the keyboard can be used for fine adjustment of <em>k</em> in increments of 0.01.)</span></p>
+<p>The resulting 95% confidence interval is displayed in red behind the data. 
+Click <strong>Another sample</strong> to obtain 95% confidence intervals for other 
+data sets.</p>
+<p>Use the pop-up menu to change the sample size to 5 and repeat. Observe that 
+<em>k</em> must be increased in order to achieve a 95% confidence level.</p>
+
+<div class="centred"><div class="boxed">
+<p>The value of <em>k</em> that gives a 95% confidence level depends 
+on the sample size.</p>
+</div></div>
+
+
+<br>
+
+</div>
+
+  
+<p class="heading">The t-value</p>
+  
+<p>The value <em>k</em> that is needed to achieve a 95% confidence level depends 
+on the sample size, <em>n</em>, and is denoted by <em>t<sub>n-1</sub></em>. 
+This <strong>t-value</strong> can be obtained from a table or graph or computer 
+software. Small values of <em>n</em> require larger t-values. A 95% confidence 
+interval for µ 
+is therefore</p>
+<p class=eqn><img class="gif" src="../ciMean/images/plusMinusTSE.gif" width="93" height="32">
+</p>
+
+<p>For reasons that cannot be explained here, you must look up the t-value using 
+the sample size <strong>minus one</strong> rather than the sample size itself. 
+The value <i>n</i> - 1 is called the <strong>degrees of freedom</strong> of the 
+constant. </p>
+
+
+<div class="diagram" title="T values for different sample sizes"> 
+<p class="heading">Finding the t-value</p>
+
+<p>You will often use a printed table or computer software to obtain the t-value 
+for any problem. The diagram below shows how the t-value depends on the degrees 
+of freedom (and therefore the sample size).</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="inferenceProg.TTable2Applet">
+<param name="horizAxis" value="0 100 0 10">
+<param name="vertAxis" value="1.5 5 1.5 0.5">
+<param name="customText" value="t-value=t-value">
+</applet>
+</div>
+
+<p>Drag the slider to change the degrees of freedom and read off the corresponding 
+t-value. Note that </p>
+<ul>
+  <li>The t-value corresponding to 1 degree of freedom (and therefore a sample
+	size of 2) is too large to display on the graph.</li>
+  
+<li>When the degrees of freedom are over 100, the t-value is just under 2.0. Indeed, 
+if you change the degrees of freedom to 100000, the t-value is 1.960.</li>
+  <li>The value 2.0 is a reasonable approximation to the t-value when the degrees of
+  freedom are over 30.</li>
+</ul>
+
+<br>
+
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

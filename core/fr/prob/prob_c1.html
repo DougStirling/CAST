@@ -1,0 +1,252 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Joint probabilities</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	<style type="text/css">
+<!--
+span.sub {			font-family: Arial, Helvetica, sans-serif;
+			vertical-align: baseline;
+			font-size: 0.7em;
+			position: relative;
+			top: 0.4em;
+			margin-left: 2px;
+			margin-right: 2px;
+}
+-->
+	</style>
+
+	<meta name="index" content="bivariate data, categorical data, contingency table, joint probability">
+	<meta name="dataset" content="Promotional material sought by travelers">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Data sets with two categorical variables</p>
+
+<p>In this section, we explain how to model data sets that consist of pairs of 
+categorical values &mdash; bivariate categorical data.</p>
+
+<p>Examples where pairs of categorical variables are measured from 'individuals' are:
+</p>
+
+<center>
+    
+<table border="1" cellspacing="0" cellpadding="5">
+<tr> 
+<th align="CENTER" width="22%"><font color="#000000">'Individuals'</font></th>
+<th align="CENTER" width="22%"><font color="#000000">Variable X</font></th>
+<th align="CENTER" width="22%"><font color="#000000">Variable Y</font></th>
+</tr>
+<tr bgcolor="#FFFFFF"> 
+<td>Employees in a large company</td>
+<td bordercolor="#CCCCCC">Sex (M or F)</td>
+<td>Education (none, high school or tertiary)</td>
+</tr>
+<tr bgcolor="#FFFFFF"> 
+<td>Customers leaving supermarket</td>
+<td>Checkout operator type (full- or part-time)</td>
+<td>Rating of quality of service (poor, OK or good)</td>
+</tr>
+<tr bgcolor="#FFFFFF"> 
+<td>TVs leaving a production line</td>
+<td>Assembler (A, B, C or D)</td>
+<td>Status (defective or OK)</td>
+</tr>
+</table>
+</center>
+
+<p>In each case, the data that are collected are pairs of categorical values that 
+are measurements of the two variables. Data of this form are usually summarised 
+in a <a href="javascript:showNamedPage('sec_bivarCat')">contingency 
+table</a>. </p>
+
+<div class="diagram"> 
+<p class="heading">Requests for promotional material by travelers</p>
+
+<p>Travel agents provide 'destination-specific travel literature' about activities, 
+facilities and prices to tourists free of charge on request. A study was made 
+to investigate the differences between information seekers (who requested such 
+literature) and nonseekers, with the aim of better targeting such material.</p>
+<p>A sample of 686 tourists was selected and each was classified as an information 
+seeker or non-seeker and in various other ways including educational level.</p>
+<table border="0" class="centred" cellpadding="3" cellspacing="0">
+<tr> 
+<th>Tourist</th>
+<th>&nbsp;&nbsp;&nbsp;Educational level&nbsp;&nbsp;&nbsp;</th>
+<th>&nbsp;&nbsp;&nbsp;&nbsp;Information seeker?&nbsp;&nbsp;&nbsp;&nbsp;</th>
+</tr>
+<tr align="center" bgcolor="#FFFFFF"> 
+<td>1</td>
+<td>High school degree</td>
+<td>Yes</td>
+</tr>
+<tr align="center" bgcolor="#FFFFFF"> 
+<td>2</td>
+<td>College degree</td>
+<td>Yes</td>
+</tr>
+<tr align="center" bgcolor="#FFFFFF"> 
+<td>3</td>
+<td>Some high school</td>
+<td>No</td>
+</tr>
+<tr align="center" bgcolor="#FFFFFF"> 
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</table>
+
+<p>The data from the 686 tourists are summarised in the contingency table below.</p>
+
+<table border="0" class="centred" cellpadding="3" cellspacing="0">
+<tr> 
+<th>&nbsp;</th>
+<th colspan="2" align="center">Information seeker?</th>
+<th align="center">&nbsp;</th>
+</tr>
+<tr> 
+<th align="left">Education</th>
+<th align="center">&nbsp;&nbsp;&nbsp;&nbsp;Yes&nbsp;&nbsp;&nbsp;&nbsp;</th>
+<th align="center">&nbsp;&nbsp;&nbsp;&nbsp;No&nbsp;&nbsp;&nbsp;&nbsp;</th>
+<th align="center">&nbsp;&nbsp;&nbsp;Total&nbsp;&nbsp;&nbsp;</th>
+</tr>
+<tr> 
+<th align="left">&nbsp;&nbsp;Some high school</th>
+<td align="center" bgcolor="#FFFFFF">13</td>
+<td align="center" bgcolor="#FFFFFF">27</td>
+<td align="center">40</td>
+</tr>
+<tr> 
+<th align="left">&nbsp;&nbsp;High school degree&nbsp;&nbsp;&nbsp;</th>
+<td align="center" bgcolor="#FFFFFF">64</td>
+<td align="center" bgcolor="#FFFFFF">118</td>
+<td align="center">182</td>
+</tr>
+<tr> 
+<th align="left">&nbsp;&nbsp;Some college&nbsp;&nbsp;&nbsp;</th>
+<td align="center" bgcolor="#FFFFFF">100</td>
+<td align="center" bgcolor="#FFFFFF">123</td>
+<td align="center">223</td>
+</tr>
+<tr> 
+<th align="left">&nbsp;&nbsp;College degree&nbsp;&nbsp;&nbsp;</th>
+<td align="center" bgcolor="#FFFFFF">59</td>
+<td align="center" bgcolor="#FFFFFF">69</td>
+<td align="center">128</td>
+</tr>
+<tr> 
+<th align="left">&nbsp;&nbsp;Graduate degree&nbsp;&nbsp;&nbsp;</th>
+<td align="center" bgcolor="#FFFFFF">67</td>
+<td align="center" bgcolor="#FFFFFF">46</td>
+<td align="center">113</td>
+</tr>
+<tr> 
+<th align="left">Total</th>
+<td align="center">303</td>
+<td align="center">383</td>
+<td align="center">686</td>
+</tr>
+</table>
+
+<br>
+
+</div>
+
+  <p class="heading">Joint probabilities</p>
+  
+<p>To model bivariate categorical data, we assume an underlying population of 
+pairs of categorical values. The data are treated as <strong>a random sample of 
+pairs of values</strong> from this population. A real finite population occasionally 
+underlies the data, but we must usually hypothesise an infinite underlying population.</p>
+<p>The proportion of times that the pair of categorical values (x,&nbsp;y) occurs 
+in the population &mdash; its <strong>probability</strong> &mdash; is denoted by <em>p<sub>xy</sub></em>. 
+The probabilities <em>p<sub>xy</sub></em> are called the <strong>joint probabilities</strong> for the two variables. </p>
+
+<div class="diagram"> 
+<p class="heading">Gambling simulation</p>
+	
+<p>A gambler draws a card from a shuffled deck and also tosses a coin, resulting
+in a pair of categorical values,
+</p>
+
+<center>
+      <table border="1" cellpadding="5" cellspacing="0" bordercolor="#999999" bgcolor="white">
+        <tr>
+<th align="CENTER"><font color="blue">Variable</font></th>
+<th align="CENTER"><font color="blue">Possible values</font></th></tr>
+<tr>
+<td>Coin side, X</td>
+<td>Head or Tail</td></tr>
+<tr>
+<td>Card suit, Y</td>
+<td>Heart, Club, Diamond or Spade</td></tr>
+</table>
+</center>
+
+<p>Each of the eight possible combinations of coin side and card suit is equally 
+likely and would occur in the same proportions in the underlying population.</p>
+<p class=eqn><img src="../../en/prob/images/cardAndCoin.png" width="284" height="117" alt="pxy = 1/8"> 
+</p>
+<p>The probabilities for all pairs are therefore the same, </p>
+
+<p class=eqn><em>p</em><span class="sub">head, heart</span> &nbsp;= &nbsp;<em>p</em><span class="sub">head, club</span> &nbsp;= &nbsp;... &nbsp;= &nbsp;<em>p</em><span class="sub">tail, spade</span> &nbsp;= &nbsp;<sup>1</sup>/<sub>8</sub> &nbsp;= &nbsp;0.125</p>
+<p>These joint probabilities are shown in blue in the table below.
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="continProg.SampleContinApplet">
+<param name="yVarName" value="Y variable">
+<param name="xVarName" value="X variable">
+<param name="yLabels" value="heart club diamond spade">
+<param name="xLabels" value="head tail">
+<param name="xMargin" value="0.50 0.50">
+<param name="yCondit" value="0.125 0.125 0.125 0.125 0.125 0.125 0.125 0.125">
+<param name="sampleSize" value="25 *100 500">
+<param name="maxCount" value="99">
+<param name="customText" value="Sample proportions=Sample proportions#Sample counts=Sample counts#Joint probabilities=Joint probabilities">
+</applet>
+</div>
+
+<p>The two lower tables (in black) describe 100 pairs of values sampled from this population
+-- 100 coin-card pairs. The first of these tables shows the sample as a contingency
+table of counts; the other table displays the counts as proportions.
+</p>
+
+<p>Click <strong>Take sample</strong> a few times to see the variability
+in samples of 100 coin-card pairs. Increase the sample size to 500 and repeat.
+Observe that the sample proportions are less variable when the sample size is large.
+</p>
+</div>
+
+<p class="heading">Interest in the model</p>
+<p>We are usually interested in the joint probabilities in the underlying model, 
+rather than the corresponding proportions from the sample data that have been 
+collected (the contingency table). However the joint probabilities are unknown 
+parameters in most practical situations and must be <strong>estimated</strong> 
+from the sample data. </p>
+
+<div class="diagram"> 
+<p class="heading">Requests for promotional material by travelers</p>
+<p>In situations of practical importance, the underlying probabilities are unknown. 
+In the data set that was collected to examine which travelers request promotional 
+material, the 686 travelers in the study were not the focus of attention &mdash; the 
+researcher wanted to generalise to <strong>all other similar travelers</strong>.</p>
+<p class=eqn><object data="images/seekers.svg" width="503" height="343"></object></p>
+<p>The population proportions are unknown, but the sample proportions provide 
+<strong>estimates</strong> of them. </p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

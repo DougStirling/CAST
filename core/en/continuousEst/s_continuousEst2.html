@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Method of moments</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="estimation, method of moments, rectangular distribution">
+	<meta name="dataset" content="German tank problem"
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>A simple way to obtain an estimate of a single unknown parameter from a random sample is  the <strong>method of moments</strong>. For both discrete and continuous distributions, it is the parameter value that makes the distribution's mean equal to that of the random sample and is therefore the solution to the equation</p>
+\[
+E[X] \;\; = \; \; \overline{X}
+\]
+
+<div class="example">
+	
+	<p class="exampleHeading">German tank problem</p>
+
+<p>Consider a rectangular distribution,</p>
+\[
+X \;\; \sim \; \; \RectDistn(0, \beta)
+\]
+<p>where the upper limit, \(\beta\), is an unknown parameter. The distribution's mean and variance  are</p>
+\[
+E[X] \;\; = \; \; \frac {\beta} 2 \spaced{and} \Var(X) = 
+\frac {\beta^2} {12} \]
+<p>so the method of moments estimator is</p>
+\[
+\hat{\beta} \;\;=\;\; 2\overline{X}\]
+<p>It is  unbiased  and has standard error</p>
+\[
+\se(\hat{\beta}) \;\;=\;\; \sqrt{\Var(2\overline{X})} \;\;=\;\; \sqrt{ \frac {4\Var(X)} n } \;\;=\;\; \frac {\beta} {\sqrt{3n}}
+\]
+<hr width="75%">
+<p>Despite being unbiased, this estimator has one major problem. From the random sample {<span class="eqn">12,17, 42, 97</span>}, the resulting estimate of \(\beta\) would be</p>
+\[
+\hat{\beta} \;\;=\;\; 2\overline{X} \;\;=\;\; 84\]
+<p>yet the maximum of the distribution <strong>cannot</strong> be 84 since we have already observed one value greater than this.</p>
+</div>
+
+<p>The method of moments <strong>usually</strong> gives reasonable parameter estimates, but can sometimes  result in estimates that are not feasible.</p>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

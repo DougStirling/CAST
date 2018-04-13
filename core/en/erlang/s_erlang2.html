@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Mean and variance</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="exponential distribution, erlang distribution, mean, variance">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p class="heading">Sum of independent exponential variables</p>
+<p>In a homogeneous Poisson process, the time until the \(k\)'th event is</p>
+
+\[
+X \;\; = \; \; \sum_{i=1}^k {Y_i}
+\]
+<p>where \(Y_1\) is the time to the first event, \(Y_2\) is the time from the first event to the second, and so on. From the memoryless property of a homogeneous Poisson process, the \(\{Y_i\}\) are independent and they  all have \(\ExponDistn(\lambda)\) distributions. </p>
+<p>Since \(X\) is the sum of a random sample of size \(k\) from an exponential distribution,  we can use general results about the sum of a random sample to find its mean and variance.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Mean and variance of Erlang distribution</p>
+<p>If a random variable, \(X\), has an Erlang distribution with probability density function</p>
+\[
+		f(x) \;\;=\;\; \begin{cases} \dfrac{\lambda^k}{(k-1)!} x^{k-1} e^{-\lambda x} &amp; x \gt 0 \\[0.3em]
+		0 &amp; \text{otherwise}
+		\end{cases} \]
+		<p>its mean and variance are</p>
+\[
+E[X] \;=\; \frac k{\lambda}\spaced{and} \Var(X) \;=\; \frac k{\lambda^2}
+\] 
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p>A final useful property of Erlang distributions that adding together two independent Erlang variables (with the same \(\lambda\)) results in a variable that also has an Erlang distribution.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Additive property of Erlang distributions</p>
+		<p>If \(X_1 \sim \ErlangDistn(k_1,\; \lambda)\) and \(X_2 \sim \ErlangDistn(k_2,\; \lambda)\) are independent, then</p>
+		\[
+		X_1 + X_2 \;\;\sim\;\; \ErlangDistn(k_1 + k_2,\; \lambda)
+		\] 
+		<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

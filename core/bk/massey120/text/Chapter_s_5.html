@@ -1,0 +1,309 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>5. Time Series</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/maths/mathStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/maths/theorems.js"></script>
+  <script src="../../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 5 &nbsp; Time Series</h1>
+<h1 class="sectionName">5.1 &nbsp; Time series plots</h1>
+<h2 class="pageName">5.1.1 &nbsp; Time series plots</h2>
+
+<p class="heading notPrinted">Time series data</p>
+	<p>Data sets whose measurements  are made sequentially at regular 
+		intervals are called <strong>time series</strong>. We often want to forecast
+future values of a time series.</p>
+<p class="heading">The importance of plotting</p>
+	<p>As with other data structures, the information 
+		in a time series is most easily understood from a <strong>graphical</strong> display.
+A <strong>time series plot</strong> is a type of scatterplot whose horizontal
+axis shows the time-ordering of the values. Successive crosses are often  joined
+by lines.</p>
+ <p class=eqn><img class="gif" src="../../../en/timePlot/images/timePlotDisplay.gif" width="310" height="183"></p>
+
+
+
+
+<h2 class="pageName">5.1.2 &nbsp; Patterns in time series</h2>
+
+<p class="heading notPrinted">Types of pattern</p>
+	<div class="centred"><table class="centred" width="90%">
+	<tr><th width="50%">Trend</th>
+	<th width="50%">Seasonal variation</th>
+	</tr>
+	<tr>
+<td>Trend refers to long-term increases and decreases in the values.
+		<div class="centred"><img src="../../../en/timePlot/images/pattern_trend.gif" width="204" height="135" style="background-color:#FFFFFF; border:solid 1px #666666; padding:5px"></div></td>
+	<td>This is often evident in monthly or quarterly data and refers to a pattern
+that is repeated each year.
+		<div class="centred"><img src="../../../en/timePlot/images/pattern_seasonal.gif" width="204" height="135" style="background-color:#FFFFFF; border:solid 1px #666666; padding:5px"></div></td>
+	</tr>
+	</table></div>
+	
+	<div class="centred"><table width="90%" border="0" cellpadding="0" cellspacing="0" class="centred">
+	<tr><th width="50%">Cyclic variation (autocorrelation)</th>
+	<th width="50%">Random fluctuations</th>
+	</tr>
+	<tr>
+		<td>This arises when  values are  similar to  adjacent values,
+making irregular waves or cycles .
+	<div class="centred"><img src="../../../en/timePlot/images/pattern_cyclical.gif" width="204" height="135" style="background-color:#FFFFFF; border:solid 1px #666666; padding:5px"></div></td>
+	<td>These are 'ups and downs' in a time series that do not correspond to trend, seasonal variation or autocorrelation.
+		<div class="centred"><img src="../../../en/timePlot/images/pattern_random.gif" width="204" height="135" style="background-color:#FFFFFF; border:solid 1px #666666; padding:5px"></div></td>
+	</tr>
+	</table></div>
+	
+	<p>Most time series  show more than one of these patterns to some degree.</p>
+
+
+
+
+<h2 class="pageName">5.1.3 &nbsp; Multiple time series</h2>
+
+<p class="heading notPrinted">Displaying several time series on the same plot</p>
+	<p>Several related time series can be superimposed with different colours on the same display, making comparisons easier. The crosses may be omitted.</p>
+	<p class="eqn"><img src="../../../en/timePlot/images/s_multiPlots.gif" width="454" height="285"></p>
+
+
+
+
+<h1 class="sectionName breakBefore">5.2 &nbsp; Smoothing</h1>
+<h2 class="pageName">5.2.1 &nbsp; Moving averages</h2>
+
+<p class="heading notPrinted">Smoothing</p>
+	<p>Random fluctuations in a time series are usually <strong>noise</strong> that  can obscure trend and other <strong>signal</strong> in the series. The values can be <strong>smoothed</strong> to reduce these random fluctuations and show 
+	the systematic movement in the series more clearly.</p>
+	<p class=eqn><span class="black"><strong>smoothed value</strong> &nbsp; = &nbsp;<em><strong>centre</strong></em> ( <strong>original value</strong> <em>and</em> <strong>adjacent values</strong> )</span> </p>
+	<p class="heading">Moving averages</p>
+	<p>A <strong>3-point moving average</strong> replaces the value at time <i>i</i> by </p>
+	<p class=eqn><img class="gif" src="../../../en/smoothing/images/runningMeanEqn.gif" width="210" height="25"> </p>
+	<p>Moving 
+		averages are also called <strong>running means</strong>. In the example below,
+a 7-point moving average replaces each value with the mean of it and the 3 adjacent
+ values on each side.</p>
+	<p class="eqn"><img src="../../../en/smoothing/images/s_movingAverage.gif" width="501" height="249"></p>
+	<p>The more adjacent values used, the greater the smoothing.</p>
+	<p class="heading">Ends of the series</p>
+	<p>Note that moving averages cannot be used to smooth the values at the two ends of the time series.</p>
+	
+
+
+
+<h2 class="pageName">5.2.2 &nbsp; More about moving averages</h2>
+
+<p class="heading notPrinted">Moving average with odd and even run lengths</p>
+	<p>A moving average provides a smoothed value at the middle of the times of the values being averaged.</p>
+	<p class=eqn><img class="gif" src="../../../en/smoothing/images/movingAverage5.gif" width="249" height="218">          <img class="gif" src="../../../en/smoothing/images/movingAverage4.gif" width="237" height="218"></p>
+	<p>If averaging over an even number of values, the smoothed value is for a time between those of the data values, such as &quot;year 2005.5&quot;.</p>
+	<p class="heading">A second stage of averaging for even run lengths</p>
+	<p>To provide smoothed values at the same times as the raw data, we often take a further 2-point moving average.</p>
+	<p class=eqn><img class="gif" src="../../../en/smoothing/images/movingAverageDouble.gif" width="428" height="218"> </p>
+	<p>This is equivalent to giving <strong>half weight</strong> to the two outermost values. If  based on moving averages of 4, this is called a 4-point centred moving average.</p>
+	<div class="centred"><div class="boxed">
+		<p>These centred averages are particularly useful when analysing seasonal data. For example, 12-point centred moving averages are often used for monthly data.</p>
+	</div></div>
+	
+
+
+
+<h2 class="pageName">5.2.3 &nbsp; Robust smoothing (Optional (not examined))</h2>
+
+<p class="heading">Outliers and running medians</p>
+	<p>Since medians are less sensitive to outliers than means, a more robust alternative to running means replaces each value by the <strong>median</strong> of it and adjacent values. A <strong>3-point running median</strong> is: </p>
+	<p class=eqn><img class="gif" src="../../../en/smoothing/images/runningMedianEqn.gif" width="225" height="25"> </p>
+	<p>and higher-order running medians will use more adjacent values. </p>
+	<p class="heading">Comparison of means and medians</p>
+	<ul>
+		<li>Moving averages are more affected by outliers in the series</li>
+		<li>Running medians often have a 'stepped' appearance &mdash; the smoothed series 
+			is level for periods, followed by relatively sharp jumps.</li>
+	</ul>
+	<p class=eqn><img src="../../../en/smoothing/images/s_meanMedian.gif" width="539" height="283"></p>
+<p class=heading>Running medians, followed by moving averages</p>
+<p>To take advantage of the best features of both moving averages and running 
+		medians, these two techniques are often applied sequentially.</p>
+	<ul>
+		<li>Firstly, low-order running medians are used to remove the influence of outliers.</li>
+		<li>The resulting series is then further smoothed with low-order moving averages.</li>
+	</ul>
+
+
+
+
+<h2 class="pageName">5.2.4 &nbsp; Exponential smoothing</h2>
+
+<p class="heading">Smoothing up to the end of the series</p>
+	<p>We are usually most interested in the  latest values in a time
+series, but moving averages  cannot provide smoothed values at the two ends of
+the time series. <strong>Exponential 
+smoothing</strong> works up to the end of the series:</p>
+<p class=eqn><img class="gif" src="../../../en/smoothing/images/expSmoothInitial.gif" width="59" height="18"> </p>
+	<p class=eqn><img class="gif" src="../../../en/smoothing/images/expSmoothEqn.gif" width="175" height="25"></p>
+	<p>where the smoothing constant, <i>a</i>, is a value between 0 and 1. The smoothed
+value is a 'weighted average' of the actual value at that time and the previous
+smoothed value.</p>
+<p class="heading">Alternative formula</p>
+	<p>The formula can also be expressed as </p>
+	<p class=eqn><img class="gif" src="../../../en/smoothing/images/expSmoothEqn2.gif" width="486" height="26"></p>
+	<p>For example, if <em>a</em>&nbsp;=&nbsp;<sup>1</sup>/<sub>2 </sub>, </p>
+	<p class=eqn><img class="gif" src="../../../en/smoothing/images/expSmoothHalf.gif" width="299" height="26"> </p>
+	<p>The smoothed value puts more weight on the recent past (which is an intuitively sensible thing to do).</p>
+	<ul>
+		<li>The closer <em>a</em> becomes to one, the greater the influence of the
+actual value, and the less smoothing.</li>
+		<li>The closer <em>a</em> becomes to zero, the more smoothing.</li>
+</ul>
+	<p class="heading">Forecasting future values</p>
+	<p>If the most recent value is at time <em>i</em>, we forecast
+the value at time <em>i</em> + <em>k</em> to be the last exponentially smoothed
+value,</p>
+<p class=eqn><img class="gif" src="../../../en/smoothing/images/expPredict.gif" width="252" height="23"></p>
+	<ul>
+		<li>If <i>a</i>&nbsp;=&nbsp;1, the forecast is just the last observed value 
+			in the time series.</li>
+		<li>As <i>a</i> is reduced, the forecast becomes more affected by earlier 
+			values in the series.</li>
+	</ul>
+	
+	<p class="heading">Time series with trend</p>
+	<p>If the time 
+		series has an increasing trend, exponential smoothing will 
+		tend to underestimate the trend. Similarly, the smoothed series will be too high if 
+		there is a decreasing trend.</p>
+	<p class="eqn"><img src="../../../en/smoothing/images/s_expSmoothTrend.gif" width="455" height="258"></p>
+	<div class="centred"><div class="boxed">
+		<p>Do not use exponential smoothing on a time series with trend.</p>
+	</div></div>
+	
+
+
+<h1 class="sectionName breakBefore">5.3 &nbsp; Long-term trend</h1>
+<h2 class="pageName">5.3.1 &nbsp; Linear trend</h2>
+
+<p class="heading">Least squares</p>
+	<p>Moving averages provide a good <strong>description</strong> of the trend
+ in a time series but are less useful for <strong>forecasting</strong> future
+values. For forecasting, it is better to describe trend  with a mathematical
+equation,</p>
+<p class=eqn><span class="black"><em>trend</em> &nbsp; = &nbsp; function (<em> time</em> )</span> </p>
+	<p>The simplest such model is a <strong>linear model</strong>,</p>
+	<p class=eqn><span class="black"><em>trend</em> &nbsp; = &nbsp; <em>b</em><sub>0</sub> &nbsp;+ &nbsp;<em>b</em><sub>1</sub><em> time</em></span> </p>
+	<p><em>b</em><sub>0</sub> and <em>b</em><sub>1</sub> can be estimated by <strong>least squares</strong> to
+minimise</p>
+<p class=eqn><img class="gif" src="../../../en/trend/images/rss.gif" width="233" height="26"> </p>
+	<p class=eqn><img src="../../../en/trend/images/s_linear.gif" width="456" height="311"></p>
+	<p class="heading">Recoding the years</p>
+	<p>The large intercept in the example above is avoided if the years are recoded
+ so that
+some year within the range of the data becomes &quot;year 0&quot;.</p>
+<p class=eqn><span class="black"><em>trend</em> &nbsp; = &nbsp; <em>b</em><sub>0</sub> &nbsp;+ &nbsp;<em>b</em><sub>1</sub> <font size="+1">(</font><em>time</em> &minus; 1960<font size="+1">)</font></span> </p>
+	<p>This model is equivalent and gives the same fitted values and 
+		forecasts. </p>
+	<p class="eqn"><img src="../../../en/trend/images/s_linearRecoded.gif" width="456" height="311"></p>
+
+
+
+
+<h2 class="pageName">5.3.2 &nbsp; Quadratic trend</h2>
+
+<p class="heading notPrinted">Quadratic models</p>
+	<p>If the trend in a time series is nonlinear, a linear model should not be
+used. A simple model that can explain some simple types of curvature is a <strong>quadratic
+model</strong>:</p>
+<p class=eqn><span class="black"><em>trend</em> &nbsp; = &nbsp; <em>b</em><sub>0</sub> &nbsp;+ &nbsp;<em>b</em><sub>1</sub><em> time</em> &nbsp;+ &nbsp;<em>b</em><sub>2</sub><em> time</em><sup>2</sup></span> </p>
+	<p>This has <strong>three</strong> parameters that 
+		can be adjusted to improve the fit of the model. Residuals
+ are again defined as</p>
+	<p class=eqn><span class="black"><em>e<sub>i</sub></em>&nbsp;&nbsp;=&nbsp;&nbsp;<em>y<sub>i</sub></em>&nbsp;&minus;&nbsp;<em>trend<sub>i</sub></em></span> </p>
+	<p>and the <strong>least squares</strong> estimates of <em>b</em><sub>0</sub>, <em>b</em><sub>1</sub>
+and <em>b</em><sub>2</sub>  are
+the values that minimise the residual sum of squares,</p>
+<p class=eqn><span class="black"><font size="+1">&Sigma;</font> <em>e<sub>i</sub></em><sup>2</sup></span> </p>
+	<p class="eqn"><img src="../../../en/trend/images/s_quadratic.gif" width="507" height="315"></p>
+
+
+
+
+<h2 class="pageName">5.3.3 &nbsp; Forecasting</h2>
+
+<p class="heading notPrinted">Using linear and quadratic models for forecasting</p>
+	<p>After fitting a linear or quadratic model by least squares, forecasting 
+		is simply a matter of inserting future time values into its equation.</p>
+	<p class="heading">Dangers in forecasting</p>
+	<p>It is important to realise that the forecasts from linear or quadratic models
+are highly dependent on the type of line or curve that is chosen for modelling.
+The dangers are the same as those for extrapolation in bivariate relationships.</p>
+
+<div class="centred"><div class="boxed">
+<p>Beware forecasting many time periods into the future &mdash; the 
+				shape of the actual trend line might be different from your model.</p>
+</div></div>
+
+
+
+
+<h2 class="pageName">5.3.4 &nbsp; Polynomial trend</h2>
+
+<p class="heading">Cubic and higher-degree polynomial models</p>
+	<p>If a quadratic model does not adequately describe the shape of the trend in a time series, it is tempting to try to further increase the order of the polynomial,</p>
+	<p class=eqn><span class="black"><em>trend</em> &nbsp; = &nbsp; <em>b</em><sub>0</sub> &nbsp;+ &nbsp;<em>b</em><sub>1</sub><em> time</em> &nbsp;+ &nbsp;<em>b</em><sub>2</sub><em> time</em><sup>2</sup> &nbsp;+ &nbsp;<em>b</em><sub>3</sub><em> time</em><sup>3</sup> &nbsp;+ &nbsp;...</span> </p>
+	<p>This kind of polynomial model  can also be fitted by least squares.</p>
+	<p class="eqn"><img src="../../../en/trend/images/s_polynomial.gif" width="550" height="327"></p>
+	<p>A polynomial of degree 3 or 4 often provides a fairly smooth description
+of trend but polynomial models usually behave badly (with sudden increases or
+decreases) beyond the data points, so...</p>
+	<div class="centred"><div class="boxed">
+		<p>Polynomial models of degree greater than 2 should not be used for forecasting.</p>
+	</div></div>
+
+	
+
+
+
+<h2 class="pageName">5.3.5 &nbsp; Detrending a time series</h2>
+
+<p class="heading">Residuals</p>
+	<p>The residuals for a time series model subtract the trend from the values
+and are called the <strong>detrended</strong> values,</p>
+<p class=eqn><span class="black"><em>e<sub>i</sub></em>&nbsp;&nbsp;=&nbsp;&nbsp;<em>y<sub>i</sub></em>&nbsp;&minus;&nbsp;<em>trend<sub>i</sub></em></span> </p>
+	<p>If the model under consideration fits well, there should be no 
+		pattern in the residuals &mdash; each should have the same chance of being positive 
+		or negative.</p>
+
+
+
+
+</body>
+</html>

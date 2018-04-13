@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Lowess smoothing of scatterplots</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="lowess">
+	<meta name="dataset" content="US defence investment">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">'Difficult' relationships</p>
+	<p>Transformations are  able to some linearise relationships and polynomial models can explain the curvature in others. However the relationship between some variables cannot be easily described by either of these techniques. In this page, a method is described that makes no assumptions about the form of the relationship and can be used to describe relationships that cannot be easily summarised by other methods.</p>
+	<p class="heading">Lowess for time series</p>
+	<p>The method is first described for time series. It is called <strong>lowess</strong> (<strong>lo</strong>cally <strong>we</strong>ighted <strong>s</strong>catterplot <strong>s</strong>moothing) and is similar to running means except that instead of using the average of values at adjacent times, it fits a least squares line through them and uses this least squares line to estimate the smoothed value.</p>
+	<p class=eqn><img class="gif" src="../../en/smoothing/images/lowessEqn.gif" width="309" height="21"></p>
+	<p>Since a separate least squares line must be fitted to obtain each smoothed value, a computer must be used to apply this method.</p>
+	<div class="diagram">
+		<p class="heading">US defence expenditure</p>
+		<p>The time series plot below shows the investment in defence in the USA between 1947 
+			and 2006, with all values reported in '2000 dollars'.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="370">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="loessProg.LoessApplet">
+<param name="xVarName" value="Year">
+<param name="yVarName" value="US defence expenditure ($billion)">
+<param name="xValues" value="1947 1948 1949 1950 1951 1952 1953 1954 1955 1956 1957 1958 1959 1960 1961 1962 1963 1964 1965 1966 1967 1968 1969 1970 1971 1972 1973 1974 1975 1976 1977 1978 1979 1980 1981 1982 1983 1984 1985 1986 1987 1988 1989 1990 1991 1992 1993 1994 1995 1996 1997 1998 1999 2000 2001 2002 2003 2004 2005 2006">
+<param name="yValues" value="4.9 9.4 13.8 10.8 38.5 55.7 62.4 50.8 41.1 39.3 37.3 39.7 47.3 42.7 47.3 48.9 42.3 38.4 33.5 38.7 43.7 38.3 34.0 30.9 19.7 14.7 16.6 20.2 22.5 24.5 25.0 24.8 28.4 30.4 33.5 37.7 44.2 50.5 60.7 69.6 76.0 70.3 70.7 72.9 68.7 66.1 57.8 53.8 50.9 51.3 45.1 45.6 47.6 48.8 50.8 56.7 61.7 68.0 71.7 76.6">
+<param name="horizAxis" value="1945 2006 1950 10">
+<param name="vertAxis" value="0 80 0 20">
+<param name="windowWidth" value="21 3 odd">
+<param name="labelAxes" value="true">
+<param name="customText" value="Window width=Window width">
+</applet>
+</div>
+
+		<p>The diagram initially shows  lowess smoothed values based on adjacent groups of 3 values. <strong>Click</strong> on any value to see the adjacent values that are used, the least squares line that is fitted to them, and the smoothed value that is obtained from this least squares line. <strong>Drag</strong> over the time series plot to see how these 'local' least squares lines change as the set of adjacent values moves.</p>
+		<p>Use the slider to increase the number of adjacent values used to obtain the least squares lines and smoothed values. A 'window' width of 5 or 7 results in a fairly smooth curve.</p>
+		<p>Click at the ends of the series and observe how smoothed values are obtained up to the ends of the series by extending the final least squares line.</p>
+	</div>
+	<p class="heading">Local smoothing of scatterplots</p>
+	<p>Lowess  can be used to smooth time series but was originally developed as a general way to draw a smooth curve on any type of scatterplot. Again, the smoothed value for any observation is obtained by fitting a least squares line to the observations with adjacent values for the explanatory variable. The fitted values that are obtained in this way are joined with lines.</p>
+	<p>(Most computer software implements a version of lowess that is  a actually bit more complex than has been described here but our simpler version gives a good flavour of the method.)</p>
+	<div class="diagram">
+<p class="heading">Rose powdery mildew</p>
+
+		<p>The following scatterplot shows the results of an experiment that was conducted to determine how the latent period (time in days from initial infection to sporation) of rose powdery mildew is affected by temperature.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="370">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="loessProg.LoessApplet">
+<param name="xVarName" value="Temp (C)">
+<param name="yVarName" value="Latent period (days)">
+<param name="xValues" value="18.0 20.8 23.7 18.0 25.7 9.7 13.6 25.6 18.4 25.4 17.2 10.5 25.1 10.9 21.6 17.9 11.4 20.0 23.6 11.8 21.8 23.9 19.3 19.5 23.3 8.4 24.6 17.8 15.5 16.9 9.4 21.7 17.4 8.4 25.5 23.8 14.2 23.3 15.8 13.7 9.0 17.8 19.7 13.0 22.5 17.9 16.8 8.5 17.5 15.1 22.1 23.5 24.9 26.0 16.0 15.7 10.2 21.7 24.5">
+<param name="yValues" value="6.5 7.1 7.0 5.9 7.0 10.5 9.7 7.6 6.8 7.3 7.3 11.7 7.2 10.5 6.2 6.5 11.5 5.9 5.8 9.1 5.9 6.5 6.4 6.5 6.3 13.4 7.0 8.0 8.3 7.7 12.7 6.8 7.3 14.5 7.2 7.2 8.4 6.6 7.7 9.4 13.5 6.1 5.4 9.6 6.3 8.1 6.6 14.3 6.6 6.9 5.5 6.6 5.7 8.1 8.0 8.0 10.6 6.3 7.8">
+<param name="horizAxis" value="7 27 8 2">
+<param name="vertAxis" value="4 16 4 2">
+<param name="windowWidth" value="-1 -1">
+<param name="labelAxes" value="true">
+<param name="customText" value="Window width=Window width">
+</applet>
+</div>
+
+		<p>As in the previous page, drag over the crosses to see the 'adjacent' values that are used for the least squares line that provides each 'smoothed' value.</p>
+		<p>Use the slider to adjust the 'window width'. Windows of about 10 adjacent points give a fairly smooth curve.</p>
+  </div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

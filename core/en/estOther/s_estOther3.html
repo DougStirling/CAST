@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Simulations with normal distns</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Normal distribution parameters</p>
+	<p>The mean, µ, 
+		of normal populations is usually of most interest, but we may also want to estimate:</p>
+	<ul>
+		<li>standard deviation</li>
+		<li>interquartile range (upper quartile - lower quartile)</li>
+		<li>median</li>
+		<li>other percentiles (e.g. the upper quartile)</li>
+	</ul>
+	<p>The corresponding sample statistics provide point estimates of these parameters, but formulae for standard errors may be difficult to find.</p>
+	<p class="heading">Simulation</p>
+	<p>If the values of µ 
+	and σ were known, we could perform a simulation with repeated samples to find the error distribution for the type of estimate that we were using. The standard deviation of the error distribution gives the standard error of the estimate.</p>
+	<p>In practice, µ 
+	and σ are unknown, but we can perform a similar simulation, replacing them with the sample mean and standard deviation.</p>
+	<p class=heading>Example</p>
+<p>We want to  how long one in four silkworm larvae will survive a certain dose of poison &mdash; i.e the <strong>upper quartile</strong> of the distribution of survival times. The diagram below shows the survival times of a sample of 80 larvae and the point estimate of the upper quartile.</p>
+<p class=eqn><img class="gif" src="images/silkwormUQ.gif" width="396" height="136"></p>
+<p>The survival times have a fairly symmetric distribution and the diagram below 
+		shows a normal distribution whose mean and standard deviation are the same as those 
+		of our actual data.</p>
+	<p class=eqn><img class="gif" src="images/silkwormModel.gif" width="388" height="128"></p>
+	<p>This approximate normal distribution has upper quartile 293.3, so we can perform a simulation with samples of <em>n</em> = 80 values from this distribution and find how far the sample upper quartiles are from this theoretical value &mdash; the error distribution.</p>
+	<p class="eqn"><img src="images/s_normalSim.gif" width="339" height="240"></p>
+	<p>From the 70-95-100 rule-of-thumb, the error has approximately 95% chance of being within 2 s.e. of 
+	zero and will be almost certainly within 3 s.e. of zero. This means that  our point estimate of the upper quartile (292 secs) is likely to be less than 9 sec from the underlying population parameter and will be almost certain to be less than 13.5 sec from it.</p>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

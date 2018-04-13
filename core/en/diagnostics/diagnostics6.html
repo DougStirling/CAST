@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Externally studentised residuals</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="externally studentised residual, deleted residual">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Deleted estimate of standard deviation</p>
+  <p>Although ordinary deleted residuals do not offer anything new for detecting 
+		outliers, a variation is more useful. The ordinary standardised residuals 
+		use the mean residual sum of squares (MS<sub>Resid</sub>) from the full data 
+		set as an estimate of σ<sup>2</sup>,</p>
+	<p class="eqn"><img src="images/standardResid3.gif" width="428" height="51" align="absmiddle"></p>
+	<p>Instead, we define the <strong>externally studentised residuals</strong>,</p>
+	<p class="eqn"><img src="images/extStudentResid.gif" width="428" height="51" align="absmiddle"></p>
+	<p>where σ 
+		is now separately estimated for the <em>i</em>'th residual from the data set 
+		without the <em>i</em>'th data point. (This requires a separate calculation 
+		of MS<sub>Resid</sub> for each of the <em>n</em> deleted subsets of the data.)</p>
+
+<div class="diagram">
+		<p class="heading">Illustration</p>
+
+		<p>The diagram below shows a data set and its ordinary standardised residuals.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="residProg.ExtStudentResidApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="xValues" value="0.6 0.8 1.0 1.2 1.4 1.6 1.8 2.0 2.2 4.0">
+<param name="yValues" value="37 36 40 43 44 42 45 48 49 46">
+<param name="xAxis" value="0.5 4.5 1 1">
+<param name="yAxis" value="30 65 30 10">
+<param name="residAxis" value="-6 6 -6 2">
+<param name="sdLeftUp" value="60 30">
+<param name="sdDecimals" value="3">
+<param name="maxValues" value="-99.99 9.999 9.999 -9.99">
+<param name="customText" value="Ordinary standardised residual=Ordinary standardised residual#Externally studentised residual=Externally studentised residual">
+</applet>
+</div>
+
+		<p>Click on any cross on the left to see how the standardised residuals are 
+			calculated from the deleted residuals. (They could alternatively be found 
+			from the ordinary residuals.) Note that the denominator, <img src="../../images/symbol.sigmaHat.png" width="9" height="14" align="baseline">, 
+			is the same for each standardised residual.</p>
+		<p>Select <strong>Externaly studentised residual</strong> from the pop-up 
+			menu and repeat. Observe that the estimates of σ 
+			are different for the different observations. In particular, note that the 
+			estimate is much smaller for the high-leverage outlier, which therefore 
+			makes the externally studentised residual stand out more than the ordinary 
+			standardised one.</p>
+</div>
+
+  <p class="heading">Guidelines</p>
+
+  <p>The externally studentised residuals have approximately standard normal distributions, 
+		so they can be compared with ±2 (or ±3) to help detect outliers. 
+		Remember however that you should <strong>expect</strong> about 5% of the residuals 
+		to be outside ±2 and about 0.3% to be outside ±3, even if there 
+		are no outliers, so do <strong>not</strong> conclude that a residual outside 
+		±3 must be an outlier in large data sets.</p>
+	<p class="gray">(If the sample size, <em>n</em>, is small, the proportions 
+		outside ±2 and ±3 are actually <strong>greater</strong> than 
+		5% and 0.3%. It is actually better to replace 
+		±2 with the 95% point of the t(<em>n</em>&nbsp;-&nbsp;1) distribution, 
+		but this refinement is usually unimportant since the residuals are not used 
+		for formal testing.)</p>
+	<p>It is best to plot the externally studentised residuals against <em>x</em> 
+		or the fitted values to see whether any seem unusually large.</p>
+
+<div class="diagram">
+		<p class="heading">Illustration</p>
+
+		<p>The scatterplot on the left below shows a data set in which one observation 
+			can be altered by dragging.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="residProg.DragStdResidApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="xValues" value="0.6 0.8 1.0 1.2 1.4 1.6 1.8 2.0 2.2 4.0">
+<param name="yValues" value="37 36 40 43 44 42 45 48 49 46">
+<param name="xAxis" value="0.5 4.5 1 1">
+<param name="yAxis" value="30 65 30 10">
+<param name="residAxis" value="-10 10 -10 5">
+<param name="customText" value="Ordinary standardised residual=Ordinary standardised residual#Externally studentised residual=Externally studentised residual">
+</applet>
+</div>
+
+		<p>The ordinary standardised residuals are plotted against <em>x</em> on the 
+			right and bands are shaded at ±1, ±2 and ±3. Drag the 
+			top-right observation and observe that the standardised residual is never 
+			outside the range ±3.</p>
+		<p>Select <strong>Externally studentised residual</strong> from the pop-up 
+			menu. When the point is dragged, observe that this residual becomes far 
+			more 'extreme' when the point is far from the line passing through the other 
+			observations (an outlier).</p>
+		
+<div class="centred"><div class="boxed">
+<p>Externally studentised residuals highlight 
+							outliers better than ordinary standardised residuals.</p>
+</div></div>
+
+		<br>
+	</div>
+		<br>
+		
+<div class="centred"><div class="boxed">
+<p>Externally studentised residuals are best for finding outliers.</p>
+</div></div>
+
+		<br>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+</p>
+</div>
+
+</body>
+</html>

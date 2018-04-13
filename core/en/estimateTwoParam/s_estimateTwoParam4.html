@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Grid search for MLEs</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+	
+	<style>
+	table.gridSearch td {background-color:#FFF; padding-left:8px; padding-right:8px; text-align:right}
+	</style>
+
+	<meta name="index" content="maximum likelihood, grid search, beta distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>For some families of two-parameter distributions, it is difficult to find maximum likelihood estimates algebraically.</p>
+<ul>
+	<li>It may be difficult to differentiate the log-likelihood function</li>
+	<li>The equations found by differentiating the log-likelihood may be impossible to solve algebraically.</li>
+</ul>
+<p>A numerical method must then be used to evaluate the maximum likelihood estimates.</p>
+<p>A simple algorithm is a <strong>grid search</strong>; it simply evaluates the log-likelihood over a grid of values of the two parameters, letting us identify  <strong>approximately</strong> where the maximum lies. The grid  can then be refined to focus on a narrower range of possible parameter values.</p>
+<div class="example">
+	
+	<p class="exampleHeading">Beta distribution</p>
+
+<p>The following data set contains proportions between zero and one:</p>
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred">
+	<tr>
+		<td>0.078</td>
+		<td>0.713</td>
+		<td>0.668</td>
+		<td>0.621</td>
+		<td>0.069</td>
+		<td>0.378</td>
+		<td>0.735</td>
+		<td>0.255</td>
+		<td>0.220</td>
+		<td>0.220</td>
+	</tr>
+	<tr>
+		<td>0.136</td>
+		<td>0.413</td>
+		<td>0.516</td>
+		<td>0.183</td>
+		<td>0.724</td>
+		<td>0.377</td>
+		<td>0.409</td>
+		<td>0.403</td>
+		<td>0.042</td>
+		<td>0.692</td>
+	</tr>
+	<tr>
+		<td>0.486</td>
+		<td>0.421</td>
+		<td>0.358</td>
+		<td>0.236</td>
+		<td>0.654</td>
+		<td>0.717</td>
+		<td>0.520</td>
+		<td>0.266</td>
+		<td>0.520</td>
+		<td>0.641</td>
+	</tr>
+</table>
+</div>
+
+<p>A reasonable distribution that could be used to model the data would  be a beta distribution with probability density function</p>
+\[
+	f(x) \;\;=\;\; \begin{cases} \dfrac {\Gamma(\alpha +\beta) }{\Gamma(\alpha)\Gamma(\beta)} x^{\alpha - 1} (1 - x)^{\beta - 1}&amp; \text{if }0 \lt x \le 1 \\
+	0 &amp; \text{otherwise}
+	\end{cases} \]
+<p>The log-likelihood is</p>
+\[ \begin{align}
+\ell(\alpha, \beta) \;=\; n \log \Gamma(\alpha + \beta) &amp;- n \log \Gamma(\alpha) - n \log \Gamma(\beta) \\
+&amp;+ (\alpha - 1) \sum(\log(x_i) + (\beta - 1)\sum \log(1 - x_i)
+\end{align} \]
+<p>so we will maximise</p>
+\[ \ell(\alpha, \beta) \;=\; 30 \log \Gamma(\alpha + \beta) - 30 \log \Gamma(\alpha) - 30 \log \Gamma(\beta) -31.89 (\alpha - 1) - 18.75 (\beta - 1)
+\]
+<p>with respect to \(\alpha\) and \(\beta\). This cannot be done algebraically.</p>
+<p>The following Excel spreadsheet shows  the log-likelihood for values of \(\alpha\) between 1 and 2.4, and values of \(\beta\) between 2 and 3.4.</p>
+<p class="eqn"><img src="images/excelGrid.png" width="706" height="251"></p>
+				<!--  this has a bitmap so the SVG version cannot be used because it does not display in Safari -->
+<p>From these log-likelihoods, the maximum is at \(\alpha \approx 1.8\) and \(\beta \approx 2.6\).</p>
+<p>Refining the grid to values of \(\alpha\) and \(\beta\) near 1.8 and 2.6, we can find that the MLEs are approximately</p>
+\[ \hat{\alpha} = 1.81 \spaced{and} \hat{\beta} = 2.56
+\] </div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

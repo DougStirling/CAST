@@ -1,0 +1,197 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Model parameters</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="linear model, regression model, slope, intercept">
+	<meta name="dataset" content="Cat body and heart weight">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Three parameters of the normal linear model</p>
+
+<p>A normal linear model,
+</p>
+
+<p class=eqn><span class="black">&mu;<sub><em>y</em></sub> &nbsp;=&nbsp; &beta;<sub>0</sub> &nbsp;+&nbsp; &beta;<sub>1</sub><em>x</em></span> 
+</p>
+<p class=eqn><span class="black">&sigma;<sub><em>y</em></sub> &nbsp;=&nbsp; &sigma;</span> 
+</p>
+<p>involves 3 parameters,
+β<sub>0</sub>, β<sub>1</sub> and σ.
+These parameters provide considerable flexibility to the model.</p>
+
+
+<div class="diagram" title="Illustration of model parameters">
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="420">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="linModProg.DragRegnParamApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="interceptLimits" value="2.50 7.50 3.50">
+<param name="slopeLimits" value="-1.00 1.00 0.50">
+<param name="sdLimits" value="0.10 0.80 0.30">
+<param name="randomX" value="20 2.5 1.0 5876299 2.0">
+<param name="horizAxis" value="0.5 4.5 1 1">
+<param name="vertAxis" value="2.5 7.5 3 1">
+<param name="random" value="20 0.0 1.0 345945782 3.0">
+<param name="labelAxes" value="true">
+</applet>
+</div>
+
+<p>Drag the three red arrows to adjust the parameters of the normal
+linear model.
+</p>
+
+<p>Click <strong>Take sample</strong> a few times to verify that approximately 95%
+of values are within the grey band.
+</p>
+
+<p class="gray">(Note that the values of <i>X</i> are not fixed in this 
+example &mdash; they vary from sample to sample. The normal linear model does not attempt 
+to describe variability in <i>X</i>, though a standard univariate distribution 
+such as a normal distribution might fit the distribution of <em>X</em> in this 
+example.)</p>
+
+</div>
+
+<p class="heading">Interpreting the model's slope and intercept</p>
+<p>The most important parameters of a linear model are its slope, β<sub>1</sub>, 
+and intercept, β<sub>0</sub>. 
+These can be interpreted in a similar way to the slope and intercept of the least 
+squares lines that were <a href="javascript:showNamedPage('leastSqrs4')">fitted 
+to data in an earlier chapter</a>.</p>
+
+<dl>
+  <dt>Slope</dt>
+  <dd>The slope parameter, β<sub>1</sub>, 
+    is the more important of the two. It specifies the increase in the mean response 
+    per unit increase in <i>X</i>.</dd>
+  <dt>Intercept</dt>
+  <dd>The intercept, β<sub>0</sub>, 
+    is the mean response when <em>X</em> = 0. (In some contexts, this may not have 
+    an easily interpreted meaning.)</dd>
+  <dt>&nbsp;</dt>
+</dl>
+<div class="centred">
+	<table class="centred" border="0" cellpadding="8" cellspacing="0">
+		<tr>
+			<th align="CENTER" width="300">Context</th>
+			<th width="33%" align="CENTER">Interpretation of β<sub>1</sub></th>
+			<th width="33%" align="CENTER">Interpretation of β<sub>0</sub></th>
+		</tr>
+		<tr bgcolor="#FFFFFF">
+			<td width="300" style="border:1px solid #999999;"><i>Y</i> = Yield of wheat per acre <br>
+				<i>X</i> = Fertiliser (kg per m<sup>2</sup>)</td>
+			<td width="33%" style="border:1px solid #999999; border-left:0px;">Increase in mean yield per acre for
+				each additional kg/m<sup>2</sup> of fertiliser</td>
+			<td width="33%" style="border:1px solid #999999; border-left:0px;">Mean yield per acre if no fertiliser
+				is used</td>
+		</tr>
+		<tr bgcolor="#FFFFFF">
+			<td width="300" style="border:1px solid #999999; border-top:0px;"><i>Y</i> = Exam mark <br>
+				<i>X</i> = Hours of study by student before exam</td>
+			<td width="33%" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">Increase in expected mark for each additional
+				hour of study</td>
+			<td width="33%" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">Expected mark if there is no study</td>
+		</tr>
+		<tr bgcolor="#FFFFFF">
+			<td width="300" style="border:1px solid #999999; border-top:0px;"><i>Y</i> = Hospital stay (days) <br>
+				<i>X</i> = Age of patient</td>
+			<td width="33%" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">Average extra days in hospital per extra
+				year of age</td>
+			<td width="33%" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">Average days in hospital at age 0. Not particularly
+				meaningful here. </td>
+		</tr>
+	</table>
+</div>
+<p class="heading">Esimating the parameters by eye</p>
+
+<p>The regression line (i.e. the straight line showing how the mean depends on <em>x</em>) and the band that is 2σ above and below it are a good way to understand the normal linear model. Indeed 
+they can be used as an informal way to estimate the parameters of the model 'by 
+eye'. (We will give better methods in the next section.)</p>
+
+
+<div class="diagram" title="Examples of fitting model to data">
+<p class="heading">Artificial data</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="420">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="linModProg.DragRegnParamApplet">
+<param name="xVarName" value="Explanatory variable, x">
+<param name="yVarName" value="Response, y">
+<param name="interceptLimits" value="-99.0 99.0 13.0">
+<param name="slopeLimits" value="-5.0 5.0 -1.4">
+<param name="sdLimits" value="0.30 10.00 1.00">
+<param name="xValues" value="2.30 2.24 2.04 1.93 2.62 2.62 2.54 2.17 2.45 2.24 2.01 1.92 2.16 2.24 2.47 2.45 2.14 2.22 2.65 2.84 2.17 2.54 2.47 2.42 1.97 2.02 2.96 2.30 2.47 1.97 2.52 1.99 2.20 2.25 3.12 2.43 2.61 2.30 2.89 2.94 2.75 2.01 2.42 3.08 2.61 2.85 2.28 2.80 3.06 2.53 2.50 2.55 1.92 2.05 2.43 2.97 2.42 2.64 2.04 2.29 3.03 2.79 2.17 3.05 2.56 2.30 2.14 2.91 2.74 2.85 3.18 2.01 3.20 2.25 2.58 2.16 1.97 3.12 2.16 2.47 2.95 2.43 2.70 2.82 3.12 2.86 3.19 2.98 2.08 3.17 2.98 2.52 2.22 2.61 3.12 2.28 2.50 2.48 2.72 2.65">
+<param name="yValues" value="9.78 8.19 8.17 7.45 9.34 9.01 10.14 9.08 9.54 8.34 7.88 7.45 7.70 8.50 9.66 9.28 8.30 9.62 10.56 10.81 8.57 10.12 9.41 8.98 7.92 7.34 10.84 8.88 9.09 8.13 8.46 8.26 9.00 8.46 11.84 8.54 9.24 9.99 9.65 11.14 10.21 7.30 8.56 10.67 8.92 10.62 8.97 9.64 10.60 8.96 9.46 9.87 8.12 9.44 9.45 10.19 8.43 9.48 7.76 8.96 10.25 10.31 8.35 11.12 9.98 8.39 8.66 10.62 9.57 9.71 10.27 8.22 11.38 8.82 9.71 8.63 7.53 11.27 8.23 9.82 11.67 8.49 10.50 10.49 11.01 10.36 11.34 11.14 7.87 11.75 10.18 8.56 8.92 9.56 11.55 8.14 9.84 9.41 9.77 9.64">
+<param name="horizAxis" value="1.8 3.3 1.8 0.2">
+<param name="vertAxis" value="5 14 6 2">
+<param name="labelAxes" value="true">
+<param name="customText" value="Best values=Best values">
+</applet>
+</div>
+<p>A normal linear model might be used to describe how the response depends on the explanatory variable.</p>
+<ul>
+  <li>Firstly drag the two red arrows on the regression line to position it centrally 
+    in the data.</li>
+  <li>Then drag the third red arrow to adjust the parameter σ. 
+    You should aim for the grey region to include about 95% of the crosses.</li>
+</ul>
+<p>In the next section, we will explain how to objectively estimate the parameters 
+  to match a data set. Click <strong>Best values</strong> to see these 'best' parameter 
+  values.</p>
+<p>If there are fewer values or if the relationship is weaker, it is harder to position the band by eye.</p>
+<p class="heading">Body and heart weights of cats</p>
+<p>The data set below shows the body and heart weights of 47 female cats. The 
+data might be used to predict heart weight from body weight since the latter can 
+be easily measured from live cats!</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="420">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="linModProg.DragRegnParamApplet">
+<param name="xVarName" value="Body wt (kg)">
+<param name="yVarName" value="Heart wt (g)">
+<param name="interceptLimits" value="-99.0 99.0 13.0">
+<param name="slopeLimits" value="-5.0 5.0 -1.4">
+<param name="sdLimits" value="0.30 10.00 1.00">
+<param name="xValues" value="2.3 3 2.9 2.4 2.3 2 2.2 2.1 2.3 2.1 2.1 2.2 2 2.3 2.2 2.3 2.1 2 2.9 2.7 2.6 2.3 2.6 2.1 2.1 2.7 2.2 2.3 2.1 2.4 2.7 2.3 2.1 2.2 2.3 2.1 2.9 3 2.2 2.4 2.4 2.5 2.5 2.3 2.3 2.6 2.3">
+<param name="yValues" value="9.6 10.6 9.9 8.7 10.1 7 11 8.2 9 7.3 8.5 9.7 7.4 7.3 7.1 9 7.6 9.5 10.1 10.2 10.1 9.5 8.7 7.2 9.8 10.8 9.1 11.2 8.1 10.2 8.5 10.1 8.7 10.9 7.9 8.3 10.1 13 8.7 6.3 8.8 10.9 9 9.7 8.4 10.1 10.6">
+<param name="horizAxis" value="1.8 3.3 1.8 0.2">
+<param name="vertAxis" value="5 14 6 2">
+<param name="labelAxes" value="true">
+<param name="customText" value="Best values=Best values">
+</applet>
+</div>
+
+    
+<p>A normal linear model might be used to describe how heart weight depends on 
+body weight.</p>
+
+<ul>
+<li>Firstly drag the two red arrows on the regression line to position it centrally 
+in the data.</li>
+<li>Then drag the third red arrow to adjust the parameter σ. 
+  You should aim for the grey region to include about 95% of the crosses.</li>
+</ul>
+<p>In the next section, we will explain how to objectively estimate the parameters 
+to match a data set.</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

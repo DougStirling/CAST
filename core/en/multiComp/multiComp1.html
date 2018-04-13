@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Problems with multiple tests</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="bonferroni correction, multiple comparisons">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Multiple hypothesis tests</p>
+<p>Analysis of many data sets involves several hypothesis tests, either to test different independent aspects of the data or in sequence. For example, <a href="javascript:showNamedPage('factorial8')">analysis of the 4-factor experiment at the end of the previous section</a> required sequentially testing several interaction terms to find the simplest model that was consistent with the data.</p>
+<p>A more extreme example arises with microarray experiments in genetics where tens of thousands of response measurements may be made. This number of hypothesis tests would result if analysis of variance is applied to each possible response.</p>
+<p>For sequential testing to find the 'best' model for a data set, we usually only use the p-values from the sequential tests as rough guidance and should avoid interpreting the p-values as strict probabilities. However it is important to understand the problems that can arise if multiple tests are conducted.</p>
+
+<p class="heading">Probability of <span class="darkred">at least one</span> significant result</p>
+<p>Firstly consider <em>n</em> <strong>idependent</strong> hypothesis tests. If we conclude that any particular test is significant if its p-value is under 0.05, then the probability that <strong>at least one</strong> of the <em>n</em> tests gives a false positive result (a p-value under 0.05 when the null hypothesis is true) is</p>
+<p class="eqn">P(at least one significant result) &nbsp; = &nbsp; 1&nbsp;-&nbsp;(1 - 0.05)<em><sup>n</sup></em></p>
+<p>As <em>n</em> increases, this probability gets further from the nominal significance level of the individual tests, 0.05, and closer to 1.</p>
+<p>In many practical situations involving <em>n</em> tests, they are <strong>not independent</strong>. An exact formula for the probability cannot then be given, but an upper bound can be shown to be</p>
+<p class="eqn">P(at least one significant result) &nbsp; ≤ &nbsp;<em>n</em> × 0.05</p>
+
+<p class="heading">Adjusting the critical value for hypothesis tests</p>
+<p>The two formulae above can be inverted to give the necessary critical value if we want to specify the <strong>overall</strong> probality of at least one test being significant. For example, inverting the formula for dependent tests implies that for an overall significance level of 0.05, we should only reject the null hypothesis for individual tests if:</p>
+<p class="eqn">p-value &nbsp; &lt; &nbsp;0.05&nbsp;/&nbsp;<em>n</em></p>
+<p>This inverse formula is called a <strong>Bonferroni correction</strong>.</p>
+
+<div class="diagram"> 
+<p class="heading">Fixed significance levels for individual tests</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="240">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.MultipleTestApplet">
+<param name="fixedProbType" value="individual">
+<param name="resultDecimals" value="4">
+<param name="customText" value="Number of tests=Number of tests#Probability of rejecting=Probability of rejecting#in each test=in each test#in at least one test=in at least one test#Independent tests=Independent tests#Dependent tests=Dependent tests#any rejected=any rejected">
+</applet>
+</div>
+
+<p>Drag the slider in the above diagram to see how quickly the overall probability of <strong>at least one</strong> of several tests being significant increases.</p>
+
+<p class="heading">Fixed overall significance level</p>
+<p>The following diagram does the inverse by fixing the overall significance level and showing the significance levels required for the individual tests to achieve this.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="240">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.MultipleTestApplet">
+<param name="fixedProbType" value="overall">
+<param name="resultDecimals" value="6">
+<param name="customText" value="Number of tests=Number of tests#Probability of rejecting=Probability of rejecting#Required probability of rejecting=Required probability of rejecting#in at least one test=in at least one test#in individual tests=in individual tests#Independent tests=Independent tests#Dependent tests=Dependent tests#reject=reject">
+</applet>
+</div>
+
+<p>Agan drag the slider to the right. Observe that much stronger  evidence is needed from individual tests to ensure that the overall probability of getting at least one significant result (when <strong>H<sub>0</sub></strong> holds) remains at 0.05.</p>
+<p class="heading">Factorial experiment with four factors</p>
+<p>Consider a factorial experiment with four factors in which we test in sequence the 4-factor interaction, the 3-factor and 2-factor interactions, and finally test the main effects if no interactions are significant. (The final example in the previous section is an example.)</p>
+<div class="centred"><div class="boxed">
+	<p>If none of the factors affect the response, then there is a probability of more than 0.5 that testing at least one of the15 interaction and main effect terms will give a p-value less than 0.05, even if none of the factors really affect the response.</p>
+</div></div>
+<p>If none of the factors affect the response, we might want to specify that our testing will conclude this with probability 0.95. Since none of the 15 interaction and main effect terms  can be significant for this to occur, the Bonferroni correction states that the p-values for the individual tests should be less than 0.05&nbsp;/&nbsp;15&nbsp;=&nbsp;0.0033 before we should treat the term as significant.</p>
+</div>
+
+<p class="heading">In practice</p>
+<p>In any hypothesis test, there are two possible types of error:</p>
+<div class="centred"><table border="0" class="centred" cellpadding="6" cellspacing="0">
+	<tr>
+		<td></td>
+		<td></td>
+		<th colspan="2">Decision</th>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<th>&nbsp;&nbsp;accept <strong>H<sub>0</sub></strong>&nbsp;&nbsp;</th>
+		<th>&nbsp;&nbsp;reject<strong> H<sub>0</sub></strong>&nbsp;&nbsp;</th>
+	</tr>
+	<tr>
+		<th rowspan="2">True state of nature</th>
+		<th><strong>H<sub>0</sub></strong>&nbsp;is true&nbsp;&nbsp;&nbsp;</th>
+		<td align="center" bgcolor="#00FF00" class="bigger black">correct</td>
+		<td align="center" bgcolor="#FF0000" class="black bigger">Type I error</td>
+	</tr>
+	<tr>
+		<th><strong>H<sub>A</sub></strong> (<strong>H<sub>0</sub></strong> is false)&nbsp;&nbsp;&nbsp;&nbsp;</th>
+		<td align="center" bgcolor="#FF0000" class="black bigger">Type II error</td>
+		<td align="center" bgcolor="#00FF00" class="black bigger">correct</td>
+	</tr>
+</table></div>
+<p>Adjusting the decision rule to reduce the probability of a Type&nbsp;I error  generally increases the probability of a Type&nbsp;II error. The Bonferroni correction reduces the probability of a Type&nbsp;I error for  individual tests, so</p>
+<div class="centred"><div class="boxed">
+	<p>The Bonferroni correction increases the probability that situations in which H<sub>0</sub> is <strong>false</strong> will not be detected.</p>
+</div></div>
+<p>Failing to detect significant factors (or interactions)  usually has as bad consequences as concluding that they are significant when they are not. Therefore:</p>
+<div class="centred"><div class="boxed">
+	<p>Except in special situations, Bonferroni corrections are rarely used.</p>
+</div></div>
+<p>However if multiple tests have been performed, it is important to take note of the results in this page when reporting conclusions about a significant result.</p>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

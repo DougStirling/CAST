@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Graphical display of probabilities</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="marginal probability, joint probability, proportional Venn diagram">
+	<meta name="dataset" content="Apple bruising">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p class="heading">Joint, marginal and conditional probabilities</p>
+  <p>The  conditional probability of \(A\)<em> </em>given \(B\)<em> </em>is defined to be </p>
+\[
+P(A \mid B) \;=\; \frac {P(A \textbf { and } B)} {P(B)}
+\]
+
+<p>with a similar definition for \(P(B \mid A)\). These equations can be rewritten as:</p>
+
+\[
+P(A \textbf { and } B) \;=\; P(A \mid B) \times P(B) \;=\; P(B \mid A) \times P(A)
+\]
+
+<p>The probabilities \(P(A)\) and \(P(B)\) are called <strong>marginal</strong> probabilities for <em>A</em> and <em>B</em>, whereas \(P(A \textbf { and } B)\) is called their <strong>joint</strong> probability.</p>
+<p class="heading">Proportional Venn diagram</p>
+<p>The marginal and conditional probabilities can be displayed graphically with a Venn diagram in which one margin is partitioned using the marginal probabilities for \(A\) and the slices are split using the conditional probabilities for \(B\) given \(A\).</p>
+
+<p class=eqn><img class="svgImage" src="images/propnVenn.png" width="304" height="332"></p>
+
+<p>When drawn in this way, the <strong>areas</strong> of the rectangles are equal to the joint probability for the combinations of events, since each area is the product of a marginal probability and the corresponding conditional probability.</p>
+
+<div class="centred"><div class="boxed">
+<p>The area of any rectangle in the diagram equals the 
+joint probability of the row and column events.</p>
+</div></div>
+
+<p>A similar diagram can be based on the marginal probabilities for \(B\)<i> </i>and the conditional probabilities of \(A\)<i> </i>given \(B\), splitting the unit square first horizontally 
+and then vertically. The areas of the resulting rectangles are again equal to 
+the joint probabilities, so the two diagrams are just rearrangements of the same 
+areas.</p>
+
+<p>The use of the diagrams is best explained in an example.
+</p>
+
+
+<div class="example" title="Example: Apple bruising">
+	<p class="exampleHeading">Apple bruising</p>
+	<p>The contingency table below describes bruising of 96 apples in a packing plant. 
+The apples were classified by the variety of apple (Granny Smith or Fuji) and 
+whether or not they were bruised. (The data are not real.)</p>
+	<div class="centred">
+		<table border="0" class="centred" cellpadding="5" cellspacing="0">
+			<tr>
+				<td>&nbsp;</td>
+				<th>Not bruised</th>
+				<th>  Bruised  </th>
+			</tr>
+			<tr>
+				<th align="left">Granny Smith</th>
+				<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">40</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">8</td>
+			</tr>
+			<tr>
+				<th align="left">Fuji</th>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">24</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">24</td>
+			</tr>
+		</table>
+	</div>
+	<p>The diagram below shows a Proportional Venn diagram for one apple selected at random from this batch. Note that the four areas are proportional
+		to the numbers of apples for each combination of apple type and bruising.</p>
+	<div class="centred">
+		<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="500">
+			<script type="text/javascript">writeAppletParams();</script>
+			<param name="appletName" value="propnVennProg.AreaContin2Applet">
+			<param name="backgroundColor" value="FFFBF3">
+			<param name="yVarName" value="Variety">
+			<param name="xVarName" value="Bruising">
+			<param name="yLabels" value="Fuji Granny">
+			<param name="xLabels" value="OK Brsd">
+			<param name="xValues" value="64@0 32@1">
+			<param name="yValues" value="24@0 40@1 24@0 8@1">
+			<param name="customText" value="Marginal propn for=Marginal prob for#Conditional propn for=Conditional prob for">
+		</applet>
+	</div>
+	<ul>
+		<li>Click on any rectangle in the diagram to observe how the joint probability 
+			of getting an apples with any combination of apple type and bruising equals the product of 
+			a marginal and conditional probability.</li>
+		<li>Clicking on the other formulae under the diagram shows how the joint proportions 
+			can be obtained from the other marginal and conditional proportions.</li>
+	</ul>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

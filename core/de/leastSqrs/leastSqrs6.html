@@ -1,0 +1,83 @@
+<html>
+<head>
+	<title>Residuendiagramm</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="regression model, linear model, curvature, outliers">
+	<meta name="dataset" content="Pressure and boiling point of water">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Probleme in dem Modell
+entdecken&nbsp;</p>
+<p>Falls Ausreißer oder ein nichtlinearer Zusammenhang
+	im Datensatz vorliegt, sind sie oft in einem Streudiagramm der
+	abhängigen und der erklärenden Variable zu entdecken.
+	Normalerweise kann man Ausreißer und Nichtlinearität
+	noch deutlicher erkennen wenn die Residuen, statt der eigentlichen
+	abhängigen Variablen gegen X dargestellt werden.</p>
+  <div class="boxed">
+  	<p>Stelle die Residuen
+mit der erklärenden Variable X in einem Streudiagramm dar um
+Probleme im Modell zu entdecken</p>
+</div>
+
+<div class="diagram">
+
+		<p class="heading">Siedepunkt und Luftdruck</p>
+		<p>Mitte des 19ten Jahrhunderts untersuchte J. D. Forbes den
+			Siedepunkt von Wasser (Grad Fahrenheit) und den Luftdruck (inches
+			Quecksilbersäule) anhand von&nbsp;Messungen an 17
+			verschiedenen Standorten in den Alpen und in Schottland. </p>
+		<p>Ziel dieser Untersuchung war es den Luftdruck und damit die
+			Höhe mit dem Siedepunkt von Wasser (einer sehr einfach zu
+			bestimmenden Größe) bestimmen zu können.
+			Deshalb behandeln wir in diesem Beispiel Luftdruck als
+			abhängige Variable (normalerweise würden wir den
+			kausalen Zusammenhang eher in entgegengesetzter Richtung vermuten).</p>
+
+<div class="centred">
+	<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.ResidualPlotApplet">
+<param name="xVarName" value="Siedepunkt">
+<param name="yVarName" value="Luftdruck">
+<param name="xValues" value="194.5 194.3 197.9 198.4 199.4 199.9 200.9 201.1 201.4 201.3 203.6 204.6 209.5 208.6 210.7 211.9 212.2">
+<param name="yValues" value="20.79 20.79 22.40 22.67 23.15 23.35 23.89 23.99 24.02 24.01 25.14 26.57 28.49 27.76 29.04 29.88 30.06">
+<param name="horizAxis" value="194 213 195 5">
+<param name="vertAxis" value="20 31 20 2">
+<param name="residAxis" value="-0.4 0.8 -0.4 0.2">
+<param name="change1" value="#11 204.6 *#">
+<param name="change1Name" value="Lösche Ausreißer">
+</applet>
+</div>
+
+<p>Obwohl das Streudiagramm der Rohdaten auf der linken Seite
+eine recht gute Anpassung des linearen Modells vermuten lässt,
+kann man anhand des Residuendiagramms auf der rechten Seite zwei
+Probleme mit dem Modell &nbsp;erkennen. </p>
+<ul>
+	<li>Die meisten Kreuzchen des Residuendiagramms liegen auf
+		einer U-förmigen Kurve, was auf einen nichtlinearen
+		Zusammenhang hinweist..</li>
+	<li>Es gibt einen Ausreißer, ein Messwert bei dem der
+		Luftdruck ungewöhnlich hoch für den Siedepunkt ist.</li>
+</ul>
+<p>Der Ausreißer könnte eine Messfehler sein,
+	das können wir an dieser Stelle jedoch nicht
+	überprüfen. Klicke <strong>Lösche Ausreißer</strong>,
+	um den Ausreißer zu entfernen. </p>
+<p>Das Problem der Nichtlinearität werden wir
+	später betrachten.</p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

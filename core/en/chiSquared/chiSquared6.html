@@ -1,0 +1,168 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Confidence interval for normal variance</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="chi-squared distribution, variance of random sample, sample variance, confidence interval, pivot">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Pivot for a normal sample's variance</p>
+
+<p>Data sets are often modelled as random samples from normal distributions. We will now assume that \(\{X_1, X_2, \dots, X_n\}\) is a random sample from a \(\NormalDistn(\mu,\;\sigma^2)\) distribution but where both \(\mu\) and \(\sigma^2\) are unknown parameters.</p>
+<p>To find a confidence interval for \(\sigma^2\), we will use a pivot — a function of the data and \(\sigma^2\) whose distribution is completely known with no unknown parameters. A suitable pivot is</p>
+
+\[
+g(\sigma^2, X_1, \dots, X_n) \;\;=\;\; \frac{n-1}{\sigma^2} S^2 \;\;\sim\;\;\ChiSqrDistn(n-1\;\text{df})
+\]
+
+<p>where \(S^2\) is the sample variance.</p>
+<p>This pivot can be used to find a 95% confidence interval for \(\sigma^2\).</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Confidence interval for a normal distribution's variance</p>
+<p>If \(s^2\) is the variance of a random sample from a \(\NormalDistn(\mu,\;\sigma^2)\) distribution, a 95% confidence interval for \(\sigma^2\) is</p>
+
+\[
+\frac{(n-1)s^2}{\chi_{n-1,\;0.975}^2} \;\;\lt\;\; \sigma^2 \;\;\lt\;\; \frac{(n-1)s^2}{\chi_{n-1,\;0.025}^2}
+\]
+
+<p>where \(\chi_{n-1,\;0.025}^2\) and \(\chi_{n-1,\;0.975}^2\) are the 2½th and 97½th percentiles of the Chi-squared distribution with \((n-1)\) degrees of freedom.</p>
+</div>
+
+<div class="proof">
+<p>The method for finding the confidence interval follows the <a href="javascript:showNamedPage('pivotal2')">general pivotal method described earlier</a>. Since</p>
+\[
+P\left(\chi_{n-1,\;0.025}^2 \;\lt\; \frac{n-1}{\sigma^2} S^2 \;\lt\; \chi_{n-1,\;0.975}^2\right) \;\;=\;\; 0.95
+\]
+<p>a 95% confidence interval is found by rearranging the two inequalities in</p>
+\[
+\chi_{n-1,\;0.025}^2 \;\lt\; \frac{n-1}{\sigma^2} s^2 \;\lt\; \chi_{n-1,\;0.975}^2
+\]
+<p>Rearranging the leftmost inequality gives</p>
+\[
+\sigma^2 \;\;\lt\;\; \frac{(n-1)s^2}{\chi_{n-1,\;0.025}^2}
+\]
+<p>and rearranging the right-hand one gives</p>
+\[
+\sigma^2 \;\;\gt\;\; \frac{(n-1)s^2}{\chi_{n-1,\;0.975}^2}
+\]
+</div>
+
+</div>
+
+<p>This can be generalised in an obvious way to find interval estimates with other confidence levels by replacing \(\chi_{n-1,\;0.025}^2\) and \(\chi_{n-1,\;0.975}^2\) with other quantiles from the Chi-squared distribution. For example, to find a 90% confidence interval, \(\chi_{n-1,\;0.05}^2\) and \(\chi_{n-1,\;0.95}^2\) would be used.</p>
+<p class="heading">Quantiles of Chi-squared distributions</p>
+<p>There are no explicit formulae for  the cumulative probabilities or quantiles of the family of Chi-squared distributions, but computer software can evaluate these for you. The example on the previous page showed how to find a cumulative probability using Excel. Type into a spreadsheet cell</p>
+<p class="eqn">=CHISQ.INV(\(\langle p \rangle\), \(\langle df \rangle\))</p>
+<p>when looking for the  <span class="eqn">\(\langle p \rangle\)</span>th quantile of the Chi-squared distribution with <span class="eqn">\(\langle df \rangle\)</span> degrees of freedom.</p>
+
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Example</p>
+<p>In an experiment that investigated the grazing behaviour of dairy cows, four cows were studied while they grazed on 48 different plots of grass. The grass intake was estimated in each plot by sampling before and after the experiment, and the number of bites made by each cow was recorded. This table gives  the grass intake per bite in each of the plots.</p>
+<div class="centred">
+	<table border="0" cellpadding="5" cellspacing="0" class="centred" bgcolor="#FFFFFF" style="border:1px solid #999999;">
+		<tr>
+			<td>1.09</td>
+			<td>1.41</td>
+			<td>1.20</td>
+			<td>1.04</td>
+			<td>1.07</td>
+			<td>1.39</td>
+			<td>1.06</td>
+			<td>1.14</td>
+		</tr>
+		<tr>
+			<td>0.88</td>
+			<td>0.92</td>
+			<td>1.07</td>
+			<td>1.07</td>
+			<td>1.18</td>
+			<td>0.57</td>
+			<td>0.01</td>
+			<td>0.31</td>
+		</tr>
+		<tr>
+			<td>1.14</td>
+			<td>1.18</td>
+			<td>0.58</td>
+			<td>0.74</td>
+			<td>0.14</td>
+			<td>0.48</td>
+			<td>0.91</td>
+			<td>0.37</td>
+		</tr>
+		<tr>
+			<td>2.19</td>
+			<td>1.17</td>
+			<td>2.34</td>
+			<td>1.69</td>
+			<td>1.97</td>
+			<td>1.04</td>
+			<td>1.76</td>
+			<td>1.26</td>
+		</tr>
+		<tr>
+			<td>1.62</td>
+			<td>0.81</td>
+			<td>1.81</td>
+			<td>2.06</td>
+			<td>2.27</td>
+			<td>1.24</td>
+			<td>0.02</td>
+			<td>1.46</td>
+		</tr>
+		<tr>
+			<td>2.29</td>
+			<td>2.28</td>
+			<td>1.40</td>
+			<td>0.60</td>
+			<td>1.41</td>
+			<td>0.49</td>
+			<td>1.06</td>
+			<td >1.58</td>
+		</tr>
+	</table>
+</div>
+<p>There are only 48 observations, so it is impossible to be sure of the shape of the underlying population distribution. However a histogram does seem reasonably symmetrical, so a normal distribution is a reasonable model.</p>
+<p class="eqn"><img class="svgImage" src="images/grassHisto.png" width="401" height="262"></p>
+<p>Assuming that the data come from a \(\NormalDistn(\mu,\;\sigma^2)\) distribution, find a 95% confidence interval for the standard deviation, \(\sigma\).</p>
+	</div>
+
+<div class="solution">
+<p>The sample variance is \(s^2 = 0.3606\) and this has \(n - 1 = 47\) degrees of freedom.</p>
+<p>The 2½th and 97½th percentiles of the \(\ChiSqrDistn(47\;\text{df})\) distribution can be found from Excel to be 29.96 and 67.82. A 95% confidence interval for the normal variance \(\sigma^2\) is therefore</p>
+\[
+\frac{47 \times 0.3606}{67.82} \;\;\lt\;\; \sigma^2 \;\;\lt\;\; \frac{47 \times 0.3606}{29.96}
+\]
+\[
+0.2499 \;\;\lt\;\; \sigma^2 \;\;\lt\;\; 0.5658
+\]
+<p>A 95% CI for the standard deviation is found by rewriting the inequalities</p>
+\[
+\sqrt{0.2499} \;\;\lt\;\; \sigma \;\;\lt\;\; \sqrt{0.5658}
+\]
+\[
+0.500 \;\;\lt\;\; \sigma \;\;\lt\;\; 0.752
+\]
+</div>
+
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

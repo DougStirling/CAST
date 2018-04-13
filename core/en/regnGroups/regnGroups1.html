@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Additional variables in regression</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="multivariate data">
+	<meta name="dataset" content="Body fat of AIS athletes">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Three or more variables</p>
+
+<p>We previously described the relationship between two numerical variables, <em>X</em> and <em>Y</em>.</p>
+<ul>
+	<li>The correlation coefficient summarises the strength of their relationship.</li>
+	<li>The least squares line summarises the 'shape' of the relationship &mdash; it 
+		can be used to predict <em>Y</em> from <em>X</em>.</li>
+</ul>
+<p>In many applications, more than two measurements are made from each individual and the  additional variables may throw light on the relationship.</p>
+
+<div class="diagram" title="Example: Body fat of AIS athletes">
+	<p class="heading">Body fat of AIS athletes</p>
+
+	<p>Data were collected from a sample of 202 elite athletes who were in training 
+		at the Australian Institute of Sport. Two of the measurements from each 
+		athlete were:</p>
+	<dl>
+		<dt><strong>Body fat</strong></dt>		<dd>The percentage body fat of individuals is difficult to measure. Accurate 
+			measurements were obtained from the AIS athletes by an underwater weighing 
+			technique.</dd>
+		<dt><strong>Body mass index (BMI)</strong></dt>
+		<dd>The body mass index of an individual is defined as the individual's 
+			weight (kg) divided by the squared height (metres). BMI is often used 
+			as an indicator of obesity &mdash; an adult with BMI of 30 or above is usually 
+			classified as obese.</dd>
+
+</dl>
+
+	<p>The scatterplot below shows the relationship between <em>Body fat</em> 
+		and <em>BMI</em>. The relationship is not particularly strong, throwing 
+		doubt on the use of BMI as a predictor of body fat for  athletes such as these.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="600">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.ExtraVarsApplet">
+<param name="yVarName" value="Fat(%)">
+<param name="yValues" value="19.75 21.3 19.88 23.66 17.64 15.58 19.99 22.43 17.95 15.07 28.83 18.08 23.3 17.71 18.77 19.83 25.16 18.04 21.79 22.25 16.25 16.38 19.35 19.2 17.89 12.2 23.7 24.69 16.58 21.47 20.12 17.51 23.7 22.39 20.43 11.29 25.26 19.39 19.63 23.11 16.86 21.32 26.57 17.93 24.97 22.62 15.01 18.14 26.78 17.22 26.5 23.01 30.1 13.93 26.65 35.52 15.59 19.61 14.52 11.47 17.71 18.48 11.22 13.61 12.78 11.85 13.35 11.77 11.07 21.3 20.1 24.88 19.26 19.51 23.01 8.07 11.05 12.39 15.95 9.91 16.2 9.02 14.26 10.48 11.64 12.16 10.53 10.15 10.74 20.86 19.64 17.07 15.31 11.07 12.92 8.45 10.16 12.55 9.1 13.46 8.47 7.68 6.16 8.56 6.86 9.4 9.17 8.54 9.2 11.72 8.44 7.19 6.46 9	 12.61 9.03 6.96 10.05 9.56 9.36 10.81 8.61 9.53 7.42 9.79 8.97 7.49 11.95 7.35 7.16 8.77 9.56 14.53 8.51 10.64 7.06 8.87 7.88 9.2 7.19 6.06 5.63 6.59 9.5 13.97 11.66 6.43 6.99 6 6.56 6.03 6.33 6.82 6.2 5.93 5.8 6.56 6.76 7.22 8.51 7.72 19.94 13.91 6.1 7.52 9.56 6.06 7.35 6 6.92 6.33 5.9 8.84 8.94 6.53 9.4 8.18 17.41 18.08 9.86 7.29 18.72 10.12 19.17 17.24 9.89 13.06 8.84 8.87 14.69 8.64 14.98 7.82 8.97 11.63 13.49 10.25 11.79 10.05 8.51 11.5 6.26">
+<param name="xVarName" value="BMI">
+<param name="xValues" value="20.56 20.67 21.86 21.88 18.96 21.04 21.69 20.62 22.64 19.44 25.75 21.2 22.03 25.44 22.63 21.86 22.27 21.27 23.47 23.19 23.17 24.54 22.96 19.76 23.36 22.67 24.24 24.21 20.46 20.81 20.17 23.06 24.4 23.97 22.62 19.16 21.15 21.4 21.03 21.77 21.38 21.47 24.45 22.63 22.8 23.58 20.06 23.01 24.64 18.26 24.47 23.99 26.24 20.04 25.72 25.64 19.87 23.35 22.42 20.42 22.13 25.17 23.72 21.28 20.87 19 22.04 20.12 21.35 28.57 26.95 28.13 26.85 25.27 31.93 16.75 19.54 20.42 22.76 20.12 22.35 19.16 20.77 19.37 22.37 17.54 19.06 20.3 20.15 25.36 22.12 21.25 20.53 17.06 18.29 18.37 18.93 17.79 17.05 20.31 22.46 23.88 23.68 23.15 22.32 24.02 23.29 25.11 22.81 26.25 21.38 22.52 26.73 23.57 25.84 24.06 23.85 25.09 23.84 25.31 19.69 26.07 25.5 23.69 26.79 25.61 25.06 24.93 22.96 20.69 23.97 24.64 25.93 23.69 25.38 22.68 23.36 22.44 22.57 19.81 21.19 20.39 21.12 21.89 29.97 27.39 23.11 21.75 20.89 22.83 22.02 20.07 20.15 21.24 19.63 23.58 21.65 25.17 23.25 32.52 22.59 30.18 34.42 21.86 23.99 24.81 21.68 21.04 23.12 20.76 23.13 22.35 22.28 23.55 19.85 26.51 24.78 33.73 30.18 23.31 24.51 25.37 23.67 24.28 25.82 21.93 23.38 23.07 25.21 23.25 22.93 26.86 21.26 25.43 24.54 27.79 23.58 27.56 23.76 22.01 22.34 21.07">
+<param name="zKeys" value="Ht Wt Sex Rcc Wcc Sp">
+<param name="HtVarName" value="Ht(cm)">
+<param name="HtValues" value="195.9 189.7 177.8 185 184.6 174 186.2 173.8 171.4 179.9 193.4 188.7 169.1 177.9 177.5 179.6 181.3 179.7 185.2 177.3 179.3 175.3 174 183.3 184.7 180.2 180.2 176 156 179.7 180.9 179.5 178.9 182.1 186.3 176.8 172.6 176 169.9 183 178.2 177.3 174.1 173.6 173.7 178.7 183.3 174.4 173.3 168.6 174 176 172.2 182.7 180.5 179.8 179.6 171.7 170 170 180.5 173.3 173.5 181 175 170.3 165 169.8 174.1 175 171.1 172.7 175.6 171.6 172.3 171.4 178 162 167.3 162 170.8 163 166.1 176 163.9 173 177 168 172 167.9 177.5 162.5 172.5 166.7 175 157.9 158.9 156.9 148.9 149 172.7 176.5 183 194.4 193.4 180.2 183 184 192.7 187.2 183.9 192 190.4 190.7 181.8 188.3 198 186 192 185.6 165.3 185.6 189 193.4 185.6 194.6 189 188.1 200.4 195.3 194.1 187.9 209.4 203.4 198.7 187.1 196.6 186.1 192.8 195.2 169.1 186.6 184.4 187.3 185.1 185.5 184.9 175 185.4 181 176 176.2 174 191 171 174 180.2 178.5 190.3 185 189 180.1 189.2 182.6 186 174.9 180.6 178.6 173 179.7 174.6 178 178.5 171.3 178 189.1 195.4 179.1 180.1 179.6 174.7 192.7 179.3 197.5 182.7 190.5 191 179.6 192.6 194.1 193 193.9 187.7 185.3 191.5 184.6 179.9 183.9 183.5 183.1 178.4 190.8">
+<param name="WtVarName" value="Wt(kg)">
+<param name="WtValues" value="78.9 74.4 69.1 74.9 64.6 63.7 75.2 62.3 66.5 62.9 96.3 75.5 63 80.5 71.3 70.5 73.2 68.7 80.5 72.9 74.5 75.4 69.5 66.4 79.7 73.6 78.7 75 49.8 67.2 66 74.3 78.1 79.5 78.5 59.9 63 66.3 60.7 72.9 67.9 67.5 74.1 68.2 68.8 75.3 67.4 70 74 51.9 74.1 74.3 77.8 66.9 83.8 82.9 64.1 68.85 64.8 59 72.1 75.6 71.4 69.7 63.9 55.1 60 58 64.7 87.5 78.9 83.9 82.8 74.4 94.8 49.2 61.9 53.6 63.7 52.8 65.2 50.9 57.3 60 60.1 52.5 59.7 57.3 59.6 71.5 69.7 56.1 61.1 47.4 56 45.8 47.8 43.8 37.8 45.1 67 74.4 79.3 87.5 83.5 78 78 85 84.7 92 72.3 83 96.9 85.7 85.4 85.3 93.5 86.8 87.9 87.2 53.8 89.8 91.1 88.6 92.3 97 89.5 88.2 92.2 78.9 90.3 87 113.7 98 100.2 79.4 90.3 77.7 83.9 75.5 60.6 71 71.8 76.8 102.7 94.25 79 66.6 71.8 74.8 68.2 62.3 61 77.5 57.4 71.4 70.3 80.2 84.2 111.3 80.7 97.9 123.2 72.9 83 75.9 70.7 67.1 69.2 67.05 70.5 70.8 71 69.1 62.9 94.8 94.6 108.2 97.9 75.2 74.8 94.2 76.1 94.7 86.2 79.6 85.3 74.4 93.5 87.6 85.4 101 74.9 87.3 90 94.7 76.3 93.2 80 73.8 71.1 76.7">
+<param name="SexVarName" value="Sex">
+<param name="SexValues" value="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0">
+<param name="SexCatLabels" value="Male Female">
+<param name="RccVarName" value="Red cc">
+<param name="RccValues" value="3.96 4.41 4.14 4.11 4.45 4.1 4.31 4.42 4.3 4.51 4.71 4.62 4.35 4.26 4.63 4.36 3.91 4.51 4.37 4.9 4.46 3.95 4.46 5.02 4.26 4.46 4.16 4.49 4.21 4.57 4.87 4.44 4.45 4.41 4.87 4.56 4.15 4.16 4.32 4.06 4.12 4.17 3.8 3.96 4.44 4.27 3.9 4.02 4.39 4.52 4.25 4.46 4.4 4.83 4.23 4.24 3.95 4.03 4.36 4.07 4.17 4.23 4.46 4.38 4.31 4.51 4.13 4.48 5.31 4.58 4.81 4.51 4.77 5.33 4.75 4.11 4.76 4.27 4.44 4.2 4.71 4.09 4.24 3.9 4.82 4.32 4.77 5.16 4.97 4 4.4 4.38 4.08 4.98 5.16 4.66 4.19 4.53 4.09 4.42 5.13 4.83 5.09 5.17 5.11 5.03 5.32 4.75 5.34 4.87 5.33 4.81 4.32 4.87 5.04 4.4 4.95 4.78 5.21 5.22 5.18 5.4 4.92 5.24 5.09 4.83 5.22 4.71 5.24 4.54 5.13 5 5.17 4.89 4.5 4.84 4.13 4.87 4.82 4.73 4.55 4.71 4.93 5.21 5.09 5.11 4.94 4.87 4.41 4.86 4.91 4.93 4.2 5.1 4.5 4.89 5.13 4.88 5 5.48 5.93 5.01 5.48 5.16 4.64 6.72 4.83 5.34 5.13 4.68 5 4.99 5.49 5.59 5.03 5.5 5.11 4.96 5.01 5.11 5.69 4.63 4.91 4.95 5.34 5.16 5.29 5.02 5.01 5.03 5.25 5.08 5.04 4.63 5.11 5.34 4.86 4.9 5.66 5.03 4.97 5.38">
+<param name="WccVarName" value="White cc">
+<param name="WccValues" value="7.5 8.3 5 5.3 6.8 4.4 5.3 5.7 8.9 4.4 5.3 7.3 7.8 6.2 6 5.8 7.3 8.3 8.1 6.9 5.7 3.3 9.5 6.4 5.8 5.6 5.8 7.6 7.5 6.6 6.4 10.1 6.6 5.9 7.3 13.3 6 7.6 6.4 5.8 6.1 5 6.6 5.5 9.7 10.6 6.3 9.1 9.6 5.1 10.7 10.9 9.3 8.4 6.9 8.4 6.6 8.5 5.5 5.9 4.9 8.1 8.3 5.8 5.3 5.1 7 9.5 9.5 5.8 6.8 9 7.1 9.3 7.5 7.3 7.6 6.9 6.1 6.5 6.9 6.4 6.6 6 7.6 6.8 7.2 8.2 7.8 4.2 4 7.9 6.6 6.4 7.2 6.4 9 5 4.9 6.4 7.1 7.6 4.7 4.1 6.7 7.1 6 8.6 6.6 4.8 5.2 6.2 4.3 8.2 7.1 5.3 5.9 9.3 6.8 8.4 6.5 6.8 5.4 7.5 10.1 5 6 8 7.2 5.9 5.8 6.7 8 7.5 9.2 8.3 8.9 7.4 6.4 6.7 5.55 7.2 7.3 7.5 8.9 9.6 6.3 6.3 4.5 3.9 9 7.3 4.5 6.1 6.1 5.8 4 4.3 8.2 4.6 6.4 8.9 6.2 8.4 9 7.1 6.6 7.6 4.6 4.8 5.2 7.2 5.9 7.9 6.6 6.4 9.3 8.3 8.9 8.7 10.8 9.1 10.2 7.5 10 12.9 12.7 6.1 9.8 7.5 7.4 8.5 6 14.3 7 6.2 8.9 7.6 8.3 6.4 8.8 6.3">
+<param name="SpVarName" value="Sport">
+<param name="SpValues" value="0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3 4 5 4 4 4 4 4 4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 6 6 6 6 6 6 6 7 7 7 7 3 3 3 3 3 3 3 3 3 3 3 3 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 5 5 5 5 4 4 4 5 5 5 5 5 5 5 5 5 5 5 4 4 4 4 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 4 4 4 5 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 6 6 6 6">
+<param name="SpCatLabels" value="Basketball Rowing Netball Swimming Field Track Tennis Gymnastics Waterpolo">
+<param name="horizAxis" value="15 38 15 5">
+<param name="vertAxis" value="0 40 0 5">
+</applet>
+</div>
+
+		<p>Several other measurements were also made from each individual, as shown 
+			in the table below the scatterplot.</p>
+		<ul>
+			<li>Height (cm)</li>
+			<li>Weight (kg)</li>
+			<li>Sex</li>
+			<li>Red blood cell count</li>
+			<li>White blood cell count</li>
+			<li>Sport</li>
+		</ul>
+		<p><strong>Click</strong> on any cross on the scatterplot to see the additional 
+			information that is available from that athlete.</p>
+			
+			
+<div class="centred"><div class="boxed">
+<p>The extra variables might help us to understand 
+					the relationship between body fat and BMI. It may help us to predict 
+					body fat more accurately.</p>
+</div></div>
+
+		<br>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

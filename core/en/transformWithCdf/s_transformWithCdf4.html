@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Relationship with rectangular distribution</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="transformation, cumulative distribution function, rectangular distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Cumulative distribution function and quantiles</p>
+
+<p>The cumulative distribution function of a continuous random variable \(X\) has been defined as</p>
+\[
+F(x) \;\;=\;\; P(X \le x)
+\]
+<p>and is a monotonic increasing function rising from 0 to 1. Its inverse is</p>
+\[
+F^{-1}(y) \;\;=\;\; q_y \qquad \text{where }P(X \le q_y) = y
+\]
+<p>Therefore \(F^{-1}(y)\) returns the \(y\)'th quantile of the distribution. Note also that</p>
+\[
+F\left(F^{-1}(y)\right) \;\;=\;\;  y
+\]
+<p class="heading">Applying the CDF as a transformation</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Transforming a variable into a rectangular distribution</p>
+<p>If a continuous random variable \(X\) has cumulative distribution functions \(F(x)\), then the random variable \(Y = F(X)\) has a \(\RectDistn(0, 1)\) distribution.</p>
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+<p>The converse of this theorem is also useful.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Transforming a rectangular variable into an arbitrary distribution</p>
+		<p>If \(F(x)\) is a monotonic continuous function of \(x\) rising from 0 to 1, with inverse function \(F^{-1}(\cdot)\), and \(Y \sim \RectDistn(0, 1)\), then the random variable \(X = F^{-1}(Y)\) has a distribution with cumulative distribution function \(F(x)\).</p>
+		<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p>We now illustrate these results with an example.</p>
+
+<div class="example">
+	
+	<p class="exampleHeading">Example: Exponential distribution</p>
+
+<p>If \(X \sim \ExponDistn(\lambda)\), then it has cumulative distribution function</p>
+\[ F(x) \;\;=\;\; 1 - e^{\large -\lambda x}\]
+
+<p>The first result above means that</p>
+\[ Y \;\;=\;\; 1 - e^{\large -\lambda X} \;\;\sim\;\; \RectDistn(0,\;1) \]
+<hr width="75%">
+<p>The inverse function to \(F(x)\)  is</p>
+\[ F^{-1}(y) \;\;=\;\; -\frac {\log(1 - y)}{\lambda}\]
+<p>Therefore if \(Y \sim \RectDistn(0,\; 1)\), then \(X = -\dfrac {\log(1 - Y)}{\lambda}\) has a distribution with cumulative distribution function \(F(x)\) that is therefore an \(\ExponDistn(\lambda)\) distribution.</p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

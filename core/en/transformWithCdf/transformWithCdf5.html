@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Generating random numbers</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="transformation, random number, pseudo-random number, rectangular distribution, generate random numbers, cumulative distribution function">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Pseudo-random numbers</p>
+
+<p>Computer simulations of real-life phenomena are built using values that are randomly generated from  distributions. For example, a  board game might be simulated using random rolls of a die by successive players, with each roll being a randomly generated value from a \(\UniformDistn(1,6)\) distribution.</p>
+<p>Values may be randomly generated using a physical mechanism (such as rolling a 6-sided die) but they are usually generated on a computer with some algorithm. Strictly speaking, these should be called <strong>pseudo-random</strong> values but, if a good enough algorithm is used to generate them, they are practically indistinguishable and will simply be called random values here.</p>
+<p>The basis of generating random values from a distribution is usually an algorithm that generates a random value from a \(\RectDistn(0, 1)\) distribution. For example, Excel has a function to generate one such value:</p>
+<p class="eqn">=RAND()</p>
+<p>The relationship between a \(\RectDistn(0, 1)\) distribution and one with cumulative distribution function \(F(x)\) can be used to generate a random value from an arbitrary distribution.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Random values from an arbitrary distribution</p>
+		<p>If \(y\) is a random value from a \(\RectDistn(0, 1)\) distribution, then \(F^{-1}(y)\) is a random value from the distribution with cumulative distribution function \(F(x)\).</p>
+	</div>
+</div>
+<p>Excel has built-in functions to evaluate \(F^{-1}(y)\) for several common distributions, including the following ones.</p>
+<table border="0" cellpadding="5" cellspacing="0" class="centred">
+	<tr>
+		<th>Distribution</th>
+		<th>\(F(x)\)</th>
+		<th>\(F^{-1}(y)\)</th>
+	</tr>
+	<tr>
+		<td>\(\NormalDistn(0, 1)\)</td>
+		<td>=NORM.S.DIST(\(x\), true)</td>
+		<td>=NORM.S.INV(\(y\))</td>
+	</tr>
+	<tr>
+		<td>\(\NormalDistn(\mu, \sigma^2)\)</td>
+		<td>=NORM.DIST(\(x\), \(\mu\), \(\sigma\), true)</td>
+		<td>=NORM.INV(\(y\), \(\mu\), \(\sigma\))</td>
+	</tr>
+	<tr>
+		<td>\(\GammaDistn(\alpha, \lambda)\)</td>
+		<td>=GAMMA.DIST(\(x\), \(\alpha\), \(\frac 1{\lambda}\), true)</td>
+		<td>=GAMMA.INV(\(y\), \(\alpha\), \(\frac 1{\lambda}\))</td>
+	</tr>
+</table>
+<p>For example, a random value from a \(\NormalDistn(\mu = 10, \sigma^2 = 4)\) distribution can be generated in Excel by typing the following into a spreadsheet cell:</p>
+<p class="eqn">=NORM.INV(RAND(), 10, 2)</p>
+
+
+<div class="example" title="Example: Generating values from a normal distribution">
+	
+	<p class="exampleHeading">Example: Generating values from a normal distribution</p>
+
+<p>The diagram below illustrates this method for generating values from a normal distribution
+with mean 2.0 and standard deviation 0.5.
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="simulationProg.RandomNormCumApplet">
+<param name="backgroundColor" value="FFFBF3">
+<param name="distnName" value="Normal distn">
+<param name="simRectName" value="Random uniform =">
+<param name="simValueName" value="Simulated normal =">
+<param name="horizAxisName" value="Value, x">
+<param name="valueAxis" value="0.4 3.6 0.5 0.5">
+<param name="cumAxis" value="0 1.0 0 0.1">
+<param name="normalDistn" value="2.0 0.5">
+<param name="maxValue" value="2.000">
+<param name="customText" value="Next value=Next value">
+</applet>
+</div>
+
+<p>Click <strong>Next Value</strong> a few times to see how a simulated value from
+a \(\RectDistn(0,\; 1)\) distribution on the vertical axis leads to a simulated value from the target \(\NormalDistn(\mu = 2.0,\; \sigma = 0.5)\) distribution.
+</p>
+
+<p>Click <strong>Accumulate</strong> then generate a few more values. The jittered dot plot
+	on the vertical axis shows the  \(\RectDistn(0,\; 1)\) values, whereas the jittered
+	dot plot on the horizontal axis illustrates that the distribution of the generated values
+	is indeed the target normal distribution.
+</p>
+</div>
+
+<p class="heading">Generating values from a discrete distribution</p>
+<p>Although the methodology above is easiest to explain for continuous random variables, it can also be used to generate random numbers from discrete distributions.</p>
+<p> Excel only has a function for the inverse of the binomial distribution's CDF. Typing the following into a spreadsheet cell generates a random value from a binomial distribution:</p>
+<p class="eqn">=BINOM.INV(\(n\), \(\pi\), RAND())</p>
+<p>The method can however be applied to other discrete distributions too.</p>
+
+
+<div class="example" title="Example: Generating values from a Poisson distribution">
+	<p class="exampleHeading">Example: Generating values from a Poisson distribution</p>
+	<p>The diagram below shows the cumulative distribution function for a \(\PoissonDistn(\lambda = 3)\) distribution — a step function.</p>
+	<div class="centred">
+		<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="400">
+			<script type="text/javascript">writeAppletParams();</script>
+			<param name="appletName" value="distributionProg.PoissonUniformApplet">
+			<param name="backgroundColor" value="FFFBF3">
+			<param name="xAxis" value="-0.5 10.5 0 1">
+			<param name="cdfAxis" value="-0.05 1.05 0 0.1">
+			<param name="lambda" value="3">
+			<param name="startCum" value="0.3">
+		</applet>
+	</div>
+	<p>Click anywhere in the CDF to see how rectangularly distributed values are translated into values from this Poisson distribution.</p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Test statistics and pivots</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="test statistic, pivot, confidence interval, hypothesis test, test">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>The ideas of test statistics and pivots are very closely related.</p>
+<dl>
+	<dt>Pivot for parameter \(\theta\)</dt>
+	<dd>A pivot is a function of the data and parameters whose distribution does not depend on any unknown parameters,</dd>
+</dl>
+
+
+\[
+Q \;\;=\;\; g(X_1, \dots, X_n, \theta) \;\;\sim\;\; \mathcal{Standard\;distn} \]
+<dl>
+	<dt>Test statistic for null hypothesis \(\theta = \theta_0\)</dt>
+	<dd>This is a function of the data (and known constants such as \(\theta_0\)) whose distribution does not depend on any unknown parameters,</dd>
+</dl>
+\[
+Q \;\;=\;\; g(X_1, \dots, X_n, \theta_0) \;\;\sim\;\; \mathcal{Standard\;distn} \]
+<div class="boxed">
+<p>If a function \(g(X_1, \dots, X_n, \theta)\) can be used as a pivot for \(\theta\), then \(g(X_1, \dots, X_n, \theta_0)\) can be used as a test statistic for testing whether \(\theta = \theta_0\).</p>
+</div>
+<p>To simplify the notation, we will express the distributions as \(Q(\theta) \sim \mathcal{Standard\;distn}\).</p>
+<p class="heading">Relationship between confidence interval and test</p>
+<p>Confidence intervals and tests about the parameter \(\theta\)  are also closely related. The diagram below illustrates a possible standard distribution for \(Q(\theta) \sim \mathcal{Standard\;distn}\). The  distribution could be a \(\NormalDistn(0,1)\) distribution, a \(\ChiSqrDistn(k \text{ df})\) distribution or any other standard distribution.</p>
+<p class="eqn"><img class="svgImage" src="images/quantiles.png" width="412" height="246"></p>
+<p>Quantiles of this distribution have also been shown with  tail probabilities of \(\frac {\alpha}{2}\) in each tail and probability \((1 - \alpha)\) between them.</p>
+<dl>
+  <dt>\((1 - \alpha)\) confidence interval for parameter \(\theta\)</dt>
+	<dd>The confidence interval consists of the values of the parameter that result in the pivot, \(Q(\theta)\), being in the middle \((1 - \alpha)\) of the distribution,</dd>
+</dl>
+<p class="eqn"><img class="svgImage" src="images/ciFromPivot.png" width="412" height="246"></p>
+<dl>
+	<dt>Two-tailed test for <strong>H<sub>0</sub></strong>:  \(\theta = \theta_0\) at significance level \(\alpha\)</dt>
+	<dd>We reject the null hypothesis if the value of the test statistic, \(Q(\theta_0)\), is in one of the two tails of the distribution (with total tail area \(\alpha\)),</dd>
+</dl>
+<p class="eqn"><img class="svgImage" src="images/testFromStat.png" width="412" height="246"></p>
+<p>Because of this relationship between confidence intervals and tests, we can perform a hypothesis test from  a confidence interval.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Test from confidence interval</p>
+		<p>If we reject the null hypothesis in a  2-tailed test about whether \(\theta = \theta_0\) when the parameter value \(\theta_0\) is outside a \((1 - \alpha)\) confidence interval for \(\theta\), then the test has significance level \(\alpha\).</p>
+	</div>
+</div>
+<p>Similarly, we can find a confidence interval based on a hypothesis test.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Confidence interval from test</p>
+<p>A \((1 - \alpha)\) confidence interval can be found as the values \(\theta_0\) that are <strong>not</strong> rejected by a 2-tailed test of whether \(\theta = \theta_0\) at significance level \(\alpha\).</p>
+	</div>
+</div>
+
+<p>We will give examples of both in the following pages.</p>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Better definition of percentiles</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="percentile, median, quartiles">
+	<meta name="dataset" content="Samaru rainfall">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class=heading>Different definitions of the quartiles</p>
+	<p>There is universal agreement that the median of a data set is the middle 
+		value if there is an odd number of observations, or half-way between the middle 
+		two values if the size of the data set is even.</p>
+	<p>However it was mentioned earlier that there are several competing definitions 
+		of the upper and lower quartile. All such definitions split the data approximately 
+		into quarters but there is not a unique way to do this. For example, if there 
+		are <em>n</em>&nbsp;=&nbsp;16 values in the data set, any value between the 
+		4th and 5th values would cut off a quarter of the data. In this situation, 
+		we have defined here the lower quartile to be half-way between these values, 
+		but other authors and computer software define the lower quartile to be nearer 
+		to the 4th value.</p>
+	<p>The differences are of little practical importance.</p>
+	
+<div class="centred"><div class="boxed">
+<p>If your conclusion about the data would change 
+				with a different definition of the quartiles, you are over-interpreting 
+				the data.</p>
+</div></div>
+
+	<p class=heading>Smoothing the cumulative proportions</p>
+	<p>There is even less agreement about the precise definition of other percentiles, 
+		and different computer software finds them in different ways. In the earlier 
+		pages of this section, we defined the percentiles as the values that are found 
+		from reading across and down the cumulative distribution function.</p>
+	<p>Most statistical computer software  replaces the cumulative distribution 
+		function (a step function) with a smoothed version before reading off the 
+		percentiles. </p>
+	<p>In practical terms, the difference is unimportant. If the data set is large, 
+		there is likely to be little difference in the value of most percentiles. 
+		If the data set is small, the percentile is likely to be more affected by 
+		'randomness' of the data so the precise value is less important.</p>
+	
+<div class="centred"><div class="boxed">
+<p>If your conclusion about the data would change 
+				with a different definition of the percentiles, you are over-interpreting 
+				the data.</p>
+</div></div>
+
+	<br>
+	<div class="diagram">
+
+<p class=heading>Annual rainfall in Samaru, 1968 to 1983</p>
+
+		<p>The diagram below shows the last 16 years of the Samaru annual rainfall data.</p>
+
+		<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="percentileProg.ChangeCumFunctApplet">
+<param name="varName" value="rainfall">
+<param name="longVarName" value="Annual rainfall in Samaru, Nigeria">
+<param name="values" value="1059.45 1218.19 948.15 883.89 907.27 974.32 1115.32 987.04 1189.40 745.50 1149.90 1183.30 847.40 1019.10 766.50 608.20">
+<param name="horizAxis" value="600 1250 600 200">
+<param name="fixedValue" value="75">
+<param name="maxValue" value="1250">
+<param name="units" value="mm">
+<param name="customText" value="Smooth function=Smooth function#is approximately=is approximately#The*'th percentile is=The*'th percentile is">
+</applet>
+</div>
+
+		<p>Drag the red horizontal line to read off different quartiles. Observe that 
+			the percentiles do not change smoothly, due to the steps in the cumulative 
+			distribution function.</p>
+		<p>Click the checkbox <strong>Smoothed</strong> to replace the cumulative 
+			distribution function with a smoothed version. Again drag the horizontal 
+			line to read the percentiles from this graph and observe that the percentiles 
+			change without sharp jumps.</p>
+		<p>(This smoothed graph gives the definition of the percentiles that is used 
+			in many statistical computer programs.)</p>
+
+<p class=heading>Annual rainfall in Samaru, 1928 to 1983</p>
+
+		<p>The diagram below shows the full 56 years of Samaru annual rainfall data.</p>
+
+		<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="percentileProg.ChangeCumFunctApplet">
+<param name="varName" value="rainfall">
+<param name="longVarName" value="Annual rainfall in Samaru, Nigeria">
+<param name="values" value="1262.34 1284.18 1044.73 1197.82 1198.16 1311.61 1076.67 996.43 1150.32 982.98 987.06 1129.27 910.82 1033.97 935.74 1273.04 928.62 983.75 1425.41 1149.85 896.90 988.82 898.92 1159.99 1105.16 1155.41 1481.80 1345.45 927.12 1394.71 888.67 1063.55 1091.43 824.23 1301.97 1091.18 1055.04 977.65 1332.50 967.74 1059.45 1218.19 948.15 883.89 907.27 974.32 1115.32 987.04 1189.40 745.50 1149.90 1183.30 847.40 1019.10 766.50 608.20">
+<param name="horizAxis" value="600 1600 600 200">
+<param name="fixedValue" value="75">
+<param name="maxValue" value="1600">
+<param name="units" value="mm">
+<param name="customText" value="Smooth function=Smooth function#is approximately=is approximately#The*'th percentile is=The*'th percentile is">
+</applet>
+</div>
+
+		<p>Again drag the red horizontal line to read off different quartiles for 
+			the actual cumulative distribution function and the smoothed version. Observe 
+			that the differences between the two definitions of the percentiles are 
+			much smaller with this larger data set.</p>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

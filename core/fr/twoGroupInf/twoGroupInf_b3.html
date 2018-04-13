@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>CI for difference between means</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<script type="text/javascript">
+		var svgNames = new Array();
+		svgNames[0] = "images/hypnosisCI.svg";
+		svgNames[1] = "images/satelliteCI.svg";
+		svgNames[2] = "images/shellDensityCI.svg";
+		svgNames[3] = "images/birthWtCI.svg";
+		svgNames[4] = "images/teethCI.svg";
+		
+		function changeSvgImage(select) {
+			var newIndex = select.selectedIndex;
+			var image = document.getElementById('dataImage');
+			image.src = svgNames[newIndex];
+		}
+	</script>
+
+	<meta name="index" content="confidence interval, mean, difference">
+	<meta name="dataset" content="Anticipation of hypnosis">
+	<meta name="dataset" content="Satellite classification of land use">
+	<meta name="dataset" content="Egg shell density">
+	<meta name="dataset" content="Births by season">
+	<meta name="dataset" content="Teeth and gender">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Interval estimate</p>
+
+<p>A point estimate of <span class="eqn"><font color="#000000">µ<sub>2</sub>&nbsp;-&nbsp;µ<sub>1</sub></font></span> cannot be easily interpreted on its own. The estimated error distribution that 
+was shown on the previous page helps, but statisticians commonly use an interval 
+estimate instead &mdash; a range of values within which we are confident that the true 
+value of <span class="eqn"><font color="#000000">µ<sub>2</sub>&nbsp;-&nbsp;µ<sub>1</sub></font></span> will lie.</p>
+
+<p class="heading">If population standard deviations were known...</p>
+  
+<p>From the normal distribution of the error, we can state that </p>
+
+<p class=eqn><span class="black"><strong>Prob</strong> ( <span style="position:relative; top:6px"><img src="../../images/symbol.xBarDiffRed.png" width="42" height="21" align="baseline"></span> &nbsp;<strong>is
+within</strong> &nbsp; &plusmn; &nbsp;1.96 &nbsp;<span style="position:relative; top:7px"><img src="../../images/symbol.sdDiffGreen.png" width="41" height="26" align="baseline"></span> &nbsp; of &nbsp; <span style="color:#00F; font-weight:bold">&mu;<sub>2</sub>&nbsp;-&nbsp;&mu;<sub>1</sub></span>) &nbsp; = &nbsp; 0.95</span> </p>
+<p>If we knew the values of the two parameters <span class="black">σ<sub>1</sub></span> and <span class="black">σ<sub>2</sub></span>,
+we could therefore obtain a 95% confidence interval for <span class="black">µ<sub>2</sub>&nbsp;&minus;&nbsp;µ<sub>1</sub></span> as</p>
+<p class=eqn><span class="black"><span style="position:relative; top:6px"><img src="../../images/symbol.xBarDiffRed.png" width="42" height="21" align="baseline"></span>&nbsp; &plusmn; &nbsp; 1.96 &nbsp;<span style="position:relative; top:7px"><img src="../../images/symbol.sdDiffGreen.png" width="41" height="26" align="baseline"></span></span></p>
+<p class="heading">Confidence interval for difference</p>
+  <p>Unfortunately, neither <font color="#000000">σ<sub>1</sub></font>	nor <font color="#000000">σ<sub>2</sub></font>	are known in most practical applications, so we must replace them by their 
+	sample equivalents in the confidence interval. As a result, the constant '1.96' 
+	must also be replaced by a slightly larger value from t-tables, </p>
+
+<p class=eqn><img class="gif" width="257" height="70"></p>
+
+<p>where the degrees of freedom for the t-value are
+</p>
+<p class=eqn style="color:#000">ν &nbsp; = &nbsp; min (<em>n</em><sub>1</sub>−1, &nbsp;<em>n</em><sub>2</sub>−1) </p>
+<p><font color="#666666">(Interval estimates obtained in this way actually have 
+	a confidence level that is slightly higher than 95% &mdash; they are conservative estimates. 
+	Some authors prefer a different formula for the degrees of freedom that gives 
+a slightly lower t-value, but the difference is usually negligible.)</font></p>
+<p class=eqn><img class="gif" src="../../en/twoGroupInf/images/dfEqn2.gif" width="222" height="88"> </p>
+<div class="diagram"> 
+<p class="heading">Examples</p>
+<p>The diagram below shows how a confidence interval is obtained and interpreted 
+for the difference between the means of two groups. Use the pop-up menu to see 
+other data sets.</p>
+
+<form>
+<select name="dataset" onChange="changeSvgImage(this)">
+<option value="0" selected>Anticipation of hypnosis and ventilation</option>
+<option value="1">Satellite classification of land use</option>
+<option value="2">Effect of vitamin D on egg shell density</option>
+<option value="3">Birth weights in summer and winter</option>
+<option value="4">Teeth and gender</option>
+</select>
+</form>
+
+<p align="center"><iframe src="images/hypnosisCI.svg" id="dataImage" width="514" height="401" frameborder="0"></iframe></p>
+
+</div>
+
+<p class="heading">Properties</p>
+<p>Confidence intervals for the difference between two group means have the same 
+properties as the confidence intervals that we investigated in earlier sections. 
+A confidence interval that is obtained using the above formula varies from sample 
+to sample and:</p>
+
+<center>
+<table border="1" cellspacing="0" cellpadding="10" bgcolor="white" width="75%">
+<tr> 
+<td><div class="centred"><strong>The confidence interval will include the true 
+difference, <span class="black">&micro;<sub>2</sub>&nbsp;&minus;&nbsp;&micro;<sub>1</sub></span>, 
+in approximately 95% of such repeat samples.</strong></div></td>
+</tr>
+</table>
+</center>
+<br>
+
+<div class="diagram"> 
+<p class="heading">Demonstration of properties</p>
+
+<p>The simulation below shows that 95% confidence intervals vary from sample to 
+sample, and that not all of them include the true difference between the population 
+means. </p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoGroupProg.DiffCIApplet">
+<param name="yVarName" value="response">
+<param name="yAxis" value="50 100 50 10">
+<param name="anovaModel" value="70 6 80 8">
+<param name="xVarName" value="Group">
+<param name="xValues" value="20@0 20@1">
+<param name="xLabels" value="#Group A# #Group B#">
+<param name="jitterPropn" value="0.5">
+<param name="summaryDecimals" value="2">
+<param name="summaryAxis" value="0 20 0 5">
+<param name="randomSeed" value="450045782">
+<param name="maxSummary" value="99.99">
+<param name="confidenceLevel" value="0.95">
+<param name="meanName" value="Estimate of difference =">
+<param name="customText" value="Propn including=Propn including">
+</applet>
+</div>
+
+<p>Group B has a population mean that is 10 greater than the mean of group A. Click
+<strong>Accumulate</strong> then take 100 or more samples from the two populations.
+</p>
+
+<p>Observe that approximately 95% of the resulting confidence intervals for
+<span class="black">&micro;<sub>2</sub>&nbsp;&minus;&nbsp;&micro;<sub>1</sub></span>
+include the true value&nbsp;(10).
+</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

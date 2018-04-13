@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Binomial random variable</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="bernoulli trial, binomial distribution">
+	<meta name="dataset" content="Balcombe rain days">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Binomial distribution</p>
+
+<p>A binomial distribution is the most commonly encountered distribution that arises from a sequence of independent Bernoulli trials.</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>If the following conditions hold:</p>
+<ol>
+	<li>There is a sequence of \(n\) Bernoulli trials, each with two outcomes &quot;success&quot; and &quot;failure&quot;, where \(n\) is a fixed constant,</li>
+	<li>The results of all Bernoulli trials are independent of each other,</li>
+	<li>The probability of &quot;success&quot; is the same for all trials, \(P(success) = \pi\),</li>
+</ol>
+<p>then the total number of successes, \(X\), has a <strong>binomial</strong> distribution with parameters <em>n</em> and \(\pi\).</p>
+\[
+X \;\; \sim \;\; \BinomDistn(n, \pi)
+\]
+
+</div>
+
+<p>In most practical applications, the parameter \(\pi\) is an unknown constant, but occasionally we know its value.</p>
+<div class="example">
+	<p class="exampleHeading">Number of sixes when four dice are rolled</p>
+	<ol>
+		<li>Defining a success to be a six when a die is rolled, we have a sequence of \(n = 4\) Bernoulli trials.</li>
+		<li>Assuming that the dice are fairly rolled, the four values are independent of each other.</li>
+		<li>The probability of getting a six is \(\pi = \frac 1 6\) for each roll.</li>
+	</ol>
+	<p>The number of sixes, \(X\), therefore has a binomial distribution,</p>
+\[
+X \;\; \sim \; \; \BinomDistn(n=4, \pi=\frac 1 6)
+\]
+
+<p class="exampleHeading">Sex of reptiles</p>
+<p>In many reptiles,  sex is partly determined by the incubation temperature of the eggs. In an experiment with 10 lizard eggs incubated at 25ºC, the number of males hatching, \(X\), has a binomial distribution since</p>
+<ol>
+	<li>There is a fixed number,  \(n = 10\), of Bernoulli trials, with a male being treated as a &quot;success&quot;.</li>
+	<li>The sexes of the different eggs are likely to be independently determined.</li>
+	<li>The probabilities of all hatchlings being male are the same since they are all incubated at the same temperature, but this probability is an unknown value, \(\pi\).</li>
+</ol>
+ \[
+X \;\; \sim \; \; \BinomDistn(n=10, \pi)
+\]</div>
+
+
+<p>Although we can often argue from the context that the assumptions behind the binomial distribution hold, there may be some doubt over this.</p>
+<div class="example">
+<p class="exampleHeading">Rainy days in week</p>
+<p>The table below shows the number of rainy days each week during a year at Balcombe, Sussex in the UK.</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred">
+	<tr>
+		<th>Number of days<br>
+			in week with<br>
+			measurable rain,<em> x</em></th>
+		<th>Number of weeks in <br>
+			year (frequency)</th>
+		</tr>
+	<tr>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">0<br>
+			1<br>
+			2<br>
+			3<br>
+			4<br>
+			5<br>
+			6<br>
+			7</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">  4<br>
+			  9<br>
+			15<br>
+			11<br>
+			  6<br>
+			  4<br>
+			  2<br>
+			  1</td>
+		</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td align="center">52</td>
+		</tr>
+</table>
+</div>
+
+<p>We first consider whether the random variable <em>X</em> — the number of rainy days in a single week — might have a binomial distribution.</p>
+<dl>
+	<dt>Fixed number of trials</dt>
+	<dd>If we define a 'success' to be a single day with rain, <em>X</em> is the number of successes in \(n = 7\) such days. The number of Bernoulli trials is therefore a fixed number, seven.</dd>
+	<dt>Constant probability of success</dt>
+	<dd>For the binomial distribution to hold, we need the probability of success to be the same for each Bernoulli trial, \(\pi\). Within any single week, this is likely to be true.</dd>
+	<dt>Independence</dt>
+	<dd>The last  assumption that is required for the binomial distribution to hold is that the \(n = 7\) Bernoulli trials are independent. There is considerable doubt about independence in this example — if one day is rainy, then the following day is more likely to be rainy also.</dd>
+	</dl>
+<p>Although the assumptions underlying the binomial distribution are unlikely to hold exactly, with short weather cycles the effect of dependence of adjacent days' weather <strong>may</strong> be slight. As an <strong>approximation</strong>, we can therefore tentatively make the assumption of independence, and model the number of rainy days in a week with a binomial distribution.</p>
+\[ X \;\; \sim \; \; \BinomDistn(n=7, \pi) \]
+<hr width="75%">
+<p>A further complication with the data set shown above is that the 52 different weeks are at different times in the year. Are the 52  binomial distributions underlying the 52 counts all the same? As rainfall is not strongly seasonal in the south of England, the value of \(\pi\) is likely to be at least approximately the same in each week, so the 52 values in the table are likely to be at least approximately a random sample from the same distribution,</p>
+\[ X_i \;\; \sim \; \; \BinomDistn(n=7, \pi) \quad \quad \text{for }i=1, ..., 52\]
+<p> We should however remember our doubt about the assumption of independence and examine the data later for evidence that this assumption does not hold.</p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

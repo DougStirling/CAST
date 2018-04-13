@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Orthogonal variables</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="orthogonal variables, sequential sums of squares">
+	<meta name="dataset" content="Heart catheter length">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Benefits from uncorrelated explanatory variables</p>
+  <p>Uncorrelated explanatory variables are called <strong>orthogonal</strong>. 
+    We mentioned earlier that orthogonal explanatory variable result in <a href="javascript:showNamedPage('multicollin1')">more 
+    accurate estimates of the two slope parameters</a>. With orthogonal explanatory 
+    variables, </p>
+		<ul>
+		<li>The variance inflation factors (VIF) for both variables are 1. This means 
+			that you cannot estimate β<sub>1</sub> or β<sub>2</sub> more accurately without increasing <em>n</em> 
+			or the standard deviations of <em>X</em> or <em>Z</em>.</li>
+	</ul>
+	<p>A further benefit from orthogonal explanatory variables is that the least 
+		squares slopes are easier to interpret:</p>
+	<ul>
+		<li>The two least squares estimates of the slope parameters for <em>X</em> 
+			and <em>Z</em>, <em>b</em><sub>1</sub> 
+			and <em>b</em><sub>2</sub>, 
+			are the same when fitting the full regression model with both expalanatory 
+			variables and the models with only <em>X</em> or <em>Z</em>.</li>
+	</ul>
+	<p>Finally, the two sequential anova tables contain the same sums of squares 
+		when <em>X</em> and <em>Z</em> are orthogonal.</p>
+	<ul>
+		<li>When <em>X</em> and <em>Z</em> are orthogonal, <span class="black">SS<sub>X&nbsp;|&nbsp;Z</sub>&nbsp;=&nbsp;SS<sub>X</sub></span>
+		and <span class="black">SS<sub>Z&nbsp;|&nbsp;X</sub>&nbsp;=&nbsp;SS<sub>Z</sub></span></li>
+	</ul>
+	<p>With orthogonal explanatory variables therefore, a single anova table is 
+		sufficient and we do not need to worry about the order of adding the explanatory 
+		variables,</p>
+	<p class="eqn"><img src="images/anovaOrthogTable.gif" width="527" height="186" align="absmiddle"></p>
+	<p>Note that we can use the two F ratios in this table to test the significance 
+		of the two explanatory variables in either order. (If the explanatory variables 
+		had been correlated, the upper F ratio should only be tested after you concluded 
+		that the other variable could be omitted from the model.)</p>
+	<div class="diagram">
+    <p class="heading">Illustrations</p>
+
+    <p>The diagram below shows simulated data from a regression model. The slider 
+			changes the values of the explanatory variables (<em>X</em> and <em>Z</em>) 
+			to adjust their correlation.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="420">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="multiRegnProg.OrthogEqnsApplet">
+<param name="yAxis" value="0 50 0 10">
+<param name="xAxis" value="65 120 70 10">
+<param name="zAxis" value="63 76 65 5">
+<param name="yVarName" value="Y">
+<param name="xVarName" value="X">
+<param name="zVarName" value="Z">
+<param name="randomSeed" value="6456893">
+<param name="multiRegnModel" value="-55.0 0.5 0.5 5">
+<param name="xValues" value="90.75 83.60 84.10 82.26 93.39 90.57 77.05 84.99 88.96 73.17 86.39 84.41 112.73 86.19 96.82 98.47 97.62 82.35 84.50 98.73 79.79 83.86 70.48 73.18 85.08 79.45">
+<param name="zValues" value="66.06 72.97 68.07 66.12 66.32 70.60 69.47 68.13 70.03 68.30 68.00 70.50 73.62 66.07 71.15 67.81 68.23 68.42 71.77 71.29 68.31 71.76 68.75 71.26 67.46 66.69">
+<param name="initialXZR2" value="0.7">
+<param name="maxR" value="0.95">
+<param name="maxCoeff" value="-999.99 -9.999 -9.999">
+<param name="lsDecimals" value="2 3 3">
+<param name="customText" value="Display models=Display models#Involving=Involving#Correl(X, Z)=Correl(X, Z)">
+</applet> 
+</div>
+
+    <p>Observe initially that the slope coefficients for <em>X</em> are different 
+			in the least squares fit of the full model and that of the model with only 
+			<em>X</em>. Use the slider to make <em>X</em> and <em>Z</em> orthogonal 
+			and observe that the two slope coefficients for <em>X</em> are now equal.</p>
+		<hr width="75%">
+		<p>The next simulation is similar but shows the two sequential sums of squares 
+			tables corresponding to the two orders of adding <em>X</em> and <em>Z</em>.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="480">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="multiRegnProg.OrthogAnovaApplet">
+<param name="yAxis" value="0 50 0 10">
+<param name="xAxis" value="65 120 70 10">
+<param name="zAxis" value="63 76 65 5">
+<param name="yVarName" value="Y">
+<param name="xVarName" value="X">
+<param name="zVarName" value="Z">
+<param name="randomSeed" value="6456893">
+<param name="multiRegnModel" value="-55.0 0.5 0.5 5">
+<param name="xValues" value="90.75 83.60 84.10 82.26 93.39 90.57 77.05 84.99 88.96 73.17 86.39 84.41 112.73 86.19 96.82 98.47 97.62 82.35 84.50 98.73 79.79 83.86 70.48 73.18 85.08 79.45">
+<param name="zValues" value="66.06 72.97 68.07 66.12 66.32 70.60 69.47 68.13 70.03 68.30 68.00 70.50 73.62 66.07 71.15 67.81 68.23 68.42 71.77 71.29 68.31 71.76 68.75 71.26 67.46 66.69">
+<param name="initialXZR2" value="0.7">
+<param name="maxR" value="0.95">
+<param name="maxCoeff" value="-999.99 -9.999 -9.999">
+<param name="maxSsq" value="999.999">
+<param name="componentDecimals" value="2">
+<param name="customText" value="Display models=Display models#Involving=Involving#Correl(X, Z)=Correl(X, Z)#after=after">
+</applet> 
+</div>
+
+    <p>Observe initially that the sums of squares in the two tables are different. 
+			Use the slider to make <em>X</em> and <em>Z</em> orthogonal and observe 
+			that the sums of squares in the tables are now equal.</p>
+    </div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

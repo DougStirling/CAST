@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Autocorrélation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="autocorrelation">
+	<meta name="dataset" content="New company registrations in NZ">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Autocorrélation des valeurs détendancées</p>
+<p>Les valeurs détendancées sont définis comme les résidus après la tendance a été soustraite de toute une série de temps,</p>
+<p class=eqn><em>e<sub>i</sub></em> &nbsp; = &nbsp; <em>y<sub>i</sub></em> &nbsp;−&nbsp;<em>tendance<sub>i</sub></em></p>
+	<p>Même après une ligne de tendance lisse a été monté, il est souvent constaté que les valeurs successives détendancées sont similaires &mdash; si une valeur est supérieure à la ligne de tendance, la valeur suivante est souvent au-dessus aussi. C'est ce qu'on appelle <strong>autocorrélation</strong> et peut être décrite par le coefficient de corrélation entre des paires de résidus successifs.</p>
+<p>Cette similitude des résidus successifs a un impact important sur la prévision &mdash; si la valeur actuelle est supérieure à la ligne de tendance, nous devons prévoir que la prochaine valeur sera également au-dessus.</p>
+<div class="diagram">
+	<p class="heading">Enregistrements de nouvelles entreprises</p>
+
+	<p>La série chronologique ci-dessous montre le taux d'inscriptions nouvelle société en Nouvelle-Zélande (pour 100.000 habitants) entre 1960 et 1998.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="550">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.LagTimeApplet">
+<param name="varName" value="Enregistrements de nouvelles entreprises">
+<param name="values" value="157 145 133 162 192 209 207 176 181 228 225 189 221 292 250 247 201 167 173 183 193 211 197 192 220 301 309 375 479 368 342 322 360 392 483 529 625 634 641">
+<param name="yAxis" value="0 700 0 200">
+<param name="timeAxis" value="0 10 1960 10">
+<param name="residAxis" value="-200 350 -200 100">
+<param name="timeName" value="an">
+<param name="timeSequence" value="1960 1 39">
+<param name="decimals" value="3 3 3 3">
+<param name="labelAxes" value="true">
+<param name="timeAxisName" value="An">
+<param name="customText" value="Previous Residual=Précédente résiduelle#Detrending=Detrending#None=Aucun#Linear=Linéaire#Quadratic=Quadratique">
+</applet>
+</div>
+
+		<p>Lorsque aucune tentative n'est faite pour modéliser la tendance de la série, les résidus sont tout simplement les valeurs réelles de moins à leur moyenne. Le nuage de points au bas de chaque <strong>parcelles résiduelles contre l'résiduelle précédente</strong>. Cliquez sur un cross de voir comment ce nuage se rapporte à la série temporelle originale. Observez que les résidus successifs sont fortement corrélés &mdash; le coefficient d'autocorrélation est montré sur la gauche.</p>
+		<p>Utilisez le menu pop-up sur la gauche pour modéliser la tendance croissante à un linéaire, puis un modèle quadratique. Ces supprimer certains de l'autocorrélation entre les résidus, mais il reste à 0,7, même après avoir enlevé une tendance quadratique &mdash; valeurs successives détendancées sont encore souvent similaires.</p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

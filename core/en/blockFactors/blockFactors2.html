@@ -1,0 +1,215 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Analysis of variance</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	<meta name="index" content="randomised block design, sequential sums of squares, interaction">
+	<meta name="dataset" content="Rice yield, nitrogen and variety">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Splitting the treatment sum of squares</p>
+
+<p>The type of analysis of variance table that was described in earlier sections of this chapter considered all treatments to comprise a single factor, so there was a single row of the table corresponding to the treatments.</p>
+<p>Consider a randomised block experiment with two factors A and B and a single replicate. We will use <span class="black em">y<sub>ijk</sub></span> to denote the response measurement in block <em>i</em> that gets factor A at level <em>j</em> and factor B at level <em>k.</em> The diagram below shows the sequence of models implied by an analysis of variance with a single row for the treatments.</p>
+<div class="centred"><table class="centred">
+	<tr>
+		<td align="center"><strong><em><span class="bold black">Neither blocks nor treatments</span> </em></strong><br>
+				<span class="black em">y<sub>ijk</sub></span> &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp;ε<em><sub>ijk</sub></em></td>
+	</tr>
+	<tr>
+		<td align="center"><img src="../factorInteract/images/downArrow.gif" width="24" height="42"></td>
+	</tr>
+	<tr>
+		<td align="center"><strong><em><strong><em><span class="bold black">Only blocks</span> </em></strong></em></strong><br>
+				<span class="black em">y<sub>ijk</sub></span> &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp; <span class="red">β<em><sub>i</sub></em></span> &nbsp;+ &nbsp; ε<em><sub>ijk</sub></em></td>
+	</tr>
+	<tr>
+		<td align="center" bgcolor="#FFFF66"><img src="../factorInteract/images/downArrow.gif" width="24" height="42"></td>
+	</tr>
+	<tr>
+		<td align="center"><strong><em><strong><em><strong><em><span class="bold black">Blocks and treatments</span> </em></strong></em></strong></em></strong><br>
+				<span class="black em">y<sub>ijk</sub></span> &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp; <span class="red">β<em><sub>i</sub></em></span> &nbsp; + &nbsp; <span class="green">θ<em><sub>jk</sub></em></span>&nbsp; + &nbsp; ε<em><sub>ijk</sub></em></td>
+	</tr>
+</table></div>
+<p>We can modify this sequence by expanding the yellow step  to separately add terms for the individual factors and their interaction, as shown below.</p>
+<div class="centred"><table border="0" class="centred" cellpadding="0" cellspacing="0">
+	<tr>
+		<td colspan="3" align="center"><strong><em><span class="bold black">Neither blocks nor treatments</span> </em></strong><br>
+			<span class="black em">y<sub>ijk</sub></span> &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp;ε<em><sub>ijk</sub></em></td>
+	</tr>
+	<tr>
+		<td colspan="3" align="center"><img src="../factorInteract/images/downArrow.gif" width="24" height="42"></td>
+	</tr>
+	<tr>
+		<td colspan="3" align="center"><strong><em><strong><em><span class="bold black">Only blocks</span> </em></strong></em></strong><br>
+			<span class="black em">y<sub>ijk</sub></span> &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp; <span class="red">β<em><sub>i</sub></em></span> &nbsp;+ &nbsp; ε<em><sub>ijk</sub></em></td>
+	</tr>
+	<tr>
+		<td align="right" bgcolor="#FFFF66"><img src="../factorInteract/images/leftArrow.gif" width="70" height="70"></td>
+		<td width="100" align="center" bgcolor="#FFFF66">&nbsp;</td>
+		<td align="left" bgcolor="#FFFF66"><img src="../factorInteract/images/rightArrow.gif" width="70" height="70"></td>
+	</tr>
+	<tr>
+		<td align="center" bgcolor="#FFFF66"><em><span class="bold black">Blocks and  X</span> </em><br>
+				<span class="black em">y<sub>ijk</sub></span> &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp; <span class="red">β<em><sub>i</sub></em></span> &nbsp; + &nbsp;<span class="green">γ<em><sub>j</sub></em></span>&nbsp;+ &nbsp; ε<em><sub>ijk</sub></em></td>
+		<td align="center" bgcolor="#FFFF66">&nbsp;</td>
+		<td align="center" bgcolor="#FFFF66"><em><span class="bold black">Blocks and  Z</span> </em><br>
+				<span class="black em">y<sub>ijk</sub></span> &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp; <span class="red">β<em><sub>i</sub></em></span> &nbsp; + &nbsp;<span class="purple">δ<em><sub>k</sub></em></span> &nbsp; + &nbsp; ε<em><sub>ijk</sub></em></td>
+	</tr>
+	<tr>
+		<td align="right" bgcolor="#FFFF66"><img src="../factorInteract/images/rightArrow.gif" width="70" height="70"></td>
+		<td align="center" bgcolor="#FFFF66">&nbsp;</td>
+		<td align="left" bgcolor="#FFFF66"><img src="../factorInteract/images/leftArrow.gif" width="70" height="70"></td>
+	</tr>
+	<tr>
+		<td colspan="5" align="center" bgcolor="#FFFF66"><span class="black em bold">Blocks, X and Z, but no interaction</span><br>
+				<span class="black em">y<sub>ijk</sub></span> &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp; <span class="red">β<em><sub>i</sub></em></span> &nbsp; + &nbsp; <span class="green">γ<em><sub>j</sub></em></span> &nbsp; + &nbsp;<span class="purple">δ<em><sub>k</sub></em></span> &nbsp; + &nbsp; ε<em><sub>ijk</sub></em></td>
+	</tr>
+	<tr>
+		<td colspan="5" align="center" bgcolor="#FFFF66"><img src="../factorInteract/images/downArrow.gif" width="24" height="42"></td>
+	</tr>
+	<tr>
+		<td colspan="5" align="center"><span class="black em bold">Blocks and treatments</span><br>
+				<span class="black em">y<sub>ijk</sub></span> &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp; <span class="red">β<em><sub>i</sub></em></span> &nbsp; + &nbsp;<span class="green">θ<em><sub>jk</sub></em></span>&nbsp; + &nbsp; ε<em><sub>ijk</sub></em></td>
+	</tr>
+</table></div>
+<p>Each arrow in this new diagram corresponds to a reduction in the residual sum of squares (i.e. an explained sum of squares) due to adding one term. With equal replicates for all treatments, A and B are orthogonal so the order of adding their main effects does not affect their sums of squares. The diagram therefore shows how the anova table row for the treatment sum of squares and its degree of freedom can be split into three rows:</p>
+<div class="centred"><div class="boxed">
+	<ul>
+		<li>Main effect for A</li>
+		<li>Main effect for B</li>
+		<li>Interaction between A and B</li>
+	</ul>
+	</div></div>
+<p>In this expanded anova table, the rows for blocks, residual and total remain the same.</p>
+<div class="diagram">
+<p class="heading">Rice yield, nitrogen and variety</p>
+<p>A randomised block experiment was conducted to assess how the yields of three varieties of rice were affected by different applications of nitrogen fertiliser. The fifteen treatments were the factorial combinations the following levels of rice and nitrogen and each was used once within each block.</p>
+<div class="centred"><table border="0" class="centred" cellpadding="4" cellspacing="0">
+	<tr>
+		<th>Rice varieties</th>
+		<th width="20" align="center">&nbsp;</th>
+		<th align="center">Nitrogen level</th>
+		</tr>
+	<tr>
+		<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-bottom:0px;">&quot;6966&quot;</td>
+		<td align="center">&nbsp;</td>
+		<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-bottom:0px;">0 kg/ha</td>
+		</tr>
+	<tr>
+		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999; border-right:1px solid #999999;">&quot;P1215936&quot;</td>
+		<td align="center">&nbsp;</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999; border-right:1px solid #999999;">40 kg/ha</td>
+		</tr>
+	<tr>
+		<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-top:0px;">&quot;Milfor 6(2)&quot;&nbsp;</td>
+		<td align="center">&nbsp;</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999; border-right:1px solid #999999;">70 kg/ha</td>
+		</tr>
+	<tr>
+		<td align="center">&nbsp;</td>
+		<td align="center">&nbsp;</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999; border-right:1px solid #999999;">100 kg/ha</td>
+	</tr>
+	<tr>
+		<td align="center">&nbsp;</td>
+		<td align="center">&nbsp;</td>
+		<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-top:0px;">130 kg/ha</td>
+	</tr>
+</table></div>
+<p>The analysis of variance table below initially contains a single row that can be used to test whether there are differences between the 15 treatments.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="200">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="glmAnovaProg.CombineSsqApplet">
+<param name="yVarName" value="Yield">
+<param name="yValues" value="3.852 2.606 3.144 2.894 4.788 4.936 4.562 4.608 4.576 4.454 4.884 3.924 6.034 5.276 5.906 5.652 5.874 5.916 5.984 5.518 2.846 3.794 4.108 3.444 4.956 5.128 4.150 4.990 5.928 5.698 5.810 4.308 5.664 5.362 6.458 5.474 5.458 5.546 5.786 5.932 4.192 3.754 3.738 3.428 5.250 4.582 4.896 4.286 5.822 4.848 5.678 4.932 5.888 5.524 6.042 4.756 5.864 6.264 6.056 5.362">
+<param name="xVariables" value="Block V N VN">
+<param name="BlockVarName" value="Block">
+<param name="BlockLabels" value="B1 B2 B3 B4">
+<param name="BlockValues" value="0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3">
+<param name="VVarName" value="Variety">
+<param name="VValues" value="20@0 20@1 20@2">
+<param name="VLabels" value="V1 V2 V3">
+<param name="NVarName" value="Nitrogen">
+<param name="NValues" value="4@0 4@1 4@2 4@3 4@4 4@0 4@1 4@2 4@3 4@4 4@0 4@1 4@2 4@3 4@4">
+<param name="NLabels" value="0 40 70 100 130">
+<param name="VNVarName" value="N-V interaction">
+<param name="VNValues" value="20@0 4@0 4@1 4@2 4@3 4@4 4@0 4@5 4@6 4@7 4@8">
+<param name="VNLabels" value="baseline V2N2 V2N3 V2N4 V2N5 V3N2 V3N3 V3N4 V3N5">
+<param name="maxSsq" value="99.999 99 99.999 99.99">
+<param name="componentNames" value="Blocks#Variety#Nitrogen#V-N interaction">
+<param name="split" value="2:3:Split treatments:Between treatments">
+</applet>
+</div>
+
+<p>Click <strong>Split treatments</strong> to separately show the explained sums of squares for variety, nitrogen and their interaction. From the p-values associated with these sums of squares, we would conclude:</p>
+<ul>
+	<li>There is no evidence that the different varieties differ in their response to changes to nitrogen (the interaction p-value is 0.0867).</li>
+	<li>It is virtually certain that nitrogen level affects yield.</li>
+	<li>There is  moderately strong evidence of differences between the varieties (p-value = 0.0400).</li>
+</ul>
+<p>All terms are orthogonal (since there were equal replicates of all treatments in each blocks), so the effects of the two factors can be summarised in the following tables of mean yields.</p>
+<div class="centred"><table border="0" class="centred" cellpadding="4" cellspacing="0">
+	<tr>
+		<th>Rice variety</th>
+		<th>Mean yield<br>
+			(t/ha)</th>
+		<th width="20" align="center">&nbsp;</th>
+		<th align="center">Nitrogen level</th>
+		<th align="center">Mean yield<br>
+(t/ha)</th>
+	</tr>
+	<tr>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">&quot;6966&quot;</td>
+		<td align="right" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">4.769&nbsp;&nbsp;&nbsp;</td>
+		<td align="center">&nbsp;</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">0 kg/ha</td>
+		<td align="right" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">3.483&nbsp;&nbsp;&nbsp;</td>
+	</tr>
+	<tr>
+		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">&quot;P1215936&quot;</td>
+		<td align="right" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">5.042&nbsp;&nbsp;&nbsp;</td>
+		<td align="center">&nbsp;</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">40 kg/ha</td>
+		<td align="right" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">4.761&nbsp;&nbsp;&nbsp;</td>
+	</tr>
+	<tr>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">&quot;Milfor 6(2)&quot;&nbsp;</td>
+		<td align="right" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">5.058&nbsp;&nbsp;&nbsp;</td>
+		<td align="center">&nbsp;</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">70 kg/ha</td>
+		<td align="right" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">5.072&nbsp;&nbsp;&nbsp;</td>
+	</tr>
+	<tr>
+		<td align="center">&nbsp;</td>
+		<td align="center">&nbsp;</td>
+		<td align="center">&nbsp;</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">100 kg/ha</td>
+		<td align="right" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">5.670&nbsp;&nbsp;&nbsp;</td>
+	</tr>
+	<tr>
+		<td align="center">&nbsp;</td>
+		<td align="center">&nbsp;</td>
+		<td align="center">&nbsp;</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">130 kg/ha</td>
+		<td align="right" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">5.797&nbsp;&nbsp;&nbsp;</td>
+	</tr>
+</table></div>
+
+<p>It appears that the variety &quot;6966&quot; may have lower yield than the others, and that yield increases steadily with increases to the amount of nitrogen (within the range used in the experiment).</p>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

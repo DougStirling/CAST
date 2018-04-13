@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Change in abilities over time</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Does the model really fit the data?</p>
+
+<p>Our model can explain the decrease in <strong>expected</strong> winning times 
+  for the 1500m race in the Olympics over the last century, but do the actual 
+  winning times <strong>really</strong> match what is predicted by the model?</p>
+<p>Did you notice that the winning times that we simulated in the previous page 
+  seemed to fluctuate more than the real winning times? </p>
+
+<div class="diagram">
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="sportProg.OlympicDataApplet">
+<param name="varName" value="Winning Time (secs)">
+<param name="expectedName" value="expected winning time">
+<param name="vertAxis" value="200 280 200 10">
+<param name="timeAxis" value="1 5 1900 20">
+<param name="sampleSize" value="20000 2000000 27 6 12 13">
+<param name="dataDecimals" value="3">
+<param name="values" value="273.2 246.2 245.4 252 243.4 236.8 ? 241.8 233.6 233.2 231.2 227.8 ? ? 229.8 225.1 221.2 215.6 218.1 214.9 216.3 219.17 218.4 212.53 215.96 220.12 215.78 212.07">
+<param name="labelName" value="Gold medalist">
+<param name="labels" value="#Teddy Flack, AUS# #Charles Bennett, GBR# #Jim Lightbody, USA# #Jim Lightbody, USA# #Mel Sheppard, USA# #Arnold Jackson, GBR# none #Albert Hill, GBR# #Paavo Nurmi, FIN# #Harry Larva, FIN# #Luigi Beccali, ITA# #John Lovelock, NZE# none none #Henry Eriksson, SWE# #Josy Barthel, LUX# #Ron Delany, IRL# #Herb Elliott, AUS# #Peter Snell, NZE# #Kip Keino, KEN# #Pekka Vasala, FIN# #John Walker, NZE# #Sebastian Coe, GBR# #Sebastian Coe, GBR# #Peter Rono, KEN# #Fermin Cacho, SPA# #Noureddine Morceli, ALG# #Noah Ngeny, KEN#">
+</applet>
+</div>
+
+</div>
+
+<p>To answer this question, we must pick a summary statistic that is likely to 
+  behave differently if the model really does implies that the variation will 
+  be too high. </p>
+
+<p class="heading">Number of records</p>
+<p>If there has been an improvement in abilities over the century, on top of the 
+  increasing pool of potential competitors, we would expect a higher number of 
+  Olympic records.</p>
+<p>In real life, a new record was set on 15 occasions. (Strictly, Olympic records 
+  can be set in heats as well as in the final, but we will only treat performances 
+  in the final as being elligible for records here!) What would be the chance 
+  of getting as many records if our model of a constant underlying population 
+  distribution was true?</p>
+
+<div class="diagram">
+
+<p>The simulation below helps to answer this question. </p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="650" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="sportProg.OlympicRecordsApplet">
+<param name="varName" value="Winning Time">
+<param name="expectedName" value="expected winning time">
+<param name="vertAxis" value="180 280 180 10">
+<param name="timeAxis" value="1 5 1900 20">
+<param name="sampleSize" value="20000 2000000 27 5 11 12">
+<param name="dataDecimals" value="3">
+<param name="speedDistn" value="458 50">
+<param name="recordsName" value="Number of Olympic Records">
+<param name="recordAxis" value="0 20 0 5">
+<param name="customText" value="Fast algorithm=Fast algorithm#Do simulation=Do simulation">
+</applet>
+</div>
+
+<p>The number of records is displayed on the right of the diagram.
+Click <strong>Faster Algorithm</strong>
+and <strong>Accumulate</strong>,
+then click <strong>Take sample</strong> several times to build up the sampling distribution
+of the number of records. Take about 100 samples.
+</p>
+
+<p>You should observe that there would be virtually no chance of getting as many as
+15 records if our model actually held.
+</p>
+
+</div>
+
+<p class="heading">Conclusion</p>
+<p>We can therefore conclude that the assumption of an unchanging underlying population 
+  does <strong>not</strong> seem to be justified &mdash; there must have also been 
+  an improvement in training and methodology over the last century. </p>
+
+<p><font color="gray">(This last conclusion is not affected by the distribution that
+we assumed for speeds in the underlying population &mdash; normal with mean 458 seconds and
+standard deviation 50 seconds. Whatever the shape of the population distribution,
+<a href="javascript:showNamedPage('orderStats2')">the distribution of the number of records is the same</a>.)</font>
+</p>
+
+<div class="boxed"><p>Simulations can provide useful information about a process that would be very
+difficult to obtain by analytic means.</p></div>
+
+<br>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

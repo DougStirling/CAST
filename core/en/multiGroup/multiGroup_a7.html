@@ -1,0 +1,205 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Analysis of variance</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="comparing groups, sums of squares, analysis of variance">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Standard deviation and variance</p>
+  <p>The variance of a set of values is the square of its standard deviation. 
+		Although standard deviations are much easier to interpret since they are in 
+		the same units as the original values (e.g. kg or degrees C), variances are 
+		the basis of many advanced statistical methods.</p>
+	<p>In particular, the total sums of squares is closely related to the overall 
+		variance of the observations, and the within-group sum of squares is closely 
+		related to the variance within the groups.</p>
+	<p class="heading">Mean sums of squares</p>
+
+  <p>The connection between sums of squares and variances occurs through quantities 
+		called <strong>mean sums of squares</strong>.</p>
+	<p>These are obtained by dividing each of the three sums of squares by a value 
+		called its <strong>degrees of freedom</strong>.</p>
+<div class="centred"><table width="90%" border="0" class="centred" cellpadding="6" cellspacing="0" style="background-color:#FFFFFF">
+<tr> 
+<td><img class="gif" src="images/totalMss.gif" width="139" height="43"></td>
+<td class="green">The <strong>mean total sum of squares</strong> is the 
+sample variance of the response (ignoring groups).</td>
+</tr>
+<tr> 
+<td><img class="gif" src="images/residMss.gif" width="143" height="43"></td>
+			<td class="blue">The <strong>mean within-group sum of squares</strong> 
+				describes the variance within groups.</td>
+</tr>
+<tr> 
+<td><img class="gif" src="images/regnMss.gif" width="162" height="43"></td>
+<td class="red">The <strong>mean between-group sum of squares</strong> 
+is harder to directly interpret.</td>
+</tr>
+</table></div>
+
+  <p>Note that the within-group and between-group degrees of freedom (the denominators) 
+    also add to give the total degrees of freedom.</p>
+  <div class="centred"><table width="75%" border="1" class="centred" cellpadding="10" cellspacing="0">
+    <tr> 
+      <td bgcolor="#FFFFFF"><strong>The mean sums of squares are <span class="red">all</span> 
+        variances. </strong></td>
+    </tr>
+  </table></div>
+  <p>This cannot be easily explained for the between-group sum of squares, but 
+    is the basis of the term <strong>analysis of variance</strong> that is used 
+    for the methodology.</p>
+  <p class="heading">Analysis of variance table</p>
+<p>The calculations are usually presented in a table called an <strong>analysis 
+of variance table</strong>. (This is often abbreviated to an <strong>anova table</strong>.)</p>
+  <p class=eqn><img class="gif" src="images/anovaTable2.gif" width="596" height="192"></p>
+  <p><em>(The final column contains a value that is used to <strong>test</strong> 
+    whether the group means are equal, but it can be ignored here. </em><em>Textbooks 
+    usually call it an F ratio because the test is known as an F test, but a better 
+    name might be a Variance Ratio, because the numerator and denominator mean 
+    sums of squares are types of variances.)</em></p>
+  <p class="heading">Interpreting the mean sums of squares</p>
+	<p>The square root of MSS<sub>Total</sub> is the overall standard deviation 
+		of the data.</p>
+	<p>The square root of MSS<sub>Within</sub> is a kind of 'average' of the standard 
+		deviations within the <em>g</em> groups.</p>
+		
+
+<div class="diagram" title="Illustration of calculations and example">
+<p class="heading">Illustration of calculations</p>
+<p>The dot plots on the left below show 3 numerical measurements from each of 
+4 groups. </p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="380">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.AnovaTableApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="xLabels" value="#Group A# #Group B# #Group C# #Group D#">
+<param name="anovaModel" value="7 1 14 1 12 1 4 1">
+<param name="randomSeed" value="614945782">
+<param name="yAxis" value="0 20 0 5">
+<param name="decimals" value="3">
+<param name="maxSummaries" value="9999.99 999.99 999.99 9.999">
+<param name="initialR2" value="0.75">
+<param name="componentName" value="Total#Between groups#Within groups">
+<param name="noOfDataSets" value="3">
+<param name="dataName" value="3 per group">
+<param name="xValues" value="3@0 3@1 3@2 3@3">
+<param name="dataName2" value="5 per group">
+<param name="xValues2" value="5@0 5@1 5@2 5@3">
+<param name="dataName2" value="10 per group">
+<param name="xValues2" value="10@0 10@1 10@2 10@3">
+<param name="dataName3" value="20 per group">
+<param name="xValues3" value="20@0 20@1 20@2 20@3">
+<param name="showPValue" value="false">
+<param name="showR2" value="true">
+<param name="customText" value="Variability=Variability#All unexplained=All unexplained#All explained=All explained#Variation in Data=Variation in Data">
+</applet>
+</div>
+
+    <p>The slider adjusts the relative size of the between-group and within-group 
+      sums of squares. Observe how this affects the relative sizes of SS<sub>Within</sub> 
+      and SS<sub>Between</sub>.</p>
+		<p class="heading">Maximum temperatures in Bulawayo</p>
+		
+    <p>The diagram below repeats the jittered dot plot for all monthly maximum 
+      temperatures from July 1951 to April 2001, and separate dot plots for individual 
+      months.</p>
+		
+		<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="280">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="statistic2Prog.GroupMeanSdApplet">
+<param name="varName" value="Maximum temperature in month, Bulawayo">
+<param name="values" value="24.4 28.8 33.6 34.9 33.4 31.1 29.8 30.3 31.7 32.0 29.7 24.2 26.1 31.3 34.0 34.4 33.4 32.1 29.8 29.5 28.1 28.8 26.3 24.2 25.1 29.3 30.2 35.8 32.6 31.9 30.3 31.4 31.6 29.7 27.8 25.0 24.5 29.9 33.2 36.3 31.4 28.7 29.0 28.2 28.5 28.0 25.4 23.5 25.1 29.8 31.9 33.7 36.2 32.3 29.9 31.2 28.5 29.0 27.2 25.8 25.6 32.2 37.1 34.7 32.9 30.6 30.6 30.9 29.2 31.2 29.8 26.6 27.2 29.9 34.1 32.9 35.0 33.7 29.8 30.8 31.3 31.1 29.0 28.2 24.7 30.0 32.9 35.4 35.3 30.9 30.8 31.1 31.8 30.9 29.6 27.0 28.4 30.5 31.7 35.7 34.1 33.4 33.2 31.8 31.0 31.6 28.1 24.7 26.4 29.8 33.0 35.7 31.7 33.7 30.8 29.0 29.1 28.3 28.4 26.1 24.2 30.5 31.5 36.3 34.9 33.5 32.4 31.0 31.4 31.3 26.1 27.2 27.3 29.6 33.2 36.8 33.1 29.1 31.3 28.2 29.3 29.1 27.1 24.4 25.8 28.0 33.8 34.1 33.4 32.8 30.8 31.9 32.9 32.0 27.2 25.9 24.4 28.1 33.4 33.9 34.4 29.8 30.6 33.2 32.6 30.3 26.3 26.4 24.8 30.6 32.4 35.0 34.2 34.4 36.4 28.7 30.9 31.1 27.4 24.3 26.1 28.8 32.4 35.0 34.8 32.9 30.9 29.1 30.3 30.3 26.9 25.7 25.1 27.4 33.4 35.2 33.8 34.6 34.4 33.8 31.8 32.6 29.3 26.1 28.3 31.9 31.6 36.3 34.7 32.5 32.3 33.4 31.9 29.3 27.8 26.3 24.9 28.3 33.4 34.2 34.7 29.4 36.3 33.0 35.1 31.4 30.2 25.8 26.9 30.4 33.1 34.8 34.1 34.4 30.7 30.8 32.1 30.9 29.7 25.5 25.9 29.7 33.1 34.2 31.2 32.7 30.2 28.7 28.3 29.2 28.3 27.0 27.0 29.9 34.8 34.2 35.4 35.5 35.2 31.7 33.6 31.2 31.0 24.7 29.0 29.4 35.3 33.7 32.8 30.9 28.4 28.5 28.4 26.5 27.7 24.5 24.8 31.3 31.4 35.0 33.5 29.6 31.0 29.2 29.6 29.0 30.3 25.8 26.8 28.2 32.5 34.6 35.5 32.2 30.0 30.3 29.0 27.0 27.5 25.5 27.0 28.7 32.0 35.2 33.9 33.2 34.0 30.7 28.8 29.1 28.3 26.4 26.8 31.2 33.1 35.0 36.2 31.7 30.1 29.4 28.3 28.4 25.6 23.3 25.5 30.8 35.5 35.5 33.2 33.1 32.2 32.4 31.4 31.1 30.3 26.6 27.2 32.2 35.5 35.9 32.2 31.1 34.7 33.1 29.5 31.0 29.2 25.0 24.0 30.8 33.2 35.0 35.1 31.3 31.5 28.5 31.1 29.1 26.3 26.5 25.8 31.5 34.4 34.6 36.6 33.3 32.7 33.5 34.4 31.7 27.4 26.9 28.0 29.1 32.5 33.1 34.1 35.6 36.7 35.4 34.2 31.9 29.3 26.3 26.7 27.9 34.5 35.3 35.5 33.5 34.7 33.5 35.6 30.2 29.6 25.5 25.3 29.2 34.0 34.0 31.8 32.8 31.7 29.8 32.3 31.1 29.5 26.8 26.8 28.7 32.9 32.5 34.5 33.9 31.0 33.8 33.6 32.2 26.1 25.7 28.1 30.7 33.2 33.4 34.4 33.2 33.0 33.8 33.9 33.9 32.5 28.1 26.9 29.9 34.5 34.8 37.2 32.1 33.9 30.8 29.4 30.3 27.2 27.0 26.0 32.3 33.6 34.8 33.6 35.8 33.6 33.9 32.1 29.3 29.0 27.8 26.8 31.6 34.6 34.5 34.3 34.7 31.5 30.6 31.8 29.9 30.2 27.2 28.0 30.5 34.0 35.6 37.4 34.9 31.5 33.2 33.2 29.5 27.2 28.1 26.2 32.1 33.9 35.4 33.8 32.5 35.6 38.0 34.5 31.8 30.1 28.2 26.8 30.7 34.5 35.8 33.5 35.5 32.8 31.1 29.9 30.7 30.4 25.8 27.5 29.0 33.4 35.4 35.2 32.7 30.8 31.7 33.1 32.1 30.5 26.6 28.2 30.5 34.2 34.1 35.7 34.6 35.7 36.0 33.8 33.1 29.5 25.6 26.8 31.4 33.2 37.8 35.7 31.8 33.0 29.7 29.4 29.3 28.4 25.7 26.4 32.1 33.5 35.8 35.5 32.2 30.0 30.7 30.6 29.0 27.9 28.1 28.6 29.9 34.3 35.0 36.9 34.3 32.3 33.0 34.3 34.2 32.7 29.6 28.9 29.9 33.7 35.9 36.0 30.4 31.5 30.0 30.3 34.6 29.7 27.8 27.5 29.1 34.9 35.4 35.7 32.4 31.4 29.7 29.4 28.2 27.2 23.9 26.7 28.8 32.0 34.0 32.5 31.7 35.5 34.0 29.3 29.6">
+<param name="horizAxis" value="20 40 20 5">
+<param name="catVarName" value="Month">
+<param name="catLabels" value="January February March April May June July August September October November December">
+<param name="catValues" value="6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 0 1 2 3">
+<param name="sDecimals" value="1">
+<param name="customText" value="All months=All months">
+</applet>
+</div>
+
+		
+    <p>The anova table for these data is shown next.</p>
+	
+    <div class="centred"><table border="0" class="centred" cellpadding="4" cellspacing="0">
+      <tr>
+        <th>Source</th>
+        <th>SS</th>
+        <th>df</th>
+        <th>MSS</th>
+        <th>&nbsp;F ratio&nbsp;</th>
+      </tr>
+      <tr bgcolor="#FFFFFF"> 
+        <td>Between groups</td>
+        <td align="center">&nbsp;&nbsp;4,417&nbsp;&nbsp;</td>
+        <td align="right">11&nbsp;&nbsp;</td>
+        <td align="right">&nbsp;&nbsp;401.52&nbsp;&nbsp;</td>
+        <td align="center">&nbsp;&nbsp;148.4&nbsp;&nbsp;</td>
+      </tr>
+      <tr> 
+        <td bgcolor="#FFFFFF">Within groups</td>
+        <td align="center" bgcolor="#FFFFFF">1,585</td>
+        <td align="right" bgcolor="#FFFFFF">&nbsp;&nbsp;586&nbsp;&nbsp;</td>
+        <td align="right" bgcolor="#FFFFFF">2.70&nbsp;&nbsp;</td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td align="center">6,002</td>
+        <td align="right">597&nbsp;&nbsp;</td>
+        <td align="right">10.53&nbsp;&nbsp;</td>
+      </tr>
+    </table></div>
+    <p>From this table,</p>
+	<ul>
+      <li>The overall variance of the temperatures is 10.53, so the overall standard 
+        deviation is its square root, 3.24.</li>
+      <li>The variance of temperatures within any month is approximately 2.70, 
+        so the standard deviation within months is its square root, 1.64.</li>
+      <li>A proportion R<sup>2</sup> = <sup>4,417</sup>/<sub>6,002</sub> = 0.736 
+        of variation in temperatures is explained by the difference between the 
+        months.</li>
+    </ul>
+    <br>
+</div>
+	
+  <p class="heading">Generalising</p>
+  <p>The idea that overall variation in a variable can be partly explained by 
+    other information is a general one that is the basis of many advanced statistical 
+    methods.</p>
+  <ul>
+    <li>Variation in incomes can be partly explained by educational level, age, 
+      gender, region, ...</li>
+    <li>Variation in crop yields can be partly explained by rainfall, types of 
+      soil, varieties of crop grown, ...</li>
+    <li>Variation in AIDS rates in different regions can be partly explained by 
+      tribal grouping, average age, education, ...</li>
+  </ul>
+  <br>
+  <div class="centred"><table width="75%" border="1" class="centred" cellpadding="10" cellspacing="0">
+    <tr> 
+      <td bgcolor="#FFFFFF"><strong>In all cases, we try to use available information 
+        to reduce the unexplained variation and analysis of variance is used to 
+        analyse the data. </strong></td>
+    </tr>
+  </table></div>
+  <p>This partly explains the importance of variance and its square root, standard 
+    deviation, in all aspects of data analysis.</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

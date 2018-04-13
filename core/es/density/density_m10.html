@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Kernel density estimates</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="kernel density estimate, estimation">
+	<meta name="dataset" content="Wind speed">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Histograms are 'boxy'</p>
+
+  <p>Histograms tend to have a rather 'boxy' outline unless the data set is very 
+    large. A <strong>kernel density estimate</strong> is an alternative display 
+    of density that is smoother than a histogram.</p>
+  <p class="heading">Kernel density estimate</p>
+  <p>In a kernel density estimate, each sample value is represented by an area 
+    of 'ink' called a <strong>kernel</strong> that is centred on the value. Where 
+    the kernels for adjacent sample values overlap, the areas of ink are stacked 
+    on top of each other. The diagram below shows triangular kernels for 3 data 
+    points. The areas where the triangles overlap are stacked on top of the triangles 
+    to their left. </p>
+<p class=eqn><object data="images/kernels.svg" width="346" height="143" alt="kernels"></object> </p>
+  <p>Although triangular kernels can be used, a rounded kernel is more common. The width
+    of the kernels can be adjusted to give the smoothest display. Very narrow
+    kernels result in a peak at each data value, whereas very wide kernels spread the density
+    estimate wider than the actual data. Some intermediate width will provide the best compromise
+    between smoothness and closeness to the data. </p>
+  <div class="diagram">
+
+<p>The diagram below shows a dot plot of six values. Above it is a kernel density estimate
+based on these values.
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="350" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="inferenceProg.KernelDisplayApplet">
+<param name="varName" value="Test measurements">
+<param name="values" value="10 20 30 35 40 50">
+<param name="horizAxis" value="0 60 0 10">
+<param name="kernelWidth" value="1 10 60">
+<param name="jittering" value="0.0">
+<param name="customText" value="Kernel width=Kernel width#Narrow=Narrow#Wide=Wide">
+</applet>
+</div>
+
+<p>Use the slider to adjust the width of the kernels and observe how the stacking of the
+kernels smoothes the density when the kernels are widened.
+</p>
+
+<p><strong>Click</strong> on individual
+crosses in the dot plot to highlight the corresponding kernel on the density estimate,
+then adjust the kernel width again to show how individual crosses' kernels are stacked.
+</p>
+
+		<p class="heading">Wind speed</p>
+		<p>As part of a study of pollution levels in the UK, wind speed (mph) was 
+			measured on 114 successive days in 1990. 
+			The following diagram shows a kernel density estimate for the wind speeds. </p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="350" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="inferenceProg.KernelDisplayApplet">
+<param name="varName" value="Wind speed">
+<param name="values" value="14.8 14.3 5.5 5.0 4.5 4.8 4.3 4.0 9.3 6.3 5.8 8.3 16.0 15.8 16.0 16.7 9.5 9.8 12.0 4.8 2.7 6.5 13.5 6.0 10.5 5.3 18.0 8.5 15.0 22.7  8.5 8.3 14.3 15.0 10.5 13.8 8.5 6.0 16.5 7.3 9.8 7.3 5.5 6.0 11.3 8.8 8.5 8.3 14.5 9.0 11.5 10.0 11.3 18.5 16.0 8.3 13.0 13.5 10.0 9.0 7.3 5.8 8.5 6.0 8.0 7.5 10.5 11.0 16.0 13.5 20.2 11.5 15.0 10.3 7.8 6.3 6.8 10.0 5.5 17.0 19.2 10.0 6.0 8.8 9.3 6.5 6.8 8.8 8.3 5.3 10.3 13.3 7.0 20.5 17.5 14.8 18.5 8.3 0.5 7.8 3.5 4.5 3.7 8.0 11.5 5.8 14.8 13.3 10.8 15.0 17.2 12.0 18.0">
+<param name="horizAxis" value="-2 26 0 5">
+<param name="kernelWidth" value="1 10 50">
+<param name="jittering" value="1.0">
+</applet>
+</div>
+
+		<p>Use the slider to adjust the width of the kernels and give a smooth density 
+			estimate. If the kernels are too wide, the density estimate spreads out 
+			too far on each side of the data, but narrow kernels give a spiky estimate. 
+			An intermediate kernel width is the best compromise.</p>
+		<p><font color="#666666">(The kernel density estimate suggests that there 
+			may be two clusters in the data. It would be worth investigating whether 
+			these corresponded to different seasons or wind coming from different directions.)</font></p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

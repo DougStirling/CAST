@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Simulated winning times</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Simulation from the Model
+</p>
+
+<p>The increasing pool from which the Olympic competitors are chosen and a normal 
+  population with µ&nbsp;=&nbsp;458&nbsp;sec 
+  and σ&nbsp;=&nbsp;50&nbsp;sec 
+  might explain the decrease in winning times in the 1500 metres race. </p>
+	
+<div class="diagram">
+
+<p>The diagram below simulates this model &mdash; the 1896 winning time is the minimum
+of 20,000 values from the normal distribution and the subsequent
+winning times are minima from random samples of increasing size, up to a random sample of
+2,000,000 values from the distribution in the year 2000.
+</p>
+
+<div class="centred"><table width="50%" border="0" cellspacing="0" cellpadding="10" bgcolor="#FFFF00" class="centred" style="border:2px solid #0066FF;">
+  <tr> 
+	<td><strong>Warning:</strong> It may take a considerable time for CAST to display the 
+	  diagram below. Have patience!</td>
+  </tr>
+</table></div>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="sportProg.OlympicSpeedApplet">
+<param name="varName" value="Winning Time">
+<param name="expectedName" value="expected winning time">
+<param name="vertAxis" value="180 280 180 10">
+<param name="timeAxis" value="1 5 1900 20">
+<param name="sampleSize" value="20000 2000000 27 5 11 12">
+<param name="dataDecimals" value="3">
+<param name="speedDistn" value="458 50">
+<param name="customText" value="Fast algorithm=Fast algorithm#Do simulation=Do simulation">
+</applet>
+</div>
+
+<p><span class="instruction">Click <strong>Take sample</strong> again to see another 
+  sample from this model.</span> (You may need a lot of patience if your computer 
+  is slow &mdash; the computer is generating millions or random numbers!) </p>
+
+</div>
+
+<p class="heading">Speeding up the Simulation
+</p>
+
+<p>It takes a considerable time to generate each run of the simulation
+For example, in the year 2000, the winning speed is the minimum of 2 million random values
+which we have generated individually. Can we avoid generating so many random values?
+</p>
+
+<p>The minimum of a random sample of <i>n</i> values also has a distribution. 
+  If we can obtain its distribution, we can directly generate the minimum by generating 
+  a single random value from this distribution, without generating the other <i>n</i>-1 
+  values. Since only a single random value needs to be generated in each year, 
+  the simulations can be performed much more quickly. (A bit more about <a href="javascript:showNamedPage('orderStats2')">this faster algorithm</a>
+	is given later.)</p>
+<p>The theory underlying this is a bit more advanced, but if you are interested, 
+  click the button on the right to read more detail about how these minima are 
+  generated.</p>
+
+<p>Click <strong>Faster Algorithm</strong> in the diagram above, then repeat the 
+  simulation a few more times. </p>
+
+<div class="boxed"><p>Applying a bit of probability theory may speed up your simulations 
+	  considerably!</p></div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

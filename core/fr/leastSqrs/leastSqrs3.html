@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Valeurs ajustées et des résidus</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="regression model, linear model, fitted values, residual">
+	<meta name="dataset" content="Temperatures and locations of US cities">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Valeurs ajustées</p>
+
+<p>Un modèle linéaire,</p>
+
+<p class=eqn><span class="black"><em>y</em> &nbsp;=&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x</em></span>
+</p>
+
+<p>implique deux constantes (la pente et l'interception) dont les valeurs sont inconnues, ils sont appelés&nbsp;<strong>paramètres inconnus</strong>&nbsp;du modèle.&nbsp;Comment devrions-nous définir leurs valeurs pour correspondre à un ensemble particulier de données?</p>
+
+  <p>Pour évaluer dans quelle mesure un modèle linéaire particulière s'adapte à tous l'un de nos points de données, (<em>x<sub>i</sub></em>,&nbsp;<em>y<sub>i</sub></em>)<em>,</em>&nbsp;nous pourrions envisager la façon dont le modèle prédirait la valeur y du point,</p>
+
+<p class=eqn><span class="black"><span style="position:relative; top:4px"><img src="../../images/symbol.yiHat.png" width="11" height="18" align="baseline"></span>&nbsp;=&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x<sub>i</sub></em></span>
+</p>
+
+  <p>Ces prédictions pour les valeurs x dans l'ensemble de données sont appelées&nbsp;<strong>valeurs ajustées</strong>.</p>
+<p class="heading">Résidus</p>
+  <p>La différence entre les valeurs ajustées pour un point de données et sa réelle valeur y est appelé&nbsp;<strong>résiduelle</strong>&nbsp;du point.</p>
+
+<p class=eqn><span class="black"><em>e<sub>i</sub></em>&nbsp;&nbsp;=&nbsp;&nbsp;<em>y<sub>i</sub></em> &minus; <span style="position:relative; top:4"><img src="../../images/symbol.yiHat.png" width="11" height="18" align="baseline"></span></span>
+</p>
+  <p>Les résidus de décrire les «erreurs» qui auraient résulté de l'utilisation du modèle pour prédire la réponse pour les valeurs x dans les données.</p>
+
+<div class="diagram">
+
+<p class="heading">La température et de latitude</p>
+
+<p>Le diagramme de dispersion ci-dessous montre la température maximale Janvier&nbsp;<em>(y,</em>&nbsp;en degrés Fahrenheit) et la latitude&nbsp;<em>(x,</em>&nbsp;en degrés) de différentes villes des Etats-Unis.</p>
+
+<p>Une ligne que nous pouvons considérer comme un modèle linéaire de ces données est en gris sur la parcelle.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.FitResidApplet">
+<param name="xVarName" value="Latitude">
+<param name="yVarName" value="Jan Temp">
+<param name="labelName" value="Ville">
+<param name="xValues" value="30 32 58 33 34 34 37 39 41 39 38 38 24 25 33 21 43 41 39 41 42 37 38 29 43 39 42 42 46 44 38 46 41 43 39 35 42 40 35 35 46 39 41 35 45 40 39 32 44 36 35 29 29 40 44 36 47 47 43 43 41 18">
+<param name="yValues" value="61 59 30 64 51 65 55 42 37 41 44 67 74 76 52 79 36 33 37 29 27 42 44 64 32 44 37 33 23 22 40 29 32 32 43 46 31 40 51 52 20 41 35 46 44 39 40 61 34 49 50 61 64 37 25 50 44 31 26 28 37 81">
+<param name="labels" value="#Mobile, Ala# #Montgomery, Ala# #Juneau, Alaska# #Phoenix, Ariz# #Litle Rock, Ark# #Los Angeles, Calif# #San Francisco, Calif# #Denver, Col# #New Haven, Conn# #Wilmington, Del# #Washington, DC# #Jacksonville, Fla# #Key West, Fla# #Miami, Fla# #Atlanta, Ga# #Honolulu, Hawaii# #Boise, Idaho# #Chicago, Ill# #Indianapolis, Ind# #Des Moines, Iowa# #Dubuque, Iowa# #Wichita, Kansas# #Louisville, Ky# #New Orleans, La# #Portland, Maine# #Baltimore, Md# #Boston, Mass# #Detroit, Mich# #Sault Ste Marie, Mich# #Minn St Paul, Minn# #St Louis, Missouri# #Helena, Montana# #Omaha, Nebraska# #Concord, NH# #Atlantic City, NJ# #Albuquerque, NM# #Albany, NY# #New York, NY# #Charlotte, NC# #Raleigh, NC# #Bismarck, ND# #Cincinnati, Ohio# #Cleveland, Ohio# #Oklahoma City, Okla# #Portland, Ore# #Harrisburg, Pa# #Philadelphia, Pa# #Charlestown, SC# #Rapid City, SD# #Nashville, Tenn# #Amarillo, Tx# #Galveston, Tx# #Houston, Tx# #Salt Lake City, Utah# #Burlington, Vt# #Norfolk, Va# #Seattle Tacoma, Wash# #Spokane, Wash# #Madison, Wisc# #Milwaukee, Wisc# #Cheyenne, Wyoming# #San Juan, Puerto Rico#">
+<param name="model" value="111.67 -1.67 1.0">
+<param name="horizAxis" value="15 60 20 10">
+<param name="vertAxis" value="10 82 20 10">
+<param name="decimals" value="2">
+<param name="customText" value="Fitted=Ajustée#Resid=Résiduelle">
+</applet>
+</div>
+
+    <p><strong>Cliquez</strong>&nbsp;sur des croisements individuels pour déterminer les villes d'où les mesures ont été effectuées.&nbsp;Les valeurs ajustées et les résidus sont également affichées au-dessus du nuage de points.&nbsp;Par exemple, Seattle-Tacoma, l'un des passe au-dessus de la ligne en bas à droite, a une température réelle de 44 degrés (la position verticale de la croix), une température équipé d'33.18 degrés, et une valeur résiduelle de 10.82.</p>
+
+<table width="80%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+<tr> 
+<td align="center"><strong>Notez que les <font color="#FF0000">résidus sont les distances verticales des croix à la ligne</font>.</strong></td>
+</tr>
+</table>
+<br>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

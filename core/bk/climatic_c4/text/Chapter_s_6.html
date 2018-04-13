@@ -1,0 +1,181 @@
+<html>
+<head>
+  <title>6. Regression Models</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 6 &nbsp; Regression Models</h1>
+<h1 class="sectionName">6.1 &nbsp; Linear regression models</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Interest in generalising from data</li>
+<li>Distribution of Y for each X</li>
+<li>Normal linear model</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='4'>
+<li>Another way to describe the model</li>
+<li>Model parameters</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">6.1.1 &nbsp; Interest in generalising from data</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Bivariate data: population or sample?</p>
+<p>In most bivariate data sets, we have no interest in the specific individuals from
+which the data are collected. The individuals are 'representative' of a larger population
+or process, and our main interest is in this underlying population. </p>
+<p class="heading">Example</p>
+<p>Data  were collected by biologists from 15 lakes
+in central Ontario to assess how zinc concentrations in an aquatic plant were related
+to zinc concentrations in the lake sediment.</p>
+<p class="eqn"><img src="../../../en/regnModel/images/s_sampleScatter.gif" width="403" height="316"> </p>
+<p class="heading">Band containing about 95% of values</p>
+<p>Applying the 70-95-100 rule of thumb to the errors, about 95% of them
+will be within 2 standard deviations of zero &mdash; i.e. between ±2σ.</p>
+<p>Since the errors are vertical distances of data points to the regression line,
+a  band
+2σ on each side of it should contain about 95% of the crosses
+on a scatterplot of the data.</p>
+<p class=eqn><img class="gif" src="../../../en/regnModel/images/band95.gif" width="297" height="274"></p>
+
+
+
+
+<h2 class="pageName">6.1.5 &nbsp; Model parameters</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Slope and intercept</p>
+<p>A normal linear model, </p>
+<p class=eqn><span class="black">&mu;<sub><em>y</em></sub> &nbsp;=&nbsp; &beta;<sub>0</sub> &nbsp;+&nbsp; &beta;<sub>1</sub><em>x</em></span> </p>
+<p class=eqn><span class="black">&sigma;<sub><em>y</em></sub> &nbsp;=&nbsp; &sigma;</span> </p>
+<p>involves 3 parameters, β<sub>0</sub>, β<sub>1</sub> and σ. The model's slope,
+β<sub>1</sub>,
+and intercept, β<sub>0</sub>, can be interpreted in a similar way to the slope
+and intercept of a least squares line.</p> 
+<dl>
+<dt>Slope</dt>
+<dd>Increase in the mean response per unit increase in <i>X</i>.</dd>
+<dt>Intercept</dt>
+<dd>Mean response when <em>X</em> = 0.</dd>
+</dl>
+
+<p class="heading" style="margin-bottom:5px; margin-top:35px">Examples of interpretation</p>
+
+<div class="centred"><table class="centred" border="0" cellpadding="8" cellspacing="0" style="margin-top:0px">
+<tr>
+<th align="CENTER" width="300">Context</th>
+<th width="33%" align="CENTER">Interpretation of β<sub>1</sub></th>
+<th width="33%" align="CENTER">Interpretation of β<sub>0</sub></th>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td width="300" class="top bottom left right"><i>Y</i> = Yield of wheat per acre <br>
+<i>X</i> = Fertiliser (kg per m<sup>2</sup>)</td>
+<td width="33%" class="top bottom right">Increase in mean yield per acre for
+each additional kg/m<sup>2</sup> of fertiliser</td>
+<td width="33%" class="top bottom right">Mean yield per acre if no fertiliser
+is used</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td width="300" class="bottom left right"><i>Y</i> = Exam mark <br>
+<i>X</i> = Hours of study by student before exam</td>
+<td width="33%" class="bottom right">Increase in expected mark for each additional
+hour of study</td>
+<td width="33%" class="bottom right">Expected mark if there is no study</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td width="300" class="bottom left right"><i>Y</i> = Hospital stay (days) <br>
+<i>X</i> = Age of patient</td>
+<td width="33%" class="bottom right">Average extra days in hospital per extra
+year of age</td>
+<td width="33%" class="bottom right">Average days in hospital at age 0. Not particularly
+meaningful here. </td>
+</tr>
+</table></div>
+
+
+<h1 class="sectionName breakBefore">6.2 &nbsp; Estimating parameters</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Estimating the slope and intercept</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='2'>
+<li>Estimating the error standard devn</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">6.2.1 &nbsp; Estimating the slope and intercept</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Least squares</p>
+<p>In practical situations, we must estimate β<sub>0</sub>,
+β<sub>1</sub> and σ from a data set that we believe satisfies the normal linear model.</p>
+
+<div class="centred"><div class="boxed">
+<p>The best estimates of β<sub>0</sub> and β<sub>1</sub> are the slope and
+intercept of the least squares line, <em>b</em><sub>0</sub> and <em>b</em><sub>1</sub></p>
+</div></div>
+
+<p>Since<em> b</em><sub>0 </sub>and <em>b</em><sub>1</sub> are functions of a
+data set that we assume to be a random sample from the normal linear model, <em>b</em><sub>0</sub> and <em>b</em><sub>1</sub> are
+themselves random quantities and have distributions.</p>
+<p class="heading">Simulated example</p>
+<p>The diagram below represents a regression model with a grey band. A sample
+of 20 values has been generated from this model and the least squares line (shown
+in blue) has been fitted to the simulated data. The least squares line provides
+estimates of the slope and intercept but they are not exactly equal to the underlying
+model values.</p>
+<p class="eqn"><img src="../../../en/regnEst/images/s_lsAndModel.gif" width="406" height="357"> </p>
+<p>In practice, the slope and intercept of the regression line are unknown, so <strong>the
+errors are also unknown values</strong>, but  the least squares residuals provide
+<strong>estimates</strong>.</p>
+<p class=eqn><img class="gif" src="../../../en/regnEst/images/residDiagram.gif" width="355" height="274"> </p>
+<p class="heading">Estimating the error standard deviation</p>
+<p>The third unknown parameter of the normal linear model, σ, is the standard deviation
+of the errors,</p>
+<p class=eqn><span class="black">&sigma; &nbsp;=&nbsp;<strong>st devn</strong>( &epsilon; )</span> </p>
+<p>σ can be estimated from the least squares residuals, {<em>e<sub>i</sub></em>},</p>
+<p class=eqn><img class="gif" src="../../../en/regnEst/images/errorSdEst.gif" width="95" height="41"> </p>
+<p>This is similar to the formula for the standard deviation of the residuals,
+but uses the divisor (<em>n</em> &minus; 2) instead of (<em>n</em> &minus; 1).
+It describes the size of a 'typical' residual.</p>
+<p class="heading">Example</p>
+<p class="eqn"><img src="../../../en/regnEst/images/s_residSd.gif" width="463" height="291"></p>
+
+
+
+
+</html>

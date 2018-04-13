@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Removing the block effect</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="randomised block design, sum of squares, explained sum of squares, residual sum of squares">
+	<meta name="dataset" content="Acupuncture and codeine">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Sums of squares</p>
+
+  <p>In the model with no terms for the blocks or factor, the 'residual sum of squares' is the sum of squared differences of values from the overall mean and is what we call have called the <strong>total sum of squares</strong>, <span class="purple">SS<sub>Total</sub></span>.</p>
+  <p>Adding a term for the blocks reduces the residual sum of squares by <span class="green">SS<sub>Blocks</sub></span> and adding a term for the factor reduces it by a further <span class="red">SS<sub>Factor</sub></span>. What is left is the residual sum of squares for the full model, <span class="blue">SS<sub>Resid</sub></span>.</p>
+  <p>From these definitions,</p>
+  <p class="eqn"><span class="purple">SS<sub>Total</sub></span><sub></sub>&nbsp; = &nbsp; <span class="green">SS<sub>Blocks</sub></span> &nbsp; + &nbsp; <span class="red">SS<sub>Factor</sub></span> &nbsp; + &nbsp; <span class="blue">SS<sub>Resid</sub></span></p>
+  <p>The block and treatment sums of squares are variation that is <strong>explained</strong> 
+    by the randomised block model whereas the residual sum of squares is <strong>unexplained</strong>.</p>
+  
+  <p class="heading">Formula for sum of squares explained by blocks</p>
+  <p>If the block mean for block <em>b</em> is denoted by <span style="position:relative; top:3px"><img src="../../images/symbol.yBar.png" width="9" height="15" align="baseline"></span><sub><em><span class="black">b</span></em></sub>, the block sum of squares is:</p>
+  <div class="centred"><table width="90%" border="0" class="centred" cellpadding="6" cellspacing="0" style="background-color:#FFFFFF">
+		<tr>
+			<td><img class="gif" src="../randBlock/images/blockSsq.gif" width="73" height="26"></td>
+			<td class="green">The <strong> sum of squares between blocks</strong> measures the variability of the block means.</td>
+		</tr>
+	</table></div>
+  <p>This summation is  over<strong> all observations in the data 
+  	set</strong>, so the contribution from each block is repeated for every experimental unit within the block.</p>
+  <p class="heading">Formula for sum of squares explained by the factor</p>
+  <p>Similarly, if the mean response for factor level <em>g</em> is  denoted by <span style="position:relative; top:3px"><img src="../../images/symbol.yBar.png" width="9" height="15" align="baseline"></span><sub><em><span class="black">g</span></em></sub>, the  sum of squares explained by the factor is:</p>
+  <div class="centred"><table width="90%" border="0" class="centred" cellpadding="6" cellspacing="0" style="background-color:#FFFFFF">
+		<tr>
+			<td><img class="gif" src="../randBlock/images/treatSsq.gif" width="73" height="28"></td>
+			<td><span class="red">The <strong> sum of squares between treatments</strong> measures the variability of the treatment means.</span></td>
+		</tr>
+	</table></div>
+  <p>This summation is again over<strong> all observations in the data set</strong>.</p>
+  <div class="diagram">
+    <p class="heading">Acupuncture and Codeine for dental pain relief</p>
+
+		<p>An anaesthetist conducted an experiment to assess the effects of codeine 
+			and acupuncture for relieving dental pain. The experiment used 32 subjects 
+			who were grouped into blocks of 4 according to an initial assessment of 
+			their tolerance to pain.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="410">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="pairBlockProg.BlockTreatComponent2Applet">
+<param name="yVarName" value="Pain relief score">
+<param name="yValues" value="0.0 0.6 0.5 1.2 0.3 0.7 0.6 1.3 0.4 0.8 0.8 1.6 0.4 0.9 0.7 1.5 0.6 1.5 1.0 1.9 0.9 1.6 1.4 2.3 1.0 1.7 1.8 2.1 1.2 1.6 1.7 2.4">
+<param name="xVarName" value="Treatment">
+<param name="xLabels" value="Placebo Codeine Acupuncture #Cod + Acu#">
+<param name="xValues" value="0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3">
+<param name="zVarName" value="Block (pain tolerance)">
+<param name="zLabels" value="#Tol 1# #Tol 2# #Tol 3# #Tol 4# #Tol 5# #Tol 6# #Tol 7# #Tol 8#">
+<param name="zValues" value="4@0 4@1 4@2 4@3 4@4 4@5 4@6 4@7">
+<param name="yAxis" value="0 2.5 0 0.5">
+<param name="componentDecimals" value="3">
+<param name="maxSummaries" value="999.999 99.999 99.99 9.999">
+<param name="customText" value="Treatment sum of squares=Treatment sum of squares#Block sum of squares=Block sum of squares#Overall mean=Overall mean">
+</applet>
+</div>
+
+   <p>The horizontal coloured lines initially show the differences between the 
+    	treatment mean and overall mean for each observation. Their sum of squares 
+    	is the <strong>treatment sum of squares</strong>.</p>
+    <p>Select <strong>Block sum of squares</strong> from the pop-up menu. The 
+    	coloured lines now show the difference between each observation's block 
+    	mean and the overall mean. Their sum of squares is the <strong>block 
+    		sum of squares</strong>.</p>
+  </div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

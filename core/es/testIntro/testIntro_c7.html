@@ -1,0 +1,196 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Common patterns in hypothesis testing</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="hypothesis test, null hypothesis, alternative hypothesis, p-value">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">A general framework</p>
+<p>The examples in earlier pages of this section involved different types of data 
+and different analyses. Indeed, you may find it difficult to spot their common 
+theme!</p>
+<p>All analyses were examples of <strong>hypothesis testing</strong>. We now describe 
+the general framework of hypothesis testing within which all of these examples 
+fit. This general framework is the basis for important applications in later sections 
+of CAST.</p>
+<center>
+<table border="1" cellspacing="0" cellpadding="10" bgcolor="white" width="75%">
+<tr> 
+<td><strong>The concepts in this page are extremely important &mdash; make sure that 
+you understand them well before moving on.</strong></td>
+</tr>
+</table>
+</center>
+<p class="heading">The model and data</p>
+
+<p>Each example involved a model, some of whose characteristics were unknown. 
+A set of data from the model is available and we hope to use it to answer questions 
+about the model.</p>
+<dl>
+<dt>Soccer league in one season</dt>
+<dd>Some random mechanism underlies the actual results in the matches during a 
+season. The probabilities of winning may vary from team to team and there may 
+be a home-team advantage, so there are a lot of unknowns about this model! Our 
+data are a single set of results &mdash; the league table at the end of the season.</dd>
+<dt>Australia Post deliveries</dt>
+<dd>Each letter has some probability of being delivered 'on time' &mdash; our model. 
+We also assume that delivery of different letters is independent, a reasonable 
+assumption if they are posted from different locations, but not if they are posted 
+together. A sample of 59 letters was posted and our data is the number that were 
+delivered on time.</dd>
+<dt>Characteristics of failed companies</dt>
+<dd>We assume that our data (asset-to-liability ratios from companies) are random 
+samples of 68 and 33 from underlying populations of healthy and failed companies 
+(respectively) in Greece. Random sampling from these unknown populations is our 
+model.</dd>
+<dt>Soccer leagues in two seasons</dt>
+<dd>Some random mechanism again generates results during each season &mdash; our model. 
+In this case, we have recorded the number of points for each team at the end of 
+two successive seasons &mdash; our data.</dd>
+</dl>
+
+<p class="heading">Asking a question &mdash; the null hypothesis</p>
+<p>All models had unknown characteristics, and we want to know whether the model 
+has particular properties &mdash; the <strong>null hypothesis</strong>.</p>
+<dl>
+<dt>Soccer league in one season</dt>
+<dd>The null hypothesis is that all teams are equally matched &mdash; i.e. that they 
+all have the same probability of winning each match.</dd>
+<dt>Australia Post deliveries</dt>
+<dd>The null hypothesis is that each letter has probability 0.96 of being delivered 
+on time &mdash; Australia Post's claim.</dd>
+<dt>Characteristics of failed companies</dt>
+<dd>The null hypothesis is that the population distribution of asset-to-liabilities 
+ratio is the same for healthy and failed companies.</dd>
+<dt>Soccer leagues in two seasons</dt>
+<dd>The null hypothesis is that all teams (other than Manchester United, Arsenal, 
+Liverpool and Leeds) have the same probabilities of winning against the same opposition 
+in both seasons.</dd>
+</dl>
+<p>The focus of our hypothesis test is whether or not the null hypothesis holds.</p>
+<p class="heading">The alternative hypothesis</p>
+<p>If the null hypothesis is not true, we say that the <strong>alternative hypothesis</strong> 
+holds. (You can understand most of hypothesis testing without paying much attention 
+to the alternative hypothesis however!)</p>
+<center>
+<table border="1" cellspacing="0" cellpadding="10" bgcolor="white" width="75%">
+<tr> 
+<td><strong>Either the null hypothesis or the alternative hypothesis must be true.</strong></td>
+</tr>
+</table>
+</center>
+<p class="heading">Using the data</p>
+<p>We assess the null hypothesis by asking&nbsp;...</p>
+<center>
+<table width="75%" border="1" cellpadding="10" cellspacing="0" bordercolor="#990000" bgcolor="#FFFF33">
+<tr> 
+<td><strong><font color="#CC0000">Are the data consistent with the null hypothesis?</font></strong></td>
+</tr>
+</table>
+</center>
+<p>It is <strong>extremely</strong> important that you understand that hypothesis 
+testing addresses this question &mdash; make sure that you remember it well!!</p>
+<p class="heading">Test statistic</p>
+<p>Some function of the data is picked that throws light on whether the null or 
+alternative hypothesis holds.</p>
+<dl>
+<dt>Soccer league in one season</dt>
+<dd>The standard deviation of final points was used. It will be higher if the 
+teams have different abilities (the alternative hypothesis).</dd>
+<dt>Australia Post deliveries</dt>
+<dd>The proportion of letters delivered on time is the test statistic. It will 
+be far from 0.96 if Australia Post's claim is not correct (the alternative hypothesis).</dd>
+<dt>Characteristics of failed companies</dt>
+<dd>The difference between the mean asset-to-liabilities ratios of the healthy 
+and failed companies was the test statistic. It should be close to zero if the 
+null hypothesis holds, and far from zero if the alternative hypothesis holds.</dd>
+<dt>Soccer leagues in two seasons</dt>
+<dd>The correlation coefficient between the final points of teams in the two seasons 
+is the test statistic. It will be close to zero if the teams have the same chances 
+of winning (the null hypothesis) and will be positive if some teams have higher 
+chances of winning than others (the alternative hypothesis).</dd>
+</dl>
+<p class="heading">P-value</p>
+<p>The question</p>
+<center>
+<table border="1" cellspacing="0" cellpadding="10" bgcolor="white" width="75%">
+<tr> 
+<td><strong>Are the data consistent with the null hypothesis?</strong></td>
+</tr>
+</table>
+</center>
+<p>is rephrased as...</p>
+<center>
+<table border="1" cellspacing="0" cellpadding="10" bgcolor="white" width="75%">
+<tr> 
+<td><strong>What is the probability of obtaining such an 'extreme' value of the 
+test statistic if the null hypothesis holds?</strong></td>
+</tr>
+</table>
+</center>
+<p>This probability is called the <strong>p-value</strong> for the hypothesis 
+test. There are various ways to find the p-value. Note that all of them <strong>assume 
+that the null hypothesis is true</strong>.</p>
+<dl>
+<dt>Soccer league in one season</dt>
+<dd>We simulated the soccer league, assuming that all teams had the same probability 
+of winning. The p-value was the probability of getting a standard deviation of 
+final points as high as 16.7 (the actual data).</dd>
+<dt>Australia Post deliveries</dt>
+<dd>We simulated delivery of 57 letters, assuming that each had probability 0.96 
+of being delivered on time. The p-value was the probability of <sup>52</sup>/<sub>59</sub> 
+or fewer being delivered on time (the actual data).</dd>
+<dt>Characteristics of failed companies</dt>
+<dd>We randomised the 101 asset-to-liabilities ratios between the two groups of 
+companies &mdash; each is equally likely if the populations are the same. The p-value 
+was the probability that the difference in means is further from zero than 0.902 
+(the actual data).</dd>
+<dt>Soccer leagues in two seasons</dt>
+<dd>We randomised the points in the second season &mdash; each is equally likely if 
+the teams have the same probability of winning. The p-value was the probability 
+that the correlation coefficient is further from zero than 0.149 (the actual data).</dd>
+</dl>
+<p class="heading">Interpreting the p-value</p>
+<p>Although it may be regarded as an over-simplification, the table below can 
+be used as a guide to interpreting p-values. </p>
+<center>
+<table border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+<tr> 
+<th align="CENTER">p-value</th>
+<th align="CENTER">Interpretation</th>
+</tr>
+<tr bgcolor="white"> 
+<td>over 0.1</td>
+<td>no evidence that the null hypothesis does not hold</td>
+</tr>
+<tr bgcolor="white"> 
+<td>between 0.05 and 0.1</td>
+<td>very weak evidence that the null hypothesis does not hold</td>
+</tr>
+<tr bgcolor="white"> 
+<td>between 0.01 and 0.05</td>
+<td>moderately strong evidence that the null hypothesis does not hold</td>
+</tr>
+<tr bgcolor="white"> 
+<td>under 0.01</td>
+<td>strong evidence that the null hypothesis does not hold</td>
+</tr>
+</table>
+</center>
+
+<br>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

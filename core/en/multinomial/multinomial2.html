@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Marginal distributions</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="multinomial distribution, marginal distribution, binomial distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>A multinomial distribution arises when there are \(n\) independent &quot;trials&quot;, each with the same probabilities for the \(g\) different possible values from each trial. We now concentrate on the number of times that <strong>one</strong> of these values is observed — its marginal distribution.</p>
+
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Marginal distributions</p>
+<p>If \((X_1, X_2,\dots, X_g)\), have a \(\MultinomDistn(n, \pi_1, \dots, \pi_g)\) distribution, then the marginal distribution of any \(X_i\) is \(\BinomDistn(n, \pi_i)\).</p>
+</div>
+
+<div class="proof">
+<p>This follows from treating the outcome \(O_i\) as a &quot;success&quot; and combining all other outcomes as a &quot;failure&quot;. \(X_i\) is then the number of successes in \(n\) independent trials, each with probability \(\pi_i\) of success.<br>
+</p>
+</div>
+</div>
+
+<p>&nbsp;</p>
+
+<div class="example" title="Example: Opinion poll">
+	
+	<p class="exampleHeading">Opinion poll</p>
+
+<p>We return here to the example on the previous page where responses to a question about a new piece of legislation had probabilities</p>
+<p class="eqn">P(Agree) = 0.3, <br>
+	P(Neutral) = 0.4<br>
+	P(Disagree) = 0.3 </p>
+<p>The 3-dimensional bar chart below again shows the joint probabilities for the numbers in a random sample of \(n\) who agree and are neutral.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="650" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="bivarDistnProg.MultinomialApplet">
+<param name="backgroundColor" value="FFFBF3">
+<param name="yVarName" value="Y = number neutral">
+<param name="xVarName" value="X = number agreeing">
+<param name="catProbs" value="0.3 0.4 0.3">
+<param name="sampleSize" value="1 2 3 4">
+<param name="probAxis" value="0 0.8 0 0.2#0 0.6 0 0.1#0 0.5 0 0.1#0 0.45 0 0.1">
+<param name="initialRotation" value="30 45">
+<param name="transitions" value="marginal">
+</applet>
+</div>
+
+<p>Initially the sample size is \(n = 1\). Click the box <strong>Marginal for X</strong> to display the marginal probabilities for the number agreeing. Since the probability of agreeing is 0.3, the marginal distribution is a \(\BinomDistn(n=1, \pi=0.3)\) distribution.</p>
+<p>Similarly the marginal distribution for the number who are neutral can be displayed by clicking <strong>Marginal for Y</strong> and is \(\BinomDistn(n=1, \pi=0.4)\).</p>
+<p>Increase the sample size to display the marginal binomial distributions for other sample sizes.</p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

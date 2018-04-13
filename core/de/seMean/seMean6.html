@@ -1,0 +1,108 @@
+<html>
+<head>
+	<title>Using SEs to compare estimators</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="mean, median, standard error, bias">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Comparison of estimators</p>
+
+  <p>Most estimators that are used in statistics have error distributions that 
+		are centred on zero &mdash; they are unbiased. The standard errors of the estimators 
+		are therefore the most important way to compare  their accuracy.</p>
+	<div class="diagram"> 
+
+		<p class="heading">Comparison of mean and median</p>
+
+		
+    <p>Consider a normal population &mdash; say annual rainfalls &mdash; whose distribution 
+			is centred on a parameter µ. 
+			Since the normal distribution is symmetric, µ 
+			is both the distribution's mean and median.</p>
+		<center>
+			<table border="1" cellspacing="0" cellpadding="10" bgcolor="white" width="75%">
+				<tr> 
+					<td align="center"><strong>Is it better to use the sample mean or sample 
+						median to estimate<strong>&nbsp;µ?</strong></strong></td>
+				</tr>
+			</table>
+		</center>
+		<p>We will use a simulation to help answer this question. The diagram below 
+			takes samples of 20 values from a normal population with mean 1000.</p>
+	
+    <div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="stdErrorProg.MeanMedErrorDistnApplet">
+<param name="varName" value="Annual rainfall (mm)">
+<param name="random" value="20 1000 200 875636431 2.5">
+<param name="dataAxis" value="500 1500 600 200">
+<param name="errorName" value="Error in mean">
+<param name="medianErrorName" value="Error in median">
+<param name="errorAxis" value="-150 150 -150 50">
+<param name="maxEstimate" value="9999.9">
+<param name="customText" value="Target parameter=Target parameter#Estimates from sample=Estimates from sample">
+</applet>
+</div>
+		
+    <p>Click <strong>Another sample</strong> several times to see the sample means 
+			and medians. Hold the <strong>Another sample</strong> button down until 
+			about 150 samples have been taken.</p>
+		<p>Observe that:</p>
+		<ul>
+			<li>The error distributions are symmetric round zero for both the sample 
+				mean and median.</li>
+			<li>The spread of errors is smaller for the mean than the median.</li>
+		</ul>
+		<p>Since the errors for the sample mean tend to be closer to zero than those 
+			for the median, we conclude that:</p>
+		<center>
+			<table border="1" cellspacing="0" cellpadding="10" bgcolor="white" width="75%">
+				<tr> 
+					<td align="center"><strong>The sample mean is better than the sample 
+						median as an estimator of the centre of a normal population.</strong></td>
+				</tr>
+			</table>
+		</center>
+		<p>The diagram below shows the theoretical distributions of the errors for 
+			the sample mean and median for different sample sizes.</p>
+	
+    <div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="stdErrorProg.MeanMedTheoryApplet">
+<param name="varName" value="Annual rainfall (mm)">
+<param name="popnDistn" value="normal">
+<param name="popnParams" value="1000 200">
+<param name="dataAxis" value="500 1500 600 200">
+<param name="meanErrorName" value="Error in mean">
+<param name="medianErrorName" value="Error in median">
+<param name="errorAxis" value="-240 240 -200 100">
+<param name="errorSdDecimals" value="1">
+<param name="sampleSize" value="10 100 16">
+<param name="customText" value="Population*distribution=Population*distribution#Error*distribution*(approx)=Error*distribution*(approx)">
+</applet>
+</div>
+
+			
+		
+    <p>Use the slider to see that the standard error of the sample median is always 
+			about 25% higher than that of the sample mean.</p>
+		<p><font color="#666666">(Note: The error distribution shown for the mean 
+			is exact, but that of the median is only approximate &mdash; the exact distribution 
+			of the sample median is difficult to obtain.)</font></p>
+		
+	</div>
+	
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

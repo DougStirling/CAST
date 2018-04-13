@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE topic SYSTEM "exerciseXmlDefn.dtd">
+
+<topic name='leastSqrs'>
+<longName>Least squares and prediction</longName>
+
+
+<exercise name='identifyResponseExplan'>
+	<description>Identify response and explanatory variables from scenario</description>
+	<comment>The question presents a scenario then asks to identify the response and explanatory variable, whether the data are observational or experimental, and whether the data can be used to predict the effect of changing the explanatory variable.</comment>
+	<applet>exerciseBivarProg.ExplanResponseApplet</applet>
+	<width>450</width>
+	<height>500</height>
+	
+	<variable name="explanatory" type="string(14)">Name of explanatory variable</variable>
+	<variable name="response" type="string(14)">Name of response variable</variable>
+	<variable name="experimental" type="boolean(experimental#observational)">Whether scenario is an experiment or observational study</variable>
+	<variable name="causal" type="boolean(causal#not causal)">Whether relationship is causal or not</variable>
+	<variable name="message" type="string(40)">Text describing a causal relationship for the scenario (which may be true or false)</variable>
+	<variable name="errorCausal" type="string(40)">Error message for wrong choice about whether relationship is causal</variable>
+	<variable name="answer" type="string(40)">Text describing complete answer</variable>
+	
+	<template>
+		<question>Text describing an experiment from which a causal relationship can be inferred.</question>
+		<qnParam>explanatory(X)#response(Y)#experimental(true)#causal(true)#message(Based on data of this kind, it may be possible to conclude that Y is causally related to X.)#errorCausal(It is an experiment so a causal relationship could be inferred.)#answer(Y is the response.\nSince X is controlled, the data are experimental.\nSince the data arise from an experiment, we can conclude that the changes in X will cause changes in Y.)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>bodyFat</shortName>
+		<longName>Weight and body fat of children</longName>
+		<question>A scientist records the weight and percentage body fat from a sample of 50 children of different ages with the aim of predicting body fat from weight.</question>
+		<qnParam>explanatory(Weight)#response(Body fat)#experimental(false)#causal(false)#message(Based on data of this kind, it may be possible to conclude that body fat is causally related to weight.)#errorCausal(Although physiology suggests that increases in body fat would result in increased weight, both variables may increase with age so any correlation between them could potentially result from the varying age of the children.)#answer(We are interested in predicting body fat, so that is the response.\nSince we have no control over the weights of the sampled men, the data are observational.\nAlthough weight may be a good predictor of body fat, the data do not allow us to conclude that changing a person's weight will affect their body fat.)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>tomatoes</shortName>
+		<longName>Fertiliser and tomato weight</longName>
+		<question>A scientist takes 50 tomato seedlings and randomly applies one of five different amounts of fertiliser to each seedling. The weight of tomatoes harvested from each plant was recorded.</question>
+		<qnParam>explanatory(Fertiliser)#response(Tomato weight)#experimental(true)#causal(true)#message(If tomato weight and fertiliser are strongly correlated, it is possible to conclude that tomato weight depends on the amount of fertiliser used.)#errorCausal(Since this is an experiment, it is possible for fertiliser to affect weight but not the reverse.)#answer(The experimenter controlled the amount of fertiliser so that is the explanatory variable.\nFor the same reason, the data are experimental.\nSince the data arise from a well designed experiment, we can conclude that the changes in yield result from changes in the amount of fertiliser.)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>cotton</shortName>
+		<longName>Irrigation and cotton yield (observational)</longName>
+		<question>A researcher sampled 20 farms in a cotton-growing region, each of which had similar sandy loam soil. Each farmer supplied information about the amount of irrigation water and the yield of cotton in kg per hectare.</question>
+		<qnParam>explanatory(Irrigation)#response(Cotton yield)#experimental(false)#causal(false)#message(The researcher could use this information to make recommendations to farmers about the best level of irrigation to use.)#errorCausal(There are likely to be differences between the growing conditions in the different farms and it is possible that farmers with poor growing conditions use less or more irrigation, making the relationship seem stronger or weaker.)#answer(The researcher would be interested in predicting yield, so it is the response.\nSince neither variable is under the control of the researcher, the data are observational.\nIt would be impossible to use the data to predict the effect of changing irrigation in a farm since sampled farms that use irrigation may have better growing conditions too.)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>cotton2</shortName>
+		<longName>Irrigation and cotton yield (experimental)</longName>
+		<question>A researcher sampled 20 fields in a cotton-growing region, each of which had similar sandy loam soil. Different fields were irrigated with randomly chosen amounts of water and the amount of irrigation water and the yield of cotton in kg per hectare were recorded.</question>
+		<qnParam>explanatory(Irrigation)#response(Cotton yield)#experimental(true)#causal(true)#message(The researcher could use this information to make recommendations to farmers about the best level of irrigation to use.)#errorCausal(The data are experimental, so any relationship between irrigation and yield is causal.)#answer(The researcher would be interested in predicting yield, so it is the response.\nSince irrigation is controlled by the researcher, the data are experimental.\nThe data would allow you to predict the effect of changing irrigation since it is a well-designed experiment.)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>membership</shortName>
+		<longName>Club membership and crowd size at football club</longName>
+		<question>A board member in a football club collected data about the number of club members and the average crowd size at home games each year from 1985 to 2008. He hoped to persuade the board that a membership drive would improve attendance at home games.</question>
+		<qnParam>explanatory(Club membership)#response(Crowd size)#experimental(false)#causal(false)#message(It is possible to use the data to predict the effect of increasing club membership.)#errorCausal(The data are observational and any apparent relationship could be a result of differing performance of the team -- when the team does well, both variables increase.)#answer(The board member wants to predicting crowd size, so it is the response.\nNeither variable is controlled so the data are observational.\nSince higher crowd size is likely to be correlated with team performance as well as club membership, the data do not allow prediction of the effect of changing club membership on its own so the relationship is not causal.)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>studentMarks</shortName>
+		<longName>Study time and mark in test</longName>
+		<question>After a test, lecturer asked each student in a statistics class about the number of hours of study in the subject during the week prior to the test.</question>
+		<qnParam>explanatory(Study time)#response(Exam mark)#experimental(false)#causal(false)#message(The lecturer can use the data to show the students how many extra marks they can get by studying more.)#errorCausal(It is possible that better students also spend more time studying. Any apparent relationship could be simply the result of varying ability levels with no students benefiting from studying before the test.)#answer(The lecturer wants to predict test marks, so that is the response.\nNeither variable is controlled so the data are observational.\nSince both test marks and the amount of studying could both be higher for better students, it is possible that the two variables could be correlated even if studying did not actually improve any student's mark. The data cannot therefore be used to predict the effect of studying more.)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>concrete</shortName>
+		<longName>Cement content and hardness of concrete slabs</longName>
+		<question>A civil engineer manufactures 20 concrete slabs with varying amounts of cement in the mixture. Each slab is tested for hardness by dropping a pointed weight on it several times and recording the amount of material chipped off.</question>
+		<qnParam>explanatory(Cement)#response(Hardness)#experimental(true)#causal(true)#message(The engineer can use the data to predict the hardness of other slabs from the amount of cement in their concrete mixture.)#errorCausal(Since the data are experimental, it is possible to conclude that the hardness depends on the amount of cement in the concrete.)#answer(The engineer controlled the amount of cement in the mixture, so it is the response.\nFor the same reason, the data are experimental.\nSince the data arise from a well designed experiment, we can conclude that any differences in hardness are caused by the amount of cement in the mixture so the relationship can be used to predict hardness of other slabs.)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='sketchLineFromEqn'>
+	<description>Sketch a line from its equation (by dragging)</description>
+	<comment>The equation of a regression line is given. A line is drawn against two axes and two points on the line must be dragged to position it. Two templates are provided to help calculate two points on the line.\\nIf the option to show multiple axes is selected, an appropriate vertical axis must also be selected (from a pop-up menu), making the question harder.</comment>
+	<applet>exerciseBivarProg.SketchLineApplet</applet>
+	<width>500</width>
+	<height>680</height>
+	
+	<option name="multipleAxes">This options shows a menu of alternative vertical axes; an appropriate axis must also be chosen.</option>
+	
+	<variable name="xVarName" type="string(10)">Name of explanatory variable</variable>
+	<variable name="yVarName" type="string(10)">Name of response variable</variable>
+	<variable name="xAxis" type="axis">Scale for x-axis</variable>
+	<variable name="yAxis" type="axis_array">Different possible scales for y-axis</variable>
+	<variable name="axisLabels" type="string_array(10)">Menu names for alternative scales on y-axis</variable>
+	<variable name="correctYAxis" type="int(0)">Index from the array of possible y-axes that is correct to display the line</variable>
+	<variable name="yPropnAtLowX" type="double">Proportion of way up the y-axis where line intercepts at the lowest displayed X</variable>
+	<variable name="yPropnAtHighX" type="double">Proportion of way up the y-axis where line intercepts at the highest displayed X</variable>
+	<variable name="interceptDecimals" type="int(0)">Number of decimals used to display intercept of line</variable>
+	<variable name="slopeDecimals" type="int(0)">Number of decimals used to display slope of line</variable>
+	
+	<template>
+		<question>The equation below describes the relationship between Y and X. Draw the line that represents this equation.</question>
+		<qnParam>xVarName(X)#xAxis(10 30 10 5)#yVarName(Y)#yAxis(5_10_5_0.5)#axisLabels(5_to_10)#correctYAxis(0)#yPropnAtLowX(0:0.400)#yPropnAtHighX(0.600:1)#interceptDecimals(1)#slopeDecimals(3)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>leaves</shortName>
+		<longName>Width and length of leaves</longName>
+		<question>The equation below describes the relationship between the width and length of leaves of a species. Draw the line that represents this equation.</question>
+		<qnParam>xVarName(Length)#xAxis(10 30 10 5)#yVarName(Width)#yAxis(5_10_5_0.5 8_14_8_1 12_20_12_1)#axisLabels(5_to_10 8_to_14 12_to_20)#correctYAxis(0:2)#yPropnAtLowX(0:0.400)#yPropnAtHighX(0.600:1)#interceptDecimals(1)#slopeDecimals(3)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>latheFinish</shortName>
+		<longName>Rotation speed and finish on lathe</longName>
+		<question>The equation below describes how the surface finish of a component manufactured on a lathe depends on its rotation speed (rpm). Draw the line that represents this equation.</question>
+		<qnParam>xVarName(RPM)#xAxis(200 300 200 20)#yVarName(Finish)#yAxis(40_50_40_1 45_55_45_1 50_60_50_1)#axisLabels(40_to_50 45_to_55 50_to_60)#correctYAxis(0:2)#yPropnAtLowX(0.600:1)#yPropnAtHighX(0:0.400)#interceptDecimals(2)#slopeDecimals(4)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>sharePrice</shortName>
+		<longName>Share price of company and price of crude oil</longName>
+		<question>The following equation summarises the how the share price of a company is affected by the price of crude oil. Draw the line that represents this equation.</question>
+		<qnParam>xVarName(Crude oil price)#xAxis(100 200 100 20)#yVarName(Share price)#yAxis(20_60_20_5 50_100_50_5 100_200_100_10)#axisLabels(20_to_60 50_to_100 100_to_200)#correctYAxis(0:2)#yPropnAtLowX(0:0.400)#yPropnAtHighX(0.600:1)#interceptDecimals(1)#slopeDecimals(3)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='calcEqnFromYAt01'>
+	<description>Calculate the equation of a line from the y-value at x=0 and x=1</description>
+	<comment>A regression line is drawn and the coordinates of two points at x=0 and x=1 are displayed. The equation of the line should be found from these points.</comment>
+	<applet>exerciseBivarProg.SlopeInterceptGuessApplet</applet>
+	<width>500</width>
+	<height>600</height>
+	
+	<variable name="xVarName" type="string(10)">Name of explanatory variable</variable>
+	<variable name="yVarName" type="string(10)">Name of response variable</variable>
+	<variable name="xAxis" type="axis">Scale for x-axis</variable>
+	<variable name="yAxis" type="axis">Scale for y-axis</variable>
+	<variable name="yDecimals" type="int(0)">Number of decimals used to report the y-value at any x</variable>
+	<variable name="yPropnAtLowX" type="double">Proportion of way up the y-axis where line intercepts at the lowest displayed X</variable>
+	<variable name="yPropnAtHighX" type="double">Proportion of way up the y-axis where line intercepts at the highest displayed X</variable>
+	<variable name="interceptDecimals" type="int(0)">Number of decimals used to display intercept of line</variable>
+	<variable name="slopeDecimals" type="int(0)">Number of decimals used to display slope of line</variable>
+	
+	<template>
+		<question>The line drawn below describes the relationship between two variables X and Y. What is its equation?</question>
+		<qnParam>xVarName(X)#xAxis(-0.1 1.1 0 0.2)#yVarName(Y)#yAxis(0 5 0 1)#yDecimals(2)#yPropnAtLowX(0:0.400)#yPropnAtHighX(0.600:1)#interceptDecimals(2)#slopeDecimals(2)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>simple1</shortName>
+		<longName>A simple example</longName>
+		<question>The line drawn below describes the relationship between two variables X and Y. What is its equation?</question>
+		<qnParam>xVarName(X)#xAxis[](-0.1 1.1 0 0.2*-0.2 3.2 0 0.5*-0.3 5 0 1)#yVarName(Y)#yAxis[](0 5 0 1*2 4 2 0.5*5 15 5 1)#yDecimals(2)#yPropnAtLowX(0:0.400)#yPropnAtHighX(0.600:1)#interceptDecimals(2)#slopeDecimals(2)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>simple2</shortName>
+		<longName>Another simple example</longName>
+		<question>The line drawn below describes the relationship between two variables X and Y. What is its equation?</question>
+		<qnParam>xVarName(X)#xAxis[](-0.1 1.1 0 0.2*-0.2 3.2 0 0.5*-0.3 5 0 1)#yVarName(Y)#yAxis[](0 5 0 1*2 4 2 0.5*5 15 5 1)#yDecimals(2)#yPropnAtLowX(0.600:1)#yPropnAtHighX(0:0.400)#interceptDecimals(2)#slopeDecimals(2)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='calcEqnFrom2Points'>
+	<description>Calculate the equation of a least squares line from two points on it</description>
+	<comment>A least squares line is drawn and the coordinates of two points on it are displayed. The equation of the line should be found from these points.\\nTwo templates are supplied to help calculate the slope and intercept.</comment>
+	<applet>exerciseBivarProg.SlopeInterceptHarderApplet</applet>
+	<width>500</width>
+	<height>710</height>
+	
+	<variable name="xVarName" type="string(10)">Name of explanatory variable</variable>
+	<variable name="yVarName" type="string(10)">Name of response variable</variable>
+	<variable name="xAxis" type="axis">Scale for x-axis</variable>
+	<variable name="yAxis" type="axis">Scale for y-axis</variable>
+	<variable name="sampleSize" type="int">Number of crosses shown on scatterplot</variable>
+	<variable name="yDecimals" type="int(0)">Number of decimals used to report the y-value at any x</variable>
+	<variable name="yPropnAtLowX" type="double">Proportion of way up the y-axis where line intercepts at the lowest displayed X</variable>
+	<variable name="yPropnAtHighX" type="double">Proportion of way up the y-axis where line intercepts at the highest displayed X</variable>
+	<variable name="interceptDecimals" type="int(0)">Number of decimals used to display intercept of line</variable>
+	<variable name="slopeDecimals" type="int(0)">Number of decimals used to display slope of line</variable>
+	
+	<template>
+		<question>The scatterplot below shows the Y and X values from a sample of size #sampleSize[](20,40,50)#. The least squares line is shown in blue. What is its equation?</question>
+		<qnParam>xVarName(Width)#xAxis(3.9 6.1 4)#yVarName(Length)#yAxis(0 5 0 1)#yDecimals(2)#yPropnAtLowX(0:0.400)#yPropnAtHighX(0.600:1)#interceptDecimals(2)#slopeDecimals(2)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>leaves</shortName>
+		<longName>Widths and lengths of a sample of leaves</longName>
+		<question>The scatterplot below shows the widths and lengths of a sample of #sampleSize[](20,40,50)# leaves. The least squares line is shown in blue. What is its equation?</question>
+		<qnParam>xVarName(Width)#xAxis[](3.9 6.1 4 0.5*6.8 10.2 7 0.5*2.8 8.2 3 1)#yVarName(Length)#yAxis[](0 5 0 1*2 4 2 0.5*5 15 5 1)#yDecimals(2)#yPropnAtLowX(0:0.400)#yPropnAtHighX(0.600:1)#interceptDecimals(2)#slopeDecimals(2)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>leaves2</shortName>
+		<longName>Widths and lengths of a diferent sample of leaves</longName>
+		<question>The scatterplot below shows the widths and lengths of a sample of #sampleSize[](20,40,50)# leaves. The least squares line is shown in blue. What is its equation?</question>
+		<qnParam>xVarName(Width)#xAxis[](3.9 6.1 4 0.5*6.8 10.2 7 0.5*2.8 8.2 3 1)#yVarName(Length)#yAxis[](0 5 0 1*2 4 2 0.5*5 15 5 1)#yDecimals(2)#yPropnAtLowX(0.600:1)#yPropnAtHighX(0:0.400)#interceptDecimals(2)#slopeDecimals(2)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>strengthSoftness</shortName>
+		<longName>Strength and softness of fabric squares</longName>
+		<question>A sample of #sampleSize[](20,40,50)# fabric squares were manufactured and the scatterplot below shows their strength and softness. The least squares line is shown in blue. What is its equation?</question>
+		<qnParam>xVarName(Strength)#xAxis[](39 51 40 2*68 102 70 5*28 82 30 10)#yVarName(Softness)#yAxis[](0 50 0 10*20 40 20 5*50 150 50 10)#yDecimals(1)#yPropnAtLowX(0:0.400)#yPropnAtHighX(0.600:1)#interceptDecimals(1)#slopeDecimals(2)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>strengthSoftness2</shortName>
+		<longName>Strength and softness of different fabric squares</longName>
+		<question>A sample of #sampleSize[](20,40,50)# fabric squares were manufactured and the scatterplot below shows their strength and softness. The least squares line is shown in blue. What is its equation?</question>
+		<qnParam>xVarName(Strength)#xAxis[](39 51 40 2*68 102 70 5*28 82 30 10)#yVarName(Softness)#yAxis[](0 50 0 10*20 40 20 5*50 150 50 10)#yDecimals(1)#yPropnAtLowX(0.600:1)#yPropnAtHighX(0:0.400)#interceptDecimals(1)#slopeDecimals(2)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='interpretSlopeIntercept'>
+	<description>Pick correct interpretation of the LS slope and intercept</description>
+	<comment>This is a multiple choice question that gives a least squares line and four possible interpretations of the slope or intercept</comment>
+	<applet>exerciseBivarProg.BetaInterpInterpApplet</applet>
+	<width>500</width>
+	<height>600</height>
+	
+	<variable name="xVarName" type="string(10)">Name of explanatory variable</variable>
+	<variable name="yVarName" type="string(10)">Name of response variable</variable>
+	<variable name="slope" type="double">Slope of LS line</variable>
+	<variable name="intercept" type="double">Intercept of LS line</variable>
+	<variable name="qnParam" type="int_choice(Value in questions is the intercept#Value in questions is the slope)"></variable>
+	<variable name="paramOrder" type="int_choice(y = a + bx#y = bx + a)">The LS line may be written in either order.</variable>
+	<variable name="qnText" type="string_array(50)">Four choices for interpretation. %% is replaced by actual slope or intercept. Order is slope (correct, wrong), intercept (correct, wrong)</variable>
+	
+	<template>
+		<question>All students in a class was asked how many hours they had studied before a Statistics test.\\nThe least squares line below describes the relationship between the mean exam mark and the hours of study. Which of the following statements would be the best interpretation of the parameters?</question>
+		<qnParam>slope(0.10:0.30)#intercept(3.0:6.0)#xVarName(X)#yVarName(Y)#qnParam(0:1)#paramOrder(0:1)#qnText(If_X_increases_by_1,_Y_is_expected_to_increase by_%%. If_Y_is_one_higher,_X_is_expected_to_be_%%_higher. If_X_is_zero,_we_would_expect_Y_to_be_%%. If_Y_is_zero,_we_would_expect_X_to_be_%%.)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>markStudy</shortName>
+		<longName>Student marks and time spent studying</longName>
+		<question>All students in a class was asked how many hours they had studied before a Statistics test.\\nThe least squares line below describes the relationship between the mean exam mark and the hours of study. Which of the following statements would be the best interpretation of the parameters?</question>
+		<qnParam>slope(0.10:0.30)#intercept(3.0:6.0)#xVarName(study)#yVarName(mark)#qnParam(0:1)#paramOrder(0:1)#qnText(A_student_who_studies_1_hour_more_than_another_is_expected_to_get_%%_more_marks_in_the_test. A_student_who_gets_one_more_mark_than_another_in_the_test_is_expected_to_have_studied_for_%%_more_hours. A_student_who_did_not_study_would_be_expected_to_get_%%_marks_in_the_test. A_student_who_got_zero_marks_in_the_test_is_expected_to_have_studied_for_%%_hours.)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>markStudy2</shortName>
+		<longName>Student marks and time spent studying (variation 2)</longName>
+		<question>All students in a class was asked how many hours they had studied before a Statistics test.\\nThe least squares line below describes the relationship between the mean hours of study and the exam mark. Which of the following statements would be the best interpretation of the parameters?</question>
+		<qnParam>slope(0.50:2.00)#intercept(10.0:30.0)#xVarName(mark)#yVarName(study)#qnParam(0:1)#paramOrder(0:1)#qnText(A_student_who_gets_one_more_mark_than_another_in_the_test_is_expected_to_have_studied_for_%%_more_hours. A_student_who_studies_1_hour_more_than_another_is_expected_to_get_%%_more_marks_in_the_test. A_student_who_got_zero_marks_in_the_test_is_expected_to_have_studied_for_%%_hours. A_student_who_did_not_study_would_be_expected_to_get_%%_marks_in_the_test.)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>computerUse</shortName>
+		<longName>Computer use and years of education</longName>
+		<question>A survey was conducted in which 200 adults were asked to report the number of hours per week that they spent on a computer and their number of years of education.\\nThe least squares line below describes the relationship between the mean computer hours and years of education. Which of the following statements would be the best interpretation of the parameters?</question>
+		<qnParam>slope(0.50:1.00)#intercept(8.0:12.0)#xVarName(education)#yVarName(computers)#qnParam(0:1)#paramOrder(0:1)#qnText(An_adult_who_has_1_more_year_of_education_than_another_is_expected_to_spend_%%_more_hours_per_week_on_a_computer. An_adult_who_spends_1_more_hour_per_week_on_a_computer_than_another_is_expected_to_have_had_%%_more_years_of_education. An_adult_who_has_had_no_years_of_education_would_be_expected_to_spend_%%_hours_per_week_on_a_computer. An_adult_who_spends_no_hours_per_week_on_a_computer_is_expected_to_had_%%_years_of_education.)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>computerUse2</shortName>
+		<longName>Computer use and years of education (variation 2)</longName>
+		<question>A survey was conducted in which 200 adults were asked to report the number of hours per week that they spent on a computer and their number of years of education.\\nThe least squares line below describes the relationship between the years of education and the mean computer hours. Which of the following statements would be the best interpretation of the parameters?</question>
+		<qnParam>slope(1.00:2.00)#intercept(4.0:8.0)#xVarName(computers)#yVarName(education)#qnParam(0:1)#paramOrder(0:1)#qnText(An_adult_who_spends_1_more_hour_per_week_on_a_computer_than_another_is_expected_to_have_had_%%_more_years_of_education. An_adult_who_has_1_more_year_of_education_than_another_is_expected_to_spend_%%_more_hours_per_week_on_a_computer. An_adult_who_spends_no_hours_per_week_on_a_computer_is_expected_to_had_%%_years_of_education. An_adult_who_has_had_no_years_of_education_would_be_expected_to_spend_%%_hours_per_week_on_a_computer.)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='estimateResid'>
+	<description>Estimate a residual by eye from scatterplot and LS line</description>
+	<comment>This is a very simple question that only requires estimation of the vertical distance of a cross from the least squares line.</comment>
+	<applet>exerciseBivarProg.FindResidualApplet</applet>
+	<width>500</width>
+	<height>600</height>
+	
+	<variable name="xVarName" type="string(10)">Name of explanatory variable</variable>
+	<variable name="yVarName" type="string(10)">Name of response variable</variable>
+	<variable name="xAxis" type="axis">Scale for x-axis</variable>
+	<variable name="yAxis" type="axis">Scale for y-axis</variable>
+	<variable name="decimals" type="int(0)">Decimals used when residual is given in solution</variable>
+	<variable name="count" type="int(3)">Number of values in scatterplot</variable>
+	<variable name="corr" type="double">Correlation between X and Y in scatterplot</variable>
+	
+	<template>
+		<question>The scatterplot and least squares line below describe the relationship between Y and X for a sample of #count(20)# individuals.\\nWhat is the residual for the selected individual?</question>
+		<qnParam>xVarName(X)#xAxis(10 30 10 5)#yVarName(Y)#yAxis(5 15 6 2)#corr(0.7)#decimals(2)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>leaves</shortName>
+		<longName>Length and width of leaves</longName>
+		<question>A sample of #count[](20,50,100)# leaves was collected from a bush. The least squares line for predicting the width (mm) of the leaves from their lengths (mm) is drawn on the scatterplot of their widths and lengths.\\nWhat is the residual for the selected leaf?</question>
+		<qnParam>index(0:2)#xVarName(Length)#xAxis[index](10 30 10 5*60 100 60 10*100 200 100 20)#yVarName(Width)#yAxis[index](5 15 6 2*30 50 30 5*50 100 50 10)#corr[](-0.9,-0.7,-0.5,-0.3,0.3,0.5,0.7,0.8)#decimals[index](2,2,1)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>tomatoes</shortName>
+		<longName>Weight and sugar content of tomatoes</longName>
+		<question>Researchers measured the weight (gm) and sugar content (%) of a sample of #count[](20,50,100)# tomatoes of one variety. A least squares line was fitted to predict sugar content from weight.\\nWhat is the residual for the selected tomato?</question>
+		<qnParam>xVarName(Weight)#xAxis[](150 250 160 20*100 200 100 20)#yVarName(Sugar)#yAxis(2.5 3.5 2.6 0.2)#corr[](-0.9,-0.7,-0.5,-0.3,0.3,0.5,0.7,0.8)#decimals(2)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='pickResidPlot'>
+	<description>Pick the correct residual plot corresponding a scatterplot of Y vs X</description>
+	<comment>A scatterplot is shown and the corresponding plot of residuals against X must be chosen from four multiple-choice options.</comment>
+	<applet>exerciseBivarProg.ResidualPlotApplet</applet>
+	<width>500</width>
+	<height>750</height>
+	
+	<variable name="xVarName" type="string(10)">Name of explanatory variable</variable>
+	<variable name="yVarName" type="string(10)">Name of response variable</variable>
+	<variable name="xAxis" type="axis">Scale for x-axis</variable>
+	<variable name="yAxis" type="axis">Scale for y-axis</variable>
+	<variable name="residAxis" type="axis">Scale for residuals on residual plot</variable>
+	<variable name="count" type="int(3)">Number of values in scatterplot</variable>
+	
+	<template>
+		<question>Which of the four scatterplots below is the correct residual plot after a linear model is fitted to the data on the right?</question>
+		<qnParam>xVarName(Explanatory variable, X)#xAxis(10 20 10 2)#yVarName(Response, Y)#yAxis(0 20 0 5)#residAxis(-12 12 -10 5)#count[](50,100)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>generic</shortName>
+		<longName>Generic wording of variables as X and Y</longName>
+		<question>Which of the four scatterplots below is the correct residual plot after a linear model is fitted to the data on the right?</question>
+		<qnParam>xVarName(Explanatory variable, X)#xAxis(10 20 10 2)#yVarName(Response, Y)#yAxis(0 20 0 5)#residAxis(-12 12 -10 5)#count[](50,100)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='predictYFromX'>
+	<description>Predict the response at X=x from eqn of LS line</description>
+	<comment>A scatterplot of data is shown with least squares line superimposed; its equation is also given. The equation should be used to make the prediction.</comment>
+	<applet>exerciseBivarProg.FindPredictionApplet</applet>
+	<width>470</width>
+	<height>640</height>
+	
+	<variable name="xVarName" type="string(10)">Name of explanatory variable</variable>
+	<variable name="yVarName" type="string(10)">Name of response variable</variable>
+	<variable name="xAxis" type="axis">Scale for x-axis</variable>
+	<variable name="yAxis" type="axis">Scale for y-axis</variable>
+	<variable name="xValue" type="double">X-value at which prediction is required.</variable>
+	<variable name="corr" type="double">Correlation between X and Y in scatterplot</variable>
+	<variable name="count" type="int(3)">Number of values in scatterplot</variable>
+	<variable name="decimals" type="int(0)">Decimals used for prediction in solutions</variable>
+	<variable name="interceptDecimals" type="int(0)">Decimals for intercept given in LS line</variable>
+	<variable name="slopeDecimals" type="int(0)">Decimals for slope given in LS line</variable>
+	
+	<template>
+		<question>The least squares line below shows the relationship between Y and X for #count[](20,50,100)# individuals.\nPredict the value of Y for an individual with X = #xValue(10:35)#.</question>
+		<qnParam>xVarName(Explanatory variable, X)#xAxis(10 35 10 5)#yVarName(Response, Y)#yAxis(5 17 6 2)#corr(-0.7)#decimals(2)#interceptDecimals(1)#slopeDecimals(2)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>leaves</shortName>
+		<longName>Length and width of leaves</longName>
+		<question>A sample of #count[](20,50,100)# leaves was collected from a bush. The least squares line showing the relationship between leaf width (mm) and length (mm) is shown above their scatterplot.\nPredict the width of a leaf whose length is #xValue(10:35)# mm.</question>
+		<qnParam>xVarName(Length)#xAxis(10 35 10 5)#yVarName(Width)#yAxis(5 17 6 2)#corr[](-0.9,-0.8,-0.7,-0.5,-0.3,0.3,0.5,0.7,0.8,0.9)#decimals(2)#interceptDecimals(1)#slopeDecimals(2)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>tomatoes</shortName>
+		<longName>Weight and sugar content of tomatoes</longName>
+		<question>Researchers measured the weight (gm) and sugar content (%) of a sample of #count[](20,50,100)# tomatoes of one variety. The least squares line is shown above the scatterplot of the data.\nPredict the sugar content of a tomato whose weight is #xValue(150:200)# gm.</question>
+		<qnParam>xVarName(Weight)#xAxis(150 250 160 20)#yVarName(Sugar)#yAxis(2.5 3.7 2.6 0.2)#corr[](-0.9,-0.8,-0.7,-0.5,-0.3,0.3,0.5,0.7,0.8,0.9)#decimals(3)#interceptDecimals(1)#slopeDecimals(3)</qnParam>
+	</variation>
+</exercise>
+
+</topic>

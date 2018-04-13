@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Events in fixed time</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="poisson process, discrete distribution, poisson distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Number of events in a fixed time period</p>
+
+<p>In a homogeneous Poisson process with events that occur at a rate of \(\lambda\) per unit time, we  now define a discrete random variable, \(X\), to be the number of events that occur in one unit of time.</p>
+<p>If the unit of time is split into infinitessimally small periods, each of length \(\delta t\), the requirements of a homogeneous Poisson process mean that</p>
+<ol>
+	<li>No more than one event can occur in each period.</li>
+	<li>The occurrences of events in different small periods are independent.</li>
+	<li>The probability of an event in any interval is \(\lambda \times \delta t\).</li>
+</ol>
+<p class="heading">Binomial approximation</p>
+<p>To derive the probability function of \(X\), we start with a situation in which the above three conditions hold, but \(\delta t\) is larger. If unit time is split into \(n\) intervals, each of length \(\frac 1 n\), the three conditions would mean that the number of events is the number of successes in a series of \(n\) independent Bernoulli trials, each with probability \(\pi = \frac {\lambda} n\) of success, so</p>
+
+\[
+X \;\sim\; \BinomDistn \left(n, \pi = \frac {\lambda} n\right)
+\]
+
+<p>The probability function for the number of events in a homogeneous Poisson process can be found as the limit of this, as \(n \to \infty\).</p>
+
+<div class="example" title="Illustration: Poisson process with λ = 3">
+	<p class="exampleHeading">Process with λ = 3 events per unit time</p>
+	<p>The diagram below initially splits the unit time period into 5 periods of length \(\frac 1 5\). We initially only allow a single event in each of these periods, with probability \(\frac 3 5\) of an event with each. The total number of events therefore has a  
+\(\BinomDistn(n=5, \pi=\frac 3 5)
+\) distribution, as shown in the bar chart at the bottom. The expected value of this variable is 3, corresponding to a rate of 3 per unit time.</p>
+	<div class="centred">
+		<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="500">
+			<script type="text/javascript">writeAppletParams();</script>
+			<param name="appletName" value="estimationProg.BinomialPoissonApplet">
+			<param name="backgroundColor" value="FFFBF3">
+			<param name="rate" value="3">
+			<param name="probAxis" value="0 0.37 0 0.1">
+			<param name="countAxis" value="-0.5 10.5 0 1">
+			<param name="sections" value="5 10 20 40 80 160">
+			<param name="timeAxis" value="0 1 0 0.1">
+			<param name="randomSeed" value="248462545">
+			<param name="customText" value="Number of events=Number of events#Time=Time#Split into*periods=Split into*periods#Generate events=Generate events">
+		</applet>
+	</div>
+	<p>Use the pop-up menu to split  unit time into 10 periods. Halving the length of each period means that its probability of an event is also halved to  \(\frac 3 {10}\), giving a \(\BinomDistn(n=10, \pi=\frac 3 {10})
+\) distribution for the total number of events.</p>
+	<p>With a finer splitting of unit time into 160 periods, the probability of an event in each of these periods would be \(\frac 3 {160}\), giving a \(\BinomDistn(n=160, \pi=\frac 3 {160})
+	\) distribution for the total number of events. The expected number of events  remains at 3, corresponding to a rate of \(\lambda = 3\) events per unit time.</p>
+	<p>The  distribution of \(X\), the number of events in a <strong>Poisson</strong> process, is  the limit of this as the unit time period is split into finer and finer intervals, allowing events to occur arbitrarily close in time, but not simultaneously.</p>
+\[
+X \;\; \sim \; \; \lim_{k \to \infty} \BinomDistn\left(k,\; \frac 3 k\right)
+\]</div>
+<p>We now find the probability function for the number of events in a Poisson process, \(X\), as the limit of the probability functions of these binomial distributions.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Poisson probability function</p>
+		<p>The number of events in unit time in a Poisson process with rate \(\lambda\) per unit time has probability function</p>
+\[
+p(x) \;\;=\;\;  \frac {\lambda^x e^{-\lambda}} {x!} \quad\quad \text{ for } x=0, 1, \dots
+\]</div>
+	<div class="proof">
+		<p>We use the fact that</p>
+\[
+X \;\; \sim \; \; \lim_{k \to \infty} \BinomDistn\left(k,\; \frac {\lambda} k\right)
+\]
+		<p>The probability function is therefore the limit of these binomial probability functions,</p>
+\[
+p(x) \;\;=\;\;  \lim_{k \to \infty} p_k(x) \]
+		<p>where</p>
+\[ \begin{align}
+p_k(x) \;\;&amp;=\;\;  {k \choose x} \left(\frac {\lambda} k \right)^x \left(1 - \frac {\lambda} k \right)^{k-x} \\
+&amp;=\;\; \frac{k!} {(k-x)!\;x!} \times \frac {\lambda^x} {k^x} \left(1-\frac {\lambda} k \right)^{-x} \left(1-\frac {\lambda} k \right)^{k} \\[0.4em]
+&amp;=\;\; \frac{k(k-1)\dots(k-x+1)} {k^x} \times  \left(1-\frac {\lambda} k \right)^{-x} \frac {\lambda^x} {x!} \left(1-\frac {\lambda} k \right)^{k} \\[0.3em]
+&amp;=\;\; \left(1 - \frac 1 k\right) \left(1 - \frac 2 k\right) \dots \left(1 - \frac {x-1} k\right) \times  \left(1-\frac {\lambda} k \right)^{-x} \frac {\lambda^x} {x!} \left(1-\frac {\lambda} k \right)^{k}
+\end{align} \]
+		<p>Since the limits of the initial terms as \(k \to \infty\) are all one, </p>
+\[
+p(x) \;\;=\;\;  \frac {\lambda^x} {x!} \times \lim_{k \to \infty} {\left(1-\frac {\lambda} k \right)^{k}} \]
+		<p>You may recognise (from maths) that the limit on the right is \(e^{-\lambda}\). Otherwise we can find the limit using the fact that the probability function of any discrete random variable sums to one, so</p>
+\[ \begin{align}
+\sum_{x=0}^{\infty}{
+p(x)} \;\;&amp;=\;\;  \sum_{x=0}^{\infty} {\frac {\lambda^x} {x!}} \times \lim_{k \to \infty} {\left(1-\frac {\lambda} k \right)^{k}} \\
+&amp;=\;\; e^{\lambda} \times \lim_{k \to \infty} {\left(1-\frac {\lambda} k \right)^{k}} \quad\quad \text{(sum of exponential series)} \\
+&amp;=\;\;1
+\end{align} \]	</div>
+</div>
+<p>A distribution of this form is called a  <strong>Poisson distribution</strong>.</p>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

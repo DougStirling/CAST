@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE topic SYSTEM "exerciseXmlDefn.dtd">
+
+<topic name='simTest'>
+<longName>Testing with simulations</longName>
+
+
+<exercise name='testBinomWithSimulation'>
+	<description>Do a simulation to test a proportion</description>
+	<comment>This is a complex question with several steps. Firstly the hypotheses must be chosen, then the null hypothesis parameters must be set and several samples should be drawn from this model. The proportion of values as 'extreme' as the data should then be calculated -- the p-value for the test. Finally the strength of the evidence against the H0 must be described with a pop-up menu.</comment>
+	<applet>exerciseTestProg.BinomSimTestApplet</applet>
+	<width>600</width>
+	<height>770</height>
+	
+	<variable name="trialsName" type="string(26)">Name for Bernoulli trials (plural)</variable>
+	<variable name="successesName" type="string(26)">Name for successes (plural)</variable>
+	<variable name="successName" type="string(26)">Name for a single success</variable>
+	<variable name="pSuccess" type="double">Probability of success</variable>
+	<variable name="nTrials" type="int">Number of Bernoulli trials</variable>
+	<variable name="nSuccess" type="random">Number of observed successes</variable>
+	<variable name="conclusions" type="string_array">Strings for p-value over 0.1, 0.05 to 0.1, 0.01 to 0.05, 0.001 to 0.1 and under 0.001</variable>
+	<variable name="maxSliderN" type="int">Maximum number of trials for binomial experiments</variable>
+	<variable name="tail" type="int_choice(Low tail, null greater#Low tail, null equals#High tail, null lower#High tail, null equals#Two-tailed)"></variable>
+	<variable name="minSimulations" type="int">Minimum number of simulations for correct answer</variable>
+	<variable name="defaultSimulations" type="int">Number of simulations used when Tell Me is clicked</variable>
+	
+	<template>
+		<question>We want to test whether π is#?:string[tail]( at least * equal to * no higher than * equal to * * )##pSuccess(0.6)#.\\nIn #nTrials(20:30)# trials, there were #nSuccess(:)# successes. Perform a test for whether π is #?:string[tail](less than*less than*more than*more than*different from*not equal to)# #pSuccess#.</question>
+		<qnParam>tail[](0,1,2,3,4,4)#maxSliderN(40)#trialsName(trials)#successesName(successes)#successName(success)#minSimulations(50)#defaultSimulations(100)#conclusions(There_is_no_evidence_that_H%sub1%_is_true There_is_only_weak_evidence_that_H%sub1%_is_true There_is_moderately_strong_evidence_that_H%sub1%_is_true There_is_very_strong_evidence_that_H%sub1%_is_true It_is_almost_certain_that_H%sub1%_is_true)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>strawberryYoghurt</shortName>
+		<longName>Choice of strawberry yoghurt</longName>
+		<question>It is thought that the proportion of customers buying yoghurt who choose strawberry flavour is#?:string[tail]( at least * equal to * no higher than * equal to * * )##pSuccess[index](0.6,0.5,0.4)#.\\nOut of #nTrials(20:30)# customers buying yoghurt, #nSuccess(:)# were observed to pick strawberry. Perform a test for whether its probability is #?:string[tail](less than*less than*more than*more than*different from*not equal to)# #pSuccess#.</question>
+		<qnParam>index(0:2)#tail[](0,1,2,3,4,4)#maxSliderN(40)#trialsName(customers)#successesName(strawberry choices)#successName(choosing strawberry)#minSimulations(50)#defaultSimulations(100)#conclusions(There_is_no_evidence_that_H%sub1%_is_true There_is_only_weak_evidence_that_H%sub1%_is_true There_is_moderately_strong_evidence_that_H%sub1%_is_true There_is_very_strong_evidence_that_H%sub1%_is_true It_is_almost_certain_that_H%sub1%_is_true)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>raspberryYoghurt</shortName>
+		<longName>Choice of raspberry yoghurt</longName>
+		<question>It is thought that the proportion of customers buying yoghurt who choose raspberry flavour is#?:string[tail]( at least * equal to * no higher than * equal to * * )##pSuccess[index](0.6,0.5,0.4)#.\\nOut of #nTrials(20:30)# customers buying yoghurt, #nSuccess(:)# were observed to pick raspberry. Perform a test for whether its probability is #?:string[tail](less than*less than*more than*more than*different from*not equal to)# #pSuccess#.</question>
+		<qnParam>index(0:2)#tail[](0,1,2,3,4,4)#maxSliderN(40)#trialsName(customers)#successesName(raspberry choices)#successName(choosing raspberry)#minSimulations(50)#defaultSimulations(100)#conclusions(There_is_no_evidence_that_H%sub1%_is_true There_is_only_weak_evidence_that_H%sub1%_is_true There_is_moderately_strong_evidence_that_H%sub1%_is_true There_is_very_strong_evidence_that_H%sub1%_is_true It_is_almost_certain_that_H%sub1%_is_true)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>femaleLizards</shortName>
+		<longName>Female lizards hatching</longName>
+		<question>Researchers believe that the proportion of lizards of a particular species that are hatched female is#?:string[tail]( at least * equal to * no higher than * equal to * * )##pSuccess[index](0.6,0.5,0.4)#.\\n#nTrials(20:30)# lizards were observed hatching and #nSuccess(:)# of these were female. Perform a test for whether the probability of being female is #?:string[tail](less than*less than*more than*more than*different from*not equal to)# #pSuccess#.</question>
+		<qnParam>index(0:2)#tail[](0,1,2,3,4,4)#maxSliderN(40)#trialsName(lizards)#successesName(females)#successName(being female)#minSimulations(50)#defaultSimulations(100)#conclusions(There_is_no_evidence_that_H%sub1%_is_true There_is_only_weak_evidence_that_H%sub1%_is_true There_is_moderately_strong_evidence_that_H%sub1%_is_true There_is_very_strong_evidence_that_H%sub1%_is_true It_is_almost_certain_that_H%sub1%_is_true)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>maleLizards</shortName>
+		<longName>Male lizards hatching</longName>
+		<question>Researchers believe that the proportion of lizards of a particular species that are hatched male is#?:string[tail]( at least * equal to * no higher than * equal to * * )##pSuccess[index](0.6,0.5,0.4)#.\n#nTrials(20:30)# lizards were observed hatching and #nSuccess(:)# of these were male. Perform a test for whether the probability of being male is #?:string[tail](less than*less than*more than*more than*different from*not equal to)# #pSuccess#.</question>
+		<qnParam>index(0:2)#tail[](0,1,2,3,4,4)#maxSliderN(40)#trialsName(lizards)#successesName(males)#successName(being_male)#minSimulations(50)#defaultSimulations(100)#conclusions(There_is_no_evidence_that_H%sub1%_is_true There_is_only_weak_evidence_that_H%sub1%_is_true There_is_moderately_strong_evidence_that_H%sub1%_is_true There_is_very_strong_evidence_that_H%sub1%_is_true It_is_almost_certain_that_H%sub1%_is_true)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>drugRecovery</shortName>
+		<longName>Recovery after 12 hours with throat lozenge</longName>
+		<question>A drug company claims that when patients with sore throats take a throat lozenge, the probability of recovery after 12 hours is#?:string[tail]( at least *equal to *??? *??? * * )##pSuccess[index](0.6,0.5,0.4)#.\\nIn an experiment with #nTrials(20:30)# patients, #nSuccess(:)# had recovered after 12 hours. Perform a test for whether the probability of recovery is #?:string[tail](less than*less than*???*???*different from*not equal to)# #pSuccess#.</question>
+		<qnParam>index(0:2)#tail[](0,1,4,4)#maxSliderN(40)#trialsName(patients)#successesName(recovered patients)#successName(recovery)#minSimulations(50)#defaultSimulations(100)#conclusions(There_is_no_evidence_that_H%sub1%_is_true There_is_only_weak_evidence_that_H%sub1%_is_true There_is_moderately_strong_evidence_that_H%sub1%_is_true There_is_very_strong_evidence_that_H%sub1%_is_true It_is_almost_certain_that_H%sub1%_is_true)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>drugFailure</shortName>
+		<longName>Still ill after 12 hours with throat lozenge</longName>
+		<question>A drug company claims that when patients with sore throats take a throat lozenge, the probability of being still ill after 12 hours is#?:string[tail](??? *??? * no higher than * equal to * * )##pSuccess[index](0.6,0.5,0.4)#.\\nIn an experiment with #nTrials(20:30)# patients, #nSuccess(:)# were still ill after 12 hours. Perform a test for whether the probability of being still ill is #?:string[tail](???*???*more than*more than*different from*not equal to)# #pSuccess#.</question>
+		<qnParam>index(0:2)#tail[](2,3,4,4)#maxSliderN(40)#trialsName(patients)#successesName(patients still ill)#successName(being still ill)#minSimulations(50)#defaultSimulations(100)#conclusions(There_is_no_evidence_that_H%sub1%_is_true There_is_only_weak_evidence_that_H%sub1%_is_true There_is_moderately_strong_evidence_that_H%sub1%_is_true There_is_very_strong_evidence_that_H%sub1%_is_true It_is_almost_certain_that_H%sub1%_is_true)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='testMeanWithSimulation'>
+	<description>Do a simulation to test a mean (known sigma)</description>
+	<comment>This is a complex question with several steps. Firstly the hypotheses must be chosen, then the null hypothesis parameters must be set and several samples should be drawn from this model. The proportion of values as 'extreme' as the data should then be calculated - the p-value for the test. Finally the strength of the evidence against the H0 must be described with a pop-up menu.</comment>
+	<applet>exerciseTestProg.NormSimTestApplet</applet>
+	<width>550</width>
+	<height>770</height>
+	
+	<variable name="valueName" type="string(16)">Name for a value</variable>
+	<variable name="meanDecimals" type="int">Decimals used for reporting the mean</variable>
+	<variable name="sd" type="double">Known standard deviation. If sd/5 has more decimal digits, add a trailing zero.</variable>
+	<variable name="nullMean" type="double">Null hypothesis value for mean</variable>
+	<variable name="sampleSize" type="int">Number of data values, n</variable>
+	<variable name="observedMean" type="random">Observed sample mean</variable>
+	<variable name="conclusions" type="string_array">Strings for p-value over 0.1, 0.05 to 0.1, 0.01 to 0.05, 0.001 to 0.1 and under 0.001</variable>
+	<variable name="tail" type="int_choice(Low tail, null greater#Low tail, null equals#High tail, null lower#High tail, null equals#Two-tailed)"></variable>
+	<variable name="minSimulations" type="int">Minimum number of simulations for correct answer</variable>
+	<variable name="defaultSimulations" type="int">Number of simulations used when Tell Me is clicked</variable>
+	
+	<template>
+		<question>In a population with known standard deviation, #sigma# = #sd(0.020)#, we want to test whether µ is #?:string[tail]( at least * equal to * no higher than * equal to * * )##nullMean(2.05)#.\\nIn a sample of size n = #sampleSize[](4,9,16,25)#, the sample mean was #observedMean(:)#. Perform a test for whether #mu#, is #?:string[tail](less than*less than*more than*more than*different from*not equal to)# #nullMean#.</question>
+		<qnParam>tail[](0,1,2,3,4,4)#meanDecimals(3)#minSimulations(50)#defaultSimulations(100)#valueName(volume)#conclusions(There_is_no_evidence_that_H%sub1%_is_true There_is_only_weak_evidence_that_H%sub1%_is_true There_is_moderately_strong_evidence_that_H%sub1%_is_true There_is_very_strong_evidence_that_H%sub1%_is_true It_is_almost_certain_that_H%sub1%_is_true)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>milkVolume</shortName>
+		<longName>Volume of milk in containers</longName>
+		<question>From previous records, it is known that the volume of milk in 2-litre containers has standard deviation #sigma# = #sd(0.020)# litres. If working to specifications, the filling machine should have a mean fill volume of#?:string[tail]( at least * equal to * no higher than * equal to * * )##nullMean[index](2.05,2.06,2.07,2.08,2.09,2.10)# litres.\\nIn a sample of size n = #sampleSize[](4,9,16,25)#, the sample mean was #observedMean(:)# litres. Perform a test for whether the population mean, #mu#, is now #?:string[tail](less than*less than*more than*more than*different from*not equal to)# #nullMean#.</question>
+		<qnParam>index(0:5)#tail[](0,1,2,3,4,4)#meanDecimals(3)#minSimulations(50)#defaultSimulations(100)#valueName(volume)#conclusions(There_is_no_evidence_that_H%sub1%_is_true There_is_only_weak_evidence_that_H%sub1%_is_true There_is_moderately_strong_evidence_that_H%sub1%_is_true There_is_very_strong_evidence_that_H%sub1%_is_true It_is_almost_certain_that_H%sub1%_is_true)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>waterDischarge</shortName>
+		<longName>Wastewater discharged by factory</longName>
+		<question>An #?:string[tail](environmental group*environmental group*industrial concern*industrial concern*environmental group*industrial concern)# claims that #?:string[tail]( at least * equal to * no higher than * equal to * * )##nullMean[index](500,1000,1500,2000)# litres of wastewater per hour are discharged by a factory into a nearby lake.\\nIf it can be assumed that the standard deviation of the hourly discharge is #sigma# = #sd[index](150,200,250,400)# litres and a random sample of n = #sampleSize[](4,9,16,25)# hours gives a mean discharge of #observedMean(:)# litres per hour, perform a test for whether the population mean, #mu#, is now #?:string[tail](less than*less than*more than*more than*different from*not equal to)# #nullMean#.</question>
+		<qnParam>index(0:3)#tail[](0,1,2,3,4,4)#meanDecimals(0)#minSimulations(50)#defaultSimulations(100)#valueName(hourly discharge volume)#conclusions(There_is_no_evidence_that_H%sub1%_is_true There_is_only_weak_evidence_that_H%sub1%_is_true There_is_moderately_strong_evidence_that_H%sub1%_is_true There_is_very_strong_evidence_that_H%sub1%_is_true It_is_almost_certain_that_H%sub1%_is_true)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>serumCreatinine</shortName>
+		<longName>Serum-creatinine level in patients</longName>
+		<question>The mean and standard deviation of serum-creatinine in the general population are #mu# = #nullMean[index](0.9,1.0,1.1)# mg/dL and #sigma# = #sd[index](0.25,0.30,0.35)# mg/dL.\\nA group of n = #sampleSize[](4,9,16,25)# patients are given a new antibiotic and had a mean serum-creatinine level of #observedMean(:)# mg/dL. Test whether #mu# is now #?:string[tail](???*less than*???*more than*different from)# #nullMean# mg/dL.</question>
+		<qnParam>index(0:2)#tail[](1,3,4)#meanDecimals(3)#minSimulations(50)#defaultSimulations(100)#valueName(serum-creatinine level)#conclusions(There_is_no_evidence_that_H%sub1%_is_true There_is_only_weak_evidence_that_H%sub1%_is_true There_is_moderately_strong_evidence_that_H%sub1%_is_true There_is_very_strong_evidence_that_H%sub1%_is_true It_is_almost_certain_that_H%sub1%_is_true)</qnParam>
+	</variation>
+</exercise>
+
+</topic>

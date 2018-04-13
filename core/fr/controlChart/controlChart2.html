@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Les graphiques de séquences</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="run chart, graphical methods">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class=heading>Variabilité inhérente</p>
+
+<p>Quand un processus de production est contrôlée, il ya généralement une variabilité dans la sortie. Un certain niveau de variabilité est inévitable, du moins sans changements substantiels dans le processus. Dans la terminologie de contrôle de qualité, nous disons que ce niveau «acceptable» de la variabilité est le résultat de <strong>causes communes</strong> (ou les <strong>causes aléatoires</strong>). Si ce n'est la seule source de variabilité, le processus est dit être <strong>en contrôle</strong>. </p>
+<p class=heading>Les changements systématiques</p>
+<p>Notre objectif est de détecter des changements à la sortie qui <strong>ne</strong> sont <strong>pas</strong> le résultat de causes communes. Ces changements systématiques seraient le résultat de <strong>causes particulières</strong> (ou des <strong>causes assignables</strong>) et pourrait entraîner po ...</p>
+
+<ul>
+	<li>mouvement dans le processus de moyenne (soit brutalement soit constante dans le temps),</li>
+	<li>aberrantes unique, ou</li>
+	<li>changements à la variabilité des processus</li>
+</ul>
+
+<p>Les changements systématiques indiquent généralement des problèmes avec la qualité de la production.</p>
+<p class=heading>Exécuter tableau</p>
+
+<p>Mesures successives sont enregistrées à intervalles réguliers dans le cadre du suivi du processus. Ces valeurs sont utilisées pour détecter les causes spéciales de sorte que le processus peut être rapidement ajustée pour maintenir la qualité.</p>
+<center>
+  <table border="1" cellspacing="0" cellpadding="5" bgcolor="white" width="75%">
+    <tr> 
+      <th align="CENTER">L'objectif est de détecter les problèmes <font color="#FF0000">dès que possible</font>.</th>
+    </tr>
+  </table>
+</center>
+<p>Dans une <strong>carte de contrôle</strong>, les valeurs sont tracées par ordre chronologique, ce qui donne un type de séries temporelles intrigue. Comme chaque valeur est tracée, elle est comparée à des points plus tôt et, selon la valeur, il peut être pris comme un avertissement que le processus est <strong>hors de contrôle</strong>.</p>
+<p>Le type le plus simple de carte de contrôle se produit quand une mesure individuelle est faite à partir du processus à intervalles réguliers. L'intrigue de ces mesures contre le temps est appelé un <strong>tableau exécuté</strong>. Le défi consiste à détecter des changements systématiques dans le tableau run (due à des causes spéciales) sur le niveau de fond de la variabilité (due à des causes communes).</p>
+
+<div class="diagram">
+
+  <p class=heading>Carton de lait remplissant</p>
+
+<p>Une usine d'embouteillage de lait remplit les cartons en plastique avec un 2 litres de lait nominale. Aléatoire dans le processus de remplissage signifie que le volume réel varie d'un carton pour emballage. Le gestionnaire a déterminé qu'il est possible d'atteindre un volume moyen de 2040 ml avec presque tous les cartons de maintien entre 2000 et 2080 ml; variabilité au sein de cette gamme est considérée comme due à des causes communes.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="controlProg.ControlChartApplet">
+<param name="varName" value="milk volume (ml)">
+<param name="values" value="2041 2054 2047 2050 2047 2032 2046 2016 2057 2010 2036 2037 2051 2037 2035 2045 2052 2002 2031 2044 2037 2049 2031 2060 2043 2046 2042 2015 2036 2029 2061 2048 2029 2060 2034 2049 2067 2035 2043 2050 2059 2040 2058 2042 2057 2033 2042 2090 2072 2065 2084 2021 2051 2047 2069 2051 2051 2077 2067 2083 2051 2067 2089 2078 2085 2084 2076 2107 2099 2032 2049 2035 2042 2012 2064 1998 2018 2045 2074 2049 2053 2047 2063 2029 2031 2045 2025 2045 2073 2043 2048 2034 2029 2019 2038 2032 2028 2032 2026 2026">
+<param name="vertAxis" value="1990 2110 2000 20">
+<param name="controlLimits" value="#Lower limit# 2000 Centre 2040 #Upper limit# 2080">
+<param name="timeAxis" value="9 10 10 10">
+<param name="customText" value="start=start#end=end#Value outside control limits=Value outside control limits#2 out of 3 values in Zone A=2 out of 3 values in Zone A#4 out of 5 values in Zones A or B on one side=4 out of 5 values in Zones A or B on one side#6 values in a row increasing or decreasing=6 values in a row increasing or decreasing#9 values on one side of centre=9 values on one side of centre">
+</applet>
+</div>
+
+  <p>Le diagramme ci-dessus montre les volumes de lait dans des cartons successifs qui ont été échantillonnés à partir du processus de sortie pendant un quart de travail. Faites glisser le curseur pour afficher les valeurs dans l'ordre où elles ont été enregistrées. <font color="#666666">Cliquez sur chaque traverse pour voir le volume de lait (g) dans les cartons individuels échantillonnés.</font> </p>
+
+<p>Les lignes ont été dessinées sur le complot de 2000 et 2080 ml. Les valeurs en dehors de ces limites sont affichées en rouge - ils pourraient être prises pour indiquer des causes spéciales.</p>
+
+  <p>Le processus débute «sous contrôle» avec des variations qui semblent se conformer à des causes communes. Cependant entre les observations 30 et 70 il semble y avoir une tendance croissante dans le processus. A l'observation 70, les opérateurs vérifié la machine de remplissage et de trouver une soupape lâche qui a été resserré. Les observations finales à nouveau semblent se conformer à des causes communes avec l'exception possible de l'observation 76 qui a été exceptionnellement faible si aucune cause particulière n'a été trouvée pour cette valeur aberrante. </p>
+
+<p>Utilisez la barre de défilement à nouveau regarder les observations dans l'ordre où elles surgissent. <strong>Comment serait bientôt vous détecter la tendance croissante?</strong></p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

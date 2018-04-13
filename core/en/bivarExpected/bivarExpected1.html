@@ -1,0 +1,225 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Discrete expected values</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="bivariate distribution, discrete distribution, expected value">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Expected values for a single discrete variable</p>
+
+<p>For a single discrete variable \(X\) with probability function \(p(x)\), we <a href="javascript:showNamedPage('discreteDistns4')">defined the expected value</a> of any function of \(X\), \(g(X)\), to be</p>
+\[
+E[g(X)] \;=\; \sum_{\text{all }x} {g(x) \times p(x)}
+\]
+<p>This involves all possible values of \(g(x)\) and <strong>weights</strong> each by the probability of it being observed — the higher its probability \(p(x)\), the greater the contribution that it makes to the expected value. In particular, the distribution's mean and variance were defined to be</p>
+\[
+\mu \;=\; E[X] \;=\; \sum_{\text{all }x} {x \times p(x)} \spaced{and} \Var(X) \;=\; E\left[(X-\mu)^2\right]
+\]
+<p class="heading">Expected values for two discrete variables</p>
+<p>We define expected values for the joint distribution of two discrete random variables in a similar way.</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>If \(X\) and \(Y\) are discrete random variables with joint probability function \(p(x,y)\), then the <strong>expected value</strong> of a function of the variables, \(g(X,Y)\), is defined to be</p>
+\[
+E[g(X,Y)] \;=\; \sum_{\text{all }x,y} {g(x,y) \times p(x,y)}
+\]</div>
+
+<p>This can be expressed as a double-summation,</p>
+\[
+E[g(X,Y)] \;=\; \sum_{\text{all }x} {\sum_{\text{all }y}{g(x,y) \times p(x,y)}}
+\]
+
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Example: Maximum – minimum for three dice </p>
+		<p>Earlier, we  gave the joint probability function of the maximum and minimum values in  rolls of three fair dice.</p>
+\[
+p(x,y) \;\;=\;\; \begin{cases} {\frac 1 {6^3}} &amp; \quad\text{if }x = y \;\;\text{ and }\;\; 1 \le x,y \le 6 \\[0.4em]
+{\frac {x-y}{6^2}} &amp; \quad\text{if } 1 \le y \lt x \le 6 \\[0.4em]
+0 &amp; \quad\text{otherwise}
+\end{cases} \]
+<p>What is the expected value of the difference between the maximum and minimum?</p>
+	</div>
+	<div class="solution">
+		<p>We initially find the expected value by listing the probabilities  for all possible values of \(X\) and \(Y\).</p>
+
+		<div class="centred">
+			<table border="0" cellpadding="5" cellspacing="0" class="centred">
+				<tr>
+					<th>&nbsp;</th>
+					<th colspan="6">Maximum, <em>x</em></th>
+				</tr>
+				<tr>
+					<th>Minimum, <em>y</em></th>
+					<th>     1     </th>
+					<th>    2    </th>
+					<th>    3    </th>
+					<th>    4    </th>
+					<th>    5    </th>
+					<th>    6    </th>
+				</tr>
+				<tr>
+					<th>1</th>
+					<td style="background-color:#FFFFFF; border-top:1px solid #999999; border-left:1px solid #999999;">\(\small\diagfrac 1{6^3}\)</td>
+					<td style="background-color:#FFFFFF; border-top:1px solid #999999;">\(\small\diagfrac 1{6^2}\)</td>
+					<td style="background-color:#FFFFFF; border-top:1px solid #999999;">\(\small\diagfrac 2{6^2}\)</td>
+					<td style="background-color:#FFFFFF; border-top:1px solid #999999;">\(\small\diagfrac 3{6^2}\)</td>
+					<td style="background-color:#FFFFFF; border-top:1px solid #999999;">\(\small\diagfrac 4{6^2}\)</td>
+					<td style="background-color:#FFFFFF; border-top:1px solid #999999; border-right:1px solid #999999;">\(\small\diagfrac 5{6^2}\)</td>
+				</tr>
+				<tr>
+					<th>2</th>
+					<td style="background-color:#FFFFFF; border-left:1px solid #999999;">0</td>
+					<td  style="background-color:#FFFFFF;">\(\small\diagfrac 1{6^3}\)</td>
+					<td  style="background-color:#FFFFFF;">\(\small\diagfrac 1{6^2}\)</td>
+					<td  style="background-color:#FFFFFF;">\(\small\diagfrac 2{6^2}\)</td>
+					<td  style="background-color:#FFFFFF;">\(\small\diagfrac 3{6^2}\)</td>
+					<td style="background-color:#FFFFFF; border-right:1px solid #999999;">\(\small\diagfrac 4{6^2}\)</td>
+				</tr>
+				<tr>
+					<th>3</th>
+					<td style="border-left:1px solid #999999; background-color:#FFFFFF">0</td>
+					<td style="background-color:#FFFFFF">0</td>
+					<td style="background-color:#FFFFFF">\(\small\diagfrac 1{6^3}\)</td>
+					<td style="background-color:#FFFFFF">\(\small\diagfrac 1{6^2}\)</td>
+					<td style="background-color:#FFFFFF">\(\small\diagfrac 2{6^2}\)</td>
+					<td style="border-right:1px solid #999999; background-color:#FFFFFF">\(\small\diagfrac 3{6^2}\)</td>
+				</tr>
+				<tr>
+					<th>4</th>
+					<td style="background-color:#FFFFFF; border-left:1px solid #999999;">0</td>
+					<td  style="background-color:#FFFFFF;">0</td>
+					<td  style="background-color:#FFFFFF;">0</td>
+					<td  style="background-color:#FFFFFF;">\(\small\diagfrac 1{6^3}\)</td>
+					<td  style="background-color:#FFFFFF;">\(\small\diagfrac 1{6^2}\)</td>
+					<td style="background-color:#FFFFFF; border-right:1px solid #999999;">\(\small\diagfrac 2{6^2}\)</td>
+				</tr>
+				<tr>
+					<th>5</th>
+					<td style="background-color:#FFFFFF; border-left:1px solid #999999;">0</td>
+					<td  style="background-color:#FFFFFF;">0</td>
+					<td  style="background-color:#FFFFFF;">0</td>
+					<td  style="background-color:#FFFFFF;">0</td>
+					<td  style="background-color:#FFFFFF;">\(\small\diagfrac 1{6^3}\)</td>
+					<td style="background-color:#FFFFFF; border-right:1px solid #999999;">\(\small\diagfrac 1{6^2}\)</td>
+				</tr>
+				<tr>
+					<th>6</th>
+					<td style="background-color:#FFFFFF; border-bottom:1px solid #999999; border-left:1px solid #999999;">0</td>
+					<td style="background-color:#FFFFFF; border-bottom:1px solid #999999;">0</td>
+					<td style="background-color:#FFFFFF; border-bottom:1px solid #999999;">0</td>
+					<td style="background-color:#FFFFFF; border-bottom:1px solid #999999;">0</td>
+					<td style="background-color:#FFFFFF; border-bottom:1px solid #999999;">0</td>
+					<td style="background-color:#FFFFFF; border-bottom:1px solid #999999; border-right:1px solid #999999;">\(\small\diagfrac 1{6^3}\)</td>
+				</tr>
+			</table>
+		</div>
+		<p>Here are the corresponding values of \((x-y)\).</p>
+		<div class="centred">
+			<table border="0" cellpadding="5" cellspacing="0" class="centred">
+				<tr>
+					<th>&nbsp;</th>
+					<th colspan="6" align="center">Maximum, <em>x</em></th>
+				</tr>
+				<tr>
+					<th align="center">Minimum, <em>y</em></th>
+				<th align="center">    1    </th>
+				<th align="center">    2    </th>
+				<th align="center">    3    </th>
+				<th align="center">    4    </th>
+				<th align="center">    5    </th>
+				<th align="center">    6    </th>
+				</tr>
+				<tr>
+					<th align="center">1</th>
+					<td style="background-color:#FFFFFF; border-top:1px solid #999999; border-left:1px solid #999999;">0</td>
+					<td style="background-color:#FFFFFF; border-top:1px solid #999999;">1</td>
+					<td style="background-color:#FFFFFF; border-top:1px solid #999999;">2</td>
+					<td style="background-color:#FFFFFF; border-top:1px solid #999999;">3</td>
+					<td style="background-color:#FFFFFF; border-top:1px solid #999999;">4</td>
+					<td style="background-color:#FFFFFF; border-top:1px solid #999999; border-right:1px solid #999999;">5</td>
+				</tr>
+				<tr>
+					<th align="center">2</th>
+					<td style="background-color:#FFFFFF; border-left:1px solid #999999;">-1</td>
+					<td  style="background-color:#FFFFFF;">0</td>
+					<td  style="background-color:#FFFFFF;">1</td>
+					<td  style="background-color:#FFFFFF;">2</td>
+					<td  style="background-color:#FFFFFF;">3</td>
+					<td style="background-color:#FFFFFF; border-right:1px solid #999999;">4</td>
+				</tr>
+				<tr>
+					<th align="center">3</th>
+					<td style="border-left:1px solid #999999; background-color:#FFFFFF">-2</td>
+					<td style="background-color:#FFFFFF">-1</td>
+					<td style="background-color:#FFFFFF">0</td>
+					<td style="background-color:#FFFFFF">1</td>
+					<td style="background-color:#FFFFFF">2</td>
+					<td style="border-right:1px solid #999999; background-color:#FFFFFF">3</td>
+				</tr>
+				<tr>
+					<th align="center">4</th>
+					<td style="background-color:#FFFFFF; border-left:1px solid #999999;">-3</td>
+					<td  style="background-color:#FFFFFF;">-2</td>
+					<td  style="background-color:#FFFFFF;">-1</td>
+					<td  style="background-color:#FFFFFF;">0</td>
+					<td  style="background-color:#FFFFFF;">1</td>
+					<td style="background-color:#FFFFFF; border-right:1px solid #999999;">2</td>
+				</tr>
+				<tr>
+					<th align="center">5</th>
+					<td style="background-color:#FFFFFF; border-left:1px solid #999999;">-4</td>
+					<td  style="background-color:#FFFFFF;">-3</td>
+					<td  style="background-color:#FFFFFF;">-2</td>
+					<td  style="background-color:#FFFFFF;">-1</td>
+					<td  style="background-color:#FFFFFF;">0</td>
+					<td style="background-color:#FFFFFF; border-right:1px solid #999999;">1</td>
+				</tr>
+				<tr>
+					<th align="center">6</th>
+					<td style="background-color:#FFFFFF; border-bottom:1px solid #999999; border-left:1px solid #999999;">-5</td>
+					<td style="background-color:#FFFFFF; border-bottom:1px solid #999999;">-4</td>
+					<td style="background-color:#FFFFFF; border-bottom:1px solid #999999;">-3</td>
+					<td style="background-color:#FFFFFF; border-bottom:1px solid #999999;">-2</td>
+					<td style="background-color:#FFFFFF; border-bottom:1px solid #999999;">-1</td>
+					<td style="background-color:#FFFFFF; border-bottom:1px solid #999999; border-right:1px solid #999999;">0</td>
+				</tr>
+			</table>
+		</div>
+		<p>The expected value is the sum of the product of the values in the two tables, and this evaluates to</p>
+\[
+E[X-Y] \;=\; 2.917
+\]
+		<hr width="75%">
+		<p>Alternatively, we can  find the expected value more algebraically.</p>
+\[ \begin{align}
+E[X-Y] \;=\; \sum_{\text{all }x,y}{(x-y) \times p(x,y)} \;&amp;=\; \sum_{1 \le y \lt x \le 6} {(x-y)\frac{x-y}{6^2}} \\
+&amp;=\; \sum_{1 \le y \lt x \le 6} {\frac{(x-y)^2}{6^2}}
+\end{align} \]
+		<p>We now note that there are only five non-zero possible differences, \((x-y)\) = {1, 2, 3, 4 or 5}. These arise in the summation {5, 4, 3, 2 and 1} times, respectively. Therefore</p>
+\[ \begin{align}
+E[X-Y] \;&amp;=\; 5 \times \frac {1^2}{6^2} + 4 \times \frac {2^2}{6^2} + 3 \times \frac {3^2}{6^2} + 2 \times \frac {4^2}{6^2} + 1 \times \frac {5^2}{6^2} \\
+&amp;=\; 2.917
+\end{align} \]
+</div>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

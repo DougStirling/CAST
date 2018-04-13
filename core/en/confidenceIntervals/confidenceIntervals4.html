@@ -1,0 +1,205 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Other examples</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="confidence interval, geometric distribution, log-series distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>We now describe two  examples in which there is no exact formula for the standard error of the estimator.</p>
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Example: Geometric random sample</p>
+<p>If \(\{x_1, x_2, \dots, x_n\}\) is a random sample from a geometric distribution with parameter \(\pi\), find a large-sample 90% confidence interval for the parameter \(\pi\).</p>
+</div>
+
+<div class="solution">
+<p>The geometric probability function is</p>
+\[
+		p(x\;|\;\pi) = \pi(1-\pi)^{x-1} \]
+<p>The log-likelihood is</p>
+\[
+		\ell(\pi) \;\; = \;\;  \sum_{i=1}^n {\log p(x_i\;|\;\pi)} \;\; = \;\; n \log(\pi) + (\sum x - n) \log(1 - \pi)\]
+<p>and its first derivative is</p>
+\[
+\ell'(\pi) \;\; = \;\; \frac n {\pi} - \frac {\sum x - n} {1 - \pi}
+\]
+
+<p>The maximum likelihood estimator was <a href="javascript:showNamedPage('maxLikelihood3')">shown earlier</a> to be</p>
+\[ \hat{\pi} \;\; = \;\; \frac n {\sum x}
+		 \;\; = \;\; \frac 1 {\overline x}\]
+<p>Although this estimator is biased, maximum likelihood estimators are <strong>asymptotically</strong> unbiased, so the bias will be small in large samples.</p>
+<p>In a similar way, there is no simple formula for the standard deviation of \(\hat{\pi}\), but we have an asymptotic formula that gives an approximate value for large samples. The second derivative of the log-likelihood is</p>
+\[
+\ell''(\pi) \;\; = \;\; -\frac n {\pi^2} -\frac {\sum x - n} {(1 - \pi)^2}
+\]
+<p>and replacing \(\pi\) by \(\hat{\pi}\) gives</p>
+\[
+\ell''(\hat{\pi}) \;\; = \;\; -\frac n {\hat{\pi}^2(1-\hat{\pi})}
+\]
+<p>The asymptotic value for the standard error is therefore</p>
+\[
+	\se(\hat {\pi}) \;\;\approx\;\; \sqrt {- \frac 1 {\ell''(\hat {\pi})}} \;\;=\;\; \sqrt {\frac {{\hat{\pi}}^2(1-\hat{\pi})} n}
+\]
+<p>Since the large sample also means that the estimator will have a distribution that is close to normal, an approximate 90% confidence interval for \(\pi\) is</p>
+\[ \begin{align}
+	\hat {\pi} \;\pm\; 1.645 \times \se(\hat {\pi}) \;\;&amp;=\;\; \frac 1 {\overline x} \;\pm\; 1.645 \times \sqrt {\frac {{\hat{\pi}}^2(1-\hat{\pi})} n} \\
+&amp;=\;\; \frac 1 {\overline x} \;\pm\; 1.645 \times \sqrt{\frac {\overline x - 1} {n {\overline x}^3}}
+\end{align} \]
+</div>
+
+</div>
+
+<p>In the next example, the Newton-Raphson algorithm is used to obtain the maximum likelihood estimate and its standard error.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Example: Log-series distribution</p>
+		<p>The following data set that is assumed to arise from a log-series distribution with probability function</p>
+\[
+p(x) \;=\; \frac {-1} {\log(1-\theta)} \times \frac {\theta^x} x \quad\quad \text{for } x=1, 2, \dots
+\]
+
+<div class="centred">
+	<table border="0" cellpadding="5" cellspacing="0" class="centred" style="background-color:#FFFFFF">
+		<tr>
+			<td style="border-top:1px solid #999999; border-left:1px solid #999999; width:15px; text-align:right; padding:4px 8px 4px 5px">3</td>
+			<td style="border-top:1px solid #999999; width:15px; text-align:right; padding:4px 8px 4px 5px">5</td>
+			<td style="border-top:1px solid #999999; width:15px; text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="border-top:1px solid #999999; width:15px; text-align:right; padding:4px 8px 4px 5px">4</td>
+			<td style="border-top:1px solid #999999; width:15px; text-align:right; padding:4px 8px 4px 5px">8</td>
+			<td style="border-top:1px solid #999999; width:15px; text-align:right; padding:4px 8px 4px 5px">10</td>
+			<td style="border-top:1px solid #999999; width:15px; text-align:right; padding:4px 8px 4px 5px">2</td>
+			<td style="border-top:1px solid #999999; width:15px; text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="border-top:1px solid #999999; width:15px; text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="border-top:1px solid #999999; border-right:1px solid #999999; width:15px; text-align:right; padding:4px 8px 4px 5px">2</td>
+		</tr>
+		<tr>
+			<td style="border-left:1px solid #999999; text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">8</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">6</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">13</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">6</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">2</td>
+			<td style="text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="border-right:1px solid #999999; text-align:right; padding:4px 8px 4px 5px">3</td>
+		</tr>
+		<tr>
+			<td style="border-bottom:1px solid #999999; border-left:1px solid #999999; text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="border-bottom:1px solid #999999; text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="border-bottom:1px solid #999999; text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="border-bottom:1px solid #999999; text-align:right; padding:4px 8px 4px 5px">2</td>
+			<td style="border-bottom:1px solid #999999; text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="border-bottom:1px solid #999999; text-align:right; padding:4px 8px 4px 5px">6</td>
+			<td style="border-bottom:1px solid #999999; text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="border-bottom:1px solid #999999; text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="border-bottom:1px solid #999999; text-align:right; padding:4px 8px 4px 5px">1</td>
+			<td style="border-bottom:1px solid #999999; border-right:1px solid #999999; text-align:right; padding:4px 8px 4px 5px">1</td>
+		</tr>
+	</table>
+</div>
+<p>Find a large-sample 95% confidence interval for the parameter \(\theta\).</p>
+	</div>
+	<div class="solution">
+		<p>The log-likelihood for a random sample from the log-series distribution is</p>
+\[
+\ell(\theta) = \sum_{i=1}^n \log \left(p(x_i)\right) = {\sum x_i} \log(\theta) - n \times \log \left( \log(1 - \theta) \right) + K
+\]
+<p>where \(K\) is a constant whose value does not depend on \(\theta\). The maximum likelihood estimate is the solution of</p>
+\[
+\ell'(\theta) = \frac {\sum x_i} {\theta} + \frac n {(1 - \theta)\log(1 - \theta)} = 0
+\]
+<p>but cannot be solved algebraically  for \(\theta\). Iterations of the Newton Raphson algorithm for numerically solving the equation also use the second derivative of the log-likelihood,</p>
+\[
+\ell''(\theta) = -\frac {\sum x_i} {\theta^2} + \frac {n \left(1 + \log(1 - \theta) \right)} {(1 - \theta)^2\log^2(1 - \theta)}
+\]
+<p>The following table shows iterations from an initial guess, \(\theta_0 = 0.7\).</p>
+<div class="centred">
+	<table border="0" cellpadding="5" cellspacing="0" class="centred iterations">
+		<tr>
+			<th style="border-bottom:1px solid #999999;">Iteration, <em>i</em></th>
+			<th style="border-bottom:1px solid #999999;">\(\theta_i\)</th>
+			<th style="border-bottom:1px solid #999999;">\(\ell'(\theta_i)\)</th>
+			<th style="border-bottom:1px solid #999999;">\(\ell''(\theta_i)\)</th>
+		</tr>
+		<tr>
+			<td style="text-align:center; background-color:#FFFFFF; padding:4px 8px 4px 5px">0</td>
+			<td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">0.7000</td>
+			<td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">52.656</td>
+			<td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-240.78</td>
+		</tr>
+		<tr>
+			<td style="text-align:center; background-color:#FFFFFF; padding:4px 8px 4px 5px">1</td>
+			<td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">0.9187</td>
+			<td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-43.613</td>
+			<td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-1200.14</td>
+		</tr>
+		<tr>
+			<td style="text-align:center; background-color:#FFFFFF; padding:4px 8px 4px 5px">2</td>
+			<td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">0.8823</td>
+			<td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-11.484</td>
+			<td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-661.52</td>
+		</tr>
+		<tr>
+			<td style="text-align:center; background-color:#FFFFFF; padding:4px 8px 4px 5px">3</td>
+			<td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">0.8650</td>
+			<td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-1.139</td>
+			<td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-538.41</td>
+		</tr>
+		<tr>
+			<td style="text-align:center; background-color:#FFFFFF; padding:4px 8px 4px 5px">4</td>
+			<td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">0.8629</td>
+			<td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-0.013</td>
+			<td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-526.41</td>
+		</tr>
+		<tr>
+			<td style="text-align:center; background-color:#FFFFFF; padding:4px 8px 4px 5px">5</td>
+			<td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">0.8628</td>
+			<td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-0.000</td>
+			<td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-526.28</td>
+		</tr>
+		<tr>
+			<td style="text-align:center; background-color:#FFFFFF; padding:4px 8px 4px 5px">6</td>
+			<td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">0.8628</td>
+			<td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-0.000</td>
+			<td style="text-align:right; background-color:#FFFFFF; padding:4px 8px 4px 5px">-526.28</td>
+		</tr>
+		<tr>
+			<td style="text-align:center; border-bottom:1px solid #999999; background-color:#FFFFFF; padding:4px 8px 4px 5px">7</td>
+			<td style="text-align:right; border-bottom:1px solid #999999; background-color:#FFFFFF; padding:4px 8px 4px 5px">0.8628</td>
+			<td style="text-align:right; border-bottom:1px solid #999999; background-color:#FFFFFF; padding:4px 8px 4px 5px"></td>
+			<td style="text-align:right; border-bottom:1px solid #999999; background-color:#FFFFFF; padding:4px 8px 4px 5px"></td>
+		</tr>
+	</table>
+</div>
+<p>From the second derivative, we can approximate the standard error of the estimator,</p>
+\[
+	\se(\hat {\theta}) \;\;\approx\;\; \sqrt {- \frac 1 {\ell''(\hat {\theta})}} \;\;=\;\; \sqrt {\frac 1 {526.28}}
+ \;\;=\;\; 0.0436\]
+<p>This leads to a 95% confidence interval</p>
+\[ \begin{align}
+	\hat {\theta} \;\pm\; 1.96 \times \se(\hat {\theta}) \;\;&amp;=\;\; 0.8628 \;\pm\; 1.96 \times 0.0436 \\
+	&amp;=\;\; 0.7773 \text{  to  } 0.9483
+\end{align} \]
+</div>
+</div>
+
+<p class="eqn">&nbsp;</p>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

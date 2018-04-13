@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Simulations with normal distns</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="simulation, error distribution, standard error, bias, quartiles">
+	<meta name="dataset" content="Silkworm poisoning">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Estimating other parameters of a normal population</p>
+
+<p>In normal populations, the mean, µ, 
+	is the parameter that is most often estimated. However numerical distributions 
+	have other parameters that may be of interest. For example,</p>
+<ul>
+	<li>standard deviation</li>
+	<li>interquartile range (upper quartile - lower quartile)</li>
+	<li>median</li>
+	<li>other percentiles (e.g. the upper quartile)</li>
+</ul>
+<p>These parameters can be estimated using the corresponding summary statistic 
+	from a random sample, but the error distribution may be difficult to obtain 
+	theoretically.</p>
+<p class="heading">Simulation</p>
+<p>Since the parameters µ 
+	and σ 
+	are unknown, we cannot perform a simulation with repeated samples from the 
+	actual population. However we can conduct a simulation from our best estimate 
+	of the population distribution &mdash; i.e. replacing µ 
+	and σ 
+	with the sample mean and standard deviation.</p>
+<p>We repeatedly take samples of size <em>n</em> from this approximate population 
+	and evaluate the estimation error from using each sample. (Since we know the 
+	population from which we are sampling, we know the population parameter and 
+	can find the estimation error.)</p>
+<p>The standard deviation of these errors is the approximate standard error 
+	of the estimator.</p>
+
+<div class="diagram" title="Example: Silkworm poisoning">
+	<p class=heading>Silkworm poisoning</p>
+
+	<p>In an experiment to investigate the toxic action of arsenic, 80 fourth-instar 
+		silkworm larvae weighing between 0.41 and 0.45 grams were given 0.10 mg 
+		of sodium arsenate per gram of body weight.</p>
+	
+<div class="centred"><div class="boxed">
+<p>How long will one in four of the larvae survive?<strong> 
+					</strong></p>
+</div></div>
+
+	<p> In other words, we want to estimate the <strong>upper quartile</strong> 
+		of the survival times.</p>
+	<p class=eqn><img class="gif" src="images/silkwormUQ.gif" width="396" height="136"></p>
+	<p>The above dot plot shows the survival times and their upper quartile. Assuming 
+		that these silkworms are a random sample,&nbsp;...</p>
+	
+<div class="centred"><div class="boxed">
+<p>...&nbsp;we <strong><strong>estimate</strong> 
+					that the population upper quartile is 292 seconds &mdash; i.e. we predict 
+					that 1 in 4 silkworms of this type will survive for 292 seconds</strong>.<strong> 
+					</strong></p>
+</div></div>
+
+	
+	<p class=heading>Approximate population</p>
+	<p>The survival times have a fairly symmetric distribution so it is reasonable 
+		to try simulating random samples from a normal population. The diagram below 
+		shows a normal distribution whose mean and standard deviation equal those 
+		of our actual data.</p>
+	<p class=eqn><img class="gif" src="images/silkwormModel.gif" width="388" height="128"></p>
+	<p>We use this normal distribution as a population from which to sample 80 
+		values &mdash; simulated survival times for 80 silkworms given the same dose 
+		of arsenic. For the normal (272.6, 30.7) distribution, the upper quartile 
+		is 293.3, so this is the 'target' parameter that is estimated by our simulated 
+		samples. </p>
+		
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="stdErrorProg.ErrorSampleApplet">
+<param name="varName" value="Simulated survival times (sec)">
+<param name="random" value="80 272.6 30.7 875636431 2.5">
+<param name="dataAxis" value="180 380 200 50">
+<param name="errorName" value="Error in estimate (sec)">
+<param name="errorAxis" value="-15 15 -15 5">
+<param name="percentile" value="0.75">
+<param name="paramName" value="Target (UQ)">
+<param name="statisticName" value="Estimate (sample UQ)">
+<param name="decimals" value="2">
+<param name="units" value="sec">
+<param name="maxBiasSe" value="99.99">
+<param name="showBiasSe" value="true">
+<param name="customText" value="Estimate s.e. & bias=Estimate s.e. & bias#Bias=Bias">
+</applet>
+</div>
+
+	
+<p>The diagram initially shows a sample of 80 survival times. The error is 
+	the difference between the sample upper quartile and the underlying population 
+	parameter, 293.3 sec.</p>
+<p>Click <strong>Take sample</strong> a few times and observe that the error 
+	varies from sample to sample.</p>
+<p>Click <strong>Accumulate</strong> then take 100 or more samples (survival 
+	times of 80 silkworms). The error distribution is built up as a stacked 
+	dot plot at the bottom of the diagram.</p>
+
+<div class="centred"><div class="boxed">
+<p>The distribution of errors gives an idea 
+				of how far the upper quartile of our actual survival times (292 sec) 
+				is likely to be from the true unknown population upper quartile.</p>
+</div></div>
+
+
+	
+<p>Click <strong>Estimate s.e. and bias</strong> to see the standard deviation 
+	and mean of the error distribution.</p>
+<p class=heading>Understanding accuracy of estimate</p>
+
+<p>In the simulation, you should have observed that the bias of the estimator 
+	is small, so we will treat it as zero.</p>
+<p>The estimated standard error in your simulation was probably just over 
+	4&nbsp;sec. We can use the 70-95-100 rule-of-thumb to help interpret its 
+	value &mdash; the error has approximately 95% chance of being within 2 s.e. of 
+	zero and will be almost certainly within 3 s.e. of zero.</p>
+
+<div class="centred"><div class="boxed">
+<p>The error in our estimate of the population upper quartile, 
+				292&nbsp;sec, is likely to be less than 8&nbsp;sec and will almost 
+				certainly be less than 12&nbsp;sec.</p>
+</div></div>
+
+<br>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

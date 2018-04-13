@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Simple model for two factors</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="interaction, additivity of factor effects">
+	<meta name="dataset" content="Asphalt tensile strength">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Model without interaction between the factors</p>
+<p>The simplest model for the effect of two factors on a response is an additive one of the form:</p>
+<p class="eqn"><span class="black">(<em>mean response</em>) &nbsp; = &nbsp; (<em>base value</em>) &nbsp; + &nbsp; (<em><span class="darkblue">effect of factor A</span></em>) &nbsp; + &nbsp; (<span class="em darkred">effect of factor B</span> <span class="darkred">)</span></span></p>
+<p>One implication of this model is that the effect on the response of changing the level of factor A is the same, whatever the level of factor B. In a similar way, the model assumes that the effect of changing factor B is the same whatever the level of factor A.</p>
+<div class="centred"><div class="boxed">
+	<p>If this model holds, the effects of each factor can be separately 
+		described by a table of means.<br>
+</p>
+</div></div>
+<p>It should be noted that this model does not always hold. For example the effect on the response of changing A may be lower when B is at a low level than when B is at a high level. This is called <strong>interaction</strong> between the effects of A and B and a different model must be used if interaction is present. Interaction will be discussed later in this section.</p>
+
+<div class="diagram" title="Example: Strength of asphaltic concrete">
+<p class=heading>Strength of asphaltic concrete</p>
+
+<p>An experiment was conducted by a civil engineer to assess the effect of the 
+		compaction method on asphaltic concrete. Two types of aggregate and four compaction types were used in the 
+		factorial experiment with three replicates.</p>
+<p>The diagram below shows the tensile strengths (psi) of the samples and the
+best-fitting  factor model with no interaction.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoFactorProg.RotateDragFactorsApplet">
+<param name="yVarName" value="Concrete strength">
+<param name="yValues" value="68 63 65 126 128 133 93 101 98 56 59 57 71 66 66 107 110 116 63 60 59 40 41 44">
+<param name="yAxis" value="40 140 40 20">
+<param name="xVarName" value="Compaction">
+<param name="xValues" value="3@0 3@1 3@2 3@3 3@0 3@1 3@2 3@3">
+<param name="xLabels" value="Static #Regular kneading# #Low kneading# #Very low kneading#">
+<param name="zVarName" value="Aggregate type">
+<param name="zValues" value="12@0 12@1">
+<param name="zLabels" value="Basalt Silicious">
+<param name="xModelTerms" value="factor">
+<param name="zModelTerms" value="factor">
+<param name="interaction" value="false">
+<param name="initialModel" value="ls">
+<param name="maxRss" value="999.99">
+<param name="customText" value="None=None#Linear=Linear#Factor=Factor">
+</applet>
+</div>
+
+<p>Rotate to <strong>y-z</strong>. The coloured lines show how the tensile strength differs for the two aggregate types for all compaction methods. Observe that :</p>
+<div class="centred"><div class="boxed">
+	<p>The fitted lines are all <strong>parallel</strong> since the no-interaction model assumes that the differences (Basalt - Silicious) are the same for all compaction methods.</p>
+</div></div>
+<p>Similarly, rotate to <strong>y-x</strong>. Again the two fitted lines 
+	(corresponding to the different aggregate types) are all <strong>parallel</strong>.</p>
+<div class="centred"><div class="boxed">
+	<p>The no-interaction model assumes that the effect of changing the compaction method is the same for both aggregate types.</p>
+</div></div>
+<p>With the assumption of no interaction, the differences between the effects of the aggregates and compaction methods can be well summarised by the two tables below:</p>
+<div class="centred"><table border="0" class="centred" cellpadding="3" cellspacing="0">
+	<tr>
+		<td>&nbsp;</td>
+		<th colspan="2">Aggregate type</th>
+		</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<th>&nbsp;&nbsp;Basalt&nbsp;&nbsp;</th>
+		<th>&nbsp;&nbsp;Silicious&nbsp;&nbsp;</th>
+	</tr>
+	<tr>
+		<th>Mean strength&nbsp;&nbsp;</th>
+		<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-right:0px">87.25</td>
+		<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-left:0px">70.25</td>
+	</tr>
+</table></div>
+<p>The model therefore estimates that Basalt aggregate is 17psi stronger than Silicious, whatever the compaction method.</p>
+<div class="centred"><table border="0" class="centred" cellpadding="3" cellspacing="0">
+	<tr>
+		<td>&nbsp;</td>
+		<th colspan="4">Compaction method</th>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td align="center">&nbsp;&nbsp;&nbsp;Static&nbsp;&nbsp;&nbsp;</td>
+		<td align="center">Regular<br>
+			&nbsp;kneading&nbsp;</td>
+		<td align="center">Low<br>
+			&nbsp;kneading&nbsp;</td>
+		<td align="center">Very low<br>
+			&nbsp;kneading&nbsp;</td>
+	</tr>
+	<tr>
+		<th>Mean strength&nbsp;&nbsp;</th>
+		<td bgcolor="#FFFFFF" style="border:1px solid #999999; border-right:0px"><div class="centred">66.5</div></td>
+		<td bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;"><div class="centred">120.0</div></td>
+		<td bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;"><div class="centred">79.0</div></td>
+		<td bgcolor="#FFFFFF" style="border:1px solid #999999; border-left:0px"><div class="centred">49.4</div></td>
+	</tr>
+</table></div>
+<p>This table summarises the differences between the compaction methods, whatever the aggregate type.</p>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

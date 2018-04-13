@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Patterns in time series</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="time series, trend, seasonal pattern, cyclic pattern, autocorrelation">
+	<meta name="dataset" content="World rice production">
+	<meta name="dataset" content="Temperature in Sydney">
+	<meta name="dataset" content="Southern oscillation">
+	<meta name="dataset" content="Yield of barley">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Types of pattern</p>
+<p>A few patterns in time series are particularly important.</p>
+
+<table>
+<tr valign="top">
+	<td><dl><dt>Trend</dt>
+  <dd>This refers to long-term increases and decreases in the values. Identifying trend is important since we might use it to help forecast future values.</dd>
+	</dl>  </td>
+	<td><p><img src="../timePlot/images/pattern_trend.gif" width="204" height="135"></p></td>
+ </tr>
+ 
+<tr valign="top">
+	<td><dl><dt>Seasonal variation</dt>
+  <dd>Seasonal variation is often evident in monthly or quarterly data and refers to a pattern that is repeated each year. For example, temperature is  lowest in the winter months and highest in the summer of every year.</dd>
+  </dl>  </td>
+	<td><p><img src="../timePlot/images/pattern_seasonal.gif" width="204" height="135"></p></td>
+ </tr>
+ 
+<tr valign="top">
+	<td><dl>
+		<dt>Cyclic variation (autocorrelation)</dt>
+		<dd>In some time series, successive values tend to be similar to the adjacent values but, unlike in a situation where there is trend, there is no systematic tendency to increase or decrease. The time series plot often appears to have irregular waves or cycles.</dd>
+		<dt>&nbsp;</dt>
+  </dl>  </td>
+	<td><p><img src="../timePlot/images/pattern_cyclical.gif" width="204" height="135"></p></td>
+ </tr>
+ 
+<tr valign="top">
+	<td><dl>
+		<dt>Random fluctuations</dt>
+		<dd>These are 'ups and downs' in a time series that do not correspond to trend, seasonal variation or autocorrelation.</dd>
+	</dl></td>
+	<td><p><img src="../timePlot/images/pattern_random.gif" width="204" height="135"></p></td>
+</tr>
+</table>
+
+<p>Most time series  show more than one of these patterns to some degree.</p>
+
+<div class="diagram">
+<p class="heading">World rice production</p>
+<p>The time series plot below shows the total world rice production each year from 1961 to 2001.<span class="gray"></span></p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.TimePlotApplet">
+<param name="varName" value="World rice production (million tonnes)">
+<param name="values" value="? 215.7 226.6 247.1 263.0 254.1 261.2 277.5 288.7 295.7 316.4 317.8 307.3 335.0 332.0 357.0 347.7 369.5 385.1 375.1 396.8 410.0 421.9 447.8 465.1 467.9 468.4 461.1 487.0 514.0 518.2 518.5 528.2 529.8 538.8 547.0 568.5 576.8 578.8 609.9 598.2 585.1">
+<param name="vertAxis" value="200 650 200 50">
+<param name="timeAxis" value="0 10 1960 10">
+<param name="labelAxes" value="true">
+<param name="timeAxisName" value="Year">
+<param name="timeSequence" value="1960 1 43">
+</applet>
+</div>
+<p>The dominant feature of this time series is the  <span class="red bold">upward trend</span> over the period.</p>
+
+<p class="heading">Temperature in Sydney</p>
+<p>This time series shows the mean daily maximum temperature in Sydney each month between January 2005 and April 2009.<span class="gray"></span></p>
+<div class="centred">
+  <applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.TimePlotApplet">
+  <param name="varName" value="Temperature (degrees C)">
+  <param name="values" value="26.6 27.4 24.3 25.1 21.2 19.2 19.0 20.0 21.0 24.3 23.9 28.6 23.4 27.0 27.8 27.1 24.6 20.6 17.0 17.9 19.8 23.1 24.2 24.3 24.2 23.1 26.4 26.0 26.3 23.0 22.4 16.8 17.1 19.9 20.9 25.0 23.5 24.7 22.7 26.0 24.8 25.1 21.5 20.5 18.6 17.2 17.3 21.4 23.2 23.7 25.9 22.1">
+  <param name="vertAxis" value="15 29 16 2">
+  <param name="labelAxes" value="false">
+  <param name="timeAxisName" value="Month">
+  <param name="seasonName" value="12 Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec">
+  <param name="seasonInfo" value="0 0 2005">
+  </applet>
+</div>
+<p>Temperature is highly seasonal and the <span class="red bold">seasonal pattern</span> of a summer peak between December and April each year is clear.</p>
+
+<p class="heading">Southern Oscillation</p>
+<p>The Southern Oscillation Index is defined as the barometric pressure difference between Tahiti and the Darwin Islands at sea level. The southern oscillation is a predictor of El Nino which in turn is thought to be a driver of world-wide weather. Specifically, repeated southern oscillation values less than -1 typically defines an El Nino.<span class="gray"></span> The time series plot shows the index between January 1984 and December 1987.</p>
+<div class="centred">
+  <applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.TimePlotApplet">
+  <param name="varName" value="Pressure difference">
+  <param name="values" value="0 0.4 -0.8 0.4 0 -1.2 0 0.1 0.1 -0.6 0.3 -0.3 -0.5 0.8 0.2 1.4 -0.2 -1.4 -0.3 0.7 0 -0.8 -0.4 0.1 0.8 -1.2 -0.1 0.1 -0.6 1 0.1 -0.9 -0.5 0.6 -1.6 -1.6 -0.7 -1.4 -2 -2.7 -2 -2.7 -1.8 -1.7 -1.1 -0.7 -0.1 -0.6 -0.3 -0.6 0.1 0 1.1 -0.3 1.1 1.4 1.9 1.5 1.9 1.1 1.5 1.1 0.6 1.6 1.2 0.5 0.8 -0.8 0.6 0.6 -0.4 -0.7 -0.2 -2.4 -1.2 0 1.1 0 0.5 -0.5 -0.8 0.1 -0.7 -0.4 0.6 -0.1 -1.4 -1 -1.5 -0.5 -0.2 -0.9 -1.8 -1.5 -0.8 -2.3 -3.4 -1.4 -3 -1.4 0 -1.2 -0.8 0 0 -1.9 -0.9 -1.1">
+  <param name="vertAxis" value="-3 2.5 -3 1">
+  <param name="labelAxes" value="false">
+  <param name="timeAxisName" value="Month">
+  <param name="seasonName" value="12 Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec">
+  <param name="seasonInfo" value="0 0 1984">
+  </applet>
+</div>
+<p>There is a lot of random variation in this time series, but the index remains low for much of 1987 and is relatively high in 1988 and 1989. These periodic highs and lows indicate  <span class="red bold">autocorrelation</span>.</p>
+<p class="heading">Annual barley yields</p>
+<p>The final example shows annual barley yields per acre in England &amp; Wales from 1884 to 1939.</p>
+<div class="centred">
+  <applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.TimePlotApplet">
+  <param name="varName" value="Yield per acre">
+  <param name="values" value="15.2 16.9 15.3 14.9 15.7 15.1 16.7 16.3 16.5 13.3 16.5 15 15.9 15.5 16.9 16.4 14.9 14.5 16.6 15.1 14.6 16 16.8 16.8 15.5 17.3 15.5 15.5 14.2 15.8 15.7 14.1 14.8 14.4 15.6 13.9 14.7 14.3 14 14.5 15.4 15.3 16 16.4 17.2 17.8 14.4 15 16 16.8 16.9 16.6 16.2 14 18.1 17.5">
+  <param name="vertAxis" value="13 18.5 13 1">
+  <param name="timeAxis" value="6 10 1890 10">
+  <param name="labelAxes" value="true">
+  <param name="timeAxisName" value="Year">
+  <param name="timeSequence" value="1884 1 56">
+  </applet>
+</div>
+<p>This time series is dominated by <span class="red bold">random fluctuations</span> &mdash; the yields seems to vary unpredictably.</p>
+<p class="heading"></p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Pairwise orthogonality</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="orthogonal factors, pairwise orthogonal factors, blocks, analysis of variance, anova">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Orthogonal pairs of factors</p>  
+<p>Missing treatments in completely randomised designs or in some blocks of randomised block designs have two consequences:</p>
+<ul>
+	<li>Some interaction parameters  cannot be estimated and it may not be possible to test the significance of some interaction terms.</li>
+	<li>The factors may not be orthogonal so their order of being added to the anova table affects their sums of squares, complicating the analysis.</li>
+</ul>
+<p>This is simplified in a completely randomised experiment if the design ensures that each <strong>pair</strong> of factors uses all combinations of their levels in the same number of experimental units. In such a design, the factors are <strong>pairwise orthogonal</strong>.</p>
+<p>In this kind of design, the main effects of the factors are orthogonal so their sums of squares are not affected by the order of adding them to the model, simplifying the analysis.</p>
+<div class="centred"><div class="boxed">
+	<p>In a  design with pairwise orthogonal factors, there is only a single analysis of variance table for the main effects.</p>
+</div></div>
+<p>In this type of design, the symmetry between the levels of each factor also means that the level means for a factor are good summaries of its effect on the response.</p>
+
+
+<p class="heading">Orthogonality in block designs</p>
+<p>This extends to block designs. If the factors are pairwise orthogonal and, within every block, each factor's levels occur equally often, the factors and blocks are also pairwise orthogonal. This again ensures that the order of rows in the analysis of variance table does not affect the sums of squares or their degrees of freedom.</p>
+<div class="diagram"> 
+<p class="heading">Example</p>
+<p>A randomised block experiment for two 3-level factors with all treatments in every block would require blocks of size 9. The table below shows data from a pairwise orthogonal experiment that used three blocks of size 3 and three blocks of size 6. The levels of factor Z are indicated by the bracketted letters to the left of the response values.</p>
+<div class="centred"><table border="0" class="centred" cellpadding="5" cellspacing="0">
+	<tr>
+		<th>&nbsp;</th>
+		<th colspan="6">Blocks</th>
+		</tr>
+	<tr>
+		<th>Factor X&nbsp;&nbsp;&nbsp;&nbsp;</th>
+		<th>1</th>
+		<th>2</th>
+		<th>3</th>
+		<th>4</th>
+		<th>5</th>
+		<th>6</th>
+	</tr>
+	<tr>
+		<th>&nbsp;&nbsp;&nbsp;&nbsp;Level 1</th>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">&nbsp;(A)13.00&nbsp;</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">&nbsp;(B)23.09&nbsp;</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">&nbsp;(C)21.24&nbsp;</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">&nbsp;(A)20.04&nbsp;<br>
+			(B)19.29</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">&nbsp;(A)28.74&nbsp;<br>
+			(C)24.45</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">&nbsp;(B)12.43&nbsp;<br>
+			(C)21.87</td>
+	</tr>
+	<tr>
+		<th>&nbsp;&nbsp;&nbsp;&nbsp;Level 2</th>
+		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">(B)21.71</td>
+		<td align="center" bgcolor="#FFFFFF">(C)28.07</td>
+		<td align="center" bgcolor="#FFFFFF">(A)17.18</td>
+		<td align="center" bgcolor="#FFFFFF">(A)20.56<br>
+			(C)24.63</td>
+		<td align="center" bgcolor="#FFFFFF">(B)27.88<br>
+			(C)28.17</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">(A)21.50<br>
+			(B)20.27</td>
+	</tr>
+	<tr>
+		<th>&nbsp;&nbsp;&nbsp;&nbsp;Level 3</th>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">(C)24.33</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">(A)27.42</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">(B)20.92</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">(B)22.53<br>
+			(C)26.02</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">(A)26.45<br>
+			(B)35.08</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">(A)20.49<br>
+			(C)23.68</td>
+	</tr>
+</table></div>
+<p>The analysis of variance table below describes the main effects of all variables, assuming that there are no interactions between the factors and  blocks.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="200">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="glmAnovaProg.AnovaTableReorderApplet">
+<param name="yVarName" value="Response, Y">
+<param name="yValues" value="13.00 21.71 24.33 23.09 28.07 27.42 21.24 17.18 20.92 20.04 19.29 20.56 24.63 22.53 26.02 28.74 24.45 27.88 28.17 26.45 35.08 12.43 21.87 21.50 20.27 20.49 23.68">
+<param name="xVariables" value="B1 B2 B3 B4 B5 X1 X2 Z1 Z2">
+<param name="B1VarName" value="Block1">
+<param name="B1Values" value="3@0 24@1">
+<param name="B2VarName" value="Block2">
+<param name="B2Values" value="6@0 21@1">
+<param name="B3VarName" value="Block3">
+<param name="B3Values" value="9@0 18@1">
+<param name="B4VarName" value="Block4">
+<param name="B4Values" value="15@0 12@1">
+<param name="B5VarName" value="Block5">
+<param name="B5Values" value="21@0 6@1">
+
+<param name="X1VarName" value="X1">
+<param name="X1Values" value="0 1 1 0 1 1 0 1 1 0 0 1 1 1 1 0 0 1 1 1 1 0 0 1 1 1 1">
+<param name="X2VarName" value="X2">
+<param name="X2Values" value="0 0 2 0 0 2 0 0 2 0 0 0 0 2 2 0 0 0 0 2 2 0 0 0 0 2 2">
+
+<param name="Z1VarName" value="Z1">
+<param name="Z1Values" value="0 1 1 1 1 0 1 0 1 0 1 0 1 1 1 0 1 1 1 0 1 1 1 0 1 0 1">
+<param name="Z2VarName" value="Z2">
+<param name="Z2Values" value="0 0 2 0 2 0 2 0 0 0 0 0 2 0 2 0 2 0 2 0 0 0 2 0 0 0 2">
+
+<param name="maxSsq" value="9999.99 99 9999.99 99.99">
+<param name="maxBarSsq" value="8000.0">
+<param name="xGroups" value="5:B:Blocks#2:X:Factor X#2:Z:Factor Z">
+</applet>
+</div>
+
+<p>Drag the red arrows to change the order of adding the factors X and Z, and observe that their sums of squares do not change.</p>
+<p>Although blocks would usually be the first term added and we would not consider dropping the blocks from the model, to demonstrate the orthogonality of all three terms, also change its position in the anova table and observe that all sums of squares still remain the same.</p>
+<div class="centred"><div class="boxed">
+	<p>To analyse  pairwise balanced data, a single analysis of variance table is sufficient for testing the main effects of the variables and the order of the terms in it is unimportant.</p>
+</div></div>
+
+<br>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

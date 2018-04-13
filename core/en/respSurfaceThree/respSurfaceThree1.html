@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Design of experiment</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="response surface, quadratic model, central composite design, star points, centre points, box-behnken design, rotatable design">
+	<meta name="dataset" content="Wastewater treatment in a refinery">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Quadratic model for 3 factors</p>  
+  <p>The quadratic response surface model for two numerical factors extends to 
+    three factors with linear and quadratic terms for the three factors and interaction 
+    terms between all pairs of factors. (Response surface models rarely model 
+    higher-order interactions than 2-factor interactions.)</p>
+  <p class=eqn><img src="images/quadModel.gif" width="487" height="133"> </p>
+  <p>This model has <strong>10</strong> parameters defining the mean response 
+    (plus the unknown standard deviation, σ), 
+    so a considerable amount of data is needed to estimate the parameters accurately.</p>
+  <p>Data from at least 10 design points (distinct combinations of levels of the 
+    three parameters) are needed to get any estimates of the parameters. A 2<sup>3</sup> 
+    factorial design only has 8 design points, so it does not allow the quadratic 
+    model to be fitted, even if replicates at the centre point of the design are 
+    added. </p>
+  <p class="heading">Central composite design</p>
+  <p>The most commonly used design for fitting a quadratic response surface to 
+    three numerical factors is a <strong>central composite</strong> design. This 
+    augments the 8 runs of a 2<sup>3</sup> factorial design with a further 2 design 
+    points (called <strong>star points</strong>) for each factor in which that 
+    factor takes values more extreme than the factorial levels and the other factors 
+    are set at their average value. (The design can be explained better graphically 
+    &mdash; see the diagram below.) There is usually only a single replicate for each 
+    at these 14 design points.</p>
+  <p>If the levels of each factor for the factorial part of the experiment are 
+    coded as ±1, the design is <strong>rotatable</strong> if the extreme 
+    values for the star points are ±1.682. In rotatable designs, predictions 
+    are equally accurate in all directions round the centre point of the design.</p>
+  <p>Several replicates are usually added at the centre point of the design to 
+    help the estimates of curvature. More importantly, the replicates of the centre 
+    point provide a good estimate of the error variance that can be used in analysis 
+    of variance for testing the significance of the model terms.</p>
+  <p class="heading">Box-Behnken design</p>
+  <p>Central composite designs have one run of the experiment at a very high and 
+    one run at a very low level for each factor. In some experiments, it may not 
+    be feasible to run the experiment at such extreme levels. In this case, the 
+    'extremes' for the star points may be reduced to values closer to ±1 
+    than ±1.682.</p>
+  <p>However an alternative design only uses 3 different levels for each factor. 
+    A <strong>Box-Behnken</strong> design for three factors consists of three 
+    sets of design points; each is conducted with one factor at its centre level 
+    and is a 2<sup>2</sup> factorial design for the other two factors. Again, 
+    several replicates of the centre point of the design are usually added. Box-Behnken 
+    designs are also rotatable (or almost rotatable).</p>
+	
+	
+  <div class="diagram"> 
+    <p class="heading">Wastewater treatment in a refinery</p>
+    <p>Scientists studied treatments to remove waste products from the water that 
+      was output from a dewatering process of petroleum storage tanks. A <em>Disolved 
+      Air Flotation</em> procedure was used and three factors were varied in the 
+      experiment &mdash; the amounts of coagulant, flocculant and pH.</p>
+    <p>The low and high levels of these factors for a 2<sup>3</sup> factorial 
+      experiment are shown in the following table.</p>
+    <div class="centred"><table border="0" class="centred" cellpadding="4" cellspacing="0">
+      <tr><th style="border-bottom:1px solid #999999;">Factor</th>
+			<th style="border-bottom:1px solid #999999;">Units</th>
+			<th style="border-bottom:1px solid #999999;">Low level (-1)</th>
+			<th style="border-bottom:1px solid #999999;">High level (+1)</th></tr>
+	  <tr bgcolor="#FFFFFF"> 
+        <td>Coagulant, Aluminium sulphate</td>
+        <td align="center">mg/litre</td>
+        <td align="center">22</td>
+        <td align="center">88</td>
+      </tr>
+	  <tr bgcolor="#FFFFFF"> 
+        <td>Flocculant, Polyelectolyte</td>
+        <td align="center">mg/litre</td>
+        <td align="center">6</td>
+        <td align="center">24</td>
+      </tr>
+	  <tr bgcolor="#FFFFFF"> 
+        <td style="border-bottom:1px solid #999999;">pH</td>
+        <td align="center" style="border-bottom:1px solid #999999;">&nbsp;</td>
+        <td align="center" style="border-bottom:1px solid #999999;">5.5</td>
+        <td align="center" style="border-bottom:1px solid #999999;">8.5</td>
+      </tr>
+	</table></div>
+    <p>The diagram below initially shows the eight design points for a factorial 
+      experiment with these levels.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="responseSurfaceProg.DesignPointsApplet">
+<param name="yVarName" value="Aluminium sulphate">
+<param name="xVarName" value="Polyelectolyte">
+<param name="zVarName" value="pH">
+<param name="yAxis" value="0 120 0 20">
+<param name="xAxis" value="0 35 0 5">
+<param name="zAxis" value="4 10 4 1">
+<param name="yFactorialVals" value="22 88">
+<param name="xFactorialVals" value="6 24">
+<param name="zFactorialVals" value="5.5 8.5">
+<param name="startReplicates" value="1 0 0 0">
+<param name="customText" value="Design=Design#Factorial=Factorial#Central composite=Central composite#Box-Behnken=Box-Behnken#Centre points=Centre points">
+</applet>
+</div>
+
+    <p>The 2<sup>3</sup> factorial design does not allow a quadratic response 
+      surface to be fitted.</p>
+    <p>Select <strong>Central composite</strong> from the pop-up menu. This adds 
+      star points at ±1.682 to the factorial design. Rotate the display 
+      (dragging with the mouse or using the rotation buttons) to understand better 
+      the location of the star points. Observe that each star point involves one 
+      factor at a level more extreme than the values in the table above.</p>
+    <p>A central composite design is usually augmented by several replicates of 
+      the centre point of the design. Use the control on the right to add six 
+      replicate of the centre point.</p>
+    <p>Finally select <strong>Box-Behnken</strong> from the pop-up menu. The design 
+      points are in the centres of each edge of a cube (possibly with additional 
+      replicates of the design's centre point). This design only uses three different 
+      levels for each factor.</p>
+    </div>
+		
+		
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

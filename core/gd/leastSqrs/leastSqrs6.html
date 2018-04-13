@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Residual plots</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="regression model, linear model, curvature, outliers">
+	<meta name="dataset" content="Pressure and boiling point of water">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Detecting problems with the model</p>
+
+  <p>If outliers or curvature are present in a data set, they are often visible 
+    in a scatterplot of the response against the explanatory variable. However 
+    these features are usually clearer if the <strong>residuals</strong> are plotted 
+    against <i>X</i> rather than the original response.</p>
+	<table width="75%" border="1" cellspacing="0" cellpadding="10" class="centred" bgcolor="#FFFFFF">
+		<tr> 
+			<td align="center"><strong>Plot residuals against X to look for problems 
+				in the model</strong></td>
+		</tr>
+	</table>
+	
+	<br>
+
+<div class="diagram">
+
+		<p class="heading">Atmospheric pressure and boiling point</p>
+
+<p>In the mid 19th century, J. D. Forbes took measurements of the boiling point
+of water (degrees Fahrenheit) and barometric pressure (inches of mercury)
+at 17 locations in the Alps and in Scotland.
+</p>
+
+<p>The data were collected with the aim of predicting barometric pressure (and hence altitude)
+from the boiling point, an easily measured quantity. We therefore treat pressure as the
+response variable in our model.
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.ResidualPlotApplet">
+<param name="xVarName" value="Boiling point">
+<param name="yVarName" value="Pressure">
+<param name="xValues" value="194.5 194.3 197.9 198.4 199.4 199.9 200.9 201.1 201.4 201.3 203.6 204.6 209.5 208.6 210.7 211.9 212.2">
+<param name="yValues" value="20.79 20.79 22.40 22.67 23.15 23.35 23.89 23.99 24.02 24.01 25.14 26.57 28.49 27.76 29.04 29.88 30.06">
+<param name="horizAxis" value="194 213 195 5">
+<param name="vertAxis" value="20 31 20 2">
+<param name="residAxis" value="-0.4 0.8 -0.4 0.2">
+<param name="change1" value="#11 204.6 *#">
+<param name="change1Name" value="Delete outlier">
+</applet>
+</div>
+
+<p>Although the scatterplot of the raw data on the left seems to conform quite well
+to a simple linear model, the plot of residuals on the right highlights two problems with the model.
+</p>
+
+<ul>
+  <li>Most of the crosses on the residual plot lie on a U-shaped curve, indicating
+  that the relationship is not perfectly linear.</li>
+  <li>One outlier is present, a measurement whose pressure is unusually high for
+  its boiling point.</li>
+</ul>
+
+<p>The outlier
+is likely to have been caused by an incorrect measurement, but this is now impossible
+to check. Click <strong>Delete Outlier</strong> to remove the outlier.
+</p>
+
+<p>We will examine solutions to the problem of nonlinearity later.
+</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

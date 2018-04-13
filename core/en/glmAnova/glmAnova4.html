@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Sequential sums of squares</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="general linear model, sequential sums of squares, type 1 sum of squares, coefficient of determination">
+	<meta name="dataset" content="Oxygen uptake when running">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Marginal (Type 3) sums of squares</p>  
+  <p>The marginal sums of squares are the changes to the residual sum of squares 
+		caused by deleting the individual variables from the full model. The diagram 
+		below illustrates the models being compared by the marginal sums of squares 
+		when there are four explanatory variables.</p>
+	<p class="eqn"><img src="images/type3Ssq.gif" width="360" height="141"></p>
+	<p>Note that the marginal sums of squares cannot tell you anything about the 
+		fit of models with fewer than three explanatory variables.</p>
+	<p class="heading">Sequential (Type 1) sums of squares</p>
+	<p>Sequential sums of squares also describe the effect on the residual sum of 
+		squares of changing the explanatory variables in the model. They give the 
+		reductions in the residual sum of squares as the variables are added in order, 
+		starting from the model with no explanatory variables.</p>
+	<p class="eqn"><img src="images/type1Ssq.gif" width="518" height="34"></p>
+	<p>The sequential sums of squares are specific to a particular order of adding 
+		the explanatory variables.</p>
+	
+<div class="centred"><div class="boxed">
+<p>In later sections, we will show applications 
+				where only one such sequence is appropriate.</p>
+</div></div>
+
+	<p> For example, it sometimes does not make sense to add a variable <em>V</em> 
+		unless variables <em>X</em>, <em>Z</em> and <em>U</em> are already in the 
+		model.</p>
+	<p class="heading">Relationship between sums of squares</p>
+	<p>The fitted values for the model with no explanatory variables are all equal 
+		to the response mean. The residual sum of squares for this model is therefore 
+		equal to the total sum of squares.</p>
+	<p class="eqn"><img src="images/ssTotal.gif" width="164" height="26"></p>
+	<p>The sequential sums of squares are the reductions in this value as the variables 
+		are added in turn to the model, leaving eventually the residual sum of squares 
+		for the full model. </p>
+	<p>Equivalently, we could start from the full model with all explanatory variables; 
+		the sequential sums of squares are the increases to this as variables are 
+		dropped from the model in turn, leaving eventually the residual sum of squares 
+		for the model with no explanatory variables &mdash; i.e. the total sum of squares.</p>
+	<p>The residual sum of squares from the full model plus all the sequential sums 
+		of squares therefore equals the total sum of squares.</p>
+	<p class="eqn"><img src="images/ssqEqnGlm.gif" width="261" height="20"></p>
+	<p class="heading">Sum of squares table</p>
+	<p>Sequential sums of squares are usually presented in a table called a <strong>sum 
+		of squares table</strong>.</p>
+	<p>A column is usually added giving the <strong>degrees of freedom</strong> 
+		for the sums of squares. Since the sequential sums of squares that we have 
+		described above each involve removal or addition of a single explanatory variable, 
+		they all have 1 degree of freedom. The total degrees of freedom are <em>n</em>&nbsp;-&nbsp;1 
+		and the residual degrees of freedom satisfy the equation,</p>
+	<p class="eqn"><img src="images/dfEqnGlm.gif" width="248" height="20"></p>
+<br>
+
+	<div class="diagram"> 
+  
+    <p class="heading">Oxygen uptake when running</p>
+    <p>Oxygen uptake rates were measured from 17 men aged between 40 and 49 who 
+      were involved in a physical fitness programme at North Carolina State University.</p>
+    <div class="centred"><table class="centred" cellpadding="3" cellspacing="0">
+      <tr> 
+        <th colspan="4" align="center" style="border-bottom:1px solid #999999;">Response</th>
+      </tr>
+      <tr valign="top" bgcolor="#FFFFFF"> 
+        <td style="border-bottom:1px solid #999999;" align="right"><em>Oxygen uptake</em></td>
+        <td style="border-bottom:1px solid #999999;" width="30" align="center">Y</td>
+        <td style="border-bottom:1px solid #999999;" width="20"></td>
+        <td style="border-bottom:1px solid #999999;">Oxygen uptake rate (ml per kg body weight per minute)</td>
+      </tr>
+<tr><td colspan="3">&nbsp;</td></tr>
+      <tr> 
+        <th colspan="4" align="center" class="darkblue" style="border-bottom:1px solid #999999;">Explanatory variables</th>
+      </tr>
+      <tr bgcolor="#FFFFFF"> 
+        <td align="right" class="darkblue"><em>Weight</em></td>
+        <td width="30" align="center" valign="top" class="darkblue">X</td>
+        <td width="20">&nbsp;</td>
+        <td class="darkblue">Body weight (kg)</td>
+      </tr>
+      <tr bgcolor="#FFFFFF"> 
+        <td align="right" class="darkblue"><em>Running time</em></td>
+        <td width="30" align="center" valign="top" class="darkblue">Z</td>
+        <td width="20">&nbsp;</td>
+        <td class="darkblue">Time to run 1.5 miles (minutes)</td>
+      </tr>
+      <tr bgcolor="#FFFFFF"> 
+        <td align="right" class="darkblue"><em>Resting heart rate</em></td>
+        <td width="30" align="center" valign="top" class="darkblue">U</td>
+        <td width="20">&nbsp;</td>
+        <td class="darkblue">Heart rate when resting</td>
+      </tr>
+      <tr bgcolor="#FFFFFF"> 
+        <td style="border-bottom:1px solid #999999;" align="right" class="darkblue"><em>Running heart rate</em></td>
+        <td style="border-bottom:1px solid #999999;" width="30" align="center" valign="top" class="darkblue">V</td>
+        <td style="border-bottom:1px solid #999999;" width="20">&nbsp;</td>
+        <td style="border-bottom:1px solid #999999;" class="darkblue">Heart rate at same time oxygen uptake was measured</td>
+      </tr>
+    </table></div>
+
+    <p>The table below shows the sequential sums of squares when the variables 
+			are added to the model in the order <em>Weight</em>, <em>Running time</em>, 
+			<em>Resting heart rate</em>, and <em>Running heart rate</em>.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="glmAnovaProg.AnovaTableSeqApplet">
+<param name="yVarName" value="O2 uptake">
+<param name="yValues" value="44.609 45.313 54.297 59.571 44.811 45.681 49.091 39.442 50.541 37.388 44.754 47.273 49.156 46.774 50.388 48.673 47.920">
+<param name="xVariables" value="X Z U V">
+<param name="XVarName" value="Weight, X">
+<param name="XValues" value="89.47 75.07 85.84 68.15 77.45 75.98 81.19 81.42 73.03 87.66 66.45 79.15 81.42 91.63 73.37 76.32 61.24">
+<param name="ZVarName" value="Resting HR, Z">
+<param name="ZValues" value="62 62 45 40 58 70 64 63 45 56 51 47 44 48 67 56 52">
+<param name="UVarName" value="Run time, U">
+<param name="UValues" value="11.37 10.07 8.65 8.17 11.63 11.95 10.85 13.08 10.13 14.03 11.12 10.60 8.95 10.25 10.08 9.40 11.50">
+<param name="VVarName" value="Running HR, V">
+<param name="VValues" value="178 185 156 166 176 176 162 174 168 186 176 162 180 162 168 186 170">
+<param name="maxSsq" value="999.99 99">
+<param name="customText" value="Explained=Explained#Unexplained=Unexplained#Sums of squares=Sums of squares">
+</applet> 
+</div>
+
+		<p>Drag the red arrow up to remove variables from the model. Observe that 
+			the sequential sums of squares give the increase in residual sum of squares 
+			from deleting variables.</p>
+		<p>The stacked bar chart on the right shows the changes to the residual sum 
+			of squares graphically. It also shows how the total sum of squares that 
+			is split into explained and unexplained components. The <strong>coefficient 
+			of determination, <em>R</em><sup>2</sup></strong>, is the proportion of the total sum 
+			of squares that is explained by the explanatory variables in the model.</p>
+
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

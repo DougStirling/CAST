@@ -1,0 +1,173 @@
+<html>
+<head>
+  <title>7. Inference for Regression</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 7 &nbsp; Inference for Regression</h1>
+<h1 class="sectionName">7.1 &nbsp; Testing regression parameters</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Importance of zero slope</li>
+<li>Testing whether slope is zero</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='3'>
+<li>Strength of evidence and relationship</li>
+<li>Properties of p-values</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">7.1.1 &nbsp; Importance of zero slope</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Does the response depend on X?</p>
+<p>In a normal linear model, the response has a distribution whose mean, µ<sub>y</sub>,
+depends linearly on the explanatory variable,</p>
+<p class=eqn><span class="black"><em>Y</em>&nbsp; ~ &nbsp;<font face="Arial, Helvetica, sans-serif">normal</font> (&mu;<sub>y</sub>&nbsp;, &sigma;<sub>y</sub>)</span> </p>
+<p>If the slope parameter, β<sub>1</sub>, is zero, then the response has a normal
+distribution that <strong>does not depend on <i>X</i></strong>.</p>
+<p class=eqn><span class="black"><em>Y</em> &nbsp; ~ &nbsp; <font face="Arial, Helvetica, sans-serif">normal</font> (&beta;<sub>0</sub> , &nbsp;&sigma;)</span> </p>
+<p>This can be tested formally with a hypothesis test for whether β<sub>1</sub> is
+zero.</p>
+
+
+
+
+<h2 class="pageName">7.1.2 &nbsp; Testing whether slope is zero</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Testing for zero slope</p>
+<p>To assess whether the explanatory variable affects the response, we test the
+hypotheses </p>
+<p class=eqn><span class="blue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&beta;<sub>1</sub> &nbsp;=&nbsp; 0<br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&beta;<sub>1</sub>  &nbsp;&ne;&nbsp;  0</span> </p>
+<p>The test is based on how far the least squares slope, <em>b</em><sub>1</sub>,
+is from zero. To assess this, we must take into account its standard deviation
+(standard error),</p>
+<p class=eqn><img class="gif" src="../../../en/regnTest/images/sdSlopeEqn.gif" width="129" height="42"> </p>
+<p>If we knew the value of σ, we could  standardise <em>b</em><sub>1</sub> to
+get a test statistic,</p>
+<p class=eqn><span class="black bold">standardised value,</span>  &nbsp;<img class="gif" src="../../../en/regnTest/images/standardisedSlope.gif" width="85" height="43"></p>
+<p>If β<sub>1</sub> was really zero (<strong>H<sub>0</sub></strong>), the probability
+of getting a least squares slope as far from zero as that recorded would be the
+p-value,</p>
+<p class=eqn><img class="gif" src="../../../en/regnTest/images/zForTestingSlope.gif" width="294" height="141"></p>
+<p>Unfortunately σ is usually unknown and the standard deviation of <em>b</em><sub>1</sub> must
+be <a href="javascript:showNamedPage('regnEst4')">estimated from the sample
+data</a>. We therefore use a test statistic of the form </p>
+<p class=eqn><span class="black bold">t ratio,</span>  &nbsp;<img class="gif" src="../../../en/regnTest/images/standardisedSlope2.gif" width="69" height="48"></p>
+<p>and refer to a t distribution with <i><span class="black">n</span></i><span class="black">&nbsp;-&nbsp;2</span> degrees
+of freedom to find the p-value.</p>
+<p class=eqn><img class="gif" src="../../../en/regnTest/images/slopeTestP.gif" width="426" height="268"> </p>
+<p>The p-value is interpreted in the same way as for other hypothesis tests &mdash;
+a p-value close to zero means that the sample slope is far enough from zero to
+be inconsistent with <strong>H<sub>0</sub>: &beta;<sub>1</sub> = 0</strong>.</p>
+<p class="heading">Examples</p>
+<p align="center"><img src="../../../en/regnTest/images/possumDamage.gif" width="550" height="442"></p>
+<p>The test statistic and  the p-value therefore both depend on both <em>r</em> and
+the sample size, <em>n</em>. Increasing <em>n</em> and increasing <em>r</em> <strong>both</strong> result
+in a lower p-value.</p>
+<p class=eqn><img class="gif" src="../../../en/regnTest/images/rnEffect.gif" width="550" height="440"></p>
+
+
+
+
+<h2 class="pageName">7.1.4 &nbsp; Properties of p-values</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Properties of p-value</p>
+<p>P-values for testing whether a linear model's slope is zero have the same
+properties as p-values for other hypothesis tests. In particular, </p>
+<ul>
+<li>When <b>H<sub>0</sub></b> is true (i.e. <i>Y</i> is not related to <i>X</i>),
+all p-values between 0 and 1 are equally likely.</li>
+<li>If <b>H<sub>A</sub></b> is true (i.e. <i>Y</i> and <i>X</i> are
+related), then  p-values  near zero
+are more likely than p-values near 1.</li>
+</ul>
+<p>When <em>Y</em> and <em>X</em> are not related
+(β<sub>1</sub> = 0), it is still possible to get small p-values, suggesting that
+β<sub>1</sub> is <strong>not</strong> zero. However there is only probability
+0.01 of getting a p-value as low as 0.01 &mdash; it is unlikely but possible. Such
+a p-value is more likely if the variables <strong>are</strong> related so we
+interpret it as giving strong evidence of a relationship.</p>
+
+
+
+
+<h1 class="sectionName breakBefore">7.2 &nbsp; Predicting the response</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Estimated response distn at X</li>
+<li>Variability of estimate at X</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='3'>
+<li>Estimating the mean vs prediction</li>
+<li>Confidence and prediction intervals</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">7.2.1 &nbsp; Estimated response distn at X</h2><!DOCTYPE HTML>
+
+
+<p>A normal linear model provides
+a response distribution <strong>for all <i>X</i></strong>. With estimates for
+all three model parameters, we can obtain the approximate response distribution
+at <strong>any</strong> x-value, even if we have no data at that x-value. </p>
+<p class="eqn"><img src="../../../en/regnPred/images/s_estimDistn.gif" width="434" height="369"> </p>
+<p>A formula for the standard error on the right exists, but you should rely
+on statistical software to find its value.</p>
+<p class=heading>95% prediction interval for a new individual's response</p>
+<p>For prediction, a similar interval is used:</p>
+<p class=eqn><img class="gif" src="../../../en/regnPred/images/predInterval.gif" width="169" height="21"> </p>
+<p>where  <em>k</em> is greater than the corresponding standard error
+for the confidence interval. Statistical software should again be used to find
+its value.</p>
+<p class=heading>Example</p>
+<p>The diagram below shows 95% confidence intervals for the mean response at <em>x</em> and
+95% prediction intervals for a new response at <em>x</em> as bands for a small
+data set with <em>n</em> = 7 values. </p>
+<p class="eqn"><img src="../../../en/regnPred/images/s_bands.gif" width="402" height="284"></p>
+<p class=heading>Extrapolation</p>
+<p>These 95% confidence intervals and 95% prediction intervals are valid within
+the range of x-values about which we have collected data, but <strong>they should
+not be relied on for extrapolation</strong>.
+Both intervals assume that the normal linear model describes the process, but
+we have no information about linearity beyond the x-values that have been collected.</p>
+
+
+
+
+</html>

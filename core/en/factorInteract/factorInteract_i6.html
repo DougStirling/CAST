@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Experiments with a single replicate</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="replicates, single replicate, residual sum of squares, interaction, degrees of freedom">
+	<meta name="dataset" content="Bond strength of thermoplastic composite">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Mean residual sum of squares</p>  
+  <p>All normal models can be expressed as:</p>
+	<p class=eqn><img src="../linModIntro/images/generalModel.gif" width="218" height="34"> 
+	</p>
+	<p>where the error term has a normal distribution,</p>
+  <p class="eqn"><span class="red">ε<em><sub>i</sub></em> &nbsp; ∼ &nbsp; normal&nbsp;(0, σ)</span></p>
+<p>In any model, the mean residual sum of squares is an estimate of the error 
+		variance, σ<sup>2</sup>. 
+		This is an important summary of the model since it quantifies the amount of 
+		variation that is unexplained by the controlled factors &mdash; the 'randomness' 
+		of the data.</p>
+  <p>The mean residual sum of squares therefore provides a baseline measure of 
+		variability against which the explained sums of squares can be compared (with 
+		F ratios) to assess their significance.</p>
+	<p class="heading">Replicates and residual degrees of freedom</p>
+	<p>Since the mean residual sum of squares is the denominator of all F ratios, 
+		the more accurate it is as an estimate of σ<sup>2</sup>, 
+		the more powerful the test. Since the accuracy of this estimate depends on 
+		the residual degrees of freedom, we ideally want a large number of residual 
+		degrees of freedom.</p>
+  <p>Replicates of the experiment &mdash; two or more response values at each combination 
+		of factor levels &mdash; are the best way to get a reasonable number of residual 
+		degrees of freedom.</p>
+	<p class="heading">Data with a single replicate</p>
+	<p>Unfortunately experiments are not always conducted with replication. There are often so many treatment combinations that it would be too expensive 
+		to repeat each two or more times.</p>
+	<p>The need to have residual degrees of freedom to perform hypothesis tests 
+		means that either:</p>
+	<ul>
+	  <li>It must be assumed that there is no interaction (since no test is possible), allowing the main effects to be tested, or</li>
+	  <li>The data can simply be graphed and hypothesis testing ignored.</li>
+  </ul>
+  <br>
+
+<div class="diagram"> 
+		<p class="heading">Bond strength of thermoplastic composite</p>
+    <p>Researchers conducted an experiment that dealt with the laser-assisted manufacture of a thermoplastic composite. Two factors were varied in the experiment: the laser power was set at 40W, 50W or 60W and the tape speed was set at 6.42, 13 and 27&nbsp;m/s. (The tape speeds were roughly evenly spaced on a log scale, but we will treat both factors as categorical here so the spacing does not affect the results.)</p>
+    <p>A single replicate was used for each of the 9 treatments and the table below shows the interply bond strength of the composite as measured by a short-beam-shear test.</p>
+    <div class="centred"><table border="0" class="centred" cellpadding="5" cellspacing="0">
+    	<tr>
+    		<th>&nbsp;</th>
+    		<th colspan="3">Laser Power</th>
+   		</tr>
+    	<tr>
+    		<th>Tape Speed</th>
+    		<th>40 W</th>
+    		<th>50 W</th>
+    		<th>60 W</th>
+   		</tr>
+    	<tr>
+    		<th>6.42</th>
+    		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">&nbsp;25.66&nbsp;</td>
+    		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">&nbsp;29.15&nbsp;</td>
+    		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">&nbsp;35.73&nbsp;</td>
+   		</tr>
+    	<tr>
+    		<th>13</th>
+    		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">28.00</td>
+    		<td align="center" bgcolor="#FFFFFF">35.09</td>
+    		<td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">39.56</td>
+   		</tr>
+    	<tr>
+    		<th>27</th>
+    		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">20.65</td>
+    		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">29.79</td>
+    		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">35.66</td>
+   		</tr>
+   	</table></div>
+    <p>The diagram below shows the data.</p>
+    <div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoFactorProg.FactorAnovaSeqApplet">
+<param name="yVarName" value="Bond strength">
+<param name="yValues" value="25.66 29.15 35.73 28.00 35.09 39.56 20.65 29.27 35.66">
+<param name="yAxis" value="20 40 20 5">
+<param name="zVarName" value="Tape speed">
+<param name="zValues" value="3@0 3@1 3@2">
+<param name="zLabels" value="6.42 13 27">
+<param name="xVarName" value="Laser power">
+<param name="xValues" value="0 1 2 0 1 2 0 1 2">
+<param name="xLabels" value="40W 50W 60W">
+<param name="xVariables" value="x z Interaction">
+<param name="xTypes" value="xFac zFac Int">
+<param name="factorVariables" value="x z">
+<param name="InteractionVarName" value="Interaction">
+<param name="InteractionValues" value="4@0 1 2 0 3 4">
+<param name="InteractionLabels" value="0 1 2 3 4">
+<param name="maxSsq" value="999.9 99 999.9 999.99">
+<param name="componentNames" value="Laser power#Tape speed#Interaction">
+<param name="initVariables" value="0">
+</applet> 
+</div>
+
+    <p><strong>Drag</strong> the red arrow to add  terms for the two 
+      factors and an interaction. Since there are no replicates, the model with 
+      interaction fits the data perfectly, so all residuals are zero. The residual 
+      sum of squares and degrees of freedom are therefore zero and we cannot test 
+    the significance of the interaction.</p>
+    <p><strong>Drag</strong> the red arrow up to remove the interaction from the model.	We	have	no way to assess whether there is an interaction between laser power and tape speed, but if we are willing to assume that they do not interact, the interaction sum of squares and degrees of freedom provide an estimate of unexplained variation and allow us to test the main effects of the factors.</p>
+    <div class="centred"><div class="boxed">
+    	<p>If we assume that there is no interaction, we can conclude that there is strong evidence that the laser power affects bond strength but only moderate evidence of an effect of tape speed.</p>
+</div></div>
+
+<br>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

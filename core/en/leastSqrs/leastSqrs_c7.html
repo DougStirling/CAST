@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Predicting Y and predicting X</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	<meta name="dataset" content="Garden centre revenue">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Different lines are used to predict Y and to predict X</p>
+	<p>The correlation coefficient is symmetric in the two variables &mdash; the correlation 
+		coefficient between X and Y is the same as that between Y and X. However the 
+		least squares line predicting Y from X is not the same as that used to predict 
+		X from Y (even after rearranging the equation).</p>
+	<p>If the scatterplot is drawn with the variable Y on the vertical axis, the 
+		least squares line for predicting Y from X,</p>
+	<p class=eqn><span class="black"><em>y</em> &nbsp;=&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x</em></span></p>
+	<p> minimises the sum of squared <strong>vertical</strong> distances between 
+		the points on a scatterplot and the line. On the other hand, if we are interested 
+		in predicting X from Y using a line,</p>
+	<p class=eqn><span class="black"><em>x</em> &nbsp;=&nbsp; <em>c</em><sub>0</sub> + <em>c</em><sub>1 </sub><em>y</em></span></p>
+	<p>the residuals are the <strong>horizontal</strong> distances between the points 
+		and the line in the same scatterplot, and least squares minimises the sum 
+		of squares of these.</p>
+	<p class=eqn><img class="gif" src="images/predictAndInverse.gif" width="469" height="209"></p>
+	<p>Different lines minimise the sum of squares of horizontal and vertical distances.</p>
+	<p class="heading">About the two least squares lines</p>
+	<p>The two least squares lines can be simply written in terms of standardised 
+		variables,</p>
+	<div class="centred"><table border="0" cellspacing="0" cellpadding="10" class="centred">
+		<tr> 
+			<th>Equation of least squares line to predict Y from X</th>
+			<td><img class="gif" src="../leastSqrs/images/yxLsLine.gif" width="135" height="44"></td>
+		</tr>
+		<tr> 
+			<th>Equation of least squares line to predict X from Y</th>
+			<td><img class="gif" src="../leastSqrs/images/xyLsLine.gif" width="136" height="44"></td>
+		</tr>
+	</table></div>
+	<p>where <i>r</i> is the correlation coefficient between <i>X</i> and <i>Y</i>. 
+		Since <i>r</i> is always less than 1, the least squares line for predicting 
+		<i>Y</i> from <i>X</i> is the more horizontal (closer to being parallel to 
+		the x-axis) of the two lines.</p>
+
+<div class="diagram" title="Example: Revenue in garden centres">
+		<p class="heading">Revenue in garden centres</p>
+
+		<p>The scatterplot below shows the weekly sales figures ($000) in two similar 
+			garden centres over a period of 100 weeks. Sales receipts for both shops 
+			are affected by weather, season and various other factors that affect the 
+			two garden centres in a similar way, so the weekly figures are correlated.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="regnProg.TwoWayResidApplet">
+<param name="xVarName" value="Shop A">
+<param name="yVarName" value="Shop B">
+<param name="xValues" value="77 74 82 81 84 78 67 92 77 69 81 85 77 95 79 80 82 84 75 82 89 77 83 84 81 76 82 85 77 87 86 85 67 89 70 78 82 83 84 70 80 71 84 83 73 70 92 82 76 76 80 83 83 85 82 84 74 86 88 68 77 87 83 85 78 82 77 75 78 86 87 90 73 88 80 77 77 88 77 85 86 86 72 91 74 76 75 87 86 73 80 78 81 85 75 77 87 76 78 77">
+<param name="yValues" value="80 83 83 85 82 84 74 86 88 68 77 87 83 85 78 82 77 75 78 86 87 90 73 88 80 77 77 88 77 85 86 86 72 91 74 76 75 87 86 73 80 78 81 85 75 77 87 76 78 77 77 74 82 81 84 78 67 92 77 69 81 85 77 95 79 80 82 84 75 82 89 77 83 84 81 76 82 85 77 87 86 85 67 89 70 78 82 83 84 70 80 71 84 83 73 70 92 82 76 76">
+<param name="horizAxis" value="60 100 60 10">
+<param name="vertAxis" value="60 100 60 10">
+<param name="initialLine" value="0 1">
+<param name="xRssAxis" value="0 8000 0 2000">
+<param name="yRssAxis" value="0 8000 0 2000">
+<param name="xRssDecimals" value="0">
+<param name="yRssDecimals" value="0">
+<param name="sliderHeight" value="60">
+<param name="labelAxes" value="true">
+<param name="customText" value="Response=Response#RSS=RSS#Resids for=Resids for">
+</applet>
+</div>
+
+		<p>The line that is initially drawn on the scatterplot looks a reasonable 
+			fit to the data &mdash; it would predict each shop's sales to be equal to that 
+			of the other shop. However this is <strong>not</strong> the least squares 
+			line for predicting Shop A's sales.</p>
+		<p>Click the checkbox <strong>Shop A</strong> under the scatterplot. This 
+			draws the residuals from using the line to predict Shop A's sales from those 
+			of Shop B. The residual sum of squares is also shown under the scatterplot. 
+			<strong>Drag the red arrow</strong> on the scatterplot to rotate the line 
+			and observe that the residual sum of squares is minimised when the line 
+			is closer to horizontal.</p>
+		<p>Now turn off the checkbox <strong>Shop A</strong> and click the checkbox 
+			<strong>Shop B</strong>. The residuals for predicting Shop B's sales from 
+			those of Shop A are now shown as horizontal lines and their sum of squares 
+			is displayed. <strong>Drag</strong> the line and observe that the residual 
+			sum of squares is minimised when the line is more vertical than before.</p>
+	</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

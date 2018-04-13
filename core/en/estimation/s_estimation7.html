@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Sample mean or median?</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="bias, standard error">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>Bias and standard error can be used to compare alternative estimators.</p>
+<div class="example">
+	<p class="exampleHeading">Samples from a normal distribution</p>
+	<p>Consider a random sample of \(n\) values from a normal distribution with known standard deviation,</p>
+\[
+X \;\; \sim \; \; \NormalDistn(\mu, \;\;\sigma^2 = 0.2^2)
+\]
+	<p>Since the normal distribution is symmetric, both its mean and median are  \(\mu\), so is the sample mean or sample median  a better estimator?</p>
+	
+\[
+\overline{X} \;\; \sim \; \; \NormalDistn\left(\mu, \;\;\sigma_{\overline{X}}^2 = \frac {0.2^2} n \right)
+\]
+	<p>The  sample median, \(\tilde{X}\), has a harder distribution but, in large samples, there is an <strong>approximate</strong> result,</p>
+\[
+\tilde{X} \;\; \underset{\text{approx}}{\sim} \; \; \NormalDistn\left(\mu, \;\;\sigma_{\tilde{X}}^2 = \frac {0.2^2} n \times 1.571 \right)
+\]
+	<p>Both estimators are therefore unbiased, but the standard error of the mean, \(\overline{X}\), is lower than that of the median, \(\tilde{X}\), so the sample mean is the better estimator.</p>
+	<p class="exampleHeading">Samples from a skew distribution</p>
+	<p>On the other hand, consider samples from the following skew distribution.</p>
+	<p class="eqn"><img src="images/s_exponential.png" width="475" height="229" alt=""/></p>
+	<p>If the median of this distribution, \(\gamma\), was unknown, the obvious estimator would be the median of a random sample, \(\tilde{X}\).</p>
+	<p>The distributions of the sample mean and sample median both have similar standard errors. However</p>
+\[
+E[\overline{X}] \;\; = \; \; \mu \;\;=\;\; 4
+\]
+	<p>so the sample mean has a bias of 1.23 when it is used to estimate this distribution's median, whereas the sample median is approximately unbiased. Moreover, the sample mean's bias does not decrease as \(n\) increases, so it is <strong>not</strong> a consistent estimator.</p>
+
+<div class="boxed">
+	<p>The sample median would be the better estimator to use to estimate the median of such a skew distribution.</p>
+</div>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

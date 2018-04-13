@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Quantiles</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="continuous distribution, quantile, rectangular distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>We have shown how to find a cumulative probability, \(P(X \le x)\). It is sometimes useful to work in the opposite direction — when given  a cumulative probability, we may want to find the corresponding value of \(x\).</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>The <strong>\(p\)'th quantile</strong> of a continuous distribution is the value, \(x\), such that</p>
+\[
+P(X \le x) \;\; = \; \; p
+\]</div>
+
+<p>When \(p\) is expressed as a percentage, the value is called the \(100p\)'th <strong>percentile</strong>.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<ul>
+		<li>The 50th percentile of a continuous distribution is the distribution's <strong>median</strong>,</li>
+		<li>The 25th percentile is the <strong>lower quartile</strong>, and</li>
+		<li>The 75th percentile is the <strong>upper quartile</strong>.</li>
+	</ul>
+</div>
+<p>These three values split the probability density function into four equal areas, and the corresponding probabilities are 0.25 for each of these ranges of values.<strong></strong></p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Example</p>
+		<p>What are the median and quartiles of the \(\RectDistn(1, 5)\) distribution?</p>
+	</div>
+	<div class="solution">
+		<p>The cumulative distribution function of \(X\) is</p>
+		\[
+		F(x) = \begin{cases} 0  &amp; \quad \text{for } x \lt 1\\[0.2em]
+		\dfrac {x-1} 4 &amp; \quad \text{for } 1 \le x \le 5 \\[0.2em]
+		1 &amp; \quad \text{for } x \gt 5 \end{cases}
+		\]
+		<p>To find the \(p\)'th quantile, we need to solve</p>
+\[F(x) \;\; = \; \; \frac {x-1} 4 \;\;=\;\; p\]
+		<p>giving</p>
+\[x \;\; = \; \; 4p + 1\]
+<p>The quartiles and median are  found by inserting \(p = \) 0.25, 0.5 and 0.75 into this equation giving the values \(x\) = 2, 3 and 4.</p>
+	</div>
+</div>
+<p>The next example is a little harder.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Example</p>
+		<p>Find a formula for the \(p\)'th quantile of the exponential distribution with probability density function</p>
+\[
+		f(x) = \begin{cases}
+		4\;e^{-4x} &amp; \quad \text{for } x \ge 0\\[0.2em]
+		0 &amp; \quad \text{otherwise}
+		\end{cases}
+	\]	</div>
+	<div class="solution">
+		<p>The cumulative distribution function of \(X\) is</p>
+\[
+		F(x) = \begin{cases} 0  &amp; \quad \text{for } x \lt 0\\[0.2em]
+		1 - e^{-4x} &amp; \quad \text{for } x \ge 0
+		\end{cases} \]
+		<p>To find the \(p\)'th quantile, we need to solve</p>
+		\[F(x) \;\; = \; \; 1 - e^{-4x} \;\;=\;\; p\]
+		<p>With a bit of algebraic manipulation,</p>
+		\[x \;\; = \; \; - \frac {\log(1 - p)} 4\]	</div>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

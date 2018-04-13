@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Least squares estimates</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="comparing groups, general linear model, indicator variable">
+	<meta name="dataset" content="Anticipation of hypnosis">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Applying the GLM theory</p>
+  <p>We showed on the previous page that the model of a normal distribution in 
+		each of two groups with the same standard deviation, σ, 
+		but possibly different group means can be expressed as a single GLM for all 
+		observations, </p>
+  <p class="eqn"><img src="images/indicatorModel2.gif" width="416" height="76"></p>
+  <p>Standard GLM theory can therefore be used to find the least squares estimates 
+		of the model parameters,</p>
+  
+   <p class=eqn><img src="../glm/images/lsEquation.gif" width="138" height="23"></p>
+	 
+  <p>Expanding this matrix equation using the design matrix, <strong>X</strong>, 
+    from the previous page, it can be shown that the least squares estimates are:</p>
+	<p class=eqn><img src="images/lsTwoGroup.gif" width="162" height="60"></p>
+	<p>Using these estimates to find fitted values for the observations, it is simple 
+		to show that:</p>
+	
+<div class="centred"><div class="boxed">
+<p>The fitted values are the sample means from the two groups.</p>
+</div></div>
+
+	<p>Using a GLM with an indicator variable therefore gives identical estimates 
+		of the mean response in the groups as does a conventional 2-sample analysis.</p>
+<div class="diagram"> 
+    <p class="heading">Anticipation of hypnosis</p>  
+    <p>In a study of the effect of hypnosis, 16 subjects were divided at random 
+			into a group of 8 to be hypnotised and 8 controls. A measure of ventilation 
+			(breathing) was taken from each subject at the start of the experiment.</p>
+		<p>We have initially chosen the <em>Control</em> group as the baseline. The 
+			parameter µ<sub>1</sub> 
+			denotes the mean ventilation in that group. The other parameter, δ<sub>2</sub>, 
+			denotes the difference between the mean binding ventilation rate for the 
+			and <em>Pre-hypnosis</em> group and the <em>Control</em> group.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="600">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="matrixProg.FactorFittedValApplet">
+<param name="yName" value="Ventilation">
+<param name="yValues" value="3.99 4.19 4.21 4.54 4.64 4.69 4.84 5.48 4.36 4.67 4.78 5.08 5.16 5.20 5.52 5.74">
+<param name="xRows" value="16">
+<param name="nXColumns" value="1">
+<param name="fullNameX1" value="Group">
+<param name="shortNameX1" value="x">
+<param name="valuesX1" value="8@0 8@1">
+<param name="labelsX1" value="#Control# #Pre-hypnosis#">
+<param name="fitDecimals" value="3">
+<param name="lsDecimals" value="3 3 3 3 3">
+<param name="yAxis" value="3.5 6.0 3.5 0.5">
+<param name="oneFactor" value="baseline 0">
+<param name="matrixFont" value="standard">
+<param name="customText" value="Baseline=Baseline">
+</applet> 
+</div>
+
+    <p>This model allows the two group means can be set to arbitrary values. Drag 
+			the two red arrows to observe this.</p>
+    <p>Click <strong>Least squares</strong> to set the parameters to their least 
+			squares estimates. The fitted values are now all equal to their group mean.</p>
+    <p>Either group could have been used as the baseline group. Finally, use the 
+			pop-up menu to change the baseline group to the <em>Pre-hypnosis</em> group. 
+			Observe that although the values of the parameters change, the fitted values 
+			from the model remain the same.</p>
+
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

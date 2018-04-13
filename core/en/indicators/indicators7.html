@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Anova test for equal group means</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<script type="text/javascript">
+		setupChoiceImages("cuckooF", "expiredAirF", "antibioticF", "laminectomyF", "elNinoF");
+	</script>
+
+	<meta name="index" content="f test, comparing groups, analysis of variance">
+	<meta name="dataset" content="Cuckoo eggs">
+	<meta name="dataset" content="Antibiotics">
+	<meta name="dataset" content="El nino and storms">
+	<meta name="dataset" content="Expired air volume">
+	<meta name="dataset" content="Hospital charges">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Hypotheses</p>
+  <p>When the model is written in the form,</p>
+<p class="eqn"><img src="images/factorModel.gif" width="308" height="23"></p>
+  <p>the test for equal group means assesses the hypotheses,</p>
+<p class="eqn"> <img src="images/hypothesesGroups.gif" width="225" height="44" align="absmiddle"></p>
+  <p>When this model is expressed as a GLM with indicator variables,</p>
+	<p class=eqn><img src="images/factorModel2.gif" width="483" height="27"></p>
+	<p>the corresponding hypotheses are:</p>
+	<p class="eqn"> <img src="images/hypothesesGroups2.gif" width="207" height="46" align="absmiddle"></p>
+	<br>
+
+<div class="centred"><div class="boxed">
+<p>The two ways to express the model and 
+						hypotheses are identical.</p>
+</div></div>
+
+	<p>When the model is expressed as a GLM, the hypotheses test whether <strong>any</strong> 
+		of the explanatory variables (indicator variables) are related to the response, 
+		and the standard anova test for a GLM does this.</p>
+	<p class="heading">Anova table</p>
+  <p>The explained (i.e. between groups) and residual (i.e. within groups) sums 
+		of squares form the basis of the following anova table.</p>
+	<p class="eqn"><img src="images/anovaTable.gif" width="520" height="138"></p>
+	<p>Note that the between-groups sum of squares had <em>g</em>&nbsp;-&nbsp;1 
+		degrees of freedom since there are (<em>g</em>&nbsp;-&nbsp;1) indicator variables.</p>
+	<p class="heading">P-value</p>
+	<p>If the null hypothesis holds (i.e. all group means are equal), the F ratio 
+		can be proved to have a standard distribution called an F distribution with 
+		(<em>g</em>&nbsp;-&nbsp;1) and (<em>n</em>&nbsp;-&nbsp;<em>g</em>) degrees 
+		of freedom,</p>
+	<p class="eqn"><img src="images/fRatioDistn.gif" width="261" height="38"></p>
+	<p>When the alternative hypothesis is true (some group means are different), 
+		SS<sub>Between</sub> is expected to be larger and this also results in a larger 
+		value for the F ratio. The p-value for the test is therefore the upper tail 
+		area of this F distribution.</p>
+	<p class="eqn"> <img src="images/fPValue.gif" width="456" height="262" align="absmiddle"></p>
+	<p>The formulae may seem a bit complicated, but:</p>
+	
+<div class="centred"><div class="boxed">
+<p>The details are unimportant &mdash; in practice, 
+						you will use a computer to evaluate the anova table and p-value.</p>
+</div></div>
+
+	<br>
+
+<div class="diagram">
+<p class="heading">Examples</p>
+<p>Analysis of variance F tests are used to analyse a few data sets below.</p>
+
+<form>
+<select name="dataset" onChange="changeImage('image', this)">
+<option value="0" selected>Size of cuckoo eggs</option>
+<option value="1">Expired air volumes</option>
+<option value="2">Antibiotic effectiveness</option>
+<option value="3">Hospital charges for operation</option>
+<option value="4">El Nino and Pacific storms</option>
+</select>
+</form>
+
+<p align="center"><img id="image" src="images/cuckooF.gif" width="580" height="515"></p>
+
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

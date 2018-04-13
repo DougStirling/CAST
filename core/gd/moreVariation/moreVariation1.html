@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Effect of outliers</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="standard deviation, outliers">
+	<meta name="dataset" content="Samaru rainfall">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Outliers and the standard deviation</p>
+  <p>The mean and standard deviation of a data set summarise the centre and spread of values but contain no further information about the shape of the distribution. They are therefore poor descriptions 
+  of distributions that have clusters, outliers or skewness.</p>
+  <p>It is worth spending 
+    a little more time investigating the effect of an outlier on the mean and 
+    standard deviation. Although an outlier has a reasonably strong influence on the mean of the 
+		data,</p>
+  <table width="75%" border="1" class="centred" cellpadding="10" cellspacing="0">
+		<tr> 
+			<td bgcolor="#FFFFFF"><strong>Outliers have an <font color="#FF0000">extremely</font> 
+				strong effect on the standard deviation.</strong></td>
+		</tr>
+	</table>
+	<p>By applying the 70-95-100 rule of thumb and thinking about whether the resulting proportions of values within 1, 2 and 3 standard deviations are reasonable in the context of the data, you may be able to tell that something is wrong. (E.g. is it reasonable that 70% of the values are between say 14 and 18, and 30% are outside this interval?)</p>
+	<table width="75%" border="1" class="centred" cellpadding="10" cellspacing="0">
+    <tr>
+      <td bgcolor="#FFFFFF"><strong>The mean and standard deviation are bad summaries of data sets with outliers.</strong></td>
+    </tr>
+  </table>
+	<p>A graphical display such as a dot plot is the best way to detect an outlier and you should <strong>always look at the data</strong> before summarising with a mean and standard deviation.</p>
+	<p>An outlier should be carefully examined. Was the value incorrectly recorded? Was there something unusual about the individual from which the measurement was obtained? If we are convinced that there was something wrong about the value, it should be removed from the data set before further analysis.</p>
+	<div class="diagram"> 
+		<p class="heading">Date of first rains in Samaru, Nigeria</p>
+		<p>The stacked dot plot below shows the date of the first planting rain in 
+			Samaru each year from 1928 to 1983, defined as the first occasion after 
+			1st April when there was more than 20&nbsp;mm of rain within one or two 
+			days.</p>
+		<p>The dates are recorded as the day number after 1st January (e.g. 1st April&nbsp;=&nbsp;day&nbsp;92, 
+			1st May&nbsp;=&nbsp;day&nbsp;122).</p>
+		<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="210">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="statistic2Prog.DragOutlierApplet">
+<param name="varName" value="Date of first rain in Samaru, Nigeria">
+<param name="values" value="115 126 108 118 115 156 116 134 113 126 118 134 118 138 120 140 160 158 129 134 109 122 136 95 131 125 114 118 143 94 143 115 147 99 111 123 154 160 107 111 110 129 127 136 108 144 119 109 100 151 96 127 140 109 152 176 50 240">
+<param name="horizAxis" value="-20 390 0 50">
+<param name="decimals" value="1 1">
+<param name="lowFixedOutlier" value="0#No planting rain (coded 0)">
+<param name="highFixedOutlier" value="999#Missing value (coded 999)">
+<param name="lowDragOutlier" value="1 80">
+<param name="highDragOutlier" value="200 365">
+<param name="customText" value="Low outlier=Low outlier#High outlier=High outlier">
+</applet>
+</div>
+
+		<p>We will now consider adding an 'outlier' to this data set &mdash; we will pretend 
+			that it is an incorrectly recorded date for the first rains in 1927. Click 
+			<strong>High outlier</strong> to add a value of 240 to the data set. The 
+			mean date is increased by only 2 days, but the standard deviation increases 
+			from 18.7 to 23.9 days, a much greater increase.</p>
+		<p>Drag the outlier to 300, increasing the standard deviation to 29.5. The 
+			70-95-100 rule with this standard deviation gives a misleading impression 
+			of the chance of a very early or late date for the first rains.</p>
+		<p class="heading">Missing value</p>
+		<p>When a data value is missing (e.g. the date of the first rains in 1927 
+			may not have been recorded), it is often coded as an 'impossible' value, 
+			such as '999'. Click <strong>Missing value (coded 999)</strong> to change 
+			the value for 1927 to 999. Observe that:</p>
+		<ul>
+			<li>The mean (day 141.5) is still a 'reasonable' value for the data set, 
+				even though it is incorrect.</li>
+			<li>The standard deviation (117.1 days) is <strong>not</strong> reasonable. 
+				It should be obvious to any climatologist that there would not be 30% 
+				of years with first rains outside days 141.5 ± 117.1, as predicted 
+				by the 70-95-100 rule.</li>
+		</ul>
+		<p class="heading">No planting rain</p>
+		<p>Another complication with rainfall data in Africa is that sometimes the 
+			rains do not start <strong>at all</strong>. Consider what would happen if 
+			there was no planting rain in 1984. Such a year might be coded as the value 
+			'0'. Such zeros are important information (unlike missing values) but they 
+			should <strong>not</strong> be included with calculating means and standard 
+			deviations.</p>
+		<p>Click <strong>Low outlier</strong> and then <strong>No planting rain (coded 
+			0)</strong> to see the effect of erroneously treating the value 0 for 1984 
+			as a proper date. Again the standard deviation is badly affected.</p>
+		<table width="75%" border="1" class="centred" cellpadding="10" cellspacing="0">
+			<tr> 
+				<td bgcolor="#FFFFFF"><strong>The mean and standard deviation may appear 
+					'reasonable' even if there are outliers. <font color="#FF0000">Always 
+					examine a dot plot, histogram or box plot before analysis.</font></strong></td>
+			</tr>
+		</table>
+		<br>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

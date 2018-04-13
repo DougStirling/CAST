@@ -1,0 +1,189 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Relationships between variables</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="causal relationship, association">
+	<meta name="dataset" content="Drug testing of PO applicants">
+	<meta name="dataset" content="Alcohol and smoking when pregnant">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Groups and explanatory variables</p>
+  
+<p>It was <a href="javascript:showNamedPage('structures3')">explained earlier</a> that  data from different groups can be combined in a single data matrix with a categorical variable that gives group membership. In a similar way, a categorical variable can be used to split a data set into groups.</p>
+<p>In some data sets,   one categorical variable can be thought of as a <strong>response</strong> whose values are thought to depend on a second categorical variable &mdash; an <strong>explanatory </strong>variable. We can then  think of the explanatory variable as defining different groups and ask how the response distribution differs between the groups.</p>
+<div class="boxed">
+  <p>Do not  use the response variable to define the groups.</p>
+</div>
+
+<p>If one categorical variable is a response and the other is an explanatory variable, the methods in the previous section can be used to see how the explanatory variable affects the response.</p>
+
+<div class="diagram"> 
+<p class="heading">Drug screening of job applicants</p>
+<p>Urine drug screening that was performed on <a href="javascript:showNamedPage('groupedCat2')">2537 
+  applicants for postal jobs.</a> Among the categorical variables measured 
+  from each applicant were the type of drug detected (if any) and the applicant's 
+  gender. The contingency table below shows these data.</p>
+<table border="0" class="centred" cellpadding="5" cellspacing="0">
+  <tr> 
+    <th>&nbsp;</th>
+    <th>Negative</th>
+    <th>Marijuana</th>
+    <th>Cocaine</th>
+    <th>Other drugs</th>
+    <th>Total</th>
+  </tr>
+  <tr> 
+    <th align="left">Male</th>
+    <td align="center" bgcolor="#FFFFFF">1465</td>
+    <td align="center" bgcolor="#FFFFFF">146</td>
+    <td align="center" bgcolor="#FFFFFF">33</td>
+    <td align="center" bgcolor="#FFFFFF">28</td>
+    <td align="center">1672</td>
+  </tr>
+  <tr> 
+    <th align="left">Female</th>
+    <td align="center" bgcolor="#FFFFFF">764</td>
+    <td align="center" bgcolor="#FFFFFF">52</td>
+    <td align="center" bgcolor="#FFFFFF">22</td>
+    <td align="center" bgcolor="#FFFFFF">27</td>
+    <td align="center">865</td>
+  </tr>
+</table>
+
+<p>In this data set, the result of the drug test is the response and gender is the explanatory variable &mdash;  it is possible for gender 
+to affect the type of drug detected, but not the reverse (!).</p>
+<p>We can therefore use the methods in the previous section to compare the distributions for males and females. For example, the following table shows the <strong>percentages within each gender group</strong>.</p>
+<table border="0" class="centred" cellpadding="5" cellspacing="0">
+  <tr>
+    <th>&nbsp;</th>
+    <th>Negative</th>
+    <th>Marijuana</th>
+    <th>Cocaine</th>
+    <th>Other drugs</th>
+    <th>Total</th>
+  </tr>
+  <tr>
+    <th align="left">Male</th>
+    <td align="center" bgcolor="#FFFFFF">87.6</td>
+    <td align="center" bgcolor="#FFFFFF">8.7</td>
+    <td align="center" bgcolor="#FFFFFF">2.0</td>
+    <td align="center" bgcolor="#FFFFFF">1.7</td>
+    <td align="center">100.0</td>
+  </tr>
+  <tr>
+    <th align="left">Female</th>
+    <td align="center" bgcolor="#FFFFFF">88.3</td>
+    <td align="center" bgcolor="#FFFFFF">6.0</td>
+    <td align="center" bgcolor="#FFFFFF">2.5</td>
+    <td align="center" bgcolor="#FFFFFF">3.1</td>
+    <td align="center">100.0</td>
+  </tr>
+</table>
+<p>From this table, it can be seen that the differences between males and females are fairly small.</p>
+<p>It is however <strong>unhelpful to treat the drug result as defining the groups</strong>. For example, the percentages in the following table are much harder to interpret and compare.</p>
+<table border="0" class="centred" cellpadding="5" cellspacing="0">
+  <tr>
+    <th>&nbsp;</th>
+    <th>Negative</th>
+    <th>Marijuana</th>
+    <th>Cocaine</th>
+    <th>Other drugs</th>
+  </tr>
+  <tr>
+    <th align="left">Male</th>
+    <td align="center" bgcolor="#FFFFFF">65.7</td>
+    <td align="center" bgcolor="#FFFFFF">73.7</td>
+    <td align="center" bgcolor="#FFFFFF">60.0</td>
+    <td align="center" bgcolor="#FFFFFF">50.9</td>
+  </tr>
+  <tr>
+    <th align="left">Female</th>
+    <td align="center" bgcolor="#FFFFFF">34.3</td>
+    <td align="center" bgcolor="#FFFFFF">26.3</td>
+    <td align="center" bgcolor="#FFFFFF">40.0</td>
+    <td align="center" bgcolor="#FFFFFF">49.1</td>
+  </tr>
+  <tr>
+    <th align="left">Total</th>
+    <td align="center">100.0</td>
+    <td align="center">100.0</td>
+    <td align="center">100.0</td>
+    <td align="center">100.0</td>
+  </tr>
+    </table>
+<br>
+</div>
+
+  <p class="heading">Bivariate data without an explanatory variable</p>
+  <p>Not all data sets have  variables that can be categorised as a response and an explanatory variable. Sometimes the relationship between the variables 
+    is more symmetrical but we still want to discover whether particular values of one variable are <strong>associated</strong> with values of the other.</p>
+  <p>For numerical variables, we would use a correlation coefficient to describe the strength of the relationship (as opposed to least squares for variables that can be classified as a response and explanatory variable). When the two variables are categorical, different methods are needed to describe the association between the variables.</p>
+  <div class="boxed">
+    <p>The remainder of this section describes some methods of analysing data of this 
+form.</p>
+  </div>
+  <div class="diagram"> 
+    <p class="heading">Alcohol and nicotine intake</p>
+    <p>As part of a study of how drinking and smoking by pregnant women affected 
+      their children, data were collected from 452 mothers about the relationship 
+      between their nicotine intake during pregnancy and their alcohol intake 
+      before their pregnancy was recognised. The contingency table below describes 
+      the relationship between these two ordinal categorical variables.</p>
+    <table border="0" class="centred" cellpadding="5" cellspacing="0">
+      <tr> 
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+        <th colspan="3">Nicotine (milligrams/day)</th>
+      </tr>
+      <tr> 
+        <th colspan="2">Alcohol (oz/day)</th>
+        <th><font color="#660000">None</font></th>
+        <th><font color="#660000">1 to 15</font></th>
+        <th><font color="#660000">Over 15</font></th>
+      </tr>
+      <tr> 
+        <th rowspan="4" align="left">&nbsp;</th>
+        <th align="left"><font color="#000099">None</font></th>
+        <td align="center" bgcolor="#FFFFFF">105</td>
+        <td align="center" bgcolor="#FFFFFF">7</td>
+        <td align="center" bgcolor="#FFFFFF">11</td>
+      </tr>
+      <tr> 
+        <th align="left"><font color="#000099">0.01 to 0.10</font></th>
+        <td align="center" bgcolor="#FFFFFF">58</td>
+        <td align="center" bgcolor="#FFFFFF">5</td>
+        <td align="center" bgcolor="#FFFFFF">13</td>
+      </tr>
+      <tr> 
+        <th align="left"><font color="#000099">0.11 to 0.99</font></th>
+        <td align="center" bgcolor="#FFFFFF">84</td>
+        <td align="center" bgcolor="#FFFFFF">37</td>
+        <td align="center" bgcolor="#FFFFFF">42</td>
+      </tr>
+      <tr> 
+        <th align="left"><font color="#000099">1.00 or more</font></th>
+        <td align="center" bgcolor="#FFFFFF">57</td>
+        <td align="center" bgcolor="#FFFFFF">16</td>
+        <td align="center" bgcolor="#FFFFFF">17</td>
+      </tr>
+    </table>
+    <p>The variables cannot be classified as a response and explanatory variable &mdash; both variables have similar status. 
+      However it is reasonable to ask whether high alcohol consumption tends to 
+      be <strong>associated</strong> with high nicotine intake.</p>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

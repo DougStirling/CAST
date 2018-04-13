@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Simulation: Will the best team win?</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="probability, simulation">
+	<meta name="dataset" content="Soccer league">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class=heading>Repetitions of  a simulation</p>
+
+<p>Repeating a simulation and observing the 
+  variability in the results can give insight into the randomness of the system's 
+  behaviour.</p>
+
+<div class="diagram" title="Illustration: Sport leagues"> 
+<p class=heading>Sport leagues</p>
+<p>In many sports, teams are grouped into leagues, with each team playing every 
+other team one or more times throughout during the year. Teams gain points for 
+wins and draws and their total points are usually tabulated each week in newspapers. 
+We will use a simulation to investigate how much the points in a league table 
+reflect the randomness of individual matches and how much they depend on the abilities 
+of the different teams.</p>
+<p>In this page, we will consider a league with 10 teams in which each team plays each other twice and:</p>
+
+<div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+  <tr>
+    <td>&nbsp;Points from a match =&nbsp;&nbsp;&nbsp;</td>
+    <td style="border-left:1px solid #000000">3 &nbsp;if team wins<br>&nbsp;1 &nbsp;if team draws<br>0 &nbsp;if team loses</td></tr>
+</table></div>
+
+<p class=heading>Model </p>
+<p>The first stage in any simulation is to produce a <strong>model</strong> for 
+the process. In the league table example, such a model defines the probabilities 
+of winning, drawing and losing for each match during the season. A good model 
+would express these probabilities in terms of different abilities for the various 
+teams (perhaps based on their results from the previous year), a home-team advantage 
+and changes during the season. However a much simpler model can still provide 
+useful insight.</p>
+
+<p>We initially assume that the two teams in 
+each match are equally likely to win. More precisely, in any match between teams 
+<i>i</i> and <i>j</i>, we assume that </p>
+<p class="eqn"><span class="black"><em>P</em> (<em> team i wins</em> ) &nbsp; = &nbsp; <em>P</em> ( <em>team j wins </em>) &nbsp; = &nbsp; 0.4<br>
+<em> P</em> ( <em>draw </em>) &nbsp; = &nbsp; 0.2</span></p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="650" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="sportProg.LeagueTableApplet">
+<param name="tableName" value="League table">
+<param name="drawProb" value="0.2">
+<param name="teamAProb" value="0.00 0.80 0.40">
+<param name="randomSeed" value="922883746">
+<param name="teams" value="10">
+<param name="rankAxis" value="1 10 1 1">
+<param name="rankName" value="Team A rank">
+<param name="customText" value="Run League=Run League#wins=wins#draw=draw#lose=lose#is top=is top">
+</applet>
+</div>
+
+<p>Click <strong>Run League</strong> to perform a simulation 
+in which each pair of teams plays two matches (one at each team's home ground).</p>
+
+<ul>
+  <li>The table on the left shows the winners of all 90 matches (a cross means a draw)</li>
+  <li>The  league table at the end of the season is shown in the middle</li>
+</ul>
+
+<p class="heading">Is the best team likely to be top of the league?
+</p>
+
+<p>We will now concentrate on a single team, Team A, and examine how its skill level affects its  league placing at the end of the season. This is shown by its <strong>rank</strong> at the end of the season on the dot plot at the right of the above diagram. (A rank of 1 means that the team was top
+  or top equal in the league.)</p>
+<p>With team A still equally likely to win and lose each match, click <strong>Accumulate</strong> and run the simulation
+  several more times. Observe that
+  Team A has (almost) the same chance of being in any position in the league at the end of the
+  season.</p>
+<p>The slider under the diagram allows us to adjust 
+the probability of Team A winning its matches. (The other teams remain evenly 
+matched.) Give Team A a probability of 0.55 of winning its matches &mdash; more than 
+double its probability of losing &mdash; then repeat the simulation 100 times. 
+</p>
+<p>Observe that Team A often wins the league, but not always.</p>
+
+<div class="centred"><div class="boxed">
+<p>Even with over double the the chance of winning than losing each match, Team A only ends the season on top of the league in about half of the simulations.</p>
+</div></div>
+
+<p>Indeed, 
+  you will probably have observed that Team A's final placing was in the bottom 
+  half of the league in several simulated seasons! </p>
+</div>
+
+<p>A simple probability model can often give valuable and perhaps surprising insight 
+into a system through a simulation.</p>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

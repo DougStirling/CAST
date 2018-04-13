@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Pivot for normal mean</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="t distribution, confidence interval, pivot">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Confidence interval for &mu; when &sigma;<sup>2</sup> is known</p>
+
+<p>If \(\{X_1, X_2,\dots, X_n\}\) is a random sample from a \(\NormalDistn(\mu, \sigma^2)\) distribution and the population variance, \(\sigma^2\), is <strong>known</strong>, then</p>
+\[
+\overline{X} \;\;\sim\;\; \NormalDistn(\mu,\;\frac{\sigma^2}{n})
+\]
+<p>and</p>
+\[
+\frac{\overline{X} - \mu}{\diagfrac{\sigma}{\sqrt{n}}} \;\;\sim\;\; \NormalDistn(0,\;1)
+\]
+<p>is a pivot for the parameter \(\mu\). Since</p>
+\[
+P\left(-1.96 \;\;\lt\;\; \frac{\overline{X} - \mu}{\diagfrac{\sigma}{\sqrt{n}}} \;\;\lt\;\; 1.96 \right) \;\;=\;\;0.95
+\]
+
+<p>we get the following 95% confidence interval for \(\mu\)</p>
+
+\[
+\overline{X} -1.96 \frac{\sigma}{\sqrt{n}} \;\;\lt\;\; \mu \;\;\lt\;\; \overline{X} +1.96 \frac{\sigma}{\sqrt{n}}
+\]
+<p>Intervals with other confidence levels can be obtained by replacing 1.96 with other quantiles from the standard normal distribution.</p>
+<p class="heading">Unknown &sigma;<sup>2</sup></p>
+<p>However in most situations when a random sample is obtained from a normal distribution, the distribution's variance, \(\sigma^2\), is an <strong>unknown</strong> value, so this method does not work. However a pivot can still be found by replacing the unknown \(\sigma^2\) by the sample variance, \(S^2\).</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Pivot for μ when σ² is unknown</p>
+<p>If \(\overline{X}\) and \(S^2\) are the mean and variance of a random sample of size \(n\) from a \(\NormalDistn(\mu, \sigma^2)\) distribution,</p>
+\[
+\frac{\overline{X} - \mu}{\diagfrac{S}{\sqrt{n}}} \;\;\sim\;\; \TDistn(n-1 \text{ df})
+\]
+<p>is a pivot for the parameter \(\mu\).</p>
+</div>
+
+<div class="proof">
+\[
+\frac{\overline{X} - \mu}{\diagfrac{S}{\sqrt{n}}} \;=\; \frac{\large\frac{\overline{X} - \mu}{\diagfrac{\sigma}{\sqrt{n}}}}{\sqrt{\diagfrac{S^2}{\sigma^2}}}
+ \;=\; \frac{\large\frac{\overline{X} - \mu}{\diagfrac{\sigma}{\sqrt{n}}}}{\sqrt{\large\frac{\diagfrac{(n-1)S^2}{\sigma^2}}{n-1}}}
+\]
+<p>Since the numerator has a standard normal distribution, the denominator involves a Chi-squared distribution, and the sample mean and variance are independent,</p>
+\[
+\frac{\overline{X} - \mu}{\diagfrac{S}{\sqrt{n}}} \;\sim\; \frac{\NormalDistn(0,\;1)}{\sqrt{\Large \frac {\ChiSqrDistn(n-1\text{ df})}{n-1}}}
+\;=\; \TDistn(n-1\text{ df})
+\]
+<p>Since the distribution does not involve any unknown parameters, this proves that we have a pivot.</p>
+</div>
+
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

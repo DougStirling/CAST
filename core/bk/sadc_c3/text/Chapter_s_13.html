@@ -1,0 +1,935 @@
+<html>
+<head>
+  <title>13. Regression Models</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 13 &nbsp; Regression Models</h1>
+<h1 class="sectionName">13.1 &nbsp; Linear regression models</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Interest in generalising from data</li>
+<li>Distribution of Y for each X</li>
+<li>Normal linear model</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='4'>
+<li>Another way to describe the model</li>
+<li>Model parameters</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">13.1.1 &nbsp; Interest in generalising from data</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Bivariate data: population or sample?</p>
+<p>In most bivariate data sets, we have no interest in the specific individuals from
+which the data are collected. The individuals are 'representative' of a larger population
+or process, and our main interest is in this underlying population. </p>
+<p class="heading">Example</p>
+<p>Data  were collected by biologists from 15 lakes
+in central Ontario to assess how zinc concentrations in an aquatic plant were related
+to zinc concentrations in the lake sediment.</p>
+<p class="eqn"><img src="../../../en/regnModel/images/s_sampleScatter.gif" width="403" height="316"></p>
+<p>The biologists want to <strong>generalise</strong> from
+these specific lakes (and sediment samples) to describe the relationship between
+zinc concentrations in sediments and plants in a way that might be used to predict
+plant zinc from sediment samples in <strong>other
+similar </strong> lakes.</p>
+
+
+
+
+<h2 class="pageName">13.1.2 &nbsp; Distribution of Y for each X</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Response distribution at each X</p>
+<p>In an experiment, several response measurements are often made at each  distinct
+value of <i>X</i>. The diagram below shows one such data set using a histogram for
+the distribution of <em>Y</em> at
+each x-value.</p>
+<p class="eqn"><img src="../../../en/regnModel/images/s_histos.gif" width="380" height="331"></p>
+<p class="heading">Model for data</p>
+<p>The response measurements at any x-value can be modelled as a random sample from
+a normal distribution. The collection of distributions of <em>Y</em> at different
+values of <em>X</em> is called a <strong>regression model</strong>.</p>
+<p class="eqn"><img src="../../../en/regnModel/images/s_pdfs.gif" width="349" height="373"></p>
+
+
+
+
+<h2 class="pageName">13.1.3 &nbsp; Normal linear model</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Normal linear model for the response</p>
+<p>The most commonly used regression
+model is a <strong>normal linear model</strong>. It  involves: </p>
+<dl>
+<dt><strong>Normality</strong></dt>
+<dd>At each value of <i>X</i>, <i>Y</i> has a normal distribution.</dd>
+<dt><strong>Constant variance</strong></dt>
+<dd>The standard deviation of <i>Y</i> is the same for all values of <i>X</i>.</dd>
+<dt><strong>Linearity</strong></dt>
+<dd>The mean of <i>Y</i> is linearly related to <i>X</i>.</dd>
+</dl>
+<p>The last two properties of the normal linear model can be expressed as </p>
+<p class=eqn><span class="black">&sigma;<sub><em>y</em></sub> &nbsp;=&nbsp; &sigma;</span> </p>
+<p class=eqn><span class="black">&mu;<sub><em>y</em></sub> &nbsp;=&nbsp; &beta;<sub>0</sub> &nbsp;+&nbsp; &beta;<sub>1</sub><em>x</em></span> </p>
+<p>The diagram below illustrates these three properties of the normal linear model:
+the distributions at different x-values have  normal distributions with the same
+spread and the mean increases linearly with <em>x</em>.</p>
+<p class=eqn><img src="../../../en/regnModel/images/s_pdfs2.gif" width="362" height="385"></p>
+<p class="heading">Note: only the response is modelled</p>
+<p>A normal linear model does not try to explain the distribution of x-values. In
+experimental data, they are fixed by the experimenter. In observational data, the
+x-values are usually random, but the regression model only explains how the y-values
+are related to them and treats them as constants.</p>
+<div class="centred"><div class="boxed"><p>The regression model only describes the <strong>conditional</strong> distribution
+of <em>Y</em> at each <em>X</em>.</p></div></div>
+
+
+
+
+<h2 class="pageName">13.1.4 &nbsp; Another way to describe the model</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Alternative descriptions of the model</p>
+<p>The normal linear model describes the distribution of <em>Y</em> for any value
+of <em>X</em>:</p>
+<p class=eqn><span class="black"><em>Y</em>&nbsp; ~ &nbsp;<font face="Arial, Helvetica, sans-serif">normal</font> (&mu;<sub>y</sub>&nbsp;, &sigma;<sub>y</sub>)</span> </p>
+<p>where</p>
+<p class=eqn><span class="black">&mu;<sub><em>y</em></sub> &nbsp;=&nbsp; &beta;<sub>0</sub> &nbsp;+&nbsp; &beta;<sub>1</sub><em>x</em></span> </p>
+<p class=eqn><span class="black">&sigma;<sub><em>y</em></sub> &nbsp;=&nbsp; &sigma;</span> </p>
+<p>An equivalent way to write the same model is...</p>
+<p class=eqn><span class="black"><em>y<sub></sub></em> &nbsp;=&nbsp; &beta;<sub>0</sub> &nbsp;+&nbsp; &beta;<sub>1</sub><em>x</em> &nbsp;+&nbsp; &epsilon;</span> </p>
+<p>where  &epsilon; is
+called the model <strong>error</strong> and has a distribution</p>
+<p class=eqn><span class="black">&epsilon;&nbsp; ~ &nbsp;<font face="Arial, Helvetica, sans-serif">normal</font> (0<sub></sub>&nbsp;, &sigma;)</span> </p>
+<p>The error, ε , for a data point is the <strong>vertical distance</strong> between the cross on a scatterplot and the regression
+line.</p>
+<p class=eqn><img class="gif" src="../../../en/regnModel/images/errorDiagram.gif" id="gif_image_1_4_2" width="355" height="274"><iframe class="svg" src="../../../en/regnModel/images/errorDiagram.svg" id="svg_image_1_4_2" width="355" height="274" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_1_4_2");</script> </p>
+<p class="heading">Band containing about 95% of values</p>
+<p>Applying the 70-95-100 rule of thumb to the errors, about 95% of them
+will be within 2 standard deviations of zero &mdash; i.e. between ±2σ.</p>
+<p>Since the errors are vertical distances of data points to the regression line,
+a  band
+2σ on each side of it should contain about 95% of the crosses
+on a scatterplot of the data.</p>
+<p class=eqn><img class="gif" src="../../../en/regnModel/images/band95.gif" id="gif_image_1_4_1" width="297" height="274"><iframe class="svg" src="../../../en/regnModel/images/band95.svg" id="svg_image_1_4_1" width="297" height="274" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_1_4_1");</script></p>
+
+
+
+
+<h2 class="pageName">13.1.5 &nbsp; Model parameters</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Slope and intercept</p>
+<p>A normal linear model, </p>
+<p class=eqn><span class="black">&mu;<sub><em>y</em></sub> &nbsp;=&nbsp; &beta;<sub>0</sub> &nbsp;+&nbsp; &beta;<sub>1</sub><em>x</em></span> </p>
+<p class=eqn><span class="black">&sigma;<sub><em>y</em></sub> &nbsp;=&nbsp; &sigma;</span> </p>
+<p>involves 3 parameters, β<sub>0</sub>, β<sub>1</sub> and σ. The model's slope,
+β<sub>1</sub>,
+and intercept, β<sub>0</sub>, can be interpreted in a similar way to the slope
+and intercept of a least squares line.</p> 
+<dl>
+<dt>Slope</dt>
+<dd>Increase in the mean response per unit increase in <i>X</i>.</dd>
+<dt>Intercept</dt>
+<dd>Mean response when <em>X</em> = 0.</dd>
+</dl>
+
+<p class="heading" style="margin-bottom:5px; margin-top:35px">Examples of interpretation</p>
+
+<div class="centred"><table class="centred" border="0" cellpadding="8" cellspacing="0" style="margin-top:0px">
+<tr>
+<th align="CENTER" width="300">Context</th>
+<th width="33%" align="CENTER">Interpretation of β<sub>1</sub></th>
+<th width="33%" align="CENTER">Interpretation of β<sub>0</sub></th>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td width="300" class="top bottom left right"><i>Y</i> = Yield of wheat per acre <br>
+<i>X</i> = Fertiliser (kg per m<sup>2</sup>)</td>
+<td width="33%" class="top bottom right">Increase in mean yield per acre for
+each additional kg/m<sup>2</sup> of fertiliser</td>
+<td width="33%" class="top bottom right">Mean yield per acre if no fertiliser
+is used</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td width="300" class="bottom left right"><i>Y</i> = Exam mark <br>
+<i>X</i> = Hours of study by student before exam</td>
+<td width="33%" class="bottom right">Increase in expected mark for each additional
+hour of study</td>
+<td width="33%" class="bottom right">Expected mark if there is no study</td>
+</tr>
+<tr bgcolor="#FFFFFF">
+<td width="300" class="bottom left right"><i>Y</i> = Hospital stay (days) <br>
+<i>X</i> = Age of patient</td>
+<td width="33%" class="bottom right">Average extra days in hospital per extra
+year of age</td>
+<td width="33%" class="bottom right">Average days in hospital at age 0. Not particularly
+meaningful here. </td>
+</tr>
+</table></div>
+
+
+<h1 class="sectionName breakBefore">13.2 &nbsp; Estimating parameters</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Estimating the slope and intercept</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='2'>
+<li>Estimating the error standard devn</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">13.2.1 &nbsp; Estimating the slope and intercept</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Least squares</p>
+<p>In practical situations, we must estimate β<sub>0</sub>,
+β<sub>1</sub> and σ from a data set that we believe satisfies the normal linear model.</p>
+
+<div class="centred"><div class="boxed">
+<p>The best estimates of β<sub>0</sub> and β<sub>1</sub> are the slope and
+intercept of the least squares line, <em>b</em><sub>0</sub> and <em>b</em><sub>1</sub></p>
+</div></div>
+
+<p>Since<em> b</em><sub>0 </sub>and <em>b</em><sub>1</sub> are functions of a
+data set that we assume to be a random sample from the normal linear model, <em>b</em><sub>0</sub> and <em>b</em><sub>1</sub> are
+themselves random quantities and have distributions.</p>
+<p class="heading">Simulated example</p>
+<p>The diagram below represents a regression model with a grey band. A sample
+of 20 values has been generated from this model and the least squares line (shown
+in blue) has been fitted to the simulated data. The least squares line provides
+estimates of the slope and intercept but they are not exactly equal to the underlying
+model values.</p>
+<p class="eqn"><img src="../../../en/regnEst/images/s_lsAndModel.gif" width="406" height="357"></p>
+<p>A different sample would give 20 different  points and a different least squares
+line, so the least squares slope and intercept are random.</p>
+
+
+
+
+<h2 class="pageName">13.2.2 &nbsp; Estimating the error standard devn</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Errors and residuals</p>
+<p>The error, ε, for any data point is its <a href="javascript:showNamedPage('regnModel4')">vertical
+distance from the regression line</a>. </p>
+<p class=eqn><img class="gif" src="../../../en/regnModel/images/errorDiagram.gif" id="gif_image_2_2_3" width="355" height="274"><iframe class="svg" src="../../../en/regnModel/images/errorDiagram.svg" id="svg_image_2_2_3" width="355" height="274" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_2_3");</script> </p>
+<p>In practice, the slope and intercept of the regression line are unknown, so <strong>the
+errors are also unknown values</strong>, but  the least squares residuals provide
+<strong>estimates</strong>.</p>
+<p class=eqn><img class="gif" src="../../../en/regnEst/images/residDiagram.gif" id="gif_image_2_2_1" width="355" height="274"><iframe class="svg" src="../../../en/regnEst/images/residDiagram.svg" id="svg_image_2_2_1" width="355" height="274" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_2_1");</script> </p>
+<p class="heading">Estimating the error standard deviation</p>
+<p>The third unknown parameter of the normal linear model, σ, is the standard deviation
+of the errors,</p>
+<p class=eqn><span class="black">&sigma; &nbsp;=&nbsp;<strong>st devn</strong>( &epsilon; )</span> </p>
+<p>σ can be estimated from the least squares residuals, {<em>e<sub>i</sub></em>},</p>
+<p class=eqn><img class="gif" src="../../../en/regnEst/images/errorSdEst.gif" id="gif_image_2_2_2" width="95" height="41"><iframe class="svg" src="../../../en/regnEst/images/errorSdEst.svg" id="svg_image_2_2_2" width="95" height="41" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_2_2");</script> </p>
+<p>This is similar to the formula for the standard deviation of the residuals,
+but uses the divisor (<em>n</em> &minus; 2) instead of (<em>n</em> &minus; 1).
+It describes the size of a 'typical' residual.</p>
+<p class="heading">Example</p>
+<p class="eqn"><img src="../../../en/regnEst/images/s_residSd.gif" width="463" height="291"></p>
+
+
+
+
+<h1 class="sectionName breakBefore">13.3 &nbsp; Confidence intervals</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Distn of least squares estimates</li>
+<li>Standard error of least squares slope</li>
+<li>95% confidence interval for slope</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='4'>
+<li>Properties of confidence interval</li>
+<li>Influences on accuracy</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">13.3.1 &nbsp; Distn of least squares estimates</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Distribution of the least squares slope and intercept</p>
+<p>The least squares line<sub></sub> varies from sample
+to sample &mdash; it is random.</p>
+<p class="eqn"><img src="../../../en/regnEst/images/s_randomLines.gif" width="550" height="290"></p>
+<p>The least squares estimates <em>b</em><sub>0</sub> and <em>b</em><sub>1</sub> of
+the two linear model parameters β<sub>0</sub> and β<sub>1</sub> therefore also
+vary from sample to sample and have normal distributions that are centered
+on β<sub>0</sub> and β<sub>1</sub> respectively.</p>
+<p class="eqn"><img src="../../../en/regnEst/images/s_slopeInterceptDistn.gif" width="541" height="321"></p>
+
+
+
+
+<h2 class="pageName">13.3.2 &nbsp; Standard error of least squares slope</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Standard error of slope</p>
+<p>When <em>b</em><sub>1 </sub> is used as an estimate of β<sub>1</sub>, the
+estimation error has a normal distribution,</p>
+<p class=eqn><span class="black"><strong>error in estimate of &beta;<sub>1</sub></strong> &nbsp; = &nbsp; (<em>b</em><sub>1</sub> &minus; &beta;<sub>1</sub>) &nbsp; ~ &nbsp; <font face="Arial, Helvetica, sans-serif">normal</font> ( 0, &nbsp;&sigma;<sub><em>b</em><sub>1</sub></sub> )</span> </p>
+<p>This standard deviation is the  <strong>standard error</strong> of
+the estimate,</p>
+<p class=eqn><img class="gif" src="../../../en/regnEst/images/sdSlopeEqn.gif" id="gif_image_3_2_2" width="227" height="42"><iframe class="svg" src="../../../en/regnEst/images/sdSlopeEqn.svg" id="svg_image_3_2_2" width="227" height="42" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_3_2_2");</script> </p>
+<p>where <em>s</em><sub>x </sub> is the standard deviation of  <em>X. </em>Since
+σ is unknown, we must replace it with an estimate from
+the data to obtain a numerical value for the standard error,</p>
+<p class=eqn><img class="gif" src="../../../en/regnEst/images/errorSdEst.gif" id="gif_image_3_2_1" width="95" height="41"><iframe class="svg" src="../../../en/regnEst/images/errorSdEst.svg" id="svg_image_3_2_1" width="95" height="41" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_3_2_1");</script> </p>
+<p class=heading>Example</p>
+<p align="center"><img src="../../../en/regnEst/images/radiationCancer.gif" width="550" height="377" class="summaryPict"></p>
+<p>The estimated error distribution  gives in indication of how close our least
+squares estimate, <em>b</em><sub>1</sub> = 9.27, is likely to be to the population
+regression slope, &beta;<sub>1</sub>.</p>
+
+
+
+
+<h2 class="pageName">13.3.3 &nbsp; 95% confidence interval for slope</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Confidence interval for the slope</p>
+<p>When the least squares slope, <em>b</em><sub>1</sub>, is used to estimate
+β<sub>1</sub>,
+the error  has a normal distribution,</p>
+<p class=eqn><span class="black"><strong>error in estimate of &beta;<sub>1</sub></strong> &nbsp; = &nbsp; (<em>b</em><sub>1</sub> &minus; &beta;<sub>1</sub>) &nbsp; ~ &nbsp; <font face="Arial, Helvetica, sans-serif">normal</font> ( 0, &nbsp;&sigma;<sub><em>b</em><sub>1</sub></sub> )</span> </p>
+<p>This suggests a 95% confidence interval of
+the form </p>
+<p class=eqn><img class="gif" src="../../../en/regnEst/images/slopeCIFormula2.gif" id="gif_image_3_3_4" width="124" height="24"><iframe class="svg" src="../../../en/regnEst/images/slopeCIFormula2.svg" id="svg_image_3_3_4" width="124" height="24" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_3_3_4");</script></p>
+<p>In practice, we must replace σ in the formula for the standard error with
+an estimate (based on the sum of squared residuals),</p>
+<p class=eqn><img class="gif" src="../../../en/regnEst/images/sdSlopeEqn2.gif" id="gif_image_3_3_2" width="234" height="52"><iframe class="svg" src="../../../en/regnEst/images/sdSlopeEqn2.svg" id="svg_image_3_3_2" width="234" height="52" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_3_3_2");</script> </p>
+<p>so the constant 1.96 must be replaced by a larger
+value from the t distribution with
+(<em>n</em>&nbsp;-&nbsp;2) degrees of freedom. </p>
+
+<div class="centred"><div class="boxed"><p><strong>A 95% confidence interval for the slope is</strong></p>
+<p class=eqn><img class="gif" src="../../../en/regnEst/images/slopeCIFormula.gif" id="gif_image_3_3_3" width="121" height="26"><iframe class="svg" src="../../../en/regnEst/images/slopeCIFormula.svg" id="svg_image_3_3_3" width="121" height="26" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_3_3_3");</script></p></div></div>
+<p>Most statistical software will evaluate <em>b</em><sub>1</sub> and its standard
+error for you when you fit a normal linear model, so it is fairly easy to evaluate
+the confidence interval in practice &mdash; you will not need to use any of the formulae
+above!</p>
+<p class="heading">Example</p>
+<p>For the example on the previous page, the least squares estimate of the slope
+and its standard error were:
+</p>
+<p class="eqn"><em>b</em><sub>1</sub> = 9.27,        se (<em>b</em><sub>1</sub>)
+= 1.42</p>
+<p>Since there were <em>n</em> = 9 data points, <em>t</em><sub><em>n</em> &minus; 2</sub> =
+t<sub>7</sub> = 2.365,  so a 95%
+confidence interval for the slope is </p>
+<p class=eqn><img class="gif" src="../../../en/regnEst/images/radiationCI.gif" id="gif_image_3_3_1" width="284" height="39"><iframe class="svg" src="../../../en/regnEst/images/radiationCI.svg" id="svg_image_3_3_1" width="284" height="39" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_3_3_1");</script></p>
+<p>We are 95% confident that the expected number of deaths per 100,000
+is between 5.9 and 12.6 higher for each unit increase in the exposure index.</p>
+
+
+
+
+<h2 class="pageName">13.3.4 &nbsp; Properties of confidence interval</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Properties of 95% confidence interval</p>
+<p>Since a confidence interval for the slope, β<sub>1</sub>, is evaluated from
+random sample data, it will vary from sample to sample. In 95% of such samples,
+the 95% confidence interval will include the true population slope, but in 5%
+of samples it will not.</p>
+
+<div class="centred"><div class="boxed">
+<p>We cannot tell whether or not our single data set is one of the 'lucky'
+ones.</p>
+</div></div>
+
+<p class="heading">Simulation</p>
+<p class="eqn"><img src="../../../en/regnEst/images/s_ciSimulation.gif" width="437" height="344"></p>
+
+
+
+
+<h2 class="pageName">13.3.5 &nbsp; Influences on accuracy</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">What affects the accuracy of the least squares slope?</p>
+<p>The standard deviation of <em>b</em><sub>1</sub> (its standard error) is</p>
+<p class=eqn><img class="gif" src="../../../en/regnEst/images/sdSlopeEqn.gif" id="gif_image_3_5_3" width="227" height="42"><iframe class="svg" src="../../../en/regnEst/images/sdSlopeEqn.svg" id="svg_image_3_5_3" width="227" height="42" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_3_5_3");</script> </p>
+<p>where </p>
+<ul>
+<li>σ is the standard deviation of the errors &mdash; i.e. the spread of points<i></i> around
+the regression line,</li>
+<li><i>n</i> is the number of data points, and</li>
+<li><em>s</em><sub>x</sub> is the sample standard deviation of <i>X</i>.</li>
+</ul>
+<div class="centred"><div class="boxed">
+<p style="text-align:left">The standard error of  <em>b</em><sub>1</sub>
+is lowest when: </p>
+<ol>
+<li>the response standard deviation, σ, is low</li>
+<li>the sample size, <i>n</i>, is large</li>
+<li>the spread of x-values is high</li>
+</ol>
+</div></div>
+<p class=heading>Implications for experimental design </p>
+<p>To get the most accurate estimate of the slope from experimental data,</p>
+<dl>
+<dt>Reduce σ</dt>
+<dd>σ can be reduced by ensuring that the experimental units
+are as similar as possible.</dd>
+<dt>Increase <em>n</em></dt>
+<dd>Collect as much data as possible.</dd>
+<dt>Increase <em>s<sub>x</sub></em></dt>
+<dd>Choose to run the experiment with x-values that are widely spread.</dd>
+</dl>
+<br>
+<p>However if the spread of x-values is increased too much, the relationship
+may not be sufficiently linear for a linear model to be used.</p>
+<p class=eqn><img class="gif" src="../../../en/regnEst/images/nonlinearity.gif" id="gif_image_3_5_1" width="271" height="210"><iframe class="svg" src="../../../en/regnEst/images/nonlinearity.svg" id="svg_image_3_5_1" width="271" height="210" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_3_5_1");</script> </p>
+<p>Nonlinearity is a major problem, so it is important to be able to assess whether
+a relationship is linear. Don't just collect data at the ends of the 'acceptable'
+range of x-values, even though this maximises <em>s</em><sub>x</sub>. </p>
+<p class=eqn><img class="gif" src="../../../en/regnEst/images/nonlinearity2.gif" id="gif_image_3_5_2" width="271" height="210"><iframe class="svg" src="../../../en/regnEst/images/nonlinearity2.svg" id="svg_image_3_5_2" width="271" height="210" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_3_5_2");</script></p>
+
+
+
+
+<h1 class="sectionName breakBefore">13.4 &nbsp; Testing regression parameters</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Importance of zero slope</li>
+<li>Testing whether slope is zero</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='3'>
+<li>Strength of evidence and relationship</li>
+<li>Properties of p-values</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">13.4.1 &nbsp; Importance of zero slope</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Does the response depend on X?</p>
+<p>In a normal linear model, the response has a distribution whose mean, µ<sub>y</sub>,
+depends linearly on the explanatory variable,</p>
+<p class=eqn><span class="black"><em>Y</em>&nbsp; ~ &nbsp;<font face="Arial, Helvetica, sans-serif">normal</font> (&mu;<sub>y</sub>&nbsp;, &sigma;<sub>y</sub>)</span> </p>
+<p>If the slope parameter, β<sub>1</sub>, is zero, then the response has a normal
+distribution that <strong>does not depend on <i>X</i></strong>.</p>
+<p class=eqn><span class="black"><em>Y</em> &nbsp; ~ &nbsp; <font face="Arial, Helvetica, sans-serif">normal</font> (&beta;<sub>0</sub> , &nbsp;&sigma;)</span> </p>
+<p>This can be tested formally with a hypothesis test for whether β<sub>1</sub> is
+zero.</p>
+
+
+
+
+<h2 class="pageName">13.4.2 &nbsp; Testing whether slope is zero</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Testing for zero slope</p>
+<p>To assess whether the explanatory variable affects the response, we test the
+hypotheses </p>
+<p class=eqn><span class="blue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&beta;<sub>1</sub> &nbsp;=&nbsp; 0<br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&beta;<sub>1</sub>  &nbsp;&ne;&nbsp;  0</span> </p>
+<p>The test is based on how far the least squares slope, <em>b</em><sub>1</sub>,
+is from zero. To assess this, we must take into account its standard deviation
+(standard error),</p>
+<p class=eqn><img class="gif" src="../../../en/regnTest/images/sdSlopeEqn.gif" id="gif_image_4_2_1" width="129" height="42"><iframe class="svg" src="../../../en/regnTest/images/sdSlopeEqn.svg" id="svg_image_4_2_1" width="129" height="42" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_4_2_1");</script> </p>
+<p>If we knew the value of σ, we could  standardise <em>b</em><sub>1</sub> to
+get a test statistic,</p>
+<p class=eqn><span class="black bold">standardised value,</span>  &nbsp;<img class="gif" src="../../../en/regnTest/images/standardisedSlope.gif" id="gif_image_4_2_4" width="85" height="43"><iframe class="svg" src="../../../en/regnTest/images/standardisedSlope.svg" id="svg_image_4_2_4" width="85" height="43" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_4_2_4");</script></p>
+<p>If β<sub>1</sub> was really zero (<strong>H<sub>0</sub></strong>), the probability
+of getting a least squares slope as far from zero as that recorded would be the
+p-value,</p>
+<p class=eqn><img class="gif" src="../../../en/regnTest/images/zForTestingSlope.gif" id="gif_image_4_2_3" width="294" height="141"><iframe class="svg" src="../../../en/regnTest/images/zForTestingSlope.svg" id="svg_image_4_2_3" width="294" height="141" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_4_2_3");</script></p>
+<p>Unfortunately σ is usually unknown and the standard deviation of <em>b</em><sub>1</sub> must
+be <a href="javascript:showNamedPage('regnEst4')">estimated from the sample
+data</a>. We therefore use a test statistic of the form </p>
+<p class=eqn><span class="black bold">t ratio,</span>  &nbsp;<img class="gif" src="../../../en/regnTest/images/standardisedSlope2.gif" id="gif_image_4_2_5" width="69" height="48"><iframe class="svg" src="../../../en/regnTest/images/standardisedSlope2.svg" id="svg_image_4_2_5" width="69" height="48" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_4_2_5");</script></p>
+<p>and refer to a t distribution with <i><span class="black">n</span></i><span class="black">&nbsp;-&nbsp;2</span> degrees
+of freedom to find the p-value.</p>
+<p class=eqn><img class="gif" src="../../../en/regnTest/images/slopeTestP.gif" id="gif_image_4_2_2" width="426" height="268"><iframe class="svg" src="../../../en/regnTest/images/slopeTestP.svg" id="svg_image_4_2_2" width="426" height="268" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_4_2_2");</script> </p>
+<p>The p-value is interpreted in the same way as for other hypothesis tests &mdash;
+a p-value close to zero means that the sample slope is far enough from zero to
+be inconsistent with <strong>H<sub>0</sub>: &beta;<sub>1</sub> = 0</strong>.</p>
+<p class="heading">Examples</p>
+<p align="center"><img src="../../../en/regnTest/images/possumDamage.gif" width="550" height="442" class="summaryPict"></p>
+<p align="center"><img src="../../../en/regnTest/images/alcoholStrength.gif" width="550" height="442" class="summaryPict"></p>
+
+
+
+
+
+<h2 class="pageName">13.4.3 &nbsp; Strength of evidence and relationship</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Strength of  relationship vs strength of <span class="darkred">evidence</span> for
+relationship</p>
+<p>It is important to distinguish between the correlation coefficient, <em>r</em>,
+and the p-value for testing whether there is a relationship between <em>X</em> and <em>Y</em>. </p>
+<dl>
+<dt>Correlation coefficient</dt>
+<dd>Describes the strength of the relationship between <em>X</em> and <em>Y</em></dd>
+<dt>The p-value for testing whether <em>X</em> and <em>Y</em> are related</dt>
+<dd>Describes the strength of <strong>evidence</strong> for whether <em>X</em> and <em>Y</em> are
+related <strong>at all</strong></dd>
+</dl>
+<p>It is important not to confuse these two values when interpreting the p-value
+for a test.</p>
+<ul>
+<li>A p-value  close to zero does <strong>not</strong> imply that there must
+be a strong relationship. It
+just means that we are <strong>sure</strong> that
+there is <strong>some</strong> relationship, however weak.</li>
+<li>A large p-value  does <strong>not</strong> imply that the relationship
+must be weak. The sample size might just be too small to be sure that the relationship
+exists.</li>
+</ul>
+<p>This is partly explained by an alternative formula for the test statistic,</p>
+<p class=eqn><img class="gif" src="../../../en/regnTest/images/s_tFromR.gif" id="gif_image_4_3_2" width="162" height="48"><iframe class="svg" src="../../../en/regnTest/images/s_tFromR.svg" id="svg_image_4_3_2" width="162" height="48" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_4_3_2");</script></p>
+<p>The test statistic and  the p-value therefore both depend on both <em>r</em> and
+the sample size, <em>n</em>. Increasing <em>n</em> and increasing <em>r</em> <strong>both</strong> result
+in a lower p-value.</p>
+<p class=eqn><img class="gif" src="../../../en/regnTest/images/rnEffect.gif" id="gif_image_4_3_1" width="550" height="440"><iframe class="svg" src="../../../en/regnTest/images/rnEffect.svg" id="svg_image_4_3_1" width="550" height="440" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_4_3_1");</script></p>
+
+
+
+
+<h2 class="pageName">13.4.4 &nbsp; Properties of p-values</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Properties of p-value</p>
+<p>P-values for testing whether a linear model's slope is zero have the same
+properties as p-values for other hypothesis tests. In particular, </p>
+<ul>
+<li>When <b>H<sub>0</sub></b> is true (i.e. <i>Y</i> is not related to <i>X</i>),
+all p-values between 0 and 1 are equally likely.</li>
+<li>If <b>H<sub>A</sub></b> is true (i.e. <i>Y</i> and <i>X</i> are
+related), then  p-values  near zero
+are more likely than p-values near 1.</li>
+</ul>
+<p>When <em>Y</em> and <em>X</em> are not related
+(β<sub>1</sub> = 0), it is still possible to get small p-values, suggesting that
+β<sub>1</sub> is <strong>not</strong> zero. However there is only probability
+0.01 of getting a p-value as low as 0.01 &mdash; it is unlikely but possible. Such
+a p-value is more likely if the variables <strong>are</strong> related so we
+interpret it as giving strong evidence of a relationship.</p>
+
+
+
+
+<h1 class="sectionName breakBefore">13.5 &nbsp; Predicting the response</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Estimated response distn at X</li>
+<li>Variability of estimate at X</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='3'>
+<li>Estimating the mean vs prediction</li>
+<li>Confidence and prediction intervals</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">13.5.1 &nbsp; Estimated response distn at X</h2><!DOCTYPE HTML>
+
+
+<p>A normal linear model provides
+a response distribution <strong>for all <i>X</i></strong>. With estimates for
+all three model parameters, we can obtain the approximate response distribution
+at <strong>any</strong> x-value, even if we have no data at that x-value. </p>
+<p class="eqn"><img src="../../../en/regnPred/images/s_estimDistn.gif" width="434" height="369"></p>
+
+
+
+
+<h2 class="pageName">13.5.2 &nbsp; Variability of estimate at X</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">What affects the accuracy of a prediction?</p>
+<p>The predicted response at <i>X</i> is</p>
+<p class=eqn><span class="black"><span style="position:relative; top:4px"><img src="../../../en/../images/symbol.yHat.png" width="10" height="17" align="baseline"></span>&nbsp; =&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x</em></span> </p>
+<p>and has a normal distribution
+with mean</p>
+<p class=eqn><span class="black">&mu;<sub><em>y</em></sub> &nbsp;=&nbsp; &beta;<sub>0</sub> &nbsp;+&nbsp; &beta;<sub>1</sub><em>x</em></span> </p>
+<p>Its standard deviation   depends on the value <i>x</i> at which the prediction
+is being made. The further <i>x</i> is from
+its mean in the training data, <img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline">,
+the greater the variability in the prediction.</p>
+<p class="heading">Simulation</p>
+<p>The effect of the x-value on the variability of the predicted response can
+be shown using least squares lines fitted to simulated data:</p>
+<p class="eqn"><img src="../../../en/regnPred/images/s_lsVariability.gif" width="550" height="294"></p>
+<p>The diagram below shows two theoretical distributions from the above model.
+(The spread would be even greater for predicting at <em>x</em> = 10.)</p>
+<p class="eqn"><img src="../../../en/regnPred/images/s_predictDistn.gif" width="348" height="281"></p>
+
+
+
+
+<h2 class="pageName">13.5.3 &nbsp; Estimating the mean vs prediction</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Estimating the <span class="red">mean</span> response</p>
+<p>In some situations, we are interested in estimating the mean response at some
+x-value,</p>
+<p class=eqn><span class="black">&mu;<sub><em>y</em></sub> &nbsp;=&nbsp; &beta;<sub>0</sub> &nbsp;+&nbsp; &beta;<sub>1</sub><em>x</em></span> </p>
+<p>The least squares estimate, </p>
+<p class=eqn><span class="black"><span style="position:relative; top:4px"><img src="../../../en/../images/symbol.yHat.png" width="10" height="17" align="baseline"></span>&nbsp; =&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x</em></span> </p>
+<p>becomes increasingly accurate as the sample size increases (since  <em>b</em><sub>0</sub> and <em>b</em><sub>1</sub> become
+more accurate estimates of β<sub>0</sub> and β<sub>1</sub>).</p>
+<p class=heading>Predicting a <span class="red">single item's</span> response</p>
+<p>To predict the response for a <strong>single</strong> new
+individual with a known x-value, the
+same prediction would be used,</p>
+<p class=eqn><span class="black"><span style="position:relative; top:4px"><img src="../../../en/../images/symbol.yHat.png" width="10" height="17" align="baseline"></span>&nbsp; =&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x</em></span> </p>
+<p>However no matter how accurately we estimate the <strong>mean</strong> response
+for such individuals, a single new individual's response will have a distribution
+with standard deviation σ around this mean and we have no information to help
+us predict how far it will be from its mean. The 
+prediction error <strong>cannot</strong> have a standard deviation
+that is less than σ.</p>
+<div class="centred"><div class="boxed"><p>The error in predicting an individual's response is usually greater than the
+error in estimating the mean response.</p></div></div>
+<p class=heading>Simulation</p>
+<p>The diagram below contrasts estimation of the mean response and prediction
+of a new individual's response at <em>x</em> = 5.5. Least squares lines have
+been fitted to several simulated data sets, one of which is shown on the left.
+The two kinds of errors from the simulations are shown on the right, showing
+that the prediction errors are usually greater.</p>
+<p class="eqn"><img src="../../../en/regnPred/images/s_estimPredict.gif" width="453" height="525"></p>
+
+
+
+
+<h2 class="pageName">13.5.4 &nbsp; Confidence and prediction intervals</h2><!DOCTYPE HTML>
+
+
+<p>The same value,</p>
+<p class=eqn><span class="black"><span style="position:relative; top:4px"><img src="../../../en/../images/symbol.yHat.png" width="10" height="17" align="baseline"></span>&nbsp; =&nbsp; <em>b</em><sub>0</sub> + <em>b</em><sub>1 </sub><em>x</em></span> </p>
+<p>is used both to estimate the mean response at <em>x</em> and to predict a
+new individual's response at <em>x</em>, but the errors are different in
+the two situations &mdash; they tend to be larger for predicting a new value.</p>
+<p class="heading">95% confidence interval for  mean response </p>
+<p class=eqn><img class="gif" src="../../../en/regnPred/images/ciForMeanY.gif" id="gif_image_5_4_1" width="224" height="26"><iframe class="svg" src="../../../en/regnPred/images/ciForMeanY.svg" id="svg_image_5_4_1" width="224" height="26" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_5_4_1");</script> </p>
+<p>A formula for the standard error on the right exists, but you should rely
+on statistical software to find its value.</p>
+<p class=heading>95% prediction interval for a new individual's response</p>
+<p>For prediction, a similar interval is used:</p>
+<p class=eqn><img class="gif" src="../../../en/regnPred/images/predInterval.gif" id="gif_image_5_4_2" width="169" height="21"><iframe class="svg" src="../../../en/regnPred/images/predInterval.svg" id="svg_image_5_4_2" width="169" height="21" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_5_4_2");</script> </p>
+<p>where  <em>k</em> is greater than the corresponding standard error
+for the confidence interval. Statistical software should again be used to find
+its value.</p>
+<p class=heading>Example</p>
+<p>The diagram below shows 95% confidence intervals for the mean response at <em>x</em> and
+95% prediction intervals for a new response at <em>x</em> as bands for a small
+data set with <em>n</em> = 7 values. </p>
+<p class="eqn"><img src="../../../en/regnPred/images/s_bands.gif" width="402" height="284"></p>
+<p class=heading>Extrapolation</p>
+<p>These 95% confidence intervals and 95% prediction intervals are valid within
+the range of x-values about which we have collected data, but <strong>they should
+not be relied on for extrapolation</strong>.
+Both intervals assume that the normal linear model describes the process, but
+we have no information about linearity beyond the x-values that have been collected.</p>
+
+
+
+
+<h1 class="sectionName breakBefore">13.6 &nbsp; Linear model assumptions</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Assumptions in a normal linear model</li>
+<li>Curvature &mdash; transforming X</li>
+<li>Curvature and non-constant variance</li>
+<li>Transformations and prediction</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='5'>
+<li>Outliers and leverage</li>
+<li>Non-normal errors</li>
+<li>Correlated errors</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">13.6.1 &nbsp; Assumptions in a normal linear model</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Assumptions</p>
+<p>The normal linear model is:</p>
+<p class=eqn><span class="black"><em>y<sub></sub></em> &nbsp;=&nbsp; &beta;<sub>0</sub> &nbsp;+&nbsp; &beta;<sub>1</sub><em>x</em> &nbsp;+&nbsp; &epsilon;</span> </p>
+<p class=eqn><span class="black">&epsilon;&nbsp; ~ &nbsp;<font face="Arial, Helvetica, sans-serif">normal</font> (0<sub></sub>&nbsp;, &sigma;)</span> </p>
+<p>The following four requirements are implicit in the model but
+may be violated, as illustrated by the examples. </p>
+
+<div class="centred"><table border="0" cellspacing="0" cellpadding="0" class="centred">
+<tr>
+<td width="50%" align="LEFT" valign="top"><p class=heading>Linearity</p>
+<p>The response may change nonlinearly with <em>x</em>.</p>
+<p class="eqn"><img class="gif" src="../../../en/regnProblem/images/nonlinear.gif" id="gif_image_6_1_2" width="246" height="166"><iframe class="svg" src="../../../en/regnProblem/images/nonlinear.svg" id="svg_image_6_1_2" width="246" height="166" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_6_1_2");</script></p></td>
+<td width="220" align="LEFT" valign="top"><p class=heading>Constant standard deviation</p>
+<p>The response may be more variable at some <em>x</em> than others.</p>
+<p class="eqn"><img class="gif" src="../../../en/regnProblem/images/hetroskedastic.gif" id="gif_image_6_1_3" width="246" height="166"><iframe class="svg" src="../../../en/regnProblem/images/hetroskedastic.svg" id="svg_image_6_1_3" width="246" height="166" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_6_1_3");</script></p></td>
+</tr>
+<tr>
+<td align="LEFT" valign="top"><p class=heading>Normal distribution for errors</p>
+<p>The errors may have skew distributions.</p>
+<p class="eqn"><img class="gif" src="../../../en/regnProblem/images/skewError.gif" id="gif_image_6_1_4" width="246" height="166"><iframe class="svg" src="../../../en/regnProblem/images/skewError.svg" id="svg_image_6_1_4" width="246" height="166" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_6_1_4");</script></p></td>
+<td align="LEFT" valign="top"><p class=heading>Independent errors</p>
+<p>When the observations are ordered in time, successive errors may be correlated.</p>
+<p class="eqn"><img class="gif" src="../../../en/regnProblem/images/autoCorr.gif" id="gif_image_6_1_1" width="246" height="166"><iframe class="svg" src="../../../en/regnProblem/images/autoCorr.svg" id="svg_image_6_1_1" width="246" height="166" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_6_1_1");</script></p></td>
+</tr>
+</table></div>
+
+<p class="heading">Residual plots</p>
+<p>The above problems may be evident in a scatterplot of the raw data, but a <a href="javascript:showNamedPage('leastSqrs6')">residual
+plot</a> often highlights any problems.</p>
+<p class="eqn"><img src="../../../en/regnProblem/images/s_residPlot.gif" width="550" height="266"></p>
+
+
+
+
+<h2 class="pageName">13.6.2 &nbsp; Curvature &mdash; transforming X</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Linearising the relationship between Y and X</p>
+<p>Even if  <em>X</em> and <em>Y</em> are nonlinearly related,
+some transformation of <em>X</em> may be linearly
+related to some transformation of <em>Y</em>. For example, the data may satisfy
+the model</p>
+<p class=eqn><span class="black"><em>y<sup>2</sup><sub></sub></em> &nbsp; = &nbsp; &beta;<sub>0 &nbsp;</sub>+ &nbsp; &beta;<sub>1 </sub><strong>log</strong><em> x</em> &nbsp;+ &nbsp;&epsilon;</span> </p>
+<p class=eqn><span class="black">&epsilon;&nbsp; ~ &nbsp;<font face="Arial, Helvetica, sans-serif">normal</font> (0<sub></sub>&nbsp;, &sigma;)</span> </p>
+<p>The parameters of this model could again be estimated by least squares, based
+on the transformed values of the two variables, and confidence intervals and
+hypothesis tests would be valid.</p>
+<p class="heading">Example: Transformation of X</p>
+<p class="eqn"><img src="../../../en/regnProblem/images/s_curvatureX.gif" width="279" height="244"></p>
+<p>For this data set, a linear model seems reasonable after a log transformation
+of <em>X</em>.</p>
+<p class="eqn"><img src="../../../en/regnProblem/images/s_curvatureX2.gif" width="550" height="256"></p>
+
+
+
+
+<h2 class="pageName">13.6.3 &nbsp; Curvature and non-constant variance</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Transformation and the error standard deviation</p>
+<p>Transforming <em>X</em>  does not affect the <strong>spread</strong> of
+response values at each value of <em>X</em>. Transformation of <em>X</em> therefore
+does not affect whether or not the linear model's assumption of constant error
+standard deviation holds.</p>
+<p>However, transforming <em>Y</em> not only affects
+linearity of the relationship, but <strong>also affects whether
+or not the error standard deviation is constant</strong>.</p>
+<p class="heading">Example</p>
+<p>The raw data shown in the scatterplot on the top left shows both curvature
+and non-constant variance &mdash; the y-values are much more variable when X is near
+0 than when X is high.</p>
+<p class="eqn"><img src="../../../en/regnProblem/images/s_curvatureY.gif" width="550" height="551"></p>
+<p>A log transformation of Y both linearises the relationship <strong>and</strong> removes
+the non-constant variance.</p>
+
+<div class="centred"><div class="boxed">
+<p>Fortunately, the same transformation of the response that linearises
+the relationship often <strong>also</strong> results in fairly constant
+error standard deviation.</p>
+</div></div>
+
+
+
+
+
+<h2 class="pageName">13.6.4 &nbsp; Transformations and prediction</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Prediction using transformed variables</p>
+<p>To predict <em>Y</em> at any value <em>x,</em> we use the least squares line
+that was fitted to the transformed data.
+</p>
+<ol>
+<li>Transform <em>x</em></li>
+<li>Put this transformed <em>x</em>-value into the least squares equation to
+obtain a prediction of the <strong>transformed</strong> <em>Y</em>.</li>
+<li>Apply the <strong>inverse transformation</strong> to the one that was used
+on <em>Y</em> to obtain the prediction of <em>Y</em> itself</li>
+</ol>
+<p class="heading">Example</p>
+<p>In the example below, a linear model can be used to describe the relationship
+between log<sub>10</sub>(<em>y</em>)
+and log<sub>10</sub>(<em>x</em>). The diagram shows how it can be used to predict <em>y</em> from
+<em>x</em>.</p>
+<p class="eqn"><img src="../../../en/regnProblem/images/s_predictNonlin.gif" width="548" height="306"></p>
+<p><strong>Prediction intervals</strong> can be obtained in a similar way. A prediction interval
+is found using the transformed variables, then its end-points are back-transformed
+into values of <em>Y</em> on its original scale.</p>
+<p>For example, if the square root of <em>Y</em> is linearly related to <em>X</em>,
+we find a prediction interval for sqrt(<em>Y</em>), then square both ends of
+this interval to get a prediction interval for <em>Y</em> itself.</p>
+
+
+
+
+<h2 class="pageName">13.6.5 &nbsp; Outliers and leverage</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Outliers and errors</p>
+<p>In a scatterplot,  cross that is unusually far above or below
+the regression line is an <strong>outlier</strong>. It would correspond to a large error, ε.</p>
+<p class=eqn> <img class="gif" src="../../../en/regnProblem/images/outlierError.gif" id="gif_image_6_5_2" width="297" height="274"><iframe class="svg" src="../../../en/regnProblem/images/outlierError.svg" id="svg_image_6_5_2" width="297" height="274" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_6_5_2");</script> </p>
+<p class="heading">Standardised residuals</p>
+<p>The least squares residuals are estimates of the unknown errors and
+can be used in a similar way to give information about whether there is an outlier.</p>
+<p class=eqn> <img class="gif" src="../../../en/regnProblem/images/errorsDiagram.gif" id="gif_image_6_5_1" width="297" height="274"><iframe class="svg" src="../../../en/regnProblem/images/errorsDiagram.svg" id="svg_image_6_5_1" width="297" height="274" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_6_5_1");</script>    <img class="gif" src="../../../en/regnProblem/images/residualsDiagram.gif" id="gif_image_6_5_3" width="297" height="274"><iframe class="svg" src="../../../en/regnProblem/images/residualsDiagram.svg" id="svg_image_6_5_3" width="297" height="274" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_6_5_3");</script> </p>
+<p>To help assess the residuals, we usually standardise them &mdash; dividing
+each by an estimate of its standard deviation.</p>
+<table border="0" cellspacing="0" cellpadding="0" class="centred" style="margin-top:0; margin-bottom:0; color:#000000">
+<tr>
+<td rowspan="3"><strong>standardised residual </strong>&nbsp;= &nbsp;</td>
+<td style="text-align:center"><em><font size="+1">e</font></em></td>
+</tr>
+<tr>
+<td style="border-bottom:1px solid #000000" height="3px"><img src="../../../en/../images/blankSquare.gif"></td>
+</tr>
+<tr>
+<td style="text-align:center"><em><font size="+1">s<sub>e</sub></font></em></td>
+</tr>
+</table>
+<p>The standardised residuals are each approximately normal (0, 1) if the normal
+linear model fits, so only about 5% 
+will be outside the range ±2, and hardly any outside the range ±3.</p>
+
+<div class="centred"><div class="boxed">
+<p>Standadised residual greater than 3 or less than -3 are often taken
+to indicate possible outliers.</p>
+</div></div>
+
+<p>Note however that in a large data set of 1,000 values, we would <strong>expect</strong> 50
+values outside ±2 and 3
+values outside ±3. Values a little outside ±3 <strong>can</strong> occur by chance.</p>
+<p class="heading">Problems with residuals as indicators of outliers</p>
+<p>All data points pull the least squares line towards themselves &mdash; the line
+is positioned to minimise the sum of squares of the residuals</p>
+<p class=eqn><span class="bold black">minimise</span>  &nbsp; <img class="gif" src="../../../en/regnProblem/images/minResidSsq.gif" id="gif_image_6_5_4" width="37" height="20"><iframe class="svg" src="../../../en/regnProblem/images/minResidSsq.svg" id="svg_image_6_5_4" width="37" height="20" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_6_5_4");</script></p>
+<p>Large residuals pull very strongly on the line since they are <strong>squared</strong> in
+the least squares criterion. As a result,</p>
+
+<div class="centred"><div class="boxed">
+<p>Outliers will strongly pull the least squares line towards themselves,
+making their residuals smaller than you might otherwise expect.</p>
+</div></div>
+
+<p class="heading">Leverage</p>
+<p>If an outlier corresponds to an <em>x</em>-value near its mean, it usually
+will have a large residual,</p>
+<p class="eqn"><img src="../../../en/regnProblem/images/s_outlier.gif" width="553" height="321"></p>
+<p>However if the outlier occurs at an extreme <em>x</em>-value, it has a stronger
+influence on the position of the least squares line than the other data points.
+Such points are called <strong>high leverage</strong> points and pull the least
+squares line strongly towards them. Outliers that are high leverage points may
+therefore result in residuals that do not stand out from the other residuals.</p>
+<p class="eqn"><img src="../../../en/regnProblem/images/s_leverage.gif" width="557" height="319"></p>
+
+
+
+
+
+<h2 class="pageName">13.6.6 &nbsp; Non-normal errors</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Normal probability plot of residuals</p>
+<p>The normal linear model assumes that the model errors are
+normally distributed,</p>
+<p class=eqn><span class="black">&epsilon;&nbsp; ~ &nbsp;<font face="Arial, Helvetica, sans-serif">normal</font> (0<sub></sub>&nbsp;, &sigma;)</span> </p>
+<p>A histogram of the residuals can be examined for normality but a better way
+ is with a <strong><a href="javascript:showNamedPage('normalDistn10')">normal
+probability plot</a></strong> of the residuals. If the residuals are normally
+distributed, the crosses in the normal probability plot should lie close to a
+straight line.</p>
+<p class="eqn"><img src="../../../en/regnProblem/images/s_probPlot.gif" width="550" height="274"></p>
+<p class="heading">Warning</p>
+<p>If the assumptions of linearity and constant variance are violated, or if
+there are outliers, the probability plot of residuals will often be curved, irrespective
+of the error distribution.</p>
+
+<div class="centred"><div class="boxed">
+<p>Only draw a probability plot if you are sure that the data are linear,
+have constant variance and have no outliers.</p>
+</div></div>
+
+
+
+
+
+<h2 class="pageName">13.6.7 &nbsp; Correlated errors</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Independence of the errors</p>
+<p>The normal
+linear model assumes that the  errors are uncorrelated with each other, but correlated
+errors sometimes arise.</p>
+<p>Correlated errors may arise in an experiment in a greenhouse where adjacent
+plants will be grown in similar conditions (light, moisture, air flow). An
+unusually high growth rate for one plant may be associated with environmental
+conditions that also cause unusually high growth rates in adjacent plants.</p>
+<p>Correlated errors are most common when the observations are made sequentially
+in time. This is called <strong>serial correlation</strong>.</p>
+<p class="heading">Assessing serial correlation</p>
+<p>Strong serial correlation may be visible in a plot of residuals against time.
+A more formal test uses a test statistic called the <strong>Durbin-Watson
+statistic, <em>d</em></strong>. Writing the successive
+residuals as <em>e</em><sub>1</sub>, <em>e</em><sub>2</sub>, ..., <em>e<sub>n</sub></em>,</p>
+<p class=eqn><img class="gif" src="../HregnProblem/durbWatson.gif" id="gif_image_6_7_1" width="127" height="51"><iframe class="svg" src="../HregnProblem/durbWatson.svg" id="svg_image_6_7_1" width="127" height="51" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_6_7_1");</script> </p>
+<p>If successive residuals are  similar,
+<em>d</em> will be close to zero. An approximate p-value can be obtained  from
+a computer, special statistical tables or with a simulation such as that below.</p>
+<p class="eqn"><img src="../../../en/regnProblem/images/s_durbinWatson.gif" width="530" height="451"></p>
+<p class="heading">Warning</p>
+<p>If a linear model is used for a time series, but the relationship is actually
+nonlinear, successive residuals also tend to be similar and the Durbin-Watson
+statistic will also be small.</p>
+
+<div class="centred"><div class="boxed">
+<p>An unusually small Durbin-Watson statistic can be caused by <strong>either
+serial correlation or nonlinearity</strong>.</p>
+</div></div>
+
+
+
+
+
+</html>

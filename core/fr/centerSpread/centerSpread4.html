@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Propriétés de la médiane et la moyenne</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="mean, median, robustness, outliers">
+	<meta name="dataset" content="Sunshine hours">
+	<meta name="dataset" content="Guinea pig survival">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class=heading>Est-ce que la médiane et la même signification?</p>
+
+  <p>Bien que les deux décrivent les aspects du «centre» d'une distribution, ils ne sont pas les mêmes et peuvent parfois avoir des valeurs très différentes.&nbsp;Cette page décrit certaines différences entre l'interprétation et les propriétés de la médiane et la moyenne.</p>
+<p class=heading>Social vs indicateur économique</p>
+	<p>Pour certains ensembles de données,&nbsp;<strong>la médiane peut être considérée comme un indicateur social, alors que la moyenne peut être interprétée comme un indicateur économique.</strong>&nbsp;Par exemple, si un lot de valeurs comprend les salaires de tous les employés dans une entreprise,</p>
+<ul>
+		<li>le salaire médian indique ce que le «salarié moyen» gagne (la moitié des salariés gagnent plus et la moitié gagnent moins)</li>
+		<li>le salaire moyen reflète le montant total versé en salaires dans l'entreprise (puisque c'est le total des salaires, divisé par le nombre d'employés)</li>
+	</ul>
+<p class=heading>Les valeurs aberrantes</p>
+
+<p>Une valeur aberrante a peu d'effet sur la valeur numérique de la médiane, tandis qu'une valeur aberrante affecte la moyenne plus fortement.&nbsp;La médiane est donc appelé une mesure plus&nbsp;<strong>robuste</strong>&nbsp;du centre que la moyenne.</p>
+
+<div class="diagram">
+
+<p>La distribution des valeurs dans l'ensemble des données ci-dessous est assez symétrique, donc la moyenne et la médiane sont similaires.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="170">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="statistic2Prog.DragValueApplet">
+<param name="dragMessages" value="Glissez plus grande croix de rendre une valeur aberrante* *">
+<param name="varName" value="test">
+<param name="values" value="1.0 1.7 1.6 1.9 2.3 2.5 2.8 2.9 3.4 3.9">
+<param name="horizAxis" value="0.8 8.2 1 1">
+<param name="decimals" value="3">
+</applet>
+</div>
+
+		<p><strong>Faites glisser</strong>&nbsp;la croix pour l'une des valeurs les plus élevées avec la souris vers la droite de l'axe (environ 8,0) et observer l'effet sur ??la moyenne et la médiane.</p>
+		<p>Vous devriez constater que la médiane est resté inchangé à 2,4, mais la moyenne augmente considérablement.&nbsp;Si ce changement a été causé par l'enregistrement incorrect de la valeur, la valeur aberrante résultant aurait donc mal effectué la moyenne, mais pas la médiane.</p>
+</div>
+
+<p class=heading>Distributions d'obliquité</p>
+
+<p>Lorsque la distribution d'un lot de valeurs est assez symétrique, la moyenne et la médiane sont similaires.&nbsp;Toutefois, si la distribution est oblique, puis la moyenne est habituellement plus loin dans la queue de la distribution que la médiane.</p>
+<p>Ceci peut être facilement comprise par rapport à l'interprétation équilibre de la moyenne - des valeurs loin du «centre» ont un poids relativement élevé, de sorte que le point d'équilibre (la moyenne) est encore dans la queue de la distribution.</p>
+
+<div class="diagram">
+	
+	<p class="heading">La survie de porc Guinée</p>
+<p>Le diagramme ci-dessous montre le nombre de jours que 72 porcs Guinée ont survécu après avoir été injecté par le bacille tuberculeux.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="150">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="statistic2Prog.DragValueApplet">
+<param name="varName" value="Temps de survie (jours)">
+<param name="values" value="45 45 55 55 55 55 60 65 65 75 75 80 80 80 80 80 80 80 85 85 85 90 90 90 90 90 90 95 100 100 100 100 100 100 100 100 105 105 105 110 110 115 115 120 120 125 125 130 135 140 140 145 145 145 155 160 175 180 180 185 190 200 210 215 245 150 330 380 405 510 520 600">
+<param name="horizAxis" value="0 610 0 100">
+<param name="decimals" value="1">
+<param name="allowDrag" value="false">
+<param name="showVarName" value="true">
+</applet>
+</div>
+
+<p>Puisque les données ont une longue queue des temps de survie élevé, la moyenne est plus loin dans la queue (ie plus grand) que la médiane.</p>
+
+
+<p class="heading">Heures d'ensoleillement à Gaborone</p>
+
+<p>Dans une étude de la viabilité des cuiseurs solaires au Botswana, les données du soleil les années 1978 à 1997 ont été analysées.&nbsp;Le tracé de points suivants Jittered montre le total des heures d'ensoleillement le 25 Février de chaque année de 1978 à 1997.</p>
+  
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="150">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="statistic2Prog.DragValueApplet">
+<param name="varName" value="Heures d'ensoleillement">
+<param name="values" value="9.6 11.5 5.7 11.2 11.5 11.3 9.6 4.9 11.2 11.3 10.4 7.8 10.5 11.9 11.7 8.5 10.9 10.6 9.1 11.8">
+<param name="horizAxis" value="4 13 4 2">
+<param name="decimals" value="2">
+<param name="allowDrag" value="false">
+<param name="showVarName" value="true">
+</applet>
+</div>
+
+<p>Dans cet ensemble de données, les données ont une distribution biaiser avec une longue queue vers la&nbsp;<strong>gauche</strong>&nbsp;afin de la moyenne journalière heures de soleil est beaucoup moins que la médiane (mais là encore plus loin dans la longue queue de la distribution).</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

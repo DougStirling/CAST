@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Method of moments</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="estimation, method of moments, normal distribution, negative binomial distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Models with two unknown parameters</p>
+
+<p>Most of the <a href="javascript:showNamedPage('ch_moreFlexibleModels')">flexible models</a> that we described earlier involved <strong>two</strong> unknown parameters.</p>
+\[
+X \;\;\sim\;\; \NegBinDistn(\kappa, \pi) \\
+X \;\;\sim\;\; \BetaBinomDistn(\alpha, \beta) \\
+X \;\;\sim\;\; \WeibullDistn(\alpha, \lambda) \\
+X \;\;\sim\;\; \GammaDistn(\alpha, \beta) \\
+X \;\;\sim\;\; \NormalDistn(\mu, \sigma^2)
+\]
+
+<p class="heading">Method of moments for two  parameters</p>
+<p>We introduced the method of moments as a way to estimate a <strong>single</strong> unknown parameter, \(\theta\). The method of moments estimate was the value that made the distribution's mean equal to the mean of a random sample — in other words, by solving</p>
+\[
+\mu(\theta) \;\;=\;\; \overline{x}
+\]
+<p>This can be easily extended to models with two parameters if the parameters are chosen to make the distribution's mean and variance <strong>both</strong> equal to those from a random sample.</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>If a distribution has two unknown parameters, \(\theta\) and \(\phi\), the <strong>method of moments </strong>estimates of the parameters are found by solving</p>
+\[
+\mu(\theta, \phi) \;=\; \overline{x} \spaced{and} \sigma^2(\theta, \phi) \;=\; s^2
+\]
+<p>where \(\mu(\theta, \phi)\) and \(\sigma^2(\theta, \phi)\) are the mean and variance of the distribution and \(\overline{x}\) and \(s^2\) are the mean and variance of a random sample from it.</p>
+</div>
+
+<p>We now illustrate the method with two examples. The first is almost trivially simple.</p>
+<div class="example">
+	<p class="exampleHeading">Example: Normal distribution</p>
+	<p>If \(X\) has a normal distribution,</p>
+	\[
+	X \;\;\sim\;\; \NormalDistn(\mu, \sigma^2)
+	\]
+	<p>then the method of moments estimates of its parameters are</p>
+	\[
+	\hat{\mu} = \overline{x} \spaced{and} \hat{\sigma}^2 = s^2
+	\]</div>
+<p>The second example is a little harder.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Example: Negative binomial distribution</p>
+		<p>If \(X\) has a generalised negative binomial distribution,</p>
+\[
+X \;\;\sim\;\; \NegBinDistn(\kappa, \pi)
+\]
+<p>what are the method of moments estimates of \(\kappa\) and \(\pi\)  from a random sample?</p>
+	</div>
+	<div class="solution">
+		<p>The distribution's mean and variance are</p>
+\[
+E[X] = \mu = \frac {\kappa(1-\pi)} \pi \spaced{and} \Var(X) = \sigma^2 = \frac {\kappa(1-\pi)} {\pi^2}
+\]
+<p>The method of moments estimates of \(\kappa\) and \(\pi\) are therefore found by solving</p>
+\[ \begin{align}
+\frac {\kappa(1-\pi)} \pi \;&amp;=\; \overline{x} \\
+\frac {\kappa(1-\pi)} {\pi^2} \;&amp;=\; s^2
+\end{align} \]
+<p>Dividing the first of these equations by the second gives</p>
+\[
+\hat{\pi} \;\;=\;\; \frac{\overline{x}}{s^2}
+\]
+<p>Substituting back into the first equation gives</p>
+\[
+\hat{\kappa} \;\;=\;\; \frac{\overline{x}^2}{s^2 - \overline{x}}
+\]	</div>
+</div>
+<p class="heading">Three or more  parameters</p>
+<p>Although the method of moments works fairly intuitively for models with one or two parameters, it does not extend easily to models with three or more parameters.</p>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

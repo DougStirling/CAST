@@ -1,0 +1,193 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Log transformations</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="transformations">
+	<meta name="dataset" content="Brain weights of mammals">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Nonlinear transformations</p>
+
+<p>There are several types of data where alternative units of measurement are not linearly
+related. For example,
+</p>
+
+  <ul>
+		<li>The wavelength of radiation (in metres) may alternatively be recorded 
+			as a frequency (in cycles per second) &mdash; a reciprocal relationship.</li>
+		<li>A medical researcher might record the mean time between seizures for acute 
+			epileptic patients, or the rate of seizures per year &mdash; another reciprocal 
+			relationship. </li>
+		<li>The Richter scale transforms the measured intensity of earthquakes to 
+			a logarithmic scale.</li>
+	</ul>
+
+<p>Nonlinear transformations of the values in a data set have a more fundamental effect on
+the shape of the distribution, and this may be used to extract further information from the
+data.
+</p>
+
+  
+<div class="centred"><div class="boxed">
+<p>Nonlinear transformation changes the shape of 
+				a distribution.</p>
+</div></div>
+
+
+  <p class="heading">Logarithmic transformations</p>
+	<p>The most commonly used nonlinear transformation replaces each value by its 
+		logarithm,</p>
+	<p class=eqn><span class="black"><strong>new value</strong> &nbsp; = log<sub>10</sub> <font size="+1">(</font><strong>old value</strong><font size="+1">)</font></span> </p>
+	<p>We use base-10 logarithms in CAST since their values are easier to interpret, 
+		but natural logarithms (base&nbsp;e) have a similar effect on the distribution 
+		of values.</p>
+	<p class="heading">Effect on the shape of a distribution</p>
+	<p>Important properties of logarithms are</p>
+	<ul>
+		<li>Multiplying any value by 10 increases its logarithm by 1.</li>
+		<li>In a similar way, doubling any value increases its logarithm by the same 
+			constant</li>
+	</ul>
+
+	<p>Consider four values 1, 10, 100 and 1000. The first two values are much closer 
+		to each other than the last two values. However their logarithms are 0, 1, 
+		2 and 3, so their logarithms are evenly spaced out.</p>
+	<p>As a result, a logarithmic transformation selectively spreads out low values 
+		in a distribution and compresses high values. It is therefore useful for skew 
+		data with a long tail towards the high values. It will spread out a dense 
+		cluster of low values and may detect clustering or outliers that would not 
+		be visible in graphical displays of the original data.</p>
+
+<div class="diagram" title="Example: Mammal brain weights">
+	  <p class="heading">Mammal brain weights</p>
+
+		<p>The dot plot below shows the average brain weights (grams) of 62 species 
+			of mammals. </p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="transformProg.DotLabelApplet">
+<param name="varName" value="Brain wt (grams)">
+<param name="values" value="44.50 15.50 8.100 423.0 119.5 115.0 98.20 5.500 58.00 6.400 4.000 5.700 6.600 0.140 1.000 10.80 12.30 6.300 4603 0.300 419.0 655.0 3.500 115.0 25.60 5.000 17.50 680.0 406.0 325.0 12.30 1320 5712 3.900 179.0 56.00 17.00 1.000 0.400 0.250 12.50 490.0 12.10 175.0 157.0 440.0 179.5 2.400 81.00 21.00 39.20 1.900 1.200 3.000 0.330 180.0 25.00 169.0 2.600 11.40 2.500 50.40 ">
+<param name="labelName" value="Mammal">
+<param name="labels" value="#Arctic fox# #Owl monkey# #Mountain beaver# #Cow# #Gray wolf# #Goat# #Roe deer# #Guinea pig# #Vervet# #Chinchilla# #Ground squirrel# #Arctic ground squirrel# #African giant pouched rat# #Lesser short-tailed shrew# #Star-nosed mole# #Nine-banded armadillo# #Tree hydrax# #N. American opossum# #Asian elephant# #Big brown bat# #Donkey# #Horse# #European hedgehog# #Patas monkey# #Cat# #Galago# #Genet# #Giraffe# #Gorilla# #Gray seal# #Rock hyrax (h. brucci)# #Man# #African elephant# #Water opossum# #Rhesus monkey# #Kangaroo# #Yellow-bellied marmot# #Golden hamster# #Mouse# #Little brown bat# #Slow loris# #Okapi# #Rabbit# #Sheep# #Jaguar# #Chimpanzee# #Baboon# #Desert hedgehog# #Giant armadillo# #Rock hyrax (p. habess.)# #Raccoon# #Rat# #E. American mole# #Mole rat# #Musk shrew# #Pig# #Echidna# #Brazilian tapir# #Tenrec# #Phalanger# #Tree shrew# #Red fox#">
+<param name="horizAxis" value="0 6000 0 1000">
+</applet>
+</div>
+
+		<p><strong>Drag</strong> over the crosses to display the names of the mammals.</p>
+		<p>The data set is so highly skewed that little can be determined about the 
+			distribution for small mammals. </p>
+		
+		<hr width="85%">
+
+		<p>The diagram below also shows a jittered dot plot of the data.</p>
+		<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="transformProg.Log10Applet">
+<param name="varName" value="Brain wt (grams)">
+<param name="values" value="44.50 15.50 8.100 423.0 119.5 115.0 98.20 5.500 58.00 6.400 4.000 5.700 6.600 0.140 1.000 10.80 12.30 6.300 4603 0.300 419.0 655.0 3.500 115.0 25.60 5.000 17.50 680.0 406.0 325.0 12.30 1320 5712 3.900 179.0 56.00 17.00 1.000 0.400 0.250 12.50 490.0 12.10 175.0 157.0 440.0 179.5 2.400 81.00 21.00 39.20 1.900 1.200 3.000 0.330 180.0 25.00 169.0 2.600 11.40 2.500 50.40 ">
+<param name="labelName" value="Mammal">
+<param name="labels" value="#Arctic fox# #Owl monkey# #Mountain beaver# #Cow# #Gray wolf# #Goat# #Roe deer# #Guinea pig# #Vervet# #Chinchilla# #Ground squirrel# #Arctic ground squirrel# #African giant pouched rat# #Lesser short-tailed shrew# #Star-nosed mole# #Nine-banded armadillo# #Tree hydrax# #N. American opossum# #Asian elephant# #Big brown bat# #Donkey# #Horse# #European hedgehog# #Patas monkey# #Cat# #Galago# #Genet# #Giraffe# #Gorilla# #Gray seal# #Rock hyrax (h. brucci)# #Man# #African elephant# #Water opossum# #Rhesus monkey# #Kangaroo# #Yellow-bellied marmot# #Golden hamster# #Mouse# #Little brown bat# #Slow loris# #Okapi# #Rabbit# #Sheep# #Jaguar# #Chimpanzee# #Baboon# #Desert hedgehog# #Giant armadillo# #Rock hyrax (p. habess.)# #Raccoon# #Rat# #E. American mole# #Mole rat# #Musk shrew# #Pig# #Echidna# #Brazilian tapir# #Tenrec# #Phalanger# #Tree shrew# #Red fox#">
+<param name="logName" value="Log (brain wt)">
+<param name="logDecimals" value="3">
+<param name="horizAxis" value="0.08 10000 1000 1000">
+<param name="logAxis" value="0.08 10000 -1 1">
+<param name="customText" value="Original scale=Original scale#Log scale=Log scale">
+</applet>
+</div>
+
+		<p>A second axis is drawn under the plot labelling the values 0.1, 1, 10, 
+			100, 1000 and 10,000. These values are <strong>not</strong> evenly spaced 
+			and the leftmost labels overlap. The axis above the dot plot shows the logarithms 
+			of these six values (-1, 0, 1, 2, 3 and 4).</p>
+		<p>Drag the slider under the diagram towards the right to change the display 
+			into a dot plot of the <strong>logarithms</strong> of the brain weights. 
+			The transformation turns the log axis above the plot into a conventionally 
+			spaced axis.</p>
+		<p>The transformation <strong>spreads out the dense cluster of mammals with 
+			low brain weights in the original plot and compresses the long tail of mammals 
+			with high brain weights</strong>. </p>
+
+		<p>From the transformed data, we might conclude that:</p>
+
+		<ul>
+			<li>There are no distinct clusters of mammals.</li>
+			<li>The 2 elephants, despite having brain that are 3 times the weight of 
+				the next heaviest mammals (humans), may be interpreted as the extreme 
+				values in a very long-tailed distribution rather than as 'errors'. (There 
+				is more than one type of outlier!)</li>
+		</ul>
+		<br>
+
+		<hr width="85%">
+		<p>To help explain the transformation, the diagram below shows only five of 
+			the mammals</p>
+		<div class="centred">
+			<table border="0" cellpadding="4" class="centred" cellspacing="0">
+				<tr>
+					<th>Mammal</th>
+					<th>Brain weight</th>
+				</tr>
+				<tr bgcolor="#FFFFFF">
+					<td style="border-top:1px solid #999999;">Asian elephant</td>
+					<td align="center" style="border-top:1px solid #999999;">4603 g</td>
+				</tr>
+				<tr bgcolor="#FFFFFF">
+					<td>Chimpanzee</td>
+					<td align="center">440 g</td>
+				</tr>
+				<tr bgcolor="#FFFFFF">
+					<td>Arctic fox</td>
+					<td align="center">44.5 g</td>
+				</tr>
+				<tr bgcolor="#FFFFFF">
+					<td>Ground squirrel</td>
+					<td align="center">4 g</td>
+				</tr>
+				<tr bgcolor="#FFFFFF">
+					<td style="border-bottom:1px solid #999999;">Mouse</td>
+					<td align="center" style="border-bottom:1px solid #999999;">0.4 g</td>
+				</tr>
+			</table>
+		</div>
+		<p>These mammals differ by approximately a factor of 10.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="transformProg.Log10Applet">
+<param name="varName" value="Brain wt (grams)">
+<param name="values" value="0.400 4.000 44.50 440 4603">
+<param name="labelName" value="Mammal">
+<param name="labels" value="#Mouse# #Ground squirrel# #Arctic fox# #Chimpanzee# #Asian elephant# ">
+<param name="logName" value="Log (brain wt)">
+<param name="logDecimals" value="3">
+<param name="horizAxis" value="0.08 10000 1000 1000">
+<param name="logAxis" value="0.08 10000 -1 1">
+<param name="jittering" value="0.0">
+<param name="customText" value="Original scale=Original scale#Log scale=Log scale">
+</applet>
+</div>
+
+		<p>Again <strong>drag the slider</strong> to apply a logarithmic transformation. 
+			Observe that the five mammals become evenly spaced on a log scale.</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Overdispersion in binomial distribution</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="overdispersion, binomial distribution">
+	<meta name="dataset" content="Sex of children in family">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Binomial distribution</p>
+
+<p>The binomial distribution also requires certain assumptions about a sequence of success/failure trials; these do not always hold. In particular, we assume that</p>
+<ul>
+	<li>All trials are independent.</li>
+	<li>The probability of success, \(\pi\), is the same for each trial.</li>
+</ul>
+<p>If the probability of success varies or the results of successive trials are positively related, the probability of a very low or very high count will be greater than a binomial distribution would give — <strong>overdispersion</strong>.</p>
+<div class="example">
+	<p class="exampleHeading">Sex of babies</p>
+	<p>The following table gives the number of male children among the first 12 children in 6,115 families of size 13, taken from hospital records in 19th century Saxony. (The 13th child has been ignored to avoid the possible distortion of families stopping when a desired sex is reached.)</p>
+
+<div class="centred">
+	<table border="0" cellpadding="5" cellspacing="0" class="centred">
+		<tr>
+			<th>Males</th>
+			<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">0</td>
+			<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">1</td>
+			<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">2</td>
+			<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">3</td>
+			<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">4</td>
+			<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">5</td>
+			<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">6</td>
+			<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">7</td>
+			<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">8</td>
+			<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">9</td>
+			<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">10</td>
+			<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">11</td>
+			<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">12</td>
+		</tr>
+		<tr>
+			<th>Frequency</th>
+			<td width="30" align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">3</td>
+			<td width="30" align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">24</td>
+			<td width="30" align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">104</td>
+			<td width="30" align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">286</td>
+			<td width="30" align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">670</td>
+			<td width="30" align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">1033</td>
+			<td width="30" align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">1343</td>
+			<td width="30" align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">1112</td>
+			<td width="30" align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">829</td>
+			<td width="30" align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">478</td>
+			<td width="30" align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">181</td>
+			<td width="30" align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">45</td>
+			<td width="30" align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">7</td>
+		</tr>
+	</table>
+</div>
+
+	<p>Assuming independence and that each child has the same probability of being male, \(\pi\), this would be a random sample from a \(\BinomDistn(n=12, \; \pi)\) distribution.</p>
+	<p>Maximum likelihood gives</p>
+\[
+\hat{\pi} \;=\; \frac {\overline{X}}{12} \;=\; 
+0.5192\]
+	<p>The table below compares the sample proportions to the best-fitting binomial ones.</p>
+
+<div class="centred">
+	<table border="0" cellpadding="3" cellspacing="0" class="centred">
+		<tr>
+			<th>&nbsp;&nbsp;Number of&nbsp;&nbsp;<br>males, \(x\)</th>
+			<th>Sample<br>&nbsp;&nbsp;proportion&nbsp;&nbsp;</th>
+			<th>Binomial<br>&nbsp;&nbsp;probability, \(p(x)\)&nbsp;&nbsp;</th>
+		</tr><tr><td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999; border-top:1px solid #999999;">0</td>
+<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">0.0005</td>
+<td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999; border-top:1px solid #999999;">0.0002</td></tr>
+
+<tr><td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">1</td><td align="center" bgcolor="#FFFFFF">0.0039</td><td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">0.0020</td></tr>
+<tr><td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">2</td><td align="center" bgcolor="#FFFFFF">0.0170</td><td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">0.0117</td></tr>
+<tr><td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">3</td><td align="center" bgcolor="#FFFFFF">0.0468</td><td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">0.0423</td></tr>
+<tr><td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">4</td><td align="center" bgcolor="#FFFFFF">0.1096</td><td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">0.1027</td></tr>
+<tr><td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">5</td><td align="center" bgcolor="#FFFFFF">0.1689</td><td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">0.1775</td></tr>
+<tr><td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">6</td><td align="center" bgcolor="#FFFFFF">0.2196</td><td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">0.2236</td></tr>
+<tr><td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">7</td><td align="center" bgcolor="#FFFFFF">0.1818</td><td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">0.2070</td></tr>
+<tr><td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">8</td><td align="center" bgcolor="#FFFFFF">0.1356</td><td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">0.1397</td></tr>
+<tr><td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">9</td><td align="center" bgcolor="#FFFFFF">0.0782</td><td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">0.0671</td></tr>
+<tr><td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">10</td><td align="center" bgcolor="#FFFFFF">0.0296</td><td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">0.0217</td></tr>
+<tr><td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999;">11</td><td align="center" bgcolor="#FFFFFF">0.0074</td><td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999;">0.0043</td></tr>
+<tr><td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999; border-bottom:1px solid #999999;">12</td><td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">0.0011</td><td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999; border-bottom:1px solid #999999;">0.0004</td></tr>
+
+	</table>
+</div>
+
+	<p>There were more families with 3 or fewer males and with 9 or more males than the binomial model would predict, indicating overdispersion.</p>
+	<p>The  variance of the best binomial model is</p>
+\[
+\Var(X) \;=\; 12 \times \hat{\pi} (1 -  \hat{\pi}) \;=\; 
+2.996\]
+	<p>whereas the actual sample variance was 3.490, again indicating overdispersion.</p>
+	<hr width="75%">
+	<p>This gives strong evidence that the assumptions underlying the binomial model do not hold. The most likely reason is that the probability of a  child being male is not constant, but varies from family to family.</p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

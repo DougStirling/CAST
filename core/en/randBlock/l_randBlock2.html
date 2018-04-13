@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Randomised block examples</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="randomised block design, blocks, treatments">
+	<meta name="dataset" content="Amino acid uptake by fish">
+	<meta name="dataset" content="Penicillin production yield">
+	<meta name="dataset" content="Grazing of cattle in Uganda">
+</head>
+
+
+<body class="lecture">
+<script type="text/javascript">writePageStart();</script>
+
+<div class="divChoice">
+<form>
+<select name="dataset" onChange="changeBlock(this, 3)" id="dataChoice">
+    <option value="0" selected>Single replicate</option>
+    <option value="1">Several replicates (unavoidable blocks)</option>
+    <option value="1">Intentional choice of blocks that differ</option>
+  </select>
+</form>
+		
+		
+<div id="example1">
+
+<p class="heading">Each observers watched same 6 cattle in Uganda</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="530" height="480">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="pairBlockProg.HiliteBlockApplet">
+<param name="yVarName" value="Time animal was observed grazing (min)">
+<param name="yValues" value="34 33 35 34 33 76 76 78 77 77 75 72 76 71 70 31 29 30 29 27 61 60 65 60 59 82 82 86 78 81 82 84 88 83 82 67 67 66 67 67 72 72 76 72 70 38 36 37 37 33">
+<param name="xVarName" value="Observer">
+<param name="xLabels" value="#Obs A# #Obs B# #Obs C# #Obs D# #Obs E#">
+<param name="xValues" value="0 1 2 3 4 0 1 2 3 4 0 1 2 3 4 0 1 2 3 4 0 1 2 3 4 0 1 2 3 4 0 1 2 3 4 0 1 2 3 4 0 1 2 3 4 0 1 2 3 4">
+<param name="blockVarName" value="Block (animal)">
+<param name="blockLabels" value="1 2 3 4 5 6 7 8 9 10">
+<param name="blockValues" value="5@0 5@1 5@2 5@3 5@4 5@5 5@6 5@7 5@8 5@9">
+<param name="yAxis" value="25 90 30 10">
+<param name="maxSummaries" value="9999.99 999.99 99.99 9.999">
+<param name="componentName" value="Total#Between observers#Residual">
+<param name="jitter" value="0.0">
+<param name="ignoreBlockText" value="Ignoring blocks (animals), there is no evidence of difference between the observers from the anova table.">
+<param name="showBlockText" value="Most variability is caused by differences between animals. By looking at differences between observers within animals, we get a more sensitive test &mdash; there is now strong evidence that the observers are different. (E.g. for most animals, observer E records them grazing for a shorter time than observer C.)">
+<param name="customText" value="Analysis ignoring blocks=Analysis ignoring blocks#Correct analysis taking account of blocks=Correct analysis taking account of blocks">
+<param name="fontSize" value="big">
+</applet>
+</div>
+</div>
+
+<div id="example2" style="display:none">
+<p class="heading">Amino acid uptake by fish: only 6 units possible per fish</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="480">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="pairBlockProg.HiliteBlockApplet">
+<param name="yVarName" value="Amino acid uptake">
+<param name="yValues" value="1.74 1.92 2.26 1.60 1.92 1.54 1.52 2.02 1.91 1.31 1.15 1.51 1.00 1.12 1.13 0.79 0.84 0.86 1.58 1.78 1.52 1.24 0.81 1.32">
+<param name="xVarName" value="Treatment">
+<param name="xLabels" value="#Without NaCN# #With NaCN#">
+<param name="xValues" value="3@0 3@1 3@0 3@1 3@0 3@1 3@0 3@1">
+<param name="blockVarName" value="Block (fish)">
+<param name="blockLabels" value="#Fish 1# #Fish 2# #Fish 3# #Fish 4#">
+<param name="blockValues" value="6@0 6@1 6@2 6@3">
+<param name="yAxis" value="0.5 2.5 0.5 0.5">
+<param name="maxSummaries" value="999.999 999.999 99.99 9.999">
+<param name="componentName" value="Total#Between treatments#Residual">
+<param name="jitter" value="0.3">
+<param name="ignoreBlockText" value="Ignoring blocks (fish), there is only moderate evidence of difference between treatments from the anova table.">
+<param name="showBlockText" value="Within each fish, there is a consistent pattern of lower Amino acid intake when NaCN is present. This gives STRONG evidence of difference between treatments. (Taking into account blocks, the p-value is much smaller.)">
+<param name="customText" value="Analysis ignoring blocks=Analysis ignoring blocks#Correct analysis taking account of blocks=Correct analysis taking account of blocks">
+<param name="fontSize" value="big">
+</applet>
+</div>
+</div>
+
+<div id="example3" style="display:none">
+<p class="heading">Penicillin production: results should hold for different corn blends</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="480">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="pairBlockProg.HiliteBlockApplet">
+<param name="yVarName" value="Yield of penicillin">
+<param name="yValues" value="89 88 97 94 84 77 92 79 81 87 87 85 87 92 89 84 79 81 80 88">
+<param name="xVarName" value="Process variant">
+<param name="xLabels" value="A B C D">
+<param name="xValues" value="0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3 0 1 2 3">
+<param name="blockVarName" value="Block (corn blend)">
+<param name="blockLabels" value="#Blend 1# #Blend 2# #Blend 3# #Blend 4# #Blend 5#">
+<param name="blockValues" value="4@0 4@1 4@2 4@3 4@4">
+<param name="yAxis" value="75 100 75 5">
+<param name="maxSummaries" value="999.999 99.999 99.99 9.999">
+<param name="componentName" value="Total#Between treatments#Residual">
+<param name="jitter" value="0.0">
+<param name="ignoreBlockText" value="Ignoring blocks (differences between blends of corn steep liquor), the anova table shows no evidence of a difference between the four manufacturing processes.">
+<param name="showBlockText" value="In this example, there is no common pattern of yields within blocks. Taking account of blocks gives a more sensitive test, but there is still no evidence of a difference between the four manufacturing processes. (The p-value has decreased a little but is still large.)">
+<param name="customText" value="Analysis ignoring blocks=Analysis ignoring blocks#Correct analysis taking account of blocks=Correct analysis taking account of blocks">
+<param name="fontSize" value="big">
+</applet>
+</div>
+</div>
+
+</div>
+
+
+<script type="text/javascript">
+	writeLecturerNotesLink(withDataNotes);
+</script>
+
+<div class="lecturerNote" id="lecturerNote">
+<p>For the first data set, explain that if there is no baseline treatment, there are usually too many pairs of treatments to 
+	compare them all pairwise.</p>
+<p>If differences between the animals (blocks) are ignored, the anova table finds no evidence of differences between the observers.</p>
+<p>Select <strong>Correct analysis using blocks</strong> from the pop-up menu. We do not explain how the p-value is obtained here &mdash; say that computer software will find it for you. With the correct analysis, there is <strong>strong</strong> evidence of differences between the observers.</p>
+<p>The other examples are similar but in the second, there are 3 replicates for each treatment in each block. In the last example, the blocks were <strong>intentionally</strong> chosen to be different.</p>
+</div>
+
+<div class="lecturerNote" id="dataNote">
+<p class="heading">Comparing observers who watched grazing cattle in Uganda</p>
+<p>Five observers simultaneously watched the same group of 10 cattle for 88 minutes 
+	in one afternoon. Each person reported the number of minutes that each animal 
+	was observed grazing.</p>
+<p>The animals can be treated as blocks &mdash; we are mostly interested in differences between the observers in this study.</p>
+
+<p class="heading">Amino acid uptake by fish (<span class="red">unavoidable</span> 
+	variability between experimental units)</p>
+	<p>Amino acid uptake varies considerably between fish. The intestines of each 
+	fish only give six perparations on which to do an experiment about how NaCN 
+	affects uptake of amino acid. </p>
+	
+<p class="heading">Penicillin production (<span class="red">intentional</span> 
+	variability in experimental units)</p>
+<p>Four variants of the basic process for manufacture of penicillin (A, B, C and 
+	D).</p>
+		
+<p>Corn steep liquor, an important raw material for the process, is quite variable. 
+	A single blend could have been used, but five blends (blocks) were used to ensure 
+	that the results were not specific to one particular blend.</p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

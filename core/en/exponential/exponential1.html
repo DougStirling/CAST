@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Time until first event</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="continuous distribution, exponential distribution, probability density function, cumulative distribution function">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>The number of events that occur in a homogeneous Poisson process over a fixed time period has a Poisson distribution. We  now consider the distribution of the time it takes for the <strong>first</strong> event to occur in the process, a continuous random variable.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Exponential distribution</p>
+<p>In a homogeneous Poisson process with rate \(\lambda\) events per unit time, the time until the first event, \(Y\), has a distribution called an <strong>exponential</strong> distribution,</p>
+\[
+Y \;\; \sim \; \; \ExponDistn(\lambda)
+\]
+<p>with probability density function</p>
+\[
+f(y) \;\; = \; \; \lambda\; e^{-\lambda y}
+\]
+<p>and cumulative distribution function</p>
+\[
+F(y) \;\; = \; \; 1 - e^{-\lambda y} 
+\]</div>
+
+<div class="proof">
+<p>The cumulative distribution function is</p>
+\[
+F_Y(t) \;\; = \; \; P(Y \le t) \;\; = \; \; 1 - P(Y \gt t)
+\]
+<p>The time of the first event being after time \(t\) is equivalent to there being no events before time \(t\). We have already seen that the number of events before time \(t\), \(X_t\), has a Poisson distribution,</p>
+\[
+X_t \;\; \sim \; \; \PoissonDistn(\lambda t)
+\]
+<p>so</p>
+\[ \begin{align}
+F_Y(t) \;\; = \; \; 1 - P(Y \gt t) \;\;&amp;=\;\; 1 - P(X_t = 0) \\[0.4em]
+&amp;=\;\; 1 - \frac {(\lambda t)^0 e^{-\lambda t}} {0!} \\
+&amp;=\;\; 1 - e^{-\lambda t}
+\end{align} \]
+<p>The probability density function is the derivative of the cumulative distribution function, so</p>
+\[
+f_Y(t) \;\;=\;\;
+F_Y'(t) \;\; =\;\; \lambda\; e^{-\lambda t} \]</div>
+</div>
+
+<p class="heading">Shape of exponential distribution</p>
+<p>The exponential distribution is skew with a long tail towards the high values.</p>
+
+<p>The diagram below shows the shape of a typical exponential distribution.</p>
+
+<div class="centred">
+	<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="400">
+			<script type="text/javascript">writeAppletParams();</script>
+			<param name="appletName" value="distributionProg.ExponentialDistnApplet">
+			<param name="backgroundColor" value="FFFBF3">
+			<param name="lambdaLimits" value="0.10 2.00 1.00">
+			<param name="xAxis" value="-1 30 0 5">
+			<param name="xAxisName" value="Time until first event">
+			<param name="densityAxis" value="0 2 0 0.2">
+			<param name="customText" value="Rate of events=Rate of events#Probability density=Probability density#Show density axis=Show density axis">
+		</applet>
+	</div>
+	
+<p>Drag the slider to see how the shape of the distribution depends on the rate of events, \(\lambda\). The smaller that rate, \(\lambda\), the greater the time until the first event.</p>
+<p>By definition, the total area under any probability density function is 1.0. This makes the shape of the pdf in the diagram relatively hard to see when \(\lambda\) is small. Click <strong>Show density axis</strong> to deselect it, making the decay in its height clearer.</p>
+	
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

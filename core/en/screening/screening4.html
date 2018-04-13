@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Hypothesis tests</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="factorial design, interaction, analysis of variance, anova">
+	<meta name="dataset" content="Sugar reduction study">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Inference when there is a single replicate</p>  
+  <p>If there are many controlled factors in an experiment, there are often so many possible combinations of levels that no treatments are repeated. The model with all main effects and interactions therefore has no residual degrees of freedom or sum of squares. Without any estimate of the unexplained variation in the data, it is impossible to assess the <strong>accuracy</strong> of any estimated factor effects or interactions and it is impossible to test the significance of any terms in the model.</p>
+  <div class="centred"><div class="boxed">
+  	<p>If there is only a single replicate, inference can only be performed if it can be assumed that there are no high-order interactions.</p>
+  </div></div>
+  <p>However factorial experiments with many factors are often used as a preliminary stage in a project  to identify  important factors and interactions for later detailed study. Since further experiments will fully assess the important factors, the main goal is to sort the main effects and interactions in order of importance; formal inference is  of less importance.</p>
+  <div class="diagram">
+		<p class="heading">Sugar reduction study</p>
+  	<p>In this study, there are four main effects, six 2-factor interactions, four 3-factor interactions and a single 4-factor interaction, each of which has one degree of freedom. The analysis of variance table is shown below.</p>
+		<div class="centred">
+			<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="factorialProg.AnovaTableOnlyApplet">
+			<param name="yVarName" value="Sweetness">
+			<param name="yValues" value="7.60 7.92 7.72 7.27 8.09 7.87 7.52 6.89 8.02 8.34 8.20 8.21 8.14 7.82 8.04 7.00">
+			<param name="xKeys" value="S A T H">
+			<param name="SVarName" value="Sa">
+			<param name="SValues" value="8@1 8@0">
+			<param name="SLabels" value="Sa- Sa+">
+			<param name="AVarName" value="Ac">
+			<param name="AValues" value="4@1 4@0 4@1 4@0">
+			<param name="ALabels" value="Ac- Ac+">
+			<param name="TVarName" value="Th">
+			<param name="TValues" value="2@1 2@0 2@1 2@0 2@1 2@0 2@1 2@0">
+			<param name="TLabels" value="Th- Th+">
+			<param name="HVarName" value="Ht">
+			<param name="HValues" value="1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0">
+			<param name="HLabels" value="Ht- Ht+">
+			<param name="startModel" value="0*1*2*3">
+			<param name="maxSsq" value="9.999 99 9.999 99.99">
+			</applet>
+		</div>
+		<p>Since there are no replicates, there are no residual degrees of freedom if all interactions are included in the model. Since the 3- and 4-factor interactions are also extremely difficult to interpret, we will assume that they are negligible. Click the checkboxes to remove the 4-factor interaction and all 3-factor interactions. This combines 
+		the sums of squares for these terms to form a residual sum of squares.</p>
+		
+<div class="centred"><div class="boxed">
+<p>The mean residual sum of squares, 0.020, estimates 
+						the error variance for the experiment.<br>
+										<strong>We therefore estimate that the standard deviation 
+											of the experimental error is the square root of this, 0.14.</strong></p>
+</div></div>
+
+		<p>From the p-values, we conclude that several 2-factor interactions are significant.</p>
+  </div>
+  
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

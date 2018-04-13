@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Bayes theorem</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="bayes theorem, conditional probability">
+	<meta name="dataset" content="Contraception and pregnancy">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Marginal and conditional probs can be found from joint probs 
+(and vice versa)</p>
+<p>Consider two partitions of the sample space, \(\{A_i, i=1,\dots, k\}\) and \(\{B, \overline{B}\}\). The first partition might be simply \(A\) and its inverse but there could be more possibilities.</p>
+<p>The probabilities for all possible events can be described in three different ways:</p>
+<dl>
+	<dt>The joint probabilities</dt>
+	<dd>\(P(A_i \textbf{ and } B)\) and \(P(A_i \textbf{ and } \overline{B})\) for all <em>i</em></dd>
+	<dt>The marginal probabilities for \(A\) 
+	and the conditional probabilities for \(B\)</dt>
+	<dd>\(P(A_i)\),  \(P(B \mid A_i)\)  and \(P(\overline{B} \mid A_i)\)  for all <em>i</em></dd>
+	<dt>The marginal probabilities for \(B\) 
+	and the conditional probabilities for \(A\)</dt>
+	<dd>\(P(B)\), \(P(\overline{B})\), 
+  \(P(A_i \mid B)\) and   \(P(A_i \mid \overline{B})\) for all <em>i</em></dd>
+</dl>
+<p>We have already shown how to find marginal and conditional probabilities from the joint probabilities, and how to find joint probabilities from marginal and conditional ones. The following theorem gives a formula that helps find one set of conditional probabilities from the other.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Bayes Theorem</p>
+		<p>If \(\{A_1, ..., A_k\} \) is a partition of the sample space,</p>
+\[
+	P(A_j \mid B)   =  \frac {P(A_j) \times P(B \mid A_j) } {\sum_{i=1}^{k} {P(A_i) \times P(B \mid A_i) } }
+\]
+	</div>
+
+	<div class="proof">
+		<p>From the definition of conditional probability,</p>
+\[
+	P(A_j \mid B)   =  \frac {P(B \textbf{ and } A_j) } {P(B) }
+\]
+		<p>Since the definition of conditional probability also implies that</p>
+\[
+	P(B \textbf{ and } A_j)  = P(A_j) \times P(B \mid A_j)
+\]
+		<p>we can rewrite the equation as</p>
+		
+\[
+	\begin{align}
+	P(A_j \mid B)   &amp;=  \frac {P(A_j) \times P(B \mid A_j) } {P(B) }
+	\\
+	&amp;= \frac {P(A_j) \times P(B \mid A_j) } {\sum_{i=1}^{k} {P(A_i) \times P(B \mid A_i) } }
+	\end{align}
+\]
+		<p>using the law of total probability.</p>
+	</div>
+</div>
+
+<p>The formula looks complicated, but it is usually easiest to apply the result from first principles by first calculating the joint probabilities, as illustrated by the example below.</p>
+
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Example</p>
+		<p>Medical diagnostic tests for a disease are rarely 100% accurate. There are 
+two types of error: </p>
+		<ul>
+			<li>A positive test result for someone who does not have the disease.</li>
+			<li>A negative test result for someone who has the disease.</li>
+		</ul>
+		<p>Consider
+			a diagnostic test with probability 0.05 of a negative test
+			result for someone who has the target disease, and probability 0.10 of a positive test
+			result for someone who does not have the disease. These are conditional probabilities and
+			can be written formally as: </p>
+\[
+	P(negative \mid disease) = 0.05 \quad\quad\quad 
+	P(positive \mid no \text{ } disease) = 0.10
+\]
+		<p>Since the probability of someone with the disease having a positive 
+			test result is one minus the conditional probability of a negative test result 
+			(and a similar result for those who do not have the disease), the remaining conditional 
+			probabilities are</p>
+\[
+	P(positive \mid disease) = 0.95 \quad\quad\quad 
+	P(negative \mid no \text{ } disease) = 0.90
+\]
+		
+		<p>We will also assume that 10% of people who are given the test have the disease. This
+			corresponds to a marginal probability,</p>
+\[
+	P(disease) = 0.10
+\]
+		<p>What is the probability that someone with a positive test result actually has the disease?</p>
+	</div>
+
+	<div class="solution">
+		<p>We are asked for \(P(disease \mid positive)\). From the definition of conditional probability, this is</p>
+\[
+	P(disease \mid positive) = \frac {P(disease \textbf{ and } positive)} {P(positive)}
+\]
+
+		<p>The numerator is</p>
+\[
+	P(disease \textbf{ and } positive) = P(disease) \times P(positive \mid disease) = 0.1 \times 0.95 = 0.095
+\]
+		
+		<p>The denominator is found from the law of total probability,</p>
+\[
+\begin{align}
+	P(positive) &amp;= P(disease \textbf{ and } positive) + P(no \text{ } disease \textbf{ and } positive) \\
+	&amp;= 0.1 \times 0.95 + 0.9 \times 0.1 = 0.185
+\end{align}
+\]
+		<p>The probability of having the disease, conditional on testing positive, is therefore</p>
+\[
+	P(disease \mid positive) = \frac {0.095} {0.185} = 0.514
+\]
+
+<div class="explanation" title="Illustration of calculations">
+	<p>The diagram below illustrates the calculations.</p>
+	
+	<div class="centred">
+		<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="400">
+	<script type="text/javascript">writeAppletParams();</script>
+	<param name="appletName" value="continProg.ConditCalcApplet">
+	<param name="backgroundColor" value="FFFFFF">
+	<param name="yVarName" value="Test">
+	<param name="xVarName" value="Disease">
+	<param name="yLabels" value="Positive Negative">
+	<param name="xLabels" value="#Has disease# #No disease#">
+	<param name="xMargin" value="0.10 0.90">
+	<param name="yCondit" value="0.95 0.05 0.10 0.90">
+	<param name="customText" value="Conditional=Conditional#Marginal=Marginal#Joint probabilities=Joint probabilities">
+	</applet>
+	</div>
+	
+	<ul>
+		<li>Click each of the joint probabilities (green) to see how they are found from the marginal probabilities for disease and conditional probabilities for the test results.</li>
+		<li>Click the marginal probabilities for the test results (black) to see how they are found from the joint probabilities.</li>
+		<li>Click the conditional probabilities for the disease, given the test results (black in bottom right) to see how they are calculated.</li>
+	</ul>
+</div>
+</div>
+</div>
+
+<p>Initially there might seem to be a contradiction between the two conditional
+probabilities in the above example, </p>
+\[P(positive \mid disease) = 0.95 \quad\quad\quad 
+	P(disease \mid positive) = 0.514 \]
+<p>However the two probabilities are consistent since they have very different
+	interpretations.</p>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

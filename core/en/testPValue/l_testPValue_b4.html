@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>P-values for other tests</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="hypothesis test, p-value, Shapiro-Wilkes test, normal distribution/testing for normality">
+	<meta name="dataset" content="Prostate acid measurements">
+</head>
+
+
+<body class="lecture">
+<script type="text/javascript">writePageStart();</script>
+
+
+<p class="heading">Are data consistent with a normal distribution? (Shapiro-Wilkes test)</p>
+
+<div class="divChoice">
+<form>
+<select name="dataset" onChange="changeBlock(this, 2)" id="dataChoice">
+    <option value="0" selected>Simulation</option>
+    <option value="1">PSA measurements</option>
+  </select>
+</form>
+
+
+<div id="example1">
+  <div class="centred">
+	<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="320">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="testProg.ShapiroWilkesApplet">
+  <param name="varName" value="Simulated data">
+  <param name="horizAxis" value="0 10 0 1">
+  <param name="maxValue" value="10.0">
+  <param name="noOfValues" value="40">
+  <param name="dataDecimals" value="2">
+  <param name="summaryDecimals" value="4">
+	<param name="customText" value="Proportion less than p=Proportion less than p#Distn is normal=Distn is normal#Distn is not normal=Distn is not normal#normal=normal#skew=skew">
+  <param name="fontSize" value="big">
+  </applet>
+  </div>
+
+</div>
+
+<div id="example2" style="display:none">
+
+<div class="centred"><table border="0" cellspacing="0" cellpadding="10" class="centred">
+<tr>
+  <td align="left">
+&nbsp;48&nbsp; 56&nbsp; 50&nbsp; 52&nbsp; 50&nbsp; 49&nbsp; 46&nbsp; 62&nbsp; 56&nbsp; 55&nbsp; 62&nbsp; 71<br>
+&nbsp;65&nbsp; 67&nbsp; 47&nbsp; 49&nbsp; 50&nbsp; 78&nbsp; 83&nbsp; 98&nbsp; 52&nbsp; 75&nbsp; 99&nbsp;187<br>
+136&nbsp; 82&nbsp; 40&nbsp; 50&nbsp; 50&nbsp; 40&nbsp; 55&nbsp; 59&nbsp; 48&nbsp; 51&nbsp; 49&nbsp; 48<br>
+&nbsp;63&nbsp;102&nbsp; 76&nbsp; 95&nbsp; 66&nbsp; 84&nbsp; 81&nbsp; 76&nbsp; 70&nbsp; 78&nbsp; 70&nbsp; 67<br>
+ 82&nbsp; 67&nbsp; 72&nbsp; 89&nbsp;126
+  </td>
+  <td><img class="gif" src="images/psaHisto.gif" width="296" height="178"></td>
+</tr>
+<tr>
+  <td colspan="2" align="center"><strong>SAS gives p-value for Shapiro-Wilkes W test = 0.0001</strong></td>
+</tr>
+</table></div>
+
+<br>
+
+<div class="centred"><div class="boxed">
+<ul>
+  <li>P(such a non-normal looking sample from a normal 
+    distribution) = 0.0001.</li>
+  <li>Extremely strong evidence that the data are <strong>not</strong> a sample from a normal 
+    population.</li>
+</ul>
+</div></div>
+<p>After deleting the highest three values, the p-value is still 0.0039. So 
+even without these values there is strong evidence of skewness.</p>
+</div>
+
+</div>
+
+<script type="text/javascript">
+	writeLecturerNotesLink(withDataNotes);
+</script>
+
+<div class="lecturerNote" id="lecturerNote">
+  <p>Use the simulation to demonstrate that p-values have the same distributions for other types of hypothesis test, so their interpretation (in terms of evidence against <b>H<sub>0</sub></b>) is the same.</p>
+  <div class="centred"><div class="boxed">
+    <p>You don't need to know the details behind the test to interpret its p-value </p>
+  </div></div>
+  <p class="heading">Simulation</p>
+  <p>The page uses the Shapiro-Wilkes W test whose null hypothesis is that the data are sampled from a normal distribution. (The alternative is that the distn is non-normal.)</p>
+  <p>In the simulation, take several samples to build up the distribution of p-values when the population distribution <strong>is</strong> normal. Observe that all values between 0 and 1 are equally likely. (Click on any p-value to see the corresponding sample.)</p>
+  <div class="centred"><div class="boxed">
+    <p>All values between 0 and 1 are equally likely when the popn is normal.</p>
+  </div></div>
+  <p>Discuss the fact that p-values below 0.05 still occur by chance with prob 0.05, etc.</p>
+  <p>Drag the slider to make the population distn skew and repeat. Observe that the p-values are more likely to be near zero.</p>
+  <p class="heading">Data</p>
+  <p>Select <strong>PSA measurements</strong> from the pop-up menu. This applies the test to a real data set and interprets the resulting p-value.</p>
+</div>
+
+<div class="lecturerNote" id="dataNote">
+  <p>The data  are measurements of serum acid phosphatase (PSA) for 53 patients 
+who were diagnosed as having prostate cancer.</p>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

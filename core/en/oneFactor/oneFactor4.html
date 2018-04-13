@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Describing unexplained variation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="pooled variance estimate, error, error variance, degrees of freedom">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Error standard deviation</p>
+
+<p>In the model,</p>
+<p class="eqn"><span class="black em">y<sub>ij</sub></span> &nbsp;= &nbsp;<span class="green">µ<em><sub>i</sub></em></span> &nbsp; + &nbsp; <span class="red">ε<em><sub>ij</sub></em></span> &nbsp; &nbsp; &nbsp; for <em>i</em> = 1 to <em>g</em> and <em>j</em> = 1 to <em>n<sub>i</sub></em></p>
+<p class="eqn">where <span class="red">ε<em><sub>ij</sub></em></span> &nbsp;∼&nbsp; normal (0<em><sub></sub></em>, σ)</p>
+<p>least squares provides estimate of the parameters <span class="green">µ<sub>1</sub>, µ<sub>2</sub>, ..., µ<em><sub>g</sub></em></span> and these describe the variation in the response that is <strong>explained</strong> by the factor,</p>
+<p class=eqn><img src="images/groupMeanEst.gif" width="52" height="22"> </p>
+	<p>The sample standard deviation in any single group, <em>s<sub>i</sub></em>, 
+is a valid estimate of σ. 
+How should these <em>g</em> separate estimates be combined to give a single pooled 
+estimate of σ?</p>
+	<p class="heading">Pooled estimate of variance</p>
+	<div class="centred">
+		<div class="boxed">
+			<p>It is easier to describe estimation in terms of <span class="black">variance</span> &mdash; the square of the standard deviation</p>
+		</div>
+	</div>
+	<p>From the data in a single group (say group <em>i</em>), the sample variance 
+		is an estimate of σ<sup>2</sup>,</p>
+<p class=eqn><img class="gif" src="../multigroup/images/varIEst.gif" width="132" height="56"></p>
+	<p>If the sample sizes are the same in all groups, the pooled variance is the 
+	average of these group variances,</p>
+	<p class=eqn><img class="gif" src="../multigroup/images/varPooledEst3.gif" width="105" height="38"></p>
+	<p>This estimate is called the <strong>pooled</strong> estimate of σ<sup>2</sup>.</p>
+	<p class="heading">Mixed sample sizes</p>
+	<p>If there are different numbers of replicates at different factor levels, a more complex formula is 
+		needed. The best estimate of σ<sup>2</sup>		is found by adding the numerators and denominators of the formulae for the 
+		<em>g</em> separate  variances,</p>
+	<p class=eqn><img class="gif" src="../multiGroup/images/varPooledEst.gif" width="444" height="67"> </p>
+<p>More precisely,</p>
+<p class=eqn><img class="gif" src="../multiGroup/images/varPooledEst2.gif" width="210" height="80"> </p>
+
+<div class="diagram"> 
+<p class="heading">Illustration of pooled variance</p>
+		<p>The diagram below shows a random sample from a normal model in which the 
+			group means differ, but all groups have the same variance, σ<sup>2</sup>&nbsp;=&nbsp;0.9. 
+			(The grey bands show the means ± 2 standard deviations for the model.) 
+			Note that the crosses have been jittered a little (moved horizontally) to 
+			separate them within each group.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="520" height="430">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.PooledVarApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Group, x">
+<param name="xLabels" value="A B C">
+<param name="anovaModel" value="3.5 0.9 7.5 0.9 5.5 0.9">
+<param name="randomSeed" value="223945782">
+<param name="yAxis" value="1.0 9.5 1 1">
+<param name="decimals" value="3">
+<param name="maxSsq" value="999.999">
+<param name="maxMssq" value="99.999">
+<param name="maxDF" value="99">
+<param name="noOfDataSets" value="3">
+<param name="dataName" value="Group sizes equal">
+<param name="xValues" value="8@0 8@1 8@2">
+<param name="dataName2" value="Group sizes unequal">
+<param name="xValues2" value="15@0 6@1 3@2">
+<param name="dataName3" value="Group with 1 rep">
+<param name="xValues3" value="20@0 3@1 1@2">
+</applet>
+</div>
+
+<p>The vertical coloured lines from the crosses at each factor level to the  level mean 
+are the values <span style="position:relative; top:8px"><img class="gif" src="../multiGroup/images/devnInGroup.gif" width="53" height="20"></span> 
+whose sums of squares are the numerators of the equations for the <em>s<sub>i</sub></em><sup>2</sup>.</p>
+<p>The numerator of the pooled estimate of σ<sup>2</sup> is the sum of the numerators for the level variances. The denominator is the sum 
+of their denominators.</p>
+
+
+<div class="centred"><div class="boxed">
+<p>Note that the numerator is the sum of the squared lengths 
+of all coloured vertical lines.</p>
+</div></div>
+
+<p>When there are the same number of replicates at each factor level, the pooled estimate is the average of the 
+three level variances.</p>
+<p>Use the pop-up menu to change the number of replicates. Observe that the pooled variance 
+is closest to the variance at level 1, the level with the most replicates. Note that if one group has no replicates, then it cannot contribute to the estimate of the pooled variance.</p>
+</div>
+
+<p class="heading">Degrees of freedom</p>
+<p>We briefly mention here that the denominator of the formula for the standard deviation, <em>s<sub>i</sub></em><sup>2</sup>, at level <em>i</em> is  (<em>n<sub>i</sub></em>&nbsp;&minus;&nbsp;1) and this is called the <strong>degrees of freedom</strong> for this estimate of σ.  It reflects the amount of information used by the estimate.</p>
+<p>In a similar way, the denominator of formula for the pooled estimate of σ is called the residual <strong>degrees of freedom</strong>.</p>
+<p>Degrees of freedom will be described more fully later.</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

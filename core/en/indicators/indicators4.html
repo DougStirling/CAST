@@ -1,0 +1,197 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Tests for separate indicator variables</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="general linear model, factor, indicator variable, analysis of variance, sequential sums of squares">
+	<meta name="dataset" content="Antibiotics">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Standard errors and t-tests</p>  
+  <p>The 'baseline-category' parameterisation,</p>
+	<p class=eqn><img src="images/factorModel2.gif" width="483" height="27"></p>
+	<p>is still a general linear model. Therefore all general results from the first 
+		sections of this chapter can be used to further analyse it. In particular, 
+		GLM theory provides standard errors for the parameter estimates and t-tests 
+		for whether individual parameters are zero.</p>
+	<p>As usual with GLMs, the hypthesis tests describe the effect of removing a 
+		variable from the full model. For the indicator variables, this can be interpreted 
+		as follows:</p>
+	
+<div class="centred"><div class="boxed">
+<p>The t-test for whether the coefficient 
+						of a group's indicator variable is zero is really a test for whether 
+						that group's mean is equal to the mean for the baseline group.</p>
+</div></div>
+
+	<br>
+
+<div class="diagram">
+
+<p class="heading">Antibiotic effectiveness</p>  
+		<p>We now return to the experimental data about binding percentages of antibiotics, 
+			but we use the full data set with all five antibiotics. (In the previous 
+			page, we only showed data from four of the antibiotics to simplify the presentation.) 
+			The diagram below shows the full data set.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="470" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="curveInteractProg.FactorSeTestTableApplet">
+<param name="yVarName" value="Binding percentage">
+<param name="yValues" value="29.6 24.3 28.5 32.0 27.3 32.6 30.8 34.8 5.8 6.2 11.0 8.3 21.6 17.4 18.3 19.0 29.2 32.8 25.0 24.2">
+<param name="yAxis" value="0 40 0 10">
+<param name="factorVarName" value="Antibiotic">
+<param name="factorValues" value="4@0 4@1 4@2 4@3 4@4">
+<param name="factorLabels" value="Penic Tetra Strep Eryth Chlor">
+<param name="x0VarName" value="Tetra - Penic">
+<param name="x0Values" value="4@0 4@1 12@0">
+<param name="x1VarName" value="Strep - Penic">
+<param name="x1Values" value="8@0 4@1 8@0">
+<param name="x2VarName" value="Eryth - Penic">
+<param name="x2Values" value="12@0 4@1 4@0">
+<param name="x3VarName" value="Chlor - Penic">
+<param name="x3Values" value="16@0 4@1">
+<param name="maxParam" value="99.99 99.99 -99.99 -99.99 99.99">
+<param name="maxTableEntries" value="-99.99 9.99 99.99 9.99 999999">
+<param name="maxSsq" value="9999.9 99 999.99 9.999">
+<param name="customText" value="param=param#intercept=intercept#se=se">
+</applet> 
+</div>
+
+		<p> The table shows the least squares estimates of the intercept and the coefficients 
+			of the indicator variables, using <em>Penicilin</em> as the baseline group. 
+			The table also gives p-values for the parameters.</p>
+		<dl>
+			<dt>Intercept</dt>
+			<dd>The p-value for the 'intercept' term is testing whether the mean for 
+				the baseline category, <em>Penicillin</em>, is zero. (We conclude that 
+				it is not zero.)</dd>
+			<dt>Indicator variables</dt>
+			<dd>The p-values for the indicator variables test whether the corresponding 
+				group mean is equal to the baseline mean. (We would conclude that <em>Streptomycin</em> 
+				and <em>Erythromycin</em> have different means from <em>Penicillin</em>.)</dd>
+		</dl>
+		<p>You can use the checkboxes to remove indicator variables from the model. 
+			Observe how this merges groups (antibiotics) with the baseline group (<em>Penicillin</em>).</p>
+	</div>
+	
+	<p class="heading">Problem with multiple comparisons</p>
+	<p>In some data sets, one group is 'special' in some ways and is a natural choice 
+		for the baseline group. For example, there may be a 'control' treatment in 
+		an experiment (a group that gets a 'standard' treatment) and we may be interested 
+		in comparing all other treatments with this 'standard' treatment. The p-values 
+		for the individual indicator variables then test whether the other treatments 
+		have different mean response from the control group.</p>
+	<p>In many other situations, all groups have similar status and the choice of 
+		a 'baseline' group is arbitrary. The more groups, the greater the number of 
+		possible pairwise comparisons that could be tested with t-tests.</p>
+		
+	<div class="centred"><table border="0" class="centred" cellpadding="5" cellspacing="0">
+		<tr><th>Number of groups, g</th><th>Number of pairwise comparisons</th></tr>
+	  <tr align="center" bgcolor="#FFFFFF"> 
+			<td style="border-top:1px solid #999999;">2</td>
+			<td style="border-top:1px solid #999999;">1</td>
+		</tr>
+	  <tr align="center" bgcolor="#FFFFFF"> 
+			<td>3</td>
+			<td>3</td>
+		</tr>
+	  <tr align="center" bgcolor="#FFFFFF"> 
+			<td>4</td>
+			<td>6</td>
+		</tr>
+	  <tr align="center" bgcolor="#FFFFFF"> 
+			<td>5</td>
+			<td>10</td>
+		</tr>
+	  <tr align="center" bgcolor="#FFFFFF"> 
+			<td style="border-bottom:1px solid #999999;">:</td>
+			<td style="border-bottom:1px solid #999999;">:</td>
+		</tr>
+	</table></div>
+
+	<p>As the number of possible pairwise comparisons of groups increases, there 
+		becomes a greater chance that <strong>at least one</strong> pair of groups 
+		will <strong>appear</strong> significantly different, even if all groups really 
+		have the same mean.</p>
+		
+	
+	<div class="diagram"> 
+		<p class="heading">Antibiotic effectiveness</p>
+		<p>In this data set, none of the five antibiotics is a standard one, so there 
+			are 10 possible pairs of antibiotic that we might want to compare with t-tests.</p>
+		
+<div class="centred"><div class="boxed">
+<p>If t-tests are used to compare pairs 
+							of antibiotics but there are really no population differences, <strong>at 
+							least one pairwise comparison</strong> will have a p-value less than 
+							5% with probabilitiy 25.8%.</p>
+</div></div>
+
+		<p>In other words, there is a reasonable chance that one pair of antibiotics 
+			will appear different even if all antibiotics are really the same.</p>
+		
+<div class="centred"><div class="boxed">
+<p>A single p-value that is lower than 
+							5% would not be unusual and may not give much evidence of differences 
+							between the group means.</p>
+</div></div>
+
+		<p>The standard guidelines of 5% and 1% for interpreting p-values must be 
+			interpreted differently if you are performing many tests simultaneously.</p>
+		<p class="heading">General results about pairwise comparisons</p>
+		<p>The diagram below can be used to read off the probability of at least one 
+			pair of groups <strong>seeming</strong> different (p-value&nbsp;&lt;&nbsp;5%) 
+			when all groups really have the same mean response.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="400" height="200">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.PairwiseCoverageApplet">
+<param name="appletType" value="pValues">
+<param name="customText" value="Number of groups=Number of groups#Values per group=Values per group#Prob(at least one pairwise p-value < 0.05)=Prob(at least one pairwise p-value < 0.05)">
+</applet>
+</div>
+
+		<p>Observe that:</p>
+		<ul>
+			<li>When there are only 2 groups, there is a 5% chance that we will mistakenly 
+				conclude that the groups are different (when testing at the 5% significance 
+				level). This is as would be expected.</li>
+			<li>With 5 groups and 4 values per group (as in the antibiotics example), 
+				there is a 25.8% chance that at least one pair of groups will be significantly 
+				different at the 5% level.</li>
+			<li>If there are 10 groups and 10 values per group, there is 61% probability 
+				that one pair of groups will appear significantly different at the 5% 
+				level. </li>
+		</ul>
+	<br>
+</div>
+
+	<p class="heading">Testing for equal group means</p>  
+  <p>Since it is hard to interpret the p-values for all pairwise comparisons of 
+		group means, it is better to find a single hypthesis test that <strong>simultaneously</strong> 
+		assesses whether <strong>all</strong> group means are equal.</p>
+	
+<div class="centred"><div class="boxed">
+<p>In the rest of this section, we use analysis 
+						of variance to perform a single test for equality of all group means.</p>
+</div></div>
+
+	<br>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

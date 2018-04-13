@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Mean and variance</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="normal distribution, mean, variance">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>Before finding the mean and variance of a general normal distribution, we derive those  of the standard normal distribution.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Mean and variance of standard normal distribution</p>
+<p>If \(Z \sim \NormalDistn(0,\; 1)\), its mean and variance are</p>
+\[
+	E[Z] \;=\; 0 \spaced{and} \Var(Z) \;=\; 1
+	\]</div>
+
+<div class="proof">
+<p>A standard normal distribution's mean is</p>
+
+\[ \begin{align}
+E[Z] \;&amp;=\; \int_{-\infty}^{\infty} z \times \frac 1{\sqrt{2\pi}} e^{- \frac{\large z^2}{\large 2}} dz \\
+&amp;=\; \frac 1{\sqrt{2\pi}} \left(\int_0^{\infty} z \;e^{- \frac{\large z^2}{\large 2}} dz \;+ \int_{-\infty}^0 z \;e^{- \frac{\large z^2}{\large 2}} dz \right)
+\end{align} \]
+<p> With a change of variable \(w = -z\) and \(dw = -dz\) in the second integral,</p>
+\[
+E[Z] \;=\; \frac 1{\sqrt{2\pi}} \left(\int_0^{\infty} z \;e^{- \frac{\large z^2}{\large 2}} dz \;- \int_0^{\infty} w \;e^{- \frac{\large w^2}{\large 2}} dw \right)
+\]
+<p>The two integrals in the brackets are the same but before we can cancel them, we should show that they are finite. A change of variable \(v = \frac {z^2}2\) lets us evaluate  the lefthand integral. Since \(z = \sqrt{2v}\) and \(dv = zdz\),</p>
+\[
+\int_0^{\infty} z \;e^{- \frac{\large z^2}{\large 2}} dz \;=\; \int_0^{\infty} e^{-v} dv \;=\; 1
+\]
+<p>To find the variance of \(Z\),</p>
+\[ \begin{align}
+\Var(Z) \;=\; E[Z^2] - \left(E[Z]\right)^2 \;&amp;=\; E[Z^2] \\[0.4em]
+&amp;=\; \int_{-\infty}^{\infty} z^2 \times \frac 1{\sqrt{2\pi}}\;e^{- \frac{\large z^2}{\large 2}} dz \\
+&amp;=\; \frac 2{\sqrt{2\pi}} \int_0^{\infty} z^2 \;e^{- \frac{\large z^2}{\large 2}} dz
+\end{align} \]
+<p>With the same change of variable as above,</p>
+\[ \begin{align}
+\Var(Z) \;&amp;=\; \frac 2{\sqrt{2\pi}} \int_0^{\infty} \sqrt{2} \times v^{1.5} \;e^{-v} dv \\
+&amp;=\; \frac 2{\sqrt{2\pi}} \times \sqrt{2} \times \Gamma(1.5) \\
+&amp;=\; \frac 2{\sqrt{\pi}} \times 0.5 \times \Gamma(0.5) \\
+&amp;=\; \frac 1{\sqrt{\pi}} \times \sqrt{\pi} \;=\; 1
+\end{align} \]
+</div>
+
+</div>
+<p>The mean and variance of a general normal distribution can be found from this result.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Mean and variance of a general normal distribution</p>
+		<p>If \(X \sim \NormalDistn(\mu,\; \sigma^2)\), its mean and variance are</p>
+		\[
+		E[X] \;=\; \mu \spaced{and} \Var(X) \;=\; \sigma^2
+		\]</div>
+	<div class="proof">
+		<p>The normal distribution's mean is</p>
+\[ 
+E[X] \;=\; \int_{-\infty}^{\infty} x \times \frac 1{\sqrt{2\pi}\;\sigma} e^{- \frac{\large (x-\mu)^2}{\large 2 \sigma^2}} dx
+\]
+		<p> With a change of variable \(z = \frac{x-\mu}{\sigma}\) so \(x = \mu + z\sigma\) and \(dz = \frac{dx}{\sigma}\), this is</p>
+\[ \begin{align}
+E[X] \;&amp;=\; \int_{-\infty}^{\infty} (\mu + z\sigma) \times \frac 1{\sqrt{2\pi}} e^{- \frac{\large z^2}{\large 2}} dz \\
+&amp;=\; \mu \int_{-\infty}^{\infty} \frac 1{\sqrt{2\pi}} e^{- \frac{\large z^2}{\large 2}} dz \;+\; \sigma \int_{-\infty}^{\infty} z \frac 1{\sqrt{2\pi}} e^{- \frac{\large z^2}{\large 2}} dz
+\end{align} \]
+		<p>The first integral is that of the <strong>standard</strong> normal distribution's pdf and is therefore one. The second integral is the same as the formula for the <strong>standard</strong> normal distribution's mean which was shown earlier to be zero, so \(E[X] = \mu\).</p>
+		<p>The proof for the variance is done in a similar way.</p>
+\[ \begin{align}
+\Var(X) = E\left[(X-\mu)^2\right] \;&amp;=\; \int_{-\infty}^{\infty} (x-\mu)^2 \times \frac 1{\sqrt{2\pi}\;\sigma} e^{- \frac{\large (x-\mu)^2}{\large 2 \sigma^2}} dx \\
+&amp;=\; \int_{-\infty}^{\infty} (z^2\sigma^2) \times \frac 1{\sqrt{2\pi}} e^{- \frac{\large z^2}{\large 2}} dz \\
+&amp;=\; \sigma^2 \int_{-\infty}^{\infty} z^2 \frac 1{\sqrt{2\pi}} e^{- \frac{\large z^2}{\large 2}} dz
+\end{align} \]
+<p>This integral is the same as the one for the variance of the standard normal distribution and is therefore one, completing the proof for the variance.</p>
+</div>
+</div>
+<p>These results explain why the symbols &quot;\(\mu\)&quot; and &quot;\(\sigma^2\)&quot; are used for the normal distribution's two parameters.</p>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

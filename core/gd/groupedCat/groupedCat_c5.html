@@ -1,0 +1,150 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Two special cases</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="stacked bar chart, time series, binary variable">
+	<meta name="dataset" content="Hospital overnight stays">
+	<meta name="dataset" content="Air conditioner reliability">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Time series</p>
+
+<p>When sets of categorical measurements are recorded at successive times, time 
+can be treated as a grouping variable. Stacked barcharts are often informative 
+displays.</p>
+
+<div class="diagram">
+
+<p class="heading">Same-day treatment in hospitals</p>
+
+<p>Trends in the proportion of hospital patients who are treated and released 
+on the same day affect planning for the number of beds that are required. The 
+diagram below shows numbers of patients in Australian hospitals, categorised by 
+the length of their stay in hospital.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="360">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="bivarCatProg.BarTimeApplet">
+<param name="xVarName" value="Length of stay">
+<param name="xLabels" value="#Same day# Overnight">
+<param name="xValues" value="1691@0 3043@1 1945@0 3035@1 2226@0 3028@1 2423@0 2985@1 2610@0 3017@1 2813@0 3033@1 2973@0 3047@1">
+<param name="yVarName" value="Year">
+<param name="yValues" value="4734@1994 4980@1995 5254@1996 5408@1997 5627@1998 5846@1999 6020@2000">
+<param name="countAxis" value="6500 1000">
+<param name="propnAxis" value="1.0 0.2">
+<param name="timeAxis" value="0 1 1994 1">
+<param name="bottomPanel" value="true">
+<param name="stackable" value="true">
+<param name="mainGroup" value="1">
+<param name="vertScale" value="0 2">
+<param name="barWidth" value="15">
+<param name="freqUnits" value="Thousands">
+<param name="customText" value="Propn within=Propn within#Percent within=Percent within">
+</applet>
+</div>
+
+<p>Firstly click the checkbox <strong>Stacked</strong>. This shows the increase 
+in the total number of patients over this period.</p>
+<p>Now choose <strong>Propn within Year</strong> from the pop-up menu. The stacked 
+display of these proportions shows how the <strong>proportion</strong> of same-day 
+patients increased. The unstacked version of this plot perhaps shows this increase 
+even more clearly.</p>
+</div>
+
+<p class="heading">Binary variables</p>
+
+<p>When the variable of interest can only take two possible values, it is called 
+a <strong>binary variable</strong>. Examples are</p>
+<ul>
+<li>Gender (male or female)</li>
+<li>Approval (yes or no)</li>
+<li>Quality (acceptable or rejected)</li>
+</ul>
+<p>This type of variable is often abstracted by calling the two categories <strong>success</strong> 
+and <strong>failure</strong>. Note that either category could be called 'success' 
+with this notation &mdash; there is no 'positive' implication associated with the term.</p>
+<p>A single binary variable is described fully by the numbers of successes and 
+failures and the <strong>proportion of successes</strong> is the most useful single 
+summary. Comparison of several groups is based on the proportion of successes 
+in the groups, and these can be displayed in a single bar chart.</p>
+
+<div class="diagram">
+
+<p class="heading">Reliability of reverse-cycle air conditioners</p>
+
+<p>The Australian consumer magazine <em>Choice</em> conducted a survey of subscribers 
+in November 1995 to assess reliability of air conditioners. Each respondent who 
+owned an air conditioner was asked about the brand and whether it had needed any 
+repairs in the previous 12 months.</p>
+<table border="0" class="centred" cellpadding="7" cellspacing="0">
+<tr> 
+<th align="left" valign="bottom">Brand</th>
+<th>Sample size</th>
+<th>Percentage<br>
+requiring repairs</th>
+</tr>
+<tr> 
+<td align="left">Panasonic<br>
+Sanyo<br>
+Fujitsu<br>
+Westinghouse<br>
+Mitsubishi<br>
+Emailair<br>
+Kelvinator<br>
+Carrier</td>
+<td align="center" bgcolor="#FFFFFF">169<br>
+51<br>
+77<br>
+99<br>
+85<br>
+104<br>
+188<br>
+169</td>
+<td align="center" bgcolor="#FFFFFF">2<br>
+6<br>
+7<br>
+7<br>
+9<br>
+13<br>
+13<br>
+15</td>
+</tr>
+</table>
+<p>The diagram below shows stacked bar charts for the eight brands.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="bivarCatProg.BinaryPropnApplet">
+<param name="xVarName" value="Brand">
+<param name="xLabels" value="Panasonic Sanyo Fujitsu Westinghouse Mitsubishi Emailair Kelvinator Carrier">
+<param name="xValues" value="1690@0 510@1 770@2 909@3 850@4 1040@5 1880@6 1690@7">
+<param name="yVarName" value="Reliability">
+<param name="yLabels" value="#Needed repair# OK">
+<param name="yValues" value="34@0 1656@1 31@0 479@1 54@0 716@1 69@0 921@1 77@0 773@1 135@0 905@1 244@0 1636@1 254@0 1436@1">
+<param name="maxProb" value="0.16">
+<param name="propnAxis" value="0 1 0.0 0.1">
+<param name="customText" value="Propns for=Propns for">
+</applet>
+</div>
+
+<p>Since the proportions requiring repairs are all small, the differences between 
+the brands are not displayed well. Choose <strong>Propns for Needed repair</strong> 
+from the pop-up menu to hide the bars for 'OK' and expand the vertical scale. 
+The resulting diagram looks like a simple bar chart of the proportion requiring 
+repairs for the brands.</p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

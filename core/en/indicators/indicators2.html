@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Indicator variables</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="comparing groups, general linear model, indicator variable">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Combining the models for the groups</p>
+  <p>Our model for data in <em>g</em> groups is of the form,</p>
+	<p class="eqn"><img src="images/factorModel.gif" width="308" height="23"></p>
+	<p>where <em>Y<sub>ij</sub></em> denotes the <em>j</em>'th of the <em>n<sub>i</sub></em> 
+		response measurements in group <em>i</em>. </p>
+	<p>Although this model does not initially appear to be a general linear model 
+		(GLM), it can be expressed as a GLM using indicator variables.</p>
+	<p class="eqn"><img src="images/modelWithIndicators.gif" width="503" height="129"></p>
+  <p>Note that this GLM does not have a constant term (intercept).</p>
+  <div class="diagram">
+    <p class="heading">Matrix representation of the model</p>
+
+    <p>The next diagram shows this general linear model in matrix form for a data 
+			set with 3 observations in each of 4 groups.</p>
+<p class="eqn"><img src="../glm/images/generalMatrixModel.gif" width="91" height="17"></p>
+ 
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="370">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="matrixProg.FactorModelEqnApplet">
+<param name="xRows" value="12">
+<param name="nXColumns" value="1">
+<param name="fullNameX1" value="Group">
+<param name="shortNameX1" value="x">
+<param name="valuesX1" value="3@0 3@1 3@2 3@3">
+<param name="labelsX1" value="AAA BBB CCC DDD">
+<param name="oneFactor" value="separate means">
+<param name="customText" value="effect=effect">
+</applet> 
+</div>
+
+    <p>Click on any y-value to see how the indicator variables pick out the appropriate 
+      mean for its group.</p>
+    </div>
+  
+  <p class="heading">Baseline group</p>
+  <p>Although this is the most obvious way to describe the normal model for data 
+		in <em>g</em> groups as a GLM, a different parameterisation makes it easier 
+		to test for equal group means.</p>
+	
+<div class="centred"><div class="boxed">
+<p>A different way to express the model is more useful.</p>
+</div></div>
+
+	<p>We first pick one category as a 'baseline' category. In experimental data, 
+		one category may be a Control group (with no experimental treatment) and this 
+		is often used as a baseline category. In other situations, the choice of a 
+		baseline category is often arbitrary; we then usually treat the first category 
+		as the baseline.</p>
+  <p class="heading">Parameterisation of model in terms of differences from baseline</p>
+	<p>The mean for the baseline category will be the first parameter in our new 
+		parameterisation. For each other category, a parameter will give the <strong>difference</strong> 
+		between its group mean and the baseline mean. If we use the first category 
+		as baseline, we therefore express the means for the other categories as:</p>
+	<p class=eqn><img src="images/meanRelationship.gif" width="91" height="17"></p>
+	<p>In terms of these new parameters, the model is:</p>
+	<p class=eqn><img src="images/factorModel2.gif" width="483" height="27"></p>
+	<p>where the <em>d<sub>ij</sub></em> are the same indicator variables that were 
+		used before, but the model no longer has one for the first group.</p>
+	<p>Note that we now have a constant term in the GLM, µ<sub>1</sub>, 
+		so the first column of the X matrix is a column of 1's. The other columns 
+		of X are the same as before.</p>
+	<div class="diagram">
+    <p class="heading">Matrix representation of the model</p>
+
+    <p>The next diagram shows this general linear model in matrix form.</p>
+<p class="eqn"><img src="../glm/images/generalMatrixModel.gif" width="91" height="17"></p>
+ 
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="370">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="matrixProg.FactorModelEqnApplet">
+<param name="xRows" value="12">
+<param name="nXColumns" value="1">
+<param name="fullNameX1" value="Group">
+<param name="shortNameX1" value="x">
+<param name="valuesX1" value="3@0 3@1 3@2 3@3">
+<param name="labelsX1" value="AAA BBB CCC DDD">
+<param name="oneFactor" value="baseline 0">
+<param name="customText" value="effect=effect">
+</applet> 
+</div>
+
+    <p>Click on any y-value to see how the indicator variables give the correct 
+			means for all groups.</p>
+    </div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

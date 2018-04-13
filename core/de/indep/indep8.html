@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Vergleich von Gruppen</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+  <script type="text/javascript">
+		var svgNames = new Array();
+		svgNames[0] = "images/obeseTest.svg";
+		svgNames[1] = "images/iqSeasonTest.svg";
+		svgNames[2] = "images/buffaloTest.svg";
+		svgNames[3] = "images/typhoidTest.svg";
+		
+		function changeSvgImage(select) {
+			var newIndex = select.selectedIndex;
+			var image = document.getElementById('dataImage');
+			image.src = svgNames[newIndex];
+		}
+	</script>
+
+	<meta name="index" content="contingency table, chi-squared test">
+	<meta name="dataset" content="IQ and season">
+	<meta name="dataset" content="Typhoid vaccine">
+	<meta name="dataset" content="Obesity and country">
+
+	<meta name="dataset" content="Buffalo in Yellowstone">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Kontingenztabellen univariater Daten in mehreren
+Gruppen</p>
+<p>Kontingenztabellen entstehen oft aus bivariaten kategorischen Daten.
+Allerdings k&ouml;nnen sie auch aus univariaten kategorischen Daten
+entstehen, welche separat aus mehreren Gruppen aufgezeichnet werden.<br>
+</p>
+<p>&sbquo;Gruppenzugeh&ouml;rigkeit&lsquo; kann als zweite kategorische
+Variable behandelt werden.</p>
+<div class="diagram">
+<p class="heading">Typhus Impfstoffe</p>
+<p>Die unten stehende Tabelle zeigt die Resultate eines Tests zweier
+Typhusimpfstoffe, welche 6907 Menschen in Nepal verabreicht wurden. Von
+diesen wurden 3457 der Impfstoff&nbsp;<em>Vi
+capsular polysaccharide (Vi)</em> und 3450 der Impfstoff&nbsp;<em>pneumococcus polysaccharide (Pneumo)</em>
+verabreicht. </p>
+<div class="centred">
+<table class="centred" border="0" cellpadding="5" cellspacing="0">
+<tr>
+<th align="CENTER">&nbsp;</th>
+<th align="CENTER"><font color="blue">Impfstoff Vi</font></th>
+<th align="CENTER"><font color="blue">Impfstoff Pneumo</font></th>
+<th align="CENTER"><span class="red">Total</span></th>
+</tr>
+<tr>
+<th align="CENTER"><font color="blue">Typhus</font></th>
+<td align="CENTER" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">14</td>
+<td align="CENTER" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">57</td>
+<td align="CENTER"><span class="red">71</span></td>
+</tr>
+<tr>
+<th align="CENTER"><font color="blue">kein Typhus</font></th>
+<td align="CENTER" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">3443</td>
+<td align="CENTER" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">3393</td>
+<td align="CENTER"><span class="red">6836</span></td>
+</tr>
+<tr>
+<th align="CENTER"><span class="red">Total</span></th>
+<td align="CENTER"><span class="red">3457</span></td>
+<td align="CENTER"><span class="red">3450</span></td>
+<td align="CENTER"><span class="blue">6907</span></td>
+</tr>
+</table>
+</div>
+<p>In diesem Beispiel wurden zwei verschiedene Gruppen von Menschen
+f&uuml;r das Experiment verwendet. Die Variable in der Spalte
+(Unterscheidung zwischen zwei Impfstoffen) ist keine zuf&auml;llige
+Variable, da sie durch das Experiment kontrolliert wird. Eine einzige
+kategorische Messung (ob Typhus &uuml;bertragen wurde oder nicht) wurde
+an jeder Person vorgenommen.</p>
+</div>
+<p class="heading">Vergleichen von Gruppen</p>
+<p>Obwohl der Chi-Quadrat Test als Test f&uuml;r die
+Unabh&auml;ngigkeit zweier kategorischen Variablen vorgesehen ist, kann
+man <strong>denselben Test</strong> benutzen,
+wenn jede Reihe (oder Spalte) einer Kontingenztabelle einer separaten
+Gruppe von Individuen entspricht.</p>
+<dl>
+  <dt>Null-Hypothese (entsprechend der Unabh&auml;ngigkeit)</dt>
+  <dd>Die kategorischen Wahrscheinlichkeiten sind in jeder Gruppe
+gleich.</dd>
+  <dt>Alternativhypothese (entspricht der Assoziation)</dt>
+  <dd>Die verschiedenen Gruppen haben unterschiedliche
+Wahrscheinlichkeiten.</dd>
+</dl>
+<p>Die&nbsp; &chi;<sup>2</sup>-Test-Statistik und der p-Wert sind
+identisch mit denen, die f&uuml;r die fr&uuml;heren
+Unabh&auml;ngigkeitstests gegeben waren.</p>
+<div class="diagram">
+<p class="heading">Beispiele</p>
+<p>In den folgenden Beispielen testen wir, ob die
+&sbquo;abh&auml;ngigen&lsquo; Anteile in mehreren Gruppen gleich sind.</p>
+<form>
+  <select name="dataset" onChange="changeSvgImage(this)">
+  <option value="0" selected="selected">Obesity and country</option>
+  <option value="1">IQ and season of birth</option>
+  <option value="2">Buffalo in Yellowstone Park</option>
+  <option value="3">Effect of typhoid vaccines</option>
+  </select>
+</form>
+<p align="center"><iframe src="images/obeseTest.svg" id="dataImage"
+ frameborder="0" height="459" width="541"></iframe></p>
+<p>Wieder gilt es zu beachten, dass ein visueller Vergleich der
+beobachteten Z&auml;hlungen und jene, die aus den R&auml;ndern, welche
+Unabh&auml;ngigkeit annehmen, gesch&auml;tzt wurden, helfen die Natur
+der Beziehung in Beispielen, wo wir auf einen Unterschied zwischen den
+Gruppen schlie&szlig;en, zu erkl&auml;ren.</p>
+</div>
+<p class="heading">Zwei Gruppen und zwei Kategorien</p>
+<p>In dem besonderen Fall, in dem es zwei Gruppen gibt und die
+kategorischen Messungen zwei Kategorien haben (die
+wir&sbquo;Erfolg&lsquo; und &sbquo;Fehler&lsquo; nennen),
+&uuml;berpr&uuml;ft der Chi-Quadrat Test, ob die Wahrscheinlichkeit
+f&uuml;r &sbquo;Erfolg&lsquo; in beiden Gruppen gleich ist. Zum
+Beispiel &uuml;berpr&uuml;fen wir im Datensatz zum Typhusimpfstoff, ob
+die Wahrscheinlichkeit Typhus zu bekommen in beiden Gruppen mit beiden
+Impfstoffen gleich ist.</p>
+<p>Diese Hypothese kann auch mit einem <span
+ style="text-decoration: underline; color: rgb(0, 0, 153);">2-Stichproben-Test
+der Gleichheit zweier Anteile</span> &uuml;berpr&uuml;ft werden.&nbsp;</p>
+<p>Gl&uuml;cklicherweise kann, obwohl beide Tests unterschiedlich
+motiviert waren, bewiesen werden, dass:</p>
+<table class="centred" bgcolor="#ffffff" border="1" cellpadding="10"
+ cellspacing="0" width="80%">
+  <tbody>
+    <tr>
+      <td align="center"><strong>Der 2-Stichproben-Test der Gleichheit
+zweier Anteile und der Chi-Quadrat Test&nbsp;beide im selben p-Wert und
+in der selben Schlussfolgerung resultieren.</strong></td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

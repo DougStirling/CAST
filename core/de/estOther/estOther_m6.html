@@ -1,0 +1,141 @@
+<html>
+<head>
+	<title>CIs from simulation (advanced)</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="confidence interval, simulation">
+	<meta name="dataset" content="Samaru rainfall">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Confidence intervals for other parameters</p>
+
+  <p>Statistical theory can provide formulae for the standard errors of most commonly 
+		used parameter estimates. These can be used to form approximate 95% confidence 
+		intervals in a similar way to those for means and proportions,</p>
+	<p class="eqn"><strong><font color="#000000"><em>estimate</em> - 2 <em>s.e.</em><em>&nbsp; 
+		</em><strong>&nbsp;to</strong><em> &nbsp;&nbsp;estimate</em> + 2 <em>s.e.</em></font></strong></p>
+	<p>However the standard errors for some estimators cannot be so easily derived 
+		(or cannot be evaluated by readily available software).</p>
+		
+		
+	<div class="diagram"> 
+		<p class=heading>Annual rainfall in Samaru</p>
+
+	  <p>The diagram below shows annual rainfall in Samaru, Nigeria, each year from 
+			1928 to 1983.</p>
+		
+    <p class=eqn><object data="images/samaruLQ.svg" width="398" height="127"></object></p>
+		<p>Assuming that there has been no climate change, we would like to form a 
+			95% confidence interval to answer the following question.</p>
+		<center>
+			<table border="1" cellspacing="0" cellpadding="10" bgcolor="white" width="75%">
+				<tr> 
+					<td><strong>What annual rainfall is not reached in 1 year out of 4?<strong> 
+						</strong></strong></td>
+				</tr>
+			</table>
+		</center>
+		<p>There is no easy formula for a confidence interval for the lower quartile, 
+			so a different approach is needed.</p>
+	</div>
+		
+	<p class="heading">Confidence interval from simulation</p>
+	<p>95% confidence intervals can be found directly from the error distribution.</p>
+	<p class=eqn> <object data="../DciMean/images/errorBounds.svg" width="276" height="114"></object>
+	</p>
+	<p>From the value <em>e*</em>,</p>
+	<p class=eqn> <font color="#000000">Prob (&nbsp;-<em>e*&nbsp; </em>&lt;&nbsp; 
+		<em>error</em> &nbsp;&lt;<em> &nbsp;e*</em> ) &nbsp;= &nbsp;0.95</font></p>
+  <p>and therefore</p>
+	<p class=eqn> <font color="#000000"><em>estimate</em> - <em>e*&nbsp; </em><strong>&nbsp;to</strong><em> 
+		&nbsp;&nbsp;estimate</em> + <em>e*</em></font></p>
+	<p>is a <strong>95% confidence interval</strong> for the parameter.</p>
+	<center>
+		<table border="1" cellspacing="0" cellpadding="10" bgcolor="white" width="75%">
+			<tr> 
+				<td align="center"><strong>If the error distribution (or standard error) 
+					cannot be found from statistical theory, a simulation may provide an 
+					approximate error distribution.</strong></td>
+			</tr>
+		</table>
+	</center>
+	
+	<p>The method is illustrated below.</p>
+	
+	<div class="diagram"> 
+		<p class="heading">Simulated error distribution for upper quartile</p>
+		<p>We will conduct a simulation to find the error distribution for the upper 
+			quartile of the Samaru annual rainfall distribution. A normal population 
+			seems a reasonable model and the best-fitting normal distribution is shown 
+			below. </p>
+		
+    <p class=eqn><object data="images/samaruModel.svg" width="398" height="127"></object></p>
+		
+		<p>We now forget about our data and perform a simulation based on samples 
+			from this best-fitting normal population. The lower quartile of this population 
+			is 947.8&nbsp;mm, so this is the 'target' parameter that we will be trying 
+			to estimate from our simulated samples.</p>
+		<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="stdErrorProg.ErrorBoundsApplet">
+<param name="varName" value="Simulated Samaru rainfall (mm)">
+<param name="random" value="56 1068.1 178.5 875636431 2.5">
+<param name="dataAxis" value="500 1700 600 200">
+<param name="errorName" value="Error in estimate (mm)">
+<param name="errorAxis" value="-130 130 -100 50">
+<param name="percentile" value="0.25">
+<param name="paramName" value="Target (LQ)">
+<param name="statisticName" value="Estimate (sample LQ)">
+<param name="decimals" value="1">
+<param name="maxErrorBound" value="99">
+<param name="customText" value="Show 95% bounds for error=Show 95% bounds for error#P( -* < error < * )=P( -* < error < * )">
+</applet>
+</div>
+
+		
+    <p>Click <strong>Accumulate</strong> and take 100 or more samples to build 
+			up the error distribution for estimation of the population lower quartile 
+			from a sample of 56 years. (Hold down the <strong>Take sample</strong> button 
+			to repeatedly take samples.)</p>
+
+		<p>When the error distribution contains 100 or more crosses, click the checkbox 
+			<strong>Show 95% bounds for error</strong>. This displays the interval of 
+			errors that occurred in 95% of samples.</p>
+		<center>
+			<table border="1" cellspacing="0" cellpadding="10" bgcolor="white" width="75%">
+				<tr> 
+					<td align="center"><strong>You should have observed that 95% of estimation 
+						errors for this type of estimator were within about ±70&nbsp;mm.</strong></td>
+				</tr>
+			</table>
+		</center>
+		<p>(The exact value varies with the simulation.)</p>
+		<p class="heading">95% confidence interval for upper quartile</p>
+		<p>From the simulation, we are 95% confident that the error from this type 
+			of estimator will be no more than 70&nbsp;mm.</p>
+		<p>We can now apply this error bound to our actual data. Since the lower quartile 
+			from our actual rainfall data was 939&nbsp;mm,</p>
+		<center>
+			<table border="1" cellspacing="0" cellpadding="10" bgcolor="white" width="75%">
+				<tr> 
+					<td align="center"><strong>We are 95% confidence that the population 
+						upper quartile is between (939&nbsp;-&nbsp;70)&nbsp;=&nbsp;869 and 
+						(939&nbsp;+&nbsp;70)&nbsp;=&nbsp;1009&nbsp;mm</strong></td>
+				</tr>
+			</table>
+		</center>
+		<br>
+		</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

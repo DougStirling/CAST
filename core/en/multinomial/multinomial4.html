@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Means, variances and correlations</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="multinomial distribution, mean, variance, covariance, correlation">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>The means and variances of the individual variables in a multinomial distribution follow directly from their marginal binomial distributions.</p>
+
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Means and variances</p>
+<p>If \((X_1, \dots, X_g)\) have a \(\MultinomDistn(n, \pi_1, \dots, \pi_g)\) distribution,</p>
+\[
+E[X_i] \;=\; n\pi_i \spaced{and} \Var(X_i) \;=\; n\pi_i(1 - \pi_i) \qquad \text{for }i=1,\dots,g
+\]
+</div>
+
+</div>
+<p>The covariance between any two variables in a multinomial distribution is a little harder to obtain.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Covariances</p>
+		<p>If \((X_1, \dots, X_g)\) have a \(\MultinomDistn(n, \pi_1, \dots, \pi_g)\) distribution,</p>
+		\[
+		\Covar(X_i, X_j) \;=\; -n\pi_i\pi_j \qquad \text{if }i \ne j
+		\]
+	</div><div class="proof">
+<p>The random variable \(Y = X_i + X_j\) is the number of  values that are in either categories \(i\) or \(j\). Treating these two categories as a &quot;success&quot;, \(Y\) has a \(\BinomDistn(n, \pi_i + \pi_j)\) distribution, so</p>
+\[
+\Var(X_i + X_j) \;=\; n(\pi_i + \pi_j)(1 - \pi_i - \pi_j)
+\]
+<p>We will now find this variance in a different way. Using the earlier result about the variance of the sum of two random variables,</p>
+\[ \begin{align}
+\Var(X_i + X_j) \;&amp;=\;  \Var(X_i) + \Var(X_j) + 2\Covar(X_i, X_j) \\
+&amp;=\; n\pi_i(1 - \pi_i) + n\pi_j(1 - \pi_j) + 2\Covar(X_i, X_j) 
+\end{align} \]
+<p>Equating these two formulae for the variance,</p>
+\[
+n(\pi_i + \pi_j)(1 - \pi_i - \pi_j) \;=\; n\pi_i(1 - \pi_i) + n\pi_j(1 - \pi_j) + 2\Covar(X_i, X_j)
+\]
+<p>Rearranging this gives</p>
+\[ \begin{align}
+2\Covar(X_i, X_j) \;&amp;=\; n(\pi_i + \pi_j)(1 - \pi_i - \pi_j) - n\pi_i(1 - \pi_i) - n\pi_j(1 - \pi_j) \\
+&amp;=\; -2n\pi_i\pi_j
+\end{align} \]
+
+</div>
+</div>
+<p>The correlation between any two of the multinomial variables can be easily found from their covariance,</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Correlation coefficients</p>
+		<p>If \((X_1, \dots, X_g)\) have a \(\MultinomDistn(n, \pi_1, \dots, \pi_g)\) distribution,</p>
+\[
+\Corr(X_i, X_j) \;=\; -\sqrt{\frac{\pi_i\pi_j}{(1 - \pi_i)(1 - \pi_j)}}
+\]
+</div>
+	<div class="proof">
+		
+\[ \begin{align}
+\Corr(X_i, X_j) \;&amp;=\; \frac{\Covar(X_i, X_j)}{\sqrt{\Var(X_i) \Var(X_j)}} \\[0.4em]
+&amp;=\; \frac{-n\pi_i\pi_j}{\sqrt{n\pi_i(1 - \pi_i) \times n\pi_j(1 - \pi_j)}} \\[0.4em]
+&amp;=\; -\sqrt{\frac{\pi_i\pi_j}{(1 - \pi_i)(1 - \pi_j)}}
+\end{align} \]
+
+</div>
+</div>
+<p>It should be noticed here that the correlation between two multinomial variables does not depend on the sample size, \(n\). Increasing \(n\) does not decrease their correlation.</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

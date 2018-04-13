@@ -1,0 +1,825 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>5. Testing a Proportion</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/maths/mathStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/maths/theorems.js"></script>
+  <script src="../../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 5 &nbsp; Testing a Proportion</h1>
+<h1 class="sectionName">5.1 &nbsp; Introduction to hypothesis tests</h1>
+<h2 class="pageName">5.1.1 &nbsp; Inference</h2>
+
+<p class="heading notPrinted">Inference</p>
+<p><strong>Statistical inference</strong> refers to statistical
+	techniques for obtaining information about a population parameter (or parameters) from
+	a  random sample. There are two branches of inference:</p>
+<p class=heading>Estimation</p>
+<p>Point estimates and confidence intervals give answers to questions of the form:</p>
+<div class="centred"><div class="boxed"><p>What parameter values would be consistent with the sample data?</p></div></div>
+<p class=heading>Hypothesis tests</p>
+<p>This chapter deals with a related type of question:</p>
+<div class="centred"><div class="boxed"><p>Are the sample data consistent with some statement about the parameters?</p></div></div>
+<p class=heading>Errors and strength of evidence</p>
+<p>A single random sample can rarely provide enough information 
+	about a population parameter to allow us to be sure whether or not any statement (hypothesis)
+	about that parameter will be true. The best we can hope for is an indication of 
+	the <strong>strength of the evidence</strong> against it. </p>
+
+
+
+
+<h2 class="pageName">5.1.2 &nbsp; Soccer league simulation</h2>
+
+<p class=heading>Randomness in sports results</p>
+<p>Although we like to think that the 'best' team wins in sports competitions, 
+there is actually considerable variability in the results that 
+can only be explained through randomness. For example when  two teams play a series
+of matches, the same team rarely wins all matches.</p>
+<p class=heading>English Premier Soccer League, 2008/09</p>
+<p>In the English Premier Soccer league, each team plays every other 
+team twice (home and away) during the season. Three points are awarded for a win 
+and one point for a draw. The table below shows the wins, draws, losses and total 
+points for all teams at the end of the 2008/09 season.</p>
+<div class="centred">
+	<table border="0" class="centred" cellpadding="2" cellspacing="0">
+		<tr>
+			<th>&nbsp;</th>
+			<th><div>Team</div></th>
+			<th width="60" align="center">Wins</th>
+			<th width="60" align="center">Draws</th>
+			<th width="60" align="center">Losses</th>
+			<th width="60" align="center">Points</th>
+		</tr>
+		<tr>
+			<td>1.<br>
+				2.<br>
+				3.<br>
+				4.<br>
+				5.<br>
+				6.<br>
+				7.<br>
+				8.<br>
+				9.<br>
+				10.<br>
+				11.<br>
+				12.<br>
+				13.<br>
+				14.<br>
+				15.<br>
+				16.<br>
+				17.<br>
+				18.<br>
+				19.<br>
+				20.</td>
+			<td bgcolor="#FFFFFF"  style="padding-left:10px; border-top:1px solid #999999; border-bottom:1px solid #999999;"><strong>Manchester City<br>
+				Liverpool<br>
+				Chelsea<br>
+				Arsenal<br>
+				Everton<br>
+				Tottenham Hotspur<br>
+				Manchester United<br>
+				Southampton<br>
+				Stoke City<br>
+				Newcastle United<br>
+				Crystal Palace<br>
+				Swansea City<br>
+				West Ham United<br>
+				Sunderland<br>
+				Aston Villa<br>
+				Hull City<br>
+				West Bromwich Albion<br>
+				Norwich City<br>
+				Fulham<br>
+				Cardiff City</strong></td>
+			<td width="60" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">27<br>
+				26<br>
+				25<br>
+				24<br>
+				21<br>
+				21<br>
+				19<br>
+				15<br>
+				13<br>
+				15<br>
+				13<br>
+				11<br>
+				11<br>
+				10<br>
+				10<br>
+				10<br>
+				7<br>
+				8<br>
+				9<br>
+				7</td>
+			<td width="60" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">5<br>
+				6<br>
+				7<br>
+				7<br>
+				9<br>
+				6<br>
+				7<br>
+				11<br>
+				11<br>
+				4<br>
+				6<br>
+				9<br>
+				7<br>
+				8<br>
+				8<br>
+				7<br>
+				15<br>
+				9<br>
+				5<br>
+				9</td>
+			<td width="60" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">6<br>
+				6<br>
+				6<br>
+				7<br>
+				8<br>
+				11<br>
+				12<br>
+				12<br>
+				14<br>
+				19<br>
+				19<br>
+				18<br>
+				20<br>
+				20<br>
+				20<br>
+				21<br>
+				16<br>
+				21<br>
+				24<br>
+				22</td>
+			<td width="60" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">86<br>
+				84<br>
+				82<br>
+				79<br>
+				72<br>
+				69<br>
+				64<br>
+				56<br>
+				50<br>
+				49<br>
+				45<br>
+				42<br>
+				40<br>
+				38<br>
+				38<br>
+				37<br>
+				36<br>
+				33<br>
+				32<br>
+				30</td>
+		</tr>
+	</table>
+</div>
+<p class=heading>Were all teams evenly matched?</p>
+<p>A simulation can help us to investigate this question. We could be used to generate results from all 380 matches in the season for evenly matched teams, each result having probabilities 0.372, 0.372 and 0.255 of being a win, loss or draw for the home team. (A proportion 0.255 of games in the actual league resulted in draws.)</p>
+<p>If there are differences between teams, we would expect the worst teams to have very few points at the end of the season and the best to have many. On the other hand, for evenly matched teams, we would expect all 20 finals points to be similar. The <strong>spread of final points</strong> in the league table should tell us something about whether the teams are evenly matched.</p>
+<p>In the actual league table, the standard deviation of the final points for the 20 teams was 18.236. The diagram below shows the standard deviations in 200 simulated league tables with evenly matched teams.</p>
+<p class="eqn"><img src="../../../en/testIntro/images/s_leagueSdSim.gif" width="357" height="150"></p>
+<p>The spread of points in the actual league table was much higher than the spread that would be likely for evenly matched teams, so:</p>
+<div class="centred"><div class="boxed"><p>There is strong evidence that the top teams are 'better' than the bottom teams.</p></div></div>
+
+
+
+
+<h2 class="pageName">5.1.3 &nbsp; Simulation to test a proportion</h2>
+
+<p class=heading>Is a population proportion equal to 0.8, or is it lower?</p>
+<p>Consider a random sample of <em>n</em> = 100 values from a population in which
+it is claimed that the probability of success is at least 0.80.</p>
+<p>Is an observed count of <em>x</em> = 72 successes low enough to throw
+doubt on the claimed probability of success, 0.80?</p>
+<p class=heading>Simulation</p>
+<p>We can perform a simulation with probability 0.80 of success to generate
+a random sample 100 successes and failures. The
+diagram below shows the numbers of successes in 200 such simulations.</p>
+<p class="eqn"><img src="../../../en/testIntro/images/s_successSim.gif" width="401" height="209"></p>
+<p>If the probability of success was really 0.80, there would
+be approximately <sup>10</sup>/<sub>200</sub> = 5% chance of 72 or successes
+being observed. Since this is low,</p>
+<div class="centred"><div class="boxed">
+<p>There is moderately strong evidence that the probability
+of success is less than 0.80 &mdash; observing only 72 successes would be unlikely
+if the probability really was 0.80.</p>
+</div></div>
+
+
+
+
+<h2 class="pageName">5.1.4 &nbsp; Test for a mean</h2>
+
+<p class=heading>Does a random sample have mean  520?</p>
+<p>In an industrial process, some measurement, <em>X</em>, is
+normally distributed with standard deviation σ = 10. Its mean should be µ = 520
+but  can drift from this, so samples of <em>n</em> = 10 measurements are regularly
+collected as part of quality control.</p>
+<p>If one such sample had mean 529, does the process need to
+be adjusted? The question can be reexpressed as:</p>
+<div class="centred"><div class="boxed">
+<p>If the underlying population mean was really µ = 520, what is the chance a
+sample of 10 values having a mean as far from 520 as 529?</p>
+</div></div>
+<p class=heading>Simulation</p>
+<p>We can base our answer on the distribution of the sample mean, assuming that
+<em>X</em> has a normal distribution with µ&nbsp;=&nbsp;520 and
+σ = 10. Simulations of 10 values from this distribution can be used to
+get an approximate distribution.</p>
+<p class="eqn"><img src="../../../en/testIntro/images/s_meanSim.gif" width="402" height="173"></p>
+<p>From the 200 simulated samples above, it seems very unlikely that a sample
+mean of 529 would have been recorded if the process meanhad been µ&nbsp;=&nbsp;520.
+We therefore conclude that:</p>
+<div class="centred"><div class="boxed">
+<p>There is strong evidence that the process no longer has a mean  of µ = 520
+and needs to be adjusted.</p>
+</div></div>
+
+
+
+
+<h2 class="pageName">5.1.5 &nbsp; Randomisation tests ((optional))</h2>
+
+<p class=heading>Simulation and randomisation</p>
+<p>Simulation and randomisation both involve randomly generated
+data sets.</p>
+<dl>
+<dt>Simulation</dt>
+<dd>New data sets are generated directly from a model.</dd>
+<dt>Randomisation</dt>
+<dd>Random variations are made to the data.</dd>
+</dl>
+<p class=heading>Randomisation of samples from two populations</p>
+<p>Consider random samples from two populations. If these populations are identical,
+any of the sampled values could have equally belonged to either population. Random
+variations of the data can be generated by randomly allocating the values to
+the two samples.</p>
+<p>The diagram below gives an example of two-group data and a random allocation
+of the 101 values to the two groups.</p>
+<p class="eqn"><img src="../../../en/testIntro/images/s_randomisation.gif" width="434" height="317"></p>
+<p class=heading>Test for equal population means</p>
+<p>In the example above, the mean for Group A was 0.902 higher than that for
+Group B. To examine whether the underlying population means are equal, we can
+find how far apart the sample means would be in randomised variations of the
+data.</p>
+<p>The diagram below shows the difference between the Group A and Group B means
+for 100 randomised variations of the data.</p>
+<p class="eqn"><img src="../../../en/testIntro/images/s_randomiseDist.gif" width="475" height="165"></p>
+<p>A difference between sample means as large as that recorded would be unusual
+if both underlying populations were the same, so</p>
+<div class="centred"><div class="boxed">
+<p>We  conclude that there is strong evidence that the population means for the
+two groups are different.</p>
+</div></div>
+
+
+
+
+<h2 class="pageName">5.1.6 &nbsp; Randomisation test for correlation ((advanced))</h2>
+
+<p class=heading>Another example using randomisation</p>
+<p>Randomisation can be used to assess whether two variables are uncorrelated.</p>
+<div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+<tr>
+<th colspan="2" align="center">Variable</th>
+</tr>
+<tr>
+<th width="100" align="center">Y</th>
+<th width="100" align="center">X</th>
+</tr>
+<tr>
+<td width="100" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">65<br>
+60<br>
+58<br>
+57<br>
+55<br>
+49<br>
+46<br>
+43<br>
+42<br>
+40<br>
+39<br>
+37<br>
+36</td>
+<td width="100" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">63<br>
+62<br>
+41<br>
+41<br>
+50<br>
+51<br>
+51<br>
+34<br>
+32<br>
+45<br>
+36<br>
+41<br>
+53</td>
+</tr>
+</table></div>
+<div class="centred"><div class="boxed">
+<p>Are the variables uncorrelated in the underlying population?</p>
+</div></div>
+<p class=heading>Randomisation</p>
+<p><strong>If <em>Y</em> and <em>X</em> were unrelated,</strong> any permutation
+of the values of <em>X</em> would have been equally likely, so
+we can generate random variations of the data by shuffling the values of <em>X</em> between
+the individuals.</p>
+<p>The correlation between <em>Y</em> and <em>X</em> in the data was 0.537. To
+assess whether such a large correlation could have arisen if <em>Y</em> and <em>X</em> were
+unrelated, we can use randomisations to investigate
+the distribution of the correlation coefficient when they are unrelated.
+The diagram below shows the correlation coefficients from 200 randomisations
+of the data.</p>
+<p class="eqn"><img src="../../../en/testIntro/images/s_randomiseCorr.gif" width="402" height="173"></p>
+<p>Since there would only be a <sup>7</sup>/<sub>200</sub> = 3.5% chance of a
+sample correlation being as far from zero as that observed, we can
+conclude that:</p>
+<div class="centred"><div class="boxed">
+<p>There is moderately strong evidence that there is a real relationship between<em> Y</em> and <em>X</em> (in
+the underlying population). </p>
+</div></div>
+
+
+
+
+<h2 class="pageName">5.1.7 &nbsp; Common patterns in tests</h2>
+
+<p class="heading">A general framework</p>
+<p>You may find it difficult to spot the
+common theme in the examples in this section, but they are all examples of <strong>hypothesis
+testing</strong> and  fit into a common framework that is used for <strong>all</strong> hypothesis
+tests.</p>
+<p class="heading">Data, model and question</p>
+<dl>
+<dt>Data (and model)</dt>
+<dd>The data were assumed to arise from a random
+mechanism (model), some of whose characteristics are unknown.</dd>
+<dt>Null hypothesis</dt>
+<dd>This is a statement about the characteristics of the model. We are particularly
+interested in whether the null hypothesis is true.</dd>
+<dt>Alternative hypothesis</dt>
+<dd>This is usually just the opposite of the null hypothesis.</dd>
+</dl>
+<p>We assess whether the null hypothesis is true by asking&nbsp;...</p>
+
+<div class="boxed" style="background-color:#FFFF00">
+<p><span class="darkred">Are the data consistent with the null hypothesis?</span></p>
+</div>
+
+<dl>
+<dt>Test statistic</dt>
+<dd>This is some function of the data that throws light on whether the null or alternative
+hypothesis holds.</dd>
+<dt>P-value</dt>
+<dd>This is the probability of obtaining a test statistic value as 'extreme' as the
+one recorded <strong>if the null hypothesis holds</strong>.</dd>
+<dt>Interpreting the p-value</dt>
+<dd>The following table  can be used as a guide:</dd>
+</dl>
+<div class="centred">
+	<table cellpadding="5" cellspacing="0" class="centred">
+		<tr>
+			<th align="left">p-value</th>
+			<th align="left">Interpretation</th>
+		</tr>
+		<tr bgcolor="white">
+			<td style="border-top:1px solid #999999;"><strong>over 0.1</strong></td>
+			<td style="border-top:1px solid #999999;">no evidence that the null hypothesis does not hold</td>
+		</tr>
+		<tr bgcolor="white">
+			<td style="border-top:1px solid #999999;"><strong>between 0.05 and 0.1</strong></td>
+			<td style="border-top:1px solid #999999;">very weak evidence that the null hypothesis does not hold</td>
+		</tr>
+		<tr bgcolor="white">
+			<td style="border-top:1px solid #999999;"><strong>between 0.01 and 0.05</strong></td>
+			<td style="border-top:1px solid #999999;">moderately strong evidence that the null hypothesis does not hold</td>
+		</tr>
+		<tr bgcolor="white">
+			<td style="border-top:1px solid #999999; border-bottom:1px solid #999999;"><strong>under 0.01</strong></td>
+			<td style="border-top:1px solid #999999; border-bottom:1px solid #999999;">strong evidence that the null hypothesis does not hold</td>
+		</tr>
+	</table>
+</div>
+<p class="heading">Soccer league in one season</p>
+<dl>
+<dt>Data (and model)</dt>
+<dd><strong>End-of-season points for the teams in the league.</strong> The model
+involves probabilities for wins, losses and draws in all matches, but we know little
+about these probabilities.</dd>
+<dt>Null hypothesis</dt>
+<dd>All teams have the same probability of winning each match.</dd>
+<dt>Alternative hypothesis</dt>
+<dd>All teams do <strong>not</strong> have the
+same probabilities of winning.</dd>
+<dt>Test statistic</dt>
+<dd><strong>The standard deviation of final points.</strong> It will be low if the
+teams have the same abilities (null hypothesis) and higher otherwise (alternative
+hypothesis).</dd>
+<dt>P-value</dt>
+<dd>Probability that the standard deviation is as high as 16.7 (the actual data) <strong>if
+all teams are equally matched</strong>. None of the simulated leagues had standard
+deviations as high as 16.7, so the p-value is zero. </dd>
+<dt>Interpreting the p-value</dt>
+<dd>There is extremely strong evidence that the teams do <strong>not</strong> have
+the same probability of winning.</dd>
+</dl>
+
+
+<p class="heading">Proportion</p>
+<dl>
+<dt>Data (and model)</dt>
+<dd><strong>Number of successes in 100 values.</strong> Our model assumes that P(success)
+is the same for all values and that they were independent.</dd>
+<dt>Null hypothesis</dt>
+<dd>The probability of success is 0.80.</dd>
+<dt>Alternative hypothesis</dt>
+<dd>The probability of success is <strong>less than</strong> 0.80.</dd>
+<dt>Test statistic</dt>
+<dd><strong>The number of successes in the 100 values.</strong> It will be near 80
+if the underlying probability of success is 0.80 (null hypothesis) and lower than
+80 if it is less (alternative hypothesis).</dd>
+<dt>P-value</dt>
+<dd>Probability of <sup>72</sup>/<sub>100</sub> or fewer successes (the actual data) <strong>if
+the underlying population proportion is 0.80</strong>. The p-value was 0.05.</dd>
+<dt>Interpreting the p-value</dt>
+<dd>Since 72 or fewer successes
+would be unlikely if the population proportion was 0.80, we have moderately strong
+evidence that it is lower than 0.80.</dd>
+</dl>
+
+
+<p class="heading">Process mean</p>
+<dl>
+<dt>Data (and model)</dt>
+<dd><strong>Sample of 10 values from a process.</strong> Our model is that they were
+sampled from a normally distribution with σ&nbsp;=&nbsp;10 and unknown µ.</dd>
+<dt>Null hypothesis</dt>
+<dd>The distribution of values has mean µ&nbsp;=&nbsp;520.</dd>
+<dt>Alternative hypothesis</dt>
+<dd>The alternative hypothesis is that µ&nbsp;≠&nbsp;520&nbsp;gm.</dd>
+<dt>Test statistic</dt>
+<dd><strong>The mean of our sample of 10 values.</strong> It will be close to 520
+if the process is working correctly (the null hypothesis) and farther from this if
+the process mean has drifted from 520 (alternative hypothesis).</dd>
+<dt>P-value</dt>
+<dd>Probability of a sample mean as far from 520 as the value in our actual data
+(529) <strong>if the underlying population mean is 520</strong>. Since none of the
+simulated samples had means as far from 520, the p-value is 0.0.</dd>
+<dt>Interpreting the p-value</dt>
+<dd>Since a mean as far from 520 as our actual mean (529) is very unlikely, there
+is strong evidence that the mean weight is <strong>no
+longer</strong> 520
+gm.</dd>
+</dl>
+
+
+<p class="heading">Comparison of groups</p>
+<dl>
+<dt>Data (and model)</dt>
+<dd><strong>Samples of values from two groups.</strong> No assumptions are made about
+the shape of the underlying distributions (model) but the data are assumed to be
+random samples from them.</dd>
+<dt>Null hypothesis</dt>
+<dd>The population distributions are the same in both groups.</dd>
+<dt>Alternative hypothesis</dt>
+<dd>The groups have different distributions.</dd>
+<dt>Test statistic</dt>
+<dd><strong>The difference between the means of the two groups.</strong> It should
+be near zero if the two populations are the same (null hypothesis) and only different
+from zero if the groups are different (alternative hypothesis).</dd>
+<dt>P-value</dt>
+<dd>Probability that the difference in means is further from zero than 0.902 (the
+actual data) <strong>if both samples come from the same population</strong>. Since
+this never happened in our randomised samples, the p-value is zero.</dd>
+<dt>Interpreting the p-value</dt>
+<dd>We conclude that it is almost certain that
+the null hypothesis does not hold &mdash;values are higher in Group A than in Group B.</dd>
+</dl>
+
+
+<p class="heading">Correlation coefficient</p>
+<dl>
+<dt>Data (and model)</dt>
+<dd><strong>Pairs of values from two variables (<em>Y</em> and <em>X</em>).</strong> No
+assumptions are made about a model underlying the data.</dd>
+<dt>Null hypothesis</dt>
+<dd>The correlation coefficient between <em>Y</em> and <em>X</em> in the population
+is zero.</dd>
+<dt>Alternative hypothesis</dt>
+<dd>The correlation is non-zero.</dd>
+<dt>Test statistic</dt>
+<dd><strong>The sample correlation coefficient between <em>Y</em> and <em>X</em>.</strong> It
+will be close to zero if the variables are uncorrelated in the underlying population
+(null hypothesis) and further from zero otherwise (alternative hypothesis).</dd>
+<dt>P-value</dt>
+<dd>Probability that the correlation coefficient is further from zero than 0.537
+(the actual data)<strong> if the variables are uncorrelated in the underlying population</strong>.
+Only 3.5% of the simulated samples had relationships as strong, so this is the p-value.</dd>
+<dt>Interpreting the p-value</dt>
+<dd>A correlation coefficient as far
+from zero would be unlikely if the null hypothesis was true, so there is moderately
+strong evidence that the variables are correlated.</dd>
+</dl>
+
+
+
+
+<h1 class="sectionName breakBefore">5.2 &nbsp; Tests about proportions</h1>
+<h2 class="pageName">5.2.1 &nbsp; Inference about parameters</h2>
+
+<p class=heading>Inference and random samples</p>
+<p>In the rest of this chapter, we assume that the observed data are a random sample
+from some population. Inference asks questions about characteristics
+of the underlying population distribution &mdash; unknown population parameters.</p>
+
+<div class="centred"><div class="boxed">
+<p>The null and alternative hypotheses specify values
+for the unknown  parameters.</p>
+</div></div>
+
+<p class=heading>Categorical populations</p>
+<p>For categorical populations, the unknowns are the population
+probabilities for the different categories. We focus on one category that is of particular
+interest ('success').</p>
+<p>The null and alternative hypotheses are  specified in terms of the probability
+of success, π.</p>
+
+
+
+
+<h2 class="pageName">5.2.2 &nbsp; P-value for testing proportion</h2>
+
+<p class=heading>Test statistic</p>
+<p>A test about a probability, π, could be based on the corresponding sample proportion, <em>p</em>,
+but it is  more
+convenient to use the <strong>number</strong> of successes, <em>x</em>,
+rather than <em>p</em> since we know its distribution,</p>
+
+<div class="centred"><div class="boxed percent50">
+<p><em>X</em>&nbsp; ~ &nbsp;<font face="Arial, Helvetica, sans-serif">binomial</font> (<em>n</em>&nbsp;, &pi;)</p>
+</div></div>
+
+<p class=heading>P-value</p>
+<p>The p-value is the probability of getting such an 'extreme'
+set of data if the null hypothesis is true. Since we know the binomial distribution
+of <em>X</em> when the null hypothesis
+holds,</p>
+
+<div class="centred"><div class="boxed">
+<p>The p-value is a sum of binomial probabilities</p>
+</div></div>
+
+<p>Note that the p-value can be obtained exactly <strong>without need for simulations
+or randomisation</strong>.</p>
+<p class=heading>Example</p>
+<p>In 100 values from a categorical population, 72 successes were observed. Is this
+consistent with probability π = 0.80 of success, or is the probability of success
+lower?</p>
+<p class="eqn"><strong>H<sub>0</sub>:</strong> &nbsp; π&nbsp;=&nbsp;0.80</p>
+<p class="eqn"><strong>H<sub>A</sub>:</strong> &nbsp; π&nbsp;&lt;&nbsp;0.80</p>
+<p>If the null hypothesis is true, we know the distribution of the number of successes, <em>X</em>,</p>
+<p class="eqn"><img src="../../../en/testPropn/images/s_binom.gif" width="356" height="212"></p>
+<p>The p-value for the test is the probability of observing 72 or fewer successes,
+assuming that the null hypothesis holds. Since this is 0.0342, we conclude that there
+would be little chance of seeing as low a number of successes if π = 0.80, so</p>
+<div class="centred"><div class="boxed">
+<p>There is moderately strong evidence that<span class="eqn"> π&nbsp;&lt;&nbsp;0.80</span></p>
+</div></div>
+
+
+
+
+<h2 class="pageName">5.2.3 &nbsp; Another example</h2>
+
+<p class=heading>Rat recognition of symbols</p>
+<p>In an experiment, a rat was trained to 'recognise' three symbols by placing
+food in one of three boxes (marked with a circle, cross and square) and shown
+a card with the correct symbol, this being repeated 100 times.</p>
+<p>After this training period, 90 cards were presented to the rat and the box
+with the same symbol was picked 36 times.</p>
+<p align="center"><strong>H<sub>0</sub>:</strong> &nbsp; π&nbsp;=&nbsp;<sup>1</sup>/<sub>3</sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(guessing)</p>
+<p align="center"><strong>H<sub>A</sub>:</strong> &nbsp; π&nbsp;&gt;&nbsp;<sup>1</sup>/<sub>3</sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(learned)</p>
+<p>If the rat is guessing, the number of correct choices will be binomial with
+π&nbsp;=&nbsp;<sup>1</sup>/<sub>3</sub> and <i>n</i>&nbsp;=&nbsp;90. </p>
+<p class="eqn"><img src="../../../en/testPropn/images/s_binom2_b.gif" width="356" height="212"></p>
+<p>The p-value for the test is the probability of getting as 'extreme' a count
+as was observed if the rat guesses, 0.1103. Since this is high, we
+conclude that there is no evidence of learning from the data.</p>
+<p class=heading>Interpretation of p-values</p>
+<p>A p-value only tells you whether the data are consistent with the null hypothesis
+or are inconsistent with it. From a very small p-value, we can conclude that
+the null hypothesis is probably wrong. However a high p-value does not mean that
+the null hypothesis is correct, only that the observed data are consistent with
+it. In the rat training example, we could never be sure that π was not very very
+slightly different from <sup>1</sup>/<sub>3</sub>.</p>
+
+<div class="centred"><div class="boxed">
+<p>A hypothesis test should never conclude that the null hypothesis
+is correct.</p>
+</div></div>
+
+<p>For the telepathy example, the correct interpretation of p-values  would be...</p>
+
+<div class="centred"><table class="centred" border="0" cellpadding="5" cellspacing="0">
+<tr>
+<th align="left">p-value</th>
+<th align="left">Conclusion</th>
+</tr>
+<tr bgcolor="white">
+<td class="top bottom"><strong>p&nbsp;> &nbsp;0.1</strong></td>
+<td class="top bottom">No evidence against π&nbsp;=&nbsp;<sup>1</sup>/<sub>3</sub>.</td>
+</tr>
+<tr bgcolor="white">
+<td style="border-bottom:1px solid #999999;"><strong>0.05&nbsp;<&nbsp;p&nbsp;<&nbsp;0.1</strong></td>
+<td style="border-bottom:1px solid #999999;">Only slight evidence against π&nbsp;=&nbsp;<sup>1</sup>/<sub>3</sub>.</td>
+</tr>
+<tr bgcolor="white">
+<td style="border-bottom:1px solid #999999;"><strong>0.01&nbsp;<&nbsp;p&nbsp;<&nbsp;0.05   </strong></td>
+<td style="border-bottom:1px solid #999999;">Moderately strong evidence against π&nbsp;=&nbsp;<sup>1</sup>/<sub>3</sub>.</td>
+</tr>
+<tr bgcolor="white">
+<td style="border-bottom:1px solid #999999;"><strong>p&nbsp;<&nbsp;0.01</strong></td>
+<td style="border-bottom:1px solid #999999;">Strong evidence against π&nbsp;=&nbsp;<sup>1</sup>/<sub>3</sub>.</td>
+</tr>
+</table></div>
+
+
+
+
+
+<h2 class="pageName">5.2.4 &nbsp; One- and two-tailed tests</h2>
+
+<p class="heading">P-value for a one-tailed test</p>
+<p>Consider a test of the hypotheses</p>
+<p class=eqn><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;=&nbsp; </strong>&pi;<strong><sub>0</sub></strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;&lt;&nbsp; </strong>&pi;<strong><sub>0</sub></strong></span> </p>
+<p>where π<sub>0</sub> is a constant of interest. The following diagram shows
+how the p-value is found:</p>
+<p class=eqn><img class="gif" src="../../../en/testPropn/images/testProcessA.gif" width="441" height="265"> </p>
+<p>Since the probabilities in one tail of the distribution are added, this is
+called a <strong>one-tailed test</strong>.</p>
+<p class="heading">P-value for a two-tailed test</p>
+<p>If the alternative hypothesis allows <strong>either high or low</strong> values
+of <em>x</em>, the test is called a <strong>two-tailed</strong> test, </p>
+<p class=eqn><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;=&nbsp; </strong>&pi;<strong><sub>0</sub></strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;&ne;&nbsp; </strong>&pi;<strong><sub>0</sub></strong></span></p>
+<p>The p-value is then <strong>double the smaller tail probability</strong> since
+values of <em>x</em> in <strong>both</strong> tails of the binomial distribution
+would provide evidence for <b>H<sub>A</sub></b>.</p>
+<p class="heading">Example</p>
+<p>In a population of people, a proportion 0.574 have blood group O. In a 
+sub-group of this population, a sample of 54 individuals were tested and 26 of
+these had blood group O. Is there any evidence that they differ from the main
+population?</p>
+<p>This question can be expressed with the hypotheses</p>
+<p class=eqn><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;=&nbsp; 0.574</strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;&ne;&nbsp; 0.574</strong></span></p>
+<p>If the sub-group had the same proportion with blood group O as the main population,
+the number out of 54 with this blood group would have the binomial distribution
+below.</p>
+<p class="eqn"><img src="../../../en/testPropn/images/s_binom2Tail.gif" width="356" height="212"></p>
+<p>There is a probability 0.1085 of getting 26 or fewer, but large sample numbers
+with blood group O would <strong>also</strong> throw doubt on the null hypothesis,
+so the p-value is <strong>double</strong> the low-tail probability, 0.2169.</p>
+<p>From the large p-value, we conclude that there is no evidence of a difference
+between the sub-group and the main population.</p>
+
+
+
+
+<h2 class="pageName">5.2.5 &nbsp; Normal approximation</h2>
+
+<p class="heading">Normal approximation</p>
+<p>When the sample size, <em>n</em>, is large,  a normal distribution may
+be used as an <a href="javascript:showNamedPage('randomPropn5')">approximation
+to the binomial</a>.</p>
+<p class=eqn><img class="gif" src="../../../en/randomPropn/images/normalApprox.gif" width="389" height="126"> </p>
+<p class="heading">Approximate p-value</p>
+<p>We  again
+test the hypotheses </p>
+<p class=eqn><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;=&nbsp; </strong>&pi;<strong><sub>0</sub></strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;&lt;&nbsp; </strong>&pi;<strong><sub>0</sub></strong></span> </p>
+<p>If <em>n</em> is large, the approximate normal distribution for <em>x</em> can
+be used to obtain the p-value for the test.</p>
+<p class=eqn><img class="gif" src="../../../en/testPropn/images/normalPValue2.gif" width="471" height="266"> </p>
+<p class="heading">Adverse reactions to drug</p>
+<p>A pharmaceutical company claims that only 1% of a drug's users experience
+adverse reactions. An agency monitors 2500 patients taking the
+drug and observes adverse reactions in 37 cases. Is the occurrence of adverse reactions
+more common than claimed by the company?</p>
+<p class="eqn"><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;=&nbsp; 0.01</strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;&gt;&nbsp; 0.01</strong></span></p>
+<p>where  π = P(adverse effect).</p>
+<p class="eqn"><img src="../../../en/testPropn/images/s_normalApprox_b.gif" width="352" height="165"> </p>
+<p>with a standard normal distribution. Since <em>x</em> is discrete,</p>
+<p class="eqn">P(<em>X</em> ≥ 37) &nbsp; = &nbsp;P(<em>X</em> ≤ 36.5) &nbsp; = &nbsp; P(<em>X</em> ≤
+36.9) &nbsp; = &nbsp; ...</p>
+<p>To find this tail probability, any value of <em>x</em> between 36 and 37
+might have been used when evaluating the z-score. The p-value can be more accurately
+estimate by using 36.5. This is called a <strong>continuity correction</strong>.
+This more accurate p-value in the above example is 0.011 leading to a similar conclusion.</p>
+<div class="centred"><div class="boxed">
+<p>The continuity correction involves <strong>either adding or subtracting 0.5</strong> from
+the observed count, <em>x</em>, before finding the z-score.</p>
+</div></div>
+
+
+
+
+<h2 class="pageName">5.2.6 &nbsp; Statistical distance</h2>
+
+<p class="heading notPrinted">Difference between parameter and estimate</p>
+<p>If the  value of a parameter
+specified by the null hypothesis (e.g. a population proportion, π<sub>0</sub>) is
+close to the corresponding sample statistic (e.g. the sample proportion, <em>p</em>)
+then there is no reason to doubt the null hypothesis. However if they
+are far apart, the data are not consistent with the null hypothesis and we should
+conclude that the alternative hypothesis holds.</p>
+<div class="centred"><div class="boxed">
+<p>A large distance between the estimate and hypothesized value gives evidence
+against the null hypothesis.</p>
+</div></div>
+<p class="heading">Statistical distance</p>
+<p>To help assess this difference, we express it as a <strong>number of standard
+errors</strong> since we know from the 70-95-100 rule of thumb that that
+2 (standard errors) is a large distance, 3 is a very large distance, and 1 is
+not much.</p>
+<p>For a proportion, the number of standard errors is</p>
+<p class="eqn"><img class="gif" src="../../../en/testPropn/images/zForP.gif" width="186" height="56"></p>
+<p>In general, the <strong>statistical distance</strong> of an estimate to a
+hypothesised value of the underlying parameter is</p>
+<p class="eqn"><img class="gif" src="../../../en/testMean/images/zGeneral.gif" width="185" height="37"></p>
+<p>Values more than 2, or less than -2,  suggests that the hypothesized
+value is wrong. However if <em>z</em> is close to zero, <em>p</em> is reasonably
+close to π<sub>0</sub> and we should not doubt the null hypothesis.</p>
+
+
+
+
+<h2 class="pageName">5.2.7 &nbsp; Tests based on statistical distance</h2>
+
+<p class="heading notPrinted">Test statistic and p-value</p>
+<p>The <strong>statistical distance</strong> of an estimate to a hypothesised
+value of the underlying parameter is</p>
+<p class="eqn"><img class="gif" src="../../../en/testMean/images/zGeneral.gif" width="185" height="37"></p>
+<p>If the null hypothesis holds, <em>z</em> has
+approximately a standard normal distribution and it can be used as a test statistic
+for tests about the parameter. The p-value can be determined from the tail areas
+of this standard normal distribution.</p>
+<p class="eqn"><img class="gif" src="../../../en/testMean/images/pValueFromZ.gif" width="471" height="212"></p>
+<p>For a two-tailed test, the p-value is the red tail area and can be looked
+up using either normal tables or in Excel.</p>
+<p class=heading>Example</p>
+<p>We again examine a data set in which a proportion <sup>37</sup>/<sub>2500</sub> = 0.0148 of
+2,500 patients had adverse reactions to a drug. Do more than 1% of such patients
+have adverse reactions?</p>
+<p class="eqn"><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;=&nbsp; 0.01</strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;&gt;&nbsp; 0.01</strong></span></p>
+<p>The diagram below shows how the 'statistical distance' of the sample proportion
+from 0.01 is calculated.</p>
+<p class="eqn"><img src="../../../en/testPropn/images/s_testP_b.gif" width="419" height="224"></p>
+<p>The p-value for the test is the upper tail area of the standard normal distribution
+and is 0.0079 here, so we again conclude that there is strong evidence that more
+than 1% of patients have adverse reactions from the drug.</p>
+<p>Using a 'statistical distance' to test a proportion gives a p-value that is <strong>identical</strong> to
+the p-value based on a normal approximation to the number of successes <strong>without</strong> a
+continuity correction. (The p-value is slightly different if a continuity correction
+is used.) However this approach will  be used to  test many different
+kinds of parameter in later sections.</p>
+<p>(The procedure will be refined slightly 
+when applied to situations where the standard error of the estimate must itself
+be estimated from the sample data. A t distribution will be used instead of a
+standard normal distribution.)</p>
+
+
+
+
+</body>
+</html>

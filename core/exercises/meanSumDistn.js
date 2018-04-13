@@ -1,0 +1,28 @@
+startExercise("exerciseMeanSumProg.MatchNormalSdApplet", 550, 650);
+
+addVariation("generic", "The following four density functions describe the distribution of the #?:string[mean-sum](mean*total)# of the values in samples of different sizes from a normal population with mean zero.\\nMatch the sample sizes with the four distributions by dragging them up or down.", "mean-sum(0:1)#axis[](-5 5 -4 2*-1 1 -1 0.5*-30 30 -30 10)#baseN[](1,5,20)", null, 0);
+
+//----------------------------------------------
+
+startExercise("exerciseMeanSumProg.MatchSampleSizeApplet", 550, 650);
+
+addVariation("generic", "The four density functions on the right below describe the distribution of the #?:string[mean-sum](sample mean*total of the sample values)# from samples of size 1, 2, 4 and 8 from some population. Match the sample sizes with the shapes of the four distributions by dragging them up or down.\\nNote that the matching should be based on the shapes of the distributions not their spreads, since the horizontal scales on the four axes are not displayed but differ.", "shape(1:4)#mean-sum(0:1)", null, 0);
+
+//----------------------------------------------
+
+startExercise("exerciseMeanSumProg.SetMeanDistnApplet", 550, 650);
+
+addVariation("leafLength", "The top diagram below shows the distribution of the lengths of the leaves of a tree.\\nUse the three pop-up menus to display the distribution of", "index(0:1)#popnOffset[index](1,0.5)#popnShape(2:3.2)#axis[index](0 10 0 1*0 4 0 0.5)#varName(Leaf length, cm)#meanName(Mean leaf length, cm)#sumName(Total leaf length, cm)#singleName(Length of a single leaf, cm)", "meanSumType(0)# the mean length of a random sample of #n(2:4)# leaves.|||meanSumType(1)# the total length of a random sample of #n(2:4)# leaves.|||meanSumType(2)# the length of a single leaf sampled from trees of this type.", 0);
+addVariation("income", "The annual income of software engineers in a city has the skew distribution that is shown in the top below.\\nUse the three pop-up menus to display the distribution of", "popnOffset(20)#popnShape(1.2:2.2)#axis(0 120 0 20)#varName(Annual income, $000)#meanName(Average annual income, $000)#sumName(Total annual income, $000)#singleName(Annual income of sampled engineer, $000)", "meanSumType(0)# the average annual income of a random sample of #n(2:4)# software engineers in the city.|||meanSumType(1)# the total annual income of a random sample of #n(2:4)# software engineers in the city.|||meanSumType(2)# the annual income of a single software engineer sampled from those in the city.", 0);
+addVariation("componentLifetime", "The lifetime of an automobile component before it fails has the skew distribution that is shown in the top below.\\nUse the three pop-up menus to display the distribution of", "popnOffset(2)#popnShape(1.2:3.2)#axis(0 20 2 2)#varName(Lifetime, years)#meanName(Average lifetime, years)#sumName(Total lifetime, years)#singleName(Lifetime of component, years)", "meanSumType(0)# the average lifetime of a random sample of #n(2:4)# components.|||meanSumType(1)# the total lifetime of #n(2:4)# randomly sampled components.|||meanSumType(2)# the lifetime of a single sampled component.", 0);
+
+//----------------------------------------------
+
+startExercise("exerciseMeanSumProg.MeanSumProbApplet", 600, 750);
+
+addVariation("appleWeight", "Weights of supermarket apples of one type are approximately normal with mean #mu# = #mean(100:300)# grams and standard deviation #sigma# = $#sd(20:40)# grams.\\nAssuming that the weights of individual apples are independent, consider a bag containing #count(6:10)# apples.", "intervalType(0:2)#maxParam(9999.99)", "sumMeanType(0)# What is the probability that the average weight of the apples in the bag is #cut-offs(-3:3:0)# grams?|||sumMeanType(1)# What is the probability that the total weight of the apples in the bag is #cut-offs(-3:3:0)# grams?|||sumMeanType(2)# What is the probability that the weight of a randomly selected apple from the bag is #cut-offs(-3:3:0)# grams?", 0);
+addVariation("bankBalances", "The bank balance of first year students at the end of the year is approximately normal with mean #mu# = $#mean(100:500)# and standard deviation #sigma# = $#sd(400:800)#, with negative balances indicating overdrafts.\\nConsider a flat containing #count(2:5)# students. If their bank balances are independent,", "intervalType(0:2)#maxParam(9999.9)", "sumMeanType(0)# what is the probability that the mean bank balance of the students is #cut-offs(-3:3:0)# dollars?|||sumMeanType(1)# what is the probability that the total bank balance in the flat is #cut-offs(-3:3:0)# dollars?|||sumMeanType(2)# what is the probability that the bank balance of one particular student is #cut-offs(-3:3:0)# dollars?", 0);
+addVariation("custodialSentences", "The lengths of custodial sentences handed out to male youths aged under 20 has a roughly normal distribution with mean #mu# = #mean[index](2.5,3.3,3.5,4.2,5.1)# years and standard deviation #sigma# = #sd[index](1.1,1.8,1.9,2.1,2.4)# years.\\nAssuming that the sentences given to different youths are independent,", "index(0:4)#intervalType(0:2)#maxParam(99.999)#count[](9,16,25)", "sumMeanType(0)# what is the probability that the average sentence given to #count# sentenced youths will be #cut-offs(-3:3:1)# years?|||sumMeanType(1)# what is the probability that the total of the sentences given to #count# sentenced youths will be #cut-offs(-3:3:1)# years?|||sumMeanType(2)# what is the probability that the sentence given to a single youth will be #cut-offs(-3:3:1)# years?", 0);
+
+//----------------------------------------------
+

@@ -1,0 +1,182 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Calculations with probabilities</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+  <style type="text/css">
+<!--
+.style4 {	color: #000000;
+	font-style: italic;
+}
+span.sub {font-family: Arial, Helvetica, sans-serif;
+			vertical-align: baseline;
+			font-size: 0.7em;
+			position: relative;
+			top: 0.4em;
+			margin-left: 2px;
+			margin-right: 2px;
+}
+-->
+  </style>
+
+	<meta name="index" content="conditional probability, Bayes theorem">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Marginal and conditional probs can be found from joint probs 
+	(and vice versa)</p>
+
+<p>We have used three types of probability to describe a model for two categorical 
+variables &mdash; the <strong>joint</strong> probabilities, the <strong>marginal</strong> 
+probabilities for the two variables and the <strong>conditional</strong> probabilities 
+for each variable given the value of the other variable. These sets of probabilities 
+are closely related. Indeed, the model can be equivalently described by any of 
+the following.</p>
+
+<ul>
+	<li>The joint probabilities, 
+		<span class="style4">p<sub>xy</sub></span></li>
+	
+<li>The marginal probabilities for <i><font color="#000000">X</font></i>, <span class="style4">p<sub>x</sub></span>, 
+and the conditional probabilities for <i><font color="#000000">Y</font></i>, <span class="black"><em>p</em><sub><em>y</em>&nbsp;|&nbsp;<em>x</em></sub></span></li>
+	
+<li>The marginal probabilities for <i><font color="#000000">Y</font></i>, <span class="style4">p<sub>y</sub></span>, 
+and the conditional probabilities for <i><font color="#000000">X</font></i>, <span class="black"><em>p</em><sub><em>x</em>&nbsp;|&nbsp;<em>y</em></sub></span></li>
+</ul>
+
+<p>The diagram below shows how to find each set of probabilities from the others, using
+the formulae described in the earlier pages of this section.
+</p>
+
+<p class=eqn><object data="images/jointCondit.svg" width="537" height="234" alt="relns between joint,condit,marginal probs"></object>
+</p>
+
+  <p class="heading">Bayes theorem</p>
+  
+<p>In particular, note that it is possible to obtain the conditional probabilities 
+for <i><font color="#000000">X</font></i> given <i><font color="#000000">Y</font></i>, 
+<span class="black"><em>p</em><sub><em>x</em>&nbsp;|&nbsp;<em>y</em></sub></span>, 
+from the marginal probabilities of <i>X</i>, <span class="style4">p<sub>x</sub></span>, 
+and the conditional probabilities for <i><font color="#000000">Y</font></i> given 
+<i><font color="#000000">X</font></i>, <span class="black"><em>p</em><sub><em>y</em>&nbsp;|&nbsp;<em>x</em></sub></span>. 
+This can be expressed in a single formula that is called <strong>Bayes Theorem</strong>, 
+but it is easier in practice to do the calculations in two steps, obtaining the 
+joint probabilities, <span class="style4">p<sub>xy</sub></span>, 
+in the first step. There are several important applications of Bayes Theorem.</p>
+
+<div class="diagram"> 
+<p class="heading">Fraudulent tax claims</p>
+<p>Tax inspectors investigate some of the tax returns that are submitted by individuals 
+if they think that some claims for expenses are too high or are unjustified.</p>
+<p>A investigation of the tax return does not always conclude that the claims 
+were fraudulent &mdash; their suspicions are rarely 100% accurate. There are two types 
+of error: </p>
+
+<ul>
+<li>The tax return of someone who has submitted correct claims is investigated.</li>
+<li>The tax return of someone who has submitted a bad claim is not investigated</li>
+</ul>
+
+<p>There are commonly non-zero probabilities for each of these types of error. 
+Consider tax inspectors who have probability 0.1 of investigating a correct claim 
+and 0.2 of not investigating a bad claim. These are conditional probabilities 
+and can be written formally as: </p>
+
+<p class=eqn style="color:#000000"><em>p</em><span class="sub">investigated | good claim</span> &nbsp;= &nbsp;0.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="eqn" style="color:#000000"><em>p</em><span class="sub">not investigated | bad claim</span> &nbsp;= &nbsp;0.2</span></p>
+<p>Since the probability (proportion) of investigating a bad claim is one minus 
+the conditional probability of investigating it (and a similar result for correct 
+claims), the remaining conditional probabilities are</p>
+
+<p class=eqn style="color:#000000"><em>p</em><span class="sub">not iinvestigated | good claim</span> &nbsp;= &nbsp;0.9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="eqn" style="color:#000000"><em>p</em><span class="sub"> investigated | bad claim</span> &nbsp;= &nbsp;0.8</span></p>
+<p>We will also assume that 10% of tax returns are bad claims. This corresponds 
+to a marginal probability, P(bad&nbsp;claim) = 0.10. </p>
+
+<p>The diagram below shows how these marginal probabilities for <i>Y</i> (claim 
+type) and conditional probabilities for <i>X</i> (investigation) given <i>Y</i> 
+can be used to obtain the conditional probabilities for <i>Y</i> (claim type) 
+given <i>X</i> (investigation). </p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="continProg.ConditCalcApplet">
+<param name="yVarName" value="Investigated?">
+<param name="xVarName" value="Claim type">
+<param name="yLabels" value="Invest #Not invest#">
+<param name="xLabels" value="#Bad claim# #Good claim#">
+<param name="xMargin" value="0.10 0.90">
+<param name="yCondit" value="0.80 0.20 0.10 0.90">
+<param name="customText" value="Conditional=Conditional#Marginal=Marginal#Joint probabilities=Joint probabilities">
+</applet>
+</div>
+
+<p>The initial information is shown in blue at the top of the diagram.
+The joint probabilities (green) are first found from them. Click on any value in the
+table of joint probabilities to see how it is related to the initial information.
+</p>
+
+<p>Marginal probabilities for the test results are next obtained by adding the
+columns of joint probabilities. Click on any of the black marginal probabilities to
+see how they are obtained from the joint probabilities.
+</p>
+
+<p>Finally the conditional probabilities for claim type (given whether the tax 
+return has been investigated) are obtained from the joint probabilities and the 
+marginal probabilities for the claim types. Click on the conditional probabilities 
+on the bottom right of the diagram to see the formula. </p>
+
+<hr align=center width="75%">
+
+<p>Initially there might seem to be a contradiction between the two conditional
+probabilities,</p>
+
+<p class=eqn style="color:#000000"><em>p</em><span class="sub">bad claim | investigated</span> &nbsp;= &nbsp;0.471</p>
+<p class=eqn style="color:#000000"><span class="eqn" style="color:#000000"><em>p</em><span class="sub">investigated | bad claim</span> &nbsp;= &nbsp;0.8</span></p>
+<p>However the two probabilities are consistent since they have very different 
+interpretations. The proportional Venn diagrams below help to explain the difference. 
+The diagram on the left shows the marginal and conditional probabilities given 
+in the question. The corresponding diagram on the right shows the marginal probabilities 
+for the whether claims are investigated and the conditional probabilities for 
+good/bad claims. </p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="600" height="330">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="continProg.AreaContinDragApplet">
+<param name="yVarName" value="Investigated?">
+<param name="xVarName" value="Claim type">
+<param name="yLabels" value="Invest #Not inv#">
+<param name="xLabels" value="#Bad claim# #Good claim#">
+<param name="xMargin" value="0.10 0.90">
+<param name="yCondit" value="0.80 0.20 0.10 0.90">
+</applet>
+</div>
+
+<p>Remember that <strong>the areas of the rectangles equal the joint probabilities and are
+therefore the same in both diagrams</strong>.
+</p>
+
+<p>Drag the slider to alter the proportion of people who make bad tax claims in 
+the population. (We assume that the conditional probabilities of investigating 
+the claims remain the same.) Observe that: </p>
+
+<ul>
+<li>When a large proportion in the population make bad tax claims, <span class="eqn" style="color:#000000"><em>p</em><span class="sub">bad claim | investigated</span></span>, is high. This is because there are very few people in the population who make 
+good claims and are investigated.</li>
+<li>When P(bad claim) is small, <span class="eqn" style="color:#000000"><em>p</em><span class="sub">bad claim | investigated</span></span>, is also small since the small number who make bad claims and are investigate is 
+outweighed by those who make good claims and are investigated.</li>
+</ul>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

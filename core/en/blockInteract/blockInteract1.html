@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Varying factor effect</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="randomised block design, interaction, model, normal model">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Very different blocks</p>
+  <p>In some experiments, the blocks are so different that the effect of the factor varies between blocks.</p>
+  <ul>
+    <li>An experiment comparing the yields from different varieties of a vegetable uses plots at several different research stations located throughout a country. The best variety in one location may not be the best in other locations due to some varieties being better suited to particular climates than others.</li>
+    <li>In an on-farm experiment, different farmers often manage their cattle in different ways. The effect of the factor that is being investigated in the experiment may vary according to the farm management strategy.</li>
+  </ul>
+  <p>The most general model for randomised block data has a separate parameter to allow an arbitrary response mean at each combination of block and factor level.</p>
+  <div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+    <tr>
+      <td align="center"><br>
+        <br>
+          <span class="black em">y<sub>ijk</sub></span> &nbsp;= </td>
+      <td align="center"><span class="red">(<em>explained by block-factor <br>
+        combination</em>)<br>
+      µ<em><sub>ij</sub></em></span></td>
+      <td align="center"><br>
+        <br>
+      &nbsp;+&nbsp;</td>
+      <td align="center"><br>
+        (<em>unexplained</em>)<br>
+      ε<em><sub>ijk</sub></em></td>
+    </tr>
+  </table></div>
+  <p>This is similar to the model for interaction between two factors, X and Z, and it is again useful to express it   in the form,</p>
+  <div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+    <tr>
+      <td align="center"><br>
+        <br>
+          <span class="black em">y<sub>ijk</sub></span> &nbsp;= &nbsp;<span class="blue">µ</span></td>
+      <td align="center"><br>
+        <br>
+      &nbsp;+&nbsp;</td>
+      <td align="center"><span class="red">(<em>effect of <br>
+        block i</em>)<br>
+        β<em><sub>i</sub></em></span></td>
+      <td align="center"><br>
+        <br>
+      &nbsp;+&nbsp;</td>
+      <td align="center" class="green">(<em>main effect of <br>
+        factor level j</em>)<br>
+        γ<em><sub>j</sub></em></td>
+      <td align="center"><br>
+        <br>
+      &nbsp;+&nbsp;</td>
+      <td align="center" class="green">(<em>block-factor<br>
+        interaction</em>)<br>
+      δ<em><sub>ij</sub></em></td>
+      <td align="center"><br>
+        <br>
+        &nbsp;+&nbsp;</td>
+      <td align="center"><br>
+        (<em>unexplained</em>)<br>
+      ε<em><sub>ijk</sub></em></td>
+    </tr>
+  </table></div>
+  <p>When written in this way, the sum of the  terms (<span class="green">γ<em><sub>j</sub></em></span> + <span class="purple">δ<em><sub>ij</sub></em></span>) describes the effect of factor level <em>j</em> in block <em>i</em>. There are again redundant parameters, so we  define all parameters that refer to the baseline block and factor level to be zero,</p>
+  <ul>
+    <li><span class="red">β<sub>1</sub> = 0</span></li>
+    <li><span class="green">γ<sub>1</sub> = 0</span></li>
+    <li class="purple">δ<em><sub>ij</sub></em> = 0 &nbsp; &nbsp; &nbsp;if <em>i</em> = 1 or <em>j</em> = 1</li>
+  </ul>
+  <p>The <span class="purple">δ</span>-parameters are again called  <strong>interaction terms</strong> and they describe how much the factor effects differ from block to block &mdash; if the factor effects are the same in all blocks, the <span class="purple">δ</span>-parameters will all be zero.<br>
+</p>
+  <div class="diagram">
+  <p class="heading">Graphical display of model</p>
+		<p>The diagram below again shows data from a randomised block experiment.</p>
+
+        <div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoFactorProg.RotateDragFactorsApplet">
+<param name="yVarName" value="Response">
+<param name="yValues" value="68 63 65 126 128 133 93 101 98 56 59 57 71 66 66 107 110 116 63 60 59 40 41 44">
+<param name="yAxis" value="20 150 20 20">
+<param name="xVarName" value="Block">
+<param name="xValues" value="6@0 6@1 6@2 6@3">
+<param name="xLabels" value="#Block 1# #Block 2# #Block 3# #Block 4#">
+<param name="zVarName" value="Level of factor">
+<param name="zValues" value="2@0 2@1 2@2 2@0 2@1 2@2 2@0 2@1 2@2 2@0 2@1 2@2">
+<param name="zLabels" value="Regular Low #Very low#">
+<param name="zModelTerms" value="factor">
+<param name="xModelTerms" value="factor">
+<param name="interaction" value="true">
+<param name="initialModel" value="90">
+<param name="maxRss" value="999.99">
+<param name="initialRotation" value="30 60">
+<param name="customText" value="None=None#Linear=Linear#Factor=Factor#Terms in model=Terms in model#Interaction=Interaction">
+</applet>
+</div>
+
+		<p>The diagram initially shows a model for the data in which the factor has the same effect within each block. Click <strong>Least squares</strong> then click the<strong> y-z </strong>rotation button the lines for the four blocks are parallel since the effect of changing the factor level is the same within each block.</p>
+		<p>Click the <strong>y-x-z</strong> rotation button then click the checkbox<strong> Interaction</strong> to add extra draggable arrows to the diagram allowing arbitrary response means for all combinations of block and factor level. Click <strong>Least squares</strong> then rotate the diagram to get a better feel for how changing the factor level has a different effect in different blocks.</p>
+		<div class="centred"><div class="boxed">
+		  <p>Decreasing the level of the factor increases the response in blocks 1 and 3, but it decreases the response in blocks 2 and 4.<br>
+</p>
+	</div></div>
+
+<br>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

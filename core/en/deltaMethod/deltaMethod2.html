@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Examples</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="transformation, delta method, geometric distribution, odds, binomial distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>We now give two applications of the delta method.</p>
+<div class="example">
+	<p class="exampleHeading">Estimator of a geometric distribution's parameter, π</p>
+	<p>If \(X \sim \GeomDistn(\pi)\) is the number of independent success-failure trials until the first success, it has probability function</p>
+\[
+p(x) = \pi (1-\pi)^{x-1} \quad \quad \text{for } x = 1, 2, \dots
+\]
+	<p>We showed earlier that the <a href="javascript:showNamedPage('methodOfMoments2')">method of moments estimator</a> of \(\pi\) and its <a href="javascript:showNamedPage('maxLikelihood3')">maximum likelihood estimator</a> are both the inverse of the sample mean,</p>
+\[
+\hat{\pi} \;\;=\;\; \dfrac 1{\overline{X}}
+\]
+	<p>Although we cannot easily find the distribution of \(1 /{\overline{X}}\), we do have formulae for the mean and variance of a geometric distribution's sample mean,</p>
+\[
+E[\overline{X}] = E[X] = \frac 1 {\pi} \spaced{and} \Var(\overline{X}) = \frac {\Var(X)}{n} = \frac{1 - \pi}{n\pi^2}
+\]
+	<p>Defining \(g(y) = 1 / y\) so that \(\hat{\pi} = g(\overline{X}) = 1 / \overline{X}\) and \(g'(y) = -1 / {y^2}\), we can use the delta method to find the approximate variance of \(\hat{\pi}\).</p>
+\[
+\Var(\hat{\pi}) \;\;\approx\;\; \left(g'(\mu_{\overline{X}})\right)^2 \Var(\overline{X}) \;\;=\;\; 
+\left(-\pi^2\right)^2 \times \frac{1 - \pi}{n\pi^2} \;\;=\;\; 
+\frac {\pi^2(1-\pi)} n\]
+	<p>The unknown parameter \(\pi\) can be replaced by its maximum likelihood estimate, \(\hat{\pi}\), to get a numerical value for the variance and its square root, the estimator's standard error.</p>
+</div>
+<p>In this example, the delta method gives the same approximate standard error as the one that was <a href="javascript:showNamedPage('asymptoticMle3')">obtained earlier</a> using the second derivative of the log-likelihood, but  approximations from the two methods are not always equal.</p>
+<p class="heading">Odds</p>
+<p>We have described uncertainty about whether an event will happen using its probability, but an alternative way to describe it is with its <strong>odds</strong>. Odds are  used in gambling but are also used as the basis of some advanced statistical models.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>The <strong>odds</strong> for an event are the ratio of the probability of the event happening to the probability of it not happening,</p>
+\[
+\operatorname{odds}(E) \;\;=\;\; \frac{P(E)}{1 - P(E)}
+\]</div>
+<p>For example, the odds for getting a head when tossing a coin are 1.0 since there are the same probabilities of getting a head and tail. The odds for getting a &quot;6&quot; when rolling a fair 6-sided die are \(\frac 1 5\) since a &quot;6&quot; has a fifth of the probability of &quot;1-5&quot;.</p>
+<p>Note that whereas probabilities must be between 0 and 1, the odds of an event can  be greater than 1.</p>
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Example: Odds of success</p>
+<p>In a series of \(n\) independent success/failure trials that each have odds \(\theta\) of success, \(x\) successes are observed. What is the maximum likelihood estimator of \(\theta\)? If \(n\) is large, what is its approximate standard error?</p>
+</div>
+
+<div class="solution">
+<p>Firstly note that the parameter \(\theta\) is closely related to the usual binomial distribution parameter \(\pi\),</p>
+\[
+\theta \;=\; g(\pi) \;=\; \frac{\pi}{1 - \pi} \spaced{and} \pi \;=\; \frac{\theta}{1 + \theta}
+\]
+<p>Therefore the number of successes, \(X\) has the  binomial distribution</p>
+\[
+X \;\;\sim\;\; \BinomDistn\left(n,\; \frac{\theta}{1 + \theta}\right)
+\]
+<p>The log-likelihood is</p>
+\[
+\ell(\theta) \;\;=\;\; x \log\left(\frac{\theta}{1 + \theta}\right) + (n-x)\log\left(1 - \frac{\theta}{1 + \theta}\right) + K
+\]
+<p>whose derivative could be set to zero to find the maximum likelihood estimator of \(\theta\). However it is easier to use our knowledge that the value of \(\pi\) that maximises the likelihood is</p>
+\[
+\hat{\pi} = \frac x n
+\]
+<p>so the corresponding maximum likelihood estimate of \(\theta\) must be</p>
+\[
+\hat{\theta} = \frac{\hat{\pi}}{1 - \hat{\pi}} = \frac x{n-x}
+\]
+<p>Note that this can be infinite if all observed events are successes, \(x = n\).</p>
+<hr width="75%">
+<p>The variance of the sample proportion, \(\hat{\pi}\), is known to be</p>
+\[
+\Var(\hat{\pi}) \;\;=\;\; \frac{\pi(1 - \pi)} n
+\]
+<p>so we can use the delta method to get the approximate variance of</p>
+\[
+\hat{\theta} \;\;=\;\; g(\hat{\pi}) \;\;=\;\; \frac{\large \hat{\pi}}{\large 1 - \hat{\pi}}
+\]
+<p>We first find</p>
+\[
+g'(\pi) \;\;=\;\; \frac 1{(1-\pi)^2}
+\]
+<p>The delta method gives the approximation</p>
+\[
+\Var(\hat{\theta}) \;\;\approx\;\; \left(g'(\pi)\right)^2 \Var(\hat{\pi}) \;\;=\;\; \frac {\pi}{n(1 - \pi)^3} \;\;=\;\; \frac{\theta(1 + \theta)^2} n
+\]
+<p>The approximate standard error of the estimator is the square root of this,</p>
+\[
+\se(\hat{\theta}) \;\;\approx\;\; (1 + \theta) \sqrt{\frac{\theta}{n}}
+\]
+<p>A numerical value can be found if \(\theta\) in this formula is replaced by \(\hat{\theta}\).</p>
+</div>
+
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

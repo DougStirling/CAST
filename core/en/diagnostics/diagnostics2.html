@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Outliers and leverage</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="leverage, outliers, residual">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Problem with high-leverage observations</p>
+  <p>High leverage is a good thing if you <strong>know</strong> that all data arose 
+		from a normal linear model of the form</p>
+	<p class="eqn"><img src="../regnAnova/images/normModel.gif" width="359" height="21"> 
+</p>
+	<p class="heading">Outliers and residuals</p>
+	<p>Unfortunately, in a real data set, the errors are unknown, so we must use 
+		the residuals from the least squares line as estimates of the errors. The 
+		residuals can be used in a similar way to give information about whether there 
+		is an outlier.</p>
+	<p class=eqn> <img class="gif" src="../regnProblem/images/errorsDiagram.gif" width="297" height="274"> 
+		<img class="gif" src="../regnProblem/images/residualsDiagram.gif" width="297" height="274"> 
+</p>
+	<p>It might be expected that the outlier could be detected by an examination 
+		of the residuals from the model. However the high leverage usually results 
+		in a residual that is no larger than the others.</p>
+	
+<div class="centred"><div class="boxed">
+<p>An examination of residuals often fails 
+						to detect an outlier if it is a high-leverage point.</p>
+</div></div>
+
+	<br>
+	
+	<div class="diagram">
+		<p class="heading">Illustration</p>
+
+<p>The scatterplot below shows a data set and the corresponding residuals.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="residProg.DragOutlierApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="xValues" value="0.6 0.8 1.0 1.2 1.4 1.6 1.8 2.0 2.2 4.0">
+<param name="yValues" value="37 36 40 43 44 42 45 48 49 66">
+<param name="horizAxis" value="0.5 4.5 1 1">
+<param name="vertAxis" value="30 75 30 10">
+<param name="residAxis" value="-40 40 -40 20">
+<param name="customText" value="What you would like to see=What you would like to see#What you actually get=What you actually get">
+</applet>
+</div>
+
+<p>The cross on the far right can be dragged with the mouse. Initially, the diagram 
+shows what we would ideally have <span class="darkred bold">hoped</span>  
+to see in the residuals &mdash; the other points are close to a straight line, so if 
+the final cross is dragged away from this line, we would have <span class="bold darkred">hoped</span>  
+that it would result in a large residual.</p>
+<p><span class="darkred bold">This is not what actually happens.</span>  
+Choose <strong>What you actually get...</strong> from the pop-up menu at the top 
+and drag the point again. The least squares line is pulled towards the point, 
+so when it is dragged away from the line followed by the other points, its residual 
+is smaller than might be expected and the residuals for the other points are larger.</p>
+<p>This is especially evident when the point being dragged has an x-value of around 
+4 &mdash; i.e. when it is a high leverage point. Drag it down to a y-value of about 
+40 and observe that its residual is no more extreme than those of the other points.</p>
+
+<div class="centred"><div class="boxed">
+<p>Do not rely on an extreme residual to tell you whether a high-leverage 
+point is an outlier.</p>
+</div></div>
+
+
+<br>
+
+</div>
+
+  <p class="heading">High-leverage points</p>
+
+  <p>High-leverage points have a large <strong>potential</strong> to affect the 
+		results of an analysis if they correspond to observations that do not follow 
+		the linear model, but the resulting problem may not be evident in an examination 
+		of residuals. It is therefore important to identify high-leverage points.</p>
+	<p>From their definition, it can be easily shown that all leverages sum to 2.</p>
+	<p class=eqn><img src="images/leverageAtXi.gif" width="303" height="53" alt="eqn"> 
+	</p>
+	<p>They therefore have an average value of <sup>2</sup>/<sub><em>n</em></sub> 
+		and their minimum possible value is <sup>1</sup>/<sub><em>n</em></sub>. A 
+		rule-of-thumb is therefore to carefully examine any points whose leverage 
+		is more than twice their average value:</p>
+	
+<div class="centred"><div class="boxed">
+<p>Carefully examine points with leverage <em>h<sub>ii</sub></em> 
+				&gt; <sup>4</sup>/<sub><em>n</em></sub></p>
+</div></div>
+
+
+  <p>It is important to note that high leverage does not necessarily mean that 
+		there is a problem.</p>
+	
+<div class="centred"><div class="boxed">
+<p>High leverage on its own does <span class="bold red">not</span>  
+				indicate that something is <span class="bold red">wrong</span>  
+				with the normal linear model. Leverage only depends on the explanatory 
+				variable and the actual response value may still be consistent with the 
+				model</p>
+</div></div>
+
+	<p>Later in this section, we will investigate whether a high-leverage point 
+		actually <strong>does</strong> influence the results.</p>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+</p>
+</div>
+
+</body>
+</html>

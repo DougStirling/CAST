@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Components sums of squares for two groups</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="comparing groups, sums of squares">
+	<meta name="dataset" content="Egg shell density">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Model</p>
+<p>As an initial example, consider the normal model for data from two groups,</p>
+
+<p class="eqn">group 1: &nbsp; <img src="images/group1Model.gif" width="154" height="23" align="absmiddle"></p>
+
+<p class="eqn">group 2: &nbsp; <img src="images/group2Model.gif" width="154" height="23" align="absmiddle"></p>
+<p>These can be written together as</p>
+<p class="eqn"> <img src="images/combinedGroupModel.gif" width="263" height="38" align="absmiddle"></p>
+<p>where <em>Y<sub>ij</sub></em> is the <em>j</em>'th of the <em>n<sub>i</sub></em> values 
+from group <em>i</em>.</p>
+<p class="heading">Components</p>
+<p>The difference between a value and the overall mean, <span style="position:relative; top:4px"><img src="../../images/symbol.yBar.png" width="10" height="14" align="baseline"></span>, 
+can be written as the sum of two components,</p>
+<p class="eqn"><img src="images/basicComponents.gif" width="233" height="23"></p>
+<p>It is useful to further split the second component into two separate components, 
+depending on its group,</p>
+<p class="eqn"><img src="images/groupComponents.gif" width="358" height="53"></p>
+<p>The green components are the difference between the values and their group 
+mean for values in group 1, but are zero for values in group 2. The blue components 
+have a similar definition for group 2.</p>
+<p class="heading">Sums of squares</p>
+<p>The sums of squares of these three components satisfy a similar equality,</p>
+<p class="eqn"><img src="images/groupComponentSsqs.gif" width="419" height="42"></p>
+<p>Since the first component on the right is the same for all <em>n<sub>i</sub></em> values 
+in group <em>i</em>, the equation can be simplified as,</p>
+<p class="eqn"><img src="images/groupComponentSsqs2.gif" width="434" height="55"></p>
+<br>
+
+<div class="diagram">
+<p class="heading">Egg shell density</p>
+<p>In a randomised experiment, 12 hens were given a diet supplemented with leaves 
+of a plant containing vitamin D and a different control group of 12 hens was given 
+a normal diet. After two weeks, the shell density of the egs produced by each 
+hen was recorded.</p>
+<p>The jittered dot plot on the left shows the data.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="varianceProg.Group2ComponentsApplet">
+<param name="yVarName" value="Shell density">
+<param name="yValues" value="79.5 81.4 74.7 77.5 71.2 83.0 80.9 73.1 76.7 84.8 78.8 75.9 73.9 69.3 71.5 83.3 75.5 66.3 82.1 78.4 68.0 77.9 70.6 74.8">
+<param name="yAxis" value="64 86 65 5">
+<param name="xVarName" value="Diet">
+<param name="xLabels" value="Supplemented Control">
+<param name="xValues" value="12@0 12@1">
+<param name="decimals" value="3">
+<param name="maxSsq" value="999.99">
+<param name="componentAxis" value="-12 12 -10 5">
+<param name="dotPlotWidth" value="110">
+<param name="ssqNames" value="Total variation#Between means#Within group 1#Within group 2">
+<param name="dataSpacing" value="20">
+<param name="customText" value="Component=Component">
+</applet>
+</div>
+
+<p>Use the pop-up menu to draw the different components on the dot plot. (The 
+dot plot on the right shows the distribution of the individual components.)</p>
+
+<ul>
+<li>Click on crosses to see the three components for individual hens.</li>
+<li>Observe that the sums of squares of the components add up to the total sum 
+of squares.</li>
+</ul>
+
+<br>
+</div>
+
+<p class="heading">Interpretation</p>
+<p>The three component sums of squares hold information about different aspects 
+of the model.</p>
+
+<table border="0" cellpadding="5" cellspacing="0">
+<tr> 
+<th class="black">Source of variation</th>
+<th class="black">Sum of sqrs</th>
+<th class="black">Affected by:</th>
+<th class="black">Holds information about parameters:</th>
+</tr>
+<tr> 
+<td style="border-top:1px solid #999999; border-bottom:1px solid #999999;" class="darkred">Between means</td>
+<td style="border-top:1px solid #999999; border-bottom:1px solid #999999;" align="center"><img src="images/betweenSsq.gif" width="90" height="40"></td>
+<td style="border-top:1px solid #999999; border-bottom:1px solid #999999;" class="darkred">Depends only on the group means, not the variation within 
+the groups</td>
+<td style="border-top:1px solid #999999; border-bottom:1px solid #999999;" align="center">&micro;<sub>2</sub>&nbsp;&minus;&nbsp;&micro;<sub>1</sub></td>
+</tr>
+<tr> 
+<td style="border-bottom:1px solid #999999;" class="green">Within group 1</td>
+<td style="border-bottom:1px solid #999999;" align="center"><img src="images/within1Ssq.gif" width="90" height="40"></td>
+<td style="border-bottom:1px solid #999999;" class="green">Depends only on the spread of value in group 1</td>
+<td style="border-bottom:1px solid #999999;" align="center">&sigma;<sub>1</sub></td>
+</tr>
+<tr> 
+<td style="border-bottom:1px solid #999999;" class="darkblue">Within group 2</td>
+<td style="border-bottom:1px solid #999999;" align="center"><img src="images/within2Ssq.gif" width="90" height="40"></td>
+<td style="border-bottom:1px solid #999999;" class="darkblue">Depends only on the spread of value in group 1</td>
+<td style="border-bottom:1px solid #999999;" align="center">&sigma;<sub>2</sub></td>
+</tr>
+</table>
+<br>
+
+<div class="diagram">
+<p class="heading">Demonstration</p>
+<p>The diagram below shows a data set of 15 values from each of two groups. The 
+sliders under the diagram can be used to adjust the sample means and standard 
+deviations of the two groups &mdash; i.e. they shift and scale the data.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="varianceProg.TwoGroupSsqApplet">
+<param name="varName" value="Response">
+<param name="values" value="0.060 0.205 0.110 0.264 0.603 0.555 0.097 0.480 0.598 0.995 0.089 0.674 0.946 0.910 0.895 0.926 0.472 0.493 0.277 0.045 0.301 0.492 0.179 0.067 0.856 0.842 0.419 0.841 0.443 0.410">
+<param name="yAxis" value="-2 22 0 5">
+<param name="catVarName" value="Group">
+<param name="catLabels" value="#Group 1# #Group 2#">
+<param name="catValues" value="15@0 15@1">
+<param name="maxSsq" value="999.99 999.99 99.99 9.999">
+<param name="meanLimits" value="5.0 15.0 100 10.0">
+<param name="sdLimits" value="1.00 4.00 60 2.00">
+<param name="componentName" value="Total variation#Between means#Within group 1#Within group 2">
+</applet>
+</div>
+
+<br>
+<dl>
+<dt><span class="red">Adjust the two sample means</span></dt>
+<dd>Observe that the sum of squares between means is changed, but the other sums 
+of squares remain the same. The sum of squares between means reflects the size 
+of the difference between the group means &mdash; it is zero if the two means are equal.</dd>
+<dt><span class="green">Adjust the sample standard deviation in group 1</span></dt>
+<dd>Observe that only the sum of squares within group 1 is affected. The bigger 
+the spread in group 1, the bigger its sum of squares.</dd>
+<dt><span class="darkblue">Adjust the sample standard deviation in group 2</span></dt>
+<dd>Observe that only the sum of squares within group 2 is affected. The bigger 
+the spread in group 2, the bigger its sum of squares.</dd>
+</dl>
+
+<p>The three component sums of squares therefore reflect characteristics of the 
+model that are easily interpreted.</p>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

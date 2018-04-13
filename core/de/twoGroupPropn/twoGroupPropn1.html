@@ -1,0 +1,234 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Modelling two proportions</title>
+
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+  <script type="text/javascript">
+var svgNames = new Array();
+svgNames[0] = "images/birthSex.svg";
+svgNames[1] = "images/chromosome.svg";
+svgNames[2] = "images/binge.svg";
+svgNames[3] = "images/asprin.svg";
+function changeSvgImage(select) {
+var newIndex = select.selectedIndex;
+var image = document.getElementById('dataImage');
+image.src = svgNames[newIndex];
+}
+  </script>
+
+	<meta name="index" content="comparing groups, probability, difference, proportion, estimation">
+	<meta name="dataset" content="Births by season">
+	<meta name="dataset" content="Chromosomes and crime">
+	<meta name="dataset" content="Binge drinking">
+	<meta name="dataset" content="Aspirin and strokes">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Daten aus zwei Gruppen modellieren</p>
+
+<p>F&uuml;r Daten aus unabh&auml;ngigen Stichproben
+zweier Gruppen
+benutzen wir ein separates univariates Modell f&uuml;r jede Gruppe.</p>
+
+<table class="centred" bgcolor="#ffffff" border="1" cellpadding="10" cellspacing="0" width="75%">
+
+  <tbody>
+
+    <tr>
+
+      <td><strong>Die Daten in jeder Gruppe werden separat
+in Form
+einer willk&uuml;rlichen Stichprobe einer univariaten Verteilung
+modelliert.</strong></td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<p>Details h&auml;ngen von der Art der Messungen der
+jeweiligen Gruppe
+ab.</p>
+
+<dl>
+
+  <dt>Numerische Messungen</dt>
+
+  <dd>Um jede Gruppe zu bearbeiten, wird eine numerische
+Verteilung
+(z.B. eine Normalverteilung) verwendet. Die vorherigen Teile dieses
+Kapitels beschrieben Modelle dieser Art und die damit verbundene
+Inferenz.</dd>
+
+  <dt>Kategorische Messungen</dt>
+
+  <dd>Es wird angenommen, dass die Daten jeder Gruppe eine
+zuf&auml;llige Stichprobe von kategorischen Werten einer Population
+sind, deren Populationsanteile (Wahrscheinlichkeiten) in der Regel
+unbekannt sind.</dd>
+
+  <dt>Kategorische Messungen mit <span style="color: rgb(0, 0, 0);">nur
+zwei Kategorien</span>&nbsp;</dt>
+
+  <dd>In diesem Abschnitt betrachten wir den speziellen Fall, bei
+dem
+es nur zwei m&ouml;gliche Kategorien gibt, n&auml;mlich
+&bdquo;Erfolg&ldquo; und &bdquo;Misserfolg&ldquo;.</dd>
+
+</dl>
+
+<p class="eqn"><object data="images/model.svg" alt="popn -&gt; sample" height="196" width="368"></object>
+</p>
+
+<p class="heading">Sind die beiden Gruppen das Gleiche?</p>
+
+<p>Wir sind oft an Unterschieden zwischen zwei Gruppen
+interessiert.
+Das zwei-Gruppen Modell "Erfolg/Misserfolg" beinhaltet nur zwei
+Parameter, &pi;1 und &pi;2, so dass wir den Unterschied
+zwischen den
+Wahrscheinlichkeiten &pi;<sub>2</sub>&nbsp;-&nbsp;&pi;<sub>1</sub>errechnen.
+Wenn die Differenz 0 betr&auml;gt, sind die beiden Gruppen gleich.</p>
+
+<table class="centred" bgcolor="#ffffff" border="1" cellpadding="10" cellspacing="0" width="75%">
+
+  <tbody>
+
+    <tr>
+
+      <td><strong>Der Wert von </strong><strong>&pi;<sub>2</sub>&nbsp;-&nbsp;&pi;<sub>1</sub></strong><strong>
+beschreibt deutlich einen Unterschied zwischen den beiden Gruppen.</strong></td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<p>In der Praxis ist der Wert von&nbsp;&pi;<sub>2</sub>&nbsp;-&nbsp;&pi;<sub>1</sub>
+unbekannt, kann jedoch anhand von Stichprobendaten gesch&auml;tzt
+werden. Der Unterschied der Stichprobenanteile<em> p</em><sub>2</sub>&nbsp;-&nbsp;<em>p</em><sub>1
+</sub>ist eine Sch&auml;tzung. Allerdings ist dies eine
+zuf&auml;llige
+Menge, die von Stichprobe zu Stichprobe variiert und man so ihre
+Variabilit&auml;t bei der Interpretation ihres Wertes
+ber&uuml;cksichtigen muss.</p>
+
+<div class="diagram">
+<p class="heading">Typische Datens&auml;tze</p>
+
+<p>Das nachfolgende Diagramm zeigt ein paar Datens&auml;tze,
+bei denen
+&bdquo;Erfolg&ldquo; oder &bdquo;Misserfolg&ldquo; der
+jeweiligen
+beiden Gruppen aufgezeichnet wurde.</p>
+
+<form>
+  <select name="dataset" onchange="changeSvgImage(this)">
+  <option value="0" selected="selected">Gender of
+babies in summer and
+winter</option>
+  <option value="1">Chromosome abnormalities and crime</option>
+  <option value="2">Binge drinking by students</option>
+  <option value="3">Aspirin and strokes</option>
+  </select>
+
+</form>
+
+<p align="center"><iframe src="images/birthSex.svg" id="dataImage" frameborder="0" height="336" width="514"></iframe></p>
+
+<p>Jeder Datensatz wird durch eine Kontingenztabelle
+zusammengefasst..</p>
+
+<p>Beachte, dass die rote Frage nicht auf bestimmte Individuen
+der
+Studie verweist, sondern nach den Unterschieden der Gruppen im
+Allgemeinen fragt.</p>
+
+<table class="centred" bgcolor="#ffffff" border="1" cellpadding="10" cellspacing="0" width="75%">
+
+  <tbody>
+
+    <tr>
+
+      <td><strong>Wir sind eher am Unterschied der
+Population&nbsp;</strong><strong>&pi;<sub>2</sub>&nbsp;-&nbsp;&pi;<sub>1</sub></strong><strong>
+interessiert, als am Unterschied der Stichprobe </strong><strong><em>p</em><sub>2</sub>&nbsp;-&nbsp;<em>p</em><sub>1</sub></strong><strong>.<br>
+
+      <font color="#ff0000">Wir m&uuml;ssen die
+Genauigkeit unserer
+Punktsch&auml;tzung verstehen.</font></strong></td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<p class="heading">Simulation der Variabilit&auml;t
+von Stichprobe zu
+Stichprobe</p>
+
+<p>Das nachfolgende Diagramm w&auml;hlt Proben mit der
+Gr&ouml;&szlig;e
+100 aus jeweils zwei kategorischen Populationen.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" height="340" width="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoGroupProg.PDiffSampleApplet"><param name="yVarName" value="Reaktion"><param name="yLabels" value="Erfolg Misserfolg"><param name="continProbs" value="0.3 0.7 0.4 0.6"><param name="xVarName" value="Group"><param name="xValues" value="100@0 100@1"><param name="xLabels" value="#Gruppe A# #Gruppe B#"><param name="summaryDecimals" value="2"><param name="randomSeed" value="330045782"><param name="propnDecimals" value="3"></applet></div>
+
+<p>Zun&auml;chst ist die Wahrscheinlichkeit eines Erfolges in
+der
+Gruppe A &pi;<sub>1</sub>&nbsp;=&nbsp;0,30, so
+dass wir 30 Erfolge und
+70 Misserfolge bei einem Umfang von 100 Werten <strong>erwarten</strong>
+k&ouml;nnen. In Gruppe B
+ist &pi;<sub>2</sub>&nbsp;=&nbsp;0,40, so dass
+wir 40 Erfolge erwarten.
+Die oben stehende Tabelle zeigt die erwarteten Z&auml;hlungen und
+eine
+zuf&auml;llige Stichprobe aus dem Modell.</p>
+
+<p>Klicke ein paar mal <strong>Stichprobe
+ziehen</strong>, um die Variabilit&auml;t der
+Z&auml;hlungen der
+Stichproben von Erfolg und Misserfolg zu beobachten. Die
+Stichprobenanteile und ihre Unterschiede werden auf der rechten Seite
+angezeigt.</p>
+
+<div class="boxed">
+<p>Der Unterschied <em>p</em><sub>2</sub>&nbsp;-&nbsp;<em>p</em><sub>1</sub>
+variiert von Stichprobe zu Stichprobe und stimmt oft nicht mit dem
+Unterschied der Population &pi;<sub>2</sub>&nbsp;-&nbsp;&pi;<sub>1</sub>
+&uuml;berein.</p>
+
+</div>
+
+<p>Schlie&szlig;lich verwende die beiden Schieberegler, um
+die Werte
+der Populationswahrscheinlichkeit, &pi;2 und &pi;1, anzupassen.
+Beachte:</p>
+
+<div class="boxed">
+<p>Wenn &pi;2 und &pi;1 gleich sind, und f&uuml;r <em>p</em><sub>2</sub>&nbsp;-&nbsp;<em>p<sub>1</sub></em>
+positive und negative Werte gleich oft auftreten, wird ihre Verteilung
+auf 0 gesetzt.</p>
+
+</div>
+
+<p>Wir werden die Verteilung von <em>p</em><sub>2</sub>&nbsp;-&nbsp;<em>p<sub>1</sub></em>
+auf der n&auml;chsten Seite genauer pr&uuml;fen.&nbsp;</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

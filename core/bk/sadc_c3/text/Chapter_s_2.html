@@ -1,0 +1,395 @@
+<html>
+<head>
+  <title>2. Time Series</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 2 &nbsp; Time Series</h1>
+<h1 class="sectionName">2.1 &nbsp; Long-term trend</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Linear trend</li>
+<li>Quadratic trend</li>
+<li>Forecasting</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='4'>
+<li>Polynomial trend</li>
+<li>Detrending a time series</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">2.1.1 &nbsp; Linear trend</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Least squares</p>
+	<p>Moving averages provide a good <strong>description</strong> of the trend
+ in a time series but are less useful for <strong>forecasting</strong> future
+values. For forecasting, it is better to describe trend  with a mathematical
+equation,</p>
+<p class=eqn><span class="black"><em>trend</em> &nbsp; = &nbsp; function (<em> time</em> )</span> </p>
+	<p>The simplest such model is a <strong>linear model</strong>,</p>
+	<p class=eqn><span class="black"><em>trend</em> &nbsp; = &nbsp; <em>b</em><sub>0</sub> &nbsp;+ &nbsp;<em>b</em><sub>1</sub><em> time</em></span> </p>
+	<p><em>b</em><sub>0</sub> and <em>b</em><sub>1</sub> can be estimated by <strong>least squares</strong> to
+minimise</p>
+<p class=eqn><img class="gif" src="../../../en/trend/images/rss.gif" id="gif_image_1_1_1" width="233" height="26"><iframe class="svg" src="../../../en/trend/images/rss.svg" id="svg_image_1_1_1" width="233" height="26" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_1_1_1");</script> </p>
+	<p class=eqn><img src="../../../en/trend/images/s_linear.gif" width="456" height="311"></p>
+	<p class="heading">Recoding the years</p>
+	<p>The large intercept in the example above is avoided if the years are recoded
+ so that
+some year within the range of the data becomes &quot;year 0&quot;.</p>
+<p class=eqn><span class="black"><em>trend</em> &nbsp; = &nbsp; <em>b</em><sub>0</sub> &nbsp;+ &nbsp;<em>b</em><sub>1</sub> <font size="+1">(</font><em>time</em> &minus; 1960<font size="+1">)</font></span> </p>
+	<p>This model is equivalent and gives the same fitted values and 
+		forecasts. </p>
+	<p class="eqn"><img src="../../../en/trend/images/s_linearRecoded.gif" width="456" height="311"></p>
+
+
+
+
+<h2 class="pageName">2.1.2 &nbsp; Quadratic trend</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Quadratic models</p>
+	<p>If the trend in a time series is nonlinear, a linear model should not be
+used. A simple model that can explain some simple types of curvature is a <strong>quadratic
+model</strong>:</p>
+<p class=eqn><span class="black"><em>trend</em> &nbsp; = &nbsp; <em>b</em><sub>0</sub> &nbsp;+ &nbsp;<em>b</em><sub>1</sub><em> time</em> &nbsp;+ &nbsp;<em>b</em><sub>2</sub><em> time</em><sup>2</sup></span> </p>
+	<p>This has <strong>three</strong> parameters that 
+		can be adjusted to improve the fit of the model. Residuals
+ are again defined as</p>
+	<p class=eqn><span class="black"><em>e<sub>i</sub></em>&nbsp;&nbsp;=&nbsp;&nbsp;<em>y<sub>i</sub></em>&nbsp;&minus;&nbsp;<em>trend<sub>i</sub></em></span> </p>
+	<p>and the <strong>least squares</strong> estimates of <em>b</em><sub>0</sub>, <em>b</em><sub>1</sub>
+and <em>b</em><sub>2</sub>  are
+the values that minimise the residual sum of squares,</p>
+<p class=eqn><span class="black"><font size="+1">&Sigma;</font> <em>e<sub>i</sub></em><sup>2</sup></span> </p>
+	<p class="eqn"><img src="../../../en/trend/images/s_quadratic.gif" width="507" height="315"></p>
+
+
+
+
+<h2 class="pageName">2.1.3 &nbsp; Forecasting</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Using linear and quadratic models for forecasting</p>
+	<p>After fitting a linear or quadratic model by least squares, forecasting 
+		is simply a matter of inserting future time values into its equation.</p>
+	<p class="heading">Dangers in forecasting</p>
+	<p>It is important to realise that the forecasts from linear or quadratic models
+are highly dependent on the type of line or curve that is chosen for modelling.
+The dangers are the same as those for extrapolation in bivariate relationships.</p>
+
+<div class="centred"><div class="boxed">
+<p>Beware forecasting many time periods into the future &mdash; the 
+				shape of the actual trend line might be different from your model.</p>
+</div></div>
+
+
+
+
+<h2 class="pageName">2.1.4 &nbsp; Polynomial trend</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Cubic and higher-degree polynomial models</p>
+	<p>If a quadratic model does not adequately describe the shape of the trend in a time series, it is tempting to try to further increase the order of the polynomial,</p>
+	<p class=eqn><span class="black"><em>trend</em> &nbsp; = &nbsp; <em>b</em><sub>0</sub> &nbsp;+ &nbsp;<em>b</em><sub>1</sub><em> time</em> &nbsp;+ &nbsp;<em>b</em><sub>2</sub><em> time</em><sup>2</sup> &nbsp;+ &nbsp;<em>b</em><sub>3</sub><em> time</em><sup>3</sup> &nbsp;+ &nbsp;...</span> </p>
+	<p>This kind of polynomial model  can also be fitted by least squares.</p>
+	<p class="eqn"><img src="../../../en/trend/images/s_polynomial.gif" width="550" height="327"></p>
+	<p>A polynomial of degree 3 or 4 often provides a fairly smooth description
+of trend but polynomial models usually behave badly (with sudden increases or
+decreases) beyond the data points, so...</p>
+	<div class="centred"><div class="boxed">
+		<p>Polynomial models of degree greater than 2 should not be used for forecasting.</p>
+	</div></div>
+
+	
+
+
+
+<h2 class="pageName">2.1.5 &nbsp; Detrending a time series</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Residuals</p>
+	<p>The residuals for a time series model subtract the trend from the values
+and are called the <strong>detrended</strong> values,</p>
+<p class=eqn><span class="black"><em>e<sub>i</sub></em>&nbsp;&nbsp;=&nbsp;&nbsp;<em>y<sub>i</sub></em>&nbsp;&minus;&nbsp;<em>trend<sub>i</sub></em></span> </p>
+	<p>If the model under consideration fits well, there should be no 
+		pattern in the residuals &mdash; each should have the same chance of being positive 
+		or negative.</p>
+
+
+
+
+<h1 class="sectionName breakBefore">2.2 &nbsp; Short-term fluctuations</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Autocorrelation</li>
+<li>AR(1) model for autocorrelation</li>
+<li>AR(1) model and trend</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='4'>
+<li>Trend or autocorrelation?</li>
+<li>Cyclical patterns</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">2.2.1 &nbsp; Autocorrelation</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Autocorrelation of detrended values</p>
+	<p>In many time series, there is a tendency for unusually large values 
+to be followed by other similar values, even after detrending the series,</p>
+<p class=eqn><span class="black"><em>e<sub>i</sub></em>&nbsp;&nbsp;=&nbsp;&nbsp;<em>y<sub>i</sub></em>&nbsp;&minus;&nbsp;<em>trend<sub>i</sub></em></span> </p>
+	<p>Any tendency for  these residuals to be followed by others of similar size
+is called
+<strong>autocorrelation</strong> and can be described by the correlation coefficient
+between pairs of adjacent residuals.</p>
+<p class="eqn"><img src="../../../en/cyclic/images/s_autoCorr.gif" width="509" height="516"></p>
+	<p>In this example, the <strong>autocorrelation</strong> is 0.71, so there is some tendency for values above the trend line to be followed by others on the same side of it.</p>
+	<p>Positive autocorrelation has an important impact on forecasting 
+		&mdash; if the most recent value is above the trend line, we should forecast 
+the next value  will also be above it.</p>
+
+
+
+
+<h2 class="pageName">2.2.2 &nbsp; AR(1) model for autocorrelation</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Predicting a value from the previous value</p>
+	<p>In a time series without trend, positive autocorrelation means that  values
+tend to be followed by others of similar size.</p>
+<p class=eqn><img class="gif" src="../../../en/cyclic/images/yAgainstPrevious.gif" id="gif_image_2_2_2" width="276" height="207"><iframe class="svg" src="../../../en/cyclic/images/yAgainstPrevious.svg" id="svg_image_2_2_2" width="276" height="207" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_2_2");</script> </p>
+	<p>We can try to predict <em>y<sub>t</sub></em> from its previous value by fitting
+a straight line by least squares to this scatterplot,</p>
+	<p class=eqn><span class="black"><em>y<sub>t</sub></em>&nbsp;&nbsp;=&nbsp;&nbsp;<em>b</em><sub>0</sub>&nbsp;&nbsp;+&nbsp;&nbsp;<em>b</em><sub>1 </sub><em>y<sub>t</sub></em><sub>&minus;1</sub></span> </p>
+	<p>This  is a type of <strong>auto-regressive model</strong>, and is usually 
+		called an <strong>AR(1) model</strong>.</p>
+	<p class=eqn><img class="gif" src="../../../en/cyclic/images/arForecastPlot.gif" id="gif_image_2_2_1" width="376" height="206"><iframe class="svg" src="../../../en/cyclic/images/arForecastPlot.svg" id="svg_image_2_2_1" width="376" height="206" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_2_1");</script> </p>
+	<p class="heading">Forecasting further into the future</p>
+	<p>The model only directly predicts one time period into the future,</p>
+<p class=eqn><span class="black"><span style="position:relative; top:4px"><img src="../../../en/../images/symbol.yHat.png" width="10" height="17"></span><em><sub>t</sub></em>&nbsp;&nbsp;=&nbsp;&nbsp;<em>b</em><sub>0</sub>&nbsp;&nbsp;+&nbsp;&nbsp;<em>b</em><sub>1 </sub><em>y<sub>t</sub></em><sub> &minus; 1</sub></span> </p>
+	<p>but we can predict further into the future using:</p>
+	<p class=eqn><span class="black"><span style="position:relative; top:4px"><img src="../../../en/../images/symbol.yHat.png" width="10" height="17"></span><em><sub>t</sub></em><sub> + </sub><em><sub>k</sub></em>&nbsp;&nbsp;=&nbsp;&nbsp;<em>b</em><sub>0</sub>&nbsp;&nbsp;+&nbsp;&nbsp;<em>b</em><sub>1 </sub><em><span style="position:relative; top:4px"><img src="../../../en/../images/symbol.yHat.png" width="10" height="17"></span><sub>t</sub></em><sub> + <em>k </em>&minus;1</sub></span></p>
+
+
+
+
+<h2 class="pageName">2.2.3 &nbsp; AR(1) model and trend</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Forecasting when there is trend</p>
+	<p>The method described in the previous page works well if there is no trend
+in the time series. If there <strong>is</strong> trend, we should remove it before
+using an AR(1) model. The steps for forecasting a future value are therefore...</p>
+ <ol>
+		<li>Estimate the trend in the series.</li>
+		<li>Fit an AR(1) model to the detrended values (residuals).</li>
+		<li>Forecast future detrended values by applying the AR(1) model to the most
+recent detrended value.</li>
+		<li>Forecast the trend (using the model fitted in step 1) and add the detrended
+ forecast from step 3.</li>
+	</ol>
+	<p class="gray">(There are more efficient ways to do steps 
+		1 and 2 together, but these are beyond the scope of an introductory course.)</p>
+
+
+
+
+<h2 class="pageName">2.2.4 &nbsp; Trend or autocorrelation?</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Dangers of over-interpretation</p>
+	<p>Very strong autocorrelation in a time series can result in apparent trends,
+even when there is no real trend underlying the series. Autocorrelation and trend
+are especially difficult to distinguish in short time series. You should therefore
+be wary of extrapolating a trend into the future if there is high autocorrelation.</p>
+
+
+
+
+<h2 class="pageName">2.2.5 &nbsp; Cyclical patterns</h2><!DOCTYPE HTML>
+
+
+<p>Many time series change in cycles, with increases and decreases that cannot 
+			be explained by a smooth trend line.</p>
+	<p class="heading">Seasonal patterns</p>
+	<p>Some cycles are <strong>seasonal</strong>. Seasonal patterns are distinguished by a period that repeats exactly &mdash; for 
+		example, monthly data has a period of <strong>exactly</strong> 12 months.</p>
+	<div class="centred"><div class="boxed">
+		<p>Seasonal patterns are not usually referred to as 'cyclical'.</p>
+	</div></div>
+	<p class="heading">Cyclical patterns</p>
+	<p>Other cycles  repeat much less regularly. Sun-spot activity
+has  cycles of approximately 11 years, and the 'business cycle' can be anywhere
+between 3 and 10 years. In both cases, different cycles are not  <strong>exactly</strong> the
+same length.</p>
+<div class="centred"><div class="boxed">
+		<p>The AR(1) method can be used to obtain forecasts for cyclical data with irregular cycle lengths.</p>
+	</div></div>
+	<p>We will not distinguish cyclical patterns from other forms of autocorrelation
+here.</p>
+
+
+
+
+<h1 class="sectionName breakBefore">2.3 &nbsp; Seasonal data</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Seasonal patterns</li>
+<li>Smoothing out seasonal variation</li>
+<li>Estimating the seasonal effect</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='4'>
+<li>Deseasonalised data</li>
+<li>Putting it all together</li>
+<li>Forecasting with seasonal data</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">2.3.1 &nbsp; Seasonal patterns</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Seasonal data</p>
+	<p>In monthly or quarterly data, there is often a pattern of peaks and troughs
+ that repeats in a similar way each year. Daily data often show a  pattern
+ that repeats each week, and hourly data often have a daily pattern. These 
+		are all called <strong>seasonal patterns</strong>.</p>
+<p class="eqn"><img src="../../../en/seasonal/images/s_seasonalPlot.gif" width="541" height="305"></p>
+	<p>Seasonal patterns make it difficult to assess whether a particular month's value is unusually high or low.</p>
+	<p>Regular seasonal patterns can be projected into the future and are  important
+ in forecasting.</p>
+
+
+
+
+<h2 class="pageName">2.3.2 &nbsp; Smoothing out seasonal variation</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Moving averages</p>
+	<p>Daily data have a cycle length of 7 days, so each 7-point running 
+		mean averages exactly <strong>one value from each day of the week</strong>.
+If the seasonal pattern was to repeat <strong>exactly</strong> every week, 7-point
+moving averages will be the same every day, as illustrated below.</p>
+	<p class=eqn><img src="../../../en/seasonal/images/s_weeklyMean.gif" width="428" height="162"> </p>
+<p>A 7-point moving average therefore removes a weekly seasonal pattern from
+daily data. In general,</p>
+	<div class="centred"><div class="boxed">
+		<p>For seasonal data with cycle length n, an n-point moving average 
+	removes the seasonal effect.</p>
+	</div></div>
+	<p class=heading>Even cycle lengths </p>
+	<p>Most seasonal data have an even cycle length, so <strong>centred</strong> moving averages must be used. For example, with quarterly data we should use a  4-point moving average: </p>
+	<p class=eqn><img class="gif" src="../../../en/seasonal/images/quarterlySmoothEqn.gif" id="gif_image_3_2_1" width="314" height="46"><iframe class="svg" src="../../../en/seasonal/images/quarterlySmoothEqn.svg" id="svg_image_3_2_1" width="314" height="46" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_3_2_1");</script></p>
+	<p>The diagram below removes a monthly seasonal effect with 12-point moving averages.</p>
+	<p class="eqn"><img src="../../../en/seasonal/images/s_movingAve.gif" width="537" height="287"></p>
+
+
+
+
+<h2 class="pageName">2.3.3 &nbsp; Estimating the seasonal effect</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Limitations of moving averages for removing seasonal variation</p>
+	<ul>
+		<li>They cannot be used at the ends of the time series.</li>
+		<li>They are only 'local' and do not use information about
+the seasonal pattern from other cycles.</li>
+	<li>They cannot be used to forecast future values.</li>
+	</ul>
+<p class="heading">Estimating a common seasonal effect</p>
+	<p>If the underlying seasonal pattern in monthly data repeats in the same form
+each year, the <strong>residuals</strong> from
+ 12-point moving averages can be used to estimate the seasonal pattern. The seasonal
+effect for any month is estimated as the  average of the residuals for that month.</p>
+	<p class="eqn"><img src="../../../en/seasonal/images/s_averageEffects.gif" width="506" height="491"></p>
+
+
+
+
+<h2 class="pageName">2.3.4 &nbsp; Deseasonalised data</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Removing the seasonal effect</p>
+	<p>Having estimated a common seasonal effect that describes how far each month's 
+		value is (on average) from the overall trend, we can subtract this seasonal 
+		effect to obtain <strong>deseasonalised data</strong>. This is often called <strong>seasonally adjusting</strong> the data.</p>
+	<p class="eqn"><img src="../../../en/seasonal/images/s_removeEffect.gif" width="495" height="497"></p>
+	<p>The time series can be deseasonalised in this way for <strong>all</strong> years (including the most recent data).</p>
+	<p>The deseasonalised data not only shows the trend in the series more clearly, 
+		but also shows <strong>individual</strong> months that are substantially different 
+		from the usual seasonal pattern.</p>
+
+
+
+
+<h2 class="pageName">2.3.5 &nbsp; Putting it all together</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Four components of a time series</p>
+	<p>The variation in a time series can be split into <strong>four</strong> separate components:</p>
+	<p class=eqn><span class="darkblue" style="font-weight:bold">Deseasonalised&nbsp; = &nbsp; Trend &nbsp; + &nbsp; Cyclical &nbsp; + &nbsp; Residual</span> </p>
+	<p>(Of course, the seasonal effect is only present for seasonal data.)</p>
+	<p class="eqn"><img src="../../../en/seasonal/images/s_comp_raw.gif" width="515" height="210"></p>
+	<p class="eqn"><img src="../../../en/seasonal/images/s_comp_seasonal.gif" width="515" height="210"></p>
+	<p class="eqn"><img src="../../../en/seasonal/images/s_comp_trend.gif" width="515" height="210"></p>
+	<p class="eqn"><img src="../../../en/seasonal/images/s_comp_cyclic.gif" width="515" height="210"></p>
+	<p class="eqn"><img src="../../../en/seasonal/images/s_comp_residual.gif" width="515" height="210"></p>
+	
+
+
+
+<h2 class="pageName">2.3.6 &nbsp; Forecasting with seasonal data</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Forecasting the individual components</p>
+	<p>The seasonal, trend and cyclical components can  be separately forecast into
+the future. Putting them together provides a forecast for the time series values,</p>
+<p class=eqn><span class="darkblue" style="font-weight:bold">Forecast&nbsp; = &nbsp; Seasonal effect &nbsp; + &nbsp; Trend forecast&nbsp; + &nbsp; Cyclical forecast</span> </p>
+	<dl>
+		<dt>Seasonal effect</dt>
+		<dd>We forecast that the same seasonal effects will hold into the future.</dd>
+		<dt>Trend forecast</dt>
+		<dd>A linear or quadratic model for the trend gives forecasts of the future trend.</dd>
+		<dt>Cyclical forecast</dt>
+		<dd>The cyclical component can be forecast into the future with an AR(1) model.</dd>
+	</dl>
+
+
+
+
+
+</html>

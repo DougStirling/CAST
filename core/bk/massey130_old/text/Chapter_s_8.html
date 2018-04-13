@@ -1,0 +1,603 @@
+<html>
+<head>
+  <title>8. Probability</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 8 &nbsp; Probability</h1>
+<h1 class="sectionName">8.1 &nbsp; Simulation (optional)</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Probability models and simulation</li>
+<li>Simulation: Will the best team win?</li>
+<li>Is there evidence of skill in a league?</li>
+<li>Assessing unusual features in data</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='5'>
+<li>Random numbers</li>
+<li>Generating categorical values</li>
+<li>Generating numerical values</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">8.1.1 &nbsp; Probability models and simulation</h2><!DOCTYPE HTML>
+
+
+<p>Probability describes situations where a random sample is selected from a population. It  is also used to model a 
+	variety of <strong>other</strong> situations involving randomness.</p>
+<p class=heading>Tennis match</p>
+	<p>A simple model for a tennis match between two players, A and B, assumes that:</p>
+	<div class="centred"><div class="boxed">
+		<ul>
+			<li>Probability of A winning  serve = π<sub>1</sub></li>
+			<li>Probability of B winning  serve = π<sub>2</sub></li>
+			<li>The results of successive points are independent</li>
+			<li>The standard years of tennis</li>
+		</ul>
+	</div></div>
+	<p>A more complex model might introduce more parameters to relax the assumption of independence.</p>
+	<p class=heading>Simulation</p>
+	<p>For any values of  π<sub>1</sub> and  π<sub>2</sub>, we could randomly generate the results of successive points until a match was complete.</p>
+	<p>This generates an <strong>instance</strong> of the model and is called a <strong>simulation</strong>.</p>
+	
+
+
+
+
+<h2 class="pageName">8.1.2 &nbsp; Simulation: Will the best team win?</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Repetitions of  a simulation</p>
+	<p>Repeating a simulation and observing the 
+		variability in the results can give insight into the randomness of the system's 
+		behaviour.</p>
+	<p class=heading>Model for sport league</p>
+	<p>Consider a sports league of 10 teams in which each team plays each other twice and:</p>
+	<div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0" style="background-color:#FFFFFF">
+		<tr>
+			<td class="top bottom left">&nbsp;Points from a match =&nbsp;</td>
+			<td class="top bottom right">3 if team wins<br>
+				1 if team draws<br>
+				0 if team loses</td>
+		</tr>
+	</table></div>
+	<p>We will model the league with a simple model for the results of individual matches. In it, team A has over twice the probability of winning than losing, but all other teams are equally matched.</p>
+	<ul>
+		<li>The results of all matches are independent</li>
+		<li>P(draw) = 0.2 in all matches</li>
+		<li>P(team A wins its matches) = 0.55 and P(A loses) = 0.25</li>
+		<li>All other teams are equally matched with P(win) = P(lose) = 0.4.</li>
+	</ul>
+	<p class=heading>Simulation</p>
+	<p>This model can be used to randomly generate the results of all 90 matches in the league.</p>
+	<p class=eqn><img src="../../../en/probSim/images/s_league1.gif" width="455" height="360"></p>
+	<p>Repeating the simulation 100 times gives the following results:</p>
+	<p class=eqn><img src="../../../en/probSim/images/s_league2.gif" width="421" height="312"></p>
+	<p>Despite team A being so much better than the other teams, the simulation shows that it has little more than 50% chance of ending the season on top of the league.</p>
+
+
+
+
+<h2 class="pageName">8.1.3 &nbsp; Is there evidence of skill in a league?</h2><!DOCTYPE HTML>
+
+
+<p class=heading>English Premier Soccer League in 2008/9</p>
+	<p>The table below shows the points gained by all teams in the English Premier 
+		Soccer League at the end of the 2008/9 season.</p>
+
+		<div class="centred"><table width=260 border=0 cellspacing="0" class="centred">
+			<tr>
+				<td width=30>&nbsp;</td>
+				<td width=200><strong>Team</strong></td>
+				<td width=30><strong>Pts</strong></td>
+			</tr>
+			<tr>
+				<td class="top">1</td>
+				<td  class="top"bgcolor="white">Manchester United</td>
+				<td  class="top"bgcolor="white">90</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td bgcolor="white">Liverpool</td>
+				<td bgcolor="white">86</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td bgcolor="white">Chelsea</td>
+				<td bgcolor="white">83</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td bgcolor="white">Arsenal</td>
+				<td bgcolor="white">72</td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td bgcolor="white">Everton</td>
+				<td bgcolor="white">63</td>
+			</tr>
+			<tr>
+				<td>6</td>
+				<td bgcolor="white">Aston Villa</td>
+				<td bgcolor="white">62</td>
+			</tr>
+			<tr>
+				<td>7</td>
+				<td bgcolor="white">Fulham</td>
+				<td bgcolor="white">53</td>
+			</tr>
+			<tr>
+				<td>8</td>
+				<td bgcolor="white">Tottenham Hotspur</td>
+				<td bgcolor="white">51</td>
+			</tr>
+			<tr>
+				<td>9</td>
+				<td bgcolor="white">West Ham United</td>
+				<td bgcolor="white">51</td>
+			</tr>
+			<tr>
+				<td>10</td>
+				<td bgcolor="white">Manchester City</td>
+				<td bgcolor="white">50</td>
+			</tr>
+			<tr>
+				<td>11</td>
+				<td bgcolor="white">Wigan Athletic</td>
+				<td bgcolor="white">45</td>
+			</tr>
+			<tr>
+				<td>12</td>
+				<td bgcolor="white">Stoke City</td>
+				<td bgcolor="white">45</td>
+			</tr>
+			<tr>
+				<td>13</td>
+				<td bgcolor="white">Bolton Wanderers</td>
+				<td bgcolor="white">41</td>
+			</tr>
+			<tr>
+				<td>14</td>
+				<td bgcolor="white">Portsmouth</td>
+				<td bgcolor="white">41</td>
+			</tr>
+			<tr>
+				<td>15</td>
+				<td bgcolor="white">Blackburn Rovers</td>
+				<td bgcolor="white">41</td>
+			</tr>
+			<tr>
+				<td>16</td>
+				<td bgcolor="white">Sunderland</td>
+				<td bgcolor="white">36</td>
+			</tr>
+			<tr>
+				<td>17</td>
+				<td bgcolor="white">Hull City</td>
+				<td bgcolor="white">35</td>
+			</tr>
+			<tr>
+				<td>18</td>
+				<td bgcolor="white">Newcastle United</td>
+				<td bgcolor="white">34</td>
+			</tr>
+			<tr>
+				<td>19</td>
+				<td bgcolor="white">Middlesburgh</td>
+				<td bgcolor="white">32</td>
+			</tr>
+			<tr>
+				<td class="bottom">20</td>
+				<td class="bottom" bgcolor="white">West Bromwich Albion</td>
+				<td class="bottom" bgcolor="white">32</td>
+			</tr>
+		</table></div>
+
+	<p class="heading">Evidence of skill? </p>
+	<p>A quarter of the matches in 2008/9 were draws, so we will conduct a simulation with a model in which all teams are equally matched and:</p>
+	<ul>
+		<li>P(draw)  =  0.25</li>
+		<li>P(win)  =  P(lose)  =  0.375</li>
+	</ul>
+	<p>From each simulated league, we will summarise the spread of points at the end of the season using both their range and their standard deviation. After 100 simulated leagues, these measures of spread are shown below.</p>
+	<p class="eqn"><img src="../../../en/probSim/images/s_leagueSpread.gif" width="476" height="352"></p>
+	<p>The actual spread of points in the 2008/9 league was much higher than those that appeared in the simulations with equally matched teams, indicating that there was indeed a difference between the skill levels of the best and worst teams in the league.</p>
+	
+
+
+
+<h2 class="pageName">8.1.4 &nbsp; Assessing unusual features in data</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Interpreting a graphical summary of a sample</p>
+	<p>Simulations can also help us to assess features such as outliers, clusters or skewness in a data set 
+		by examining how often they appear in random samples from a population <strong>without</strong> such features.</p>
+	<p>In particular, we can examine variability in samples from a normal 
+		distribution that closely matches the shape of the data set. </p>
+	<p class="eqn"><img src="../../../en/probSim/images/s_skewnessSim.gif" width="381" height="305"></p>
+	<p>The amount of skewness  in the the actual data (top) is rarely seen in simulated normal samples (such as that shown above). This informally suggests that the the population underlying the data really is skew and not symmetric.</p>
+
+
+
+
+<h2 class="pageName">8.1.5 &nbsp; Random numbers</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Random values</p>
+	<p>Simulations are conducted by generating random 
+		values from the probability distributions in the model.</p>
+	
+<div class="centred"><div class="boxed">
+<p>A computer program should normally be used to generate 
+				random values. The program Excel contains functions that can be used.</p>
+</div></div>
+
+	<p>Generating categorical and numerical values 
+		is usually based on random values that are equally likely to take any value between 0 and 1. Such a value is said to come from 
+		a rectangular (or uniform) distribution between 0 and 1 and has the probability 
+		density function shown below.</p>
+	<p class="eqn"><img class="gif" src="../../../en/probSim/images/uniform01.gif" id="gif_image_1_5_1" width="185" height="169"><iframe class="svg" src="../../../en/probSim/images/uniform01.svg" id="svg_image_1_5_1" width="185" height="169" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_1_5_1");</script></p>
+	<p>A value can be generated from a rectangular distribution with the Excel function &quot;=RAND()&quot; or, by hand, by  generating a sequence of
+	random digits (e.g. by rolling a 10-sided die).</p>
+
+
+
+
+<h2 class="pageName">8.1.6 &nbsp; Generating categorical values</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Generating a categorical value</p>
+	<p>A random category can be generated from a rectangularly distributed random value, <span class="em black">r</span> .</p>
+	<p>If P(<em>success</em>)  is denoted by the symbol <span class="black">π</span>, 
+		then a <em>success</em> will be generated if <span class="em black">r</span>  is less than <span class="black">π</span>. This can be generalised as illustrated in the diagram below:</p>
+	<p class="eqn"><img src="../../../en/probSim/images/s_randomCat.gif" width="340" height="274"></p>
+
+
+
+
+<h2 class="pageName">8.1.7 &nbsp; Generating numerical values</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Generating a continuous numerical value</p>
+	<p>There are several algorithm that can efficiently generate random values from continuous distributions. For example, the Excel function &quot;=NORMSINV(RAND())&quot; generates a random value from a normal distribution with µ = 0 and σ = 1.</p>
+	<div class="centred"><div class="boxed"><p>The following method is simple to explain but is not recommended for general use.</p></div></div>
+	<p>Consider the diagram below which encloses the distribution's probability density 
+		function with a rectangle.</p>
+	<p class="eqn"><img class="gif" src="../../../en/probSim/images/envelopeGenerator.gif" id="gif_image_1_7_1" width="246" height="173"><iframe class="svg" src="../../../en/probSim/images/envelopeGenerator.svg" id="svg_image_1_7_1" width="246" height="173" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_1_7_1");</script></p>
+	<p>A random position within the rectangle is generated with a random rectangular horizontal and vertical positions. If it lies within the density function, the x-coordinate is the generated value. Otherwise more positions within the rectangle are generated until a point is found within the density function.</p>
+	<p class="eqn"><img src="../../../en/probSim/images/s_envelopeReject.gif" width="413" height="234"></p>
+	<p class="eqn"><img src="../../../en/probSim/images/s_envelopeAccept.gif" width="413" height="234"></p>
+
+
+
+
+
+<h1 class="sectionName breakBefore">8.2 &nbsp; Probability and applications</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Joint probabilities</li>
+<li>Marginal probabilities</li>
+<li>Conditional probabilities</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='4'>
+<li>Graphical display of probabilities</li>
+<li>Calculations with probabilities</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">8.2.1 &nbsp; Joint probabilities</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Data sets with two categorical variables</p>
+<p>Bivariate categorical data sets are usually summarised with a contingency
+table.</p>
+<p>For example, a study examined 62 patients who had been given a prescription
+medicine for some condition. Each patient was classified by whether they had
+complied with the treatment prescribed and by racial group:</p>
+<div class="centred"><table border="0" class="centred" cellpadding="3" cellspacing="0">
+<tr>
+<th align="left">Race</th>
+<th align="center">&nbsp;&nbsp;&nbsp;&nbsp;Compliers&nbsp;&nbsp;&nbsp;&nbsp;</th>
+<th align="center">Non-compliers</th>
+<th align="center">&nbsp;&nbsp;&nbsp;Total&nbsp;&nbsp;&nbsp;</th>
+</tr>
+<tr>
+<th align="left">&nbsp;&nbsp;White</th>
+<td align="center" bgcolor="#FFFFFF" class="top left">13</td>
+<td align="center" bgcolor="#FFFFFF" class="top right">10</td>
+<td align="center">23</td>
+</tr>
+<tr>
+<th align="left">&nbsp;&nbsp;Non-white&nbsp;&nbsp;&nbsp;</th>
+<td align="center" bgcolor="#FFFFFF" class="bottom left">13</td>
+<td align="center" bgcolor="#FFFFFF" class="bottom right">26</td>
+<td align="center">39</td>
+</tr>
+<tr>
+<th align="left">Total</th>
+<td align="center">26</td>
+<td align="center">36</td>
+<td align="center">62</td>
+</tr>
+</table></div>
+<p class="heading">Joint probabilities</p>
+<p>Bivariate categorical data can be modelled as a random sample from an underlying
+population of pairs of categorical values. The population proportion for each
+pair (<em>x</em>, <em>y</em>) is denoted by <em>p<sub>xy</sub></em> and is called
+the <strong>joint probability</strong> for (<em>x</em>, <em>y</em>).</p>
+<p>In games of chance, we can often work out the joint probabilities. For example,
+if a gambler draws a card from a shuffled deck and also tosses a coin, there
+are eight possible combinations,</p>
+<p class=eqn><img src="../../../en/prob/images/s_cardAndCoin.gif" width="296" height="122" alt="pxy = 1/8"> </p>
+<p>Since these are equally likely,</p>
+<p class=eqn><span class="black"><em>p</em><span class="textSub">head, heart</span> &nbsp;= &nbsp;<em>p</em><span class="textSub">head, club</span> &nbsp;= &nbsp;... &nbsp;= &nbsp;<em>p</em><span class="textSub">tail, spade</span> &nbsp;= &nbsp;<sup>1</sup>/<sub>8</sub> &nbsp;= &nbsp;0.125</span> </p>
+<p class="heading">Interest in the model</p>
+<p>In practice, we usually only have a random sample (summarised by a contingency
+table) and do not know the underlying joint probabilities. The sample proportions
+however provide <strong>estimates</strong>.</p>
+<p class=eqn><img class="gif" src="../../../en/prob/images/glaucoma.gif" id="gif_image_2_1_1" width="510" height="308"><iframe class="svg" src="../../../en/prob/images/glaucoma.svg" id="svg_image_2_1_1" width="510" height="308" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_1_1");</script> </p>
+
+
+
+
+<h2 class="pageName">8.2.2 &nbsp; Marginal probabilities</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Probabilities for a single variable</p>
+<p>A model for two categorical variables is characterised by the joint probabilities <span class="black em">p<sub>xy</sub></span>.</p>
+<p>The <strong>marginal probability</strong>, <span class="black em">p<sub>x</sub></span>,
+for a variable <span class="em black">X</span>  is the proportion of <span class="black">(<em>x</em>,&nbsp;<em>y</em>)</span> pairs
+in the population with <span class="em black">X</span>  = <span class="em black">x</span> .
+This can be found by adding all joint probabilities for pairs with this <em>x</em>-value.</p>
+<p class="eqn"><img class="gif" src="../../../en/prob/images/margProbEqn.gif" id="gif_image_2_2_1" width="89" height="31"><iframe class="svg" src="../../../en/prob/images/margProbEqn.svg" id="svg_image_2_2_1" width="89" height="31" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_2_1");</script></p>
+<p>There is a similar formula for the marginal
+probabilities of the other variable, </p>
+<p class=eqn><img class="gif" src="../../../en/prob/images/margProb2Eqn.gif" id="gif_image_2_2_2" width="88" height="27"><iframe class="svg" src="../../../en/prob/images/margProb2Eqn.svg" id="svg_image_2_2_2" width="88" height="27" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_2_2");</script> </p>
+<p class="heading">Example</p>
+<p>In the following example, the marginal probabilities for <em>X</em> are the
+row of  totals under the table, and the marginal probabilities for <em>Y</em> are
+the column of totals on the right.</p>
+
+<div class="centred"><table class="centred" border="0" cellpadding="5" cellspacing="0">
+<caption align="TOP">
+<strong>Joint probabilities</strong>
+</caption>
+<tr>
+<th align="CENTER">&nbsp;</th>
+<th colspan="3" align="CENTER">Variable <em>X</em></th>
+<th>&nbsp;</th>
+</tr>
+<tr>
+<th align="CENTER">Variable <em>Y</em></th>
+<th align="CENTER"><span class="blue"><em>X</em> = A</span></th>
+<th align="CENTER"><span class="blue"><em>X</em> = B</span></th>
+<th align="CENTER"><span class="blue"><em>X</em> = C</span></th>
+<th align="CENTER"><span class="red">Total</span></th>
+</tr>
+<tr>
+<th align="CENTER"><span class="blue"><em>Y</em> = 1</span></th>
+<td align="CENTER" bgcolor="#FFFFFF" class="top left">0.2576</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="top">0.1364</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="top right">0.1212</td>
+<td align="CENTER"><span class="red">0.5152</span></td>
+</tr>
+<tr>
+<th align="CENTER"><span class="blue"><em>Y</em> = 2</span></th>
+<td align="CENTER" bgcolor="#FFFFFF" class="left">0.0909</td>
+<td align="CENTER" bgcolor="#FFFFFF">0.0758</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="right">0.0152</td>
+<td align="CENTER"><span class="red">0.1818</span></td>
+</tr>
+<tr>
+<th align="CENTER"><span class="blue"><em>Y</em> = 3</span></th>
+<td align="CENTER" bgcolor="#FFFFFF" class="left">0.0455</td>
+<td align="CENTER" bgcolor="#FFFFFF">0.0758</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="right">0.0606</td>
+<td align="CENTER"><span class="red">0.1818</span></td>
+</tr>
+<tr>
+<th align="CENTER"><span class="blue"><em>Y</em> = 4</span></th>
+<td align="CENTER" bgcolor="#FFFFFF" class="bottom left">0.0152</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="bottom">0.0303</td>
+<td align="CENTER" bgcolor="#FFFFFF" class="bottom right">0.0758</td>
+<td align="CENTER"><span class="red">0.1212</span></td>
+</tr>
+<tr>
+<th align="CENTER"><span class="brown">Total</span></th>
+<td align="CENTER"><span class="brown">0.4091</span></td>
+<td align="CENTER"><span class="brown">0.3182</span></td>
+<td align="CENTER"><span class="brown">0.2727</span></td>
+<td align="CENTER"><span class="gray">1.0000</span></td>
+</tr>
+</table></div>
+
+
+
+
+<h2 class="pageName">8.2.3 &nbsp; Conditional probabilities</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Probabilities in a sub-population</p>
+<dl>
+<dt>Complete population</dt>
+<dd>The joint probabilities <span class="black em">p<sub>xy</sub></span> and the marginal
+probabilities <span class="black em">p<sub>x</sub></span> and <span class="black em">p<sub>y</sub></span> all
+describe proportions in the complete population of <span class="black">(<em>x</em>,&nbsp;<em>y</em>)</span> pairs.</dd>
+<dt>Sub-population</dt>
+<dd>In contrast, it is sometimes meaningful to restrict attention to a <strong>subset</strong> of
+the <span class="black">(<em>x</em>,&nbsp;<em>y</em>)</span> pairs. For example,
+we may be interested only in pairs for which the first variable, <span class="em black">X</span> ,
+has some particular value. Probabilities that relate to a sub-population are called <strong>conditional</strong> probabilities.</dd>
+</dl>
+<p class="heading">Conditional probabilities for <em>Y</em>, given <em>X</em>&nbsp;=&nbsp;<em>x</em></p>
+<p>The general definition of the conditional probabilities for <i><span class="black">Y</span></i> given
+that the value of <i><span class="black">X</span></i> is <span class="em black">x</span>  is </p>
+<div class="centred"><table width="40%" border="1" class="centred" cellpadding="10" cellspacing="0" style="background-color:#FFFFFF">
+<tr>
+<td align="center"><img class="gif" src="../../../en/prob/images/conditProbDefn.gif" id="gif_image_2_3_2" width="91" height="39"><iframe class="svg" src="../../../en/prob/images/conditProbDefn.svg" id="svg_image_2_3_2" width="91" height="39" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_3_2");</script></td>
+</tr>
+</table></div>
+<p>They can be found by rescaling of that row of the table of joint probabilities
+(dividing by <span class="black em">p<sub>x</sub></span>) so that the row sums to 1.0. </p>
+<p class=eqn><img class="gif" src="../../../en/prob/images/conditCalc.gif" id="gif_image_2_3_1" width="395" height="294"><iframe class="svg" src="../../../en/prob/images/conditCalc.svg" id="svg_image_2_3_1" width="395" height="294" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_3_1");</script></p>
+<p class="heading">Two sets of conditional probabilities</p>
+<p>Conditional probabilities for <span class="em black">X</span>  given
+that <span class="em black">Y</span> &nbsp;has the value <span class="em black">y</span>  are
+defined in a similar way:</p>
+<p class=eqn><img class="gif" src="../../../en/prob/images/conditProb2Defn.gif" id="gif_image_2_3_3" width="90" height="42"><iframe class="svg" src="../../../en/prob/images/conditProb2Defn.svg" id="svg_image_2_3_3" width="90" height="42" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_3_3");</script> </p>
+<p>You should be careful to distinguish between <span class="black"><em>p</em><sub><em>x</em> | <em>y</em></sub></span> and <span class="black"><em>p</em><sub><em>y</em> | <em>x</em></sub></span>.</p>
+<div class="centred"><table width="75%" border="1" class="centred" cellpadding="10" cellspacing="0" style="background-color:#FFFFFF">
+<tr>
+<td align="center"><strong>The probability of being pregnant, given that a randomly
+selected person is female would be fairly small. The probability of being female,
+given that a person is pregnant is 1.0&nbsp;!!</strong></td>
+</tr>
+</table></div>
+
+
+
+<h2 class="pageName">8.2.4 &nbsp; Graphical display of probabilities</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Proportional Venn diagrams</p>
+<p>A proportional Venn diagram is drawn from the marginal probabilities of one
+variable and the conditional probabilities for the other variable,</p>
+<p class=eqn><img class="gif" src="../../../en/prob/images/propnVenn.gif" id="gif_image_2_4_1" width="550" height="281"><iframe class="svg" src="../../../en/prob/images/propnVenn.svg" id="svg_image_2_4_1" width="550" height="281" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_4_1");</script> </p>
+<p>Rewriting the definition of conditional probabilities,</p>
+<p class=eqn><img class="gif" src="../../../en/prob/images/jointProbEqn.gif" id="gif_image_2_4_2" width="118" height="20"><iframe class="svg" src="../../../en/prob/images/jointProbEqn.svg" id="svg_image_2_4_2" width="118" height="20" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_4_2");</script> </p>
+<p>The area of any rectangle in the diagram therefore equals the joint probability
+of the categories it represents.</p>
+<p>An alternative proportional Venn diagram can be drawn from the marginal probabilities
+of <i><span class="black">Y</span></i> and
+the conditional probabilites of <i><span class="black">X</span></i> given <i><span class="black">Y</span></i>.
+The area for the rectangle corresponding to any (<em>x</em>, <em>y</em>) is
+its joint probability, <span class="black em">p<sub>xy</sub></span>.</p>
+<p class="heading">Example</p>
+<p>The table below is based on the world population in 2002, categorised by region
+and by age group. It shows the joint probabilities for a randomly chosen person
+being in each age/region category.</p>
+<div class="centred"><table class="centred" border="0" cellpadding="5" cellspacing="0">
+<caption>
+<strong>Joint probabilities</strong>
+</caption>
+<tr>
+<th>&nbsp;</th>
+<th colspan="3" align="CENTER" width="100"><span class="blue">Age</span></th>
+</tr>
+<tr>
+<th>&nbsp;</th>
+<th align="CENTER" width="70"><span class="blue">0-19</span></th>
+<th align="CENTER" width="70"><span class="blue">20-64</span></th>
+<th align="CENTER" width="70"><span class="blue">65+</span></th>
+</tr>
+<tr>
+<th align="left"><span class="blue">Africa and Near East</span></th>
+<td align="CENTER" bgcolor="white" class="top left">0.085</td>
+<td align="CENTER" bgcolor="white" class="top">0.073</td>
+<td align="CENTER" bgcolor="white" class="top right">0.006</td>
+</tr>
+<tr>
+<th align="left"><span class="blue">Asia</span></th>
+<td align="CENTER" bgcolor="white" class="left">0.215</td>
+<td align="CENTER" bgcolor="white">0.315</td>
+<td align="CENTER" bgcolor="white" class="right">0.035</td>
+</tr>
+<tr>
+<th align="left"><span class="blue">America, Europe and Oceanea</span></th>
+<td align="CENTER" bgcolor="white" class="bottom left">0.084</td>
+<td align="CENTER" bgcolor="white" class="bottom">0.158</td>
+<td align="CENTER" bgcolor="white" class="bottom right">0.030</td>
+</tr>
+</table></div>
+<p>The two proportional Venn diagrams are shown below.</p>
+<p class="eqn"><img src="../../../en/prob/images/s_propnVenn.gif" width="535" height="620"></p>
+<p>Note that the areas are the same in both diagrams &mdash; they are simply rearranged.</p>
+
+
+
+
+<h2 class="pageName">8.2.5 &nbsp; Calculations with probabilities</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Marginal and conditional probs can be found from joint probs
+(and vice versa)</p>
+<p>We have used three types of probability to describe a model for two categorical
+variables &mdash; the <strong>joint</strong> probabilities, the <strong>marginal</strong> probabilities
+for the two variables and the <strong>conditional</strong> probabilities for
+each variable given the value of the other variable. These sets of probabilities
+are closely related. Indeed, the model can be equivalently described by any of
+the following.</p>
+<ul>
+<li>The joint probabilities, <span class="black em">p<sub>xy</sub></span></li>
+<li>The marginal probabilities for <i><span class="black">X</span></i>, <span class="black em">p<sub>x</sub></span>,
+and the conditional probabilities for <i><span class="black">Y</span></i>, <span class="black"><em>p</em><sub><em>y</em> | <em>x</em></sub></span></li>
+<li>The marginal probabilities for <i><span class="black">Y</span></i>, <span class="black em">p<sub>y</sub></span>,
+and the conditional probabilities for <i><span class="black">X</span></i>, <span class="black"><em>p</em><sub><em>x</em> | <em>y</em></sub></span></li>
+</ul>
+<p>Each can be found from the others:</p>
+<p class=eqn><img class="gif" src="../../../en/prob/images/jointCondit.gif" id="gif_image_2_5_1" width="537" height="234"><iframe class="svg" src="../../../en/prob/images/jointCondit.svg" id="svg_image_2_5_1" width="537" height="234" frameborder="0"></iframe><script type="text/javascript">showCorrectImage("image_2_5_1");</script> </p>
+<p class="heading">Bayes theorem</p>
+<p>In particular, note that it is possible to obtain the conditional probabilities
+for <i><span class="black">X</span></i> given <i><span class="black">Y</span></i>, <span class="black"><em>p</em><sub><em>x</em> | <em>y</em></sub></span>,
+from the marginal probabilities of <i>X</i>, <span class="black em"> p<sub>x</sub></span>,
+and the conditional probabilities for <i><span class="black">Y</span></i> given <i><span class="black">X</span></i>, <span class="black"><em>p</em><sub><em>y</em> | <em>x</em></sub></span>.
+This can be expressed in a single formula that is called <strong>Bayes Theorem</strong>,
+but it is easier in practice to do the calculations in two steps, obtaining the
+joint probabilities, <span class="black em">p<sub>xy</sub></span>, in the first
+step. There are several important applications of Bayes Theorem.</p>
+<p class="heading">Accuracy of medical diagnostic tests</p>
+<p>There are
+two types of error in a test for a medical condition: </p>
+<ul>
+<li>A positive test result for someone who does not have the disease.</li>
+<li>A negative test result for someone who has the disease.</li>
+</ul>
+<p>Consider a diagnostic test with</p>
+<p class="eqn black"><em>p</em> <sub>negative | disease</sub>  =  0.05     <em>       p</em><sub>positive | no disease</sub>  =  0.10</p>
+<p>From these, we can also write</p>
+<p class="eqn black"><em>p</em> <sub>positive
+| disease</sub>  =  0.95     <em>      
+p</em><sub>negative | no disease</sub>  =  0.90</p>
+<p>We will also assume that 10% of people who are given the test have the disease,</p>
+<p class="eqn black"><em>p</em> <sub>disease</sub>  =  0.10</p>
+<p>From this information, we can find the probabilities of having the disease,
+given the result of the diagnostic test,</p>
+<p class="eqn"><img src="../../../en/prob/images/s_bayes.gif" width="550" height="368"></p>
+
+
+
+
+</html>

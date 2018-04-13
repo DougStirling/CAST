@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Method of moments</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="estimation, method of moments, rectangular distribution">
+	<meta name="dataset" content="German tank problem"
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Method of moments estimate</p>
+
+<p>A simple way to obtain an estimate of a single unknown parameter from a random sample is  the <strong>method of moments</strong>. This is defined in the same way as when estimating a parameter in a discrete distribution — it is the parameter value that makes the distribution's mean equal to that of the random sample and is therefore the solution to the equation</p>
+\[
+E[X] \;\; = \; \; \overline{X}
+\]
+
+<div class="example">
+	
+	<p class="exampleHeading">German tank problem</p>
+
+<p>Consider a rectangular distribution,</p>
+\[
+X \;\; \sim \; \; \RectDistn(0, \beta)
+\]
+<p>where the upper limit, \(\beta\), is an unknown parameter.</p>
+<p>This is often called the <strong>German tank problem</strong> since it is related to Allied estimates of German tank production in the second war from the serial numbers of captured tanks. The serial number of the captured tanks, \(\{x_1, x_2, \dots, x_n\}\), can be treated as a random sample from this kind of rectangular distribution with \(\beta\) being the total number of tanks produced. (The distribution is actually discrete uniform distribution but when \(\beta\) is large, such as in this application, it can be approximated by a rectangular distribution.)</p>
+
+<p>Since the mean and variance of this rectangular distribution are</p>
+\[
+E[X] \;\; = \; \; \frac {\beta} 2 \spaced{and} \Var(X) = 
+\frac {\beta^2} {12} \]
+<p>the method of moments estimator is</p>
+\[
+\hat{\beta} \;\;=\;\; 2\overline{X}\]
+<p>It is an unbiased estimator and has standard error</p>
+\[
+\se(\hat{\beta}) \;\;=\;\; \sqrt{\Var(2\overline{X})} \;\;=\;\; \sqrt{ \frac {4\Var(X)} n } \;\;=\;\; \frac {\beta} {\sqrt{3n}}
+\]
+<hr width="75%">
+<p>Although this method of moments estimator is unbiased, it has one major problem. Consider the random sample</p>
+<p class="eqn">12, 17, 42, 97</p>
+<p>The resulting estimate of \(\beta\) would be</p>
+\[
+\hat{\beta} \;\;=\;\; 2\overline{X} \;\;=\;\; 84\]
+<p>yet the maximum of the distribution <strong>cannot</strong> be 84 since we have already observed one value greater than this.</p>
+</div>
+
+<p>The method of moments <strong>usually</strong> gives reasonable parameter estimates, but can sometimes  result in estimates that are not feasible.</p>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

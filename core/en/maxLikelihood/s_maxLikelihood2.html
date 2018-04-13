@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Maximising the likelihood</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="maximum likelihood, log-likelihood, binomial distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Maximum likelihood estimate</p>
+
+<p>The likelihood function, \(L(\theta \; | \; x_1, x_2, \dots, x_n) = p(x_1, x_2, \dots, x_n \;| \; \theta)\), gives the probability of getting the data that were recorded for different values of the unknown parameter \(\theta\). A value of \(\theta\) that gives the observed data high probability is more likely to be correct than one that would make the observed data unlikely.</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>The <strong>maximum likelihood estimate</strong> of a parameter \(\theta\) is the value that maximises the likelihood function,</p>
+\[
+L(\theta \; | \; x_1, x_2, \dots, x_n) = p(x_1, x_2, \dots, x_n \;| \; \theta)
+\]</div>
+
+<p>Finding a maximum likelihood estimate (MLE)  therefore involves maximising a function of  \(\theta\). This is usually a &quot;turning point&quot; of the likelihood function.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Finding the maximum likelihood estimate</p>
+<p>The maximum likelihood estimate of a parameter \(\theta\) can normally be obtained as a solution to the equation</p>
+\[
+\frac {d\; L(\theta \; | \; x_1, x_2, \dots, x_n)} {d\; \theta} \;\; = \;\; 0
+\]	</div>
+</div>
+
+<p>It is often easier mathematically to maximise the <strong>logarithm</strong> of the likelihood function rather than the likelihood function itself.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Maximising the log-likelihood</p>
+		<p>Writing</p>
+\[
+\ell(\theta) \;=\; \log L(\theta)
+\]
+		<p>the maximum likelihood estimate of a parameter \(\theta\) can normally be found by solving the equation</p>
+		\[
+		\frac {d\; \log L(\theta \; | \; x_1, x_2, \dots, x_n)} {d\; \theta} \;\; = \;\;  
+\ell'(\theta) \;\; = \;\; 0
+		\] 
+		<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p>We will now give a simple example.</p><div class="example">
+	<p class="exampleHeading">A simple binomial example</p>
+	<p>Consider a random variable \(X\) that is the number of successes in \(n=20\) independent trials, each of which has probability \(\pi\) of success. If  the experiment resulted in \(x=6\) successes, the likelihood function would be</p>
+	\[
+	L(\pi) = {{20} \choose 6} \pi^6(1-\pi)^{20-6} \;\; = \;\;38,760 \; \times 
+	\pi^6(1-\pi)^{14} \]
+	
+	<p>Instead of differentiating \(L(\theta)\), it is easier to differentiate the log-likelihood to find the maximum likelihood estimate,</p>
+\[
+	\ell(\pi) \;\; = \;\; \log L(\pi) \;\; = \;\; 6 \log(\pi) + 14 \log(1 - \pi) + K\]
+	<p>where \(K\) is a constant that does not depend on \(\pi\). We solve</p>
+\[
+	\frac {d \; \ell(\pi)} {d\; \pi} \;\; = \;\; \frac 6 {\pi} - \frac {14} {1 - \pi} \;\; = \;\; 0
+\]
+\[
+	6(1-\pi) = 14\pi
+\]
+\[
+	6 = 20\pi
+\]
+	<p>The maximum likelihood estimate of \(\pi\) is therefore \(
+	\hat {\pi} = \frac 6 {20} \), the sample proportion of successes.</p>
+	<p>The diagram below  shows both the likelihood function and the log-likelihood. It illustrates the fact that both functions have their maximum at the same value of \(\pi\).</p>
+	<p class="eqn"><img src="images/s_maxLikelihood.png" width="525" height="449"  alt=""/></p>
+	<p>Generalising to a binomial experiment in which \(x\) successes are observed in \(n\) trials,</p>
+\[
+	\ell(\pi) \; = \; \log L(\pi) \; = \; x \log(\pi) + (n-x) \log(1 - \pi) + K(n, x)
+\]
+\[
+	\frac {d \; \ell(\pi)} {d\; \pi} \; = \; \frac x {\pi} - \frac {n-x} {1 - \pi} \; = \; 0
+\]
+	<p>which can be solved to give</p>
+\[
+	\hat {\pi} \;=\; \frac x n
+\]
+
+
+
+
+
+</div>
+
+<p>Note that we are using <strong>natural </strong> logarithms (base-e) here, not logarithms to the base 10.</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

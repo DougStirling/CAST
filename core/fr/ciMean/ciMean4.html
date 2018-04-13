@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Le niveau de confiance, si sigma est remplacé par s</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="interval estimate, estimation, mean">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Inconnue écart type de population</p>
+
+<p>Si nous connaissons la valeur de l'écart type de population, σ, une estimation par intervalle de la forme</p>
+<p class=eqn><img class="gif" src="../../en/ciMean/images/ci.gif" width="87" height="31"> 
+  </p>
+<p>a un niveau de confiance de 0.95 &mdash; c'est à dire qu'il est un intervalle de confiance à 95%.</p>
+<center>
+<table border="1" cellspacing="0" cellpadding="5" bgcolor="white" width="75%">
+<tr> 
+<th align="CENTER">En pratique cependant, la valeur de σ est rarement connue.</th>
+</tr>
+</table>
+</center>
+<p>Il est tentant de simplement remplacer σ dans la formule par son équivalent de l'échantillon, <em>s</em>.</p>
+<p class=eqn><img class="gif" src="../../en/ciMean/images/bad95CI.gif" width="86" height="31"> 
+</p>
+<p>Toutefois, le niveau de confiance pour un intervalle de cette forme est inférieure à 95% &mdash; la variabilité supplémentaire causée par l'estimation de σ signifie qu'il est moins probable que l'intervalle comprendra μ. Lorsque la taille de l'échantillon est importante, le niveau de confiance est proche de 95%, mais le niveau de confiance peut être beaucoup plus faible si la taille de l'échantillon est petit.</p>
+<p>Un intervalle de confiance de cette forme serait donc donner une impression trompeuse de précision &mdash; nous serions prétendant être confiant à 95% qu'il comprenait μ, mais le niveau de confiance de vrais serait plus faible.</p>
+<center>
+<table border="1" cellspacing="0" cellpadding="5" bgcolor="white" width="75%">
+<tr> 
+<th align="CENTER">Une formule différente doit être utilisée que si σ est inconnu.</th>
+</tr>
+</table>
+</center>
+
+<br>
+
+<div class="diagram">
+
+<p class="heading">Simulation</p>
+
+<p>Le diagramme ci-dessous montre d'abord un échantillon aléatoire de n = 30 valeurs d'une population normale avec μ = 12 et σ = 1. Il peut montrer l'intervalle des estimations calculées à l'aide de σ = 1 ou en utilisant l'écart-type, s, en fonction du réglage de la case à cocher <strong>Utiliser l'échantillon sd</strong>.</p>
+
+<table border="0" class="centred" cellpadding="10" cellspacing="0">
+<tr>
+<th>Utiliser connue σ&nbsp;=&nbsp;1</th>
+<th>L'échantillon utilisante sd, <em>s</em></th>
+</tr>
+<tr align="center" bgcolor="#FFFFFF"> 
+        <td><img class="gif" src="../../en/ciMean/images/ci.gif" width="87" height="31"></td>
+<td><img class="gif" src="../../en/ciMean/images/bad95CI.gif" width="86" height="31"></td>
+</tr>
+</table>
+
+<br>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="580" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="inferenceProg.EstimateSIntervalApplet">
+<param name="varName" value="Sample data">
+<param name="random" value="30 12 2 6497052 2.5">
+<param name="dataDecimals" value="2">
+<param name="meanName" value="Interval estimate is">
+<param name="summaryDecimals" value="3">
+<param name="horizAxis" value="6.8 17.2 8 2">
+<param name="summaryAxis" value="7.0 17.0 8 2">
+<param name="knownPopnSD" value="2.0">
+<param name="sampleSize" value="3 5 12 *30">
+<param name="kValue" value="1.96">
+<param name="customText" value="Propn including=Propn including#Use sample sd=Use sample sd">
+</applet>
+</div>
+
+<p>Cliquez <strong>Accumuler</strong> et prendre environ 100 échantillons. Observez que ...</p>
+
+<ul>
+<li>Lors de l'utilisation d'intervalles basés sur connue σ = 1, environ 95% comprennent μ = 12. (Théorie affirme que la probabilité est exactement 0.95).</li>
+<li>Intervalles basés sur s sont similaires et encore environ 95% comprennent μ = 12. La probabilité à long terme est proche de 0,95, mais un peu moins - pas assez pour être perceptible dans ce type de simulation.</li>
+</ul>
+
+<p>Réduire la taille de l'échantillon à 5 et prendre une autre 100 échantillons. Observez maintenant que...</p>
+
+<ul>
+<li>Lors de l'utilisation d'intervalles basés sur connue σ = 1, environ 95% comprennent encore µ&nbsp;=&nbsp;12.</li>
+<li>Lorsque les intervalles sont basés sur <em>s</em>, leurs largeurs varient d'un échantillon à. Cliquez sur l'étroit intervalle et observer qu'elles correspondent à des échantillons dont les valeurs se trouvent être rapprochés.</li>
+<li>Intervalles basés sur s incluent désormais μ = 12 <strong>beaucoup moins souvent que 95% du temps</strong>. (La théorie est avancée, mais le niveau de confiance de l'intervalle est en fait 88%, et non pas 95%.)</li>
+</ul>
+
+<p>Répétez l'opération avec un échantillon de 3. Lorsque vous utilisez l'écart-type, le niveau de confiance est encore plus faible &mdash; 81% au lieu de 95%.</p>
+
+</div>
+
+<p>L'estimation par intervalle doit clairement être modifiés afin d'avoir un niveau de confiance de 95%, surtout pour les petits échantillons.</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

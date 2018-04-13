@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Normal approximation to error distribution</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<script type="text/javascript">
+		var svgNames = new Array();
+		svgNames[0] = "images/buffalo.svg";
+		svgNames[1] = "images/skiing.svg";
+		svgNames[2] = "images/marketResearch.svg";
+		svgNames[3] = "images/church.svg";
+		
+		function changeSvgImage(select) {
+			var newIndex = select.selectedIndex;
+			var image = document.getElementById('dataImage');
+			image.src = svgNames[newIndex];
+		}
+	</script>
+
+	<meta name="index" content="estimation, proportion, standard error">
+	<meta name="dataset" content="Fruit fly survival on mangoes">
+	<meta name="dataset" content="Buffalo in Yellowstone">
+	<meta name="dataset" content="Skiing injuries">
+	<meta name="dataset" content="Market research for spice mix">
+	<meta name="dataset" content="Church attendance">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Normal approximation to the error distribution</p>
+	<p>If the sample size, <em>n</em>, is large enough, <a href="javascript:showNamedPage('randomPropn5')">the 
+	  binomial distribution is approximately normal</a>, so we have the approximation</p>
+	<p class=eqn><span class="black"><span style="position:relative; top:-14px"><em>error</em> &nbsp;=&nbsp; <em>p</em> &minus; &pi; &nbsp;~&nbsp; <font face="Arial, Helvetica, sans-serif">normal</font> (0, </span><img src="../../images/symbol.sePi.png" width="89" height="46"><span style="position:relative; top:-14px"> )</span></span></p>
+<table width="75%" border="1" class="centred" cellpadding="10" cellspacing="0" bgcolor="white">
+    <tr>
+      <td align="center"><strong>You will see later that it is often easier to 
+        use this normal approximation than the binomial distribution.</strong></td>
+    </tr>
+  </table>
+	<br>
+  <div class="diagram">
+    <p class="heading">Closeness of the normal approximation</p>
+    <p>The diagram below shows the binomial distribution for the errors in simulations 
+      with probability π of success (red) and its normal approximation (grey).</p>
+    <div class="centred">
+      <applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="stdErrorProg.ErrorDistnApproxApplet">
+      <param name="n" value="100 20">
+      <param name="errorAxis" value="-0.5 0.5 -0.4 0.2">
+      <param name="decimals" value="3">
+      </applet>
+    </div>
+    <p>Use the sliders to verify that</p>
+    <ul>
+      <li>The normal approximation improves as <em>n</em> increases, whatever the value 
+        of π.</li>
+      <li>The normal approximation is best when π is close to 0.5.</li>
+    </ul>
+    <p>The normal approximation to the error distribution is therefore reasonable 
+      provided the sample size is reasonably large and π is not close to 0 or 1. <font color="#666666">(We will give better guidelines 
+        later.) </font></p>
+  </div>
+  <p>The following examples illustrate how the standard error is found  and the normal approximation to the error distribution is sketched for each.</p>
+
+  <div class="diagram">
+	
+  <p class="heading">Examples</p>
+	
+  <p>Each of the following data sets was collected to provide information about 
+			an unknown probability. </p>
+<form>
+<select name="dataset" onChange="changeSvgImage(this)">
+<option value="0" selected>Buffalo ages at Yellowstone</option>
+<option value="1">Skiing injuries for children</option>
+<option value="2">Market research for spice mix</option>
+<option value="3">Church attendance</option>
+</select>
+</form>
+
+<p align="center"><iframe src="images/buffalo.svg" id="dataImage" width="594" height="307" frameborder="0"></iframe></p>
+
+		<p>In each example, the sample size, <em>n</em>, is large so the errors are 
+			approximately normal. The diagram on the bottom right shows the approximate 
+			normal distribution for the errors &mdash; its mean is zero (the bias) and its 
+			standard deviation is the standard error of the estimator.</p>
+
+<center>
+<table border="1" cellspacing="0" cellpadding="10" bgcolor="white" width="75%">
+<tr> 
+					<td align="center"><strong>In each example, the error distribution gives 
+						a good indication of how far the sample proportion is likely to be 
+						from the true probability.<strong></strong></strong></td>
+</tr>
+</table>
+</center>
+<br>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

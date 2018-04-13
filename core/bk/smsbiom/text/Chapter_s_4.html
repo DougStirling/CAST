@@ -1,0 +1,561 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>4. Testing Hypotheses</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/maths/mathStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/maths/theorems.js"></script>
+  <script src="../../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 4 &nbsp; Testing Hypotheses</h1>
+<h1 class="sectionName">4.1 &nbsp; Introduction to hypothesis tests</h1>
+<h2 class="pageName">4.1.1 &nbsp; Inference</h2>
+
+<p class="heading notPrinted">Inference</p>
+<p><strong>Statistical inference</strong> refers to statistical
+	techniques for obtaining information about a population parameter (or parameters) from
+	a  random sample. There are two branches of inference:</p>
+<p class=heading>Estimation</p>
+<p>Point estimates and confidence intervals give answers to questions of the form:</p>
+<div class="centred"><div class="boxed"><p>What parameter values would be consistent with the sample data?</p></div></div>
+<p class=heading>Hypothesis tests</p>
+<p>This chapter deals with a related type of question:</p>
+<div class="centred"><div class="boxed"><p>Are the sample data consistent with some statement about the parameters?</p></div></div>
+<p class=heading>Errors and strength of evidence</p>
+<p>A single random sample can rarely provide enough information 
+	about a population parameter to allow us to be sure whether or not any statement (hypothesis)
+	about that parameter will be true. The best we can hope for is an indication of 
+	the <strong>strength of the evidence</strong> against it. </p>
+
+
+
+
+<h2 class="pageName">4.1.2 &nbsp; Test for a mean</h2>
+
+<p class=heading>Does a random sample have mean  520?</p>
+<p>In an industrial process, some measurement, <em>X</em>, is
+normally distributed with standard deviation σ = 10. Its mean should be µ = 520
+but  can drift from this, so samples of <em>n</em> = 10 measurements are regularly
+collected as part of quality control.</p>
+<p>If one such sample had mean 529, does the process need to
+be adjusted? The question can be reexpressed as:</p>
+<div class="centred"><div class="boxed">
+<p>If the underlying population mean was really µ = 520, what is the chance a
+sample of 10 values having a mean as far from 520 as 529?</p>
+</div></div>
+<p class=heading>Simulation</p>
+<p>We can base our answer on the distribution of the sample mean, assuming that
+<em>X</em> has a normal distribution with µ&nbsp;=&nbsp;520 and
+σ = 10. Simulations of 10 values from this distribution can be used to
+get an approximate distribution.</p>
+<p class="eqn"><img src="../../../en/testIntro/images/s_meanSim.gif" width="402" height="173"></p>
+<p>From the 200 simulated samples above, it seems very unlikely that a sample
+mean of 529 would have been recorded if the process meanhad been µ&nbsp;=&nbsp;520.
+We therefore conclude that:</p>
+<div class="centred"><div class="boxed">
+<p>There is strong evidence that the process no longer has a mean  of µ = 520
+and needs to be adjusted.</p>
+</div></div>
+
+
+
+
+<h2 class="pageName">4.1.3 &nbsp; Common patterns in tests</h2>
+
+<p class="heading">A general framework</p>
+<p>You may find it difficult to spot the
+common theme in the examples in this section, but they are all examples of <strong>hypothesis
+testing</strong> and  fit into a common framework that is used for <strong>all</strong> hypothesis
+tests.</p>
+<p class="heading">Data, model and question</p>
+<dl>
+<dt>Data (and model)</dt>
+<dd>The data were assumed to arise from a random
+mechanism (model), some of whose characteristics are unknown.</dd>
+<dt>Null hypothesis</dt>
+<dd>This is a statement about the characteristics of the model. We are particularly
+interested in whether the null hypothesis is true.</dd>
+<dt>Alternative hypothesis</dt>
+<dd>This is usually just the opposite of the null hypothesis.</dd>
+</dl>
+<p>We assess whether the null hypothesis is true by asking&nbsp;...</p>
+
+<div class="boxed" style="background-color:#FFFF00">
+<p><span class="darkred">Are the data consistent with the null hypothesis?</span></p>
+</div>
+
+<dl>
+<dt>Test statistic</dt>
+<dd>This is some function of the data that throws light on whether the null or alternative
+hypothesis holds.</dd>
+<dt>P-value</dt>
+<dd>This is the probability of obtaining a test statistic value as 'extreme' as the
+one recorded <strong>if the null hypothesis holds</strong>.</dd>
+<dt>Interpreting the p-value</dt>
+<dd>The following table  can be used as a guide:</dd>
+</dl>
+<div class="centred">
+	<table cellpadding="5" cellspacing="0" class="centred">
+		<tr>
+			<th align="left">p-value</th>
+			<th align="left">Interpretation</th>
+		</tr>
+		<tr bgcolor="white">
+			<td style="border-top:1px solid #999999;"><strong>over 0.1</strong></td>
+			<td style="border-top:1px solid #999999;">no evidence that the null hypothesis does not hold</td>
+		</tr>
+		<tr bgcolor="white">
+			<td style="border-top:1px solid #999999;"><strong>between 0.05 and 0.1</strong></td>
+			<td style="border-top:1px solid #999999;">very weak evidence that the null hypothesis does not hold</td>
+		</tr>
+		<tr bgcolor="white">
+			<td style="border-top:1px solid #999999;"><strong>between 0.01 and 0.05</strong></td>
+			<td style="border-top:1px solid #999999;">moderately strong evidence that the null hypothesis does not hold</td>
+		</tr>
+		<tr bgcolor="white">
+			<td style="border-top:1px solid #999999; border-bottom:1px solid #999999;"><strong>under 0.01</strong></td>
+			<td style="border-top:1px solid #999999; border-bottom:1px solid #999999;">strong evidence that the null hypothesis does not hold</td>
+		</tr>
+	</table>
+</div>
+<p class="heading">Soccer league in one season</p>
+<dl>
+<dt>Data (and model)</dt>
+<dd><strong>End-of-season points for the teams in the league.</strong> The model
+involves probabilities for wins, losses and draws in all matches, but we know little
+about these probabilities.</dd>
+<dt>Null hypothesis</dt>
+<dd>All teams have the same probability of winning each match.</dd>
+<dt>Alternative hypothesis</dt>
+<dd>All teams do <strong>not</strong> have the
+same probabilities of winning.</dd>
+<dt>Test statistic</dt>
+<dd><strong>The standard deviation of final points.</strong> It will be low if the
+teams have the same abilities (null hypothesis) and higher otherwise (alternative
+hypothesis).</dd>
+<dt>P-value</dt>
+<dd>Probability that the standard deviation is as high as 16.7 (the actual data) <strong>if
+all teams are equally matched</strong>. None of the simulated leagues had standard
+deviations as high as 16.7, so the p-value is zero. </dd>
+<dt>Interpreting the p-value</dt>
+<dd>There is extremely strong evidence that the teams do <strong>not</strong> have
+the same probability of winning.</dd>
+</dl>
+
+
+<p class="heading">Proportion</p>
+<dl>
+<dt>Data (and model)</dt>
+<dd><strong>Number of successes in 100 values.</strong> Our model assumes that P(success)
+is the same for all values and that they were independent.</dd>
+<dt>Null hypothesis</dt>
+<dd>The probability of success is 0.80.</dd>
+<dt>Alternative hypothesis</dt>
+<dd>The probability of success is <strong>less than</strong> 0.80.</dd>
+<dt>Test statistic</dt>
+<dd><strong>The number of successes in the 100 values.</strong> It will be near 80
+if the underlying probability of success is 0.80 (null hypothesis) and lower than
+80 if it is less (alternative hypothesis).</dd>
+<dt>P-value</dt>
+<dd>Probability of <sup>72</sup>/<sub>100</sub> or fewer successes (the actual data) <strong>if
+the underlying population proportion is 0.80</strong>. The p-value was 0.05.</dd>
+<dt>Interpreting the p-value</dt>
+<dd>Since 72 or fewer successes
+would be unlikely if the population proportion was 0.80, we have moderately strong
+evidence that it is lower than 0.80.</dd>
+</dl>
+
+
+<p class="heading">Process mean</p>
+<dl>
+<dt>Data (and model)</dt>
+<dd><strong>Sample of 10 values from a process.</strong> Our model is that they were
+sampled from a normally distribution with σ&nbsp;=&nbsp;10 and unknown µ.</dd>
+<dt>Null hypothesis</dt>
+<dd>The distribution of values has mean µ&nbsp;=&nbsp;520.</dd>
+<dt>Alternative hypothesis</dt>
+<dd>The alternative hypothesis is that µ&nbsp;≠&nbsp;520&nbsp;gm.</dd>
+<dt>Test statistic</dt>
+<dd><strong>The mean of our sample of 10 values.</strong> It will be close to 520
+if the process is working correctly (the null hypothesis) and farther from this if
+the process mean has drifted from 520 (alternative hypothesis).</dd>
+<dt>P-value</dt>
+<dd>Probability of a sample mean as far from 520 as the value in our actual data
+(529) <strong>if the underlying population mean is 520</strong>. Since none of the
+simulated samples had means as far from 520, the p-value is 0.0.</dd>
+<dt>Interpreting the p-value</dt>
+<dd>Since a mean as far from 520 as our actual mean (529) is very unlikely, there
+is strong evidence that the mean weight is <strong>no
+longer</strong> 520
+gm.</dd>
+</dl>
+
+
+<p class="heading">Comparison of groups</p>
+<dl>
+<dt>Data (and model)</dt>
+<dd><strong>Samples of values from two groups.</strong> No assumptions are made about
+the shape of the underlying distributions (model) but the data are assumed to be
+random samples from them.</dd>
+<dt>Null hypothesis</dt>
+<dd>The population distributions are the same in both groups.</dd>
+<dt>Alternative hypothesis</dt>
+<dd>The groups have different distributions.</dd>
+<dt>Test statistic</dt>
+<dd><strong>The difference between the means of the two groups.</strong> It should
+be near zero if the two populations are the same (null hypothesis) and only different
+from zero if the groups are different (alternative hypothesis).</dd>
+<dt>P-value</dt>
+<dd>Probability that the difference in means is further from zero than 0.902 (the
+actual data) <strong>if both samples come from the same population</strong>. Since
+this never happened in our randomised samples, the p-value is zero.</dd>
+<dt>Interpreting the p-value</dt>
+<dd>We conclude that it is almost certain that
+the null hypothesis does not hold &mdash;values are higher in Group A than in Group B.</dd>
+</dl>
+
+
+<p class="heading">Correlation coefficient</p>
+<dl>
+<dt>Data (and model)</dt>
+<dd><strong>Pairs of values from two variables (<em>Y</em> and <em>X</em>).</strong> No
+assumptions are made about a model underlying the data.</dd>
+<dt>Null hypothesis</dt>
+<dd>The correlation coefficient between <em>Y</em> and <em>X</em> in the population
+is zero.</dd>
+<dt>Alternative hypothesis</dt>
+<dd>The correlation is non-zero.</dd>
+<dt>Test statistic</dt>
+<dd><strong>The sample correlation coefficient between <em>Y</em> and <em>X</em>.</strong> It
+will be close to zero if the variables are uncorrelated in the underlying population
+(null hypothesis) and further from zero otherwise (alternative hypothesis).</dd>
+<dt>P-value</dt>
+<dd>Probability that the correlation coefficient is further from zero than 0.537
+(the actual data)<strong> if the variables are uncorrelated in the underlying population</strong>.
+Only 3.5% of the simulated samples had relationships as strong, so this is the p-value.</dd>
+<dt>Interpreting the p-value</dt>
+<dd>A correlation coefficient as far
+from zero would be unlikely if the null hypothesis was true, so there is moderately
+strong evidence that the variables are correlated.</dd>
+</dl>
+
+
+
+
+<h1 class="sectionName breakBefore">4.2 &nbsp; Tests about means</h1>
+<h2 class="pageName">4.2.1 &nbsp; Introduction</h2>
+
+<p class="heading">Tests about numerical populations</p>
+<p>The most important characteristic of a numerical population is usually its mean,
+µ. Hypothesis tests therefore usually question the value of this parameter.</p>
+<p class=heading>Null and alternative hypotheses</p>
+<p><strong>Two-tailed tests</strong> about a population mean  involve the  hypotheses</p>
+<p class=eqn><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> &nbsp;=&nbsp; </strong>&mu;<strong><sub>0</sub></strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> &nbsp;&ne;&nbsp; </strong>&mu;<strong><sub>0</sub></strong></span></p>
+<p>where µ<sub>0</sub> is the constant that we think may be the true mean.</p>
+<p>In a <strong>one-tailed test</strong>, the alternative
+hypothesis  involves only high (or low) values of µ,
+such as</p>
+<p class=eqn><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> &nbsp;=&nbsp; </strong>&mu;<strong><sub>0</sub></strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> &nbsp;&gt;&nbsp; </strong>&mu;<strong><sub>0</sub></strong></span></p>
+
+
+
+
+<h2 class="pageName">4.2.2 &nbsp; The t distribution</h2>
+
+<p class="heading notPrinted">Test statistic if σ is unknown</p>
+<p>In practical problems,  the value of σ is rarely known so we cannot use</p>
+<p class=eqn><img class="gif" src="../../../en/testMean/images/zStatDefn.gif" width="92" height="47"></p>
+<p>as a test statistic &mdash; it cannot be evaluated even  when <b>H<sub>0</sub></b> is
+true. Instead,  we must use a closely related type of 'statistical
+distance' between the sample mean and µ<sub>0</sub>,</p>
+<p class=eqn><img class="gif" src="../../../en/testMean/images/tStatDefn.gif" width="90" height="46"></p>
+<p>where <i>s</i> is the <strong>sample</strong> standard deviation. This test
+statistic no longer has a normal distribution &mdash; it has greater spread due to
+the extra variability that results from estimating <i>s</i>, and
+has a standard distribution called a <strong>t distribution
+with (<i>n</i> - 1) degrees of freedom</strong>.</p>
+<p class="eqn"><img src="../../../en/testMean/images/s_tDistn.gif" width="298" height="202"></p>
+
+
+
+
+<h2 class="pageName">4.2.3 &nbsp; The t test for a mean</h2>
+
+<p class="heading notPrinted">Finding a p-value from the t distribution</p>
+<p>When testing the value of  µ when σ is unknown, we use the test statistic</p>
+<p class=eqn><img class="gif" src="../../../en/testMean/images/tStatDefn.gif" width="90" height="46"></p>
+<p>This has a t distribution (with <em>n</em>&nbsp;&minus;&nbsp;1 degrees of
+freedom) when <b>H<sub>0</sub></b> is true, so the p-value is found from a tail
+area of this distribution. </p>
+<p class="heading">One-tailed test</p>
+<p class=eqn><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> &nbsp;=&nbsp; </strong>&mu;<strong><sub>0</sub></strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> &nbsp;&lt;&nbsp; </strong>&mu;<strong><sub>0</sub></strong></span></p>
+<p>The steps for testing these hypotheses are shown in the diagram below. </p>
+<p class=eqn><img class="gif" src="../../../en/testMean/images/oneTailedT.gif" width="424" height="266"> </p>
+<p class="heading">Example</p>
+<p>Consider a sample of <em>n</em> = 13 values with mean  <span class="black"><img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline"> = </span>16.14
+and standard deviation <em>s</em> = 2.15. A test for whether the population mean
+is more than 15.0 uses the hypotheses:</p>
+<p class=eqn><span class="black"><b>H<sub>0</sub></b> :   µ  =  15<sub></sub></span></p>
+<p class=eqn><span class="black"><b>H<sub>A</sub></b> :   µ  &gt;  15<sub></sub></span></p>
+<p>Since the population standard deviation, σ, is unknown, the test must be based
+on a t statistic.</p>
+<p class="eqn"><img src="../../../en/testMean/images/s_tExample.gif" width="294" height="198"></p>
+
+
+
+
+<h1 class="sectionName breakBefore">4.3 &nbsp; Properties of p-values</h1>
+<h2 class="pageName">4.3.1 &nbsp; Null and alternative hypotheses</h2>
+
+<p class="heading">Symmetric hypotheses</p>
+<p>In some situations there is a kind of symmetry between  two competing hypotheses.
+For example, if two candidates, A and B, stand in an election and π is the population
+proportion who will vote for A, we are interested in which candidate will
+win:</p>
+<p class=eqn><span class="black"><b>H<sub>1</sub></b> :   π  &gt;  0.5<sub></sub></span></p>
+<p class=eqn><span class="black"><b>H<sub>2</sub></b> :   π  &lt;  0.5<sub></sub></span></p>
+<p class="heading">Null and alternative hypotheses</p>
+<p>In statistical hypothesis testing, the two hypotheses are <strong>not</strong> treated
+symmetrically in this way. Instead, we ask whether the sample data are consistent
+with one particular hypothesis (the <strong>null hypothesis</strong>, denoted by <b>H<sub>0</sub></b>).
+If the data are not consistent with <b>H<sub>0</sub></b>, then we can conclude that
+the competing hypothesis (the <strong>alternative hypothesis</strong>, denoted by <b>H<sub>A</sub></b>)
+must be true.</p>
+<p>The two possibilities are:</p>
+<ul>
+<li>The data are consistent with <b>H<sub>0</sub></b>.</li>
+<li>The data are not consistent with <b>H<sub>0</sub></b>, so <b>H<sub>A</sub></b> must
+be true.</li>
+</ul>
+
+<p>We should <strong>never</strong> conclude that <strong>H<sub>0</sub></strong> is
+likely to be true.</p>
+<p class="heading">Example</p>
+<p>Consider a test for whether a population mean is zero:</p>
+<p class=eqn><span class="black"><b>H<sub>0</sub></b> :   µ  =  0.0<sub></sub></span></p>
+<p class=eqn><span class="black"><b>H<sub>A</sub></b> :   µ  ≠  0.0<sub></sub></span></p>
+<p>Based on a random sample, we might conclude:</p>
+<ul>
+<li>The sample mean is close  to 0.0, so data are consistent with µ = 0.0.</li>
+<li>The sample mean is far enough from 0.0 to be inconsistent with µ = 0.0, so it
+appears that µ ≠ 0.0.</li>
+</ul>
+
+
+
+
+
+<h2 class="pageName">4.3.2 &nbsp; Consistency with null hypothesis</h2>
+
+<p class="heading notPrinted">Describing the credibility of the null hypothesis</p>
+<p>A p-value is a numerical description of the strength
+of the evidence against <b>H<sub>0</sub></b> that is provided by the data .</p>
+
+<div class="centred"><div class="boxed">
+<p>A p-value is a numerical summary statistic that describes the
+strength of the evidence against <b>H<sub>0</sub></b></p>
+</div></div>
+
+<p>P-values are interpreted in the same way for <strong>all</strong> hypothesis tests.</p>
+
+
+
+
+<h2 class="pageName">4.3.3 &nbsp; Interpretation of a p-value</h2>
+
+<p class="heading notPrinted">P-values and probability</p>
+<p>When <b>H<sub>0</sub></b> holds,</p>
+<ul>
+<li>the probability
+of obtaining a p-value of 0.1 or lower is exactly 0.1</li>
+<li>the probability of obtaining a p-value of 0.01 or lower is exactly 0.01, etc.</li>
+</ul>
+<p class=eqn><img class="gif" src="../../../en/testPValue/images/pValueProbs.gif" width="525" height="187"> </p>
+<p>On the other hand, when <b>H<sub>A</sub></b> holds, p-values are more likely to
+be near zero and</p>
+<ul>
+<li>the probability of obtaining a p-value of 0.1 or lower is <strong>more than</strong> 0.1, etc.</li>
+</ul>
+<p class=heading>Examples</p>
+<dl>
+<dt>p-value = 0.0023</dt>
+<dd>From this, we know that there would be only 0.0023 probability of getting such
+a small p-value if <b>H<sub>0</sub></b> was true. This is unlikely, so there is strong
+evidence that <b>H<sub>0</sub></b> does not hold.</dd>
+
+<dt>p-value = 0.4</dt>
+<dd>There is probability 0.4 of seeing such a low p-value if <b>H<sub>0</sub></b> is
+true, so there is no evidence against <b>H<sub>0</sub></b>.</dd>
+</dl>
+<p>Of course, we may be wrong. A p-value of 0.0023 <strong>could</strong> arise when
+either <b>H<sub>0</sub></b> or <b>H<sub>A</sub></b> holds but it is  more likely
+under <b>H<sub>A</sub></b>. And a p-value of 0.4 could also arise when either hypothesis
+is true.</p>
+<p class=heading>Interpretation of p-values for all tests</p>
+<div class="centred">
+	<table cellpadding="5" cellspacing="0" class="centred">
+		<tr>
+			<th align="left">p-value</th>
+			<th align="left">Interpretation</th>
+		</tr>
+		<tr bgcolor="white">
+			<td style="border-top:1px solid #999999;"><strong>over 0.1</strong></td>
+			<td style="border-top:1px solid #999999;">no evidence that the null hypothesis does not hold</td>
+		</tr>
+		<tr bgcolor="white">
+			<td style="border-top:1px solid #999999;"><strong>between 0.05 and 0.1</strong></td>
+			<td style="border-top:1px solid #999999;">very weak evidence that the null hypothesis does not hold</td>
+		</tr>
+		<tr bgcolor="white">
+			<td style="border-top:1px solid #999999;"><strong>between 0.01 and 0.05  </strong></td>
+			<td style="border-top:1px solid #999999;">moderately strong evidence that the null hypothesis does not
+				hold</td>
+		</tr>
+		<tr bgcolor="white">
+			<td style="border-top:1px solid #999999; border-bottom:1px solid #999999;"><strong>under 0.01</strong></td>
+			<td style="border-top:1px solid #999999; border-bottom:1px solid #999999;">strong evidence that the null hypothesis does not hold</td>
+		</tr>
+	</table>
+</div>
+
+
+<h1 class="sectionName breakBefore">4.4 &nbsp; Models for two groups</h1>
+<h2 class="pageName">4.4.1 &nbsp; Interest in underlying population</h2>
+
+<p class="heading notPrinted">Data from two groups</p>
+<p>When data are  collected from two groups, we are usually interested in  differences
+between the groups
+<strong>in general</strong>. The <strong>specific</strong> individuals  are of
+less interest. Questions are therefore about the characteristics of the populations
+or processes that we assume <strong>underlie</strong> the
+data.</p>
+<p class="heading">Example</p>
+<p class="eqn"><img src="../../../en/twoGroupModel/images/hypnosis.gif" width="523" height="299" class="summaryPict"></p>
+<p>The  questions do not refer to the 16 specific subjects &mdash; they ask about
+whether anticipation of hypnosis affects the ventilation rate <strong>in general</strong>.
+We
+would like to use the answers to predict what will happen to other people.</p>
+
+
+
+
+<h2 class="pageName">4.4.2 &nbsp; Model for two groups</h2>
+
+<p class="heading notPrinted">Data and model</p>
+<p>Data from two groups can be displayed with two histograms:</p>
+<p class="eqn"><img src="../../../en/twoGroupModel/images/s_histos.gif" width="325" height="281"> </p>
+<p>The diagram below illustrates a possible model for the data above.</p>
+<p class="eqn"><img src="../../../en/twoGroupModel/images/s_pdfs.gif" width="321" height="251"></p>
+
+
+
+
+<h2 class="pageName">4.4.3 &nbsp; Testing a hypothesis</h2>
+
+<p class="heading">Testing for a difference between  two  means</p>
+<p>The difference between two groups that is of most practical
+importance is a difference between their <strong>means</strong>. </p>
+<p class=eqn><span class="blue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong><sub>2</sub> &minus; </strong>&mu;<strong><sub>1</sub> &nbsp;=&nbsp; 0</strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong><sub>2</sub> &minus; </strong>&mu;<strong><sub>1</sub> &nbsp;&ne;&nbsp; 0</strong></span></p>
+<p>The summary statistic that throws most light on these hypotheses is the difference
+between the sample means, <span style="position:relative; top:5px"><img src="../../../en/../images/symbol.xBarDiff.png" width="36" height="15" align="baseline"></span>.
+Testing therefore involves assessment of whether this difference is unusually
+far from zero. </p>
+<p class=eqn><img class="gif" src="../../../en/twoGroupInf/images/pValue.gif" width="454" height="266"> </p>
+<p>As with all other hypothesis tests, a p-value near zero gives evidence that
+the null hypothesis does not hold &mdash; evidence of a difference between the group
+means. </p>
+<p class="heading">Example</p>
+<p align="center"><img src="../../../en/twoGroupInf/images/hypnosisTest.gif" width="514" height="468" class="summaryPict"></p>
+<p class="heading">General properties of p-values</p>
+<p>A statistical hypothesis test cannot provide
+a definitive answer about whether two groups have different means. The randomness
+of sample data means that p-values are also random quantities.</p>
+<p>It is possible to get a small p-value (supporting H<sub>A</sub>) when H<sub>0</sub> is
+true, and it is possible to get a large p-value (consistent with H<sub>0</sub>)
+when H<sub>A</sub> is true.</p>
+<div class="centred"><div class="boxed"><p>There is some chance of being misled by an 'unlucky sample.</p></div></div>
+<dl>
+<dt>If H<sub>0</sub> is true</dt>
+<dd>All p-values between 0 and 1 are equally likely. For example, there is a
+5% probability of getting a p-value less than 0.05.</dd>
+<dt>If H<sub>A</sub> is true</dt>
+<dd>The p-value is more likely to be near zero, though there is still some chance
+of a larger p-value.</dd>
+</dl>
+<p class="heading">Effect of increasing the sample size</p>
+<dl>
+<dt>If H<sub>0</sub> is true</dt>
+<dd>The p-values remain equally likely between 0 and 1.</dd>
+<dt>If H<sub>A</sub> is true</dt>
+<dd>The distribution of p-values becomes more concentrated near zero, so you
+are more likely to conclude that the population means are really different.</dd>
+</dl>
+
+
+
+
+<h2 class="pageName">4.4.4 &nbsp; One-tailed tests for differences</h2>
+
+<p class="heading notPrinted">One- and two-tailed tests for differences</p>
+<p>In a <strong>two-tailed test</strong>, the alternative hypothesis is that the two population
+means are different. A <strong>one-tailed test</strong> arises when we want to test whether one
+mean is <strong>higher</strong> than the other (or <strong>lower</strong> than the other).</p>
+<p class=eqn><img class="gif" src="../../../en/twoGroupInf/images/hypotheses.gif" width="441" height="84"> </p>
+<p class="heading">Test statistic, p-value and conclusion</p>
+<p>Consider a test for the hypotheses,</p>
+<p class=eqn><span class="blue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong><sub>1</sub> &nbsp;=&nbsp; </strong>&mu;<strong><sub>2</sub></strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong><sub>1</sub> &nbsp;&gt;&nbsp; </strong>&mu;<strong><sub>2</sub></strong></span> </p>
+<p>The alternative hypothesis is only supported by very small values of <span style="position:relative; top:5px"><img src="../../../en/../images/symbol.xBarDiff.png" width="36" height="15" align="baseline"></span>.
+This also corresponds to small values of the test statistic <span class="em black">t</span> ,
+so the p-value is the <strong>lower</strong> tail probability of the t distribution. </p>
+<p class=eqn><img class="gif" src="../../../en/twoGroupInf/images/oneTailedP.gif" width="453" height="265"> </p>
+<p>A small  p-value is interpreted as giving evidence that H<sub>0</sub> is false, in a
+similar way to all other kinds of hypothesis test.</p>
+<p class="heading">Examples</p>
+<p align="center"><img src="../../../en/twoGroupInf/images/bacteriaCarpetsTest.gif" width="514" height="468" class="summaryPict"></p>
+<p class="heading">Properties of p-values</p>
+<p>We again stress that a statistical hypothesis test cannot provide a definitive
+answer. The randomness of sample data means that p-values are also random quantities,
+so there is some chance of us being misled by an 'unlucky' sample:</p>
+<ul>
+<li>If µ<sub>1</sub> = µ<sub>2</sub>, it is still possible to get a small p-value
+(e.g. a 5% probability of getting a p-value less than 0.05).</li>
+<li>If µ<sub>1</sub> and µ<sub>2</sub> are different, large p-values are still
+possible (though less likely than small p-values).</li>
+</ul>
+
+
+
+
+<h1 class="sectionName breakBefore">4.5 &nbsp; Exercises</h1>
+</body>
+</html>

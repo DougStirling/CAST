@@ -1,0 +1,294 @@
+<html>
+<head>
+  <title>6. Multivariate Data</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 6 &nbsp; Multivariate Data</h1>
+<h1 class="sectionName">6.1 &nbsp; Displaying multivariate data</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Representing a third variable</li>
+<li>Rotating 3D scatterplots</li>
+<li>Scatterplot matrix and brushing</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='4'>
+<li>Brushing example</li>
+<li>Slicing</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">6.1.1 &nbsp; Representing a third variable</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Different plotting symbols for a third variable</p>
+	<p>The simplest way to show the relationship between <strong>three</strong> numerical variables is based on a scatterplot of two of the variables, with the third 
+		variable being represented by  differing symbols instead of identical 
+		'crosses'. Possibilities are:</p>
+	<ul>
+		<li>Colour</li>
+		<li>Size</li>
+		<li>Angle</li>
+	</ul>
+	<p>Although this kind of scatterplot is easy to draw, it is usually hard to 
+		interpret. The decision about  which of the three variables to represent using 
+				the plotting symbol  can make interpretation easier.</p>
+	<p class="eqn"><img src="../../../en/multivariate/images/s_symbols.gif" width="408" height="257"></p>
+	<p class="heading">Parallel regression lines</p>
+	<p>Interpretation is considerably simplified if we constrain the  regression lines for the different groups to have the same slope. In the diagram below, the difference between the groups is the same for all values of <em>X</em>.</p>
+	<p class="eqn"><img class="gif" src="../../../en/regnGroups/images/parallelLines.gif" width="313" height="274"></p>
+	<p>Parallel lines are not appropriate descriptions of all data sets. Always check a scatterplot first.</p>
+	<p class="heading">Least squares</p>
+	<p>The principle behind fitting  parallel lines to two or more groups is the same as in ordinary simple regression &mdash; we choose the parameters to minimise the sum of squared residuals (vertical distances between the data crosses and their corresponding line). The resulting formulae are complicated, but most statistical software will do the calculations for you.</p>
+
+
+
+
+
+<h2 class="pageName">6.2.5 &nbsp; Transformed variables and groups</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Transformation of the response</p>
+	<p>It is much easier to interpret the parameters when parallel lines are fitted to different groups than when their slopes are different, but the data or the context may not justify such a simplification.</p>
+	<p class="eqn"><img src="../../../en/regnGroups/images/s_beforeLog.gif" width="436" height="331"></span><span class="black"></span> &nbsp;<span style="position:relative; top:11px"><img class="gif" src="../../../en/multiRegn/images/residSsq2Multi.gif" width="222" height="37"></span></p>
+<p>The least squares estimates of <em>b</em><sub>0</sub>, <em>b</em><sub>1</sub> and <em>b</em><sub>2</sub> are the values that minimise this.</p>
+	<p class="eqn"><img src="../../../en/multiRegn/images/s_redSquares.gif" alt="" width="428" height="342"></p>
+	<p>The solution can be obtained algebraically but the formulae are relatively complex and a computer should be used to evaluate the least squares estimates.</p>
+
+
+
+
+<h1 class="sectionName breakBefore">6.4 &nbsp; Marginal relationships</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Misleading marginal correlation</li>
+<li>Misleading marginal difference in means</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='3'>
+<li>Simpsons paradox</li>
+<li>Other examples with lurking variables</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">6.4.1 &nbsp; Misleading marginal correlation</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Relationship between two numerical variables</p>
+	<p>Scatterplots, correlation coefficients and least squares lines honestly summarise the relationship between two numerical variables, <em>Y</em> and <em>X</em>.</p>
+	<p>However they can sometimes give 
+		a misleading impression about the relationship. The problem arises when other variables are also associated with both <em>Y</em> and <em>X</em>.</p>
+	<dl>
+		<dt>Marginal relationship between <em>Y</em> and <em>X</em></dt>
+		<dd>The relationship that is evident in a scatterplot of the two variables 
+		without taking into account any other variables.</dd>
+		<dt>Conditional relationship between <em>Y</em> and <em>X</em>, given <em>Z</em></dt>
+		<dd>The relationship between <em>Y</em> and <em>X</em> that is evident within subsets of the data corresponding 
+		to different values of <em>Z</em>.</dd>
+	</dl>
+	<p>The marginal and conditional relationships between <em>Y</em> and <em>X</em> are often different and may even be in a different direction.</p>
+	<p class="eqn"><img src="../../../en/lurking/images/s_margCondit.gif" width="550" height="269"></p>
+	<p class="heading">Lurking (or hidden) variables</p>
+	<p>If the marginal relationship between <em>X</em> and <em>Y</em> is different 
+		from their conditional relationship given <em>Z</em>, but <em>Z</em> has either 
+		not been recorded or is ignored when analysing the data, then <em>Z</em> is 
+		called a <strong>lurking </strong>variable (or a <strong>hidden</strong> variable).</p>
+	
+<div class="centred"><div class="boxed">
+<p>Always think about whether there might be a lurking 
+					variable, <em>Z</em>, that is distorting the relationship that is observed 
+					between <em>Y</em> and <em>X</em>.</p>
+</div></div>
+
+
+
+
+
+<h2 class="pageName">6.4.2 &nbsp; Misleading marginal difference in means</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Relationship between a numerical and a categorical variable</p>
+	<p>The previous page showed that the marginal relationship between two numerical 
+		variables, <em>X</em> and <em>Y</em>, can be very different from their conditional 
+		relationship for specific values of <em>Z</em>. The same can happen when <em>X</em> is a categorical variable, perhaps defining different groups. </p>
+	<p class="eqn"><img src="../../../en/lurking/images/s_margMeans.gif" width="496" height="537"></p>
+
+
+
+
+<h2 class="pageName">6.4.3 &nbsp; Simpsons paradox</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Lurking variables and relationships between categorical variables</p>
+	<p>When the direction of the relationship reverses, the effect is called <strong>Simpson's 
+		paradox</strong>. As with other 'paradoxes', there is no real contradiction; it 
+		just takes a bit more thought to understand why your initial intuition is wrong.</p>
+	<p class="heading">College admission and gender</p>
+	<p>The table below describes admission rates of male and female students into
+the Business and Law Schools of a university.</p>
+<div class="centred"><table border="0" cellspacing="0" cellpadding="3" class="centred">
+<tr>
+			<td>&nbsp;</td>
+			<th colspan="2">Admission</th>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<th align="left">Gender</th>
+			<td>  Admit  </td>
+			<td>  Deny  </td>
+			<th>  Total  </th>
+			<th>  P(Admit)  </th>
+		</tr>
+		<tr>
+			<td>  Male</td>
+			<td align="center" bgcolor="#FFFFFF" class="top left">490</td>
+		<td align="center" bgcolor="#FFFFFF" class="top right">210</td>
+		<td align="center">700</td>
+			<td align="center">0.700</td>
+		</tr>
+		<tr>
+			<td>  Female  </td>
+			<td align="center" bgcolor="#FFFFFF" class="bottom left">280</td>
+		<td align="center" bgcolor="#FFFFFF" class="bottom right">220</td>
+		<td align="center">500</td>
+			<td align="center">0.560</td>
+		</tr>
+	</table></div>
+<p>A naive examination of the data suggests that females have a lower probability
+of being admitted, but the opposite is true if the applicants are split into
+the two different degrees.</p>
+	<div class="centred"><table border="0" cellspacing="0" cellpadding="3" class="centred">
+<tr>
+			<td colspan="6" style="color:#900; font-weight:bold">Business</td>
+		</tr>
+		<tr>
+			<td width="40">&nbsp;</td>
+			<td>&nbsp;</td>
+			<th colspan="2">Admission</th>
+		<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<th align="left">&nbsp;</th>
+			<th align="left">Gender</th>
+<td>  Admit  </td>
+<td>  Deny  </td>
+<th>  Total  </th>
+<th>  P(Admit)  </th>
+</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>  Male</td>
+<td align="center" bgcolor="#FFFFFF" class="top left">480</td>
+		<td align="center" bgcolor="#FFFFFF" class="top right">120</td>
+		<td align="center">600</td>
+			<td align="center">0.800</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>  Female  </td>
+<td align="center" bgcolor="#FFFFFF" class="bottom left">180</td>
+		<td align="center" bgcolor="#FFFFFF" class="bottom right"><span class="white">0</span>20</td>
+		<td align="center">200</td>
+			<td align="center">0.900</td>
+		</tr>
+		<tr>
+			<td colspan="6" style="color:#900; font-weight:bold">Law</td>
+		</tr>
+		<tr>
+			<td width="40">&nbsp;</td>
+			<td>&nbsp;</td>
+			<th colspan="2">Admission</th>
+		<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<th align="left">&nbsp;</th>
+			<th align="left">Gender</th>
+<td>  Admit  </td>
+<td>  Deny  </td>
+<th>  Total  </th>
+<th>  P(Admit)  </th>
+</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>  Male</td>
+<td align="center" bgcolor="#FFFFFF" class="top left"><span class="white">0</span>10</td>
+		<td align="center" bgcolor="#FFFFFF" class="top right"><span class="white">0</span>90</td>
+		<td align="center">100</td>
+			<td align="center">0.100</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>  Female  </td>
+<td align="center" bgcolor="#FFFFFF" class="bottom left">100</td>
+		<td align="center" bgcolor="#FFFFFF" class="bottom right">200</td>
+		<td align="center">300</td>
+			<td align="center">0.333</td>
+		</tr>
+	</table></div>
+<p class="heading">Proportional Venn diagram</p>
+	<p>Simpson's paradox is explained in the proportional Venn diagram below &mdash; in it, each rectangle is proportional to the number of women with these values for the variables.</p>
+	<p class="eqn"><img src="../../../en/lurking/images/s_propnVenn_c.gif" width="500" height="370"></p>
+	<p>Most of the males applied to the Business school (where admittance rates
+were high) and this increased their overall admittance rate compared to the females.</p>
+
+
+
+
+<h2 class="pageName">6.4.4 &nbsp; Other examples with lurking variables</h2><!DOCTYPE HTML>
+
+
+<p class="heading">Analysis using 'lurking' variables</p>
+	<p>Variables are only called 'lurking' variables if they are either <strong>unrecorded </strong>or are<strong> unused</strong> when analysing the data. In this section's examples, we presented two analyses of the data sets:</p>
+	<ol type="a">
+		<li>A simple naive analysis ignoring the lurking variable, and</li>
+		<li>A more complete analysis using this variable (which should therefore no 
+			longer be called 'lurking')</li>
+	</ol>
+	<p>Although the simple analysis can result in wrong conclusions, a full analysis 
+		using the 'lurking' variable is always more complex.</p>
+	
+<div class="centred"><div class="boxed">
+<p>Do not ignore lurking variables to simplify the analysis &mdash; 
+				you could reach the wrong conclusions from the data.</p>
+</div></div>
+
+
+
+
+
+</html>

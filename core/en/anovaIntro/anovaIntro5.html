@@ -1,0 +1,285 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Hierarchy of models for numerical factor</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<script language="javascript">
+	var quadraticExpanded = false;
+	var linearExpanded = false;
+	
+	function expandLinear() {
+		var linearOff = document.getElementById("linearOff");
+		var linearOn = document.getElementById("linearOn");
+		linearOn.style.display = linearExpanded ? "none" : "block";
+		linearOff.style.display = linearExpanded ? "block" : "none";
+		linearExpanded = !linearExpanded;
+	}
+	
+	function expandQuadratic() {
+		var quadraticOff = document.getElementById("quadraticOff");
+		var quadraticOn = document.getElementById("quadraticOn");
+		quadraticOn.style.display = quadraticExpanded ? "none" : "block";
+		quadraticOff.style.display = quadraticExpanded ? "block" : "none";
+		quadraticExpanded = !quadraticExpanded;
+	}
+	</script>
+
+	<meta name="index" content="degrees of freedom, residual sum of squares, least squares, hierarchy of models, linear model, quadratic model">
+	<meta name="dataset" content="Hardness of ball bearings">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Alternative models for numerical factor</p>
+	<p>In the previous section, we described three different models that could be used to explain the effect of a numerical factor. These models, plus a model in which the factor has <strong>no</strong> effect on the response, are shown below.</p>
+	<div class="centred"><table border="0" class="centred" cellpadding="4" cellspacing="0">
+		<tr>
+			<th style="border-bottom:1px solid #999999;">&nbsp;</th>
+			<th style="border-bottom:1px solid #999999;">Unknown parameters</th>
+			<th style="border-bottom:1px solid #999999;">Number of<br>
+				unknown parameters</th>
+		</tr>
+		<tr>
+			<th bgcolor="#FFFFFF">Factor does not affect the response<br>
+			<strong><em class="black">y<sub>ij</sub></em> &nbsp;= &nbsp;<span class="green">µ</span>&nbsp; &nbsp;+ &nbsp; <span class="red">ε<em><sub>ij</sub></em></span></strong></th>
+			<td align="center" bgcolor="#FFFFFF"><span class="green"><strong>µ</strong></span> </td>
+			<td align="center" bgcolor="#FFFFFF">1</td>
+		</tr>
+		<tr>
+			<th bgcolor="#FFFFFF">Linear model<br>
+			<strong><em>y<sub>ij</sub></em> &nbsp;= &nbsp;<span class="green">β<sub>0</sub>&nbsp;+&nbsp;β<sub>1</sub> <em> x<sub>i</sub></em></span>&nbsp;+ &nbsp; <span class="red">ε<em><sub>ij</sub></em></span></strong></th>
+			<td align="center" bgcolor="#FFFFFF"><span class="green"><strong>β<sub>0</sub></strong></span> and <span class="green"><strong>β<sub>1</sub></strong></span> </td>
+			<td align="center" bgcolor="#FFFFFF">2</td>
+		</tr>
+		<tr>
+			<th bgcolor="#FFFFFF">Quadratic model<br>
+			<strong><em>y<sub>ij</sub></em> &nbsp;= &nbsp;<span class="green">β<sub>0</sub>&nbsp;+&nbsp;β<sub>1</sub> <em> x<sub>i</sub></em>&nbsp;+&nbsp;β<sub>2</sub> <em> x<sub>i</sub></em><sup>2</sup></span>&nbsp;+ &nbsp; <span class="red">ε<em><sub>ij</sub></em></span></strong></th>
+			<td align="center" bgcolor="#FFFFFF"><span class="green"><strong>β<sub>0</sub></strong></span> , <span class="green"><strong>β<sub>1</sub></strong></span> and <span class="green"><strong>β<sub>2</sub></strong></span> </td>
+			<td align="center" bgcolor="#FFFFFF">3</td>
+		</tr>
+		<tr>
+			<th bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">Factor treated as categorical<br>
+				<strong><em class="black">y<sub>ij</sub></em> &nbsp;= &nbsp;<span class="green">µ<em><sub>i</sub></em></span> &nbsp;+ &nbsp; <span class="red">ε<em><sub>ij</sub></em></span></strong></th>
+			<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;"><strong><span class="green">µ<sub>1</sub></span> , <span class="green">µ<sub>2</sub></span></strong> , ..., <strong><span class="green">µ<em><sub>g</sub></em></span></strong> </td>
+			<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;"><em>g</em></td>
+		</tr>
+	</table></div>
+	
+<p>With a numerical factor, we usually anticipate that its relationship with the response will be 'smooth. Advantages of linear and quadratic models are that:</p>
+<ul>
+	<li>they impose smoothness on the mean responses at the different factor levels,</li>
+	<li>they allow prediction of the response at values of the factor that were not used in the experiment, and</li>
+	<li>they have fewer parameters so the parameters can be estimated more accurately.</li>
+</ul>
+<p>However the curvature in some relationships cannot be modelled with linear or quadratic models.</p>
+<div class="centred"><div class="boxed">
+	<p>Is a linear or quadratic model adequate to describe the relationship?</p>
+</div></div>
+<p class="heading">Hierarchy of models</p>  
+  <p>The four models in the table above form a hierarchy of increasing flexibility. The most general model treats the factor as categorical and has the flexibility to model <strong>any</strong> shape of relationship between the factor and response. The linear model is the most restrictive of the models in which the factor affects the response since it constrains the mean responses at the different levels to lie on a straight line. The quadratic model is intermediate.</p>
+
+<div class="html5">
+<!-- width=650 height=550-->
+<script language="javascript">
+var quadraticExpanded = false;
+var linearExpanded = false;
+
+function expandLinear() {
+	var linearOff = document.getElementById("linearOff");
+	var linearOn = document.getElementById("linearOn");
+	linearOn.style.display = linearExpanded ? "none" : "block";
+	linearOff.style.display = linearExpanded ? "block" : "none";
+	linearExpanded = !linearExpanded;
+}
+
+function expandQuadratic() {
+	var quadraticOff = document.getElementById("quadraticOff");
+	var quadraticOn = document.getElementById("quadraticOn");
+	quadraticOn.style.display = quadraticExpanded ? "none" : "block";
+	quadraticOff.style.display = quadraticExpanded ? "block" : "none";
+	quadraticExpanded = !quadraticExpanded;
+}
+</script>
+
+<style type="text/css">
+<!--
+input {color: #000066; font-weight:bold; font-size:14px;}
+span.red {color:#FF0000;}
+span.blue {color:#0000CC;}
+span.green {color:#009900;}
+span.purple {color:#9300FF;}
+span.bigger {font-size:16px; font-weight:bold; font-style:italic; font-family:Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;}
+-->
+</style>
+
+  <div class="centred"><table class="centred" cellpadding="4" width="100%">
+  	<tr>
+  		<td align="center"><table border="1" cellspacing="0" cellpadding="10">
+  			<tr>
+  				<td align="center" bgcolor="#CCCCFF" class="black bold"><em><span class="bigger">Factor does not affect Y</span><br>
+  					y<sub>ij</sub></em> &nbsp;= &nbsp;<span class="green">µ</span>&nbsp; &nbsp;+ &nbsp; <span class="red">ε<em><sub>ij</sub></em></span></td>
+  				</tr>
+  			</table></td>
+ 		</tr>
+ 	</table></div>
+	<div id="linearOff" style="display:block">
+		<div class="centred"><table class="centred" cellpadding="4" width="100%">
+			<tr>
+				<td align="right" width="40%"><span class="black bold">generalise to term </span> <span class="bold green">µ<em><sub>i</sub></em></span> </td>
+				<td width="24" align="right"><img src="../../en/contrasts/images/downArrow.gif" width="24" height="42" align="absmiddle"></td>
+				<td width="40" valign="middle"><form>
+					<input type="button" value="Show linear model" onClick="expandLinear()">
+				</form></td>
+				<td width="24" align="right"><img src="../../en/contrasts/images/downArrow.gif" width="24" height="42" align="absmiddle"></td>
+				<td align="center" width="40%"><div align="left"><span class="black bold">add (<em>g</em>&nbsp;-&nbsp;1) parameters</span> </div></td>
+			</tr>
+		</table></div>
+	</div>
+	<div id="linearOn" style="display:none">
+		<div class="centred"><table class="centred" cellpadding="4" width="100%">
+			<tr>
+				<td align="right" width="40%"><span class="black bold">add term </span> <span class="bold green"><span class="green">β<sub>1</sub> <em> x<sub>i</sub></em></span></span> </td>
+				<td width="24" align="right"><img src="../../en/contrasts/images/downArrow.gif" width="24" height="42" align="absmiddle"></td>
+				<td width="40" valign="middle"><form>
+					<input type="button" value="Hide linear model" onClick="expandLinear()">
+				</form></td>
+				<td width="24" align="right"><img src="../../en/contrasts/images/downArrow.gif" width="24" height="42" align="absmiddle"></td>
+				<td align="left" width="40%"><span class="black bold">add 1 parameter</span> <strong class="red"></strong></td>
+			</tr>
+		</table></div>
+		<div id="quadraticOff" style="display:block">
+			<div class="centred"><table class="centred" cellpadding="4" width="100%">
+				<tr>
+					<td  colspan="5"align="center"><table border="1" cellspacing="0" cellpadding="10">
+						<tr>
+							<td align="center" bgcolor="#CCCCFF" class="black bold"><em><span class="bigger">Factor affects Y linearly</span><br>
+							y<sub>ij</sub></em> &nbsp;= &nbsp;<span class="green"><span class="green">β<sub>0</sub>&nbsp;+&nbsp;β<sub>1</sub> <em> x<sub>i</sub></em></span></span>&nbsp;+ &nbsp; <span class="red">ε<em><sub>ij</sub></em></span></td>
+						</tr>
+					</table></td>
+				</tr>
+				<tr>
+					<td align="right" width="40%"><span class="black bold">generalise </span> <span class="black"><strong>to term </strong><span class="bold green">µ<em><sub>i</sub></em></span> </span></td>
+					<td width="24" align="right"><img src="../../en/contrasts/images/downArrow.gif" width="24" height="42" align="absmiddle"></td>
+					<td width="40" valign="middle"><form>
+						<input type="button" value="Show quadratic model" onClick="expandQuadratic()">
+					</form></td>
+					<td width="24" align="right"><img src="../../en/contrasts/images/upArrow.gif" width="24" height="42" align="absmiddle"></td>
+					<td align="left" class="black" width="40%"><strong>add (<em>g</em>&nbsp;-&nbsp;2) parameters</strong></td>
+				</tr>
+			</table></div>
+		</div>
+		<div id="quadraticOn" style="display:none">
+			<div class="centred"><table class="centred" cellpadding="4" width="100%">
+				<tr>
+					<td colspan="5" align="center"><table border="1" cellspacing="0" cellpadding="10">
+						<tr>
+							<td align="center" bgcolor="#CCCCFF" class="black bold"><em><span class="bigger">Factor affects Y linearly</span><br>
+							y<sub>ij</sub></em> &nbsp;= &nbsp;<span class="green"><span class="green">β<sub>0</sub>&nbsp;+&nbsp;β<sub>1</sub> <em> x<sub>i</sub></em></span></span>&nbsp;+ &nbsp; <span class="red">ε<em><sub>ij</sub></em></span></td>
+						</tr>
+					</table></td>
+				</tr>
+				<tr>
+					<td align="right" width="40%"><span class="black bold">add term </span> <span class="bold green"><span class="green">β</span><sub>2</sub><span class="green"> <em> x<sub>i</sub></em><sup>2</sup></span></span> </td>
+					<td width="24" align="right"><img src="../../en/contrasts/images/downArrow.gif" width="24" height="42" align="absmiddle"></td>
+					<td width="40" valign="middle"><form>
+						<input type="button" value="Hide quadratic model" onClick="expandQuadratic()">
+					</form></td>
+					<td width="24" align="right"><img src="../../en/contrasts/images/upArrow.gif" width="24" height="42" align="absmiddle"></td>
+					<td align="left" class="black" width="40%"><strong>add 1 parameter</strong></td>
+				</tr>
+				<tr>
+					<td colspan="5" align="center"><table border="1" cellspacing="0" cellpadding="10">
+						<tr>
+							<td align="center" bgcolor="#CCCCFF" class="black bold"><em><span class="bigger">Factor affects Y quadratically</span><br>
+							y<sub>ij</sub></em> &nbsp;= &nbsp;<span class="green"><span class="green">β<sub>0</sub>&nbsp;+&nbsp;β<sub>1</sub> <em> x<sub>i</sub></em>&nbsp;+&nbsp;β</span><sub>2</sub><span class="green"> <em> x<sub>i</sub></em><sup>2</sup></span></span>&nbsp;+ &nbsp; <span class="red">ε<em><sub>ij</sub></em></span></td>
+						</tr>
+					</table></td>
+				</tr>
+				<tr>
+					<td align="right" width="40%"><span class="black bold">generalise </span> <span class="black"><strong>to term </strong><span class="bold green">µ<em><sub>i</sub></em></span> </span></td>
+					<td width="24" align="right"><img src="../../en/contrasts/images/downArrow.gif" width="24" height="42" align="absmiddle"></td>
+					<td width="40" valign="middle">&nbsp;</td>
+					<td width="24" align="right"><img src="../../en/contrasts/images/upArrow.gif" width="24" height="42" align="absmiddle"></td>
+					<td align="left" class="black" width="40%"><strong>add (<em>g</em>&nbsp;-&nbsp;3) parameters</strong></td>
+				</tr>
+			</table></div>
+		</div>
+	</div>
+	<div class="centred"><table class="centred" cellpadding="4" width="100%">
+		<tr>
+			<td align="center"><table border="1" cellspacing="0" cellpadding="10">
+				<tr>
+					<td align="center" bgcolor="#CCCCFF" class="black bold"><em><span class="bigger">Factor affects Y</span><br>
+					y<sub>ij</sub></em> &nbsp;= &nbsp;<span class="green">µ<em><sub>i</sub></em></span> &nbsp;+ &nbsp; <span class="red">ε<em><sub>ij</sub></em></span></td>
+				</tr>
+			</table></td>
+		</tr>
+	</table></div>
+	</div>
+	
+	
+	<p class="heading">Residual and explained sums of squares</p>
+	<p>When fitting a model to experimental data, we estimate the parameters to 
+		give the minimum possible residual sum of squares &mdash; they are the 'least squares' 
+		estimates. </p>
+	<p>As the number of parameters increases, improving the flexibility of the model, the more it is possible to reduce the residual sum of squares. Each addition of parameters in the hierarchy above therefore results in a decrease in the residual sum of squares by an amount that is called the sum of squares <strong>explained</strong> by adding the factor. These explained sums of squares have <strong>degrees of freedom</strong> equal to the number of extra parameters.
+<br>
+	</p>
+	<div class="diagram">
+		<p class="heading">Hardness of ball bearings</p>
+		<p>The hardness of steel ball bearings is related to the rate <em>X</em> at which they were cooled after being made. Data were obtained from an experiment where two ball bearings were cooled at each of several rates of cooling.</p>
+<p>The table below initially shows the residual sum of squares for the model in which 
+the cooling rate has <strong>no</strong> effect on the response 
+variable (hardness). In this model, none of the variation in the response is explained by the model.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="exper2Prog.SeqFitTermsApplet">
+<param name="yVarName" value="Hardness index">
+<param name="yValues" value="48.60 47.80 47.60 46.70 46.20 45.70 46.55 46.57 46.49 41.82 41.40 42.10 42.01 41.67 38.96 40.97 38.71 37.00 35.88 36.25 39.23 34.18 34.59 37.56 33.49 33.93 31.02 31.57 26.99 28.38">
+<param name="xVarName" value="Cooling rate">
+<param name="xValues" value="2@0 2@1 2@2 2@3 2@4 2@5 2@6 2@7 2@8 2@9 2@10 2@11 2@12 2@13 2@14">
+<param name="xLabels" value="10 15 20 25 30 35 40 45 50 55 60 65 70 75 80">
+<param name="yAxis" value="25 50 25 5">
+<param name="xVariables" value="Cool Cool2 Factor">
+<param name="CoolVarName" value="Linear">
+<param name="CoolValues" value="2@0 2@1 2@2 2@3 2@4 2@5 2@6 2@7 2@8 2@9 2@10 2@11 2@12 2@13 2@14">
+<param name="Cool2VarName" value="Quadratic">
+<param name="Cool2Values" value="2@49 2@36 2@25 2@16 2@9 2@4 2@1 2@0 2@1 2@4 2@9 2@16 2@25 2@36 2@49">
+<param name="FactorVarName" value="Categorical">
+<param name="FactorValues" value="6@0 2@1 2@2 2@3 2@4 2@5 2@6 2@7 2@8 2@9 2@10 2@11 2@12">
+<param name="FactorLabels" value="L123 L4 L5 L6 L7 L8 L9 L10 L11 L12 L13 L14 L15">
+<param name="maxSsq" value="9999.99 99">
+<param name="componentNames" value="Linear cooling#Adding quadratic#Quadratic lack-of-fit">
+</applet>
+</div>
+
+		<p>Drag the red arrow down past <strong>Linear </strong>to see the effect 
+			on the residual sum of squares of changing the model to one that models 
+			the effect of cooling rate linearly. The residual sum of squares reduces 
+			by 1029.15 and this is displayed in the table as the sum of squares <strong>explained</strong> by the linear model.</p>
+		<p>Drag past <strong>Quadratic</strong> to add a quadratic term, further reducing the residual sum of squares (with a further 1 explained degree of freedom).</p>
+		<p>Finally drag past <strong>Factor</strong> to move to the most general  model that treats the cooling rate levels as categorical. This model has 12 more parameters than the quadratic model and does not impose any form of smoothness on the relationship between cooling rate and hardness. The corresponding reduction in the residual sum of squares, 26.84, can be interpreted as being caused by <strong>lack of 
+			fit</strong> of the quadratic model.</p>
+		
+		<div class="centred"><div class="boxed">
+		<p>Note that the sums of squares and their degrees of freedom 
+					add up to give the total sum of squares and its degrees of freedom, 
+					(<em>n</em>&nbsp;-&nbsp;1).</p>
+		</div></div>
+		
+		<br>
+	</div>
+	
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

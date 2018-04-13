@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Sums of squares</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	<meta name="index" content="variation, explained variation, unexplained variation, sum of squares, explained sum of squares, residual sum of squares, total sum of squares">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Summarising variation between and within treatments</p>
+<p>Evidence for a difference between 
+the factor levels is strongest when the variation between observed treatment means 
+is high <strong>relative to the variation within the treatments</strong>. In this page, 
+we describe quantities that summarise these two types of variation.</p>
+<p>We use the notation <em>y<sub>ij</sub></em> 
+to denote the <i>j</i>'th of the response measurements getting treatment <i>i</i>. 
+The mean response for the <em>i</em>'th treatment  in the data is denoted by <span style="position:relative; top:4px"><img src="../../images/symbol.yiBar.png" width="12" height="14" align="baseline"></span>.</p>
+<p class="heading">Total variation</p>
+
+<p>Before summarising variation within and between treatments, we first present a 
+value that describes the overall variability in the response measurement, ignoring 
+the existence of the factor.</p>
+<div class="centred"><table width="90%" border="0" class="centred" cellpadding="6" cellspacing="0" style="background-color:#FFFFFF">
+<tr> 
+<td><img class="gif" src="../multiGroup/images/totalSsq.gif" width="79" height="27"></td>
+<td class="green">The <strong>total sum of squares</strong> reflects the 
+overall variability of the response.</td>
+</tr>
+</table></div>
+
+<p>Note that the sample variance of all <em>n</em> response values is the total sum of squares divided by (<em>n</em>&nbsp;-&nbsp;1).</p>
+  <p class="heading">Variation between treatment means (explained sum of squares)</p>
+<p>A measure of variation between treatments describes how far apart the treatment means are. It is defined in terms of distances between the treatment means and the 
+overall mean, <span style="position:relative; top:4px"><img src="../../images/symbol.yBar.png" width="10" height="14" align="baseline"></span>.</p>
+
+<div class="centred"><table width="90%" border="0" class="centred" cellpadding="6" cellspacing="0" style="background-color:#FFFFFF">
+<tr> 
+<td><img class="gif" src="../multiGroup/images/regnSsq.gif" width="75" height="26"></td>
+<td class="red">The <strong> sum of squares between levels</strong> measures 
+the variability of the level means.</td>
+</tr>
+</table></div>
+  <p>Note that the summation here is <span class="black bold">over all observations 
+		in the data set</span> &mdash; if  <em>n<sub>i</sub></em> experimental units get treatment <em>i</em>, each of them separately contributes 
+		an equal amount to the between-treatments sum of squares.</p>
+  <p class="heading">Variation within treatments (residual sum of squares)</p>
+<p>We summarise unexplained variation using differences between the values and their treatment means.</p>
+<div class="centred"><table width="90%" border="0" class="centred" cellpadding="6" cellspacing="0" style="background-color:#FFFFFF">
+<tr> 
+<td><img class="gif" src="../multiGroup/images/residSsq.gif" width="83" height="27"></td>
+<td class="blue">The <strong> sum of squares within treatments</strong> quantifies 
+the spread of values within each treatment.</td>
+</tr>
+</table></div>
+<p>This is also called the <strong>residual</strong> sum of squares since it describes 
+variability that is unexplained by differences between the treatments. Dividing it by (<em>n</em>&nbsp;-&nbsp;<em>g</em>) gives the <a href="javascript:showNamedPage('oneFactor4')">pooled estimate of the unknown model parameter σ<sup>2</sup></a>.</p>
+<p class="heading">Relationship between sums of squares</p>
+<p>The following relationship is difficult to prove but is important.</p>
+<p class=eqn><img class="gif" src="../multiGroup/images/ssqEqn.gif" width="308" height="48"></p>
+<div class="diagram"> 
+<p class="heading">Illustration of sums of squares</p>
+<p>The display on the left below shows the results of a completely randomised experiment with 8 replicates at each of 
+4 factor levels. </p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="420">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="ssqProg.ComponentsSsqApplet">
+<param name="noOfDataSets" value="2">
+<param name="dataName" value="Eight replicates">
+<param name="dataName2" value="Two replicates">
+<param name="yVarName" value="Yield of wheat, y">
+<param name="xVarName" value="Variety, x">
+<param name="xLabels" value="A B C D">
+<param name="xValues" value="8@0 8@1 8@2 8@3">
+<param name="xValues2" value="2@0 2@1 2@2 2@3">
+<param name="anovaModel" value="9 0.9 16 0.9 14 0.9 6 0.9">
+<param name="randomSeed" value="5836280">
+<param name="yAxis" value="0 25 0 5">
+<param name="decimals" value="3">
+<param name="residAxis" value="-15 15 -15 5">
+<param name="initialR2" value="0.75">
+<param name="maxSsq" value="999.99">
+<param name="componentName" value="Total#Between#Within">
+<param name="customText" value="Variability=Variability#All unexplained=All unexplained#All explained=All explained">
+</applet>
+</div>
+
+    
+<p>The three jittered dot plots on the right show the values whose squares are 
+summed to give the total, between-level and within-level sums of squares. <strong>Click 
+on each of these three plots</strong> to display the quantities on the diagram on the left. 
+The sums of squares summarise the size of the three components.</p>
+<p>Use the slider to adjust the data values and observe how the relative size 
+of the variation between  and within treatments is reflected in the size of 
+these sums of squares.</p>
+
+<div class="centred"><div class="boxed">
+<p>Evidence for a difference between the treatment means is 
+strongest when the between-treatment sum of squares is much higher than the within-treatment 
+sum of squares.</p>
+</div></div>
+
+
+<p>Select <strong>Two replicates</strong> from the pop-up menu and repeat.</p>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Estimating the error variance</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="error variance, error, residual sum of squares, anova, analysis of variance">
+	<meta name="dataset" content="Cement packing machines">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Standard deviation of the 'error' in the model</p>
+  <p>In the earlier pages of this section, we have concentrated on the parameters describing explained variation in a normal model for experimental data. For example, in the model for a categorical factor, we have estimated the parameters <span class="blue">{µ<em><sub>i</sub></em>}</span> and used analysis of variance to test whether these parameters are all equal.</p>
+  <div class="centred"><table border="0" class="centred" cellpadding="3" cellspacing="0">
+  	<tr>
+  		<td colspan="2"><span class="black em">y<sub>ij</sub></span> &nbsp;= &nbsp;<span class="blue">µ<em><sub>i</sub></em></span>&nbsp;&nbsp;+&nbsp;<span class="red">&nbsp;ε<em><sub>ij</sub></em></span> &nbsp; &nbsp; &nbsp; for &nbsp; <em>i</em>&nbsp;=&nbsp;1 to <em>g</em> &nbsp; and &nbsp; <em>j</em>&nbsp;=&nbsp;1 to <em>n<sub>i</sub></em></td>
+ 		</tr>
+  	<tr>
+  		<td width="40">&nbsp;</td>
+  		<td>where &nbsp;<span class="red">ε<em><sub>ij</sub></em> &nbsp; ∼ &nbsp; normal&nbsp;(0, σ)</span></td>
+ 		</tr>
+ 	</table></div>
+  <p>The model however also contains a parameter <span class="red">σ</span> which is the standard deviation of the model errors, <span class="red">{ε<em><sub>ij</sub></em></span><span class="red">}</span>, and describes the amount of <strong>unexplained</strong> variation in the model. The parameter <span class="red">σ</span> is the standard deviation of the error &mdash; it is also the standard deviation of replicate observations at the same factor level. From it, we can say that:</p>
+  <div class="centred"><div class="boxed">
+  	<p>About 95% of replicate observations at the same factor level will be within <span class="red">±2σ</span> of the mean response at that level.</p>
+</div></div>
+<br>
+
+  <div class="diagram"> 
+    <p class="heading">Cement packing machines</p>
+    <p>A cement manufacturing company packs cement into '50&nbsp;lb' bags using several packing machines. Twenty bags produced by each of 3 machines were weight.</p>
+<p>The diagram below shows the actual weight (lb) of each of the 60 bags and a possible normal model for the data. (The three normal distributions are centred on the sample mean weights of the 20 bags from the three machines.)</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoFactorProg.RotateAdjustSDApplet">
+<param name="yVarName" value="Actual bag weight">
+<param name="yValues" value="49.89 48.80 49.22 49.34 48.77 48.71 50.06 49.51 49.11 49.98 49.64 48.91 50.30 49.67 50.39 50.18 49.09 48.72 49.46 49.30 50.69 51.50 52.09 50.87 50.69 51.05 51.60 50.69 50.48 51.13 51.16 51.49 50.84 51.11 50.94 51.15 52.12 50.84 50.39 51.48 49.36 49.92 49.52 50.22 50.23 49.78 48.67 49.98 50.86 50.51 48.95 49.85 49.49 49.29 49.16 50.07 49.64 49.93 49.68 49.62">
+<param name="xVarName" value="Packing machine">
+<param name="xLabels" value="#M/C 1# #M/C 2# #M/C 3#">
+<param name="xValues" value="20@0 20@1 20@2">
+<param name="yAxis" value="48.5 52.2 48.5 0.5">
+<param name="rootMeanRss" value="0.20 1.00 0.80">
+<param name="jittering" value="0.5">
+<param name="initialRotation" value="45 60">
+<param name="customText" value="Estimate of error sd=Estimate of error sd#Best estimate=Best estimate">
+</applet> 
+</div>
+
+    <p>Use the slider to adjust the value of σ.</p>
+    <p>Click <strong>Best estimate</strong> to display the best-fitting model. 
+			(A brief explanation of the source of this estimate is given in the next 
+			page.)</p>
+</div>
+
+  <p class="heading">Estimate of error variance</p>
+  <p>For technical reasons, when analysing experimental data, it is better to 
+    focus on variances rather than standard deviations, so we will consider estimation 
+    of <span class="red">σ<sup>2</sup></span> 
+    rather than <span class="red">σ</span>.</p>
+  <p>The error variance, <span class="red">σ<sup>2</sup></span>, 
+    is estimated by the <strong>mean residual sum of squares</strong> for the model being fitted.</p>
+  <p class=eqn><img src="images/meanResidSsq.gif" width="91" height="35"> </p>
+  <p>if there are <em>n</em> observations and the explained part of the model has <em>df</em> parameters.</p>
+  <div class="diagram"> 
+    <p class="heading">Cement packing machines</p>
+
+    <p>The analysis of variance (anova) table for the  cement-packing data is shown below.</p>
+    <div class="centred"><table border="0" class="centred" cellpadding="0" cellspacing="0">
+      <tr> 
+        <th align="left"><span class="gray">Source of variation</span></th>
+        <th><span class="gray">SSq</span></th>
+        <th><span class="gray">df</span></th>
+        <th><span class="gray">MSq</span></th>
+        <th><span class="gray">F</span></th>
+        <th><span class="gray">p-value</span></th>
+      </tr>
+      <tr> 
+        <td colspan="6" bgcolor="#000000"><img border="0" src="../structure/images/spacer.gif" width="20" height="1"></td>
+      </tr>
+      <tr> 
+        <td><span class="gray">Machines&nbsp;&nbsp;</span></td>
+        <td align="center"><span class="gray">&nbsp;&nbsp;31.65&nbsp;&nbsp;</span></td>
+        <td align="center"><span class="gray">2</span></td>
+        <td align="right"><span class="gray">&nbsp;&nbsp;15.826&nbsp;&nbsp;</span></td>
+        <td align="center"><span class="gray">&nbsp;&nbsp;59.51&nbsp;&nbsp;</span></td>
+        <td align="center"><span class="gray">0.000</span></td>
+      </tr>
+      <tr> 
+        <td bgcolor="#FFFFFF"><span class="red bold">Residual</span> </td>
+        <td align="center" bgcolor="#FFFFFF"><span class="red bold">15.16</span> </td>
+        <td align="center" bgcolor="#FFFFFF"><span class="red bold">&nbsp;&nbsp;57&nbsp;&nbsp;</span> </td>
+        <td align="right" bgcolor="#FFFFFF"><span class="red bold">0.266&nbsp;&nbsp;</span> </td>
+        <td align="center">&nbsp;</td>
+        <td align="center">&nbsp;</td>
+      </tr>
+      <tr> 
+        <td colspan="6" bgcolor="#000000"><img border="0" src="../structure/images/spacer.gif" width="20" height="1"></td>
+      </tr>
+      <tr> 
+        <td><span class="gray">Total</span></td>
+        <td align="center"><span class="gray">46.81</span></td>
+        <td align="center"><span class="gray">59</span></td>
+        <td align="center">&nbsp;</td>
+        <td align="center">&nbsp;</td>
+        <td align="center">&nbsp;</td>
+      </tr>
+    </table></div>
+    <p>From the p-value associated with the factor (the difference between the machines), we conclude that there is almost certainly a difference between the mean back weights for the different packing machines.</p>
+    <p>The row of the table that is highlighted in red shows the residual sum 
+      of squares, its degrees of freedom, and the best estimate of the error variance, 
+      <span class="red">σ<sup>2</sup></span>,&nbsp;is&nbsp;0.266. 
+    From this, we can say that:</p>
+    <div class="centred"><div class="boxed">
+    	<p>About 95% of bags produced by a packing machine will have weights within <span class="red">2σ</span> = 1.03&nbsp;pounds of the mean bag weight for that machine.</p>
+</div></div>
+
+<br>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

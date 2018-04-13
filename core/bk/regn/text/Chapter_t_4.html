@@ -1,0 +1,94 @@
+<html>
+<head>
+<title>4. Indicator Variables</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../structure/tocPrintStyles.css" type="text/css">
+<script type='text/javascript'>
+	function toggleDescriptions() {
+		var showNotHide = document.getElementById('descriptionCheck').checked;
+		var descriptions = document.getElementsByTagName('p');
+		for (var i=0 ; i<descriptions.length ; i++)
+			descriptions[i].style.display = showNotHide ? 'block' : 'none';
+	}
+</script>
+</head>
+
+<body>
+<div style='position:absolute; top:3em; right:5; color:#FF0000; border:solid 1px #FF0000; background-color:#FFFFCC; padding:4px; margin:0px; line-height:0.8em'>
+<input type='checkbox' id='descriptionCheck' checked onChange='toggleDescriptions()'/>Long page<br>descriptions
+</div>
+<h1>Chapter 4 &nbsp; Indicator Variables</h1>
+<h2>4.1 &nbsp; Indicator variable for two groups</h2>
+<h3>4.1.1 &nbsp; Model and hypotheses</h3>
+<p>We assume that the data arise as random samples from two normal populations with the same standard deviation.</p>
+<h3>4.1.2 &nbsp; Indicator variables</h3>
+<p>A linear model with an explanatory variable whose value is 0 or 1 depending on the group is equivalent to the model with separate parameters for each of the two group means.</p>
+<h3>4.1.3 &nbsp; Least squares estimates</h3>
+<p>The least squares estimates for the GLM with an indicator variable give fitted values that are the two group means.</p>
+<h3>4.1.4 &nbsp; Test for equal group means</h3>
+<p>The t-test for whether the coefficient of the indicator variable is zero is identical to the standard t-test for comparing two sample means.</p>
+<h3>4.1.5 &nbsp; Sums of squares</h3>
+<p>The explained sum of squares can be interpreted as the sum of squares between groups; the residual sum of squares is the sum of squares within groups.</p>
+<h3>4.1.6 &nbsp; Anova test for equal means</h3>
+<p>The anova F test for equal group means gives the same p-value and conclusion as the standard t test.</p>
+<h2>4.2 &nbsp; Indicator variables for 3+ groups</h2>
+<h3>4.2.1 &nbsp; Model for several groups</h3>
+<p>The normal model for several groups has the same standard deviation in each group but allows the means to be different.</p>
+<h3>4.2.2 &nbsp; Indicator variables</h3>
+<p>Different means in g groups can be modelled with (g-1) indicator variables whose GLM coefficients are differences between the group means that of a baseline group.</p>
+<h3>4.2.3 &nbsp; Least squares estimates</h3>
+<p>The least squares estimates for the GLM with indicator variables for the groups result in fitted values that are the group sample means.</p>
+<h3>4.2.4 &nbsp; Tests for separate indicator variables</h3>
+<p>T-tests for the coefficients of separate indicator variables test whether the mean of that group equals the mean of the baseline group. This may make sense if the baseline group is a control treatment, but in general there are too many pairwise comparisons to rely on the results of separate t-tests.</p>
+<h3>4.2.5 &nbsp; Explained and residual sums of squares</h3>
+<p>Testing for equal group means requires simultaneous testing of the coefficients of the (g-1) indicator variables using analysis of variance. The explained and residual sums of squares describe between-group and within-group variation.</p>
+<h3>4.2.6 &nbsp; Coefficient of determination</h3>
+<p>The coefficient of determination is the proportion of response variation that is explained by the groups.</p>
+<h3>4.2.7 &nbsp; Anova test for equal group means</h3>
+<p>An anova table with between-group and within-group sums of squares provides a test for equal group means.</p>
+<h3>4.2.8 &nbsp; Can groups be combined?</h3>
+<p>Many parameterisations are possible for the model with arbitrary group means. An example is given that allows testing of whether a subset of group means are equal.</p>
+<h2>4.3 &nbsp; Numerical &amp; categorical variables</h2>
+<h3>4.3.1 &nbsp; Model for X and 2 groups</h3>
+<p>A simple linear model for Y against X can be augmented with a 0/1 indicator variable distinguishing the groups. The model is a GLM and can be represented by two parallel lines on the scatterplot of Y vs X.</p>
+<h3>4.3.2 &nbsp; Inference for X and 2 groups</h3>
+<p>A t-test for whether the coefficient of the indicator variable is zero tests whether the groups are the same.</p>
+<h3>4.3.3 &nbsp; Model for X and 3+ groups</h3>
+<p>If there are g groups, (g-1) indicator variables can be added to the simple linear model. This corresponds to g parallel lines for the groups on the scatterplot of Y vs X.</p>
+<h3>4.3.4 &nbsp; Inference for X and 3+ groups</h3>
+<p>Analysis of variance provides a single test for differences between the groups. If X is not orthogonal to the groups, there are two different anova tables corresponding to the two orders of adding X and the indicator variables.</p>
+<h3>4.3.5 &nbsp; Categorical variables and groups</h3>
+<p>Observations that are split into groups can be equivalently considered as a single data set with a categorical variable defining group membership.</p>
+<h3>4.3.6 &nbsp; Model for 2 categorical variables</h3>
+<p>Data with two categorical explanatory variables often arise from designed experiments. Two sets of indicator variables can be used to model the effects of the two variables in a GLM.</p>
+<h3>4.3.7 &nbsp; Inference for 2 categorical variables</h3>
+<p>The effects of the categorical explanatory variables can be tested with analysis of variance. The categorical explanatory variables are usually orthogonal in designed experiments and a single anova table can test both variables. </p>
+<h3>4.3.8 &nbsp; Mixtures of explanatory variable types</h3>
+<p>The models in this section can be extended with terms for any mixture of numerical and categorical explanatory variables. If one or more categorical explanatory variables has 3+ levels, F-tests based on Type 3 sums of squares should be used to test significance instead of t-tests for individual parameters.</p>
+<h2>4.4 &nbsp; Interactions</h2>
+<h3>4.4.1 &nbsp; Interaction between numerical variables</h3>
+<p>Interaction between two numerical variables can be modelled in a GLM with a term involving the product of the variables.</p>
+<h3>4.4.2 &nbsp; Numerical-categorical interaction</h3>
+<p>If there is no interaction between a numerical and categorical explanatory variable, the regression lines for all categories are parallel. If these regression lines are not parallel, then there is interaction. Extra terms can be added to the no-interaction GLM to model the interaction.</p>
+<h3>4.4.3 &nbsp; Inference for num-cat interaction</h3>
+<p>The existence of interaction can be tested with a test for whether the parameters for the interaction terms are zero. This can be done with a t-test if there are only 2 categories, but an F-test is needed for more categories.</p>
+<h3>4.4.4 &nbsp; Interaction between categorical variables</h3>
+<p>Indicator variables can be added to the no-interaction GLM to model an interaction between 2 categorical variables.</p>
+<h3>4.4.5 &nbsp; Inference for categorical interaction</h3>
+<p>Testing for interaction is equivalent to testing whether the parameters for the interaction indicator variables are all zero.</p>
+<h3>4.4.6 &nbsp; Interactions with several variables</h3>
+<p>An example is shown with several main effects and interactions.</p>
+<h2>4.5 &nbsp; Goodness-of-fit and pure error</h2>
+<h3>4.5.1 &nbsp; Modelling nonlinearity with g groups</h3>
+<p>When there are several response values at each x, the most general model for curvature allows for an arbitrary response mean at each x. This model places no constraint on the shape of the curvature.</p>
+<h3>4.5.2 &nbsp; Understanding the sums of squares</h3>
+<p>The nonlinearity sum of squares describes the distances of the group means from a straight line.</p>
+<h3>4.5.3 &nbsp; Test for linearity</h3>
+<p>An F ratio comparing the nonlinear and residual sums of squares provides a test for linearity.</p>
+<h3>4.5.4 &nbsp; Contrasts for testing linearity</h3>
+<p>The g-group model that allows for arbitrary response means at each x can be parameterised in a way that makes the test for linearity equivalent to testing whether the coefficients of (g-2) indicator variables are zero.</p>
+<h3>4.5.5 &nbsp; Comparison of tests</h3>
+<p>The quadratic test is more likely to detect 'smooth' nonlinearity. The test based on the factor model is better at detecting more irregular types of nonlinearity, including those that can arise from badly randomised experiments.</p>
+<h3>4.5.6 &nbsp; Goodness-of-fit for other models</h3>
+<p>In experiments where there are repeated response measurements at different x-z combinations it is possible to perform a more general anova test about the fit of a model. This can detect both curvature and interaction.</p>
+</html>

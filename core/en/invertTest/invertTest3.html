@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Confidence interval from a test</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="confidence interval, hypothesis test, test, binomial distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Inverting a test to find a confidence interval</p>
+
+<p>There are two reasons why hypothesis tests may be simpler than confidence intervals:</p>
+<ul>
+	<li>The underlying theory is easier in some applications</li>
+	<li>Sometimes conventional confidence intervals involve  approximations that can be avoided in hypothesis tests.</li>
+</ul>
+<p>In these situations, a good approach to finding a confidence interval  may  be through hypothesis tests.</p>
+<p>For example, the confidence intervals for a binomial proportion that we showed earlier were based on normal approximations to the number or proportion of successes. A <a href="javascript:showNamedPage('testConcepts4')">hypothesis test about the probability of success</a> can be performed using binomial probabilities without the need for this normal approximation.</p>
+<p>A \((1 - \alpha)\) confidence interval for a parameter \(\theta\) can be found as follows:</p>
+<ol>
+	<li>For different values of \(\theta_0\), perform a 2-tailed test for whether \(\theta = \theta_0\) at significance level \(\alpha\).</li>
+	<li>A \((1 - \alpha)\) confidence interval for \(\theta\) consists of the values \(\theta_0\) that are not rejected by these tests.</li>
+</ol>
+<p>This will be illustrated in an example.</p>
+
+
+<div class="example" title="Example: Exact CI for a binomial probability">
+	
+	<p class="exampleHeading">Exact confidence interval for a binomial probability, π</p>
+
+<p>We will now find a 95% confidence interval for the probability of success, \(\pi\), based on \(n=20\) binomial trials in which there were \(x=7\) successes.</p>
+
+<p>The confidence interval can be based on a 2-tailed hypothesis test with null hypothesis <strong>H<sub>0</sub></strong>: \(\pi = \pi_0\). For this test, we can use the test statistic \(X\) whose distribution is known when <strong>H<sub>0</sub></strong> is true,</p>
+\[
+X \;\;\sim\;\; \BinomDistn(n=20, \pi_0)
+\]
+<p>For any value of \(\pi_0\), the p-value for the test can be found as double the smaller tail probability from this binomial distribution,</p>
+\[
+2 \times P(X \le 7 \mid \pi = \pi_0) \spaced{or} 2 \times P(X \ge 7 \mid \pi = \pi_0)
+\]
+<p>For a test at significance level \(\alpha = 5%\), we should reject the null hypothesis if the p-value is less than 0.05.</p>
+<hr width="75%">
+<p>A 95% confidence interval for \(\pi\) can therefore be found as the values \(\pi_0\) that are <strong>not</strong> rejected in the above hypothesis test. By trial-and-error with different values of \(\pi_0\), we find the following p-values for testing whether \(\pi = 0.592\) and for testing \(\pi = 0.154\),</p>
+\[
+2 \times P(X \le 7 \mid \pi = 0.592) = 0.05 \spaced{and} 2 \times P(X \ge 7 \mid \pi = 0.154) = 0.05
+\]
+<p>The null hypothesis is only accepted at the 5% significance level for values of \(\pi_0\) between these, so the exact 95% confidence interval is</p>
+\[
+0.154 \;\;\lt\;\; \pi \;\;\lt\;\; 
+0.592\]
+
+<p>The diagram below illustrates this. It shows the calculations to find the p-value for a two-tailed test of whether \(\pi = \pi_0\) based on this data set.</p>
+<div class="centred">
+	<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="500">
+		<script type="text/javascript">writeAppletParams();</script>
+		<param name="appletName" value="estimationProg.BinomialPValueApplet">
+		<param name="backgroundColor" value="FFFBF3">
+		<param name="xAxis" value="-0.5 20.5 0 2">
+		<param name="xAxisName" value="Number of successes, x">
+		<param name="probAxis" value="0 0.40 0 0.05">
+		<param name="nTrials" value="20">
+		<param name="nSuccess" value="7">
+		<param name="sigLevel" value="0.0500">
+		<param name="probLimits" value="0.050 0.700 0.400">
+	</applet>
+</div>
+<p>When the null hypothesis is true, the p-value is twice the smaller tail probability of the binomial distribution shown in this bar chart and is initially shown for testing whether \(\pi = 0.400\). This p-value is greater than 0.05 so we would accept the null hypothesis at the 5% significance level. This means that 0.400 is inside a 95% confidence interval for \(\pi\).</p>
+<p>Drag the slider to find the p-values for testing whether \(\pi\) equals other values. (You can use the arrow keys on your keyboard for finer adjustment of \(\pi\).) Observe that:</p>
+<ul>
+	<li>The p-value is less than 0.05 when \(\pi_0\) is less than 0.154, so these values are not in the 95% confidence interval for \(\pi\).</li>
+	<li>The p-value is less than 0.05 when \(\pi_0\) is greater than 0.592, so these values are not in the 95% confidence interval for \(\pi\).</li>
+	<li>When testing whether \(\pi\) is equal to values between 0.154 and 0.592, the p-value is over 0.05 so these values are in the 95% confidence interval.</li>
+</ul>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

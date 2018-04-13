@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Transformations and correlation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="transformations, correlation coefficient/transform to linearity first">
+	<meta name="dataset" content="Mazda car prices">
+	<meta name="dataset" content="World GDP">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Correlation coefficient and nonlinear relationships</p>
+
+  <p>The correlation coefficient, <i>r</i>, is a good description of the strength 
+		of linear relationship but
+		<a href="javascript:showNamedPage('correlation4')">not 
+		nonlinear ones</a>. If a scatterplot shows marked curvature, the correlation 
+		coefficient can considerably understate the strength of the relationship.</p>
+	<p>How can you summarise the strength of a nonlinear relationship? One solution 
+    is to use a different summary statistic that has better properties than <i>r</i>. 
+    In this page, we describe an alternative solution to the problem.</p>
+	
+	<p class="heading">Transform the variables to linearise the relationship</p>
+	
+	<p><a href="javascript:showNamedPage('transform2')">Applying 
+		a nonlinear transformation</a> (such as a log transformation) to a single 
+		variable changes the shape of its distribution and can be used to eliminate 
+		skewness.</p>
+	<p>Nonlinear transformation of a variable has a more important effect on bivariate 
+		data &mdash; it alters the shape of the relationship. (It is easier to explain 
+		how this happens in the diagram below than in words!) It is often possible 
+		to linearise a relationship by transforming one or both variables.</p>
+	<p>Therefore one way to use <i>r</i> to describe nonlinear relationships is 
+		to apply a transformation to one or both variables to <strong>remove the nonlinearity</strong> 
+		before evaluating <i>r</i>.</p>
+
+<div class="diagram" title="Example: Prices of Mazda cars">
+	<p class="heading">Prices of Mazda cars</p>
+	
+		<p>The scatterplot below shows the price and age of second hand Mazda cars 
+			that were advertised for sale in the <i>Melbourne Age</i> newspaper on 8 
+			February 1992. The relationship is clearly nonlinear with a steep initial 
+			decline in price followed by a more gradual decrease.</p>
+		<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="420" height="440">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="corrProg.CorrelTransApplet">
+<param name="xVarName" value="Age of car">
+<param name="yVarName" value="Price">
+<param name="xValues" value="12 9 8 3 9 1 9 10 5 9 2 11 18 10 12 11 6 4 7 2 18 7 13 6 1 4 1 2 3 3 5 9 10 3 6 1 12 11 6 20 12 17 3 7 11 8 12 18 4 14 15 3 3 13 10 2 12 10 5 9 15 10 10 9 12 10 10 14 13 16 11 4 8 6 7 7 3 12 9 7 7 7 8 5 12 0 7 5 11 2 8 5 15 5 7 12 8 4 6 1 9 4 15 5 2 3 2 1 0 5 7 2 17 9 11 1 9 12 9 14 3 5 0 2">
+<param name="yValues" value="2950 5900 2999 11950 6100 26500 6850 5490 12999 9900 19900 3990 800 3900 7000 2750 11000 9850 7500 26500 1990 7000 3500 6990 39990 29990 29990 25990 21990 19990 6000 5999 5990 12500 14000 20500 4250 4500 7750 950 4300 2300 9490 8900 3000 6500 8000 1450 14150 1950 1800 18000 16350 1690 3490 26000 4000 5490 7900 10500 799 4200 5500 11500 2600 5100 4000 4500 2600 2400 4900 14950 8900 13490 5499 12999 21500 4200 4200 10500 10800 8600 8950 7900 3700 25600 11000 8700 3800 10950 6450 9450 2950 10500 8000 4600 4975 18950 10000 30000 4000 7650 2695 12490 36900 18000 27900 22950 23900 11900 9800 20980 5000 10980 2800 24500 10995 7879 6990 1498 17900 9990 13990 9990">
+<param name="horizAxis" value="0 21 0 2">
+<param name="vertAxis" value="750 45000 5000 5000">
+<param name="labelAxes" value="true">
+<param name="transformAxes" value="true">
+</applet>
+</div>
+
+		<p>The correlation coefficient is <i>r</i> = -0.8, indicating a fairly strong 
+			relationship between the price and age of these cars, but the nonlinearity 
+			means that the strength of the relationship is understated by this. </p>
+
+		<p>Drag the red line on the vertical axis upwards to apply a power transformation 
+			to the car prices. When the power becomes close to zero (which corresponds 
+			to a log transformation of the response), the relationship becomes nearly 
+			linear. Since the relationship between log(price) and age is approximately 
+			linear, the correlation coefficient between these two variables, <i>r</i> 
+			= -0.9, is a better description of the strength of the relationship. </p>
+		</div>
+
+<p class=heading>Choosing the transformation</p>
+
+  <p><strong>How do you decide which variable to transform to use?</strong> There 
+    is no easy answer that works for all data sets, but a useful approach is to 
+    look at the marginal distributions of each variable separately and to initially 
+    try transformations that remove any skewness in these distributions. </p>
+
+
+<div class="diagram" title="Example: GDP and population">
+<p class=heading>GDP and population</p>
+
+		<p>The scatterplot below shows the Gross Domestic Product (GDP in US$billion) 
+			and population (million) in the all countries of the world in 2011 for which data was available. The 
+			box plots on the two axes show that each of the variables has a skew distribution. 
+			Because of the dense cluster of countries near the origin of the plot, it 
+			is difficult to assess whether or not there is <strong>any</strong> relationship 
+			between the variables. Notions of linearity cannot even be assessed. </p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="480">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="corrProg.CorrelTransBoxApplet">
+<param name="xVarName" value="Population">
+<param name="yVarName" value="GDP">
+<param name="labelName" value="Country">
+<param name="xValues" value="29.105 3.154 37.763 20.180 0.088 40.729 2.964 0.102 22.340 8.406 9.173 0.366 1.293 152.862 0.282 9.473 11.048 0.316 9.780 0.065 0.729 10.324 3.839 1.987 196.935 0.407 7.348 15.995 9.540 14.606 21.156 34.343 0.491 4.436 12.080 17.308 1344.130 47.079 0.700 63.932 4.225 4.738 19.390 4.281 11.276 1.117 10.496 5.571 0.071 10.148 15.246 79.392 6.256 0.716 5.933 1.335 89.393 0.868 5.388 65.372 1.594 1.735 4.483 81.798 24.821 11.123 0.105 14.707 11.162 1.624 0.791 10.033 7.777 7.072 9.972 0.319 1221.156 243.802 75.424 31.760 4.577 7.766 60.724 2.700 127.817 6.181 16.557 42.028 0.099 49.779 1.791 3.125 5.515 6.521 2.060 4.383 2.030 4.080 3.028 0.518 0.546 2.104 21.679 15.458 28.759 0.332 14.417 0.416 0.052 3.703 1.286 119.361 0.103 3.560 0.037 2.754 0.621 32.059 24.581 2.218 27.156 16.693 4.405 5.905 16.511 164.193 4.953 3.025 176.166 0.021 3.740 7.013 6.573 29.615 95.053 38.534 10.558 3.694 1.911 20.148 142.960 11.144 0.187 0.183 27.762 13.331 7.259 0.087 5.865 5.184 5.398 2.053 0.538 51.580 10.381 46.743 20.869 0.053 0.179 0.109 36.431 0.530 1.212 9.449 7.912 7.815 46.355 66.576 1.176 6.472 0.105 1.333 10.674 73.059 5.107 0.010 35.148 45.706 8.925 63.260 311.588 3.383 29.339 0.242 29.501 87.840 23.304 13.634 13.359">
+<param name="yValues" value="17.870 12.960 199.071 104.116 1.095 446.044 10.142 2.584 1386.889 415.612 65.953 7.873 29.044 111.879 4.369 64.272 512.860 1.493 7.295 5.551 1.834 23.949 18.252 15.292 2476.652 16.360 53.545 10.396 2.356 12.830 25.487 1737.001 1.865 2.213 12.156 251.191 7321.935 336.560 0.610 15.700 14.426 41.032 24.074 61.789 68.234 24.851 216.011 333.664 0.484 55.737 76.770 236.001 23.139 16.807 2.608 22.523 29.947 3.753 262.054 2779.719 18.760 0.898 14.435 3624.861 39.565 289.627 0.816 47.689 5.067 0.968 2.577 7.346 17.588 248.726 137.449 14.046 1880.097 846.341 528.426 191.177 225.833 258.217 2195.014 14.402 5896.795 28.840 188.050 33.621 0.172 1114.472 6.637 160.600 6.199 8.254 28.480 40.094 2.525 1.538 42.872 57.958 36.797 10.439 9.912 5.621 289.259 2.154 10.676 9.152 0.171 4.273 11.251 1159.890 0.310 7.015 6.075 8.761 4.502 99.211 12.568 12.623 19.123 832.010 162.635 9.636 6.412 245.682 491.211 69.972 213.854 0.213 31.316 12.394 26.008 181.011 224.095 515.667 237.675 98.757 173.519 182.611 1899.085 6.354 0.630 0.248 669.507 14.441 43.292 1.075 2.939 245.024 95.878 50.250 0.867 401.802 19.146 1453.232 59.184 0.699 1.259 0.688 63.997 4.363 3.969 536.293 657.418 6.523 23.874 345.672 1.128 3.686 0.423 23.578 46.435 774.775 29.233 0.039 15.493 163.422 348.595 2478.931 15533.800 46.435 45.324 0.786 316.482 135.539 31.725 19.204 8.865">
+<param name="labels" value="Afghanistan Albania Algeria Angola Antigua Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia Botswana Brazil Brunei Bulgaria #Burkina Faso# Burundi Cambodia Cameroon Canada #Cabo Verde# #Central African Rep# Chad Chile China Colombia Comoros #Congo, Dem Rep# #Congo, Rep# #Costa Rica# #Cote d'Ivoire# Croatia Cuba Cyprus #Czech Republic# Denmark Dominica #Dominican Rep# Ecuador #Egytp# #El Salvador# #Equatorial Guinea# Eritrea Estonia Ethiopia Fiji Finland France Gabon Gambia Georgia Germany Ghana Greece Grenada Guatemala Guinea Guinea-Bissau Guyana Haiti Honduras #Hong Kong, China# Hungary Iceland India Indonesia #Iran# Iraq Ireland Israel Italy Jamaica Japan Jordan Kazakhstan Kenya Kiribati #Korea, Rep# Kosovo Kuwait #Kyrgyz Republic# Laos Latvia Lebanon Lesotho Liberia Lithuania Luxembourg #Macao, China# Macedonia Madagascar Malawi Malaysia Maldives Mali Malta #Marshall Islands# Mauritania Mauritius Mexico Micronesia Moldova Monaco Mongolia Montenegro Morocco Mozambique Namibia Nepal Netherlands #New Zealand# Nicaragua Niger Nigeria Norway Oman Pakistan Palau Panama #Papua New Guinea# Paraguay Peru Philippines Poland Portugal #Puerto Rico# Qatar Romania #Russia# Rwanda Samoa #Sao Tome# #Saudi Arabia# Senegal Serbia Seychelles #Sierra Leone# Singapore #Slovak Republic# Slovenia #Solomon Islands# #South Africa# #South Sudan# Spain #Sri Lanka# #St. Kitts# #St. Lucia# #St. Vincent# Sudan Suriname Swaziland Sweden Switzerland Tajikistan Tanzania Thailand Timor-Leste Togo Tonga #Trinidad  Tobago# Tunisia Turkey Turkmenistan Tuvalu Uganda Ukraine #United Arab Emirates# #United Kingdom# #United States# Uruguay Uzbekistan Vanuatu Venezuela Vietnam Yemen Zambia Zimbabwe">
+<param name="horizAxis" value="0.1 1400 200 200">
+<param name="vertAxis" value="0.245 16000 2000 2000">
+<param name="labelAxes" value="true">
+<param name="transformAxes" value="true">
+</applet>
+</div>
+
+		<p>Drag the red line on each axis to remove the skewness in that variable. 
+			Raising each variable to a power of approximately zero (corresponding to a log transformation) removes its skewness, 
+			and increases the correlation coefficient from 0.498 to 0.782, a much better 
+			indication of the strength of the relationship. <span class="gray">(For 
+			fine tuning of the powers, use the arrow keys on your keyboard.)</span> 
+		</p>
+
+<div class="boxed"><p>You may have felt that the variables raised to slightly different powers had more symmetric distributions. It is however hard to interpret values when the powers are values such as –0.1 or +0.1, so it is usuall best to use powers such as 0.5, 0.0 (log), –0.5 or –1.0.</p></div>
+
+    <p>Note that the 'rich' countries are those that lie on the top left of the 
+			cluster of points. The 'poor' countries are towards the bottom right of 
+			the cluster. Drag over the crosses to identify the countries. Are there 
+			any outliers or clusters of countries?</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

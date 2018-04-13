@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>CI for difference in proportions</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<script type="text/javascript">
+		var svgNames = new Array();
+		svgNames[0] = "images/ethicsCI.svg";
+		svgNames[1] = "images/tractorCI.svg";
+		svgNames[2] = "images/bingeCI.svg";
+		svgNames[3] = "images/pizzaCI.svg";
+		
+		function changeSvgImage(select) {
+			var newIndex = select.selectedIndex;
+			var image = document.getElementById('dataImage');
+			image.src = svgNames[newIndex];
+		}
+	</script>
+
+	<meta name="index" content="confidence interval, difference, probability, proportion">
+	<meta name="dataset" content="Business ethics and gender">
+	<meta name="dataset" content="Tractor driveline shields">
+	<meta name="dataset" content="Binge drinking">
+	<meta name="dataset" content="Pizza and price">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Estimating the standard error</p>
+<p>The most important parameter of the distribution of <em>p</em><sub>2</sub>&nbsp;-&nbsp;<em>p</em><sub>1</sub> 
+is its standard deviation. This is also the standard deviation of the estimation 
+error when <em>p</em><sub>2</sub>&nbsp;-&nbsp;<em>p</em><sub>1</sub> 
+is used to estimate π<sub>2</sub>&nbsp;-&nbsp;π<sub>1</sub> 
+-- the <strong>standard error</strong> of the estimate.</p>
+<p class=eqn><img class="gif" src="../../en/twoGroupPropn/images/sdDiffEqn.gif" width="228" height="45"></p>
+<p>Unfortunately the parameters π<sub>1</sub> 
+and π<sub>2</sub> 
+are unknown in practical situations. However we can replace them by their sample 
+equivalents to estimate the standard error. </p>
+<p class=eqn><img class="gif" src="../../en/twoGroupPropn/images/sdDiffEqn2.gif" width="228" height="45"></p>
+
+<p class="heading">Confidence interval for difference</p>
+
+<p>The accuracy of our estimate of π<sub>2</sub>&nbsp;-&nbsp;π<sub>1</sub> 
+depends on its standard error and is best described by a confidence interval.</p>
+<p>Any normally distributed quantity has probability 0.95 of being within 1.96 
+standard deviations of its mean, so</p>
+<p class=eqn style="color:#000000"><strong>Prob</strong> &nbsp;( <span class="red"><em>p</em><sub>2</sub>&minus;<em>p</em><sub>1</sub></span> &nbsp; <strong>is within</strong> &nbsp;<span class="blue">&pi;<sub>2</sub>&minus;&pi;<sub>1</sub></span> &nbsp;±&nbsp; 1.96 <span class="green">&sigma;<sub><em>p</em><sub>2</sub>&minus;<em>p</em><sub>1</sub></sub></span> ) &nbsp; = &nbsp; 0.95</p>
+<p>This equation would suggest a 95% confidence interval for
+π<sub>2</sub>&nbsp;-&nbsp;π<sub>1</sub>
+of the form
+</p>
+
+<p class=eqn><img class="gif" src="../../en/twoGroupPropn/images/diffCIEqn.gif" width="358" height="72"></p>
+
+<p>However since this formula depends on the unknown values, π<sub>1</sub> 
+and π<sub>2</sub>, 
+it cannot be used. Instead, we replace them in the formula with their sample equivalents 
+to obtain a rough confidence interval </p>
+
+<p class=eqn><img class="gif" src="../../en/twoGroupPropn/images/diffCIEqn2.gif" width="278" height="48"></p>
+
+<p><font color="#666666">The refinement of replacing the constant 1.96 by a t-value, 
+as was done when comparing population means, is not appropriate here. When the 
+sample sizes are small, the distribution of <em>p</em><sub>2</sub>&nbsp;-&nbsp;<em>p</em><sub>1</sub> 
+is noticably discrete so the equations underlying the confidence interval, which 
+are based on a normal approximation, may be quite inaccurate. As a result, we 
+should avoid this type of confidence interval when sample sizes are small and 
+we use the value '2' instead of '1.96' to acknowledge the roughness of the formulae. 
+</font> </p>
+
+<div class="diagram"> 
+<p class="heading">Examples</p>
+<p>The diagram below shows how 95% confidence intervals are found and interpreted 
+for a few data sets.</p>
+
+<form>
+<select name="dataset" onChange="changeSvgImage(this)">
+<option value="0" selected>Business ethics and gender</option>
+<option value="1">Tractor driveline shield removal</option>
+<option value="2">Binge drinking by students</option>
+<option value="3">Pizza buying and price</option>
+</select>
+</form>
+
+<p align="center"><iframe src="images/ethicsCI.svg" id="dataImage" width="514" height="373" frameborder="0"></iframe></p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

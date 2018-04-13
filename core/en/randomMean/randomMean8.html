@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Sampling from finite populations</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="mean, finite population correction factor, sample/with and without replacement">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Sampling with replacement from finite populations</p>
+
+<p>When selecting a random sample <strong>with replacement</strong> from a finite 
+population, each successive value does not depend on earlier values, so the sample 
+is an independent random sample. The formula that we gave earlier for the standard 
+deviation of sample means is therefore still appropriate</p>
+
+<div class="centred"><table border="0" cellpadding="0" cellspacing="0" class="centred"><tr>
+<td valign="middle"><img src="../../images/symbol.sigmaXbar.png" width="19" height="16" align="baseline"></td>
+<td valign="middle"> &nbsp;<span class="black">=</span>&nbsp; </span></td>
+<td valign="middle"><img src="../../images/symbol.sigmaOverRootN.png" width="26" height="31" align="baseline"></td>
+<td valign="middle"> &nbsp; &nbsp; where &nbsp; &nbsp; </td>
+<td valign="middle"><img class="gif" src="images/popnSdFinite.gif" width="114" height="49"></td>
+</tr></table></div>
+<p>Note that the formula for the population standard deviation, σ, 
+	uses divisor <em>N</em>, the number of values in the population, rather than (<em>N</em>&nbsp;-&nbsp;1). 
+	The distinction between these two divisors was <a href="javascript:showNamedPage('centerSpread6')">mentioned 
+when the standard deviation was initially defined</a>.</p>
+<p class="heading">Sampling without replacement from finite populations</p>
+<p>The above formula does not hold when the sample values are dependent on each 
+other in any way. We saw that <a href="javascript:showNamedPage('randomMean7')">when 
+the sample values are positively correlated (i.e. they tend to be similar), the 
+formula overstates the accuracy of the sample mean.</a></p>
+<p>The opposite happens when a random sample is selected <strong>without replacement</strong> 
+from a finite population. The successive values are again dependent &mdash; after a 
+large value is selected, it cannot be selected again, so the next value will tend 
+to be lower. The sample values are therefore negatively correlated.</p>
+<p>Provided only a small fraction of the population is sampled (say under 5%), 
+the dependence is slight and can usually be ignored. However if the sampling fraction 
+is higher, the earlier formula should be corrected since it understates the accuracy 
+of the sample mean. The correct formula is</p>
+<p class=eqn><img class="gif" src="../randomMean/images/sdMeanSWOR.gif" width="138" height="45"> </p>
+<p>The quantity (<em>N </em>- <em>n</em>) / (<em>N</em> - 1) is called the <strong>finite 
+population correction factor</strong>.</p>
+
+<div class="diagram" title="Demonstration"> 
+<p>The diagram below shows a population of 16 values.</p>
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="sampDesignProg.FiniteCorrectionApplet">
+<param name="horizAxis" value="0 10 0 1">
+<param name="varName" value="Value">
+<param name="randomPopn" value="16 5.0 1.3 347761213 2.5">
+<param name="sampleSeed" value="783095723">
+<param name="initSampSize" value="2">
+<param name="decimals" value="3">
+<param name="popnSize" value="*16 48 100">
+<param name="customText" value="Sampled values=Sampled values#Sample mean=Sample mean#Finite population correction=Finite population correction">
+</applet>
+</div>
+
+<p>Click <strong>Take sample</strong> to select a random sample of 2 of these 
+values (without replacement). The sample mean is shown in the lower half of the 
+diagram with a normal distribution whose standard deviation is calculated <strong>without</strong> 
+the finite population correction factor.</p>
+<p>Click <strong>Finite population correction</strong> to show the effect of the 
+correction factor. Since only a small fraction of the population is sampled, there 
+is little difference.</p>
+<p>Turn off the correction factor, increase the sample size to 14, then take several 
+samples. The jittered dot plot of the sample means shows a distribution with much 
+lower spread than the normal distribution. After turning on the correction factor, 
+the normal distribution matches the actual spread of the distribution of sample 
+means.</p>
+<p>Increase the population size to 48 and again observe that the correction factor 
+has little effect when a small fraction of the population is sampled, but is important 
+when the sampling fraction is high.</p>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Model for randomised blocks</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="model, normal model, randomised block design">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Simple model</p>
+  <p>Consider a randomised block experiment for a single factor. We use the notation <span class="black"> y<sub>ijk</sub></span> to denote the <em>k</em>'th of the replicates for which the factor  is at level <em>j</em> in block <em>i</em>. The simplest model for the response is given by the equation:</p>
+  <div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+		<tr>
+			<td align="center"><br>
+					<br>
+					<span class="em black">y<sub>ijk</sub></span>  &nbsp;= &nbsp;<span class="blue">µ</span></td>
+			<td align="center"><br>
+					<br>
+				&nbsp;+&nbsp;</td>
+			<td align="center" class="red">(<em>explained <br>
+				by blocks</em>)<br>
+				β<em><sub>i</sub></em></td>
+			<td align="center"><br>
+					<br>
+				&nbsp;+&nbsp;</td>
+			<td align="center" class="green">(<em>explained<br>
+				by factor</em>)<br>
+				γ<em><sub>j</sub></em></td>
+			<td align="center"><br>
+					<br>
+				&nbsp;+&nbsp;</td>
+			<td align="center"><br>
+				(<em>unexplained</em>)<br>
+				ε<em><sub>ijk</sub></em></td>
+		</tr>
+	</table></div>
+	<p><span class="eqn">where <span class="red">β<sub>1</sub> = 0</span> and <span class="green">γ<sub>1</sub> = 0</span></span>. The parameters are interpreted as follows:</p>
+<ul>
+  <li><span class="blue">µ</span> is the mean response in block 1 when the factor  is at its baseline level (arbitrarily set as 1 here).</li>
+  <li><span class="red">β<em><sub>i</sub></em></span> is the difference between the mean responses in block <em>i</em> and block 1 for any fixed level of the factor.</li>
+  <li><span class="green">γ<em><sub>j</sub></em></span> is the difference between the mean response when the factor is at level <em>j</em> and at level 1 within any block.</li>
+</ul>
+<p>The <span class="red">β</span>-parameters therefore describe the differences between the blocks whereas the  <span class="green">γ</span>-parameters  capture the differences between the levels of factor.</p>
+<div class="centred"><div class="boxed">
+	<p>It is important to understand  this model since estimates of its parameters  are often reported.</p>
+</div></div>
+<p class="heading">Relationship to model for two factors</p>
+<p>Although the experimental design is totally different, the above model  for randomised block data is identical in form to the no-interaction model that we used previously experiments with  two factors (and no blocks).</p>
+<div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+	<tr>
+		<td align="center"><br>
+				<br>
+				<span class="em black">y<sub>ijk</sub></span>  &nbsp;= &nbsp;<span class="blue">µ</span></td>
+		<td align="center"><br>
+				<br>
+			&nbsp;+&nbsp;</td>
+		<td align="center" class="red">(<em>explained <br>
+			by factor B</em>)<br>
+			β<em><sub>i</sub></em></td>
+		<td align="center"><br>
+				<br>
+			&nbsp;+&nbsp;</td>
+		<td align="center" class="green">(<em>explained<br>
+			by factor C</em>)<br>
+			γ<em><sub>j</sub></em></td>
+		<td align="center"><br>
+				<br>
+			&nbsp;+&nbsp;</td>
+		<td align="center"><br>
+			(<em>unexplained</em>)<br>
+			ε<em><sub>ijk</sub></em></td>
+	</tr>
+</table></div>
+<p>The only difference is that the <span class="red">β</span>-parameters now describe differences between the blocks instead of differences between levels of the second factor.<br>
+</p>
+<div class="diagram">
+  <p class="heading">Graphical display of model</p>
+		<p>The diagram below shows data from a randomised block experiment against one axis for the blocks and another for the levels of the factor. The means from the best model (fitted by least squares) are shown by 
+			the coloured grid.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="550">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="indicatorProg.Rotate2FactorDragApplet">
+<param name="yVarName" value="Response">
+<param name="yValues" value="68 63 65 126 128 133 93 101 98 56 59 57 71 66 66 107 110 116 63 60 59 40 41 44">
+<param name="yAxis" value="20 150 20 20">
+<param name="xVarName" value="Block">
+<param name="xValues" value="6@0 6@1 6@2 6@3">
+<param name="xLabels" value="#Block 1# #Block 2# #Block 3# #Block 4#">
+<param name="zVarName" value="Level of factor">
+<param name="zValues" value="2@0 2@1 2@2 2@0 2@1 2@2 2@0 2@1 2@2 2@0 2@1 2@2">
+<param name="zLabels" value="Regular Low #Very low#">
+<param name="initialMean" value="90">
+<param name="maxParam" value="999.99 -99.99 -99.99">
+<param name="separateX" value="Separate blocks#90#0">
+<param name="separateZ" value="Separate factors#0#0">
+<param name="customText" value="Baseline=Baseline">
+</applet>
+</div>
+
+		<p>The blue value under the table is <span class="blue">µ</span> in the equation at the top of this page. The four red values are the parameters <span class="red">β<em><sub>i</sub></em></span> and represent the block effects. The three green values are the parameters <span class="green">γ<em><sub>j</sub></em></span> and describe the differences between the factor levels.</p>
+	<p>Dragging the three red arrows for blocks 2, 3 and 4 adjusts the parameters <span class="red">β<sub>2</sub></span>, <span class="red">β<sub>3</sub></span> and <span class="red">β<sub>4</sub></span> in the model. Their values describe differences between their mean responses and that in block 1.</p>
+	<p>Similarly, the two red arrows for factor levels <em>Low</em> and <em>Very low</em> can be dragged to change <span class="green">γ<sub>2</sub></span> and <span class="green">γ<sub>3</sub></span>. These parameters describe differences between their mean responses and that for treatment<em> Regular</em>.</p>
+	<p>(Clicking <strong>Least squares</strong> returns the parameter values to their least squares estimates.)<br>
+		</p>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

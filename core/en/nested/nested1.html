@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Nested design: a factor at block level</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="nested design, blocks, confounding">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Blocks</p>  
+<p>In many experiments, there is structure to the experimental units that is known before the experiment is started. This is often modelled by defining <strong>blocks</strong> of similar units. The blocks may be based on measured characteristics of the units or may describe a more fundamental structure of the units.</p>
+<ul>
+	<li>An agricultural experiment may use several fields on the same or different farms. Each field is split into several smaller plots from which crop yield is measured. The plots are the experimental units and the fields are blocks.</li>
+	<li>An animal experiment may involve several herds of cattle (blocks) but measurements are made on individual cows.</li>
+	<li>In an experiment about preserving fish meat from a fish farm, a few samples  may be obtained from each fish. The meat samples are the experimental units and the fish are the blocks.</li>
+</ul>
+<p class="heading">Factors varied at unit level</p>
+<p>In earlier chapters, it has been possible to apply (and vary) treatments at the level of the experimental units:</p>
+<ul>
+	<li>Different crops can be planted in different plots within a field.</li>
+	<li>Different worming treatments can be applied to different animals.</li>
+	<li>Different preservatives can be applied to different fish-meat samples.</li>
+</ul>
+<p class="eqn"><img src="images/unitLevelFactor.gif" width="586" height="315"></p>
+<p class="heading">Factors varied at block level</p>
+<p>In other types of experiment, it may not be possible to vary a factor within each block.</p>
+<ul>
+	<li>Irrigation can only be applied to whole fields and cannot be varied between plots within a field.</li>
+	<li>Rotation of cattle between paddocks can only be varied at herd level &mdash; all cows in a herd must get the same rotation regime.</li>
+	<li>The way that the fish are captured and killed can be varied at fish level &mdash; all meat samples from the same fish have the same capture and killing method.</li>
+</ul>
+<p class="eqn"><img src="images/blockLevelFactor.gif" width="586" height="315"></p>
+<p class="heading">Confounding of factor and blocks</p>
+<p>The problem with a conventional analysis of an experiment with a factor varied at block level is that:</p>
+<div class="centred"><div class="boxed">
+	<p>The factor effect is completely confounded with differences between the blocks.</p>
+</div></div>
+<p>In the experimental design that is illustrated in the diagram above,  higher response values for experimental units getting factor level A (1, 2, 3, 13, 14, and 15) could have equally been caused by:</p>
+<ul>
+	<li>a high factor effect for factor level A, or</li>
+	<li>high block effects for blocks 1 and 5</li>
+</ul>
+<p class="heading">Analysis of variance</p>
+<p>In a conventional analysis of variance table, the effect of the blocks is removed first and the further reduction to the residual sum of squares when the factor is added to the model (the sum of squares explained by the factor <em>after</em> the blocks) is used to test the effect of the factor.</p>
+<p>If the factor is varied at block level, this results in an analysis of variance table with zero degrees of freedom for the factor, so the effect of the factor cannot be tested.</p>
+<div class="centred"><table border="0" class="centred" cellpadding="4" cellspacing="0">
+	<span class="black">
+	<tr>
+		<th align="left" scope="col">Source of <br>
+			variation</th>
+		<th scope="col">Sum of<br>sqrs</th>
+		<th scope="col">d.f.</th>
+		<th scope="col">Mean ssq</th>
+		<th scope="col">F-ratio</th>
+		<th scope="col">&nbsp;&nbsp;p-value&nbsp;&nbsp;</th>
+	</tr>
+	</span>
+	<span class="red">
+	<tr>
+		<td bgcolor="#FFFFFF" style="border-top:1px solid #999999;">Blocks</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">SS<sub>B</sub></td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">5</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">MS<sub>B</sub></td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">MS<sub>B</sub> / <span class="blue">MS<sub>Resid</sub></span></td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">(F distn)<sub></sub></td>
+	</tr>
+	</span>
+	<span class="green">
+	<tr>
+		<td bgcolor="#FFFF66">Factor (after blocks)</td>
+		<td align="center" bgcolor="#FFFF66">0</td>
+		<td align="center" bgcolor="#FFFF66">0</td>
+		<td align="center" bgcolor="#FFFF66">undefined</td>
+		<td align="center" bgcolor="#FFFF66">undefined</td>
+		<td align="center" bgcolor="#FFFF66">undefined</td>
+	</tr>
+	</span>
+	<span class="blue">
+	<tr>
+		<td bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">Residual</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">SS<sub>Resid</sub></td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">12</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">MS<sub>Resid</sub></td>
+		<td align="center">&nbsp;</td>
+		<td align="center">&nbsp;</td>
+	</tr>
+	</span>
+	<span class="black">
+	<tr>
+		<th align="left">Total</th>
+		<th>SS<sub>Total</sub></th>
+		<th>17</th>
+		<th>&nbsp;</th>
+		<th>&nbsp;</th>
+		<th>&nbsp;</th>
+	</tr>
+	</span>
+</table></div>
+<p>In order to analyse data from an experiment in which a factor is varied at block level, a different approach is needed.</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

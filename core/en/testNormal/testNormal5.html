@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Equal variances in two distributions</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="hypothesis test, test, normal distribution, variance, equal variances, f distribution">
+	<meta name="dataset" content="Growth of dwarf peas">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Assumption of equal variances</p>
+
+<p>The test on the previous page assumed that the variances of  normal distributions in the two samples were equal. We now describe a hypothesis test to assess this assumption.</p>
+<p class=eqn><strong><font size="+1">H</font><sub>0</sub></strong>&nbsp;:&nbsp;&nbsp;&nbsp;\(\sigma_1^2 = \sigma_2^2\)<br>
+	<strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>\(\sigma_1^2 \ne \sigma_2^2\)</p>
+<p>We showed earlier that the two sample variances, \(S_1^2\) and \(S_2^2\), have distributions proportional to chi-squared distributions,</p>
+
+\[
+\frac{n_1-1}{\sigma_1^2} S_1^2 \;\;\sim\;\; \ChiSqrDistn(n_1 - 1 \text{ df})
+\]
+
+<p>and similarly for \(S_2^2\).</p>
+<p class="heading">Hypothesis test</p>
+<p>The ratio of the two sample variances can be used as a test statistic for this test.</p>
+
+<div class="theoremProof">
+<div class="theorem">
+<p class="theoremTitle">Test statistic</p>
+<p>If \(\overline{X}_1\) and \(S_1^2\) are the mean and variance of a sample of \(n_1\) values from a \(\NormalDistn(\mu_1, \sigma_1^2)\) distribution and  \(\overline{X}_2\) and \(S_2^2\) are the mean and variance of an independent sample of \(n_2\) values from a \(\NormalDistn(\mu_2, \sigma_2^2)\) distribution,</p>
+\[
+F \;\;=\;\; \frac{S_1^2}{S_2^2}
+\;\;\sim\;\; \FDistn(n_1 - 1,\; n_2 - 1 \text{ df})
+\]
+<p>provided \(\sigma_1^2 = \sigma_2^2\).</p>
+</div>
+
+<div class="proof">
+<p>If \(\sigma_1^2 = \sigma_2^2 = \sigma^2\), </p>
+\[ \begin{align}
+F \;\;=\;\; \frac{S_1^2}{S_2^2} \;\;&amp;=\;\; \frac{ \frac{\large {n_1 - 1}}{\large \sigma^2} S_1^2}{n_1 - 1} \div \frac{ \frac{\large {n_2 - 1}}{\large \sigma^2} S_2^2}{n_2 - 1} \\
+&amp;\sim\;\; \frac{\ChiSqrDistn(n_1 \text{ df})}{n_1 - 1} \div \frac{\ChiSqrDistn(n_2 \text{ df})}{n_2 - 1} \\[0.4em]
+&amp;=\;\; \FDistn(n_1 - 1,\; n_2 - 1 \text{ df})
+\end{align} \]
+
+</div>
+
+</div>
+
+<p>The p-value for the test can be found from this distribution.</p>
+
+<div class="questionSoln">
+<div class="question">
+<p class="questionTitle">Example</p>
+<p>When analysing the data set about the effect of the hormone IAA on the growth of dwarf pea stems  on the previous page, an assumption was made that the underlying normal distribution's variance was the same for both hormone levels. Test whether the data are consistent with this assumption.</p>
+</div>
+
+<div class="solution">
+<p>The two sample variances were \(s_X^2 = 0.244\) and \(s_Y^2 = 0.353\) and their ratio is</p>
+\[
+f \;\;=\;\; \frac{0.244}{0.353}
+\;\;=\;\; 0.693
+\]
+<p>This should be compared to the \(\FDistn(10,\; 12 \text{ df})\) distribution in a two-tailed test. The  tail probability of this distribution below 0.693 is 0.285, so the p-value for the test is</p>
+<p class="eqn">p-value   =   \(2 \times 0.285 \;\;=\;\; 0.569\)</p>
+<p>Since this p-value is high, we conclude that sample variances that are as different as those observed in the data could easily have arisen by chance, even if the underlying normal variances were equal. There is therefore no evidence from the data that the two normal distribution variances differ.</p>
+</div>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

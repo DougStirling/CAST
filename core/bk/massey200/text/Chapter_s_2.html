@@ -1,0 +1,745 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>2. Random Variables</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/maths/mathStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/maths/theorems.js"></script>
+  <script src="../../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 2 &nbsp; Random Variables</h1>
+<h1 class="sectionName">2.1 &nbsp; Discrete random variables</h1>
+<h2 class="pageName">2.1.1 &nbsp; Discrete distributions</h2>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>A <strong>discrete random variable</strong> is a function that gives a numerical value for each outcome in a sample space and whose possible values are either finite or countably infinite.</p>
+</div>
+<p>In many applications, it is possible to use a simpler definition that retains the essential features of discrete random variables.</p>
+<div class="definition">
+	<p class='definitionTitle'>Simpler (but less general) description</p>
+	<p>An experiment whose outcomes are numerical and whose sample space is either finite or countably infinite can be treated as a <strong>discrete random variable</strong>.</p>
+</div>
+<p>For most discrete random variables, the outcomes are <strong>whole numbers</strong> — <strong>counts</strong> of something, but the definition also includes situations where the values are not integers. For example,  the <strong>proportion</strong> of successes in 10 repetitions of a simple experiment is also  a discrete random variable — its possible values are {0.0, 0.1, 0.2, ..., 0.9, 1.0}.</p>
+<p class="heading">Probability function</p>
+<p>A discrete random variable's distribution is fully described by its <strong>probability function</strong>,</p>
+
+\[
+P(\text{outcome } x) \;\;=\;\; P(X=x) \;\;=\;\; p(x)
+\]
+
+
+<p>This may be described by a table of probabilities (if there is a finite number of possible outcomes) but is more often described by a mathematical formula.</p>
+<p>From the probability function, we can find the probability of any other event relating to the random variable. For any event, \(A\),</p>
+
+\[
+P(A) = \sum_{x \in A} p(x)
+\]
+<p></p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Question: Girls in a family</p>
+		<p>A couple want at least two children and no more than four. However, subject to this constraint on their total number of children, they will stop when they get a boy.</p>
+		<p>Assuming that  there are no multiple births and the probability of any child being male is \(\frac 1 2\), independent of the genders of previous children, what is the probability function for the number of girls in the family?</p>
+		<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+<p>In order to be a probability function, a function \(p(x)\) must satisfy a few properties:</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Properties of probability functions</p>
+ \[ \begin{align}
+&p(x) \ge 0 \text{ for all } x\\[0.4em]
+&\sum_{\text{all } x} p(x) = 1
+\end{align} \]
+
+	<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">2.1.2 &nbsp; Cumulative distribution function</h2>
+
+<p class="heading">Cumulative probabilities</p>
+
+<p>The <strong>cumulative probability</strong> for any value \(x\) is</p>
+\[P(X \le x) = \sum_{u \le x} p(u)\]
+<p>The <strong>cumulative distribution function</strong> generalises this:</p>
+
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+<p>The <strong>cumulative distribution function</strong> (CDF) for \(X\) is the function</p>
+\[F(x) = P(X \le x) = \sum_{u \le x} p(u)\]</div>
+
+<p>The CDF is a <strong>step function</strong>, satisfying</p>
+
+
+\[ \begin{align}
+	F(-\infty) &= 0\\
+	F(+\infty) &= 1
+\end{align} \]
+
+<p>and increasing by \(p(x)\) at each \(x\).</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Question</p>
+		<p>A couple want at least two children and no more than four, but will stop when they get a boy. Assuming that the probability of each child being a girl is \(\frac {1} {2} \), independently of the genders of previous children, the probability function for the number of girls in the resulting family is</p>
+		
+		<div class="centred">
+		<table border="0" class="centred" cellpadding="5" cellspacing="0">
+			<tr>
+				<th align="left" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">Number of girls, <em>x</em></th>
+				<td width="40" align="center" style="border-bottom:1px solid #999999;">0</td>
+				<td width="40" align="center" style="border-bottom:1px solid #999999;">1</td>
+				<td width="40" align="center" style="border-bottom:1px solid #999999;">2</td>
+				<td width="40" align="center" style="border-bottom:1px solid #999999;">3</td>
+				<td width="40" align="center" style="border-bottom:1px solid #999999;">4</td>
+			</tr>
+			<tr>
+				<th align="left" style="border-right:1px solid #999999;"><em>p</em>(<em>x</em>)</th>
+				<td align="center">0.25</td>
+				<td align="center">0.5</td>
+				<td align="center">0.125</td>
+				<td align="center">0.0625</td>
+				<td align="center">0.0625</td>
+			</tr>
+		</table>
+		</div>
+		
+		<p>Draw the cumulative distribution function for X.</p>
+		<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">2.1.3 &nbsp; Mean</h2>
+
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>The <strong>mean</strong> of a discrete random variable, \(X\), is defined to be</p>
+	\[
+	E[X] = \mu = \sum_{\text{all } x} {x \times p(x)}
+	\] </div>
+<p>This corresponds closely to the definition of the mean of a discrete data set. For example, the following frequency table summarises the distribution of 600 discrete values.</p>
+<div class="centred">
+	<table class="centred" width="250" border="0" cellpadding="3" cellspacing="0">
+		<tr>
+			<td width="50%" height="17" align="center"><strong>Household size</strong><br>
+				<em>x</em></td>
+			<td width="50%" align="center"><strong>Frequency</strong><br>
+				&fnof;<sub><em>x</em></sub></td>
+		</tr>
+		<tr bgcolor="#FFFFFF">
+			<td align="center" style="border-top:1px solid #999999; border-bottom:1px solid #999999;"><table border="0" cellpadding="0" cellspacing="8" style="margin-top:0; margin-bottom:0">
+				<tr>
+					<td align="right">1<br>
+						2<br>
+						3<br>
+						4<br>
+						5<br>
+						6<br>
+						7</td>
+				</tr>
+			</table></td>
+			<td align="center" style="border-top:1px solid #999999; border-bottom:1px solid #999999;"><table border="0" cellpadding="0" cellspacing="8" style="margin-top:0; margin-bottom:0">
+				<tr>
+					<td align="right">140<br>
+						180<br>
+						60<br>
+						100<br>
+						60<br>
+						40<br>
+						20</td>
+				</tr>
+			</table></td>
+		</tr>
+		<tr>
+			<th width="50%" height="17">total</th>
+			<th width="50%">600</th>
+		</tr>
+	</table>
+</div>
+<p>The mean of the data is</p>
+
+
+\[\begin{align}
+\overline{x} = \frac {\sum x} n &amp; = \frac {\overbrace{1 + 1 + ... + 1}^{140} \; + \; \overbrace{2 + 2 + ... + 2}^{180} \; + \; \overbrace{3 + 3 + ... + 3}^{60} \; + \; ...} {600} \\
+&amp; = \frac {140 \times 1 \; + \; 180 \times 2 \; + \; 60 \times 3 \; + \; ...} {600} \\
+&amp; = \frac {140} {600} \times 1 \; + \; \frac {180} {600} \times 2 \; + \; \frac {60} {600} \times 3 \; + \; ... \\
+&amp; = \sum_{x=1}^7 {x \times \text{Propn}(x)} \\
+&amp; = 2.933
+\end{align} \]
+
+<p>If \(X\) is defined as a randomly chosen one of these 600 values, the probabilities of getting {1, ..., 7} would be their proportions in the data set and would have the same mean,</p>
+
+\[
+\mu \;=\; \sum_{x=1}^7 {x \times p(x)} \;=\; 2.933
+\]
+
+
+<h2 class="pageName">2.1.4 &nbsp; Expected values</h2>
+<p>The definition of a random variable's mean can be generalised:</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>The<strong> expected value </strong>of a function \(g(X)\) of a discrete random variable, \(X\), is defined to be</p>
+	\[
+	E\big[g(X)\big] = \sum_{\text{all } x} {g(x) \times p(x)}
+\]
+</div>
+
+<p>As with the definition of the variable's mean, this definition 'weights' the possible values, g(x), with their probabilities of arising.</p>
+
+<p>The following two results make it easier to evaluate expected values.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Linear function of a random variable</p>
+		<p>If \(X\) is a discrete random variable and \(a\) and \(b\) are constants,</p>
+		\[
+		E\big[a + b \times X\big] \;\;=\;\; a + b \times E[X]
+		\] 
+		<div class="theorem">
+			<p class="theoremTitle">Sum of two functions of X</p>
+			<p>If \(X\) is a discrete random variable and \(g(X)\) and \(h(X)\) are functions of it,</p>
+			\[
+			E\big[g(X) + h(X)\big] \;\;=\;\; E\big[g(X)\big] + E\big[h(X)\big]
+			\] 
+			<p class="theoremNote">(Both proved in full version)</p>
+		</div>
+	</div>
+</div>
+
+
+<h2 class="pageName">2.1.5 &nbsp; Variance</h2>
+<p>The mean of a random variable — its expected value — summarises the <strong>centre</strong> of the distribution. We next define a summary of the <strong>spread</strong> of values around this centre.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+<p>The <strong>variance</strong> of a discrete random variable, <em>X</em>, is defined to be</p>
+
+\[
+\Var (X) = \sigma^2 = E \left[(X - \mu)^2 \right]
+\]
+<p>where \(\mu\) is the variable's mean.</p>
+</div>
+
+<p>As with the variance of a data set, \(s^2 = \dfrac { \sum {(x_i - \overline{x})^2}} {n-1}\), this is a kind of average of squared differences of values from the mean. The <strong>standard deviation</strong>, \(\sigma\), is  the square root of the variance.</p>
+<p>An alternative  formula for the variance   is usually easier to apply in practice when evaluating a random variable's variance:</p>
+
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Alternative formula for variance</p>
+		<p>A discrete random variable's variance can be written as</p>
+\[
+\Var (X) = E \left[(X - \mu)^2 \right]
+= E[X^2] - \left( E[X] \right)^2
+\] 
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+<p>When the probability function is described by a mathematical function, the summations needed to find \(E[X]\) and \(E[X^2]\) can often be evaluated mathematically. However they can also be easily evaluated if the probabilities are specified in tabular form.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Question</p>
+		<p>A couple want at least two children and no more than four, but will stop  when they get a boy. Assuming that the probability of each child being a  girl is \(\frac {1} {2} \)<span aria-readonly="true" role="textbox" id="MathJax-Element-11-Frame"> </span>, independently of the genders of previous children, the probability function for the number of girls in the resulting family is</p>
+		
+		<div class="centred">
+		<table border="0" class="centred" cellpadding="5" cellspacing="0">
+			<tr>
+				<th align="left" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">Number of girls, <em>x</em></th>
+				<td width="40" align="center" style="border-bottom:1px solid #999999;">0</td>
+				<td width="40" align="center" style="border-bottom:1px solid #999999;">1</td>
+				<td width="40" align="center" style="border-bottom:1px solid #999999;">2</td>
+				<td width="40" align="center" style="border-bottom:1px solid #999999;">3</td>
+				<td width="40" align="center" style="border-bottom:1px solid #999999;">4</td>
+			</tr>
+			<tr>
+				<th align="left" style="border-right:1px solid #999999;"><em>p</em>(<em>x</em>)</th>
+				<td align="center">0.25</td>
+				<td align="center">0.5</td>
+				<td align="center">0.125</td>
+				<td align="center">0.0625</td>
+				<td align="center">0.0625</td>
+			</tr>
+		</table>
+		</div>
+		
+		<p>What are the mean and standard deviation of \(X\)?</p>
+		<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+<p>The next result gives the variance of a linear function of <em>X</em>.</p>
+
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Variance of a linear function of X</p>
+			<p>If <em>X</em> is a discrete random variable and <em>a</em> and<em> b</em> are constants,</p>
+			\[
+			\Var(a + b \times X) = b^2 \times \Var(X)
+			\]
+			<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+
+
+
+<h1 class="sectionName breakBefore">2.2 &nbsp; Continuous random variables</h1>
+<h2 class="pageName">2.2.1 &nbsp; Probability density functions</h2>
+<dl>
+	<dt>Discrete random variable</dt>
+	<dd>This is a numerical variable with either a finite or a countably infinite number of possible values — usually <strong>counts</strong> of something.</dd>
+	<dt>Continuous random variable</dt>
+	<dd>Its values can be <strong>anywhere</strong> in some range, such as a weight or distance.</dd>
+</dl>
+<p>Although <strong>recorded</strong> values of a continuous variable are always rounded to some number of decimals, making the number of possible <strong>recorded</strong> values of these variables finite,  the <strong>underlying</strong> measurement has an uncountable number of possible values.</p>
+<p class="heading">Probabilities for individual values</p>
+<p>For continuous random variables, all individual values have effectively zero probability.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Probability for a specific value of X</p>
+		<p>If a random variable, \(X\), has a continuous distribution,</p>
+		\[
+		P(X=x) \;=\; 0 \qquad \text{for all } x
+		\]
+		<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p>Probabilities are still used to describe the distribution, but  we need to find a way to describe the probabilities for <strong>events</strong>, such as \((2 \lt X \lt 3)\), not individual outcomes such as \((X = 2.5)\).</p>
+<p class="heading">Probability density functions</p>
+<p>A  <strong>probability density function</strong> (<strong>pdf</strong>) is used to describe a continuous random variable's distribution. It is closely related to a histogram, but with infinitely narrow histogram classes.(It is scaled to have area one.)</p>
+
+<p class="eqn"><img class="svgImage" src="../../../en/continuousDistns/images/histogram.png" width="420" height="154"></p>
+<p>A random variable's probability density function is usually a smooth function and is often described by a mathematical function,</p>
+\[f(x)\]
+<p>The properties of probability density functions are fully described in a later chapter. At this stage, we just informally introduce some of the ideas.</p>
+
+
+<h2 class="pageName">2.2.2 &nbsp; Probability and area</h2>
+<p>In the histogram of a finite data set, the area above any class equals 
+  the proportion of values in the class.</p>
+<p class="eqn"><img src="../../../en/probDensity/images/s_histoArea.gif" width="455" height="254"></p>
+<p>Since a probability density function (pdf)  is a type of histogram, it satisfies the same property.</p>
+<div class="centred">
+	<div class="boxed">
+		<p>The probability that a sampled value is within two values, P(<em>a</em>&nbsp;&lt;&nbsp;<em>X</em>&nbsp;&lt;&nbsp;<em>b</em>), equals the area under the pdf.</p>
+	</div>
+</div>
+<p>This is the key to interpreting pdfs.</p>
+<p class="eqn"><img src="../../../en/probDensity/images/s_pdfArea.gif" width="402" height="212"></p>
+
+
+<h2 class="pageName">2.2.3 &nbsp; Mean and variance</h2>
+
+<p>Discrete distributions are often summarised by their mean and variance.</p>
+\[
+E[X] \;=\; \mu \;=\; \sum_{\text{all } x} {x \times p(x)}
+\]
+\[
+\Var (X) \;=\; \sigma^2 \;=\; E \left[(X - \mu)^2 \right] \;=\; \sum_x (x - \mu)^2 \;p(x)
+\]
+<p>The mean and variance of a continuous distribution are similar concepts.</p>
+<div class="boxed">
+	<p>We will  define the mean and variance as  integrals later in the e-book.</p>
+</div>
+<p>However these formal definitions also correspond to a <strong>sequence of histograms</strong> whose classes become narrower. The mean and variance are the limit of what would be found from discrete variables whose possible values were in the middle of the classes.</p>
+
+<p class="eqn"><img class="svgImage" src="../../../en/continuousDistns/images/mean2.png" width="393" height="244"></p>
+
+
+
+<h2 class="pageName">2.2.4 &nbsp; Normal distributions</h2>
+<p><strong>Normal </strong>distributions are particularly important in statistics. A particular  distribution from this family is specified by the values of two  <strong>parameters</strong>,  usually denoted by \(\mu\) and \(\sigma\).</p>
+\[
+X \;\; \sim \; \; \NormalDistn(\mu,\; \sigma^2)
+\]
+<p>Confusingly, the second parameter of the normal distribution is sometimes written  &quot;\(\sigma\)&quot; instead of &quot;\(\sigma^2\)&quot;. We will try to be explicit about whether \(\sigma\) or \(\sigma^2\) is intended, such as</p>
+\[
+X \;\; \sim \; \; \NormalDistn(\mu=12,\; \sigma^2=5)
+\]
+<p class="heading">Shape of a normal distribution</p>
+<p>A normal distribution's pdf has a relatively complex formula,</p>
+\[
+f(x) = \frac 1 {\sqrt{2\pi}\;\sigma} e^{\large -\frac 1{2\sigma^2} (x-\mu)^2 } \quad\quad \text{for } -\infty \lt x \lt +\infty
+\]
+<p>The normal distribution's pdf will be treated mathematically later in the e-book.</p>
+<p>At this point, we simply state some  of its properties without proof. Its shape is determined by the values of the two parameters,  \(\mu\) and \(\sigma\):</p>
+<dl>
+	<dt>Symmetry</dt>
+	<dd>All normal distributions are symmetric with their maximum pdf  at \(\mu\).</dd>
+	<dt>Mean and median</dt>
+	<dd>For any symmetric distribution, both the mean and median are at the point of symmetry. This holds for normal distributions so, in particular,</dd>
+\[E[X] = \mu\]
+	<dt>Variance</dt>
+	<dd>The variance of the normal distribution is</dd>
+\[\Var(X) = \sigma^2\]
+	<dt>Shape</dt>
+	<dd>Other than their centre and spread of values, all normal distributions have pdfs with the same basic shape. Many authors call this &quot;bell-shaped&quot; though the peak at \(\mu\) is sharper than most bells!</dd>
+</dl>
+
+<p>Some of these results will be proved later.</p>
+
+
+<h2 class="pageName">2.2.5 &nbsp; Important normal quantiles</h2>
+<p>The following diagram therefore describes the pdf of <strong>any</strong> normal distribution.</p>
+<p class=eqn><img class="svgImage" src="../../../en/normalDistn/images/normalDensity.gif" width="498" height="145">
+</p>
+<p>Observe how the tails of the distribution fade away.</p>
+<ul>
+	<li>The distribution almost disappears at 3σ 
+		from µ</li>
+	<li>The probability (area) further than 2σ 
+		from µ 
+		is small &mdash; only about <sup>1</sup>/<sub>20</sub> of the total area.</li>
+</ul>
+<p>To be more precise, for <strong>all</strong> normal distributions,</p>
+<ul>
+	<li>\(P( X \text{ is within } \sigma \text{ of } \mu) = 0.6827\)</li>
+	<li>\(P( X \text{ is within } 2\sigma \text{ of } \mu) 
+		= 0.9545\)</li>
+	<li>\(P( X \text{ is within } 3\sigma \text{ of } \mu) 
+		= 0.9973\)</li>
+</ul>
+<p>The next  probabilities are <strong>particularly</strong> important.</p>
+<ul>
+	<li>\(P( X \text{ is within } 1.645 \sigma \text{ of } \mu) = 0.90\)</li>
+	<li>\(P( X \text{ is within } 1.960 \sigma \text{ of } \mu) 
+		= 0.95\)</li>
+	<li>\(P( X \text{ is within } 2.576 \sigma \text{ of } \mu) 
+		= 0.99\)</li>
+</ul>
+<p>In particular, there is a 95% probability that a normally distributed random variable \(X\) is within 1.96 standard deviations of the distribution's mean.</p>
+
+
+<h1 class="sectionName breakBefore">2.3 &nbsp; Discrete random samples</h1>
+<h2 class="pageName">2.3.1 &nbsp; Independence</h2>
+<p>Two <strong>events</strong>, A and B, are independent when</p>
+\[P(A \textbf{ and } B) = P(A) \times P(B) \]
+<p>We extend this to define independence of two  <strong>random variables</strong>, <em>X</em> and <em>Y</em>.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>Two  random variables, \(X\) and \(Y\), are <strong>independent</strong> if all events about the value of \(X\) are independent of all events about the value of \(Y\).</p>
+</div>
+<p>This  can be simplified considerably for discrete random variables.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Independence of discrete random  variables</p>
+		<p>Two discrete random variables, \(X\), and \(Y\), are independent if and only if</p>
+\[
+P(X = x \textbf{ and } Y = y) \; = \; P(X=x) \times P(Y=y) \qquad \text{ for all } x \text{ and } y
+\]	</div>
+</div>
+<p>When dealing with two or more random variables, we often use subscripts to distinguish between their probability functions. Two subscripts are used when referring to the <strong>joint</strong> probabilities for the two variables,</p>
+\[
+p_{X,Y}(x, y) = P(X = x \textbf{ and } Y = y)
+\]
+<div class="boxed">
+	<p style="text-align:left; font-weight:normal">Discrete random variables \(X\) and \(Y\) are therefore independent when</p>
+	\[
+	p_{X,Y}(x, y) = p_X(x) \times p_Y(y) \qquad \text{ for all } x \text{ and } y
+	\] </div>
+<p class="heading">Proving independence</p>
+<p>In some scenarios, we can argue that variables <strong> should</strong> be independent because of the way that the experiment was conducted. Otherwise, independence must be checked using the definition before we can be sure that two variables are independent.</p>
+<p>To <strong>prove</strong> independence, it is necessary to show that <strong>all</strong> combinations of <em>x</em> and <em>y</em> satisfy the relationship, but it is only necessary to find a <strong>single</strong> combination that does not work to prove that <em>X</em> and <em>Y</em> are <strong>not</strong> independent.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Question</p>
+		<p>A couple want at least two children,  but will stop when they either have four children or get a boy, and the probability of each child being a girl is \(\frac {1} {2} \), independently of the genders of previous children.</p>
+		<p>Are the family size, <em>X</em>, and the number of girls, <em>Y</em>, independent?</p>
+		<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">2.3.2 &nbsp; Random samples</h2>
+
+<p class="heading">Independent repetitions of an experiment</p>
+
+<p>One important situation that leads to independent random variables is when some random experiment is repeated  in essentially the same way.</p>
+<p>If the experiment is repeated twice, it is usually reasonable to assume that the resulting two variables are not only independent, but also both have the same distribution. This allows us to dispense with the subscripts for their probability functions,</p>
+\[
+p_X(\cdot) \;=\; p_Y(\cdot) \;=\; p(\cdot)
+\]
+
+<p>If this is extended to \(n\) independent repetitions of a random experiment, we get  \(n\) independent identically distributed random variables. These are often abbreviated to  <strong>iidrv</strong>'s and are also called a <strong>random sample</strong> from the distribution with probability function \(p(x)\).</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>A <strong>random sample</strong> of  \(n\) values from a distribution is a collection of  \(n\) independent random variables, each of which has this distribution.</p>
+</div>
+
+<p>Random samples often arise in statistics, and the following theorem is central to their analysis.</p>
+
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Probabilities for random samples</p>
+		<p>The probability that the values in a discrete random sample are \(x_1, x_2, ..., x_n\) is</p>
+		\[
+		P(X_1 = x_1, X_2 = x_2, ..., X_n = x_n) \;\; = \;\; \prod_{i=1}^n p(x_i)
+		\]
+		<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">2.3.3 &nbsp; Functions of two variables</h2>
+
+<p class="heading">Random variables defined from others</p>
+
+<p>Any function of these two variables can be used to define another random variable.</p>
+\[Z =g(X, Y)\]
+
+<p>The shape of its distribution  depends on those of \(X\) and \(Y\), but we will only consider its mean and variance here. </p>
+<p class="heading">Independent variables</p>
+<p>We now give two results that hold provided \(X\) and \(Y\) are <strong>independent</strong>. The first result is stated without proof here, but will be used later.</p>
+
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Product of independent random variables</p>
+		<p>If two  discrete random variables, \(X\) and \(Y\), are independent,</p>
+\[
+E[XY] = E[X] \times E[Y]
+\]
+	<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p>More important in practice is a <strong>linear</strong> combination of \(X\) and \(Y\),</p>
+<p class="eqn">\(Z =aX + bY\)   where \(a\) and \(b\) are constants</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Linear combination of independent variables</p>
+		<p>If the means of two independent discrete random variables, \(X\) and \(Y\), are \(\mu_X\) and \(\mu_Y\) and their variances are \(\sigma_X^2\) and \(\sigma_Y^2\), then the linear combination \((aX + bY)\) has mean and variance</p>
+\[ \begin {align}
+E[aX + bY] &amp; = a\mu_X + b\mu_Y \\[0.4em]
+\Var(aX + bY) &amp; = a^2\sigma_X^2 + b^2\sigma_Y^2
+\end {align} \]
+	<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+<p>Although the formula for the mean still holds if \(X\) and \(Y\) are <strong>not</strong> independent, the formula for the variance requires modification to cope with dependent random variables. </p>
+
+
+
+<h2 class="pageName">2.3.4 &nbsp; Properties of sums and means</h2>
+
+<p class="heading">Two independent random variables</p>
+
+<p>From the result on the previous page about linear functions of two independent variables,</p>
+
+\[\begin{align}
+E[X_1 + X_2] \;\;&amp; =\;\; E[X_1] + E[X_2] \\[0.5em]
+\Var(X_1 + X_2) \;\;&amp; =\;\; \Var(X_1) + \Var(X_2)
+\end{align} \]
+
+<p>If \(X_1\) and \(X_2\) also have the <strong>same</strong> distributions with mean \(\mu\) and variance \(\sigma^2\), then:</p>
+\[\begin{align}
+E[X_1 + X_2] \;\;&amp; =\;\; 2\mu \\
+\Var(X_1 + X_2) \;\;&amp; =\;\; 2\sigma^2
+\end{align} \]
+
+<p class="heading">Random sample</p>
+<p>This extends to the sum  of \(n\) independent identically distributed random variables — the sum of the values in a random sample.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Sum of values in a random sample</p>
+		<p>If \(\{X_1, X_2, ..., X_n\}\) is a random sample of \(n\) values from a discrete distribution with mean \(\mu\) and variance \(\sigma^2\), then the sum of the values, \(\sum_{i=1}^n {X_i}\) has mean and variance</p>
+\[\begin{align}
+E\left[\sum_{i=1}^n {X_i}\right] &amp; = n\mu \\
+\Var\left(\sum_{i=1}^n {X_i}\right) &amp; = n\sigma^2
+\end{align} \]
+
+	<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p>Since the sample mean is simply the sum of the values divided by the constant \(n\), this result also provides us with formulae for the mean and variance of the sample mean.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Mean of a random sample</p>
+		<p>If \(\{X_1, X_2, ..., X_n\}\) is a random sample of \(n\) values from a discrete distribution with mean \(\mu\) and variance \(\sigma^2\), then the sample mean has a distribution with mean and variance</p>
+\[\begin{align}
+E[\overline{X}] \;\;&amp; =\;\; \mu \\
+\Var(\overline{X}) \;\;&amp; =\;\; \frac {\sigma^2} n
+\end{align} \]	
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+
+
+
+<h2 class="pageName">2.3.5 &nbsp; Central limit theorem</h2>
+
+<p class="heading">Sum and mean of  normal random sample</p>
+
+<p>If \(\{X_1, X_2, ..., X_n\}\) is a random sample from a distribution with mean \(\mu\) and variance \(\sigma^2\), we have found formulae for the mean and variance of the sample mean (and of the sum of the sample values).</p>
+<p>If  the random sample comes from a <strong>normal</strong> distribution, we can  also find the <strong>shapes</strong> of their distributions.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Sum and mean of a normal random sample</p>
+		<p>If \(\{X_1, X_2, ..., X_n\}\) is a random sample of \(n\) values from a \(\NormalDistn(\mu, \;\sigma^2)\) distribution,</p>
+\[\begin{align}
+\sum_{i=1}^n {X_i} &amp; \;\; \sim \;\; \NormalDistn(n\mu, \;\sigma_{\Sigma X}^2=n\sigma^2) \\
+\overline{X} &amp; \;\; \sim \; \; \NormalDistn(\mu, \;\sigma_{\overline X}^2=\frac {\sigma^2} n)
+\end{align} \]	</div>
+</div>
+<p class="heading">Samples from other distributions</p>
+<p><strong>Whatever</strong> the shape of the distribution from which the random sample is selected from, the sample sum and mean are <strong>approximately </strong>normal when the sample size is large.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Central Limit Theorem (informal)</p>
+		<p>If \(\{X_1, X_2, ..., X_n\}\) is a random sample of \(n\) values from any distribution with mean \(\mu\) and variance \(\sigma^2\),</p>
+		\[\begin{align}
+		\sum_{i=1}^n {X_i} &amp; \;\; \xrightarrow[n \rightarrow \infty]{} \;\; \NormalDistn(n\mu, \;\;\sigma_{\Sigma X}^2=n\sigma^2) \\
+		\overline{X} &amp; \;\; \xrightarrow[n \rightarrow \infty]{} \; \; \NormalDistn(\mu, \;\;\sigma_{\overline X}^2=\frac {\sigma^2} n)
+		\end{align} \] </div>
+</div>
+<p>This way of writing the Central Limit Theorem describes how it is interpreted in practice, but the following is a more precise statement of the result.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Central Limit Theorem (more precise)</p>
+		<p>If \(\{X_1, X_2, ..., X_n\}\) is a random sample of \(n\) values from any distribution with mean \(\mu\) and variance \(\sigma^2\),</p>
+
+\[
+Z_n = \frac {\sum_{i=1}^n {X_i} - n\mu} {\sqrt{n}\; \sigma} \quad \xrightarrow[n \rightarrow \infty]{} \quad \NormalDistn(0,\; 1)
+\]
+
+</div>
+</div>
+<p>The Central Limit Theorem is the main reason why the normal distribution is so important in statistics. Sample means are approximately normal, whatever the distribution from which the values are sampled. Many other summary statistics from large random samples <strong>also</strong> have approximately normal distributions.</p>
+
+
+<h1 class="sectionName breakBefore">2.4 &nbsp; Uniform distribution</h1>
+<h2 class="pageName">2.4.1 &nbsp; Family of uniform distributions</h2>
+
+<p class="heading">Equally likely values</p>
+
+<p>A uniform distribution arises when  each integer value between two limits has the same chance of being observed — equally likely outcomes.</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>If a discrete random variable, \(X\), can only take integer values from \(a\) to \(b\), where \(a\) and \(b\)<em> </em>are integer constants, and each such value is equally likely, it is said to have a <strong>discrete uniform distribution</strong>.</p>
+\[
+X \;\; \sim \; \; \UniformDistn(a, b)
+\] </div>
+
+<p class="heading">Probability function</p>
+<p>Since there are \((b-a+1)\) equally likely values between \(a\) and \(b\) (inclusive),</p>
+
+
+\[
+p(x) = \begin {cases} \displaystyle
+	\frac 1 {b-a+1} &amp; \quad \text{if } a \le x \le b \\[0.5em]
+	0 &amp; \quad \text{otherwise}
+\end {cases}
+\]
+
+	
+	<p>If the probabilities are displayed graphically in a bar chart, each bar has the same height.</p>
+<p class="eqn"><img class="svgImage" src="../../../en/uniform/images/uniformBarchart.png" width="319" height="243"></p>
+
+
+
+
+<h2 class="pageName">2.4.2 &nbsp; Mean and variance (Proof not examined)</h2>
+<p>Since a uniform distribution's probability function is defined by a mathematical function (as opposed to a list of values), we can find its mean and variance by summing series.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Uniform distribution's mean and variance</p>
+<p>If \(X \sim \UniformDistn(a, b) \), its</em> mean and variance are</p>
+\[ \begin {align}
+	E[X] &amp; = \frac {a+b} 2 \\
+	\Var(X) &amp; = \frac { (b - a + 1)^2 - 1} {12}
+\end {align} \]
+	<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+
+
+
+<h2 class="pageName">2.4.3 &nbsp; Sample mean</h2>
+<p>The general results about the distribution of means of random samples can be applied to the uniform distribution. If \(\overline{X}\) is the mean of a random sample of \(n\) values from a \(\UniformDistn(a, b)\) distribution,</p>
+
+\[\begin{align}
+E[\overline{X}] &amp; \;=\; E[X] \;=\; \frac{a+b} 2 \\[0.3em]
+\Var(\overline{X}) &amp; \;=\; \frac {\Var(X)} n \;=\; \frac{ (b - a + 1)^2 - 1} {12n}
+\end{align} \]
+
+
+
+<div class="example">
+	<p class="exampleHeading">Example: Rolling a six-sided die</p>
+	<p>If \(X \sim \UniformDistn(1, 6)\),</p>
+
+\[\begin{align}
+E[X] &amp; = \frac{1+6} 2 = 3.5 \\
+\Var(X) &amp; = \frac{ (6 - 1 + 1)^2 - 1} {12} = \frac {35} {12} = 2.917
+\end{align} \]
+
+	<p>so for the average of a sample of size \(n\),	</p>
+\[ \begin{align}
+E[\overline{X}] &amp;= E[X] = 3.5 \\[0.4em]
+\Var(\overline{X}) &amp;= \frac {\Var(X)} n = \frac {2.917} n
+\end{align} \]
+	<p>The barcharts below show the distribution of \(\overline{X}\) for a few sample sizes.</p>
+	<p class="eqn"><img src="../../../en/uniform/images/s_uniformBarcharts.png" width="520" height="345"></p>
+	<p>This illustrates that:</p>
+<ul>
+	<li> the distribution of \(\overline{X}\) remains centred on 3.5 for all \(n\), </li>
+	<li>the standard deviation of  \(\overline{X}\) decreases as \(n\) increases, and</li>
+	<li>the <strong>shape</strong> of the distribution approaches a normal distribution as \(n\) increases.</li>
+</ul>
+<p>The limiting normal distribution should be expected from the Central Limit Theorem.</p>
+</div>
+
+
+
+<h1 class="sectionName">2.5 &nbsp; What you need to learn</h1>
+
+
+<p class="heading">What you need to know in this chapter</p>
+<p>You should concentrate on the following material when studying  the chapter about random variables.</p>
+<p class="heading">2.1 Discrete random variables</p>
+<p>The distinction between discrete and continuous random variables is central to the course, so you must be able to identify which is relevant to any scenario. The idea of a probability function and its properties should be understood (2.1.1). From any probability function, you should be able to find any probability, including cumulative probabilities, by summing its probability function (2.1.2).</p>
+<p>You should also be able to find the mean and variance  for  a discrete random variable described by a table of probabilities or the mathematical formula for its probability function (2.1.3 and 2.1.5). You should also be able to use the results in page 2.1.4 to find other expected values and prove the alternative formula for the variance.</p>
+<p class="heading">2.2 Continuous random variables</p>
+<p>This section is a brief introduction to continuous random variables that is only used to introduce the normal distribution here. (Chapter 5 goes into a lot more detail.) At this point, you only need to understand how a probability density function describes a continuous random variable's probabilities as areas under it (2.2.1-2), and know that a variable's mean and variance are interpreted in a similar way to those of a discrete random variable (2.2.3).</p>
+<p>From 100-level statistics, you should already know how the shape of the normal distribution depends on its parameters &mu; and &sigma;&sup2; and be able to find probabilities for specific normal random distributions.</p>
+<p class="heading">2.3 Discrete random samples</p>
+<p>You should understand the concept of two or more independent discrete random variables and its precise definition (2.3.1-2) and be able to derive the formulae for the mean and variance of (<em>aX</em>+<em>bY</em>) when <em>X</em> and <em>Y</em> are independent (2.3.3).</p>
+<p>You should also be able to derive the formulae for the mean and variance of the sum and mean of the values in a random sample (2.3.4), and know that the Central Limit Theorem justifies their approximately normal distribution in large samples (2.3.5).</p>
+<p class="heading">2.4 Uniform distribution</p>
+<p>The discrete uniform distribution is mainly introduced here as a simple example to illustrate the earlier results. You will <strong>not</strong> be asked to derive the formulae for its mean and variance but could be asked to find probabilities about the mean of a random sample, using a normal approximation based on the Central Limit Theorem.</p>
+
+
+</body>
+</html>

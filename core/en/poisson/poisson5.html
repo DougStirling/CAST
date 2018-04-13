@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Example</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="poisson distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>We now give an example in which Poisson probabilities are found.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Example: Arrival of phone calls</p>
+		<p>A homogeneous Poisson process might be used to model arrival of telephone calls in an office. We will assume that calls arrive at a constant rate of \(\lambda = 3\) per hour during the morning (8:30 am to 12:30 pm).</p>
+		<ol>
+			<li>What are the mean and standard deviation of the number of calls arriving in a single hour?</li>
+			<li>What is the probability of getting three or more calls in a single hour?</li>
+			<li>What is the probability of getting no calls in a 20-minute period?</li>
+		</ol>
+	</div>
+	<div class="solution">
+		<p>If \(X\) is the number of calls in an hour,</p>
+\[
+X \;\; \sim \; \; \PoissonDistn(\lambda t = 3)
+\]
+		<p>The mean and variance of \(X\) are both \(\lambda = 3\), so its standard deviation is \(\sqrt 3 = 1.73\).</p>
+		<p>The probability of 3 or more calls in an hour is</p>
+\[ \begin{align}
+P(X \ge 3)\;\; &amp;= \;\; p(3) + p(4) + p(5) + \cdots \\[0.3em]
+&amp;= \;\; 1 - \big(p(0) + p(1) + p(2) \big) \\[0.3em]
+&amp;= \;\; 1 - \left(\frac {3^0 e^{-3}} {0!} + \frac {3^1 e^{-3}} {1!} + \frac {3^2 e^{-3}} {2!} \right) \\
+&amp;= \;\; 1 - (0.050 + 0.149 + 0.224 ) \\[0.3em]
+&amp;= \;\; 0.577
+\end{align} \]
+		<p>If we use \(Y\) to denote the number of calls in a 20-minute period,</p>
+\[
+Y \;\; \sim \; \; \PoissonDistn(\lambda t = 1)
+\]
+		<p>The probability of zero calls in 20 minutes is therefore</p>
+\[
+P(Y = 0) \;\; = \; \; \frac {1^0 e^{-1}} {0!} \;\; = \; \; 0.368
+\]	</div>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

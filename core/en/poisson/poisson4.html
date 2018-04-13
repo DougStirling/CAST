@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Mean and variance</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="poisson distribution, mean, variance, normal distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>The  Poisson distribution's probability function was  derived as a limit of those of binomial distributions. The Poisson mean and variance can also be found from this limit.</p>
+
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Mean and variance</p>
+<p>If \(X\) has a \(\PoissonDistn(\lambda)\) distribution with probability function</p>
+\[
+p(x) \;\;=\;\;  \frac {\lambda^x e^{-\lambda}} {x!} \quad\quad \text{ for } x=0, 1, \dots
+\]
+<p>then its mean and variance are</p>
+\[
+E[X] \;=\;  \lambda \spaced{and} \Var[X] \;=\;  \lambda
+\] </div>
+
+<div class="proof">
+<p>We use the fact that</p>
+\[
+X \;\; \sim \; \; \lim_{k \to \infty} \BinomDistn\left(k,\; \frac {\lambda} k\right)
+\]
+<p>Denoting a variable with the binomial distribution on the right by \(X_k\), its mean is</p>
+<p>\[
+	E[X_k] \;=\;  k \times \frac {\lambda} k = \lambda
+	\] </p>
+<p>As \(k \to \infty\), the limiting mean is therefore also \(\lambda\). The binomial variance is</p>
+\[
+\Var[X_k] \;=\;  k \times 
+\frac {\lambda} k \times \left(1 - \frac {\lambda} k \right) \;=\; \lambda \times \left(1 - \frac {\lambda} k \right)\]
+<p>As \(k \to \infty\), the limiting variance is   \(\lambda\).</p>
+</div>
+
+</div>
+
+<p class="heading">Approximate normal distribution</p>
+<p>We showed earlier that the Poisson distribution becomes close to normal as its parameter \(\lambda\) increases. We can now be more precise with the parameters of this distribution.</p>
+\[
+\PoissonDistn(\lambda) \;\;\xrightarrow[\lambda \to \infty]{} \;\; \NormalDistn(\mu = \lambda,\; \sigma^2 = \lambda)
+\]
+<p>This approximation is reasonably good even when \(\lambda\) is as low as 20.</p>
+
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

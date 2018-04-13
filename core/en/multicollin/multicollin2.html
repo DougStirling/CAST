@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Correlated explanatory variables</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="multicollinearity, orthogonal variables, variance inflation factor">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Variance inflation factors</p>
+	<p>The loss of accuracy of <em>b</em><sub>1</sub> 
+		and <em>b</em><sub>2</sub> 
+		due to the correlation between <em>X</em> and <em>Z</em> is quantified by 
+		their <strong>variance inflation factors (VIF)</strong>, defined by:</p>
+	<p class=eqn><img src="images/vifDefn.gif" width="398" height="60" alt="eqn"> 
+	</p>
+	<p>For example, if the VIF for the slope parameter associated with <em>X</em> 
+		is 4.0, its variance is 4 times what it would have been if <em>X</em> and 
+		<em>Z</em> were uncorrelated &mdash; i.e. its standard deviation is twice the minimum 
+		possible.</p>
+	<p>Since the formula for the actual variance of <em>b</em><sub>1</sub> 
+		is </p>
+	<p class=eqn><img src="images/bxVarEqn.gif" width="196" height="45" alt="eqn"> 
+	</p>
+	<p>and its minimum value arises when <em>r</em> is zero (uncorrelated explanatory 
+		variables), and a similar formula holds for the other slope parameter, the 
+		variance inflation factors can both be written as</p>
+	<p class=eqn><img src="images/vifSimpleEqn.gif" width="111" height="35" alt="eqn"> 
+	</p>
+	
+	<p class="gray">(Although both VIFs are the same in models with only 
+		two explanatory variables, all VIFs are usually different in models with three 
+		or more explanatory variables.)</p>
+	
+	<div class="diagram">
+    <p class="heading">Illustration</p>
+
+    <p>The diagram below shows a normal linear model, represented by two planes &plusmn; 2&sigma; 
+			above and below the regression plane. (95% of response values from the
+model  would be expected to be between these planes.)</p>
+<p class=eqn><span class="black"><em>y</em> &nbsp;=&nbsp; 2.0 + 0.4 <em>x</em></span> 
+		</p>
+		<p>The x- and z-values are represented by crosses on the x-z plane and red 
+			vertical lines above each cross between the &plusmn; 2&sigma;		planes. (Rotate with the mouse or buttons to understand this diagram better.)</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="multiRegnProg.ModelBandApplet">
+<param name="yAxis" value="0 50 0 10">
+<param name="xAxis" value="65 110 70 10">
+<param name="zAxis" value="63 76 65 5">
+<param name="yVarName" value="Y">
+<param name="xVarName" value="X">
+<param name="zVarName" value="Z">
+<param name="randomSeed" value="6456893">
+<param name="multiRegnModel" value="-15.0 0.5 0.0 5">
+<param name="xValues" value="90.75 83.60 84.10 82.26 93.39 90.57 77.05 84.99 88.96 73.17 86.39 84.41 102.73 86.19 96.82 98.47 97.62 82.35 84.50 98.73 79.79 83.86 70.48 73.18 85.08 79.45">
+<param name="zValues" value="66.06 72.97 68.07 66.12 66.32 70.60 69.47 68.13 70.03 68.30 68.00 70.50 73.62 66.07 71.15 67.81 68.23 68.42 71.77 71.29 68.31 71.76 68.75 71.26 67.46 66.69">
+<param name="initialXZR2" value="0.7">
+<param name="maxR" value="0.99">
+<param name="xSlopeAxis" value="-2 3 -2 1">
+<param name="zSlopeAxis" value="-10 10 -10 5">
+<param name="maxSlopeSD" value="9.999 9.999">
+<param name="maxVIF" value="999.99">
+<param name="bxAxisInfo" value="-1.0 2.0 -1.0 0.5">
+<param name="bzAxisInfo" value="-5 5 -4 2">
+<param name="customText" value="LS slope for=LS slope for#Correl(X, Z)=Correl(X, Z)#VIF=VIF#sd of=sd of">
+</applet> 
+</div>
+
+    <p>At the bottom of the diagram, the distributions of the least squares slopes 
+			are shown &mdash; they are normal distributions. (We will <strong>not</strong> 
+			simulate data from the model in this diagram to check that they are correct.)</p>
+		<p>Drag the slider to adjust the correlation between <em>X</em> and <em>Z</em>. 
+			Observe that the spread of the two distributions is lowest when <em>X</em> 
+			and <em>Z</em> are uncorrelated (and hence the VIF is 1.0). When the correlation 
+			is increased, the VIF also becomes higher.</p>
+    </div>
+
+  <p class="heading">Multicollinearity and orthogonal variables</p>
+	<p>When the two explanatory variables <em>X</em> and <em>Z</em> are highly correlated, 
+		they are called <strong>multicollinear</strong>. (There is no precise definition 
+		for the term.)</p>
+	<p>Uncorrelated explanatory variables are called <strong>orthogonal</strong>. 
+		When the explanatory variables are orthogonal,</p>
+	<ul>
+		<li>Both <em>b</em><sub>1</sub> 
+			and <em>b</em><sub>2</sub> 
+			are more accurate (more variable) than if <em>X</em> and <em>Z</em> had 
+			similar standard deviations but were correlated.</li>
+		<li>The VIFs for both <em>b</em><sub>1</sub> 
+			and <em>b</em><sub>2</sub> 
+			are 1.0.</li>
+		<li>Also, <em>b</em><sub>1</sub> 
+			and <em>b</em><sub>2</sub> 
+			are uncorrelated.</li>
+	</ul>
+	<p>Orthogonal explanatory variables are clearly desirable, but in practice they 
+		usually only arise from designed experiments &mdash; in experiments, the values 
+		of <em>X</em> and <em>Z</em> can be <strong>chosen</strong> to be uncorrelated.</p>
+	
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

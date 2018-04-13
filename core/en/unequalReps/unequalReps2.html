@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Unequal replicates by design</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="unequal replicates, control level, randomisation">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Control level in an experiment</p>  
+<p>In many experiments with a single factor, all factor levels are of equal status and none is of particular interest. There is no reason to design such experiments with different replicates for the different factor levels.</p>
+<p>However sometimes experiments have one factor level  that is special in some way.</p>
+<ul>
+	<li>Crop experiments are often intended to discover whether new varieties have better yields, pest resistance or tollerance to drought than a 'traditional' variety.</li>
+	<li>In experiments to determine the effect of different feed supplements on the growth of animals, the standard diet without supplements is a baseline treatment against which the others will be compared.</li>
+</ul>
+<p>The 'special' level for the factor is called a <strong>control</strong> level and we are more interested in comparing other levels to the control than to make comparisons between these other levels. In order to estimate the differences between the control and other levels more accurately,</p>
+<div class="centred"><div class="boxed">
+	<p>We often design  experiments with more replicates of the control level. </p>
+</div></div>
+<br>
+
+<div class="diagram">
+<p class="heading">Designs with a control level</p>
+<p>To illustrate the advantages that can arise from using more replicates for an experiment's control level, we will consider estimation of two types of contrast:</p>
+<ul>
+	<li>differences between the mean response for the control level and other levels</li>
+	<li>differences between the mean responses for non-control levels</li>
+</ul>
+<p>The diagram below describes experiments about the effect of a feed supplement on the weight gained chickens in their first three weeks. Four supplements are being assessed against a control level for which the chickens get no supplement. The experiment will be conducted on 50 chickens (experimental units).</p>
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="exper2Prog.ContrastSeApplet">
+<param name="xVarName" value="Treatments">
+<param name="xLabels" value="#Control (no sup)#  #Supplement 1# #Supplement 2# #Supplement 3# #Supplement 4#">
+<param name="nUnits" value="50">
+<param name="controlContrastName" value="Involving control">
+<param name="controlContrast0" value="Control vs Sup 2#0 0 1 0 0">
+<param name="controlContrast1" value="Control vs Sup 3#0 0 0 1 0">
+<param name="controlContrast2" value="Control vs ave(Sups)#0 0.25 0.25 0.25 0.25">
+<param name="otherContrastName" value="Others">
+<param name="otherContrast0" value="S1 vs S2#0 -1 1 0 0">
+<param name="otherContrast1" value="S2 vs S3#0 0 -1 1 0">
+<param name="otherContrast2" value="S3 vs S4#0 0 0 -1 1">
+<param name="maxSe" value="99.9999">
+<param name="customText" value="Contrast=Contrast#SE(contrast)=SE(contrast)#Reps for control=Reps for control">
+</applet> 
+</div>
+
+<p>The slider at the top of the diagram adjusts the number of replicates for the control level (and therefore also for the other factor levels since we are limited to 50 experimental units). The two columns at the bottom of the diagram show the standard errors of esimates of six contrasts.</p>
+<p>The top two on the left are for the differences in mean weight gain between chickens getting particular supplements and those getting no supplement. The bottom standard error on the left is for the difference between the mean weight gain over <strong>all</strong> supplements and the control level. Observe that:</p>
+<div class="centred"><div class="boxed">
+	<p>Contrasts involving the control level are more accurately estimated (lower standard errors) if there are <strong>a few</strong> more replicates for the control than the other levels. </p>
+</div></div>
+<p>The benefits of more accurate comparisons between the control and other levels come at a cost. Since there are fewer replicates for the non-control levels,</p>
+<div class="centred"><div class="boxed">
+	<p>Contrasts comparing the non-control levels are less accurate if there are more replicates for the control level. </p>
+</div></div>
+<p>The decision on how much to increase the replicates for the control level depends largely on the objectives of the experiment.</p>
+</div>
+
+<p class="heading">Randomisation</p>
+<p>As with all other experiments, random allocation of treatments to experimental units is critically important. The diagram below illustrates.</p>
+
+<div class="diagram">
+	<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="440">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="exper2Prog.RandomiseTreatApplet">
+<param name="treatmentNames" value="Control #Treat 2# #Treat 3# #Treat 4#">
+<param name="repTableNames" value="Control #Treat 2# #Treat 3# #Treat 4#">
+<param name="noOfDesigns" value="2">
+<param name="designName" value="Same replicates for all treatments">
+<param name="treatments" value="6@0 6@1 6@2 6@3">
+<param name="replicates" value="6 6 6 6">
+<param name="designName2" value="More replicates of Control">
+<param name="treatments2" value="12@0 4@1 4@2 4@3">
+<param name="replicates2" value="12 4 4 4">
+<param name="unitTable" value="8 3">
+<param name="customText" value="Randomise treatments=Randomise treatments#Randomise again=Randomise again">
+</applet> 
+</div>
+
+<p>In the diagram above, click <strong>Randomise experiment</strong> to randomly allocate the treatments used to experimental units.</p>
+<p>Use the pop-up menu to increase the number of replicates for the control treatment. Randomisation of the allocation of treatments works in exactly the same way as in experiments with equal replicates.</p>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

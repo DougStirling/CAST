@@ -1,0 +1,176 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Model for X and 3+ groups</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="comparing groups, indicator variable, general linear model, baseline category">
+	<meta name="dataset" content="Californian wine quality">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Regression model for <em>g</em> groups</p>
+	
+  <p>It is fairly easy to extend the 2-group model at the start of this section 
+    to allow for 3 or more groups. This model is again a general linear model 
+    (GLM). </p>
+  <p class=eqn><img src="images/regnGroupsModel.gif" width="418" height="105"></p>
+  <p>The indicator variables pick out one of the &delta; 
+    parameters, depending on group membership, so the model implies the following 
+    models in the different groups.</p>
+<dl>
+    <dt>Group 1</dt>
+  </dl>
+  <p class=eqn><img src="images/regnGroup1Model.gif" width="160" height="17"></p>
+  <dl>
+    <dt>Group <em>j</em> ( &gt; 1)</dt>
+  </dl>
+  <p class=eqn><img src="images/regnGroupJModel.gif" width="201" height="20"></p>
+  <p>Note that the δ-parameters describe the differences between the mean responses in the other 
+		groups and that in group 1.</p>
+	
+<div class="centred"><div class="boxed">
+<p>Group 1 is the <strong>baseline</strong> 
+						group &mdash; the parameters compare the other groups to it.</p>
+</div></div>
+
+	<p>Choice of the group to use as the baseline group is arbitrary &mdash; the flexibility 
+		of the model does not depend on the choice.</p>
+	<div class="diagram">
+		
+    <p class="heading">Californian wine quality</p>
+
+		
+    <p>This data set arises from a wine quality contest in California that had 
+      entries from all over the state. The wines were marked by judges on several 
+      characteristics including <em>Clarity</em>, <em>Aroma</em>, <em>Flavour</em> 
+      and <em>Body</em>, and an overall score for <em>Quality</em> was also given. 
+      We examine here the relationship between the <em>Quality</em> and <em>Body</em> 
+      of the wines, based on the average scores of all judges for each wine. The 
+      wines were also classified by the part of California in which they were 
+      produced, <em>North</em>, <em>Napa valley</em> and <em>Central</em>.</p>
+    
+<div class="centred"><div class="boxed">
+<p>To simplify the design matrix, we initially show only 7 wines from each region.</p>
+</div></div>
+
+    <p>The model is expressed in matrix notation below.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="matrixProg.GenericModelEqnApplet">
+<param name="nXColumns" value="2">
+<param name="fullNameX1" value="Body, b">
+<param name="shortNameX1" value="b">
+<param name="valuesX1" value="2.8 4.9 5.3 2.6 5.1 4.7 4.8 5.4 5.0 4.1 4.0 4.6 4.9 4.4 4.3 4.3 5.7 6.6 4.4 5.6 5.4">
+<param name="fullNameX2" value="Region">
+<param name="shortNameX2" value="r">
+<param name="valuesX2" value="7@0 7@1 7@2">
+<param name="labelsX2" value="North Central Napa">
+<param name="yName" value="Quality, Y">
+<param name="errorName" value="error">
+<param name="matrixFont" value="standard">
+<param name="groupKeyIndex" value="2">
+<param name="customText" value="effect=effect">
+</applet>
+</div>
+
+		
+    <p>Click on any y-value to see the model that is used for that wine. Note 
+      that there is a simple linear model with intercept β<sub>0</sub> 
+      and slope β<sub>1</sub> 
+      for wines from the <em>North</em>. For wines in the other two regions, the indicator 
+      variables add other constant parameters, β<sub>2</sub> and β<sub>3</sub>.</p>
+
+</div>
+  
+  <p class="heading">Parameter estimates</p>
+	
+  <p>Again, the standard GLM theory provides a formula for the least squares estimates 
+    of the model parameters,</p>
+  <p class=eqn><img src="../glm/images/lsEquation.gif" width="138" height="23"></p>
+  <p>and a computer can use this to evaluate the estimates.</p>
+  <p class="heading">Graphical representation</p>
+  <p>This model can be respresented by <strong>parallel</strong> lines on a scatterplot 
+    of <em>y</em> against <em>x</em>, one for each group. The vertical distances 
+    of these lines from at of group 1 are given by the coefficients of the indicator 
+    variables.</p>
+  <div class="diagram"> 
+    <p class="heading">Californian wine quality</p>
+
+		
+    <p>The diagram below shows the full data set, using different colours for 
+      the three regions in California.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="indicatorProg.DragParallelLinesApplet">
+<param name="yVarName" value="Wine quality, Q">
+<param name="yValues" value="9.8 12.6 11.9 11.1 13.3 12.8 12.8 12.0 13.6 13.9 14.4 12.3 16.1 16.1 15.5 15.5 13.8 13.8 11.3 7.9 15.1 13.5 10.8 9.5 12.7 11.6 11.7 11.9 10.8 8.5 10.7 9.1 12.1 14.9 13.5 12.2 10.3 13.2">
+<param name="xVarName" value="Body, B">
+<param name="xValues" value="2.8 4.9 5.3 2.6 5.1 4.7 4.8 4.5 4.3 3.9 4.3 5.4 5.7 6.6 4.4 5.6 5.4 5.5 4.1 5.0 5.4 5.3 4.1 4.0 5.4 4.6 4.0 4.9 4.4 3.7 4.3 3.8 3.5 5.0 5.7 4.7 5.5 4.8">
+<param name="zVarName" value="Region, R">
+<param name="zValues" value="0 0 0 0 0 0 0 0 2 0 2 1 2 2 2 2 2 2 0 1 2 2 1 1 2 1 0 1 1 1 1 0 0 2 0 0 0 0">
+<param name="zLabels" value="North Central Napa">
+<param name="yAxis" value="6 18 6 2">
+<param name="xAxis" value="2 7 2 1">
+<param name="initModelParams" value="12.00 0.00 -1.00 -2.00 0">
+<param name="shortNames" value="Q B R/Central R/Napa">
+<param name="maxCoeffs" value="99.99 -9.99 -9.99 -9.99">
+</applet>
+</div>
+
+		
+    <p>There are 4 parameters in the model (excluding the error standard deviation, 
+      σ), 
+      so there are 4 red arrows can be dragged to adjust the model parameters.</p>
+    <ul>
+      <li>Firstly adjust the upper (grey) line to lie close to the black crosses 
+        (wines from the <em>North</em> region).</li>
+      <li>Now drag the arrow on the blue line to make it lie close to the blue 
+        <em>Napa valley </em>points. Observe that the coefficient of the indicator 
+        variable <em>R<sub>Napa</sub></em> is the distance between this line and 
+        the <em>North</em> line.</li>
+      <li>Finally move the arrow on the red line to drag it close to the red <em>Central</em> 
+        points. The coefficient of the indicator variable <em>R<sub>Central</sub></em> 
+        is the distance between this line and the <em>North</em> line.</li>
+    </ul>
+    <p>Finally, click the checkbox <strong>Show residuals</strong> and click the 
+      button <strong>Least squares</strong> to set the parameters to their least 
+      squares estimates.</p>
+    <p>From the least squares estimates, we estimate that:</p>
+
+      
+<div class="centred"><div class="boxed">
+<ul>
+<li> 
+		The wine <em>Quality</em> rating increases 
+			by 0.72 for each increase in <em>Body</em> rating of 1.
+</li>
+	<li>For wines of the same <em>Body</em>, wines in the <em>Napa 
+		valley</em> have <em>Quality</em> that is 2.00 higher than those 
+		in the <em>North</em>.</li>
+<li>For wines of the same <em>Body</em>, wines in the <em>Central</em> 
+have <em>Quality</em> that is 1.60 lower than those in the <em>North</em>.</li>
+</ul>
+</div></div>
+
+
+	<br>
+		</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

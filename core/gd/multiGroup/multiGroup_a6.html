@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Coefficient of determination</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<script type="text/javascript">
+		var svgNames = new Array();
+		svgNames[0] = "images/radiocarbonR2.svg";
+		svgNames[1] = "images/elNinoR2.svg";
+		svgNames[2] = "images/antibioticR2.svg";
+		svgNames[3] = "images/teachingR2.svg";
+		svgNames[4] = "images/cuckooR2.svg";
+		
+		function changeSvgImage(select) {
+			var newIndex = select.selectedIndex;
+			var image = document.getElementById('dataImage');
+			image.src = svgNames[newIndex];
+		}
+	</script>
+
+	<meta name="index" content="coefficient of determination, sums of squares">
+	<meta name="dataset" content="Cuckoo eggs">
+	<meta name="dataset" content="Antibiotics">
+	<meta name="dataset" content="Teaching methods">
+	<meta name="dataset" content="Radiocarbon dating of pottery">
+	<meta name="dataset" content="El nino and storms">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Sums of squares</p>
+
+  <p>The table below summarises the interpretation of the total, within-groups and 
+		between-groups sums of squares.</p>
+	<table border="0" class="centred" cellpadding="4" cellspacing="0">
+		<tr> 
+			<th align="left">Sum of squares</th>
+			<th>Interpretation</th>
+		</tr>
+		<tr>
+			<td><object data="images/totalSsq2.svg" width="141" height="25">
+			</object>
+			<td>Overall variability of <em>Y</em>, taking no account of the groups.</td>
+		</tr>
+		<tr>
+			<td><object data="images/residSsq2.svg" width="154" height="25">
+			</object>
+			<td>Describes variability around the group means and is therefore variability 
+				that cannot be explained by the model.</td>
+		</tr>
+		<tr>
+			<td><object data="images/regnSsq2.svg" width="152" height="24">
+			</object>
+			<td>Describes how far the group means are from the overall mean &mdash; i.e. 
+				the variability of the group means. It can also be interpreted as the 
+				sum of squares <strong>explained</strong> by the model.</td>
+		</tr>
+	</table>
+<p>The best prediction for any observation in group <em>i</em> would be <span style="position:relative; top:4px"><img src="../../images/symbol.yBar.png" width="10" height="14" align="baseline"></span> 
+		if groups were not taken into account, whereas it would be <span style="position:relative; top:4px"><img src="../../images/symbol.yiBar.png" width="12" height="14" align="baseline"></span> 
+		with our model.</p>
+	<center>
+		<table border="1" cellspacing="0" cellpadding="5" bgcolor="white" width="75%">
+			<tr> 
+				<th align="CENTER"><strong>The between-group sum of squares summarises 
+					how much predictions are improved by using the model.</strong></th>
+			</tr>
+		</table>
+	</center>
+	<p class="heading">Coefficient of determination</p>
+<p>Since the between-group (explained) and within-group (residual) sums of squares 
+add to the total sum of squares, a useful summary statistics is the <strong>proportion</strong> 
+of the total sum of squares that is explained by the model. This proportion is 
+called the <strong>coefficient of determination</strong> and is denoted by R<sup>2</sup>.</p>
+<p class=eqn>
+	<object data="images/rSquaredDefn.svg" width="102" height="38">
+	</object>
+</p>
+<p>Note the following properties of R<sup>2</sup>.</p>
+
+<ul>
+<li>R<sup>2</sup> always has a value between zero and one.</li>
+</ul>
+<p class=eqn><span class="black">0 &nbsp;&le;&nbsp; <em>R</em><sup>2</sup> &nbsp;&le;&nbsp; 1</span> </p>
+
+  <ul>
+		<li>When R<sup>2</sup> is close to 1, all values must be relatively close 
+			to their group means. Since the proportion of <strong>unexplained</strong> 
+			variation is (1&nbsp;-&nbsp;R<sup>2</sup>), the unexplained variation must 
+			be relatively low.</li>
+		<li>When R<sup>2</sup> is close to 0, the variability within the groups is 
+			much greater than the variability between the means &mdash; the means are similar 
+			to each other. </li>
+	</ul>
+
+<br>
+<div class="diagram"> 
+<p class="heading">Examples</p>
+<p>The diagram below shows how R<sup>2</sup> is calculated and interpreted for 
+a few data sets.</p>
+
+
+<form>
+<select name="dataset" onChange="changeSvgImage(this)">
+<option value="0" selected>Radiocarbon dating of pottery</option>
+<option value="1">El Nino and Pacific storms</option>
+<option value="2">Antibiotic effectiveness</option>
+<option value="3">Grouping of students before an experiment</option>
+<option value="4">Size of cuckoo eggs</option>
+</select>
+</form>
+
+<p align="center"><iframe src="images/radiocarbonR2.svg" id="dataImage" width="587" height="367" frameborder="0"></iframe></p>
+
+<br>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

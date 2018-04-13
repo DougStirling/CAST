@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Parameter estimation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="multinomial distribution, maximum likelihood">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>In practical situations involving multinomial distributions, the probabilities of the underlying categories are unknown and must be estimated from data.</p>
+<p>We therefore consider estimating \(\pi_1\), ..., \(\pi_g\) from a single multinomial observation of</p>
+\[
+(X_1,\dots,X_g) \;\;\sim\;\; \MultinomDistn(n, \pi_1, ..., \pi_g)
+\]
+<p class="heading">Likelihood function</p>
+<p>As with univariate distributions, the likelihood function is the probability of observing the data, treated as a function of the unknown parameters. This is just the data's joint probability function,</p>
+\[
+L(\pi_1, ..., \pi_g \mid x_1,\dots,x_g) \;\;=\;\; \frac{n!}{x_1!\;x_2!\; \cdots,\;x_g!} \pi_1^{x_1}\pi_2^{x_2}\cdots \pi_g^{x_g} \]
+<p>We can eliminate one of the unknown parameters here. Since the \(g\) probabilities sum to one,</p>
+\[
+\pi_g \;\;=\;\; 1 - \pi_1 - \pi_2 - \cdots - \pi_{g-1} \]
+<p>We will therefore rewrite the likelihood as</p>
+\[
+L(\pi_1, ..., \pi_{g-1}) \;\;=\;\; \frac{n!}{x_1!\;x_2!\; \cdots,\;x_g!} \pi_1^{x_1}\pi_2^{x_2}\cdots \pi_{g-1}^{x_{g-1}} (1 - \pi_1 - \pi_2 - \cdots - \pi_{g-1})^{x_g} \]
+<p>The log-likelihood is</p>
+\[ \begin{align}
+\ell(\pi_1, ..., \pi_{g-1}) \;\;=\;\; x_1 \log(\pi_1) +  \cdots &amp;+ x_{g-1} \log(\pi_{g-1})\\[0.4em]
+&amp;+ x_g \log(1 -  \pi_1 - \pi_2 - \cdots - \pi_{g-1}) + K
+\end{align} \]
+<p>where \(K\) is a constant whose value does not depend on the unknown parameters.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Maximum likelihood estimates</p>
+		<p>If \((x_1, x_2, \dots, x_g)\) are a random sample from a \(\MultinomDistn(n, \pi_1, \dots, \pi_g)\) distribution, the maximum likelihood estimates of \(\pi_1, \dots, \pi_g\) are</p>
+\[
+\hat{\pi}_i \;\;=\;\; \frac{x_i}{n} \]</div>
+	<div class="proof">
+		<p>The maximum likelihood estimates are the parameter values that maximise the log-likelihood and are the solutions to</p>
+\[
+\frac{\partial \ell}{\partial \pi_i} \;\;=\;\; \frac{x_i}{\pi_i} - \frac{x_g}{1 -  \pi_1 - \pi_2 - \cdots - \pi_{g-1}} = 0 \qquad\text{for } i=1,\dots,g-1
+\]
+
+<p>If we replace \((1 -  \pi_1 - \pi_2 - \cdots - \pi_{g-1})\) by \(\pi_g\) in this equation to get</p>
+\[
+\frac{x_i}{\pi_i} - \frac{x_g}{\pi_g} = 0
+\]
+		<p>then it can be easily seen that \(\displaystyle \hat{\pi}_i = \frac{x_i}{n}\) is a solution.</p>
+	</div>
+</div>
+<p>The best estimates of the probabilities of the \(g\) different values are simply their sample proportions.</p>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

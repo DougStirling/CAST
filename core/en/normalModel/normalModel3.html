@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Normal model for the response</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	<meta name="index" content="explained variation, unexplained variation, error, normal model, normal distribution">
+	<meta name="dataset" content="Antibiotic effectiveness">
+	<meta name="dataset" content="Clam length">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Normal model for explained and unexplained variation</p>  
+  <p>In normal models, explained variation is modelled using a function for the mean response that depends on the values of the controlled variables and the known structure of the experimental units (e.g. blocks)</p>
+  <p class=eqn><span class="blue">µ<em><sub>i</sub></em> &nbsp; = &nbsp; <em>f</em>&nbsp;(<em>x<sub>i</sub></em>,<em> z<sub>i</sub></em>, ... )</span></p>
+  <p>This function also involves unknown parameters that must be estimated. The unexplained varitioan is modelled  with a normal distribution. This model can be expressed in the form</p>
+  <div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+  	<tr>
+  		<td align="center"><br>
+  			<span class="em black">y<sub>i</sub></span>  &nbsp;= &nbsp;</td>
+  		<td align="center" class="blue">(<em>explained</em>)<br>
+  			µ<em><sub>i</sub></em></td>
+  		<td align="center"><br>
+  			&nbsp;+&nbsp;</td>
+  		<td align="center" class="red">(<em>unexplained</em>)<br>
+  			ε<em><sub>i</sub></em></td>
+ 		</tr>
+ 	</table></div>
+  <p>where the term <span class="red">ε<em><sub><em>i</em></sub></em></span> is called the <strong>error</strong> term in the model. The error term is the random part of that models the unexplained variation and we usually make the assumption that it has mean zero and standard deviation, σ.</p>
+  <p class=eqn><span class="red">ε<em><sub>i</sub></em> &nbsp; ∼ &nbsp; normal&nbsp;(0, σ)</span></p>
+  <p>This model assumes that the standard deviation of the error is the same for all experimental units &mdash; this assumption should be checked from graphical displays of the data.</p>
+  <div class="centred"><div class="boxed">
+		<p>Although the term <span class="red">ε<em><sub>i</sub></em></span>		is conventionally called the model's 'error', there is <strong>no</strong> implication of any kind of mistake. </p>
+ 	</div></div>
+	<br>
+	
+  <div class="diagram">
+<p class="heading">Antibiotic effectiveness</p>
+
+    <p>An experiment was conducted to assess how well an antibiotic, <em>polymyxin 
+      B</em>, killed the bacterium, <em>Brucella bronchiseptica</em>. Petri dishes 
+      containing the bacterium (grown in agar) were used and different doses of 
+      the antibiotic were added. The diameter of the area cleared around the addition 
+      point were recorded. Each of 6 different doses of antibiotic was used 10 
+      times.</p>
+    <p>In this experiment, the explanatory factor is the dose of antibiotic 
+			which is numerical. The diagram below shows the data from the experiment 
+			with the crosses jittered a little (randomly moved) to separate them in 
+			the scatterplot.</p>
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="440">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="linModProg.RotateHistoPdfApplet">
+<param name="yVarName" value="Inhibition diameter(mm)">
+<param name="xVarName" value="Conc of antibiotic">
+<param name="yValues" value="13.6 13.5 14.9 14.5 14.5 14.8 14.4 14.5 13.9 14.7 14.5 14.4 15.8 15.4 15.4 15.7 15.3 15.4 14.8 15.6 15.6 15.4 16.2 15.9 16.2 16.0 15.9 15.5 16.1 16.5 15.8 15.6 16.8 16.6 16.6 17.0 16.0 15.8 16.2 16.6 16.2 16.0 17.4 17.2 17.2 16.8 17.2 17.4 16.2 17.1 16.5 16.4 17.8 17.7 18.1 17.5 17.3 17.2 16.5 16.7">
+<param name="xValues" value="10@40 10@60 10@80 10@100 10@120 10@140">
+<param name="xAxis" value="35 145 40 20">
+<param name="yAxis" value="13.0 18.5 13 1">
+<param name="classInfo" value="13.0 0.4 14">
+<param name="sortedX" value="40 60 80 100 120 140">
+<param name="jittering" value="0.2">
+<param name="initialRotation" value="90 90">
+<param name="invPdfScaling" value="1.7">
+<param name="model" value="quadratic">
+<param name="customText" value="Data=Data#Model=Model">
+</applet> 
+</div>
+
+    <p>Click in the centre of the diagram and drag towards the top left to display 
+			histograms of the response measurement at each value of <em>x</em>.</p>
+		
+		<dl>
+			<dt>Explained variation</dt>
+			
+      <dd>The systematic increase in mean inhibition diameter as concentration 
+        increases is explained variation.</dd>
+			<dt>Unexplained variation</dt>
+			<dd>The spread of values around the mean at each concentration is unexplained 
+				variation.</dd>
+		</dl>
+		
+		<p>Select <strong>Model</strong> from the pop-up menu to display a model that 
+			could potentially underly the data.</p>
+		<dl>
+			<dt>Explained variation</dt>
+			<dd>The blue curve on the x-y plane describes how the <strong>mean</strong> 
+				inhibition diameter might depend on the effect of concentration (explained 
+				variation).</dd>
+			<dt>Unexplained variation</dt>
+			<dd>A normal distribution around the mean models the unexplained variation.</dd>
+		</dl>
+		<p>Observe that the standard deviation of the response is the same for all values of <em>x</em> in this model &mdash; all normal distributions have the same spread.</p>
+		<p class="heading">Clam lengths</p>   
+    <p>In a study to determine the effects of thermal pollution on <em>Corbicula fluminea</em> (Asiatic clams), samples of clams were obtained from three different geographical locations. The diagram below shows the lengths of these clams.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="440">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="linModProg.RotateHistoPdfApplet">
+<param name="yVarName" value="Clam length (mm)">
+<param name="xVarName" value="Location">
+<param name="yValues" value="7.20 7.50 6.89 6.95 6.73 7.25 7.20 6.85 7.52 7.01 6.65 7.55 7.14 7.45 7.24 7.75 6.85 6.50 6.64 7.19 7.15 7.21 7.15 7.30 6.35  7.25 7.23 6.85 7.07 6.55 7.43 7.30 6.90 7.10 6.95 7.39 6.54 6.39 6.08 6.30 6.35 7.34 6.70 7.08 7.09 7.40 6.00 6.94  5.95 7.60 6.15 7.00 6.81 7.10 6.85 6.68 5.51 6.85 7.10 6.81 7.30 7.05 6.75 6.75 7.35 6.22 6.80 6.29 7.55 7.45 6.70 7.51 6.95 7.50">
+<param name="xCatNames" value="#Location 1# #Location 2# #Location 3#">
+<param name="xValues" value="25@0 23@1 25@2">
+<param name="yAxis" value="5.3 8.2 5.5 0.5">
+<param name="classInfo" value="5.4 0.4 7">
+<param name="sortedX" value="0 1 2">
+<param name="jittering" value="0.2">
+<param name="initialRotation" value="45 50">
+<param name="invPdfScaling" value="1.7">
+<param name="customText" value="Data=Data#Model=Model">
+</applet> 
+</div>
+
+    <p>Since the explanatory variable (location) is categorical, there is 
+			no requirement for a 'smooth' relationship between the mean clam length and 
+			location. We might model the effect of the effect of this variable by allowing arbitrary means for the three locations.</p>
+		<p>Again select <strong>Model</strong> from the pop-up menu to display one 
+			such model. Note that this model does not imply that the average lengths differ much between the locations.</p>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

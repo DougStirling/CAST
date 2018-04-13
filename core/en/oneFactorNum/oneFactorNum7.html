@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Numerical factors in other designs</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="linear model, quadratic model, numerical factor, anova, analysis of variance">
+	<meta name="dataset" content="Soybean yield and trace elements">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Linear terms in other models</p>  
+<p>Consider an experiment in which a numerical factor has three or more levels that is modelled by an equation of the form</p>
+<p class="eqn"><span class="black em">y<sub>ij</sub></span>  &nbsp;= &nbsp;<span class="green">µ</span> &nbsp; + &nbsp; ...&nbsp; + &nbsp; <span class="blue">β<em><sub>i</sub></em></span> &nbsp; + &nbsp; ...&nbsp; + &nbsp; <span class="red">ε<em><sub>ij</sub></em></span></p>
+<p>where the numerical factor has level <em>i</em>. The experiment may have blocks and use other factors that are explained by other terms in the model. In any such model, it may be possible to replace the term for the factor with a linear term that imposes smoothness on effect of the factor on the mean response.</p>
+<p class="eqn"><em>y<sub>ij</sub></em>&nbsp;= &nbsp;<span class="green">µ</span> &nbsp; + &nbsp; ...&nbsp; + &nbsp;<span class="blue">β&nbsp;<em>x<sub>i</sub></em></span>&nbsp; + &nbsp; ...&nbsp; + &nbsp;<span class="red">ε<em><sub>ij</sub></em></span></p>
+<p class="heading">Analysis of variance to assess linearity</p>
+<p>The sum of squares explained by any such factor can be split into two components &mdash; a sum of squares for the linear effect of the factor and a sum of squares for nonlinearity. The sum of squares for nonlinearity can be used to test whether there is any evidence of nonlinearity in the relationship.</p>
+<div class="diagram">
+
+<p class="heading">Soybean yield and trace elements</p>
+<p>An experiment was conducted to assess how different applications of manganese 
+	(Mn) and copper (Cu) affect the yield of soybeans.</p>
+<p>In the experiment, a large field was subdivided into 32 plots and two were 
+	randomly allocated to each combination of Mn rate and Cu rate &mdash; i.e. there were 
+	2 replicates for each of the 16 treatments. Soybeans were planted in rows 1 metre apart and the yield of soybeans 
+	(in kg per hectare) was recorded from each plot.</p>
+			
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="200">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="glmAnovaProg.CombineSsqApplet">
+	<param name="yVarName" value="Yield">
+	<param name="yValues" value="1558 1578 2003 2033 2490 2470 2830 2810 1590 1610 2020 2051 2620 2632 2841 2841 1558 1550 2003 2010 2490 2690 2830 2910 1328 1427 2010 2031 2887 2832 2960 2941">
+	<param name="xVariables" value="XLin XFac ZLin ZFac">
+	<param name="XLinVarName" value="Linear rate of Cu">
+	<param name="XLinValues" value="8@1 8@3 8@5 8@7">
+	<param name="XFacVarName" value="Nonlinear Cu">
+	<param name="XFacValues" value="16@0 8@1 8@2">
+	<param name="XFacLabels" value="1&3 5 7">
+	<param name="ZLinName" value="Linear rate of Mn">
+	<param name="ZLinValues" value="2@20 2@50 2@80 2@110 2@20 2@50 2@80 2@110 2@20 2@50 2@80 2@110 2@20 2@50 2@80 2@110">
+	<param name="ZFacVarName" value="Nonlinear Mn">
+	<param name="ZFacValues" value="4@0 2@1 2@2 4@0 2@1 2@2 4@0 2@1 2@2 4@0 2@1 2@2">
+	<param name="ZFacLabels" value="20&50 80 110">
+	<param name="maxSsq" value="9999999 99 9999999 99.99">
+	<param name="componentNames" value="Linear Cu#Nonlinear Cu#Linear Mn#Nonlinear Mn">
+	<param name="split" value="1:2:Split Cu rate:Between Cu rates#3:2:Split Mn rate:Between Mn rates">
+</applet>
+</div>
+
+<p>Initially the analysis of variance table ignores the fact that both factors are numerical and the model therefore imposes no smoothness on the effect of Cu and Mn on the yield. Click the checkbox <strong>Split Cu rates</strong> to split the sum of squares for Cu into a linear component and a nonlinear component. The p-value associated with nonlinearity in the effect of Cu is 0.6555, so there is no evidence of nonlinearity. (The p-value for the linear term is also large here, so can also conclude that there is no evidence that Cu affects the yield at all.)</p>
+<p>Now click <strong>Split Mn rates</strong> to split the sum of squares for Mn into similar components. The sum of squares for nonlinearity in the effect of Mn has a p-value 0.0001, so we would conclude that there is nonlinearity in the effect of Mn on soybean yield.</p>
+<p>The diagram below shows these models graphically.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoFactorProg.RotateDragFactorsApplet">
+<param name="yVarName" value="Yield">
+<param name="yValues" value="1558 1578 2003 2033 2490 2470 2830 2810 1590 1610 2020 2051 2620 2632 2841 2841 1558 1550 2003 2010 2490 2690 2830 2910 1328 1427 2010 2031 2887 2832 2960 2941">
+<param name="yAxis" value="1200 3000 1500 500">
+<param name="xVarName" value="Rate of Cu">
+<param name="xValues" value="8@0 8@1 8@2 8@3">
+<param name="xLabels" value="1 3 5 7">
+<param name="zVarName" value="Rate of Mn">
+<param name="zValues" value="2@0 2@1 2@2 2@3 2@0 2@1 2@2 2@3 2@0 2@1 2@2 2@3 2@0 2@1 2@2 2@3">
+<param name="zLabels" value="20 50 80 110">
+<param name="zModelTerms" value="none linear factor">
+<param name="xModelTerms" value="none linear factor">
+<param name="interaction" value="false">
+<param name="initialModel" value="ls">
+<param name="maxRss" value="9999999">
+<param name="factorNotGroups" value="true">
+<param name="customText" value="None=None#Linear=Linear#Factor=Factor">
+</applet> 
+</div>
+		
+<p>Use the pop-up menus under the diagram to display the least squares fit of  models with linear and general factor terms for the two factors.</p>
+
+
+<!--
+<p class="heading">Randomised blocks with 2 factors, one numerical with 3-4 levels and the other categorical</p>
+<p>Anova table splitting numerical factor into linear and nonlinear.</p>
+<p>????????????</p>
+-->
+
+</div>
+	
+	
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

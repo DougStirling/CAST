@@ -1,0 +1,157 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Linear terms for factors</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="linear model">
+	<meta name="dataset" content="Drilling thrust">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Model for numerical factors</p>  
+  <p>The model without interaction that treats both factors as categorical is</p>
+  <div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+		<tr>
+			<td align="center"><br>
+					<em><span class="black">y</span><sub><span class="blue">i</span><span class="green">j</span><span class="red">k</span></sub></em>&nbsp;= &nbsp;µ&nbsp;+&nbsp;</td>
+			<td align="center" class="blue">(<em>explained by X</em>)<br>
+				β<em><sub>i</sub></em></td>
+			<td align="center"><br>
+				&nbsp;+&nbsp;</td>
+			<td align="center" class="green">(<em>explained by Z</em>)<br>
+				γ<em><sub>j</sub></em></td>
+			<td align="center"><br>
+				&nbsp;+&nbsp;</td>
+			<td align="center" class="red">(<em>unexplained</em>)<br>
+				ε<em><sub>ijk</sub></em></td>
+		</tr>
+	</table></div>
+  <p>The simplest way to impose a smooth relationship between each numerical factor and the response is with a linear term. A linear model for both factors takes the form</p>
+  <div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+		<tr>
+			<td align="center"><br>
+					<em><span class="black">y</span><sub><span class="blue">i</span><span class="green">j</span><span class="red">k</span></sub></em>&nbsp;= &nbsp;µ&nbsp;+&nbsp;</td>
+			<td align="center" class="blue">(<em>explained by X</em>)<br>
+			β<em> x<sub>i</sub></em></td>
+			<td align="center"><br>
+				&nbsp;+&nbsp;</td>
+			<td align="center" class="green">(<em>explained by Z</em>)<br>
+			γ<em> z<sub>i</sub></em></td>
+			<td align="center"><br>
+				&nbsp;+&nbsp;</td>
+			<td align="center" class="red">(<em>unexplained</em>)<br>
+				ε<em><sub>ijk</sub></em></td>
+		</tr>
+	</table></div>
+  <p>This model corresponds to a plane in 3-dimensions.<br>
+  </p>
+  <div class="diagram"> 
+		<p class="heading">Drilling thrust</p>
+		
+    <p>A possible model for how drilling speed and feed rate affect drilling thrust is:</p>
+    <p class="eqn"><em>mean thrust</em> &nbsp; = &nbsp; 86 &nbsp; + &nbsp; 6 × <em>feed rate</em> &nbsp; + &nbsp; 0.14 × <em>drill speed</em></p>
+    <p>The diagram below represents this model as a plane.</p>
+
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="460">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="multiRegnProg.Predict3DApplet">
+<param name="yAxis" value="200 900 200 100">
+<param name="xAxis" value="15 155 40 50">
+<param name="zAxis" value="12.5 887.5 100 175">
+<param name="yVarName" value="Thrust">
+<param name="xVarName" value="Feed rate">
+<param name="zVarName" value="Drill speed">
+<param name="modelParams" value="86 5 0.14 0.0">
+<param name="predictMinMax" value="250.0 850.0 1.0 170.0 0.0 900.0">
+</applet> 
+</div>
+
+<p>Click anywhere between the <em>feed</em> and <em>speed</em> axes (in the yellow area of the diagram) 
+	to see how the plane translates any pair of values (<em>feed</em>, <em>speed</em>) into a predicted 
+	value of <em>thrust</em>, via the equation.</p>
+
+</div>
+
+  <p class="heading">Least squares</p>
+	<p>The linear model above contains three unknown parameters  that must be estimated. We again define <strong>residuals</strong> to be differences between  the actual response 
+	values and the values predicted by the model:</p>
+	<p class=eqn><img src="../linModIntro/images/residDef.gif" width="91" height="21"> 
+	</p>
+	<p>The residuals are vertical distances between the model plane and the data points. The parameters are estimated to minimise the sum 
+		of squares of these residuals &mdash; the method of <strong>least squares</strong>.</p>
+	<p class=eqn><img src="../linModIntro/images/minResid2.gif" width="97" height="21"> 
+	</p>
+	<br>
+	
+	<div class="diagram"> 
+		<p class="heading">Drilling thrust</p>
+		<p>The diagram below again shows the  drilling thrust data. The model residuals 
+		are shown as red vertical lines from the data points to their fitted values.</p>
+<div class="centred"> 
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="500">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="twoFactorProg.RotateDragFactorsApplet">
+<param name="yVarName" value="Thrust">
+<param name="yValues" value="322 310 308 285 308 260 266 250 280 260 532 530 476 510 448 395 448 475 476 510 840 700 812 700 543 650 812 810 835 770">
+<param name="yAxis" value="200 900 200 100">
+<param name="xVarName" value="Feed rate">
+<param name="xValues" value="10@0 10@1 10@2">
+<param name="xLabels" value="40 90 140">
+<param name="zVarName" value="Drill speed">
+<param name="zValues" value="2@0 2@1 2@2 2@3 2@4 2@0 2@1 2@2 2@3 2@4 2@0 2@1 2@2 2@3 2@4">
+<param name="zLabels" value="100 275 450 625 800">
+<param name="zModelTerms" value="none linear">
+<param name="xModelTerms" value="none linear">
+<param name="interaction" value="false">
+<param name="initialModel" value="ls">
+<param name="maxRss" value="9999999">
+<param name="customText" value="None=None#Linear=Linear#Factor=Factor">
+</applet> 
+</div>
+
+		<p>Initially the model used only has a constant term for the mean. Since neither of the factors affect the response in this model, all fitted values are equal and their least squares estimate is the overall response mean.</p>
+		<p>Select <strong>Linear</strong> from the pop-up menu for <em>Feed rate</em>.			This displays the least squares fit of a linear model containing a linear term for this variable (but no term for the<em> Drill speed</em>). The feed rate seems to have an important influence on the thrust.</p>
+		<p>Finally select <strong>Linear </strong>from the pop-up menu for <em>Drill speed</em>.			This displays the least squares fit for the full linear model for the two controlled variables.</p>
+		<div class="centred"><div class="boxed">
+			<p>Adding <em>Drill speed</em> does not change the fitted plane much. Does this factor really affect thrust?<br>
+	</p>
+		</div></div>
+
+<br>
+</div>
+
+  <p class="heading">One numerical factor and one categorical factor</p>
+  <p>If one factor is categorical, we have less choice in the possible models &mdash; the categorical factor cannot be modelled with a linear  term. For example, if X is numerical and Z 
+  	is categorical, then a linear model has the form:</p>
+  <div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+		<tr>
+			<td align="center"><br>
+					<span class="em black">y<sub>ijk</sub></span>  &nbsp;= &nbsp;µ&nbsp;+&nbsp;</td>
+			<td align="center" class="blue">(<em>explained by X</em>)<br>
+				β<sub>1</sub> <em> x<sub>i</sub></em></td>
+			<td align="center"><br>
+				&nbsp;+&nbsp;</td>
+			<td align="center" class="green">(<em>explained by Z</em>)<br>
+				γ<em><sub>j</sub></em></td>
+			<td align="center"><br>
+				&nbsp;+&nbsp;</td>
+			<td align="center" class="red">(<em>unexplained</em>)<br>
+				ε<em><sub>ijk</sub></em></td>
+		</tr>
+	</table></div>
+  <br>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

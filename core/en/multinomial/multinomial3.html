@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Conditional distributions</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="multinomial distribution, conditional distribution, binomial distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>Another important property of the multinomial distribution is that its <strong>conditional</strong> distributions are also multinomial.</p>
+
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Conditional distributions</p>
+<p>If \((X_1, X_2,\dots, X_g)\) have a \(\MultinomDistn(n, \pi_1, \dots, \pi_g)\) distribution, the conditional distribution of \((X_2, \dots, X_g)\), given that \(X_1 = x_1\) is \(\MultinomDistn(n-x_1, \pi_2^*, \dots, \pi_g^*)\) where</p>
+\[
+\pi_i^* \;\;=\;\; \frac{\pi_i}{1 -\pi_1}
+\]</div>
+
+<div class="proof">
+<p>The marginal probability function of \(X_1\) is</p>
+\[
+p_{X_1}(x_1) \;=\; \frac{n!}{x_1!(n - x_1)!} \pi_1^{x_1}(1-\pi_1)^{n-\pi_1}
+\]
+<p>The  conditional probabilities for \(X_2, \dots, X_g\), given \(X_1 = x_1\) are therefore</p>
+\[ \begin{align}
+p_{X_2, \dots, X_g \mid X_1=x_1}(x_2, \dots, x_g) \;&amp;=\; \frac{p(x_1, \dots, x_g)}{p_{X_1}(x_1)} \\[0.5em]
+&amp;=\; \frac{\frac{\large n!}{\large x_1!\;x_2!\; \cdots,\;x_g!} \pi_1^{x_1}\pi_2^{x_2}\cdots \pi_g^{x_g}}{\frac{\large n!}{\large x_1!(n - x_1)!} \pi_1^{x_1}(1-\pi_1)^{n-\pi_1}} \\[0.5em]
+&amp;=\; \frac{(n - x_1)!}{x_2!\dots x_g!} \left(\frac{\pi_2}{1 - \pi_1} \right)^{x_2} \cdots \left(\frac{\pi_g}{1 - \pi_1} \right)^{x_g}
+\end{align} \]
+<p>and this is the joint probability function of the \(\MultinomDistn(n-x_1, \pi_2^*, \dots, \pi_g^*)\) distribution.</p>
+</div>
+
+</div>
+
+<p>A similar result holds for the conditional distribution of <strong>any</strong> collection of these multinomial variables, given the values of the others.</p>
+
+
+<div class="example" title="Example: Opinion poll">
+	<p class="exampleHeading">Opinion poll</p>
+	<p>We again consider results from an opinion poll in which responses to a question about a new piece of legislation have probabilities</p>
+	<p class="eqn">P(Agree) = 0.3, <br>
+		P(Neutral) = 0.4<br>
+		P(Disagree) = 0.3 </p>
+	<p>If a random sample of \(n\) = 4 people is asked and the numbers agreeing, neutral and disagreeing are \(X_A\), \(X_N\) and \(X_D\), then these variables have a \(\MultinomDistn(4, 0.3, 0.4, 0.3)\) distribution.</p>
+	<p>If it is known that one person in the sample Agrees, i.e. \(X_A = 1\), then there are \(n-x_A = 3\) remaining who are either Neutral or Disagree. The probabilities of these are in proportion to their initial probabilities,</p>
+\[
+P(Neutral \mid \text{not } Agree) = \frac{0.4}{0.4 + 0.3} \spaced{and} P(Disagree \mid \text{not } Agree) = \frac{0.3}{0.4 + 0.3}
+\]
+	<p>The conditional distribution for the numbers who are Neutral and Disagree, given that 1 of the 4 Agrees, is therefore</p>
+\[
+(X_N, X_D) \;\sim\; \MultinomDistn\left(3, \frac{0.4}{0.4 + 0.3}, \frac{0.3}{0.4 + 0.3}\right)
+\]
+	<p>Since this multinomial distribution only involves two variables, it is actually binomial, so the conditional distribution for the number who are Neutral, given that \(X_A = 1\) agrees is</p>
+\[
+X_N \;\sim\; \BinomDistn\left(n=3, \pi=\frac{0.4}{0.4 + 0.3}\right)
+\]
+
+<p class="exampleHeading">Graphical illustration</p>
+
+<p>The following diagram illustrates this result.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="650" height="450">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="bivarDistnProg.MultinomialApplet">
+<param name="backgroundColor" value="FFFBF3">
+<param name="yVarName" value="Y = number neutral">
+<param name="xVarName" value="X = number agreeing">
+<param name="catProbs" value="0.3 0.4 0.3">
+<param name="sampleSize" value="1 2 3 4">
+<param name="probAxis" value="0 1 0 0.2#0 1 0 0.2#0 1 0 0.2#0 1 0 0.2">
+<param name="initialRotation" value="30 45">
+<param name="transitions" value="conditional">
+<param name="customText" value="Restrict to...=Restrict to...">
+</applet>
+</div>
+
+<p>The diagram initially shows the joint probabilities for a sample of size 1. First change the sample size to \(n = 4\).</p>
+<p>Now click <strong>Conditional for Y</strong> to display the conditional distributions for the number who are <em>Neutral</em>, given that different numbers agree. This simply scales the joint probabilities for each value of Y to sum to one.</p>
+<p>Now click <strong>Restrict to</strong> and use the slider to show only the conditional distribution when the number agreeing is <strong>X=1</strong>. This is the \(\BinomDistn\left(n=3, \pi=\frac{0.4}{0.4 + 0.3}\right)\) distribution that was described above.</p>
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

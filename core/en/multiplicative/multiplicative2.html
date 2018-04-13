@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Properties of multiplicative models</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="additive model, multiplicative model, time series/multiplicative model">
+	<meta name="dataset" content="Visitor arrivals in NZ">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Difference between additive and multiplicative models</p>
+
+<p>Multiplicative models for time series are very widely used. It is therefore 
+	worth ensuring that you can recognise the features that suggest a multiplicative 
+	model.</p>
+<p>Additive and multiplicative models can only be easily distinguished when 
+	there is noticeable trend in the time series.</p>
+<dl> 
+	<dt>Additive model</dt>
+	<dd>The seasonal, cyclical and residual variation around the trend line are 
+		of approximately the same size whether the trend value is low or high.</dd>
+	<dt>Multiplicative model</dt>
+	<dd>The seasonal, cyclical and residual variation around the trend line are 
+		greater when the trend is at high values than when the trend is low.</dd>
+</dl>
+
+<br>
+	
+
+<div class="diagram" title="Example: New Zealand visitor numbers">
+	<p class="heading">Additive model for New Zealand visitors</p>
+	<p>The time series plot below describes visitor arrivals in New Zealand (in 
+		thousands).</p>
+			
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.TransComponentsApplet">
+<param name="varName" value="NZ visitor arrivals">
+<param name="values" value="146.4 80.8 85.4 152.6 144.7 87.2 91.2 155.0 139.2 91.4 96.1 155.0 145.1 91.9 104.8 166.6 155.1 111.8 112.0 188.7 184.5 132.2 132.0 220.9 204.0 137.6 142.3 249.5 233.8 158.1 167.9 284.5 245.0 161.9 183.7 274.3 247.6 168.0 197.7 287.7 280.0 190.8 205.8 299.5 271.0 176.1 209.8 306.5 307.2 199.6 220.9 327.9 338.1 218.3 232.7 367.8 394.5 240.2 273.9 414.0 414.9 264.2 290.6 439.1 447.9 293.6 307.7 479.4 470.6 283.6 303.7 439.3 438.1 277.2 302.7 466.4 471.0 298.9 330.1 507.2 512.7 340.5 362.0 571.5 574.4">
+<param name="vertAxis" value="40 600 100 100">
+<param name="seasonName" value="4 Q1, Q2, Q3, Q4,">
+<param name="seasonInfo" value="0 0 80">
+<param name="timeAxisName" value="Quarter">
+<param name="timeSequence" value="0 1 85">
+<param name="logAxis" value="40 600 9 5">
+<param name="smallAxisFont" value="true">
+<param name="decimals" value="2">
+<param name="modelType" value="additive">
+<param name="customText" value="Seasonal=Seasonal#Trend=Trend#Cyclical=Cyclical#Residual=Residual#Fitted value=Fitted value#Prediction=Prediction#Original scale=Original scale#Log scale=Log scale">
+</applet>
+</div>
+
+		<p>Click the checkboxes <strong>Trend</strong> and then <strong>Seasonal</strong> 
+			to fit an additive model to these data. Observe that the seasonal fluctuations 
+			in the data are greater in recent years, but the 'best' additive model cannot 
+			match this.</p>
+		<p>As a result, the additive model over-estimates the seasonal fluctuations 
+			in the 1980's but under-estimates them in the 1990s. Click on values in 
+			the latest years to verify that the model under-estimates tourist numbers 
+			in the New Zealand summer (Q4 and Q1) and over-estimates tourist numbers 
+			in the winter (Q2 and Q3).</p>
+		<p>Quarterly forecasts based on the additive model will therefore similarly 
+			under-estimate tourist numbers in the New Zealand summer and over-estimate 
+			them in the winter.</p>
+			
+		<p class="heading">Multiplicative model for New Zealand visitors</p>
+		<p>The time series plot below shows the visitor arrivals on a log scale.</p>
+			
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="420">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="timeProg.TransComponentsApplet">
+<param name="varName" value="NZ visitor arrivals">
+<param name="values" value="146.4 80.8 85.4 152.6 144.7 87.2 91.2 155.0 139.2 91.4 96.1 155.0 145.1 91.9 104.8 166.6 155.1 111.8 112.0 188.7 184.5 132.2 132.0 220.9 204.0 137.6 142.3 249.5 233.8 158.1 167.9 284.5 245.0 161.9 183.7 274.3 247.6 168.0 197.7 287.7 280.0 190.8 205.8 299.5 271.0 176.1 209.8 306.5 307.2 199.6 220.9 327.9 338.1 218.3 232.7 367.8 394.5 240.2 273.9 414.0 414.9 264.2 290.6 439.1 447.9 293.6 307.7 479.4 470.6 283.6 303.7 439.3 438.1 277.2 302.7 466.4 471.0 298.9 330.1 507.2 512.7 340.5 362.0 571.5 574.4">
+<param name="vertAxis" value="40 600 100 100">
+<param name="seasonName" value="4 Q1, Q2, Q3, Q4,">
+<param name="seasonInfo" value="0 0 80">
+<param name="timeAxisName" value="Quarter">
+<param name="timeSequence" value="0 1 85">
+<param name="logAxis" value="40 600 9 5">
+<param name="smallAxisFont" value="true">
+<param name="decimals" value="2">
+<param name="modelType" value="multiplicative">
+<param name="customText" value="Seasonal=Seasonal#Trend=Trend#Cyclical=Cyclical#Residual=Residual#Fitted value=Fitted value#Prediction=Prediction#Original scale=Original scale#Log scale=Log scale">
+</applet>
+</div>
+
+<p>The multiplicative model is equivalent to fitting an additive model to 
+	the log data. Click the checkboxes <strong>Trend</strong> and then <strong>Seasonal</strong> 
+	to display these components. <strong>On the log scale</strong>, the seasonal 
+	effect is the same throughout the time period.</p>
+<p>Now use the slider to adjust the scale back to a plot of the original data. 
+	The multiplicative model implies lower seasonal variation when visitor arrivals 
+	are low, and higher seasonal variation when visitor numbers are high. This 
+	matches the pattern in the data well.</p>
+<p>This multiplicative model is likely to give better forecasts than the additive 
+	model &mdash; there is no tendency to systematically over-estimate or under-estimate 
+	quarters in the most recent years.</p>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

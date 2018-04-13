@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Combining estimates</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="balanced incomplete block design, inter-block estimates, intra-block estimates">
+	<meta name="dataset" content="Catalyst and reaction time">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Standard errors for parameter estimates</p>
+<p>We showed at the start of this section that it is possible to obtain <strong>two</strong> independent sets of estimates of the treatment effects in experiments where the treatments and blocks are not orthogonal. To summarise the results of the experiment, these must be combined in a <strong>single</strong> set of parameter estimates.</p>
+<p>In general, the two sets of estimates of the parameters <span class="green">{γ<sub><em>i</em></sub>}</span> have different properties. Both sets of estimates are unbiased but they have different standard errors. If the design is balanced, there is a form of symmetry between the treatments and all parameters are estimated with equal accuracy. Two standard errors, one for the inter-block estimates of the <span class="green">{γ<sub><em>i</em></sub>}</span> and one for the intra-block estimates, are therefore enough to summarise the accuracy of the two sets of estimates.</p>
+<p>(Note that the parameters  <span class="green">{γ<sub><em>i</em></sub>}</span> are differences between the mean response for factor level <em>i</em> and the baseline level of the factor. The standard errors are therefore also the standard errors for the difference between <strong>any</strong> two factor levels.)</p>
+<p class="heading">Combining inter-block and intra-block estimates</p>
+<p>The most accurate linear combination of the two sets of parameter estimates  gives higher weight to the estimate with lower variance. The best estimate can be shown to be:</p>
+<p class="eqn"><img src="images/combinedEst.gif" width="376" height="54"></p>
+<p>In balanced designs, the inter-block and intra-block variances do not depend on <em>i</em>.</p>
+<p class="heading">Unbalanced designs</p>
+<p>Combining the inter-block and intra-block estimates becomes more difficult when the design is unbalanced since the standard errors of the inter-block and intra-block estimates vary depending on the factor levels being compared. A simple linear combination of parameter estimates is therefore no longer best but a better way to combine the inter-block and intra-block estimates is beyond the scope of this e-book.</p>
+<p class="heading">In practice...</p>
+<p>In  experiments with balanced incomplete blocks, most of the information is usually supplied by the intra-block estimates.</p>
+<div class="centred"><div class="boxed">
+	<p>Little information is usually lost by ignoring the inter-block estimates and using the intra-block estimates described in Section 6.6.</p>	
+</div></div>
+<br>
+
+<div class="diagram">
+<p class="heading">Catalyst and reaction time</p>
+<p>The diagram below repeats the inter-block and intra-block estimates for the chemical experiment on the previous page, but also shows estimates of the standard errors of the parameters <span class="green">{γ<sub><em>i</em></sub>}</span>. (These are also the standard errors of the differences between any two factor effects.)</p>
+<br>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="340">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="glmAnovaProg.InterIntraEstApplet">
+<param name="yVarName" value="Reaction time">
+<param name="yValues" value="73 73 75 74 75 75 67 68 72 71 72 75">
+<param name="blockVarName" value="Blocks">
+<param name="blockValues" value="3@0 3@1 3@2 3@3">
+<param name="blockLabels" value="B1 B2 B3 B4">
+<param name="factorVarName" value="Catalyst">
+<param name="factorValues" value="0 2 3 0 1 2 1 2 3 0 1 3">
+<param name="factorLabels" value="D1 D2 D3 D4">
+<param name="decimals" value="3">
+<param name="maxParam" value="99.999">
+<param name="showSe" value="true">
+<param name="allowCombine" value="true">
+<param name="customText" value="Intra-block=Intra-block#Inter-block=Inter-block#Combined=Combined#estimates=estimates#Display=Display#Estimated coefficients=Estimated coefficients#Estimated means=Estimated means#se(diff)=se(diff)#Combine estimates=Combine estimates">
+</applet>
+
+</div>
+<p>Observe that the standard errors are much higher for the inter-block estimates, so we should give much higher weight to the intra-block estimates when combining the two sets of estimates.</p>
+<p>Click <strong>Combine estimates</strong> to show how the two sets of estimates are combined to form a single set of estimates. Note that these are very close to the intra-block estimates.</p>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

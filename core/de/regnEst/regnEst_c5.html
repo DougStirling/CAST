@@ -1,0 +1,64 @@
+<html>
+<head>
+	<title>95% confidence interval for slope</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="slope, estimation, confidence interval">
+	<meta name="dataset" content="Tourists in Hawaii">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Confidence interval for the slope</p>
+
+<p>The slope of the least squares line, <em>b</em><sub>1</sub>, 
+  is a good estimate of the normal linear model's slope, β<sub>1</sub>, 
+  and the error in this estimate has a normal distribution,</p>
+<p class=eqn style="color:#000000; font-weight:bold">error in estimate of β<sub>1</sub> &nbsp; = &nbsp;
+		<object data="images/slopeErrorDistn.svg" alt="eqn" width="212" height="30" align="absmiddle">
+		</object>
+</p>
+<p>The estimate <em>b</em><sub>1</sub> has probability 0.95 of being within 1.96 standard deviations of β<sub>1</sub>, 
+  suggesting a 95% confidence interval of the form </p>
+<p class=eqn><img class="gif" src="../../en/regnEst/images/slopeCIFormula2.gif" width="124" height="24"></p>
+<p>Unfortunately the standard error depends on σ and therefore cannot be determined exactly. However we can obtain an approximation</p>
+<p class=eqn><img class="gif" src="../../en/regnEst/images/sdSlopeEqn2.gif" width="234" height="52"> </p>
+<p>If this approximation is used, the constant 1.96 must be replaced by a larger 
+  value, <em>t</em><sub>n-2</sub>, 
+  which is obtained by looking up <a href="javascript:showNamedPage('ciMean2')">t-tables</a> with (<em>n</em>&nbsp;-&nbsp;2) degrees of freedom. </p>
+<table width="75%" border="1" cellspacing="0" cellpadding="3" bgcolor="#FFFFFF" class="centred">
+  <tr>
+    <td><p><strong>A 95% confidence interval for the slope is</strong></p>
+        <p class=eqn><img class="gif" src="../../en/regnEst/images/slopeCIFormula.gif" width="121" height="26"></p></td>
+  </tr>
+</table>
+<p>Most statistical software will evaluate <em>b</em><sub>1</sub> and its standard error for you when you fit a normal linear model, so it is fairly 
+  easy to evaluate the confidence interval in practice &mdash; you will not need to use 
+  any of the formulae above!</p>
+<div class="diagram"> 
+<p class="heading">Tourist arrivals in Hawaii</p>
+<p>Consider again the tourist arrival data for Hawaii between 1990 and 2002.</p>
+<p class=eqn><object data="images/hawaii2.svg" width="580" height="283" alt="eqn"></object>
+</p>
+<p>Since there are <em>n</em>&nbsp;=&nbsp;13 data points, we look up <em>t</em> 
+tables with 11 degrees of freedom to get the value 2.201. A 95% confidence interval 
+for the slope is therefore</p>
+<p class=eqn><img class="gif" src="../../en/regnEst/images/hawaiiCI.gif" width="292" height="39"></p>
+<p>In words, we are 95% confident that tourism is increasing at a rate of between 
+232,000 and 704,000 per year.</p>
+<table width="75%" border="1" cellspacing="0" cellpadding="10" bgcolor="#FFFFFF" class="centred">
+<tr> 
+<td><strong><font color="#FF0000">Warning:</font> It would be dangerous to extrapolate 
+this trend many years into the future &mdash; a linear trend may not continue.</strong></td>
+</tr>
+</table>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

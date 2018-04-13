@@ -1,0 +1,114 @@
+<html>
+<head>
+	<title>Misleading marginal difference in means</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="marginal relationship, conditional relationship">
+	<meta name="dataset" content="House prices in two years">
+</head>
+
+
+<body>
+<script type="text/javascript">addPageControls();</script>
+
+
+<p class="heading">Relationship between a numerical and a categorical variable</p>  
+	<p>The previous page showed that the marginal relationship between two numerical 
+		variables, <em>X</em> and <em>Y</em>, can be very different from their conditional 
+		relationship for specific values of <em>Z</em>. The same can happen when <em>X</em> 
+		is a categorical variable. </p>
+	<p class="heading">Marginal and conditional relationships</p>
+	<p>When <em>X</em> is categorical (splitting the data into groups), there are 
+		again two different types relationship between <em>Y</em> and <em>X</em>, 
+		depending on whether or not we make use of a third variable, <em>Z</em>.</p>
+	<dl>
+		<dt>Marginal relationship</dt>
+		<dd>This is the observed relationship, ignoring any additional information 
+			that is available. The relationship can be summarised by the means of <em>Y</em> 
+			for the different groups (values of <em>X</em>).</dd>
+		<dt>Conditional relationships, given <em>Z</em></dt>
+		<dd>These conditional relationships are described in the same way as the marginal 
+			relationship above, but are based on a subset of individuals with a particular 
+			value of <em>Z</em>.</dd>
+	</dl>
+	<p>The marginal relationship can again be very different from the conditional 
+		relationships, even changing 'direction'. This will be clearer in an example.</p>
+	<center>
+		<table border="1" cellspacing="0" cellpadding="5" bgcolor="white" width="75%">
+			<tr> 
+				<th align="CENTER">If the existence of a lurking variable <em>Z</em> is 
+					not recognised, the relationship between <em>Y</em> and <em>X</em> may 
+					be misrepresented.</th>
+			</tr>
+		</table>
+	</center>
+	<br>
+	
+	<div class="diagram"> 
+<p class="heading">House prices</p>
+		<p>The diagram below shows the sale prices of residential properties in a 
+			town in March 2003 and March 2004. In the notation above, the <em>sale price</em> 
+			is <em>Y</em> and the <em>year</em> is a categorical variable, <em>X</em>.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="experProg.SimpsonSliceApplet">
+<param name="yVarName" value="Sale price ($000)">
+<param name="yValues" value="168 177 130 213 112 218 265 156 278 188 284 202 169 391 277 286 449 382 276 331 365 281 280 424 332 273 332 339 294 234 393 539 305 493 517 496 513 427 550 187 193 123 169 134 220 129 194 236 215 219 282 299 135 276 183 293 267 312 217 259 311 198 280 229 241 378 313 356 378 371 367 418 198 381 339 469 375 543 539 574">
+<param name="xVarName" value="Year">
+<param name="xValues" value="39@0 41@1">
+<param name="xLabels" value="2003 2004">
+<param name="zVarName" value="District">
+<param name="zValues" value="5@0 8@1 18@2 8@3 10@0 16@1 10@2 5@3">
+<param name="zLabels" value="#Trackside# #Oldsville# #Newtown# #Parklands#">
+<param name="horizAxis" value="0 700 0 100">
+<param name="overallMean" value="Overall mean">
+<param name="sliceMean" value="Mean in #">
+<param name="customText" value="Slice=Slice">
+</applet>
+</div>
+
+		<p>Since the mean <em>sale price</em> is lower in 2004, it is tempting to 
+			conclude that house prices have fallen during the year. (This is the marginal 
+			relationship between sale price and year.)</p>
+		<p>Click the checkbox <strong>Slice</strong>. The variable <em>district</em> 
+			is a lurking variable that splits the town into four districts and the diagram 
+			now shows the conditional relationship for one district. Drag the slider 
+			and observe that the mean sale price of housing actually <em>increased</em> 
+			within each district.</p>
+
+<dl>
+			<dt>Marginal relationship between <em>sale price</em> and <em>year</em></dt>
+<dd>The overall decrease in mean sale price is useful information, but is caused 
+by an increase in the proportion of sales in the poorer districts of the town.</dd>
+			<dt>Conditional relationship for each <em>district</em></dt>
+<dd>The increase in mean price in individual districts is a better indication 
+that the prices of individual houses have increased &mdash; your own house is likely 
+to be worth more!</dd>
+</dl>
+<br>
+
+	<center>
+		<table border="1" cellspacing="0" cellpadding="5" bgcolor="white" width="75%">
+			<tr> 
+				  <th align="CENTER">Although house prices increased in all districts 
+						in 2004, more houses were sold in the poorer districts so the overall 
+						(marginal) average price decreased.</th>
+			</tr>
+		</table>
+	</center>
+	<br>
+
+</div>
+
+<script type="text/javascript">
+	top.writeNextButton(document);
+	showCopyright();
+</script>
+
+</body>
+</html>

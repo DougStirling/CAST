@@ -1,0 +1,200 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Outliers and leverage</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="outliers, leverage">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Outliers and errors</p>
+<p>An outlier is a measurement that does not fit in with the pattern exhibited 
+by the rest of the data. By definition, an outlier does not satisfy the normal 
+linear model that fits the rest of the data, so it should be omitted from the 
+analysis. </p>
+
+<div class="centred"><div class="boxed">
+<p>In a regression situation, an outlier corresponds to a large error, 
+ε.</p>
+</div></div>
+
+<p>In a scatterplot, the point is unusually far above or below the regression 
+line.</p>
+<p class=eqn> <img class="gif" src="images/outlierError.gif" width="297" height="274"> 
+</p>
+<p class="heading">Standardised residuals</p>
+<p>Unfortunately, in a real data set, the errors are unknown, so we must use the 
+residuals from the least squares line as estimates of the errors. The residuals 
+can be used in a similar way to give information about whether there is an outlier.</p>
+<p class=eqn> <img class="gif" src="images/errorsDiagram.gif" width="297" height="274"> 
+<img class="gif" src="images/residualsDiagram.gif" width="297" height="274"> 
+</p>
+<p>Hopefully the large error will correspond to an unusually large residual that 
+will stand out from the distribution of the other residuals.</p>
+<p>To help assess the residuals, it is common to standardise them &mdash; dividing 
+by an estimate of the standard deviation of each. <span class="gray">(The details 
+of the standardisation are not important, but it is worth noting that the errors, 
+ε, 
+all have standard deviation σ. 
+The residuals have a standard deviation that is a bit smaller than this.)</span></p>
+
+<div class="centred">
+<table border="0" cellspacing="0" cellpadding="0" class="centred" style="margin-top:0; margin-bottom:0; color:#000000">
+	<tr>
+		<td rowspan="3"><strong>standardised residual&nbsp; </strong>= &nbsp; </td>
+		<td style="text-align:center"><em><font size="+1">e</font></em></td>
+	</tr>
+	<tr>
+		<td style="border-bottom:1px solid #000000; line-height:3px; height:3px;"><img src="../../images/blankSquare.gif"></td>
+	</tr>
+	<tr>
+		<td style="text-align:center"><em><font size="+1">s<sub>e</sub></font></em></td>
+	</tr>
+</table>
+</div>
+
+<p>The standardised residuals are each approximately normally distributed with 
+		mean 0 and standard deviation 1 if the normal linear model fits. From the 
+		<a href="javascript:showNamedPage('normalDistn3')">properties 
+		of the standard normal distribution</a>, only about 5% of the standardised 
+		residuals will be outside the range ±2, and hardly any outside the 
+		range ±3. Most statistical software will evaluate standardised residuals 
+		for you when you fit a line by least squares and automatically report any 
+		outside these ranges.</p>
+
+<div class="centred"><div class="boxed">
+<p>Standadised residual greater than 3 or less than -3 are often taken 
+to indicate possible outliers.</p>
+</div></div>
+
+<p>It is worth remembering however that there is still a probability 0.003 that 
+a value from the standard normal distribution will be outside ±3. In a 
+data set of 1,000 values, it would therefore be <strong>expected</strong> that 
+3 values would be labelled as 'outliers' by this rule.</p>
+<div class="centred"><div class="boxed">
+	<p>In large data sets, do not assume that standardised residuals outside 
+		±3 <strong>must</strong> be outliers &mdash; values a little outside 
+		can also occur by chance.</p>
+</div></div>
+
+<div class="diagram" title="Illustration"> 
+<p class="heading">Standardised residuals when there are no outliers</p>
+<p>The scatterplot below shows a data set that is sampled from a normal linear 
+model. A plot of the standardised residuals is shown on the right.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="residProg.StdResidApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="xValues0" value="0.6 0.8 1.0 1.2 1.4 1.6 1.8 2.0 2.2 2.4 2.6 2.8 3.0 3.2 3.4 3.6 3.8 4.0 4.2 4.4">
+<param name="xValues1" value="0.8 3@0.9 3@1.0 3@1.1 3@1.2 3@1.3 3@1.4 3@1.5 3@1.6 3@1.7 3@1.8 3@1.9 3@2.0 3@2.1 3@2.2 3@2.3 3@2.4 3@2.5 3@2.6 3@2.7 3@2.8 3@2.9 3@3.0 3@3.1 3@3.2 3@3.3 3@3.4 3@3.5 3@3.6 3@3.7 3@3.8 3@3.9 3@4.0 2@4.1 4.2">
+<param name="xValues2" value="4@0.65 4@0.68 4@0.71 4@0.74 4@0.77 4@0.8 4@0.83 4@0.86 4@0.89 4@0.92 4@0.95 4@0.98 4@1.01 4@1.04 4@1.07 4@1.1 4@1.13 4@1.16 4@1.19 4@1.22 4@1.25 4@1.28 4@1.31 4@1.34 4@1.37 4@1.4 4@1.43 4@1.46 4@1.49 4@1.52 4@1.55 4@1.58 4@1.61 4@1.64 4@1.67 4@1.7 4@1.73 4@1.76 4@1.79 4@1.82 4@1.85 4@1.88 4@1.91 4@1.94 4@1.97 4@2 4@2.03 4@2.06 4@2.09 4@2.12 4@2.15 4@2.18 4@2.21 4@2.24 4@2.27 4@2.3 4@2.33 4@2.36 4@2.39 4@2.42 4@2.45 4@2.48 4@2.51 4@2.54 4@2.57 4@2.6 4@2.63 4@2.66 4@2.69 4@2.72 4@2.75 4@2.78 4@2.81 4@2.84 4@2.87 4@2.9 4@2.93 4@2.96 4@2.99 4@3.02 4@3.05 4@3.08 4@3.11 4@3.14 4@3.17 4@3.2 4@3.23 4@3.26 4@3.29 4@3.32 4@3.35 4@3.38 4@3.41 4@3.44 4@3.47 4@3.5 4@3.53 4@3.56 4@3.59 4@3.62 4@3.65 4@3.68 4@3.71 4@3.74 4@3.77 4@3.8 4@3.83 4@3.86 4@3.89 4@3.92 4@3.95 4@3.98 4@4.01 4@4.04 4@4.07 4@4.1 4@4.13 4@4.16 4@4.19 4@4.22 4@4.25 4@4.28 4@4.31 4@4.34 4@4.37">
+<param name="sampleSize" value="20 100 500">
+<param name="regnModel" value="33.0 7.5 6.0">
+<param name="horizAxis" value="0.5 4.5 1 1">
+<param name="vertAxis" value="25 80 30 10">
+<param name="randomSeed" value="345945782">
+<param name="residName" value="Standardised residual">
+</applet>
+</div>
+
+<p>Click <strong>Another data set</strong> a few times and observe that standardised 
+residuals are occasionally outside ±2. When the sample size is increased, 
+there are often some standardised residuals outside this range.</p>
+<p>It is unusual for standardised residuals to be outside ±3 when the sample 
+size is small, but even this is not uncommon when the sample size is large.</p>
+
+<div class="centred"><div class="boxed">
+<p>Standardised residuals would need to be outside ±3.5 or ±4 
+for us to be really confident that they are outliers.</p>
+</div></div>
+
+<br>
+</div>
+
+<p class="heading">Problems with residuals as indicators of outliers</p>
+<p>All data points pull the least squares line towards themselves &mdash; the line 
+is positioned to minimise the sum of squares of the residuals</p>
+<p class=eqn><span class="bold">minimise</span>   &nbsp; <img class="gif" src="images/minResidSsq.gif"width="37" height="20"></p>
+<p>Imagine the blue residuals below as rubber bands, all pulling the least squares 
+line. The further a cross from the line, the stronger its pull on the line.</p>
+<p class=eqn> <img class="gif" src="images/residPull.gif" width="297" height="274"> </p>
+<p>Large residuals pull very strongly on the line since they are <strong>squared</strong> 
+in the least squares criterion (the rubber band is extremely tight). As a result,</p>
+
+<div class="centred"><div class="boxed">
+<p>Outliers will strongly pull the least squares line towards themselves, 
+making their residuals smaller than you might otherwise expect.</p>
+</div></div>
+
+<p class="heading">Leverage</p>
+<p>This effect is strongest when the <em>x</em>-value of a point is very large 
+or small. Using the analogy of rubber bands pulling the least squares line, points 
+with extreme <em>x</em>-values have more <strong>leverage</strong> on the position 
+of the least squares line.</p>
+
+<div class="centred"><div class="boxed">
+<p>If an outlier corresponds to a high-leverage point, its residual may 
+therefore still be small.</p>
+</div></div>
+
+<br>
+
+<div class="diagram" title="Example illustrating effect of high leverage points">
+<p class="heading">Illustration</p>
+<p>The scatterplot below shows a data set and the corresponding residuals.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="350">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="residProg.DragOutlierApplet">
+<param name="yVarName" value="Response, y">
+<param name="xVarName" value="Explanatory, x">
+<param name="xValues" value="0.6 0.8 1.0 1.2 1.4 1.6 1.8 2.0 2.2 4.0">
+<param name="yValues" value="37 36 40 43 44 42 45 48 49 66">
+<param name="horizAxis" value="0.5 4.5 1 1">
+<param name="vertAxis" value="30 75 30 10">
+<param name="residAxis" value="-40 40 -40 20">
+<param name="customText" value="What you would like to see=What you would like to see#What you actually get=What you actually get">
+</applet>
+</div>
+
+<p>The cross on the far right can be dragged with the mouse. Initially, the diagram 
+shows what we would ideally have <span class="darkred bold">hoped</span>  
+to see in the residuals &mdash; the other points are close to a straight line, so if 
+the final cross is dragged away from this line, we would have <span class="bold darkred">hoped</span>  
+that it would result in a large residual.</p>
+<p><span class="darkred bold">This is not what actually happens.</span>  
+Choose <strong>What you actually get...</strong> from the pop-up menu at the top 
+and drag the point again. The least squares line is pulled towards the point, 
+so when it is dragged away from the line followed by the other points, its residual 
+is smaller than might be expected and the residuals for the other points are larger.</p>
+<p>This is especially evident when the point being dragged has an x-value of around 
+4 &mdash; i.e. when it is a high leverage point. Drag it down to a y-value of about 
+40 and observe that its residual is no more extreme than those of the other points.</p>
+
+<div class="centred"><div class="boxed">
+<p>Do not rely on an extreme residual to tell you whether a high-leverage 
+point is an outlier.</p>
+</div></div>
+
+<br>
+</div>
+
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

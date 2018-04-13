@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Conditional distributions</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="joint probability function, bivariate distribution, discrete distribution, conditional distribution, conditional mean, conditional variance">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>If the value of one variable is known, it may provide information about the likely values of the other variable. This is captured by the  conditional probabilities about \(Y\) given \(X\).</p>
+
+\[
+P(Y = y \mid X=x) \;\;=\;\; \frac{P(Y = y \text{ and } X=x)}{P(X=x)} \;\;=\;\; \frac{p(x,y)}{p_X(x)} \]
+
+
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+<p>The <strong>conditional distribution</strong> of \(Y\) given \(X=x\) is the distribution with probability function</p>
+\[
+p_{Y \mid X=x}(y) \;\;=\;\; \frac{p(x,y)}{p_X(x)}
+\]
+</div>
+
+<p>Note that there are separate conditional distributions of \(Y\) for each possible value of \(X\).</p>
+<p>The conditional distribution of  \(X\) given \(Y=y\) can be similarly defined as</p>
+
+\[p_{X \mid Y=y}(x) = \frac{p(x,y)}{p_Y(y)}\]
+
+<div class="example">
+  <p class="exampleHeading">Minimum and maximum of three dice</p>
+	<p>When three fair six-sided dice are rolled,  the joint probability function of the minimum, \(Y\), and maximum, \(X\), the joint probabilities are shown in tabular form below.</p>
+	
+	<div class="centred">
+	<table border="0" cellpadding="5" cellspacing="0" class="centred">
+		<tr>
+			<th>&nbsp;</th>
+			<th colspan="6">Maximum, <em>x</em></th>
+		</tr>
+		<tr>
+			<th>Minimum, <em>y</em></th>
+			<th>1</th>
+			<th>2</th>
+			<th>3</th>
+			<th>4</th>
+			<th>5</th>
+			<th>6</th>
+		</tr>
+		<tr>
+			<th>1</th>
+			<td style="background-color:#FFFFFF; border-top:1px solid #999999; border-left:1px solid #999999;">\(\small\diagfrac 1{6^3}\)</td>
+			<td style="background-color:#FFFFFF; border-top:1px solid #999999;">\(\small\diagfrac 1{6^2}\)</td>
+			<td style="background-color:#FFFFFF; border-top:1px solid #999999;">\(\small\diagfrac 2{6^2}\)</td>
+			<td style="background-color:#FFFFFF; border-top:1px solid #999999;">\(\small\diagfrac 3{6^2}\)</td>
+			<td style="background-color:#FFFFFF; border-top:1px solid #999999;">\(\small\diagfrac 4{6^2}\)</td>
+			<td style="background-color:#FFFFFF; border-top:1px solid #999999; border-right:1px solid #999999;">\(\small\diagfrac 5{6^2}\)</td>
+		</tr>
+		<tr>
+			<th>2</th>
+			<td style="background-color:#FFFFFF; border-left:1px solid #999999;">0</td>
+			<td  style="background-color:#FFFFFF;">\(\small\diagfrac 1{6^3}\)</td>
+			<td  style="background-color:#FFFFFF;">\(\small\diagfrac 1{6^2}\)</td>
+			<td  style="background-color:#FFFFFF;">\(\small\diagfrac 2{6^2}\)</td>
+			<td  style="background-color:#FFFFFF;">\(\small\diagfrac 3{6^2}\)</td>
+			<td style="background-color:#FFFFFF; border-right:1px solid #999999;">\(\small\diagfrac 4{6^2}\)</td>
+		</tr>
+		<tr>
+			<th class="red">3</th>
+			<td style="border-left:1px solid #999999; background-color:#FFFF00">0</td>
+			<td style="background-color:#FFFF00">0</td>
+			<td style="background-color:#FFFF00">\(\small\diagfrac 1{6^3}\)</td>
+			<td style="background-color:#FFFF00">\(\small\diagfrac 1{6^2}\)</td>
+			<td style="background-color:#FFFF00">\(\small\diagfrac 2{6^2}\)</td>
+			<td style="border-right:1px solid #999999; background-color:#FFFF00">\(\small\diagfrac 3{6^2}\)</td>
+		</tr>
+		<tr>
+			<th>4</th>
+			<td style="background-color:#FFFFFF; border-left:1px solid #999999;">0</td>
+			<td  style="background-color:#FFFFFF;">0</td>
+			<td  style="background-color:#FFFFFF;">0</td>
+			<td  style="background-color:#FFFFFF;">\(\small\diagfrac 1{6^3}\)</td>
+			<td  style="background-color:#FFFFFF;">\(\small\diagfrac 1{6^2}\)</td>
+			<td style="background-color:#FFFFFF; border-right:1px solid #999999;">\(\small\diagfrac 2{6^2}\)</td>
+		</tr>
+		<tr>
+			<th>5</th>
+			<td style="background-color:#FFFFFF; border-left:1px solid #999999;">0</td>
+			<td  style="background-color:#FFFFFF;">0</td>
+			<td  style="background-color:#FFFFFF;">0</td>
+			<td  style="background-color:#FFFFFF;">0</td>
+			<td  style="background-color:#FFFFFF;">\(\small\diagfrac 1{6^3}\)</td>
+			<td style="background-color:#FFFFFF; border-right:1px solid #999999;">\(\small\diagfrac 1{6^2}\)</td>
+		</tr>
+		<tr>
+			<th>6</th>
+			<td style="background-color:#FFFFFF; border-bottom:1px solid #999999; border-left:1px solid #999999;">0</td>
+			<td style="background-color:#FFFFFF; border-bottom:1px solid #999999;">0</td>
+			<td style="background-color:#FFFFFF; border-bottom:1px solid #999999;">0</td>
+			<td style="background-color:#FFFFFF; border-bottom:1px solid #999999;">0</td>
+			<td style="background-color:#FFFFFF; border-bottom:1px solid #999999;">0</td>
+			<td style="background-color:#FFFFFF; border-bottom:1px solid #999999; border-right:1px solid #999999;">\(\small\diagfrac 1{6^3}\)</td>
+		</tr>
+	</table>
+	</div>
+	
+	<p>We will now find the conditional distribution of the maximum value, \(Y\), if it is known that the minimum  is \(X = 3\). The marginal probability for \(Y = 3\) is the sum of the probabilities in the  highlighted row.</p>
+\[
+p_Y(3) = \sum_{x=1}^{6} p(x,y) = \frac 1{6^3} + \frac 1 6
+\]
+  <p>The conditional probabilities for \(X\) divide the highlighted row by this value,</p>
+\[
+p_{X\mid Y=3}(x) =\frac {p(x,3)}{p_Y(3)}
+\]
+	<p>Because of how \(p_{X\mid Y=3}(x)\) was calculated,  the row of conditional probabilities adds to one, making it a valid univariate probability function for \(X\).</p>
+	
+<div class="centred">
+	<table border="0" cellpadding="5" cellspacing="0" class="centred">
+		<tr>
+			<th colspan="6">Conditional distribution of <em>X</em>, given <em>y</em> = 3</th>
+		</tr>
+		<tr>
+			<th width="70">1</th>
+			<th width="70">2</th>
+			<th width="70">3</th>
+			<th width="70">4</th>
+			<th width="70">5</th>
+			<th width="70">6</th>
+		</tr>
+		<tr>
+			<td style="background-color:#FFFFFF; border:1px solid #999999; border-right:0px;">0</td>
+			<td style="background-color:#FFFFFF; border-top:1px solid #999999; border-bottom:1px solid #999999;">0</td>
+			<td style="background-color:#FFFFFF; border-top:1px solid #999999; border-bottom:1px solid #999999;">\(\displaystyle \frac {\small\diagfrac 1{6^3}}{\frac 1{6^3} + \frac 1 6}\)</td>
+			<td style="background-color:#FFFFFF; border-top:1px solid #999999; border-bottom:1px solid #999999;">\(\displaystyle \frac {\small\diagfrac 1{6^2}} {\frac 1{6^3} + \frac 1 6}\)</td>
+			<td style="background-color:#FFFFFF; border-top:1px solid #999999; border-bottom:1px solid #999999;">\(\displaystyle \frac {\small\diagfrac 2{6^2}} {\frac 1{6^3} + \frac 1 6}\)</td>
+			<td style="background-color:#FFFFFF; border:1px solid #999999; border-left:0px;">\(\displaystyle \frac {\small\diagfrac 3{6^2}} {\frac 1{6^3} + \frac 1 6}\)</td>
+		</tr>
+	</table>
+</div>
+<br>
+</div>
+
+<p class="heading">Conditional mean and variance</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>The <strong>conditional mean</strong> of \(Y\) given \(X=x\) is</p>
+	\[
+	E[Y \mid X=x] \;\;=\;\; \sum_{\text{all }y} {y \times p_{Y \mid X=x}(y)} \;\;=\;\; \sum_{\text{all }y} {y \times \frac{p(x,y)}{p_X(x)}}
+	\] </div>
+<p>The <strong>conditional variance</strong> of \(Y\) given \(X=x\) is similarly defined as the variance of this conditional distribution.</p>
+<p>Both  can depend on the x-value that we are conditioning on.</p>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

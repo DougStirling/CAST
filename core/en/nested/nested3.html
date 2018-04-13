@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Anova for nested design</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="nested design, anova, analysis of variance, f test">
+
+	<index dataset="Combability of hair" />
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Testing for a factor effect</p>  
+<p>As shown in the previous page, if a factor varies at block level (with all experimental units in a block getting the same treatment), its effect  should be tested by comparing its explained sum of squares with the sum of squares between blocks (within factor levels). The test is based on the ratio of these two mean sums of squares:</p>
+<p class="eqn"><img src="images/F_ratio.gif" width="178" height="39"></p>
+<p>This is compared to an F distribution with degrees of freedom equal to these of the numerator and denominator of the F ratio, and the resulting p-value is interpreted as usual.</p>
+
+<div class="diagram">
+<p class="heading">Combability of hair</p>
+<p>An experiment was conducted to compare two formulations of shampoo (A and B). Sixteen hair swatches were prepared and eight were randomly selected for each formulation. Each hair swatch was independently tested five times and a measure of combability was recorded from each of these five runs.</p>
+<div class="centred"><table border="0" class="centred" cellpadding="6" cellspacing="0">
+	<tr>
+		<td>&nbsp;</td>
+		<th colspan="8">Swatch</th>
+		</tr>
+	<tr>
+		<th>Formulation</th>
+		<th>1</th>
+		<th>2</th>
+		<th>3</th>
+		<th>4</th>
+		<th>5</th>
+		<th>6</th>
+		<th>7</th>
+		<th>8</th>
+		</tr>
+	<tr>
+		<th>A</th>
+		<td align="center" bgcolor="#FFFFFF">183<br>133<br>190<br>153<br>173</td>
+		<td align="center" bgcolor="#FFFFFF">173<br>173<br>115<br>198<br>150</td>
+		<td align="center" bgcolor="#FFFFFF">80<br>75<br>68<br>70<br>58</td>
+		<td align="center" bgcolor="#FFFFFF">115<br>125<br>120<br>125<br>148</td>
+		<td align="center" bgcolor="#FFFFFF">145<br>113<br>98<br>138<br>140</td>
+		<td align="center" bgcolor="#FFFFFF">73<br>123<br>100<br>75<br>115</td>
+		<td align="center" bgcolor="#FFFFFF">123<br>138<br>100<br>253<br>93</td>
+		<td align="center" bgcolor="#FFFFFF">38<br>55<br>35<br>38<br>53</td>
+		</tr>
+	<tr>
+		<th>&nbsp;</th>
+		<th>9</th>
+		<th>10</th>
+		<th>11</th>
+		<th>12</th>
+		<th>13</th>
+		<th>14</th>
+		<th>15</th>
+		<th>16</th>
+		</tr>
+	<tr>
+		<th>B</th>
+		<td align="center" bgcolor="#FFFFFF">255<br>110<br>195<br>93<br>213</td>
+		<td align="center" bgcolor="#FFFFFF">118<br>200<br>145<br>155<br>108</td>
+		<td align="center" bgcolor="#FFFFFF">133<br>155<br>145<br>240<br>230</td>
+		<td align="center" bgcolor="#FFFFFF">150<br>130<br>110<br>185<br>105</td>
+		<td align="center" bgcolor="#FFFFFF">65<br>60<br>105<br>90<br>100</td>
+		<td align="center" bgcolor="#FFFFFF">95<br>65<br>45<br>65<br>60</td>
+		<td align="center" bgcolor="#FFFFFF">145<br>175<br>125<br>145<br>180</td>
+		<td align="center" bgcolor="#FFFFFF">60<br>55<br>60<br>45<br>65</td>
+		</tr>
+</table></div>
+<p>This is a nested design since the treatment (formulations) is applied at block (swatch) level and there are five measurements within each block. The diagram below shows the data.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="250">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="glmAnovaProg.CombineNestedApplet">
+<param name="yVarName" value="Combability">
+<param name="yValues" value="183 133 190 153 173 173 173 115 198 150 80 75 68 70 58 115 125 120 125 148 145 113 98 138 140 73 123 100 75 115 123 138 100 253 93 38 55 35 38 53 255 110 195 93 213 118 200 145 155 108 133 155 145 240 230 150 130 110 185 105 65 60 105 90 100 95 65 45 65 60 145 175 125 145 180 60 55 60 45 65">
+<param name="yAxis" value="0 300 0 50">
+<param name="xVariables" value="Form Swatch">
+<param name="blockVarName" value="Swatch">
+<param name="blockValues" value="5@0 5@1 5@2 5@3 5@4 5@5 5@6 5@7 5@8 5@9 5@10 5@11 5@12 5@13 5@14 5@15">
+<param name="blockLabels" value="S1 S2 S3 S4 S5 S6 S7 S8 S9 S10 S11 S12 S13 S14 S15 S16">
+<param name="factorVarName" value="Formulation">
+<param name="factorValues" value="40@0 40@1">
+<param name="factorLabels" value="#Formulation A# #Formulation B#">
+<param name="FormVarName" value="Formulation">
+<param name="FormValues" value="40@0 40@1">
+<param name="Formabels" value="F1 F2">
+<param name="SwatchVarName" value="Hair swatch">
+<param name="SwatchValues" value="5@0 5@1 5@2 5@3 5@4 5@5 5@6 5@7  5@0 5@8 5@9 5@10 5@11 5@12 5@13 5@14">
+<param name="SwatchLabels" value="S1&9 S2 S3 S4 S5 S6 S7 S8 S1- S11 S12 S13 S14 S15 S16">
+<param name="maxSsq" value="999999 9 99999.9 99.99">
+<param name="componentNames" value="Formulation#Swatches (within form)">
+<param name="split" value="1:2:Split swatches:Between all swatches">
+<param name="denomIndex" value="0 2 3">
+</applet>
+</div>
+
+<p>The analysis of variance table above initially describes the structure of the experimental units without taking account of the factor.</p>
+<ul>
+	<li>The mean sum of squares between all swatches describes the variation between the blocks.</li>
+	<li>The mean residual sum of squares describes variation within the five measurements from individual swatches.</li>
+</ul>
+<p>Click the checkbox <strong>Split swatches</strong> to separate the between-swatches sum of squares into:</p>
+<ul>
+	<li>A sum of squares explained by the two treatments (with 1 degree of freedom), and</li>
+	<li>A sum of squares describing variation between swatches that is unexplained by the factor.</li>
+</ul>
+<p>The F-ratio associated with the shampoo formulation is the ratio of the corresponding mean sums of squares. From the associated p-value, we should conclude that:</p>
+<div class="centred"><div class="boxed">
+	<p>From the p-value 0.7424, there is no evidence of a difference between the two treatments.</p>
+</div></div>
+<p>This is also evident from the scatterplot of the data. Although the mean combability is slightly higher for Formulation B &mdash; its red line is slightly higher &mdash; the two means are similar compared to the differences between the swatch means.</p>
+<p>Although it is unnecessary in this example (since the researchers know that the swatches will differ in their combability), it is valid to compare the sum of squares for swatches (within formulations) with the residual sum of squares in order to test for differences between the blocks (swatches). The p-value is reported as &quot;0.0000&quot; confirming that the swatches do differ from each other.</p>
+</div>
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

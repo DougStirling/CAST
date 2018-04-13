@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Generalised negative binomial distribution</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="negative binomial distribution, generalised negative binomial distribution, mean, variance, poisson distribution">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Model for overdispersion</p>
+
+<p>The Poisson distribution only has a single parameter, so its variance cannot be increased without simultaneously increasing the distribution's mean.</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>A random variable, \(X\), is said to have a <strong>generalised negative binomial distribution</strong></p>
+\[
+X \;\;\sim\;\; \NegBinDistn(\kappa, \pi)
+\]
+<p>if its probability function is</p>
+\[
+p(x) \;\;=\;\; \begin{cases} \displaystyle \frac{\Gamma(\kappa + x)}{x! \; \Gamma(\kappa)} \pi^{\kappa} (1-\pi)^x  &amp;\text{for }x = 0, 1, 2, \dots \\[0.2em]
+0 &amp; \text{otherwise}
+\end{cases} \]
+<p>where \(\kappa \gt 1\) and \(0 \le \pi \lt 1\). The two parameters \(\kappa\) and \(\pi\) are usually two unknown.</p>
+</div>
+
+<p>This is a generalisation of the negative binomial distribution that was <a href="javascript:showNamedPage('negBinomial2')">described earlier</a> for the number failures before the \(\kappa\)'th success in a sequence of independent success/failure trials with probability \(\pi\) of success, but we now allow non-integer values of \(\kappa\). It is often simply called a negative binomial distribution.</p>
+<p>(To see that the distribution is the same as the earlier negative binomial distribution, notice that \(\kappa\) was an integer, allowing the gamma functions to be replaced by factorials.)</p>
+<p class="heading">Properties</p>
+<p>We now describe some properties of the negative binomial distribution that explain why it works as a model for overdispersed count data.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Mean and variance</p>
+		<p>The mean and variance of the generalised negative binomial distribution are</p>
+\[
+E[X] = \frac {\kappa(1-\pi)} \pi \spaced{and} \Var(X) =  \frac {\kappa(1-\pi)} {\pi^2}
+\]</div>
+	<div class="proof">
+		<p>These are the same formulae that were <a href="javascript:showNamedPage('negBinomial5')">derived earlier</a> for integer \(\kappa\). We will not give the more general proof here.</p>
+	</div>
+</div>
+<p>From these formulae,</p>
+\[
+\Var(X) \;=\;  E[X] \times \frac 1 {\pi}
+\]
+<p>Since \(\pi\) is less than 1, the variance of the distribution is always greater than its mean, a characteristic of overdispersion.</p>
+<p>The next result is also stated without proof.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Asymptotic distribution</p>
+		<p>If \(\kappa \to \infty\) and \(\pi \to 1\) simultaneously with \(\displaystyle \frac{\kappa(1-\pi)}{\pi} = \lambda\), the negative binomial distribution approaches a \(\PoissonDistn(\lambda)\) distribution.</p>
+	</div>
+</div>
+<p>This shows that the negative binomial distribution can be made arbitrarily close to a Poisson distribution with appropriate choice of \(\kappa\) and \(\pi\).</p>
+<p class="heading">Justification for the negative binomial distribution</p>
+<p>We will mainly treat the negative binomial distribution simply as a more flexible model for counts that can be used to model overdispersion. There are however two ways that a negative binomial distribution can be theoretically derived. (The details are complex and we will simply give a flavour here.)</p>
+<dl>
+	<dt>Varying \(\lambda\)</dt>
+	<dd>If the rate of events in a Poisson process, \(\lambda\), varies according to a particular distribution called a Gamma distribution, the number of events observed can be proved to have a negative binomial distribution.</dd>
+	<dt>Clusters of events</dt>
+	<dd>Events sometimes arise in clusters. If the clusters arise as a Poisson process and the number of events per cluster has a <a href="javascript:showNamedPage('newtonRaphson2')">log-series distribution</a>, then the number of events has a negative binomial distribution. (For example, if houses were randomly distributed over an area as a Poisson process, and the number of people in any house had a log-series distribution, the total number of people in an area would have a negative binomial distribution.)</dd>
+</dl>
+<p>We can however simply use the distribution as an empirical model with the flexibility to model overdispersed count data.</p>
+
+
+<div class="example" title="Shape of generalised negative binomial distribution">
+	<p class="exampleHeading">Shape of generalised negative binomial distribution</p>
+	<p>The diagram below initially shows the probability function for a Poisson distribution; the top slider can be used to adjust its mean, \(\lambda\).</p>
+	<div class="centred">
+		<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="500">
+			<script type="text/javascript">writeAppletParams();</script>
+			<param name="appletName" value="distributionProg.NegBinom2DistnApplet">
+			<param name="backgroundColor" value="FFFBF3">
+			<param name="meanLimits" value="0.10 5.00 3.00">
+			<param name="varianceLimits" value="10.00 1.00">
+			<param name="paramDecimals" value="4 2">
+			<param name="xAxis" value="-0.4 20 0 5">
+			<param name="maxK" value="999.00">
+			<param name="maxPSuccess" value="0.9999">
+			<param name="xAxisName" value="Number of events">
+		</applet>
+	</div>
+	<p>For any Poisson distribution, the mean \(E[X]\) is equal to the variance \(\Var(X)\). The generalised negative binomial has a second parameter that allows more flexibility. <strong>Drag the bottom slider</strong> to make the variance a greater multiple of the mean. Observe that whatever the distribution's mean,</p>
+	<ul>
+		<li>Increasing the variance increases the probability of &quot;extreme' counts, both small and large.</li>
+		<li>Increasing the variance makes the distribution more skew (less symmetric).</li>
+	</ul>
+	<p>Clicking <strong>Show zero-one axis</strong> to deselect it makes the bar charts fill up more of the vertical height in the diagram, making these features clearer.</p>
+</div>
+<script type='text/javascript'>writePageEnd();</script>
+</body>
+</html>

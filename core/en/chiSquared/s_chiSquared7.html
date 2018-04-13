@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Pooled variance from several samples</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+	
+	<link rel='stylesheet' href='../../structure/maths/mathStyles.css' type='text/css'>
+	<script src='../../structure/videoControls/jquery.js'></script>
+	<script src='../../structure/maths/theorems.js'></script>
+	<script src='../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js'></script>
+
+	<meta name="index" content="chi-squared distribution, pooled variance">
+	<meta name="dataset" content="Sugar beet yields">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+<p>We now consider data sets that arise as random samples from two or more groups. </p>
+<p class="heading">A normal model</p>
+<p>We often assume that all groups have normal distributions, with a \(\NormalDistn(\mu_i,\;\sigma_i^2)\) distribution in the \(i\)'th of the \(g\) groups. It is also common to assume that the variances is the same in all groups, so</p>
+
+\[
+Y_{ij} \;\;\sim\;\; \NormalDistn(\mu_i, \sigma^2) \qquad \text{for }i = 1,\dots,g \text{ and }j = 1,\dots,n_i
+\]
+<p>where \(Y_{ij}\) is the \(j\)'th value in group \(i\). Note that we are using \(n_i\) to denote the number of values in the \(i\)'th group and the total number of values is \(n = \sum_{i=1}^g n_i\).</p>
+<p>The maximum likelihood estimates of the group means \(\{\mu_i\}\) are</p>
+\[
+\hat{\mu}_{i} \;\;=\;\; \overline{Y}_i
+\]
+<p>but how should we estimate the common group variance, \(\sigma^2\)? </p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>The <strong>pooled estimate</strong> of the common group variance is</p>
+\[
+S_{\text{pooled}}^2 \;=\; \frac{\sum_{i=1}^g (n_i - 1)S_i^2}{\sum_{i=1}^g (n_i - 1)}
+\]
+<p>where</p>
+\[
+S_i^2 \;=\; \frac{\sum_{j=1}^{n_i} (Y_{ij} - \overline{Y}_i)^2} {n_i - 1}
+\]
+<p>is the sample variance in group \(i\).</p>
+</div>
+
+<p>We now give its distribution.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Distribution of pooled variance</p>
+<p>The pooled estimator \(S_{\text{pooled}}^2\) is an unbiased estimator of \(\sigma^2\) and</p>
+\[
+\frac{n-g}{\sigma^2}S_{\text{pooled}}^2 \;\;\sim\;\; \ChiSqrDistn(n-g\;\text{df})
+\]
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+<p>Since the quantity on the left is a pivot for \(\sigma^2\), it can be used to find a confidence interval for the parameter, in a very similar way to how one was found from a <strong>single</strong> random sample.</p>
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

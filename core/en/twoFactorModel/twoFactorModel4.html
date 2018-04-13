@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Parameters for two factor model</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="factorial design, model, normal model, parameterisation, baseline level">
+	<meta name="dataset" content="Strength of asphaltic concrete">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Model for two factors</p>
+<p>The reason for expressing the one-factor model in the form</p>
+<p class="eqn"><span class="black em">y<sub>ij</sub></span> &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp; <span class="red">β<em><sub>i</sub></em></span> &nbsp; + &nbsp; ε<em><sub>ij</sub></em> &nbsp; &nbsp; &nbsp; where <span class="red">β<sub>1</sub> = 0</span></p>
+<p>is that it can be extended easily to give a model without interaction for two factors.</p>
+<p>Consider an experiment in which factor X has <em>g</em><sub>X</sub> levels and factor Z has <em>g</em><sub>Z</sub> levels. We use the notation <em> y<sub>ijk</sub></em> to denote the <em>k</em>'th of the replicates for which factor X is at level <em>i</em> and factor Z is at level <em>j</em>. The model with no interaction can be expressed as:</p>
+<p class="eqn"><span class="black em">y<sub>ijk</sub></span> &nbsp;= &nbsp;<span class="blue">µ</span> &nbsp; + &nbsp; <span class="red">β<em><sub>i</sub></em></span> &nbsp; + &nbsp; <span class="green">γ<em><sub>j</sub></em></span> &nbsp; + &nbsp; ε<em><sub>ijk</sub></em> &nbsp; &nbsp; &nbsp; where <span class="red">β<sub>1</sub> = 0</span> and <span class="green">γ<sub>1</sub> = 0</span></p>
+<p>The parameters are interpreted as follows:</p>
+<ul>
+  <li><span class="blue">µ</span> is the mean response when both factors are at their baseline level (arbitrarily set as 1 here).</li>
+  <li><span class="red">β<em><sub>i</sub></em></span> is the difference between the mean response when X is at level <em>i</em> and at level 1, irrespective of the level of Z.</li>
+  <li><span class="green">γ<em><sub>j</sub></em></span> is the difference between the mean response when Z is at level <em>j</em> and at level 1, irrespective of the level of X.</li>
+</ul>
+<p>The <span class="red">β</span>-parameters therefore capture all the differences between the levels of X and there are (<em>g</em><sub>X</sub>&nbsp;-&nbsp;1) of them that are non-zero. Similarly there are (<em>g</em><sub>Z</sub>&nbsp;-&nbsp;1) non-zero <span class="green">γ</span>-parameters that capture the differences between the levels of Z.</p>
+<br>
+	
+	<div class="diagram">
+		<p class="heading">Strength of asphaltic concrete</p>
+
+		<p>A civil engineer conducted an experiment to evaluate how different compaction 
+			methods and types of aggregate affect the strength of asphaltic concrete. 
+			Two types of aggegate and four levels of compaction were used in the experiment 
+			and three specimens were tested at each combination of levels for the two 
+			factors. The tensile strength of each specimen (psi) was recorded and will 
+			be modelled in terms of the two categorical explanatory variables <em>Aggregate</em> 
+			and <em>Compaction</em>.</p>
+		<div class="centred"><table border="0" class="centred" cellpadding="4" cellspacing="0">
+			<tr> 
+				<th>&nbsp;</th>
+				<th colspan="4"><em>Compaction method</em></th>
+			</tr>
+			<tr> 
+				<th align="left" valign="bottom"><em>Aggregate type</em></th>
+				<th>Static</th>
+				<th>Regular<br>
+					kneading</th>
+				<th>Low<br>
+					kneading</th>
+				<th>Very low<br>
+					kneading</th>
+			</tr>
+			<tr> 
+				<th align="left">Basalt</th>
+				<td align="center" bgcolor="#FFFFFF">68<br>
+			    63<br>
+			    65</td>
+		  <td align="center" bgcolor="#FFFFFF">126<br>
+    128<br>
+					<em>&nbsp;</em>133</td>
+		  <td align="center" bgcolor="#FFFFFF"><em>&nbsp;</em>93<br>
+    101<br>
+    98</td>
+		  <td align="center" bgcolor="#FFFFFF">56<br>
+    59<br>
+    57</td>
+		  </tr>
+			<tr> 
+				<th align="left">Silicious</th>
+				<td align="center" bgcolor="#FFFFFF">71<br>
+			    66<br>
+			    66</td>
+		  <td align="center" bgcolor="#FFFFFF">107<br>
+    110<br>
+    116</td>
+		  <td align="center" bgcolor="#FFFFFF">63<br>
+    60<br>
+    59</td>
+		  <td align="center" bgcolor="#FFFFFF">40<br>
+			<em>&nbsp;</em>41<br>
+			44</td>
+		  </tr>
+		</table></div>
+		<p>We will treat <em>Static</em> compression and <em>Basalt</em> as the baseline 
+			levels for the two factors. (Any other factor levels could have been used 
+			with equivalent results.)  </p>
+
+	  <p class="heading">Graphical display of model</p>
+		<p>The diagram below shows the actual data against two categorical axes (for 
+			the two factors). The means from the best model without interaction are shown by 
+			the coloured grid.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="550">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="indicatorProg.Rotate2FactorDragApplet">
+<param name="yVarName" value="Concrete strength">
+<param name="yValues" value="68 63 65 126 128 133 93 101 98 56 59 57 71 66 66 107 110 116 63 60 59 40 41 44">
+<param name="yAxis" value="20 150 20 20">
+<param name="zVarName" value="Aggregate">
+<param name="zValues" value="12@0 12@1">
+<param name="zLabels" value="Basalt Silicious">
+<param name="xVarName" value="Compaction">
+<param name="xValues" value="3@0 3@1 3@2 3@3 3@0 3@1 3@2 3@3">
+<param name="xLabels" value="Static Regular Low #Very low#">
+<param name="initialMean" value="90">
+<param name="maxParam" value="999.99 -99.99 -99.99">
+<param name="separateX" value="Separate aggregates#0#34">
+<param name="customText" value="Baseline=Baseline">
+</applet>
+</div>
+
+		<p>The blue value under the table is <span class="blue">µ</span> in the equation earlier in the page. The four red values are the parameters <span class="red">β<em><sub>i</sub></em></span> and the two green values are the parameters <span class="green">γ<em><sub>j</sub></em></span>.</p>
+		<p>Drag the  red arrow for <em>Silicious</em> aggregate  to change the parameter <span class="green">γ<sub>2</sub></span> and observe that its value is the difference between the mean response for this aggregate and the baseline aggregate (<em>Basalt</em>).</p>
+		<p>Similarly drag the three red arrows for <em>Regular</em>, <em>Low</em> and <em>Very low</em> compaction and observe that the values for the corresponding parameters are differences from the baseline compaction (<em>Static</em>).</p>
+		<p>Finally, click <strong>Least squares</strong> to show the least squares estimates 
+		of the parameters. Observe that the model estimates that:</p>
+  <ul>
+			<li>The mean strength for <em>Static</em> compaction with <em>Basalt</em> 
+				aggregate is 75.00</li>
+			<li>The mean strength for <em>Regular</em> compaction is 53.50 higher than 
+				for <em>Static</em> compaction.</li>
+			<li>The mean strength for <em>Silicious</em> aggregate is 17.00 lower than 
+				for <em>Basalt</em> aggregate.</li>
+		</ul>
+	<br>
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

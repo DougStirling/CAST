@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Histograms with varying class widths</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+  <style type="text/css">
+<!--
+.style1 {color: #FF0000}
+-->
+  </style>
+
+	<meta name="index" content="histogram">
+	<meta name="dataset" content="Technical support/histogram">
+	<meta name="dataset" content="Wood chip size">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Combining classes</p>
+	<p>In all previous histograms, the classes have had the same width, but this is 
+		not essential. Histograms can be drawn with mixed class widths. Indeed, 
+	a histogram can be drawn corresponding to any choice of classes, but drawing  a histogram with mixed class widths is harder.</p>
+	<div class="boxed">
+    <p> The vertical axis of a histogram with mixed class widths must <span class="style1">not</span> be 'frequency'.</p>
+  </div>
+	<p>To retain the correct visual impression, in a histogram with classes of different 
+	  widths, <strong>the vertical axis must  be labeled 'density'</strong>. (We will not give a precise definition 
+	  here.) The guiding principle is...</p>
+	<div class="boxed">
+	  <p> In a correctly drawn histogram, each value contributes the same area. </p>
+  </div>
+	<p>For example, if there are the same number of values in two classes but one class is twice the width of the other, its height should be half that of the other in order to ensure that their class rectangles have the same area.<br>
+  </p>
+	<div class="diagram"> 
+<p class="heading">Accounting software support data</p>
+<p>The histogram below shows the 20 values in the Accounting Software Support 
+Time data. </p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="500" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="histoProg.HistoSwap4Applet">
+<param name="varName" value="Time (min)">
+<param name="values" value="61 14 51 55 52 53 69 20 79 71 61 13 23 32 34 49 34 28 52 64">
+<param name="horizAxis" value="5 85 10 10">
+<param name="classInfo" value="5 0.5">
+<param name="densityAxis" value="0 0.042 1 1">
+<param name="groupingInfo" value="9 20 20 20 20 20 20 20 11">
+<param name="grouping2Info" value="9 20 20 20 20 10 10 10 10 20 11">
+<param name="grouping3Info" value="9 20 20 20 20 40 20 11">
+<param name="groupingNames" value="#Narrower classes# #Standard classes# #Wider classes#">
+<param name="highlight" value="50 70">
+<param name="boxing" value="true">
+<param name="lines" value="both">
+<param name="axisType" value="density">
+<param name="customText" value="Box values=Box values">
+</applet>
+</div>
+
+		<p>Each rectangle represents one value &mdash; click on any rectangle to see the 
+			value. </p>
+		<p>Select <strong>Wider classes</strong> from the pop-up menu to combine the 
+			highlighted classes. Observe that each value is still represented by a rectangle 
+			of the same area, but of a different shape. The total highlighted area remains 
+			the same.</p>
+		<p>If the height had been 'frequency', the height of the combined class would 
+			have been doubled, incorrectly distorting the visual impact of the class. 
+			The correct height is the <strong>average height</strong> of the two classes 
+			that have been combined. </p>
+
+		<p>Select <strong>Narrower classes</strong> from the pop-up menu and observe 
+			that the areas contributed by each value again remain the same.</p>
+
+</div>
+
+  <p class="heading">Why use mixed class widths?</p>
+
+  <p>When all class widths are the same, frequencies can be written on the vertical 
+		axis, simplifying interpretation. If possible, histograms should therefore 
+		be drawn with constant class widths.</p>
+	<p>However the goal of smoothness can sometimes be attained better by using 
+		narrower classes in regions of high density.</p>
+
+  <div class="diagram"> 
+    <p>The histogram below shows a skew data set.</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="450" height="300">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="histoProg.HistoSwap4Applet">
+<param name="varName" value="weight">
+<param name="values" value="4.036 1.340 1.818 1.959 1.732 2.751 1.399 1.492 3.535 5.709 5.210 4.631 8.134 3.312 4.729 7.350 13.357 22.472 7.758 3.817 8.886 0.355 6.748 3.286 10.108 5.150 1.529 4.137 6.359 5.968 3.143 15.935 4.936 4.549 14.069 14.555 3.821 8.613 13.125 1.380 2.193 5.902 5.294 2.465 3.158 1.586 3.549 6.279 1.039 6.886 3.125 2.595 7.797 11.770 5.716 3.087 6.595 3.217 20.553 5.845 4.182 2.767 6.699 5.318 2.366 8.288 10.367 11.169 8.523 2.413 13.998 2.246 3.945 3.252 9.668 20.345 6.330 13.163 5.130 5.351 8.432 8.451 29.424 3.678 1.340 2.565 8.021 4.386 10.585 6.036 7.892 5.903 4.977 1.931 17.227 5.350 6.256 5.018 4.704 11.287">
+<param name="horizAxis" value="-1 40 0 5">
+<param name="classInfo" value="0.0 2.0">
+<param name="groupingInfo" value="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1">
+<param name="grouping2Info" value="4 4 4 4 4">
+<param name="grouping3Info" value="1 1 1 1 2 2 4 8">
+<param name="groupingNames" value="#All classes wide# #All classes narrow# # Mixed classes#">
+<param name="densityAxis" value="0 0.125 1 1">
+<param name="lines" value="vert">
+<param name="axisType" value="density">
+</applet>
+</div>
+
+		
+    <p>Although the histogram is fairly smooth on the left of the axis with narrow 
+      classes, it becomes more jagged at higher values where the density is lower. 
+      However increasing all class widths to smooth the higher classes leaves 
+      the histogram blocky on the left. (Select <strong>All classes wide</strong> 
+      from the pop-up menu.)</p>
+		<p>Select <strong>Mixed classes </strong> from the pop-up menu and observe 
+			that it gives a smoother picture of the distribution.</p>
+
+</div>
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>

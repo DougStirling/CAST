@@ -1,0 +1,345 @@
+<html>
+<head>
+  <title>6. Testing a Proportion</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 6 &nbsp; Testing a Proportion</h1>
+<h1 class="sectionName">6.1 &nbsp; Introduction to hypothesis tests</h1>
+<div class='leftTocCol'>
+<ol class='toc'>
+<li>Inference</li>
+<li>Soccer league simulation</li>
+<li>Simulation to test a proportion</li>
+<li>Test for a mean</li>
+</ol>
+</div>
+<div class='rightTocCol'>
+<ol class='toc' start='5'>
+<li>Randomisation tests</li>
+<li>Randomisation test for correlation</li>
+<li>Common patterns in tests</li>
+</ol>
+</div>
+<br clear='all'>
+<h2 class="pageName">6.1.1 &nbsp; Inference</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Inference</p>
+<p><strong>Statistical inference</strong> refers to statistical
+	techniques for obtaining information about a population parameter (or parameters) from
+	a  random sample. There are two branches of inference:</p>
+<p class=heading>Estimation</p>
+<p>Point estimates and confidence intervals give answers to questions of the form:</p>
+<div class="centred"><div class="boxed"><p>What parameter values would be consistent with the sample data?</p></div></div>
+<p class=heading>Hypothesis tests</p>
+<p>This chapter deals with a related type of question:</p>
+<div class="centred"><div class="boxed"><p>Are the sample data consistent with some statement about the parameters?</p></div></div>
+<p class=heading>Errors and strength of evidence</p>
+<p>A single random sample can rarely provide enough information 
+	about a population parameter to allow us to be sure whether or not any statement (hypothesis)
+	about that parameter will be true. The best we can hope for is an indication of 
+	the <strong>strength of the evidence</strong> against it. </p>
+
+
+
+
+<h2 class="pageName">6.1.2 &nbsp; Soccer league simulation</h2><!DOCTYPE HTML>
+
+
+<p class=heading>Randomness in sports results</p>
+<p>Although we like to think that the 'best' team wins in sports competitions, 
+there is actually considerable variability in the results that 
+can only be explained through randomness. For example when  two teams play a series
+of matches, the same team rarely wins all matches.</p>
+<p class=heading>English Premier Soccer League, 2008/09</p>
+<p>In the English Premier Soccer league, each team plays every other 
+team twice (home and away) during the season. Three points are awarded for a win 
+and one point for a draw. The table below shows the wins, draws, losses and total 
+points for all teams at the end of the 2008/09 season.</p>
+<div class="centred"><table border="0" class="centred" cellpadding="2" cellspacing="0">
+<tr>
+<th>&nbsp;</th>
+<th><div>Team</div></th>
+<th width="60" align="center">Wins</th>
+<th width="60" align="center">Draws</th>
+<th width="60" align="center">Losses</th>
+<th width="60" align="center">Points</th>
+</tr>
+<tr>
+<td>1.<br>
+2.<br>
+3.<br>
+4.<br>
+5.<br>
+6.<br>
+7.<br>
+8.<br>
+9.<br>
+10.<br>
+11.<br>
+12.<br>
+13.<br>
+14.<br>
+15.<br>
+16.<br>
+17.<br>
+18.<br>
+19.<br>
+20.</td>
+<td bgcolor="#FFFFFF"  class="top bottom" style="padding-left:10px"><strong>Manchester_U<br>
+Liverpool<br>
+Chelsea<br>
+Arsenal<br>
+Everton<br>
+Aston_Villa<br>
+Fulham<br>
+Tottenham<br>
+West_Ham<br>
+Manchester_C<br>
+Wigan<br>
+Stoke_City<br>
+Bolton<br>
+Portsmouth<br>
+Blackburn<br>
+Sunderland<br>
+Hull_City<br>
+Newcastle<br>
+Middlesbrough<br>
+West_Brom_Albion </strong></td>
+<td width="60" align="center" bgcolor="#FFFFFF" class="top bottom">28<br>
+25<br>
+25<br>
+20<br>
+17<br>
+17<br>
+14<br>
+14<br>
+14<br>
+15<br>
+12<br>
+12<br>
+11<br>
+10<br>
+10<br>
+9<br>
+8<br>
+7<br>
+7<br>
+8</td>
+<td width="60" align="center" bgcolor="#FFFFFF" class="top bottom">6<br>
+11<br>
+8<br>
+12<br>
+12<br>
+11<br>
+11<br>
+9<br>
+9<br>
+5<br>
+9<br>
+9<br>
+8<br>
+11<br>
+11<br>
+9<br>
+11<br>
+13<br>
+11<br>
+8</td>
+<td width="60" align="center" bgcolor="#FFFFFF" class="top bottom">4<br>
+2<br>
+5<br>
+6<br>
+9<br>
+10<br>
+13<br>
+15<br>
+15<br>
+18<br>
+17<br>
+17<br>
+19<br>
+17<br>
+17<br>
+20<br>
+19<br>
+18<br>
+20<br>
+22</td>
+<td width="60" align="center" bgcolor="#FFFFFF" class="top bottom">90<br>
+86<br>
+83<br>
+72<br>
+63<br>
+62<br>
+53<br>
+51<br>
+51<br>
+50<br>
+45<br>
+45<br>
+41<br>
+41<br>
+41<br>
+36<br>
+35<br>
+34<br>
+32<br>
+32</td>
+</tr>
+</table></div>
+<p class=heading>Were all teams evenly matched?</p>
+<p>A simulation can help us to investigate this question. We could be used to generate results from all 380 matches in the season for evenly matched teams, each result having probabilities 0.372, 0.372 and 0.255 of being a win, loss or draw for the home team. (A proportion 0.255 of games in the actual league resulted in draws.)</p>
+<p>If there are differences between teams, we would expect the worst teams to have very few points at the end of the season and the best to have many. On the other hand, for evenly matched teams, we would expect all 20 finals points to be similar. The <strong>spread of final points</strong> in the league table should tell us something about whether the teams are evenly matched.</p>
+<p>In the actual league table, the standard deviation of the final points for the 20 teams was 18.236. The diagram below shows the standard deviations in 200 simulated league tables with evenly matched teams.</p>
+<p class="eqn"><img src="../../../en/testIntro/images/s_leagueSdSim.gif" width="357" height="150"> </p>
+<p>Since the probabilities in one tail of the distribution are added, this is
+called a <strong>one-tailed test</strong>.</p>
+<p class="heading">P-value for a two-tailed test</p>
+<p>If the alternative hypothesis allows <strong>either high or low</strong> values
+of <em>x</em>, the test is called a <strong>two-tailed</strong> test, </p>
+<p class=eqn><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;=&nbsp; </strong>&pi;<strong><sub>0</sub></strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;&ne;&nbsp; </strong>&pi;<strong><sub>0</sub></strong></span></p>
+<p>The p-value is then <strong>double the smaller tail probability</strong> since
+values of <em>x</em> in <strong>both</strong> tails of the binomial distribution
+would provide evidence for <b>H<sub>A</sub></b>.</p>
+<p class="heading">Example</p>
+<p>In a population of people, a proportion 0.574 have blood group O. In a 
+sub-group of this population, a sample of 54 individuals were tested and 26 of
+these had blood group O. Is there any evidence that they differ from the main
+population?</p>
+<p>This question can be expressed with the hypotheses</p>
+<p class=eqn><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;=&nbsp; 0.574</strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;&ne;&nbsp; 0.574</strong></span></p>
+<p>If the sub-group had the same proportion with blood group O as the main population,
+the number out of 54 with this blood group would have the binomial distribution
+below.</p>
+<p class="eqn"><img src="../../../en/testPropn/images/s_binom2Tail.gif" width="356" height="212"> </p>
+<p class="heading">Approximate p-value</p>
+<p>We  again
+test the hypotheses </p>
+<p class=eqn><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;=&nbsp; </strong>&pi;<strong><sub>0</sub></strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;&lt;&nbsp; </strong>&pi;<strong><sub>0</sub></strong></span> </p>
+<p>If <em>n</em> is large, the approximate normal distribution for <em>x</em> can
+be used to obtain the p-value for the test.</p>
+<p class=eqn><img class="gif" src="../../../en/testPropn/images/normalPValue2.gif" width="471" height="266"> </p>
+<p class="heading">Adverse reactions to drug</p>
+<p>A pharmaceutical company claims that only 1% of a drug's users experience
+adverse reactions. An agency monitors 2500 patients taking the
+drug and observes adverse reactions in 37 cases. Is the occurrence of adverse reactions
+more common than claimed by the company?</p>
+<p class="eqn"><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;=&nbsp; 0.01</strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;&gt;&nbsp; 0.01</strong></span></p>
+<p>where  π = P(adverse effect).</p>
+<p class="eqn"><img src="../../../en/testPropn/images/s_normalApprox_b.gif" width="352" height="165"> </p>
+<p>with a standard normal distribution. Since <em>x</em> is discrete,</p>
+<p class="eqn">P(<em>X</em> ≥ 37) &nbsp; = &nbsp;P(<em>X</em> ≤ 36.5) &nbsp; = &nbsp; P(<em>X</em> ≤
+36.9) &nbsp; = &nbsp; ...</p>
+<p>To find this tail probability, any value of <em>x</em> between 36 and 37
+might have been used when evaluating the z-score. The p-value can be more accurately
+estimate by using 36.5. This is called a <strong>continuity correction</strong>.
+This more accurate p-value in the above example is 0.011 leading to a similar conclusion.</p>
+<div class="centred"><div class="boxed">
+<p>The continuity correction involves <strong>either adding or subtracting 0.5</strong> from
+the observed count, <em>x</em>, before finding the z-score.</p>
+</div></div>
+
+
+
+
+<h2 class="pageName">6.2.6 &nbsp; Statistical distance</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Difference between parameter and estimate</p>
+<p>If the  value of a parameter
+specified by the null hypothesis (e.g. a population proportion, π<sub>0</sub>) is
+close to the corresponding sample statistic (e.g. the sample proportion, <em>p</em>)
+then there is no reason to doubt the null hypothesis. However if they
+are far apart, the data are not consistent with the null hypothesis and we should
+conclude that the alternative hypothesis holds.</p>
+<div class="centred"><div class="boxed">
+<p>A large distance between the estimate and hypothesized value gives evidence
+against the null hypothesis.</p>
+</div></div>
+<p class="heading">Statistical distance</p>
+<p>To help assess this difference, we express it as a <strong>number of standard
+errors</strong> since we know from the 70-95-100 rule of thumb that that
+2 (standard errors) is a large distance, 3 is a very large distance, and 1 is
+not much.</p>
+<p>For a proportion, the number of standard errors is</p>
+<p class="eqn"><img class="gif" src="../../../en/testPropn/images/zForP.gif" width="186" height="56"></p>
+<p>In general, the <strong>statistical distance</strong> of an estimate to a
+hypothesised value of the underlying parameter is</p>
+<p class="eqn"><img class="gif" src="../../../en/testMean/images/zGeneral.gif" width="185" height="37"></p>
+<p>Values more than 2, or less than -2,  suggests that the hypothesized
+value is wrong. However if <em>z</em> is close to zero, <em>p</em> is reasonably
+close to π<sub>0</sub> and we should not doubt the null hypothesis.</p>
+
+
+
+
+<h2 class="pageName">6.2.7 &nbsp; Tests based on statistical distance</h2><!DOCTYPE HTML>
+
+
+<p class="heading notPrinted">Test statistic and p-value</p>
+<p>The <strong>statistical distance</strong> of an estimate to a hypothesised
+value of the underlying parameter is</p>
+<p class="eqn"><img class="gif" src="../../../en/testMean/images/zGeneral.gif" width="185" height="37"></p>
+<p>If the null hypothesis holds, <em>z</em> has
+approximately a standard normal distribution and it can be used as a test statistic
+for tests about the parameter. The p-value can be determined from the tail areas
+of this standard normal distribution.</p>
+<p class="eqn"><img class="gif" src="../../../en/testMean/images/pValueFromZ.gif" width="471" height="212"></p>
+<p>For a two-tailed test, the p-value is the red tail area and can be looked
+up using either normal tables or in Excel.</p>
+<p class=heading>Example</p>
+<p>We again examine a data set in which a proportion <sup>37</sup>/<sub>2500</sub> = 0.0148 of
+2,500 patients had adverse reactions to a drug. Do more than 1% of such patients
+have adverse reactions?</p>
+<p class="eqn"><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;=&nbsp; 0.01</strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;&gt;&nbsp; 0.01</strong></span></p>
+<p>The diagram below shows how the 'statistical distance' of the sample proportion
+from 0.01 is calculated.</p>
+<p class="eqn"><img src="../../../en/testPropn/images/s_testP_b.gif" width="419" height="224"></p>
+<p>The p-value for the test is the upper tail area of the standard normal distribution
+and is 0.0079 here, so we again conclude that there is strong evidence that more
+than 1% of patients have adverse reactions from the drug.</p>
+<p>Using a 'statistical distance' to test a proportion gives a p-value that is <strong>identical</strong> to
+the p-value based on a normal approximation to the number of successes <strong>without</strong> a
+continuity correction. (The p-value is slightly different if a continuity correction
+is used.) However this approach will  be used to  test many different
+kinds of parameter in later sections.</p>
+<p>(The procedure will be refined slightly 
+when applied to situations where the standard error of the estimate must itself
+be estimated from the sample data. A t distribution will be used instead of a
+standard normal distribution.)</p>
+
+
+
+
+</html>

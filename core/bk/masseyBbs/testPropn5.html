@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Tests based on normal approximation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../pageStyles.css" type="text/css">
+	<script src="../../releaseInfo.js"></script>
+	<script src="../../structure/pageSetup.js"></script>
+
+	<meta name="index" content="proportion, binomial distribution, hypothesis test, normal distribution/approximation to binomial">
+	<meta name="dataset" content="Home-based businesses">
+</head>
+
+
+<body>
+<script type="text/javascript">writePageStart();</script>
+
+<p class="heading">Computational problem</p>
+
+<p>To find the p-value for a hypothesis test about a proportion, tail probabilities 
+for a binomial distribution must be summed.</p>
+<p>If the sample size <i>n</i> is large, there may be a huge number of probabilities 
+to add together and this is both tedious and may result in numerical errors.</p>
+
+<div class="diagram">
+<p class="heading">Home-based businesses owned by women</p>
+
+<p>A recent study that was reported in the <em>Wall Street Journal</em> sampled 
+899 home-based businesses and found that 369 were owned by women. </p>
+
+<p>Are home-based businesses less likely to be owned by females than by males? 
+This question can be expressed as a hypothesis test. If the population proportion 
+of home-based businesses owned by females is denoted by π, 
+the hypotheses can be written as... </p>
+<p class="eqn"><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;=&nbsp; 0.5</strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;&lt;&nbsp; 0.5</strong></span></p>
+
+<p>If the null hypothesis is true, the sample number owned by females will have 
+a binomial distribution with parameters <em>n</em>&nbsp;=&nbsp;899 and π&nbsp;=&nbsp;0.5. 
+The p-value for the test is therefore the sum of binomial probabilities,</p>
+
+<p class="eqn"><strong>p-value</strong> &nbsp; = &nbsp; P(<em>X</em> &le; 369) &nbsp; = &nbsp; P(0) &nbsp;+ &nbsp;P(1) &nbsp;+ &nbsp;...  + &nbsp;P(368) &nbsp;+ &nbsp;P(369)</p>
+<p>A lot of probabilities must be evaluated and summed! And all are close to zero.</p>
+
+</div>
+
+<p class="heading">Normal approximation</p>
+<p>We saw earlier that the normal distribution may be used as an <a href="javascript:showNamedPage('randomPropn5')">approximation 
+to the binomial</a> when <i>n</i> is large. Both the sample proportion of successes, 
+<em>p</em>, 
+and the number of successes, <em>x</em>&nbsp;=&nbsp;<em>np</em>, 
+are approximately normal when <em>n</em> is large.</p>
+<p class=eqn><img class="gif" src="../../en/randomPropn/images/normalApprox.gif" width="389" height="126"> 
+</p>
+<p>The best-fitting normal distribution can be used to obtain an approximation 
+to any binomial tail probability. In particular, it can be used to find an approximate 
+p-value for a hypothesis test.</p>
+<p class="heading">Using a normal approximation to find a p-value</p>
+<p>A large random sample of size <i>n</i> is selected from a population with probability 
+π 
+of success and <em>x</em> successes are observed. We will again test the hypotheses </p>
+
+<p class=eqn><span class="darkblue"><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;=&nbsp; </strong>&pi;<strong><sub>0</sub></strong><br><strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&pi;<strong> &nbsp;&lt;&nbsp; </strong>&pi;<strong><sub>0</sub></strong></span> </p>
+
+<p>The main difference from our exact procedure (using the binomial distribution) 
+is that a different test statistic is used. The test statistic <em>z</em> is obtained 
+by standardising the number of successes, <em>x</em>, &mdash; subtracting the mean of the normal 
+approximation and dividing by its standard deviation.</p>
+
+<p class=eqn><img class="gif" src="../../en/testPropn/images/normalPValue.gif" width="471" height="266">
+</p>
+
+<div class="diagram">
+
+<p class="heading">Home-based businesses owned by women</p>
+
+<p>In this example, the sample size, <em>n</em>&nbsp;=&nbsp;899 is large, so we can use a
+normal approximation to obtain the probability of 369 or fewer businesses owned by females
+if the underlying population probability was 0.5 (the null hypothesis).
+</p>
+
+<div class="centred">
+<applet codebase="../../java" code="dataView.CastApplet.class" archive="coreCAST.jar" width="550" height="400">
+<script type="text/javascript">writeAppletParams();</script>
+<param name="appletName" value="randomisationProg.SuccessSimApplet">
+<param name="sampleInfo" value="899 0.5">
+<param name="summaryAxis" value="350 550 350 50">
+<param name="nSuccess" value="369">
+<param name="propnDecimals" value="4">
+<param name="catVarName" value="Gender">
+<param name="catLabels" value="Female Male">
+<param name="probLabel" value="Prob (Female)">
+<param name="nLabel" value="Number of home-based businesses =">
+<param name="normalDecimals" value="1">
+<param name="showTheory" value="true">
+<param name="theoryType" value="normal">
+<param name="tail" value="low">
+<param name="customText" value="No of Success=No of Success#Number of=Number of#Show results as=Show results as#Propn with=Propn with#Prob of=Prob of#or fewer=or fewer#or more=or more#Approximate distribution=Approximate distribution#Normal approximation=Normal approximation">
+</applet>
+</div>
+
+<p>Click <strong>Accumulate</strong> then simulate sampling of 899 businesses about 300 times.
+(Hold down the button <strong>Simulate</strong>.) From the simulation, it is clear that
+the probability of obtaining 369 or fewer businesses owned by females is extremely small &mdash; there is strong evidence
+against the null hypothesis.
+</p>
+
+<hr align="center" width="75%">
+<p>The same conclusion can be reached without a simulation. </p>
+
+<p>Select <strong>Bar chart</strong> from the pop-up menu, then select <strong>Normal 
+approximation</strong>. From the normal approximation, we can determine that the 
+p-value for the test (the tail area below 369) is extremely close to zero. </p>
+
+</div>
+
+
+
+<script type='text/javascript'>writePageEnd();</script>
+
+</body>
+</html>
