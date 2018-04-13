@@ -1,0 +1,55 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>CAST banner</title>
+<style type="text/css">
+	body {
+		margin: 0px;
+		padding: 0px;
+		border: 0px;
+		background-color: #EEEEEE;
+		overflow: hidden;
+	}
+	div#text {
+		color:#000000;
+		font-family:Arial, Helvetica, sans-serif;
+		font-size:32px;
+		font-weight:bold;
+		white-space:nowrap;
+	}
+</style>
+
+<script type="text/javascript" language="javascript">
+
+	function lookup(searchString, key) {
+		var keyStart = searchString.indexOf(key + "=", 0);
+		if (keyStart < 0)
+			return "";
+		var resultStart = keyStart + key.length + 1;
+		var resultEnd = searchString.indexOf("&", resultStart);
+		if (resultEnd < 0)
+			resultEnd = searchString.length;
+		return unescape(searchString.substring(resultStart, resultEnd));
+	}
+
+	function setupText() {
+		var textDiv = document.getElementById("text");
+		var searchString = window.location.search;
+		var heading1 = lookup(searchString, "heading1");
+		var heading2 = lookup(searchString, "heading2");
+		textDiv.innerHTML = heading1 + "<br>" + heading2;
+	}
+
+</script>
+</head>
+
+<body onLoad="setupText()">
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr>
+<td width="115px"><img src="../core/structure/images/logo.png" width="111" height="91"></td>
+<td valign="middle"><div id="text" align="center">Top line of text<br>Bottom line of text</div></td>
+<td width="115px"><img src="../core/structure/images/logo.png" width="111" height="91"></td>
+</tr></table>
+
+</body>
+</html>
