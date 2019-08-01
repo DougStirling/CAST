@@ -23,6 +23,15 @@ addVariation("seedWeightExpected", "The weight of the seeds of one species of tr
 
 //----------------------------------------------
 
+startExercise("exerciseNormalProg.NormalProbExternalApplet", 500, 600);
+
+addVariation("temperatureProb", "The maximum daily temperature in a city in January is approximately normally distributed with mean #mu# = #mean[index](10,15,20,25)##degrees#C and standard deviation #sigma# = #sd[](3,4,5)##degrees#C.\\nUse a statistics program to find the probability that the maximum temperature will be #cut-offs(-3:3:1)##degrees#C in one day (accurate to #requiredDecimals(4)# decimals).", "index(0:3)#questionType(0)#count()#intervalType(0:3)#varName(maximum temperature in day)#maxValue(99.999)#axis[index](-5 25 -5 5*0 30 0 5*5 35 5 5*10 40 10 5)", null, 0);
+addVariation("seedWeightProb", "The weight of the seeds of one species of tree has a normal distribution with mean #mu# = #mean[index](18,19,20,21)# grams and standard deviation #sigma# = #sd[](1,1.5,2)# grams.\\nUse a statistics program to find the probability that one seed from this type of tree has weight #cut-offs(-3:3:1)# grams (accurate to #requiredDecimals(4)# decimals).", "index(0:3)#questionType(0)#count()#intervalType(0:3)#varName(seed weight)#maxValue(99.999)#axis[index](12 24 12 2*13 25 14 2*14 26 14 2*15 27 16 2)", null, 0);
+addVariation("temperatureExpected", "The maximum daily temperature in a city in January is approximately normally distributed with mean #mu# = #mean[index](10,15,20,25)##degrees#C and standard deviation #sigma# = #sd[](3,4,5)##degrees#C.\\nUse a statistics program to find how many days out of #count[](5,10,15,20,25,30)# you would expect the maximum temperature to be #cut-offs(-3:3:1)##degrees#C, accurate to #requiredDecimals(3)# decimals.", "index(0:3)#questionType(1)#intervalType(0:2)#varName(maximum temperature in day)#maxValue(99.999)#axis[index](-5 25 -5 5*0 30 0 5*5 35 5 5*10 40 10 5)", null, 0);
+addVariation("seedWeightExpected", "The weight of the seeds of one species of tree has a normal distribution with mean #mu# = #mean[index](18,19,20,21)# grams and standard deviation #sigma# = #sd[](1,1.5,2)# grams.\\nIn a sample of #count[](5,10,15,20,25,30)# seeds, how many would you expect to have weight #cut-offs(-3:3:1)# grams? (Use a statistics program to find this, exact to #requiredDecimals(3)# decimals.)", "index(0:3)#questionType(1)#intervalType(0:3)#varName(seed weight)#maxValue(99.999)#axis[index](12 24 12 2*13 25 14 2*14 26 14 2*15 27 16 2)", null, 0);
+
+//----------------------------------------------
+
 startExercise("exerciseNormalProg.NormalZProbApplet", 500, 700);
 
 addVariation("temperatureProb", "The maximum daily temperature in a city in January is approximately normally distributed with mean #mu# = #mean[index](10,15,20,25)##degrees#C and standard deviation #sigma# = #sd[](3,4,5)##degrees#C.\\nWhat is the probability that the maximum temperature will be #cut-offs(-3:3:1)##degrees#C in one day?", "index(0:3)#questionType(0)#count()#intervalType(0:2)", null, 0);
@@ -45,6 +54,13 @@ startExercise("exerciseNormalProg.NormalInverseApplet", 500, 550);
 
 addVariation("temperature", "The maximum daily temperature in a city in January is approximately normally distributed with mean #mu# = #mean[index](10,15,20,25)##degrees#C and standard deviation #sigma# = #sd[](3,4,5)##degrees#C.\\nWhat is the daily maximum temperature that will not be reached in #percent(5:50)#% of days?", "index(0:3)#intervalType(0)#varName(maximum temperature in day)#maxValue(99.999)#axis[index](-5 25 -5 5*0 30 0 5*5 35 5 5*10 40 10 5)", null, 0);
 addVariation("temperature2", "The maximum daily temperature in a city in January is approximately normally distributed with mean #mu# = #mean[index](10,15,20,25)##degrees#C and standard deviation #sigma# = #sd[](3,4,5)##degrees#C.\\nWhat is the daily maximum temperature that will be exceeded in #percent(5:50)#% of days?", "index(0:3)#intervalType(1)#varName(maximum temperature in day)#maxValue(99.999)#axis[index](-5 25 -5 5*0 30 0 5*5 35 5 5*10 40 10 5)", null, 0);
+
+//----------------------------------------------
+
+startExercise("exerciseNormalProg.NormalInverseExternalApplet", 500, 550);
+
+addVariation("temperature", "The maximum daily temperature in a city in January is approximately normally distributed with mean #mu# = #mean[index](10,15,20,25)##degrees#C and standard deviation #sigma# = #sd[](3,4,5)##degrees#C.\\nFind the daily maximum temperature that will not be reached in #percent(5:50)#% of days, accurate to #requiredDecimals(3)# decimals.", "index(0:3)#intervalType(0)#varName(maximum temperature in day)#maxValue(99.999)#axis[index](-5 25 -5 5*0 30 0 5*5 35 5 5*10 40 10 5)", null, 0);
+addVariation("temperature2", "The maximum daily temperature in a city in January is approximately normally distributed with mean #mu# = #mean[index](10,15,20,25)##degrees#C and standard deviation #sigma# = #sd[](3,4,5)##degrees#C.\\nFind the daily maximum temperature that will be exceeded in #percent(5:50)#% of days, accurate to #requiredDecimals(3)# decimals.", "index(0:3)#intervalType(1)#varName(maximum temperature in day)#maxValue(99.999)#axis[index](-5 25 -5 5*0 30 0 5*5 35 5 5*10 40 10 5)", null, 0);
 
 //----------------------------------------------
 

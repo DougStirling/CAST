@@ -119,6 +119,78 @@
 </exercise>
 
 
+<exercise name='margConditJointExternalProbs'>
+	<description>Find marginal, conditional or joint prob from contin table</description>
+	<comment>A question is asked about a data set in the context of the data, corresponding to a joint, marginal or conditional probability.</comment>
+	<applet>exerciseCategProg.FindContinPropnExternalApplet</applet>
+	<width>450</width>
+	<height>650</height>
+	
+	<variable name="xVarName" type="string">Name for horizontal variable in table</variable>
+	<variable name="yVarName" type="string">Name for vertical variable in table</variable>
+	<variable name="xCategories" type="string_array">Categories for horizontal variable, X</variable>
+	<variable name="yCategories" type="string_array">Categories for vertical variable, Y</variable>
+	<variable name="counts" type="int_array">Counts for 1st x-category, followed by those for 2nd x-category, etc</variable>
+	<variable name="probType" type="int_choice(Joint probability#Marginal probability for X#Conditional probability for X|Y#Marginal probability for Y#Conditional probability for Y|X)" extra="true"></variable>
+	<variable name="criticalX" type="int" extra="true">Selected X-category</variable>
+	<variable name="criticalY" type="int" extra="true">Selected Y-category</variable>
+	
+	<template>
+		<question>The contingency table below describes categorical variables X and Y.\\nnAnswer the following question to #requiredDecimals(4)# decimals. </question>
+		<qnParam>xVarName(Variable X)#xCategories(X1 X2 X3)#yVarName(Variable Y)#yCategories(Y1 Y2 Y3)#counts(17 6 3 1 9 5 5 2 8)#dataName(Data)</qnParam>
+		<ending>#probType(0)#What proportion of values had X = #criticalX(0:2)# and Y = #criticalY(0:3)#?</ending>
+	</template>
+	
+	<variation>
+		<shortName>grief</shortName>
+		<longName>Grief and support for mothers after neonatal death</longName>
+		<question>The contingency table below describes the state of grief (I to IV) of 66 mothers who had suffered a neonatal death and the amount of support given to these mothers.\\nAnswer the following question to #requiredDecimals(4)# decimals. </question>
+		<qnParam>xVarName(Support)#xCategories(Good Adequate Poor)#yVarName(Grief state)#yCategories(Level_I Level_II Level_III Level_IV)#counts(17 6 3 1 9 5 5 2 8 1 4 5)#dataName(MotherGrief)</qnParam>
+		<ending>#probType(0)#What proportion of these mothers had #criticalX(0:2)# support and were also in grief state #apos##criticalY(0:3)##apos#?</ending>
+		<ending>#probType(1)#What proportion of these mothers had #criticalX(0:2)# support?</ending>
+		<ending>#probType(2)#What proportion of the mothers with grief state #apos##criticalY(0:3)##apos# had #criticalX(0:2)# support?</ending>
+		<ending>#probType(3)#What proportion of these mothers had grief level that was categorised as #apos##criticalY(0:3)##apos#?</ending>
+		<ending>#probType(4)#What proportion of the mothers with #criticalX(0:2)# support were classified as having grief at #apos##criticalY(0:3)##apos#?</ending>
+	</variation>
+	
+	<variation>
+		<shortName>marijuana</shortName>
+		<longName>Use of marijuana by students and their parents</longName>
+		<question>Four hundred and forty five college students were classified according to both frequency of marijuana use and parental use of alcohol and psychoactive drugs.\\nAnswer the following question to #requiredDecimals(4)# decimals. </question>
+		<qnParam>xVarName(Parent)#xCategories(Both One Neither)#yVarName(Student)#yCategories(Never Occasionally Regularly)#counts(17 11 19 68 44 51 141 54 40)#dataName(StudentDrugs)</qnParam>
+		<ending>#probType(0)#What proportion of the students had #criticalX(0:2)# of their parents who used alcohol or drugs and themselves #criticalY(0:2)# used marijuana?</ending>
+		<ending>#probType(1)#What proportion of the students had #criticalX(0:2)# of their parents who used alcohol or drugs?</ending>
+		<ending>#probType(2)#Of the students who #apos##criticalY(0:2)##apos# used marijuana, what proportion had #criticalX(0:2)# of their parents who used alcohol or drugs?</ending>
+		<ending>#probType(3)#What proportion of the students #apos##criticalY(0:2)##apos# used marijuana?</ending>
+		<ending>#probType(4)#Of the students with #criticalX(0:2)# of their parents who used drugs or alcohol, what proportion themselves #apos##criticalY(0:2)##apos# used marijuana?</ending>
+	</variation>
+	
+	<variation>
+		<shortName>waferDefects</shortName>
+		<longName>Defects in silicon wafers and production shift</longName>
+		<question>This data set describes the defects of four kinds that were detected in silicon wafers manufactured during three production shifts.\\nAnswer the following question to #requiredDecimals(4)# decimals. </question>
+		<qnParam>xVarName(Defect)#xCategories(A B C D)#yVarName(Shift)#yCategories(1 2 3)#counts(15 26 33 21 31 17 45 34 49 13 5 20)#dataName(DefectiveWafers)</qnParam>
+		<ending>#probType(0)#What proportion of the wafers were made in shift #criticalY(0:2)# and had defect #criticalX(0:3)#?</ending>
+		<ending>#probType(1)#What proportion of the wafers had defect #criticalX(0:3)#?</ending>
+		<ending>#probType(2)#Of the wafers made on shift #criticalY(0:2)#, what proportion had defect #criticalX(0:3)#?</ending>
+		<ending>#probType(3)#What proportion of the wafers were made on shift #criticalY(0:2)#?</ending>
+		<ending>#probType(4)#What proportion of the wafers with defect #criticalX(0:3)# were made on shift #criticalY(0:2)#?</ending>
+	</variation>
+	
+	<variation>
+		<shortName>fog</shortName>
+		<longName>Forecast of fog and actual weather</longName>
+		<question>Weather forecasts are often inaccurate. This data set describes the occasions during a year in which fog was predicted for the following day and the actual occurrence of fog on that day.\\nAnswer the following question to #requiredDecimals(4)# decimals. </question>
+		<qnParam>xVarName(Actual)#xCategories(Fog No_fog)#yVarName(Forecast)#yCategories(Fog No_fog)#counts(28 17 5 315)#dataName(WeatherForecasts)</qnParam>
+		<ending>#probType(0)#On what proportion of days was the forecast #criticalY(0:1)# and had the actual weather #criticalX(0:1)#?</ending>
+		<ending>#probType(1)#On what proportion of days was there #criticalX(0:1)#?</ending>
+		<ending>#probType(2)#On what proportion of the days with forecast #criticalY(0:1)# was the actual weather #criticalX(0:1)#?</ending>
+		<ending>#probType(3)#For what proportion of days was the forecast #criticalY(0:1)#?</ending>
+		<ending>#probType(4)#Of the days in which the actual weather was #criticalX(0:1)#, on what proportion was it forecast that there would be #criticalY(0:1)#?</ending>
+	</variation>
+</exercise>
+
+
 <exercise name='continExpectedCount'>
 	<description>Find the expected count for a contingency table cell, assuming independence</description>
 	<comment>A contingency table is shown and a question asks for the expected count in one cell of the table, assuming independence.</comment>

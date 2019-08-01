@@ -162,6 +162,45 @@
 </exercise>
 
 
+<exercise name='findLsEquation'>
+	<description>Find least squares equation.</description>
+	<comment>A scatterplot is shown and the data should be exported and the equation of the least squares line found accurately.</comment>
+	<applet>exerciseBivarProg.FindSlopeInterceptExternalApplet</applet>
+	<width>500</width>
+	<height>600</height>
+	
+	<variable name="xVarName" type="string(16)">Name of X variable</variable>
+	<variable name="xAxis" type="axis">Axis for x</variable>
+	<variable name="yVarName" type="string(16)">Name of Y variable</variable>
+	<variable name="yAxis" type="axis">Axis for y</variable>
+	<variable name="count" type="int(1)">Number of crosses</variable>
+	<variable name="yMeanSD" type="meanSd"></variable>
+	<variable name="corr" type="double">Correlation between X and Y</variable>
+	<variable name="dataName" type="string(16)">File name for exported data</variable>
+	<variable name="requiredInterceptDecimals" type="int(1)">The intercept should be exact to this number of decimals</variable>
+	<variable name="requiredSlopeDecimals" type="int(1)">The slope should be exact to this number of decimals</variable>
+	
+	<template>
+		<question>The scatterplot below describes #count(20)# values of X and Y.\\nFind the equation of the least squares line. Give the intercept to #requiredInterceptDecimals(2)# decimals and the slope to #requiredSlopeDecimals(2)# decimals.</question>
+		<qnParam>xVarName(Length, mm)#xAxis(10 30 10 5)#yVarName(Width, mm)#yAxis(5 15 6 2)#yMeanSD(0.8:1:2.5)#corr[](-0.99,-0.8,0,0.8,0.99)#dataName(data)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>leaves</shortName>
+		<longName>Length and width of leaves</longName>
+		<question>A sample of #count[](20,50,100)# leaves was collected from a bush. A scatterplot of leaf length and width is shown below.\\nFind the equation of the least squares line. Give the intercept to #requiredInterceptDecimals(2)# decimals and the slope to #requiredSlopeDecimals(2)# decimals.</question>
+		<qnParam>xVarName(Length, mm)#xAxis[](10 30 10 5*60 100 60 10*100 200 100 20)#yVarName(Width, mm)#yAxis[](5 15 6 2*30 50 30 5*50 100 50 10)#yMeanSD(0.8:1:2.5)#corr[](-0.99,-0.97,-0.95,-0.93,-0.9,-0.8,-0.6,-0.4,0,0.4,0.6,0.8,0.9,0.93,0.95,0.97,0.99)#dataName(Leaf measurements)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>tomatoes</shortName>
+		<longName>Weight and sugar content of tomatoes</longName>
+		<question>Researchers measured the weight and sugar content of a sample of #count[](20,50,100)# tomatoes of one variety. A scatterplot of these two measurements is shown below.\nFind the equation of the least squares linet. Give the intercept to #requiredInterceptDecimals(2)# decimals and the slope to #requiredSlopeDecimals(2)# decimals.</question>
+		<qnParam>xVarName(Weight, gm)#xAxis[](150 250 160 20*100 200 100 20)#yVarName(Sugar, %)#yAxis(2.5 3.5 2.6 0.2)#yMeanSD(0.8:1:2.5)#corr[](-0.99,-0.97,-0.95,-0.93,-0.9,-0.8,-0.6,-0.4,0,0.4,0.6,0.8,0.9,0.93,0.95,0.97,0.99)#dataName(Tomato measurements)</qnParam>
+	</variation>
+</exercise>
+
+
 <exercise name='calcEqnFrom2Points'>
 	<description>Calculate the equation of a least squares line from two points on it</description>
 	<comment>A least squares line is drawn and the coordinates of two points on it are displayed. The equation of the line should be found from these points.\\nTwo templates are supplied to help calculate the slope and intercept.</comment>
@@ -265,6 +304,65 @@
 </exercise>
 
 
+<exercise name='interpretSlopeInterceptExternal'>
+	<description>Pick correct interpretation of the LS slope and intercept</description>
+	<comment>This is a multiple choice question that gives a least squares line and four possible interpretations of the slope or intercept</comment>
+	<applet>exerciseBivarProg.BetaInterpExternalApplet</applet>
+	<width>500</width>
+	<height>600</height>
+	
+	<variable name="xVarName" type="string(10)">Name of explanatory variable</variable>
+	<variable name="yVarName" type="string(10)">Name of response variable</variable>
+	<variable name="dataName" type="string(10)">Name of exported CSV data file</variable>
+	<variable name="count" type="int">Number of individuals in data set</variable>
+	<variable name="xMean" type="double">Mean for generating x-values</variable>
+	<variable name="xSd" type="double">Sd for generating x-values</variable>
+	<variable name="xDecimals" type="int">x-values are rounded to this number of decimals</variable>
+	<variable name="modelSlope" type="double">Slope of line for generating Y</variable>
+	<variable name="modelIntercept" type="double">Intercept of line for generating Y</variable>
+	<variable name="modelErrorSd" type="double">Error standard deviation for generating Y</variable>
+	<variable name="yDecimals" type="int">y-values are rounded to this number of decimals</variable>
+	<variable name="slopeDecimals" type="int">Number of decimals output for the least squares slope</variable>
+	<variable name="interceptDecimals" type="int">Number of decimals output for the least squares intercept</variable>
+	<variable name="qnParam" type="int_choice(Value in questions is the intercept#Value in questions is the slope)"></variable>
+	<variable name="paramOrder" type="int_choice(y = a + bx#y = bx + a)">The LS line may be output in the answer in either order.</variable>
+	<variable name="qnText" type="string_array(50)">Four choices for interpretation. %% is replaced by actual slope or intercept. Order is slope (correct, wrong), intercept (correct, wrong)</variable>
+	
+	<template>
+		<question>All students in a class was asked how many hours they had studied before a Statistics test.\\nThe least squares line below describes the relationship between the mean exam mark and the hours of study. Which of the following statements would be the best interpretation of the parameters?</question>
+		<qnParam>slope(0.10:0.30)#intercept(3.0:6.0)#xVarName(X)#yVarName(Y)#qnParam(0:1)#paramOrder(0:1)#qnText(If_X_increases_by_1,_Y_is_expected_to_increase by_%%. If_Y_is_one_higher,_X_is_expected_to_be_%%_higher. If_X_is_zero,_we_would_expect_Y_to_be_%%. If_Y_is_zero,_we_would_expect_X_to_be_%%.)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>markStudy</shortName>
+		<longName>Student marks and time spent studying</longName>
+		<question>All #count[](20,30,50,100)# students in a class were asked how many hours they had studied before a Statistics test.\\nFind the least squares line describing the relationship between the mean exam (response) mark and the hours of study (explanatory variable). Which of the following statements would be the best interpretation of the parameters?</question>
+		<qnParam>xVarName(study)#yVarName(mark)#dataName(studyMark)#xMean(20)#xSd(9)#xDecimals(1)#yDecimals(0)#modelSlope(0.2)#modelIntercept(4.0)#modelErrorSd(2.5)#interceptDecimals(1)#slopeDecimals(1)#qnParam(0:1)#paramOrder(0)#qnText(A_student_who_studies_1_hour_more_than_another_is_expected_to_get_%%_more_marks_in_the_test. A_student_who_gets_one_more_mark_than_another_in_the_test_is_expected_to_have_studied_for_%%_more_hours. A_student_who_did_not_study_would_be_expected_to_get_%%_marks_in_the_test. A_student_who_got_zero_marks_in_the_test_is_expected_to_have_studied_for_%%_hours.)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>markStudy2</shortName>
+		<longName>Student marks and time spent studying (variation 2)</longName>
+		<question>All #count[](20,30,50,100)# students in a class were asked how many hours they had studied before a Statistics test.\\nFind the least squares line describing the relationship between the hours of study (response) and the mean exam mark (explanatory variable). Which of the following statements would be the best interpretation of the parameters?</question>
+		<qnParam>xVarName(mark)#yVarName(study)#dataName(markStudy)#xMean(10)#xSd(4)#modelSlope(2.50)#modelIntercept(0.0)#xDecimals(0)#yDecimals(0)#modelErrorSd(7)#interceptDecimals(1)#slopeDecimals(1)#qnParam(0:1)#paramOrder(0)#qnText(A_student_who_gets_one_more_mark_than_another_in_the_test_is_expected_to_have_studied_for_%%_more_hours. A_student_who_studies_1_hour_more_than_another_is_expected_to_get_%%_more_marks_in_the_test. A_student_who_got_zero_marks_in_the_test_is_expected_to_have_studied_for_%%_hours. A_student_who_did_not_study_would_be_expected_to_get_%%_marks_in_the_test.)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>computerUse</shortName>
+		<longName>Computer use and years of education</longName>
+		<question>A survey was conducted in which #count[](100,200)# adults were asked to report the number of hours per month that they spent on a computer and their number of years of education.\\nFind the least squares line describing the relationship between the mean computer hours (response) and years of education (explanatory variable). Which of the following statements would be the best interpretation of the parameters?</question>
+		<qnParam>xVarName(education)#yVarName(computers)#dataName(computerEducation)#xMean(14)#xSd(2)#xDecimals(0)#modelSlope(0.75)#modelIntercept(8.0)#modelErrorSd(7.0)#yDecimals(1)#interceptDecimals(1)#slopeDecimals(1)#qnParam(0:1)#paramOrder(0)#qnText(An_adult_who_has_1_more_year_of_education_than_another_is_expected_to_spend_%%_more_hours_per_week_on_a_computer. An_adult_who_spends_1_more_hour_per_week_on_a_computer_than_another_is_expected_to_have_had_%%_more_years_of_education. An_adult_who_has_had_no_years_of_education_would_be_expected_to_spend_%%_hours_per_week_on_a_computer. An_adult_who_spends_no_hours_per_week_on_a_computer_is_expected_to_had_%%_years_of_education.)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>computerUse2</shortName>
+		<longName>Computer use and years of education (variation 2)</longName>
+		<question>A survey was conducted in which #count[](100,200)# adults were asked to report the number of hours per month that they spent on a computer and their number of years of education.\\nFind the least squares line describing the relationship between the years of education (response) and the mean computer hours (explanatory). Which of the following statements would be the best interpretation of the parameters?</question>
+		<qnParam>xVarName(computers)#yVarName(education)#dataName(computersEducation)#xMean(8)#xSd(3)#xDecimals(1)#modelSlope(0.50)#modelIntercept(10.0)#modelErrorSd(1.5)#yDecimals(0)#slopeDecimals(2)#interceptDecimals(1)#qnParam(0:1)#paramOrder(0:1)#qnText(An_adult_who_spends_1_more_hour_per_week_on_a_computer_than_another_is_expected_to_have_had_%%_more_years_of_education. An_adult_who_has_1_more_year_of_education_than_another_is_expected_to_spend_%%_more_hours_per_week_on_a_computer. An_adult_who_spends_no_hours_per_week_on_a_computer_is_expected_to_had_%%_years_of_education. An_adult_who_has_had_no_years_of_education_would_be_expected_to_spend_%%_hours_per_week_on_a_computer.)</qnParam>
+	</variation>
+</exercise>
+
+
 <exercise name='estimateResid'>
 	<description>Estimate a residual by eye from scatterplot and LS line</description>
 	<comment>This is a very simple question that only requires estimation of the vertical distance of a cross from the least squares line.</comment>
@@ -355,15 +453,56 @@
 	<variation>
 		<shortName>leaves</shortName>
 		<longName>Length and width of leaves</longName>
-		<question>A sample of #count[](20,50,100)# leaves was collected from a bush. The least squares line showing the relationship between leaf width (mm) and length (mm) is shown above their scatterplot.\nPredict the width of a leaf whose length is #xValue(10:35)# mm.</question>
+		<question>A sample of #count[](20,50,100)# leaves was collected from a bush. The least squares line showing the relationship between leaf width (mm) and length (mm) is shown above their scatterplot.\\nPredict the width of a leaf whose length is #xValue(10:35)# mm.</question>
 		<qnParam>xVarName(Length)#xAxis(10 35 10 5)#yVarName(Width)#yAxis(5 17 6 2)#corr[](-0.9,-0.8,-0.7,-0.5,-0.3,0.3,0.5,0.7,0.8,0.9)#decimals(2)#interceptDecimals(1)#slopeDecimals(2)</qnParam>
 	</variation>
 	
 	<variation>
 		<shortName>tomatoes</shortName>
 		<longName>Weight and sugar content of tomatoes</longName>
-		<question>Researchers measured the weight (gm) and sugar content (%) of a sample of #count[](20,50,100)# tomatoes of one variety. The least squares line is shown above the scatterplot of the data.\nPredict the sugar content of a tomato whose weight is #xValue(150:200)# gm.</question>
+		<question>Researchers measured the weight (gm) and sugar content (%) of a sample of #count[](20,50,100)# tomatoes of one variety. The least squares line is shown above the scatterplot of the data.\\nPredict the sugar content of a tomato whose weight is #xValue(150:200)# gm.</question>
 		<qnParam>xVarName(Weight)#xAxis(150 250 160 20)#yVarName(Sugar)#yAxis(2.5 3.7 2.6 0.2)#corr[](-0.9,-0.8,-0.7,-0.5,-0.3,0.3,0.5,0.7,0.8,0.9)#decimals(3)#interceptDecimals(1)#slopeDecimals(3)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='predictYFromXExternal'>
+	<description>Predict the response at X=x from eqn of LS line</description>
+	<comment>A scatterplot of data is shown with least squares line superimposed. The data should be exported and the least squares line found; it should be used to predict Y for some value of X.</comment>
+	<applet>exerciseBivarProg.FindPredictionExternalApplet</applet>
+	<width>470</width>
+	<height>640</height>
+	
+	<variable name="xVarName" type="string(10)">Name of explanatory variable</variable>
+	<variable name="yVarName" type="string(10)">Name of response variable</variable>
+	<variable name="xAxis" type="axis">Scale for x-axis</variable>
+	<variable name="yAxis" type="axis">Scale for y-axis</variable>
+	<variable name="xValue" type="double">X-value at which prediction is required.</variable>
+	<variable name="corr" type="double">Correlation between X and Y in scatterplot</variable>
+	<variable name="count" type="int(3)">Number of values in scatterplot</variable>
+	<variable name="decimals" type="int(0)">Decimals used for prediction in solutions</variable>
+	<variable name="interceptDecimals" type="int(0)">Decimals for intercept given by the LS line in the answer</variable>
+	<variable name="slopeDecimals" type="int(0)">Decimals for slope given by the LS line in the answer</variable>
+	<variable name="xDecimals" type="int(0)">Decimals for exported x-values</variable>
+	<variable name="dataName" type="string(10)">Name of exported CSV file</variable>
+	
+	<template>
+		<question>The least squares line below shows the relationship between Y and X for #count[](20,50,100)# individuals.\nPredict the value of Y for an individual with X = #xValue(10:35)#.</question>
+		<qnParam>xVarName(Explanatory variable, X)#xAxis(10 35 10 5)#yVarName(Response, Y)#yAxis(5 17 6 2)#corr(-0.7)#decimals(2)#interceptDecimals(1)#slopeDecimals(2)#dataName(data)#xDecimals(2)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>leaves</shortName>
+		<longName>Length and width of leaves</longName>
+		<question>A sample of #count[](20,50,100)# leaves was collected from a bush. Export the data and find the least squares line regressing leaf width (mm) against the explanatory variable length (mm).\\nGive the least squares prediction of the width of a leaf whose length is #xValue(10:35)# mm, accurate to #decimals(2)# decimals.</question>
+		<qnParam>xVarName(Length)#xAxis(10 35 10 5)#yVarName(Width)#yAxis(5 17 6 2)#corr[](-0.9,-0.8,-0.7,-0.5,-0.3,0.3,0.5,0.7,0.8,0.9)#interceptDecimals(3)#slopeDecimals(3)#dataName(leaves)#xDecimals(2)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>tomatoes</shortName>
+		<longName>Weight and sugar content of tomatoes</longName>
+		<question>Researchers measured the weight (gm) and sugar content (%) of a sample of #count[](20,50,100)# tomatoes of one variety. Export the data then find the least squares line regressing weight against sugar content.\\nGive the least squares prediction of the sugar content of a tomato whose weight is #xValue(150:200)# gm, accurate to #decimals(3)# decimals.</question>
+		<qnParam>xVarName(Weight)#xAxis(150 250 160 20)#yVarName(Sugar)#yAxis(2.5 3.7 2.6 0.2)#corr[](-0.9,-0.8,-0.7,-0.5,-0.3,0.3,0.5,0.7,0.8,0.9))#interceptDecimals(4)#slopeDecimals(5)#dataName(tomatoes)#xDecimals(1)</qnParam>
 	</variation>
 </exercise>
 

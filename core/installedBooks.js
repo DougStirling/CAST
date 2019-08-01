@@ -40,3 +40,9 @@ addBook('business_old', 'core', 'Business Student Version Without Videos', 'This
 
 addBook('esiac', 'Climatology course (University of Reading)', 'CAST for Climatology: Exploring Data', 'This is the first of four e-books that accompany the four levels of a course run by the University of Reading for climatologists. It introduces some simple ways to display and summarise data.');
 addBook('fr_esiac', 'Climatology course (University of Reading)', 'CAST for Climatology: Exploring Data', 'This is the first of four e-books that accompany the four levels of a course run by the University of Reading for climatologists. It introduces some simple ways to display and summarise data.');
+
+addBook('exercisesR', 'core', 'CAST Exercises', 'This is an e-book containing interactive exercises');
+
+addBook('idems_prob', 'idems', 'Introduction to Probability book', 'This e-book introduces some of the probability theory that underlies statisticals.');
+
+addBook('idems_data', 'idems', 'Descriptive Statistics book', 'This is an introductory e-book focusing on descriptive statistics with data sets and scenarios from a wide range of applications.');

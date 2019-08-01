@@ -1,0 +1,510 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>4. Continuous Distributions</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/maths/mathStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/maths/theorems.js"></script>
+  <script src="../../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 4 &nbsp; Continuous Distributions</h1>
+<h1 class="sectionName">4.1 &nbsp; Finding probabilities</h1>
+<h2 class="pageName">4.1.1 &nbsp; Probabilities by integration</h2>
+<p class="heading">Probabilities as areas</p>
+<p>The distributions of a continuous random variable is defined by a type of histogram called a <strong>probability density function</strong> (pdf), with the following properties</p>
+<ul>
+	<li>\(f(x) \ge 0\) for all \(x\)</li>
+	<li>The total area under \(f(x)\) is 1.0</li>
+</ul>
+<p>Based on the properties of histograms, the probability of a value between any two constants is the <strong>area</strong> under the pdf above this range of values.</p>
+<p class="eqn"><img src="../../../en/continuousProbs/images/s_densityAreas.png" width="461" height="320"/></p>
+<p class="heading">Probabilities by integration</p>
+<p>Since probability density functions can usually be expressed as simple mathematical functions,  these areas can be found as <strong>integrals</strong>,</p>
+\[
+P(a \lt X \lt b) \;\; = \; \; \int_a^b {f(x)}\; dx
+\]
+
+
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Properties of a probability density function</p>
+		<p>A function \(f(x)\) can be the probability density function of a continuous random variable if and only if</p>
+\[
+f(x) \;\; \ge \; \; 0 \quad\quad \text{for all } x \text{, and}
+\]
+\[
+\int_{-\infty}^{\infty} {f(x)}\; dx \;\; = \; \; 1
+\]
+	<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+ 
+
+
+<h2 class="pageName">4.1.2 &nbsp; Rectangular distribution</h2>
+<p>The simplest kind of continuous distribution is a <strong>rectangular</strong> distribution (also called a <strong>continuous uniform</strong> distribution).</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>A random variable, \(X\), is said to have a <strong>rectangular</strong> distribution with parameters \(a\) and \(b\)</p>
+\[
+X \;\; \sim \; \; \RectDistn(a, b)
+\]
+	<p>if its probability density function is</p>
+\[
+f(x) = \begin{cases}
+\frac {\large 1} {\large b-a} &amp; \text{for } a \lt x \lt b \\[0.2em]
+0 &amp; \text{otherwise}
+\end{cases}
+\]
+</div>
+<p>Probabilities for rectangular random variables can be easily found using geometry.</p>
+<p class="eqn"><img class="svgImage" src="../../../en/continuousProbs/images/rectangularProb.png" width="342" height="243"></p>
+
+<p>Equivalently, using integration,</p>
+
+\[ \begin{align}
+P(c \lt X \lt d) \;\; &amp;= \; \; \int_c^d {f(x)}\; dx \\
+&amp;= \; \; \int_c^d {\frac 1 {b-a}}\; dx \\
+&amp;=\;\; \frac {d-c} {b-a}
+\end{align} \]
+
+
+
+<div class="example">
+	
+	<p class="exampleHeading">Example</p>
+
+<p>If \(X \;\; \sim \; \; \RectDistn(0, 10)\),</p>
+\[
+P(4 \lt X \lt 7) \;\;=\;\; \frac {7-4} {10-0} \;\;=\;\; 0.3
+\] </div>
+
+
+<h2 class="pageName">4.1.3 &nbsp; Other examples</h2>
+<p>In the next two examples, integration is  used to find probabilities.</p>
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Question</p>
+<p>If a continuous random variable, \(X\), has probability density function</p>
+\[
+f(x) = \begin{cases}
+1 - \dfrac x 2 &amp; \quad \text{for } 0 \lt x \lt 2 \\[0.2em]
+0 &amp; \quad \text{otherwise}
+\end{cases}
+\]
+<p>what is the probability of getting a value less than 1?</p>
+<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+<p>The next example involves a distribution called an<strong> exponential</strong> distribution; practical applications of this distribution will be described in the next chapter.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Question</p>
+		<p>If a continuous random variable, \(X\), has probability density function</p>
+		\[
+		f(x) = \begin{cases}
+		4\;e^{-4x} &amp; \quad \text{for } x \ge 0\\[0.2em]
+		0 &amp; \quad \text{otherwise}
+		\end{cases}
+		\]
+		<p>what is the probability of getting a value less than 1?</p>
+		<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">4.1.4 &nbsp; Cumulative distribution function</h2>
+<p>The cumulative distribution function has the same definition for a continuous random variable as for a discrete one.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>The <strong>cumulative distribution function</strong> (CDF) for a continuous random variable \(X\) is the function</p>
+	\[F(x) \;=\; P(X \le x)\]
+</div>
+
+<p>This probability can be expressed as an integral,</p>
+
+\[F(x) \;\; = \; \; \int_{-\infty}^x f(t)\;dt\]
+<p>Note that this also implies that</p>
+\[f(x) \;\; = \; \; \frac {d}{dx} F(x)\]
+
+<p>All cumulative distribution functions  monotonically rises from zero to one. However whereas a discrete distribution's CDF is a step function, that of a continuous distribution is a smooth function.</p>
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Question: Rectangular distribution</p>
+<p>Sketch the cumulative distribution function of a random variable with a rectangular distribution, \(X \sim  \RectDistn(1, 5)\).</p>
+</div><div class="question">
+		<p class="questionTitle">Question: Exponential distribution</p>
+		<p>If \(X\) has probability density function</p>
+\[
+		f(x) = \begin{cases}
+		4\;e^{-4x} &amp; \quad \text{for } x \ge 0\\[0.2em]
+		0 &amp; \quad \text{otherwise}
+		\end{cases}
+	\]	
+		<p>what is its cumulative distribution function?</p>
+		<p class="questionNote">(Both solved in full version)</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">4.1.5 &nbsp; Quantiles</h2>
+<p>A cumulative probability, \(P(X \le x)\), can be found by integration. It is sometimes useful to work in the opposite direction —  given  a cumulative probability, what is the corresponding value of \(x\)?</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>The <strong>\(p\)'th quantile</strong> of a continuous distribution is the value, \(x\), such that</p>
+\[
+P(X \le x) \;\; = \; \; p
+\]</div>
+
+<p>When \(p\) is expressed as a percentage, the value is called the \(100p\)'th <strong>percentile</strong>.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<ul>
+		<li>The 50th percentile of a continuous distribution is the distribution's <strong>median</strong>,</li>
+		<li>The 25th percentile is the <strong>lower quartile</strong>, and</li>
+		<li>The 75th percentile is the <strong>upper quartile</strong>.</li>
+	</ul>
+</div>
+<p>These three values split the probability density function into four equal areas.<strong></strong></p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Question</p>
+		<p>What are the median and quartiles of the \(\RectDistn(1, 5)\) distribution?</p>
+		<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+<p>The next example is a little harder.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Question</p>
+		<p>Find a formula for the \(p\)'th quantile of the exponential distribution with probability density function</p>
+\[
+		f(x) = \begin{cases}
+		4\;e^{-4x} &amp; \text{for } x \ge 0\\[0.2em]
+		0 &amp; \text{otherwise}
+		\end{cases}
+	\]	
+		<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+<h1 class="sectionName breakBefore">4.2 &nbsp; Mean and variance</h1>
+<h2 class="pageName">4.2.1 &nbsp; Expected values</h2>
+<p>For an infinitesimally small interval of width \(\delta x\),</p>
+\[
+P(x \lt X \lt x+\delta x) \;\approx\; f(x) \times 
+\delta x\]
+<p class="eqn"><img class="svgImage" src="../../../en/continuousMeanVar/images/sliceProb.png" width="322" height="239"></p>
+<p>If the whole range of possible x-values is split into  such slices, the definition of  an expected value for a <strong>discrete</strong> random variables would give</p>
+\[
+E[X] \;\approx\; \sum {x \times f(x) \; 
+\delta x}\]
+<p>In the limit, this summation becomes an integral, giving us the following definition.</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>The <strong>expected value</strong> of a continuous random variable with probability density function \(f(x)\) is</p>
+\[
+E[X] \;=\; \int_{-\infty}^{\infty} {x \times f(x) \; 
+d x}\]</div>
+
+<p>This can be generalised:</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>If \(X\) is  a continuous random variable with probability density function \(f(x)\), the expected value of any function \(g(X)\) is</p>
+	\[
+	E\big[g(X)\big] \;=\; \int_{-\infty}^{\infty} {g(x) \times f(x) \; 
+d x}\]</div>
+
+
+<h2 class="pageName">4.2.2 &nbsp; Mean and variance</h2>
+<p>We define the mean and variance of a continuous distribution in a similar way to those of a discrete distribution.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+<p>The <strong>mean</strong> of a continuous random variable is</p>
+\[
+E[X] \;=\; \mu
+\]
+<p>and its <strong>variance</strong> is</p>
+\[
+\Var(X) \;=\; \sigma^2 \;=\; E \left[(X - \mu)^2 \right]
+\]
+</div>
+
+<p>Their interpretations are also similar.</p>
+<ul>
+	<li>The mean can be interpreted as a 'typical value' from the distribution, and</li>
+	<li>the square root of the variance (also called the distribution's <strong>standard deviation</strong>) is a 'typical distance from the mean'.</li>
+</ul>
+<p>The following result is often useful for evaluating a continuous distribution's variance.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Alternative formula for the variance</p>
+		<p>A continuous random variable's variance can be written as</p>
+		\[
+		\Var (X) \;=\; E \left[(X - \mu)^2 \right]
+		\;=\; E[X^2] - \left( E[X] \right)^2
+		\] </div>
+</div>
+
+
+
+<h2 class="pageName">4.2.3 &nbsp; Example</h2>
+
+<p>In the next example, you should find the mean and variance of the distribution  by integration.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Question</p>
+		<p>What are the mean and variance of the \(\RectDistn(a, b)\) distribution?</p>
+		<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+
+
+<h1 class="sectionName breakBefore">4.3 &nbsp; Random samples</h1>
+<h2 class="pageName">4.3.1 &nbsp; Independence and random samples</h2>
+<p>The same definition of independence holds for both discrete and continuous random variables.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+<p>Two  random variables, \(X\) and \(Y\), are independent if all events about the value of \(X\) are independent of all events about the value of \(Y\).</p>
+</div>
+<p>Independence of continuous random variables is usually deduced from the way that the variables are measured rather than from  mathematical calculations. For example,</p>
+<ul>
+	<li>If blood pressures are recorded from two patients admitted to hospital after heart attacks, we can argue that these variables should be unrelated and hence independent.</li>
+</ul>
+<p class="heading">Characterisation of independence</p>
+<p>For  independent continuous random variables, \(X\) and \(Y\),</p>
+
+\[ \begin{align}
+P(x \lt X \lt x+\delta x &amp;\textbf{ and } y \lt Y \lt y+\delta y) \\
+&amp;=\;\; P(x \lt X \lt x+\delta x) \times P(y \lt Y \lt y+\delta y) \\
+&amp;\approx\;\; f_X(x)\;f_Y(y) \times  \delta x \; \delta y
+\end{align} \]
+
+<p>so</p>
+\[
+P(X \approx x \textbf{ and } Y \approx y) \;\; \propto \;\; f_X(x)\;f_Y(y)
+\]
+<p>This is closely related to the corresponding result for two independent discrete random variables,</p>
+\[
+P(X=x \textbf{ and } Y=y) \;\;=\;\; p_X(x) \times p_Y(y)
+\]
+
+<p class="heading">Random samples</p>
+<p>A collection of \(n\) independent identically distributed  random variables from the same distribution is called a <strong>random sample</strong>.</p>
+<p>Extending our earlier characterisation of independence of <strong>two</strong> continuous random variables, </p>
+\[
+		P(X_1 \approx x_1, X_2 \approx x_2, ..., X_n \approx x_n) \;\; \propto \;\; \prod_{i=1}^n f(x_i)
+		\]
+<p>This is again closely related to the corresponding formula for a random sample from a discrete distribution</p>
+\[
+		P(X_1 = x_1, X_2 = x_2, ..., X_n = x_n) \;\; = \;\; \prod_{i=1}^n p(x_i)
+		\]
+
+
+<h2 class="pageName">4.3.2 &nbsp; Distribution of sample sum and mean</h2>
+<p>The results that we showed earlier about sums and means of discrete random variables also hold for variables with continuous distributions. We simply repeat them here.</p>
+
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Linear combination of independent variables</p>
+		<p>If the means of two independent  random variables, \(X\) and \(Y\), are \(\mu_X\) and \(\mu_Y\) and their variances are \(\sigma_X^2\) and \(\sigma_Y^2\), then the linear combination \((aX + bY)\) has mean and variance</p>
+		\[ \begin {align}
+		E[aX + bY] &amp; = a\mu_X + b\mu_Y \\[0.4em]
+		\Var(aX + bY) &amp; = a^2\sigma_X^2 + b^2\sigma_Y^2
+		\end {align} \] </div>
+		
+	<div class="theorem">
+		<p class="theoremTitle">Sum of a random sample</p>
+		<p>If \(\{X_1, X_2, ..., X_n\}\) is a random sample of <em>n</em> values from any  distribution with mean \(\mu\) and variance \(\sigma^2\), then the sum of the values has mean and variance</p>
+		\[\begin{aligned}
+		E\left[\sum_{i=1}^n {X_i}\right] &amp; \;=\; n\mu \\
+		\Var\left(\sum_{i=1}^n {X_i}\right) &amp; \;=\; n\sigma^2
+	\end{aligned} \] </div>
+	
+	<div class="theorem">
+		<p class="theoremTitle">Sample mean</p>
+		<p>If \(\{X_1, X_2, ..., X_n\}\) is a random sample of <em>n</em> values from any  distribution with mean \(\mu\) and variance \(\sigma^2\), then the sample mean has a distribution with mean and variance</p>
+		\[\begin{aligned}
+		E\big[\overline{X}\big] &amp; \;=\; \mu \\
+		\Var\big(\overline{X}\big) &amp; \;=\; \frac {\sigma^2} n
+		\end{aligned} \] </div>
+		
+	<div class="theorem">
+		<p class="theoremTitle">Central Limit Theorem (informal)</p>
+		<p>If \(\{X_1, X_2, ..., X_n\}\) is a random sample of <em>n</em> values from any distribution with mean \(\mu\) and variance \(\sigma^2\),</p>
+		\[\begin{aligned}
+		\sum_{i=1}^n {X_i} &amp; \;\; \xrightarrow[n \rightarrow \infty]{} \;\; \NormalDistn(n\mu, \;\;\sigma_{\Sigma X}^2=n\sigma^2) \\
+		\overline{X} &amp; \;\; \xrightarrow[n \rightarrow \infty]{} \; \; \NormalDistn(\mu, \;\;\sigma_{\overline X}^2 = \frac {\sigma^2} n)
+		\end{aligned} \] </div>
+</div>
+
+
+
+<h1 class="sectionName breakBefore">4.4 &nbsp; Normal distribution</h1>
+<h2 class="pageName">4.4.1 &nbsp; Standard normal distribution</h2>
+<p>The family of normal distributions is  flexible enough to be used as a model for many practical variables.</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>A random variable, \(X\), is said to have a <strong>normal</strong> distribution,</p>
+\[
+X \;\; \sim \; \; \NormalDistn(\mu,\; \sigma^2)
+\]
+<p>if its probability density function is</p>
+\[
+f(x) \;\;=\;\; \frac 1{\sqrt{2\pi}\;\sigma} e^{- \frac{\large (x-\mu)^2}{\large 2 \sigma^2}} \qquad \text{for } -\infty \lt x \lt \infty
+\]</div>
+
+<p>Normal distributions are symmetric and the two parameters only affect the centre and spread of the distribution.</p>
+<p class="eqn"><img class="svgImage" src="../../../en/normalDistn/images/normalDensity.gif" width="498" height="145"> </p>
+<p class="heading">Standard normal distribution</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>A <strong>standard normal</strong> distribution is one whose parameters are \(\mu = 0\) and \(\sigma = 1\),</p>
+\[
+	Z \;\; \sim \; \; \NormalDistn(0,\; 1)
+	\]
+<p>A random variable, \(Z\) with a standard normal distribution is often called a <strong>z-score</strong>.</p>
+</div>
+<p>If \(Z\) has a  standard normal distribution, its pdf has a particularly simple form:</p>
+\[
+f(z) \;\;=\;\; \frac 1{\sqrt{2\pi}} e^{- \frac{\large z^2}{\large 2}} \qquad \text{for } -\infty \lt x \lt \infty
+\] 
+
+
+<h2 class="pageName">4.4.2 &nbsp; Mean and variance</h2>
+<p>The mean and variance of a general normal distribution, can be found from those of the standard normal distribution.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Mean and variance of standard normal distribution</p>
+<p>If \(Z \sim \NormalDistn(0,\; 1)\), its mean and variance are</p>
+\[
+	E[Z] \;=\; 0 \spaced{and} \Var(Z) \;=\; 1
+	\]
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p>A change of variable, \(z = \frac {x-\mu}{\sigma}\), can be used to find the mean and variance of a general normal distribution  from this result.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Mean and variance of a general normal distribution</p>
+		<p>If \(X \sim \NormalDistn(\mu,\; \sigma^2)\), its mean and variance are</p>
+		\[
+		E[X] \;=\; \mu \spaced{and} \Var(X) \;=\; \sigma^2
+		\]
+		<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p>This explain why the symbols &quot;\(\mu\)&quot; and &quot;\(\sigma^2\)&quot; are used for the normal distribution's two parameters.</p>
+
+
+<h2 class="pageName">4.4.3 &nbsp; Z-scores</h2>
+
+<p>The following diagram  describes the probability density function of <strong>any</strong> normal distribution.</p>
+<p class=eqn><img src="../../../en/normalDistn/images/normalDensity.svg" width="498" height="145"></p>
+
+<p>It can be used to add a scale appropriate to any values of \(\mu\) and \(\sigma\). For example, the pdf of a \(\NormalDistn(\mu=180, \sigma=10)\) distribution is</p>
+<p class=eqn><img src="../../../en/normal/images/s_normalApples.png" width="526" height="212"></p>
+<p class="heading">Z-scores</p>
+<p>The number of standard deviations from the mean is called a <strong>z-score</strong>.</p>
+\[
+Z = \frac {X-\mu} {\sigma}
+\]
+<p>Z-scores  have a standard normal distribution,</p>
+\[
+	Z \;\; \sim \; \; \NormalDistn(0,\; 1)
+	\]
+	
+
+
+<h2 class="pageName">4.4.4 &nbsp; Probabilities for normal distributions</h2>
+
+<p class="heading">Cumulative distribution function</p>
+
+<p>The cumulative distribution function for a \(\NormalDistn(\mu,\; \sigma^2)\) distribution is</p>
+\[
+F(x) \;\;=\;\; \int_{-\infty}^x {\frac 1{\sqrt{2\pi}\;\sigma} e^{- \frac{\large (u-\mu)^2}{\large 2 \sigma^2}}} du \]
+<p>This integration cannot be performed algebraically, but numerical algorithms will find cumulative probabilities for you. For example, in Excel you can use the function</p>
+<p class="eqn">= NORM.DIST( \(x\), \(\mu\), \(\sigma\), true)</p>
+<p class="heading">Normal probabilities from z-scores</p>
+<p>Although  probabilities for any normal distribution can be found as described above,  an alternative method uses z-scores. This lets us find probabilities about a normal random variable using the <strong>standard</strong> normal distribution.</p>
+<p class="eqn"><img src="../../../en/normalDistn/images/s_xProb.gif" width="509" height="436"></p>
+<p>In Excel, this would be evaluated as</p>
+<p class="eqn">=NORM.S.DIST(z, true)</p>
+<p>Although this offers few practical advantages when a computer is used,</p>
+<ul>
+	<li>If a computer is unavailable, tables of cumulative probabilities for the standard normal distribution exist and can be used to find normal probabilities.</li>
+	<li>The z-score itself is an informative value — for example, we know that z-scores below -3 or above +3 are very unlikely.</li>
+</ul>
+
+
+<h2 class="pageName">4.4.5 &nbsp; Normal quantiles</h2>
+<p>We are sometimes given the value of the probability, \(P(X \le x)\) and need to find the value \(x\). If we are provided with a probability, \(p\), then the value \(x\) such that</p>
+\[
+	P(X \le x) = p
+	\]
+<p>is  the \(p\)'th <strong>quantile</strong> of the distribution of \(X\). We now give an example to illustrate the use of quantiles for a normally distributed random variable.</p>
+<div class="example">
+	<p class="exampleHeading">Example</p>
+	<p>If the weight of a Fuji apple has the following normal distribution</p>
+	\[
+	X \;\; \sim \; \; \NormalDistn(\mu=180, \sigma=10)
+	\]
+	<p>what is the apple weight that will be exceeded with 95% probability? In other words, we want to find the apple weight \(x\) such that</p>
+	\[
+	P(X \lt x)  \;\;= \;\; 0.05
+	\]
+	<p>In terms of z-scores,</p>
+\[
+	P(X \lt x)  \;= \; P\left(Z \lt \frac {x-180} {10}\right)  \;= \; 
+	0.05
+\]
+	<p>Using the function &quot;<span class="eqn">=NORM.S.INV(0.05)</span>&quot; in Excel, we can find that</p>
+\[
+	P(Z \lt -1.645) \;\;=\;\; 
+	0.05
+\]
+	<p>Translating back to the original units,</p>
+\[
+	x \;=\; 180 - 1.645 \times 10 \;=\; 163.55 \text{ grams}
+\]</div>
+
+
+</body>
+</html>

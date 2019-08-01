@@ -75,7 +75,7 @@
 	<variable name="yUnits" type="string(8)"></variable>
 	<variable name="direction" type="int_choice(X to Y#Y to X)">Sets whether y-values are displayed and question is about x or vice versa</variable>
 	<variable name="decimals" type="int(0)">Decimal digits shown for mean and sd in dot plot</variable>
-	<variable name="maxResult" type="double">Template for the value of the transformed mean and sd</variable>
+	<variable name="maxResult" type="double">Template for the value of the transformed mean and sd. Results should be accurate to this number of decimals</variable>
 	<variable name="intercept" type="double">Intercept in equation for y in terms of x</variable>
 	<variable name="slope" type="double">Slope in equation for y in terms of x</variable>
 	
@@ -114,6 +114,61 @@
 </exercise>
 
 
+<exercise name='meanSdScaledExternal'>
+	<description>Find the mean and standard devn after linear transformation</description>
+	<comment>The mean and standard deviation are given for a data set in one unit and must be calculated in another unit (after linear transformation). The data are shown in a dot plot but must be exported and analysed in a statistical program.</comment>
+	<applet>exerciseSDProg.ScaledMeanSdExternalApplet</applet>
+	<width>500</width>
+	<height>550</height>
+	
+	<variable name="count" type="int(2)">Number of values in data set</variable>
+	<variable name="axis" type="axis">This could be for x or y, depending on the setting of direction</variable>
+	<variable name="varName" type="string(24)"></variable>
+	<variable name="shortVarName" type="string(16)"></variable>
+	<variable name="xUnits" type="string(8)"></variable>
+	<variable name="yUnits" type="string(8)"></variable>
+	<variable name="direction" type="int_choice(X to Y#Y to X)">Sets whether y-values are displayed and question is about x or vice versa</variable>
+	<variable name="decimals" type="int(0)">Decimal digits shown for mean and sd in dot plot</variable>
+	<variable name="maxResult" type="double">Template for the value of the transformed mean and sd. Results should be accurate to this number of decimals</variable>
+	<variable name="intercept" type="double">Intercept in equation for y in terms of x</variable>
+	<variable name="slope" type="double">Slope in equation for y in terms of x</variable>
+	<variable name="dataName" type="string(16)">Name for exported data file (external analysis)</variable>
+	
+	<template>
+		<question>The stacked dot plot below shows X.\\nWhat are the mean and standard deviation of Y?</question>
+		<qnParam>count(40)#axis(0 20 0 2)#varName(Value)#shortVarName(value)#xUnits(X)#yUnits(Y)#direction(0)#decimals(2)#maxResult(999.99)#intercept(0)#slope(2)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>tempC</shortName>
+		<longName>Temperatures in degrees C</longName>
+		<question>The stacked dot plot below shows temperatures in a city on 21 March on each of #count[](20,40,60,80)# years in degrees Celsius.\\nWhat are the mean and standard deviation of the temperatures in degrees Fahrenheit (correct to 2 decimals)?</question>
+		<qnParam>axis(10 30 10 2)#varName(Temperature)#shortVarName(temp)#xUnits(degreesC)#yUnits(degreesF)#direction(0)#decimals(2)#maxResult(999.99)#intercept(32)#slope(1.8)#dataName(City temperature)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>tempF</shortName>
+		<longName>Temperatures in degrees F</longName>
+		<question>The stacked dot plot below shows temperatures in a city on 21 March on each of #count[](20,40,60,80)# years in degrees Fahrenheit.\\nWhat are the mean and standard deviation of the temperatures in degrees Celsius (correct to 2 decimals)?</question>
+		<qnParam>axis(40 80 40 5)#varName(Temperature)#shortVarName(temp)#xUnits(degreesC)#yUnits(degreesF)#direction(1)#decimals(2)#maxResult(999.99)#intercept(32)#slope(1.8)#dataName(City temperature)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>weightKg</shortName>
+		<longName>Weights of sheep in kg</longName>
+		<question>#count[](20,40,60,80)# two-year-old sheep were weighed and their weights are shown below in kilograms.\\nWhat are the mean and standard deviation of the weights in pounds (lb) (correct to 2 decimals)?</question>
+		<qnParam>axis(25 70 25 5)#varName(Weight)#shortVarName(wt)#xUnits(kg)#yUnits(lb)#direction(0)#decimals(2)#maxResult(999.99)#intercept(0)#slope(2.20)#dataName(Sheep weight)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>weightLb</shortName>
+		<longName>Weights of sheep in lb</longName>
+		<question>#count[](20,40,60,80)# two-year-old sheep were weighed and their weights are shown below in pounds (lb).\\nWhat are the mean and standard deviation of the weights in kilograms (correct to 2 decimals)?</question>
+		<qnParam>axis(50 150 50 10)#varName(Weight)#shortVarName(wt)#xUnits(kg)#yUnits(lb)#direction(1)#decimals(1)#maxResult(999.99)#intercept(0)#slope(2.20)#dataName(Sheep weight)</qnParam>
+	</variation>
+</exercise>
+
+
 <exercise name='matchDotPlotsWithTransforms'>
 	<description>Match 3 dot plots to 3 nonlinear transformations of a base distn</description>
 	<comment>A stacked dot plot is shown of a data set, followed by three stacked dot plots of transformed data (after square, square root and log transformations). The dot plots must be reordered to align with the transformation names.</comment>
@@ -134,6 +189,42 @@
 		<longName>Weights of apples or pears</longName>
 		<question>The top stacked dot plot shows the distributions of weights of #count[](50,100)# #?:string[](apples*pears)#. The three stacked dot plots underneath show the distribution of three transformations of the raw data. Which distribution matches each transformation?\\nDrag the lower three transformation names up or down to align with the corresponding dot plot.</question>
 		<qnParam>baseShape(0:3)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='findPowerTransform'>
+	<description>Find a power transformation that makes a skew distribution fairly symmetric</description>
+	<comment>A stacked dot plot is shown of a data set. The data set should be exported and dot plots should be produced for different power transformations of the values. Identify which one has the 'symmetric' distribution shown in the second stacked dot plot in the exercise.</comment>
+	<applet>exerciseNumGraphProg.FindTransformApplet</applet>
+	<width>500</width>
+	<height>560</height>
+	
+	<variable name="count" type="int(3)">Number of values in data set</variable>
+	<variable name="varName" type="string(24)"></variable>
+	<variable name="dataName" type="string(24)">Name of the exported CSV data file</variable>
+	<variable name="normalMeanSd" type="string(12)">Mean and sd (separated by spaces) of the normal distribution used to generate the data. The mean - 2sd must be greater than zero</variable>
+	<variable name="transformFactor" type="double">The power-transformed normal base variable is multiplied by this to give the exported values.</variable>
+	<variable name="powerIndex" type="int_choice(inverse square#inverse#inverseRoot#log#square root#square)">Gives the transformation required to return the exported variable to normal</variable>
+	<variable name="decimals" type="int(2)">Number of decimals in exported data</variable>
+	
+	<template>
+		<question>The top stacked dot plot shows the distribution of #count[](100,200,300)# values. Export the data then find a power transformation that makes its distribution more symmetric (as in the second transformed dot plot)</question>
+		<qnParam>varName(Variable)#dataName(Data)#normalMeanSd(4.1 2)#powerIndex(0:5)#transformFactor[powerIndex](-6,-6,-0.2,0.33,1.2,9.5)#decimals(3)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>weights</shortName>
+		<longName>Weights of items</longName>
+		<question>The top stacked dot plot shows the distribution of #count[](100,200,300)# weights of items. Export the data then find a power transformation that makes its distribution more symmetric (as in the second transformed dot plot)</question>
+		<qnParam>varName(Weight)#dataName(Weights of items)#normalMeanSd(4.1 2)#powerIndex(0:5)#transformFactor[powerIndex](-6,-6,-0.2,0.33,1.2,9.5)#decimals(3)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>survivalTimes</shortName>
+		<longName>Survival times</longName>
+		<question>The top stacked dot plot shows the distribution of #count[](100,200,300)# survival times of insects. Export the data then find a power transformation that makes its distribution more symmetric (as in the second transformed dot plot)</question>
+		<qnParam>varName(Time)#dataName(Survival times)#normalMeanSd(4.1 2)#powerIndex(0:5)#transformFactor[powerIndex](-6,-6,-0.2,0.33,1.2,9.5)#decimals(3)</qnParam>
 	</variation>
 </exercise>
 

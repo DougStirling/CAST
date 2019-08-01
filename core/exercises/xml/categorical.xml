@@ -155,6 +155,86 @@
 </exercise>
 
 
+<exercise name="pFromCategories">
+	<description>Find a proportion or percentage from exported data</description>
+	<comment>The question describes a categorical data set that can be exported and asks for either a proportion or percentage of values in one or more categories.\\nThe simplest variations only ask for the proportion in a single category (or not in it), but other variations are based on ordinal categories and ask for the proportion of values greater or less than a value (harder).</comment>
+	<applet>exerciseCategProg.FindPropnExternalApplet</applet>
+	<width>500</width>
+	<height>500</height>
+	
+	<variable name="varName" type="string(20)">Variable name for categories</variable>
+	<variable name="itemName" type="string(14)">Name for items that were categorised</variable>
+	<variable name="categories" type="string_array">Category names</variable>
+	<variable name="counts" type="string(20)">Counts for the different categories separated by spaces. Must have same number of values as categories.</variable>
+	<variable extra="true" name="questionType" type="int_choice(equals#not equals#less than#less than or equal#greater than#greater than or equal)">Whether prob is for category with ordered rank equal to criticalIndex, not equal to criticalIndex, etc.</variable>
+	<variable extra="true" name="criticalIndex" type="int">0 refers to the first category, 1 for second, etc.</variable>
+	<variable extra="true" name="percentPropn" type="string_choice(percentage#proportion)">Either 'percentage' or 'proportion'</variable>
+	
+	<template>
+		<question>The Monks Wood Research Station collected information about deaths of kestrels in Britain, based on carcasses sent to them from to adverts in birdwatching magazines between 1963 and 1997. The following data set and question relate to the cause of death of the birds received in the month of #?:string[index](January*February*March*April*May*June*July*August*September*October*November*December)# during this period.\\n</question>
+		<qnParam>index(0:11)#varName(cause of death)#itemName(kestrel)#categories(Window_collision Road_accident Trauma Being_shot Being_poisoned Disease Starvation An_unknown_cause)#counts[index](1 7 23 8 27 20 49 19*0 17 29 2 17 7 37 10*1 35 41 1 6 4 54 4*1 30 22 0 2 4 44 4*0 10 14 0 0 2 25 4*0 10 12 1 0 1 13 2*3 25 14 2 11 11 38 11*0 25 23 2 39 12 54 18*0 14 21 3 2 5 43 3*1 42 34 2 7 3 76 4*0 24 28 0 0 1 89 6*0 23 23 5 7 7 63 29)</qnParam>
+		<ending>questionType(0)#criticalIndex(0:7)#What #percentPropn[](percentage*proportion)# of the birds died from #categories[criticalIndex]#?</ending>
+	</template>
+	
+	<variation>
+		<shortName>kestrels</shortName>
+		<longName>Cause of deaths of kestrels in Britain</longName>
+		<question>The Monks Wood Research Station collected information about deaths of kestrels in Britain, based on carcasses sent to them from to adverts in birdwatching magazines between 1963 and 1997. The following data set and question relate to the cause of death of the birds received in the month of #?:string[index](January*February*March*April*May*June*July*August*September*October*November*December)# during this period.\\n</question>
+		<qnParam>index(0:11)#varName(cause of death)#itemName(kestrel)#categories(Window_collision Road_accident Trauma Being_shot Being_poisoned Disease Starvation An_unknown_cause)#counts[index](1 7 23 8 27 20 49 19*0 17 29 2 17 7 37 10*1 35 41 1 6 4 54 4*1 30 22 0 2 4 44 4*0 10 14 0 0 2 25 4*0 10 12 1 0 1 13 2*3 25 14 2 11 11 38 11*0 25 23 2 39 12 54 18*0 14 21 3 2 5 43 3*1 42 34 2 7 3 76 4*0 24 28 0 0 1 89 6*0 23 23 5 7 7 63 29)#dataName(KestrelDeaths)</qnParam>
+		<ending>questionType(0)#criticalIndex(0:7)#What #percentPropn[](percentage*proportion)# of the birds died from #categories[criticalIndex]#?</ending>
+		<ending>questionType(1)#criticalIndex(0:6)#What #percentPropn[](percentage*proportion)# of the birds did not die from #categories[criticalIndex]#?</ending>
+	</variation>
+	
+	<variation>
+		<shortName>yoghurt</shortName>
+		<longName>Preferences for different flavours of yoghurt</longName>
+		<question>Market researchers collected data on purchases of five different flavours of Dannon yoghurt. The data set and question below describe the number of tubs of each flavour purchased in shopping trips where #?:string[index](only one flavour was purchased*there was a mixture of flavours purchased simultaneously)#.\\n</question>
+		<qnParam>index(0:1)#varName(flavour)#itemName(purchase)#categories(Strawberry Blueberry Pina_Colada Plain Mixed_Berry)#counts[index](208 129 99 108 140*128 78 84 9 58)#dataName(YogurtFlavours)</qnParam>
+		<ending>questionType(0)#criticalIndex(0:4)#What #percentPropn[](percentage*proportion)# of the purchases were for #categories[criticalIndex]# yoghurt?</ending>
+		<ending>questionType(1)#criticalIndex(0:4)#What #percentPropn[](percentage*proportion)# of the purchases were not for #categories[criticalIndex]# yoghurt?</ending>
+	</variation>
+	
+	<variation>
+		<shortName>caterpillars</shortName>
+		<longName>Number of caterpillars on cabbages (ordinal, harder)</longName>
+		<question>Data were collected about the number of caterpillars on each of 50 unsprayed cabbages.\\n</question>
+		<qnParam>varName(caterpillars)#itemName(cabbage)#categories(0 1 2 3 4 5 6_or_more)#counts[](21 13 8 5 2 1 0*18 11 10 6 2 2 1)#dataName(Caterpillars)</qnParam>
+		<ending>questionType(0)#criticalIndex(0:6)#What #percentPropn[](percentage*proportion)# of the cabbages have #categories[criticalIndex]# caterpillars?</ending>
+		<ending>questionType(1)#criticalIndex(0:5)#In what #percentPropn[](percentage*proportion)# of the cabbages was the number of caterpillars not equal to #categories[criticalIndex]#?</ending>
+		<ending>questionType(2)#criticalIndex(1:5)#What #percentPropn[](percentage*proportion)# of the cabbages have fewer than #categories[criticalIndex]# caterpillars?</ending>
+		<ending>questionType(3)#criticalIndex(0:5)#What #percentPropn[](percentage*proportion)# of the cabbages have less than or equal to #categories[criticalIndex]# caterpillars?</ending>
+		<ending>questionType(4)#criticalIndex(0:5)#What #percentPropn[](percentage*proportion)# of the cabbages have more than #categories[criticalIndex]# caterpillars?</ending>
+		<ending>questionType(5)#criticalIndex(1:5)#What #percentPropn[](percentage*proportion)# of the cabbages have at least #categories[criticalIndex]# caterpillars?</ending>
+	</variation>
+	
+	<variation>
+		<shortName>childWeights</shortName>
+		<longName>Weight category of 6th grade children (ordinal, harder)</longName>
+		<question>Two thousand sixth-grade children were classified according to their weights. The data set and question below relate to the data#?:string[index](.* for the children whose performance at school was poor.* for the children whose performance at school was satisfactory.* for the children whose performance at school was above average.)#\\n</question>
+		<qnParam>index(0:3)#varName(weight)#itemName(child)#categories(Underweight Normal Overweight Obese)#counts[index](250 1100 400 250*36 160 65 50*180 840 300 185*34 100 35 15)#dataName(ChildWeights)</qnParam>
+		<ending>questionType(0)#criticalIndex(0:3)#What #percentPropn[](percentage*proportion)# of the children are #categories[criticalIndex]#?</ending>
+		<ending>questionType(1)#criticalIndex(0:3)#What #percentPropn[](percentage*proportion)# of the children are not #categories[criticalIndex]#?</ending>
+		<ending>questionType(2)#criticalIndex(1:3)#What #percentPropn[](percentage*proportion)# of the chldren are lighter than #categories[criticalIndex]#?</ending>
+		<ending>questionType(3)#criticalIndex(0:2)#What #percentPropn[](percentage*proportion)# of the children are #categories[criticalIndex]# or lighter?</ending>
+		<ending>questionType(4)#criticalIndex(0:2)#What #percentPropn[](percentage*proportion)# of the children are heavier than #categories[criticalIndex]#?</ending>
+		<ending>questionType(5)#criticalIndex(1:2)#What #percentPropn[](percentage*proportion)# of the children are #categories[criticalIndex]# or heavier?</ending>
+	</variation>
+	
+	<variation>
+		<shortName>cuckooEggs</shortName>
+		<longName>Numbers of cuckoo eggs in nests (ordinal, harder)</longName>
+		<question>Cuckoos are birds that lay eggs in the nests of other birds. Researchers observed 193 nests of Great Reed Warblers in central Hungary in 1998 and 1999 and the question below describes the number of cuckoo eggs in each nest.\\n</question>
+		<qnParam>varName(cuckoo eggs)#itemName(nest)#categories(0 1 2 3 4)#counts(70 79 28 12 4)#dataName(CuckooEggs)</qnParam>
+		<ending>questionType(0)#criticalIndex(0:4)#What #percentPropn[](percentage*proportion)# of nests had #categories[criticalIndex]# cuckoo eggs?</ending>
+		<ending>questionType(1)#criticalIndex(0:4)#What #percentPropn[](percentage*proportion)# of nests did not have #categories[criticalIndex]# cuckoo eggs?</ending>
+		<ending>questionType(2)#criticalIndex(1:4)#What #percentPropn[](percentage*proportion)# of nests had fewer than #categories[criticalIndex]# cuckoo eggs?</ending>
+		<ending>questionType(3)#criticalIndex(0:3)#What #percentPropn[](percentage*proportion)# of nests had #categories[criticalIndex]# or fewer cuckoo eggs?</ending>
+		<ending>questionType(4)#criticalIndex(0:3)#What #percentPropn[](percentage*proportion)# of nests had more than #categories[criticalIndex]# cuckoo eggs?</ending>
+		<ending>questionType(5)#criticalIndex(1:3)#What #percentPropn[](percentage*proportion)# of nests had #categories[criticalIndex]# or more cuckoo eggs?</ending>
+	</variation>
+</exercise>
+
+
 
 <exercise name="drawBarChart">
 	<description>Drag bars to draw bar chart from frequency table</description>
@@ -413,6 +493,74 @@
 		<longName>Generic options with 4 categories</longName>
 		<question>The bar charts of four data sets are shown on the left below. The four pie charts on the right describe the same data sets but are in a different order. Reorder them by dragging so that each pie chart describes the same data set as the bar chart on its left.</question>
 		<qnParam>categories[](A B C D*Agree Neutral Disagree Dont_know)#counts(12_8_3_5 10_4_10_6 8_12_5_3 8_10_8_4 12_5_3_8 8_6_12_6)</qnParam>
+	</variation>
+</exercise>
+
+
+
+<exercise name="matchBarPieExternal">
+	<description>Match 4 bar or pie charts to the names of the four data sets</description>
+	<comment>A column of bar charts for 4 categorical data sets is shown on the left. A shuffled column of pie charts for the same data sets is shown on the right. The diagrams must be dragged to match the distributions</comment>
+	<applet>exerciseCategProg.MatchBarPieExternalApplet</applet>
+	<width>450</width>
+	<height>700</height>
+	
+	<option name="pie">Draw pie charts for the categorical variables (default is bar charts)</option>
+	<option name="permuted">Permutes the rows of the data set that is exported</option>
+	
+	<variable name="categories" type="string(20)">Category names, separated by spaces</variable>
+	<variable name="counts" type="string_array(12)">Alternatives for category counts, each separated by spaces. Question will randomly pick 4 of these.</variable>
+	<variable name="dataName" type="string(20)">Name for the exported data set</variable>
+	<variable name="groupName" type="string(20)">Names for the columns of categorical values in the exported data set (unstacked) and for the column of group names (stacked); names are separated by '*'</variable>
+	<variable name="variableName" type="string(20)">Name for the column of categorical values in the exported data set (stacked)</variable>
+	<variable name="factorName" type="string(20)">Name for the column of group labels in the exported data set (stacked)</variable>
+	<variable name="groups" type="boolean">True for variation with groups of individuals (and stacked output), false for different variables (and unstacked output)</variable>
+	
+	<template>
+		<question>Graphical displays of four data sets are shown on the right below. Export the data sets and produce graphical displays in a statistics program. The graphical displays are in a different order from the names of the data sets. Reorder them by dragging so that each describes the same data set as the name on its left.</question>
+		<qnParam>categories(Group_A Group_B)#counts(10_10 9_11 8_12 5_15 11_9 12_8 15_5)#dataName(Data)#groupNames(Dataset 4*Dataset 3*Dataset 2*Dataset 1)#variableName(Categories)#factorName(Groups)#groups(true)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>2categoriesVariables</shortName>
+		<longName>Generic options with 2 categories</longName>
+		<question>Graphical displays of four variables are shown on the right below. Export the data and produce graphical displays of the four variables in a statistics program. The graphical displays are in a different order from the names of the variables. Reorder them by dragging so that each describes the same variable as the name on its left.</question>
+		<qnParam>index(0:2)#categories[index](Correct Wrong*Black White*Male Female)#counts(10_10 9_11 8_12 5_15 11_9 12_8 15_5)#dataName[index](Answer*Colour*Sex)#groupNames(Variable 4*Variable 3*Variable 2*Variable 1)#groups(false)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>3categoriesVariables</shortName>
+		<longName>Generic options with 3 categories</longName>
+		<question>Graphical displays of four variables are shown on the right below. Export the data and produce graphical displays of the four variables in a statistics program. The graphical displays are in a different order from the names of the variables. Reorder them by dragging so that each describes the same variable as the name on its left.</question>
+		<qnParam>index(0:2)#categories[index](A B C*Red Blue Green*Good Bad Ugly)#counts(10_10_5 5_10_10 10_5_10 7_7_11 7_11_7 11_7_7 14_8_3 14_3_8 8_14_3 8_3_14 3_8_14 3_14_8)#dataName[index](Letter*Colour*Attitude)#groupNames(Variable 4*Variable 3*Variable 2*Variable 1)#groups(false)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>4categoriesVariables</shortName>
+		<longName>Generic options with 4 categories</longName>
+		<question>Graphical displays of four variables are shown on the right below. Export the data and produce graphical displays of the four variables in a statistics program. The graphical displays are in a different order from the names of the variables. Reorder them by dragging so that each describes the same variable as the name on its left.</question>
+		<qnParam>index(0:1)#categories[index](A B C D*Agree Neutral Disagree Dont_know)#counts(13_8_3_6 10_4_10_6 8_13_6_3 8_10_8_4 13_6_3_8 8_5_12_5)#dataName[index](Letter*Attitude)#groupNames(Variable 4*Variable 3*Variable 2*Variable 1)#groups(false)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>2categoriesGroups</shortName>
+		<longName>Generic options with 2 categories</longName>
+		<question>Graphical displays of four data sets are shown on the right below. Export the data sets and produce graphical displays in a statistics program. The graphical displays are in a different order from the names of the data sets. Reorder them by dragging so that each describes the same data set as the name on its left.</question>
+		<qnParam>index(0:2)#categories[index](Correct Wrong*Black White*Male Female)#counts(10_10 9_11 8_12 5_15 11_9 12_8 15_5)#dataName[index](Answer*Colour*Sex)#groupNames(Group 4*Group 3*Group 2*Group 1)#variableName[index](Answer*Colour*Sex)#factorName(Groups)#groups(true)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>3categoriesGroups</shortName>
+		<longName>Generic options with 3 categories</longName>
+		<question>Graphical displays of four data sets are shown on the right below. Export the data sets and produce graphical displays in a statistics program. The graphical displays are in a different order from the names of the data sets. Reorder them by dragging so that each describes the same data set as the name on its left.</question>
+		<qnParam>index(0:2)#categories[index](A B C*Red Blue Green*Good Bad Ugly)#counts(10_10_5 5_10_10 10_5_10 5_5_10 5_10_5 10_5_5 15_10_5 15_5_10 10_15_5 10_5_15 5_10_15 5_15_10)#dataName(Data)#groupNames(Group 4*Group 3*Group 2*Group 1)#variableName[index](Letter*Colour*Attitude)#factorName(Groups)#groups(true)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>4categoriesGroups</shortName>
+		<longName>Generic options with 4 categories</longName>
+		<question>Graphical displays of four data sets are shown on the right below. Export the data sets and produce graphical displays in a statistics program. The graphical displays are in a different order from the names of the data sets. Reorder them by dragging so that each describes the same data set as the name on its left.</question>
+		<qnParam>index(0:1)#categories[index](A B C D*Agree Neutral Disagree Dont_know)#counts(12_8_3_5 10_4_10_6 8_12_5_3 8_10_8_4 12_5_3_8 8_6_12_6)#dataName(Data)#groupNames(Group 4*Group 3*Group 2*Group 1)#variableName[index](Letter*Attitude)#factorName(Groups)#groups(true)</qnParam>
 	</variation>
 </exercise>
 

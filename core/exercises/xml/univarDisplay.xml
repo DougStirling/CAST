@@ -230,6 +230,48 @@
 </exercise>
 
 
+<exercise name='matchDisplaysExternal'>
+	<description>Match displays of four distributions to the group names</description>
+	<comment>The questions here present the names of the four data sets on the left and a column of graphical displays of their distributions on the right. They must be matched by dragging to reorder the displays.\\nDepending on the options chosen, the column on the left can show stacked dot plots or histograms. The column on the right can show stacked dot plots, box plots or histograms.</comment>
+	<applet>exerciseNumGraphProg.MatchDistnExternalApplet</applet>
+	<width>600</width>
+	<height>700</height>
+	
+	<option name="histogram">Right column shows histograms (stacked dot plots are default)</option>
+	<option name="boxplot">Right column shows boxplots (stacked dot plots are default)</option>
+	<option name="easy">This option makes the shapes of the four distributions more distinct (differences are more subtle without this option)</option>
+	<option name="externalAnalysis">If used, the left column shows group names, the right column can be histo, boxplot or dot plots (default) and an export data button is shown.</option>
+	<option name="stacked">Only used for external analysis. With this option, the data are exported in stacked format with 'factorName' giving the name of the factor and 'groupNames' giving the factor level names.</option>
+	
+	<variable name="varName" type="string(14)">Name of variable</variable>
+	<variable name="count" type="int">Number of values in data set</variable>
+	<variable name="axis" type="axis">Axis for data</variable>
+	<variable name="classLimits" type="histo">Definition of histogram classes</variable>
+	<variable name="groupNames" type="string">Names of the four groups, separated by *s</variable>
+	<variable name="factorName" type="string(14)">Name of factor distinguishing groups (if data are exported in stacked format)</variable>
+	<variable name="dataName" type="string(14)">Name of exported CSV file with data</variable>
+	
+	<template>
+		<question>Match the four graphical summaries on the right with the names of the data sets on the left by dragging them up or down.</question>
+		<qnParam>count[](30,50)#axis(240 360 240 20)#classLimits(240 20)#varName(Variable, Y)#groupNames(Group 4*Group 3*Group 2*Group 1)#factorName(Group)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>fruitWeight</shortName>
+		<longName>Weights of fruit from four farms</longName>
+		<question>The four graphical summaries on the right show the distributions of weights of #count[](30,50)# #?:string[](apples*pears)# that an exporter sampled from each of four farms. Which of the farm names on the right are described by these distributions of weights?\\nDrag the displays up or down to align the matching farms.</question>
+		<qnParam>index[](0,1)#axis[index](240 360 240 20*180 300 180 20)#classLimits[index](240 20*180 20)#varName(Weight, gm)#groupNames(Farm 4*Farm 3*Farm 2*Farm 1)#factorName(Farm)#dataName(Fruit weights)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>milkFat</shortName>
+		<longName>Fat content of milk from cows in four herds</longName>
+		<question>The four graphical summaries on the right describe measurements of milk fat content from four herds of #count[](50,100)# cows. Which of the herd names on the left match these distributions?\\nDrag the displays up or down to align with the matching herd names.</question>
+		<qnParam>axis(2.2 3.6001 2.2 0.2)#classLimits(2.2 0.2)#varName(Milk fat %)#groupNames(Herd 4*Herd 3*Herd 2*Herd 1)#factorName(Herd)#dataName(MilkFat)</qnParam>
+	</variation>
+</exercise>
+
+
 <exercise name='pFromHisto'>
 	<description>Find proportion/probability in interval from a histogram</description>
 	<comment>This type of question shows a histogram and asks for the proportion of values in an interval.\\nIf the option to display class counts is selected, the proportion can be accurately found; otherwise it must be estimated roughly by eye.</comment>
@@ -239,6 +281,7 @@
 	
 	<option name="showCounts">Displays the counts in each class, allowing the proportion to be exactly found (default needs estimation 'by eye')</option>
 	<option name="allowHints">Shows a pop-up menu that will highlight the required histogram area.</option>
+	<option name="externalAnalysis">Does not show histogram or template but gives button for exporting data.</option>
 	
 	<variable name="varName" type="string(16)">Name for variable</variable>
 	<variable name="intervalType" type="int_choice(Less than cutoff#Greater than cutoff#Between two cutoffs#Outside two cutoffs)"></variable>
@@ -247,6 +290,7 @@
 	<variable name="cut-offs" type="random">Defines the minimum and maximum cutoff values (or the z-scores between which they ar randomly generated)</variable>
 	<variable name="classInfo" type="histo">Definition of histogram classes</variable>
 	<variable name="count" type="int(1)">Sample size</variable>
+	<variable name="varName" type="string(16)">Name for exported data (when using 'externalAnalysis' option)</variable>
 	
 	<template>
 		<question>A histogram of #count[](50,100)# values is shown below. What proportion of values are #cut-offs(:)#?</question>
@@ -272,6 +316,27 @@
 		<longName>Birth weight of babies</longName>
 		<question>The birth weights of #count(40:80)# full-term babies born in a hospital in a 3-month period are summarised in the histogram below. What proportion of weights are #cut-offs(:)# kg?</question>
 		<qnParam>shape[](2,8,-2)#axis(2.0 4.5001 2.0 0.2)#classInfo(2.0 0.2)#intervalType(0:3)#varName(Birth weight, kg)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>appleWeightsExternal</shortName>
+		<longName>Weights of apples</longName>
+		<question>The weights of #count[](50,100)# apples were measured. Export the data and find the proportion of apples that have weights #cut-offs(:)# grams.</question>
+		<qnParam>shape[](2,8,-2)#axis(240 360 240 20)#classInfo(240 10)#intervalType(0:3)#varName(Weight, gm)#dataName(Apple weights)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>milkFatExternal</shortName>
+		<longName>Fat content of milk</longName>
+		<question>The milk fat content from a herd of #count[](50,100)# cows were recorded. Export the data and find the proportion of the cows that have milk fat percentages #cut-offs(:)#.</question>
+		<qnParam>shape[](2,8,-2)#axis(2.2 3.6001 2.2 0.2)#classInfo(2.2 0.1)#intervalType(0:3)#varName(Milk fat %)#dataName(Fat content of milk)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>birthWeightExternal</shortName>
+		<longName>Birth weight of babies</longName>
+		<question>The birth weights of #count(40:80)# full-term babies born in a hospital in a 3-month period were recorded. Export the data and find the proportion of weights that are #cut-offs(:)# kg.</question>
+		<qnParam>shape[](2,8,-2)#axis(2.0 4.5001 2.0 0.2)#classInfo(2.0 0.2)#intervalType(0:3)#varName(Birth weight, kg)#dataName(Baby birth weight)</qnParam>
 	</variation>
 </exercise>
 
@@ -316,6 +381,51 @@
 		<longName>Heights of children</longName>
 		<question>The heights of #count(80:140)# children were recorded and are shown in the stacked dot plot below. What would you conclude from the shape of the distribution?</question>
 		<qnParam>index(0:7)#shapeValue[index](0,0,1,2,3,4,5,6)#axis(120 160 120 5)#varName(Height, cm)#optionText(The_heights_of_the_children_are_fairly_variable,_but_nothing_else_stands_out_in_their_distribution. Most_children_in_the_group_are_fairly_short,_but_a_smaller_number_are_taller. One_child's_height_may_have_been_incorrectly_recorded. There_seem_to_be_two_distinct_groups_of_children_with_different_heights._The_groups_could_be_boys_and_girls_or_different_ages. The_majority_of_the_children_are_reasonably_tall,_but_there_are_a_few_who_are_much_shorter.)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='interpretShapeExternal'>
+	<description>Interpret shape of a distribution in context of data set</description>
+	<comment>This is a multiple choice question whose data set should be examined in an external program. It asks for an interpretation of the distribution's shape in wording relevant to the context. The distribution may be symmetric, skew, clustered or have an outlier.</comment>
+	<applet>exerciseNumGraphProg.InterpretShapeExternalApplet</applet>
+	<width>550</width>
+	<height>650</height>
+	
+	<variable name="varName" type="string(16)">Name for variable</variable>
+	<variable name="count" type="int(1)">Sample size</variable>
+	<variable name="axis" type="axis">Axis for stacked dot plot</variable>
+	<variable name="shapeValue" type="int_choice(Normal#Positively skew#High outlier#Equal sized clusters#Negatively skew#Low outlier#Clusters of different sizes)">Shape of distribution</variable>
+	<variable name="cut-offs" type="random">Defines the minimum and maximum cutoff values</variable>
+	<variable name="classInfo" type="histo">Definition of histogram classes</variable>
+	<variable name="count" type="int(1)">Sample size</variable>
+	<variable name="optionText" type="string_array(40)">Sample size</variable>
+	<variable name="dataName" type="string(16)">Name for data set when exported</variable>
+	
+	<template>
+		<question>The stacked dot plot below describes a sample of #count(80:140)# values. What would you conclude from the shape of the distribution?</question>
+		<qnParam>index(0:7)#shapeValue[index](0,0,1,2,3,4,5,6)#axis(240 360 240 20)#varName(Variable, Y)#optionText(There_is_a_reasonably_large_spread_of_values,_but_nothing_else_stands_out_in_their_distribution. Most_values_are_fairly_low_but_there_are_a_few_that_are_larger. One_value_may_have_been_recorded_wrongly. There_may_be_two_different_types_of_individual. Most_values_are_fairly_high_but_there_are_a_few_that_are_lower.)#dataName(data)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>appleWeight</shortName>
+		<longName>Weights of apples</longName>
+		<question>The stacked dot plot below shows the weights of #count(80:140)# apples. What would you conclude from the shape of the distribution?</question>
+		<qnParam>index(0:7)#shapeValue[index](0,0,1,2,3,4,5,6)#axis(240 360 240 20)#varName(Weight, gm)#optionText(There_is_a_reasonably_large_spread_of_weights_for_the_apples,_but_nothing_else_stands_out_in_their_distribution. Most_apples_have_fairly_low_weights_but_there_are_a_few_that_are_heavier. It_looks_as_though_one_apple's_weight_may_have_been_recorded_wrongly. There_may_be_two_different_types_of_apple_in_the_batch,_or_they_could_have_come_from_two_different_trees_or_suppliers. Most_apples_have_fairly_high_weights_but_there_are_a_few_that_are_lighter.)#dataName(Apple weight)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>milkFat</shortName>
+		<longName>Fat content of milk</longName>
+		<question>The milk fat content from a herd of #count(80:140)# cows is shown in the stacked dot plot below. What would you conclude from the shape of the distribution?</question>
+		<qnParam>index(0:7)#shapeValue[index](0,0,1,2,3,4,5,6)#axis(2.2 3.6001 2.2 0.2)#varName(Milk fat %)#optionText(There_is_a_reasonably_large_spread_of_milk_fat_content,_but_nothing_else_stands_out_in_their_distribution. Most_cows_have_fairly_low_milk_fat_contents_but_there_are_a_few_whose_milk_fat_content_is_a_fair_bit_higher. It_looks_as_though_one_cow's_milk_fat_content_may_have_been_recorded_wrongly. The_cows_seem_to_split_into_two_groups_with_different_milk_fat_contents._The_cows_may_be_of_two_different_ages_or_breeds_or_come_from_two_different_herds. Most_cows_have_fairly_high_milk_fat_contents_but_there_are_a_few_whose_milk_fat_content_is_a_fair_bit_lower.)#dataName(Milk fat content)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>childHeight</shortName>
+		<longName>Heights of children</longName>
+		<question>The heights of #count(80:140)# children were recorded and are shown in the stacked dot plot below. What would you conclude from the shape of the distribution?</question>
+		<qnParam>index(0:7)#shapeValue[index](0,0,1,2,3,4,5,6)#axis(120 160 120 5)#varName(Height, cm)#optionText(The_heights_of_the_children_are_fairly_variable,_but_nothing_else_stands_out_in_their_distribution. Most_children_in_the_group_are_fairly_short,_but_a_smaller_number_are_taller. One_child's_height_may_have_been_incorrectly_recorded. There_seem_to_be_two_distinct_groups_of_children_with_different_heights._The_groups_could_be_boys_and_girls_or_different_ages. The_majority_of_the_children_are_reasonably_tall,_but_there_are_a_few_who_are_much_shorter.)#dataName(Heights of children)</qnParam>
 	</variation>
 </exercise>
 

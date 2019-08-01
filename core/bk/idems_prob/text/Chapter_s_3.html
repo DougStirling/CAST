@@ -1,0 +1,596 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>3. Successes and Failures</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/maths/mathStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/maths/theorems.js"></script>
+  <script src="../../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 3 &nbsp; Successes and Failures</h1>
+<h1 class="sectionName">3.1 &nbsp; Bernoulli distribution</h1>
+<h2 class="pageName">3.1.1 &nbsp; Bernoulli trials</h2>
+<p>A random experiment  with only two possible outcomes (that we call &quot;success&quot; and &quot;failure&quot;) is called a<strong> Bernoulli trial</strong>.</p>
+<p>We now define a <strong>numerical</strong> variable based on one such Bernoulli trial.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>If there is an event \(A\) for which \(P(A) = \pi\), and a random variable \(X\) is defined by</p>
+ \[
+X = \begin {cases}
+	1 &amp; \quad \text{if  } A \text{ occurs (a success)}\\[0.5em]
+	0 &amp; \quad \text{if } A \text{ does not occur (a failure)}
+\end {cases}
+\]
+
+<p>then \(X\) has a <strong>Bernoulli</strong> distribution with parameter \(\pi\),</p>
+
+\[
+X \;\; \sim \; \; \BernoulliDistn(\pi)
+\]
+
+</div>
+<p>\(X\) is therefore a discrete random variable with  probability function:</p>
+\[
+p(x) = \begin {cases}
+	\pi &amp; \quad \text{if  } x = 1\\[0.5em]
+	(1 - \pi) &amp; \quad \text{if } x = 0\\[0.5em]
+	0 &amp; \quad \text{otherwise}
+\end {cases}
+\]
+
+<p>Although a single Bernoulli trial is too simple to be of much practical importance, situations often arise that can be treated as  sequences of independent Bernoulli trials, all of which have the same probability of success.</p>
+
+
+<h2 class="pageName">3.1.2 &nbsp; Mean and variance</h2>
+<p>We now show the mean and variance of a Bernoulli distribution,</p>
+\[
+p(x) = \begin {cases}
+	\pi &amp; \text{if  } x = 1\\[0.5em]
+	(1 - \pi) &amp; \text{if } x = 0\\[0.5em]
+	0 &amp; \text{otherwise}
+\end {cases}
+\]
+
+
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Bernoulli mean and variance</p>
+<p>If a random variable \(X\) has a \(\BernoulliDistn(\pi)\) distribution, its mean and variance are</p>
+
+\[
+E[X] = \pi \spaced{and} \Var(X) = \pi(1-\pi)
+\]
+
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+
+<h1 class="sectionName breakBefore">3.2 &nbsp; Binomial distribution</h1>
+<h2 class="pageName">3.2.1 &nbsp; Binomial random variable</h2>
+<p>A binomial distribution  arises from a sequence of independent Bernoulli trials.</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>If the following conditions hold:</p>
+<ol>
+	<li>There is a sequence of \(n\) Bernoulli trials, each with two outcomes &quot;success&quot; and &quot;failure&quot;, where \(n\) is a fixed constant,</li>
+	<li>The results of all Bernoulli trials are independent of each other,</li>
+	<li>The probability of &quot;success&quot; is the same for all trials, \(P(success) = \pi\),</li>
+</ol>
+<p>then the total number of successes, \(X\), has a <strong>binomial</strong> distribution with parameters <em>n</em> and \(\pi\).</p>
+\[
+X \;\; \sim \;\; \BinomDistn(n, \pi)
+\]
+
+</div>
+
+<p>In most practical applications, the parameter \(\pi\) is an unknown constant, but occasionally we know its value.</p>
+
+<div class="boxed">
+	<p>Before using a binomial distribution, we must be able to argue from the context that the above three assumptions  hold.</p></div>
+
+
+<h2 class="pageName">3.2.2 &nbsp; Binomial probability function</h2>
+<p>The probability function for the \(\BinomDistn(n, \pi)\) distribution can be found by counting how many distinct sequences of \(n\) Bernoulli trials that result in \(x\) successes, then multiplying this by the probability of any one such sequence.</p>
+
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Binomial probability function</p>
+<p>If \(X\) has a \(\BinomDistn(n, \pi)\) distribution, its probability function is</p>
+\[
+p(x)= {n \choose x} \pi^x(1-\pi)^{n-x} \qquad \text{for } x=0, 1, \dots, n
+\]	
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+
+
+<h2 class="pageName">3.2.3 &nbsp; Mean and variance</h2>
+<p class="heading">Number of successes</p>
+<p>Since the number of successes, \(X\), can be written as the sum of \(n\) independent Bernoulli variables, we can find the binomial mean and variance from those of the Bernoulli distribution.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Binomial mean and variance</p>
+<p>If \(X\) has a binomial distribution with probability function </p>
+\[
+p(x)= {n \choose x} \pi^x(1-\pi)^{n-x} \quad \quad \text{for } x=0, 1, \dots, n
+\]
+<p>then its mean and variance are</p>
+\[
+E[X] = n\pi \quad\quad \text{and} \quad\quad  
+\Var(X) = n\pi(1-\pi)\]	
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p class="heading">Proportion of successes</p>
+<p>The proportion of successes has a closely related distribution since</p>
+\[
+P = \frac X n
+\]
+
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Proportion of successes</p>
+		<p>The proportion of successes in a binomial experiment, \(P\), has mean and variance</p>
+		\[
+		E[P] = \pi \spaced{and}  
+		\Var(P) = \frac {\pi(1-\pi)} n \] 
+		<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">3.2.4 &nbsp; Shape of the binomial distribution</h2>
+<p class="heading">Mode</p>
+<p>The distributions of \(X\) and \(P\) are 'unimodal' — there is either a single value (or two adjacent ones) with maximum probability, with probabilities decreasing steadily on each side.</p>
+<p class="heading">Shape</p>
+<p>The distributions of \(X\) and \(P\) are symmetric if \(\pi = 0.5\), but skew with a longer right tail when \(\pi \lt 0.5\) and skew with a longer left tail when \(\pi \gt 0.5\).</p>
+<p>As \(n\) increases, the distribution's shape becomes more symmetric.</p>
+<p class="heading">Centre and spread of \(X\)</p>
+<p>Both the mean and variance of \(X\) increase with \(n\).</p>
+<p class="eqn"><img src="../../../en/binomial/images/s_pi.5.png" width="510" height="340"></p>
+<p>The variance of \(X\) is highest when \(\pi = 0.5\) and decreases as \(\pi\) approaches 0 or 1.</p>
+
+<p class="eqn"><img src="../../../en/binomial/images/s_pi.9.png" width="510" height="340"></p>
+<p></p>
+<p class="heading">Centre and spread of \(P\)</p>
+<p>The mean of \(P\) is not affected by \(n\), but its variance <strong>decreases</strong> as \(n\) gets larger.</p>
+<p class="eqn"><img src="../../../en/binomial/images/s_pi.9_propn.png" width="360" height="450"></p>
+<p class="heading">Normal approximation</p>
+<p>The Central Limit Theorem can  be applied to the distributions of both \(X\) and \(P\):</p>
+
+\[ \begin{align}
+		X  &amp;\;\; \xrightarrow[n \rightarrow \infty]{} \; \; \NormalDistn\left(\mu_X = n\pi, \;\;\sigma_X^2 = n\pi(1-\pi) \right) \\
+		P  &amp;\;\; \xrightarrow[n \rightarrow \infty]{} \; \; \NormalDistn\left(\mu_P = \pi, \;\;\sigma_P^2 = \frac{\pi(1-\pi)} n \right)
+\end{align} \]
+
+		
+
+<h2 class="pageName">3.2.5 &nbsp; Binomial examples</h2>
+<p>Binomial probabilities may be obtained using ... </p>
+<ul>
+	<li>a computer (preferred),</li>
+	<li>a mathematical formula, or</li>
+	<li>tables of binomial probabilities.</li>
+</ul>
+<p class="heading">Excel</p>
+<p>In Excel, the function &quot;BINOM.DIST()&quot; can be used to find binomial probabilities. For example, if \(X \sim \BinomDistn(n=20, \pi=0.3)\),</p>
+<dl>
+	<dt>\(\mathbf {P(X = 4)}\)</dt>
+	<dd>Type in an Excel spreadsheet cell &quot;=BINOM.DIST(4, 20, 0.3, false)&quot;</dd>
+	<dt>\(\mathbf {P(X ≤ 2)}\)</dt>
+	<dd>Type in an Excel spreadsheet cell &quot;=BINOM.DIST(2, 20, 0.3, true)&quot;</dd>
+</dl>
+<p class="heading">Scientific calculator</p>
+<p>If \(X  \sim \BinomDistn(n=20, \pi=0.3)\) then a scientific calculator can find:</p>
+<dl>
+	<dt>\(\mathbf {P(X = 4)}\)</dt>
+</dl>
+	\[
+		p(4)= {20 \choose 4} {0.3}^4(1-0.3)^{20-4}
+	\]
+	<dl>
+	<dt>\(\mathbf {P(X ≤ 2)}\)</dt>
+	\[ \begin {align}
+		p(0) + p(1) + p(2) &amp;= {20 \choose 0} {0.3}^{0}0.7^{20} + {20 \choose 1} {0.3}^{1}0.7^{19} + {20 \choose 2} {0.3}^{2}0.7^{18} \\
+		&amp; =\;\; 0.7^{20} \;+\; 20 \times 0.3 \times 0.7^{19} \;+\; 190 \times {0.3}^{2}0.7^{18}
+	\end {align}\]
+</dl>
+<p class="heading">Probabilities for ranges of counts</p>
+<p>Care must be taken with the wording of  questions &mdash; should the 'extreme' value that is mentioned in the wording of the interval  be included? For example,</p>
+<div class="centred">
+	<table border="0" class="centred" cellpadding="3" cellspacing="0">
+		<tr>
+			<th align="center" scope="col">In words...</th>
+			<th align="center" scope="col">&nbsp;&nbsp;&nbsp;&nbsp;In terms of X&nbsp;&nbsp;&nbsp;&nbsp;</th>
+			<th align="center" scope="col">&nbsp;&nbsp;&nbsp;&nbsp;Using ½&nbsp;&nbsp;&nbsp;&nbsp;</th>
+		</tr>
+		<tr>
+			<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">More than 5</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">X &gt; 5</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">X&nbsp;&gt;&nbsp;5.5</td>
+		</tr>
+		<tr>
+			<td align="center" bgcolor="#FFFFFF">Greater than or equal to 5</td>
+			<td align="center" bgcolor="#FFFFFF">X ≥ 5</td>
+			<td align="center" bgcolor="#FFFFFF">X &gt; 4.5</td>
+		</tr>
+		<tr>
+			<td align="center" bgcolor="#FFFFFF">No more than 5</td>
+			<td align="center" bgcolor="#FFFFFF">X ≤ 5</td>
+			<td align="center" bgcolor="#FFFFFF">X &lt; 5.5</td>
+		</tr>
+		<tr>
+			<td align="center" bgcolor="#FFFFFF">At least 5</td>
+			<td align="center" bgcolor="#FFFFFF">X ≥ 5</td>
+			<td align="center" bgcolor="#FFFFFF">X &gt; 4.5</td>
+		</tr>
+		<tr>
+			<td align="center" bgcolor="#FFFFFF">Fewer than 5</td>
+			<td align="center" bgcolor="#FFFFFF">X &lt; 5</td>
+			<td align="center" bgcolor="#FFFFFF">X &lt; 4.5</td>
+		</tr>
+		<tr>
+			<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">5 or fewer</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">X ≤ 5</td>
+			<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">X &lt; 5.5</td>
+		</tr>
+	</table>
+</div>
+<p>The final column  most clearly expresses which values of \(X\) are included.</p>
+<div class="centred">
+	<div class="boxed">
+		<p>We recommend translating any interval into its form using ½ before finding its probability.</p>
+	</div>
+</div>
+
+<p>Translating the interval in this way is particularly useful when using a normal approximation to evaluate the probability. In this context, it is called a <strong>continuity correction</strong>.</p>
+
+
+
+<h2 class="pageName">3.2.6 &nbsp; Cumulative probabilities</h2>
+<p>A binomial distribution's cumulative probability at \(x\) is the probability of a value less than or equal to a constant \(x\),</p>
+
+\[
+	F(x) = P(X \le x) = \sum_{u \le x} {p(u)} = 
+\sum_{u=0}^{\lfloor x \rfloor} {{n \choose u}\pi^x (1-\pi)^{n-x} }\]
+<p>where \(\lfloor x \rfloor\) denotes the largest integer less than or equal to \(x\). Note that, unlike the probability function \(p(x)\), this is defined for all \(x\), not just for integer values.</p>
+<div class="centred">
+	<div class="boxed">
+		<p>Unfortunately there is no simple formula for  the cumulative probabilities of the binomial distribution.</p>
+	</div>
+</div>
+
+<p>When treated as a function of \(x\), this is  the distribution's <strong><a href="javascript:showNamedPage('discreteDistns2')">cumulative distribution function</a></strong> (CDF) — a step function that increases by \(p(x)\) at each integer value from 0 to \(n\).</p>
+<p class="eqn"><img src="../../../en/binomial/images/s_cdf.png" width="516" height="425"></p>
+
+
+<h1 class="sectionName breakBefore">3.3 &nbsp; Geometric distribution</h1>
+<h2 class="pageName">3.3.1 &nbsp; Geometric random variable</h2>
+
+<p class="heading">Bernoulli trials until first success</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+<p>In a sequence of independent Bernoulli trials with \(P(success) = \pi\) in each trial, the number of trials until the first success is observed has a distribution called a <strong>geometric distribution</strong>.</p>
+
+\[
+X \;\; \sim \; \; \GeomDistn(\pi)
+\]
+
+</div>
+<p>The probability function of a geometric random variable is relatively simple.</p>
+
+<div class="theoremProof">
+<div class="theorem">
+<p class="theoremTitle">Probability function</p>
+<p>If a random variable has a geometric distribution, \(X \sim \GeomDistn(\pi) \), then its probability function is</p>
+\[
+p(x) = \pi (1-\pi)^{x-1} \quad \quad \text{for } x = 1, 2, \dots
+\]
+<p class="theoremNote">(Proved in full version)</p>
+</div>
+</div>
+<p>The geometric probability function can be directly shown to satisfy the required properties of a valid probability function.</p>
+<dl>
+	<dt>Negative probabilities are impossible</dt>
+	<dd>Since \(0 \le \pi \le 1 \), it must also be true that \(0 \le (1-\pi) \le 1 \). Therefore</dd>
+\[
+p(x) = \pi (1-\pi)^{x-1} \ge 0 \quad \quad \text{for all } x
+\]
+	<dt>The probabilities sum to one</dt>
+ \[ 
+\sum_{x=1}^\infty {p(x)} \;=\; \sum_{x=1}^\infty {\pi (1-\pi)^{x-1}} \;=\; 1
+ \]
+</dl>
+
+<p>The second property can be proved using following mathematical result.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Sum of geometric series</p>
+		<p>If \(-1 &lt; a &lt; 1\), then</p>
+		\[
+		\sum_{x=0}^\infty {a^x} = \frac 1 {1-a}
+		\] 
+		<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+
+<p class="heading">Shape of the geometric distribution</p>
+
+<p>Each geometric probability is \( (1-\pi) \) times that of the previous one, so the probabilities decrease steadily from the mode at \(x = 1\).</p>
+<p class="eqn"><img src="../../../en/geometric/images/s_probFunctions.png" width="520" height="510"></p>
+
+
+<h2 class="pageName">3.3.2 &nbsp; Cumulative distribution function</h2>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Cumulative distribution function</p>
+<p>The cumulative distribution function for the geometric distribution with probability function</p>
+\[
+p(x) = \pi (1-\pi)^{x-1} \quad \quad \text{for } x = 1, 2, \dots
+\]
+<p>is</p>
+\[
+F(x) = \begin{cases} 1 - (1-\pi)^{\lfloor x \rfloor} &amp; \text{for } x \ge 0 \\
+0 &amp; \text{for } x \lt 0 \end{cases}
+\]
+<p>where \(\lfloor x \rfloor\) denotes the largest integer less than or equal to \(x\).</p>
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+<p>An example is shown below.</p>
+<p class="eqn"><img src="../../../en/geometric/images/s_cdf.png" width="514" height="394"></p>
+
+
+
+<h2 class="pageName">3.3.3 &nbsp; Examples</h2>
+<p>The probability below can be found by adding a few geometric probabilities.</p>
+
+<div class="questionSoln">
+<div class="question">
+<p class="questionTitle">Question</p>
+<p>If a fair six-sided die is rolled repeatedly, what is the probability that it will take between 6 and 8 rolls (inclusive) to get the first &quot;six&quot;?</p>
+<p class="questionNote">(Solved in full version)</p>
+</div>
+</div>
+
+<p>Adding probabilities like this works provided there are not too many of them. However an alternative way to find probabilities is to use the cumulative distribution function.</p>
+
+<div class="questionSoln">
+<div class="question">
+<p class="questionTitle">Question</p>
+<p>If a fair six-sided die is rolled repeatedly, what is the probability that it will take between 10 and 20 rolls (inclusive) to get the first &quot;six&quot;?</p>
+<p class="questionNote">(Solved in full version)</p>
+</div>
+</div>
+
+
+<h2 class="pageName">3.3.4 &nbsp; Mean and variance</h2>
+<p>Derivation of formulae for the mean and variance of the geometric distribution requires summation of two series that are closely related to the summation of a geometric series.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Two mathematical results</p>
+<p>If \(-1 &lt; a &lt; 1\), then</p>
+\[ \begin{align}
+\sum_{x=0}^\infty {x \times a^x} &amp; = \frac a {(1-a)^2} \\
+\sum_{x=0}^\infty {x^2 \times a^x} &amp; = \frac {a(1+a)} {(1-a)^3}
+\end{align} \]
+
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p>We now give the mean and variance of the geometric distribution.</p>
+<div class="theoremProof">
+<div class="theorem">
+<p class="theoremTitle">Mean and variance</p>
+<p>If a random variable has a geometric distribution, \(X \sim \GeomDistn(\pi) \) with probability function</p>
+\[
+p(x) = \pi (1-\pi)^{x-1} \qquad \text{for } x = 1, 2, \dots
+\] 
+<p>then its mean and variance are</p>
+\[
+E[X] = \frac 1 {\pi} \spaced{and} \Var(X) = \frac {1 - \pi} {\pi^2}
+\]
+<p class="theoremNote">(Proved in full version)</p>
+</div>
+</div>
+
+
+<h1 class="sectionName breakBefore">3.4 &nbsp; Negative binomial distribution</h1>
+<h2 class="pageName">3.4.1 &nbsp; Probability function</h2>
+
+<p class="heading">Waiting for the <em>k</em>'th success</p>
+
+<p>The number of  independent Bernoulli trials until the <strong>first</strong> success is observed has a geometric distribution. We now generalise this to consider the number of trials until we observe the <strong>\(k\)'th</strong> success.</p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>In a sequence of independent Bernoulli trials with \(P(success) = \pi\) in each trial, the number of trials until the \(k\)'th success is observed has a distribution called a <strong>negative binomial distribution</strong>.</p>
+\[
+X \;\; \sim \; \; \NegBinDistn(k, \pi)
+\]</div>
+
+<p>The probability function for the negative binomial distribution can be fairly easily obtained.</p>
+
+<div class="theoremProof">
+<div class="theorem">
+<p class="theoremTitle">Negative binomial probability function</p>
+<p>If a random variable has a negative binomial distribution, \(X \sim \NegBinDistn(k, \pi) \), then its probability function is</p>
+\[
+p(x) = \begin{cases}
+\displaystyle{{x-1} \choose {k-1}} \pi^k(1-\pi)^{x-k} &amp; \text{for } x = k, k+1, \dots \\[0.5em]
+0 &amp; \text{otherwise}
+\end{cases}
+\]
+<p class="theoremNote">(Proved in full version)</p>
+</div>
+</div>
+
+<p>The negative binomial distribution is identical to the geometric distribution when \(k=1\).</p>
+<p class="eqn"><img src="../../../en/negBinomial/images/s_probFunctions.png" width="515" height="550"></p>
+<p>The distribution's second parameter gives more flexibility in its possible shape than the geometric distribution. The following three negative binomial distributions all have the same mean (μ = 20).</p>
+<p class="eqn"><img src="../../../en/negBinomial/images/s_probFunctions2.png" width="515" height="480"></p>
+
+
+<h2 class="pageName">3.4.2 &nbsp; Alternative form</h2>
+
+<p class="heading">Number of failures until \(k\)'th success</p>
+
+<p>Confusingly,  an <strong>alternative</strong> definition of a negative binomial random variable  is also in common use. Instead of the number of <strong>trials</strong> until the \(k\)'th success, it is sometimes defined as the number of <strong>failures</strong> until the \(k\)'th success is observed.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+<p>In a sequence of independent Bernoulli trials with \(P(success) = \pi &gt; 0\) in each trial, the number of failures observed before the \(k\)'th success is observed has a distribution that is also called a <strong>negative binomial distribution</strong>.</p>
+\[
+X^* \;\; \sim \; \; \NegBinDistn^*(k, \pi)
+\]</div>
+
+<p>If the \(k\)'th success is observed on the \(X\)'th trial, there must have been \((X - k)\) failures, so</p>
+
+\[
+X^* \;\; = \; \; X - k
+\]
+
+
+
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Alternative distribution's probability function</p>
+<p>If \( X^*  \sim  \NegBinDistn^*(k, \pi) \), then it has probability function</p>
+\[
+p(x) = \begin{cases}
+\displaystyle{{x + k -1} \choose {k-1}} \pi^k(1-\pi)^x &amp; \quad \text{for } x = 0, 1, \dots \\[0.5em]
+0 &amp; \quad \text{otherwise}
+\end{cases}
+\]
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+
+<p>It is important to carefully identify which type of negative binomial distribution to use in any context.</p>
+
+
+<h2 class="pageName">3.4.3 &nbsp; Finding negative binomial probabilities</h2>
+
+<p class="heading">Excel</p>
+
+<p>Excel has a function that will evaluate either single negative binomial probabilities or cumulative probabilities, &quot;NEGBINOM.DIST()&quot;. For example, if the probability of success is π = 0.3 and we are interested in how long it takes to get \(k = 5\) successes,</p>
+<dl>
+	<dt>\(\mathbf{P( \text{exactly 12 trials} ) = P(X = 12)}\), or</dt>
+	<dt>\(\mathbf{P( \text{exactly 7 failures} ) = P(X^* = 7)}\)</dt>
+	<dd>Type in an Excel spreadsheet cell "=NEGBINOM.DIST(7, 5, 0.3, false)"</dd>
+</dl>
+<p>Excel is  implicitly using the second form of negative binomial distribution for the number of <strong>failures</strong> before the \(k\)'th success.</p>
+<p class="heading">On a scientific calculator</p>
+<p>Negative binomial probabilities can also be found on a scientific calculator directly using the formula for its probability function.</p>
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Question</p>
+<p>If a coin is repeatedly tossed, what is the probability that the second head will appear on the fifth toss of the coin?</p>
+<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">3.4.4 &nbsp; Cumulative distribution function</h2>
+
+<p class="heading">Direct evaluation of cumulative probabilities</p>
+
+<p>There is no simple formula for the negative binomial distribution's cumulative distribution function, \(F(x)\) but individual negative binomial probabilities can be added,</p> 
+\[
+F(x) = \sum_{u=k}^{\lfloor x \rfloor} {{u-1} \choose {k-1}} \pi^k(1-\pi)^{u-k}
+\]
+<p>where \(\lfloor x \rfloor \) denotes the smallest integer less than or equal to \(x\).</p>
+
+<p class="heading">Cumulative probabilities from binomial distribution</p>
+<p>If \(k\) is much smaller than \(x\), there is a simpler method since taking more than \(x\) trials to get the \(k\)'th success is equivalent to there being fewer than \(k\) successes in the first \(x\) trials.</p>
+\[ \begin{align}
+P(X \gt x) &amp; = P(\text{fewer than } k \text{ successes in first } x \text{ trials}) \\
+&amp; = \sum_{v=0}^{k-1} {x \choose v} \pi^v (1-\pi)^{x-v}
+\end{align}\]
+<p>The cumulative probability is \(F(x) = 1 - P(X \gt x)\).</p>
+<p class="heading">Cumulative probabilities in Excel</p>
+<p>These formulae can be avoided if Excel is used. Again the function &quot;NEGBINOM.DIST()&quot; is used, but with its last parameter set to <strong>true</strong>. For example, if the probability of success is π = 0.3 and we are interested in how long it takes to get \(k = 5\) successes,</p>
+<dl>
+	<dt>\(\mathbf{P( \text{no more than 16 trials} ) = P(X ≤ 16)}\), or</dt>
+	<dt>\(\mathbf{P( \text{no more than 11 failures} ) = P(X^* ≤ 11)}\)</dt>
+	<dd>Type in an Excel spreadsheet cell "=NEGBINOM.DIST(11, 5, 0.3, true)"</dd>
+</dl>
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Question</p>
+<p>If a fair six-sided die is rolled repeatedly, what is the probability that it will take more than 20 rolls before three sixes are observed?</p>
+<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+
+
+<h2 class="pageName">3.4.5 &nbsp; Mean and variance</h2>
+<p>We now give formulae for the mean and variance of the negative binomial distribution.</p>
+
+<div class="theoremProof">
+<div class="theorem">
+<p class="theoremTitle">Mean and variance</p>
+<p>If the random variable \(X\) has a negative binomial distribution with probability function</p>
+\[
+p(x) = \begin{cases}
+\displaystyle{{x-1} \choose {k-1}} \pi^k(1-\pi)^{x-k} &amp; \quad \text{for } x = k, k+1, \dots \\[0.5em]
+0 &amp; \quad \text{otherwise}
+\end{cases}
+\]
+<p>then its mean and variance are</p>
+\[
+E[X] = \frac k {\pi} \spaced{and} \Var(X) = \frac {k(1-\pi)} {\pi^2}
+\]
+<p class="theoremNote">(Proved in full version)</p>
+</div>
+</div>
+
+<p>Since the alternative type of negative binomial distribution (for the number of <strong>failures</strong> before the \(k\)'th success) is for</p>
+\[
+X^* \;\; = \; \; X - k
+\]
+<p>its mean is simply \(k\) less than that of \(X\) and its variance is the same,</p>
+\[
+E[X^*] = \frac k {\pi} - k = \frac {k(1-\pi)} \pi \spaced{and} \Var(X^*) =  \frac {k(1-\pi)} {\pi^2}
+\]
+
+
+
+</body>
+</html>

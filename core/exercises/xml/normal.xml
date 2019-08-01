@@ -144,6 +144,61 @@
 </exercise>
 
 
+<exercise name='pFromExternal'>
+	<description>Find a normal probability or expected count (using statistics program)</description>
+	<comment>A normal pdf is displayed and the probability of being less than a value (or greater than it, between 2 values or not between 2 values) is requested. (Some variations ask for the expected number in a sample of size n instead of the probability.)\\nThe probability should be found using an external statistics program.</comment>
+	<applet>exerciseNormalProg.NormalProbExternalApplet</applet>
+	<width>500</width>
+	<height>600</height>
+	
+	<option name="nTemplate">Displays a simple template to help evaluate an expected count (not needed to find probabilities)</option>
+	
+	<variable name="varName" type="string(16)">Name for variable</variable>
+	<variable name="intervalType" type="int_choice(Less than cutoff#Greater than cutoff#Between two cutoffs#Outside two cutoffs)"></variable>
+	<variable name="axis" type="axis"></variable>
+	<variable name="mean" type="double"></variable>
+	<variable name="sd" type="double"></variable>
+	<variable name="cut-offs" type="cut_offs">Defines the minimum and maximum cutoff values (or the z-scores between which they ar randomly generated)</variable>
+	<variable name="maxValue" type="double">Template for the maximum possible x-value</variable>
+	<variable name="questionType" type="int_choice(Probability#Expected count)">Variations can either request a probability of the expected number in n values</variable>
+	<variable name="count" type="int(optional)">If the question is about the expected number in an interval, this should be positive. Otherwise leave it blank.</variable>
+	<variable name="requiredDecimals" type="int">The probability (or expected count) should be exact to this number of decimals</variable>
+	
+	<template>
+		<question>A normal distribution has mean #mu# = #mean(10)# and standard deviation #sigma# = #sd(3)#. What is the probability of getting a value #cut-offs(-3:3:1)#, accurate to #requiredDecimals(4)# decimals?</question>
+		<qnParam>questionType(0)#count()#intervalType(0:3)#varName(Variable, Y)#maxValue(99.999)#axis(-5 25 -5 5)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>temperatureProb</shortName>
+		<longName>Max daily temperature (probabiity)</longName>
+		<question>The maximum daily temperature in a city in January is approximately normally distributed with mean #mu# = #mean[index](10,15,20,25)##degrees#C and standard deviation #sigma# = #sd[](3,4,5)##degrees#C.\\nUse a statistics program to find the probability that the maximum temperature will be #cut-offs(-3:3:1)##degrees#C in one day (accurate to #requiredDecimals(4)# decimals).</question>
+		<qnParam>index(0:3)#questionType(0)#count()#intervalType(0:3)#varName(maximum temperature in day)#maxValue(99.999)#axis[index](-5 25 -5 5*0 30 0 5*5 35 5 5*10 40 10 5)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>seedWeightProb</shortName>
+		<longName>Seed weight of trees (probabiity)</longName>
+		<question>The weight of the seeds of one species of tree has a normal distribution with mean #mu# = #mean[index](18,19,20,21)# grams and standard deviation #sigma# = #sd[](1,1.5,2)# grams.\\nUse a statistics program to find the probability that one seed from this type of tree has weight #cut-offs(-3:3:1)# grams (accurate to #requiredDecimals(4)# decimals).</question>
+		<qnParam>index(0:3)#questionType(0)#count()#intervalType(0:3)#varName(seed weight)#maxValue(99.999)#axis[index](12 24 12 2*13 25 14 2*14 26 14 2*15 27 16 2)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>temperatureExpected</shortName>
+		<longName>Max daily temperature (expected count)</longName>
+		<question>The maximum daily temperature in a city in January is approximately normally distributed with mean #mu# = #mean[index](10,15,20,25)##degrees#C and standard deviation #sigma# = #sd[](3,4,5)##degrees#C.\\nUse a statistics program to find how many days out of #count[](5,10,15,20,25,30)# you would expect the maximum temperature to be #cut-offs(-3:3:1)##degrees#C, accurate to #requiredDecimals(3)# decimals.</question>
+		<qnParam>index(0:3)#questionType(1)#intervalType(0:2)#varName(maximum temperature in day)#maxValue(99.999)#axis[index](-5 25 -5 5*0 30 0 5*5 35 5 5*10 40 10 5)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>seedWeightExpected</shortName>
+		<longName>Seed weight of trees (expected count)</longName>
+		<question>The weight of the seeds of one species of tree has a normal distribution with mean #mu# = #mean[index](18,19,20,21)# grams and standard deviation #sigma# = #sd[](1,1.5,2)# grams.\\nIn a sample of #count[](5,10,15,20,25,30)# seeds, how many would you expect to have weight #cut-offs(-3:3:1)# grams? (Use a statistics program to find this, exact to #requiredDecimals(3)# decimals.)</question>
+		<qnParam>index(0:3)#questionType(1)#intervalType(0:3)#varName(seed weight)#maxValue(99.999)#axis[index](12 24 12 2*13 25 14 2*14 26 14 2*15 27 16 2)</qnParam>
+	</variation>
+</exercise>
+
+
 <exercise name='pByDraggingOverN(0,1)'>
 	<description>Find a normal probability using z-scores and dragging over N(0,1) pdf</description>
 	<comment>A question asks for a probability about a normal distribution (or the expected count in a sample of n for some variations).\\nThe end-point(s) of the interval must be translated into z-scores first. The relevant area under a N(0,1) pdf between the z-scores can be found roughly by dragging on a pdf or, more accurately, by typing the z-scores into text edit boxes.</comment>
@@ -280,6 +335,43 @@
 		<shortName>temperature2</shortName>
 		<longName>Max temperature (exceeded)</longName>
 		<question>The maximum daily temperature in a city in January is approximately normally distributed with mean #mu# = #mean[index](10,15,20,25)##degrees#C and standard deviation #sigma# = #sd[](3,4,5)##degrees#C.\\nWhat is the daily maximum temperature that will be exceeded in #percent(5:50)#% of days?</question>
+		<qnParam>index(0:3)#intervalType(1)#varName(maximum temperature in day)#maxValue(99.999)#axis[index](-5 25 -5 5*0 30 0 5*5 35 5 5*10 40 10 5)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='quantileExternal'>
+	<description>Find a normal quantile using an external statistics program</description>
+	<comment>The question asks for a value that is exceeded (or not reached) with a given probabiity.</comment>
+	<applet>exerciseNormalProg.NormalInverseExternalApplet</applet>
+	<width>500</width>
+	<height>550</height>
+	
+	<variable name="varName" type="string(16)">Name for variable</variable>
+	<variable name="intervalType" type="int_choice(Less than cutoff#Greater than cutoff)"></variable>
+	<variable name="axis" type="axis"></variable>
+	<variable name="mean" type="double"></variable>
+	<variable name="sd" type="double"></variable>
+	<variable name="percent" type="int">Percentage of values in target interval</variable>
+	<variable name="maxValue" type="double">Template for the maximum possible x-value</variable>
+	<variable name="requiredDecimals" type="int">Number of decimals needed in solution</variable>
+	
+	<template>
+		<question>A normal distribution has mean #mu# = #mean(10)# and standard deviation #sigma# = #sd(3)#. There is #percent(5:50)#% probability of getting a lower value than what x-value? Give the answer to #requiredDecimals(3)# decimals.</question>
+		<qnParam>intervalType(0)#varName(Variable, X)#maxValue(99.999)#axis(-5 25 -5 5)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>temperature</shortName>
+		<longName>Max temperature (not reached)</longName>
+		<question>The maximum daily temperature in a city in January is approximately normally distributed with mean #mu# = #mean[index](10,15,20,25)##degrees#C and standard deviation #sigma# = #sd[](3,4,5)##degrees#C.\\nFind the daily maximum temperature that will not be reached in #percent(5:50)#% of days, accurate to #requiredDecimals(3)# decimals.</question>
+		<qnParam>index(0:3)#intervalType(0)#varName(maximum temperature in day)#maxValue(99.999)#axis[index](-5 25 -5 5*0 30 0 5*5 35 5 5*10 40 10 5)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>temperature2</shortName>
+		<longName>Max temperature (exceeded)</longName>
+		<question>The maximum daily temperature in a city in January is approximately normally distributed with mean #mu# = #mean[index](10,15,20,25)##degrees#C and standard deviation #sigma# = #sd[](3,4,5)##degrees#C.\\nFind the daily maximum temperature that will be exceeded in #percent(5:50)#% of days, accurate to #requiredDecimals(3)# decimals.</question>
 		<qnParam>index(0:3)#intervalType(1)#varName(maximum temperature in day)#maxValue(99.999)#axis[index](-5 25 -5 5*0 30 0 5*5 35 5 5*10 40 10 5)</qnParam>
 	</variation>
 </exercise>

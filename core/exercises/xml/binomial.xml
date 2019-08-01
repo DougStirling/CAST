@@ -141,6 +141,56 @@
 </exercise>
 
 
+<exercise name='pExternal'>
+	<description>Find a binomial probability from a barchart</description>
+	<comment>A scenario is described in words and an external statistics program must be used to find a binomial probability relating to it.</comment>
+	<applet>exerciseNormalProg.BinomialProbExternalApplet</applet>
+	<width>500</width>
+	<height>650</height>
+	
+	<variable name="varName" type="string(20)">Name of binomial variable</variable>
+	<variable name="trialsName" type="string(20)">Name for the Bernouli trials (plural)</variable>
+	<variable name="nTrials" type="int(1)"></variable>
+	<variable name="pSuccess" type="double">Probability of success</variable>
+	<variable name="intervalType" type="int_choice(any value#less than or equal to end#less than end#greater than or equal to start#between start and end (inclusive)#greater than or equal to start but less than end#greater than start#greater than start but less than or equal to end#between start and end (exclusive))">Used in conjunction with cut-offs parameter to generate 'start' and 'end' (and wording for the interval)</variable>
+	<variable name="cut-offs" type="random">Must be random -- the question picks a sensible interval between 0 and nTrials in conjunction with the setting of 'intervalType'.</variable>
+	<variable name="requiredDecimals" type="int(2)">The probability should be given to this number of decimals.</variable>
+	
+	<template>
+		<question>If there are #nTrials(10:30)# independent trials and the probability of success is #pi# = #pSuccess(0.2:0.8)#, what is the probability of #cut-offs(:)# successes?</question>
+		<qnParam>varName(Y)#trialsName(trials)#requiredDecimals(4)#intervalType(1:8)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>flooding</shortName>
+		<longName>River flooding in year</longName>
+		<question>Each year, the probability of a river flooding is #pi# = #pSuccess(0.2:0.8)#.\\nAssuming that the local climate does not change over the period, what is the probability that the number of years in the next #nTrials(10:30)# in which the river floods is #cut-offs(:)#?</question>
+		<qnParam>varName(years with flood)#trialsName(years)#requiredDecimals(4)#intervalType(1:8)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>coldDrug</shortName>
+		<longName>Drug for cold symptoms</longName>
+		<question>A new drug has been developed to help reduce the symptoms of the common cold.\\nA clinical trial is conducted with #nTrials[](20,40,80)# female patients aged 20-30. If the probability that each patient reports an improvement is #pi# = #pSuccess(0.1:0.7)#, what is the probability that the total number reporting an improvement is #cut-offs(:)#?</question>
+		<qnParam>varName(patients reporting improvement)#trialsName(patients)#requiredDecimals(4)#intervalType(1:8)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>crimeProsecution</shortName>
+		<longName>Crimes resulting in prosecution</longName>
+		<question>In a town, a proportion #pSuccess(0.20:0.60)# of reported crimes of violence have been found to result in successful prosecutions.\\nIf this is the probability of successful prosecutions, #pi#, in the next #nTrials[](40,60,80)# reported crimes of violence, what is the probability that there will be #cut-offs(:)# successful prosecutions?</question>
+		<qnParam>varName(successful prosecutions)#trialsName(reported crimes of violence)#requiredDecimals(4)#intervalType(1:8)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>reptileGender</shortName>
+		<longName>Gender of hatched reptiles</longName>
+		<question>The gender of many reptiles is strongly affected by the ambient temperature when the embrio is developing in its egg.\\nIf the probability of an embrio being male is #pi# = #pSuccess(0.10:0.90)# at one particular temperature, what is the probability that out of #nTrials(10:40)# eggs at this temperature, #cut-offs(:)# males will be hatched?</question>
+		<qnParam>varName(males hatching)#trialsName(years)#requiredDecimals(4)#intervalType(1:8)</qnParam>
+	</variation>
+</exercise>
+
+
 <exercise name='paramsOfNormalApprox'>
 	<description>Find parameters of best normal approximation to binomial</description>
 	<comment>The question describes a binomial scenario and asks for the best normal approximation for either the number or proportion of successes.\\nThree templates are provided but only one or two are appropriate for any specific question, depending on whether the variable is a count or proportion.</comment>
@@ -198,7 +248,7 @@
 	<variable name="pSuccess" type="double">Probability of success</variable>
 	<variable name="intervalType" type="int_choice(any value#less than or equal to end#less than end#greater than or equal to start#between start and end (inclusive)#greater than or equal to start but less than end#greater than start#greater than start but less than or equal to end#between start and end (exclusive))">Used in conjunction with cut-offs parameter to generate 'start' and 'end' (and wording for the interval)</variable>
 	<variable name="cut-offs" type="random(minMaxProb)">Must be random -- the question picks a sensible interval between 0 and nTrials in conjunction with the setting of 'intervalType'. If a min and max are specified, these are for the cumulative probabilities.</variable>
-	<variable name="maxValue" type="double">A template for the format of cutoff values 'xxx.5' that are shown above the barchart.</variable>
+	<variable name="maxValue" type="double">A template for the format of cutoff values 'xxx.5' that are shown above the normal density.</variable>
 	<variable name="maxMeanSd" type="double_array">Templates for the maximum values for the mean and std deviation that are calculated.</variable>
 	
 	<variation>
@@ -227,6 +277,53 @@
 		<longName>Defective plastic components</longName>
 		<question>A factory produces plastic components, each of which independently has probability #pi# = #pSuccess(0.01:0.04)# of being defective.\\nIf #nTrials[](2000,4000,8000)# components are produced, what is the probability that the number of defectives will be #cut-offs(0.01:0.99)#?</question>
 		<qnParam>index(0:3)#varName(defective components)#trialsName(components produced)#maxValue(99.999)#intervalType[index](1,2,3,6)#maxMeanSd(9999.9 999.99)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='pFromNormalApproxExternal'>
+	<description>Find a binomial probability using a normal approximation</description>
+	<comment>A scenario is described in words and a probability relating to the number of successes is requested.\\nYou will need to calculate the mean and sd of the normal approximation and to find a z-score. (Note that a continuity correction should be used for full marks.)</comment>
+	<applet>exerciseNormalProg.NormalApproxExternalApplet</applet>
+	<width>550</width>
+	<height>550</height>
+	
+	<variable name="varName" type="string(20)">Name of binomial variable</variable>
+	<variable name="trialsName" type="string(20)">Name for the Bernouli trials (plural)</variable>
+	<variable name="nTrials" type="int(1)"></variable>
+	<variable name="pSuccess" type="double">Probability of success</variable>
+	<variable name="intervalType" type="int_choice(any value#less than or equal to end#less than end#greater than or equal to start#between start and end (inclusive)#greater than or equal to start but less than end#greater than start#greater than start but less than or equal to end#between start and end (exclusive))">Used in conjunction with cut-offs parameter to generate 'start' and 'end' (and wording for the interval)</variable>
+	<variable name="cut-offs" type="random(minMaxProb)">Must be random -- the question picks a sensible interval between 0 and nTrials in conjunction with the setting of 'intervalType'. If a min and max are specified, these are for the cumulative probabilities.</variable>
+	<variable name="requiredDecimals" type="int">The number of decimals that the probability should be given to.</variable>
+	<variable name="meanDecimals" type="int">The number of decimals used when the mean is shown in the answer.</variable>
+	<variable name="sdDecimals" type="int">The number of decimals used when the standard deviation is shown in the answer.</variable>
+	
+	<variation>
+		<shortName>crimeProsecution</shortName>
+		<longName>Crimes resulting in prosecution</longName>
+		<question>In a city, a proportion #pSuccess(0.20:0.60)# of reported crimes of violence have been found to result in successful prosecutions.\\nIf this is the probability of successful prosecutions, #pi#, in the next #nTrials[](50,100,200,400)# reported crimes of violence, what is the probability that there will be #cut-offs(0.05:0.95)# successful prosecutions? Use a normal approximation and give the answer to #requiredDecimals(4)# decimals.</question>
+		<qnParam>index(0:3)#varName(successful prosecutions)#trialsName(reported crimes of violence)#intervalType[index](1,2,3,6)#meanDecimals(2)#sdDecimals(2)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>politicalPoll</shortName>
+		<longName>Poll about support for candidate A</longName>
+		<question>A newspaper conducts a survey of #nTrials[](50,100,150,200)# city residents before a local election.\\nIf each respondent has probability #pi# = #pSuccess(0.20:0.60)# of telling the newpaper that Candidate A is supported, what is the probability that the total number claiming to be supporters of A will be #cut-offs(0.01:0.99)#? Use a normal approximation and give the answer to #requiredDecimals(4)# decimals.</question>
+		<qnParam>index(0:3)#varName(supporters of A)#trialsName(surveyed people)#intervalType[index](1,2,3,6)#meanDecimals(2)#sdDecimals(2)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>softwareSupport</shortName>
+		<longName>Support required for accounting program</longName>
+		<question>A large computer software company has found that a proportion #pSuccess(0.05:0.20)# of people buying an accounting program that they developed require subsequent support.\\nAssuming that there will be #nTrials[](200,400,800)# sales in the next month and that each of them has this probability, #pi#, of each requiring support, what is the probability that the total number of purchasers requiring support will be #cut-offs(0.05:0.95)#? Use a normal approximation and give the answer to #requiredDecimals(4)# decimals.</question>
+		<qnParam>index(0:3)#varName(people requiring support)#trialsName(purchasers of software)#maxValue(99.999)#intervalType[index](1,2,3,6)#meanDecimals(2)#sdDecimals(2)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>defectives</shortName>
+		<longName>Defective plastic components</longName>
+		<question>A factory produces plastic components, each of which independently has probability #pi# = #pSuccess(0.01:0.04)# of being defective.\\nIf #nTrials[](2000,4000,8000)# components are produced, what is the probability that the number of defectives will be #cut-offs(0.01:0.99)#? Use a normal approximation and give the answer to #requiredDecimals(4)# decimals.</question>
+		<qnParam>index(0:3)#varName(defective components)#trialsName(components produced)#intervalType[index](1,2,3,6)#meanDecimnals(2)#sdDecimals(2)</qnParam>
 	</variation>
 </exercise>
 

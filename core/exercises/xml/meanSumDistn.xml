@@ -161,4 +161,59 @@
 	</variation>
 </exercise>
 
+
+<exercise name='pAboutMeanOrSumExternal'>
+	<description>Find a probability relating to a mean or sum using a z-score but without templates</description>
+	<comment>The question asks for a probability about a sample mean or total. An external program must be used to calculate the mean and sd of the approximate normal distn of the mean or sum and to find z-scores.\\nThe probabiity should be found using a statistics program.</comment>
+	<applet>exerciseMeanSumProg.MeanSumExternalApplet</applet>
+	<width>600</width>
+	<height>700</height>
+	
+	<variable name="intervalType" type="int_choice(Less than cutoff#Greater than cutoff#Between two cutoffs)"></variable>
+	<variable name="mean" type="double">Population mean</variable>
+	<variable name="sd" type="double">Population standard deviation</variable>
+	<variable name="count" type="int(1)">Sample size</variable>
+	<variable name="sumMeanType" type="int_choice(Mean#Sum#Single value">Whether question asks about the distn of the sample mean, sample sum or a single value</variable>
+	<variable name="cut-offs" type="cut_offs" extra="true">Defines the minimum and maximum cutoff values (or the z-scores between which they ar randomly generated)</variable>
+	<variable name="requiredDecimals" type="int">Number of decimals that the answer probability should be accurate to</variable>
+	<variable name="zDecimals" type="int">Number of decimals reported for z-scores in answer</variable>
+	<variable name="decimalsForSd" type="int">Number of decimals reported for standard deviation in answer</variable>
+	
+	<template>
+		<question>A normal distribution has mean #mu# = #mean(100:300)# and standard deviation #sigma# = $#sd(20:40)#.\\nA random sample of n = #count(6:10)# is selected. Give the answer to #requiredDecimals(4)# decimals.</question>
+		<qnParam>intervalType(0:2)#zDecimals(4)#sdDecimals(2)</qnParam>
+		<ending>sumMeanType(0)# What is the probability that the sample mean is #cut-offs(-3:3:0)# grams?</ending>
+	</template>
+	
+	<variation>
+		<shortName>appleWeight</shortName>
+		<longName>Weights of apples</longName>
+		<question>Weights of supermarket apples of one type are approximately normal with mean #mu# = #mean(100:300)# grams and standard deviation #sigma# = $#sd(20:40)# grams.\\nAssuming that the weights of individual apples are independent, consider a bag containing #count(6:10)# apples and find the probability below to #requiredDecimals(4)# decimals.</question>
+		<qnParam>intervalType(0:2)#zDecimals(4)#decimalsForSd(4)</qnParam>
+		<ending>sumMeanType(0)# What is the probability that the average weight of the apples in the bag is #cut-offs(-3:3:0)# grams?</ending>
+		<ending>sumMeanType(1)# What is the probability that the total weight of the apples in the bag is #cut-offs(-3:3:0)# grams?</ending>
+		<ending>sumMeanType(2)# What is the probability that the weight of a randomly selected apple from the bag is #cut-offs(-3:3:0)# grams?</ending>
+	</variation>
+	
+	<variation>
+		<shortName>bankBalances</shortName>
+		<longName>Bank balances of students</longName>
+		<question>The bank balance of first year students at the end of the year is approximately normal with mean #mu# = $#mean(100:500)# and standard deviation #sigma# = $#sd(400:800)#, with negative balances indicating overdrafts.\\nConsider a flat containing #count(2:5)# students. Find the following probability to #requiredDecimals(4)# decimals. If their bank balances are independent,</question>
+		<qnParam>intervalType(0:2)#zDecimals(4)#decimalsForSd(2)</qnParam>
+		<ending>sumMeanType(0)# what is the probability that the mean bank balance of the students is #cut-offs(-3:3:0)# dollars?</ending>
+		<ending>sumMeanType(1)# what is the probability that the total bank balance in the flat is #cut-offs(-3:3:0)# dollars?</ending>
+		<ending>sumMeanType(2)# what is the probability that the bank balance of one particular student is #cut-offs(-3:3:0)# dollars?</ending>
+	</variation>
+	
+	<variation>
+		<shortName>custodialSentences</shortName>
+		<longName>Lengths of custodial sentences</longName>
+		<question>The lengths of custodial sentences handed out to male youths aged under 20 has a roughly normal distribution with mean #mu# = #mean[index](2.5,3.3,3.5,4.2,5.1)# years and standard deviation #sigma# = #sd[index](1.1,1.8,1.9,2.1,2.4)# years. Find the following probability to #requiredDecimals(4)# decimals.\\nAssuming that the sentences given to different youths are independent,</question>
+		<qnParam>index(0:4)#intervalType(0:2)#count[](9,16,25)#zDecimals(4)#decimalsForSd(2)</qnParam>
+		<ending>sumMeanType(0)# what is the probability that the average sentence given to #count# sentenced youths will be #cut-offs(-3:3:1)# years?</ending>
+		<ending>sumMeanType(1)# what is the probability that the total of the sentences given to #count# sentenced youths will be #cut-offs(-3:3:1)# years?</ending>
+		<ending>sumMeanType(2)# what is the probability that the sentence given to a single youth will be #cut-offs(-3:3:1)# years?</ending>
+	</variation>
+</exercise>
+
 </topic>

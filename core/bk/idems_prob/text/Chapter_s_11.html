@@ -1,0 +1,1962 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>11. Hypothesis Tests</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../../structure/summaryStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/maths/mathStyles.css" type="text/css">
+  <link rel="stylesheet" href="../../../structure/printStyles.css" type="text/css">
+  <script src="../../../structure/videoControls/jquery.js"></script>
+  <script src="../../../structure/maths/theorems.js"></script>
+  <script src="../../../structure/maths/mathJax/MathJax.js?config=TeX-AMS-MML_SVG,statMacros.js"></script>
+  <script src="../../../structure/printFixes.js"></script>
+</head>
+
+<body id="body" onLoad="showPrintDialog(true)">
+<div id='overlay'>
+	<div id='dialogWindow'>
+		<div class='printDialog'>
+			<script type='text/javascript'>
+				document.write("<div class='heading'>" + top.document.title + "</div>");
+				if (top.url != null) {
+					document.write("<p class='text'>A version of this chapter has already been generated in PDF format and we recommend that it is used for printing. The button below will download and display it.</p>");
+					document.write("<p><button onClick='top.showPdf()'>Show PDF version of chapter</button></p>");
+					document.write("<p class='text'>However downloading could be slow depending on your internet connection. If this is a problem, click the button below to print the chapter without downloading (but perhaps not formatted as well as the PDF version).</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>If you are <strong>not</strong> using the PDF version, the best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+				else {
+					document.write("<p class='text'>Click the button below to print this chapter.</p>");
+					document.write("<p><button onClick='top.doPrint()'>Show print dialog</button></p>");
+					document.write("<p class='text'>The best print results are obtained if the text is reduced in size and printed on  sheets of paper that are smaller than A4. This can be done using your browser's Page Setup command to scale by 71% and then printing on A5 paper.</p>");
+				}
+			</script>
+			
+			<p class='text'>If you don't want to print now,</p>
+			<p><button onClick='top.showPrintDialog(false)'>Browse formatted chapter</button></p>
+		</div>
+	</div>
+</div>
+<h1 class="chapterName">Chapter 11 &nbsp; Hypothesis Tests</h1>
+<h1 class="sectionName">11.1 &nbsp; Hypothesis test concepts</h1>
+<h2 class="pageName">11.1.1 &nbsp; Inference</h2>
+<p>The term <strong>statistical inference</strong> refers to 
+	techniques for obtaining information about a statistical model's parameters based on data  from the model. There are two different but related
+	types of question about the  parameter (or parameters) that we might ask.</p>
+<dl>
+	<dt>What parameter values would be consistent with the sample data?</dt>
+	<dd>This branch of inference is called <strong>estimation</strong> and its main 
+	tool is a confidence interval.</dd>
+	<dt>Are the sample data consistent with some statement about the parameters?</dt>
+	<dd>This branch of inference is called <strong>hypothesis testing</strong> and 
+	is the focus of this chapter.</dd>
+</dl>
+<p class=heading>Uncertainty and strength of evidence</p>
+<p>A distribution's parameter cannot 
+	be determined <strong>exactly</strong> from a single random sample &mdash; there is 
+	a 5% chance that a 95% confidence interval will <strong>not</strong> include the 
+	true  parameter value. </p>
+<p>In a similar way, a single random sample can rarely provide enough information
+	about a  parameter to allow us to be <strong>sure</strong> whether or not any statement
+	about it will be true. The best we can hope for is an indication
+	of the <strong>strength of the evidence</strong> against the statement. </p>
+
+
+<h2 class="pageName">11.1.2 &nbsp; Null and alternative hypotheses</h2>
+
+<p>All types of hypothesis test conform to the same framework.</p>
+<p class="heading">Data and model</p>
+<p>Hypothesis tests are based on data that are collected by some random mechanism. We can usually specify some characteristics of this random mechanism — a <strong>model</strong> for the data.</p>
+<p>In this e-book, we assume that the data are a <strong>random sample</strong> from some distribution and may even be able to argue that this distribution belongs to a specific family such as a Poisson distribution. We concentrate on some specific characteristic of this family of distributions — a <strong>parameter</strong> of the distribution whose value is unknown.</p>
+<p class="heading">Null and alternative hypotheses</p>
+<p>In hypothesis testing, we want to compare two statements about an unknown parameter in the model.</p>
+<p>The <strong>null hypothesis</strong> is the more restrictive of the two hypotheses and often specifies a single value for the unknown parameter such as \(\alpha = 0\). It is a 'default' value that can be accepted as holding if there is no evidence against it. A researcher often collects data with the express hope of <strong>disproving</strong> the null hypothesis.</p>
+<p>If the null hypothesis is not true, we say that the <strong>alternative hypothesis</strong> holds. (You can understand most of hypothesis testing without paying much attention 
+to the alternative hypothesis however!)</p>
+<div class="centred">
+	<div class="boxed">
+		<p>Either the null hypothesis or the alternative hypothesis must be true.</p>
+	</div>
+</div>
+<p class="heading">Simplifying the null hypothesis</p>
+<p>In some situations, both the null and alternative hypotheses cover <strong>ranges</strong> of values for the parameter. To simplify the analysis, we do the test as though the null hypothesis specified the <strong>single</strong> value closest to the alternative hypothesis range.</p>
+<p>For example, we treat the hypotheses</p>
+<ul>
+	<li>Null hypothesis, <strong>H<sub>0</sub></strong>: \(\lambda \le \diagfrac {\small 1} {\small 110}\)   (manufacturer correct)</li>
+	<li>Alternative hypothesis, <strong>H<sub>A</sub></strong>:  \(\lambda \gt \diagfrac {\small 1} {\small 110}\)</li>
+</ul>
+<p>in exactly the same way as</p>
+<ul>
+	<li>Null hypothesis, <strong>H<sub>0</sub></strong>: \(\lambda = \diagfrac {\small 1} {\small 110}\)</li>
+	<li>Alternative hypothesis, <strong>H<sub>A</sub></strong>:  \(\lambda \gt \diagfrac {\small 1} {\small 110}\)</li>
+</ul>
+
+
+<h2 class="pageName">11.1.3 &nbsp; Test statistic</h2>
+<p>A hypothesis test is based on a quantity called a <strong>test statistic</strong> that is a function of the data. Because it is found from random data, it can also be treated as a random variable with a distribution. The test statistic should have the following properties.</p>
+<ul>
+  <li>The values of the test statistic should help to distinguish between the null and alternative hypotheses.</li>
+	<li>When the null hypothesis is true, the test statistic should have a distribution that does not involve any unknown parameters (such as a standard normal distribution).</li>
+</ul>
+
+<div class="example">
+	<p class="exampleHeading">Binomial example</p>
+	<p>In a situation where we are interested in the probability of success, \(\pi\), our data might be the successes and failures in \(n = 90\) independent trials. To test the hypotheses,</p>
+	<ul>
+		<li>Null hypothesis, <strong>H<sub>0</sub></strong>: \(\pi = \diagfrac {\small 1} {\small 3} \)</li>
+		<li>Alternative hypothesis, <strong>H<sub>A</sub></strong>: \(\pi \gt \diagfrac {\small 1} {\small 3}\)</li>
+	</ul>
+<p>The number of successes, \(X\),  might be used as a test statistics since</p>
+<ul>
+	<li>Larger values of \(X\) (i.e. more successes) would be expected when the alternative hypothesis is true than when the null hypothesis is true.</li>
+	<li>If the null hypothesis is true, \(X \sim \BinomDistn(90, \diagfrac {\small 1} {\small 3})\) and this distribution does not involve unknown parameters.</li>
+</ul>
+</div>
+
+
+<h2 class="pageName">11.1.4 &nbsp; P-value and its interpretation</h2>
+<p>The null and alternative hypotheses are treated differently in statistical hypothesis testing. We compare them by asking&nbsp;...</p>
+<div class="boxed" style="background-color:#FFFF00">
+	<p><span class="darkred">Are the data consistent with the null hypothesis?</span></p>
+</div>
+<p>A hypothesis test is based on a p-value — the probability of getting a value of the test statistic as &quot;extreme&quot; as the one calculated from the actual data set, assuming that the null hypothesis holds. </p>
+
+<div class="definition">
+<p class='definitionTitle'>Definition</p>
+<p>For a hypothesis test using a test statistic \(T\), if the values of \(T\) that favour the alternative hypothesis more than the observed value of the test statistic, \(t\), are the set \(A\), the <strong>p-value</strong> for the test is the probability of such a value when the null hypothesis holds,</p>
+\[
+\text{p-value} \;\;=\;\; P(T \in A \mid H_0)
+\]</div>
+
+<p>For example, if <strong>large</strong> values of the test statistic, \(T\), would favour the alternative hypothesis and it is evaluated to be \(t\) from the recorded data, the p-value is</p>
+\[
+\text{p-value} \;\;=\;\; P(T \ge t \mid H_0)
+\]
+<p>Since we know the distribution of the test statistic when the null hypothesis holds, the p-value can always be evaluated.</p>
+<p class="heading">Interpretation</p>
+<p>A small p-value means that our data would have been unlikely if the null hypothesis was true. This gives evidence that the data are not consistent with the null hypothesis. The following table may be regarded as an oversimplification, but can be used as a guide to interpreting p-values.</p>
+
+<div class="centred">
+	<table cellpadding="5" cellspacing="0" class="centred">
+		<tr>
+			<th align="left">p-value</th>
+			<th align="left">Interpretation</th>
+		</tr>
+		<tr bgcolor="white">
+			<td align="left" style="border-top:1px solid #999999;"><strong>over 0.1</strong></td>
+			<td align="left" style="border-top:1px solid #999999;">no evidence that the null hypothesis does not hold</td>
+		</tr>
+		<tr bgcolor="white">
+			<td align="left" style="border-top:1px solid #999999;"><strong>between 0.05 and 0.1</strong></td>
+			<td align="left" style="border-top:1px solid #999999;">very weak evidence that the null hypothesis does not hold</td>
+		</tr>
+		<tr bgcolor="white">
+			<td align="left" style="border-top:1px solid #999999;"><strong>between 0.01 and 0.05</strong></td>
+			<td align="left" style="border-top:1px solid #999999;">moderately strong evidence that the null hypothesis does not hold</td>
+		</tr>
+		<tr bgcolor="white">
+			<td align="left" style="border-top:1px solid #999999; border-bottom:1px solid #999999;"><strong>under 0.01</strong></td>
+			<td align="left" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">strong evidence that the null hypothesis does not hold</td>
+		</tr>
+	</table>
+</div>
+<br>
+
+<div class="example">
+	<p class="exampleHeading">Binomial example</p>
+	<p>If \(X\) is the number of successes in \(n = 90\) independent binomial trials, \(X \sim \BinomDistn(n=90, \pi)\). We might want to test</p>
+	<ul>
+		<li>Null hypothesis, <strong>H<sub>0</sub></strong>: \(\pi = \diagfrac {\small 1} {\small 3} \)</li>
+		<li>Alternative hypothesis, <strong>H<sub>A</sub></strong>: \(\pi \gt \diagfrac {\small 1} {\small 3}\)</li>
+	</ul>
+	<p>If \(x = 36\) successes were recorded, the p-value is the probability of 36 or more successes from a  \(\BinomDistn(n=90, \diagfrac {\small 1} {\small 3})\) distribution.</p>
+	<p class="eqn"><img src="../../../en/testConcepts/images/s_oneTailed.png" width="447" height="175" alt=""/></p>
+	<p>There would be an 11% chance of getting 36 successes when \(\pi\) was \(\diagfrac {\small 1} {\small 3}\) so the data would not be particularly unusual if <strong>H<sub>0</sub></strong> was true. We would therefore conclude that the data are consistent with the null hypothesis and there is no evidence suggesting that the alternative hypothesis is really true.</p>
+</div>
+
+
+<h2 class="pageName">11.1.5 &nbsp; Two-tailed tests</h2>
+
+<p class="heading">One- and two-tailed tests</p>
+<p>In some situations, the alternative hypothesis only allows for probabilities on <strong>one</strong> side of the null hypothesis value, such as</p>
+<ul>
+	<li>Null hypothesis, <strong>H<sub>0</sub></strong>: \(\pi = \diagfrac {\small 1} {\small 3} \)</li>
+	<li>Alternative hypothesis, <strong>H<sub>A</sub></strong>: \(\pi \gt \diagfrac {\small 1} {\small 3}\)</li>
+</ul>
+<p>This is called a <strong>one-tailed</strong> test. However the alternative hypothesis often allows for parameter values on <strong>either </strong>side of the null hypothesis value — called a <strong>two-tailed</strong> test. An example would be</p>
+<ul>
+  <li>Null hypothesis, <strong>H<sub>0</sub></strong>: \(\pi = \diagfrac {\small 1} {\small 3} \)</li>
+	<li>Alternative hypothesis, <strong>H<sub>A</sub></strong>: \(\pi \ne \diagfrac {\small 1} {\small 3}\)</li>
+</ul>
+<p class="heading">P-value for two-tailed test</p>
+
+<p>A two-tailed test is usually based on the same test statistic that would be used for the corresponding one-tailed test, but values in <strong>both tails</strong> of its distribution usually give support to the alternative hypothesis.</p>
+<p>The p-value is <strong>double</strong> the smaller tail area of the test statistic, to take account of the fact that values in the opposite tail of the distribution would give equally strong evidence against <strong>H<sub>0</sub></strong>.</p>
+<div class="example">
+	<p class="exampleHeading">Example: Ethics codes in companies</p>
+	<p>In 1999, <em>The Conference Board</em> surveyed 124 companies and found that 
+97 had their own ethics codes (&quot;Business Bulletin&quot;, <em>Wall Street 
+Journal</em>, Aug 19, 1999). In 1997, it was believed that 72% of companies 
+had ethics codes, so is there any evidence that the proportion has changed?</p>
+	<ul>
+		<li>Null hypothesis, <strong>H<sub>0</sub></strong>: \(\pi = 0.72 \)</li>
+		<li>Alternative hypothesis, <strong>H<sub>A</sub></strong>: \(\pi \ne 0.72 \)</li>
+	</ul>
+	<p>If <strong>H<sub>0</sub></strong> is true, the number with an ethics code will be</p>
+\[
+X \;\;\sim\;\; \BinomDistn(n=124, \pi = 0.72) 
+\]
+	<p>The p-value is found from this distribution,</p>
+	<p class="eqn"><img src="../../../en/testConcepts/images/s_twoTailed.png" width="400" height="180" alt=""/></p>
+	<p>Getting 97 companies with 
+	  ethics codes is therefore <strong>not</strong> unlikely, so we conclude that there is no evidence <strong>from these data</strong> of a change in the proportion of companies with 
+  ethics codes since 1997. </p>
+</div>
+
+
+<h2 class="pageName">11.1.6 &nbsp; Distribution of p-values</h2>
+
+<p class="heading">Distribution of p-values</p>
+<p>In any hypothesis test, </p>
+<dl>
+  <dt>When the null hypothesis, <b>H<sub>0</sub></b>, is true</dt>
+  <dd>All p-values
+    between 0 and 1 are equally likely. In other words, the p-value has a distribution
+  whose probability density function has constant height between 0 and 1, \(\text{p-value} \sim \RectDistn(0, 1)\).</dd>
+  <dt>When that alternative hypothesis, <b>H<sub>A</sub></b> is true<br>
+  </dt>
+  <dd>The p-values then have a distribution for which p-values near zero are more likely
+    than p-values near 1. The precise distribution under the alternative hypothesis depends on the
+    specific hypotheses being tested and the true value of the parameter, but it always favours
+    values near 0.</dd>
+</dl>
+<p>The diagram below shows typical distributions that might be obtained. </p>
+
+<p class="eqn"><img class="svgImage" src="../../../en/testPValue/images/pValueDistn.gif" width="525" height="187"></p>
+
+<p class="heading">P-values and probability</p>
+<p>P-values have a rectangular distribution between 0 and 1
+	when <b>H<sub>0</sub></b> holds. A
+	consequence of this is that the probability of obtaining a p-value of 0.1 or lower is
+	exactly 0.1 (when <b>H<sub>0</sub></b> holds).
+	This is illustrated on the left of the diagram below. </p>
+
+<p class="eqn"><img class="svgImage" src="../../../en/testPValue/images/pValueProbs.gif" width="525" height="187"></p>
+
+<p>Similarly, the probability of obtaining a p-value of 0.01 or lower is exactly 
+	0.01, etc. (when <b>H<sub>0</sub></b> holds). </p>
+
+<div class="boxed"><p>P-values are more likely to be near 0 than near 1 if the alternative 
+				hypothesis holds</p></div>
+
+
+
+
+<h1 class="sectionName breakBefore">11.2 &nbsp; Goodness of fit tests</h1>
+<h2 class="pageName">11.2.1 &nbsp; Counts and chi-squared distribution</h2>
+
+<p class="heading">Counts with Poisson distributions</p>
+
+<p>Suppose that we have \(n\) independent discrete random variables \(\{X_1, X_2,\dots, X_k\}\) that are counts of events. We will now consider whether they might be counts from Poisson processes in which the rate of events for \(X_i\) is \(\lambda_i\),</p>
+\[
+X_i \;\;\sim\;\; \PoissonDistn(\lambda_i)
+\]
+<p>If this model holds then, from the properties of Poisson distributions,</p>
+\[
+E[X_i] \;\;=\;\; \Var(X_i) \;\;=\;\; \lambda_i
+\]
+
+<p>Standardised versions of these counts</p>
+\[
+Z_i \;\;=\;\; \frac{X_i - \lambda_i}{\sqrt{\lambda_i}}
+\]
+<p> will have mean zero and standard deviation one. If the \(\{\lambda_i\}\) are large,</p>
+\[
+Z_i \;\;=\;\; \frac{X_i - \lambda_i}{\sqrt{\lambda_i}} \;\; \underset{\text{approx}}{\sim} \;\; \NormalDistn(0,1)
+\]
+<p class="heading">Chi-squared statistic</p>
+<p>If the Poisson model holds,</p>
+\[
+\sum_{i=1}^k {Z_i^2} \;\;=\;\; \sum_{i=1}^k {\frac{\left(X_i - \lambda_i\right)^2}{\lambda_i}} \;\; \underset{\text{approx}}{\sim} \;\; \ChiSqrDistn(k \text{ df})
+\]
+<p>In the context of goodness-of-fit tests, this is often written as</p>
+\[
+X^2 \;\;=\;\; \sum_{i=1}^k {\frac{\left(O_i - E_i\right)^2}{E_i}} \;\; \underset{\text{approx}}{\sim} \;\; \ChiSqrDistn(k \text{ df})
+\]
+<p>In practice, this approximation is reasonable provided most of the \(\{E_i\}\) — the Poisson means — are reasonably large. The usual guideline is that</p>
+<ul>
+	<li>At least 80% of the \(\{E_i\}\) should be ≥ 5.</li>
+	<li>All \(E_i\) should be ≥ 1.</li>
+</ul>
+<p>If these guidelines are not met, the chi-squared distribution should not be used to find probabilities related to \(X^2\).</p>
+
+
+<h2 class="pageName">11.2.2 &nbsp; Test for Poisson distribution</h2>
+<p>We now consider a hypothesis test about whether such a Poisson model underlies a set of counts,</p>
+<ul>
+	<li><strong>H<sub>0</sub></strong>: \(O_i \sim \PoissonDistn(E_i) \qquad \text{for } i=1,\dots, k\)   (correctly specified model)</li>
+		<li><strong>H<sub>A</sub></strong>: At least one \(O_i\) has a different distribution  (error in model)</li>
+	</ul>
+	
+<p class="heading">Test statistic</p>
+<p>The chi-squared statistic can be used as a test statistic.</p>
+\[
+X^2 \;\;=\;\; \sum_{i=1}^k {\frac{\left(O_i - E_i\right)^2}{E_i}}
+\]
+<p> since</p>
+<ul>
+	<li>If the null hypothesis holds, \(X^2 \underset{\text{approx}}{\sim} \ChiSqrDistn(k \text{ df}) \) with no unknown parameters.</li>
+	<li>If the model is incorrect (incorrectly specified  \(\{E_i\}\) or overdispersion), then \(X^2\) would be expected to be <strong>higher</strong>.</li>
+</ul>
+<p class="heading">P-value and conclusion</p>
+<p>The p-value is the probability that the test statistic, \(X^2\), is as large as was recorded from the actual data, \(x^2\),</p>
+\[
+\text{p-value} \;\;=\;\; P(X^2 \ge x^2)
+\]
+<p>when <strong>H<sub>0</sub></strong> is true. This can be found from the upper tail of the \(\ChiSqrDistn(k \text{ df})\) distribution.</p>
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Example</p>
+<p>The following table describes the number of heart attacks in a city in ten weeks.</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred">
+<tr>
+	<th align="left">Week</th>
+	<th width="30">1</th>
+	<th width="30">2</th>
+	<th width="30">3</th>
+	<th width="30">4</th>
+	<th width="30">5</th>
+	<th width="30">6</th>
+	<th width="30">7</th>
+	<th width="30">8</th>
+	<th width="30">9</th>
+	<th width="30">10</th>
+</tr>
+<tr>
+	<th>Count&nbsp;&nbsp;</td>
+	<td width="20" align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-right:0px;">6</td>
+	<td width="20" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">11</td>
+	<td width="20" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">13</td>
+	<td width="20" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">10</td>
+	<td width="20" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">21</td>
+	<td width="20" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">8</td>
+	<td width="20" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">16</td>
+	<td width="20" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">6</td>
+	<td width="20" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">9</td>
+	<td width="20" align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-left:0px;">19</td>
+</tr>
+</table>
+</div>
+
+<p>Test whether the heart attacks occurred at random with a rate of \(\lambda = 10\) per week.</p>
+<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+
+<h2 class="pageName">11.2.3 &nbsp; Poisson test with constraints</h2>
+
+<p class="heading">Constraints on the expected counts</p>
+
+<p>The goodness-of-fit test is easiest when the null hypothesis specifies all Poisson distribution means, \(\{E_i\}\). In practice however, the null hypothesis values of the \(\{E_i\}\) involve unknown parameters that must be estimated from the data. The simplest example is</p>
+<ul>
+  <li><strong>H<sub>0</sub></strong>: \(O_i \sim \PoissonDistn(\lambda)\)</li>
+  <li><strong>H<sub>A</sub></strong>: \(O_i \sim \mathcal{Some\;other\; distribution}\)</li>
+</ul>
+<p>Estimating the unknown parameters makes the chi-squared test statistic smaller. If  \(c\) parameters are estimated from the data and used to get values for the \(\{E_i\}\), we say that there are \(c\) <strong>constraints</strong> on the \(\{E_i\}\) and</p>
+\[
+X^2 \;\;=\;\; \sum_{i=1}^k {\frac{\left(O_i - E_i\right)^2}{E_i}} \;\; \underset{\text{approx}}{\sim} \;\; \ChiSqrDistn(k - c \text{ df})
+\]
+
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Example</p>
+<p>This table shows the number of heart attacks in a city in each of ten weeks.</p>
+<div class="centred">
+	<table border="0" cellpadding="5" cellspacing="0" class="centred">
+		<tr>
+			<th align="left">Week</th>
+			<th width="30">1</th>
+			<th width="30">2</th>
+			<th width="30">3</th>
+			<th width="30">4</th>
+			<th width="30">5</th>
+			<th width="30">6</th>
+			<th width="30">7</th>
+			<th width="30">8</th>
+			<th width="30">9</th>
+			<th width="30">10</th>
+		</tr>
+		<tr>
+			<th>Count&nbsp;&nbsp;
+				</td>
+			<td width="20" align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-right:0px;">6</td>
+			<td width="20" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">11</td>
+			<td width="20" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">13</td>
+			<td width="20" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">10</td>
+			<td width="20" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">21</td>
+			<td width="20" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">8</td>
+			<td width="20" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">16</td>
+			<td width="20" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">6</td>
+			<td width="20" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">9</td>
+			<td width="20" align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-left:0px;">19</td>
+		</tr>
+	</table>
+</div>
+<p>Test whether the heart attacks have occurred at random with a constant rate over this period.</p>
+<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+
+<h2 class="pageName">11.2.4 &nbsp; Test based on frequency table</h2>
+<p>The earlier test had two requirements:</p>
+<ul>
+	<li><strong>H<sub>0</sub></strong> is that the data have a Poisson distribution</li>
+	<li>All  expected counts should be 1 or more, and most to be over 5. </li>
+</ul>
+<p>The chi-squared test cannot therefore be used directly to test whether the following data set is a random sample from a \(\PoissonDistn(\lambda=2)\) distribution, since the \(\{E_i\}\) are all 2.</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred" style="border:1px solid #999999;">
+	<tr>
+		<td width="25" align="center" bgcolor="#FFFFFF">1</td>
+		<td width="25" align="center" bgcolor="#FFFFFF">3</td>
+		<td width="25" align="center" bgcolor="#FFFFFF">2</td>
+		<td width="25" align="center" bgcolor="#FFFFFF">2</td>
+		<td width="25" align="center" bgcolor="#FFFFFF">5</td>
+		<td width="25" align="center" bgcolor="#FFFFFF">4</td>
+		<td width="25" align="center" bgcolor="#FFFFFF">5</td>
+		<td width="25" align="center" bgcolor="#FFFFFF">2</td>
+		<td width="25" align="center" bgcolor="#FFFFFF">0</td>
+		<td width="25" align="center" bgcolor="#FFFFFF">2</td>
+	</tr>
+	<tr>
+		<td align="center" bgcolor="#FFFFFF">2</td>
+		<td align="center" bgcolor="#FFFFFF">4</td>
+		<td align="center" bgcolor="#FFFFFF">3</td>
+		<td align="center" bgcolor="#FFFFFF">5</td>
+		<td align="center" bgcolor="#FFFFFF">2</td>
+		<td align="center" bgcolor="#FFFFFF">3</td>
+		<td align="center" bgcolor="#FFFFFF">1</td>
+		<td align="center" bgcolor="#FFFFFF">4</td>
+		<td align="center" bgcolor="#FFFFFF">2</td>
+		<td align="center" bgcolor="#FFFFFF">6</td>
+	</tr>
+</table>
+</div>
+
+<p class="heading">Frequency table</p>
+<p>We  first summarise the data in a frequency table.</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred">
+	<tr>
+		<th align="center">x</th>
+		<th width="30" align="center">0</th>
+		<th width="30" align="center">1</th>
+		<th width="30" align="center">2</th>
+		<th width="30" align="center">3</th>
+		<th width="30" align="center">4</th>
+		<th width="30" align="center">5</th>
+		<th width="30" align="center">6+</th>
+	</tr>
+	<tr>
+		<th align="center">Freq(x)&nbsp;</th>
+		<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-right:0px;">1</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">2</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">7</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">3</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">3</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-bottom:1px solid #999999;">3</td>
+		<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-left:0px;">1</td>
+	</tr>
+</table>
+</div>
+
+<p>Treating these frequencies as our observed counts, \(\{O_i\}\), we can find expected counts from the Poisson distribution's probability function,</p>
+\[
+p(x) \;\;=\;\; \frac{\lambda^x e^{-\lambda}}{x!}\]
+<p>Since  \(n=20\) and \(\lambda=2\) when <strong>H<sub>0</sub></strong> holds,</p>
+\[
+E_x \;\;=\;\; 20 \times  p(x) \;\;=\;\; 20 \times \frac{2^x e^{-2}}{x!}\]
+<p>giving</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred">
+	<tr>
+		<th align="center">x</th>
+		<th width="20" align="center">0</th>
+		<th width="20" align="center">1</th>
+		<th width="20" align="center">2</th>
+		<th width="20" align="center">3</th>
+		<th width="20" align="center">4</th>
+		<th width="20" align="center">5</th>
+		<th width="20" align="center">6+</th>
+	</tr>
+	<tr>
+		<th align="center">\(O_x\)</th>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">1</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">2</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">7</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">3</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">3</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">3</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">1</td>
+	</tr>
+	<tr>
+		<th align="center">\(E_x\)</th>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">2.707</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">5.413</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">5.413</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">3.609</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">1.804</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">0.722</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">0.331</td>
+	</tr>
+</table>
+</div>
+
+<p class="heading">Combining cells</p>
+<p>Since we still do not have all \(\{E_x\}\)   ≥1 and 80% of them ≥5, cells in the table should be combined.</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred">
+	<tr>
+		<th align="center">x</th>
+		<th width="20" align="center">0,1</th>
+		<th width="20" align="center">2</th>
+		<th width="20" align="center">3+</th>
+	</tr>
+	<tr>
+		<th align="center">\(O_x\)</th>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">3</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">7</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">10</td>
+	</tr>
+	<tr>
+		<th align="center">\(E_x\)</th>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">8.120</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">5.413</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">6.466</td>
+	</tr>
+</table>
+</div>
+
+<p>Based on these three counts,</p>
+\[ \begin{align}
+X^2 \;&amp;=\; \sum_{i=1}^{10} {\frac{\left(O_i - E_i\right)^2}{E_i}} \\
+&amp;=\; \frac{(3-8.120)^2}{8.120} + \frac{(7-5.413)^2}{5.413} + \frac{(10-6.466)^2}{6.466} \\
+&amp;=\; 5.624
+\end{align} \]
+<p class="heading">P-value and conclusion</p>
+<p>There are 3 categories (after grouping) and one constraint .</p>
+\[
+\sum{E_i} \;=\; \sum{O_i} \;=\; 20
+\]
+<p>The  test should therefore be based on a chi-squared distribution with \((3-1) = 2\) degrees of freedom. The p-value here is</p>
+<p class="eqn">p-value = \(P(X^2 \ge 5.621) = 0.060\)</p>
+<p>We  conclude that there is only very weak evidence against <strong>H<sub>0</sub></strong> (that the original data set was a random sample from a \(\PoissonDistn(2)\) distribution).</p>
+<p>(It is hardly surprising that a data set with only 20 values does not show up problems with a model — a larger data set would be more sensitive to any possible lack of fit of the model.)</p>
+
+
+
+
+<h2 class="pageName">11.2.5 &nbsp; Test for any discrete distribution</h2>
+<p>This approach  can be applied to test whether a discrete data set of \(n\) values is a random sample from <strong>any</strong> distribution.</p>
+<ol>
+	<li>Estimate  the model's \(p\) unknown parameters.</li>
+	<li>The frequencies in a frequency table are our observed counts, \(\{O_x\}\).</li>
+	<li>Use the model's probability function (with estimated parameters) to get probabilities for the table cells.</li>
+	<li>The expected counts, \(\{E_x\}\), are these probabilities times \(n\).</li>
+	<li>Combine cells in the frequency table to avoid small expected counts.</li>
+	<li>The test statistic is,</li>
+</ol>
+
+\[
+X^2 \;=\; \sum_{x} {\frac{\left(O_x - E_x\right)^2}{E_x}} \]
+<ol start="7">
+	<li>The number of 'constraints' is  \(c = (p+1)\), the last one being because \(\sum{E_i} \;=\; \sum{O_i}\). The degrees of freedom are the number of combined counts minus \(c\).</li>
+	<li>The p-value is the upper tail of the chi-squared distribution with this number of degrees of freedom.</li>
+	<li>Interpret the p-value — small values give evidence that the data do <strong>not</strong> fit the distribution.</li>
+</ol>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Example</p>
+		<p>The following table gives the number of male children among the first 12 children in 6,115 families of size 13, taken from hospital records in 19th century Saxony. (The 13th child has been ignored to avoid the possible distortion of families stopping when a desired sex is reached.)</p>
+		
+		<div class="centred">
+		<table border="0" cellpadding="5" cellspacing="0" class="centred">
+			<tr>
+				<th>Males</th>
+				<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-left:1px solid #999999;">0</td>
+				<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">1</td>
+				<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">2</td>
+				<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">3</td>
+				<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">4</td>
+				<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">5</td>
+				<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">6</td>
+				<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">7</td>
+				<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">8</td>
+				<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">9</td>
+				<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">10</td>
+				<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">11</td>
+				<td width="30" align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999; border-right:1px solid #999999;">12</td>
+			</tr>
+			<tr>
+				<th>Frequency</th>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-left:1px solid #999999;">3</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">24</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">104</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">286</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">670</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">1033</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">1343</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">1112</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">829</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">478</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">181</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">45</td>
+				<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999; border-right:1px solid #999999;">7</td>
+			</tr>
+		</table>
+		</div>
+		
+		<p>Assuming independence and that each child has the same probability of being male, \(\pi\), this would be a random sample from a \(\BinomDistn(n=12, \; \pi)\) distribution.</p>
+		<p>Is there evidence that the probability of a birth being male differs from family to family?</p>
+		<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">11.2.6 &nbsp; Test for continuous distribution</h2>
+<p>This test can also be used  for continuous data if the data are first  summarised in a frequency table. The range of possible values of the distribution is partitioned into <strong>classes</strong> such as &quot;10 ≤ X &lt; 11&quot;, then the frequencies are the numbers of values in these classes.</p>
+<div class="example">
+	
+	<p class="exampleHeading">Body temperature</p>
+
+<p>In a study to determine the &quot;normal&quot; body temperature of healthy adults, body temperatures were found from 130 adults. The following frequency table summarises the data.</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred">
+	<tr>
+		<th width="20" align="center">Temperature, <em>x</em></th>
+		<th width="20" align="center">Frequency</th>
+	</tr>
+	<tr>
+		<td align="center">\(X \lt 96.0\)</td>
+		<td align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-bottom:0px;">0</td>
+	</tr>
+	<tr>
+		<td align="center">\(96.0 \le X \lt 96.5\)</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999; border-right:1px solid #999999;">2</td>
+	</tr>
+	<tr>
+		<td align="center">\(96.5 \le X \lt 97.0\)</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999; border-right:1px solid #999999;">4</td>
+	</tr>
+	<tr>
+		<td align="center">\(97.0 \le X \lt 97.5\)</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999; border-right:1px solid #999999;">13</td>
+	</tr>
+	<tr>
+		<td align="center">\(97.5 \le X \lt 98.0\)</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999; border-right:1px solid #999999;">21</td>
+	</tr>
+	<tr>
+		<td align="center">\(98.0 \le X \lt 98.5\)</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999; border-right:1px solid #999999;">38</td>
+	</tr>
+	<tr>
+		<td align="center">\(98.5 \le X \lt 99.0\)</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999; border-right:1px solid #999999;">33</td>
+	</tr>
+	<tr>
+		<td align="center">\(99.0 \le X \lt 99.5\)</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999; border-right:1px solid #999999;">15</td>
+	</tr>
+	<tr>
+		<td align="center">\(99.5 \le X \lt 100.0\)</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999; border-right:1px solid #999999;">2</td>
+	</tr>
+	<tr>
+		<td align="center">\(100.0 \le X \lt 100.5\)</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999; border-right:1px solid #999999;">1</td>
+	</tr>
+	<tr>
+		<td align="center">\(100.5 \le X \lt 101.0\)</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999; border-right:1px solid #999999;">1</td>
+	</tr>
+	<tr>
+		<td width="20" align="center">\(X \ge 101.0\)</td>
+		<td width="20" align="center" bgcolor="#FFFFFF" style="border:1px solid #999999; border-top:0px;">0</td>
+	</tr>
+</table>
+</div>
+
+<p>Could this be a random sample from a <strong>normal</strong> distribution?</p>
+<p>We first find the method of moments estimates of the normal distribution's parameters,</p>
+\[
+\hat{\mu} \;=\; \overline{x} \;=\; 98.25 \spaced{and} \hat{\sigma} \;=\; s \;=\; 0.7332
+\]
+<p>A histogram of the data and the best-fitting normal distribution seem similar in shape, but we will formally test the normal model with a chi-squared goodness-of-fit test.</p>
+<p class="eqn"><img src="../../../en/goodnessOfFit/images/s_bodyTemp.png" width="429" height="280" alt=""/></p>
+<p>The probabilities for values within these classes were found from the best-fitting \(\NormalDistn(\mu=98.25, \sigma = 0.7332)\) distribution, then multiplied by the number of values, 130, to get expected counts. However since several expected counts are low, classes must be combined before calculating the chi-squared goodness-of-fit statistic.</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred">
+	<tr>
+		<th align="center">Temperature<br>
+			<em>x</em></th>
+		<th align="center">Observed count, <br>
+			<em>O</em></th>
+		<th align="center">Expected count, <br>
+			<em>E</em></th>
+	</tr>
+	<tr>
+		<td align="center">\(X \lt 97.0\)</td>
+		<td align="right" bgcolor="#FFFFFF" style="padding-right:30px; border-left:1px solid #999999; border-top:1px solid #999999;">6</td>
+		<td align="right" bgcolor="#FFFFFF" style="padding-right:30px; border-right:1px solid #999999; border-top:1px solid #999999;">5.61</td>
+	</tr>
+	<tr>
+		<td align="center">\(97.0 \le X \lt 97.5\)</td>
+		<td align="right" bgcolor="#FFFFFF" style="padding-right:30px; border-left:1px solid #999999;">13</td>
+		<td align="right" bgcolor="#FFFFFF" style="padding-right:30px; border-right:1px solid #999999;">14.20</td>
+	</tr>
+	<tr>
+		<td align="center">\(97.5 \le X \lt 98.0\)</td>
+		<td align="right" bgcolor="#FFFFFF" style="padding-right:30px; border-left:1px solid #999999;">21</td>
+		<td align="right" bgcolor="#FFFFFF" style="padding-right:30px; border-right:1px solid #999999;">27.76</td>
+	</tr>
+	<tr>
+		<td align="center">\(98.0 \le X \lt 98.5\)</td>
+		<td align="right" bgcolor="#FFFFFF" style="padding-right:30px; border-left:1px solid #999999;">38</td>
+		<td align="right" bgcolor="#FFFFFF" style="padding-right:30px; border-right:1px solid #999999;">34.69</td>
+	</tr>
+	<tr>
+		<td align="center">\(98.5 \le X \lt 99.0\)</td>
+		<td align="right" bgcolor="#FFFFFF" style="padding-right:30px; border-left:1px solid #999999;">33</td>
+		<td align="right" bgcolor="#FFFFFF" style="padding-right:30px; border-right:1px solid #999999;">27.72</td>
+	</tr>
+	<tr>
+		<td align="center">\(99.0 \le X \lt 99.5\)</td>
+		<td align="right" bgcolor="#FFFFFF" style="padding-right:30px; border-left:1px solid #999999;">15</td>
+		<td align="right" bgcolor="#FFFFFF" style="padding-right:30px; border-right:1px solid #999999;">14.16</td>
+	</tr>
+	<tr>
+		<td align="center">\(X \ge 99.5\)</td>
+		<td align="right" bgcolor="#FFFFFF" style="padding-right:30px; border-left:1px solid #999999; border-bottom:1px solid #999999;">4</td>
+		<td align="right" bgcolor="#FFFFFF" style="padding-right:30px; border-right:1px solid #999999; border-bottom:1px solid #999999;">5.71</td>
+	</tr>
+</table>
+</div>
+
+<p>The test statistic is</p>
+\[
+X^2 \;=\; \sum_{x} {\frac{\left(O_x - E_x\right)^2}{E_x}} \;=\; 3.657 \]
+<p>Since there are 7 counts in the combined frequency table and 2 estimated parameters, the test statistic should  be compared to the chi-squared distribution with \((7-2-1) = 4\) degrees of freedom. The p-value is the probability of a value from the \(\ChiSqrDistn(4 \text{ df})\) distribution as high as 3.657 and can be found (e.g. using Excel) to be 0.4545.</p>
+<p>Since there would be almost 50% probability of getting observed counts as far from those expected from a normal distribution  if the data <strong>did</strong> come from a normal distribution, we conclude that the data are  consistent with coming from a normal distribution.</p>
+</div>
+
+
+<h1 class="sectionName breakBefore">11.3 &nbsp; Tests about normal distns</h1>
+<h2 class="pageName">11.3.1 &nbsp; Test for mean, known σ</h2>
+<p>We now concentrate on a random sample from a \(\NormalDistn(\mu, \sigma^2)\) distribution and develop hypothesis tests about the  distribution's two parameters. Initially we assume that  \(\sigma^2\) is a known value and consider how perform tests about \(\mu\). The test may be one-tailed, such as</p>
+<ul>
+	<li><strong>H<sub>0</sub></strong>: \(\mu = \mu_0 \)</li>
+	<li><strong>H<sub>A</sub></strong>: \(\mu \gt \mu_0\)</li>
+</ul>
+<p>or two-tailed,</p>
+<ul>
+	<li><strong>H<sub>0</sub></strong>: \(\mu = \mu_0 \)</li>
+	<li><strong>H<sub>A</sub></strong>: \(\mu \ne \mu_0\)</li>
+</ul>
+<p>where \(\mu_0\) is a known constant.</p>
+<p class="heading">Test statistic</p>
+<p>The sample mean, \(\overline{X}\), could be used as a test statistic but, in practice, it is easier to use its standardised version as the test statistic,</p>
+\[
+Z \;\;=\;\; \frac{\overline{X} - \mu_0}{\diagfrac{\sigma}{\sqrt{n}}}
+\]
+<p>This has a standard normal distribution, \(Z \sim \NormalDistn(0,1)\) if <strong>H<sub>0</sub></strong> is true.</p>
+<p class="heading">P-value and interpretation</p>
+<p>The p-value for the test is found by comparing the value of the test statistic (evaluated from the data set) to the standard normal distribution. For a one-tailed test, this is one tail area of the distribution, but for a two-tailed test, it is <strong>double the smaller</strong> tail area since values of \(\overline{X}\) below \(\mu_0\) give the same evidence against <strong>H<sub>0</sub></strong> as values above it.</p>
+<p>The p-value is interpreted in the same way as for all other hypothesis tests. A small value means that a value of \(\overline{X}\) as far as was observed from \(\mu_0\) would be unlikely if the null hypothesis was true, and this provides evidence suggesting that the alternative hypothesis is true. The diagram below illustrates for a 2-tailed test.</p>
+
+<p class="eqn"><img class="svgImage" src="../../../en/testNormal/images/pValueFromZ.png" width="471" height="212"></p>
+
+
+
+<h2 class="pageName">11.3.2 &nbsp; Test about mean, unknown σ</h2>
+<p>In most practical situations where normal distributions are used as models for data, the normal variance, \(\sigma^2\), is an unknown parameter. The test statistic on the previous page,</p>
+
+\[
+Z \;\;=\;\; \frac{\overline{X} - \mu_0}{\diagfrac {\sigma}{\sqrt n}}
+\]
+<p>can no longer be evaluated in a test for \(\mu\) since \(\sigma^2\) is now unknown.</p>
+<p class="heading">Test statistic</p>
+<p>If \(\sigma\) is replaced by the <strong>sample</strong> standard deviation, \(S\), the test statistic</p>
+\[
+T \;\;=\;\; \frac{\overline{X} - \mu_0}{\diagfrac {S}{\sqrt n}}
+\]
+<p> no longer has a standard normal distribution, but its distribution is another standard distribution when <strong>H<sub>0</sub></strong> is true.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Distribution of test statistic T</p>
+		<p>If \(\overline{X}\) and \(S^2\) are the mean and variance of a random sample of size \(n\) from a \(\NormalDistn(\mu_0, \sigma^2)\) distribution,</p>
+\[
+T \;\;=\;\; \frac{\overline{X} - \mu_0}{\diagfrac{S}{\sqrt{n}}} \;\;\sim\;\; \TDistn(n-1 \text{ df})
+\]	
+<p class="theoremNote">(Proved in full version)</p>
+	</div>
+</div>
+<p class="heading">T-test for \(\mu\)</p>
+<p>The test statistic \(T\) is used in a similar way to the \(Z\) statistic on the previous page, but the p-value is obtained as a tail probability from a t distribution instead of a standard normal one.</p>
+
+
+<h2 class="pageName">11.3.3 &nbsp; Test about variance</h2>
+<p>In most situations where data are modelled as a random sample from a \(\NormalDistn(\mu, \sigma^2)\) distribution,  the parameter \(\mu\) is of most interest.</p>
+<p>However very occasionally, a test about the distribution's variance, \(\sigma^2\), is needed. This could be a one-tailed test such as</p>
+<p class=eqn><strong><font size="+1">H</font><sub>0</sub></strong>&nbsp;:&nbsp;&nbsp;&nbsp;\(\sigma^2 = \sigma_0^2\)<br>
+	<strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>\(\sigma^2 \gt \sigma_0^2\)</p>
+<p>where \(\sigma_0^2\) is some constant, or a two-tailed test of the form</p>
+<p class=eqn><strong><font size="+1">H</font><sub>0</sub></strong>&nbsp;:&nbsp;&nbsp;&nbsp;\(\sigma^2 = \sigma_0^2\)<br>
+	<strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>\(\sigma^2 \ne \sigma_0^2\)</p>
+<p class="heading">Chi-squared test</p>
+<p>The  test is based on the <strong>sample</strong> variance, \(S^2\), of a random sample of \(n\) values. If <strong><font size="+1">H</font><sub>0</sub></strong> holds,</p>
+\[
+X^2 \;=\; \frac {n-1}{\sigma_0^2} S^2
+\]
+<p>has a \(\ChiSqrDistn(n - 1\;\text{df})\) distribution. The test's p-value  can be found from a tail probability of this distribution.</p>
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Example</p>
+<p>The following 20 values are a random sample from a \(\NormalDistn(\mu, \sigma^2)\) distribution.</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred" style="background-color:#FFFFFF; border:1px solid #999999;">
+<tr><td>18.68</td>
+	<td>16.28</td>
+	<td>26.02</td>
+	<td>21.57</td>
+	<td>20.54</td>
+	<td>19.45</td>
+	<td>24.55</td>
+	<td>23.03</td>
+	<td>19.34</td>
+	<td>24.69</td>
+</tr>
+<tr><td>21.31</td>
+	<td>15.22</td>
+	<td>22.81</td>
+	<td>20.53</td>
+	<td>21.01</td>
+	<td>14.98</td>
+	<td>20.52</td>
+	<td>22.39</td>
+	<td>23.37</td>
+	<td>23.23</td>
+</tr>
+</table>
+</div>
+
+<p>Test whether the distribution's variance is \(\sigma^2 = 4\).</p>
+<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+<p class="heading">Robustness</p>
+<p>This tests in this section are all based on the assumption that the data are a random sample from a normal distribution. The t-test for the distribution's mean is not affected badly if the underlying distribution is non-normal, so we say that this test is <strong>robust</strong>.</p>
+<p>However the chi-squared test test for the variance does <strong>not</strong> provide an accurate p-value if the distribution from which the data are sampled has a non-normal shape. This chi-squared test is <strong>not robust</strong>.</p>
+
+
+<h2 class="pageName">11.3.4 &nbsp; Equal means in two distributions</h2>
+<p>We now consider random samples from <strong>two</strong> normal population,</p>
+\[ \begin{align}
+X_{1,i} \;\;&amp;\sim\;\; \NormalDistn(\mu_1,\;\sigma^2) \qquad \text{for } i=1,\dots,n_1 \\
+X_{2,i} \;\;&amp;\sim\;\; \NormalDistn(\mu_2,\;\sigma^2) \qquad \text{for } i=1,\dots,n_2
+\end{align}\]
+<p>The difference between the sample means is normally distributed,</p>
+\[
+\overline{X}_1 - \overline{X}_2 \;\;\sim\;\; \NormalDistn\left(\mu_1 - \mu_2,\;\sigma^2\left(\frac 1{n_1} + \frac 1{n_2}\right)\right)
+\]
+<p>The best estimate of the common variance, \(\sigma^2\), is</p>
+\[
+S_{\text{pooled}}^2 \;\;=\;\; \frac{(n_1 - 1)S_1^2 + (n_2 - 1)S_2^2}{n_1 + n_2 - 2}
+\]
+<p>and we showed earlier that its distribution is proportional to a chi-squared distribution,</p>
+\[
+\frac{n_1 + n_2 - 2}{\sigma^2}S_{\text{pooled}}^2 \;\;\sim\;\; \ChiSqrDistn(n_1 + n_2 - 2 \text{ df})
+\]
+<p>Our best estimate of the standard error of  \(
+\overline{X}_1 - \overline{X}_2\) is therefore </p>
+\[
+\se(\overline{X}_1 - \overline{X}_2) \;=\; \sqrt{S_{\text{pooled}}^2 \left(\frac 1{n_1} + \frac 1{n_2}\right) }
+\]
+<p class="heading">Testing for equal means</p>
+<p>We now consider a hypothesis test for whether the two means are equal,</p>
+<p class=eqn><strong><font size="+1">H</font><sub>0</sub></strong>&nbsp;:&nbsp;&nbsp;&nbsp;\(\mu_1 = \mu_2\)<br>
+	<strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>\(\mu_1 \ne \mu_2\)</p>
+<p>(or the corresponding one-tailed alternative). The following function of the data can be used as a test statistic — its distribution is fully known when the null hypothesis holds.</p>
+
+<div class="theoremProof">
+<div class="theorem">
+<p class="theoremTitle">Test statistic</p>
+<p>If \(\overline{X}_1\) and \(S_1^2\) are the mean and variance of a sample of \(n_1\) values from a \(\NormalDistn(\mu_1, \sigma^2)\) distribution and  \(\overline{X}_2\) and \(S_2^2\) are the mean and variance of an independent sample of \(n_2\) values from a \(\NormalDistn(\mu_2, \sigma^2)\) distribution,</p>
+\[
+T \;\;=\;\; \frac{\overline{X}_1 - \overline{X}_2}{\se(\overline{X}_1 - \overline{X}_2)}
+\;\;\sim\;\; \TDistn(n_1 + n_2 - 2 \text{ df})
+\]
+<p>provided \(\mu_1 = \mu_2\).</p>
+<p class="theoremNote">(Proved in full version)</p>
+</div>
+</div>
+
+<p>A p-value for the test is the probability of a value from this t distribution that is further from zero than the  value that is evaluated from the actual data.</p>
+
+<div class="questionSoln">
+<div class="question">
+<p class="questionTitle">Example</p>
+<p>A botanist is interested in comparing the growth response of dwarf pea stems to two different levels of the hormone indoleacetic acid (IAA).  Using 16 day old pea plants the botanist obtains 5 millimetre sections and floats these sections on solutions with different hormone concentrations to observe the effect of the hormone on the growth of the pea stem.  Let \(X\) and \(Y\) denote respectively the independent growths that can be attributed to the hormone during the first 26 hours after sectioning for \((0.5 \times 10^{-4})\) and \(10^{-4}\) levels of concentration of  IAA. </p>
+<p>The botanist measured the growths of pea stem segments in millimetres for \(n_X = 11\) observations of \(X\):</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred" style="background-color:#FFFFFF; border:1px solid #999999;">
+<tr><td style="padding:5px 10px;">0.8</td><td style="padding:5px 10px;">1.8</td><td style="padding:5px 10px;">1.0</td><td style="padding:5px 10px;">0.1</td><td style="padding:5px 10px;">0.9</td><td style="padding:5px 10px;">1.7</td><td style="padding:5px 10px;">1.0</td><td style="padding:5px 10px;">1.4</td><td style="padding:5px 10px;">0.9</td><td style="padding:5px 10px;">1.2</td><td style="padding:5px 10px;">0.5</td></tr>
+</table>
+</div>
+
+<p>and \(n_Y = 13\) observations of \(Y\):</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred" style="background-color:#FFFFFF; border:1px solid #999999;">
+	<tr>
+		<td style="padding:5px 10px;">1.0<br>
+			1.8</td>
+		<td style="padding:5px 10px;">0.8<br>
+			2.5</td>
+		<td style="padding:5px 10px;">1.6<br>
+			1.4</td>
+		<td style="padding:5px 10px;">2.6<br>
+			1.9</td>
+		<td style="padding:5px 10px;">1.3<br>
+			2.0</td>
+		<td style="padding:5px 10px;">1.1<br>
+			1.2</td>
+		<td style="padding:5px 10px;">2.4<br>&nbsp;</td>
+	</tr>
+</table>
+</div>
+
+<p>Test whether the larger hormone concentration results in greater growth of the pea plants.</p>
+<p class="questionNote">(Solved in full version)</p>
+</div>
+</div>
+
+
+<h2 class="pageName">11.3.5 &nbsp; Equal variances in two distributions</h2>
+<p>When testing whether the means of two normal distributions are equal, we often assume that their variances are the same. We now describe a hypothesis test to assess this assumption.</p>
+<p class=eqn><strong><font size="+1">H</font><sub>0</sub></strong>&nbsp;:&nbsp;&nbsp;&nbsp;\(\sigma_1^2 = \sigma_2^2\)<br>
+	<strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>\(\sigma_1^2 \ne \sigma_2^2\)</p>
+<p>We showed earlier that the two sample variances, \(S_1^2\) and \(S_2^2\), have distributions proportional to chi-squared distributions,</p>
+
+\[
+\frac{n_1-1}{\sigma_1^2} S_1^2 \;\;\sim\;\; \ChiSqrDistn(n_1 - 1 \text{ df})
+\]
+
+<p>and similarly for \(S_2^2\).</p>
+<p class="heading">Hypothesis test</p>
+<p>The ratio of the two sample variances can be used as a test statistic for this test.</p>
+
+<div class="theoremProof">
+<div class="theorem">
+<p class="theoremTitle">Test statistic</p>
+<p>If \(\overline{X}_1\) and \(S_1^2\) are the mean and variance of a sample of \(n_1\) values from a \(\NormalDistn(\mu_1, \sigma_1^2)\) distribution and  \(\overline{X}_2\) and \(S_2^2\) are the mean and variance of an independent sample of \(n_2\) values from a \(\NormalDistn(\mu_2, \sigma_2^2)\) distribution,</p>
+\[
+F \;\;=\;\; \frac{S_1^2}{S_2^2}
+\;\;\sim\;\; \FDistn(n_1 - 1,\; n_2 - 1 \text{ df})
+\]
+<p>provided \(\sigma_1^2 = \sigma_2^2\).</p>
+<p class="theoremNote">(Proved in full version)</p>
+</div>
+</div>
+
+<p>The p-value for the test can be found from the tail probabilities of this distribution.</p>
+
+<div class="questionSoln">
+<div class="question">
+<p class="questionTitle">Example</p>
+<p>When analysing the data set about the effect of the hormone IAA on the growth of dwarf pea stems  on the previous page, an assumption was made that the underlying normal distribution's variance was the same for both hormone levels. Test whether the data are consistent with this assumption.</p>
+<p class="questionNote">(Solved in full version)</p>
+</div>
+</div>
+
+
+<h1 class="sectionName breakBefore">11.4 &nbsp; Fixed significance level</h1>
+<h2 class="pageName">11.4.1 &nbsp; Significance level</h2>
+
+<p class="heading">Revisiting p-values</p>
+
+<p>A hypothesis test is based on two competing hypotheses about the value of a parameter, \(\theta\). The null hypothesis is the simpler one, restricting \(\theta\) to a single value, whereas the alternative hypothesis allows for a range of values. Initially we consider a 1-tailed alternative,</p>
+<ul>
+	<li>Null hypothesis, <strong>H<sub>0</sub></strong>: \(\theta = \theta_0 \)</li>
+	<li>Alternative hypothesis, <strong>H<sub>A</sub></strong>: \(\theta \gt \theta_0\)</li>
+</ul>
+<p>The hypothesis test is based on a <strong>test statistic</strong>,</p>
+\[
+Q \;\;=\;\; g(X_1, X_2, \dots, X_n \mid \theta_0)
+\]
+<p>whose distribution is fully known (without any unknown parameters) when <strong>H<sub>0</sub></strong> is true (i.e. when \(\theta_0\) is the true parameter value). The p-value for the test is the probability of a test statistic value as extreme as that observed in the data. A p-value close to zero throw doubt on the null hypothesis.</p>
+<p class="eqn"><img class="svgImage" src="../../../en/fixedSigLevel/images/pValueTail.png" width="399" height="242"></p>
+<p class="heading">Fixed significance level</p>
+<p>An alternative way to perform the test involves a rule that results in a <strong>decision</strong> about which of the two hypotheses holds. Any such data-based rule can lead us to the <strong>wrong </strong> decision, so we must take into account the probability of this.</p>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>The <strong>significance level</strong> is the probability of <strong>wrongly</strong> concluding that <strong>H<sub>0</sub></strong> does not hold when it actually does.</p>
+</div>
+<p>For example, it might be acceptable to have a 5% chance of concluding that \(\theta \gt \theta_0\) when \(\theta\) is really equal to \(\theta_0\). This means a significance level of \(\alpha = 0.05\) for the test.</p>
+<p>To attain this significance level, we should reject <strong>H<sub>0</sub></strong> when the test statistic, \(Q\), falls in the &quot;rejection region&quot; below.</p>
+<p class="eqn"><img class="svgImage" src="../../../en/fixedSigLevel/images/fixedSig.png" width="399" height="242"></p>
+
+<p class="heading">Two-tailed tests</p>
+<ul>
+	<li>Null hypothesis, <strong>H<sub>0</sub></strong>: \(\theta = \theta_0 \)</li>
+	<li>Alternative hypothesis, <strong>H<sub>A</sub></strong>: \(\theta \ne \theta_0\)</li>
+</ul>
+<p>For a two-tailed test, values of the test statistic in <strong>both</strong> tails of its distribution usually provide evidence that <strong>H<sub>0</sub></strong> does not hold, so the rejection region should correspond to area \(\diagfrac {\alpha} 2\) in each tail to attain a significance level of \(\alpha\).</p>
+<p class="eqn"><img class="svgImage" src="../../../en/fixedSigLevel/images/fixedSig2.png" width="431" height="234"></p>
+
+
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Saturated fat content of cooking oil</p>
+<p>Cooking oil made from 
+soybeans has little cholesterol and has been claimed to have only 15% saturated 
+fat. A clinician believes that the saturated fat content is greater than 15% and 
+	randomly samples 13 bottles of soybean cooking oil for testing.</p>
+<div class="centred">
+	<table border="0" class="centred soy" cellpadding="5" cellspacing="0" style="border:1px solid #999999; background-color:#FFFFFF;">
+		<caption>
+			<strong>Percentage saturated fat in soybean cooking oil</strong>
+			</caption>
+		<tr align="center" valign="top">
+			<td style="padding:5px 15px;">15.2<br>
+				12.4</td>
+			<td style="padding:5px 15px;">15.4<br>
+				13.5</td>
+			<td style="padding:5px 15px;">15.9<br>
+				17.1</td>
+			<td style="padding:5px 15px;">16.9<br>
+				14.3</td>
+			<td style="padding:5px 15px;">19.1<br>
+				18.2</td>
+			<td style="padding:5px 15px;">15.5<br>
+				16.3</td>
+			<td style="padding:5px 15px;">20.0</td>
+		</tr>
+	</table>
+</div>
+<p>Assuming that the data are  a random sample from a normal distribution, the clinician wants to test the following hypotheses.</p>
+<p class=eqn><strong><font size="+1">H</font><sub>0</sub></strong>&nbsp;:&nbsp;&nbsp;&nbsp;\(\mu = 15%\)<br>
+	<strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>\(\mu \gt 15%\)</p>
+<p>What is his conclusion from testing these hypotheses with a significance level of \(\alpha = 5%\)?</p>
+<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">11.4.2 &nbsp; Type I and II errors</h2>
+
+<p class="heading">Decisions from tests</p>
+
+<p>Hypothesis tests often result in some action by the researchers that depends on whether 
+we conclude  that <strong>H<sub>0</sub></strong> or <strong>H<sub>A</sub></strong> is true. This decision depends on the data.</p>
+
+<div class="centred">
+	<table class="centred" cellpadding="4" cellspacing="0">
+		<tr>
+			<th align="left">Decision</th>
+			<th align="left">&nbsp;&nbsp;&nbsp;Action</th>
+		</tr>
+		<tr bgcolor="#FFFFFF">
+			<td style="border-bottom:1px solid #999999; border-top:1px solid #999999;" align="left">accept <strong>H<sub>0</sub></strong></td>
+			<td style="border-bottom:1px solid #999999; border-top:1px solid #999999;" align="left">&nbsp;&nbsp;&nbsp;some action (often the status quo)&nbsp;&nbsp;&nbsp;</td>
+		</tr>
+		<tr bgcolor="#FFFFFF">
+			<td style="border-bottom:1px solid #999999;" align="left">reject<strong> H<sub>0</sub></strong></td>
+			<td align="left" style="border-bottom:1px solid #999999;">&nbsp;&nbsp;&nbsp;a different action (often a change to a process)&nbsp;&nbsp;&nbsp;</td>
+		</tr>
+	</table>
+</div>
+
+<p>There are two types of error that can be made,  represented by the red cells  below:</p>
+<div class="centred">
+	<table border="0" class="centred" cellpadding="6" cellspacing="0">
+		<tr>
+			<td></td>
+			<td></td>
+			<th colspan="2">Decision</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<th>&nbsp;&nbsp;accept <strong>H<sub>0</sub></strong>&nbsp;&nbsp;</th>
+			<th>&nbsp;&nbsp;reject<strong> H<sub>0</sub></strong>&nbsp;&nbsp;</th>
+		</tr>
+		<tr>
+			<th rowspan="2">True state of nature</th>
+			<th><strong>H<sub>0</sub></strong>&nbsp;is true&nbsp;&nbsp;&nbsp;</th>
+			<td align="center" bgcolor="#00FF00" class="top left black bigger">correct</td>
+			<td align="center" bgcolor="#FF0000" class="top right black bigger white">Type I error</td>
+		</tr>
+		<tr>
+			<th><strong>H<sub>A</sub></strong> (<strong>H<sub>0</sub></strong> is false)&nbsp;&nbsp;&nbsp;&nbsp;</th>
+			<td align="center" bgcolor="#FF0000" class="bottom left black bigger white">Type II error</td>
+			<td align="center" bgcolor="#00FF00" class="bottom right black bigger">correct</td>
+		</tr>
+	</table>
+</div>
+<p>A good decision rule should have small probabilities for both 
+	kinds of error.</p>
+<div class="example">
+	<p class="exampleHeading">Saturated fat content of cooking oil</p>
+	<p>The clinician who tested the saturated fat content of soybean cooking oil 
+was interested in the hypotheses.</p>
+	<p class=eqn><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>\(\mu = 15%\)<br>
+	<strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>\(\mu \gt 15%\)</p>
+	<p>If <strong>H<sub>0</sub></strong> is rejected, the clinician intends to 
+		report the high saturated fat content to the media. The two possible errors 
+		that could be made are described below.</p>
+	<div class="centred">
+		<table border="0" class="centred" cellpadding="6" cellspacing="0">
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<th colspan="2">Decision</th>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<th>&nbsp;&nbsp;accept <strong>H<sub>0</sub></strong>&nbsp;&nbsp;<br>
+					(do nothing)</th>
+				<th>&nbsp;&nbsp;reject<strong> H<sub>0</sub></strong>&nbsp;&nbsp;<br>
+					(contact media)</th>
+			</tr>
+			<tr>
+				<th rowspan="2">Truth</th>
+				<th><strong>H<sub>0</sub></strong>:</th>
+				<th>µ 
+					is really 15%</th>
+				<td align="center" bgcolor="#00FF00" class="top left black bigger">correct</td>
+				<td align="center" bgcolor="#FF0000" class="top right white bold">wrongly accuses manufacturers</td>
+			</tr>
+			<tr>
+				<th><strong>H<sub>A</sub></strong>:</th>
+				<th>µ 
+					is really over 15%&nbsp;&nbsp;&nbsp;&nbsp;</th>
+				<td align="center" bgcolor="#FF0000" class="bottom left white bold">fails to detect high saturated fat</td>
+				<td align="center" bgcolor="#00FF00" class="bottom right black bigger">correct</td>
+			</tr>
+		</table>
+	</div>
+	<p>Ideally the decision should be made in a way that keeps both probabilities 
+		low. </p>
+</div>
+<p class="heading">Decision rule and significance level</p>
+<p>A decision rule's probability of a Type I error is its <strong>significance level</strong>. Fixing the significance level at say 5% therefore sets the details of the decision rule such that</p>
+\[
+P(\text{reject }H_0 \mid H_0 \text{ is true}) \;\;=\;\; 0.05
+\]
+<p>This does not however tell you the probability of a Type II error.</p>
+
+<div class="example">
+	
+	<p class="exampleHeading">Illustration</p>
+
+<p>Consider a test about the mean of a normal distribution with \(\sigma = 4\), based on a random sample of \(n = 16\) values:</p>
+<p class=eqn><strong><font size="+1">H</font><sub>0</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> = 10</strong><br>
+	<strong><font size="+1">H</font><sub>A</sub>&nbsp;:&nbsp;&nbsp;&nbsp;</strong>&mu;<strong> &gt; 10</strong> </p>
+<p>The sample mean will be used as a test statistic since its distribution is known when the null hypothesis holds,</p>
+\[
+\overline{X} \;\;\sim\;\; \NormalDistn\left(\mu_0, \frac{\sigma}{\sqrt{n}}\right) \;\;=\;\; \NormalDistn(10, 1)
+\]
+
+<p>Large values of \(\overline{X}\) would usually be associated with the <strong>alternative </strong>hypothesis, so we will consider decision rules of the form</p>
+
+<div class="centred">
+	<table border="0" class="centred" cellpadding="4" cellspacing="0">
+		<tr>
+			<th><span class="black">Data</span></th>
+			<th>Decision</th>
+		</tr>
+		<tr bgcolor="#FFFFFF">
+			<td align="center" style="border-bottom:1px solid #999999; border-top:1px solid #999999;"><img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline"> &lt; <em>k</em></td>
+			<td style="border-bottom:1px solid #999999; border-top:1px solid #999999;">&nbsp;&nbsp;&nbsp;accept <strong>H<sub>0</sub></strong></td>
+		</tr>
+		<tr bgcolor="#FFFFFF">
+			<td align="center" style="border-bottom:1px solid #999999;"><img src="../../../en/../images/symbol.xBar.png" width="10" height="10" align="baseline"> is <em>k</em> or higher</td>
+			<td style="border-bottom:1px solid #999999;">&nbsp;&nbsp;&nbsp;reject<strong> H<sub>0</sub></strong>&nbsp;&nbsp;&nbsp;</td>
+		</tr>
+	</table>
+</div>
+
+<p>for some value of \(k\), the <strong>critical value</strong> for the test.</p>
+<p>The diagram below illustrates the probabilities of Type I and Type II errors for different decision rules — these are the red areas in the upper and lower parts of each pair of normal distributions.</p>
+<p class="eqn"><img src="../../../en/fixedSigLevel/images/s_decisionRules.png" width="588" height="650"  alt=""/></p>
+<p>Note how reducing the probability of a Type I error increases the probability of a Type II error — it is impossible to simultaneously 
+	make both probabilities small with only \(n\)&nbsp;=&nbsp;16 observations.</p>
+<hr width="75%">
+<p>The above diagram used an alternative hypothesis value of \(\mu = 13\). The alternative hypothesis allows other values of \(\mu &gt; 12\) and the probability of a Type II error reduces as \(\mu\) increases. For a decision rule that results in a 5% significance level, the diagram below illustrates this.</p>
+<p class="eqn"><img src="../../../en/fixedSigLevel/images/s_differentAlternatives.png" width="610" height="330"  alt=""/></p>
+<p>This is as should be expected &mdash; the further that the real value \(\mu\) is above 10, 
+	the more likely we are to detect that it is higher than 10 from the sample 
+	mean.</p>
+</div>
+
+<p>The decision rule affects the probabilities of Type I and Type II errors 
+and there is always a trade-off between these two probabilities.</p>
+
+
+
+<h2 class="pageName">11.4.3 &nbsp; P-values and decisions</h2>
+
+<p class="heading">Significance level</p>
+<p>Performing hypothesis tests through interpretation of p-values and through decision rules with fixed significance levels are closely related.</p>
+<p> Although 
+some of the underlying theory depends on the type of test, the decision rule 
+for <strong>any</strong> test can be based on its p-value. For example, for a test with significance 
+level 5%, the decision rule is always:</p>
+<div class="centred">
+	<table border="0" class="centred" cellpadding="4" cellspacing="0">
+		<tr>
+			<td></td>
+			<th>Decision</th>
+		</tr>
+		<tr bgcolor="#FFFFFF">
+			<td style="border-bottom:1px solid #999999; border-top:1px solid #999999;"><strong>p-value > 0.05&nbsp;&nbsp;&nbsp;&nbsp;</strong></td>
+			<td style="border-bottom:1px solid #999999; border-top:1px solid #999999;" align="center">accept <strong>H<sub>0</sub></strong></td>
+		</tr>
+		<tr bgcolor="#FFFFFF">
+			<td style="border-bottom:1px solid #999999;"><strong>p-value &lt; 0.05&nbsp;&nbsp;&nbsp;&nbsp;</strong></td>
+			<td style="border-bottom:1px solid #999999;" align="center">reject<strong> H<sub>0</sub></strong></td>
+		</tr>
+	</table>
+</div>
+<p>For example, to conduct a test with significance level 1%, the null hypothesis, <strong>H<sub>0</sub></strong>, 
+	should be rejected if the p-value is less than 0.01.</p>
+<div class="boxed">
+	<p>If computer software provides the p-value for a hypothesis 
+		test, it is therefore easy to translate it into a decision about whether to <strong>accept 
+			(or reject) the null hypothesis at the 5% or 1% significance level</strong>.</p>
+</div>
+
+
+<h2 class="pageName">11.4.4 &nbsp; Significance levels for discrete data</h2>
+
+<p class="heading">Discrete distributions</p>
+
+<p>For continuous distributions, we can usually determine the critical value for a decision rule that <strong>exactly</strong> corresponds to any required significance level. Unfortunately this is usually impossible when the data come from discrete distributions.</p>
+<div class="example">
+	
+	<p class="exampleHeading">Failure of printed circuit boards</p>
+
+<p>Suppose a manufacturer of a certain printed circuit has found that the probability of a board failing is \(\pi = 0.06\), and an engineer  suggests some changes to the production process that might reduce this probability. Suppose that \(n = 200\) circuits will be produced using the proposed new method and  \(Y\) of these will fail. We will use the sample number failing, \(y\), to test the hypotheses</p>
+<ul>
+	<li>Null hypothesis, <strong>H<sub>0</sub></strong>: \(\pi = 0.06\)   (no improvement)</li>
+	<li>Alternative hypothesis, <strong>H<sub>A</sub></strong>: \(\pi \lt 0.06\)   (new method is better)</li>
+</ul>
+
+<p>We now consider two possible decision rules. Their significance levels can be found by adding  probabilities from the \(\BinomDistn(n=200, \pi=0.06)\) distribution.</p>
+<dl>
+	<dt>Decision rule: Reject H<sub>0</sub> if \(y = 7\) or fewer fail</dt>
+</dl>
+
+\[
+P(\text{Type I error}) \;=\; 0.083
+\]
+<dl>
+	<dt>Decision rule: Reject H<sub>0</sub> if \(y = 6\) or fewer fail</dt>
+</dl>
+
+\[
+P(\text{Type I error}) \;=\; 0.041
+\]
+<p>Since there are no intermediate decision rules, there is no decision rule with a significance level of exactly 0.05.</p>
+</div>
+<p>If a hypothesis test is required at a specified significance level, such as 0.05, a conservative approach should be taken. The decision rule should be chosen such that its significance level is <strong>under</strong> the required value. For example, we should reject the null hypothesis (and conclude that the new production method method is better) if 6 or fewer boards fail in the example above.</p>
+
+
+<h2 class="pageName">11.4.5 &nbsp; Power function</h2>
+<div class="definition">
+	<p class='definitionTitle'>Definition</p>
+	<p>The <strong>power</strong> of a decision rule is the probability of correctly deciding that the alternative hypothesis is true when it really <strong>is</strong> true,</p>
+\[ \begin{align}
+\text{Power} \;&amp;=\; 1 - P(\text{Type II error}) \\[0.3em]
+&amp;=\; P\left(\text {decide }H_A \text{ is true} \mid H_A\right)
+\end{align} \]
+</div>
+<p>A test with high power is therefore desirable.</p>
+<p>However the alternative hypothesis usually allows for a range of different parameter values, such as \(\mu \gt 12\). The power is really a power<strong> function</strong> that can be graphed against the possible parameter values.</p>
+<div class="example">
+	<p class="exampleHeading">Failure of printed circuit boards</p>
+	<p>The example on the previous page about a new method of producing printed circuit boards examined the hypotheses</p>
+	<ul>
+		<li>Null hypothesis, <strong>H<sub>0</sub></strong>: \(\pi = 0.06\)</li>
+		<li>Alternative hypothesis, <strong>H<sub>0</sub></strong>: \(\pi \lt 0.06\)</li>
+	</ul>
+	<p>We now consider the decision rule that rejects the null hypothesis if \(y=7\) or fewer fail out of a sample of \(n=200\) boards. The power function is</p>
+	\[ \begin{align}
+	\operatorname{Power}(\pi) \;&amp;=\; P\left(\text {decide }H_A \text{ is true} \mid \pi \lt 0.06\right) \\[0.4em]
+	&amp;=\; P(X \le 7 \mid \pi \lt 0.06) \\
+	&amp;=\; \sum_{x=0}^7 {200 \choose x} \; \pi^x \; (1 - \pi)^{200-x}
+	\end{align} \]
+	<p class="eqn"><img src="../../../en/fixedSigLevel/images/s_powerFunction.png" width="566" height="398"  alt=""/></p>
+	<p>At the null hypothesis value, \(\pi = 0.06\), the power function is simply the significance level of the test. The probability of rejecting <strong>H<sub>0</sub></strong> is higher when \(\pi\) is lower than this.</p>
+	<hr width="75%">
+<p>The power of the test is 0.746 when \(\pi = 0.03\). The engineer would be disappointed with this. It means that  if the new manufacturing method has actually decreased the probability of failure to 0.03 from 0.06 (a big improvement), there is still a good chance (25%) that the null hypothesis,  \(\pi = 0.06\), is accepted and the improvement is rejected.</p>
+</div>
+<p class="heading">Changing the decision criterion</p>
+<p>The trade-off between low significance level and high power is illustrated in the diagram below. Changing the decision rule to increase the power (and decrease the probability of a Type II error) also increases its significance level (and probability of a Type I error).</p>
+<p class="eqn"><img src="../../../en/fixedSigLevel/images/s_differentPowers.png" width="564" height="386"  alt=""/></p>
+
+
+<h2 class="pageName">11.4.6 &nbsp; Deciding on the sample size</h2>
+<p>The only way to increase the power of a test without also increasing the significance level is to collect more data.</p>
+<div class="example">
+	<p class="exampleHeading">Failure of printed circuit boards</p>
+	<p>Consider the above printed circuit board example. Let us assume that the engineers have decided that it is acceptable for the probability of a Type I error (deciding that \(\pi\) &lt; 0.06 when \(\pi\) is really 0.06) to be 5%:</p>
+	<p class="eqn">significance level  =  P(Type I error)  =  0.05</p>
+	<p>and that it is acceptable for the probability of a Type II error (deciding that \(\pi\) is 0.06) to be 10% if \(\pi\) is really 0.03.</p>
+	<p>With a sample size of \(n\) and decision rule to reject the null hypothesis if \(x \le k\), we therefore require</p>
+
+\[ \begin{align}
+\alpha \;&amp;=\; P\left(\text {reject }H_0 \mid \pi = 0.06\right) \\[0.4em]
+&amp;=\; P(X \le 7 \mid \pi = 0.06) \\
+&amp;=\; \sum_{x=0}^k {n \choose x} \; 0.06^x \; 0.94^{n-x} \\
+&amp;=\; 0.05
+\end{align} \]
+
+<p>and</p>
+
+\[ \begin{align}
+\beta \;&amp;=\; P\left(\text {accept }H_0 \mid \pi = 0.03\right) \\[0.4em]
+&amp;=\; 1 - P(X \le 7 \mid \pi = 0.03) \\
+&amp;=\; 1 - \sum_{x=0}^k {n \choose x} \; 0.03^x \; 0.97^{n-x} \\
+&amp;=\; 0.10
+\end{align} \]
+
+<p>The values of \(n\) (the sample size) and \(k\) (the cut-off for the decision rule) are the values that satisfy these two equations (or are as close as possible to this). By trial and error with  different \(n\) and \(k\), we can find that if \(n = 400\) and \(k = 16\), </p>
+<p class="eqn"><img src="../../../en/fixedSigLevel/images/s_optimumRule.png" width="568" height="398"  alt=""/></p>
+</div>
+<p>For tests involving continuous distributions, it is often possible to find explicit solutions to the equations for the probabilities of Type I and II errors.</p>
+
+
+<h1 class="sectionName breakBefore">11.5 &nbsp; Likelihood ratio test</h1>
+<h2 class="pageName">11.5.1 &nbsp; Big model vs small model</h2>
+
+<p class="heading">Nested models</p>
+
+<p>In some situations, a particular statistical model can be regarded as a special case of a more complex model (with more parameters). We will call the simpler model the <strong>small</strong> model, \(\mathcal{M}_S\), and say that it is nested in the more general<strong> big</strong>  model, \(\mathcal{M}_B\). To compare these, we use the hypotheses,</p>
+<ul>
+	<li>Null hypothesis, <strong>H<sub>0</sub></strong>: \(\mathcal{M}_S\) is the correct model for the data.</li>
+	<li>Alternative hypothesis, <strong>H<sub>A</sub></strong>:  \(\mathcal{M}_S\) is not correct and \(\mathcal{M}_B\) must be used to model the data.</li>
+</ul>
+<div class="example">
+	<p class="exampleHeading">Poisson parameter</p>
+	<p>The following table describes the number of defective items produced on a production line in 20 successive days.</p>
+	
+	<div class="centred">
+	<table border="0" cellpadding="5" cellspacing="0" class="centred" style="border:1px solid #999999; background-color:#FFFFFF;">
+		<tr>
+			<td style="text-align:right; padding-right:10px; width:25px;">1<br>
+			2</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">3<br>
+			4</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">2<br>
+			3</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">2<br>
+			5</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">5<br>
+			2</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">4<br>
+			3</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">5<br>
+			1</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">2<br>
+			4</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">0<br>
+			2</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">2<br>
+				6</td>
+		</tr>
+	</table>
+	</div>
+	
+	<p>It might be assumed that the data are a random sample from a \(\PoissonDistn(\lambda)\) distribution, and we might want to test whether the rate of defective items was \(\lambda = 2\) per day. Since the \(\PoissonDistn(2)\) distribution is a special case of the \(\PoissonDistn(\lambda)\) distribution,</p>
+	<ul>
+		<li>\(\mathcal{M}_S\): \(\{X_1,\dots,X_{20}\}\) are a random sample from a \(\PoissonDistn(2)\) distribution.</li>
+		<li>\(\mathcal{M}_B\): \(\{X_1,\dots,X_{20}\}\) are a random sample from a \(\PoissonDistn(\lambda)\) distribution.</li>
+	</ul>
+	
+	<p class="exampleHeading">Exponential means</p>
+	<p>Clinical records give the survival time, in months from diagnosis, of 30 sufferers from a certain disease as</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred" style="border:1px solid #999999; background-color:#FFFFFF;">
+		<tr>
+			<td style="text-align:right; padding-right:7px; width:40px;">9.73<br>5.56<br>4.28<br>4.87</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">1.55<br>6.20<br>1.08<br>7.17</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">28.65<br>6.10<br>16.16<br>9.92</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">2.40<br>6.19<br>7.67<br>1.11</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">4.66<br>4.35<br>7.31<br>3.28</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">13.38<br>3.08<br>0.41<br>4.33</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">2.16<br>4.49<br>0.75<br>&nbsp;</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">4.45<br>10.29<br>0.90<br>&nbsp;</td>
+		</tr>
+	</table>
+	</div>
+	
+	<p>In a clinical trial of a new drug treatment, 21 sufferers had survival times of:</p>
+	
+<div class="centred">
+	<table border="0" cellpadding="5" cellspacing="0" class="centred" style="border:1px solid #999999; background-color:#FFFFFF;">
+		<tr>
+			<td style="text-align:right; padding-right:7px; width:40px;">22.07<br>12.47<br>6.42</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">8.15<br>0.64<br>20.04</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">17.49<br>2.22<br>3.00</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">28.09<br>3.94<br>8.59</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">4.26<br>32.82<br>8.32</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">2.12<br>18.53<br>&nbsp;</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">9.95<br>4.25<br>&nbsp;</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">3.70<br>5.82<br>&nbsp;</td>
+		</tr>
+	</table>
+	</div>
+	
+	<p>Is there any difference in survival times for those using the new drug?</p>
+	<p>An exponential model might be considered a reasonable model for the data in each group. This would have a common death rate in both groups, \(\lambda\), if the drug had no effect on survival times, and different rates for the control group, \(\lambda_C\), and the group getting the new drug, \(\lambda_D\).</p>
+	<ul>
+		<li>\(\mathcal{M}_S\): \(\{X_{C,1},\dots,X_{C,30}\}\) and \(\{X_{D,1},\dots,X_{D,21}\}\) are  random samples from an \(\ExponDistn(\lambda)\) distribution.</li>
+		<li>\(\mathcal{M}_B\): \(\{X_{C,1},\dots,X_{C,30}\}\) is a random sample from an \(\ExponDistn(\lambda_C)\) distribution and \(\{X_{D,1},\dots,X_{D,21}\}\) is a random sample from an \(\ExponDistn(\lambda_D)\) distribution.</li>
+	</ul>
+	<p class="exampleHeading">Exponential vs Weibull distribution</p>
+	<p>The \(\ExponDistn(\lambda)\) distribution is a special case of the \(\WeibullDistn(\alpha, \lambda)\) distribution corresponding to \(\alpha = 1\). Testing whether the failure rate is constant can therefore be done using the following small and big models.</p>
+	<ul>
+		<li>\(\mathcal{M}_S\): \(\{X_1,\dots,X_n\}\)  are a random sample from an \(\ExponDistn(\lambda)\) distribution.</li>
+		<li>\(\mathcal{M}_B\): \(\{X_1,\dots,X_n\}\)  are a random sample from a \(\WeibullDistn(\alpha, \lambda)\) distribution.</li>
+	</ul>
+	<p class="exampleHeading">Exponential vs Gamma</p>
+	<p>In a similar way, the \(\ExponDistn(\lambda)\) distribution is a special case of the \(\GammaDistn(\alpha, \lambda)\) distribution corresponding to \(\alpha = 1\).</p>
+	<ul>
+		<li>\(\mathcal{M}_S\): \(\{X_1,\dots,X_n\}\)  are a random sample from an \(\ExponDistn(\lambda)\) distribution.</li>
+		<li>\(\mathcal{M}_B\): \(\{X_1,\dots,X_n\}\)  are a random sample from a \(\GammaDistn(\alpha, \lambda)\) distribution.</li>
+	</ul>
+</div>
+
+
+<h2 class="pageName">11.5.2 &nbsp; Likelihood ratio</h2>
+<p>Does the simpler &quot;small&quot; model fit the data, or is the more general &quot;big&quot; model is needed?</p>
+<ul>
+	<li>Null hypothesis, <strong>H<sub>0</sub></strong>: \(\mathcal{M}_S\) is the correct model for the data.</li>
+	<li>Alternative hypothesis, <strong>H<sub>A</sub></strong>:  \(\mathcal{M}_S\) is not correct and \(\mathcal{M}_B\) must be used to model the data.</li>
+</ul>
+<p>Since it has more parameters to adjust, the big model, \(\mathcal{M}_B\), <strong>always</strong> fits better than the small model, \(\mathcal{M}_S\), but does it fit <strong>significantly</strong> better?</p>
+<p>A model's fit can be described by its maximum possible likelihood,</p>
+\[
+L(\mathcal{M}) \;\;=\;\; \underset{\text{all models in }\mathcal{M}}{\operatorname{max}} P(data \mid model)
+\]
+<p>This is the likelihood with all unknown parameters replaced by maximum likelihood estimates.</p>
+<p class="heading">Likelihood ratio</p>
+<p>Because \(\mathcal{M}_S\) is a special case of \(\mathcal{M}_B\),</p>
+\[
+L(\mathcal{M}_B) \;\;\ge\;\; L(\mathcal{M}_S)
+\]
+<p>Equivalently, the <strong>likelihood ratio</strong> is always at least one,</p>
+\[
+R \;\;=\;\; \frac{L(\mathcal{M}_B)}{L(\mathcal{M}_S)} \;\;\ge\;\; 1
+\]
+<p>Big values of \(R\) suggest that \(\mathcal{M}_S\) does not fit as well as \(\mathcal{M}_B\). Equivalently,</p>
+\[
+\log(R) \;\;=\;\; \ell(\mathcal{M}_B) - \ell(\mathcal{M}_S) \;\;\ge\;\; 0
+\]
+<p>and again, big values suggest that \(\mathcal{M}_S\) does not fit as well as \(\mathcal{M}_B\).</p>
+
+
+<h2 class="pageName">11.5.3 &nbsp; Likelihood ratio test</h2>
+
+<p>We now formally test the hypotheses</p>
+<ul>
+	<li><strong>H<sub>0</sub></strong>: \(\mathcal{M}_S\) is the correct model for the data.</li>
+	<li><strong>H<sub>A</sub></strong>:  \(\mathcal{M}_S\) is not correct and \(\mathcal{M}_B\) must be used to model the data.</li>
+</ul>
+<p>The following test statistic is used,</p>
+\[
+X^2 \;\;=\;\; 2\log(R) \;\;=\;\; 2\left(\ell(\mathcal{M}_B) - \ell(\mathcal{M}_S)\right)
+\]
+<p>\(X^2\) has (approximately) a standard distribution when <strong>H<sub>0</sub></strong> holds, and  is likely to be largest if \(\mathcal{M}_S\) is not correct.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Distribution of test statistic</p>
+<p>If the data do come from \(\mathcal{M}_S\), and \(\mathcal{M}_B\) has \(k\) more parameters than \(\mathcal{M}_S\),</p>
+\[
+X^2 \;\;=\;\; 2\left( \ell(\mathcal{M}_B) - \ell(\mathcal{M}_S)\right) \;\;\underset{\text{approx}}{\sim} \;\; \ChiSqrDistn(k \text{ df})
+\]</div>
+</div>
+
+<p class="heading">Likelihood ratio test</p>
+<ol>
+	<li>Find the maximum likelihood estimates of all unknown parameters in \(\mathcal{M}_B\).</li>
+	<li>Find the maximum likelihood estimates of all unknown parameters in \(\mathcal{M}_S\).</li>
+	<li>Evaluate the test statistic, \(\chi^2 = 2\left( \ell(\mathcal{M}_B) - \ell(\mathcal{M}_S)\right)\).</li>
+	<li>The degrees of freedom for the test are the difference between the numbers of unknown parameters in the two models.</li>
+	<li>The p-value for the test is the upper tail probability of the \(\ChiSqrDistn(k \text{ df})\) distribution above the test statistic.</li>
+	<li>Interpret the p-value as for other kinds of hypothesis test — small values give evidence that the null hypothesis, model \(\mathcal{M}_S\), does not hold.</li>
+</ol>
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Question</p>
+<p>The following table describes the number of defective items from a production line in each of 20 days.</p>
+
+<div class="centred">
+	<table border="0" cellpadding="5" cellspacing="0" class="centred" style="border:1px solid #999999; background-color:#FFFFFF;">
+		<tr>
+			<td style="text-align:right; padding-right:10px; width:25px;">1<br>
+			2</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">3<br>
+			4</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">2<br>
+			3</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">2<br>
+			5</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">5<br>
+			2</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">4<br>
+			3</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">5<br>
+			1</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">2<br>
+			4</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">0<br>
+			2</td>
+			<td style="text-align:right; padding-right:10px; width:25px;">2<br>
+				6</td>
+		</tr>
+	</table>
+</div>
+
+<p>Assuming that the data are a random sample from a \(\PoissonDistn(\lambda)\) distribution, use a likelihood ratio test for whether the rate of defects was \(\lambda = 2\) per week.</p>
+<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+
+<h2 class="pageName">11.5.4 &nbsp; Another example</h2>
+<p>We now use a maximum likelihood test to compare two random samples from exponential distributions.</p>
+<div class="questionSoln">
+	<div class="question">
+		<p class="questionTitle">Question</p>
+		<p>Clinical records give the survival time in months from diagnosis of 30 sufferers from a certain disease as</p>
+		
+<div class="centred">
+		<table border="0" cellpadding="5" cellspacing="0" class="centred" style="border:1px solid #999999; background-color:#FFFFFF;">
+			<tr>
+				<td style="text-align:right; padding-right:7px; width:40px;">9.73<br>
+					5.56<br>
+					4.28<br>
+					4.87</td>
+				<td style="text-align:right; padding-right:7px; width:40px;">1.55<br>
+					6.20<br>
+					1.08<br>
+					7.17</td>
+				<td style="text-align:right; padding-right:7px; width:40px;">28.65<br>
+					6.10<br>
+					16.16<br>
+					9.92</td>
+				<td style="text-align:right; padding-right:7px; width:40px;">2.40<br>
+					6.19<br>
+					7.67<br>
+					1.11</td>
+				<td style="text-align:right; padding-right:7px; width:40px;">4.66<br>
+					4.35<br>
+					7.31<br>
+					3.28</td>
+				<td style="text-align:right; padding-right:7px; width:40px;">13.38<br>
+					3.08<br>
+					0.41<br>
+					4.33</td>
+				<td valign="top" style="text-align:right; padding-right:7px; width:40px;">2.16<br>
+					4.49<br>
+					0.75</td>
+				<td valign="top" style="text-align:right; padding-right:7px; width:40px;">4.45<br>
+					10.29<br>
+					0.90</td>
+			</tr>
+		</table>
+</div>
+
+		<p>In a clinical trial of a new drug treatment, 21 sufferers had survival times of</p>
+		
+<div class="centred">
+		<table border="0" cellpadding="5" cellspacing="0" class="centred" style="border:1px solid #999999; background-color:#FFFFFF;">
+			<tr>
+				<td style="text-align:right; padding-right:7px; width:40px;">22.07<br>
+					12.47<br>
+					6.42</td>
+				<td style="text-align:right; padding-right:7px; width:40px;">8.15<br>
+					0.64<br>
+					20.04</td>
+				<td style="text-align:right; padding-right:7px; width:40px;">17.49<br>
+					2.22<br>
+					3.00</td>
+				<td style="text-align:right; padding-right:7px; width:40px;">28.09<br>
+					3.94<br>
+					8.59</td>
+				<td style="text-align:right; padding-right:7px; width:40px;">4.26<br>
+					32.82<br>
+					8.32</td>
+				<td valign="top" style="text-align:right; padding-right:7px; width:40px;">2.12<br>
+					18.53</td>
+				<td valign="top" style="text-align:right; padding-right:7px; width:40px;">9.95<br>
+					4.25</td>
+				<td valign="top" style="text-align:right; padding-right:7px; width:40px;">3.70<br>
+					5.82</td>
+			</tr>
+		</table>
+</div>
+
+		<p>Assuming that survival times are exponentially distributed, perform a likelihood ratio test for whether the death rate is different for those getting the new drug.</p>
+		<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+
+<h1 class="sectionName breakBefore">11.6 &nbsp; CI from inverting a test</h1>
+<h2 class="pageName">11.6.1 &nbsp; Test statistics and pivots</h2>
+<p>The ideas of test statistics and pivots are very closely related.</p>
+<dl>
+	<dt>Pivot for parameter \(\theta\)</dt>
+	<dd>Function of the data and \(\theta\) whose distribution has no unknown parameters,</dd>
+</dl>
+
+
+\[
+Q \;\;=\;\; g(X_1, \dots, X_n, \theta) \;\;\sim\;\; \mathcal{Standard\;distn} \]
+<dl>
+	<dt>Test statistic for null hypothesis \(\theta = \theta_0\)</dt>
+	<dd>Function of the data (and known constants such as \(\theta_0\)) whose distribution has no unknown parameters,</dd>
+</dl>
+\[
+Q \;\;=\;\; g(X_1, \dots, X_n, \theta_0) \;\;\sim\;\; \mathcal{Standard\;distn} \]
+<div class="boxed">
+<p>If a function \(g(X_1, \dots, X_n, \theta)\) can be used as a pivot for \(\theta\), then \(g(X_1, \dots, X_n, \theta_0)\) can be used as a test statistic for testing whether \(\theta = \theta_0\).</p>
+</div>
+<p>To simplify the notation, we simply write \(Q(\theta) \sim \mathcal{Standard\;distn}\).</p>
+<p class="heading">Relationship between confidence interval and test</p>
+<p>These  are <strong>also</strong> closely related. The diagram below illustrates a possible standard distribution for \(Q(\theta) \sim \mathcal{Standard\;distn}\).</p>
+<dl>
+  <dt>\((1 - \alpha)\) confidence interval for parameter \(\theta\)</dt>
+	<dd>It consists of the values of \(\theta\) that result in the pivot, \(Q(\theta)\), being in the middle \((1 - \alpha)\) of the distribution,</dd>
+</dl>
+<p class="eqn"><img class="svgImage" src="../../../en/invertTest/images/ciFromPivot.png" width="412" height="246"></p>
+<dl>
+	<dt>Two-tailed test for <strong>H<sub>0</sub></strong>:  \(\theta = \theta_0\) at significance level \(\alpha\)</dt>
+	<dd>We reject <strong>H<sub>0</sub></strong> if  the test statistic, \(Q(\theta_0)\), is in one of the two tails of the distribution (with total tail area \(\alpha\)),</dd>
+</dl>
+<p class="eqn"><img class="svgImage" src="../../../en/invertTest/images/testFromStat.png" width="412" height="246"></p>
+<p>Because of this relationship between confidence intervals and tests, we can perform a hypothesis test from  a confidence interval.</p>
+<div class="theoremProof">
+	<div class="theorem">
+		<p class="theoremTitle">Test from confidence interval</p>
+		<p>If we reject the null hypothesis in a  2-tailed test about whether \(\theta = \theta_0\) when the parameter value \(\theta_0\) is outside a \((1 - \alpha)\) confidence interval for \(\theta\), then the test has significance level \(\alpha\).</p>
+	</div>
+</div>
+<p>Similarly, we can find a confidence interval based on a hypothesis test.</p>
+<div class="theoremProof">
+	<div class="theorem">
+<p class="theoremTitle">Confidence interval from test</p>
+<p>A \((1 - \alpha)\) confidence interval can be found as the values \(\theta_0\) that are <strong>not</strong> rejected by a 2-tailed test of whether \(\theta = \theta_0\) at significance level \(\alpha\).</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">11.6.2 &nbsp; Test from a confidence interval</h2>
+<p>Because of the relationship between confidence intervals and hypothesis tests, a hypothesis test at significance level \(\alpha\) for</p>
+<ul>
+	<li><strong>H<sub>0</sub></strong>: \(\theta = \theta_0\)</li>
+	<li><strong>H<sub>A</sub></strong>: \(\theta \ne \theta_0\)</li>
+</ul>
+<p>can be performed in the following way.</p>
+<ol>
+	<li>Find a \((1 - \alpha)\) confidence interval for \(\theta\).</li>
+	<li>Reject <strong>H<sub>0</sub></strong> if the confidence interval does not include \(\theta_0\).</li>
+</ol>
+<div class="example">
+	
+	<p class="exampleHeading">T-shirt sizes</p>
+
+<p>A retail clothing outlet has collected the following data from random sampling of invoices of T-shirts over the past month.</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred">
+	<tr>
+		<th>&nbsp;</th>
+		<th width="50">Small</th>
+		<th width="50">Medium</th>
+		<th width="50">Large</th>
+		<th width="50">XL</th>
+		<th width="50">Total</th>
+	</tr>
+	<tr>
+		<th>North Island</th>
+		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999; border-top:1px solid #999999;">2</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">15</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-top:1px solid #999999;">24</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999; border-top:1px solid #999999;">9</td>
+		<td align="center">50</td>
+	</tr>
+	<tr>
+		<th>South Island</th>
+		<td align="center" bgcolor="#FFFFFF" style="border-left:1px solid #999999; border-bottom:1px solid #999999;">4</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">17</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-bottom:1px solid #999999;">23</td>
+		<td align="center" bgcolor="#FFFFFF" style="border-right:1px solid #999999; border-bottom:1px solid #999999;">6</td>
+		<td align="center">50</td>
+	</tr>
+</table>
+</div>
+
+<p>Concentrating on the probability that a North Island T-shirt is Small, \(\pi\), we have the approximate pivot,</p>
+
+\[
+\frac{x - n\pi}{\sqrt{n \pi(1 - \pi)}} \;\;\underset{\text{approx}}{\sim} \;\; \NormalDistn(0,1)
+\]
+<p>where \(x = 2\) and \(n = 50\). This can be rearranged to get a 95% confidence interval</p>
+
+\[
+0.011 \;\;\lt\;\; \pi \;\;\lt\;\; 0.135
+\]
+<hr width="75%">
+<p>If we wanted to perform a <strong>test</strong> about \(\pi\),</p>
+<ul>
+	<li><strong>H<sub>0</sub></strong>: \(\pi = 0.15\)</li>
+	<li><strong>H<sub>A</sub></strong>: \(\pi \ne 0.15\)</li>
+</ul>
+<p>we note that 0.15 is <strong>not</strong> in the 95% confidence interval. This means that we would reject the null hypothesis in a test at the 5% significance level.</p>
+</div>
+
+
+<h2 class="pageName">11.6.3 &nbsp; Confidence interval from a test</h2>
+
+<p>There are two reasons why hypothesis tests may be easier than confidence intervals:</p>
+<ul>
+	<li>The underlying theory is easier in some applications</li>
+	<li>Sometimes conventional confidence intervals involve  approximations that can be avoided in hypothesis tests.</li>
+</ul>
+<p>In these situations, good approach to finding a confidence interval  may  be through hypothesis tests.</p>
+<p class="heading">Binomial probability</p>
+<p>The earlier confidence intervals that we showed for the binomial distribution's parameter \(\pi\)  were based on normal approximations to the number or proportion of successes. However a hypothesis test can be performed using binomial probabilities without the need for this normal approximation.</p>
+<p>A \((1 - \alpha)\) confidence interval for a parameter \(\theta\) can be found as follows:</p>
+<ol>
+	<li>For different values of \(\theta_0\), perform a 2-tailed test for whether \(\theta = \theta_0\) at significance level \(\alpha\).</li>
+	<li>A \((1 - \alpha)\) confidence interval for \(\theta\) consists of the values \(\theta_0\) that are not rejected by these tests.</li>
+</ol>
+<div class="example">
+	
+	<p class="exampleHeading">Exact confidence interval for π when n = 20 and x = 7</p>
+	<p>For a 2-tailed hypothesis test with  <strong>H<sub>0</sub></strong>: \(\pi = \pi_0\), we can use the test statistic</p>
+\[
+X \;\;\sim\;\; \BinomDistn(n=20, \pi_0)
+\]
+<p>For any value of \(\pi_0\), the p-value is double the smaller tail probability from this binomial distribution,</p>
+\[
+2 \times P(X \le 7 \mid \pi = \pi_0) \spaced{or} 2 \times P(X \ge 7 \mid \pi = \pi_0)
+\]
+<p>For a test at significance level \(\alpha = 5%\), we  reject <strong>H<sub>0</sub></strong> if the p-value is less than 0.05.</p>
+<hr width="75%">
+<p>A 95% confidence interval for \(\pi\) consists of the values \(\pi_0\) that are <strong>not</strong> rejected in this  test. By trial-and-error with different values of \(\pi_0\), we find the following p-values,</p>
+<p class="eqn"><img src="../../../en/invertTest/images/s_binomialCiTests.png" width="511" height="600"  alt=""/></p>
+<p><strong>H<sub>0</sub></strong> is only accepted at the 5% significance level for values of \(\pi_0\) between these, so the exact 95% confidence interval is</p>
+\[
+0.154 \;\;\lt\;\; \pi \;\;\lt\;\; 
+0.592\]</div>
+
+
+<h2 class="pageName">11.6.4 &nbsp; Confidence interval for median  (Difficult) (Difficult)</h2>
+<p>We will now find a 95% confidence interval for the <strong>median</strong> of a data set from a random sample, without making any assumptions about the shape of the underlying distribution. This will be done by inverting a test for the hypotheses</p>
+<ul>
+	<li><strong>H<sub>0</sub></strong>: \(\theta = \theta_0\)</li>
+	<li><strong>H<sub>A</sub></strong>: \(\theta \ne \theta_0\)</li>
+</ul>
+<p>where the parameter \(\theta\) is the median of the distribution. This can be based on the<strong> number</strong> of values less than \(\theta_0\). If \(\theta_0\) really is the median (and <strong>H<sub>0</sub></strong> is true),</p>
+\[
+Y \;\;=\;\; \text{number of values below }\theta_0 \;\;\sim\;\; \BinomDistn(n, \pi=0.5)
+\]
+<p>The p-value for the test is the probability of \(Y\) being further from \(\diagfrac{n}{2}\) than was observed in the data.</p>
+<p>A 95% confidence interval can be found (by trial-and-error) as the values of \(\theta_0\) that would result in the null hypothesis being accepted — i.e. with p-values greater than 0.05.</p>
+
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Question</p>
+<p>A certain disease in dogs is characterized in the early stages by unusually high levels of a blood protein. This measurement has been proposed as a diagnostic test for infection: if the measured level is above a threshold value, the dog is diagnosed as having the disease. A &lsquo;false positive&rsquo; occurs when a healthy dog happens to have a level above the threshold and is wrongly diagnosed as having the disease.</p>
+<p>Measurements on a sample of 50 unaffected dogs gave the following results:</p>
+
+<div class="centred">
+	<table border="0" cellpadding="5" cellspacing="0" class="centred" style="border:1px solid #999999; background-color:#FFFFFF;">
+		<tr>
+			<td style="text-align:right; padding-right:7px; width:40px;">14.4<br>
+				16.1<br>
+				11.9<br>
+				7.5<br>
+				9.3</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">9.3<br>
+				16.4<br>
+				4.9<br>
+				12.8<br>
+				23.7</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">23.7<br>
+				13.5<br>
+				9.3<br>
+				8.6<br>
+				17.6</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">19.0<br>
+				20.3<br>
+				17.0<br>
+				30.4<br>
+				8.3</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">13.9<br>
+				20.1<br>
+				10.2<br>
+				23.6<br>
+				14.9</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">19.7<br>
+				20.9<br>
+				17.1<br>
+				14.2<br>
+				15.7</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">50.4<br>
+				8.5<br>
+				7.5<br>
+				23.0<br>
+				18.7</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">5.5<br>
+				11.2<br>
+				31.8<br>
+				20.4<br>
+				13.0</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">13.4<br>
+				11.7<br>
+				7.8<br>
+				19.4<br>
+				21.4</td>
+			<td style="text-align:right; padding-right:7px; width:40px;">16.4<br>
+				28.2<br>
+				31.3<br>
+				30.3<br>
+				26.6</td>
+		</tr>
+	</table>
+</div>
+
+<p>Measurements on a sample of 27 diseased dogs gave the results:</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred" style="border:1px solid #999999; background-color:#FFFFFF;">
+	<tr>
+<td style="text-align:right; padding-right:7px; width:40px;">21.9<br>40.8<br>37.6</td>
+<td style="text-align:right; padding-right:7px; width:40px;">41.7<br>23.3<br>39.8</td>
+<td style="text-align:right; padding-right:7px; width:40px;">66.3<br>34.4<br>27.8</td>
+<td style="text-align:right; padding-right:7px; width:40px;">49.8<br>19.3<br>55.5</td>
+<td style="text-align:right; padding-right:7px; width:40px;">50.7<br>27.5<br>30.2</td>
+<td style="text-align:right; padding-right:7px; width:40px;">60.7<br>8.5<br>51.2</td>
+<td style="text-align:right; padding-right:7px; width:40px;">24.2<br>24.9<br>16.1</td>
+<td style="text-align:right; padding-right:7px; width:40px;">28.2<br>30.2<br>&nbsp;</td>
+<td style="text-align:right; padding-right:7px; width:40px;">15.7<br>18.3<br>&nbsp;</td>
+<td style="text-align:right; padding-right:7px; width:40px;">22.5<br>8.4<br>&nbsp;
+	</tr>
+</table>
+</div>
+
+<p>Find 95% confidence intervals for the median level of blood protein in the two groups.</p>
+<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+<h2 class="pageName">11.6.5 &nbsp; CI from likelihood ratio test</h2>
+<p>Consider a likelihood ratio test for the hypotheses</p>
+<ul>
+	<li><strong>H<sub>0</sub></strong>: \(\theta = \theta_0\)</li>
+	<li><strong>H<sub>A</sub></strong>: \(\theta \ne \theta_0\)</li>
+</ul>
+<p>This is based on the log-likelihood when <strong>H<sub>0</sub></strong> holds, \(\ell(\theta_0)\), and its maximum possible value under <strong>H<sub>A</sub></strong>, \(\ell(\hat{\theta})\), where \(\hat{\theta}\) is the maximum likelihood estimate of \(\theta\). For a hypothesis test with 5% significance level, we reject <strong>H<sub>0</sub></strong> if</p>
+\[
+2\left(\ell(\hat{\theta}) - \ell(\theta_0)\right) \;\;\gt\;\; K
+\]
+<p>where the constant \(K\) is the 95th percentile of the \(\ChiSqrDistn(1 \text{ df})\) distribution, \(K = 3.841\).</p>
+<p class="heading">Inverting the likelihood ratio test</p>
+<p>A 95% confidence interval for \(\theta\) can therefore be found as the values for which</p>
+\[ \begin{align}
+2\left(\ell(\hat{\theta}) - \ell(\theta_0)\right) \;\;&amp;\le\;\; 3.841 \\[0.4em]
+\ell(\theta_0)\;\;&amp;\gt\;\; \ell(\hat{\theta}) - \frac{3.841}{2} \\[0.5em]
+\ell(\theta_0)\;\;&amp;\gt\;\; \ell(\hat{\theta}) - 1.921
+\end{align} \]
+<p>It is therefore the values of \(\theta\) for which the log-likelihood is within 1.921 of its maximum.</p>
+<div class="questionSoln">
+	<div class="question">
+<p class="questionTitle">Question</p>
+<p>Clinical records give the survival time in months from diagnosis of 30 sufferers from a certain disease as</p>
+
+<div class="centred">
+<table border="0" cellpadding="5" cellspacing="0" class="centred" style="border:1px solid #999999; background-color:#FFFFFF;">
+	<tr>
+		<td style="text-align:right; padding-right:7px; width:40px;">9.73<br>
+			5.56<br>
+			4.28<br>
+			4.87</td>
+		<td style="text-align:right; padding-right:7px; width:40px;">1.55<br>
+			6.20<br>
+			1.08<br>
+			7.17</td>
+		<td style="text-align:right; padding-right:7px; width:40px;">28.65<br>
+			6.10<br>
+			16.16<br>
+			9.92</td>
+		<td style="text-align:right; padding-right:7px; width:40px;">2.40<br>
+			6.19<br>
+			7.67<br>
+			1.11</td>
+		<td style="text-align:right; padding-right:7px; width:40px;">4.66<br>
+			4.35<br>
+			7.31<br>
+			3.28</td>
+		<td style="text-align:right; padding-right:7px; width:40px;">13.38<br>
+			3.08<br>
+			0.41<br>
+			4.33</td>
+		<td style="text-align:right; padding-right:7px; width:40px;">2.16<br>
+			4.49<br>
+			0.75<br>
+				&nbsp;</td>
+		<td style="text-align:right; padding-right:7px; width:40px;">4.45<br>
+			10.29<br>
+			0.90<br>
+				&nbsp;</td>
+	</tr>
+</table>
+</div>
+
+<p>If the survival times are exponentially distributed with a death rate of \(\lambda\), find a 95% confidence interval for \(\lambda\).</p>
+<p class="questionNote">(Solved in full version)</p>
+	</div>
+</div>
+
+
+</body>
+</html>

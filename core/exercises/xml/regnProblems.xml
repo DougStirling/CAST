@@ -52,6 +52,56 @@
 </exercise>
 
 
+<exercise name='identifyProblemsExternal'>
+	<description>Identify nonlinearity, outliers, high leverage and extrapolation</description>
+	<comment>The question involves a regression relationship that that may have curvature, an oulier and/or a high leverage point. A prediction is to be made that may involve extrapolation. The question asks which, if any, of these problems exist.</comment>
+	<applet>exerciseBivarProg.LsProblemsExternalApplet</applet>
+	<width>550</width>
+	<height>720</height>
+	
+	<variable name="count" type="int(1)">Number of crosses</variable>
+	<variable name="predictionType" type="predictionType">Type of problem</variable>
+	<variable name="curvature" type="int_choice(Linear#Curvature)">Relationship for generated data</variable>
+	<variable name="forceExtendedAxes" type="int_choice(Standard axes for data#Force extended axes)"></variable>
+	<variable name="xVarName" type="string(14)">Name for x-variable</variable>
+	<variable name="xAxis" type="axis">X-axis</variable>
+	<variable name="xPlusAxis" type="axis">Extended x-axis for prediction</variable>
+	<variable name="yVarName" type="string(14)">Name for y-variable</variable>
+	<variable name="yAxis" type="axis">Y-axis</variable>
+	<variable name="yPlusAxis" type="axis">Extended y-axis for prediction</variable>
+	<variable name="yOutlierAxis" type="axis">Y-axis if there is an outlier</variable>
+	<variable name="linearParams" type="model(2)">b0, b1 and sigma</variable>
+	<variable name="quadParams" type="model(3)">b0, b1, b2 and sigma</variable>
+	<variable name="nonlinStatement" type="string(40)">Statement describing nonlinear problem with prediction</variable>
+	<variable name="extrapolationStatement" type="string(40)">Statement describing problem due to extrapolation</variable>
+	<variable name="outlierStatement" type="string(40)">Statement describing problem due to an outlier</variable>
+	<variable name="leverageStatement" type="string(40)">Statement describing problem due to a high-leverage point</variable>
+	<variable name="dataName" type="string(16)">Name for exported CSV data file</variable>
+	<variable name="xDecimals" type="int(1)">Decimals for exported values of X</variable>
+	<variable name="yDecimals" type="int(1)">Decimals for exported values of Y</variable>
+	
+	<template>
+		<question>The scatterplot below shows #count(40)# values. A least squares line was fitted to the data and will be used to predict Y for X = #predictionType(2:8,18:25)#. What, if any, are the problems with making this prediction?</question>
+		<qnParam>curvature(0:1)#forceExtendedAxes(0:1)#xVarName(X)#xAxis(0 10 0 2)#xPlusAxis(0 25 0 5)#yVarName(Y)#yAxis(0 2 0 0.5)#yPlusAxis(0 4.3 0 1)#yOutlierAxis(0 3.2 0 0.5)#linearParams(0.3 0.15 0.1)#quadParams(0.3 0.3 -0.015 0.06)#nonlinStatement(The relationship seems nonlinear.)#extrapolationStatement(This is extrapolation.)#outlierStatement(There is an outlier.)#leverageStatement(There is a high leverage point.)#dataName(data)#xDecimals(1)#yDecimals(2)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>pigWeight</shortName>
+		<longName>Weight gain and age of pigs (wording in terms of context)</longName>
+		<height>770</height>
+		<question>Weight gains in one week were recorded from #count[](40,80)# immature pigs of different ages that were fed a similar diet.\\nIf a least squares line is fitted to the data and used to predict the weight gain of a pig aged #predictionType(2:8,18:25)#, what, if any, are the problems with making this prediction?</question>
+		<qnParam>curvature(0:1)#forceExtendedAxes(0:1)#dataName(pigWeightGains)#xVarName(Age)#xAxis(0 10 0 2)#xPlusAxis(0 25 0 5)#yVarName(Weight gain)#yAxis(0 2 0 0.5)#yPlusAxis(0 4.3 0 1)#yOutlierAxis(0 3 0 0.5)#linearParams[](0.3 0.15 0.1*0.3 0.15 0.2)#quadParams[](0.3 0.3 -0.015 0.06*0.3 0.3 -0.015 0.1*0.3 0 0.015 0.06)#nonlinStatement(Weekly weight gain seems to increase nonlinearly with age.)#extrapolationStatement(There is no information about the shape of the relationship between weight gain and age when age is this high.)#outlierStatement(One pig's weight gain may have been incorrectly recorded.)#leverageStatement(There is one pig that is older than the rest and whose weight gain strongly affects the least squares line.)#xDecimals(1)#yDecimals(2)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>generic</shortName>
+		<longName>Y against X (generic wording)</longName>
+		<question>Export the data and examine a scatterplot of its #count[](40,80)# crosses. What, if any, are the problems with using the least squares line to predict Y when X = #predictionType(2:8,18:25)#?</question>
+		<qnParam>curvature(0:1)#forceExtendedAxes(0:1)#xVarName(X)#xAxis(0 10 0 2)#xPlusAxis(0 25 0 5)#yVarName(Y)#yAxis(0 2 0 0.5)#yPlusAxis(0 4.3 0 1)#yOutlierAxis(0 3 0 0.5)#linearParams[](0.3 0.15 0.1*0.3 0.15 0.2)#quadParams[](0.3 0.3 -0.015 0.06*0.3 0.3 -0.015 0.1*0.3 0 0.015 0.06)#nonlinStatement(The relationship seems nonlinear.)#extrapolationStatement(This is extrapolation.)#outlierStatement(There is an outlier.)#leverageStatement(There is a high leverage point.)#dataName(data)#xDecimals(1)#yDecimals(2)</qnParam>
+	</variation>
+</exercise>
+
+
 <exercise name='transformToRemoveCurvature'>
 	<description>Find a transformation that is likely to remove curvature</description>
 	<comment>The question shows a scatterplot with curvature and asks whether a nonlinear transformation of X, a nonlinear transformation of Y are likely to fix the problems with the model. For some variations of the question, neither type of transformation will work.</comment>
@@ -71,6 +121,31 @@
 		<shortName>generic</shortName>
 		<longName>Generic wording</longName>
 		<question>Which transformation of the data in the scatterplot below would be most suitable for fitting a linear model by least squares?</question>
+		<qnParam>count(50:200)#corr[](0.9,0.95,0.99,-0.9,-0.95,-0.99)#transformType(0:2)#quadConcaveUp(:)#ordersOfMagnitude(2)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='removeCurvatureExternal'>
+	<description>Find a transformation that is likely to remove curvature</description>
+	<comment>A scatterplot should be produced from the data in this question. It shows some curvature and asks whether a nonlinear transformation of X or a nonlinear transformation of Y are likely to fix the problems with the model. For some variations of the question, neither type of transformation will work.</comment>
+	<applet>exerciseBivarProg.LineariseTransformExternalApplet</applet>
+	<width>450</width>
+	<height>650</height>
+	
+	<variable name="count" type="int(1)">Number of crosses</variable>
+	<variable name="corr" type="double">Correlation coefficient</variable>
+	<variable name="transformType" type="int_choice(Log-x to linearise#Log-y to linearise#Quadratic: can't be linearised)"></variable>
+	<variable name="quadConcaveUp" type="boolean(Concave up for quadratic#Concave down for quadratic)"></variable>
+	<variable name="ordersOfMagnitude" type="int(1)">Number of orders of magnitude covered by data</variable>
+	<variable name="dataName" type="string">Name for CSV file with exported data</variable>
+	
+	<!--        no template since no different variations are possible    -->
+	
+	<variation>
+		<shortName>generic</shortName>
+		<longName>Generic wording</longName>
+		<question>Export the data and draw a scatterplot. Which transformation of the variables would be most suitable for fitting a linear model by least squares?</question>
 		<qnParam>count(50:200)#corr[](0.9,0.95,0.99,-0.9,-0.95,-0.99)#transformType(0:2)#quadConcaveUp(:)#ordersOfMagnitude(2)</qnParam>
 	</variation>
 </exercise>
@@ -115,6 +190,52 @@
 		<longName>Time to failure of a component and temperature</longName>
 		<question>The time to failure of a component (in days) is related to the temperature at which it is operated (in degrees Celsius). The scatterplot on the left below describes the lifetimes of #count[](20,30,50,80,100)# components and the scatterplot on the right uses natural logarithms (base e) to linearise the relationship.\\nPredict the lifetime of a component that is used at #xValue(1:19)##degrees#C.</question>
 		<qnParam>xVarName(Temperature)#xAxis(0 20 0 5)#lnxAxis(-1.6 3.1 -1 1)#yVarName(Lifetime)#yAxis(0 300 0 50)#lnyAxis(1 5.8 1 1)#corr[](0.95,0.8,-0.8,-0.95)#transformType(1:3)#maxIntercept(999.999)#maxSlope(-99.999)#maxExp(100.000)#accuracy(0.01)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='predictFromModelWithLogsExternal'>
+	<description>Predict Y at X=x based on LS line involving log(Y) and/or log(X)</description>
+	<comment>The question shows a scatterplot of raw data with regression problems that are fixed by a log transform of X and/or Y. A scatterplot of the transformed variables and least squares line fitted to them are also shown.\\nThe question asks for a prediction of Y from X in the original units.</comment>
+	<applet>exerciseBivarProg.TransformPredictExternalApplet</applet>
+	<width>450</width>
+	<height>650</height>
+	
+	<variable name="xVarName" type="string(16)">Name of X variable</variable>
+	<variable name="xAxis" type="axis">Axis for x</variable>
+	<variable name="lnxAxis" type="axis">Axis for log(x)</variable>
+	<variable name="yVarName" type="string(16)">Name of Y variable</variable>
+	<variable name="yAxis" type="axis">Axis for y</variable>
+	<variable name="lnyAxis" type="axis">Axis for log(y)</variable>
+	<variable name="count" type="int(1)">Number of crosses</variable>
+	<variable name="corr" type="double">Correlation coefficient</variable>
+	<variable name="transformType" type="int_choice(x,y is linear#x,lny is linear#lnx,y is linear#lnx,lny is linear)">Linearising transformation</variable>
+	<variable name="maxIntercept" type="double">Template for maximum intercept value</variable>
+	<variable name="maxSlope" type="double">Template for maximum slope value</variable>
+	<variable name="maxExp" type="double">Template for maximum exponentiated value in prediction</variable>
+	<variable name="xValue" type="double">X-value for which prediction is required</variable>
+	<variable name="dataName" type="string(16)">Name exported CSV data set</variable>
+	<variable name="xDecimals" type="int(1)">Decimals for exported x-value</variable>
+	<variable name="yDecimals" type="int(1)">Decimals for exported y-value</variable>
+	<variable name="requiredDecimals" type="int(1)">Prediction should be exact to this number of decimals</variable>
+	
+	<template>
+		<question>The scatterplot on the left below shows the relationship between Y and X. The scatterplot on the right uses natural logarithms (base e) to linearise the relationship.\\nPredict the value of Y (exact to #requiredDecimals(3)# decimals) when X is #xValue(0.1:9.9)#.</question>
+		<qnParam>xVarName(X)#xAxis(0 10 0 2)#lnxAxis(-2.5 2.5 -2 1)#yVarName(Y)#yAxis(0 100 0 20)#lnyAxis(0 4.6 0 1)#count(50)#corr(0.95)#transformType(1:3)#maxIntercept(99.999)#maxSlope(-99.999)#maxExp(100.000)#dataName(Data)#xDecimals(2)#yDecimals(2)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>reactionYield</shortName>
+		<longName>Yield of chemical reaction and catalyst</longName>
+		<question>The scatterplot on the left below shows the relationship between the yield of a chemical reaction and the concentration of a catalyst in a series of experiments. The scatterplot on the right uses natural logarithms (base e) to linearise the relationship.\\nExport the data, fit a linear model to the transformed data, then use this to predict the yield (to #requiredDecimals(3)# decimals) when the concentration of catalyst is #xValue(0.1:9.9)#.</question>
+		<qnParam>xVarName(Conc)#xAxis(0 10 0 2)#lnxAxis(-2.5 2.5 -2 1)#yVarName(Yield)#yAxis(0 100 0 20)#lnyAxis(0 4.6 0 1)#count[](20,30,50,80,100)#corr[](0.95,0.8,-0.8,-0.95)#transformType(1:3)#maxIntercept(99.999)#maxSlope(-99.999)#maxExp(100.000)#dataName(YieldConc)#xDecimals(4)#yDecimals(3)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>componentFailure</shortName>
+		<longName>Time to failure of a component and temperature</longName>
+		<question>The time to failure of a component (in days) is related to the temperature at which it is operated (in degrees Celsius). The scatterplot on the left below describes the lifetimes of #count[](20,30,50,80,100)# components and the scatterplot on the right uses natural logarithms (base e) to linearise the relationship.\\nExport the data, fit a linear model to the transformed data, then use this to predict the time to failure (to #requiredDecimals(2)# decimals) of a component that is used at #xValue(1:19)##degrees#C.</question>
+		<qnParam>xVarName(Temperature)#xAxis(0 20 0 5)#lnxAxis(-1.6 3.1 -1 1)#yVarName(Lifetime)#yAxis(0 300 0 50)#lnyAxis(1 5.8 1 1)#corr[](0.95,0.8,-0.8,-0.95)#transformType(1:3)#maxIntercept(999.999)#maxSlope(-99.999)#maxExp(100.000)#accuracy(0.01)#dataName(FailureTime)#xDecimals(4)#yDecimals(3)</qnParam>
 	</variation>
 </exercise>
 

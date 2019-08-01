@@ -90,8 +90,63 @@
 </exercise>
 
 
-<exercise name='guessCorr'>
-	<description>Guess correlation from scatterplot.</description>
+<exercise name='matchDataToDescriptions'>
+	<description>Match data sets to wording describing the pattern.</description>
+	<comment>Four data sets are provided for external analysis. They may show outliers, clusters and various strengths of relationship. Four sentences must be matched to the data sets by dragging them onto the names of the data sets.</comment>
+	<applet>exerciseBivarProg.InterpretScatterExternalApplet</applet>
+	<width>580</width>
+	<height>580</height>
+	
+	<option name="stacked">Exports data in stacked format (default exports each bivariate data set separately)</option>
+	
+	<variable name="xVarName" type="string(16)">Name of X variable</variable>
+	<variable name="xAxis" type="axis_array">List of alternative axes for x</variable>
+	<variable name="yVarName" type="string(16)">Name of Y variable</variable>
+	<variable name="yAxis" type="axis_array">List of alternative axes for y</variable>
+	<variable name="count" type="int(1)">Number of crosses</variable>
+	<variable name="uncorrel" type="string(16)">GIF file for text describing uncorrelated data set, core/java/javaImages/scatterInterp/xxx.gif</variable>
+	<variable name="posCorrel" type="string(16)">GIF file for text describing positively data set, core/java/javaImages/scatterInterp/xxx.gif</variable>
+	<variable name="negCorrel" type="string(16)">GIF file for text describing negatively data set, core/java/javaImages/scatterInterp/xxx.gif</variable>
+	<variable name="outlierBoth" type="string(16)">GIF file for text describing data set with a cross whose X and Y are both outliers, core/java/javaImages/scatterInterp/xxx.gif</variable>
+	<variable name="outlierXY" type="string(16)">GIF file for text describing data set with an outlier that is not extreme for X or Y, core/java/javaImages/scatterInterp/xxx.gif</variable>
+	<variable name="twoGroupPos" type="string(16)">GIF file for text describing positively correlated data set with two groups, core/java/javaImages/scatterInterp/xxx.gif</variable>
+	<variable name="twoGroupNeg" type="string(16)">GIF file for text describing negatively correlated data set with two groups, core/java/javaImages/scatterInterp/xxx.gif</variable>
+	<variable name="dataName" type="string(16)">Name for exported data file (or prefix of name if unstacked)</variable>
+	<variable name="factorName" type="string(16)">Name for factor variable (stacked export)</variable>
+	<variable name="factorLevelNames" type="string(16)">Names for groups, separated by '*' (stacked export)</variable>
+	
+	<template>
+		<question>Match the following four statements to the scatterplots that they describe.</question>
+		<qnParam>count(100)#xVarName(X)#xAxis(20_30_20_2)#yVarName(Y)#yAxis(50_200_50_50)#uncorrel(genericUncorrel)#posCorrel(genericPosCorr)#negCorrel(genericNegCorr)#outlierBoth(genericOutlierBoth)#outlierXY(genericOutlierXY)#twoGroupPos(genericTwoClusterPos)#twoGroupNeg(genericTwoClusterNeg)#dataName(Data)#factorLevelNames(Level A*Level B*Level C*Level D)#factorName(Factor)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>leaves</shortName>
+		<longName>Length and width of leaves</longName>
+		<height>800</height>
+		<question>Samples of #count(100)# leaves were collected from four types of tree. Scatterplots of leaf width (vertical axis, mm) against leaf length (horizontal axis, mm) for the four tree types are shown below.\\nDrag each of the four statements onto the scatterplot that it best describes.</question>
+		<qnParam>xVarName(Length, mm)#xAxis(10_30_10_5 60_100_60_10 100_200_100_20)#yVarName(Width, mm)#yAxis(5_15_6_2 30_50_30_5 50_100_50_10)#uncorrel(leafUncorrel)#posCorrel(leafPosCorr)#negCorrel(leafNegCorr)#outlierBoth(leafOutlierBoth)#outlierXY(leafOutlierXY)#twoGroupPos(leafTwoClusterPos)#twoGroupNeg(leafTwoClusterNeg))#dataName(Leaf shape)#factorLevelNames(Tree 1*Tree 2*Tree 3*Tree 4)#factorName(Tree type)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>tempRain</shortName>
+		<longName>Daily temperature and rainfall</longName>
+		<height>800</height>
+		<question>The scatterplots below show the maximum daily temperature (horiz axis, Celsius) and total rainfall (vertical axis, mm) in each of #count(120)# months in four cities.\\nDrag each of the four statements onto the scatterplot whose climate it best describes.</question>
+		<qnParam>xVarName(Temperature, Celsius)#xAxis(20_30_20_2 15_25_16_2 5_25_5_5)#yVarName(Rainfall, mm)#yAxis(50_200_50_50 100_200_100_20 0_150_0_20)#uncorrel(climateUncorrel)#posCorrel(climatePosCorr)#negCorrel(climateNegCorr)#outlierBoth(climateOutlierBoth)#outlierXY(climateOutlierXY)#twoGroupPos(climateTwoClusterPos)#twoGroupNeg(climateTwoClusterNeg)#dataName(CityTemp)#factorLevelNames(City A*City B*City C*City D)#factorName(City name)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>generic</shortName>
+		<longName>Generic wording</longName>
+		<question>Match the following four statements to the scatterplots that they describe.</question>
+		<qnParam>count(100)#xVarName(X)#xAxis(20_30_20_2 15_25_16_2 5_25_5_5 10_30_10_5 60_100_60_10 100_200_100_20)#yVarName(Y)#yAxis(50_200_50_50 100_200_100_20 0_150_0_20 5_15_6_2 30_50_30_5 50_100_50_10)#uncorrel(genericUncorrel)#posCorrel(genericPosCorr)#negCorrel(genericNegCorr)#outlierBoth(genericOutlierBoth)#outlierXY(genericOutlierXY)#twoGroupPos(genericTwoClusterPos)#twoGroupNeg(genericTwoClusterNeg)#dataName(Data)#factorLevelNames(Level A*Level B*Level C*Level D)#factorName(Factor)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='findCorr'>
+	<description>Find correlation coefficient.</description>
 	<comment>A scatterplot is shown and the correlation coefficient must be roughly guessed.</comment>
 	<applet>exerciseBivarProg.GuessCorrApplet</applet>
 	<width>500</width>
@@ -122,6 +177,44 @@
 		<longName>Weight and sugar content of tomatoes</longName>
 		<question>Researchers measured the weight and sugar content of a sample of #count[](20,50,100)# tomatoes of one variety. A scatterplot of these two measurements is shown below. What is the correlation coefficient?</question>
 		<qnParam>xVarName(Weight, gm)#xAxis[](150 250 160 20*100 200 100 20)#yVarName(Sugar, %)#yAxis(2.5 3.5 2.6 0.2)#yMeanSD(0.8:1:2.5)#corr[](-0.99,-0.97,-0.95,-0.93,-0.9,-0.8,-0.6,-0.4,0,0.4,0.6,0.8,0.9,0.93,0.95,0.97,0.99)</qnParam>
+	</variation>
+</exercise>
+
+
+<exercise name='findCorrExternal'>
+	<description>Find correlation coefficient.</description>
+	<comment>A scatterplot is shown and the data should be exported and the correlation found accurately.</comment>
+	<applet>exerciseBivarProg.GuessCorrExternalApplet</applet>
+	<width>500</width>
+	<height>600</height>
+	
+	<variable name="xVarName" type="string(16)">Name of X variable</variable>
+	<variable name="xAxis" type="axis">Axis for x</variable>
+	<variable name="yVarName" type="string(16)">Name of Y variable</variable>
+	<variable name="yAxis" type="axis">Axis for y</variable>
+	<variable name="count" type="int(1)">Number of crosses</variable>
+	<variable name="yMeanSD" type="meanSd"></variable>
+	<variable name="corr" type="double">Correlation between X and Y</variable>
+	<variable name="dataName" type="string(16)">File name for exported data</variable>
+	<variable name="requiredDecimals" type="int(1)">The correlation should be exact to this number of decimals</variable>
+	
+	<template>
+		<question>The scatterplot below describes #count(20)# values of X and Y. What is the correlation coefficient?</question>
+		<qnParam>xVarName(Length, mm)#xAxis(10 30 10 5)#yVarName(Width, mm)#yAxis(5 15 6 2)#yMeanSD(0.8:1:2.5)#corr[](-0.99,-0.8,0,0.8,0.99)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>leaves</shortName>
+		<longName>Length and width of leaves</longName>
+		<question>A sample of #count[](20,50,100)# leaves was collected from a bush. A scatterplot of leaf length and width is shown below. What is the correlation coefficient?</question>
+		<qnParam>xVarName(Length, mm)#xAxis[](10 30 10 5*60 100 60 10*100 200 100 20)#yVarName(Width, mm)#yAxis[](5 15 6 2*30 50 30 5*50 100 50 10)#yMeanSD(0.8:1:2.5)#corr[](-0.99,-0.97,-0.95,-0.93,-0.9,-0.8,-0.6,-0.4,0,0.4,0.6,0.8,0.9,0.93,0.95,0.97,0.99)#dataName(Leaf measurements)#requiredDecimals(4)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>tomatoes</shortName>
+		<longName>Weight and sugar content of tomatoes</longName>
+		<question>Researchers measured the weight and sugar content of a sample of #count[](20,50,100)# tomatoes of one variety. A scatterplot of these two measurements is shown below. What is the correlation coefficient?</question>
+		<qnParam>xVarName(Weight, gm)#xAxis[](150 250 160 20*100 200 100 20)#yVarName(Sugar, %)#yAxis(2.5 3.5 2.6 0.2)#yMeanSD(0.8:1:2.5)#corr[](-0.99,-0.97,-0.95,-0.93,-0.9,-0.8,-0.6,-0.4,0,0.4,0.6,0.8,0.9,0.93,0.95,0.97,0.99)#dataName(Tomato measurements)#requiredDecimals(4)</qnParam>
 	</variation>
 </exercise>
 

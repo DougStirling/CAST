@@ -46,6 +46,47 @@
 </exercise>
 
 
+<exercise name='identifyFeatures'>
+	<description>Identify time series features</description>
+	<comment>A time series is displayed that has TWO prominent features -- trend (upward or downward), seasonal (mid-year or end-year peak), cyclical and irregular. These two features must be identified.</comment>
+	<applet>exerciseTimeProg.TimeComponentsExternalApplet</applet>
+	<width>600</width>
+	<height>630</height>
+	
+	<variable name="count" type="int(10)">Number of time series values</variable>
+	<variable name="year0" type="int">Year number for 1st year in series</variable>
+	<variable name="autoCorrel" type="double">Autocorrelation if there is a cyclic pattern</variable>
+	<variable name="yAxis" type="axis">Axis for time series values</variable>
+	<variable name="seasonEffects" type="double_array">Effects for different seasons</variable>
+	
+	<template>
+		<question>Use the pop-up menus to specify the TWO most prominent components of the following quarterly time series.</question>
+		<qnParam>count(48)#year0(1998)#autoCorrel(0.9)#yAxis(0 10 0 1)#seasonEffects(5 2 1 4)#dataName(Data)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>quarterly</shortName>
+		<longName>Quarterly time series (generic wording)</longName>
+		<question>Use the pop-up menus to specify the TWO most prominent components of the following quarterly time series.</question>
+		<qnParam>index(0:2)#count[index](36,48,64)#year0[index](2001,1998,1994)#autoCorrel(0.9)#yAxis[](0 10 0 1*3 5 3 0.5*12 20 12 1*-5 5 -5 1)#seasonEffects(5 2 1 4)#dataName(Data)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>monthly</shortName>
+		<longName>Monthly time series (generic wording)</longName>
+		<question>Use the pop-up menus to specify the TWO most prominent components of the following monthly time series.</question>
+		<qnParam>index(0:2)#count[index](48,56,120)#year0[index](2006,2005,2000)#autoCorrel(0.9)#yAxis[](0 10 0 1*3 5 3 0.5*12 20 12 1*-5 5 -5 1)#seasonEffects(9 8 7 6.5 5 3 2 1 3 6 8 9)#dataName(Data)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>monthly</shortName>
+		<longName>Monthly time series (generic wording)</longName>
+		<question>Use the pop-up menus to specify the TWO most prominent components of the following annual time series.</question>
+		<qnParam>index(0:1)#count[index](50,100)#year0[index](1960,1910)#autoCorrel(0.9)#yAxis[](0 10 0 1*3 5 3 0.5*12 20 12 1*-5 5 -5 1)#seasonEffects(0)#dataName(Data)</qnParam>
+	</variation>
+</exercise>
+
+
 <exercise name='findSmoothedValues'>
 	<description>Find moving average and exponentially smoothed values</description>
 	<comment>This question is based on a table showing an annual time series plus two added columns with moving averages and exponentially smoothed values. One value is missed out in each of these two columns and must be calculated.</comment>
@@ -83,6 +124,54 @@
 </exercise>
 
 
+<exercise name='findForecastsExternal'>
+	<description>Find forecasts with least squares and exponential smoothing</description>
+	<comment>A table plots an annual time series that should be exported and analysed in an external statistics program. The predicted value for the following year is requested using exponential smoothing and least squares.</comment>
+	<applet>exerciseTimeProg.FindForecastExternalApplet</applet>
+	<width>550</width>
+	<height>750</height>
+	
+	<coreParam name="customText">param=param#se=se</coreParam>
+	
+	<variable name="index2" type="int(0)">Internal index for firstYear and baseYear</variable>
+	<variable name="firstYear" type="int(0)">First year in series</variable>
+	<variable name="lastYear" type="int(0)">Last year in series</variable>
+	<variable name="baseYear" type="int(0)">Year treated as time zero for regression model</variable>
+	<variable name="esConst" type="double">Exponential smoothing constant</variable>
+	<variable name="forecastYear" type="int(0)">Year for which forecast is required</variable>
+	<variable name="forecastDecimals" type="int(0)">Decimals required for forecast</variable>
+	<variable name="varName" type="string(14)">Name of variable</variable>
+	<variable name="yDecimals" type="int(0)">Decimals printed for y-values in list</variable>
+	<variable name="paramDecimals" type="int_array(0)">Decimals for reported intercept and slope</variable>
+	<variable name="lowMean" type="double">Lowest value allowed for LS line over all years</variable>
+	<variable name="highMean" type="double">Highest value allowed for LS line over all years</variable>
+	<variable name="errorSd" type="double">Error standard deviation</variable>
+	<variable name="yAxis" type="axis">Axis for time series values</variable>
+	<variable name="autoCorrel" type="double">Autocorrelation for generating data</variable>
+	<variable name="yearLabelInfo" type="string">Indices of first label, label index step, firstPrintVal and printLabelStep</variable>
+	<variable name="maxEstSe" type="double_array">Templates for maximum value of estimate and its se</variable>
+	
+	<template>
+		<question>The time series below gives the annual profit ($million) of a company from #firstYear(1970)# to #lastYear(2010)#.\\nFit a least squares line to the data (with year #baseYear[index2](1990)# coded as zero) and find exponentially smoothed values (with smoothing constant #esConst[](0.3,0.4,0.5)#).\\nForecast the profit in #forecastYear(2011)# (to #forecastDecimals(3)# decimal places) with exponential smoothing and regression.</question>
+		<qnParam>index2(0)#varName(Profit)#yDecimals(2)#paramDecimals(3 4)#lowMean(30)#highMean(50)#errorSd(3)#yAxis(20 60 20 10)#autoCorrel[](0.2,0.8)#yearLabelInfo(0 10 1970 10)#maxEstSe(99.9999 99.9999)#dataName(Data)</qnParam>
+	</template>
+	
+	<variation>
+		<shortName>profit</shortName>
+		<longName>Annual profit of a company</longName>
+		<question>The time series below gives the annual profit ($million) of a company from #firstYear[index2](1970,1970,1990,1990)# to #lastYear(2018)#.\\nFit a least squares line to the data (with year #baseYear[index2](1970,1990,1990,2000)# coded as zero) and find exponentially smoothed values (with smoothing constant #esConst[](0.3,0.4,0.5)#).\\nForecast the profit in #forecastYear(2019)# (to #forecastDecimals(3)# decimal places) with exponential smoothing and regression.</question>
+		<qnParam>index(0:3)#index2(0:3)#varName(Profit)#yDecimals(2)#paramDecimals(3 4)#lowMean[index](30,50,40,40)#highMean[index](50,30,40,40)#errorSd[index](3,3,7,7)#yAxis(20 60 20 10)#autoCorrel[](0.2,0.8)#yearLabelInfo[index2](0 10 1970 10*0 10 1970 10*0 5 1990 5*0 5 1990 5)#maxEstSe(99.9999 99.9999)#dataName(CompanyProfit)</qnParam>
+	</variation>
+	
+	<variation>
+		<shortName>cpi</shortName>
+		<longName>Consumer price index</longName>
+		<question>The consumer price index (CPI) of a country from #firstYear[index2](1970,1970,1990,1990)# to #lastYear(2018)# is shown below.\\nFIt a least squares line to the data (with year #baseYear[index2](1970,1990,1990,2000)# coded as zero) and find exponentially smoothed values (with smoothing constant #esConst[](0.3,0.4,0.5)#).\\nForecast the CPI in #forecastYear(2019)# (to #forecastDecimals(2)# decimal places) with exponential smoothing and regression.</question>
+		<qnParam>index(0:1)#index2(0:3)#varName(CPI)#yDecimals(1)#paramDecimals(2 3)#lowMean[index](100,120)#highMean[index](200,160)#errorSd[index](10,10)#yAxis(80 220 80 20)#autoCorrel[](0.6,0.8)#yearLabelInfo[index2](0 10 1970 10*0 10 1970 10*0 5 1990 5*0 5 1990 5)#maxEstSe(99.9999 99.9999)#dataName(CountryCPI)</qnParam>
+	</variation>
+</exercise>
+
+
 <exercise name='findForecasts'>
 	<description>Find forecasts with least squares and exponential smoothing</description>
 	<comment>A table shows an annual time series with a column of exponentially smoothed values. Linear regression output is also shown. The predicted value for the following year is requested using exponential smoothing and least squares.</comment>
@@ -111,21 +200,21 @@
 	<variable name="maxEstSe" type="double_array">Templates for maximum value of estimate and its se</variable>
 	
 	<template>
-		<question>The time series below gives the annual profit ($million) of a company from #firstYear(1970)# to #lastYear(2010)#.\\nLinear regression output is given (with year #baseYear(1970)# coded as zero) and exponentially smoothed values with (smoothing constant #esConst[](0.3,0.4,0.5)#) are also listed.\nForecast the profit in #forecastYear(2011)# (to #forecastDecimals(3)# decimal places) with exponential smoothing and regression.</question>
+		<question>The time series below gives the annual profit ($million) of a company from #firstYear(1970)# to #lastYear(2010)#.\\nLinear regression output is given (with year #baseYear(1970)# coded as zero) and exponentially smoothed values with (smoothing constant #esConst[](0.3,0.4,0.5)#) are also listed.\\nForecast the profit in #forecastYear(2011)# (to #forecastDecimals(3)# decimal places) with exponential smoothing and regression.</question>
 		<qnParam>index2(0)#varName(Profit)#yDecimals(2)#paramDecimals(3 4)#lowMean(30)#highMean(50)#errorSd(3)#yAxis(20 60 20 10)#autoCorrel[](0.2,0.8)#yearLabelInfo(0 10 1970 10)#maxEstSe(99.9999 99.9999)</qnParam>
 	</template>
 	
 	<variation>
 		<shortName>profit</shortName>
 		<longName>Annual profit of a company</longName>
-		<question>The time series below gives the annual profit ($million) of a company from #firstYear[index2](1970,1970,1990,1990)# to #lastYear(2010)#.\\nLinear regression output is given (with year #baseYear[index2](1970,1990,1990,2000)# coded as zero) and exponentially smoothed values with (smoothing constant #esConst[](0.3,0.4,0.5)#) are also listed.\nForecast the profit in #forecastYear(2011)# (to #forecastDecimals(3)# decimal places) with exponential smoothing and regression.</question>
+		<question>The time series below gives the annual profit ($million) of a company from #firstYear[index2](1970,1970,1990,1990)# to #lastYear(2018)#.\\nLinear regression output is given (with year #baseYear[index2](1970,1990,1990,2000)# coded as zero) and exponentially smoothed values with (smoothing constant #esConst[](0.3,0.4,0.5)#) are also listed.\\nForecast the profit in #forecastYear(2019)# (to #forecastDecimals(3)# decimal places) with exponential smoothing and regression.</question>
 		<qnParam>index(0:3)#index2(0:3)#varName(Profit)#yDecimals(2)#paramDecimals(3 4)#lowMean[index](30,50,40,40)#highMean[index](50,30,40,40)#errorSd[index](3,3,7,7)#yAxis(20 60 20 10)#autoCorrel[](0.2,0.8)#yearLabelInfo[index2](0 10 1970 10*0 10 1970 10*0 5 1990 5*0 5 1990 5)#maxEstSe(99.9999 99.9999)</qnParam>
 	</variation>
 	
 	<variation>
 		<shortName>cpi</shortName>
 		<longName>Consumer price index</longName>
-		<question>The consumer price index (CPI) of a country from #firstYear[index2](1970,1970,1990,1990)# to #lastYear(2010)# is shown below.\\nLinear regression output is given (with year #baseYear[index2](1970,1990,1990,2000)# coded as zero) and exponentially smoothed values with (smoothing constant #esConst[](0.3,0.4,0.5)#) are also listed.\nForecast the CPI in #forecastYear(2011)# (to #forecastDecimals(2)# decimal places) with exponential smoothing and regression.</question>
+		<question>The consumer price index (CPI) of a country from #firstYear[index2](1970,1970,1990,1990)# to #lastYear(2018)# is shown below.\\nLinear regression output is given (with year #baseYear[index2](1970,1990,1990,2000)# coded as zero) and exponentially smoothed values with (smoothing constant #esConst[](0.3,0.4,0.5)#) are also listed.\\nForecast the CPI in #forecastYear(2019)# (to #forecastDecimals(2)# decimal places) with exponential smoothing and regression.</question>
 		<qnParam>index(0:1)#index2(0:3)#varName(CPI)#yDecimals(1)#paramDecimals(2 3)#lowMean[index](100,120)#highMean[index](200,160)#errorSd[index](10,10)#yAxis(80 220 80 20)#autoCorrel[](0.6,0.8)#yearLabelInfo[index2](0 10 1970 10*0 10 1970 10*0 5 1990 5*0 5 1990 5)#maxEstSe(99.9999 99.9999)</qnParam>
 	</variation>
 </exercise>
